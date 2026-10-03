@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --surface-2: #f1ebe2;
+  --ink: #221e1a;
+  --muted: #6c645b;
+  --line: #e4dbcf;
+  --accent: #9a5a37;
+  --accent-ink: #ffffff;
+  --accent-soft: #f3e3d7;
+  --sage: #6f7f66;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-sage: var(--sage);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* Shared building blocks */
+@utility container-x {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-60;
+}
+@utility btn-primary {
+  @apply btn bg-accent text-accent-ink hover:bg-[#82482a];
+}
+@utility btn-ghost {
+  @apply btn border border-line bg-surface text-ink hover:border-ink;
+}
+@utility eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent;
+}
+@utility field {
+  @apply w-full rounded-lg border border-line bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-muted/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20;
+}
+@utility label {
+  @apply mb-1.5 block text-sm font-medium;
+}
+@utility chip {
+  @apply inline-flex items-center rounded-full border border-line bg-surface px-3 py-1 text-xs text-muted;
+}
+
+/* Blog article typography */
+.prose-post {
+  @apply text-[17px] leading-8 text-ink;
+}
+.prose-post h2 {
+  @apply mt-10 mb-3 font-serif text-3xl leading-tight;
+}
+.prose-post h3 {
+  @apply mt-8 mb-2 text-lg font-semibold;
+}
+.prose-post p {
+  @apply my-4;
+}
+.prose-post ul,
+.prose-post ol {
+  @apply my-4 pl-6;
+}
+.prose-post ul {
+  @apply list-disc;
+}
+.prose-post ol {
+  @apply list-decimal;
+}
+.prose-post li {
+  @apply my-1.5;
+}
+.prose-post a {
+  @apply text-accent underline underline-offset-2;
+}
+.prose-post strong {
+  @apply font-semibold;
+}
+.prose-post blockquote {
+  @apply my-6 border-l-2 border-accent pl-4 text-muted italic;
+}
+.prose-post table {
+  @apply my-6 w-full border-collapse text-sm;
+}
+.prose-post th,
+.prose-post td {
+  @apply border-b border-line px-2 py-2 text-left align-top;
 }
