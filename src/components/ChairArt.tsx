@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Chair } from "@/data/chairs";
+import renders from "@/data/renders.json";
 import { ChairDrawing } from "./chair-drawings";
 import { StudioBackdrop, chairTint } from "./studio";
 
@@ -17,11 +18,12 @@ export function ChairArt({
   className?: string;
   priority?: boolean;
 }) {
-  if (chair.image) {
+  const src = chair.image ?? (renders.includes(chair.slug) ? `/chairs/render/${chair.slug}.jpg` : undefined);
+  if (src) {
     return (
       <div className={`relative overflow-hidden ${className}`} style={{ background: chairTint(chair.slug) }}>
         <Image
-          src={chair.image}
+          src={src}
           alt={chair.name}
           fill
           priority={priority}

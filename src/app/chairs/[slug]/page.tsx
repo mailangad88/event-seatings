@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChairArt } from "@/components/ChairArt";
+import { ChairViewer } from "@/components/ChairViewer";
 import { ChairCard } from "@/components/ChairCard";
 import { VoteButton } from "@/components/VoteProvider";
 import { chairs, getChair } from "@/data/chairs";
@@ -47,7 +47,7 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
 
       <div className="mt-10 grid gap-12 md:grid-cols-[1.1fr_1fr] md:gap-20">
         <div className="md:sticky md:top-32 md:self-start">
-          <ChairArt chair={chair} className="aspect-[4/5]" priority />
+          <ChairViewer chair={chair} />
         </div>
         <div className="md:py-6">
           <p className="font-serif text-lg text-gold italic">
@@ -62,21 +62,6 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
             <span className="text-[11px] tracking-[0.2em] text-muted uppercase">Estimated</span>
             <span className="headline text-3xl">{chair.estPrice}</span>
             {!chair.estPrice.includes("/") && <span className="text-sm text-muted">per chair</span>}
-          </div>
-
-          <div className="mt-8">
-            <p className="label">Finishes</p>
-            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-3">
-              {chair.finishes.map((f) => (
-                <span key={f.name} className="flex items-center gap-2.5 text-sm">
-                  <span
-                    className="h-5 w-5 rounded-full ring-1 ring-ink/15 ring-offset-2 ring-offset-bg"
-                    style={{ background: f.hex }}
-                  />
-                  {f.name}
-                </span>
-              ))}
-            </div>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-4">

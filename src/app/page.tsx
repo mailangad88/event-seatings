@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ChairCard } from "@/components/ChairCard";
-import { HeroPlayer } from "@/components/HeroPlayer";
+import { HeroViewer } from "@/components/HeroViewer";
 import { Reveal } from "@/components/Reveal";
 import { ThisOrThat } from "@/components/ThisOrThat";
 import { WaitlistForm } from "@/components/WaitlistForm";
@@ -48,15 +48,7 @@ export default async function Home() {
         </div>
 
         <div className="animate-rise [animation-delay:200ms]">
-          <div className="relative border border-gold/50 p-3 sm:p-4">
-            <HeroPlayer />
-            <span className="absolute -top-px left-8 -translate-y-1/2 bg-bg px-3 text-[10px] tracking-[0.35em] text-gold uppercase">
-              The Founding Collection
-            </span>
-          </div>
-          <p className="mt-5 text-center text-[10px] tracking-[0.32em] text-muted uppercase">
-            Thirteen pieces · Delivered &amp; placed by our team
-          </p>
+          <HeroViewer />
         </div>
       </section>
 

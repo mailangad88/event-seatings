@@ -16,14 +16,14 @@ const grain =
 
 export function StudioBackdrop({
   tint,
-  floor = 85,
+  floor = 85 as number | null,
   className = "",
   style,
   children,
 }: {
   tint: string;
   /** Where the chair's feet land, as a percentage of the height. */
-  floor?: number;
+  floor?: number | null;
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
@@ -38,6 +38,8 @@ export function StudioBackdrop({
         ...style,
       }}
     >
+      {floor !== null && (
+        <>
       {/* floor plane */}
       <div
         aria-hidden
@@ -65,6 +67,8 @@ export function StudioBackdrop({
           filter: "blur(5px)",
         }}
       />
+        </>
+      )}
       <div style={{ position: "absolute", inset: 0, zIndex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
         {children}
       </div>

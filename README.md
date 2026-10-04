@@ -45,3 +45,17 @@ npm run remotion:render    # writes out/chair-showcase.mp4 (4:5) and out/launch-
 Chairs, names and colors come from `src/data/chairs.ts` and `src/lib/site.ts`, so renaming the brand or adding a chair updates the videos too. Fonts are bundled in `public/fonts`, so renders work offline. Keep all `remotion` and `@remotion/*` packages pinned to the same exact version.
 
 **Licensing:** Remotion is free for individuals and small teams, but companies with more than three people need a paid license. Check remotion.pro/license before you scale.
+
+## 3D chairs
+Every chair is a real-time 3D model (`src/components/three/`): wood grain, woven cane, velvet, brushed gold and acrylic materials, soft studio lighting and contact shadows. They show up three ways:
+- **Chair pages and the home hero:** live and interactive. Visitors drag to rotate and tap a finish swatch to recolor the chair. A still image shows instantly while the 3D loads, and is the fallback when WebGL isn't available.
+- **Grids and cards:** pre-rendered stills in `public/chairs/render/`, so pages with many chairs stay fast.
+
+When you add or change a chair in `src/data/chairs.ts`, regenerate its still:
+```bash
+npm run build
+ALLOW_RENDER=1 npm run start          # terminal 1
+npm run render:chairs                 # terminal 2 (or: npm run render:chairs -- <slug>)
+npm run build                         # include the new images
+```
+Set `CHROME_PATH` if Chromium isn't found. Real photography always wins: set `image: "/chairs/your-photo.jpg"` on a chair and the 3D still is replaced everywhere (the live 3D viewer still appears on that chair's page; remove it there if you prefer photos only).

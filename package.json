@@ -8,9 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "remotion:studio": "remotion studio",
-    "remotion:render": "remotion render ChairShowcase out/chair-showcase.mp4 && remotion render LaunchStory out/launch-story.mp4"
+    "remotion:render": "remotion render ChairShowcase out/chair-showcase.mp4 && remotion render LaunchStory out/launch-story.mp4",
+    "render:chairs": "node scripts/render-chairs.mjs"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.1",
     "@remotion/bundler": "4.0.532",
     "@remotion/cli": "4.0.532",
     "@remotion/player": "4.0.532",
@@ -22,6 +25,7 @@
     "react-dom": "19.2.8",
     "remotion": "4.0.532",
     "server-only": "^0.0.1",
+    "three": "^0.186.1",
     "zod": "4.5.4"
   },
   "devDependencies": {
@@ -31,8 +35,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.186.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
+    "playwright-core": "^1.63.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
