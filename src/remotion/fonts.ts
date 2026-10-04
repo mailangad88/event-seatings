@@ -4,6 +4,8 @@ import { continueRender, delayRender, staticFile } from "remotion";
 export const display = "ES Cormorant";
 export const displayItalic = "ES Cormorant Italic";
 export const sans = "ES Jost";
+export const script = "ES Great Vibes";
+export const gurmukhi = "ES Noto Serif Gurmukhi";
 
 const faces: [string, string, string][] = [
   [display, "cormorant-garamond-latin-300-normal.woff2", "300"],
@@ -11,6 +13,9 @@ const faces: [string, string, string][] = [
   [displayItalic, "cormorant-garamond-latin-400-italic.woff2", "400"],
   [sans, "jost-latin-400-normal.woff2", "400"],
   [sans, "jost-latin-500-normal.woff2", "500"],
+  [script, "great-vibes-latin-400-normal.woff2", "400"],
+  [gurmukhi, "noto-serif-gurmukhi-gurmukhi-400-normal.woff2", "400"],
+  [gurmukhi, "noto-serif-gurmukhi-gurmukhi-600-normal.woff2", "600"],
 ];
 
 if (typeof document !== "undefined") {
