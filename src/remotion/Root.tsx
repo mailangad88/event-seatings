@@ -27,6 +27,8 @@ export function RemotionRoot() {
             brideFullName: "Nehal Kaur",
             year: 2027,
             dateRange: "21 – 24 OCTOBER 2027",
+            music: "",
+            musicStartSeconds: 0,
             events: [
               { name: "Haldi", note: "Turmeric, blessings and laughter", weekday: "Thursday", day: 21, month: "October", time: "4:00 PM" },
               { name: "Jaggo", note: "Bhangra, boliyan and lanterns", weekday: "Friday", day: 22, month: "October", time: "6:00 PM" },
