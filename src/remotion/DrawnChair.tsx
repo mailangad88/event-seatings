@@ -38,5 +38,5 @@ export function DrawnChair({
     });
   }, [draw, fillAmount, silhouette]);
 
-  return <ChairDrawing svgRef={ref} silhouette={silhouette} fill={fill} style={style} strokeWidth={2.2} />;
+  return <ChairDrawing svgRef={ref} silhouette={silhouette} fill={fill} style={style} strokeWidth={1.8} />;
 }

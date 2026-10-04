@@ -6,7 +6,7 @@ import { VoteButton } from "./VoteProvider";
 export function ChairCard({ chair, index }: { chair: Chair; index?: number }) {
   return (
     <article className="group relative flex flex-col">
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden outline outline-1 outline-offset-[7px] outline-transparent transition-[outline-color] duration-700 group-hover:outline-gold/60">
         <ChairArt
           chair={chair}
           className="aspect-[4/5] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"

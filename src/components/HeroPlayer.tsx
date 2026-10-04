@@ -43,6 +43,7 @@ export function HeroPlayer() {
       compositionHeight={1350}
       fps={30}
       autoPlay
+      initialFrame={58}
       loop
       controls={false}
       clickToPlay={false}

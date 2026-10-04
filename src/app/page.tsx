@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChairCard } from "@/components/ChairCard";
 import { HeroPlayer } from "@/components/HeroPlayer";
+import { Reveal } from "@/components/Reveal";
 import { ThisOrThat } from "@/components/ThisOrThat";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { allStyles, chairs, getChair } from "@/data/chairs";
@@ -47,18 +48,30 @@ export default async function Home() {
         </div>
 
         <div className="animate-rise [animation-delay:200ms]">
-          <HeroPlayer />
+          <div className="relative border border-gold/50 p-3 sm:p-4">
+            <HeroPlayer />
+            <span className="absolute -top-px left-8 -translate-y-1/2 bg-bg px-3 text-[10px] tracking-[0.35em] text-gold uppercase">
+              The Founding Collection
+            </span>
+          </div>
+          <p className="mt-5 text-center text-[10px] tracking-[0.32em] text-muted uppercase">
+            Thirteen pieces · Delivered &amp; placed by our team
+          </p>
         </div>
       </section>
 
       {/* Statement */}
-      <section className="border-y border-line bg-surface">
-        <div className="container-x py-24 text-center md:py-32">
-          <p className="eyebrow justify-center">Our philosophy</p>
-          <p className="headline mx-auto mt-8 max-w-4xl text-3xl leading-[1.25] sm:text-5xl sm:leading-[1.2]">
-            Seating fills more of your reception than almost anything else. It deserves the same{" "}
-            <em className="text-gold">care</em> as your florals, your linens, your light.
-          </p>
+      <section className="relative overflow-hidden bg-espresso text-bg">
+        <div className="container-x py-28 text-center md:py-44">
+          <Reveal>
+            <span className="ornament" aria-hidden />
+            <p className="eyebrow mt-8 justify-center before:hidden">Our philosophy</p>
+            <p className="headline mx-auto mt-10 max-w-5xl text-4xl leading-[1.18] sm:text-6xl sm:leading-[1.12] md:text-7xl">
+              Seating fills more of your reception than almost anything else. It deserves the same{" "}
+              <em className="text-gold">care</em> as your florals, your linens, your light.
+            </p>
+            <span className="ornament mt-14" aria-hidden />
+          </Reveal>
         </div>
       </section>
 
@@ -68,12 +81,12 @@ export default async function Home() {
           ["I", "Curated", "More than a dozen distinctive styles, chosen for how they look in a room, in photographs and from behind."],
           ["II", "Commercial grade", "Weight-rated pieces built for events, never residential furniture. Delivered, placed and collected by our team."],
           ["III", "Locally owned", `Based in ${site.city}. We know the estates, barns and ballrooms of the Fox Valley.`],
-        ].map(([n, t, d]) => (
-          <div key={t} className="border-t border-ink pt-6">
+        ].map(([n, t, d], i) => (
+          <Reveal key={t} delay={i * 120} className="border-t border-ink pt-6">
             <span className="font-serif text-lg text-gold italic">{n}.</span>
             <h2 className="headline mt-3 text-3xl">{t}</h2>
             <p className="mt-3 leading-7 text-muted">{d}</p>
-          </div>
+          </Reveal>
         ))}
       </section>
 
@@ -92,8 +105,10 @@ export default async function Home() {
           <Link href="/chairs" className="link-line">View all {chairs.length} chairs</Link>
         </div>
         <div className="mt-14 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((slug) => (
-            <ChairCard key={slug} chair={getChair(slug)!} index={chairs.findIndex((c) => c.slug === slug)} />
+          {featured.map((slug, i) => (
+            <Reveal key={slug} delay={(i % 3) * 120}>
+              <ChairCard chair={getChair(slug)!} index={chairs.findIndex((c) => c.slug === slug)} />
+            </Reveal>
           ))}
         </div>
       </section>
@@ -156,9 +171,11 @@ export default async function Home() {
             ["Delivered & placed", "Our team delivers, sets every chair and collects afterward. You simply take your seat."],
           ].map(([t, d], i) => (
             <li key={t}>
+              <Reveal delay={i * 140}>
               <span className="headline text-7xl text-gold/70">0{i + 1}</span>
               <h3 className="mt-4 text-[11px] font-medium tracking-[0.25em] uppercase">{t}</h3>
               <p className="mt-3 leading-7 text-muted">{d}</p>
+              </Reveal>
             </li>
           ))}
         </ol>

@@ -1,6 +1,6 @@
 import { AbsoluteFill, Easing, Sequence, interpolate, useCurrentFrame } from "remotion";
 import { getChair } from "@/data/chairs";
-import { chairTint } from "@/components/ChairArt";
+import { StudioBackdrop, chairTint } from "@/components/studio";
 import { site } from "@/lib/site";
 import { DrawnChair } from "./DrawnChair";
 import { display, displayItalic, sans } from "./fonts";
@@ -10,7 +10,7 @@ export const SHOWCASE_SEGMENT = 96;
 export const SHOWCASE_FRAMES = SHOWCASE_SLUGS.length * SHOWCASE_SEGMENT;
 
 const ease = Easing.bezier(0.2, 0.7, 0.2, 1);
-const INK = "#1b1815";
+const INK = "#2a241e";
 const GOLD = "#a88a5a";
 
 function Segment({ slug, index }: { slug: string; index: number }) {
@@ -28,7 +28,8 @@ function Segment({ slug, index }: { slug: string; index: number }) {
   const drift = interpolate(frame, [0, SHOWCASE_SEGMENT], [0, -14]);
 
   return (
-    <AbsoluteFill style={{ background: chairTint(slug), opacity: fade }}>
+    <AbsoluteFill style={{ opacity: fade }}>
+      <StudioBackdrop tint={chairTint(slug)} floor={66} style={{ position: "absolute", inset: 0 }} />
       <div
         style={{
           position: "absolute",
@@ -47,7 +48,7 @@ function Segment({ slug, index }: { slug: string; index: number }) {
         No. {String(index + 1).padStart(2, "0")} · {chair.styles[0]}
       </div>
 
-      <div style={{ position: "absolute", top: 230, left: 0, right: 0, height: 700, display: "flex", justifyContent: "center", transform: `translateY(${drift}px)`, color: INK }}>
+      <div style={{ position: "absolute", top: 230, left: 0, right: 0, height: 700, display: "flex", justifyContent: "center", transform: `translateY(${drift}px)`, color: INK, zIndex: 3 }}>
         <DrawnChair
           silhouette={chair.silhouette}
           fill={chair.finishes[0].hex}
@@ -57,7 +58,7 @@ function Segment({ slug, index }: { slug: string; index: number }) {
         />
       </div>
 
-      <div style={{ position: "absolute", left: 0, right: 0, bottom: 150, textAlign: "center", color: INK }}>
+      <div style={{ position: "absolute", left: 0, right: 0, bottom: 150, textAlign: "center", color: INK, zIndex: 3 }}>
         <div
           style={{
             fontFamily: display,

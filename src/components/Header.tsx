@@ -10,41 +10,51 @@ export const nav = [
   { href: "/faq", label: "FAQ" },
 ];
 
-export function Logo({ light = false }: { light?: boolean }) {
+export function Logo({ light = false, center = false }: { light?: boolean; center?: boolean }) {
   return (
-    <Link href="/" className={`flex flex-col items-start leading-none ${light ? "text-bg" : "text-ink"}`}>
-      <span className="font-serif text-[1.65rem] font-normal tracking-[0.02em]">{site.name}</span>
-      <span className={`mt-1 text-[9px] tracking-[0.42em] uppercase ${light ? "text-bg/60" : "text-muted"}`}>
+    <Link
+      href="/"
+      className={`flex flex-col leading-none ${center ? "items-center" : "items-start"} ${light ? "text-bg" : "text-ink"}`}
+    >
+      <span className="font-serif text-[1.75rem] font-light tracking-[0.06em] uppercase">{site.name}</span>
+      <span className={`mt-1.5 text-[8.5px] tracking-[0.5em] uppercase ${light ? "text-bg/55" : "text-gold"}`}>
         Fine Event Seating
       </span>
     </Link>
   );
 }
 
+const linkClass =
+  "relative text-[11px] tracking-[0.24em] text-ink/75 uppercase transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-500 hover:after:scale-x-100";
+
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-bg/92 backdrop-blur-md">
-      <div className="bg-espresso text-center text-[10px] tracking-[0.28em] text-bg/80 uppercase">
+    <header className="sticky top-0 z-40 border-b border-line/80 bg-bg/97 backdrop-blur-md">
+      <div className="bg-espresso text-center text-[10px] tracking-[0.3em] text-bg/75 uppercase">
         <div className="container-x py-2.5">
-          Now reserving the {site.launch.seasonLabel} ·{" "}
+          Now reserving the {site.launch.seasonLabel}
+          <span className="mx-3 text-gold" aria-hidden>·</span>
           <Link href="/quote" className="text-bg underline decoration-gold underline-offset-4">
-            Request a quote
+            Enquire
           </Link>
         </div>
       </div>
-      <div className="container-x relative flex h-20 items-center justify-between gap-6">
-        <Logo />
-        <nav className="hidden items-center gap-9 md:flex" aria-label="Main">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-[11px] tracking-[0.22em] text-ink/80 uppercase transition-colors hover:text-gold"
-            >
+      <div className="container-x relative flex h-20 items-center justify-between md:grid md:h-24 md:grid-cols-[1fr_auto_1fr]">
+        <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
+          {nav.slice(0, 3).map((item) => (
+            <Link key={item.href} href={item.href} className={linkClass}>
               {item.label}
             </Link>
           ))}
-          <Link href="/quote" className="btn-primary px-6 py-3">
+        </nav>
+        <Logo center />
+        <nav className="hidden items-center justify-end gap-9 md:flex" aria-label="Secondary">
+          {nav.slice(3).map((item) => (
+            <Link key={item.href} href={item.href} className={linkClass}>
+              {item.label}
+            </Link>
+          ))}
+          <Link href="/quote" className="btn-primary px-7 py-3">
             Enquire
           </Link>
         </nav>
