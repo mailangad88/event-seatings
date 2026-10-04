@@ -32,3 +32,16 @@ Votes and leads are saved to `.data/db.json` until Supabase is configured.
 3. In Vercel, set the env vars from `.env.example` (`ADMIN_PASSWORD`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SITE_URL`).
 4. Point the `eventseatings.com` domain at Vercel.
 5. Submit `https://eventseatings.com/sitemap.xml` in Google Search Console.
+
+## Animations and social videos (Remotion)
+Animated chair illustrations live in `src/remotion/` and are used in two ways:
+- **On the site:** the home page hero plays `ChairShowcase` live (`src/components/HeroPlayer.tsx`). Visitors who prefer reduced motion see a still image.
+- **As videos:** render MP4s for Instagram, TikTok and Pinterest.
+
+```bash
+npm run remotion:studio    # preview and edit animations in the browser
+npm run remotion:render    # writes out/chair-showcase.mp4 (4:5) and out/launch-story.mp4 (9:16)
+```
+Chairs, names and colors come from `src/data/chairs.ts` and `src/lib/site.ts`, so renaming the brand or adding a chair updates the videos too. Fonts are bundled in `public/fonts`, so renders work offline. Keep all `remotion` and `@remotion/*` packages pinned to the same exact version.
+
+**Licensing:** Remotion is free for individuals and small teams, but companies with more than three people need a paid license. Check remotion.pro/license before you scale.

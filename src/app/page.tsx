@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ChairArt } from "@/components/ChairArt";
 import { ChairCard } from "@/components/ChairCard";
+import { HeroPlayer } from "@/components/HeroPlayer";
 import { ThisOrThat } from "@/components/ThisOrThat";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { allStyles, chairs, getChair } from "@/data/chairs";
@@ -24,8 +24,6 @@ const styleNotes: Record<string, string> = {
 
 export default async function Home() {
   const posts = (await getPosts()).slice(0, 3);
-  const heroMain = getChair("velvet-dining")!;
-  const heroSide = getChair("cane-back")!;
 
   return (
     <>
@@ -48,19 +46,8 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="relative animate-rise [animation-delay:200ms]">
-          <Link href={`/chairs/${heroMain.slug}`} className="group ml-auto block w-[82%] overflow-hidden">
-            <ChairArt chair={heroMain} className="aspect-[4/5] transition-transform duration-[1.4s] group-hover:scale-[1.03]" priority />
-          </Link>
-          <Link
-            href={`/chairs/${heroSide.slug}`}
-            className="group absolute bottom-[-8%] left-0 block w-[42%] overflow-hidden border-[10px] border-bg"
-          >
-            <ChairArt chair={heroSide} className="aspect-[3/4] transition-transform duration-[1.4s] group-hover:scale-[1.04]" priority />
-          </Link>
-          <p className="mt-4 ml-[46%] font-serif text-base text-muted italic">
-            The {heroMain.name}, in emerald velvet
-          </p>
+        <div className="animate-rise [animation-delay:200ms]">
+          <HeroPlayer />
         </div>
       </section>
 
