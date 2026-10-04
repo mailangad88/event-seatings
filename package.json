@@ -10,6 +10,7 @@
     "remotion:studio": "remotion studio",
     "remotion:render": "remotion render ChairShowcase out/chair-showcase.mp4 && remotion render LaunchStory out/launch-story.mp4",
     "render:wedding": "remotion render SikhWeddingInvite out/sikh-wedding-invite.mp4",
+    "render:garden": "remotion render GardenInvite out/garden-wedding-invite.mp4",
     "render:chairs": "node scripts/render-chairs.mjs"
   },
   "dependencies": {
