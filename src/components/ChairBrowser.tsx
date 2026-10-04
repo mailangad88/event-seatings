@@ -14,7 +14,7 @@ export function ChairBrowser({ initialStyle = null }: { initialStyle?: Style | n
 
   const option = (active: boolean) =>
     `border-b pb-1 text-[11px] tracking-[0.2em] uppercase transition-colors ${
-      active ? "border-ink text-ink" : "border-transparent text-muted hover:text-ink"
+      active ? "border-gold text-ink" : "border-transparent text-muted hover:text-ink"
     }`;
 
   return (

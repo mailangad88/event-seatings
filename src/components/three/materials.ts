@@ -57,11 +57,11 @@ export function createMats(color: string) {
   // Glossy clear acrylic: mostly transparent with strong reflections, so edges and
   // curves catch the studio lights instead of washing out.
   const acrylic = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color(color).lerp(new THREE.Color("#9fb0b8"), 0.35),
-    metalness: 0.15,
+    color: new THREE.Color(color).lerp(new THREE.Color("#e8eef0"), 0.5),
+    metalness: 0.1,
     roughness: 0.03,
     transparent: true,
-    opacity: 0.5,
+    opacity: 0.38,
     ior: 1.5,
     clearcoat: 1,
     clearcoatRoughness: 0.03,

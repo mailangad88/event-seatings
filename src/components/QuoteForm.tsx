@@ -90,19 +90,19 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
       <fieldset>
         {legend("I.", "The pieces you love")}
         <p className="-mt-5 mb-6 text-sm text-muted">Select as many as you wish.</p>
-        <div className="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {chairs.map((c) => {
             const on = selected.includes(c.slug);
             return (
               <label
                 key={c.slug}
-                className={`flex cursor-pointer items-center gap-3 px-4 py-4 text-sm transition-colors ${
-                  on ? "bg-ink text-bg" : "bg-surface hover:bg-surface-2"
+                className={`flex cursor-pointer items-center gap-3 border border-line px-4 py-4 text-sm transition-colors ${
+                  on ? "bg-gold text-[#0a0806]" : "bg-surface hover:bg-surface-2"
                 }`}
               >
                 <input type="checkbox" checked={on} onChange={() => toggle(c.slug)} className="sr-only" />
                 <span
-                  className={`grid h-4 w-4 shrink-0 place-items-center border text-[10px] ${on ? "border-gold bg-gold text-white" : "border-ink/40"}`}
+                  className={`grid h-4 w-4 shrink-0 place-items-center border text-[10px] ${on ? "border-[#0a0806] bg-[#0a0806] text-gold" : "border-ink/40"}`}
                   aria-hidden
                 >
                   {on ? "✓" : ""}
@@ -191,7 +191,7 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
           personal proposal once our founding collection is finalized. There&apos;s no payment and no commitment until
           you confirm.
         </p>
-        {status === "error" && <p className="mt-4 text-sm text-red-700">{error}</p>}
+        {status === "error" && <p className="mt-4 text-sm text-red-400">{error}</p>}
         <button className="btn-primary mt-8 w-full sm:w-auto" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Send enquiry"}
         </button>

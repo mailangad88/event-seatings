@@ -53,7 +53,7 @@ export default async function Home() {
       </section>
 
       {/* Statement */}
-      <section className="relative overflow-hidden bg-espresso text-bg">
+      <section className="relative overflow-hidden bg-espresso text-ink">
         <div className="container-x py-28 text-center md:py-44">
           <Reveal>
             <span className="ornament" aria-hidden />
@@ -74,7 +74,7 @@ export default async function Home() {
           ["II", "Commercial grade", "Weight-rated pieces built for events, never residential furniture. Delivered, placed and collected by our team."],
           ["III", "Locally owned", `Based in ${site.city}. We know the estates, barns and ballrooms of the Fox Valley.`],
         ].map(([n, t, d], i) => (
-          <Reveal key={t} delay={i * 120} className="border-t border-ink pt-6">
+          <Reveal key={t} delay={i * 120} className="border-t border-gold/40 pt-6">
             <span className="font-serif text-lg text-gold italic">{n}.</span>
             <h2 className="headline mt-3 text-3xl">{t}</h2>
             <p className="mt-3 leading-7 text-muted">{d}</p>
@@ -105,8 +105,9 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* By aesthetic */}
-      <section className="container-x py-28">
+      {/* By aesthetic (marble) */}
+      <section className="paper">
+        <div className="container-x py-28">
         <div className="grid gap-12 md:grid-cols-[1fr_1.6fr]">
           <div>
             <p className="eyebrow">By aesthetic</p>
@@ -130,6 +131,7 @@ export default async function Home() {
               </li>
             ))}
           </ul>
+        </div>
         </div>
       </section>
 
@@ -188,7 +190,7 @@ export default async function Home() {
           </div>
           <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
             {posts.map((p) => (
-              <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-ink pt-6">
+              <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-gold/40 pt-6">
                 <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
                   {formatDate(p.date)} · {p.readingMinutes} min read
                 </p>
@@ -203,7 +205,7 @@ export default async function Home() {
       )}
 
       {/* Private list (pulled down to sit flush on the footer) */}
-      <section className="-mb-32 border-b border-bg/10 bg-espresso text-bg">
+      <section className="-mb-32 border-b border-ink/10 bg-espresso text-ink">
         <div className="container-x grid gap-12 py-24 md:grid-cols-2 md:items-end md:py-28">
           <div>
             <p className="eyebrow">The private list</p>
@@ -212,7 +214,7 @@ export default async function Home() {
             </h2>
           </div>
           <div>
-            <p className="mb-6 leading-7 text-bg/70">
+            <p className="mb-6 leading-7 text-ink/70">
               Founding-season dates are limited. Join the list for priority booking, launch pricing and first sight
               of new pieces.
             </p>

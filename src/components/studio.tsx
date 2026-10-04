@@ -34,7 +34,7 @@ export function StudioBackdrop({
       style={{
         position: "relative",
         overflow: "hidden",
-        background: `radial-gradient(120% 85% at 50% 28%, ${mix(tint, "#ffffff", 0.6)} 0%, ${tint} 52%, ${mix(tint, "#2e261e", 0.2)} 100%)`,
+        background: `radial-gradient(120% 85% at 50% 28%, ${mix(tint, "#ffffff", 0.14)} 0%, ${tint} 55%, ${mix(tint, "#000000", 0.4)} 100%)`,
         ...style,
       }}
     >
@@ -49,7 +49,7 @@ export function StudioBackdrop({
           right: 0,
           top: `${floor - 1}%`,
           bottom: 0,
-          background: `linear-gradient(to bottom, ${mix(tint, "#2e261e", 0.1)}, ${mix(tint, "#2e261e", 0.22)})`,
+          background: `linear-gradient(to bottom, ${mix(tint, "#000000", 0.2)}, ${mix(tint, "#000000", 0.5)})`,
           opacity: 0.55,
         }}
       />
@@ -63,7 +63,7 @@ export function StudioBackdrop({
           width: "46%",
           height: "4%",
           transform: "translate(-50%, -40%)",
-          background: "radial-gradient(ellipse at center, rgba(28,22,16,.42) 0%, rgba(28,22,16,0) 70%)",
+          background: "radial-gradient(ellipse at center, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 70%)",
           filter: "blur(5px)",
         }}
       />
@@ -81,7 +81,7 @@ export function StudioBackdrop({
           zIndex: 2,
           backgroundImage: grain,
           mixBlendMode: "multiply",
-          opacity: 0.22,
+          opacity: 0.12,
           pointerEvents: "none",
         }}
       />
@@ -90,7 +90,7 @@ export function StudioBackdrop({
 }
 
 // Quiet stone and linen backdrops, one per chair, so the grid reads like a lookbook.
-const tints = ["#e8e0d3", "#ddd4c6", "#e4ddd5", "#d8d9cf", "#e7dcd3", "#d9cfc1"];
+const tints = ["#2c241c", "#271f19", "#2e261e", "#231f1a", "#2b221c", "#251e17"];
 export function chairTint(slug: string) {
   const i = chairs.findIndex((c) => c.slug === slug);
   return tints[(i < 0 ? 0 : i) % tints.length];

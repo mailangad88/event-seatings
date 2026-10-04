@@ -22,7 +22,7 @@ export function WaitlistForm({ source, dark = false }: { source: string; dark?: 
 
   if (status === "done") {
     return (
-      <p className={`font-serif text-xl italic ${dark ? "text-bg" : "text-ink"}`}>
+      <p className={`font-serif text-xl italic ${dark ? "text-ink" : "text-ink"}`}>
         Thank you. You&apos;ll hear from us before launch.
       </p>
     );
@@ -31,7 +31,7 @@ export function WaitlistForm({ source, dark = false }: { source: string; dark?: 
   return (
     <form onSubmit={submit}>
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
-      <div className={`flex items-end gap-4 border-b ${dark ? "border-bg/30 focus-within:border-bg" : "border-ink/30 focus-within:border-ink"}`}>
+      <div className={`flex items-end gap-4 border-b ${dark ? "border-ink/30 focus-within:border-gold" : "border-ink/30 focus-within:border-gold"}`}>
         <label className="sr-only" htmlFor={`wl-${source}`}>Email address</label>
         <input
           id={`wl-${source}`}
@@ -40,19 +40,19 @@ export function WaitlistForm({ source, dark = false }: { source: string; dark?: 
           required
           placeholder="Your email address"
           className={`min-w-0 flex-1 border-0 bg-transparent px-0 py-3 text-base focus:ring-0 focus:outline-none ${
-            dark ? "text-bg placeholder:text-bg/40" : "text-ink placeholder:text-muted/60"
+            dark ? "text-ink placeholder:text-ink/40" : "text-ink placeholder:text-muted/60"
           }`}
         />
         <button
           className={`shrink-0 py-3 text-[11px] font-medium tracking-[0.25em] uppercase transition-colors ${
-            dark ? "text-bg hover:text-gold" : "text-ink hover:text-gold"
+            dark ? "text-ink hover:text-gold" : "text-ink hover:text-gold"
           }`}
           disabled={status === "sending"}
         >
           {status === "sending" ? "Joining…" : "Join →"}
         </button>
       </div>
-      {status === "error" && <p className="mt-2 text-sm text-red-700">{error}</p>}
+      {status === "error" && <p className="mt-2 text-sm text-red-400">{error}</p>}
     </form>
   );
 }

@@ -110,3 +110,55 @@ export function cordWeave(repeat: [number, number] = [3, 3]) {
     repeat,
   );
 }
+
+// Dark polished marble with fine pale and gold veining.
+export function marble() {
+  return canvasTexture(1024, 1024, (ctx) => {
+    const r = rng(23);
+    ctx.fillStyle = "#1b1612";
+    ctx.fillRect(0, 0, 1024, 1024);
+    // soft clouds
+    for (let i = 0; i < 40; i++) {
+      const x = r() * 1024, y = r() * 1024, rad = 80 + r() * 220;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, rad);
+      g.addColorStop(0, `rgba(${r() > 0.5 ? "70,58,44" : "10,8,6"},${0.1 + r() * 0.16})`);
+      g.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = g;
+      ctx.fillRect(x - rad, y - rad, rad * 2, rad * 2);
+    }
+    // veins
+    ctx.lineCap = "round";
+    for (let i = 0; i < 46; i++) {
+      const gold = r() > 0.78;
+      ctx.strokeStyle = gold ? `rgba(198,165,105,${0.12 + r() * 0.18})` : `rgba(236,224,200,${0.05 + r() * 0.16})`;
+      ctx.lineWidth = 0.5 + r() * (gold ? 1.6 : 2.2);
+      let x = r() * 1024, y = r() * 1024, a = r() * Math.PI * 2;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      for (let s = 0; s < 14; s++) {
+        a += (r() - 0.5) * 1.1;
+        const len = 30 + r() * 70;
+        const nx = x + Math.cos(a) * len, ny = y + Math.sin(a) * len;
+        ctx.quadraticCurveTo(x + (r() - 0.5) * 50, y + (r() - 0.5) * 50, nx, ny);
+        x = nx; y = ny;
+      }
+      ctx.stroke();
+    }
+  });
+}
+
+// A bump map of vertical flutes for a fluted-panel wall (one flute per 128px).
+export function flutes() {
+  return canvasTexture(
+    128,
+    8,
+    (ctx) => {
+      for (let x = 0; x < 128; x++) {
+        const v = Math.round(128 + 127 * Math.cos((x / 128) * Math.PI * 2));
+        ctx.fillStyle = `rgb(${v},${v},${v})`;
+        ctx.fillRect(x, 0, 1, 8);
+      }
+    },
+    [64, 1],
+  );
+}

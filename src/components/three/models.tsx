@@ -248,13 +248,14 @@ function Louis({ m, color }: P) {
 
 function Shell({ m }: P) {
   // A scooped tub-style shell: a lathe-turned bowl open at the front, on a seat pan.
-  const profile = [[0.2, 0], [0.235, 0.07], [0.28, 0.2], [0.305, 0.36], [0.31, 0.46]].map(([r, y]) => new THREE.Vector2(r, y));
+  const curve = new THREE.QuadraticBezierCurve(new THREE.Vector2(0.2, 0), new THREE.Vector2(0.3, 0.1), new THREE.Vector2(0.315, 0.46));
+  const profile = curve.getPoints(28);
   return (
     <group>
-      <mesh position={[0, 0.42, -0.02]} material={m.shell} castShadow receiveShadow>
+      <mesh position={[0, 0.42, -0.02]} material={m.shell} castShadow>
         <latheGeometry args={[profile, 72, Math.PI - 1.95, 3.9]} />
       </mesh>
-      <mesh position={[0, 0.425, 0.02]} scale={[1, 1, 1.12]} material={m.shell} castShadow receiveShadow>
+      <mesh position={[0, 0.425, 0.02]} scale={[1, 1, 1.12]} material={m.shell} castShadow>
         <cylinderGeometry args={[0.235, 0.215, 0.05, 56]} />
       </mesh>
       {[[-1, 1], [1, 1], [-1, -1], [1, -1]].map(([sx, sz]) => (

@@ -41,7 +41,7 @@ export function ChairArt({
         fill={fill}
         role="img"
         aria-label={`Illustration of the ${chair.name}`}
-        className="h-[72%] w-auto -translate-y-[6%] text-[#2a241e]"
+        className="h-[72%] w-auto -translate-y-[6%] text-[#efe4cf]"
         strokeWidth={1.7}
       />
     </StudioBackdrop>

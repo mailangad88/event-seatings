@@ -14,10 +14,10 @@ export function Logo({ light = false, center = false }: { light?: boolean; cente
   return (
     <Link
       href="/"
-      className={`flex flex-col leading-none ${center ? "items-center" : "items-start"} ${light ? "text-bg" : "text-ink"}`}
+      className={`flex flex-col leading-none ${center ? "items-center" : "items-start"} text-ink`}
     >
       <span className="font-serif text-[1.75rem] font-light tracking-[0.06em] uppercase">{site.name}</span>
-      <span className={`mt-1.5 text-[8.5px] tracking-[0.5em] uppercase ${light ? "text-bg/55" : "text-gold"}`}>
+      <span className={`mt-1.5 text-[8.5px] tracking-[0.5em] uppercase ${light ? "text-ink/55" : "text-gold"}`}>
         Fine Event Seating
       </span>
     </Link>
@@ -29,12 +29,12 @@ const linkClass =
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-bg/97 backdrop-blur-md">
-      <div className="bg-espresso text-center text-[10px] tracking-[0.3em] text-bg/75 uppercase">
+    <header className="sticky top-0 z-40 border-b border-line/80 bg-bg/88 backdrop-blur-md">
+      <div className="bg-espresso text-center text-[10px] tracking-[0.3em] text-ink/75 uppercase">
         <div className="container-x py-2.5">
           Now reserving the {site.launch.seasonLabel}
           <span className="mx-3 text-gold" aria-hidden>·</span>
-          <Link href="/quote" className="text-bg underline decoration-gold underline-offset-4">
+          <Link href="/quote" className="text-ink underline decoration-gold underline-offset-4">
             Enquire
           </Link>
         </div>

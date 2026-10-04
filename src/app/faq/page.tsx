@@ -63,7 +63,7 @@ export default function FaqPage() {
             </a>
           </p>
         </div>
-        <div className="border-t border-ink">
+        <div className="border-t border-gold/40">
           {faqs.map(([q, a]) => (
             <details key={q} className="group border-b border-line">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">

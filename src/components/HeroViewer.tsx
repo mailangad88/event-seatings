@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getChair } from "@/data/chairs";
 import { ChairArt } from "./ChairArt";
 import { ChairCanvas } from "./ChairViewer";
+import { DecoFrame } from "./DecoFrame";
 
 const picks = ["velvet-dining", "cross-back", "ghost", "rattan-garden"].map((s) => getChair(s)!);
 
@@ -22,12 +23,9 @@ export function HeroViewer() {
 
   return (
     <div>
-      <div className="relative border border-gold/50 p-3 sm:p-4">
+      <DecoFrame label="The Founding Collection">
         <ChairCanvas chair={chair} color={chair.finishes[0].hex} className="aspect-[4/5]" priority />
-        <span className="absolute -top-px left-8 -translate-y-1/2 bg-bg px-3 text-[10px] tracking-[0.35em] text-gold uppercase">
-          The Founding Collection
-        </span>
-      </div>
+      </DecoFrame>
       <div className="mt-5 flex items-center justify-between gap-4">
         <div>
           <p className="font-serif text-2xl leading-tight font-light">{chair.name}</p>
@@ -49,7 +47,7 @@ export function HeroViewer() {
               }}
               className={`relative h-14 w-11 overflow-hidden outline outline-1 outline-offset-2 transition ${n === i ? "outline-gold" : "outline-transparent opacity-70 hover:opacity-100"}`}
             >
-              <ChairArt chair={c} className="absolute inset-0" />
+              <ChairArt chair={c} className="h-full w-full" />
             </button>
           ))}
         </div>

@@ -19,7 +19,7 @@ export default async function BlogPage() {
       </h1>
 
       {lead && (
-        <Link href={`/blog/${lead.slug}`} className="group mt-20 grid gap-8 border-t border-ink pt-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
+        <Link href={`/blog/${lead.slug}`} className="group mt-20 grid gap-8 border-t border-gold/40 pt-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
           <div>
             <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
               Latest · {formatDate(lead.date)} · {lead.readingMinutes} min read

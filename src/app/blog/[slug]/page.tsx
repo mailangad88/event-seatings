@@ -52,7 +52,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
         <span className="mx-auto mt-10 block h-px w-16 bg-gold" aria-hidden />
       </div>
       <div className="prose-post mx-auto mt-12 max-w-2xl" dangerouslySetInnerHTML={{ __html: html }} />
-      <div className="mx-auto mt-24 max-w-2xl border-t border-ink pt-12 text-center">
+      <div className="mx-auto mt-24 max-w-2xl border-t border-gold/40 pt-12 text-center">
         <p className="headline text-4xl">
           Planning your <em className="text-gold">seating</em>?
         </p>

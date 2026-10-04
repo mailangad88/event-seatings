@@ -71,12 +71,12 @@ export function Quiz() {
           </span>
         </div>
         <h2 className="headline text-center text-4xl leading-tight sm:text-6xl">{q}</h2>
-        <div className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2">
+        <div className="mt-12 grid gap-2 sm:grid-cols-2">
           {options.map((o) => (
             <button
               key={o.label}
               onClick={() => setAnswers([...answers, options.indexOf(o)])}
-              className="group flex items-center justify-between gap-4 bg-surface px-6 py-6 text-left transition-colors hover:bg-ink hover:text-bg"
+              className="group flex items-center justify-between gap-4 border border-line bg-surface px-6 py-6 text-left transition-colors hover:bg-gold hover:text-[#0a0806]"
             >
               <span className="font-serif text-xl leading-snug">{o.label}</span>
               <span className="text-gold transition-transform group-hover:translate-x-1" aria-hidden>→</span>
@@ -162,7 +162,7 @@ export function Quiz() {
             <p className="mt-3 text-muted">
               With styling notes for {(topStyles[0] ?? "your").toLowerCase()} celebrations.
             </p>
-            <form onSubmit={saveEmail} className="mt-8 flex items-end gap-4 border-b border-ink/30 text-left focus-within:border-ink">
+            <form onSubmit={saveEmail} className="mt-8 flex items-end gap-4 border-b border-ink/30 text-left focus-within:border-gold">
               <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
               <label className="sr-only" htmlFor="quiz-email">Email address</label>
               <input

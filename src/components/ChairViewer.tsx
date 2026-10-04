@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Chair } from "@/data/chairs";
 import { useReducedMotion, useWebGL } from "@/lib/hooks";
 import { ChairArt } from "./ChairArt";
+import { DecoFrame } from "./DecoFrame";
 import { StudioBackdrop, chairTint } from "./studio";
 
 const ChairScene = dynamic(() => import("./three/ChairScene").then((m) => m.ChairScene), { ssr: false });
@@ -39,7 +40,9 @@ export function ChairCanvas({
 
   return (
     <div ref={box} className={`relative overflow-hidden ${className}`}>
-      <ChairArt chair={chair} className="absolute inset-0" priority={priority} />
+      <div className="absolute inset-0">
+        <ChairArt chair={chair} className="h-full w-full" priority={priority} />
+      </div>
       {webgl && (
         <div className={`absolute inset-0 transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-0"}`}>
           <StudioBackdrop tint={chairTint(chair.slug)} floor={null} style={{ position: "absolute", inset: 0 }}>
@@ -66,7 +69,9 @@ export function ChairViewer({ chair }: { chair: Chair }) {
   const color = chair.finishes[finish]?.hex ?? chair.finishes[0].hex;
   return (
     <div>
-      <ChairCanvas chair={chair} color={color} className="aspect-[4/5]" priority />
+      <DecoFrame>
+        <ChairCanvas chair={chair} color={color} className="aspect-[4/5]" priority />
+      </DecoFrame>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4" role="radiogroup" aria-label="Finish">
           {chair.finishes.map((f, i) => (
@@ -79,7 +84,7 @@ export function ChairViewer({ chair }: { chair: Chair }) {
               className="flex items-center gap-2 text-[11px] tracking-[0.18em] text-muted uppercase"
             >
               <span
-                className={`h-6 w-6 rounded-full ring-1 ring-offset-2 ring-offset-bg transition ${i === finish ? "ring-ink" : "ring-ink/15"}`}
+                className={`h-6 w-6 rounded-full ring-1 ring-offset-2 ring-offset-bg transition ${i === finish ? "ring-gold" : "ring-ink/20"}`}
                 style={{ background: f.hex }}
               />
               <span className={i === finish ? "text-ink" : ""}>{f.name}</span>
