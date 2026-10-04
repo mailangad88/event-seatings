@@ -84,20 +84,26 @@ export function VoteButton({ slug, size = "sm" }: { slug: string; size?: "sm" | 
         toggle(slug);
       }}
       aria-pressed={on}
-      className={`inline-flex items-center gap-1.5 rounded-full border transition-colors ${
-        on ? "border-accent bg-accent-soft text-accent" : "border-line bg-surface text-muted hover:border-ink hover:text-ink"
-      } ${size === "lg" ? "px-5 py-2.5 text-sm font-medium" : "px-3 py-1.5 text-xs"}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border-2 border-ink font-bold transition-all active:scale-95 ${
+        on ? "bg-pink shadow-[2px_2px_0_0_var(--ink)]" : "bg-surface hover:bg-pink/50"
+      } ${size === "lg" ? "px-5 py-2.5 text-sm" : "px-3 py-1 text-xs"}`}
     >
-      <svg width={size === "lg" ? 18 : 14} height={size === "lg" ? 18 : 14} viewBox="0 0 24 24" aria-hidden>
+      <svg
+        width={size === "lg" ? 18 : 14}
+        height={size === "lg" ? 18 : 14}
+        viewBox="0 0 24 24"
+        aria-hidden
+        className={on ? "scale-110 transition-transform" : "transition-transform"}
+      >
         <path
           d="M12 21s-7.5-4.6-9.5-9.1C1.1 8.6 3.3 5 6.9 5c2 0 3.6 1.1 5.1 2.9C13.5 6.1 15.1 5 17.1 5c3.6 0 5.8 3.6 4.4 6.9C19.5 16.4 12 21 12 21z"
-          fill={on ? "currentColor" : "none"}
+          fill={on ? "var(--accent)" : "none"}
           stroke="currentColor"
-          strokeWidth="1.8"
+          strokeWidth="2.2"
         />
       </svg>
-      {size === "lg" ? (on ? "On your wishlist" : "I want this chair") : on ? "Wanted" : "Want this"}
-      {count > 0 && <span className="tabular-nums opacity-70">· {count}</span>}
+      {size === "lg" ? (on ? "on your wishlist" : "i want this one") : on ? "wanted" : "want"}
+      {count > 0 && <span className="tabular-nums">{count}</span>}
     </button>
   );
 }

@@ -14,11 +14,11 @@ export default async function ChairsPage(props: PageProps<"/chairs">) {
 
   return (
     <div className="container-x py-14">
-      <p className="eyebrow">The collection</p>
-      <h1 className="mt-2 font-serif text-5xl sm:text-6xl">Chairs beyond Chiavari</h1>
+      <span className="eyebrow">🪑 the collection</span>
+      <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">chairs beyond <span className="font-italic font-normal normal-case tracking-normal">chiavari</span></h1>
       <p className="mt-4 max-w-2xl text-muted">
-        Filter by style or by where you&apos;ll use the chair. Tap ♡ on the ones you love. Your votes help decide
-        which chairs make our {site.launch.seasonLabel} collection.
+        Filter by vibe or by where you&apos;ll use it. Tap ♡ want on the ones you love. Your votes decide which
+        chairs make our {site.launch.seasonLabel} drop.
       </p>
       <div className="mt-10">
         <ChairBrowser initialStyle={initialStyle} />

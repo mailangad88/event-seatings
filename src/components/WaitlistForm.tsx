@@ -21,7 +21,11 @@ export function WaitlistForm({ source, compact = false }: { source: string; comp
   }
 
   if (status === "done") {
-    return <p className="text-sm text-sage">You&apos;re on the list. We&apos;ll be in touch before launch.</p>;
+    return (
+      <p className="inline-block rounded-xl border-2 border-ink bg-mint px-4 py-2.5 text-sm font-bold text-ink">
+        you&apos;re on the list 🎉 we&apos;ll be in touch before launch.
+      </p>
+    );
   }
 
   return (
@@ -36,10 +40,10 @@ export function WaitlistForm({ source, compact = false }: { source: string; comp
         placeholder="you@email.com"
         className="field min-w-0 flex-1"
       />
-      <button className="btn-primary shrink-0" disabled={status === "sending"}>
-        {status === "sending" ? "Joining…" : "Join"}
+      <button className={`${compact ? "btn-dark" : "btn-primary"} shrink-0`} disabled={status === "sending"}>
+        {status === "sending" ? "joining…" : "join →"}
       </button>
-      {status === "error" && <p className="text-sm text-red-700">{error}</p>}
+      {status === "error" && <p className="text-sm font-bold text-red-700">{error}</p>}
     </form>
   );
 }

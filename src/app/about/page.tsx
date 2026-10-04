@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="container-x max-w-3xl py-14">
-      <p className="eyebrow">Our story</p>
-      <h1 className="mt-2 font-serif text-5xl sm:text-6xl">Why we started Event Seatings</h1>
+      <span className="eyebrow">👋 our story</span>
+      <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">every wedding had the <span className="font-italic font-normal normal-case tracking-normal">same</span> chair.</h1>
       <div className="prose-post mt-8">
         <p>
           Go to enough weddings around Chicago and you&apos;ll notice something: almost every reception has the same
@@ -36,8 +36,8 @@ export default function AboutPage() {
         <p>{site.serviceArea.join(", ")}, and nearby. Not sure if we reach your venue? Just ask.</p>
       </div>
       <div className="mt-10 flex flex-wrap gap-3">
-        <Link href="/chairs" className="btn-primary">Vote on chairs</Link>
-        <a href={`mailto:${site.email}`} className="btn-ghost">Email us</a>
+        <Link href="/chairs" className="btn-primary">vote on chairs →</Link>
+        <a href={`mailto:${site.email}`} className="btn-ghost">email us</a>
       </div>
     </div>
   );

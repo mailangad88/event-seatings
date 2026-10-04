@@ -10,9 +10,9 @@ export default function QuizPage() {
   return (
     <div className="container-x py-14">
       <div className="mx-auto mb-12 max-w-2xl text-center">
-        <p className="eyebrow">Style quiz</p>
-        <h1 className="mt-2 font-serif text-5xl sm:text-6xl">Which chair fits your wedding?</h1>
-        <p className="mt-4 text-muted">Four questions, about 30 seconds.</p>
+        <span className="eyebrow">🔮 style quiz</span>
+        <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">what&apos;s your chair <span className="font-italic font-normal normal-case tracking-normal">era</span>?</h1>
+        <p className="mt-4 text-muted">Four questions. 30 seconds. Zero judgment.</p>
       </div>
       <Quiz />
     </div>

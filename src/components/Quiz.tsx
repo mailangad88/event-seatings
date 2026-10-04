@@ -64,25 +64,25 @@ export function Quiz() {
       <div className="mx-auto max-w-2xl">
         <div className="mb-8 flex gap-1.5" aria-hidden>
           {questions.map((_, i) => (
-            <span key={i} className={`h-1 flex-1 rounded-full ${i <= step ? "bg-accent" : "bg-line"}`} />
+            <span key={i} className={`h-3 flex-1 rounded-full border-2 border-ink ${i < step ? "bg-accent" : i === step ? "bg-butter" : "bg-surface"}`} />
           ))}
         </div>
-        <p className="eyebrow">Question {step + 1} of {questions.length}</p>
-        <h2 className="mt-2 font-serif text-4xl leading-tight">{q}</h2>
+        <p className="text-sm font-bold">question {step + 1} / {questions.length}</p>
+        <h2 className="display mt-2 text-4xl leading-[1] sm:text-5xl">{q}</h2>
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           {options.map((o, i) => (
             <button
               key={o.label}
               onClick={() => setAnswers([...answers, i])}
-              className="rounded-xl border border-line bg-surface px-4 py-4 text-left transition-colors hover:border-accent hover:bg-accent-soft"
+              className={`pop pop-hover rounded-2xl px-5 py-4 text-left font-bold ${["bg-surface", "bg-mint", "bg-sky", "bg-pink", "bg-butter", "bg-peach"][options.indexOf(o) % 6]}`}
             >
               {o.label}
             </button>
           ))}
         </div>
         {step > 0 && (
-          <button onClick={() => setAnswers(answers.slice(0, -1))} className="mt-6 text-sm text-muted underline">
-            Back
+          <button onClick={() => setAnswers(answers.slice(0, -1))} className="mt-6 text-sm font-bold underline decoration-2 underline-offset-4">
+            ← back
           </button>
         )}
       </div>
@@ -126,35 +126,35 @@ export function Quiz() {
   return (
     <div>
       <div className="mx-auto max-w-2xl text-center">
-        <p className="eyebrow">Your wedding style</p>
-        <h2 className="mt-2 font-serif text-5xl">{topStyles.join(" + ") || "Classic"}</h2>
-        <p className="mt-4 text-muted">Here are the three chairs we&apos;d put in your room. Tap ♡ on any you love.</p>
+        <span className="eyebrow">✨ your chair era</span>
+        <h2 className="display mt-4 text-6xl leading-[0.95] sm:text-7xl">{(topStyles.join(" + ") || "Classic").toLowerCase()}</h2>
+        <p className="mt-4 text-muted">Three chairs we&apos;d put in your room. Tap ♡ want on any you love.</p>
       </div>
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {picks.map((c) => (
           <ChairCard key={c.slug} chair={c} />
         ))}
       </div>
-      <div className="mx-auto mt-12 max-w-xl rounded-2xl border border-line bg-surface p-6 text-center">
+      <div className="pop mx-auto mt-12 max-w-xl rounded-3xl bg-lilac p-6 text-center">
         {emailStatus === "done" ? (
-          <p className="text-sage">Got it! We&apos;ll send your picks, styling ideas and launch updates to your inbox.</p>
+          <p className="font-bold">Got it! 💌 We&apos;ll send your picks, styling ideas and launch updates to your inbox.</p>
         ) : (
           <>
-            <p className="font-serif text-2xl">Email me my results</p>
-            <p className="mt-1 text-sm text-muted">Plus styling tips for {topStyles[0] ?? "your"} weddings. No spam.</p>
+            <p className="display text-3xl">send me my results</p>
+            <p className="mt-1 text-sm">Plus styling tips for {(topStyles[0] ?? "your").toLowerCase()} weddings. No spam.</p>
             <form onSubmit={saveEmail} className="mt-4 flex flex-col gap-2 sm:flex-row">
               <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
               <input name="email" type="email" required placeholder="you@email.com" className="field flex-1" />
-              <button className="btn-primary" disabled={emailStatus === "sending"}>Send</button>
+              <button className="btn-primary" disabled={emailStatus === "sending"}>send →</button>
             </form>
           </>
         )}
       </div>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Link href={`/quote?chairs=${picks.map((c) => c.slug).join(",")}`} className="btn-primary">
-          Get a quote for these
+          get a quote for these →
         </Link>
-        <button onClick={() => setAnswers([])} className="btn-ghost">Retake quiz</button>
+        <button onClick={() => setAnswers([])} className="btn-ghost">retake quiz</button>
       </div>
     </div>
   );

@@ -39,28 +39,35 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
 
   return (
     <div className="container-x py-12">
-      <nav className="text-sm text-muted" aria-label="Breadcrumb">
-        <Link href="/chairs" className="hover:text-ink">Chairs</Link> <span aria-hidden>/</span> {chair.name}
+      <nav className="text-sm font-medium" aria-label="Breadcrumb">
+        <Link href="/chairs" className="underline decoration-2 underline-offset-4">chairs</Link> <span aria-hidden>/</span> {chair.name.toLowerCase()}
       </nav>
 
       <div className="mt-6 grid gap-10 md:grid-cols-2">
-        <ChairArt chair={chair} className="aspect-square rounded-3xl border border-line" priority />
+        <div className="pop overflow-hidden rounded-[2rem] md:sticky md:top-24 md:self-start">
+          <ChairArt chair={chair} className="aspect-square" priority />
+        </div>
         <div>
-          <h1 className="font-serif text-5xl leading-tight">{chair.name}</h1>
-          <p className="mt-2 text-lg text-muted">{chair.tagline}</p>
-          <p className="mt-5 text-2xl">
+          <h1 className="display text-5xl leading-[0.95] sm:text-6xl">{chair.name}</h1>
+          <p className="mt-3 text-lg text-muted">{chair.tagline}</p>
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {chair.styles.map((s) => (
+              <span key={s} className="chip">{s}</span>
+            ))}
+          </div>
+          <p className="mt-6 inline-block rounded-2xl border-2 border-ink bg-butter px-4 py-2 font-serif text-2xl font-extrabold">
             {chair.estPrice}
-            {!chair.estPrice.includes("/") && <span className="text-base text-muted"> per chair</span>}
-            <span className="ml-2 align-middle text-xs text-muted">(estimated; final pricing in your quote)</span>
+            {!chair.estPrice.includes("/") && <span className="font-sans text-base font-medium"> / chair</span>}
+            <span className="ml-2 font-sans text-xs font-medium">est.</span>
           </p>
           <p className="mt-6 leading-7">{chair.description}</p>
 
           <div className="mt-6">
-            <p className="text-sm font-medium">Finishes</p>
+            <p className="text-sm font-bold">finishes</p>
             <div className="mt-2 flex flex-wrap gap-3">
               {chair.finishes.map((f) => (
-                <span key={f.name} className="flex items-center gap-2 text-sm text-muted">
-                  <span className="h-6 w-6 rounded-full border border-black/10" style={{ background: f.hex }} />
+                <span key={f.name} className="flex items-center gap-2 text-sm font-medium">
+                  <span className="h-7 w-7 rounded-full border-2 border-ink" style={{ background: f.hex }} />
                   {f.name}
                 </span>
               ))}
@@ -69,18 +76,18 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href={`/quote?chairs=${chair.slug}`} className="btn-primary px-6 py-3 text-base">
-              Get a quote
+              get a quote →
             </Link>
             <VoteButton slug={chair.slug} size="lg" />
           </div>
           <p className="mt-3 text-xs text-muted">
-            Votes help us decide which chairs join the {site.launch.seasonLabel} collection first.
+            Estimated pricing, with final numbers in your quote. Votes decide which chairs drop first in our {site.launch.seasonLabel}.
           </p>
 
-          <dl className="mt-10 divide-y divide-line border-y border-line text-sm">
+          <dl className="pop mt-10 divide-y-2 divide-ink overflow-hidden rounded-2xl bg-surface text-sm">
             {facts.map(([k, v]) => (
-              <div key={k} className="grid grid-cols-[140px_1fr] gap-4 py-3">
-                <dt className="text-muted">{k}</dt>
+              <div key={k} className="grid grid-cols-[120px_1fr] gap-4 px-4 py-3">
+                <dt className="font-bold lowercase">{k}</dt>
                 <dd>{v}</dd>
               </div>
             ))}
@@ -90,7 +97,7 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
 
       {related.length > 0 && (
         <section className="mt-20">
-          <h2 className="font-serif text-3xl">You might also love</h2>
+          <h2 className="display text-4xl sm:text-5xl">you might also <span className="font-italic font-normal normal-case tracking-normal">love</span></h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((c) => (
               <ChairCard key={c.slug} chair={c} />

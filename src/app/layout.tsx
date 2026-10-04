@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VoteProvider } from "@/components/VoteProvider";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
+const display = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600"],
 });
 
-const body = Inter({
+const accent = Instrument_Serif({
+  variable: "--font-accent",
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+});
+
+const body = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
 });
@@ -33,7 +39,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
+    <html lang="en" className={`${display.variable} ${accent.variable} ${body.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <VoteProvider>
           <Header />

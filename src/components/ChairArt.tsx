@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Chair, Silhouette } from "@/data/chairs";
+import { chairs, type Chair, type Silhouette } from "@/data/chairs";
 
 // Line-art placeholders for each chair family. Replaced automatically by a real
 // photo once `image` is set on the chair in src/data/chairs.ts.
@@ -129,6 +129,13 @@ const art: Record<Silhouette, (fill: string) => React.ReactNode> = {
   ),
 };
 
+// Each chair gets its own pastel block so the grid feels like a sticker sheet.
+const tints = ["var(--lilac)", "var(--butter)", "var(--mint)", "var(--pink)", "var(--sky)", "var(--peach)"];
+export function chairTint(slug: string) {
+  const i = chairs.findIndex((c) => c.slug === slug);
+  return tints[(i < 0 ? 0 : i) % tints.length];
+}
+
 export function ChairArt({
   chair,
   className = "",
@@ -140,7 +147,7 @@ export function ChairArt({
 }) {
   if (chair.image) {
     return (
-      <div className={`relative overflow-hidden bg-[var(--surface-2)] ${className}`}>
+      <div className={`relative overflow-hidden ${className}`} style={{ background: chairTint(chair.slug) }}>
         <Image
           src={chair.image}
           alt={chair.name}
@@ -154,7 +161,7 @@ export function ChairArt({
   }
   const fill = chair.finishes[0]?.hex ?? "#c69c6d";
   return (
-    <div className={`flex items-center justify-center bg-[var(--surface-2)] ${className}`}>
+    <div className={`flex items-center justify-center ${className}`} style={{ background: chairTint(chair.slug) }}>
       <svg
         viewBox="0 0 120 160"
         role="img"

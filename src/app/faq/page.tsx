@@ -50,21 +50,21 @@ export default function FaqPage() {
   return (
     <div className="container-x max-w-3xl py-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <p className="eyebrow">FAQ</p>
-      <h1 className="mt-2 font-serif text-5xl sm:text-6xl">Questions, answered</h1>
-      <div className="mt-10 divide-y divide-line border-y border-line">
+      <span className="eyebrow">🤔 faq</span>
+      <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">questions, <span className="font-italic font-normal normal-case tracking-normal">answered</span></h1>
+      <div className="mt-10 space-y-3">
         {faqs.map(([q, a]) => (
-          <details key={q} className="group py-5">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-medium">
+          <details key={q} className="group pop rounded-2xl bg-surface px-5 py-4 open:bg-butter">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold">
               {q}
-              <span className="text-accent transition-transform group-open:rotate-45" aria-hidden>+</span>
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 border-ink bg-surface text-xl transition-transform group-open:rotate-45" aria-hidden>+</span>
             </summary>
-            <p className="mt-3 leading-7 text-muted">{a}</p>
+            <p className="mt-3 leading-7">{a}</p>
           </details>
         ))}
       </div>
-      <p className="mt-8 text-muted">
-        Still have a question? <a href={`mailto:${site.email}`} className="text-accent underline">{site.email}</a>
+      <p className="mt-8 font-medium">
+        still curious? <a href={`mailto:${site.email}`} className="underline decoration-accent decoration-2 underline-offset-4">{site.email}</a>
       </p>
     </div>
   );

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ChairArt } from "@/components/ChairArt";
 import { ChairCard } from "@/components/ChairCard";
+import { Marquee } from "@/components/Marquee";
+import { ThisOrThat } from "@/components/ThisOrThat";
 import { WaitlistForm } from "@/components/WaitlistForm";
-import { allStyles, chairs } from "@/data/chairs";
+import { allStyles, chairs, getChair } from "@/data/chairs";
 import { formatDate, getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -10,54 +12,87 @@ export const revalidate = 3600;
 
 const featured = ["cross-back", "ghost", "rattan-garden", "velvet-dining", "wishbone", "royal-throne"];
 
+const styleColors = ["bg-peach", "bg-mint", "bg-sky", "bg-pink", "bg-butter", "bg-lilac", "bg-surface", "bg-accent"];
+const styleEmoji: Record<string, string> = {
+  Rustic: "🌾",
+  Boho: "🌿",
+  Modern: "◼︎",
+  Glam: "✨",
+  Classic: "🕊️",
+  Garden: "🌷",
+  Minimalist: "○",
+  Cultural: "🪔",
+};
+
 export default async function Home() {
   const posts = (await getPosts()).slice(0, 3);
-  const hero = chairs.filter((c) => ["cross-back", "ghost", "velvet-dining"].includes(c.slug));
+  const [h1, h2, h3] = ["cross-back", "velvet-dining", "rattan-garden"].map((s) => getChair(s)!);
 
   return (
     <>
       {/* Hero */}
-      <section className="container-x grid items-center gap-12 py-16 md:grid-cols-[1.1fr_1fr] md:py-24">
+      <section className="container-x grid items-center gap-12 pt-12 pb-16 md:grid-cols-[1.15fr_1fr] md:pt-20 md:pb-24">
         <div>
-          <p className="eyebrow">{site.launch.seasonLabel} · {site.city}</p>
-          <h1 className="mt-4 font-serif text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
-            Your wedding deserves more than Chiavari.
+          <span className="eyebrow">📍 {site.city.toLowerCase()} · {site.launch.seasonLabel.toLowerCase()}</span>
+          <h1 className="display mt-5 text-[3.4rem] leading-[0.92] sm:text-7xl lg:text-[5.5rem]">
+            chiavari is{" "}
+            <span className="font-italic font-normal tracking-normal normal-case">so</span>{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">over.</span>
+              <svg className="absolute -bottom-2 left-0 w-full text-accent" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden>
+                <path d="M2 14 Q50 2 100 12 T198 8" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+              </svg>
+            </span>
           </h1>
-          <p className="mt-6 max-w-lg text-lg text-muted">
-            Cross-back, ghost, rattan, velvet and more. Event Seatings brings distinctive chairs to
-            weddings across the Fox Valley and Chicago&apos;s western suburbs.
+          <p className="mt-7 max-w-md text-lg leading-relaxed text-muted">
+            Your wedding has a vibe. Your chairs should too. Cross-back, ghost, rattan, velvet and more, delivered
+            across the Fox Valley &amp; Chicago burbs.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/chairs" className="btn-primary px-6 py-3 text-base">Browse the collection</Link>
-            <Link href="/quiz" className="btn-ghost px-6 py-3 text-base">Take the style quiz</Link>
+            <Link href="/chairs" className="btn-primary px-6 py-3 text-base">browse chairs →</Link>
+            <Link href="/quiz" className="btn-ghost px-6 py-3 text-base">find my chair vibe</Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-3">
-          {hero.map((c, i) => (
-            <Link
-              key={c.slug}
-              href={`/chairs/${c.slug}`}
-              className={`overflow-hidden rounded-2xl border border-line ${i === 1 ? "translate-y-8" : ""}`}
-            >
-              <ChairArt chair={c} className="aspect-[3/5]" priority />
-            </Link>
-          ))}
+
+        <div className="relative mx-auto h-[380px] w-full max-w-[440px] sm:h-[440px]">
+          <Link href={`/chairs/${h1.slug}`} className="pop pop-hover absolute top-0 left-0 w-[52%] rotate-[-6deg] overflow-hidden rounded-3xl">
+            <ChairArt chair={h1} className="aspect-[4/5]" priority />
+          </Link>
+          <Link href={`/chairs/${h2.slug}`} className="pop pop-hover absolute top-[10%] right-0 w-[50%] rotate-[5deg] overflow-hidden rounded-3xl">
+            <ChairArt chair={h2} className="aspect-[4/5]" priority />
+          </Link>
+          <Link href={`/chairs/${h3.slug}`} className="pop pop-hover absolute bottom-0 left-[24%] w-[48%] rotate-[-1deg] overflow-hidden rounded-3xl">
+            <ChairArt chair={h3} className="aspect-[5/4]" priority />
+          </Link>
+          <span
+            className="absolute top-[42%] -left-2 animate-float rounded-full border-2 border-ink bg-butter px-3 py-1.5 text-sm font-bold shadow-[3px_3px_0_0_var(--ink)] [--r:-10deg]"
+          >
+            13 styles 🪑
+          </span>
+          <span
+            className="absolute -top-3 right-6 animate-float rounded-full border-2 border-ink bg-pink px-3 py-1.5 text-sm font-bold shadow-[3px_3px_0_0_var(--ink)] [--r:8deg] [animation-delay:1.5s]"
+          >
+            vote your fave 💖
+          </span>
         </div>
       </section>
 
-      {/* Why */}
-      <section className="border-y border-line bg-surface">
-        <div className="container-x grid gap-8 py-14 md:grid-cols-3">
-          {[
-            ["Beyond the default", "Most rental companies around Chicago stock one ballroom chair. We carry 10+ styles, so your seating fits your wedding."],
-            ["Built for real events", "Commercial-grade, weight-rated chairs. They're delivered, set up and picked up by our team."],
-            ["Locally owned", `Based in ${site.city}. We know the barns, estates and ballrooms of the Fox Valley.`],
-          ].map(([title, text]) => (
-            <div key={title}>
-              <h2 className="font-serif text-2xl">{title}</h2>
-              <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
-            </div>
-          ))}
+      <Marquee items={["no more chiavari", "cross-back", "ghost chairs", "rattan", "velvet", "bentwood", "wishbone", "sit different"]} />
+
+      {/* This or that */}
+      <section className="bg-lilac py-20">
+        <div className="container-x grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+          <div>
+            <span className="eyebrow bg-surface">🎮 quick game</span>
+            <h2 className="display mt-4 text-5xl leading-[0.95] sm:text-6xl">
+              this <span className="font-italic font-normal normal-case">or</span> that?
+            </h2>
+            <p className="mt-4 max-w-sm text-lg">
+              Six matchups, zero overthinking. Your picks become votes, and the most-loved chairs drop first in our{" "}
+              {site.launch.seasonLabel.toLowerCase()}.
+            </p>
+          </div>
+          <ThisOrThat />
         </div>
       </section>
 
@@ -65,43 +100,44 @@ export default async function Home() {
       <section className="container-x py-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="eyebrow">The collection</p>
-            <h2 className="mt-2 font-serif text-4xl sm:text-5xl">Help us choose our founding chairs</h2>
+            <span className="eyebrow">the collection</span>
+            <h2 className="display mt-4 text-5xl leading-[0.95] sm:text-6xl">
+              pick your <span className="font-italic font-normal normal-case">seat</span>
+            </h2>
             <p className="mt-3 max-w-xl text-muted">
-              Tap <span className="text-accent">♡ Want this</span> on the chairs you love. The most-wanted styles
-              join our {site.launch.seasonLabel} collection first.
+              Hit <strong className="text-ink">♡ want</strong> on the ones you love. Most-wanted styles join the
+              founding collection first.
             </p>
           </div>
-          <Link href="/chairs" className="btn-ghost">See all {chairs.length} chairs</Link>
+          <Link href="/chairs" className="btn-ghost">see all {chairs.length} →</Link>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((slug) => {
-            const chair = chairs.find((c) => c.slug === slug)!;
-            return <ChairCard key={slug} chair={chair} />;
-          })}
+          {featured.map((slug) => (
+            <ChairCard key={slug} chair={getChair(slug)!} />
+          ))}
         </div>
       </section>
 
-      {/* Shop by style */}
-      <section className="bg-surface-2 py-20">
+      {/* Shop by vibe */}
+      <section className="border-y-2 border-ink bg-butter py-20">
         <div className="container-x">
-          <p className="eyebrow">Shop by style</p>
-          <h2 className="mt-2 font-serif text-4xl sm:text-5xl">What&apos;s your wedding vibe?</h2>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {allStyles.map((s) => (
+          <h2 className="display text-5xl leading-[0.95] sm:text-6xl">what&apos;s the vibe?</h2>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {allStyles.map((s, i) => (
               <Link
                 key={s}
                 href={`/chairs?style=${s}`}
-                className="rounded-full border border-line bg-surface px-6 py-3 font-serif text-xl hover:border-accent"
+                className={`pop pop-hover flex items-center justify-between rounded-2xl px-5 py-5 font-serif text-xl font-extrabold lowercase sm:text-2xl ${styleColors[i % styleColors.length]}`}
               >
                 {s}
+                <span className="text-2xl" aria-hidden>{styleEmoji[s]}</span>
               </Link>
             ))}
           </div>
-          <p className="mt-8 text-muted">
-            Not sure?{" "}
-            <Link href="/quiz" className="text-accent underline underline-offset-2">
-              Take the 30-second style quiz →
+          <p className="mt-8 font-medium">
+            not sure?{" "}
+            <Link href="/quiz" className="underline decoration-2 underline-offset-4 hover:bg-surface">
+              take the 30-sec style quiz →
             </Link>
           </p>
         </div>
@@ -109,23 +145,26 @@ export default async function Home() {
 
       {/* How it works */}
       <section className="container-x py-20">
-        <p className="eyebrow">How it works</p>
-        <h2 className="mt-2 font-serif text-4xl sm:text-5xl">Three steps to better seating</h2>
-        <ol className="mt-10 grid gap-8 md:grid-cols-3">
+        <h2 className="display text-5xl leading-[0.95] sm:text-6xl">
+          how it <span className="font-italic font-normal normal-case">works</span>
+        </h2>
+        <ol className="mt-10 grid gap-5 md:grid-cols-3">
           {[
-            ["Pick your chairs", "Browse by style or take the quiz. Mix a ceremony chair with a different reception chair."],
-            ["Request a quote", "Tell us your date, guest count and venue. We'll send a personalized quote."],
-            ["We deliver & set up", "Our team delivers, sets up and picks up. You just sit down and enjoy it."],
-          ].map(([t, d], i) => (
-            <li key={t} className="rounded-2xl border border-line bg-surface p-6">
-              <span className="font-serif text-5xl text-accent">{i + 1}</span>
-              <h3 className="mt-3 text-lg font-semibold">{t}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{d}</p>
+            ["pick your chairs", "Browse by vibe or take the quiz. Mix a ceremony chair with a different reception chair.", "bg-mint"],
+            ["request a quote", "Drop your date, guest count and venue. We'll send a personalized quote.", "bg-sky"],
+            ["we deliver + set up", "Our crew delivers, sets up and picks up. You just sit down and enjoy it.", "bg-pink"],
+          ].map(([t, d, bg], i) => (
+            <li key={t} className={`pop rounded-3xl p-6 ${bg}`}>
+              <span className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink bg-surface font-serif text-2xl font-extrabold">
+                {i + 1}
+              </span>
+              <h3 className="mt-5 font-serif text-2xl font-extrabold tracking-tight lowercase">{t}</h3>
+              <p className="mt-2 text-sm leading-6">{d}</p>
             </li>
           ))}
         </ol>
-        <div className="mt-10 text-center">
-          <Link href="/quote" className="btn-primary px-7 py-3 text-base">Request a quote</Link>
+        <div className="mt-10">
+          <Link href="/quote" className="btn-dark px-7 py-3 text-base">request a quote →</Link>
         </div>
       </section>
 
@@ -133,18 +172,21 @@ export default async function Home() {
       {posts.length > 0 && (
         <section className="container-x py-10">
           <div className="flex items-end justify-between gap-4">
-            <div>
-              <p className="eyebrow">The journal</p>
-              <h2 className="mt-2 font-serif text-4xl">Seating ideas & planning guides</h2>
-            </div>
-            <Link href="/blog" className="hidden text-sm text-accent underline sm:block">All articles</Link>
+            <h2 className="display text-5xl leading-[0.95] sm:text-6xl">the journal</h2>
+            <Link href="/blog" className="hidden font-bold underline decoration-2 underline-offset-4 sm:block">
+              all posts →
+            </Link>
           </div>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {posts.map((p) => (
-              <Link key={p.slug} href={`/blog/${p.slug}`} className="group rounded-2xl border border-line bg-surface p-6 hover:shadow-md">
-                <p className="text-xs text-muted">{formatDate(p.date)} · {p.readingMinutes} min read</p>
-                <h3 className="mt-2 font-serif text-2xl leading-tight group-hover:text-accent">{p.title}</h3>
-                <p className="mt-2 line-clamp-3 text-sm text-muted">{p.description}</p>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {posts.map((p, i) => (
+              <Link
+                key={p.slug}
+                href={`/blog/${p.slug}`}
+                className={`pop pop-hover flex flex-col rounded-3xl p-6 ${["bg-surface", "bg-peach", "bg-sky"][i % 3]}`}
+              >
+                <p className="text-xs font-bold">{formatDate(p.date).toLowerCase()} · {p.readingMinutes} min</p>
+                <h3 className="mt-3 font-serif text-2xl leading-tight font-extrabold tracking-tight">{p.title}</h3>
+                <p className="mt-3 line-clamp-3 text-sm">{p.description}</p>
               </Link>
             ))}
           </div>
@@ -153,12 +195,17 @@ export default async function Home() {
 
       {/* Waitlist */}
       <section className="container-x pt-16">
-        <div className="rounded-3xl bg-ink px-6 py-14 text-center text-white sm:px-12">
-          <h2 className="font-serif text-4xl sm:text-5xl">Be first in line for launch</h2>
-          <p className="mx-auto mt-3 max-w-lg text-white/75">
-            Founding-season dates are limited. Join the list for early access, launch pricing and new chair drops.
+        <div className="pop relative overflow-hidden rounded-[2rem] bg-ink px-6 py-16 text-center text-white sm:px-12">
+          <span className="absolute top-6 right-6 hidden rotate-12 rounded-full border-2 border-white bg-accent px-3 py-1 text-sm font-bold text-ink md:block">
+            limited dates 🔥
+          </span>
+          <h2 className="display text-5xl leading-[0.95] sm:text-6xl">
+            get on the <span className="font-italic font-normal text-butter normal-case">list</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-md text-white/75">
+            Early access to founding-season dates, launch pricing and new chair drops. No spam, promise.
           </p>
-          <div className="mx-auto mt-8 max-w-md text-left [&_.field]:border-white/20">
+          <div className="mx-auto mt-8 max-w-md text-left">
             <WaitlistForm source="home" />
           </div>
         </div>

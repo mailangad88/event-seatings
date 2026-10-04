@@ -58,17 +58,17 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
 
   if (status === "done") {
     return (
-      <div className="rounded-2xl border border-line bg-surface p-8 text-center">
-        <p className="eyebrow">Request received</p>
-        <h2 className="mt-3 font-serif text-4xl">Thank you!</h2>
-        <p className="mx-auto mt-4 max-w-lg text-muted">
+      <div className="pop rounded-[2rem] bg-mint p-8 text-center sm:p-12">
+        <span className="eyebrow bg-surface">✅ request received</span>
+        <h2 className="display mt-4 text-5xl sm:text-6xl">you&apos;re in! 🎉</h2>
+        <p className="mx-auto mt-4 max-w-lg">
           You&apos;re on our {site.launch.seasonLabel} list. We&apos;re finalizing our founding collection now. We&apos;ll
           email your personalized quote, with pricing and availability for your date, as soon as it&apos;s ready.
           Nothing is charged or held until you confirm.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Link href="/chairs" className="btn-ghost">Keep browsing chairs</Link>
-          <Link href="/blog" className="btn-ghost">Read the journal</Link>
+          <Link href="/chairs" className="btn-ghost">keep browsing</Link>
+          <Link href="/blog" className="btn-ghost">read the journal</Link>
         </div>
       </div>
     );
@@ -79,26 +79,29 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
 
       <fieldset>
-        <legend className="font-serif text-2xl">1. Which chairs catch your eye?</legend>
-        <p className="mt-1 text-sm text-muted">Pick as many as you like.</p>
+        <legend className="flex items-center gap-3 font-serif text-3xl font-extrabold tracking-tight lowercase">
+          <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-ink bg-butter text-xl">1</span>
+          which chairs catch your eye?
+        </legend>
+        <p className="mt-2 text-sm text-muted">Pick as many as you like.</p>
         <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {chairs.map((c) => {
             const on = selected.includes(c.slug);
             return (
               <label
                 key={c.slug}
-                className={`flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2.5 text-sm transition-colors ${
-                  on ? "border-accent bg-accent-soft" : "border-line bg-surface hover:border-ink"
+                className={`flex cursor-pointer items-center gap-3 rounded-xl border-2 border-ink px-3 py-2.5 text-sm font-medium transition-all ${
+                  on ? "bg-pink shadow-[3px_3px_0_0_var(--ink)]" : "bg-surface hover:bg-butter"
                 }`}
               >
                 <input
                   type="checkbox"
                   checked={on}
                   onChange={() => toggle(c.slug)}
-                  className="h-4 w-4 accent-[var(--accent)]"
+                  className="h-4 w-4 accent-[var(--ink)]"
                 />
                 <span
-                  className="h-3.5 w-3.5 shrink-0 rounded-full border border-black/10"
+                  className="h-4 w-4 shrink-0 rounded-full border-2 border-ink"
                   style={{ background: c.finishes[0].hex }}
                 />
                 {c.name}
@@ -109,7 +112,10 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
       </fieldset>
 
       <fieldset className="grid gap-5 sm:grid-cols-2">
-        <legend className="mb-4 font-serif text-2xl sm:col-span-2">2. Tell us about your event</legend>
+        <legend className="mb-5 flex items-center gap-3 font-serif text-3xl font-extrabold tracking-tight lowercase sm:col-span-2">
+          <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-ink bg-sky text-xl">2</span>
+          tell us about your event
+        </legend>
         <div>
           <label className="label" htmlFor="event_date">Event date</label>
           <input
@@ -123,7 +129,7 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
             className="field"
           />
           {beforeLaunch && (
-            <p className="mt-2 text-xs leading-5 text-accent">
+            <p className="mt-2 rounded-lg border-2 border-ink bg-butter px-3 py-2 text-xs leading-5 font-medium">
               Heads up: our first deliveries start {fmt(site.launch.firstEventDate)}. Send the request anyway and
               we&apos;ll let you know if we can help or point you to someone who can.
             </p>
@@ -153,7 +159,10 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
       </fieldset>
 
       <fieldset className="grid gap-5 sm:grid-cols-2">
-        <legend className="mb-4 font-serif text-2xl sm:col-span-2">3. How do we reach you?</legend>
+        <legend className="mb-5 flex items-center gap-3 font-serif text-3xl font-extrabold tracking-tight lowercase sm:col-span-2">
+          <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-ink bg-pink text-xl">3</span>
+          how do we reach you?
+        </legend>
         <div>
           <label className="label" htmlFor="name">Your name</label>
           <input id="name" name="name" required autoComplete="name" className="field" />
@@ -172,15 +181,15 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
         </div>
       </fieldset>
 
-      <div className="rounded-2xl border border-line bg-surface-2 p-5 text-sm text-muted">
-        <strong className="text-ink">How this works:</strong> we&apos;re a new company launching our{" "}
+      <div className="rounded-2xl border-2 border-dashed border-ink bg-lilac/50 p-5 text-sm">
+        <strong>💡 how this works:</strong> we&apos;re a new company launching our{" "}
         {site.launch.seasonLabel}. Your request puts you first in line. We&apos;ll email a personalized quote once
         our founding collection is finalized. There&apos;s no payment and no commitment until you confirm.
       </div>
 
-      {status === "error" && <p className="text-sm text-red-700">{error}</p>}
+      {status === "error" && <p className="text-sm font-bold text-red-700">{error}</p>}
       <button className="btn-primary w-full py-3.5 text-base sm:w-auto" disabled={status === "sending"}>
-        {status === "sending" ? "Sending…" : "Request my quote"}
+        {status === "sending" ? "sending…" : "request my quote →"}
       </button>
     </form>
   );

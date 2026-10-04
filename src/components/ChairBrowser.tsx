@@ -13,15 +13,15 @@ export function ChairBrowser({ initialStyle = null }: { initialStyle?: Style | n
   );
 
   const pill = (active: boolean) =>
-    `rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
-      active ? "border-ink bg-ink text-white" : "border-line bg-surface text-muted hover:border-ink hover:text-ink"
+    `rounded-full border-2 border-ink px-3.5 py-1.5 text-sm font-bold lowercase transition-all ${
+      active ? "bg-ink text-white shadow-[2px_2px_0_0_var(--accent)]" : "bg-surface hover:bg-butter"
     }`;
 
   return (
     <div>
       <div className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="mr-1 w-20 text-xs font-semibold uppercase tracking-wider text-muted">Style</span>
+          <span className="mr-1 w-14 text-sm font-bold">vibe</span>
           <button className={pill(!style)} onClick={() => setStyle(null)}>All</button>
           {allStyles.map((s) => (
             <button key={s} className={pill(style === s)} onClick={() => setStyle(style === s ? null : s)}>
@@ -30,7 +30,7 @@ export function ChairBrowser({ initialStyle = null }: { initialStyle?: Style | n
           ))}
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="mr-1 w-20 text-xs font-semibold uppercase tracking-wider text-muted">Use</span>
+          <span className="mr-1 w-14 text-sm font-bold">use</span>
           <button className={pill(!use)} onClick={() => setUse(null)}>All</button>
           {allUses.map((u) => (
             <button key={u} className={pill(use === u)} onClick={() => setUse(use === u ? null : u)}>
@@ -40,14 +40,14 @@ export function ChairBrowser({ initialStyle = null }: { initialStyle?: Style | n
         </div>
       </div>
 
-      <p className="mt-6 text-sm text-muted">{shown.length} chairs</p>
+      <p className="mt-6 text-sm font-bold">{shown.length} chairs</p>
       <div className="mt-3 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((c) => (
           <ChairCard key={c.slug} chair={c} />
         ))}
       </div>
       {shown.length === 0 && (
-        <p className="mt-10 text-center text-muted">No chairs match both filters yet. Try clearing one.</p>
+        <p className="mt-10 text-center text-muted">nothing matches both filters (yet). try clearing one.</p>
       )}
     </div>
   );
