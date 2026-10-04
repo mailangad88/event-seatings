@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages = ["", "/chairs", "/quiz", "/quote", "/blog", "/about", "/faq"].map((p) => ({
+  const pages = ["", "/chairs", "/quiz", "/quote", "/blog", "/about", "/faq", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
   }));
   const chairPages = chairs.map((c) => ({ url: `${site.url}/chairs/${c.slug}` }));

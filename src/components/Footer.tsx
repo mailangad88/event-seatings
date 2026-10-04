@@ -51,7 +51,10 @@ export function Footer() {
       <div className="border-t border-bg/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-[10px] tracking-[0.25em] text-bg/45 uppercase sm:flex-row">
           <span>© {new Date().getFullYear()} {site.name}</span>
-          <span>{site.city}</span>
+          <span className="flex gap-6">
+            <Link href="/privacy" className="hover:text-bg">Privacy</Link>
+            <Link href="/terms" className="hover:text-bg">Terms</Link>
+          </span>
         </div>
       </div>
     </footer>

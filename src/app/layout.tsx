@@ -33,10 +33,25 @@ export const metadata: Metadata = {
   },
 };
 
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  description: site.description,
+  url: site.url,
+  email: site.email,
+  address: { "@type": "PostalAddress", addressLocality: "St. Charles", addressRegion: "IL", addressCountry: "US" },
+  areaServed: site.serviceArea,
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness).replace(/</g, "\\u003c") }}
+        />
         <VoteProvider>
           <Header />
           <main className="flex-1">{children}</main>

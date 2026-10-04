@@ -10,14 +10,14 @@ Aim for 3–5 strong posts a week before trying for daily. Each post should answ
 | 2 | ✅ Cross-back vs. Chiavari | cross back vs chiavari chairs | Comparisons |
 | 3 | ✅ How many chairs do I need | how many chairs for wedding | Planning |
 | 4 | ✅ Should ceremony and reception chairs match | ceremony vs reception chairs | Planning |
-| 5 | Ghost chairs at weddings: 10 ways to style them | ghost chair wedding | Styles |
-| 6 | Best chairs for a boho wedding | boho wedding chairs | Styles |
-| 7 | Barn wedding seating ideas (Fox Valley venues) | barn wedding chairs illinois | Local |
-| 8 | Winter wedding seating: velvet, jewel tones, warmth | winter wedding decor chairs | Seasonal |
-| 9 | Sweetheart table chair ideas | sweetheart table chairs | Styles |
-| 10 | Mandap and sangeet seating for South Asian weddings | indian wedding chairs rental chicago | Cultural |
+| 5 | ✅ Ghost chairs at weddings: 10 ways to style them | ghost chair wedding | Styles |
+| 6 | ✅ Best chairs for a boho wedding | boho wedding chairs | Styles |
+| 7 | ✅ Barn wedding seating ideas (Fox Valley venues) | barn wedding chairs illinois | Local |
+| 8 | ✅ Winter wedding seating: velvet, jewel tones, warmth | winter wedding decor chairs | Seasonal |
+| 9 | ✅ Sweetheart table chair ideas | sweetheart table chairs | Styles |
+| 10 | ✅ Mandap and sangeet seating for South Asian weddings | indian wedding chairs rental chicago | Cultural |
 | 11 | Quinceañera throne chairs & seating ideas | quinceanera throne chair | Cultural |
-| 12 | Wedding chair rental cost: what to budget | wedding chair rental cost | Planning |
+| 12 | ✅ Wedding chair rental cost: what to budget | wedding chair rental cost | Planning |
 | 13 | Chair covers vs. better chairs: the real cost | chair covers vs chiavari | Comparisons |
 | 14 | Long tables vs. round tables (and which chairs suit each) | long tables vs round tables wedding | Planning |
 | 15 | Outdoor ceremony seating on grass: what works | outdoor wedding chairs grass | Planning |
