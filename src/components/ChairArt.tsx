@@ -41,7 +41,7 @@ const art: Record<Silhouette, (fill: string) => React.ReactNode> = {
   ),
   wishbone: (f) => (
     <>
-      <path d="M22 60 Q60 40 98 60" strokeWidth="5" />
+      <path d="M22 60 Q60 40 98 60" strokeWidth="3.5" />
       <path d="M60 50 V72 M60 72 L46 90 M60 72 L74 90" />
       <path d="M26 62 L32 150 M94 62 L88 150" />
       <rect x="28" y="88" width="64" height="10" rx="2" fill={f} fillOpacity=".5" />
@@ -129,8 +129,8 @@ const art: Record<Silhouette, (fill: string) => React.ReactNode> = {
   ),
 };
 
-// Each chair gets its own pastel block so the grid feels like a sticker sheet.
-const tints = ["var(--lilac)", "var(--butter)", "var(--mint)", "var(--pink)", "var(--sky)", "var(--peach)"];
+// Quiet stone and linen backdrops, one per chair, so the grid reads like a lookbook.
+const tints = ["#e8e0d3", "#ddd4c6", "#e4ddd5", "#d8d9cf", "#e7dcd3", "#d9cfc1"];
 export function chairTint(slug: string) {
   const i = chairs.findIndex((c) => c.slug === slug);
   return tints[(i < 0 ? 0 : i) % tints.length];
@@ -166,10 +166,10 @@ export function ChairArt({
         viewBox="0 0 120 160"
         role="img"
         aria-label={`Illustration of the ${chair.name}`}
-        className="h-[78%] w-auto text-[var(--ink)]"
+        className="h-[72%] w-auto text-[var(--ink)]"
         fill="none"
         stroke="currentColor"
-        strokeWidth="3"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       >

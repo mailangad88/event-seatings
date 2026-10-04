@@ -8,11 +8,13 @@ export const metadata: Metadata = {
 
 export default function QuizPage() {
   return (
-    <div className="container-x py-14">
-      <div className="mx-auto mb-12 max-w-2xl text-center">
-        <span className="eyebrow">🔮 style quiz</span>
-        <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">what&apos;s your chair <span className="font-italic font-normal normal-case tracking-normal">era</span>?</h1>
-        <p className="mt-4 text-muted">Four questions. 30 seconds. Zero judgment.</p>
+    <div className="container-x py-20">
+      <div className="mx-auto mb-20 max-w-2xl text-center">
+        <p className="eyebrow justify-center">The style quiz</p>
+        <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-8xl">
+          Discover your <em className="text-gold">aesthetic</em>
+        </h1>
+        <p className="mt-6 text-lg text-muted">Four questions. A considered recommendation.</p>
       </div>
       <Quiz />
     </div>

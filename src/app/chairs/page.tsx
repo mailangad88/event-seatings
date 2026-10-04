@@ -13,14 +13,16 @@ export default async function ChairsPage(props: PageProps<"/chairs">) {
   const initialStyle = allStyles.includes(style as Style) ? (style as Style) : null;
 
   return (
-    <div className="container-x py-14">
-      <span className="eyebrow">🪑 the collection</span>
-      <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">chairs beyond <span className="font-italic font-normal normal-case tracking-normal">chiavari</span></h1>
-      <p className="mt-4 max-w-2xl text-muted">
-        Filter by vibe or by where you&apos;ll use it. Tap ♡ want on the ones you love. Your votes decide which
-        chairs make our {site.launch.seasonLabel} drop.
+    <div className="container-x py-20">
+      <p className="eyebrow">The collection</p>
+      <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-8xl">
+        Beyond <em className="text-gold">Chiavari</em>
+      </h1>
+      <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
+        Browse by aesthetic or occasion, and save the pieces you love. Your selections help decide which chairs join
+        our {site.launch.seasonLabel}.
       </p>
-      <div className="mt-10">
+      <div className="mt-14">
         <ChairBrowser initialStyle={initialStyle} />
       </div>
     </div>

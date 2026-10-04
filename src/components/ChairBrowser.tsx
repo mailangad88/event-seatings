@@ -12,42 +12,46 @@ export function ChairBrowser({ initialStyle = null }: { initialStyle?: Style | n
     (c) => (!style || c.styles.includes(style)) && (!use || c.uses.includes(use)),
   );
 
-  const pill = (active: boolean) =>
-    `rounded-full border-2 border-ink px-3.5 py-1.5 text-sm font-bold lowercase transition-all ${
-      active ? "bg-ink text-white shadow-[2px_2px_0_0_var(--accent)]" : "bg-surface hover:bg-butter"
+  const option = (active: boolean) =>
+    `border-b pb-1 text-[11px] tracking-[0.2em] uppercase transition-colors ${
+      active ? "border-ink text-ink" : "border-transparent text-muted hover:text-ink"
     }`;
 
   return (
     <div>
-      <div className="space-y-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="mr-1 w-14 text-sm font-bold">vibe</span>
-          <button className={pill(!style)} onClick={() => setStyle(null)}>All</button>
+      <div className="space-y-5 border-y border-line py-6">
+        <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
+          <span className="w-24 font-serif text-lg text-gold italic">Aesthetic</span>
+          <button className={option(!style)} onClick={() => setStyle(null)}>All</button>
           {allStyles.map((s) => (
-            <button key={s} className={pill(style === s)} onClick={() => setStyle(style === s ? null : s)}>
+            <button key={s} className={option(style === s)} onClick={() => setStyle(style === s ? null : s)}>
               {s}
             </button>
           ))}
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="mr-1 w-14 text-sm font-bold">use</span>
-          <button className={pill(!use)} onClick={() => setUse(null)}>All</button>
+        <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
+          <span className="w-24 font-serif text-lg text-gold italic">Occasion</span>
+          <button className={option(!use)} onClick={() => setUse(null)}>All</button>
           {allUses.map((u) => (
-            <button key={u} className={pill(use === u)} onClick={() => setUse(use === u ? null : u)}>
+            <button key={u} className={option(use === u)} onClick={() => setUse(use === u ? null : u)}>
               {u}
             </button>
           ))}
         </div>
       </div>
 
-      <p className="mt-6 text-sm font-bold">{shown.length} chairs</p>
-      <div className="mt-3 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <p className="mt-8 text-[11px] tracking-[0.2em] text-muted uppercase">
+        {shown.length} {shown.length === 1 ? "piece" : "pieces"}
+      </p>
+      <div className="mt-8 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((c) => (
-          <ChairCard key={c.slug} chair={c} />
+          <ChairCard key={c.slug} chair={c} index={chairs.indexOf(c)} />
         ))}
       </div>
       {shown.length === 0 && (
-        <p className="mt-10 text-center text-muted">nothing matches both filters (yet). try clearing one.</p>
+        <p className="mt-10 text-center font-serif text-2xl text-muted italic">
+          No pieces match both selections. Try clearing one.
+        </p>
       )}
     </div>
   );

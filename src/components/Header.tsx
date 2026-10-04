@@ -3,23 +3,19 @@ import { site } from "@/lib/site";
 import { MobileNav } from "./MobileNav";
 
 export const nav = [
-  { href: "/chairs", label: "chairs" },
-  { href: "/quiz", label: "style quiz" },
-  { href: "/blog", label: "journal" },
-  { href: "/about", label: "about" },
-  { href: "/faq", label: "faq" },
+  { href: "/chairs", label: "Collection" },
+  { href: "/quiz", label: "Style Quiz" },
+  { href: "/blog", label: "Journal" },
+  { href: "/about", label: "Our Story" },
+  { href: "/faq", label: "FAQ" },
 ];
 
-export function Logo() {
+export function Logo({ light = false }: { light?: boolean }) {
   return (
-    <Link href="/" className="group flex items-center gap-2" aria-label={`${site.name} home`}>
-      <span className="grid h-9 w-9 place-items-center rounded-xl border-2 border-ink bg-accent shadow-[2px_2px_0_0_var(--ink)] transition-transform group-hover:-rotate-6">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden>
-          <path d="M7 3v18M17 3v18M7 4h10M8 6l8 6M16 6l-8 6M5 13h14" />
-        </svg>
-      </span>
-      <span className="font-serif text-xl font-extrabold tracking-tight lowercase">
-        {site.name.toLowerCase()}
+    <Link href="/" className={`flex flex-col items-start leading-none ${light ? "text-bg" : "text-ink"}`}>
+      <span className="font-serif text-[1.65rem] font-normal tracking-[0.02em]">{site.name}</span>
+      <span className={`mt-1 text-[9px] tracking-[0.42em] uppercase ${light ? "text-bg/60" : "text-muted"}`}>
+        Fine Event Seating
       </span>
     </Link>
   );
@@ -27,21 +23,29 @@ export function Logo() {
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-ink bg-bg/90 backdrop-blur">
-      <div className="container-x relative flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 border-b border-line bg-bg/92 backdrop-blur-md">
+      <div className="bg-espresso text-center text-[10px] tracking-[0.28em] text-bg/80 uppercase">
+        <div className="container-x py-2.5">
+          Now reserving the {site.launch.seasonLabel} ·{" "}
+          <Link href="/quote" className="text-bg underline decoration-gold underline-offset-4">
+            Request a quote
+          </Link>
+        </div>
+      </div>
+      <div className="container-x relative flex h-20 items-center justify-between gap-6">
         <Logo />
-        <nav className="hidden items-center gap-1 text-sm font-medium md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-9 md:flex" aria-label="Main">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-full px-3 py-1.5 transition-colors hover:bg-butter"
+              className="text-[11px] tracking-[0.22em] text-ink/80 uppercase transition-colors hover:text-gold"
             >
               {item.label}
             </Link>
           ))}
-          <Link href="/quote" className="btn-primary ml-3 py-2">
-            get a quote →
+          <Link href="/quote" className="btn-primary px-6 py-3">
+            Enquire
           </Link>
         </nav>
         <MobileNav items={nav} />

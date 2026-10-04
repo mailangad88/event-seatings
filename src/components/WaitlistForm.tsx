@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export function WaitlistForm({ source, compact = false }: { source: string; compact?: boolean }) {
+export function WaitlistForm({ source, dark = false }: { source: string; dark?: boolean }) {
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -22,28 +22,37 @@ export function WaitlistForm({ source, compact = false }: { source: string; comp
 
   if (status === "done") {
     return (
-      <p className="inline-block rounded-xl border-2 border-ink bg-mint px-4 py-2.5 text-sm font-bold text-ink">
-        you&apos;re on the list 🎉 we&apos;ll be in touch before launch.
+      <p className={`font-serif text-xl italic ${dark ? "text-bg" : "text-ink"}`}>
+        Thank you. You&apos;ll hear from us before launch.
       </p>
     );
   }
 
   return (
-    <form onSubmit={submit} className={compact ? "flex gap-2" : "flex flex-col gap-3 sm:flex-row"}>
+    <form onSubmit={submit}>
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
-      <label className="sr-only" htmlFor={`wl-${source}`}>Email</label>
-      <input
-        id={`wl-${source}`}
-        name="email"
-        type="email"
-        required
-        placeholder="you@email.com"
-        className="field min-w-0 flex-1"
-      />
-      <button className={`${compact ? "btn-dark" : "btn-primary"} shrink-0`} disabled={status === "sending"}>
-        {status === "sending" ? "joining…" : "join →"}
-      </button>
-      {status === "error" && <p className="text-sm font-bold text-red-700">{error}</p>}
+      <div className={`flex items-end gap-4 border-b ${dark ? "border-bg/30 focus-within:border-bg" : "border-ink/30 focus-within:border-ink"}`}>
+        <label className="sr-only" htmlFor={`wl-${source}`}>Email address</label>
+        <input
+          id={`wl-${source}`}
+          name="email"
+          type="email"
+          required
+          placeholder="Your email address"
+          className={`min-w-0 flex-1 border-0 bg-transparent px-0 py-3 text-base focus:ring-0 focus:outline-none ${
+            dark ? "text-bg placeholder:text-bg/40" : "text-ink placeholder:text-muted/60"
+          }`}
+        />
+        <button
+          className={`shrink-0 py-3 text-[11px] font-medium tracking-[0.25em] uppercase transition-colors ${
+            dark ? "text-bg hover:text-gold" : "text-ink hover:text-gold"
+          }`}
+          disabled={status === "sending"}
+        >
+          {status === "sending" ? "Joining…" : "Join →"}
+        </button>
+      </div>
+      {status === "error" && <p className="mt-2 text-sm text-red-700">{error}</p>}
     </form>
   );
 }

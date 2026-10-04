@@ -2,11 +2,13 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="container-x py-28 text-center">
-      <span className="eyebrow">404</span>
-      <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">this seat is <span className="font-italic font-normal normal-case tracking-normal">empty</span></h1>
-      <p className="mt-4 text-muted">We couldn&apos;t find that page. 🪑💨</p>
-      <Link href="/" className="btn-primary mt-8">back home →</Link>
+    <div className="container-x py-36 text-center">
+      <p className="eyebrow justify-center">404</p>
+      <h1 className="headline mt-6 text-6xl sm:text-8xl">
+        This seat is <em className="text-gold">empty</em>
+      </h1>
+      <p className="mt-6 text-muted">We couldn&apos;t find the page you were looking for.</p>
+      <Link href="/" className="btn-primary mt-12">Return home</Link>
     </div>
   );
 }

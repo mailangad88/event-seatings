@@ -1,24 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #fbf6ee;
-  --surface: #ffffff;
-  --surface-2: #f3ecdf;
-  --ink: #141414;
-  --muted: #5e5850;
-  --line: #141414;
-  --accent: #ff5a36;
-  --accent-ink: #141414;
-  --accent-soft: #ffd9cc;
-  --sage: #2f7a52;
+  --bg: #f7f3ec;
+  --surface: #fffdf9;
+  --surface-2: #eee7db;
+  --ink: #1b1815;
+  --muted: #776d62;
+  --line: #ddd3c4;
+  --gold: #a88a5a;
+  --gold-soft: #e9dfcc;
+  --espresso: #26201b;
+  --sage: #5f6f5a;
 
-  /* Pastel blocks used for cards, stickers and sections */
-  --lilac: #cdb8ff;
-  --butter: #ffe071;
-  --mint: #a8e6c3;
-  --pink: #ffb5d6;
-  --sky: #a9d4ff;
-  --peach: #ffc49b;
+  /* Kept for the admin dashboard and older markup */
+  --accent: var(--gold);
+  --accent-ink: #ffffff;
+  --accent-soft: var(--gold-soft);
 }
 
 @theme inline {
@@ -28,39 +25,31 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-espresso: var(--espresso);
+  --color-sage: var(--sage);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
-  --color-sage: var(--sage);
-  --color-lilac: var(--lilac);
-  --color-butter: var(--butter);
-  --color-mint: var(--mint);
-  --color-pink: var(--pink);
-  --color-sky: var(--sky);
-  --color-peach: var(--peach);
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
-  --font-italic: var(--font-accent);
-  --animate-marquee: marquee 28s linear infinite;
-  --animate-float: float 6s ease-in-out infinite;
+  --animate-rise: rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
-    50% { transform: translateY(-8px) rotate(var(--r, 0deg)); }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
 body {
   background: var(--bg);
   color: var(--ink);
+  font-weight: 350;
 }
 
 ::selection {
-  background: var(--butter);
+  background: var(--gold-soft);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -72,41 +61,38 @@ body {
 
 /* Shared building blocks */
 @utility container-x {
-  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
-}
-@utility pop {
-  /* Thick outline + offset "sticker" shadow */
-  @apply border-2 border-ink shadow-[4px_4px_0_0_var(--ink)];
-}
-@utility pop-hover {
-  @apply transition-[transform,box-shadow] duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--ink)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0_0_var(--ink)];
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-8;
 }
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink px-5 py-2.5 text-sm font-bold shadow-[3px_3px_0_0_var(--ink)] transition-[transform,box-shadow,background-color] duration-150 hover:-translate-y-0.5 hover:shadow-[5px_5px_0_0_var(--ink)] active:translate-y-0.5 active:shadow-[1px_1px_0_0_var(--ink)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink disabled:opacity-60;
+  @apply inline-flex items-center justify-center gap-3 px-8 py-4 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-ink disabled:opacity-60;
 }
 @utility btn-primary {
-  @apply btn bg-accent text-ink;
+  @apply btn bg-ink text-bg hover:bg-gold;
 }
 @utility btn-ghost {
-  @apply btn bg-surface text-ink;
+  @apply btn border border-ink text-ink hover:bg-ink hover:text-bg;
 }
-@utility btn-dark {
-  @apply btn bg-ink text-white shadow-[3px_3px_0_0_var(--accent)] hover:shadow-[5px_5px_0_0_var(--accent)];
+@utility btn-light {
+  @apply btn border border-bg/60 text-bg hover:bg-bg hover:text-ink;
+}
+@utility link-line {
+  /* Small caps link with a hairline that grows on hover */
+  @apply relative inline-flex items-center gap-2 pb-1 text-[11px] font-medium tracking-[0.22em] uppercase after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:bg-current after:transition-transform after:duration-500 hover:after:scale-x-50;
 }
 @utility eyebrow {
-  @apply inline-flex items-center gap-1.5 rounded-full border-2 border-ink bg-butter px-3 py-1 text-xs font-bold tracking-wide text-ink lowercase;
+  @apply inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.3em] text-gold uppercase before:h-px before:w-8 before:bg-gold;
+}
+@utility headline {
+  @apply font-serif font-light tracking-[-0.01em];
 }
 @utility field {
-  @apply w-full rounded-xl border-2 border-ink bg-surface px-3.5 py-3 text-sm text-ink placeholder:text-muted/60 focus:shadow-[3px_3px_0_0_var(--ink)] focus:outline-none;
+  @apply w-full border-0 border-b border-line bg-transparent px-0 py-3 text-base text-ink placeholder:text-muted/50 focus:border-ink focus:ring-0 focus:outline-none;
 }
 @utility label {
-  @apply mb-1.5 block text-sm font-bold;
+  @apply mb-1 block text-[11px] font-medium tracking-[0.2em] text-muted uppercase;
 }
 @utility chip {
-  @apply inline-flex items-center rounded-full border-[1.5px] border-ink bg-surface px-2.5 py-0.5 text-xs font-medium text-ink lowercase;
-}
-@utility display {
-  @apply font-serif font-extrabold tracking-[-0.035em] lowercase;
+  @apply inline-flex items-center border border-line px-2.5 py-1 text-[10px] font-medium tracking-[0.18em] text-muted uppercase;
 }
 
 /* Blog article typography */
@@ -114,48 +100,43 @@ body {
   @apply text-[17px] leading-8 text-ink;
 }
 .prose-post h2 {
-  @apply mt-12 mb-3 font-serif text-3xl font-extrabold tracking-tight lowercase;
+  @apply mt-14 mb-4 font-serif text-4xl font-light;
 }
 .prose-post h3 {
-  @apply mt-8 mb-2 text-lg font-bold;
+  @apply mt-8 mb-2 text-lg font-medium;
 }
 .prose-post p {
-  @apply my-4;
+  @apply my-5;
 }
 .prose-post ul,
 .prose-post ol {
-  @apply my-4 pl-6;
+  @apply my-5 pl-6;
 }
 .prose-post ul {
-  @apply list-disc marker:text-accent;
+  @apply list-disc marker:text-gold;
 }
 .prose-post ol {
-  @apply list-decimal marker:font-bold;
+  @apply list-decimal marker:text-gold;
 }
 .prose-post li {
-  @apply my-1.5;
+  @apply my-2;
 }
 .prose-post a {
-  @apply font-semibold underline decoration-accent decoration-2 underline-offset-4 hover:bg-butter;
+  @apply underline decoration-gold decoration-1 underline-offset-4 hover:text-gold;
 }
 .prose-post strong {
-  @apply font-bold;
+  @apply font-medium;
 }
 .prose-post blockquote {
-  @apply my-6 rounded-2xl border-2 border-ink bg-lilac px-5 py-3 not-italic;
+  @apply my-8 border-l border-gold pl-6 font-serif text-2xl font-light italic;
 }
 .prose-post table {
-  @apply my-6 w-full overflow-hidden rounded-2xl border-2 border-ink text-sm;
-  border-collapse: separate;
-  border-spacing: 0;
+  @apply my-8 w-full border-collapse text-sm;
 }
 .prose-post th {
-  @apply bg-butter font-bold;
+  @apply text-[11px] font-medium tracking-[0.18em] text-muted uppercase;
 }
 .prose-post th,
 .prose-post td {
-  @apply border-b-2 border-ink px-3 py-2.5 text-left align-top;
-}
-.prose-post tr:last-child td {
-  @apply border-b-0;
+  @apply border-b border-line py-3 pr-4 text-left align-top;
 }

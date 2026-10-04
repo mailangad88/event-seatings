@@ -3,41 +3,52 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "Our Story",
   description: `Event Seatings is a ${site.city} wedding chair rental company bringing alternatives to the Chiavari chair.`,
 };
 
 export default function AboutPage() {
   return (
-    <div className="container-x max-w-3xl py-14">
-      <span className="eyebrow">👋 our story</span>
-      <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">every wedding had the <span className="font-italic font-normal normal-case tracking-normal">same</span> chair.</h1>
-      <div className="prose-post mt-8">
-        <p>
-          Go to enough weddings around Chicago and you&apos;ll notice something: almost every reception has the same
-          chair. The Chiavari is lovely, but when it&apos;s the only option your rental company carries, every
-          wedding starts to look the same.
-        </p>
-        <p>
-          Couples spend months choosing florals, linens and lighting, then get one chair to choose from. We think
-          seating should be part of the design. Seating takes up more of the room than almost anything else.
-        </p>
-        <p>
-          Event Seatings is a new, locally owned rental company based in {site.city}. We&apos;re building a collection
-          of distinctive, commercial-grade chairs (cross-back, ghost, rattan, velvet, bentwood and more) for weddings
-          and events across the Fox Valley and Chicago&apos;s western suburbs.
-        </p>
-        <h2>Help us build the collection</h2>
-        <p>
-          We&apos;re launching with our {site.launch.seasonLabel}, and we&apos;re letting couples and planners help
-          decide what we stock. Every ♡ on a chair and every quote request tells us which styles to bring in first.
-        </p>
-        <h2>Where we deliver</h2>
-        <p>{site.serviceArea.join(", ")}, and nearby. Not sure if we reach your venue? Just ask.</p>
+    <div className="container-x py-20">
+      <div className="max-w-4xl">
+        <p className="eyebrow">Our story</p>
+        <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-8xl">
+          Every celebration deserves a <em className="text-gold">point of view</em>
+        </h1>
       </div>
-      <div className="mt-10 flex flex-wrap gap-3">
-        <Link href="/chairs" className="btn-primary">vote on chairs →</Link>
-        <a href={`mailto:${site.email}`} className="btn-ghost">email us</a>
+      <div className="mt-20 grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-20">
+        <p className="font-serif text-3xl leading-snug font-light text-muted italic">
+          &ldquo;Couples spend months choosing florals, linens and light, then get one chair to choose from.&rdquo;
+        </p>
+        <div>
+          <div className="prose-post">
+          <p>
+            Attend enough weddings around Chicago and you begin to notice it: nearly every reception has the same
+            chair. The Chiavari is lovely, but when it&apos;s the only option a rental company carries, every room
+            starts to look alike.
+          </p>
+          <p>
+            We believe seating belongs to the design. Seating fills more of the room than almost anything else, and
+            guests live with it all evening.
+          </p>
+          <p>
+            Event Seatings is a new, locally owned company based in {site.city}. We&apos;re assembling a collection of
+            distinctive, commercial-grade chairs (cross-back, ghost, rattan, velvet, bentwood and more) for weddings
+            and celebrations across the Fox Valley and Chicago&apos;s western suburbs.
+          </p>
+          <h2>Shaped by you</h2>
+          <p>
+            We&apos;re launching with our {site.launch.seasonLabel}, and inviting couples and planners to help decide
+            what we carry. Every saved piece and every enquiry tells us which styles to bring in first.
+          </p>
+          <h2>Where we deliver</h2>
+          <p>{site.serviceArea.join(", ")}, and nearby. Not sure we reach your venue? Simply ask.</p>
+          </div>
+          <div className="mt-12 flex flex-wrap gap-4">
+            <Link href="/chairs" className="btn-primary">Explore the collection</Link>
+            <a href={`mailto:${site.email}`} className="btn-ghost">Write to us</a>
+          </div>
+        </div>
       </div>
     </div>
   );

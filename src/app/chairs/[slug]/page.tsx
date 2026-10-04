@@ -38,56 +38,61 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
   ];
 
   return (
-    <div className="container-x py-12">
-      <nav className="text-sm font-medium" aria-label="Breadcrumb">
-        <Link href="/chairs" className="underline decoration-2 underline-offset-4">chairs</Link> <span aria-hidden>/</span> {chair.name.toLowerCase()}
+    <div className="container-x py-14">
+      <nav className="text-[11px] tracking-[0.2em] text-muted uppercase" aria-label="Breadcrumb">
+        <Link href="/chairs" className="hover:text-ink">The collection</Link>
+        <span className="mx-3 text-gold" aria-hidden>/</span>
+        {chair.name}
       </nav>
 
-      <div className="mt-6 grid gap-10 md:grid-cols-2">
-        <div className="pop overflow-hidden rounded-[2rem] md:sticky md:top-24 md:self-start">
-          <ChairArt chair={chair} className="aspect-square" priority />
+      <div className="mt-10 grid gap-12 md:grid-cols-[1.1fr_1fr] md:gap-20">
+        <div className="md:sticky md:top-32 md:self-start">
+          <ChairArt chair={chair} className="aspect-[4/5]" priority />
         </div>
-        <div>
-          <h1 className="display text-5xl leading-[0.95] sm:text-6xl">{chair.name}</h1>
-          <p className="mt-3 text-lg text-muted">{chair.tagline}</p>
-          <div className="mt-4 flex flex-wrap gap-1.5">
-            {chair.styles.map((s) => (
-              <span key={s} className="chip">{s}</span>
-            ))}
-          </div>
-          <p className="mt-6 inline-block rounded-2xl border-2 border-ink bg-butter px-4 py-2 font-serif text-2xl font-extrabold">
-            {chair.estPrice}
-            {!chair.estPrice.includes("/") && <span className="font-sans text-base font-medium"> / chair</span>}
-            <span className="ml-2 font-sans text-xs font-medium">est.</span>
+        <div className="md:py-6">
+          <p className="font-serif text-lg text-gold italic">
+            No. {String(chairs.indexOf(chair) + 1).padStart(2, "0")} · {chair.styles.join(" · ")}
           </p>
-          <p className="mt-6 leading-7">{chair.description}</p>
+          <h1 className="headline mt-4 text-5xl leading-[1] sm:text-7xl">{chair.name}</h1>
+          <p className="mt-5 font-serif text-2xl leading-snug font-light text-muted italic">{chair.tagline}</p>
 
-          <div className="mt-6">
-            <p className="text-sm font-bold">finishes</p>
-            <div className="mt-2 flex flex-wrap gap-3">
+          <p className="mt-8 leading-8">{chair.description}</p>
+
+          <div className="mt-10 flex items-baseline gap-3 border-y border-line py-5">
+            <span className="text-[11px] tracking-[0.2em] text-muted uppercase">Estimated</span>
+            <span className="headline text-3xl">{chair.estPrice}</span>
+            {!chair.estPrice.includes("/") && <span className="text-sm text-muted">per chair</span>}
+          </div>
+
+          <div className="mt-8">
+            <p className="label">Finishes</p>
+            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-3">
               {chair.finishes.map((f) => (
-                <span key={f.name} className="flex items-center gap-2 text-sm font-medium">
-                  <span className="h-7 w-7 rounded-full border-2 border-ink" style={{ background: f.hex }} />
+                <span key={f.name} className="flex items-center gap-2.5 text-sm">
+                  <span
+                    className="h-5 w-5 rounded-full ring-1 ring-ink/15 ring-offset-2 ring-offset-bg"
+                    style={{ background: f.hex }}
+                  />
                   {f.name}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href={`/quote?chairs=${chair.slug}`} className="btn-primary px-6 py-3 text-base">
-              get a quote →
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link href={`/quote?chairs=${chair.slug}`} className="btn-primary">
+              Request a quote
             </Link>
             <VoteButton slug={chair.slug} size="lg" />
           </div>
-          <p className="mt-3 text-xs text-muted">
-            Estimated pricing, with final numbers in your quote. Votes decide which chairs drop first in our {site.launch.seasonLabel}.
+          <p className="mt-4 text-sm text-muted">
+            Final pricing is confirmed in your personal quote. Saved pieces help shape our {site.launch.seasonLabel}.
           </p>
 
-          <dl className="pop mt-10 divide-y-2 divide-ink overflow-hidden rounded-2xl bg-surface text-sm">
+          <dl className="mt-12 border-t border-line text-sm">
             {facts.map(([k, v]) => (
-              <div key={k} className="grid grid-cols-[120px_1fr] gap-4 px-4 py-3">
-                <dt className="font-bold lowercase">{k}</dt>
+              <div key={k} className="grid grid-cols-[150px_1fr] gap-4 border-b border-line py-4">
+                <dt className="text-[11px] tracking-[0.2em] text-muted uppercase">{k}</dt>
                 <dd>{v}</dd>
               </div>
             ))}
@@ -96,11 +101,14 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
       </div>
 
       {related.length > 0 && (
-        <section className="mt-20">
-          <h2 className="display text-4xl sm:text-5xl">you might also <span className="font-italic font-normal normal-case tracking-normal">love</span></h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="mt-32">
+          <p className="eyebrow">Also consider</p>
+          <h2 className="headline mt-6 text-5xl">
+            Pieces in a <em>similar</em> spirit
+          </h2>
+          <div className="mt-12 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((c) => (
-              <ChairCard key={c.slug} chair={c} />
+              <ChairCard key={c.slug} chair={c} index={chairs.indexOf(c)} />
             ))}
           </div>
         </section>

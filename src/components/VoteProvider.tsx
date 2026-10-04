@@ -84,26 +84,26 @@ export function VoteButton({ slug, size = "sm" }: { slug: string; size?: "sm" | 
         toggle(slug);
       }}
       aria-pressed={on}
-      className={`inline-flex items-center gap-1.5 rounded-full border-2 border-ink font-bold transition-all active:scale-95 ${
-        on ? "bg-pink shadow-[2px_2px_0_0_var(--ink)]" : "bg-surface hover:bg-pink/50"
-      } ${size === "lg" ? "px-5 py-2.5 text-sm" : "px-3 py-1 text-xs"}`}
+      className={`inline-flex items-center gap-2 transition-colors duration-300 ${
+        size === "lg"
+          ? `border px-6 py-4 text-[11px] font-medium tracking-[0.22em] uppercase ${
+              on ? "border-gold bg-gold text-white" : "border-ink text-ink hover:bg-ink hover:text-bg"
+            }`
+          : `rounded-full bg-bg/85 px-3 py-2 text-[10px] tracking-[0.18em] uppercase backdrop-blur ${
+              on ? "text-gold" : "text-ink hover:text-gold"
+            }`
+      }`}
     >
-      <svg
-        width={size === "lg" ? 18 : 14}
-        height={size === "lg" ? 18 : 14}
-        viewBox="0 0 24 24"
-        aria-hidden
-        className={on ? "scale-110 transition-transform" : "transition-transform"}
-      >
+      <svg width={size === "lg" ? 15 : 13} height={size === "lg" ? 15 : 13} viewBox="0 0 24 24" aria-hidden>
         <path
           d="M12 21s-7.5-4.6-9.5-9.1C1.1 8.6 3.3 5 6.9 5c2 0 3.6 1.1 5.1 2.9C13.5 6.1 15.1 5 17.1 5c3.6 0 5.8 3.6 4.4 6.9C19.5 16.4 12 21 12 21z"
-          fill={on ? "var(--accent)" : "none"}
+          fill={on ? "currentColor" : "none"}
           stroke="currentColor"
-          strokeWidth="2.2"
+          strokeWidth="1.5"
         />
       </svg>
-      {size === "lg" ? (on ? "on your wishlist" : "i want this one") : on ? "wanted" : "want"}
-      {count > 0 && <span className="tabular-nums">{count}</span>}
+      {size === "lg" ? (on ? "On your wishlist" : "Add to wishlist") : on ? "Saved" : "Save"}
+      {count > 0 && <span className="tabular-nums opacity-60">{count}</span>}
     </button>
   );
 }

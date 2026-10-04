@@ -48,24 +48,35 @@ export default function FaqPage() {
     mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
   };
   return (
-    <div className="container-x max-w-3xl py-14">
+    <div className="container-x py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <span className="eyebrow">🤔 faq</span>
-      <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">questions, <span className="font-italic font-normal normal-case tracking-normal">answered</span></h1>
-      <div className="mt-10 space-y-3">
-        {faqs.map(([q, a]) => (
-          <details key={q} className="group pop rounded-2xl bg-surface px-5 py-4 open:bg-butter">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold">
-              {q}
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 border-ink bg-surface text-xl transition-transform group-open:rotate-45" aria-hidden>+</span>
-            </summary>
-            <p className="mt-3 leading-7">{a}</p>
-          </details>
-        ))}
+      <div className="grid gap-14 md:grid-cols-[1fr_1.6fr] md:gap-20">
+        <div>
+          <p className="eyebrow">Questions</p>
+          <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-7xl">
+            Frequently <em className="text-gold">asked</em>
+          </h1>
+          <p className="mt-6 leading-7 text-muted">
+            Something else on your mind?{" "}
+            <a href={`mailto:${site.email}`} className="underline decoration-gold underline-offset-4 hover:text-gold">
+              {site.email}
+            </a>
+          </p>
+        </div>
+        <div className="border-t border-ink">
+          {faqs.map(([q, a]) => (
+            <details key={q} className="group border-b border-line">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
+                <span className="font-serif text-2xl leading-snug">{q}</span>
+                <span className="text-xl font-light text-gold transition-transform duration-300 group-open:rotate-45" aria-hidden>
+                  +
+                </span>
+              </summary>
+              <p className="max-w-2xl pb-7 leading-8 text-muted">{a}</p>
+            </details>
+          ))}
+        </div>
       </div>
-      <p className="mt-8 font-medium">
-        still curious? <a href={`mailto:${site.email}`} className="underline decoration-accent decoration-2 underline-offset-4">{site.email}</a>
-      </p>
     </div>
   );
 }

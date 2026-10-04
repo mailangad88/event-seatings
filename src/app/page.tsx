@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ChairArt } from "@/components/ChairArt";
 import { ChairCard } from "@/components/ChairCard";
-import { Marquee } from "@/components/Marquee";
 import { ThisOrThat } from "@/components/ThisOrThat";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { allStyles, chairs, getChair } from "@/data/chairs";
@@ -10,203 +9,218 @@ import { site } from "@/lib/site";
 
 export const revalidate = 3600;
 
-const featured = ["cross-back", "ghost", "rattan-garden", "velvet-dining", "wishbone", "royal-throne"];
+const featured = ["cross-back", "ghost", "velvet-dining", "rattan-garden", "louis-medallion", "wishbone"];
 
-const styleColors = ["bg-peach", "bg-mint", "bg-sky", "bg-pink", "bg-butter", "bg-lilac", "bg-surface", "bg-accent"];
-const styleEmoji: Record<string, string> = {
-  Rustic: "🌾",
-  Boho: "🌿",
-  Modern: "◼︎",
-  Glam: "✨",
-  Classic: "🕊️",
-  Garden: "🌷",
-  Minimalist: "○",
-  Cultural: "🪔",
+const styleNotes: Record<string, string> = {
+  Rustic: "Barns, vineyards & farm tables",
+  Boho: "Natural textures, relaxed elegance",
+  Modern: "Clean lines, quiet confidence",
+  Glam: "Ballrooms, velvet & candlelight",
+  Classic: "Timeless, heirloom, refined",
+  Garden: "Estates, lawns & open air",
+  Minimalist: "Less, but better",
+  Cultural: "Mandaps, stages & celebrations",
 };
 
 export default async function Home() {
   const posts = (await getPosts()).slice(0, 3);
-  const [h1, h2, h3] = ["cross-back", "velvet-dining", "rattan-garden"].map((s) => getChair(s)!);
+  const heroMain = getChair("velvet-dining")!;
+  const heroSide = getChair("cane-back")!;
 
   return (
     <>
       {/* Hero */}
-      <section className="container-x grid items-center gap-12 pt-12 pb-16 md:grid-cols-[1.15fr_1fr] md:pt-20 md:pb-24">
-        <div>
-          <span className="eyebrow">📍 {site.city.toLowerCase()} · {site.launch.seasonLabel.toLowerCase()}</span>
-          <h1 className="display mt-5 text-[3.4rem] leading-[0.92] sm:text-7xl lg:text-[5.5rem]">
-            chiavari is{" "}
-            <span className="font-italic font-normal tracking-normal normal-case">so</span>{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10">over.</span>
-              <svg className="absolute -bottom-2 left-0 w-full text-accent" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden>
-                <path d="M2 14 Q50 2 100 12 T198 8" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
-              </svg>
-            </span>
+      <section className="container-x grid items-center gap-14 pt-14 pb-24 md:grid-cols-[1.05fr_1fr] md:pt-24 md:pb-32">
+        <div className="animate-rise">
+          <p className="eyebrow">{site.launch.seasonLabel} · St. Charles, Illinois</p>
+          <h1 className="headline mt-8 text-[3.6rem] leading-[0.95] sm:text-7xl lg:text-[6.2rem]">
+            Seating,
+            <br />
+            <em className="text-gold">beyond</em> Chiavari.
           </h1>
-          <p className="mt-7 max-w-md text-lg leading-relaxed text-muted">
-            Your wedding has a vibe. Your chairs should too. Cross-back, ghost, rattan, velvet and more, delivered
-            across the Fox Valley &amp; Chicago burbs.
+          <p className="mt-8 max-w-md text-lg leading-8 text-muted">
+            A curated collection of distinctive chairs for weddings and celebrations, delivered and styled across
+            Chicago&apos;s western suburbs.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/chairs" className="btn-primary px-6 py-3 text-base">browse chairs →</Link>
-            <Link href="/quiz" className="btn-ghost px-6 py-3 text-base">find my chair vibe</Link>
+          <div className="mt-11 flex flex-wrap items-center gap-8">
+            <Link href="/chairs" className="btn-primary">Explore the collection</Link>
+            <Link href="/quote" className="link-line">Request a quote</Link>
           </div>
         </div>
 
-        <div className="relative mx-auto h-[380px] w-full max-w-[440px] sm:h-[440px]">
-          <Link href={`/chairs/${h1.slug}`} className="pop pop-hover absolute top-0 left-0 w-[52%] rotate-[-6deg] overflow-hidden rounded-3xl">
-            <ChairArt chair={h1} className="aspect-[4/5]" priority />
+        <div className="relative animate-rise [animation-delay:200ms]">
+          <Link href={`/chairs/${heroMain.slug}`} className="group ml-auto block w-[82%] overflow-hidden">
+            <ChairArt chair={heroMain} className="aspect-[4/5] transition-transform duration-[1.4s] group-hover:scale-[1.03]" priority />
           </Link>
-          <Link href={`/chairs/${h2.slug}`} className="pop pop-hover absolute top-[10%] right-0 w-[50%] rotate-[5deg] overflow-hidden rounded-3xl">
-            <ChairArt chair={h2} className="aspect-[4/5]" priority />
-          </Link>
-          <Link href={`/chairs/${h3.slug}`} className="pop pop-hover absolute bottom-0 left-[24%] w-[48%] rotate-[-1deg] overflow-hidden rounded-3xl">
-            <ChairArt chair={h3} className="aspect-[5/4]" priority />
-          </Link>
-          <span
-            className="absolute top-[42%] -left-2 animate-float rounded-full border-2 border-ink bg-butter px-3 py-1.5 text-sm font-bold shadow-[3px_3px_0_0_var(--ink)] [--r:-10deg]"
+          <Link
+            href={`/chairs/${heroSide.slug}`}
+            className="group absolute bottom-[-8%] left-0 block w-[42%] overflow-hidden border-[10px] border-bg"
           >
-            13 styles 🪑
-          </span>
-          <span
-            className="absolute -top-3 right-6 animate-float rounded-full border-2 border-ink bg-pink px-3 py-1.5 text-sm font-bold shadow-[3px_3px_0_0_var(--ink)] [--r:8deg] [animation-delay:1.5s]"
-          >
-            vote your fave 💖
-          </span>
+            <ChairArt chair={heroSide} className="aspect-[3/4] transition-transform duration-[1.4s] group-hover:scale-[1.04]" priority />
+          </Link>
+          <p className="mt-4 ml-[46%] font-serif text-base text-muted italic">
+            The {heroMain.name}, in emerald velvet
+          </p>
         </div>
       </section>
 
-      <Marquee items={["no more chiavari", "cross-back", "ghost chairs", "rattan", "velvet", "bentwood", "wishbone", "sit different"]} />
+      {/* Statement */}
+      <section className="border-y border-line bg-surface">
+        <div className="container-x py-24 text-center md:py-32">
+          <p className="eyebrow justify-center">Our philosophy</p>
+          <p className="headline mx-auto mt-8 max-w-4xl text-3xl leading-[1.25] sm:text-5xl sm:leading-[1.2]">
+            Seating fills more of your reception than almost anything else. It deserves the same{" "}
+            <em className="text-gold">care</em> as your florals, your linens, your light.
+          </p>
+        </div>
+      </section>
 
-      {/* This or that */}
-      <section className="bg-lilac py-20">
-        <div className="container-x grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+      {/* Pillars */}
+      <section className="container-x grid gap-14 py-24 md:grid-cols-3 md:gap-10">
+        {[
+          ["I", "Curated", "More than a dozen distinctive styles, chosen for how they look in a room, in photographs and from behind."],
+          ["II", "Commercial grade", "Weight-rated pieces built for events, never residential furniture. Delivered, placed and collected by our team."],
+          ["III", "Locally owned", `Based in ${site.city}. We know the estates, barns and ballrooms of the Fox Valley.`],
+        ].map(([n, t, d]) => (
+          <div key={t} className="border-t border-ink pt-6">
+            <span className="font-serif text-lg text-gold italic">{n}.</span>
+            <h2 className="headline mt-3 text-3xl">{t}</h2>
+            <p className="mt-3 leading-7 text-muted">{d}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* Collection */}
+      <section className="container-x py-12">
+        <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <span className="eyebrow bg-surface">🎮 quick game</span>
-            <h2 className="display mt-4 text-5xl leading-[0.95] sm:text-6xl">
-              this <span className="font-italic font-normal normal-case">or</span> that?
+            <p className="eyebrow">The collection</p>
+            <h2 className="headline mt-6 text-5xl sm:text-6xl">
+              Help us <em>curate</em> our founding pieces
             </h2>
-            <p className="mt-4 max-w-sm text-lg">
-              Six matchups, zero overthinking. Your picks become votes, and the most-loved chairs drop first in our{" "}
-              {site.launch.seasonLabel.toLowerCase()}.
+            <p className="mt-5 max-w-xl leading-7 text-muted">
+              Save the chairs you love. The most-desired styles will join our {site.launch.seasonLabel} first.
+            </p>
+          </div>
+          <Link href="/chairs" className="link-line">View all {chairs.length} chairs</Link>
+        </div>
+        <div className="mt-14 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((slug) => (
+            <ChairCard key={slug} chair={getChair(slug)!} index={chairs.findIndex((c) => c.slug === slug)} />
+          ))}
+        </div>
+      </section>
+
+      {/* By aesthetic */}
+      <section className="container-x py-28">
+        <div className="grid gap-12 md:grid-cols-[1fr_1.6fr]">
+          <div>
+            <p className="eyebrow">By aesthetic</p>
+            <h2 className="headline mt-6 text-5xl sm:text-6xl">
+              Find your <em>style</em>
+            </h2>
+            <p className="mt-5 max-w-sm leading-7 text-muted">
+              Every wedding has a point of view. Begin with yours, or let our{" "}
+              <Link href="/quiz" className="underline decoration-gold underline-offset-4 hover:text-gold">style quiz</Link>{" "}
+              guide you.
+            </p>
+          </div>
+          <ul className="border-t border-line">
+            {allStyles.map((s) => (
+              <li key={s} className="border-b border-line">
+                <Link href={`/chairs?style=${s}`} className="group flex items-baseline justify-between gap-6 py-5">
+                  <span className="headline text-3xl transition-colors group-hover:text-gold sm:text-4xl">{s}</span>
+                  <span className="hidden text-sm text-muted sm:block">{styleNotes[s]}</span>
+                  <span className="text-gold transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Which speaks to you */}
+      <section className="bg-surface-2 py-24 md:py-32">
+        <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.5fr] lg:items-center">
+          <div>
+            <p className="eyebrow">A moment of taste</p>
+            <h2 className="headline mt-6 text-5xl sm:text-6xl">
+              Which speaks <em>to you?</em>
+            </h2>
+            <p className="mt-5 max-w-sm leading-7 text-muted">
+              Six pairings, one instinct each. Your choices are saved to your wishlist and help shape the
+              founding collection.
             </p>
           </div>
           <ThisOrThat />
         </div>
       </section>
 
-      {/* Featured chairs */}
-      <section className="container-x py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <span className="eyebrow">the collection</span>
-            <h2 className="display mt-4 text-5xl leading-[0.95] sm:text-6xl">
-              pick your <span className="font-italic font-normal normal-case">seat</span>
-            </h2>
-            <p className="mt-3 max-w-xl text-muted">
-              Hit <strong className="text-ink">♡ want</strong> on the ones you love. Most-wanted styles join the
-              founding collection first.
-            </p>
-          </div>
-          <Link href="/chairs" className="btn-ghost">see all {chairs.length} →</Link>
-        </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((slug) => (
-            <ChairCard key={slug} chair={getChair(slug)!} />
-          ))}
-        </div>
-      </section>
-
-      {/* Shop by vibe */}
-      <section className="border-y-2 border-ink bg-butter py-20">
-        <div className="container-x">
-          <h2 className="display text-5xl leading-[0.95] sm:text-6xl">what&apos;s the vibe?</h2>
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {allStyles.map((s, i) => (
-              <Link
-                key={s}
-                href={`/chairs?style=${s}`}
-                className={`pop pop-hover flex items-center justify-between rounded-2xl px-5 py-5 font-serif text-xl font-extrabold lowercase sm:text-2xl ${styleColors[i % styleColors.length]}`}
-              >
-                {s}
-                <span className="text-2xl" aria-hidden>{styleEmoji[s]}</span>
-              </Link>
-            ))}
-          </div>
-          <p className="mt-8 font-medium">
-            not sure?{" "}
-            <Link href="/quiz" className="underline decoration-2 underline-offset-4 hover:bg-surface">
-              take the 30-sec style quiz →
-            </Link>
-          </p>
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section className="container-x py-20">
-        <h2 className="display text-5xl leading-[0.95] sm:text-6xl">
-          how it <span className="font-italic font-normal normal-case">works</span>
+      {/* Experience */}
+      <section className="container-x py-28">
+        <p className="eyebrow">The experience</p>
+        <h2 className="headline mt-6 text-5xl sm:text-6xl">
+          Effortless, from <em>first</em> enquiry
         </h2>
-        <ol className="mt-10 grid gap-5 md:grid-cols-3">
+        <ol className="mt-16 grid gap-12 md:grid-cols-3 md:gap-10">
           {[
-            ["pick your chairs", "Browse by vibe or take the quiz. Mix a ceremony chair with a different reception chair.", "bg-mint"],
-            ["request a quote", "Drop your date, guest count and venue. We'll send a personalized quote.", "bg-sky"],
-            ["we deliver + set up", "Our crew delivers, sets up and picks up. You just sit down and enjoy it.", "bg-pink"],
-          ].map(([t, d, bg], i) => (
-            <li key={t} className={`pop rounded-3xl p-6 ${bg}`}>
-              <span className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink bg-surface font-serif text-2xl font-extrabold">
-                {i + 1}
-              </span>
-              <h3 className="mt-5 font-serif text-2xl font-extrabold tracking-tight lowercase">{t}</h3>
-              <p className="mt-2 text-sm leading-6">{d}</p>
+            ["Select", "Explore the collection by style or occasion. Pair a ceremony chair with a different piece for dinner."],
+            ["Enquire", "Share your date, guest count and venue. We prepare a personalized proposal for your celebration."],
+            ["Delivered & placed", "Our team delivers, sets every chair and collects afterward. You simply take your seat."],
+          ].map(([t, d], i) => (
+            <li key={t}>
+              <span className="headline text-7xl text-gold/70">0{i + 1}</span>
+              <h3 className="mt-4 text-[11px] font-medium tracking-[0.25em] uppercase">{t}</h3>
+              <p className="mt-3 leading-7 text-muted">{d}</p>
             </li>
           ))}
         </ol>
-        <div className="mt-10">
-          <Link href="/quote" className="btn-dark px-7 py-3 text-base">request a quote →</Link>
+        <div className="mt-16">
+          <Link href="/quote" className="btn-primary">Begin your enquiry</Link>
         </div>
       </section>
 
       {/* Journal */}
       {posts.length > 0 && (
-        <section className="container-x py-10">
-          <div className="flex items-end justify-between gap-4">
-            <h2 className="display text-5xl leading-[0.95] sm:text-6xl">the journal</h2>
-            <Link href="/blog" className="hidden font-bold underline decoration-2 underline-offset-4 sm:block">
-              all posts →
-            </Link>
+        <section className="container-x border-t border-line py-24">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="eyebrow">The journal</p>
+              <h2 className="headline mt-6 text-5xl sm:text-6xl">Notes on seating</h2>
+            </div>
+            <Link href="/blog" className="link-line">All articles</Link>
           </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {posts.map((p, i) => (
-              <Link
-                key={p.slug}
-                href={`/blog/${p.slug}`}
-                className={`pop pop-hover flex flex-col rounded-3xl p-6 ${["bg-surface", "bg-peach", "bg-sky"][i % 3]}`}
-              >
-                <p className="text-xs font-bold">{formatDate(p.date).toLowerCase()} · {p.readingMinutes} min</p>
-                <h3 className="mt-3 font-serif text-2xl leading-tight font-extrabold tracking-tight">{p.title}</h3>
-                <p className="mt-3 line-clamp-3 text-sm">{p.description}</p>
+          <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
+            {posts.map((p) => (
+              <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-ink pt-6">
+                <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
+                  {formatDate(p.date)} · {p.readingMinutes} min read
+                </p>
+                <h3 className="headline mt-4 text-3xl leading-tight transition-colors group-hover:text-gold">
+                  {p.title}
+                </h3>
+                <p className="mt-3 line-clamp-3 leading-7 text-muted">{p.description}</p>
               </Link>
             ))}
           </div>
         </section>
       )}
 
-      {/* Waitlist */}
-      <section className="container-x pt-16">
-        <div className="pop relative overflow-hidden rounded-[2rem] bg-ink px-6 py-16 text-center text-white sm:px-12">
-          <span className="absolute top-6 right-6 hidden rotate-12 rounded-full border-2 border-white bg-accent px-3 py-1 text-sm font-bold text-ink md:block">
-            limited dates 🔥
-          </span>
-          <h2 className="display text-5xl leading-[0.95] sm:text-6xl">
-            get on the <span className="font-italic font-normal text-butter normal-case">list</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-md text-white/75">
-            Early access to founding-season dates, launch pricing and new chair drops. No spam, promise.
-          </p>
-          <div className="mx-auto mt-8 max-w-md text-left">
-            <WaitlistForm source="home" />
+      {/* Private list (pulled down to sit flush on the footer) */}
+      <section className="-mb-32 border-b border-bg/10 bg-espresso text-bg">
+        <div className="container-x grid gap-12 py-24 md:grid-cols-2 md:items-end md:py-28">
+          <div>
+            <p className="eyebrow">The private list</p>
+            <h2 className="headline mt-6 text-5xl leading-[1.05] sm:text-6xl">
+              First access to the <em className="text-gold">founding season</em>
+            </h2>
+          </div>
+          <div>
+            <p className="mb-6 leading-7 text-bg/70">
+              Founding-season dates are limited. Join the list for priority booking, launch pricing and first sight
+              of new pieces.
+            </p>
+            <WaitlistForm source="home" dark />
           </div>
         </div>
       </section>

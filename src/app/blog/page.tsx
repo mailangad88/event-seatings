@@ -10,26 +10,43 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await getPosts();
+  const [lead, ...rest] = await getPosts();
   return (
-    <div className="container-x py-14">
-      <span className="eyebrow">📖 the journal</span>
-      <h1 className="mt-4 display text-5xl leading-[0.95] sm:text-7xl">seating ideas &amp; <span className="font-italic font-normal normal-case tracking-normal">planning</span> tea</h1>
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {posts.map((p, i) => (
-          <Link key={p.slug} href={`/blog/${p.slug}`} className={`pop pop-hover rounded-3xl p-7 ${["bg-surface", "bg-peach", "bg-sky", "bg-mint"][i % 4]}`}>
-            <p className="text-xs font-bold">{formatDate(p.date)} · {p.readingMinutes} min read</p>
-            <h2 className="mt-3 font-serif text-3xl leading-tight font-extrabold tracking-tight">{p.title}</h2>
-            <p className="mt-3 text-sm leading-6">{p.description}</p>
-            {p.tags.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {p.tags.map((t) => <span key={t} className="chip">{t}</span>)}
-              </div>
-            )}
+    <div className="container-x py-20">
+      <p className="eyebrow">The journal</p>
+      <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-8xl">
+        Notes on <em className="text-gold">seating</em>
+      </h1>
+
+      {lead && (
+        <Link href={`/blog/${lead.slug}`} className="group mt-20 grid gap-8 border-t border-ink pt-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
+          <div>
+            <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
+              Latest · {formatDate(lead.date)} · {lead.readingMinutes} min read
+            </p>
+            <h2 className="headline mt-5 text-4xl leading-[1.05] transition-colors group-hover:text-gold sm:text-5xl">
+              {lead.title}
+            </h2>
+          </div>
+          <div className="md:pt-8">
+            <p className="text-lg leading-8 text-muted">{lead.description}</p>
+            <span className="link-line mt-8">Read the article</span>
+          </div>
+        </Link>
+      )}
+
+      <div className="mt-20 grid gap-x-10 gap-y-14 md:grid-cols-3">
+        {rest.map((p) => (
+          <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-line pt-6">
+            <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
+              {formatDate(p.date)} · {p.readingMinutes} min read
+            </p>
+            <h2 className="headline mt-4 text-3xl leading-tight transition-colors group-hover:text-gold">{p.title}</h2>
+            <p className="mt-3 line-clamp-3 leading-7 text-muted">{p.description}</p>
           </Link>
         ))}
       </div>
-      {posts.length === 0 && <p className="mt-10 text-muted">first posts dropping soon 👀</p>}
+      {!lead && <p className="mt-16 font-serif text-2xl text-muted italic">The first articles arrive soon.</p>}
     </div>
   );
 }

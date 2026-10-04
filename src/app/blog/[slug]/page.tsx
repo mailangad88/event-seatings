@@ -36,19 +36,30 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   };
 
   return (
-    <article className="container-x max-w-3xl py-14">
+    <article className="container-x max-w-4xl py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <Link href="/blog" className="chip px-3 py-1 text-sm hover:bg-butter">← journal</Link>
-      <p className="mt-6 text-sm font-bold">{formatDate(post.date)} · {post.readingMinutes} min read</p>
-      <h1 className="mt-3 font-serif text-4xl leading-[1.02] font-extrabold tracking-tight sm:text-6xl">{post.title}</h1>
-      <p className="mt-4 text-lg text-muted">{post.description}</p>
-      <div className="prose-post mt-8" dangerouslySetInnerHTML={{ __html: html }} />
-      <div className="pop mt-14 rounded-3xl bg-lilac p-8 text-center">
-        <p className="display text-4xl">planning your seating?</p>
-        <p className="mt-2">Browse the collection or tell us about your event.</p>
-        <div className="mt-5 flex flex-wrap justify-center gap-3">
-          <Link href="/chairs" className="btn-ghost">see the chairs</Link>
-          <Link href="/quote" className="btn-primary">request a quote →</Link>
+      <div className="text-center">
+        <Link href="/blog" className="text-[11px] tracking-[0.22em] text-muted uppercase hover:text-ink">
+          ← The journal
+        </Link>
+        <p className="mt-10 text-[11px] tracking-[0.22em] text-gold uppercase">
+          {formatDate(post.date)} · {post.readingMinutes} min read
+        </p>
+        <h1 className="headline mt-6 text-5xl leading-[1.02] sm:text-7xl">{post.title}</h1>
+        <p className="mx-auto mt-6 max-w-2xl font-serif text-2xl leading-snug font-light text-muted italic">
+          {post.description}
+        </p>
+        <span className="mx-auto mt-10 block h-px w-16 bg-gold" aria-hidden />
+      </div>
+      <div className="prose-post mx-auto mt-12 max-w-2xl" dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="mx-auto mt-24 max-w-2xl border-t border-ink pt-12 text-center">
+        <p className="headline text-4xl">
+          Planning your <em className="text-gold">seating</em>?
+        </p>
+        <p className="mt-3 text-muted">Explore the collection, or tell us about your celebration.</p>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Link href="/chairs" className="btn-ghost">The collection</Link>
+          <Link href="/quote" className="btn-primary">Request a quote</Link>
         </div>
       </div>
     </article>
