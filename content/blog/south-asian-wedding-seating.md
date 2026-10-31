@@ -3,6 +3,8 @@ title: Seating for South Asian Weddings: Mandaps, Stages and Large Guest Lists
 description: Large guest counts, multiple events and ceremonial seating create different needs. A planning guide for couples and families.
 date: 2026-10-11
 tags: Cultural, South Asian, Planning
+image: /chairs/render/royal-throne.jpg
+imageAlt: A royal throne chair for the couple
 ---
 
 South Asian weddings often span several events, welcome large guest lists and include ceremonial seating. Planning seating well takes more than a headcount.

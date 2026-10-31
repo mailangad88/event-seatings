@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { formatDate, getPosts } from "@/lib/blog";
 
@@ -38,6 +39,16 @@ export default async function BlogPage() {
       <div className="mt-20 grid gap-x-10 gap-y-14 md:grid-cols-3">
         {rest.map((p) => (
           <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-line pt-6">
+            {p.image && (
+              <Image
+                src={p.image}
+                alt={p.imageAlt ?? ""}
+                width={1000}
+                height={1250}
+                sizes="(min-width: 768px) 30vw, 100vw"
+                className="mb-6 aspect-[4/5] w-full object-cover"
+              />
+            )}
             <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
               {formatDate(p.date)} · {p.readingMinutes} min read
             </p>

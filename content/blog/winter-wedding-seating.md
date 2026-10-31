@@ -3,6 +3,8 @@ title: Winter Wedding Seating: Velvet, Jewel Tones and Warmth
 description: Cold-weather weddings call for richer textures. Here is how to make seating feel warm and luxurious.
 date: 2026-10-08
 tags: Winter, Glam, Velvet
+image: /chairs/render/velvet-dining.jpg
+imageAlt: A velvet dining chair for winter weddings
 ---
 
 In winter, guests arrive in coats and linger indoors. The room has to feel warm and generous, and seating is a big part of that.

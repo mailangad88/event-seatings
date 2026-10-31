@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -61,6 +62,17 @@ export default function FaqPage() {
             <a href={`mailto:${site.email}`} className="underline decoration-gold underline-offset-4 hover:text-gold">
               {site.email}
             </a>
+          </p>
+          <p className="mt-4 leading-7 text-muted">
+            Planning questions about chair counts, costs, Chicago venues or delivery?{" "}
+            <Link href="/answers" className="underline decoration-gold underline-offset-4 hover:text-gold">
+              See all Chicago chair answers
+            </Link>{" "}
+            or try the{" "}
+            <Link href="/seating-planner" className="underline decoration-gold underline-offset-4 hover:text-gold">
+              free seating planner
+            </Link>
+            .
           </p>
         </div>
         <div className="border-t border-gold/40">

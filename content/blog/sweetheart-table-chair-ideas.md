@@ -3,6 +3,8 @@ title: Sweetheart Table Chair Ideas That Photograph Beautifully
 description: The couple's seats are the most-photographed chairs of the night. Here are the options worth considering.
 date: 2026-10-09
 tags: Sweetheart table, Styling
+image: /chairs/render/royal-throne.jpg
+imageAlt: A royal sweetheart throne chair
 ---
 
 You will be photographed at your sweetheart or head table more than almost anywhere else, so the chairs behind you matter.

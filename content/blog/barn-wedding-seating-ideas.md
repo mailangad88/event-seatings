@@ -3,6 +3,8 @@ title: Barn Wedding Seating Ideas for the Fox Valley
 description: Barns and farms have their own seating demands, from uneven floors to long tables. Here is what works.
 date: 2026-10-07
 tags: Rustic, Local, Barn weddings
+image: /chairs/render/cross-back.jpg
+imageAlt: Cross-back chairs suit barn weddings
 ---
 
 The Fox Valley has no shortage of barns, orchards and farm venues. They share a look, but they ask different things of a chair than a ballroom does.

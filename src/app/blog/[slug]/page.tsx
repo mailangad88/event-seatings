@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatDate, getPost, getPosts } from "@/lib/blog";
@@ -16,24 +17,52 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
   return {
     title: found.post.title,
     description: found.post.description,
-    openGraph: { type: "article", publishedTime: found.post.date },
+    alternates: { canonical: `/blog/${found.post.slug}` },
+    openGraph: {
+      type: "article",
+      publishedTime: found.post.date,
+      modifiedTime: found.post.updated ?? found.post.date,
+      ...(found.post.image ? { images: [found.post.image] } : {}),
+    },
   };
 }
 
 export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const found = await getPost((await props.params).slug);
   if (!found) notFound();
-  const { post, html } = found;
+  const { post, html, faqs } = found;
+  const url = `${site.url}/blog/${post.slug}`;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    author: { "@type": "Organization", name: site.name },
-    publisher: { "@type": "Organization", name: site.name },
-  };
+  const jsonLd: Record<string, unknown>[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      dateModified: post.updated ?? post.date,
+      mainEntityOfPage: url,
+      ...(post.image ? { image: `${site.url}${post.image}` } : {}),
+      keywords: post.tags.join(", "),
+      author: { "@type": "Organization", name: site.name, url: site.url },
+      publisher: { "@type": "Organization", name: site.name, url: site.url },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Journal", item: `${site.url}/blog` },
+        { "@type": "ListItem", position: 2, name: post.title, item: url },
+      ],
+    },
+  ];
+  if (faqs.length) {
+    jsonLd.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    });
+  }
 
   return (
     <article className="container-x max-w-4xl py-20">
@@ -49,16 +78,34 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
         <p className="mx-auto mt-6 max-w-2xl font-serif text-2xl leading-snug font-light text-muted italic">
           {post.description}
         </p>
+        {post.updated && post.updated !== post.date && (
+          <p className="mt-6 text-[11px] tracking-[0.22em] text-muted uppercase">Updated {formatDate(post.updated)}</p>
+        )}
         <span className="mx-auto mt-10 block h-px w-16 bg-gold" aria-hidden />
       </div>
+      {post.image && (
+        <Image
+          src={post.image}
+          alt={post.imageAlt ?? ""}
+          width={1000}
+          height={1250}
+          priority
+          sizes="(min-width: 640px) 420px, 100vw"
+          className="mx-auto mt-12 aspect-[4/5] w-full max-w-[420px] object-cover"
+        />
+      )}
       <div className="prose-post mx-auto mt-12 max-w-2xl" dangerouslySetInnerHTML={{ __html: html }} />
       <div className="mx-auto mt-24 max-w-2xl border-t border-gold/40 pt-12 text-center">
         <p className="headline text-4xl">
           Planning your <em className="text-gold">seating</em>?
         </p>
-        <p className="mt-3 text-muted">Explore the collection, or tell us about your celebration.</p>
+        <p className="mt-3 text-muted">
+          Get your exact chair count and a printable checklist with our free seating planner, or tell us about your
+          celebration.
+        </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link href="/chairs" className="btn-ghost">The collection</Link>
+          <Link href="/seating-planner" className="btn-ghost">Free seating planner</Link>
+          <Link href="/answers" className="btn-ghost">Chicago chair answers</Link>
           <Link href="/quote" className="btn-primary">Request a quote</Link>
         </div>
       </div>

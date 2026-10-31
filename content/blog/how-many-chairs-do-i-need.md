@@ -3,6 +3,8 @@ title: How Many Chairs Do I Need for My Wedding? A Simple Guide
 description: Ceremony, reception, cocktail hour and the head table. Here's how to count chairs so no guest is left standing.
 date: 2026-10-03
 tags: Planning, Guides
+image: /chairs/render/infinity.jpg
+imageAlt: A gold infinity chair
 ---
 
 "One per guest" is the right start, but it's not the whole answer. Here's how to count.
@@ -30,6 +32,11 @@ You don't need a seat for everyone during cocktail hour. Aim for **seating for a
 ## 4. Head table or sweetheart table
 
 This is where a **statement chair** pays off. A velvet, Louis or throne chair for the couple makes the head table stand out in photos.
+
+<figure>
+<img src="/answers/chair-count-formula.svg" alt="Guests plus vendors plus a small buffer equals reception chairs" width="1200" height="650" loading="lazy" />
+<figcaption>Or let the <a href="/seating-planner">free seating planner</a> do the math.</figcaption>
+</figure>
 
 ## Quick worksheet
 

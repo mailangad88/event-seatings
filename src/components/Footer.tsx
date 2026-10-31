@@ -25,6 +25,8 @@ export function Footer() {
               ["/chairs", "The Collection"],
               ["/quiz", "Style Quiz"],
               ["/blog", "Journal"],
+              ["/answers", "Chicago Chair Answers"],
+              ["/seating-planner", "Free Seating Planner"],
               ["/quote", "Request a Quote"],
               ["/faq", "FAQ"],
             ].map(([href, label]) => (
