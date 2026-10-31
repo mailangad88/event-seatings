@@ -4,6 +4,7 @@ import { Quiz } from "@/components/Quiz";
 export const metadata: Metadata = {
   title: "Wedding Chair Style Quiz",
   description: "Answer four quick questions and we'll match you with the wedding chairs that fit your style.",
+  alternates: { canonical: "/quiz" },
 };
 
 export default function QuizPage() {

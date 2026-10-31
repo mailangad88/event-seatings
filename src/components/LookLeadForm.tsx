@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getAttribution } from "@/lib/attribution";
-import { BookCall } from "./BookCall";
+import Link from "next/link";
 
 // "Get this look": collects an email (plus optional date and guest count) and
 // hands the visitor straight to the styling call.
@@ -27,9 +26,9 @@ export function LookLeadForm({
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        ...getAttribution(),
         ...data,
-        kind: "look",
+        // Saved as a waitlist lead; the source marks which look it came from.
+        kind: "waitlist",
         chairs,
         message: `Get this look: ${lookName}`,
         source: `look:${lookSlug}`,
@@ -52,7 +51,9 @@ export function LookLeadForm({
           your venue? Grab 15 minutes with us.
         </p>
         <div className="mt-8 flex flex-col items-center gap-4">
-          <BookCall chairs={chairs} />
+          <Link href={`/book?from=look-${lookSlug}`} className="btn-primary">
+            Book a free 15-min call
+          </Link>
         </div>
       </div>
     );

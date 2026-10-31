@@ -16,6 +16,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
   return {
     title: found.post.title,
     description: found.post.description,
+    alternates: { canonical: `/blog/${found.post.slug}` },
     openGraph: { type: "article", publishedTime: found.post.date },
   };
 }
@@ -31,8 +32,10 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    author: { "@type": "Organization", name: site.name },
-    publisher: { "@type": "Organization", name: site.name },
+    url: `${site.url}/blog/${post.slug}`,
+    mainEntityOfPage: `${site.url}/blog/${post.slug}`,
+    author: { "@type": "Organization", name: site.name, url: site.url },
+    publisher: { "@id": `${site.url}/#business` },
   };
 
   return (
@@ -59,7 +62,8 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
         <p className="mt-3 text-muted">Explore the collection, or tell us about your celebration.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link href="/chairs" className="btn-ghost">The collection</Link>
-          <Link href="/quote" className="btn-primary">Request a quote</Link>
+          <Link href="/quote" className="btn-ghost">Request a quote</Link>
+          <Link href={`/book?from=blog-${post.slug}`} className="btn-primary">Book a free call</Link>
         </div>
       </div>
     </article>

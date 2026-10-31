@@ -7,11 +7,14 @@ import { site } from "@/lib/site";
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages = ["", "/chairs", "/looks", "/plan", "/quiz", "/quote", "/blog", "/about", "/faq", "/privacy", "/terms"].map((p) => ({
+  const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/looks": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
+  const pages = ["", "/chairs", "/looks", "/book", "/quote", "/faq", "/quiz", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
+    changeFrequency: "weekly" as const,
+    priority: priority[p] ?? 0.5,
   }));
-  const chairPages = chairs.map((c) => ({ url: `${site.url}/chairs/${c.slug}` }));
-  const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}` }));
+  const chairPages = chairs.map((c) => ({ url: `${site.url}/chairs/${c.slug}`, priority: 0.8 }));
+  const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8 }));
   const posts = (await getPosts()).map((p) => ({ url: `${site.url}/blog/${p.slug}`, lastModified: p.date }));
   return [...pages, ...chairPages, ...lookPages, ...posts];
 }

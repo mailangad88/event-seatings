@@ -4,7 +4,6 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VoteProvider } from "@/components/VoteProvider";
-import { AttributionCapture } from "@/components/AttributionCapture";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -24,10 +23,21 @@ const body = Jost({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}: ${site.tagline} | ${site.city}`,
+    default: `Event Chair Rentals in ${site.market} & Suburbs | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  applicationName: site.name,
+  alternates: { canonical: "/" },
+  keywords: [
+    "chair rental Chicago",
+    "event chair rentals Chicago",
+    "wedding chair rental Chicago",
+    "Chiavari chair alternatives",
+    "cross-back chair rental",
+    "ghost chair rental",
+    "corporate event seating Chicago",
+  ],
   openGraph: {
     siteName: site.name,
     type: "website",
@@ -37,13 +47,49 @@ export const metadata: Metadata = {
 
 const localBusiness = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: site.name,
-  description: site.description,
-  url: site.url,
-  email: site.email,
-  address: { "@type": "PostalAddress", addressLocality: "St. Charles", addressRegion: "IL", addressCountry: "US" },
-  areaServed: site.serviceArea,
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": `${site.url}/#business`,
+      name: site.name,
+      alternateName: site.domain,
+      slogan: site.tagline,
+      description: site.description,
+      url: site.url,
+      email: site.email,
+      ...(site.phone && { telephone: site.phone }),
+      logo: `${site.url}/icon`,
+      image: `${site.url}/opengraph-image`,
+      priceRange: "$$",
+      address: { "@type": "PostalAddress", addressLocality: site.locality, addressRegion: site.region, addressCountry: "US" },
+      areaServed: [
+        { "@type": "City", name: "Chicago", sameAs: "https://en.wikipedia.org/wiki/Chicago" },
+        { "@type": "AdministrativeArea", name: "Chicago metropolitan area" },
+        ...site.serviceArea.filter((c) => c !== "Chicago").map((name) => ({ "@type": "City", name: `${name}, IL` })),
+      ],
+      knowsAbout: [
+        "Event chair rental",
+        "Wedding chair rental",
+        "Chiavari chair alternatives",
+        "Corporate event seating",
+        "Ceremony and reception seating layouts",
+      ],
+      sameAs: [site.instagram, site.pinterest],
+      potentialAction: {
+        "@type": "ReserveAction",
+        name: `Book a free ${site.callLength} seating call`,
+        target: `${site.url}/book`,
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      name: site.name,
+      url: site.url,
+      publisher: { "@id": `${site.url}/#business` },
+      inLanguage: "en-US",
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -57,7 +103,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness).replace(/</g, "\\u003c") }}
         />
-        <AttributionCapture />
         <VoteProvider>
           <Header />
           <main className="flex-1">{children}</main>

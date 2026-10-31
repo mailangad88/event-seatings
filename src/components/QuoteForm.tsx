@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { getAttribution } from "@/lib/attribution";
 import { chairs } from "@/data/chairs";
 import { site } from "@/lib/site";
 
@@ -46,7 +45,7 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
     const res = await fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...getAttribution(), ...data, chairs: selected, kind: "quote", source: "quote-form" }),
+      body: JSON.stringify({ ...data, chairs: selected, kind: "quote", source: "quote-form" }),
     }).catch(() => null);
     if (res?.ok) {
       setStatus("done");

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookCall } from "@/components/BookCall";
 import { FaqList } from "@/components/FaqList";
 import { LookScene } from "@/components/LookScene";
 import { Reveal } from "@/components/Reveal";
@@ -35,7 +34,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Where do you deliver?",
-    `We're based in ${site.city} and deliver across Chicagoland: ${site.serviceArea.join(", ")} and nearby. Delivery, setup and pickup are included in our full-service rentals.`,
+    `We deliver across Chicago and the suburbs: ${site.serviceArea.join(", ")} and nearby. Delivery, setup and pickup are included in our full-service rentals.`,
   ],
   [
     "When can I book?",
@@ -144,8 +143,8 @@ export default function LooksPage() {
             ))}
           </ol>
           <div className="mt-14 flex flex-wrap items-center gap-6">
-            <BookCall />
-            <Link href="/plan" className="link-line">How many chairs do I need?</Link>
+            <Link href="/book?from=looks" className="btn-primary">Book a free 15-min call</Link>
+            <Link href="/chairs" className="link-line">See every chair</Link>
           </div>
         </div>
       </section>

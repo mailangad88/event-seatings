@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { getAttribution } from "@/lib/attribution";
 
 export function WaitlistForm({ source, dark = false }: { source: string; dark?: boolean }) {
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
@@ -14,7 +13,7 @@ export function WaitlistForm({ source, dark = false }: { source: string; dark?: 
     const res = await fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...getAttribution(), ...data, kind: "waitlist", source }),
+      body: JSON.stringify({ ...data, kind: "waitlist", source }),
     }).catch(() => null);
     if (res?.ok) return setStatus("done");
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");

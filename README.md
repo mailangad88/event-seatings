@@ -1,6 +1,6 @@
-# Event Seatings
+# Beyond Chivary
 
-Pre-launch website for Event Seatings, a wedding and event chair rental company in St. Charles, IL.
+Pre-launch website for Beyond Chivary (beyondchivary.com), an event chair rental company serving Chicago and the suburbs.
 It tests which chairs people want before any inventory is bought.
 
 ## What it does
@@ -30,8 +30,8 @@ Votes and leads are saved to `.data/db.json` until Supabase is configured.
 1. Push this repo to GitHub and import it at vercel.com.
 2. Create a Supabase project and run `supabase/schema.sql` in its SQL editor.
 3. In Vercel, set the env vars from `.env.example` (`ADMIN_PASSWORD`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SITE_URL`).
-4. Point the `eventseatings.com` domain at Vercel.
-5. Submit `https://eventseatings.com/sitemap.xml` in Google Search Console.
+4. Point the `beyondchivary.com` domain at Vercel.
+5. Submit `https://beyondchivary.com/sitemap.xml` in Google Search Console.
 
 ## Animations and social videos (Remotion)
 Animated chair illustrations live in `src/remotion/` and are used in two ways:

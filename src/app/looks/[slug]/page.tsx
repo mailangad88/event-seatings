@@ -159,8 +159,11 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
               About <em className="text-gold">this look</em>
             </h2>
             <p className="mt-6 leading-7 text-muted">
-              Need a count first? Try the{" "}
-              <Link href="/plan" className="underline decoration-gold underline-offset-4 hover:text-gold">seating planner</Link>.
+              Rather talk it through?{" "}
+              <Link href={`/book?from=look-${look.slug}`} className="underline decoration-gold underline-offset-4 hover:text-gold">
+                Book a free 15-minute call
+              </Link>
+              .
             </p>
           </div>
           <FaqList faqs={faqs} />

@@ -55,7 +55,7 @@ export function LaunchStory() {
             {site.domain}
           </Line>
           <Line at={176} style={{ fontFamily: displayItalic, fontSize: 40, color: "#cdbfa5", marginTop: 20 }}>
-            {site.city}
+            {site.marketLong}
           </Line>
         </div>
       </AbsoluteFill>

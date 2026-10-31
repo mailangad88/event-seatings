@@ -54,10 +54,9 @@ export default async function AdminPage() {
   const stats: [string, number][] = [
     ["Chair votes", Object.values(votes).reduce((a, b) => a + b, 0)],
     ["Quote requests", quotes.length],
+    ["Call requests", leads.filter((l) => l.kind === "call").length],
     ["Waitlist", leads.filter((l) => l.kind === "waitlist").length],
     ["Quiz emails", leads.filter((l) => l.kind === "quiz").length],
-    ["Look requests", leads.filter((l) => l.kind === "look").length],
-    ["Seating plans", leads.filter((l) => l.kind === "planner").length],
     ["Guests in quotes", quotes.reduce((s, l) => s + (l.guest_count ?? 0), 0)],
   ];
 
@@ -73,7 +72,7 @@ export default async function AdminPage() {
         <a href="/admin/export" className="btn-ghost">Download leads (CSV)</a>
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
+      <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5">
         {stats.map(([label, n]) => (
           <div key={label} className={card}>
             <p className="text-xs uppercase tracking-wider text-muted">{label}</p>

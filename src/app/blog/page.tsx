@@ -6,7 +6,8 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Journal: Wedding Seating Ideas & Chiavari Alternatives",
-  description: "Wedding chair ideas, seating guides and styling inspiration from Event Seatings.",
+  description: "Wedding chair ideas, seating guides and styling inspiration from Beyond Chivary.",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage() {

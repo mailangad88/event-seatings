@@ -18,7 +18,7 @@ export function proxy(request: NextRequest) {
 
   return new NextResponse("Authentication required", {
     status: 401,
-    headers: { "WWW-Authenticate": 'Basic realm="Event Seatings admin"' },
+    headers: { "WWW-Authenticate": 'Basic realm="Beyond Chivary admin"' },
   });
 }
 

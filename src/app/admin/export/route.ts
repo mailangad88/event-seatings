@@ -5,7 +5,6 @@ export const dynamic = "force-dynamic";
 const cols = [
   "created_at", "kind", "name", "email", "phone", "event_date", "event_type",
   "guest_count", "city", "venue", "chairs", "quiz_styles", "message", "source",
-  "utm_source", "utm_medium", "utm_campaign", "utm_content", "landing_page", "referrer",
 ] as const;
 
 function cell(v: unknown) {
