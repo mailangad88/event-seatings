@@ -25,6 +25,8 @@ export function Footer() {
               ["/chairs", "The Collection"],
               ["/quiz", "Style Quiz"],
               ["/blog", "Journal"],
+              ["/events", "Events"],
+              ["/chair-rentals", "Areas We Serve"],
               ["/quote", "Request a Quote"],
               ["/faq", "FAQ"],
             ].map(([href, label]) => (
@@ -37,6 +39,9 @@ export function Footer() {
         <div>
           <p className="mb-5 text-[11px] tracking-[0.25em] text-gold uppercase">Service Area</p>
           <p className="text-sm leading-7 text-ink/75">{site.serviceArea.join(" · ")}</p>
+          <Link href="/chair-rentals" className="mt-3 inline-block text-[11px] tracking-[0.22em] text-gold uppercase hover:text-ink">
+            All areas →
+          </Link>
           <p className="mt-6 text-sm">
             <a href={`mailto:${site.email}`} className="text-ink/90 underline decoration-gold underline-offset-4">
               {site.email}
