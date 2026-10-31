@@ -2,7 +2,7 @@ import { getChair } from "@/data/chairs";
 import { notifyOwner } from "@/lib/notify";
 import { addLead, type LeadKind, type NewLead } from "@/lib/store";
 
-const kinds: LeadKind[] = ["quote", "waitlist", "quiz"];
+const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "look", "planner"];
 
 const str = (v: unknown, max = 200) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined;
@@ -40,6 +40,12 @@ export async function POST(request: Request) {
       ? body.quiz_styles.filter((s: unknown) => typeof s === "string").slice(0, 8)
       : undefined,
     source: str(body.source, 100),
+    utm_source: str(body.utm_source, 100),
+    utm_medium: str(body.utm_medium, 100),
+    utm_campaign: str(body.utm_campaign, 150),
+    utm_content: str(body.utm_content, 150),
+    landing_page: str(body.landing_page, 300),
+    referrer: str(body.referrer, 300),
   };
 
   if (kind === "quote" && (!lead.event_date || !lead.chairs?.length)) {

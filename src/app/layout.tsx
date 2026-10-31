@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VoteProvider } from "@/components/VoteProvider";
+import { AttributionCapture } from "@/components/AttributionCapture";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness).replace(/</g, "\\u003c") }}
         />
+        <AttributionCapture />
         <VoteProvider>
           <Header />
           <main className="flex-1">{children}</main>

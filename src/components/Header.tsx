@@ -4,8 +4,10 @@ import { MobileNav } from "./MobileNav";
 
 export const nav = [
   { href: "/chairs", label: "Collection" },
+  { href: "/looks", label: "Looks" },
   { href: "/quiz", label: "Style Quiz" },
   { href: "/blog", label: "Journal" },
+  { href: "/plan", label: "Planner" },
   { href: "/about", label: "Our Story" },
   { href: "/faq", label: "FAQ" },
 ];
@@ -41,7 +43,7 @@ export function Header() {
       </div>
       <div className="container-x relative flex h-20 items-center justify-between md:grid md:h-24 md:grid-cols-[1fr_auto_1fr]">
         <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
-          {nav.slice(0, 3).map((item) => (
+          {nav.slice(0, 4).map((item) => (
             <Link key={item.href} href={item.href} className={linkClass}>
               {item.label}
             </Link>
@@ -49,7 +51,7 @@ export function Header() {
         </nav>
         <Logo center />
         <nav className="hidden items-center justify-end gap-9 md:flex" aria-label="Secondary">
-          {nav.slice(3).map((item) => (
+          {nav.slice(4).map((item) => (
             <Link key={item.href} href={item.href} className={linkClass}>
               {item.label}
             </Link>

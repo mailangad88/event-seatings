@@ -7,7 +7,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 // - With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, data goes to Supabase (use this in production).
 // - Without them, data goes to a local JSON file (.data/db.json) so you can develop with no setup.
 
-export type LeadKind = "quote" | "waitlist" | "quiz";
+export type LeadKind = "quote" | "waitlist" | "quiz" | "look" | "planner";
 
 export type Lead = {
   id: string;
@@ -25,6 +25,13 @@ export type Lead = {
   message?: string;
   quiz_styles?: string[];
   source?: string;
+  // Where the visitor came from (first touch), e.g. utm_source=instagram&utm_medium=reel.
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  landing_page?: string;
+  referrer?: string;
 };
 
 export type NewLead = Omit<Lead, "id" | "created_at">;

@@ -11,7 +11,7 @@ create table if not exists votes (
 
 create table if not exists leads (
   id uuid primary key,
-  kind text not null check (kind in ('quote', 'waitlist', 'quiz')),
+  kind text not null check (kind in ('quote', 'waitlist', 'quiz', 'look', 'planner')),
   created_at timestamptz not null default now(),
   name text,
   email text not null,
@@ -24,8 +24,24 @@ create table if not exists leads (
   chairs text[],
   message text,
   quiz_styles text[],
-  source text
+  source text,
+  utm_source text,
+  utm_medium text,
+  utm_campaign text,
+  utm_content text,
+  landing_page text,
+  referrer text
 );
+
+-- Upgrading a database created before the social landing pages? Run these too (safe to re-run).
+alter table leads add column if not exists utm_source text;
+alter table leads add column if not exists utm_medium text;
+alter table leads add column if not exists utm_campaign text;
+alter table leads add column if not exists utm_content text;
+alter table leads add column if not exists landing_page text;
+alter table leads add column if not exists referrer text;
+alter table leads drop constraint if exists leads_kind_check;
+alter table leads add constraint leads_kind_check check (kind in ('quote', 'waitlist', 'quiz', 'look', 'planner'));
 
 alter table votes enable row level security;
 alter table leads enable row level security;

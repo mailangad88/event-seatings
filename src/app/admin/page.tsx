@@ -56,6 +56,8 @@ export default async function AdminPage() {
     ["Quote requests", quotes.length],
     ["Waitlist", leads.filter((l) => l.kind === "waitlist").length],
     ["Quiz emails", leads.filter((l) => l.kind === "quiz").length],
+    ["Look requests", leads.filter((l) => l.kind === "look").length],
+    ["Seating plans", leads.filter((l) => l.kind === "planner").length],
     ["Guests in quotes", quotes.reduce((s, l) => s + (l.guest_count ?? 0), 0)],
   ];
 
@@ -71,7 +73,7 @@ export default async function AdminPage() {
         <a href="/admin/export" className="btn-ghost">Download leads (CSV)</a>
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5">
+      <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
         {stats.map(([label, n]) => (
           <div key={label} className={card}>
             <p className="text-xs uppercase tracking-wider text-muted">{label}</p>

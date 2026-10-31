@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { getAttribution } from "@/lib/attribution";
 import { chairs, type Style } from "@/data/chairs";
 import { ChairCard } from "./ChairCard";
 
@@ -116,6 +117,7 @@ export function Quiz() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        ...getAttribution(),
         ...data,
         kind: "quiz",
         quiz_styles: topStyles,

@@ -22,6 +22,9 @@ export const site = {
   email: "hello@eventseatings.com",
   instagram: "https://instagram.com/eventseatings",
   pinterest: "https://pinterest.com/eventseatings",
+  // A scheduling link (Calendly, Cal.com, HubSpot meetings...) for the 15-minute styling call.
+  // Until it's set, "book a call" buttons fall back to the quote form.
+  bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL || "",
   // Pre-launch: the first season we will actually deliver chairs.
   // Quote requests for earlier dates get an honest "we're not delivering yet" note.
   launch: {
