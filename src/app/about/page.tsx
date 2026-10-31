@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CallCta } from "@/components/CallCta";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Story",
-  description: `Event Seatings is a ${site.city} wedding chair rental company bringing alternatives to the Chiavari chair.`,
+  description: `${site.name} is a Chicago-area event chair rental company bringing alternatives to the Chiavari chair to weddings, corporate events and parties.`,
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
   return (
+    <>
     <div className="container-x py-20">
       <div className="max-w-4xl">
         <p className="eyebrow">Our story</p>
@@ -32,9 +35,9 @@ export default function AboutPage() {
             guests live with it all evening.
           </p>
           <p>
-            Event Seatings is a new, locally owned company based in {site.city}. We&apos;re assembling a collection of
+            {site.name} is a new, locally owned company based in {site.city}. We&apos;re assembling a collection of
             distinctive, commercial-grade chairs (cross-back, ghost, rattan, velvet, bentwood and more) for weddings
-            and celebrations across the Fox Valley and Chicago&apos;s western suburbs.
+            and celebrations across Chicago and the suburbs.
           </p>
           <h2>Shaped by you</h2>
           <p>
@@ -51,5 +54,9 @@ export default function AboutPage() {
         </div>
       </div>
     </div>
+    <div className="mt-24 -mb-32">
+      <CallCta source="about" />
+    </div>
+    </>
   );
 }

@@ -2,7 +2,7 @@
 
 Work on a new branch, not `main`.
 
-This is the pre-launch website for **Event Seatings**, a luxury wedding and event chair rental company in St. Charles, IL. The look is a **luxury hotel lobby**: warm near-black, aged brass, ivory text, marble-cream contrast sections, brass corner-bracket frames, Cormorant Garamond headlines with a gold italic accent word, small widely spaced caps for labels. Keep that mood. Never use bright or playful colors, rounded pill shapes, emoji or casual slang.
+This is the pre-launch website for **Beyond Chivary**, a luxury event chair rental company serving Chicago and the suburbs. The look is a **luxury hotel lobby**: warm near-black, aged brass, ivory text, marble-cream contrast sections, brass corner-bracket frames, Cormorant Garamond headlines with a gold italic accent word, small widely spaced caps for labels. Keep that mood. Never use bright or playful colors, rounded pill shapes, emoji or casual slang.
 
 **Stack:** Next.js 16 (App Router), React 19, Tailwind CSS 4, TypeScript. Read `AGENTS.md` and `node_modules/next/dist/docs/` before writing Next.js code, because this version has breaking changes. Do **not** downgrade Next.js, React or Tailwind.
 

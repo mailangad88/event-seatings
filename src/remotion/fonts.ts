@@ -14,7 +14,7 @@ const faces: [string, string, string][] = [
 ];
 
 if (typeof document !== "undefined") {
-  const handle = delayRender("Loading Event Seatings fonts");
+  const handle = delayRender("Loading Beyond Chivary fonts");
   Promise.all(
     faces.map(async ([family, file, weight]) => {
       const face = new FontFace(family, `url(${staticFile(`fonts/${file}`)}) format("woff2")`, { weight });

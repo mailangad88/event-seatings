@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CallCta } from "@/components/CallCta";
 import { ChairViewer } from "@/components/ChairViewer";
+import renders from "@/data/renders.json";
 import { ChairCard } from "@/components/ChairCard";
 import { VoteButton } from "@/components/VoteProvider";
 import { chairs, getChair } from "@/data/chairs";
@@ -15,8 +17,9 @@ export async function generateMetadata(props: PageProps<"/chairs/[slug]">): Prom
   const chair = getChair((await props.params).slug);
   if (!chair) return {};
   return {
-    title: `${chair.name} Rental`,
-    description: `${chair.tagline}. Rent the ${chair.name} for weddings and events in ${site.city} and Chicago's western suburbs.`,
+    title: `${chair.name} Rental in ${site.market}`,
+    alternates: { canonical: `/chairs/${chair.slug}` },
+    description: `${chair.tagline}. Rent the ${chair.name} for weddings, corporate events and parties in Chicago and the suburbs. Delivery and setup included.`,
   };
 }
 
@@ -28,6 +31,44 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
     .filter((c) => c.slug !== chair.slug && c.styles.some((s) => chair.styles.includes(s)))
     .slice(0, 3);
 
+  const [low, high] = (chair.estPrice.match(/\d+/g) ?? []).map(Number);
+  const image = chair.image ?? (renders.includes(chair.slug) ? `/chairs/render/${chair.slug}.jpg` : undefined);
+  const pageUrl = `${site.url}/chairs/${chair.slug}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: `${chair.name} Rental`,
+      description: chair.description,
+      url: pageUrl,
+      ...(image && { image: `${site.url}${image}` }),
+      category: "Event chair rental",
+      brand: { "@type": "Brand", name: site.name },
+      color: chair.finishes.map((f) => f.name).join(", "),
+      ...(low && {
+        offers: {
+          "@type": "AggregateOffer",
+          priceCurrency: "USD",
+          lowPrice: low,
+          highPrice: high ?? low,
+          availability: "https://schema.org/PreOrder",
+          businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
+          areaServed: site.serviceArea.map((name) => ({ "@type": "City", name })),
+          seller: { "@id": `${site.url}/#business` },
+        },
+      }),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+        { "@type": "ListItem", position: 2, name: "Chairs", item: `${site.url}/chairs` },
+        { "@type": "ListItem", position: 3, name: chair.name, item: pageUrl },
+      ],
+    },
+  ];
+
   const facts: [string, string][] = [
     ["Best for", chair.uses.join(", ")],
     ["Styles", chair.styles.join(", ")],
@@ -38,7 +79,9 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
   ];
 
   return (
+    <>
     <div className="container-x py-14">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <nav className="text-[11px] tracking-[0.2em] text-muted uppercase" aria-label="Breadcrumb">
         <Link href="/chairs" className="hover:text-ink">The collection</Link>
         <span className="mx-3 text-gold" aria-hidden>/</span>
@@ -67,6 +110,9 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href={`/quote?chairs=${chair.slug}`} className="btn-primary">
               Request a quote
+            </Link>
+            <Link href={`/book?from=chair-${chair.slug}`} className="btn-ghost">
+              Book a free call
             </Link>
             <VoteButton slug={chair.slug} size="lg" />
           </div>
@@ -99,5 +145,9 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
         </section>
       )}
     </div>
+    <div className="mt-32 -mb-32">
+      <CallCta title={<>Is the {chair.name} <em className="text-gold">right</em> for your room?</>} source={`chair-${chair.slug}`} />
+    </div>
+    </>
   );
 }

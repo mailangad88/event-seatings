@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Event Seatings: seating beyond Chiavari";
+export const alt = "Beyond Chivary: event chair rentals in Chicago";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,13 +21,13 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ fontSize: 26, letterSpacing: 8, color: "#a88a5a", textTransform: "uppercase", display: "flex" }}>
-          2027 Founding Season · St. Charles, IL
+          2027 Founding Season · Chicago & Suburbs
         </div>
         <div style={{ fontSize: 120, lineHeight: 1.02, display: "flex", flexDirection: "column" }}>
           <span>Seating, beyond</span>
           <span style={{ color: "#a88a5a" }}>Chiavari.</span>
         </div>
-        <div style={{ fontSize: 34, display: "flex" }}>Event Seatings</div>
+        <div style={{ fontSize: 34, display: "flex" }}>Beyond Chivary</div>
       </div>
     ),
     size,

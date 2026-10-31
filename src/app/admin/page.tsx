@@ -54,6 +54,7 @@ export default async function AdminPage() {
   const stats: [string, number][] = [
     ["Chair votes", Object.values(votes).reduce((a, b) => a + b, 0)],
     ["Quote requests", quotes.length],
+    ["Call requests", leads.filter((l) => l.kind === "call").length],
     ["Waitlist", leads.filter((l) => l.kind === "waitlist").length],
     ["Quiz emails", leads.filter((l) => l.kind === "quiz").length],
     ["Guests in quotes", quotes.reduce((s, l) => s + (l.guest_count ?? 0), 0)],

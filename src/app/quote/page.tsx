@@ -5,7 +5,8 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Request a Quote",
-  description: `Request a quote for wedding and event chair rentals in ${site.city} and Chicago's western suburbs.`,
+  description: `Request a quote for wedding and event chair rentals in Chicago and the suburbs. Delivery and setup included.`,
+  alternates: { canonical: "/quote" },
 };
 
 export default async function QuotePage(props: PageProps<"/quote">) {
