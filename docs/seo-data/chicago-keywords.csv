@@ -1,0 +1,57 @@
+keyword,cluster,intent,geo,priority,est_volume_band,est_difficulty,target_url,page_status,baseline_rank,current_rank,gsc_impressions_28d,gsc_clicks_28d,leads_28d,last_checked,notes
+chair rental chicago,Core local,Transactional,Chicago metro,P1,High,Hard,/chairs,Live,,,,,,,Head term; party-rental giants own it. Win via Map Pack + /chairs relevance.
+wedding chair rental chicago,Core local,Transactional,Chicago metro,P1,Medium,Hard,/chairs,Live,,,,,,,Highest-value term. Homepage title should echo it.
+event chair rental chicago,Core local,Transactional,Chicago metro,P1,Medium,Medium,/chairs,Live,,,,,,,
+chiavari chair rental chicago,Chair style,Transactional,Chicago metro,P1,Medium,Medium,/blog/chiavari-chair-alternatives,Live,,,,,,,We don't lead with Chiavari; capture with "alternatives" angle + brand catch for Chivary misspell.
+cross back chair rental chicago,Chair style,Transactional,Chicago metro,P1,Low-Medium,Easy,/chairs/cross-back,Live,,,,,,,Quick win: few local competitors with a dedicated page.
+ghost chair rental chicago,Chair style,Transactional,Chicago metro,P1,Low-Medium,Easy,/chairs/ghost,Live,,,,,,,
+rattan chair rental chicago,Chair style,Transactional,Chicago metro,P2,Low,Easy,/chairs/rattan-garden,Live,,,,,,,
+bentwood chair rental chicago,Chair style,Transactional,Chicago metro,P2,Low,Easy,/chairs/bentwood,Live,,,,,,,
+velvet chair rental chicago,Chair style,Transactional,Chicago metro,P2,Low,Easy,/chairs/velvet-dining,Live,,,,,,,
+wishbone chair rental chicago,Chair style,Transactional,Chicago metro,P2,Low,Easy,/chairs/wishbone,Live,,,,,,,
+throne chair rental chicago,Chair style,Transactional,Chicago metro,P1,Low-Medium,Easy,/chairs/royal-throne,Live,,,,,,,Strong for quinceañera + South Asian weddings.
+king and queen chair rental chicago,Chair style,Transactional,Chicago metro,P2,Low,Easy,/chairs/royal-throne,Live,,,,,,,
+louis chair rental chicago,Chair style,Transactional,Chicago metro,P2,Low,Easy,/chairs/louis-medallion,Live,,,,,,,
+garden chair rental chicago,Chair style,Transactional,Chicago metro,P3,Low,Easy,/chairs/garden-folding,Live,,,,,,,
+folding chair rental chicago,Chair style,Transactional,Chicago metro,P3,Medium,Hard,/chairs/garden-folding,Live,,,,,,,Price-shopper term; low lead value. Don't chase.
+chair rental st charles il,City,Transactional,St. Charles,P1,Low,Easy,/chair-rental/st-charles,Planned,,,,,,,Home base. Should rank fast once page + GBP exist.
+chair rental naperville,City,Transactional,Naperville,P1,Low-Medium,Medium,/chair-rental/naperville,Planned,,,,,,,
+chair rental geneva il,City,Transactional,Geneva,P2,Low,Easy,/chair-rental/geneva,Planned,,,,,,,
+chair rental batavia il,City,Transactional,Batavia,P2,Low,Easy,/chair-rental/batavia,Planned,,,,,,,
+chair rental aurora il,City,Transactional,Aurora,P2,Low,Medium,/chair-rental/aurora,Planned,,,,,,,
+chair rental elgin il,City,Transactional,Elgin,P2,Low,Medium,/chair-rental/elgin,Planned,,,,,,,
+chair rental wheaton il,City,Transactional,Wheaton,P2,Low,Easy,/chair-rental/wheaton,Planned,,,,,,,
+chair rental oak brook,City,Transactional,Oak Brook,P2,Low,Easy,/chair-rental/oak-brook,Planned,,,,,,,
+chair rental schaumburg,City,Transactional,Schaumburg,P2,Low,Medium,/chair-rental/schaumburg,Planned,,,,,,,
+party rentals st charles il,City,Transactional,St. Charles,P2,Low-Medium,Medium,/chair-rental/st-charles,Planned,,,,,,,Broader than chairs; capture and refer out tables/linens.
+wedding rentals naperville,City,Transactional,Naperville,P2,Low-Medium,Medium,/chair-rental/naperville,Planned,,,,,,,
+wedding rentals fox valley,City,Transactional,Fox Valley,P2,Low,Easy,/chair-rental/st-charles,Planned,,,,,,,
+event rentals dupage county,City,Transactional,DuPage,P2,Low-Medium,Medium,/chair-rental/wheaton,Planned,,,,,,,
+chair rental near me,Core local,Transactional,Chicago metro,P1,High,Hard,/,Live,,,,,,,Won through Google Business Profile + reviews, not page copy. Track Map Pack position.
+wedding chair rental near me,Core local,Transactional,Chicago metro,P1,Medium,Hard,/,Live,,,,,,,Same as above.
+indian wedding chair rental chicago,Cultural,Transactional,Chicago metro,P1,Low,Easy,/blog/south-asian-wedding-seating,Live,,,,,,,High guest counts = high order value.
+mandap chairs rental chicago,Cultural,Transactional,Chicago metro,P2,Low,Easy,/blog/south-asian-wedding-seating,Live,,,,,,,
+quinceanera chair rental chicago,Cultural,Transactional,Chicago metro,P1,Low,Easy,/blog/quinceanera-throne-chairs,Planned,,,,,,,Calendar post #11. Consider Spanish-language version.
+quinceanera throne chair,Cultural,Commercial,National,P2,Medium,Easy,/blog/quinceanera-throne-chairs,Planned,,,,,,,
+gala chair rental chicago,Corporate,Transactional,Chicago metro,P2,Low,Medium,/blog/gala-seating,Planned,,,,,,,Calendar post #30. Corporate planners book repeat.
+corporate event chair rental chicago,Corporate,Transactional,Chicago metro,P2,Low,Medium,/chairs,Live,,,,,,,Needs a corporate landing page eventually.
+wedding chair rental cost,Planning,Informational,National,P1,Medium,Medium,/blog/wedding-chair-rental-cost,Live,,,,,,,Top-of-funnel magnet; add Chicago price ranges + quote CTA.
+how much does it cost to rent chairs for a wedding,Planning,Informational,National,P1,Medium,Medium,/blog/wedding-chair-rental-cost,Live,,,,,,,AEO: answer in first 50 words + FAQ schema.
+how many chairs do i need for a wedding,Planning,Informational,National,P2,Medium,Easy,/blog/how-many-chairs-do-i-need,Live,,,,,,,Good calculator/tool candidate.
+chiavari chair alternatives,Comparison,Informational,National,P1,Low-Medium,Easy,/blog/chiavari-chair-alternatives,Live,,,,,,,Brand-defining post.
+cross back vs chiavari chairs,Comparison,Commercial,National,P2,Low,Easy,/blog/cross-back-vs-chiavari,Live,,,,,,,
+ghost chair wedding,Style,Informational,National,P2,Medium,Medium,/blog/ghost-chairs-wedding-styling,Live,,,,,,,
+boho wedding chairs,Style,Informational,National,P2,Low-Medium,Easy,/blog/boho-wedding-chairs,Live,,,,,,,
+barn wedding chairs illinois,Local content,Informational,Illinois,P2,Low,Easy,/blog/barn-wedding-seating-ideas,Live,,,,,,,
+sweetheart table chairs,Style,Commercial,National,P2,Low-Medium,Easy,/blog/sweetheart-table-chair-ideas,Live,,,,,,,
+winter wedding chairs,Seasonal,Informational,National,P3,Low,Easy,/blog/winter-wedding-seating,Live,,,,,,,
+ceremony vs reception chairs,Planning,Informational,National,P3,Low,Easy,/blog/ceremony-vs-reception-chairs,Live,,,,,,,
+chair covers vs chiavari,Comparison,Commercial,National,P2,Low,Easy,/blog/chair-covers-vs-better-chairs,Planned,,,,,,,Calendar post #13.
+outdoor wedding chairs grass,Planning,Informational,National,P3,Low,Easy,/blog/outdoor-ceremony-seating,Planned,,,,,,,Calendar post #15.
+st charles il wedding venues,Local content,Informational,St. Charles,P1,Medium,Medium,/blog/fox-valley-wedding-venues,Planned,,,,,,,Calendar post #21. Venue posts earn venue backlinks.
+chicago wedding venues,Local content,Informational,Chicago metro,P3,High,Hard,/blog/fox-valley-wedding-venues,Planned,,,,,,,Too competitive head term; go venue-by-venue instead.
+chicago wedding trends 2027,Local content,Informational,Chicago metro,P2,Low,Easy,/blog/chicago-wedding-trends-2027,Planned,,,,,,,Calendar post #26. Publish Dec-Jan (engagement season).
+when to book wedding rentals,Planning,Informational,National,P2,Low,Easy,/blog/when-to-book-wedding-rentals,Planned,,,,,,,Calendar post #28. Urgency angle for 2027 bookings.
+best chair rental company chicago,Core local,Commercial,Chicago metro,P1,Low,Medium,/about,Live,,,,,,,GEO/AI-answer term: needs reviews + third-party mentions.
+beyond chivary,Brand,Navigational,Brand,P1,Low,Easy,/,Live,,,,,,,Brand. Track once the rename ships.
+chivary chairs,Brand / misspell,Navigational,National,P2,Low,Easy,/,Live,,,,,,,Common misspelling of Chiavari; brand doubles as a catch.

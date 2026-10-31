@@ -7,6 +7,21 @@ const kinds: LeadKind[] = ["quote", "waitlist", "quiz"];
 const str = (v: unknown, max = 200) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined;
 
+const attributionKeys = [
+  "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
+  "gclid", "referrer", "landing_page", "first_seen",
+];
+
+function cleanAttribution(v: unknown): Record<string, string> | undefined {
+  if (!v || typeof v !== "object") return undefined;
+  const out: Record<string, string> = {};
+  for (const k of attributionKeys) {
+    const s = str((v as Record<string, unknown>)[k], 300);
+    if (s) out[k] = s;
+  }
+  return Object.keys(out).length ? out : undefined;
+}
+
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
   if (!body || typeof body !== "object") {
@@ -40,6 +55,7 @@ export async function POST(request: Request) {
       ? body.quiz_styles.filter((s: unknown) => typeof s === "string").slice(0, 8)
       : undefined,
     source: str(body.source, 100),
+    attribution: cleanAttribution(body.attribution),
   };
 
   if (kind === "quote" && (!lead.event_date || !lead.chairs?.length)) {

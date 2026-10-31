@@ -25,6 +25,8 @@ export type Lead = {
   message?: string;
   quiz_styles?: string[];
   source?: string;
+  // First-touch marketing source: utm_*, gclid, referrer, landing_page, first_seen.
+  attribution?: Record<string, string>;
 };
 
 export type NewLead = Omit<Lead, "id" | "created_at">;

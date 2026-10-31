@@ -24,8 +24,12 @@ create table if not exists leads (
   chairs text[],
   message text,
   quiz_styles text[],
-  source text
+  source text,
+  attribution jsonb
 );
+
+-- Added for SEO/marketing attribution. Safe to re-run on an existing table.
+alter table leads add column if not exists attribution jsonb;
 
 alter table votes enable row level security;
 alter table leads enable row level security;

@@ -30,6 +30,22 @@ function Bars({ rows, empty }: { rows: [string, number][]; empty: string }) {
   );
 }
 
+// Where a lead first came from: campaign source, else referring site, else direct.
+function channel(a?: Record<string, string>) {
+  if (!a) return "Unknown";
+  if (a.utm_source) return `${a.utm_source}${a.utm_medium ? ` / ${a.utm_medium}` : ""}`;
+  if (a.gclid) return "google / cpc";
+  if (a.referrer) {
+    try {
+      const host = new URL(a.referrer).hostname.replace(/^www\./, "");
+      return /google\.|bing\.|duckduckgo\.|yahoo\./.test(host) ? `${host.split(".")[0]} / organic` : `${host} / referral`;
+    } catch {
+      return "referral";
+    }
+  }
+  return "direct";
+}
+
 export default async function AdminPage() {
   const [votes, leads] = await Promise.all([getVoteCounts(), listLeads()]);
   const quotes = leads.filter((l) => l.kind === "quote");
@@ -124,6 +140,17 @@ export default async function AdminPage() {
         <section className={card}>
           <h2 className="mb-4 font-serif text-2xl">Cities</h2>
           <Bars rows={tally(quotes, (l) => l.city?.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase()))} empty="No quote requests yet." />
+        </section>
+      </div>
+
+      <div className="mt-8 grid gap-6 lg:grid-cols-2">
+        <section className={card}>
+          <h2 className="mb-4 font-serif text-2xl">Lead sources</h2>
+          <Bars rows={tally(leads, (l) => channel(l.attribution))} empty="No leads yet." />
+        </section>
+        <section className={card}>
+          <h2 className="mb-4 font-serif text-2xl">Landing pages that convert</h2>
+          <Bars rows={tally(leads, (l) => l.attribution?.landing_page)} empty="No leads yet." />
         </section>
       </div>
 

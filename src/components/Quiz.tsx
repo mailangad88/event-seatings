@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { chairs, type Style } from "@/data/chairs";
 import { ChairCard } from "./ChairCard";
+import { getAttribution, track, trackLead } from "@/lib/analytics";
 
 type Option = { label: string; scores: Partial<Record<Style, number>> };
 
@@ -75,7 +76,10 @@ export function Quiz() {
           {options.map((o) => (
             <button
               key={o.label}
-              onClick={() => setAnswers([...answers, options.indexOf(o)])}
+              onClick={() => {
+                if (step + 1 === questions.length) track("quiz_complete");
+                setAnswers([...answers, options.indexOf(o)]);
+              }}
               className="group flex items-center justify-between gap-4 border border-line bg-surface px-6 py-6 text-left transition-colors hover:bg-gold hover:text-[#0a0806]"
             >
               <span className="font-serif text-xl leading-snug">{o.label}</span>
@@ -112,7 +116,7 @@ export function Quiz() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setEmailStatus("sending");
-    await fetch("/api/leads", {
+    const res = await fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -121,8 +125,10 @@ export function Quiz() {
         quiz_styles: topStyles,
         chairs: picks.map((c) => c.slug),
         source: "style-quiz",
+        attribution: getAttribution(),
       }),
     }).catch(() => null);
+    if (res?.ok) trackLead("quiz", "style-quiz", { quiz_style: topStyles[0] });
     setEmailStatus("done");
   }
 

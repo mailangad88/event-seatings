@@ -49,7 +49,11 @@ export default function PrivacyPage() {
         </p>
         <h2>Cookies and local storage</h2>
         <p>
-          We store a random visitor identifier in your browser&apos;s local storage so your saved chairs persist. We
+          We store a random visitor identifier in your browser&apos;s local storage so your saved chairs persist, and
+          a note of how you first found us (for example, the search engine or campaign link) so we know which pages
+          are helpful. We use Google Analytics to understand, in aggregate, how visitors use the site; it sets
+          first-party cookies, and you can opt out with Google&apos;s{" "}
+          <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer">browser add-on</a>. We
           don&apos;t use advertising cookies.
         </p>
       </div>

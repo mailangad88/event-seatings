@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { chairs } from "@/data/chairs";
 import { site } from "@/lib/site";
+import { getAttribution, trackLead } from "@/lib/analytics";
 
 const eventTypes = [
   "Wedding (ceremony + reception)",
@@ -45,9 +46,14 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
     const res = await fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...data, chairs: selected, kind: "quote", source: "quote-form" }),
+      body: JSON.stringify({ ...data, chairs: selected, kind: "quote", source: "quote-form", attribution: getAttribution() }),
     }).catch(() => null);
     if (res?.ok) {
+      trackLead("quote", "quote-form", {
+        event_type: String(data.event_type ?? ""),
+        guest_count: Number(data.guest_count) || undefined,
+        chair_count: selected.length,
+      });
       setStatus("done");
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
