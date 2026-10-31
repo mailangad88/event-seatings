@@ -9,7 +9,8 @@
     "lint": "eslint",
     "remotion:studio": "remotion studio",
     "remotion:render": "remotion render ChairShowcase out/chair-showcase.mp4 && remotion render LaunchStory out/launch-story.mp4",
-    "render:chairs": "node scripts/render-chairs.mjs"
+    "render:chairs": "node scripts/render-chairs.mjs",
+    "crm:setup": "node scripts/hubspot-setup.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",

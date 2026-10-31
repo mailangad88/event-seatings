@@ -27,5 +27,31 @@ create table if not exists leads (
   source text
 );
 
+-- Marketing attribution (added with the CRM setup). Safe to run again on an existing database.
+-- Last touch = the visit that converted; first_ = the visit that first found us; page_path = page the form was on.
+alter table leads
+  add column if not exists utm_source text,
+  add column if not exists utm_medium text,
+  add column if not exists utm_campaign text,
+  add column if not exists utm_term text,
+  add column if not exists utm_content text,
+  add column if not exists gclid text,
+  add column if not exists fbclid text,
+  add column if not exists msclkid text,
+  add column if not exists referrer text,
+  add column if not exists landing_page text,
+  add column if not exists first_utm_source text,
+  add column if not exists first_utm_medium text,
+  add column if not exists first_utm_campaign text,
+  add column if not exists first_utm_term text,
+  add column if not exists first_utm_content text,
+  add column if not exists first_gclid text,
+  add column if not exists first_fbclid text,
+  add column if not exists first_msclkid text,
+  add column if not exists first_referrer text,
+  add column if not exists first_landing_page text,
+  add column if not exists page_path text,
+  add column if not exists sms_consent boolean;
+
 alter table votes enable row level security;
 alter table leads enable row level security;

@@ -1,10 +1,10 @@
-import { listLeads } from "@/lib/store";
+import { listLeads, trackingFields } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
 const cols = [
   "created_at", "kind", "name", "email", "phone", "event_date", "event_type",
-  "guest_count", "city", "venue", "chairs", "quiz_styles", "message", "source",
+  "guest_count", "city", "venue", "chairs", "quiz_styles", "message", "source", "sms_consent", ...trackingFields,
 ] as const;
 
 function cell(v: unknown) {
@@ -20,7 +20,7 @@ export async function GET() {
   return new Response(csv, {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": `attachment; filename="event-seatings-leads-${new Date().toISOString().slice(0, 10)}.csv"`,
+      "Content-Disposition": `attachment; filename="leads-${new Date().toISOString().slice(0, 10)}.csv"`,
     },
   });
 }

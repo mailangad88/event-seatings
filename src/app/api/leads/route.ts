@@ -1,6 +1,8 @@
+import { after } from "next/server";
 import { getChair } from "@/data/chairs";
+import { syncToCrm } from "@/lib/crm";
 import { notifyOwner } from "@/lib/notify";
-import { addLead, type LeadKind, type NewLead } from "@/lib/store";
+import { addLead, trackingFields, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz"];
 
@@ -40,13 +42,20 @@ export async function POST(request: Request) {
       ? body.quiz_styles.filter((s: unknown) => typeof s === "string").slice(0, 8)
       : undefined,
     source: str(body.source, 100),
+    sms_consent: body.sms_consent === "yes" && Boolean(str(body.phone, 40)) ? true : undefined,
   };
+  for (const f of trackingFields) {
+    const v = str(body[f], 300);
+    if (v) lead[f] = v;
+  }
 
   if (kind === "quote" && (!lead.event_date || !lead.chairs?.length)) {
     return Response.json({ error: "Please pick an event date and at least one chair." }, { status: 400 });
   }
 
   const saved = await addLead(lead);
-  await notifyOwner(saved);
+  // CRM sync and the owner email run after the visitor gets their answer, so a slow or failing CRM
+  // never loses a lead: it's already saved above, and both helpers log their own errors.
+  after(() => Promise.allSettled([syncToCrm(saved), notifyOwner(saved)]));
   return Response.json({ ok: true });
 }
