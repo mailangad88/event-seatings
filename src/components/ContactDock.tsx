@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { site } from "@/lib/site";
 import { contact, OPEN_CHAT_EVENT, openerFor, quickQuestions } from "@/lib/contact";
 
 // Floating "Questions?" button on every page. Opens a panel with every fast way to reach us:
@@ -111,9 +113,18 @@ export function ContactDock() {
           className="fixed inset-x-0 bottom-0 z-50 flex max-h-[88dvh] flex-col border-t border-line bg-surface text-ink shadow-[0_-20px_60px_rgba(0,0,0,0.5)] outline-none sm:inset-x-auto sm:right-6 sm:bottom-24 sm:w-[380px] sm:border"
         >
           <div className="flex items-start justify-between gap-4 border-b border-line px-6 pt-5 pb-4">
-            <div>
-              <p className="font-serif text-2xl font-light">How can we help?</p>
-              <p className="mt-1 text-xs leading-5 text-muted">{contact.replyPromise}</p>
+            <div className="flex items-start gap-4">
+              <Image
+                src="/chairs/render/cross-back.jpg"
+                alt={`Cross-back vineyard chair from the ${site.name} collection`}
+                width={52}
+                height={52}
+                className="mt-0.5 size-[52px] shrink-0 rounded-full border border-gold/50 object-cover"
+              />
+              <div>
+                <p className="font-serif text-2xl font-light">How can we help?</p>
+                <p className="mt-1 text-xs leading-5 text-muted">{contact.replyPromise}</p>
+              </div>
             </div>
             <button
               type="button"
@@ -129,6 +140,7 @@ export function ContactDock() {
           </div>
 
           <div className="flex-1 overflow-y-auto">
+            <ContactSteps />
             {hubspot ? (
               <div id={HUBSPOT_SLOT} className="h-[440px] w-full" />
             ) : (
@@ -191,6 +203,36 @@ export function ContactDock() {
         <span className="text-[11px] tracking-[0.22em] uppercase">{open ? "Close" : "Questions? Chat"}</span>
       </button>
     </>
+  );
+}
+
+// The three steps from question to booked chairs, as a small visual flow at the top of the panel.
+// An ordered list, so screen readers and AI crawlers read it as real steps.
+const steps = [
+  { label: "Ask anything", icon: ChatIcon },
+  { label: "Quick, real reply", icon: ClockIcon },
+  { label: "Free seating call", icon: ChairIcon },
+];
+
+function ContactSteps() {
+  return (
+    <ol aria-label="How it works" className="flex items-center justify-between gap-1 border-b border-line bg-surface-2/60 px-6 py-3">
+      {steps.map((s, i) => (
+        <li key={s.label} className="flex items-center gap-1">
+          <span className="flex flex-col items-center gap-1 text-center">
+            <span className="flex size-8 items-center justify-center rounded-full border border-gold/50 text-gold">
+              <s.icon />
+            </span>
+            <span className="text-[10px] leading-tight tracking-[0.08em] text-muted uppercase">{s.label}</span>
+          </span>
+          {i < steps.length - 1 && (
+            <svg width="22" height="8" viewBox="0 0 22 8" className="mb-4 text-gold/60" aria-hidden>
+              <path d="M0 4h20M17 1l3 3-3 3" fill="none" stroke="currentColor" strokeWidth="1" />
+            </svg>
+          )}
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -297,6 +339,21 @@ function ChatIcon() {
     <svg {...svg} width={18} height={18}>
       <path d="M4 5h16v11H9l-5 4V5z" strokeLinejoin="round" />
       <path d="M8 10h8M8 13h5" strokeLinecap="round" />
+    </svg>
+  );
+}
+function ClockIcon() {
+  return (
+    <svg {...svg}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.5V12l3 2" strokeLinecap="round" />
+    </svg>
+  );
+}
+function ChairIcon() {
+  return (
+    <svg {...svg}>
+      <path d="M7 3v18M17 3v18M7 12h10M7 15h10M7 4l10 7M17 4L7 11" strokeLinecap="round" />
     </svg>
   );
 }
