@@ -17,7 +17,7 @@ export async function notifyOwner(lead: Lead) {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: process.env.NOTIFY_FROM ?? "Beyond Chivary <onboarding@resend.dev>",
+        from: process.env.NOTIFY_FROM ?? "Beyond Chiavari <onboarding@resend.dev>",
         to,
         subject: `New ${lead.kind} lead: ${lead.name ?? lead.email}`,
         text: lines.join("\n"),

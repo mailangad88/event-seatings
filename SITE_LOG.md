@@ -1,6 +1,6 @@
-# Site Log: beyondchivary.com
+# Site Log: beyondchiavari.com
 
-A living record of every public route on the Beyond Chivary site (formerly "Event Seatings"): what each page is for, when it was last touched, and how it scores on search, answer engines, local signals, visuals, FAQs and lead capture. Chicago is the primary market; the business is based in St. Charles, IL and serves Chicago and the suburbs.
+A living record of every public route on the Beyond Chiavari site (formerly "Event Seatings"): what each page is for, when it was last touched, and how it scores on search, answer engines, local signals, visuals, FAQs and lead capture. Chicago is the primary market; the business is based in St. Charles, IL and serves Chicago and the suburbs.
 
 **How to update this log**
 
@@ -24,9 +24,9 @@ A living record of every public route on the Beyond Chivary site (formerly "Even
 | robots | ✅ | `src/app/robots.ts`: allow `/`, disallow `/admin`, `/api`; points to sitemap. `/render/*` is `noindex` and 404s unless `ALLOW_RENDER=1`. |
 | llms.txt | ✅ | `/llms.txt` route (`src/app/llms.txt/route.ts`) is generated from chairs, posts and `site.ts`, so it stays in sync. robots.txt explicitly welcomes GPTBot, PerplexityBot, ClaudeBot, Google-Extended and similar crawlers. |
 | Canonical URLs | ✅ | `alternates.canonical` on every public page; `metadataBase` from `site.url`. |
-| Brand | ✅ | Beyond Chivary everywhere (copy, OG image, emails, admin realm, README). Name, domain, email and socials live in `src/lib/site.ts`. |
+| Brand | ✅ | Beyond Chiavari everywhere (copy, OG image, emails, admin realm, README). Name, domain, email and socials live in `src/lib/site.ts`. |
 | Analytics | ❌ | None yet. Add Vercel Analytics or GA4 plus conversion events (quote submit, call booked, waitlist join). |
-| Search Console | ❌ todo | Verify beyondchivary.com, submit sitemap, monitor Chicago queries. |
+| Search Console | ❌ todo | Verify beyondchiavari.com, submit sitemap, monitor Chicago queries. |
 | Google Business Profile | ❌ todo | Create a service-area business (St. Charles base, Chicago + suburbs). Use the same name/phone/area as the schema. |
 | Email sequences | ❌ todo | Waitlist welcome, quote follow-up, post-call recap. Leads currently arrive via `/api/leads`. |
 | Competitor analysis | ❌ todo | Handled in another workstream. |
@@ -40,7 +40,7 @@ A living record of every public route on the Beyond Chivary site (formerly "Even
 
 Shipped in this release:
 
-- **Rebrand** from Event Seatings to **Beyond Chivary** (beyondchivary.com).
+- **Rebrand** from Event Seatings to **Beyond Chiavari** (beyondchiavari.com).
 - **`/book`**: "Book a 15-minute seating call", Calendly/Cal.com embed via `NEXT_PUBLIC_BOOKING_URL`, with a call-request form fallback when unset.
 - **Book-a-call CTAs** in the header, mobile menu, footer, home, chair pages, about, FAQ and blog posts (each tagged with `?from=` so leads show where they came from in /admin).
 - **Product + BreadcrumbList schema** on `/chairs/[slug]`.

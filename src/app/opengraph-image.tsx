@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Beyond Chivary: event chair rentals in Chicago";
+export const alt = "Beyond Chiavari: event chair rentals in Chicago";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,7 +27,7 @@ export default function OpengraphImage() {
           <span>Seating, beyond</span>
           <span style={{ color: "#a88a5a" }}>Chiavari.</span>
         </div>
-        <div style={{ fontSize: 34, display: "flex" }}>Beyond Chivary</div>
+        <div style={{ fontSize: 34, display: "flex" }}>Beyond Chiavari</div>
       </div>
     ),
     size,
