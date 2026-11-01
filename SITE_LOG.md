@@ -48,6 +48,18 @@ Shipped in this release:
 - **Canonical URLs** on all public pages.
 - **`/llms.txt`** summary for AI answer engines.
 
+## Visuals and searchable media (rule from 2026-11-01)
+
+No page may be text-only: every page needs a chair image, a flowchart or another visual. Every image and video must be readable by Google and AI search.
+
+- **Chair images:** `ChairArt` uses `chairAlt()` in `src/data/chairs.ts` for descriptive alt text (name, look, finishes, Chicago). Chair pages also put the image in Product schema and Open Graph.
+- **3D viewers:** the live canvas has an `aria-label`, and the still render with alt text is always in the HTML for crawlers.
+- **Blog posts:** each post has a `chair:` line in its header, which sets the hero image, OG image, BlogPosting `image` and sitemap image. Posts without one get a chair picked automatically, so new posts are never text-only.
+- **Flowchart:** `ProcessFlow` (choose → talk → proposal → delivered → collected) is an ordered list, so search engines read every step. It's used on /about, /faq and /quote.
+- **Chair strips:** `ChairStrip` adds captioned, linked chair images to /about, /quiz, /privacy and /terms.
+- **Sitemap:** chair pages and posts list their images (`image:loc`) for Google Images.
+- **Videos (Remotion/Blender):** none are on the site yet. When one is added, render it with `VideoFeature` (`src/components/VideoFeature.tsx`). It requires a poster, title and description, takes an optional `.vtt` captions file, and outputs VideoObject schema. Put files in `public/videos/`.
+
 ---
 
 ## Core pages
@@ -57,15 +69,15 @@ Shipped in this release:
 | `/` | Home: hero 3D chair viewer, featured chairs, waitlist | 2026-10-31 | ✅ | ⚠️ | ⚠️ | ✅ | ❌ | ✅ |
 | `/chairs` | Browse/filter all chair styles | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
 | `/chairs/[slug]` (13 chairs) | Chair detail, 3D viewer, votes, quote link | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
-| `/quiz` | 4-question chair style quiz | 2026-10-31 | ✅ | ❌ | ❌ | ⚠️ | ❌ | ⚠️ |
-| `/quote` | Quote request form | 2026-10-31 | ✅ | ⚠️ | ✅ | ❌ | ❌ | ✅ |
+| `/quiz` | 4-question chair style quiz | 2026-11-01 | ✅ | ❌ | ❌ | ✅ | ❌ | ⚠️ |
+| `/quote` | Quote request form | 2026-11-01 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
 | `/book` | Book a 15-minute seating call | 2026-10-31 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
-| `/about` | Our story, service area | 2026-10-31 | ✅ | ⚠️ | ✅ | ⚠️ | ❌ | ✅ |
-| `/faq` | FAQ with FAQPage schema | 2026-10-31 | ✅ | ✅ | ⚠️ | ⚠️ | ✅ | ✅ |
-| `/blog` | Journal index | 2026-10-31 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ❌ |
-| `/privacy` | Privacy policy | 2026-10-31 | ⚠️ | n/a | n/a | ❌ | ❌ | n/a |
-| `/terms` | Terms of use | 2026-10-31 | ⚠️ | n/a | n/a | ❌ | ❌ | n/a |
-| 404 (`not-found.tsx`) | Not-found page | 2026-10-04 | n/a | n/a | n/a | ❌ | ❌ | ⚠️ |
+| `/about` | Our story, service area | 2026-11-01 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
+| `/faq` | FAQ with FAQPage schema | 2026-11-01 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
+| `/blog` | Journal index | 2026-11-01 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ❌ |
+| `/privacy` | Privacy policy | 2026-11-01 | ⚠️ | n/a | n/a | ✅ | ❌ | n/a |
+| `/terms` | Terms of use | 2026-11-01 | ⚠️ | n/a | n/a | ✅ | ❌ | n/a |
+| 404 (`not-found.tsx`) | Not-found page | 2026-11-01 | n/a | n/a | n/a | ✅ | ❌ | ⚠️ |
 
 ## Blog posts (`content/blog/*.md` → `/blog/[slug]`)
 
@@ -73,17 +85,17 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 
 | Route | Purpose | Last touched | SEO | AEO | GEO | Visuals | FAQ | CTA |
 |---|---|---|---|---|---|---|---|---|
-| `/blog/chiavari-chair-alternatives` | 12 Chiavari alternatives (pillar) | 2026-10-03 | ✅ | ⚠️ | ⚠️ | ❌ | ❌ | ✅ |
-| `/blog/cross-back-vs-chiavari` | Comparison | 2026-10-03 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
-| `/blog/how-many-chairs-do-i-need` | Quantity guide (HowTo candidate) | 2026-10-03 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
-| `/blog/ceremony-vs-reception-chairs` | Matching ceremony/reception | 2026-10-03 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
-| `/blog/ghost-chairs-wedding-styling` | Ghost chair styling | 2026-10-04 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
-| `/blog/boho-wedding-chairs` | Boho chair picks | 2026-10-04 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
-| `/blog/barn-wedding-seating-ideas` | Fox Valley barn weddings | 2026-10-04 | ✅ | ⚠️ | ⚠️ | ❌ | ❌ | ✅ |
-| `/blog/winter-wedding-seating` | Winter seating | 2026-10-04 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
-| `/blog/sweetheart-table-chair-ideas` | Sweetheart table chairs | 2026-10-04 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
-| `/blog/wedding-chair-rental-cost` | Budget guide | 2026-10-04 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
-| `/blog/south-asian-wedding-seating` | South Asian weddings, large lists | 2026-10-04 | ✅ | ⚠️ | ❌ | ❌ | ❌ | ✅ |
+| `/blog/chiavari-chair-alternatives` | 12 Chiavari alternatives (pillar) | 2026-10-03 | ✅ | ⚠️ | ⚠️ | ✅ | ❌ | ✅ |
+| `/blog/cross-back-vs-chiavari` | Comparison | 2026-10-03 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/how-many-chairs-do-i-need` | Quantity guide (HowTo candidate) | 2026-10-03 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/ceremony-vs-reception-chairs` | Matching ceremony/reception | 2026-10-03 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/ghost-chairs-wedding-styling` | Ghost chair styling | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/boho-wedding-chairs` | Boho chair picks | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/barn-wedding-seating-ideas` | Fox Valley barn weddings | 2026-10-04 | ✅ | ⚠️ | ⚠️ | ✅ | ❌ | ✅ |
+| `/blog/winter-wedding-seating` | Winter seating | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/sweetheart-table-chair-ideas` | Sweetheart table chairs | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/wedding-chair-rental-cost` | Budget guide | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/south-asian-wedding-seating` | South Asian weddings, large lists | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
 
 ## Generated, metadata and API routes
 
@@ -92,7 +104,7 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/sitemap.xml` (`sitemap.ts`) | XML sitemap | 2026-10-31 | ✅ Includes `/book` with priorities. Next: neighborhood pages, `lastModified` on static pages. |
 | `/robots.txt` (`robots.ts`) | Crawl rules | 2026-10-31 | ✅ Explicitly allows AI crawlers; blocks /admin, /api, /render. |
 | `/llms.txt` | AI engine summary | 2026-10-31 | ✅ Live. Generated from site data. |
-| `/opengraph-image` | Sitewide OG image | 2026-10-04 | ⚠️ Single image; add per-chair and per-post OG images. Check it shows the new brand. |
+| `/opengraph-image` | Sitewide OG image | 2026-10-04 | ✅ Sitewide default; chair pages and posts now set their own OG image (chair render). |
 | `/icon` | Favicon | 2026-10-04 | ✅ Check it reflects the new brand. |
 | `/api/leads` | Quote/waitlist/call-request submissions | 2026-10-03 | ✅ Disallowed in robots. Wire to email sequences. |
 | `/api/votes` | Chair "want this" votes | 2026-10-03 | ✅ Internal. |
@@ -114,7 +126,7 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 
 **`/chairs/[slug]`**
 - Add 3–4 chair-specific FAQs (capacity per table, indoor/outdoor, cushion colors, pairing ideas).
-- Add dimensions/specs and per-chair OG images (renders already exist in `public/chairs/render/`).
+- Add dimensions/specs. (Per-chair OG images done 2026-11-01.)
 - Add `offers`/pricing to Product schema only once real prices are set.
 
 **`/quiz`**
@@ -131,27 +143,27 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 - Test the fallback form in production; leads appear in /admin as `call`.
 
 **`/about`**
-- Text only: add founder photo (real, when available), chair renders or a service-area map illustration.
+- Chair strip and flowchart added 2026-11-01. Next: a real founder photo and a service-area map.
 - List Chicago neighborhoods and suburbs served (link to neighborhood pages when they land).
 
 **`/faq`**
-- Text only: add chair illustrations or icons per section.
+- Flowchart added 2026-11-01. Next: a small chair image beside each FAQ group.
 - Add Chicago-specific questions (city venue loading docks, parking, COI requirements, delivery to downtown high-rises).
 - ~~Add a book-a-call CTA at the end.~~ Done 2026-10-31.
 
 **`/blog` index**
-- Text only: add a cover image per post (chair renders are a quick win).
+- Thumbnails added 2026-11-01. Next: tag filters.
 - Add tag filters and a CTA band; update description to new brand.
 
 **`/privacy`, `/terms`**
-- Text only: add a light decorative illustration or header art to meet the no-text-only rule.
-- Add canonical () and a "last updated" date; review terms reference to Article/Product images.
+- Chair strip added 2026-11-01.
+- Canonical done; keep the "last updated" date current.
 
 **404**
-- Add a chair illustration and links to chairs, quote and book.
+- Chair image and links to home and chairs added 2026-11-01.
 
 **Blog posts (all 11)**
-- No images in any post: add a hero image (chair render or styled illustration) and inline images; add per-post OG images.
+- Hero image, OG image and schema image added 2026-11-01 via the `chair:` header. Next: inline images or diagrams (e.g. a seating-count flowchart in the quantity guide) and real event photos.
 - Add answer-first TL;DR at the top and an FAQ section with FAQPage schema per post.
 - Add Chicago/local angle: venues, seasons, neighborhoods (only `chiavari-chair-alternatives` and `barn-wedding-seating-ideas` have any local signal).
 - `how-many-chairs-do-i-need`: add HowTo schema and a calculator widget.

@@ -3,6 +3,7 @@ title: Wedding Chair Rental Cost: What to Budget
 description: What goes into the price of renting wedding chairs, and how to plan a realistic budget.
 date: 2026-10-10
 tags: Planning, Budget
+chair: wishbone
 ---
 
 Chair rental prices vary widely by style, quantity, date and location. Here is how to think about the budget.

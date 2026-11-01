@@ -3,10 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
 import { ChairViewer } from "@/components/ChairViewer";
-import renders from "@/data/renders.json";
 import { ChairCard } from "@/components/ChairCard";
 import { VoteButton } from "@/components/VoteProvider";
-import { chairs, getChair } from "@/data/chairs";
+import { chairAlt, chairImage, chairs, getChair } from "@/data/chairs";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -19,6 +18,9 @@ export async function generateMetadata(props: PageProps<"/chairs/[slug]">): Prom
   return {
     title: `${chair.name} Rental in ${site.market}`,
     alternates: { canonical: `/chairs/${chair.slug}` },
+    ...(chairImage(chair) && {
+      openGraph: { images: [{ url: chairImage(chair)!, alt: chairAlt(chair) }] },
+    }),
     description: `${chair.tagline}. Rent the ${chair.name} for weddings, corporate events and parties in Chicago and the suburbs. Delivery and setup included.`,
   };
 }
@@ -32,7 +34,7 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
     .slice(0, 3);
 
   const [low, high] = (chair.estPrice.match(/\d+/g) ?? []).map(Number);
-  const image = chair.image ?? (renders.includes(chair.slug) ? `/chairs/render/${chair.slug}.jpg` : undefined);
+  const image = chairImage(chair);
   const pageUrl = `${site.url}/chairs/${chair.slug}`;
   const jsonLd = [
     {
@@ -41,7 +43,9 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
       name: `${chair.name} Rental`,
       description: chair.description,
       url: pageUrl,
-      ...(image && { image: `${site.url}${image}` }),
+      ...(image && {
+        image: { "@type": "ImageObject", url: `${site.url}${image}`, caption: chairAlt(chair), description: chairAlt(chair) },
+      }),
       category: "Event chair rental",
       brand: { "@type": "Brand", name: site.name },
       color: chair.finishes.map((f) => f.name).join(", "),

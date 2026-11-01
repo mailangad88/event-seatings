@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { chairs } from "@/data/chairs";
+import { chairImage, chairs, getChair } from "@/data/chairs";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -12,7 +12,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
   }));
-  const chairPages = chairs.map((c) => ({ url: `${site.url}/chairs/${c.slug}`, priority: 0.8 }));
-  const posts = (await getPosts()).map((p) => ({ url: `${site.url}/blog/${p.slug}`, lastModified: p.date }));
+  // Image entries help Google Images and AI search find every chair photo.
+  const img = (slug: string) => {
+    const c = getChair(slug);
+    const src = c && chairImage(c);
+    return src ? [`${site.url}${src}`] : [];
+  };
+  const chairPages = chairs.map((c) => ({ url: `${site.url}/chairs/${c.slug}`, priority: 0.8, images: img(c.slug) }));
+  const posts = (await getPosts()).map((p) => ({ url: `${site.url}/blog/${p.slug}`, lastModified: p.date, images: img(p.chair) }));
   return [...pages, ...chairPages, ...posts];
 }
