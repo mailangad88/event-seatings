@@ -2,7 +2,7 @@ import { getChair } from "@/data/chairs";
 import { notifyOwner } from "@/lib/notify";
 import { addLead, type LeadKind, type NewLead } from "@/lib/store";
 
-const kinds: LeadKind[] = ["quote", "waitlist", "quiz"];
+const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "chat"];
 
 const str = (v: unknown, max = 200) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined;
@@ -41,6 +41,10 @@ export async function POST(request: Request) {
       : undefined,
     source: str(body.source, 100),
   };
+
+  if (kind === "chat" && !lead.message) {
+    return Response.json({ error: "Please type your question." }, { status: 400 });
+  }
 
   if (kind === "quote" && (!lead.event_date || !lead.chairs?.length)) {
     return Response.json({ error: "Please pick an event date and at least one chair." }, { status: 400 });

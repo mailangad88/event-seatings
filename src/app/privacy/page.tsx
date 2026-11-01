@@ -52,6 +52,12 @@ export default function PrivacyPage() {
           We store a random visitor identifier in your browser&apos;s local storage so your saved chairs persist. We
           don&apos;t use advertising cookies.
         </p>
+        <h2>Chat</h2>
+        <p>
+          If you message us through the chat button, what you type and the contact details you share are stored in our
+          customer system so we can reply. When live chat is on, it is provided by HubSpot, which loads only after you
+          open the chat and may set its own cookies to keep your conversation going.
+        </p>
       </div>
     </div>
   );

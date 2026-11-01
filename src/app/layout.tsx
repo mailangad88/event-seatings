@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContactDock } from "@/components/ContactDock";
 import { VoteProvider } from "@/components/VoteProvider";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <ContactDock />
         </VoteProvider>
       </body>
     </html>

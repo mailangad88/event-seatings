@@ -11,7 +11,7 @@ create table if not exists votes (
 
 create table if not exists leads (
   id uuid primary key,
-  kind text not null check (kind in ('quote', 'waitlist', 'quiz')),
+  kind text not null check (kind in ('quote', 'waitlist', 'quiz', 'chat')),
   created_at timestamptz not null default now(),
   name text,
   email text not null,
@@ -29,3 +29,7 @@ create table if not exists leads (
 
 alter table votes enable row level security;
 alter table leads enable row level security;
+
+-- Upgrading an existing database? Run this once to allow chat-dock messages:
+-- alter table leads drop constraint if exists leads_kind_check;
+-- alter table leads add constraint leads_kind_check check (kind in ('quote', 'waitlist', 'quiz', 'chat'));
