@@ -18,18 +18,18 @@ python3.13 -m venv .venv-blender
 ```
 
 If you have desktop Blender 5.x installed, you can run the script with it instead:
-`blender -b -P blender/beyondchivary_scene.py -- --theme gilded-ivory --shot hero --still --out out/test`
+`blender -b -P blender/beyondchiavari_scene.py -- --theme gilded-ivory --shot hero --still --out out/test`
 
 ## Render one thing
 
 ```bash
 PY=.venv-blender/bin/python
 # A still
-$PY blender/beyondchivary_scene.py --theme midnight-gold --shot hero --still --out out/blender/test
+$PY blender/beyondchiavari_scene.py --theme midnight-gold --shot hero --still --out out/blender/test
 # A clip (frames, then encode)
-$PY blender/beyondchivary_scene.py --theme blush-garden --shot dolly --frames 96 --width 720 --height 1280 --samples 24 --out out/blender/frames/test/f
+$PY blender/beyondchiavari_scene.py --theme blush-garden --shot dolly --frames 96 --width 720 --height 1280 --samples 24 --out out/blender/frames/test/f
 # Open it in Blender to tweak by hand
-$PY blender/beyondchivary_scene.py --theme gilded-ivory --shot hero --still --save-blend --out out/blender/gilded
+$PY blender/beyondchiavari_scene.py --theme gilded-ivory --shot hero --still --save-blend --out out/blender/gilded
 ```
 
 | Option | Values |
@@ -64,7 +64,7 @@ Clip renders resume where they stopped: frames that already exist are skipped.
 
 ## Add a theme
 
-Copy an entry in `THEMES` at the top of `beyondchivary_scene.py` and change the colors: chair finish, cushion, linen, drape, floor, four flower colors, greenery, charger, and light tints. Ideas next: Ivory & Sage Garden, Champagne Cross-Back Barn, Black Tie Silver.
+Copy an entry in `THEMES` at the top of `beyondchiavari_scene.py` and change the colors: chair finish, cushion, linen, drape, floor, four flower colors, greenery, charger, and light tints. Ideas next: Ivory & Sage Garden, Champagne Cross-Back Barn, Black Tie Silver.
 
 ## Next step: animate with AI
 

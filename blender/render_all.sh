@@ -25,7 +25,7 @@ for t in $THEMES; do
     for f in 1 "$FRAMES"; do
       tag=$([ "$f" = 1 ] && echo start || echo end)
       dst="$OUT/stills/$t-$s-$tag"
-      [ -f "$dst.jpg" ] || $PY blender/beyondchivary_scene.py --theme "$t" --shot "$s" --still \
+      [ -f "$dst.jpg" ] || $PY blender/beyondchiavari_scene.py --theme "$t" --shot "$s" --still \
         --still-frame "$f" --frames "$FRAMES" --samples "$SAMPLES_STILL" --out "$dst"
     done
   done
@@ -36,7 +36,7 @@ for t in $THEMES; do
     mp4="$OUT/clips/$t-$s.mp4"
     [ -f "$mp4" ] && continue
     mkdir -p "$OUT/frames/$t-$s"
-    $PY blender/beyondchivary_scene.py --theme "$t" --shot "$s" --frames "$FRAMES" \
+    $PY blender/beyondchiavari_scene.py --theme "$t" --shot "$s" --frames "$FRAMES" \
       --samples "$SAMPLES_CLIP" --width "$CLIP_W" --height "$CLIP_H" --out "$OUT/frames/$t-$s/f"
     # Upscale to 1080x1920 for Reels/Shorts, H.264 high quality, web-friendly
     ffmpeg -loglevel error -y -framerate 24 -i "$OUT/frames/$t-$s/f_%04d.png" \

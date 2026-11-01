@@ -1,15 +1,15 @@
-"""beyondchivary decor scenes, built entirely in code with Blender (bpy).
+"""Beyond Chiavari decor scenes, built entirely in code with Blender (bpy).
 
 Builds an elegant banquet scene that heroes our chairs, then renders a still
 or a vertical 9:16 clip for Instagram Reels, Facebook Reels and YouTube Shorts.
 
 Run with the pip-installed Blender module (no GUI needed):
 
-    python blender/beyondchivary_scene.py --theme gilded-ivory --shot dolly --out out/blender/gilded-ivory-dolly
+    python blender/beyondchiavari_scene.py --theme gilded-ivory --shot dolly --out out/blender/gilded-ivory-dolly
 
 or with a desktop Blender install:
 
-    blender -b -P blender/beyondchivary_scene.py -- --theme gilded-ivory --shot hero --still
+    blender -b -P blender/beyondchiavari_scene.py -- --theme gilded-ivory --shot hero --still
 
 Add --save-blend to also write a .blend file you can open and tweak in Blender.
 See blender/README.md for every option.

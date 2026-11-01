@@ -1,5 +1,4 @@
 import { AbsoluteFill, Easing, Img, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
-import { site } from "@/lib/site";
 import { display, displayItalic, sans } from "./fonts";
 
 // Vertical 9:16 reel built from the Blender decor renders (see blender/README.md).
@@ -13,6 +12,10 @@ export const DECOR_THEMES: { id: DecorTheme; label: string; hook: string; detail
   { id: "midnight-gold", label: "Midnight Gold Gala", hook: "Black tie, gold chairs, no notes", detail: "Gold Chiavari · black cushion" },
   { id: "blush-garden", label: "Blush Garden Romance", hook: "The softest table in Chicagoland", detail: "Rose-gold Chiavari · blush linen" },
 ];
+
+// Brand shown on the reels. Kept here so reels match the locked brand even before the site rename lands.
+const BRAND = "Beyond Chiavari";
+const DOMAIN = "beyondchiavari.com";
 
 export const REEL_FPS = 24;
 const CLIP = 96;
@@ -62,7 +65,7 @@ export function DecorReel({ theme }: { theme: DecorTheme }) {
       </Sequence>
       <Sequence from={CLIP + HOLD} durationInFrames={HOLD}>
         <Still src={`social/stills/${theme}-reveal-end.jpg`} />
-        <Caption kicker={site.name} title="Free 15-min seating plan" sub="Link in bio" delay={4} />
+        <Caption kicker={BRAND} title="Free 15-min seating plan" sub={`${DOMAIN} · link in bio`} delay={4} />
       </Sequence>
     </AbsoluteFill>
   );
