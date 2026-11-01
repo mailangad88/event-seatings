@@ -549,6 +549,8 @@ def configure_render(args):
     sc.cycles.caustics_reflective = sc.cycles.caustics_refractive = False
     sc.cycles.blur_glossy = 1.0
     sc.render.use_persistent_data = True
+    # Resume: skip frames that already exist, so an interrupted clip render picks up where it stopped
+    sc.render.use_overwrite = False
     sc.render.resolution_x, sc.render.resolution_y = args.width, args.height
     sc.render.resolution_percentage = 100
     sc.render.fps = args.fps

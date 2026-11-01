@@ -50,6 +50,18 @@ PY=.venv-blender/bin/python blender/render_all.sh
 
 Writes `out/blender/stills/<theme>-<shot>-start.jpg|end.jpg` and `out/blender/clips/<theme>-<shot>.mp4`. On a 4-core CPU a still takes about 2 minutes and a 4-second clip about an hour. A GPU cuts that roughly tenfold. The chosen outputs are copied to `public/social/` so the site and the lead pages can use them.
 
+## Captioned reels
+
+`src/remotion/DecorReel.tsx` turns each theme's dolly clip and two stills into a 9-second reel with a hook, a detail line and a CTA:
+
+```bash
+npm run remotion:reels   # writes out/reels/<theme>-reel.mp4
+```
+
+To use an AI-animated clip, save it over `public/social/clips/<theme>-dolly.mp4` and render again.
+
+Clip renders resume where they stopped: frames that already exist are skipped.
+
 ## Add a theme
 
 Copy an entry in `THEMES` at the top of `beyondchivary_scene.py` and change the colors: chair finish, cushion, linen, drape, floor, four flower colors, greenery, charger, and light tints. Ideas next: Ivory & Sage Garden, Champagne Cross-Back Barn, Black Tie Silver.
