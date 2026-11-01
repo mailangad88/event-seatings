@@ -57,8 +57,8 @@ Shipped in this release:
 | `/` | Home: hero 3D chair viewer, featured chairs, waitlist | 2026-10-31 | ✅ | ⚠️ | ⚠️ | ✅ | ❌ | ✅ |
 | `/chairs` | Browse/filter all chair styles | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
 | `/chairs/[slug]` (13 chairs) | Chair detail, 3D viewer, votes, quote link | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
-| `/looks` | Look Book: 8 elegant decor looks, each built around one chair (social link-in-bio target) | 2026-10-31 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
-| `/looks/[slug]` (8 looks) | One look per reel: scene, palette, recipe, chairs, "Get this look" form, sticky mobile CTA | 2026-10-31 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
+| `/looks` | Look Book: 10 elegant decor looks, each built around one chair (social link-in-bio target) | 2026-11-01 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
+| `/looks/[slug]` (10 looks) | One look per reel: video or scene, palette, recipe, chairs, "Get this look" form, sticky mobile CTA | 2026-11-01 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
 | `/quiz` | 4-question chair style quiz | 2026-10-31 | ✅ | ❌ | ❌ | ⚠️ | ❌ | ⚠️ |
 | `/quote` | Quote request form | 2026-10-31 | ✅ | ⚠️ | ✅ | ❌ | ❌ | ✅ |
 | `/book` | Book a 15-minute seating call | 2026-10-31 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
@@ -120,7 +120,8 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 - Add `offers`/pricing to Product schema only once real prices are set.
 
 **`/looks` and `/looks/[slug]`**
-- Swap the render scenes for Blender / Seedance clips: put `public/looks/<slug>.mp4` + poster `.jpg` and set `video` / `poster` in `src/data/looks.ts`.
+- Gilded Ballroom, Midnight Gold Gala and Blush Garden Party use the Blender clips and stills from PR #9 (`public/social/`). They appear once #9 is merged; until then those looks fall back to the chair render. The other 7 looks still need clips: set `video` / `poster` / `still` in `src/data/looks.ts`.
+- The Blender chair is a gold Chiavari-style chair, which isn't in the catalog; the looks name the Gold Infinity chair as the closest match. Re-render with a catalog chair when possible.
 - Once lead attribution (PR #7) lands, spread `attributionFields()` into `LookLeadForm` so reel leads carry their UTMs. Link reels as `/looks/<slug>?utm_source=instagram&utm_medium=reel&utm_campaign=<slug>`.
 - Look leads are saved as `waitlist` with `source: look:<slug>`; give them their own kind if the admin needs a separate count.
 - Once the seating planner (PR #6) lands, link it from the look pages.

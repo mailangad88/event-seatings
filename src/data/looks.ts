@@ -1,9 +1,11 @@
 // Decor "looks" for the /looks lead pages. Each look is built around one hero chair.
 //
-// Social video: when a Blender or Seedance clip for a look is ready, drop the file in
-// /public/looks/ (vertical 9:16 MP4, under ~4 MB, no audio needed) and set:
-//   video: "/looks/gilded-ballroom.mp4", poster: "/looks/gilded-ballroom.jpg"
-// Until then the page shows the studio render of the hero chair in the look's palette.
+// Social media: Blender renders live in /public/social (see blender/README.md).
+//   video  a vertical 9:16 MP4 that plays on the look's own page
+//   poster the video's first frame, shown while it loads
+//   still  a frame used on cards and as the share image
+// Any file that isn't in /public at build time is skipped, and the page falls back to the
+// studio render of the hero chair in the look's palette.
 
 export type Swatch = { name: string; hex: string };
 
@@ -20,9 +22,9 @@ export type Look = {
   details: { label: string; text: string }[];
   bestFor: string[];
   season: string;
-  /** Optional vertical video (Blender / Seedance render) and its first frame. */
   video?: string;
   poster?: string;
+  still?: string;
 };
 
 export const looks: Look[] = [
@@ -49,6 +51,63 @@ export const looks: Look[] = [
     ],
     bestFor: ["Hotel ballrooms", "Country clubs", "Galas and black-tie weddings"],
     season: "Fall and winter evenings",
+    video: "/social/clips/gilded-ivory-dolly.mp4",
+    poster: "/social/stills/gilded-ivory-dolly-start.jpg",
+    still: "/social/stills/gilded-ivory-reveal-end.jpg",
+  },
+  {
+    slug: "midnight-gold-gala",
+    name: "Midnight Gold Gala",
+    kicker: "Black linen, gold chairs and deep red roses",
+    story:
+      "The most dramatic room of the night: black linen, gold chairs that catch every candle, and roses so deep they read almost black. It is made for evening galas, New Year's Eve weddings and anything with a dress code.",
+    heroChair: "infinity",
+    alsoChairs: ["velvet-dining", "louis-medallion"],
+    palette: [
+      { name: "Onyx", hex: "#141416" },
+      { name: "Gold", hex: "#c9a646" },
+      { name: "Oxblood", hex: "#5a0d16" },
+      { name: "Ivory", hex: "#efe7da" },
+    ],
+    light: ["#4a3a1c", "#08080a"],
+    details: [
+      { label: "Florals", text: "Black Baccara and burgundy roses, low and dense, with a few ivory blooms" },
+      { label: "Linens", text: "Black velvet or satin, floor length" },
+      { label: "Lighting", text: "Gold candlesticks, fairy-light backdrop, the room kept dark" },
+      { label: "Table", text: "Gold chargers and flatware, black napkins, crystal" },
+    ],
+    bestFor: ["Galas and fundraisers", "New Year's Eve weddings", "Hotel ballrooms", "Corporate award nights"],
+    season: "Evenings, October to February",
+    video: "/social/clips/midnight-gold-dolly.mp4",
+    poster: "/social/stills/midnight-gold-dolly-start.jpg",
+    still: "/social/stills/midnight-gold-reveal-end.jpg",
+  },
+  {
+    slug: "blush-garden-party",
+    name: "Blush Garden Party",
+    kicker: "Rose gold, ivory linen and soft pink blooms",
+    story:
+      "Rose-gold chairs, crisp ivory linen and a cloud of blush flowers under string lights. Soft and romantic without being sweet, it suits spring weddings, bridal showers and garden receptions.",
+    heroChair: "infinity",
+    alsoChairs: ["ghost", "cane-back"],
+    palette: [
+      { name: "Blush", hex: "#e8c4c0" },
+      { name: "Rose gold", hex: "#c9907e" },
+      { name: "Ivory", hex: "#f4eee4" },
+      { name: "Sage", hex: "#a7b59c" },
+    ],
+    light: ["#6e4d48", "#1a1210"],
+    details: [
+      { label: "Florals", text: "Garden roses, peonies and ranunculus in blush and cream" },
+      { label: "Linens", text: "Ivory linen with a blush chiffon runner" },
+      { label: "Lighting", text: "String lights and fairy lights, candles in pink glass" },
+      { label: "Table", text: "Rose-gold chargers and flatware, clear stemware" },
+    ],
+    bestFor: ["Garden and tented weddings", "Bridal and baby showers", "Spring receptions", "Brunches"],
+    season: "April to June",
+    video: "/social/clips/blush-garden-dolly.mp4",
+    poster: "/social/stills/blush-garden-dolly-start.jpg",
+    still: "/social/stills/blush-garden-reveal-end.jpg",
   },
   {
     slug: "emerald-supper-club",

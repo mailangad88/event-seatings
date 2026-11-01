@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Elegant Wedding Decor Looks & the Chairs Behind Them",
-  description: `Eight of the most elegant wedding and event decor themes, from gilded ballroom to garden estate, each built around one statement chair. Get any look sent to you with pricing for your Chicagoland date.`,
+  description: `Ten of the most elegant wedding and event decor themes, from gilded ballroom to garden estate, each built around one statement chair. Get any look sent to you with pricing for your Chicagoland date.`,
   alternates: { canonical: "/looks" },
   openGraph: {
     title: "The Look Book: elegant event decor, chair first",
@@ -76,7 +76,7 @@ export default function LooksPage() {
             we&apos;ll send it to you with pricing for your date.
           </p>
         </div>
-        <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-4 sm:overflow-visible sm:px-0 lg:grid-cols-8">
+        <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-5 sm:overflow-visible sm:px-0">
           {looks.map((l, i) => (
             <Link
               key={l.slug}

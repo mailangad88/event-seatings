@@ -5,7 +5,7 @@ import { ChairCard } from "@/components/ChairCard";
 import { DecoFrame } from "@/components/DecoFrame";
 import { FaqList } from "@/components/FaqList";
 import { LookLeadForm } from "@/components/LookLeadForm";
-import { LookScene } from "@/components/LookScene";
+import { LookScene, lookMedia } from "@/components/LookScene";
 import { chairs, getChair } from "@/data/chairs";
 import { getLook, looks } from "@/data/looks";
 import { site } from "@/lib/site";
@@ -27,7 +27,11 @@ export async function generateMetadata(props: PageProps<"/looks/[slug]">): Promi
       title: `${look.name}: get the look`,
       description,
       url: `/looks/${look.slug}`,
-      images: [{ url: look.poster ?? `/chairs/render/${look.heroChair}.jpg`, width: 1000, height: 1250 }],
+      images: [
+        lookMedia(look).still
+          ? { url: lookMedia(look).still!, width: 1080, height: 1920 }
+          : { url: `/chairs/render/${look.heroChair}.jpg`, width: 1000, height: 1250 },
+      ],
     },
   };
 }
@@ -82,7 +86,7 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
 
         <div className="mt-8 grid gap-10 md:grid-cols-[1fr_1fr] md:gap-16">
           <div className="md:sticky md:top-32 md:self-start">
-            <LookScene look={look} priority className="aspect-[4/5] md:aspect-[9/12]" />
+            <LookScene look={look} priority motion className="aspect-[4/5] md:aspect-[9/12]" />
           </div>
 
           <div className="md:py-4">
