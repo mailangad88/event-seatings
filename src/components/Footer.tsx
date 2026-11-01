@@ -24,6 +24,7 @@ export function Footer() {
             {[
               ["/chairs", "The Collection"],
               ["/quiz", "Style Quiz"],
+              ["/tools", "Free Tools"],
               ["/blog", "Journal"],
               ["/quote", "Request a Quote"],
               ["/faq", "FAQ"],
