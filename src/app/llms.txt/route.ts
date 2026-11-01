@@ -1,4 +1,5 @@
 import { chairs } from "@/data/chairs";
+import { families } from "@/lib/guide-content";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -29,6 +30,9 @@ export async function GET() {
     "",
     "## Guides",
     ...posts.map((p) => `- [${p.title}](${site.url}/blog/${p.slug}): ${p.description}`),
+    "",
+    "## Planning guides (computed chair counts, floor plans and estimates)",
+    ...families.map((f) => `- [${f.hubTitle}](${site.url}${f.base}): ${f.hubDescription} (${f.slugs().length} guides)`),
     "",
     "## Contact",
     `- Email: ${site.email}`,

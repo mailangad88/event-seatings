@@ -163,3 +163,23 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 - Chicago neighborhood/suburb landing pages (in progress in another workstream).
 - Venue guides for popular Chicago venues (with real details only).
 - Reviews/testimonials page once real reviews exist. Never fake ones.
+
+## Planning guides (generated, 2026-11-01)
+
+Seven page families built from computed data (`src/lib/planning.ts`, `src/data/seating-events.ts`, `src/data/chairs.ts`) in `src/lib/guide-content.tsx`. Every page has an accessible SVG diagram or chair imagery with alt/title/desc, a quick-answer box, FAQPage + Article + BreadcrumbList JSON-LD, a per-page OG image, internal links and a book-a-call CTA. Each family has its own sitemap (`/sitemap/N.xml`, listed in robots.txt) and a hub in the footer and `/llms.txt`. Last touched 2026-11-01 for all rows. SEO ✅ AEO ✅ GEO ⚠️ (Chicago named, no venue facts) Visuals ✅ FAQ ✅ CTA ✅.
+
+| Family | Route | Pages | What makes each page distinct |
+|---|---|---|---|
+| Seating layouts | `/seating-layouts/[event]-[n]-guests` | 126 | Computed chair, table and floor-space counts, to-scale floor plan, event-specific advice, cost range |
+| Room size guides | `/room-size-guides/[w]x[l]-ft-room` | 29 | Real packing math per setup, to-scale layout, which events fit |
+| Chair comparisons | `/chair-comparisons/[a]-vs-[b]` | 66 | Spec table and cost from catalog, decision reasons computed from differences |
+| Chair rental cost | `/chair-rental-cost/[chair]-[n]-chairs` | 36 | Price ladder, events needing about that many chairs |
+| Chair fit | `/chair-fit/[chair]-for-[event]` | 98 | 5-step fit flowchart; only pairings scoring 5+ are published |
+| Table guides | `/table-seating-guides/[table]` | 12 | Capacity, footprint, tables needed per guest count |
+| Chicago seasons | `/chicago-event-seasons/[month]` | 12 | Month-by-month weather, event and booking notes |
+
+Plus 7 hub pages. Total: 379 guide pages + 7 hubs.
+
+**Held back on purpose:** area x chair and area x event combinations (thin doorway pages), named venue guides (need verified facts), chair-fit pairings scoring under 5, near-duplicate room sizes and cost quantities.
+
+**Remaining to improve:** add real photos/video per family (Remotion clips need VideoObject schema once added); verify cost estimates when pricing is final; add venue-type guides once facts are verified; submit the 8 sitemaps in Search Console.

@@ -28,6 +28,13 @@ export function Footer() {
               ["/book", "Book a Free Call"],
               ["/quote", "Request a Quote"],
               ["/faq", "FAQ"],
+              ["/seating-layouts", "Seating Layouts"],
+              ["/room-size-guides", "Room Size Guides"],
+              ["/chair-comparisons", "Chair Comparisons"],
+              ["/chair-rental-cost", "Chair Rental Cost"],
+              ["/chair-fit", "Chair Fit Guides"],
+              ["/table-seating-guides", "Table Guides"],
+              ["/chicago-event-seasons", "Chicago Event Seasons"],
             ].map(([href, label]) => (
               <li key={href}>
                 <Link href={href} className="transition-colors hover:text-ink">{label}</Link>

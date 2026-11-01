@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { families } from "@/lib/guide-content";
 import { site } from "@/lib/site";
 
 // Search engines and AI answer engines are all welcome; only private routes are blocked.
@@ -11,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/", disallow },
       { userAgent: aiBots, allow: ["/", "/llms.txt"], disallow },
     ],
-    sitemap: `${site.url}/sitemap.xml`,
+    sitemap: [0, ...families.map((_, i) => i + 1)].map((i) => `${site.url}/sitemap/${i}.xml`),
     host: site.url,
   };
 }
