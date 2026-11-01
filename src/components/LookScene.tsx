@@ -1,7 +1,7 @@
 import { existsSync } from "fs";
 import path from "path";
 import Image from "next/image";
-import { getChair } from "@/data/chairs";
+import { chairAlt, getChair } from "@/data/chairs";
 import type { Look } from "@/data/looks";
 import renders from "@/data/renders.json";
 
@@ -14,24 +14,22 @@ export function lookMedia(look: Look) {
   const video = has(look.video) ? look.video : undefined;
   const poster = has(look.poster) ? look.poster : undefined;
   const still = has(look.still) ? look.still : poster;
-  return { video, poster: poster ?? still, still };
+  const captions = has(look.captions) ? look.captions : undefined;
+  return { video, poster: poster ?? still, still, captions };
 }
 
-// A styled "set" for a decor look. In order of preference: the look's video (when `motion`),
-// its rendered still, or the studio render of the hero chair framed in an arched window.
+// A styled "set" for a decor look: the look's rendered still, or else the studio render of the
+// hero chair framed in an arched window. Videos are shown with VideoFeature, not here.
 export function LookScene({
   look,
   priority = false,
   className = "",
   showPalette = true,
-  motion = false,
 }: {
   look: Look;
   priority?: boolean;
   className?: string;
   showPalette?: boolean;
-  /** Play the look's video. Keep to one per page so mobile data stays light. */
-  motion?: boolean;
 }) {
   const media = lookMedia(look);
   const chair = getChair(look.heroChair);
@@ -43,22 +41,10 @@ export function LookScene({
       className={`relative isolate overflow-hidden ${className}`}
       style={{ background: `radial-gradient(130% 90% at 50% 18%, ${glow} 0%, ${shade} 72%)` }}
     >
-      {motion && media.video ? (
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          src={media.video}
-          poster={media.poster}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label={`${look.name} styled with the ${chair?.name ?? "featured chair"}`}
-        />
-      ) : media.still ? (
+      {media.still ? (
         <Image
           src={media.still}
-          alt={`${look.name}: a table styled with gold chairs`}
+          alt={look.mediaAlt ?? `${look.name} decor look: ${look.kicker.toLowerCase()}.`}
           fill
           priority={priority}
           sizes="(max-width: 768px) 90vw, 40vw"
@@ -84,7 +70,11 @@ export function LookScene({
             {src && (
               <Image
                 src={src}
-                alt={`${chair?.name ?? "Chair"} styled for ${look.name}`}
+                alt={
+                  chair
+                    ? `${look.name} decor look, built around the ${chairAlt(chair)}`
+                    : `${look.name} decor look`
+                }
                 fill
                 priority={priority}
                 sizes="(max-width: 768px) 70vw, 30vw"

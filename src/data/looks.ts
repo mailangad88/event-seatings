@@ -4,6 +4,8 @@
 //   video  a vertical 9:16 MP4 that plays on the look's own page
 //   poster the video's first frame, shown while it loads
 //   still  a frame used on cards and as the share image
+//   mediaAlt  what the still and video show (alt text, video description)
+//   captions  a WebVTT file describing the video, in /public/looks/captions
 // Any file that isn't in /public at build time is skipped, and the page falls back to the
 // studio render of the hero chair in the look's palette.
 
@@ -25,6 +27,8 @@ export type Look = {
   video?: string;
   poster?: string;
   still?: string;
+  mediaAlt?: string;
+  captions?: string;
 };
 
 export const looks: Look[] = [
@@ -54,6 +58,9 @@ export const looks: Look[] = [
     video: "/social/clips/gilded-ivory-dolly.mp4",
     poster: "/social/stills/gilded-ivory-dolly-start.jpg",
     still: "/social/stills/gilded-ivory-reveal-end.jpg",
+    mediaAlt:
+      "A long banquet table dressed in ivory linen with gold chairs down both sides, white roses and greenery, gold-rim plates and tall taper candles, in front of an ivory curtain of fairy lights.",
+    captions: "/looks/captions/gilded-ballroom.vtt",
   },
   {
     slug: "midnight-gold-gala",
@@ -81,6 +88,9 @@ export const looks: Look[] = [
     video: "/social/clips/midnight-gold-dolly.mp4",
     poster: "/social/stills/midnight-gold-dolly-start.jpg",
     still: "/social/stills/midnight-gold-reveal-end.jpg",
+    mediaAlt:
+      "A long banquet table in black linen lined with polished gold chairs with white seat pads, low arrangements of deep red roses, gold chargers and taper candles, under a dark curtain of fairy lights.",
+    captions: "/looks/captions/midnight-gold-gala.vtt",
   },
   {
     slug: "blush-garden-party",
@@ -108,6 +118,9 @@ export const looks: Look[] = [
     video: "/social/clips/blush-garden-dolly.mp4",
     poster: "/social/stills/blush-garden-dolly-start.jpg",
     still: "/social/stills/blush-garden-reveal-end.jpg",
+    mediaAlt:
+      "A long banquet table in ivory linen lined with rose-gold chairs with white seat pads, blush roses and greenery, and taper candles, in front of a soft white curtain of fairy lights.",
+    captions: "/looks/captions/blush-garden-party.vtt",
   },
   {
     slug: "emerald-supper-club",

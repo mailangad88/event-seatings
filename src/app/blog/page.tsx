@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ChairArt } from "@/components/ChairArt";
+import { getChair } from "@/data/chairs";
 import { formatDate, getPosts } from "@/lib/blog";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Journal: Wedding Seating Ideas & Chiavari Alternatives",
-  description: "Wedding chair ideas, seating guides and styling inspiration from Beyond Chivary.",
+  description: "Wedding chair ideas, seating guides and styling inspiration from Beyond Chiavari.",
   alternates: { canonical: "/blog" },
 };
 
@@ -22,6 +24,7 @@ export default async function BlogPage() {
       {lead && (
         <Link href={`/blog/${lead.slug}`} className="group mt-20 grid gap-8 border-t border-gold/40 pt-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
           <div>
+            {getChair(lead.chair) && <ChairArt chair={getChair(lead.chair)!} priority className="mb-8 aspect-[16/10]" />}
             <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
               Latest · {formatDate(lead.date)} · {lead.readingMinutes} min read
             </p>
@@ -39,6 +42,7 @@ export default async function BlogPage() {
       <div className="mt-20 grid gap-x-10 gap-y-14 md:grid-cols-3">
         {rest.map((p) => (
           <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-line pt-6">
+            {getChair(p.chair) && <ChairArt chair={getChair(p.chair)!} className="mb-6 aspect-[4/3]" />}
             <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
               {formatDate(p.date)} · {p.readingMinutes} min read
             </p>

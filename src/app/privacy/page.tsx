@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { ChairStrip } from "@/components/ChairStrip";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -13,6 +14,7 @@ export default function PrivacyPage() {
       <p className="eyebrow">Legal</p>
       <h1 className="headline mt-6 text-5xl sm:text-6xl">Privacy policy</h1>
       <p className="mt-4 text-sm text-muted">Last updated October 2026</p>
+      <ChairStrip className="mt-10" slugs={["ghost", "bentwood", "cane-back"]} caption="We collect only what we need to plan your seating." />
       <div className="prose-post mt-10">
         <p>
           {site.name} (&ldquo;we&rdquo;) is based in {site.city}. This page explains what we collect through this
@@ -23,6 +25,10 @@ export default function PrivacyPage() {
           <li>
             <strong>Quote requests:</strong> your name, email, phone (optional), event date, event type, guest count,
             city, venue, the chairs you selected and any message you write.
+          </li>
+          <li>
+            <strong>Call requests:</strong> your name, email, phone, preferred call time and anything you tell us about
+            your event.
           </li>
           <li>
             <strong>Email signups and the style quiz:</strong> your email address and, for the quiz, your style

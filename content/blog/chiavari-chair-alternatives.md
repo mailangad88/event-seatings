@@ -3,6 +3,7 @@ title: 12 Chiavari Chair Alternatives for a Wedding That Feels Like Yours
 description: Tired of seeing the same gold chair at every reception? Here are 12 wedding chair styles worth considering, and the kind of wedding each one suits best.
 date: 2026-10-01
 tags: Chiavari alternatives, Planning
+chair: bentwood
 ---
 
 The Chiavari chair became the default for a reason. It's light, it stacks, and it looks tidy in a ballroom. But walk into enough Chicagoland receptions and you'll see the same chair, in the same gold, with the same ivory cushion, in almost every one of them.

@@ -3,6 +3,7 @@ title: How Many Chairs Do I Need for My Wedding? A Simple Guide
 description: Ceremony, reception, cocktail hour and the head table. Here's how to count chairs so no guest is left standing.
 date: 2026-10-03
 tags: Planning, Guides
+chair: windsor
 ---
 
 "One per guest" is the right start, but it's not the whole answer. Here's how to count.

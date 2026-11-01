@@ -2,6 +2,7 @@ import "server-only";
 import { promises as fs } from "fs";
 import path from "path";
 import { marked } from "marked";
+import { chairs, getChair } from "@/data/chairs";
 
 // Blog posts are Markdown files in /content/blog with a small header, e.g.
 //
@@ -10,6 +11,7 @@ import { marked } from "marked";
 // description: One-sentence summary for Google and the blog list
 // date: 2026-10-05
 // tags: Chiavari alternatives, Rustic
+// chair: cross-back            (optional: the chair image shown with the post)
 // ---
 //
 // Posts dated in the future stay hidden until that day, so you can write a
@@ -21,8 +23,19 @@ export type Post = {
   description: string;
   date: string;
   tags: string[];
+  /** Slug of the chair pictured with the post (from `chair:` or picked from the slug). */
+  chair: string;
   readingMinutes: number;
 };
+
+// Every post gets a visual: the chair named in its header, else one picked from its slug.
+function pickChair(slug: string, named?: string) {
+  if (named && getChair(named)) return named;
+  const hit = chairs.find((c) => slug.includes(c.slug) || slug.includes(c.silhouette));
+  if (hit) return hit.slug;
+  const n = [...slug].reduce((a, ch) => a + ch.charCodeAt(0), 0);
+  return chairs[n % chairs.length].slug;
+}
 
 const dir = path.join(process.cwd(), "content", "blog");
 
@@ -40,6 +53,7 @@ function parse(file: string, raw: string) {
     description: meta.description ?? "",
     date: meta.date ?? "1970-01-01",
     tags: (meta.tags ?? "").split(",").map((t) => t.trim()).filter(Boolean),
+    chair: pickChair(file.replace(/\.md$/, ""), meta.chair),
     readingMinutes: Math.max(1, Math.round(body.split(/\s+/).length / 230)),
   };
   return { post, body };

@@ -44,7 +44,11 @@ export function ChairCanvas({
         <ChairArt chair={chair} className="h-full w-full" priority={priority} />
       </div>
       {webgl && (
-        <div className={`absolute inset-0 transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-0"}`}>
+        <div
+          className={`absolute inset-0 transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-0"}`}
+          role="img"
+          aria-label={`Interactive 3D model of the ${chair.name}. Drag to rotate.`}
+        >
           <StudioBackdrop tint={chairTint(chair.slug)} floor={null} style={{ position: "absolute", inset: 0 }}>
             <div style={{ width: "100%", height: "100%", cursor: "grab" }}>
               <ChairScene

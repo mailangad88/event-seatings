@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Quiz } from "@/components/Quiz";
+import { ChairStrip } from "@/components/ChairStrip";
 
 export const metadata: Metadata = {
   title: "Wedding Chair Style Quiz",
@@ -16,6 +17,7 @@ export default function QuizPage() {
           Discover your <em className="text-gold">aesthetic</em>
         </h1>
         <p className="mt-6 text-lg text-muted">Four questions. A considered recommendation.</p>
+        <ChairStrip className="mt-12" slugs={["rattan-garden", "louis-medallion", "wishbone", "infinity"]} />
       </div>
       <Quiz />
     </div>

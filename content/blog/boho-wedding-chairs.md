@@ -3,6 +3,7 @@ title: The Best Chairs for a Boho Wedding
 description: Rattan, cane and wishbone chairs bring the texture a boho wedding needs. Here is how to choose and combine them.
 date: 2026-10-06
 tags: Boho, Rattan, Styling
+chair: rattan-garden
 ---
 
 A boho wedding is built on texture: woven materials, natural wood, dried grasses, layered fabrics. The chair is one of the easiest places to get that texture right.

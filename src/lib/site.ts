@@ -1,14 +1,14 @@
 // Central business settings. Edit these and the whole site updates.
 export const site = {
-  name: "Beyond Chivary",
-  domain: "beyondchivary.com",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://beyondchivary.com",
+  name: "Beyond Chiavari",
+  domain: "beyondchiavari.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://beyondchiavari.com",
   tagline: "Event chair rentals beyond Chiavari",
   // Primary market shown in titles and copy.
   market: "Chicago",
   marketLong: "Chicago & suburbs",
   description:
-    "Beyond Chivary rents distinctive chairs for weddings, corporate events, galas and parties across Chicago and the suburbs: cross-back, ghost, rattan, bentwood, velvet, Chiavari alternatives and more, delivered and set up.",
+    "Beyond Chiavari rents distinctive chairs for weddings, corporate events, galas and parties across Chicago and the suburbs: cross-back, ghost, rattan, bentwood, velvet, Chiavari alternatives and more, delivered and set up.",
   // Where the business is based (used for the LocalBusiness address).
   city: "St. Charles, IL",
   locality: "St. Charles",
@@ -28,10 +28,10 @@ export const site = {
     "Batavia",
     "Elgin",
   ],
-  email: "hello@beyondchivary.com",
+  email: "hello@beyondchiavari.com",
   phone: process.env.NEXT_PUBLIC_PHONE ?? "",
-  instagram: "https://instagram.com/beyondchivary",
-  pinterest: "https://pinterest.com/beyondchivary",
+  instagram: "https://instagram.com/beyondchiavari",
+  pinterest: "https://pinterest.com/beyondchiavari",
   // Calendly / Cal.com / Google booking page for the free seating call.
   // When empty, /book shows a call-request form instead.
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",

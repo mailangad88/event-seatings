@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CallCta } from "@/components/CallCta";
 import { site } from "@/lib/site";
+import { ProcessFlow } from "@/components/ProcessFlow";
 
 export const metadata: Metadata = {
   title: "Chair Rental FAQ: Chicago Weddings & Events",
@@ -81,6 +82,11 @@ export default function FaqPage() {
         </div>
       </div>
     </div>
+    <section className="container-x mt-24">
+      <p className="eyebrow">At a glance</p>
+      <h2 className="headline mt-6 mb-12 text-5xl">How renting with us <em className="text-gold">works</em></h2>
+      <ProcessFlow />
+    </section>
     <div className="mt-24 -mb-32">
       <CallCta source="faq" />
     </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
+import { ChairArt } from "@/components/ChairArt";
 import { ChairCard } from "@/components/ChairCard";
 import { HeroViewer } from "@/components/HeroViewer";
 import { Reveal } from "@/components/Reveal";
@@ -197,6 +198,7 @@ export default async function Home() {
           <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
             {posts.map((p) => (
               <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-gold/40 pt-6">
+                {getChair(p.chair) && <ChairArt chair={getChair(p.chair)!} className="mb-6 aspect-[4/3]" />}
                 <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
                   {formatDate(p.date)} · {p.readingMinutes} min read
                 </p>

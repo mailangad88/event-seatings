@@ -3,6 +3,7 @@ title: Should Your Ceremony and Reception Chairs Match?
 description: Matching chairs look cohesive, but mixing them can make each part of the day feel different. Here's how to decide.
 date: 2026-10-04
 tags: Planning, Styling
+chair: garden-folding
 ---
 
 There's no rule saying your ceremony and reception chairs have to match. Here's how to think about it.

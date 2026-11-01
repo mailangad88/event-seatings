@@ -6,6 +6,7 @@ import { DecoFrame } from "@/components/DecoFrame";
 import { FaqList } from "@/components/FaqList";
 import { LookLeadForm } from "@/components/LookLeadForm";
 import { LookScene, lookMedia } from "@/components/LookScene";
+import { VideoFeature } from "@/components/VideoFeature";
 import { chairs, getChair } from "@/data/chairs";
 import { getLook, looks } from "@/data/looks";
 import { site } from "@/lib/site";
@@ -41,6 +42,7 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
   if (!look) notFound();
 
   const hero = getChair(look.heroChair)!;
+  const media = lookMedia(look);
   const also = look.alsoChairs.map(getChair).filter((c) => c !== undefined);
   const leadChairs = [hero.slug, ...also.map((c) => c.slug)];
   const others = looks.filter((l) => l.slug !== look.slug).slice(0, 3);
@@ -86,7 +88,22 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
 
         <div className="mt-8 grid gap-10 md:grid-cols-[1fr_1fr] md:gap-16">
           <div className="md:sticky md:top-32 md:self-start">
-            <LookScene look={look} priority motion className="aspect-[4/5] md:aspect-[9/12]" />
+            {media.video && media.poster ? (
+              <VideoFeature
+                className="mx-auto max-w-sm"
+                video={{
+                  src: media.video,
+                  poster: media.poster,
+                  title: `${look.name}: the look in motion`,
+                  description: look.mediaAlt ?? `${look.name} decor look: ${look.kicker.toLowerCase()}.`,
+                  captions: media.captions,
+                  uploadDate: "2026-11-01",
+                  durationSeconds: 4,
+                }}
+              />
+            ) : (
+              <LookScene look={look} priority className="aspect-[4/5] md:aspect-[9/12]" />
+            )}
           </div>
 
           <div className="md:py-4">
