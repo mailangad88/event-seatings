@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { ChairStrip } from "@/components/ChairStrip";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
   description: `Terms for using the ${site.name} website.`,
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {
@@ -12,6 +14,7 @@ export default function TermsPage() {
       <p className="eyebrow">Legal</p>
       <h1 className="headline mt-6 text-5xl sm:text-6xl">Terms of use</h1>
       <p className="mt-4 text-sm text-muted">Last updated October 2026</p>
+      <ChairStrip className="mt-10" slugs={["windsor", "shell", "garden-folding"]} caption="Plain-language terms for using this site." />
       <div className="prose-post mt-10">
         <h2>Quote requests are not bookings</h2>
         <p>

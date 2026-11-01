@@ -11,7 +11,7 @@ create table if not exists votes (
 
 create table if not exists leads (
   id uuid primary key,
-  kind text not null check (kind in ('quote', 'waitlist', 'quiz')),
+  kind text not null check (kind in ('quote', 'waitlist', 'quiz', 'call')),
   created_at timestamptz not null default now(),
   name text,
   email text not null,
@@ -26,6 +26,10 @@ create table if not exists leads (
   quiz_styles text[],
   source text
 );
+
+-- Already ran an older version of this file? Allow call requests with:
+--   alter table leads drop constraint leads_kind_check;
+--   alter table leads add constraint leads_kind_check check (kind in ('quote', 'waitlist', 'quiz', 'call'));
 
 alter table votes enable row level security;
 alter table leads enable row level security;

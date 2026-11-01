@@ -1,3 +1,5 @@
+import renders from "./renders.json";
+
 // The chair catalog. To add your own chair, copy one entry and change it.
 // Photos: drop a file in /public/chairs/ and set `image: "/chairs/your-file.jpg"`.
 // Without a photo, a line illustration of `silhouette` is shown instead.
@@ -331,4 +333,14 @@ export const allUses: EventUse[] = [
 
 export function getChair(slug: string) {
   return chairs.find((c) => c.slug === slug);
+}
+
+// Descriptive alt text for every chair image, so Google, AI search and screen readers know what's pictured.
+export function chairAlt(chair: Chair) {
+  const finishes = chair.finishes.map((f) => f.name.toLowerCase()).join(", ");
+  return `${chair.name} for rent in Chicago: ${chair.tagline.charAt(0).toLowerCase()}${chair.tagline.slice(1)}. Shown in ${chair.finishes[0]?.name.toLowerCase() ?? "its standard finish"}; also available in ${finishes}.`;
+}
+
+export function chairImage(chair: Chair) {
+  return chair.image ?? (renders.includes(chair.slug) ? `/chairs/render/${chair.slug}.jpg` : undefined);
 }

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { CallCta } from "@/components/CallCta";
+import { ChairArt } from "@/components/ChairArt";
 import { ChairCard } from "@/components/ChairCard";
 import { HeroViewer } from "@/components/HeroViewer";
 import { Reveal } from "@/components/Reveal";
@@ -31,15 +33,15 @@ export default async function Home() {
       {/* Hero */}
       <section className="container-x grid items-center gap-14 pt-14 pb-24 md:grid-cols-[1.05fr_1fr] md:pt-24 md:pb-32">
         <div className="animate-rise">
-          <p className="eyebrow">{site.launch.seasonLabel} · St. Charles, Illinois</p>
+          <p className="eyebrow">{site.launch.seasonLabel} · Chicago & suburbs</p>
           <h1 className="headline mt-8 text-[3.6rem] leading-[0.95] sm:text-7xl lg:text-[6.2rem]">
             Seating,
             <br />
             <em className="text-gold">beyond</em> Chiavari.
           </h1>
           <p className="mt-8 max-w-md text-lg leading-8 text-muted">
-            A curated collection of distinctive chairs for weddings and celebrations, delivered and styled across
-            Chicago&apos;s western suburbs.
+            A curated collection of distinctive chairs for weddings, corporate events and every celebration,
+            delivered and set up across Chicago and the suburbs.
           </p>
           <div className="mt-11 flex flex-wrap items-center gap-8">
             <Link href="/chairs" className="btn-primary">Explore the collection</Link>
@@ -72,7 +74,7 @@ export default async function Home() {
         {[
           ["I", "Curated", "More than a dozen distinctive styles, chosen for how they look in a room, in photographs and from behind."],
           ["II", "Commercial grade", "Weight-rated pieces built for events, never residential furniture. Delivered, placed and collected by our team."],
-          ["III", "Locally owned", `Based in ${site.city}. We know the estates, barns and ballrooms of the Fox Valley.`],
+          ["III", "Locally owned", "Based in the Chicago area. We know its lofts, ballrooms, estates and barns, from the Loop to the Fox Valley."],
         ].map(([n, t, d], i) => (
           <Reveal key={t} delay={i * 120} className="border-t border-gold/40 pt-6">
             <span className="font-serif text-lg text-gold italic">{n}.</span>
@@ -174,9 +176,14 @@ export default async function Home() {
           ))}
         </ol>
         <div className="mt-16">
-          <Link href="/quote" className="btn-primary">Begin your enquiry</Link>
+          <div className="flex flex-wrap items-center gap-8">
+            <Link href="/book" className="btn-primary">Book a free seating call</Link>
+            <Link href="/quote" className="link-line">Begin your enquiry</Link>
+          </div>
         </div>
       </section>
+
+      <CallCta source="home" />
 
       {/* Journal */}
       {posts.length > 0 && (
@@ -191,6 +198,7 @@ export default async function Home() {
           <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
             {posts.map((p) => (
               <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-gold/40 pt-6">
+                {getChair(p.chair) && <ChairArt chair={getChair(p.chair)!} className="mb-6 aspect-[4/3]" />}
                 <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
                   {formatDate(p.date)} · {p.readingMinutes} min read
                 </p>

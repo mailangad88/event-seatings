@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CallCta } from "@/components/CallCta";
 import { site } from "@/lib/site";
+import { ChairStrip } from "@/components/ChairStrip";
+import { ProcessFlow } from "@/components/ProcessFlow";
 
 export const metadata: Metadata = {
   title: "Our Story",
-  description: `Event Seatings is a ${site.city} wedding chair rental company bringing alternatives to the Chiavari chair.`,
+  description: `${site.name} is a Chicago-area event chair rental company bringing alternatives to the Chiavari chair to weddings, corporate events and parties.`,
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
   return (
+    <>
     <div className="container-x py-20">
       <div className="max-w-4xl">
         <p className="eyebrow">Our story</p>
@@ -16,6 +21,11 @@ export default function AboutPage() {
           Every celebration deserves a <em className="text-gold">point of view</em>
         </h1>
       </div>
+      <ChairStrip
+        className="mt-16"
+        slugs={["cross-back", "ghost", "velvet-dining", "royal-throne"]}
+        caption="A few pieces from the founding collection, all commercial-grade and delivered across Chicago and the suburbs."
+      />
       <div className="mt-20 grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-20">
         <p className="font-serif text-3xl leading-snug font-light text-muted italic">
           &ldquo;Couples spend months choosing florals, linens and light, then get one chair to choose from.&rdquo;
@@ -32,9 +42,9 @@ export default function AboutPage() {
             guests live with it all evening.
           </p>
           <p>
-            Event Seatings is a new, locally owned company based in {site.city}. We&apos;re assembling a collection of
+            {site.name} is a new, locally owned company based in {site.city}. We&apos;re assembling a collection of
             distinctive, commercial-grade chairs (cross-back, ghost, rattan, velvet, bentwood and more) for weddings
-            and celebrations across the Fox Valley and Chicago&apos;s western suburbs.
+            and celebrations across Chicago and the suburbs.
           </p>
           <h2>Shaped by you</h2>
           <p>
@@ -51,5 +61,14 @@ export default function AboutPage() {
         </div>
       </div>
     </div>
+    <section className="container-x mt-24">
+      <p className="eyebrow">How it works</p>
+      <h2 className="headline mt-6 mb-12 text-5xl">From first look to last <em className="text-gold">dance</em></h2>
+      <ProcessFlow />
+    </section>
+    <div className="mt-24 -mb-32">
+      <CallCta source="about" />
+    </div>
+    </>
   );
 }

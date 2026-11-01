@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { QuoteForm } from "@/components/QuoteForm";
 import { getChair } from "@/data/chairs";
 import { site } from "@/lib/site";
+import { ProcessFlow } from "@/components/ProcessFlow";
 
 export const metadata: Metadata = {
   title: "Request a Quote",
-  description: `Request a quote for wedding and event chair rentals in ${site.city} and Chicago's western suburbs.`,
+  description: `Request a quote for wedding and event chair rentals in Chicago and the suburbs. Delivery and setup included.`,
+  alternates: { canonical: "/quote" },
 };
 
 export default async function QuotePage(props: PageProps<"/quote">) {
@@ -22,6 +24,7 @@ export default async function QuotePage(props: PageProps<"/quote">) {
         A few details about your celebration and the pieces you love. It takes about two minutes, and we&apos;ll
         prepare a personal proposal.
       </p>
+      <ProcessFlow className="mt-16 border-y border-line py-10" />
       <div className="mt-20">
         <QuoteForm initialChairs={initial} />
       </div>

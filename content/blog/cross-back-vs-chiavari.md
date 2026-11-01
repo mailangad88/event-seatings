@@ -3,6 +3,7 @@ title: "Cross-Back vs. Chiavari Chairs: Which Is Right for Your Wedding?"
 description: A side-by-side look at the two most-requested wedding chairs, covering look, comfort, venue fit and what each says about your style.
 date: 2026-10-02
 tags: Cross-back, Chiavari alternatives, Rustic
+chair: cross-back
 ---
 
 If you're choosing between a cross-back chair and a Chiavari chair, you're choosing between two different feelings. Here's how they compare.

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { CallCta } from "@/components/CallCta";
 import { site } from "@/lib/site";
+import { ProcessFlow } from "@/components/ProcessFlow";
 
 export const metadata: Metadata = {
-  title: "FAQ",
-  description: "Answers about wedding chair rentals, delivery, setup, pricing and our launch season.",
+  title: "Chair Rental FAQ: Chicago Weddings & Events",
+  description: "Answers about event and wedding chair rentals in Chicago: delivery, setup, pricing, quantities and our launch season.",
+  alternates: { canonical: "/faq" },
 };
 
 const faqs: [string, string][] = [
@@ -13,7 +16,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Where do you deliver?",
-    `We're based in ${site.city} and serve ${site.serviceArea.join(", ")} and surrounding areas. Ask us about venues farther out.`,
+    `We serve Chicago and the suburbs from our base in ${site.city}, including ${site.serviceArea.join(", ")} and surrounding areas. Ask us about venues farther out.`,
   ],
   [
     "Do you deliver and set up?",
@@ -48,6 +51,7 @@ export default function FaqPage() {
     mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
   };
   return (
+    <>
     <div className="container-x py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <div className="grid gap-14 md:grid-cols-[1fr_1.6fr] md:gap-20">
@@ -78,5 +82,14 @@ export default function FaqPage() {
         </div>
       </div>
     </div>
+    <section className="container-x mt-24">
+      <p className="eyebrow">At a glance</p>
+      <h2 className="headline mt-6 mb-12 text-5xl">How renting with us <em className="text-gold">works</em></h2>
+      <ProcessFlow />
+    </section>
+    <div className="mt-24 -mb-32">
+      <CallCta source="faq" />
+    </div>
+    </>
   );
 }

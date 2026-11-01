@@ -3,6 +3,7 @@ title: Ghost Chairs at Weddings: How to Style Them Well
 description: Clear acrylic chairs can look dated or breathtaking. Here is how to make them work, and when to choose something else.
 date: 2026-10-05
 tags: Ghost chairs, Styling
+chair: ghost
 ---
 
 Ghost chairs are the most polarizing option on the Chiavari-alternative list. Done well, they let your florals, linens and architecture carry the room. Done poorly, they look like a hotel banquet from 2012.

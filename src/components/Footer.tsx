@@ -10,8 +10,8 @@ export function Footer() {
         <div>
           <Logo light />
           <p className="mt-6 max-w-sm text-sm leading-7 text-ink/65">
-            A curated collection of distinctive chairs for weddings and celebrations. Based in {site.city}, serving
-            the Fox Valley and Chicago&apos;s western suburbs.
+            A curated collection of distinctive chairs for weddings, corporate events and celebrations, delivered
+            and set up across Chicago and the suburbs.
           </p>
           <div className="mt-10 max-w-sm">
             <p className="mb-3 text-[11px] tracking-[0.25em] text-ink/80 uppercase">The private list</p>
@@ -25,6 +25,7 @@ export function Footer() {
               ["/chairs", "The Collection"],
               ["/quiz", "Style Quiz"],
               ["/blog", "Journal"],
+              ["/book", "Book a Free Call"],
               ["/quote", "Request a Quote"],
               ["/faq", "FAQ"],
             ].map(([href, label]) => (

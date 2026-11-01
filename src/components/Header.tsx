@@ -34,8 +34,8 @@ export function Header() {
         <div className="container-x py-2.5">
           Now reserving the {site.launch.seasonLabel}
           <span className="mx-3 text-gold" aria-hidden>·</span>
-          <Link href="/quote" className="text-ink underline decoration-gold underline-offset-4">
-            Enquire
+          <Link href="/book" className="text-ink underline decoration-gold underline-offset-4">
+            Book a free call
           </Link>
         </div>
       </div>
@@ -54,8 +54,8 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href="/quote" className="btn-primary px-7 py-3">
-            Enquire
+          <Link href="/book" className="btn-primary px-7 py-3">
+            Book a call
           </Link>
         </nav>
         <MobileNav items={nav} />

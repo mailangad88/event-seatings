@@ -4,8 +4,9 @@ import { allStyles, type Style } from "@/data/chairs";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Wedding Chair Rentals: Chiavari Alternatives",
-  description: `Browse cross-back, ghost, rattan, bentwood, velvet and more wedding chairs for rent in ${site.city} and Chicago's western suburbs.`,
+  title: "Chair Rentals in Chicago: Chiavari Alternatives for Every Event",
+  description: `Browse cross-back, ghost, rattan, bentwood, velvet and more event and wedding chairs for rent in Chicago and the suburbs, delivered and set up.`,
+  alternates: { canonical: "/chairs" },
 };
 
 export default async function ChairsPage(props: PageProps<"/chairs">) {

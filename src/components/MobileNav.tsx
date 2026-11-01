@@ -31,7 +31,10 @@ export function MobileNav({ items }: { items: { href: string; label: string }[] 
               {item.label}
             </Link>
           ))}
-          <Link href="/quote" className="btn-primary mt-6 w-full" onClick={() => setOpen(false)}>
+          <Link href="/book" className="btn-primary mt-6 w-full" onClick={() => setOpen(false)}>
+            Book a free call
+          </Link>
+          <Link href="/quote" className="btn-ghost mt-3 w-full" onClick={() => setOpen(false)}>
             Request a quote
           </Link>
         </nav>
