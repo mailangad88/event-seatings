@@ -1,23 +1,34 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VoteProvider } from "@/components/VoteProvider";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
+// Self-hosted fonts (next/font/local): no build-time fetch from Google, so builds work anywhere.
+const display = localFont({
   variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
+  display: "swap",
+  src: [
+    { path: "./fonts/cormorant-garamond-latin-300-normal.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/cormorant-garamond-latin-300-italic.woff2", weight: "300", style: "italic" },
+    { path: "./fonts/cormorant-garamond-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/cormorant-garamond-latin-400-italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/cormorant-garamond-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/cormorant-garamond-latin-500-italic.woff2", weight: "500", style: "italic" },
+  ],
 });
 
-const body = Jost({
+const body = localFont({
   variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  display: "swap",
+  src: [
+    { path: "./fonts/jost-latin-300-normal.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/jost-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/jost-latin-500-normal.woff2", weight: "500", style: "normal" },
+  ],
 });
 
 export const metadata: Metadata = {
