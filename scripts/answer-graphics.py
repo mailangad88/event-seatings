@@ -127,4 +127,46 @@ for n,r,ang in places:
     b.append(text(x+10,y+5,n,17,INK))
 b.append(text(140,240,"Schematic, not to scale",14,MUTED,SANS,"start",400,1,True))
 write("service-area.svg",svg(1200,720,"Schematic of the delivery area from St. Charles across the Fox Valley, west suburbs and Chicago","\n".join(b)))
+# 7. Quinceanera seating plan (schematic)
+b=[eyebrow(600,70,"Quinceañera seating plan","middle"),
+   text(600,122,"Four kinds of seats, one room",40,INK,SERIF,"middle",300)]
+# room outline
+b.append(f'<rect x="60" y="160" width="700" height="500" fill="none" stroke="{GOLD}" stroke-opacity=".5"/>')
+# stage + throne
+b.append(f'<rect x="250" y="180" width="320" height="70" fill="{SOFT}" stroke="{GOLD}"/>')
+b.append(f'<rect x="395" y="192" width="30" height="46" fill="{GOLD}"/>')
+b.append(text(410,272,"STAGE + THRONE",13,GOLD,SANS,"middle",500,2.5))
+# court table either side
+for x in (90,590):
+    b.append(f'<rect x="{x}" y="190" width="140" height="34" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".7"/>')
+    for k in range(5):
+        b.append(f'<circle cx="{x+18+k*26}" cy="236" r="6" fill="none" stroke="{GOLD}"/>')
+b.append(text(160,180,"COURT",12,MUTED,SANS,"middle",500,2))
+b.append(text(660,180,"COURT",12,MUTED,SANS,"middle",500,2))
+# dance floor
+b.append(f'<rect x="300" y="300" width="220" height="150" fill="none" stroke="{GOLD}" stroke-dasharray="5 6"/>')
+b.append(text(410,382,"Dance floor",22,INK,SERIF,"middle"))
+# family tables near floor
+for (x,y) in [(230,330),(590,330),(230,420),(590,420)]:
+    b.append(f'<circle cx="{x}" cy="{y}" r="30" fill="{SOFT}" stroke="{GOLD}"/>')
+b.append(text(230,470,"FAMILY + PADRINOS",11,GOLD,SANS,"middle",500,1.5))
+# guest rounds
+for row in range(2):
+    for col in range(6):
+        x=120+col*116; y=530+row*66
+        b.append(f'<circle cx="{x}" cy="{y}" r="24" fill="none" stroke="{GOLD}" stroke-opacity=".7"/>')
+b.append(text(410,650,"GUEST ROUNDS",12,MUTED,SANS,"middle",500,2))
+# legend / count column
+rows=[("1","Throne chair","For the quinceañera, on the stage"),
+      ("2","Court of honor","Damas, chambelanes and escort"),
+      ("3","Family + padrinos","Closest to the floor for the dances"),
+      ("4","Guests","Everyone else, plus a small buffer")]
+for i,(n,h,sub) in enumerate(rows):
+    y=200+i*110
+    b.append(f'<circle cx="810" cy="{y}" r="18" fill="{GOLD}"/>')
+    b.append(text(810,y+6,n,18,"#0a0806",SANS,"middle",500))
+    b.append(text(842,y-2,h,26,INK,SERIF))
+    b.append(text(842,y+26,sub,15,MUTED))
+b.append(text(600,700,"Schematic, not to scale. Every venue layout is different.",14,MUTED,SANS,"middle",400,1,True))
+write("quinceanera-seating-plan.svg",svg(1200,730,"Schematic quinceañera seating plan: a throne chair on the stage, court of honor tables beside it, family and padrinos tables near the dance floor, and guest round tables behind","\n".join(b)))
 print("ok")
