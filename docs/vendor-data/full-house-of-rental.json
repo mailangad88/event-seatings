@@ -1,0 +1,2291 @@
+{
+ "vendorId": "house-of-rental",
+ "sources": [
+  "https://www.houseofrental.com/party-rentals.asp",
+  "https://www.houseofrental.com/tent-rentals.asp",
+  "https://www.houseofrental.com/faqs.asp"
+ ],
+ "notes": "Prices are daily rental rates (monthly by quote), subject to change without notice; delivery, setup/takedown and accessories extra. Delivery rates depend on time/location, extra for stairs/elevators/after hours. China, flatware, glassware rented in dozens only (Riedel/Power crystal in 10s/cases). Tent prices include standard installation; delivery and accessories extra. Optional non-refundable damage waiver (not available for tents). Party rentals: non-refundable deposit min $25; tented events: 1/3 non-refundable deposit; final count 3 days before delivery, payment due day before. $25 surcharge per order change. Many items (stages, dance floors, tent flooring, tent lighting, restroom trailers, risers, some linens/skirting) show Request Quote and were excluded. Phone 847-677-2010. Not fetched: remaining linen colors, drapery, pipe&drape, other sidewalls, remaining catering/bar/props SKUs.",
+ "items": [
+  {
+   "section": "Tables",
+   "name": "Table, 60\" Round",
+   "specs": "Seats 8-10; 30\" tall; linen not included",
+   "unit": "each per day",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19142"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 6' Long",
+   "specs": "Seats 6-8; 30\"W x 30\"H; linen not included",
+   "unit": "each per day",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19141"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 8' Long",
+   "specs": "Seats 8-10; 30\"W x 30\"H; linen not included",
+   "unit": "each per day",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19140"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 48\" Round",
+   "specs": "Seats 5-6; 30\" tall",
+   "unit": "each per day",
+   "vendorPrice": 15.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19148"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 72\" Round",
+   "specs": "Seats 10-12; 30\" tall",
+   "unit": "each per day",
+   "vendorPrice": 21.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19147"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 4' Long",
+   "specs": "Seats 4-6; 30\"W x 30\"H",
+   "unit": "each per day",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19153"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 36\" Round High Boy 42\" Tall",
+   "specs": "Seats 2-4; 42\" tall",
+   "unit": "each per day",
+   "vendorPrice": 19.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/36704"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 30\" Round. High Boy 42\" Tall",
+   "specs": "Seats 2-4; 42\" tall",
+   "unit": "each per day",
+   "vendorPrice": 18.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/36604"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 36\" Round. Low Boy",
+   "specs": "Seats 2-4; 30\" tall",
+   "unit": "each per day",
+   "vendorPrice": 15.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/36608"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 48\" X 48\" Square",
+   "specs": "Seats 8; 30\" tall",
+   "unit": "each per day",
+   "vendorPrice": 28.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/38711"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 6' Kiddie",
+   "specs": "72\"L x 30\"W x 22\"H",
+   "unit": "each per day",
+   "vendorPrice": 22.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19154"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, Card",
+   "specs": "Seats 4; 34\" x 34\"",
+   "unit": "each per day",
+   "vendorPrice": 13.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19145"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, Serpentine 60\"X30\"",
+   "specs": "Four join to form a circle",
+   "unit": "each per day",
+   "vendorPrice": 33.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/21163"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, Farm 96\" X 40\" Antique Walnut",
+   "specs": "Seats 8-12; solid pine",
+   "unit": "each per day",
+   "vendorPrice": 205.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/41749"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, Picnic 6' Craftsman W/Bench",
+   "specs": "Seats 6; steel frame HDPE",
+   "unit": "each per day",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/44151"
+  },
+  {
+   "section": "Tables",
+   "name": "Table. 8'X18\" Wood Top",
+   "specs": "18\" wide, 30\" high; seats 4-8",
+   "unit": "each per day",
+   "vendorPrice": 22.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/21152"
+  },
+  {
+   "section": "Tables",
+   "name": "Table, 6' Long Plastic Folding",
+   "specs": "Seats 6-8; white granite-style top",
+   "unit": "each per day",
+   "vendorPrice": 15.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/44562"
+  },
+  {
+   "section": "Chairs",
+   "name": "Folding Chair White W/ White Legs",
+   "specs": "White; seat 16x16; max 275 lb",
+   "unit": "each per day",
+   "vendorPrice": 3.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19156"
+  },
+  {
+   "section": "Tents",
+   "name": "16X24, White - Fiesta Frame Tent",
+   "specs": "8-ft side poles, 13-ft peak; delivery/accessories extra",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 505.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/18450"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Red Wine 8.5Oz (Ea)",
+   "specs": "8.5 oz; rented in dozen increments only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19088"
+  },
+  {
+   "section": "Chairs",
+   "name": "Black Resin Folding Chair",
+   "specs": "Black; 300 lb max",
+   "unit": "each per day",
+   "vendorPrice": 6.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19160"
+  },
+  {
+   "section": "Chairs",
+   "name": "White Resin Folding Chair",
+   "specs": "White; 300 lb max",
+   "unit": "each per day",
+   "vendorPrice": 6.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19159"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chiavari Chair Gold",
+   "specs": "Gold; ivory seat pad; 225 lb max",
+   "unit": "each per day",
+   "vendorPrice": 10.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/37807"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chiavari Chair Fruitwood",
+   "specs": "Fruitwood; ivory seat pad; 225 lb max",
+   "unit": "each per day",
+   "vendorPrice": 10.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/37815"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chiavari Chair White Wood",
+   "specs": "White wood; ivory seat pad; 225 lb max",
+   "unit": "each per day",
+   "vendorPrice": 11.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/45572"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chiavari White Resin Chair",
+   "specs": "White resin; white cushion; 225 lb max",
+   "unit": "each per day",
+   "vendorPrice": 11.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/44550"
+  },
+  {
+   "section": "Chairs",
+   "name": "Clear Ghost Chair",
+   "specs": "Polycarbonate; indoor; 400 lb",
+   "unit": "each per day",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/44545"
+  },
+  {
+   "section": "Chairs",
+   "name": "Bentwood Natural Resin Chair",
+   "specs": "Polycarbonate; indoor/outdoor; 300 lb",
+   "unit": "each per day",
+   "vendorPrice": 13.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/45560"
+  },
+  {
+   "section": "Chairs",
+   "name": "Cane Black Resin Chair",
+   "specs": "Polycarbonate; indoor/outdoor; 300 lb",
+   "unit": "each per day",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/45564"
+  },
+  {
+   "section": "Chairs",
+   "name": "French Country Chair Walnut",
+   "specs": "Burlap cushion rented separately; 400 lb",
+   "unit": "each per day",
+   "vendorPrice": 13.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/42888"
+  },
+  {
+   "section": "Chairs",
+   "name": "Farm Bench 96\" X 12\" Antique Rustic",
+   "specs": "Solid pine; seats up to 4 adults",
+   "unit": "each per day",
+   "vendorPrice": 80.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/41753"
+  },
+  {
+   "section": "Chairs",
+   "name": "Black Stack Padded Chair",
+   "specs": "Black vinyl; 500 lb max",
+   "unit": "each per day",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/41990"
+  },
+  {
+   "section": "Chairs",
+   "name": "Willow Black Resin Chair",
+   "specs": "Polycarbonate; indoor/outdoor; 300 lb",
+   "unit": "each per day",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/45556"
+  },
+  {
+   "section": "Chairs",
+   "name": "Wishbone Natural Resin Chair",
+   "specs": "Polycarbonate; indoor/outdoor; 300 lb",
+   "unit": "each per day",
+   "vendorPrice": 18.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/45568"
+  },
+  {
+   "section": "Chairs",
+   "name": "Gunmetal Gray Stacking Chair",
+   "specs": "Galvanized steel; indoor; 500 lb",
+   "unit": "each per day",
+   "vendorPrice": 12.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/42211"
+  },
+  {
+   "section": "Chairs",
+   "name": "Bar Stool, Black Naugahide",
+   "specs": "29\" H; black seat silver legs; 220 lb",
+   "unit": "each per day",
+   "vendorPrice": 16.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/21197"
+  },
+  {
+   "section": "Chairs",
+   "name": "Bar Stool, Chiavari Gold",
+   "specs": "48\" H; solid locust wood; 225 lb",
+   "unit": "each per day",
+   "vendorPrice": 28.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/44929"
+  },
+  {
+   "section": "Chairs",
+   "name": "Bar Stool, Directors Chair-Black",
+   "specs": "Aluminum frame; 48\" H; 225 lb",
+   "unit": "each per day",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/45615"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chair Cover, White Square Top Poly",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 7.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/19302"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chair Pad, Burlap Cross Back",
+   "specs": "CA117 foam cushion",
+   "unit": "each per day",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/42905"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Pearl Dinner Knife",
+   "specs": "rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.6,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-pearl-18-10-stainless/37993"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Pearl Dinner Fork",
+   "specs": "rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.25,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-pearl-18-10-stainless/37993"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Pearl Tea Spoon",
+   "specs": "rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.25,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-pearl-18-10-stainless/37993"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Pearl Salad/Dessert Fork",
+   "specs": "rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.25,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-pearl-18-10-stainless/37993"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Pearl Table Spoon",
+   "specs": "rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-pearl-18-10-stainless/37993"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Pearl Butter Knife",
+   "specs": "rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-pearl-18-10-stainless/37993"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Empire Gold Dinner Knife",
+   "specs": "Empire Gold Mirror; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 3.05,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-empire-gold-mirror/46006"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Empire Gold Dinner Fork",
+   "specs": "Empire Gold Mirror; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 2.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-empire-gold-mirror/46006"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Empire Gold Salad Fork",
+   "specs": "Empire Gold Mirror; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 2.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-empire-gold-mirror/46006"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Empire Gold Teaspoon",
+   "specs": "Empire Gold Mirror; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 2.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-empire-gold-mirror/46006"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Black Dinner Fork",
+   "specs": "Piazza; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-piazza-brushed-black/45981"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Black Dinner Knife",
+   "specs": "Piazza; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 2.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-piazza-brushed-black/45981"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Black Soup Spoon",
+   "specs": "Piazza; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-piazza-brushed-black/45981"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Black Salad Fork",
+   "specs": "Piazza; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-piazza-brushed-black/45981"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Black Teaspoon",
+   "specs": "Piazza; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-piazza-brushed-black/45981"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Water Goblet 11Oz",
+   "specs": "11 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-water-goblet-11oz-ea-/19086"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Champagne Flute 6 Oz",
+   "specs": "6 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-champagne-flute-6-oz-ea-/19090"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, White Wine 8.5Oz",
+   "specs": "8.5 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-white-wine-8-5oz-ea-/19089"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Highball 11 Oz",
+   "specs": "11 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.1,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-highball-11-oz-ea-/19093"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Margarita 12Oz",
+   "specs": "12 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 2.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-margarita-12oz-ea-/19092"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Shot Glass 2.5Oz",
+   "specs": "2.5 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.1,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-shot-glass-2-5oz-ea-/36508"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Champagne Coupe 5.5 Oz",
+   "specs": "5.5 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-champagne-coupe-5-5-oz-ea-/19091"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Beer/Soda 12Oz",
+   "specs": "12 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-beer-soda-12oz-ea-/19087"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Old Fash-Dbl 13Oz",
+   "specs": "13 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-old-fash-dbl-13oz-ea-/19096"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Riedel Red Wine 19Oz",
+   "specs": "crystal; increments of 10 only",
+   "unit": "each per day",
+   "vendorPrice": 3.3,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-riedel-red-wine-19oz-ea-/37224"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Mason Jar 16Oz",
+   "specs": "16 oz; dozen minimum",
+   "unit": "each per day",
+   "vendorPrice": 2.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-mason-jar-16oz-ea-/45536"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Stemless Wine 9Oz",
+   "specs": "9 oz; dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.4,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-stemless-wine-9oz-ea-/44915"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Martini 7.5Oz",
+   "specs": "7.5 oz; cases of 9 only",
+   "unit": "each per day",
+   "vendorPrice": 2.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-martini-7-5oz-9-per-case/4111"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass, Power Red Wine 17Oz",
+   "specs": "lead-free crystal; 24 per case",
+   "unit": "each per day",
+   "vendorPrice": 3.3,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/glass-power-red-wine17oz-ea-/45932"
+  },
+  {
+   "section": "Heaters",
+   "name": "Heater, 170 Propane Tent",
+   "specs": "170,000 BTU forced air; propane/natural gas",
+   "unit": "each per day",
+   "vendorPrice": 242.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/heater-170-propane-tent/18767"
+  },
+  {
+   "section": "Heaters",
+   "name": "Heater, 40 Propane Patio Knock Down W/Case",
+   "specs": "40,000 BTU; needs 20 lb tank (not included)",
+   "unit": "each per day",
+   "vendorPrice": 121.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/heater-40-prop-patio-knock-down-w-case/18772"
+  },
+  {
+   "section": "Heaters",
+   "name": "Heater, 80 Propane Tent",
+   "specs": "80,000 BTU forced air; needs 100 lb tank (extra fee)",
+   "unit": "each per day",
+   "vendorPrice": 169.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/heater-80-propane-tent/18770"
+  },
+  {
+   "section": "Heaters",
+   "name": "Heater, Propane Firebowl Column",
+   "specs": "40,000 BTU; 20 lb tank not included",
+   "unit": "each per day",
+   "vendorPrice": 133.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/heater-propane-firebowl-column/43625"
+  },
+  {
+   "section": "Heaters",
+   "name": "Heater, Infrared 1500W Heater W/Stand",
+   "specs": "1500W; 10x10 ft outdoor area",
+   "unit": "each per day",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/heater-infrared-1500w-heater-w-stand/43621"
+  },
+  {
+   "section": "Heaters",
+   "name": "Heater, 60K Btu Propane Forced Air-Batry",
+   "specs": "60,000 BTU battery powered; ~1300 sq ft",
+   "unit": "each per day",
+   "vendorPrice": 61.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/heater-60k-btu-propane-forced-air-batry/38567"
+  },
+  {
+   "section": "Heaters",
+   "name": "Heater, 30 Propane Tank Top Heater (Mr Heater MH30T)",
+   "specs": "8,000-28,000 BTU; outdoor only",
+   "unit": "each per day",
+   "vendorPrice": 47.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/heater-30-propane-tank-top-heater/37996"
+  },
+  {
+   "section": "Heaters",
+   "name": "Propane Tank Holder, 2 Tank Hard Surface",
+   "specs": "holds two 100 lb tanks",
+   "unit": "each per day",
+   "vendorPrice": 83.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/propane-tank-holder-2-tank-hard-surface/45417"
+  },
+  {
+   "section": "Tents",
+   "name": "10X10, R&W - Fiesta Frame Tent",
+   "specs": "red & white; delivery/accessories extra",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/10x10-r-w-fiesta-frame-tent/18597"
+  },
+  {
+   "section": "Tents",
+   "name": "10X20, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 435.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/10x20-white-fiesta-frame-tent/34370"
+  },
+  {
+   "section": "Tents",
+   "name": "12X12, White (1P) - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 315.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/12x12-white-1p-fiesta-frame-tent/34378"
+  },
+  {
+   "section": "Tents",
+   "name": "16X16, White (2P) - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 445.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/16x16-white-2p-fiesta-frame-tent/34149"
+  },
+  {
+   "section": "Tents",
+   "name": "16X32, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 675.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/16x32-white-fiesta-frame-tent/18449"
+  },
+  {
+   "section": "Tents",
+   "name": "20X20, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 500.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/20x20-white-fiesta-frame-tent/34138"
+  },
+  {
+   "section": "Tents",
+   "name": "20X30, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 755.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/20x30-white-fiesta-frame-tent/34171"
+  },
+  {
+   "section": "Tents",
+   "name": "20X40, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 1005.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/20x40-white-fiesta-frame-tent/34175"
+  },
+  {
+   "section": "Tents",
+   "name": "30X 30, White - Navi-Lite Frame Tent",
+   "specs": "8' side poles; 15'6\" peak; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 1280.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/30x-30-white-navi-lite-frame-tent/36795"
+  },
+  {
+   "section": "Tents",
+   "name": "30X 60, White - Navi-Lite Frame Tent",
+   "specs": "8' side poles; 15'6\" peak; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 2565.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/30x-60-white-navi-lite-frame-tent/36799"
+  },
+  {
+   "section": "Tents",
+   "name": "16X24, White - Fiesta Frame Tent",
+   "specs": "8' side poles; 13' peak; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 505.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/16x24-white-fiesta-frame-tent/18450"
+  },
+  {
+   "section": "Tents",
+   "name": "10X30, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 650.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/10x30-white-fiesta-frame-tent/34374"
+  },
+  {
+   "section": "Tents",
+   "name": "12X24, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 625.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/12x24-white-fiesta-frame-tent/42921"
+  },
+  {
+   "section": "Tents",
+   "name": "16X40, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 845.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/16x40-white-fiesta-frame-tent/18471"
+  },
+  {
+   "section": "Tents",
+   "name": "20X50, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 1255.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/20x50-white-fiesta-frame-tent/34179"
+  },
+  {
+   "section": "Tents",
+   "name": "20X60, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 1500.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/20x60-white-fiesta-frame-tent/34183"
+  },
+  {
+   "section": "Tents",
+   "name": "30X 45, White - Navi-Lite Frame Tent",
+   "specs": "8' side poles; 15'6\" peak; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 1865.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/30x-45-white-navi-lite-frame-tent/36798"
+  },
+  {
+   "section": "Tents",
+   "name": "30X 90, White - Navi-Lite Frame Tent",
+   "specs": "8' side poles; 15'6\" peak; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 3845.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/30x-90-white-navi-lite-frame-tent/40896"
+  },
+  {
+   "section": "Tents",
+   "name": "12X15, White - Pavilion Frame Awning",
+   "specs": "8' side poles; 11'4\" peak; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 470.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/12x15-white-pavilion-frame-awning/34390"
+  },
+  {
+   "section": "Tents",
+   "name": "12X36, White - Fiesta Frame Tent",
+   "specs": "8' side poles; standard installation",
+   "unit": "each per day (includes standard installation)",
+   "vendorPrice": 945.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/12x36-white-fiesta-frame-tent/42922"
+  },
+  {
+   "section": "Tent Sidewalls",
+   "name": "Sidewall, 8'X 22' - White",
+   "specs": "8x22 white",
+   "unit": "each per day",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/sidewall-8-x-22-white/19433"
+  },
+  {
+   "section": "Tent Sidewalls",
+   "name": "Sidewall, 8'X 22' - Clear",
+   "specs": "8x22 clear",
+   "unit": "each per day",
+   "vendorPrice": 70.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/sidewall-8-x-22-clear/37702"
+  },
+  {
+   "section": "Tent Sidewalls",
+   "name": "Sidewall, 8'X22' - White Window",
+   "specs": "8x22 white window",
+   "unit": "each per day",
+   "vendorPrice": 70.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/sidewall-8-x22-white-window/19441"
+  },
+  {
+   "section": "Tent Sidewalls",
+   "name": "Door, Double - Glass, 6'X7' / Tent",
+   "specs": "double glass door",
+   "unit": "each per day",
+   "vendorPrice": 635.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/door-double-glass-6-x7-tent/19443"
+  },
+  {
+   "section": "Generators",
+   "name": "Generator, 5000 Watt. 17-35 Amp",
+   "specs": "5000W max / 4400W rated; 120/240V",
+   "unit": "each per day",
+   "vendorPrice": 133.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/generator-5000-watt-17-35-amp/18705"
+  },
+  {
+   "section": "AV",
+   "name": "Pa, Fender Pro 150W 2 Spkr W/Microphone",
+   "specs": "150W stereo; up to 300 people; one mic",
+   "unit": "each per day",
+   "vendorPrice": 168.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pa-fender-pro-150w-2-spkr-w-microphone/18616"
+  },
+  {
+   "section": "Fencing",
+   "name": "Crowd Control Barrier 43\"X8'",
+   "specs": "43\" tall, 8' long, galvanized steel",
+   "unit": "each per day",
+   "vendorPrice": 29.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/crowd-control-barrier-43-x8-/39928"
+  },
+  {
+   "section": "Generators",
+   "name": "Generator, 3000 Watt. 01-18 Amp",
+   "specs": "3000W max; Honda 163cc; 120V",
+   "unit": "each per day",
+   "vendorPrice": 88.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/generator-3000-watt-01-18-amp/18704"
+  },
+  {
+   "section": "Generators",
+   "name": "Generator, 8000 Watt. 29-58 Amp",
+   "specs": "8000W; 29-58 amps",
+   "unit": "each per day",
+   "vendorPrice": 233.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/generator-8000-watt-29-58-amp/20155"
+  },
+  {
+   "section": "Generators",
+   "name": "Generator, 2000 Watt. 14 Amp. Inverter",
+   "specs": "Honda EU2000i; inverter",
+   "unit": "each per day",
+   "vendorPrice": 89.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/generator-2000-watt-14-amp-inverter/41056"
+  },
+  {
+   "section": "Generators",
+   "name": "Generator, Inverter 4500 Watt. 17-30 Amp",
+   "specs": "4500W; 18-hr runtime; 5 outlets",
+   "unit": "each per day",
+   "vendorPrice": 176.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/generator-inverter-4500-watt-17-30-amp/44378"
+  },
+  {
+   "section": "Generators",
+   "name": "Extension Cord, 25' H.D.",
+   "specs": "25 ft heavy duty",
+   "unit": "each per day",
+   "vendorPrice": 11.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/extension-cord-25-h-d-/20388"
+  },
+  {
+   "section": "Generators",
+   "name": "Extension Cord, To 100'",
+   "specs": "up to 100 ft",
+   "unit": "each per day",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/extension-cord-to-100-/18744"
+  },
+  {
+   "section": "AV",
+   "name": "Pa, Fender Pro 250W 2 Spkr W/Microphones",
+   "specs": "250W; 2 mics; suits 300-500 people",
+   "unit": "each per day",
+   "vendorPrice": 214.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pa-fender-pro-250w-2-spkr-w-microphones/18617"
+  },
+  {
+   "section": "AV",
+   "name": "Pa, Fender Pro 500W 2 Spkr W/Microphones",
+   "specs": "500W Class-D; two 10\" speakers",
+   "unit": "each per day",
+   "vendorPrice": 284.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pa-fender-pro-500w-2-spkr-w-microphones/39123"
+  },
+  {
+   "section": "AV",
+   "name": "Pa, Bluetooth Loudspeaker W/ Microphones",
+   "specs": "15\" woofer; battery; 2 wireless mics",
+   "unit": "each per day",
+   "vendorPrice": 214.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pa-bluetooth-loudspeaker-w-microphones/39986"
+  },
+  {
+   "section": "AV",
+   "name": "Pa, Bullhorn",
+   "specs": "35W; 1200-yard range",
+   "unit": "each per day",
+   "vendorPrice": 56.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pa-bullhorn/18608"
+  },
+  {
+   "section": "AV",
+   "name": "Proj, Screen 96X96",
+   "specs": "manual tripod screen",
+   "unit": "each per day",
+   "vendorPrice": 81.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/proj-screen-96x96/18405"
+  },
+  {
+   "section": "AV",
+   "name": "Tv, 39\" Led Tv",
+   "specs": "Samsung 1080p",
+   "unit": "each per day",
+   "vendorPrice": 310.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/tv-39-led-tv/39343"
+  },
+  {
+   "section": "AV",
+   "name": "Proj, Screen 70X70",
+   "specs": "manual tripod screen",
+   "unit": "each per day",
+   "vendorPrice": 69.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/proj-screen-70x70/18404"
+  },
+  {
+   "section": "AV",
+   "name": "Proj, Screen 50X50",
+   "specs": "manual tripod screen",
+   "unit": "each per day",
+   "vendorPrice": 58.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/proj-screen-50x50/18403"
+  },
+  {
+   "section": "AV",
+   "name": "Pa, Lectern Pro Tabletop",
+   "specs": "22W; battery; gooseneck mic",
+   "unit": "each per day",
+   "vendorPrice": 158.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pa-lectern-pro-tabletop/41476"
+  },
+  {
+   "section": "AV",
+   "name": "Pa, Pro Mic Floor Stand",
+   "specs": "straight stand",
+   "unit": "each per day",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pa-pro-mic-floor-stand/18624"
+  },
+  {
+   "section": "AV",
+   "name": "Pa, 120W Bluetooth Sound System",
+   "specs": "120W battery; IPX5",
+   "unit": "each per day",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pa-120w-bluetooth-sound-system/43835"
+  },
+  {
+   "section": "Fencing",
+   "name": "White Crowd Control Barricade 46\"x 9.5'",
+   "specs": "9.5' long; freestanding",
+   "unit": "each per day",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-crowd-control-barricade-46-x-9-5-/46177"
+  },
+  {
+   "section": "Fencing",
+   "name": "Fence, 10'X40\" White Picket",
+   "specs": "vinyl; 10' section",
+   "unit": "each per day",
+   "vendorPrice": 61.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/fence-10-x40-white-picket/42668"
+  },
+  {
+   "section": "Fencing",
+   "name": "Fence Panel, 6' Tall X 7'5\" Wide",
+   "specs": "welded wire; yellow",
+   "unit": "each per day",
+   "vendorPrice": 22.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/fence-panel-6-tall-x-7-5-wide/39991"
+  },
+  {
+   "section": "Fencing",
+   "name": "Stanchion, Chrome Post W/6' Black Belt",
+   "specs": "39\" tall",
+   "unit": "each per day",
+   "vendorPrice": 28.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/stanchion-chrome-post-w-6-black-belt/42986"
+  },
+  {
+   "section": "Fencing",
+   "name": "Stanchion, Rope Red Velour/ 8'",
+   "specs": "stanchions rented separately",
+   "unit": "each per day",
+   "vendorPrice": 11.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/stanchion-rope-red-velour-8-/19062"
+  },
+  {
+   "section": "Inflatables",
+   "name": "Moon Walk, 13X13 - Castle",
+   "specs": "13x13x13 tall",
+   "unit": "each per day",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/moon-walk-13x13-castle/18985"
+  },
+  {
+   "section": "Inflatables",
+   "name": "Moon Walk, 15X15 - Castle",
+   "specs": "15x15x13 tall",
+   "unit": "each per day",
+   "vendorPrice": 265.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/moon-walk-15x15-castle/18984"
+  },
+  {
+   "section": "Inflatables",
+   "name": "Moon Walk, 22X19 Bouncer W/Slide",
+   "specs": "max 6 riders; delivery extra",
+   "unit": "each per day",
+   "vendorPrice": 400.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/moon-walk-22x19-bouncer-w-slide/38057"
+  },
+  {
+   "section": "Inflatables",
+   "name": "Moon Walk, 8X10 - Toddler Castle",
+   "specs": "fits 3 kids under 4",
+   "unit": "each per day",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/moon-walk-8x10-toddler-castle/38937"
+  },
+  {
+   "section": "Inflatables",
+   "name": "Inflatable 34' Obstacle Course",
+   "specs": "34'L x 12'W x 12'6\"H",
+   "unit": "each per day",
+   "vendorPrice": 400.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/inflatable-34-obstacle-course/38048"
+  },
+  {
+   "section": "Inflatables",
+   "name": "Inflatable 35' Double Water Slide",
+   "specs": "36x11x9",
+   "unit": "each per day",
+   "vendorPrice": 400.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/inflatable-35-double-water-slide/38053"
+  },
+  {
+   "section": "Inflatables",
+   "name": "Inflatable Sport Game",
+   "specs": "5 sports in one; delivery extra",
+   "unit": "each per day",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/inflatable-sport-game/38061"
+  },
+  {
+   "section": "Inflatables",
+   "name": "Inflatable Animal Kingdom",
+   "specs": "18x17x9'6\"",
+   "unit": "each per day",
+   "vendorPrice": 300.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/inflatable-animal-kingdom/38043"
+  },
+  {
+   "section": "Games",
+   "name": "Game, Money Machine",
+   "specs": "45x45x84 in",
+   "unit": "each per day",
+   "vendorPrice": 240.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/game-money-machine/36207"
+  },
+  {
+   "section": "Games",
+   "name": "Game, Baggo Bean Bag Toss",
+   "specs": "portable set with scoreboards",
+   "unit": "each per day",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/game-baggo-bean-bag-toss/36155"
+  },
+  {
+   "section": "Games",
+   "name": "Dunk Tank, Ez-Dunk 3",
+   "specs": "500-gal tank; steel cage",
+   "unit": "each per day",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/dunk-tank-ez-dunk-3/21054"
+  },
+  {
+   "section": "Games",
+   "name": "Game, Arcade 8 Game Ms. Pac Man",
+   "specs": "tabletop 8-in-1; 17-inch LCD",
+   "unit": "each per day",
+   "vendorPrice": 86.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/game-arcade-8-game-ms-pac-man/43996"
+  },
+  {
+   "section": "Games",
+   "name": "Game, Balloon Pop",
+   "specs": "case game; 6 magnetic darts",
+   "unit": "each per day",
+   "vendorPrice": 58.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/game-balloon-pop/43070"
+  },
+  {
+   "section": "Games",
+   "name": "Game, Down A Clown",
+   "specs": "case game; 12 hacky sacks",
+   "unit": "each per day",
+   "vendorPrice": 58.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/game-down-a-clown/43071"
+  },
+  {
+   "section": "Concessions",
+   "name": "Cotton Candy Maker",
+   "specs": "Gold Medal Floss Boss",
+   "unit": "each per day",
+   "vendorPrice": 103.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/cotton-candy-maker/18976"
+  },
+  {
+   "section": "Concessions",
+   "name": "Hot Dog Warmer - Steamin Demon",
+   "specs": "holds ~80 hot dogs",
+   "unit": "each per day",
+   "vendorPrice": 97.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/hot-dog-warmer-steamin-demon/18970"
+  },
+  {
+   "section": "Concessions",
+   "name": "Nacho Cheese Dispenser",
+   "specs": "Gold Medal El Nacho Grande",
+   "unit": "each per day",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/nacho-cheese-dispenser/36471"
+  },
+  {
+   "section": "Concessions",
+   "name": "Popcorn Maker On 2 Wheel Cart",
+   "specs": "Gold Medal Super 88; 8 oz",
+   "unit": "each per day",
+   "vendorPrice": 169.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/popcorn-maker-on-2-wheel-cart/18975"
+  },
+  {
+   "section": "Concessions",
+   "name": "Popcorn, Table Top",
+   "specs": "Gold Medal Super 88; 8 oz",
+   "unit": "each per day",
+   "vendorPrice": 103.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/popcorn-table-top/18974"
+  },
+  {
+   "section": "Concessions",
+   "name": "Snow Kone Machine",
+   "specs": "Gold Medal; supplies sold separately",
+   "unit": "each per day",
+   "vendorPrice": 103.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/snow-kone-machine/18973"
+  },
+  {
+   "section": "Concessions",
+   "name": "Pretzel Warmer Tabletop",
+   "specs": "holds 16 pretzels",
+   "unit": "each per day",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pretzel-warmer-tabletop/36448"
+  },
+  {
+   "section": "Concessions",
+   "name": "Pizza Warming Cabinet",
+   "specs": "Gold Medal 5551PR; four 15\" pans",
+   "unit": "each per day",
+   "vendorPrice": 169.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pizza-warming-cabinet/42755"
+  },
+  {
+   "section": "Catering",
+   "name": "Chafer, 12X20 Ss Sterno",
+   "specs": "8 qt; 2 Sterno cans; food pans rented separately",
+   "unit": "each per day",
+   "vendorPrice": 36.3,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/chafer-12x20-ss-sterno/21019"
+  },
+  {
+   "section": "Catering",
+   "name": "Chafer, 6 Qt. Round Roll Top",
+   "specs": "6 qt round; Sterno included",
+   "unit": "each per day",
+   "vendorPrice": 44.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/chafer-6-qt-round-roll-top/21016"
+  },
+  {
+   "section": "Catering",
+   "name": "Chafer, 12X20 Roll Top Americana",
+   "specs": "8 qt; 2 Sterno cans; food pans separate",
+   "unit": "each per day",
+   "vendorPrice": 50.8,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/chafer-12x20-roll-top-americana/18919"
+  },
+  {
+   "section": "Catering",
+   "name": "Soup Tureen, 6 Qt Sterno",
+   "specs": "6 qt stainless",
+   "unit": "each per day",
+   "vendorPrice": 33.9,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/soup-tureen-6-qt-sterno/21012"
+  },
+  {
+   "section": "Catering",
+   "name": "Coffee Urn, 50 Cup Silver",
+   "specs": "includes one 45-min Sterno",
+   "unit": "each per day",
+   "vendorPrice": 95.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/coffee-urn-50-cup-silver/18912"
+  },
+  {
+   "section": "Catering",
+   "name": "Coffee Maker, 36 Cup",
+   "specs": "West Bend aluminum",
+   "unit": "each per day",
+   "vendorPrice": 29.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/coffee-maker-36-cup/20961"
+  },
+  {
+   "section": "Catering",
+   "name": "Champ Fountain- 3 Gallon",
+   "specs": "holds ~15 bottles champagne",
+   "unit": "each per day",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/champ-fountain-3-gallon/21008"
+  },
+  {
+   "section": "Catering",
+   "name": "Bowl Punch 8 Qt Glass",
+   "specs": "glass; ~30 5-oz servings per gallon",
+   "unit": "each per day",
+   "vendorPrice": 46.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/bowl-punch-8-qt-glass/20990"
+  },
+  {
+   "section": "Catering",
+   "name": "Drink Dispenser, 3 Gallon w/base",
+   "specs": "BPA-free plastic; stainless lid",
+   "unit": "each per day",
+   "vendorPrice": 36.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/drink-dispenser-3-gallon-w-base/42513"
+  },
+  {
+   "section": "Catering",
+   "name": "Slush Twin Tank Machine",
+   "specs": "2.5-gal batch; 95 lb",
+   "unit": "each per day",
+   "vendorPrice": 200.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/slush-twin-tank-machine/21034"
+  },
+  {
+   "section": "Catering",
+   "name": "Water Boiler (Tea) 36 Cup",
+   "specs": "one cup per minute; 120V",
+   "unit": "each per day",
+   "vendorPrice": 34.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/water-boiler-tea-36-cup/20972"
+  },
+  {
+   "section": "Catering",
+   "name": "Chafer, Food Pan 1/1",
+   "specs": "8.3 qt full size; rents separately from chafer",
+   "unit": "each per day",
+   "vendorPrice": 6.05,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/chafer-food-pan-1-1/18920"
+  },
+  {
+   "section": "Catering",
+   "name": "Coffee Urn, 80 Cup Stainless Steel",
+   "specs": "5 gal; one Sterno included",
+   "unit": "each per day",
+   "vendorPrice": 95.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/coffee-urn-80-cup-stainless-steel/44958"
+  },
+  {
+   "section": "Catering",
+   "name": "Coffee Maker, 55 Cup",
+   "specs": "1500W 120V; NSF",
+   "unit": "each per day",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/coffee-maker-55-cup/18910"
+  },
+  {
+   "section": "Catering",
+   "name": "Champ Fountain- 5 Gallon",
+   "specs": "~25 bottles of champagne",
+   "unit": "each per day",
+   "vendorPrice": 182.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/champ-fountain-5-gallon/21009"
+  },
+  {
+   "section": "Catering",
+   "name": "Convection Oven, Countertop 12 Amp",
+   "specs": "Cadco OV-013; 1.3 cu ft",
+   "unit": "each per day",
+   "vendorPrice": 182.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/convection-oven-countertop-12-amp/39517"
+  },
+  {
+   "section": "Catering",
+   "name": "Garbage Can Gray, 32 Gal W/Liner",
+   "specs": "with one liner",
+   "unit": "each per day",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/garbage-can-gray-32-gal-w-liner/21579"
+  },
+  {
+   "section": "Catering",
+   "name": "Heat Lamp & 20\"X30\" Carving Board",
+   "specs": "250W infrared",
+   "unit": "each per day",
+   "vendorPrice": 109.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/heat-lamp-20-x30-carving-board/34540"
+  },
+  {
+   "section": "Catering",
+   "name": "Stand, Waiter 38\" Walnut",
+   "specs": "wood tray stand",
+   "unit": "each per day",
+   "vendorPrice": 11.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/stand-waiter-38-walnut/40416"
+  },
+  {
+   "section": "Catering",
+   "name": "Tray, Waiter 23\"X 27\"",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 11.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/tray-waiter-23-x-27-/18948"
+  },
+  {
+   "section": "Catering",
+   "name": "Hot Cave, Sterno- Full Size",
+   "specs": "holds 40 pans; 3 Sternos included",
+   "unit": "each per day",
+   "vendorPrice": 176.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/hot-cave-sterno-full-size/18928"
+  },
+  {
+   "section": "Bar Equipment",
+   "name": "Bar, Wine Barrel Bar 8'X30\"",
+   "specs": "96\"L x 30\"W x 42\"H; 2-piece top",
+   "unit": "each per day",
+   "vendorPrice": 210.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/bar-wine-barrel-bar-8-x30-/45829"
+  },
+  {
+   "section": "Bar Equipment",
+   "name": "Back Bar, Rectangular W/ Shelves",
+   "specs": "~90\"H x 56\"W x 16\"D",
+   "unit": "each per day",
+   "vendorPrice": 420.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/back-bar-rectangular-w-shelves/44552"
+  },
+  {
+   "section": "Bar Equipment",
+   "name": "Champagne Bucket Stainless Steel",
+   "specs": "9\" wide, 10\" tall; stand separate",
+   "unit": "each per day",
+   "vendorPrice": 18.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/champagne-bucket-stainless-steel/40344"
+  },
+  {
+   "section": "Bar Equipment",
+   "name": "Cooler, Lucite Tub-18\"X26\"X15\"",
+   "specs": "Cambro Camwear; NSF",
+   "unit": "each per day",
+   "vendorPrice": 21.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/cooler-lucite-tub-18-x26-x15-/40044"
+  },
+  {
+   "section": "Lounge",
+   "name": "Lounge, Resin Sofa White",
+   "specs": "46.75\"L x 26.25\"D x 32.25\"H",
+   "unit": "each per day",
+   "vendorPrice": 95.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/lounge-resin-sofa-white/44800"
+  },
+  {
+   "section": "Lounge",
+   "name": "Lounge Chair, White",
+   "specs": "34\"H x 30\"W x 22\"D",
+   "unit": "each per day",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/lounge-chair-white/42532"
+  },
+  {
+   "section": "Lounge",
+   "name": "Ottoman, Black Cube",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 50.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/ottoman-black-cube/44551"
+  },
+  {
+   "section": "Lounge",
+   "name": "Table, 27\"x 27\"x43\" Cocktail Table",
+   "specs": "43.3\" tall; marble-look melamine top",
+   "unit": "each per day",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/table-27-x-27-x43-cocktail-table/46111"
+  },
+  {
+   "section": "Fans & Cooling",
+   "name": "Fan, 30\" Pedestal",
+   "specs": "5-7 ft height range",
+   "unit": "each per day",
+   "vendorPrice": 66.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/fan-30-pedestal/18778"
+  },
+  {
+   "section": "Fans & Cooling",
+   "name": "Misting Fan, Portable",
+   "specs": "18\" 3-speed; 10 gal reservoir",
+   "unit": "each per day",
+   "vendorPrice": 66.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/misting-fan-portable/43067"
+  },
+  {
+   "section": "Fans & Cooling",
+   "name": "Air Conditioner, 1 Ton. 115V",
+   "specs": "13,200 BTU/hr",
+   "unit": "each per day",
+   "vendorPrice": 193.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/air-conditioner-1-ton-115v/43853"
+  },
+  {
+   "section": "Bar Equipment",
+   "name": "Bar, Black 4'X24\"",
+   "specs": "portable folding bar; 47.75\"W x 19.5\"D x 42.75\"H",
+   "unit": "each per day",
+   "vendorPrice": 145.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/bar-black-4-x24-/44558"
+  },
+  {
+   "section": "Restrooms",
+   "name": "Hand Wash Station",
+   "specs": "17 gal fresh; ~300 uses per fill; soap/towel dispenser",
+   "unit": "each per day",
+   "vendorPrice": 208.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/hand-wash-station/21605"
+  },
+  {
+   "section": "Fans & Cooling",
+   "name": "Fan 36\" Air Mover 2 Spd",
+   "specs": "11,020 CFM",
+   "unit": "each per day",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/fan-36-air-mover-2-spd/18779"
+  },
+  {
+   "section": "Lounge",
+   "name": "Lounge, Resin Coffee Table White",
+   "specs": "37.75\"L x 23.25\"D x 15.75\"H",
+   "unit": "each per day",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/lounge-resin-coffee-table-white/44808"
+  },
+  {
+   "section": "Restrooms",
+   "name": "Hand Sanitizer Stand",
+   "specs": "touch-free; 1200ml reservoir",
+   "unit": "each per day",
+   "vendorPrice": 63.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/hand-sanitizer-stand/41954"
+  },
+  {
+   "section": "Generators",
+   "name": "Cable Protector, 40\" Straight Ramp",
+   "specs": "2 channels; 40\"L x 10\"W",
+   "unit": "each per day",
+   "vendorPrice": 17.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/cable-protector-40-straight-ramp/40976"
+  },
+  {
+   "section": "Fencing",
+   "name": "Barricade Safety Cone 18\"",
+   "specs": "18-inch cone",
+   "unit": "each per day",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/barricade-safety-cone-18-/21613"
+  },
+  {
+   "section": "Tables",
+   "name": "Umbrella 8' Tan w/12\" Guide",
+   "specs": "96\"H x 108\"W",
+   "unit": "each per day",
+   "vendorPrice": 27.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/umbrella-8-tan-w-12-guide/45395"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chair Cover, White Round Top Poly",
+   "specs": "16\"W x 37\"H polyester",
+   "unit": "each per day",
+   "vendorPrice": 7.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/chair-cover-white-round-top-poly/39497"
+  },
+  {
+   "section": "Cooking & Grills",
+   "name": "Bbq, Propane - 32\"X24\" / On Wheels",
+   "specs": "4 burners; needs 20 lb tank (extra fee)",
+   "unit": "each per day",
+   "vendorPrice": 128.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/bbq-propane-32-x24--on-wheels/18932"
+  },
+  {
+   "section": "Cooking & Grills",
+   "name": "Bbq, Charcoal - 2' X 3' (Little John)",
+   "specs": "6 sq ft grilling surface",
+   "unit": "each per day",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/bbq-charcoal-2-x-3-little-john-/39614"
+  },
+  {
+   "section": "Cooking & Grills",
+   "name": "Bbq, Propane - 72\"X31\" Towable - W/Cover",
+   "specs": "80,000 BTU; needs 40 lb tank and 2\" hitch",
+   "unit": "each per day",
+   "vendorPrice": 319.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/bbq-propane-72-x31-towable-w-cover/18938"
+  },
+  {
+   "section": "Cooking & Grills",
+   "name": "Fryer, Propane -120 btu 6 gal/On Wheels",
+   "specs": "6 gal oil capacity",
+   "unit": "each per day",
+   "vendorPrice": 400.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/fryer-propane-120-btu-6-gal-on-wheels/46166"
+  },
+  {
+   "section": "Cooking & Grills",
+   "name": "Griddle, 20\"X 52\" L.P. With Cart",
+   "specs": "52x20 surface; 3 burners",
+   "unit": "each per day",
+   "vendorPrice": 246.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/griddle-20-x-52-l-p-with-cart/42403"
+  },
+  {
+   "section": "Cooking & Grills",
+   "name": "Stock Pot, 40 Quart",
+   "specs": "basket rented separately",
+   "unit": "each per day",
+   "vendorPrice": 26.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/stock-pot-40-quart/18945"
+  },
+  {
+   "section": "Cooking & Grills",
+   "name": "Stove, 1 Burn 60,000 Btu Prop",
+   "specs": "1 burner propane",
+   "unit": "each per day",
+   "vendorPrice": 43.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/stove-1-burn-60-000-btu-prop/18931"
+  },
+  {
+   "section": "Cooking & Grills",
+   "name": "Pancake Dispenser - 5 1/2 Lb",
+   "specs": "48 oz capacity",
+   "unit": "each per day",
+   "vendorPrice": 34.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/pancake-dispenser-5-1-2-lb/18936"
+  },
+  {
+   "section": "Carpet Runners",
+   "name": "Carpet, Red 4'X 25'",
+   "specs": "red runner",
+   "unit": "each per day",
+   "vendorPrice": 110.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/carpet-red-4-x-25-/21533"
+  },
+  {
+   "section": "Carpet Runners",
+   "name": "Carpet, Black 8'X 8'",
+   "specs": "black; unbound edges",
+   "unit": "each per day",
+   "vendorPrice": 110.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/carpet-black-8-x-8-/42850"
+  },
+  {
+   "section": "Chairs",
+   "name": "Folding Chair Black W/ Black Legs",
+   "specs": "Black; 275 lb max",
+   "unit": "each per day",
+   "vendorPrice": 3.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/folding-chair-black-w-black-legs/19157"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 90\" Round",
+   "specs": "90\" round",
+   "unit": "each per day",
+   "vendorPrice": 12.6,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 108\" Round",
+   "specs": "108\" round",
+   "unit": "each per day",
+   "vendorPrice": 15.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 120\" Round",
+   "specs": "120\" round",
+   "unit": "each per day",
+   "vendorPrice": 19.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 132\" Round",
+   "specs": "132\" round",
+   "unit": "each per day",
+   "vendorPrice": 26.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 90\" Round Umbrella",
+   "specs": "umbrella table",
+   "unit": "each per day",
+   "vendorPrice": 12.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 120\" Round Umbrella",
+   "specs": "umbrella table",
+   "unit": "each per day",
+   "vendorPrice": 26.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 60x120",
+   "specs": "60x120",
+   "unit": "each per day",
+   "vendorPrice": 12.6,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 90x132",
+   "specs": "90x132 rectangle",
+   "unit": "each per day",
+   "vendorPrice": 26.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 90x156",
+   "specs": "90x156 rectangle",
+   "unit": "each per day",
+   "vendorPrice": 31.1,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 60x60",
+   "specs": "60x60",
+   "unit": "each per day",
+   "vendorPrice": 7.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 90x90",
+   "specs": "90x90",
+   "unit": "each per day",
+   "vendorPrice": 18.55,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 60x72",
+   "specs": "60x72",
+   "unit": "each per day",
+   "vendorPrice": 9.9,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Elegance 90x108",
+   "specs": "90x108",
+   "unit": "each per day",
+   "vendorPrice": 18.7,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Napkin White Elegance",
+   "specs": "17x17",
+   "unit": "each per day",
+   "vendorPrice": 0.85,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Sash White Elegance",
+   "specs": "4x108",
+   "unit": "each per day",
+   "vendorPrice": 2.3,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-elegance-collection/34873"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 90\" Round",
+   "specs": "90\" round",
+   "unit": "each per day",
+   "vendorPrice": 12.6,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 108\" Round",
+   "specs": "108\" round",
+   "unit": "each per day",
+   "vendorPrice": 15.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 120\" Round",
+   "specs": "120\" round",
+   "unit": "each per day",
+   "vendorPrice": 19.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 132\" Round",
+   "specs": "132\" round",
+   "unit": "each per day",
+   "vendorPrice": 26.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 60x120",
+   "specs": "60x120",
+   "unit": "each per day",
+   "vendorPrice": 12.6,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 90x132",
+   "specs": "90x132",
+   "unit": "each per day",
+   "vendorPrice": 26.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 90x156",
+   "specs": "90x156",
+   "unit": "each per day",
+   "vendorPrice": 31.1,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 60x60",
+   "specs": "60x60",
+   "unit": "each per day",
+   "vendorPrice": 7.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 60x72",
+   "specs": "60x72",
+   "unit": "each per day",
+   "vendorPrice": 9.9,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth Black Elegance 90x108",
+   "specs": "90x108",
+   "unit": "each per day",
+   "vendorPrice": 18.7,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Napkin Black Elegance",
+   "specs": "17x17",
+   "unit": "each per day",
+   "vendorPrice": 0.85,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Sash Black Elegance",
+   "specs": "4x108",
+   "unit": "each per day",
+   "vendorPrice": 2.3,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/black-elegance-collection/34751"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Satin 90\" Round",
+   "specs": "90\" round",
+   "unit": "each per day",
+   "vendorPrice": 17.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-satin-collection/37536"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Satin 108\" Round",
+   "specs": "108\" round",
+   "unit": "each per day",
+   "vendorPrice": 20.7,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-satin-collection/37536"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Satin 120\" Round",
+   "specs": "120\" round",
+   "unit": "each per day",
+   "vendorPrice": 26.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-satin-collection/37536"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Satin 60x120",
+   "specs": "60x120",
+   "unit": "each per day",
+   "vendorPrice": 17.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-satin-collection/37536"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Satin 90x156",
+   "specs": "90x156",
+   "unit": "each per day",
+   "vendorPrice": 37.15,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-satin-collection/37536"
+  },
+  {
+   "section": "Linens",
+   "name": "Napkin White Satin",
+   "specs": "17x17",
+   "unit": "each per day",
+   "vendorPrice": 1.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-satin-collection/37536"
+  },
+  {
+   "section": "Linens",
+   "name": "Runner White Satin",
+   "specs": "12x108",
+   "unit": "each per day",
+   "vendorPrice": 5.25,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-satin-collection/37536"
+  },
+  {
+   "section": "Linens",
+   "name": "Sash White Satin",
+   "specs": "4x108",
+   "unit": "each per day",
+   "vendorPrice": 2.65,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-satin-collection/37536"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Bichon Crush 132\" Round",
+   "specs": "132\" round",
+   "unit": "each per day",
+   "vendorPrice": 41.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-bichon-crush-collection/38424"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Bichon Crush 90x90",
+   "specs": "90x90",
+   "unit": "each per day",
+   "vendorPrice": 23.7,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-bichon-crush-collection/38424"
+  },
+  {
+   "section": "Linens",
+   "name": "Napkin White Bichon Crush",
+   "specs": "17x17",
+   "unit": "each per day",
+   "vendorPrice": 1.8,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-bichon-crush-collection/38424"
+  },
+  {
+   "section": "Linens",
+   "name": "Sash White Bichon Crush",
+   "specs": "4x108",
+   "unit": "each per day",
+   "vendorPrice": 3.25,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-bichon-crush-collection/38424"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Imperial Stripe 120\" Round",
+   "specs": "120\" round",
+   "unit": "each per day",
+   "vendorPrice": 26.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-imperial-stripe-collection/34874"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Imperial Stripe 60x120",
+   "specs": "60x120",
+   "unit": "each per day",
+   "vendorPrice": 14.9,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-imperial-stripe-collection/34874"
+  },
+  {
+   "section": "Linens",
+   "name": "Tablecloth White Imperial Stripe 90x90",
+   "specs": "90x90",
+   "unit": "each per day",
+   "vendorPrice": 18.55,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-imperial-stripe-collection/34874"
+  },
+  {
+   "section": "Linens",
+   "name": "Napkin White Imperial Stripe",
+   "specs": "17x17",
+   "unit": "each per day",
+   "vendorPrice": 1.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/white-imperial-stripe-collection/34874"
+  },
+  {
+   "section": "China",
+   "name": "China 12\" Chop Plate White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 10 3/4\" Dinner Plate White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.3,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 9 1/2\" Lunch Plate White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.15,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 8\" Salad/Dessert Plate White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.15,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 6 1/2\" Bread & Butter Plate White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.15,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China Soup Plate White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.3,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China Soup Cup White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.5,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China Coffee Cup 7 oz White",
+   "specs": "7 oz; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.15,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China Saucer 6 1/4\" White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.15,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 12\" Pasta Bowl White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 6.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 12\" Oval Platter White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 6.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 11\" Small Serving Bowl White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 2 Qt Vegetable Bowl White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 8.25,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China Large Gravy Boat White",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 8\" Buffet Plate w/ Glass Holder",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.3,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-plateware-collection/40396"
+  },
+  {
+   "section": "China",
+   "name": "China 10.5\" Dinner Imperial Onyx",
+   "specs": "10.5\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-imperial-onyx-collection/37955"
+  },
+  {
+   "section": "China",
+   "name": "China 7.5\" Salad/Dessert Imperial Onyx",
+   "specs": "7.5\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.45,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-imperial-onyx-collection/37955"
+  },
+  {
+   "section": "China",
+   "name": "China 6\" Bread & Butter Imperial Onyx",
+   "specs": "6\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-imperial-onyx-collection/37955"
+  },
+  {
+   "section": "China",
+   "name": "China Cup Imperial Onyx",
+   "specs": "7 oz; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-imperial-onyx-collection/37955"
+  },
+  {
+   "section": "China",
+   "name": "China 5 3/4\" Saucer Imperial Onyx",
+   "specs": "5 3/4\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.35,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-imperial-onyx-collection/37955"
+  },
+  {
+   "section": "China",
+   "name": "China 8 oz Soup Bowl Imperial Onyx",
+   "specs": "8 oz; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 2.25,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-imperial-onyx-collection/37955"
+  },
+  {
+   "section": "China",
+   "name": "China 10\" Square Dinner White",
+   "specs": "10\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-square-white-collection/40411"
+  },
+  {
+   "section": "China",
+   "name": "China 7\" Square Salad White",
+   "specs": "7\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.75,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-square-white-collection/40411"
+  },
+  {
+   "section": "China",
+   "name": "Serving Platter 9x13 Rectangle White",
+   "specs": "9x13; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 5.55,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-square-white-collection/40411"
+  },
+  {
+   "section": "China",
+   "name": "China White Scalloped 11\" Dinner",
+   "specs": "11\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-white-11-scalloped-dinner-ea-/45957"
+  },
+  {
+   "section": "China",
+   "name": "China White Scalloped 9\" Lunch",
+   "specs": "9\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-eleanor-white-collection/45956"
+  },
+  {
+   "section": "China",
+   "name": "China White Scalloped 8\" Dessert",
+   "specs": "8\"; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.45,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-eleanor-white-collection/45956"
+  },
+  {
+   "section": "China",
+   "name": "China White Scalloped Coffee Cup",
+   "specs": "; rented in dozens only",
+   "unit": "each per day",
+   "vendorPrice": 1.45,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/china-eleanor-white-collection/45956"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Chateau Soup Spoon",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 1.05,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-chateau-18-10-stainless/18527"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Chateau Butter Knife",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 1.05,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-chateau-18-10-stainless/18527"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Chateau Dinner Knife",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 1.05,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-chateau-18-10-stainless/18527"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Chateau Dinner Fork",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 0.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-chateau-18-10-stainless/18527"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Chateau Tea Spoon",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 0.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-chateau-18-10-stainless/18527"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Chateau Salad/Dessert Fork",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 0.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-chateau-18-10-stainless/18527"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Steak Knife 8\"",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 1.65,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-chateau-18-10-stainless/18527"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Gold Dinner Knife",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 2.2,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-velo-brushed-gold/43350"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Gold Dinner Fork",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-velo-brushed-gold/43350"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Gold Teaspoon",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-velo-brushed-gold/43350"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Gold Salad/Dessert Fork",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-velo-brushed-gold/43350"
+  },
+  {
+   "section": "Flatware",
+   "name": "Flatware Brushed Gold Soup Spoon",
+   "specs": "",
+   "unit": "each per day",
+   "vendorPrice": 1.95,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-velo-brushed-gold/43350"
+  },
+  {
+   "section": "China",
+   "name": "Charger 13\" Glass w/ Gold Rim",
+   "specs": "13\"",
+   "unit": "each per day",
+   "vendorPrice": 6.85,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-velo-brushed-gold/43350"
+  },
+  {
+   "section": "China",
+   "name": "Charger 13\" Gold Bead",
+   "specs": "13\"",
+   "unit": "each per day",
+   "vendorPrice": 2.8,
+   "sourceUrl": "https://www.houseofrental.com/product/rentals/flatware-velo-brushed-gold/43350"
+  }
+ ]
+}

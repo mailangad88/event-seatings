@@ -1,0 +1,3572 @@
+{
+ "vendorId": "playhouse-party-rentals",
+ "sources": [
+  "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/",
+  "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/",
+  "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/",
+  "https://www.playhousepartyrentals.com/category/interactive-games-chicago/",
+  "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/",
+  "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/",
+  "https://www.playhousepartyrentals.com/category/package-deals/",
+  "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/",
+  "https://www.playhousepartyrentals.com/category/rock-wall-rental-chicago/",
+  "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/",
+  "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/",
+  "https://www.playhousepartyrentals.com/category/tablecloths-and-linens/",
+  "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/",
+  "https://www.playhousepartyrentals.com/category/party-extras/",
+  "https://www.playhousepartyrentals.com/category/table-game-rental/",
+  "https://www.playhousepartyrentals.com/category/mini-golf/",
+  "https://www.playhousepartyrentals.com/category/foam-party-rentals-chicago/",
+  "https://www.playhousepartyrentals.com/category/halloween-and-holiday-inflatables/",
+  "https://www.playhousepartyrentals.com/category/balloon-artists-and-face-painters/",
+  "https://www.playhousepartyrentals.com/Terms_and_Conditions/"
+ ],
+ "notes": "Phone 773-900-6262, 401 N. Trumbull Ave Suite D, Chicago IL 60624. Inflatables: standard 6-hour rental, extra time $25/hour until 7 PM, power source within 50 ft required, delivery only, units 500+ lb commercial grade. No delivery fee amount published (see Service Area page); payment due to driver at delivery; $50 deposit for park locations; $20 charge for electrical-problem service calls; no tax info. Prices shown without units are per rental. Package/Unicorn etc. use current (discounted) price. Not read (category URL unknown or page unavailable): Inflatable Obstacle Course Rentals, Dry Slides, Mechanical Attractions, Mini Bumper Cars and Go Kart (items captured via Interactive Games), Inflatable Nightclub, Luxury Wedding Rentals (no prices shown), Outdoor Patio (unavailable), LED Mini Golf (page error). Mini golf 3-18 hole captured from /category/mini-golf/.",
+ "items": [
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Standard Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Boom Box Bounce",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Disco Dance Dome",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 379.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Massive Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 595.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Large Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Spiderman Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 259.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Ferris Wheel Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Princess Castle Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Pink Castle Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Round Cake Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Pool Party Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Gracies Corner Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Graduation Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Merry Christmas Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Donuts Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Happy Birthday Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Tik Tok Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Circus Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Juneteenth Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Crayon Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Sports Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Trick or Treat Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Haunted House Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Cake Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Balloon Carnival Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Monster Truck Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Dinosaurs Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Easter Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Frozen Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Hello Kitty Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Summer Time Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Justice League Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Monster High Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Princess Banner Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Rainbow Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Roblox Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Spiderman Banner Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Strawberry Shortcake Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Superman Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Mickey Minnie Bounce House",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Pink Purple Castle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Inflatable Bounce Houses",
+   "name": "Indoor/Outdoor Bounce House (Low Ceiling Height)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/inflatable-bounce-houses-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Gamer Combo with Slide (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 365.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Lego Block Party Combo with Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Circus Train Bounce House with Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 365.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Farm Animal Bounce House with Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 365.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Red Marble Castle with Side Slide (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Ferris wheel combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Fire House Bounce House with Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Candy Land Bounce House with Double Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "School Combo Dry",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Christmas Gingerbread House Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Tropical Combo with Double Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 365.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Unicorn Bouncer with Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "5-n-1 Sports Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Tropical Jungle with Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 265.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "School Combo Wet",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Pink Purple Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Blue Gray Castle Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 245.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Tropical Combo with Slide (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Small Obstacle with Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Castle Combo with Slide (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 255.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Justice League Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Circus Marble Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "3-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 265.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Wacky Mini Inflatable Playground",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 275.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Christmas 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Christmas Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Happy Birthday 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Juneteenth 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Gracies Corner 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Pool Party 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Merry Christmas 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Summertime 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Tik Tok 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Donuts 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Graduation 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Strawberry Shortcake 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Circus 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Dinosaurs 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Justice League 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Rainbow 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Roblox 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Frozen 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Spiderman 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Princess 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Monster Truck 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Hello Kitty 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Monster High 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Trick or Treat 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Haunted House 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Easter 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Superman 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Mickey Minnie 7-n-1 Combo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Juneteenth Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Happy Birthday Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Gracies Corner Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Graduation Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Summertime Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Tik Tok Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Merry Christmas Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Pool Party Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Strawberry Shortcake Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Rainbow Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Dinosaurs Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Donuts Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Roblox Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Frozen Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Monster Truck Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Spiderman Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Princess Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Mickey Minnie Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Hello Kitty Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Easter Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Haunted House Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Monster High Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Superman Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Combo Bouncers with Slide",
+   "name": "Trick or Treat Marble Combo (Dry)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/combo-bouncers-with-slide-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Dunk Tank",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "24ft Blue Marble Waterslide with Slip N Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 745.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "22ft Purple Crush Waterslide with Landing Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 525.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Inflatable Volleyball Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Inflatable Pool Bar",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 795.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "48ft Tropical Obstacle Course (Wet)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 595.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "24ft Rampage Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 475.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "30ft Purple Crush with slip and slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 935.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "24ft Blue Marble Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 595.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "18ft Supreme Dolphin Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "15ft Dual Lane Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Mermaid Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "17ft Emerald Cave Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "22ft T-Rex Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 525.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Tropical Lava Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Dinosaurs Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Blue single lane Marble Slip N Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 315.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Toddler Slide n Soak Splash Park",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Inflatable Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Gamer Combo with Slide (wet)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 415.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "CandyLand Bounce House with Wet Double Water Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 445.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "70ft Marble Combo Obstacle Course with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 755.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "84ft Marble Castle Obstacle Course (Wet)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 875.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "19ft Marble Castle Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 475.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Marble Combo Wet",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Unicorn Bouncer with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Tropical Oasis Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 355.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "16ft Dolphin Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Volcano Waterslide with Slip n Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 495.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "16ft Volcano Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Tropical Palm Tree Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 335.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "35ft Surf Slip N Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 315.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Surfs up Tropical Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Blue Gray Castle Combo (Wet)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Roaring River Slip n Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 315.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "22ft Palm Paradise Dual Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 595.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Palm Paradise Dual Lane Slip n Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 365.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Tropical Combo with Double water slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 415.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "16ft Tropical Curve Waterslide with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "18ft Wavy Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Castle Waterslide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Red Marble Castle with Side Slide (Wet)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Spiderman Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Happy Birthday Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Monster Truck Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Frozen Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Princess Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Mickey Minnie Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Hello Kitty Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Trick or Treat Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Haunted House Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Christmas Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Circus Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Dinosaurs Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Donuts Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Easter Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Gracies Corner Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Graduation Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Juneteenth Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Justice League Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Pool Party Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Rainbow Girls Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Roblox Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Strawberry Shortcake Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Summertime Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Superman Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Tik Tok Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Water Slides and Dunk Tanks",
+   "name": "Monster High Marble Combo with Pool",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/water-slide-rentals-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Inflatable Velcro Wall",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Double Axe Throw Inflatable Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 435.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "4 Games Sports Challenge",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 695.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "22ft Giant Rockwall with Double Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 695.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Inflatable Ninja Wall",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Giant Inflatable Pool Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Hungry Hippo Chow Down Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 595.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Human Whack A Mole",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 495.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Trackless Train Rentals Chicago (4 hours)",
+   "specs": "4 hours",
+   "unit": "each",
+   "vendorPrice": 1325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "3 Player Basketball Tournament",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Inflatable Extreme Football Challenge",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Wipeout Obstacle Course",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 595.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Connect 4 Inflatable Basketball Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 435.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Toxic Meltdown Eliminator (3hrs)",
+   "specs": "3 hours",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Toxic Meltdown Eliminator (4hrs)",
+   "specs": "4 hours",
+   "unit": "each",
+   "vendorPrice": 1245.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Toxic Meltdown Eliminator (5hrs)",
+   "specs": "5 hours",
+   "unit": "each",
+   "vendorPrice": 1470.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Toxic Meltdown Eliminator (6hrs)",
+   "specs": "6 hours",
+   "unit": "each",
+   "vendorPrice": 1670.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Inflatable Wrecking Ball",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Criss Cross Basketball Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Giant Soccer Kick Dart",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 245.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Inflatable Basketball Court",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 275.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Defender Dome Inflatable Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 595.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Three Play Sports",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Par-Tee Golf Challenge",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Soccer Goal 2-IN-1 Challenge",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Inflatable Basketball Hoop",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Boxing Ring",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 275.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Inflatable Jousting Ring",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "All in 1 Sports Arena",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 695.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Oversized Boxing Gloves",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 50.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Batters Up Baseball Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 235.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Baseball Challenge Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Basketball Challenge Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Football Challenge Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Soccer Challenge Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Golf Challenge Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Giant Inflatable Basketball Hoop",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Bowler Roller",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Gaga Inflatable Ball Pit",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Mechanical Surfboard Rental (3hrs)",
+   "specs": "3 hours",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Mechanical Surfboard Rental (6hrs)",
+   "specs": "6 hours",
+   "unit": "each",
+   "vendorPrice": 1520.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "70ft Nuclear Obstacle with Double Slide",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Large Inflatable Farm Maze",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Cash Cube",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Jumbo Tricycle (Trikes)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Mini Bumper Cars (14)",
+   "specs": "14 cars",
+   "unit": "each",
+   "vendorPrice": 1195.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Mini Bumper Cars (16)",
+   "specs": "16 cars",
+   "unit": "each",
+   "vendorPrice": 1345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Mini Bumper Cars (20)",
+   "specs": "20 cars",
+   "unit": "each",
+   "vendorPrice": 1695.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Mini Bumper Cars (25)",
+   "specs": "25 cars",
+   "unit": "each",
+   "vendorPrice": 1995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "360 Rolling Cars Chicago (3 Hour Rental)",
+   "specs": "3 hours",
+   "unit": "each",
+   "vendorPrice": 795.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Hoverball Archery Bow and Arrow inflatable",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Inflatable race track",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 265.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Giant Hoola Hoop inflatable",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Roller Ball / Skee ball inflatable",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Hang Time - Beat the Bar Challenge (up to 4 Hour Rental)",
+   "specs": "up to 4 hours",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Interactive Games",
+   "name": "Dry Dunk Tank with pit balls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/interactive-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Tetris Tumble XL",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Carnival 5-n-1",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 235.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Sports Zone 3-n-1",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 215.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Carnival 3-n-1",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 215.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Junior Sports Game inflatable",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 235.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Grand Carnival Inflatable Booth Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 795.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Giant Connect Four",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Cornhole (Sandbag toss)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Giant Jenga",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Giant Pong Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Soccer Goal w/Balls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Deluxe Movie Screen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 275.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Tug-A-War",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Sack Races",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 30.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Putter Ball Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Prize Drop (Plinko)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Dodge Balls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 30.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Spinning Prize Wheel",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Carnival Vinyl Table Covers w/ 6ft Table",
+   "specs": "6ft table",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Pork Chop Pig Race",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 85.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Under the Knife Giant Operation Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Giant Uno Cards",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Giant Playing Cards",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Grand Carnival Inflatable Booth",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 475.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Ballon Pop",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Bingo Balls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Can Smash",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Coin Toss",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Down-A-Clown",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Fish-In-A-Bowl",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Hit The Bucket",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Potty Toss",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Ring-A-Bottle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Stand-A-Bottle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Tic-Tac-Toe",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Event Attendant 3hrs",
+   "specs": "3 hours",
+   "unit": "each",
+   "vendorPrice": 160.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Event Attendant 4hrs",
+   "specs": "4 hours",
+   "unit": "each",
+   "vendorPrice": 200.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Event Attendant 5hrs",
+   "specs": "5 hours",
+   "unit": "each",
+   "vendorPrice": 240.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Event Attendant 6hrs",
+   "specs": "6 hours",
+   "unit": "each",
+   "vendorPrice": 280.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Carnival Treat and concession Booth",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Pong Table Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 95.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Giant Color Stacking Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Carnival Games and Yard Games",
+   "name": "Movie projector",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 125.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/carnival-games-and-yard-games-chicago/"
+  },
+  {
+   "section": "Toddler Inflatables",
+   "name": "Candy Playland toddler Inflatable",
+   "specs": "ages 1-4",
+   "unit": "each",
+   "vendorPrice": 315.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/"
+  },
+  {
+   "section": "Toddler Inflatables",
+   "name": "Mini Lego Blocks Bounce House with Slide",
+   "specs": "ages 1-4",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/"
+  },
+  {
+   "section": "Toddler Inflatables",
+   "name": "Lego Blocks Inflatable Playground",
+   "specs": "ages 1-4",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/"
+  },
+  {
+   "section": "Toddler Inflatables",
+   "name": "Mickey Mouse Play House Inflatable Playground",
+   "specs": "ages 1-4",
+   "unit": "each",
+   "vendorPrice": 315.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/"
+  },
+  {
+   "section": "Toddler Inflatables",
+   "name": "Mini Castle Bounce House with Slide",
+   "specs": "ages 1-4",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/"
+  },
+  {
+   "section": "Toddler Inflatables",
+   "name": "2-n-1 Inflatable Sports Playground",
+   "specs": "ages 1-4",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/"
+  },
+  {
+   "section": "Toddler Inflatables",
+   "name": "Little Builders Inflatable Playground",
+   "specs": "ages 1-4",
+   "unit": "each",
+   "vendorPrice": 315.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/"
+  },
+  {
+   "section": "Toddler Inflatables",
+   "name": "Toddler Town Inflatable Playground",
+   "specs": "ages 1-4",
+   "unit": "each",
+   "vendorPrice": 315.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/toddler-inflatables-chicago/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Ultimate Combo Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 895.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Carnival Party Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1025.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Rainy Day Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 340.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Unicorn Package",
+   "specs": "vendor shows struck-through $535",
+   "unit": "each",
+   "vendorPrice": 485.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Little People Combo",
+   "specs": "struck-through $1425",
+   "unit": "each",
+   "vendorPrice": 1250.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Mickey Mouse Combo",
+   "specs": "struck-through $945",
+   "unit": "each",
+   "vendorPrice": 795.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Carnival Combo #1",
+   "specs": "struck-through $2160",
+   "unit": "each",
+   "vendorPrice": 1995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Indoor or Outdoor Fun Package",
+   "specs": "struck-through $605",
+   "unit": "each",
+   "vendorPrice": 495.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Super Hero Combo",
+   "specs": "struck-through $885",
+   "unit": "each",
+   "vendorPrice": 785.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Birthday Combo",
+   "specs": "struck-through $1150",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Ultimate Sports Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 875.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "Super Carnival Ferris wheel Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Package Deals",
+   "name": "All in one Sports Challenge",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1155.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/package-deals/"
+  },
+  {
+   "section": "Mechanical Bull Rental",
+   "name": "Mechanical Bull (3hrs)",
+   "specs": "3 hours",
+   "unit": "each",
+   "vendorPrice": 825.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/"
+  },
+  {
+   "section": "Mechanical Bull Rental",
+   "name": "Deluxe Mechanical Bull (3hrs)",
+   "specs": "3 hours",
+   "unit": "each",
+   "vendorPrice": 1095.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/"
+  },
+  {
+   "section": "Mechanical Bull Rental",
+   "name": "Mechanical wee wee 3hrs",
+   "specs": "3 hours",
+   "unit": "each",
+   "vendorPrice": 1095.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/"
+  },
+  {
+   "section": "Mechanical Bull Rental",
+   "name": "Mechanical Bull (4hrs)",
+   "specs": "4 hours",
+   "unit": "each",
+   "vendorPrice": 995.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/"
+  },
+  {
+   "section": "Mechanical Bull Rental",
+   "name": "Mechanical Bull (5hrs)",
+   "specs": "5 hours",
+   "unit": "each",
+   "vendorPrice": 1165.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/"
+  },
+  {
+   "section": "Mechanical Bull Rental",
+   "name": "Mechanical Bull (6hrs)",
+   "specs": "6 hours",
+   "unit": "each",
+   "vendorPrice": 1360.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/"
+  },
+  {
+   "section": "Mechanical Bull Rental",
+   "name": "Deluxe Mechanical Bull (4hrs)",
+   "specs": "4 hours",
+   "unit": "each",
+   "vendorPrice": 1245.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/"
+  },
+  {
+   "section": "Mechanical Bull Rental",
+   "name": "Deluxe Mechanical Bull (5hrs)",
+   "specs": "5 hours",
+   "unit": "each",
+   "vendorPrice": 1495.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mechanical-bull-rental-chicago/"
+  },
+  {
+   "section": "Rock Wall Rental",
+   "name": "Rock Wall (4 hour rental)",
+   "specs": "holds 3 riders, 40-250 lbs per rider; 4 hours",
+   "unit": "each",
+   "vendorPrice": 1295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/rock-wall-rental-chicago/"
+  },
+  {
+   "section": "Rock Wall Rental",
+   "name": "Rock Wall (5 hour rental)",
+   "specs": "holds 3 riders, 40-250 lbs per rider; 5 hours",
+   "unit": "each",
+   "vendorPrice": 1490.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/rock-wall-rental-chicago/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Cotton Candy Machine",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 85.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Sno Cone Machine",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 85.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Popcorn Machine",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 85.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "5-tier Food warmer",
+   "specs": "5-tier",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Popcorn and Bags - Extra 50 servings",
+   "specs": "50 servings",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Additional Blue Raspberry",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Additional Pink Vanilla",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Cotton Candy extra 50 cones",
+   "specs": "50 cones",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Additional Cherry Sno Bal Flavor",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Additional Strawberry Sno Bal Flavor",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Additional Blue Raspberry Sno Bal Flavor",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Additional Grape Sno Bal Flavor",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "8oz Cups 50 pack",
+   "specs": "50 pack",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Sno Cone - 50 Straws",
+   "specs": "50 straws",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Bags for Popcorn 50 count",
+   "specs": "50 count",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Concessions and Add Ons",
+   "name": "Popcorn - Extra Kit 10 servings",
+   "specs": "10 servings",
+   "unit": "each",
+   "vendorPrice": 7.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Black Folding Plastic Chairs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.5,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "White Resin Garden Chairs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "6ft Rectangle folding Banquet Table",
+   "specs": "6ft rectangle",
+   "unit": "each",
+   "vendorPrice": 12.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Hi Boy Cocktail Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "White Plastic Folding Chairs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.5,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Chair Setup Service",
+   "specs": "per individual rental item",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "8ft Banquet Table",
+   "specs": "8ft",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Table Setup Service",
+   "specs": "per individual rental item",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "60in. Round Folding Table",
+   "specs": "60in round",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Clear Chiavari Chairs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "White Chiavari Chairs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "White Bistro Garden Chairs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Square Banquet/Card Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "6ft Kids Table",
+   "specs": "6ft",
+   "unit": "each",
+   "vendorPrice": 12.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Plastic Kids Garden Chairs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.5,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Foldable Toddler Picnic Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Gold Chiavari Chairs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Chiavari Chair Pad (white)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.5,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Chiavari Chair Pad (Black)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.5,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "72in. Round Folding Table",
+   "specs": "72in round",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Disposable Table Cover",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tables and Chairs",
+   "name": "Fill-n-Chill Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tables-and-chairs-rentals-chicago/"
+  },
+  {
+   "section": "Tablecloths and Linens",
+   "name": "White 6ft Table Cover",
+   "specs": "white, 6ft",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tablecloths-and-linens/"
+  },
+  {
+   "section": "Tablecloths and Linens",
+   "name": "White Hi Boy Table Cover",
+   "specs": "white, hi boy",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tablecloths-and-linens/"
+  },
+  {
+   "section": "Tablecloths and Linens",
+   "name": "Black 6ft Table Cover",
+   "specs": "black, 6ft",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tablecloths-and-linens/"
+  },
+  {
+   "section": "Tablecloths and Linens",
+   "name": "Black Round Table Cover",
+   "specs": "black, round",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tablecloths-and-linens/"
+  },
+  {
+   "section": "Tablecloths and Linens",
+   "name": "White Round Table Cover",
+   "specs": "white, round",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tablecloths-and-linens/"
+  },
+  {
+   "section": "Tablecloths and Linens",
+   "name": "Black Hi Boy Table Cover",
+   "specs": "black, hi boy",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tablecloths-and-linens/"
+  },
+  {
+   "section": "Tablecloths and Linens",
+   "name": "Pink Hi Boy Table Cover",
+   "specs": "pink, hi boy",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tablecloths-and-linens/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Blue 10 x 10 Popup Tent",
+   "specs": "10x10 popup, blue",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "White 10 x 10 Popup Tent",
+   "specs": "10x10 popup, white",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Misting 10 x 10 Popup Tent",
+   "specs": "10x10 popup, misting",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "10 x 13 Pole Tent",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "10 x 13 Tent with Sidewalls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 250.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Tent weights 10x13 (qty 4)",
+   "specs": "set of 4",
+   "unit": "each",
+   "vendorPrice": 200.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "10 x 20 Pole Tent",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 250.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "10 x 20 Tent with Sidewalls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 350.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "10 x 20 Pole Tent Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 380.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Tent weights 10x20 (qty 4)",
+   "specs": "set of 4",
+   "unit": "each",
+   "vendorPrice": 200.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "10 x 30 Pole Tent with Sidewalls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 450.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Tent weights 10x30 (qty 4)",
+   "specs": "set of 4",
+   "unit": "each",
+   "vendorPrice": 200.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "13 x 26 Pole Tent",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 400.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "13 x 26 Pole Tent with Sidewalls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 500.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Tent weights 13x26 (qty 6)",
+   "specs": "set of 6",
+   "unit": "each",
+   "vendorPrice": 300.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "20 x 20 Pole Tent",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 350.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "20 x 20 Pole Tent with Sidewalls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 450.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "20 x 20 Pole Tent Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 475.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Tent weights 20x20 (qty 4)",
+   "specs": "set of 4",
+   "unit": "each",
+   "vendorPrice": 200.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "20 x 30 Pole Tent",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 450.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "20 x 30 Pole Tent with Sidewalls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 550.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "20 x 30 Pole Tent Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 600.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Tent weights 20x30 (qty 6)",
+   "specs": "set of 6",
+   "unit": "each",
+   "vendorPrice": 300.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "20 x 40 Pole Tent",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 550.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "20 x 40 Pole Tent with Sidewalls",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 650.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Tent Rentals",
+   "name": "Tent weights 20x40 (qty 6)",
+   "specs": "set of 6",
+   "unit": "each",
+   "vendorPrice": 300.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/tent-rentals-chicago/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "1000 Watt Bluetooth Speakers",
+   "specs": "1000 watt",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "5000 Watt Generator",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "3500 Watt Generator",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 125.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "5-in-1 Party Light with Stand",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "150 Qt Igloo Cooler",
+   "specs": "150 quart",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Certificate of Insurance",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Business/Corporation Certificate of Insurance",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "School Certificate of Insurance",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "5 Gallon of Gas",
+   "specs": "5 gallons",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Fog Machine",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 40.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "24' Industrial Fan",
+   "specs": "24 inch",
+   "unit": "each",
+   "vendorPrice": 50.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "XL 42' Industrial Fan",
+   "specs": "42 inch",
+   "unit": "each",
+   "vendorPrice": 125.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Inflatable Blower",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 50.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Extra Large Grill",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 200.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Propane 4-burner Grill",
+   "specs": "4 burner",
+   "unit": "each",
+   "vendorPrice": 140.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "2 Burner stove with flat top griddle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Up Light Party Lights",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Podium",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 60.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Silver Wedding Arch",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "12 x 12 Dance Floor",
+   "specs": "12x12",
+   "unit": "each",
+   "vendorPrice": 500.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "15 x 15 Dance Floor",
+   "specs": "15x15",
+   "unit": "each",
+   "vendorPrice": 750.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "16 x 16 Dance Floor",
+   "specs": "16x16",
+   "unit": "each",
+   "vendorPrice": 575.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "18 x 18 Dance Floor",
+   "specs": "18x18",
+   "unit": "each",
+   "vendorPrice": 1000.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Large Karaoke Machine",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Bubble Machine",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 40.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Marketing and Promotion Balloon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "LED Light with Stand",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 50.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "4 beam laser Party Light",
+   "specs": "4 beam",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Chauvet Party LED Light",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Whiskey wine barrel",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 80.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "A-Frame Chalkboard rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "4x8 Rolling Dry erase board",
+   "specs": "4x8",
+   "unit": "each",
+   "vendorPrice": 250.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "60\" TV with Stand",
+   "specs": "60 inch",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Chargable battery operated Bluetooth Speaker",
+   "specs": "rechargeable",
+   "unit": "each",
+   "vendorPrice": 40.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Party Extras",
+   "name": "Industrial Fan Evaporator Cooler",
+   "specs": "cools up to 2000 sq ft",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/party-extras/"
+  },
+  {
+   "section": "Table Games",
+   "name": "Ping Pong tennis Table Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/table-game-rental/"
+  },
+  {
+   "section": "Table Games",
+   "name": "Air Hockey Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 495.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/table-game-rental/"
+  },
+  {
+   "section": "Table Games",
+   "name": "Foosball Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/table-game-rental/"
+  },
+  {
+   "section": "Table Games",
+   "name": "9ft shuffleboard Table rental",
+   "specs": "9ft",
+   "unit": "each",
+   "vendorPrice": 495.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/table-game-rental/"
+  },
+  {
+   "section": "Table Games",
+   "name": "Craps Table Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 300.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/table-game-rental/"
+  },
+  {
+   "section": "Table Games",
+   "name": "Black jackTable Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/table-game-rental/"
+  },
+  {
+   "section": "Table Games",
+   "name": "Poker Table Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/table-game-rental/"
+  },
+  {
+   "section": "Table Games",
+   "name": "9ft Skeet ball Rental",
+   "specs": "9ft",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/table-game-rental/"
+  },
+  {
+   "section": "Mini Golf",
+   "name": "3 Hole Mini Golf",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mini-golf/"
+  },
+  {
+   "section": "Mini Golf",
+   "name": "6 Hole Mini Golf",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 645.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mini-golf/"
+  },
+  {
+   "section": "Mini Golf",
+   "name": "9 Hole Mini Golf",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 895.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mini-golf/"
+  },
+  {
+   "section": "Mini Golf",
+   "name": "18 Hole Mini Golf",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1595.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/mini-golf/"
+  },
+  {
+   "section": "Foam Party Rentals",
+   "name": "Foam Machine with Pit (240 minutes of foam)",
+   "specs": "240 minutes",
+   "unit": "each",
+   "vendorPrice": 795.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/foam-party-rentals-chicago/"
+  },
+  {
+   "section": "Foam Party Rentals",
+   "name": "Foam Machine (120 minutes of foam)",
+   "specs": "120 minutes",
+   "unit": "each",
+   "vendorPrice": 545.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/foam-party-rentals-chicago/"
+  },
+  {
+   "section": "Foam Party Rentals",
+   "name": "Foam Machine (60 minutes of foam)",
+   "specs": "60 minutes",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/foam-party-rentals-chicago/"
+  },
+  {
+   "section": "Halloween and Holiday Inflatables",
+   "name": "Oktober fest Inflatable Pub",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 695.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/halloween-and-holiday-inflatables/"
+  },
+  {
+   "section": "Halloween and Holiday Inflatables",
+   "name": "Oktoberfest Inflatable Pub Package",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 825.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/halloween-and-holiday-inflatables/"
+  },
+  {
+   "section": "Balloon Artists and Face Painters",
+   "name": "Face Painter",
+   "specs": "hourly rate",
+   "unit": "per hour",
+   "vendorPrice": 275.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/balloon-artists-and-face-painters/"
+  },
+  {
+   "section": "Balloon Artists and Face Painters",
+   "name": "Balloon Twisting",
+   "specs": "hourly rate",
+   "unit": "per hour",
+   "vendorPrice": 275.0,
+   "sourceUrl": "https://www.playhousepartyrentals.com/category/balloon-artists-and-face-painters/"
+  }
+ ]
+}

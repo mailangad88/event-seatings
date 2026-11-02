@@ -1,18 +1,43 @@
 # Chicago-area event rental vendors
 
-Checked 2026-11-02. 23 vendors are wired into the site catalog (src/data/vendors.ts). Customers never see vendor names; each lead shows them in the CRM.
+Checked 2026-11-02. 24 vendors are wired into the site catalog (src/data/vendors.ts). Customers never see vendor names; each lead shows them in the CRM.
 
-Pricing rule: customer price = vendor price + 10%, rounded to the cent. 80 of 98 items use a vendor's published price; 18 use a Chicago-market estimate (marked "Est." on the site) until a vendor quotes them.
+Pricing rule: customer price = vendor price + 10%, rounded to the cent. The catalog has 2,566 rentable items in 19 categories: 111 curated "featured" products plus 2,455 rows imported from the complete public price lists of six vendors (docs/vendor-data/full-*.json, imported by scripts/build-inventory.py). 2,545 items use a vendor's published price; 21 use a Chicago-market estimate (marked "Est." on the site) until a vendor quotes them.
+
+## Items by category
+
+| Category | Items |
+|---|---|
+| Catering equipment | 653 |
+| Games & kids | 438 |
+| Dinnerware | 260 |
+| Tables | 184 |
+| Flatware | 182 |
+| Glassware | 182 |
+| Decor | 152 |
+| Chairs | 138 |
+| Tents | 82 |
+| Linens | 70 |
+| AV & sound | 47 |
+| Concessions | 39 |
+| Lighting | 26 |
+| Heating & cooling | 25 |
+| Lounge | 23 |
+| Restrooms & power | 18 |
+| Dance floors & staging | 17 |
+| Fencing & crowd control | 16 |
+| Photo booths | 14 |
 
 ## Vendors in the catalog
 
 | Vendor | Base | Phone | Prices | Verified via | Items routed to them | Notes |
 |---|---|---|---|---|---|---|
-| [Arlington Rental (Chicagoland Party & Event Rentals)](https://www.arlingtonrental.com) | Schaumburg | 847-394-8213 | public-list | own website | 51 | Public 1-day price list at /pricing. Multi-day by quote. Delivery fee and minimum not published. Hours Mon-Fri 8-4:30, Sat 8-12. |
-| [Hall's Rental Service](https://www.hallsrental.com) | Niles | (847) 929-2222 | public-list | own website | 7 | Public 2026 price guide (web + PDF). Upscale tableware and specialty chairs. No tents. Propane equipment requires a certificate of insurance. |
-| [House of Rental](https://www.houseofrental.com) | Skokie | 847-677-2010 | partial | own website | 3 | Prices on individual product pages (daily rate). Delivery priced by time and location; extra for stairs and after-hours. |
-| [Playhouse Party Rentals](https://www.playhousepartyrentals.com) | Chicago | 773-900-6262 | partial | own website | 5 | Prices shown on the Luxury Wedding Rentals category page. IDOL-inspected inflatables; Chicago Park District approved. |
-| [Easy Breezy Bash Co.](https://easybreezybashco.com) | Oak Creek, WI | 414-559-4266 | public-list | own website | 16 | Wisconsin-based with a public online catalog; lists Chicago in its service area. Chicago delivery fee not published, confirm before quoting. |
+| [Arlington Rental (Chicagoland Party & Event Rentals)](https://www.arlingtonrental.com) | Schaumburg | 847-394-8213 | public-list | own website | 320 | Public 1-day price list at /pricing. Multi-day by quote. Delivery fee and minimum not published. Hours Mon-Fri 8-4:30, Sat 8-12. |
+| [Hall's Rental Service](https://www.hallsrental.com) | Niles | (847) 929-2222 | public-list | own website | 1166 | Public 2026 price guide (web + PDF). Upscale tableware and specialty chairs. No tents. Propane equipment requires a certificate of insurance. |
+| [House of Rental](https://www.houseofrental.com) | Skokie | 847-677-2010 | partial | own website | 282 | Prices on individual product pages (daily rate). Delivery priced by time and location; extra for stairs and after-hours. |
+| [Playhouse Party Rentals](https://www.playhousepartyrentals.com) | Chicago | 773-900-6262 | public-list | own website | 418 | Public prices on category pages for inflatables, water slides, games, concessions, tents, tables, chairs and extras (Luxury Wedding items unpriced). 6-hour rental, $25 per extra hour, $50 deposit for park events. IDOL-inspected inflatables; Chicago Park District approved. |
+| [TheJumperStore](https://www.thejumperstore.com) | Chicago | 773-756-1919 | public-list | own website | 180 | Online store with prices for bounce houses, water slides, games, concessions, tents, tables and chairs. Rentals include supplies for about 50 servings on concession machines. Delivery fee varies by date and address; obstacle courses are call-to-reserve. |
+| [Easy Breezy Bash Co.](https://easybreezybashco.com) | Oak Creek, WI | 414-559-4266 | public-list | own website | 180 | Wisconsin-based with a public online catalog; lists Chicago in its service area. Chicago delivery fee not published, confirm before quoting. |
 | [Bowery & Bash](https://www.boweryandbash.com) | Chicago | 312-882-1891 | quote-only | own website | 8 | Luxury furniture and decor. Earlier research: $3,500 minimum within 50 miles, 10% mandatory damage protection, 50% non-refundable deposit. |
 | [Big Tent Events](https://www.bigtentevents.com) | St. Charles | 630-690-8500 | quote-only | own website | 4 | Tent specialist (pole, frame, clear-top, structure). 3.5% card fee. |
 | [Joliet Tent Company](https://www.joliettent.com) | Joliet | 815-722-2315 | quote-only | own website | 0 |  |
@@ -28,7 +53,7 @@ Pricing rule: customer price = vendor price + 10%, rounded to the cent. 80 of 98
 | [Complete Weddings + Events (Chicago)](https://completewedo.com/chicago/) | Chicago | 331-207-4027 | quote-only | own website | 0 | DJ, uplighting and photo booths. |
 | Windy City Event Rentals | Chicago |  | quote-only | directory listing | 0 | Found on The Knot and WeddingWire ("starting" prices: chairs $3, tables $10). Own website not confirmed. |
 | Chicago Tent Rental | Hinsdale | (708) 699-7368 | partial | directory listing | 0 | WeddingWire shows starting prices only (tents $300, tables $10, chairs $2.50), delivery and setup included. |
-| EZ Tent Rentals | Countryside |  | quote-only | directory listing | 0 | Found on The Knot; own website not confirmed. Also generators, restrooms, climate control. |
+| EZ Tent Rentals | Countryside |  | quote-only | directory listing | 4 | Found on The Knot; own website not confirmed. Also generators, restrooms, climate control. |
 | P.S. Event Rentals by Funtime Services | Naperville | 630-922-6100 | quote-only | directory listing | 0 | Chiavari, cross-back, farm tables, clear and hi-peak tents, bistro lighting. Showroom by appointment. |
 | Champagne Petal Rentals | Chicago |  | quote-only | directory listing | 0 | Faux-floral arches and aisle decor (The Knot). |
 
@@ -42,6 +67,10 @@ Found only in directory listings. Call before adding them.
 - M&M - The Special Events Company (Carol Stream), 630-871-9999: UNVERIFIED lead: directory listing only.
 - Reventals (marketplace) (Chicago), 888-857-0071: Marketplace; FAQ gives only ballpark: Chiavari ~$8, folding ~$1-4 (not item-level published prices).
 - RentForEvent Chicago (Chicago), no phone: Pipe & drape, uplighting, wedding lighting; site blocked bot fetch, prices not verified.
+
+- Bright Event Rentals: checked Nov 2; serves Texas and California, not Chicago.
+- City Food Equipment (Lombard): concession machines listed without prices.
+- National Rent A Fence: barricades and fencing are quote-only.
 
 ## Estimated prices (no published vendor price)
 
@@ -63,16 +92,20 @@ Found only in directory listings. Call before adding them.
 | Bistro string lights | $75.00 per 100 ft | $82.50 | Big Tent Events |
 | Coffee table | $75.00 each | $82.50 | Bowery & Bash |
 | Candle holder | $2.50 each | $2.75 | Tablescapes Event Rentals |
-| Popcorn machine | $95.00 each | $104.50 | Playhouse Party Rentals |
-| Cotton candy machine | $95.00 each | $104.50 | Playhouse Party Rentals |
+| Portable restroom | $175.00 each | $192.50 | EZ Tent Rentals |
+| ADA accessible restroom | $225.00 each | $247.50 | EZ Tent Rentals |
+| Luxury restroom trailer | $1500.00 each | $1650.00 | EZ Tent Rentals |
+| Generator, 20 kW towable | $450.00 each | $495.00 | EZ Tent Rentals |
+| Temporary fence panel | $25.00 each | $27.50 | Playhouse Party Rentals |
 
 ## Gaps and caveats
 
-- Only five vendors publish item prices online: Arlington Rental (Schaumburg), Hall's Rental (Niles), House of Rental (Skokie, per product page), Playhouse Party Rentals (Chicago, wedding page) and Easy Breezy Bash Co. (Oak Creek, WI, which delivers to Chicago; its Chicago delivery fee is unpublished).
-- No vendor publishes delivery fees or order minimums. Every quote must add delivery, setup, damage waiver (typically 8-12%) and tax.
-- No published prices were found for LED dance floors, bistro string lights, sailcloth or clear-top tents, spandex highboy covers, sequin overlays, runners, or specialty chairs (rattan, velvet, wishbone etc.).
+- Full public price lists are imported for Arlington Rental (Schaumburg), Hall's Rental (Niles), House of Rental (Skokie; 285 product pages read, some SKUs not fetched), Playhouse Party Rentals (Chicago), TheJumperStore (Chicago) and Easy Breezy Bash Co. (Oak Creek, WI, delivers to Chicago). Packages, fees and installation rows are excluded.
+- Not captured: Playhouse obstacle courses, dry slides, mechanical attractions and LED mini golf (pages failed); TheJumperStore obstacle courses (call to reserve); House of Rental staging, dance floors, tent floors, restroom trailers (request-a-quote), plus remaining linen colors and drapery.
+- No Chicago vendor publishes portable restroom, restroom trailer, temporary fence or large towable generator prices; those stay estimated and route to EZ Tent Rentals or the category specialist.
+- No vendor publishes delivery fees or order minimums. Every quote must add delivery, setup, damage waiver (typically 8-12%) and tax. Playhouse: 6-hour rental, $25 per extra hour.
 - Nothing verified in Orland Park, Tinley Park, Oak Lawn, Crystal Lake/McHenry or NW Indiana; the south suburbs are thin.
 - Prices change. Re-check the source URL in price-sheet.csv before sending a customer a final number.
 - Before routing real leads, call each vendor to agree a referral or reseller arrangement; none has been contacted.
 
-Files: price-sheet.csv (one row per item with vendor, vendor price, +10% price, source), raw/*.json (full research notes per region).
+Files: price-sheet.csv (one row per item with vendor, vendor price, +10% price, source, page), raw/full-*.json (complete vendor price lists), raw/*.json (regional research notes).

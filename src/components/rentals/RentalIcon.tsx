@@ -111,6 +111,48 @@ const paths: Record<CategoryId, React.ReactNode> = {
       <path d="M16 20v-8M32 20v-8M48 20v-8" />
     </>
   ),
+  concessions: (
+    <>
+      <path d="M18 24h28l-4 32H22z" />
+      <path d="M22 24l3 32M42 24l-3 32M32 24v32" />
+      <circle cx="22" cy="18" r="5" />
+      <circle cx="32" cy="14" r="6" />
+      <circle cx="42" cy="18" r="5" />
+    </>
+  ),
+  "photo-booths": (
+    <>
+      <path d="M8 20h48v30H8z" />
+      <path d="M22 20l4-8h12l4 8" />
+      <circle cx="32" cy="35" r="9" />
+      <circle cx="32" cy="35" r="4" />
+      <path d="M48 26h3" />
+    </>
+  ),
+  "av-sound": (
+    <>
+      <path d="M18 8h20v48H18z" />
+      <circle cx="28" cy="40" r="8" />
+      <circle cx="28" cy="40" r="3" />
+      <circle cx="28" cy="20" r="4" />
+      <path d="M46 22c3 3 3 9 0 12M50 18c5 5 5 15 0 20" />
+    </>
+  ),
+  "restrooms-power": (
+    <>
+      <path d="M12 10h24v46H12z" />
+      <path d="M12 18h24M22 34h4" />
+      <path d="M46 26l-6 12h8l-6 12" />
+    </>
+  ),
+  "fencing-crowd-control": (
+    <>
+      <path d="M14 18v36M50 18v36M10 54h8M46 54h8" />
+      <circle cx="14" cy="15" r="3" />
+      <circle cx="50" cy="15" r="3" />
+      <path d="M14 20c12 10 24 10 36 0" />
+    </>
+  ),
 };
 
 export function RentalIcon({ category, className = "", title }: { category: CategoryId; className?: string; title?: string }) {

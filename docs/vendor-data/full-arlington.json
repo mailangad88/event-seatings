@@ -1,0 +1,2541 @@
+{
+ "vendorId": "arlington-rental",
+ "sources": [
+  "https://www.arlingtonrental.com/pricing",
+  "https://www.arlingtonrental.com/products",
+  "https://www.arlingtonrental.com/party-rentals-chicagoland",
+  "https://www.arlingtonrental.com/delivery-scheduling",
+  "https://www.arlingtonrental.com/rental-agreement"
+ ],
+ "notes": "Prices are 1-day rates; multi-day rates available by contacting vendor (847-394-8213, sales@arlingtonrental.com). Online prices are rental rates only; complete quotes add delivery, tax and fees. Delivery fees vary by distance from Schaumburg IL warehouse (no dollar amounts published); after-hours delivery/pickup extra; setup/takedown extra; cleaning charge for dirty returns. Damage Waiver is a non-refundable percentage of gross rental (packages cite 10% waiver + 10% tax). Security deposit required at reservation (amount not published). Hours M-F 8-5, Sat 8-2. Games page says 29 items but only 14 displayed. No lighting, restroom, generator or concession prices published online (lighting/uplights mentioned without prices). Package rows are est. incl. waiver and tax, so should probably not be marked up as item prices.",
+ "items": [
+  {
+   "section": "Chairs",
+   "name": "Samsonite® folding (white)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Chairs",
+   "name": "White wood padded folding",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Chairs",
+   "name": "Oak wood padded folding",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Chairs",
+   "name": "Black padded stacking banquet (Indoor)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Chairs",
+   "name": "White resin padded folding",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Chairs",
+   "name": "Childs resin - out door w/arms",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Chairs",
+   "name": "Bar stool black padded",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chivari - Gold with Ivory Pad",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 6.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Chairs",
+   "name": "Chivari - Barstool w/back",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "4' Banquet Plastic Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 8.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "6' Banquet Plastic 6' x 30 (Seats 6 to 8 People) 2 Edge",
+   "specs": "Seats 6 to 8 People",
+   "unit": "each",
+   "vendorPrice": 10.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "6' Banquet Plastic Child (Adjustable Height)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "8' Banquet Plastic 8' x 30 (Seats 8 to 10 People) 2 Edge",
+   "specs": "Seats 8 to 10 People",
+   "unit": "each",
+   "vendorPrice": 11.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "Conference 18 x 6'",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "Conference 18 x 8'",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 11.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "30” Round Wood",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 14.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "30” x 42” Pedestal Highboy",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 14.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "36” x 42” Pedestal",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 14.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "48” Round Plastic",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 11.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "48” Round Wood",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 11.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "60” Round Wood (Seat 8)",
+   "specs": "Seat 8",
+   "unit": "each",
+   "vendorPrice": 13.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "72” Round Wood (Seats 10)",
+   "specs": "Seats 10",
+   "unit": "each",
+   "vendorPrice": 15.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "Serpentine Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 18.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "36” Round Wood",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "30” x 30” Triangular",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tables",
+   "name": "30” x 42” Triangular",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "15’ x 15’ Canopy",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "20’ x 20’ Canopy (Seats 40)",
+   "specs": "Seats 40",
+   "unit": "each",
+   "vendorPrice": 290.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "20’ x 30’ Canopy (Seats 60)",
+   "specs": "Seats 60",
+   "unit": "each",
+   "vendorPrice": 400.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "20’ x 40’ Canopy (Seats 80)",
+   "specs": "Seats 80",
+   "unit": "each",
+   "vendorPrice": 500.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "30’ x 30’ Canopy (Seats 90)",
+   "specs": "Seats 90",
+   "unit": "each",
+   "vendorPrice": 650.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "30’ x 45’ Canopy (Seats 135)",
+   "specs": "Seats 135",
+   "unit": "each",
+   "vendorPrice": 825.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "30’ x 60’ Canopy (Seats 180)",
+   "specs": "Seats 180",
+   "unit": "each",
+   "vendorPrice": 1050.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "10’ x 10’ Frame Tent (Seats 10)",
+   "specs": "Seats 10",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "10’ x 20’ Frame Tent (Seats 20)",
+   "specs": "Seats 20",
+   "unit": "each",
+   "vendorPrice": 300.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "15’ x 15’ Frame Tent (Seats 20)",
+   "specs": "Seats 20",
+   "unit": "each",
+   "vendorPrice": 310.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "15’ x 30’ Frame Tent (Seats 45)",
+   "specs": "Seats 45",
+   "unit": "each",
+   "vendorPrice": 500.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "16’ x 16’ Frame Tent (Seats 25)",
+   "specs": "Seats 25",
+   "unit": "each",
+   "vendorPrice": 310.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "20’ x 20’ Frame Tent (Seats 40)",
+   "specs": "Seats 40",
+   "unit": "each",
+   "vendorPrice": 400.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "20’ x 30’ Frame Tent (Seats 60)",
+   "specs": "Seats 60",
+   "unit": "each",
+   "vendorPrice": 525.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "20’ x 40’ Frame Tent (Seats 80)",
+   "specs": "Seats 80",
+   "unit": "each",
+   "vendorPrice": 650.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "20’ x 60’ Frame Tent (Seats 120)",
+   "specs": "Seats 120",
+   "unit": "each",
+   "vendorPrice": 975.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "30’ x 30’ Frame Tent (Seats 90)",
+   "specs": "Seats 90",
+   "unit": "each",
+   "vendorPrice": 800.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "30’ x 45’ Frame Tent (Seats 120)",
+   "specs": "Seats 120",
+   "unit": "each",
+   "vendorPrice": 1100.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "30’ x 60’ Frame Tent (Seats 180)",
+   "specs": "Seats 180",
+   "unit": "each",
+   "vendorPrice": 1450.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Patio Heater",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "40' x 40' Pole Tent (Seats 160)",
+   "specs": "Seats 160",
+   "unit": "each",
+   "vendorPrice": 1075.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "40' x 60' Pole Tent (Seats 240)",
+   "specs": "Seats 240",
+   "unit": "each",
+   "vendorPrice": 1475.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "40’ x 80’ Pole Tent (Seats 320)",
+   "specs": "Seats 320",
+   "unit": "each",
+   "vendorPrice": 1900.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "40’ x 100’ Pole Tent (Seats 400)",
+   "specs": "Seats 400",
+   "unit": "each",
+   "vendorPrice": 2325.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "40’ x 120’ Pole Tent (Seats 480)",
+   "specs": "Seats 480",
+   "unit": "each",
+   "vendorPrice": 2750.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "60’ x 60’ Pole Tent (Seats 360)",
+   "specs": "Seats 360",
+   "unit": "each",
+   "vendorPrice": 2750.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "60’ x 90’ Pole Tent (Seats 540)",
+   "specs": "Seats 540",
+   "unit": "each",
+   "vendorPrice": 4050.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "60’ x 120’ Pole Tent (Seats 720)",
+   "specs": "Seats 720",
+   "unit": "each",
+   "vendorPrice": 5200.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Tent Sidewalls - Solid",
+   "specs": "",
+   "unit": "per lin. ft.",
+   "vendorPrice": 1.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Tent Sidewalls - Mesh",
+   "specs": "",
+   "unit": "per lin. ft.",
+   "vendorPrice": 1.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Tent Sidewalls with Windows",
+   "specs": "",
+   "unit": "per lin. ft.",
+   "vendorPrice": 1.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Rain Gutters 10’, 15’, 20’",
+   "specs": "",
+   "unit": "per lin. ft.",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Concrete Weight – 30 Lb (10x10 Tent)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Concrete Weight – 500/700 Lb (Large Tents)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 40.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Tent Heater 170,000 BTU",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Tents",
+   "name": "Tent Fan - 30 diameter",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "54 x 54 Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "90 x 90 Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 9.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "60 x 120 Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 9.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "90 x 132 Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 21.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "90 x 156 Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "90 Round Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 9.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "108 Round Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 11.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "120 Round Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 14.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "132 Round Linen",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 18.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "Umbrella Table Cloth (white only)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "75' White Isle Runner",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 80.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "Poly Satin or Organza Tie",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "Solid Napkin 20 x 20",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "Skirt - 7' Pleated",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 12.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Linens",
+   "name": "Skirt - 14' Pleated",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 21.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Tower Salt & Pepper Shaker",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Petite Salt & Pepper Shaker",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Glass Ashtray",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Embassy Water Goblet 10 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Embassy Water Goblet 11 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Embassy Wine Glass 6 1/2 oz or 8 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Embassy Champagne Flute 6 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Tulip Champagne 9 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Ice Tea/Zombie Glass 12 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Beverage Glass 11 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Juice Glass 5 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Rolly Polly 6 oz or 8 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Double Rocks Glass 12 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Punch Cup",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Traditional Champagne Glass 4 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Bolla Grande 17 1/2 oz (Red)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.8,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Wine Vina Tall 16 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.8,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Water Vina 12.5 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Beer Mug 12 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Beer Pilsner 12 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Margarita Glass 9 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Martini Glass 6 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Martini Glass 8 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.85,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Hurricane Glass 10 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Cordial Glass",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Sherry Glass",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Shot Glass",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Irish Coffee Mug 8 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Brandy Snifter 5 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Brandy Snifter 11 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Brandy Snifter 22 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Parfait 4 1/2 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Bananna Boat",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Sherbert Glass",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "Embassy 11 oz Water",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Glassware",
+   "name": "High ball 8 oz",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Soup Bowl (Cream)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Coffee Cup and Saucer (Cream)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Coffee Mug (Cream)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Bullion Cup (Cream)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Gravy Boat",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Oval Platter 13",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Oval Platter 16",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Bowl 8 Round",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Bowl 10 Round",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Bowl 10 Oval",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Turkey Platter",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Tea Pot",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Dinner Plate 10 3/4 (Platinum)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Salad/Dessert Plate 7 3/4 (Platinum)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Bread & Butter Plate 6 (Platinum)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Coffee Cup & Saucer (Platinum)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Soup Bowl (Platinum)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Platter 13 Oval (Platinum)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Bowl 10 Round (Platinum)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Dinner Plate 10 1/2 (Gold)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Salad/Dessert Plate 7 3/4 (Gold)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Coffee Cup & Saucer (Gold)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Soup Bowl (Gold)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Bread & Butter Plate 6 (Gold)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Cream & Sugar Set (Gold)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Platter 13 Oval (Gold)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Bowl 10 Round (Gold)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Dinner Plate 10 1/2 (White Elegance)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Salad/Dessert Plate 7 (White Elegance)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "B&B Plate 6 (White Elegance)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Saucer 6 (White Elegance)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Coffee Cup 8 oz (White Elegance)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Rim Soup Bowl 9 (White Elegance)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Bouillion Cup (White Elegance)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Dinner Plate 10 5/8 (White Square)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.85,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Salad Plate 7 1/4 (White Square)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.85,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "B&B Plate 6 1/4 (White Square)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.85,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Coffee Mug (White Square)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.85,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Saucer (White Square)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.85,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Glass Plate 10 1/2",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Glass Plate 9 1/4",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.65,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Glass Plate 7 1/2 or 8",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.55,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Cream & Sugar Set (Glass)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Sauce Bowl (Glass)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Bowl 10 Round (Glass)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dinnerware",
+   "name": "Serving Platter 13 Round (Glass)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Banquet Cabinet, 120 Plate (new)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Bakers Rack - Sheet Pan Rack",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 30.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Butane Table Top Burner",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 12.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Hot Box (w Heating Element)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 220.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Hot Box - Sterno",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 115.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Insulated Food Carrier - 2 1/2 Pans",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 30.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Sheet Pan 18 x 26 x 1",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Bus Pan",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Lobster Pot",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "30 Qt. Pot",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 12.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "15 Qt. Pot",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Chest Cooler - Holds 5 cases",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 21.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Galvanized Horse Trough 90 gal.",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Beer Cart",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "4' Folding White Bar",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 70.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "6' Tabletop Bar w/Skirt",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 70.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Commercial Blender",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Martini Shaker",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Bar Condiment Caddy",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.25,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Bar Rubber Mat",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Service Equipment",
+   "name": "Fill N Chill Table",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 40.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Equipment",
+   "name": "Charcoal Grill 2' x 5'",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 80.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Equipment",
+   "name": "Propane Grill 2' x 5'",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 155.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Equipment",
+   "name": "Propane Griddle 40 x 24",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 80.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Equipment",
+   "name": "Pancake Griddle 20 x 16 (Propane)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Equipment",
+   "name": "Pancake Dispenser",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Equipment",
+   "name": "Stove Top Portable Butane Burner",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Supplies",
+   "name": "Butane Can",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.79,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Food Equipment",
+   "name": "Stove Top Electric Burner",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 13.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Stage Section 4’ x 8’ Section Bil-Jax (8”, 16”, or 24” high)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Ground Level Installation (Per Section Additional)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Stage, 2 Step Wood Stairway",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Stage, 3 Step Wood Stairway",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 30.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Stage, 2 Step Rail Stairway",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Stage, 3 Step Rail Stairway",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Dance Floor w/Edging 3’ x 3’ Section (vinyl)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Red Carpet 4’ x 20’ Section (vinyl)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Dance Floor & Stage",
+   "name": "Red Carpet 3’ x 50’ Section (vinyl)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 105.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Mixer 800 Watt",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "w/ two 400 Watt Speakers",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Simple Sound System",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Speaker Stand",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Speaker's Podium",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Wireless Microphone (lapel)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Hand held Wireless Microphone",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Microphone Wired",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Tabletop Microphone Stand",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Microphone Stand",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "C.D.G. Player",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Overhead Projector w/ Extra Bulb",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 40.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "TV/ Video Cart",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Sony LCD Projector 1200 Lumens",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Projection Screen (50” x 6’ tripod)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Projection Screen (8’ x 8’ tripod)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 50.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Projection Screen (10’ cradle)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Bull Horn (includes batteries)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Bull Horn (Batteries Not Included)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Easel Table Top",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Portable PA System AC/DC",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "Aggressor",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Audio & Visual",
+   "name": "4-Channel Sound Chaser",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 40.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Beverage Service",
+   "name": "Ice Tea Dispenser (2) 3 Gallon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 11.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Beverage Service",
+   "name": "Beverage Cambro 5 Gallon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 16.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Beverage Service",
+   "name": "Igloo Beverage Cooler 5 Gallon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 13.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Beverage Service",
+   "name": "Igloo Beverage Cooler 10 Gallon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 16.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Beverage Service",
+   "name": "Lucite Ice Tub 26 x 19 x 8",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 9.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Beverage Service",
+   "name": "Chest Cooler (Holds 5 Cases)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Beverage Service",
+   "name": "Galvanized Horse Trough 90 Gallon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 52.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "36 Cup Farberware Coffee Maker",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "55 Cup Farberware Coffee Maker",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 30.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "100 Cup Coffee Maker",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "110 Cup Coffee Maker (Stainless Steel)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Thermal Coffee Server",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Stainless Tea Pot",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Wine Carafe - 1 Liter",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Plain Glass Pitcher 55 oz.",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Stainless Coffee Carafe",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Stainless Water Pitcher",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Plastic Pitcher",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Tray - Brown or Teal",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Plastic Serving Basket - Red",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "12 Round - Silver Tray",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Bread Basket - Silver-Plate Wire",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "14 Round - Silver Tray",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "3 Tier Plate Holder",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "16 Round - Silver Tray",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "11 x 5 White Platter",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "16 x 10 - Stainless Tray",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "14 x 11 White Platter",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "20 x 12 - Stainless Tray",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Glass Cake Stand",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Waiter Tray - 11",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Oval Tray - 27",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 6.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Oval Tray w/ bus stand",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 10.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Salad Bowl - 23",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Condiment Server - 3 Server",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Butter Warmer (2)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Coffee & Tea Service",
+   "name": "Crock",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Event Accessories",
+   "name": "Large Scissors (ribbon cutting)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Event Accessories",
+   "name": "Carpet Runner Burgandy 4' x 8'",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Event Accessories",
+   "name": "Exhibit Booth Pipe and Drape",
+   "specs": "",
+   "unit": "per ft",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Event Accessories",
+   "name": "Installation",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 100.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Event Accessories",
+   "name": "Outdoor Ashtray",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Event Accessories",
+   "name": "Exit Sign",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Ice Tongs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Dinner Knife",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Dinner Fork",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Salad Fork / Dessert",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Teaspoon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Bouillon Soup Spoon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Soup Spoon - Oval",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Cocktail Fork",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Butter Knife",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Ice Tea Spoon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Steak Knife - Wood Handle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 0.75,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Tablespoon - 8",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Table Fork - 8",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Salad Scissors Tong",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Wire Whisk",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Pastry Tongs 8",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Pastry Tongs 8.25",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Slotted Spoon - 12",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Spatula - 12",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Spoon - 12",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Fork - 12",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Pie Server",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Soup Ladle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Plastic Ladle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Stainless 1 oz. Ladle - 12",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Utility Tongs - 12",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Utility Tongs - 7",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Gravy Spoon",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Ice Scoop",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Plastic Salad Tongs",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 1.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Wood Salad Server Set",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Spoon Long Handle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Fork Long Handle",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.5,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Flatware",
+   "name": "Cake Knife Server",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Dunk Tank (Tow Behind)",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 200.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Limbo",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Golf Challenge",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 50.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Tug of War 75'",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Duck Pond w/pump and ducks",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 40.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Hole in One Golf Game",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Ring Toss",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Rattle Drum",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 20.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Raffle Drum Small",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Bingo Set",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 30.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "30 Color Wheel on stand",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 50.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Pick A Pop",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 12.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Cover The Spot",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 12.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Games & Fun Food",
+   "name": "Tic Tac Toe",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://www.arlingtonrental.com/pricing"
+  },
+  {
+   "section": "Packages",
+   "name": "Package #1",
+   "specs": "Seats up to 15. 15' x 15' Frame Tent, 3 x 6' Banquet Tables, 15 Samsonite folding chairs (white) (price est. incl. 10% damage waiver & 10% tax; vendor-quoted, not base rental)",
+   "unit": "per package",
+   "vendorPrice": 450.0,
+   "sourceUrl": "https://www.arlingtonrental.com/party-rentals-chicagoland"
+  },
+  {
+   "section": "Packages",
+   "name": "Package #2",
+   "specs": "Seats up to 24. 10' x 20' Frame Tent, 4 x 6' Banquet Tables, 24 Samsonite chairs. Deluxe with sidewalls +$90 (price est. incl. 10% damage waiver & 10% tax; vendor-quoted, not base rental)",
+   "unit": "per package",
+   "vendorPrice": 475.0,
+   "sourceUrl": "https://www.arlingtonrental.com/party-rentals-chicagoland"
+  },
+  {
+   "section": "Packages",
+   "name": "Package #3",
+   "specs": "Seats up to 40. 20' x 20' Frame Tent, 6 x 8' Banquet Tables, 40 chairs. Deluxe with sidewalls +$120 (price est. incl. 10% damage waiver & 10% tax; vendor-quoted, not base rental)",
+   "unit": "per package",
+   "vendorPrice": 671.0,
+   "sourceUrl": "https://www.arlingtonrental.com/party-rentals-chicagoland"
+  },
+  {
+   "section": "Packages",
+   "name": "Package #4",
+   "specs": "Seats up to 60. 20' x 30' Frame Tent, 8 x 8' Banquet Tables, 60 chairs. Deluxe with sidewalls +$150 (price est. incl. 10% damage waiver & 10% tax; vendor-quoted, not base rental)",
+   "unit": "per package",
+   "vendorPrice": 902.0,
+   "sourceUrl": "https://www.arlingtonrental.com/party-rentals-chicagoland"
+  },
+  {
+   "section": "Packages",
+   "name": "Package #5",
+   "specs": "Seats up to 80. 20' x 40' Frame Tent, 10 x 8' Banquet Tables, 80 chairs. Deluxe with sidewalls +$180 (price est. incl. 10% damage waiver & 10% tax; vendor-quoted, not base rental)",
+   "unit": "per package",
+   "vendorPrice": 1134.0,
+   "sourceUrl": "https://www.arlingtonrental.com/party-rentals-chicagoland"
+  }
+ ]
+}
