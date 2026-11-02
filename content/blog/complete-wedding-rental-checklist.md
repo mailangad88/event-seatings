@@ -99,7 +99,7 @@ Count by course. A plated three-course dinner needs a dinner plate, salad plate,
 ## Mistakes to avoid
 
 1. **Counting guests once.** The ceremony, cocktail hour and dinner may each have a different count because of kids, vendors and plus-ones.
-2. **Assuming the venue includes it.** Ask whether "included" chairs are the style you want. See venue chairs vs rented chairs.
+2. **Assuming the venue includes it.** Ask whether "included" chairs are the style you want. See [venue chairs vs rented chairs](/blog/venue-chairs-vs-rented-chairs).
 3. **Forgetting delivery access.** Stairs, elevators and loading docks in Chicago high-rises and historic buildings change how many crew members and carts are needed.
 4. **Ordering by price per piece only.** Delivery, setup, breakage and pickup times matter as much.
 
@@ -115,7 +115,7 @@ Plan one chair per guest for the ceremony and one per guest for the reception, p
 
 ### How far ahead should I book wedding rentals?
 
-Book as soon as you have a venue and a rough guest count, especially for summer and fall Saturdays. See our timeline for booking wedding rentals for what to book when.
+Book as soon as you have a venue and a rough guest count, especially for summer and fall Saturdays. See our [timeline for booking wedding rentals](/blog/wedding-rentals-timeline) for what to book when.
 
 ### Does the caterer provide rentals?
 

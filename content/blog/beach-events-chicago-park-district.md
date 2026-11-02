@@ -138,7 +138,7 @@ The Park District lists Millennium Park, Lincoln Park Zoo, Maggie Daley Park, th
 
 ## Plan with the rules in hand
 
-Bring the permit, the guidelines and your guest count to the rental conversation. We help match chairs and linens to the setting and flag where to ask the Park District first. Our guide to the [Chicago Park District event permit](/blog/chicago-park-district-event-permit) goes deeper on the application, if it is published.
+Bring the permit, the guidelines and your guest count to the rental conversation. We help match chairs and linens to the setting and flag where to ask the Park District first. Our guide to the [Chicago Park District event permit](/blog/chicago-park-district-event-permit) goes deeper on the application.
 
 ## Plan the whole rental list in one call
 

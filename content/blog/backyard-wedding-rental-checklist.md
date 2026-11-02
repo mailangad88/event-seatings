@@ -121,7 +121,7 @@ It depends on the village. Tents above a certain size, amplified music and large
 
 ### How many chairs do I need?
 
-One for each guest at the ceremony and one at dinner, plus a few spares. If the ceremony is on the same lawn, chairs can be flipped to the tent. See our ceremony to reception flip guide.
+One for each guest at the ceremony and one at dinner, plus a few spares. If the ceremony is on the same lawn, chairs can be flipped to the tent. See our [ceremony to reception flip guide](/blog/ceremony-to-reception-flip).
 
 ### Can rental trucks reach my backyard?
 
