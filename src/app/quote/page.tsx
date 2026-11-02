@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { QuoteForm, type QuoteItem } from "@/components/QuoteForm";
+import { QuoteForm, type QuoteItem, type StarterPreset } from "@/components/QuoteForm";
 import { rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Figure, FaqList, JsonLd, PageHero, StepFlow, type Faq } from "@/components/ui";
 import { catalogItems } from "@/data/catalog";
-import { getEventPreset, getLook } from "@/data/quote-presets";
+import { events, getEventPreset, getLook, looks } from "@/data/quote-presets";
+import { rentalImage } from "@/data/rental-images";
 import { toPublicItem } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -56,7 +57,6 @@ export default async function QuotePage(props: PageProps<"/quote">) {
 
   // Home page "Shop the look" and event tiles pass ?look= or ?event= to start from a typical list.
   const preset = getLook(str(sp.look)) ?? getEventPreset(str(sp.event));
-  const presetLines = preset?.lines.filter((l) => ids.has(l.id));
 
   // Old links pass chair slugs (?chairs=ghost,bentwood); catalog pages pass ids (?items=round-60).
   const initial = [
@@ -75,9 +75,19 @@ export default async function QuotePage(props: PageProps<"/quote">) {
   const items: QuoteItem[] = catalogItems.map((i) => ({
     ...toPublicItem(i),
     categoryId: i.categoryId,
-    image: i.image ?? rentalImagePath(i.id, i.categoryId),
-    imageAlt: i.imageAlt ?? rentalAlt(i.name, i.specs),
+    image: i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId),
+    imageAlt: i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs),
   }));
+
+  // Starter lists shown as tappable cards: the three home page looks (with their tablescape renders) and event types.
+  const lookScene = { "blush-garden": scenes.blushGarden, "midnight-gold": scenes.midnightGold, "gilded-ivory": scenes.gildedIvory } as const;
+  const starters: StarterPreset[] = [
+    ...looks.map((l) => {
+      const sc = lookScene[l.id as keyof typeof lookScene];
+      return { ...l, kind: "look" as const, image: sc && { src: sc.src, alt: sc.alt } };
+    }),
+    ...events.map((e) => ({ ...e, kind: "event" as const })),
+  ].map((st) => ({ ...st, lines: st.lines.filter((l) => ids.has(l.id)) }));
 
   const hero = scenes.gildedIvory;
 
@@ -111,16 +121,22 @@ export default async function QuotePage(props: PageProps<"/quote">) {
       />
 
       <div className="container-x section-y">
-        <StepFlow steps={steps} caption="How a quote works: pick rentals, send your list, get a proposal, delivered and set up." />
-        <div className="mt-16">
+        <div>
           <QuoteForm
             items={items}
             initialItems={initial}
             initialGuests={guests}
-            preset={preset && presetLines ? { label: preset.label, eventType: preset.eventType, lines: presetLines } : undefined}
+            starters={starters}
+            initialPreset={preset?.id}
             from={from}
           />
         </div>
+
+        <section className="mt-24" aria-labelledby="quote-next">
+          <p className="eyebrow">After you send it</p>
+          <h2 id="quote-next" className="display-2 mt-3">What happens next</h2>
+          <StepFlow steps={steps} className="mt-10" caption="How a quote works: pick rentals, send your list, get a proposal, delivered and set up." />
+        </section>
 
         <section className="mt-24" aria-labelledby="quote-faq">
           <p className="eyebrow">Questions</p>

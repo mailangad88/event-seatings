@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getChair } from "@/data/chairs";
 import type { CategoryId } from "@/data/catalog-products";
 import type { PresetLine } from "@/data/quote-presets";
@@ -12,9 +12,19 @@ import { site } from "@/lib/site";
 import { BookingCta } from "./BookingCta";
 import { ChairArt } from "./ChairArt";
 import { RentalIcon } from "./rentals/RentalIcon";
-import { Icon, PriceTag, formatPrice } from "./ui";
+import { Icon, PriceTag, formatPrice, type IconName } from "./ui";
 
 export type QuoteItem = PublicItem & { categoryId?: CategoryId };
+export type StarterPreset = {
+  id: string;
+  kind: "look" | "event";
+  name: string;
+  label: string;
+  icon?: string;
+  eventType?: string;
+  lines: PresetLine[];
+  image?: { src: string; alt: string };
+};
 
 const eventTypes = [
   "Wedding (ceremony + reception)",
@@ -33,46 +43,122 @@ const eventTypes = [
   "Other celebration",
 ];
 
+const guestPresets = [50, 100, 150, 200, 300];
+
 const fmt = (d: string) =>
   new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
 // `auto` lines follow the guest count (at `ratio` per guest, or the item's own rule) until the visitor edits them.
 type Pick = { qty: number; auto: boolean; ratio?: number };
 
+const fromPreset = (lines: PresetLine[]) =>
+  Object.fromEntries(lines.map((l) => [l.id, l.qty ? { qty: l.qty, auto: false } : { qty: 1, auto: true, ratio: l.ratio }])) as Record<
+    string,
+    Pick
+  >;
+
+// The visual for an item: its 3D render, the chair illustration, or the category drawing.
+function ItemVisual({ item, sizes }: { item: QuoteItem; sizes: string }) {
+  if (item.image)
+    return <Image src={item.image} alt={item.imageAlt ?? `${item.name} rental`} fill sizes={sizes} className="object-cover" />;
+  const chair = item.chairSlug ? getChair(item.chairSlug) : undefined;
+  if (chair) return <ChairArt chair={chair} className="absolute inset-0" />;
+  return (
+    <div className="grid h-full place-items-center bg-surface-2 text-gold/80">
+      {item.categoryId ? <RentalIcon category={item.categoryId} className="h-1/2 w-1/2" /> : <Icon name="spark" size={40} />}
+    </div>
+  );
+}
+
+function Stepper({
+  name,
+  qty,
+  onChange,
+  size = "md",
+}: {
+  name: string;
+  qty: number;
+  onChange: (n: number) => void;
+  size?: "sm" | "md";
+}) {
+  const btn = size === "sm" ? "h-7 w-7" : "h-9 w-9";
+  return (
+    <div className="flex items-center gap-1 rounded-full border border-line bg-surface p-0.5 shadow-soft">
+      <button type="button" aria-label={`Fewer ${name}`} onClick={() => onChange(qty - 1)} className={`grid ${btn} shrink-0 place-items-center rounded-full hover:bg-surface-2`}>
+        <Icon name="minus" size={14} />
+      </button>
+      <input
+        type="number"
+        min={0}
+        inputMode="numeric"
+        aria-label={`Quantity of ${name}`}
+        value={qty}
+        onChange={(e) => onChange(Number(e.target.value))}
+        onFocus={(e) => e.currentTarget.select()}
+        className={`${size === "sm" ? "w-10 text-xs" : "w-12 text-sm"} min-w-0 bg-transparent text-center font-semibold tabular-nums outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none`}
+      />
+      <button type="button" aria-label={`More ${name}`} onClick={() => onChange(qty + 1)} className={`grid ${btn} shrink-0 place-items-center rounded-full hover:bg-surface-2`}>
+        <Icon name="plus" size={14} />
+      </button>
+    </div>
+  );
+}
+
 // Quote builder: pick items and quantities, see a live estimate, then send the enquiry.
 // Prices shown are the customer price (vendor price + our markup), computed on the server.
 // The server re-prices everything on submit, so the totals here are only for display.
 export function QuoteForm({
   items,
+  starters = [],
   initialItems = [],
   initialGuests = 0,
-  preset,
+  initialPreset,
   from,
 }: {
   items: QuoteItem[];
+  starters?: StarterPreset[];
   initialItems?: string[];
   initialGuests?: number;
-  preset?: { label: string; eventType?: string; lines: PresetLine[] };
+  initialPreset?: string;
   from?: string;
 }) {
+  const startPreset = starters.find((s) => s.id === initialPreset);
   const [guests, setGuests] = useState(initialGuests);
   const [picks, setPicks] = useState<Record<string, Pick>>(() => {
-    const out: Record<string, Pick> = {};
-    for (const l of preset?.lines ?? []) out[l.id] = l.qty ? { qty: l.qty, auto: false } : { qty: 1, auto: true, ratio: l.ratio };
+    const out = fromPreset(startPreset?.lines ?? []);
     for (const id of initialItems) out[id] ??= { qty: 1, auto: true };
     return out;
   });
+  const [activePreset, setActivePreset] = useState(startPreset);
+  const [eventType, setEventType] = useState(startPreset?.eventType ?? "");
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const [sheet, setSheet] = useState(false);
   const [date, setDate] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
   const [contact, setContact] = useState<{ name?: string; email?: string }>({});
 
   const byId = useMemo(() => new Map(items.map((i) => [i.id, i])), [items]);
-  const categories = useMemo(() => ["All", ...sortCategories(items.map((i) => i.category))], [items]);
+  const categories = useMemo(() => sortCategories(items.map((i) => i.category)), [items]);
+  // One picture per category tile: its first item with a render, else its drawing.
+  const categoryCover = useMemo(() => {
+    const out = new Map<string, QuoteItem>();
+    for (const c of categories) {
+      const inCat = items.filter((i) => i.category === c);
+      out.set(c, inCat.find((i) => i.image) ?? inCat[0]);
+    }
+    return out;
+  }, [categories, items]);
   const today = new Date().toLocaleDateString("en-CA");
   const beforeLaunch = date !== "" && date < site.launch.firstEventDate;
+
+  useEffect(() => {
+    document.body.style.overflow = sheet ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [sheet]);
 
   const qtyOf = (id: string) => {
     const p = picks[id];
@@ -86,7 +172,20 @@ export function QuoteForm({
     .map((id) => ({ item: byId.get(id)!, qty: qtyOf(id) }))
     .filter((l) => l.item && l.qty > 0);
   const subtotal = lines.reduce((s, l) => s + l.item.price * l.qty, 0);
+  const pieces = lines.reduce((s, l) => s + l.qty, 0);
   const anyEstimated = lines.some((l) => l.item.estimated);
+  const addedIn = (c: string) => lines.filter((l) => l.item.category === c).length;
+
+  // What a starter would cost at the current guest count (or 100), for the cards.
+  const starterTotal = (s: StarterPreset) => {
+    const g = guests || 100;
+    return s.lines.reduce((sum, l) => {
+      const item = byId.get(l.id);
+      if (!item) return sum;
+      const qty = l.qty ?? suggestedQty({ perGuest: l.ratio ?? item.perGuest, minQty: item.minQty }, g);
+      return sum + item.price * qty;
+    }, 0);
+  };
 
   const q = search.trim().toLowerCase();
   const shown = items.filter(
@@ -95,6 +194,12 @@ export function QuoteForm({
       (!q || `${i.name} ${i.category} ${i.description ?? ""} ${i.specs ?? ""}`.toLowerCase().includes(q)),
   );
 
+  function applyStarter(s: StarterPreset) {
+    setPicks((p) => ({ ...p, ...fromPreset(s.lines) }));
+    setActivePreset(s);
+    if (s.eventType) setEventType(s.eventType);
+    if (!guests) setGuests(100);
+  }
   function add(item: QuoteItem) {
     setPicks((p) => ({ ...p, [item.id]: { qty: Math.max(1, item.minQty ?? 1), auto: !!item.perGuest } }));
   }
@@ -105,6 +210,10 @@ export function QuoteForm({
       else next[id] = { qty: Math.min(10_000, Math.floor(qty)), auto: false };
       return next;
     });
+  }
+  function toDetails() {
+    setSheet(false);
+    document.getElementById("details")?.scrollIntoView({ behavior: "smooth" });
   }
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -123,9 +232,10 @@ export function QuoteForm({
       body: JSON.stringify({
         ...attributionFields(),
         ...data,
+        guest_count: guests || data.guest_count,
         items: lines.map((l) => ({ id: l.item.id, qty: l.qty })),
         kind: "quote",
-        source: from ? `quote-builder:${from}` : "quote-builder",
+        source: from ? `quote-builder:${from}` : activePreset ? `quote-builder:${activePreset.kind}-${activePreset.id}` : "quote-builder",
       }),
     }).catch(() => null);
     if (res?.ok) {
@@ -150,6 +260,13 @@ export function QuoteForm({
           {lines.length === 1 ? "item" : "items"}. We&apos;ll check availability for your date with our rental partners
           and email a confirmed proposal, usually within one business day. Nothing is charged or held until you confirm.
         </p>
+        <ul className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-2">
+          {lines.slice(0, 12).map(({ item, qty }) => (
+            <li key={item.id} className="relative h-16 w-16 overflow-hidden rounded-xl border border-line" title={`${qty} × ${item.name}`}>
+              <ItemVisual item={item} sizes="64px" />
+            </li>
+          ))}
+        </ul>
         <BookingCta
           {...contact}
           content="quote-thank-you"
@@ -171,171 +288,237 @@ export function QuoteForm({
     </legend>
   );
 
-  const visual = (item: QuoteItem) => {
-    if (item.image)
-      return (
-        <Image
-          src={item.image}
-          alt={item.imageAlt ?? `${item.name} rental`}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 20vw"
-          className="object-cover"
-        />
-      );
-    const chair = item.chairSlug ? getChair(item.chairSlug) : undefined;
-    if (chair) return <ChairArt chair={chair} className="absolute inset-0" />;
-    return (
-      <div className="grid h-full place-items-center text-gold/80">
-        {item.categoryId ? <RentalIcon category={item.categoryId} className="h-1/2 w-1/2" /> : <Icon name="spark" size={48} />}
-      </div>
-    );
-  };
+  const cartList = (thumb: string) => (
+    <ul className="space-y-3">
+      {lines.map(({ item, qty }) => (
+        <li key={item.id} className="flex items-center gap-3">
+          <span className={`relative ${thumb} shrink-0 overflow-hidden rounded-xl border border-line bg-surface-2`}>
+            <ItemVisual item={item} sizes="56px" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block truncate text-sm font-medium">{item.name}</span>
+            <span className="block text-xs text-muted tabular-nums">
+              {formatPrice(item.price)} / {item.unit} · {formatPrice(item.price * qty)}
+            </span>
+          </span>
+          <Stepper name={item.name} qty={qty} onChange={(n) => setQty(item.id, n)} size="sm" />
+        </li>
+      ))}
+    </ul>
+  );
 
-  const summary = (
-    <div className="card p-6">
-      <p className="eyebrow">Your estimate</p>
-      {lines.length === 0 ? (
-        <p className="hint mt-4">Add items and quantities to see a live price.</p>
-      ) : (
-        <ul className="mt-4 max-h-80 space-y-3 overflow-y-auto pr-1 text-sm">
-          {lines.map(({ item, qty }) => (
-            <li key={item.id} className="flex justify-between gap-3">
-              <span>
-                <span className="tabular-nums">{qty.toLocaleString()} ×</span> {item.name}
-                <span className="block text-xs text-muted">
-                  {formatPrice(item.price)} / {item.unit}
-                </span>
-              </span>
-              <span className="shrink-0 tabular-nums">{formatPrice(item.price * qty)}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-      <div className="mt-5 flex items-baseline justify-between gap-3 border-t border-line pt-4">
-        <span className="text-sm text-muted">Estimated rental total</span>
+  const totals = (
+    <>
+      <div className="flex items-baseline justify-between gap-3 border-t border-line pt-4">
+        <span className="text-sm text-muted">
+          Estimated total
+          <span className="block text-xs">
+            {lines.length} {lines.length === 1 ? "item" : "items"} · {pieces.toLocaleString()} pieces
+          </span>
+        </span>
         <span aria-live="polite">
           <PriceTag amount={subtotal} unit="" size="lg" />
         </span>
       </div>
       <p className="hint text-xs leading-5">
-        {anyEstimated ? "Some prices are market estimates. " : ""}Delivery, setup, damage waiver and sales tax are quoted
-        once we confirm availability for your date and venue.
+        {anyEstimated ? "Some prices are market estimates. " : ""}Delivery, setup, damage waiver and tax are quoted once we
+        confirm your date and venue.
       </p>
-      <a href="#details" className="btn-primary mt-5 w-full justify-center">Continue to your details</a>
-    </div>
+    </>
   );
 
+  const looks = starters.filter((s) => s.kind === "look");
+  const events = starters.filter((s) => s.kind === "event");
+
   return (
-    <form onSubmit={submit} className="space-y-16">
+    <form onSubmit={submit} className="space-y-16 pb-24 lg:pb-0">
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
 
       <fieldset id="builder" className="min-w-0 scroll-mt-24">
-        {step(1, "Build your rental list", "Prices include coordination with our rental partners. Quantities update with your guest count.")}
-        {preset && (
-          <p className="well mb-6 flex items-start gap-3 text-sm leading-6">
+        {step(1, "Pick your rentals", "Tap a picture to add it. Quantities follow your guest count until you change them.")}
+
+        {/* Guest count first: it drives every suggested quantity. */}
+        <div className="card mb-8 flex flex-wrap items-center gap-x-6 gap-y-3 p-4 sm:p-5">
+          <label htmlFor="guest_count" className="flex items-center gap-2 font-medium">
+            <Icon name="users" size={20} className="text-gold" /> How many guests?
+          </label>
+          <input
+            id="guest_count"
+            name="guest_count"
+            type="number"
+            min={1}
+            max={5000}
+            required
+            className="field w-28"
+            placeholder="150"
+            value={guests || ""}
+            onChange={(e) => setGuests(Math.max(0, Math.min(5000, Math.floor(Number(e.target.value)) || 0)))}
+          />
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Quick guest counts">
+            {guestPresets.map((g) => (
+              <button
+                key={g}
+                type="button"
+                onClick={() => setGuests(g)}
+                className={`${guests === g ? "chip-active" : "chip hover:border-ink/30"} px-3 py-1.5 text-sm`}
+              >
+                {g}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {looks.length > 0 && (
+          <section aria-labelledby="looks-title" className="mb-10">
+            <h3 id="looks-title" className="mb-1 text-lg font-medium">Start from a look</h3>
+            <p className="hint mb-4">One tap adds the chairs, tables, linens and tableware in the picture, sized for your guests.</p>
+            <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
+              {looks.map((s) => {
+                const on = activePreset?.id === s.id;
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => applyStarter(s)}
+                    aria-pressed={on}
+                    className={`group card relative w-[78%] shrink-0 snap-start overflow-hidden text-left sm:w-auto ${on ? "ring-2 ring-gold" : "card-hover"}`}
+                  >
+                    <span className="relative block aspect-[4/3] overflow-hidden bg-surface-2">
+                      {s.image && (
+                        <Image src={s.image.src} alt={s.image.alt} fill sizes="(max-width: 640px) 80vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                      )}
+                      {on && <span className="badge absolute top-3 left-3 bg-surface/95"><Icon name="check" size={12} /> Added</span>}
+                    </span>
+                    <span className="flex items-end justify-between gap-3 p-4">
+                      <span>
+                        <span className="block font-medium">{s.name}</span>
+                        <span className="text-xs text-muted">
+                          {s.lines.length} items · about {formatPrice(Math.round(starterTotal(s)))} for {guests || 100} guests
+                        </span>
+                      </span>
+                      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${on ? "bg-gold text-accent-ink" : "bg-ink text-bg"}`} aria-hidden>
+                        <Icon name={on ? "check" : "plus"} size={16} />
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {events.length > 0 && (
+          <section aria-labelledby="events-title" className="mb-10">
+            <h3 id="events-title" className="mb-3 text-lg font-medium">Or start from your event</h3>
+            <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
+              {events.map((s) => {
+                const on = activePreset?.id === s.id;
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => applyStarter(s)}
+                    aria-pressed={on}
+                    className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2.5 text-sm transition-colors ${
+                      on ? "border-ink bg-ink text-bg" : "border-line bg-surface hover:border-ink/30"
+                    }`}
+                  >
+                    <Icon name={(s.icon ?? "spark") as IconName} size={16} className={on ? "" : "text-gold"} />
+                    {s.name}
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {activePreset && (
+          <p className="well mb-8 flex items-start gap-3 text-sm leading-6">
             <Icon name="spark" size={18} className="mt-0.5 shrink-0 text-gold" />
             <span>
-              We started your list with {preset.label}. Change any quantity, remove what you don&apos;t need or add more
-              below.
+              Added {activePreset.label}. Change any quantity, remove what you don&apos;t need, or keep adding below.
             </span>
           </p>
         )}
-        <div className="mb-6 grid gap-5 sm:grid-cols-[minmax(0,14rem)_1fr]">
-          <div>
-            <label className="label" htmlFor="guest_count">Approximate guests</label>
+
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <h3 className="text-lg font-medium">Browse by category</h3>
+          <div className="relative w-full sm:w-72">
+            <Icon name="search" size={16} className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-muted" />
             <input
-              id="guest_count"
-              name="guest_count"
-              type="number"
-              min={1}
-              max={5000}
-              required
-              className="field"
-              placeholder="150"
-              defaultValue={initialGuests || undefined}
-              onChange={(e) => setGuests(Math.max(0, Math.min(5000, Number(e.target.value) || 0)))}
-            />
-          </div>
-          <div>
-            <label className="label" htmlFor="item_search">Search rentals</label>
-            <input
-              id="item_search"
               type="search"
-              className="field"
-              placeholder="Chiavari, 60-inch round, napkins, tent…"
+              aria-label="Search rentals"
+              className="field pl-10"
+              placeholder="Search chairs, linens, tents…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
         </div>
-
-        <div className="mb-6 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Filter by category">
-          {categories.map((c) => (
-            <button
-              key={c}
-              type="button"
-              aria-pressed={category === c}
-              onClick={() => setCategory(c)}
-              className={`${category === c ? "chip-active" : "chip hover:border-ink/30"} shrink-0 px-4 py-1.5 text-sm`}
-            >
-              {c}
-            </button>
-          ))}
+        <div className="-mx-4 mb-8 flex snap-x gap-3 overflow-x-auto px-4 pt-2 pb-2 sm:mx-0 sm:px-1" role="group" aria-label="Categories">
+          {["All", ...categories].map((c) => {
+            const cover = c === "All" ? undefined : categoryCover.get(c);
+            const on = category === c;
+            const n = c === "All" ? lines.length : addedIn(c);
+            return (
+              <button
+                key={c}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setCategory(c)}
+                className={`relative w-24 shrink-0 snap-start text-center sm:w-28 ${on ? "" : "opacity-80 hover:opacity-100"}`}
+              >
+                <span className={`relative block aspect-square overflow-hidden rounded-2xl border-2 bg-surface-2 ${on ? "border-ink" : "border-transparent"}`}>
+                  {cover ? (
+                    <ItemVisual item={cover} sizes="112px" />
+                  ) : (
+                    <span className="grid h-full place-items-center text-gold"><Icon name="spark" size={32} /></span>
+                  )}
+                </span>
+                <span className={`mt-1.5 block text-xs leading-tight ${on ? "font-semibold" : ""}`}>{c === "All" ? "Everything" : c}</span>
+                {n > 0 && (
+                  <span className="absolute -top-1.5 -right-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[11px] font-semibold text-accent-ink">
+                    {n}
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_22rem]">
-          <ul className="grid grid-cols-2 gap-4 xl:grid-cols-3">
+          <ul className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-3">
             {shown.map((item) => {
               const qty = qtyOf(item.id);
+              const suggest = item.perGuest && guests ? suggestedQty(item, guests) : Math.max(1, item.minQty ?? 1);
               return (
-                <li key={item.id} className={`card flex flex-col overflow-hidden ${qty ? "ring-2 ring-gold" : ""}`}>
-                  <div className="relative aspect-square overflow-hidden bg-surface-2">
-                    {visual(item)}
-                    {qty > 0 && (
-                      <span className="badge absolute top-3 left-3 bg-surface/95">{qty.toLocaleString()} added</span>
+                <li key={item.id} className={`card flex flex-col overflow-hidden transition-shadow ${qty ? "ring-2 ring-gold" : ""}`}>
+                  <div className="relative aspect-square overflow-hidden">
+                    {qty === 0 ? (
+                      <button type="button" onClick={() => add(item)} className="group absolute inset-0" aria-label={`Add ${suggest} ${item.name}`}>
+                        <span className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]">
+                          <ItemVisual item={item} sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 22vw" />
+                        </span>
+                        <span className="absolute right-3 bottom-3 flex items-center gap-1 rounded-full bg-ink py-1.5 pr-3 pl-2 text-sm font-medium text-bg shadow-soft">
+                          <Icon name="plus" size={16} /> {suggest > 1 ? suggest.toLocaleString() : "Add"}
+                        </span>
+                      </button>
+                    ) : (
+                      <>
+                        <ItemVisual item={item} sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 22vw" />
+                        <span className="badge absolute top-3 left-3 bg-surface/95"><Icon name="check" size={12} /> In your list</span>
+                        <div className="absolute inset-x-2 bottom-2 flex justify-center">
+                          <Stepper name={item.name} qty={qty} onChange={(n) => setQty(item.id, n)} />
+                        </div>
+                      </>
                     )}
                   </div>
-                  <div className="flex flex-1 flex-col p-4">
-                    <p className="text-xs text-muted">{item.category}</p>
-                    <h3 className="mt-0.5 leading-snug font-medium">{item.name}</h3>
-                    {item.specs && <p className="mt-1 line-clamp-2 text-xs leading-5 text-muted">{item.specs}</p>}
-                    <PriceTag amount={item.price} unit={item.unit} size="sm" className="mt-2" />
-                    {item.estimated && <span className="text-[11px] text-muted">Estimated price</span>}
-                    <div className="mt-auto pt-4">
-                      {qty === 0 ? (
-                        <button type="button" onClick={() => add(item)} className="btn-ghost btn-sm w-full justify-center">
-                          <Icon name="plus" size={14} /> Add
-                          {item.perGuest && guests ? ` ${suggestedQty(item, guests).toLocaleString()}` : ""}
-                        </button>
-                      ) : (
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            aria-label={`Fewer ${item.name}`}
-                            onClick={() => setQty(item.id, qty - 1)}
-                            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line hover:border-ink/30"
-                          >
-                            −
-                          </button>
-                          <input
-                            type="number"
-                            min={0}
-                            inputMode="numeric"
-                            aria-label={`Quantity of ${item.name}`}
-                            value={qty}
-                            onChange={(e) => setQty(item.id, Number(e.target.value))}
-                            className="field h-9 min-w-0 px-1 py-0 text-center text-sm tabular-nums"
-                          />
-                          <button
-                            type="button"
-                            aria-label={`More ${item.name}`}
-                            onClick={() => setQty(item.id, qty + 1)}
-                            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line hover:border-ink/30"
-                          >
-                            +
-                          </button>
-                        </div>
-                      )}
+                  <div className="flex flex-1 flex-col p-3 sm:p-4">
+                    <h4 className="leading-snug font-medium">{item.name}</h4>
+                    {item.specs && <p className="mt-0.5 line-clamp-1 text-xs text-muted">{item.specs}</p>}
+                    <div className="mt-auto flex items-baseline justify-between gap-2 pt-2">
+                      <PriceTag amount={item.price} unit={item.unit} size="sm" />
+                      {qty > 0 && <span className="text-sm font-semibold tabular-nums">{formatPrice(item.price * qty)}</span>}
                     </div>
                   </div>
                 </li>
@@ -345,12 +528,65 @@ export function QuoteForm({
               <li className="col-span-full hint">Nothing matches that search yet. Tell us what you need in the notes below.</li>
             )}
           </ul>
+
           <aside className="hidden lg:block">
-            <div className="sticky top-28">{summary}</div>
+            <div className="card sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col p-5">
+              <p className="eyebrow">Your list</p>
+              <div className="mt-4 min-h-0 flex-1 overflow-y-auto pr-1">
+                {lines.length === 0 ? (
+                  <p className="hint">Tap any picture to add it. Your list and total show here.</p>
+                ) : (
+                  cartList("h-14 w-14")
+                )}
+              </div>
+              <div className="mt-4">{totals}</div>
+              <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full justify-center" disabled={!lines.length}>
+                Continue to your details
+              </button>
+            </div>
           </aside>
         </div>
-        <div className="mt-8 lg:hidden">{summary}</div>
       </fieldset>
+
+      {/* Phones: a sticky total bar that opens the list as a bottom sheet. */}
+      {lines.length > 0 && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/95 px-4 py-3 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] backdrop-blur lg:hidden">
+          <div className="mx-auto flex max-w-xl items-center gap-3">
+            <button type="button" onClick={() => setSheet(true)} className="flex min-w-0 flex-1 items-center gap-3 text-left" aria-label="View your list">
+              <span className="flex -space-x-3">
+                {lines.slice(0, 3).map(({ item }) => (
+                  <span key={item.id} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-surface bg-surface-2">
+                    <ItemVisual item={item} sizes="40px" />
+                  </span>
+                ))}
+              </span>
+              <span className="min-w-0">
+                <span className="block text-base font-semibold tabular-nums">{formatPrice(subtotal)}</span>
+                <span className="block text-xs text-muted underline">
+                  {lines.length} {lines.length === 1 ? "item" : "items"} · view list
+                </span>
+              </span>
+            </button>
+            <button type="button" onClick={toDetails} className="btn-primary shrink-0">Continue</button>
+          </div>
+        </div>
+      )}
+      {sheet && (
+        <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Your rental list">
+          <button type="button" aria-label="Close list" className="absolute inset-0 bg-black/40" onClick={() => setSheet(false)} />
+          <div className="absolute inset-x-0 bottom-0 flex max-h-[85vh] flex-col rounded-t-3xl bg-surface p-5 shadow-2xl">
+            <div className="mb-4 flex items-center justify-between">
+              <p className="text-lg font-medium">Your list</p>
+              <button type="button" onClick={() => setSheet(false)} className="grid h-9 w-9 place-items-center rounded-full border border-line" aria-label="Close">
+                <Icon name="close" size={16} />
+              </button>
+            </div>
+            <div className="min-h-0 flex-1 overflow-y-auto">{cartList("h-14 w-14")}</div>
+            <div className="mt-4">{totals}</div>
+            <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full justify-center">Continue to your details</button>
+          </div>
+        </div>
+      )}
 
       <fieldset id="details" className="grid min-w-0 scroll-mt-24 gap-x-8 gap-y-6 sm:grid-cols-2">
         {step(2, "Your event")}
@@ -375,7 +611,7 @@ export function QuoteForm({
         </div>
         <div>
           <label className="label" htmlFor="event_type">Occasion</label>
-          <select id="event_type" name="event_type" required className="field" defaultValue={preset?.eventType ?? ""}>
+          <select id="event_type" name="event_type" required className="field" value={eventType} onChange={(e) => setEventType(e.target.value)}>
             <option value="" disabled>Select</option>
             {eventTypes.map((t) => (
               <option key={t}>{t}</option>

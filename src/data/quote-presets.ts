@@ -4,7 +4,7 @@
 // Visitors can change or remove anything; the server prices whatever they send.
 
 export type PresetLine = { id: string; ratio?: number; qty?: number };
-export type QuotePreset = { id: string; label: string; eventType?: string; lines: PresetLine[] };
+export type QuotePreset = { id: string; name: string; label: string; icon?: string; eventType?: string; lines: PresetLine[] };
 
 const place = (extra: PresetLine[] = []): PresetLine[] => [
   { id: "cloth-napkins", ratio: 1 },
@@ -17,6 +17,7 @@ const place = (extra: PresetLine[] = []): PresetLine[] => [
 export const looks: QuotePreset[] = [
   {
     id: "blush-garden",
+    name: "Blush Garden",
     label: "the Blush Garden look",
     lines: [
       { id: "gold-chiavari", ratio: 1 },
@@ -32,6 +33,7 @@ export const looks: QuotePreset[] = [
   },
   {
     id: "midnight-gold",
+    name: "Midnight Gold",
     label: "the Midnight Gold look",
     lines: [
       { id: "gold-chiavari", ratio: 1 },
@@ -47,6 +49,7 @@ export const looks: QuotePreset[] = [
   },
   {
     id: "gilded-ivory",
+    name: "Gilded Ivory",
     label: "the Gilded Ivory look",
     lines: [
       { id: "gold-chiavari", ratio: 1 },
@@ -74,12 +77,16 @@ const cutlery: PresetLine[] = [
 export const events: QuotePreset[] = [
   {
     id: "wedding",
+    name: "Wedding",
+    icon: "heart",
     label: "a typical wedding reception",
     eventType: "Wedding (ceremony + reception)",
     lines: [{ id: "gold-chiavari", ratio: 1 }, ...rounds, ...place(cutlery), { id: "wine-glass", ratio: 1 }, { id: "dance-floor", qty: 25 }],
   },
   {
     id: "corporate",
+    name: "Corporate",
+    icon: "users",
     label: "a typical corporate event",
     eventType: "Corporate event or gala",
     lines: [
@@ -94,18 +101,24 @@ export const events: QuotePreset[] = [
   },
   {
     id: "birthday",
+    name: "Birthday",
+    icon: "spark",
     label: "a typical birthday or milestone party",
     eventType: "Birthday or anniversary party",
     lines: [{ id: "white-folding", ratio: 1 }, ...rounds, { id: "cocktail-highboy", ratio: 0.1 }, { id: "cloth-napkins", ratio: 1 }],
   },
   {
     id: "quinceanera",
+    name: "Quinceañera",
+    icon: "star",
     label: "a typical quinceañera",
     eventType: "Quinceañera",
     lines: [{ id: "gold-chiavari", ratio: 1 }, ...rounds, ...place(cutlery), { id: "throne-chair", qty: 1 }, { id: "dance-floor", qty: 25 }],
   },
   {
     id: "indian-wedding",
+    name: "Indian wedding",
+    icon: "light",
     label: "a typical Indian wedding or sangeet",
     eventType: "Indian wedding or sangeet",
     lines: [
@@ -120,6 +133,8 @@ export const events: QuotePreset[] = [
   },
   {
     id: "shower",
+    name: "Shower & brunch",
+    icon: "glass",
     label: "a typical shower or brunch",
     eventType: "Bridal or baby shower",
     lines: [
@@ -134,6 +149,8 @@ export const events: QuotePreset[] = [
   },
   {
     id: "graduation",
+    name: "Graduation",
+    icon: "calendar",
     label: "a typical graduation party",
     eventType: "Graduation party",
     lines: [
@@ -146,6 +163,8 @@ export const events: QuotePreset[] = [
   },
   {
     id: "gala",
+    name: "Gala",
+    icon: "candle",
     label: "a typical gala or fundraiser",
     eventType: "Fundraiser or community event",
     lines: [
