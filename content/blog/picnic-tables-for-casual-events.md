@@ -71,7 +71,7 @@ They are not ideal for elderly guests, tiny children or formal dinners. Benches 
 
 ## Add chairs for comfort
 
-Mix in some chairs at the end of each table, so older guests can sit more comfortably. Folding chairs work for this; a [garden folding chair](/chairs/garden-folding) is light, easy to move and priced for casual events. See our [outdoor chairs for Chicago weather](/blog/topic/seasons-and-venues) too.
+Mix in some chairs at the end of each table, so older guests can sit more comfortably. Folding chairs work for this; a [garden folding chair](/chairs/garden-folding) is light, easy to move and priced for casual events. See our [seasons and venues guides](/blog/topic/seasons-and-venues) too.
 
 ## Ground and weather
 

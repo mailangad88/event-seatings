@@ -27,7 +27,7 @@ At O'Hare, the normal July high is about 84 degrees F and the August high is abo
 <div><strong>82 F</strong><span>Normal August high</span></div>
 <div><strong>64 F</strong><span>Normal July low</span></div>
 <div><strong>1st</strong><span>Shade, then air, then mist</span></div>
-<div><strong>1 per 8 to 10</strong><span>Water stations per guests, a rule of thumb</span></div>
+<div><strong>1 per 80 to 100</strong><span>Water stations per guests, a rule of thumb</span></div>
 <div><strong>1</strong><span>Cool indoor retreat</span></div>
 </div>
 

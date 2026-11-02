@@ -69,6 +69,10 @@ If guests or the tent will use a street or alley, you may need a street use or b
 <li><strong>Take photos</strong> of the surface before setup.</li>
 </ol>
 
+## Insurance and paperwork for shared lots
+
+Churches, schools and businesses usually ask for a certificate of insurance naming the property owner, plus a signed agreement about the dates and the area used. Ask your tent company whether it can provide the certificate, and ask the lot owner what limits they expect. If a lot is shared among tenants, check that no lease, snow-removal plan or fire lane crosses the area you want. Fire lanes and hydrants must stay clear, and a tent that blocks them may be ordered down.
+
 ## Heat and comfort on pavement
 
 Pavement radiates heat, which makes a tent hotter in summer. Light colored tops, open sides and fans help. In cold months, concrete steals warmth from guests' feet, so add carpet or a floor. See [cooling a tent in summer](/blog/cooling-a-tent-in-summer) for more.

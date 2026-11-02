@@ -89,6 +89,10 @@ Warm light flatters natural wood and gold. [Cross-back chairs](/chairs/cross-bac
 <div><strong>30 min</strong><span>Lights on before sunset</span></div>
 </div>
 
+## A simple lighting plan for a 20 x 30 tent
+
+For a small backyard tent, you do not need a designer. Run two or three strands of warm string lights from the center ridge to the side walls, hang one or two lanterns or pendants over the main table, and add a pair of uplights in the corners. Put the strands on a dedicated outlet with a timer or a dimmer. Place path lights from the car or house door to the tent opening so guests can see their steps. Test the whole setup at dusk the evening before and replace any dead strands.
+
 ## Frequently asked questions
 
 ### How do you light the inside of a tent?

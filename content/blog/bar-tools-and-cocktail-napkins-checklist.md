@@ -23,7 +23,7 @@ The bartender arrives, looks at the bar and asks for a bottle opener that nobody
 <figure>
 <svg role="img" aria-labelledby="bk-t bk-d" viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
 <title id="bk-t">Back bar layout showing where each tool goes</title>
-<desc id="bk-t-d">Top-down view of a bartender's station. The left zone holds a cutting board and garnish tray, the center holds the shaker, jigger and strainer, and the right zone holds bottle openers and napkins. A rubber mat covers the working surface and an ice bin sits at the end.</desc>
+<desc id="bk-d">Top-down view of a bartender's station. The left zone holds a cutting board and garnish tray, the center holds the shaker, jigger and strainer, and the right zone holds bottle openers and napkins. A rubber mat covers the working surface and an ice bin sits at the end.</desc>
 <rect x="0" y="0" width="720" height="320" fill="var(--surface)"/>
 <rect x="30" y="40" width="660" height="150" fill="var(--gold)" opacity="0.15" stroke="var(--gold)" stroke-width="2"/>
 <g stroke="currentColor" stroke-width="2" fill="none">
