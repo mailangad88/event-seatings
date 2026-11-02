@@ -1,24 +1,25 @@
-// Navigation for the rental marketplace. Category ids match the catalog
-// (src/data/catalog-products.ts) so links resolve to /rentals/<id>.
+// Navigation for the rental marketplace. Ids, names and order mirror `categories` in
+// src/data/catalog-products.ts (catalog PR) so links resolve to /rentals/<id>. Once that
+// file is on main, import it here and keep only the icon map. Blurbs are shortened for the menu.
 export type NavCategory = { id: string; name: string; blurb: string; icon: IconName };
 
 import type { IconName } from "@/components/ui/Icon";
 
 export const rentalCategories: NavCategory[] = [
   { id: "chairs", name: "Chairs", blurb: "Chiavari, cross-back, ghost, folding", icon: "chair" },
-  { id: "tables", name: "Tables", blurb: "Banquet, round, farm, cocktail", icon: "table" },
-  { id: "linens", name: "Linens & napkins", blurb: "Tablecloths, runners, napkins", icon: "linen" },
-  { id: "dinnerware", name: "Dinnerware", blurb: "Plates, chargers, bowls", icon: "plate" },
-  { id: "glassware", name: "Glassware", blurb: "Wine, coupes, water goblets", icon: "glass" },
-  { id: "flatware", name: "Flatware", blurb: "Gold, silver, matte black", icon: "flatware" },
-  { id: "tents", name: "Tents", blurb: "Frame, pole, sailcloth", icon: "tent" },
-  { id: "lighting", name: "Lighting", blurb: "Bistro, uplighting, chandeliers", icon: "light" },
-  { id: "lounge", name: "Lounge furniture", blurb: "Sofas, armchairs, ottomans", icon: "sofa" },
-  { id: "bars", name: "Bars & backdrops", blurb: "Bars, arches, walls", icon: "arch" },
-  { id: "dance-floors", name: "Dance floors & stages", blurb: "Floors, risers, staging", icon: "floor" },
-  { id: "decor", name: "Decor & centerpieces", blurb: "Candles, vases, stands", icon: "candle" },
-  { id: "catering", name: "Catering equipment", blurb: "Chafers, warmers, beverage", icon: "chafer" },
-  { id: "heaters", name: "Heaters & climate", blurb: "Patio heaters, fans", icon: "heat" },
+  { id: "tables", name: "Tables", blurb: "Round, banquet, farm, cocktail", icon: "table" },
+  { id: "linens", name: "Linens", blurb: "Tablecloths, runners, napkins", icon: "linen" },
+  { id: "dinnerware", name: "Dinnerware", blurb: "Chargers, plates, bowls", icon: "plate" },
+  { id: "flatware", name: "Flatware", blurb: "Silver and gold finishes", icon: "flatware" },
+  { id: "glassware", name: "Glassware", blurb: "Goblets, wine, flutes, bar", icon: "glass" },
+  { id: "catering-equipment", name: "Catering equipment", blurb: "Chafers, urns, bars", icon: "chafer" },
+  { id: "tents", name: "Tents", blurb: "Frame, pole, sailcloth, clear-top", icon: "tent" },
+  { id: "dance-floors-staging", name: "Dance floors & staging", blurb: "Wood, white, LED, stages", icon: "floor" },
+  { id: "lighting", name: "Lighting", blurb: "Bistro, uplights, chandeliers", icon: "light" },
+  { id: "heating-cooling", name: "Heating & cooling", blurb: "Patio and tent heaters", icon: "heat" },
+  { id: "lounge", name: "Lounge", blurb: "Sofas, armchairs, coffee tables", icon: "sofa" },
+  { id: "decor", name: "Decor", blurb: "Arches, flower walls, candles", icon: "arch" },
+  { id: "games-kids", name: "Games & kids", blurb: "Bounce houses, yard games", icon: "games" },
 ];
 
 export const primaryNav = [

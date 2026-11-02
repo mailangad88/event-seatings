@@ -16,7 +16,7 @@ const detail = [
     icon: "search",
     title: "1. Build your list",
     text: "Browse rentals by category or start from a styled look. Add quantities as you go; your running total updates instantly.",
-    points: ["14 categories, chairs to chafers", "Styled looks you can price in one click", "Save and come back any time"],
+    points: ["14 categories, chairs to tents", "Styled looks you can price in one click", "Save and come back any time"],
   },
   {
     icon: "quote",
