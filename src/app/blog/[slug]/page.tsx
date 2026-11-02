@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { ChairArt } from "@/components/ChairArt";
 import { chairAlt, chairImage, getChair } from "@/data/chairs";
 import { formatDate, getPost, getPosts } from "@/lib/blog";
+import { ArticleLayout, JsonLd, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
+import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -29,12 +31,26 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
   };
 }
 
+// Give each <h2> an id so the table of contents can link to it.
+function withHeadingIds(html: string) {
+  const toc: TocItem[] = [];
+  const out = html.replace(/<h2>(.*?)<\/h2>/g, (_, inner: string) => {
+    const label = inner.replace(/<[^>]+>/g, "");
+    const id = label.toLowerCase().replace(/&[a-z#0-9]+;/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    toc.push({ id, label });
+    return `<h2 id="${id}">${inner}</h2>`;
+  });
+  return { html: out, toc };
+}
+
 export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const found = await getPost((await props.params).slug);
   if (!found) notFound();
-  const { post, html } = found;
+  const { post } = found;
+  const { html, toc } = withHeadingIds(found.html);
   const chair = getChair(post.chair);
   const img = chair && chairImage(chair);
+  const hero = sceneFor(post.slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -42,7 +58,10 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    ...(img && chair && { image: { "@type": "ImageObject", url: `${site.url}${img}`, caption: chairAlt(chair) } }),
+    image: [
+      { "@type": "ImageObject", url: `${site.url}${hero.src}`, caption: hero.alt },
+      ...(img && chair ? [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: chairAlt(chair) }] : []),
+    ],
     keywords: post.tags.join(", "),
     url: `${site.url}/blog/${post.slug}`,
     mainEntityOfPage: `${site.url}/blog/${post.slug}`,
@@ -51,41 +70,48 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   };
 
   return (
-    <article className="container-x max-w-4xl py-20">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <div className="text-center">
-        <Link href="/blog" className="text-[11px] tracking-[0.22em] text-muted uppercase hover:text-ink">
-          ← The journal
-        </Link>
-        <p className="mt-10 text-[11px] tracking-[0.22em] text-gold uppercase">
-          {formatDate(post.date)} · {post.readingMinutes} min read
-        </p>
-        <h1 className="headline mt-6 text-5xl leading-[1.02] sm:text-7xl">{post.title}</h1>
-        <p className="mx-auto mt-6 max-w-2xl font-serif text-2xl leading-snug font-light text-muted italic">
-          {post.description}
-        </p>
-        <span className="mx-auto mt-10 block h-px w-16 bg-gold" aria-hidden />
-      </div>
-      {chair && (
-        <figure className="mx-auto mt-12 max-w-md">
-          <ChairArt chair={chair} priority className="aspect-[4/5]" />
-          <figcaption className="mt-3 text-sm text-muted">
-            Pictured: the <Link href={`/chairs/${chair.slug}`} className="underline decoration-gold underline-offset-4">{chair.name}</Link>, {chair.tagline.charAt(0).toLowerCase()}{chair.tagline.slice(1)}.
-          </figcaption>
-        </figure>
-      )}
-      <div className="prose-post mx-auto mt-12 max-w-2xl" dangerouslySetInnerHTML={{ __html: html }} />
-      <div className="mx-auto mt-24 max-w-2xl border-t border-gold/40 pt-12 text-center">
-        <p className="headline text-4xl">
-          Planning your <em className="text-gold">seating</em>?
-        </p>
-        <p className="mt-3 text-muted">Explore the collection, or tell us about your celebration.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link href="/chairs" className="btn-ghost">The collection</Link>
-          <Link href="/quote" className="btn-ghost">Request a quote</Link>
-          <Link href={`/book?from=blog-${post.slug}`} className="btn-primary">Book a free call</Link>
-        </div>
-      </div>
-    </article>
+    <>
+      <JsonLd data={jsonLd} />
+      <ArticleLayout
+        breadcrumbs={[
+          { name: "Ideas & guides", href: "/blog" },
+          { name: post.title, href: `/blog/${post.slug}` },
+        ]}
+        eyebrow={post.tags[0] ?? "Guide"}
+        title={post.title}
+        intro={post.description}
+        meta={
+          <>
+            {formatDate(post.date)} · {post.readingMinutes} min read · By the {site.name} team
+          </>
+        }
+        hero={{ src: hero.src, alt: hero.alt, caption: hero.caption }}
+        toc={toc}
+        aside={
+          <>
+            <QuoteCard source={`blog-${post.slug}`} />
+            {chair && (
+              <Link href={`/chairs/${chair.slug}`} className="group card card-hover block overflow-hidden">
+                <ChairArt chair={chair} className="aspect-[4/3]" />
+                <span className="block p-4">
+                  <span className="block text-xs font-medium tracking-wide text-muted uppercase">Featured piece</span>
+                  <span className="mt-1 block font-medium group-hover:text-gold">{chair.name}</span>
+                </span>
+              </Link>
+            )}
+          </>
+        }
+      >
+        <div className="prose-post max-w-2xl" dangerouslySetInnerHTML={{ __html: html }} />
+        {post.tags.length > 0 && (
+          <ul className="mt-12 flex flex-wrap gap-2 border-t border-line pt-6">
+            {post.tags.map((t) => (
+              <li key={t} className="chip">{t}</li>
+            ))}
+          </ul>
+        )}
+      </ArticleLayout>
+      <QuoteCta source={`blog-${post.slug}`} title="Ready to price your event?" />
+    </>
   );
 }

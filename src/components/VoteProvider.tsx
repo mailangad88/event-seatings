@@ -87,7 +87,7 @@ export function VoteButton({ slug, size = "sm" }: { slug: string; size?: "sm" | 
       className={`inline-flex items-center gap-2 transition-colors duration-300 ${
         size === "lg"
           ? `border px-6 py-4 text-[11px] font-medium tracking-[0.22em] uppercase ${
-              on ? "border-gold bg-gold text-[#0a0806]" : "border-gold/70 text-ink hover:bg-gold hover:text-[#0a0806]"
+              on ? "border-gold bg-gold text-accent-ink" : "border-gold/70 text-ink hover:bg-gold hover:text-accent-ink"
             }`
           : `rounded-full bg-espresso/70 px-3 py-2 text-[10px] tracking-[0.18em] uppercase backdrop-blur ${
               on ? "text-gold" : "text-ink hover:text-gold"

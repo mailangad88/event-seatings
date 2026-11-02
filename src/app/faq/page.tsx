@@ -1,95 +1,168 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
-import { site } from "@/lib/site";
 import { ProcessFlow } from "@/components/ProcessFlow";
+import { Figure, FaqList, Icon, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
+import { scenes } from "@/lib/scenes";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Chair Rental FAQ: Chicago Weddings & Events",
-  description: "Answers about event and wedding chair rentals in Chicago: delivery, setup, pricing, quantities and our launch season.",
+  title: "Event Rental FAQ: Chicago Chairs, Tables, Linens & More",
+  description: `Answers about renting chairs, tables, linens, dinnerware, tents and more for events in Chicago and the suburbs: pricing, delivery, setup, deposits, timing and damage.`,
   alternates: { canonical: "/faq" },
 };
 
-const faqs: [string, string][] = [
-  [
-    "Are you taking bookings now?",
-    `We're a new company launching our ${site.launch.seasonLabel}. Right now we're collecting quote requests and finalizing our founding collection. When you request a quote, we'll email your personalized pricing and availability as soon as it's ready. Nothing is charged until you confirm.`,
-  ],
-  [
-    "Where do you deliver?",
-    `We serve Chicago and the suburbs from our base in ${site.city}, including ${site.serviceArea.join(", ")} and surrounding areas. Ask us about venues farther out.`,
-  ],
-  [
-    "Do you deliver and set up?",
-    "Yes. Delivery, setup and pickup are part of our full-service rentals. Exact fees depend on distance and venue access, and they're itemized in your quote.",
-  ],
-  [
-    "How much do chairs cost?",
-    "Each chair page shows an estimated per-chair range. Your quote will have exact pricing for your date, quantity and location.",
-  ],
-  [
-    "Can I mix chair styles?",
-    "Absolutely. Many couples use one chair for the ceremony and another for the reception, or a statement chair for the head table.",
-  ],
-  [
-    "Are the chairs sturdy enough for events?",
-    "Our collection is commercial-grade and weight-rated for event use. We don't use residential furniture.",
-  ],
-  [
-    "How many chairs do I need?",
-    "Usually one per guest for the reception, plus a few extras for vendors and late RSVPs. If your ceremony is in a different spot, you may need a second set or a flip, which we can plan for.",
-  ],
-  [
-    "What happens to my vote on a chair?",
-    "Votes are anonymous. We use them to decide which styles to stock first and in what quantities.",
-  ],
+const groups: { id: string; title: string; faqs: Faq[] }[] = [
+  {
+    id: "how-it-works",
+    title: "How it works",
+    faqs: [
+      {
+        q: `What is ${site.name}?`,
+        a: `${site.name} is a Chicago-area event rental marketplace. You choose chairs, tables, linens, dinnerware, glassware, tents, lighting and decor in one place, get one itemized quote, and we coordinate the local rental houses that deliver them.`,
+      },
+      {
+        q: "Do I deal with several rental companies?",
+        a: "No. You have one point of contact and one quote. We confirm availability with each vendor, line up delivery windows and handle changes for you.",
+      },
+      {
+        q: "Can I mix items from different categories?",
+        a: "Yes, that is the point. Add a ceremony chair, a different reception chair, farm tables, linens and glassware to the same quote.",
+      },
+      {
+        q: "Can I talk to a person before I decide?",
+        a: `Of course. Book a free ${site.callLength} planning call and we will help with quantities, styles and budget.`,
+      },
+    ],
+  },
+  {
+    id: "pricing",
+    title: "Pricing & payment",
+    faqs: [
+      {
+        q: "How much do event rentals cost?",
+        a: "Every item lists its per-piece or per-set price, and your quote totals live as you add items. Prices include our coordination, so there is no separate planning fee. Delivery, setup and any venue surcharges are itemized before you confirm.",
+      },
+      {
+        q: "Is the quote free?",
+        a: "Yes. Quotes are free with no obligation. Nothing is reserved or charged until you approve the final quote.",
+      },
+      {
+        q: "Is there a deposit?",
+        a: "Most bookings are secured with a deposit once you approve your quote, with the balance due before the event. Exact terms are shown on your quote.",
+      },
+      {
+        q: "Are there minimum orders?",
+        a: "Some vendors have delivery minimums, especially on weekends. If your order is small we will tell you up front and suggest the most economical option.",
+      },
+    ],
+  },
+  {
+    id: "delivery",
+    title: "Delivery & setup",
+    faqs: [
+      {
+        q: "Where do you deliver?",
+        a: `Chicago and the suburbs, including ${site.serviceArea.slice(1).join(", ")} and nearby towns. Ask about venues farther out.`,
+      },
+      {
+        q: "Is setup included?",
+        a: "Delivery and pickup are standard. Full setup (placing chairs, dressing tables) is available on most items and is shown as its own line on your quote.",
+      },
+      {
+        q: "What if my venue has stairs, no elevator or strict load-in times?",
+        a: "Tell us in your quote request. We share venue details with the delivery crew and plan around docks, stairs and time windows so there are no surprises.",
+      },
+      {
+        q: "When are items picked up?",
+        a: "Usually the night of the event or the next morning, depending on your venue's rules. We confirm the pickup window with you in advance.",
+      },
+    ],
+  },
+  {
+    id: "planning",
+    title: "Planning & quantities",
+    faqs: [
+      {
+        q: "How far ahead should I book?",
+        a: "For Saturdays from May to October, book 3 to 6 months ahead, especially for tents and popular chairs. Weekday and winter events can often be booked a few weeks out.",
+      },
+      {
+        q: "How many chairs and tables do I need?",
+        a: "Plan one chair per guest plus 3 to 5 percent extra. A 60-inch round seats 8 to 10, and an 8-foot banquet table seats 8 to 10. Our free planning call will check your floor plan.",
+      },
+      {
+        q: "Do linens come pressed?",
+        a: "Yes. Linens arrive cleaned and pressed. Return them used; laundering is included.",
+      },
+      {
+        q: "What if something is damaged?",
+        a: "Normal wear is expected. Breakage or loss is billed at the vendor's replacement cost, and some vendors offer an optional damage waiver, which we will show on your quote.",
+      },
+    ],
+  },
 ];
 
 export default function FaqPage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
-  };
+  const all = groups.flatMap((g) => g.faqs);
   return (
     <>
-    <div className="container-x py-20">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <div className="grid gap-14 md:grid-cols-[1fr_1.6fr] md:gap-20">
-        <div>
-          <p className="eyebrow">Questions</p>
-          <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-7xl">
-            Frequently <em className="text-gold">asked</em>
-          </h1>
-          <p className="mt-6 leading-7 text-muted">
-            Something else on your mind?{" "}
-            <a href={`mailto:${site.email}`} className="underline decoration-gold underline-offset-4 hover:text-gold">
-              {site.email}
-            </a>
-          </p>
-        </div>
-        <div className="border-t border-gold/40">
-          {faqs.map(([q, a]) => (
-            <details key={q} className="group border-b border-line">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
-                <span className="font-serif text-2xl leading-snug">{q}</span>
-                <span className="text-xl font-light text-gold transition-transform duration-300 group-open:rotate-45" aria-hidden>
-                  +
-                </span>
-              </summary>
-              <p className="max-w-2xl pb-7 leading-8 text-muted">{a}</p>
-            </details>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: all.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+        }}
+      />
+      <PageHero
+        breadcrumbs={[{ name: "FAQ", href: "/faq" }]}
+        eyebrow="Questions & answers"
+        title="Everything you want to know before you rent"
+        intro={
+          <>
+            Pricing, delivery, quantities and timing for event rentals across {site.marketLong}. Still curious? Email{" "}
+            <a href={`mailto:${site.email}`} className="link">{site.email}</a>.
+          </>
+        }
+        actions={
+          <>
+            <Link href="/quote?from=faq" className="btn-primary">Build your quote</Link>
+            <Link href="/book?from=faq" className="btn-ghost">Book a free call</Link>
+          </>
+        }
+        media={<Figure {...scenes.blushLongTable} ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" />}
+      />
+
+      <div className="container-x section-y grid gap-12 lg:grid-cols-[220px_1fr]">
+        <nav aria-label="FAQ topics" className="lg:sticky lg:top-28 lg:self-start">
+          <p className="text-xs font-semibold tracking-wide text-muted uppercase">Topics</p>
+          <ul className="mt-4 flex flex-wrap gap-2 lg:flex-col">
+            {groups.map((g) => (
+              <li key={g.id}>
+                <a href={`#${g.id}`} className="chip hover:border-ink hover:text-ink lg:w-full lg:justify-between">
+                  {g.title} <Icon name="arrow" size={14} className="hidden lg:block" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="space-y-14">
+          {groups.map((g) => (
+            <section key={g.id} id={g.id} className="scroll-mt-28">
+              <h2 className="display-3">{g.title}</h2>
+              <FaqList faqs={g.faqs} schema={false} className="mt-5" />
+            </section>
           ))}
         </div>
       </div>
-    </div>
-    <section className="container-x mt-24">
-      <p className="eyebrow">At a glance</p>
-      <h2 className="headline mt-6 mb-12 text-5xl">How renting with us <em className="text-gold">works</em></h2>
-      <ProcessFlow />
-    </section>
-    <div className="mt-24 -mb-32">
-      <CallCta source="faq" />
-    </div>
+
+      <Section tone="sand" eyebrow="At a glance" title="How renting with us works">
+        <ProcessFlow />
+      </Section>
+
+      <div className="-mb-32">
+        <CallCta source="faq" />
+      </div>
     </>
   );
 }

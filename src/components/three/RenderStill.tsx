@@ -9,7 +9,7 @@ const ChairScene = dynamic(() => import("./ChairScene").then((m) => m.ChairScene
 export function RenderStill({ chair, finish }: { chair: Chair; finish: number }) {
   const color = chair.finishes[finish]?.hex ?? chair.finishes[0].hex;
   return (
-    <div id="shot" style={{ width: 1000, height: 1250, background: "#0c0907" }}>
+    <div id="shot" style={{ width: 1000, height: 1250, background: "#efe9df" }}>
       <ChairScene silhouette={chair.silhouette} color={color} autoRotate={false} interactive={false} signalReady />
     </div>
   );

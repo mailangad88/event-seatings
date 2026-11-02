@@ -1,57 +1,85 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ChairArt } from "@/components/ChairArt";
-import { getChair } from "@/data/chairs";
+import { PageHero, QuoteCta } from "@/components/ui";
 import { formatDate, getPosts } from "@/lib/blog";
+import { sceneFor, scenes } from "@/lib/scenes";
+import { site } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Journal: Wedding Seating Ideas & Chiavari Alternatives",
-  description: "Wedding chair ideas, seating guides and styling inspiration from Beyond Chiavari.",
+  title: "Event Planning Ideas & Rental Guides for Chicago",
+  description: `Event rental guides, costs, quantities, layouts and styling ideas for weddings, parties and corporate events in Chicago, from ${site.name}.`,
   alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage() {
   const [lead, ...rest] = await getPosts();
+  const tags = [...new Set([lead, ...rest].filter(Boolean).flatMap((p) => p!.tags))].slice(0, 12);
   return (
-    <div className="container-x py-20">
-      <p className="eyebrow">The journal</p>
-      <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-8xl">
-        Notes on <em className="text-gold">seating</em>
-      </h1>
-
-      {lead && (
-        <Link href={`/blog/${lead.slug}`} className="group mt-20 grid gap-8 border-t border-gold/40 pt-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
-          <div>
-            {getChair(lead.chair) && <ChairArt chair={getChair(lead.chair)!} priority className="mb-8 aspect-[16/10]" />}
-            <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
-              Latest · {formatDate(lead.date)} · {lead.readingMinutes} min read
-            </p>
-            <h2 className="headline mt-5 text-4xl leading-[1.05] transition-colors group-hover:text-gold sm:text-5xl">
-              {lead.title}
-            </h2>
+    <>
+      <PageHero
+        breadcrumbs={[{ name: "Ideas & guides", href: "/blog" }]}
+        eyebrow="Ideas & guides"
+        title="Plan a better event in Chicago"
+        intro="Costs, quantities, layouts, venue rules and styling ideas for weddings, parties and corporate events, written by people who plan them."
+        meta={
+          tags.length > 0 && (
+            <ul className="flex flex-wrap gap-2">
+              {tags.map((t) => (
+                <li key={t} className="chip">{t}</li>
+              ))}
+            </ul>
+          )
+        }
+        media={
+          <div className="media aspect-[16/11] shadow-lift">
+            <Image src={scenes.threeLooks.src} alt={scenes.threeLooks.alt} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </div>
-          <div className="md:pt-8">
-            <p className="text-lg leading-8 text-muted">{lead.description}</p>
-            <span className="link-line mt-8">Read the article</span>
-          </div>
-        </Link>
-      )}
+        }
+      />
 
-      <div className="mt-20 grid gap-x-10 gap-y-14 md:grid-cols-3">
-        {rest.map((p) => (
-          <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-line pt-6">
-            {getChair(p.chair) && <ChairArt chair={getChair(p.chair)!} className="mb-6 aspect-[4/3]" />}
-            <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
-              {formatDate(p.date)} · {p.readingMinutes} min read
-            </p>
-            <h2 className="headline mt-4 text-3xl leading-tight transition-colors group-hover:text-gold">{p.title}</h2>
-            <p className="mt-3 line-clamp-3 leading-7 text-muted">{p.description}</p>
+      <div className="container-x section-y">
+        {lead && (
+          <Link href={`/blog/${lead.slug}`} className="group card card-hover grid overflow-hidden md:grid-cols-[1.2fr_1fr]">
+            <div className="relative aspect-[16/10] md:aspect-auto md:min-h-80">
+              <Image src={sceneFor(lead.slug).src} alt={sceneFor(lead.slug).alt} fill sizes="(max-width: 768px) 100vw, 55vw" className="object-cover" />
+            </div>
+            <div className="flex flex-col justify-center p-8 md:p-12">
+              <span className="badge self-start">Latest</span>
+              <h2 className="display-2 mt-4 transition-colors group-hover:text-gold">{lead.title}</h2>
+              <p className="mt-4 leading-7 text-muted">{lead.description}</p>
+              <p className="mt-6 text-sm text-muted">
+                {formatDate(lead.date)} · {lead.readingMinutes} min read
+              </p>
+            </div>
           </Link>
-        ))}
+        )}
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {rest.map((p) => {
+            const s = sceneFor(p.slug);
+            return (
+              <Link key={p.slug} href={`/blog/${p.slug}`} className="group card card-hover flex flex-col overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image src={s.src} alt={s.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  {p.tags[0] && <p className="text-xs font-medium tracking-wide text-gold uppercase">{p.tags[0]}</p>}
+                  <h2 className="mt-2 font-serif text-2xl leading-tight transition-colors group-hover:text-gold">{p.title}</h2>
+                  <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{p.description}</p>
+                  <p className="mt-auto pt-5 text-xs text-muted">
+                    {formatDate(p.date)} · {p.readingMinutes} min read
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+        {!lead && <p className="mt-16 font-serif text-2xl text-muted italic">The first guides arrive soon.</p>}
       </div>
-      {!lead && <p className="mt-16 font-serif text-2xl text-muted italic">The first articles arrive soon.</p>}
-    </div>
+      <QuoteCta source="blog" />
+    </>
   );
 }

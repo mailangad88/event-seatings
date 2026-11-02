@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactShadows, Environment, Lightformer, OrbitControls } from "@react-three/drei";
+import { Environment, Lightformer, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
@@ -55,20 +55,16 @@ function Lobby({ quality }: { quality: Quality }) {
 
   return (
     <group>
-      <fog attach="fog" args={["#0c0907", 7, 15]} />
+      <fog attach="fog" args={["#efe9df", 8, 18]} />
       {/* polished marble: semi-transparent so a mirrored chair below shows through as a reflection */}
       <mesh rotation-x={-Math.PI / 2} receiveShadow renderOrder={1}>
         <circleGeometry args={[9, 128]} />
         <meshPhysicalMaterial
           map={floorTex}
-          color="#5a554d"
-          roughness={0.3}
-          metalness={0.1}
-          clearcoat={0.35}
-          clearcoatRoughness={0.15}
-          transparent
-          opacity={0.82}
-          envMapIntensity={0.22}
+          color="#fbf6ee"
+          roughness={0.85}
+          metalness={0}
+          envMapIntensity={0.15}
         />
       </mesh>
       {/* brass inlay rings */}
@@ -80,7 +76,7 @@ function Lobby({ quality }: { quality: Quality }) {
       {/* fluted wall */}
       <mesh position-y={3}>
         <cylinderGeometry args={[6, 6, 6, 192, 1, true]} />
-        <meshStandardMaterial side={THREE.BackSide} color="#2b241f" bumpMap={fluteTex} bumpScale={5} roughness={0.5} metalness={0.15} />
+        <meshStandardMaterial side={THREE.BackSide} color="#e9e2d6" bumpMap={fluteTex} bumpScale={5} roughness={0.5} metalness={0.15} />
       </mesh>
       {/* brass band and pilasters */}
       <mesh position-y={0.55} material={brass}>
@@ -107,14 +103,16 @@ function Lobby({ quality }: { quality: Quality }) {
 function Lighting() {
   return (
     <>
-      <ambientLight intensity={0.14} color="#ffe6c4" />
+      <hemisphereLight args={["#fff8ec", "#d9cfc0", 1.6]} />
+      <directionalLight position={[0, 5, 6]} intensity={1.4} color="#fff4e2" />
+      <ambientLight intensity={0.5} color="#ffe6c4" />
       <pointLight position={[0, 3.2, 0.6]} intensity={7} distance={9} decay={1.4} color="#ffd9a6" />
       {/* warm key from the front-left, with soft shadows */}
       <spotLight
         position={[-2.6, 3.8, 3]}
-        angle={0.42}
+        angle={0.95}
         penumbra={1}
-        intensity={85}
+        intensity={45}
         castShadow
         shadow-mapSize={[2048, 2048]}
         shadow-bias={-0.0004}
@@ -174,7 +172,7 @@ export function ChairScene({
       gl={{ antialias: true, alpha: false, preserveDrawingBuffer: true, toneMappingExposure: 1.0 }}
       style={{ touchAction: "pan-y" }}
     >
-      <color attach="background" args={["#0c0907"]} />
+      <color attach="background" args={["#efe9df"]} />
       <Lobby quality={quality} />
       <Lighting />
       <group>
@@ -184,7 +182,6 @@ export function ChairScene({
       <group scale={[1, -1, 1]}>
         <ChairModel silhouette={silhouette} m={m} color={color} />
       </group>
-      <ContactShadows position={[0, 0.004, 0]} opacity={0.7} scale={3} blur={2.2} far={1.2} resolution={512} color="#000000" />
       {interactive ? (
         <OrbitControls
           target={[0, silhouette === "throne" ? 0.72 : 0.5, 0]}

@@ -76,7 +76,7 @@ export function Quiz() {
             <button
               key={o.label}
               onClick={() => setAnswers([...answers, options.indexOf(o)])}
-              className="group flex items-center justify-between gap-4 border border-line bg-surface px-6 py-6 text-left transition-colors hover:bg-gold hover:text-[#0a0806]"
+              className="group flex items-center justify-between gap-4 border border-line bg-surface px-6 py-6 text-left transition-colors hover:bg-gold hover:text-accent-ink"
             >
               <span className="font-serif text-xl leading-snug">{o.label}</span>
               <span className="text-gold transition-transform group-hover:translate-x-1" aria-hidden>→</span>
