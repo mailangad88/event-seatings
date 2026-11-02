@@ -64,18 +64,38 @@ def add_rod(bm, p1, p2, r1, r2=None, segments=16):
     bmesh.ops.create_cone(bm, cap_ends=True, segments=segments, radius1=r1, radius2=r1 if r2 is None else r2, depth=d.length, matrix=mat)
 
 
+def add_tube(bm, pts, r, segments=12):
+    """A smooth tube swept along a dense curve (no beads or seams at the joints)."""
+    pts = [Vector(p) for p in pts]
+    rings = []
+    prev_n = None
+    for i, p in enumerate(pts):
+        a = pts[max(i - 1, 0)]
+        b = pts[min(i + 1, len(pts) - 1)]
+        t = (b - a).normalized()
+        n = prev_n if prev_n is not None else (Vector((0, 0, 1)) if abs(t.z) < 0.9 else Vector((1, 0, 0)))
+        n = (n - t * n.dot(t)).normalized()
+        prev_n = n
+        bnm = t.cross(n)
+        rings.append([bm.verts.new(p + (n * math.cos(2 * math.pi * k / segments) + bnm * math.sin(2 * math.pi * k / segments)) * r)
+                      for k in range(segments)])
+    for ra, rb in zip(rings, rings[1:]):
+        for k in range(segments):
+            j = (k + 1) % segments
+            bm.faces.new((ra[k], ra[j], rb[j], rb[k]))
+    bm.faces.new(list(reversed(rings[0])))
+    bm.faces.new(rings[-1])
+
+
 def add_polyline(bm, pts, r, segments=12, joints=True):
+    if len(pts) > 6:
+        add_tube(bm, pts, r, segments)
+        return
     for a, b in zip(pts, pts[1:]):
         add_rod(bm, a, b, r, segments=segments)
-    if len(pts) > 6:
-        # dense curve: extend each rod slightly instead of beading the joints
-        for a, b in zip(pts, pts[1:]):
-            d = (Vector(b) - Vector(a))
-            add_rod(bm, Vector(a) - d * 0.15, Vector(b) + d * 0.15, r, segments=segments)
-        return
     if joints:
         for p in pts[1:-1]:
-            add_sphere(bm, p, r, subdiv=1)
+            add_sphere(bm, p, r, subdiv=2)
 
 
 def add_beam(bm, p1, p2, w, h=None):

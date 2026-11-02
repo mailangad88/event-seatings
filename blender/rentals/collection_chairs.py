@@ -32,20 +32,20 @@ def bentwood():
     w = lib.wood("Espresso", (0.16, 0.10, 0.07), (0.10, 0.06, 0.04), stretch=(6, 6, 1))
     fr = bmesh.new()
     seat_z = 0.45
-    for sx, sy in ((-1, -1), (1, -1)):
-        add_rod(fr, (sx * 0.17, sy * 0.17, seat_z - 0.03), (sx * 0.2, sy * 0.21, 0), 0.016, 0.012)
-    # back legs sweep up into a hoop
-    hoop = [(x, 0.20 + 0.02 * (z - seat_z), z) for x, _, z in _arc(0, 0.72, 0.17, 180, 360, 0, 18)]
-    for sx in (-1, 1):
-        add_polyline(fr, [(sx * 0.19, 0.24, 0), (sx * 0.17, 0.17, seat_z - 0.02), (sx * 0.17, 0.2, 0.72)], 0.015)
-    top = [(p[0], 0.2 + 0.03, p[2]) for p in _arc(0, 0.72, 0.17, 0, 180, 0, 24)]
-    add_polyline(fr, top, 0.015)
-    inner = [(p[0] * 0.75, 0.21, p[2]) for p in _arc(0, 0.69, 0.13, 0, 180, 0, 20)]
-    add_polyline(fr, [(0.0975, 0.2, 0.55)] + inner + [(-0.0975, 0.2, 0.55)], 0.011)
-    add_ring(fr, (0, 0, 0.18), (0, 0, 1), 0.19, 0.01, segs=48, ring=8)
+    r = 0.015
+    for sx in (-1, 1):  # front legs, splayed, inside the round seat
+        add_rod(fr, (sx * 0.12, -0.12, seat_z - 0.03), (sx * 0.17, -0.18, 0), r, 0.012)
+    # one continuous bent piece: back leg -> up -> hoop -> down -> other back leg
+    path = [(-0.17, 0.22, 0.0), (-0.15, 0.15, seat_z - 0.02), (-0.155, 0.18, 0.62)]
+    path += [(0.155 * math.cos(math.radians(a)), 0.19 + 0.01 * math.sin(math.radians(a)), 0.62 + 0.20 * math.sin(math.radians(a)))
+             for a in range(180, -1, -6)]
+    path += [(0.155, 0.18, 0.62), (0.15, 0.15, seat_z - 0.02), (0.17, 0.22, 0.0)]
+    lib.add_tube(fr, path, r, 14)
+    inner = [(0.10 * math.cos(math.radians(a)), 0.185, 0.55 + 0.14 * math.sin(math.radians(a))) for a in range(180, -1, -6)]
+    lib.add_tube(fr, [(-0.10, 0.17, seat_z)] + inner + [(0.10, 0.17, seat_z)], 0.011, 12)
+    add_ring(fr, (0, 0.0, 0.18), (0, 0, 1), 0.155, 0.01, segs=48, ring=8)
     mesh_object("Bentwood", fr, w)
-    _round_seat(seat_z, 0.205, w)
-    del hoop
+    _round_seat(seat_z, 0.2, w)
 
 
 def louis_medallion():

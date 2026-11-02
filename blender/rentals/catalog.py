@@ -52,12 +52,25 @@ item("throne-chair", "chairs", C.build_throne,
 item("bar-stool", "chairs", C.build_bar_stool,
      "3D render of a gold Chiavari bar stool with an ivory cushion for cocktail hours and bar seating",
      "Gold Chiavari bar stool", cam=CHAIR_CAM)
-item("chair-cover", "linens", C.build_chair_cover,
+def _turned(build):
+    """Build, then spin the item 180 degrees so its back faces the default front camera."""
+    def run():
+        sc = lib.bpy.context.scene
+        before = set(sc.collection.objects)
+        build()
+        for ob in set(sc.collection.objects) - before:
+            if ob.parent is None:
+                ob.rotation_euler.z += 3.14159265
+                ob.location.x, ob.location.y = -ob.location.x, -ob.location.y
+    return run
+
+
+item("chair-cover", "linens", _turned(C.build_chair_cover),
      "3D render of a banquet chair in a fitted ivory chair cover tied with a champagne satin sash and bow",
-     "Ivory chair cover with champagne sash", cam=dict(az=-145, el=14, lens=85, pad=1.18))
-item("chair-sash", "linens", lambda: C.build_chiavari(sash=lib.BLUSH),
+     "Ivory chair cover with champagne sash", cam=dict(az=-35, el=14, lens=85, pad=1.18))
+item("chair-sash", "linens", _turned(lambda: C.build_chiavari(sash=lib.BLUSH)),
      "3D render of a gold Chiavari chair dressed with a blush chiffon sash tied in a bow on the chair back",
-     "Blush chiffon chair sash on a gold Chiavari", cam=dict(az=-150, el=12, lens=85, pad=1.18))
+     "Blush chiffon chair sash on a gold Chiavari", cam=dict(az=-30, el=12, lens=85, pad=1.18))
 
 for mod in ("collection_chairs", "tables", "tableware", "tents", "misc", "scenes", "heroes"):
     try:

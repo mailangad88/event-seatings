@@ -12,6 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import bpy  # noqa: E402,F401  (must load before bmesh, which the registry imports)
 from PIL import Image  # noqa: E402
 
 from catalog import ITEMS  # noqa: E402

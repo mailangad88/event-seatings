@@ -4,7 +4,7 @@ front of the chair facing -Y (toward a default camera)."""
 import math
 
 import bmesh
-from mathutils import Vector
+from mathutils import Matrix, Vector
 
 from lib import (
     BLACK, GOLD, IVORY, WHITE, acrylic, add_bamboo_rod, add_beam, add_box, add_disc, add_polyline, add_ring, add_rod,
@@ -73,8 +73,8 @@ def _sash(rear, color, col):
     mid = (a + b) / 2
     band = bmesh.new()
     add_ring(band, mid, (0, 0, 1), 0.205, 0.035, segs=40, ring=10, scale=(1.0, 0.22))
-    sb = mesh_object("SashBand", band, m, collection=col)
-    sb.scale = (1, 1, 1.6)
+    bmesh.ops.scale(band, vec=(1, 1, 1.6), space=Matrix.Translation(-mid), verts=band.verts[:])
+    mesh_object("SashBand", band, m, collection=col)
     bow = bmesh.new()
     c = mid + Vector((0, 0.06, 0))
     for sx in (-1, 1):
@@ -298,9 +298,9 @@ def build_chair_cover(col=None):
     sol.thickness = 0.004
     band = bmesh.new()
     add_ring(band, (0, 0.20, 0.66), (0, 0, 1), 0.235, 0.03, segs=40, ring=8, scale=(1.0, 0.25))
+    bmesh.ops.scale(band, vec=(1, 1, 2.4), space=Matrix.Translation((0, -0.20, -0.66)), verts=band.verts[:])
     satin = mat("Satin", (0.86, 0.76, 0.58), 0.0, 0.25, **{"Sheen Weight": 0.6, "Anisotropic": 0.5})
-    b = mesh_object("Band", band, satin, collection=col)
-    b.scale = (1, 1, 2.4)
+    mesh_object("Band", band, satin, collection=col)
     bow = bmesh.new()
     for sx in (-1, 1):
         add_sphere(bow, (sx * 0.06, 0.275, 0.66), 0.06, scale=(1.0, 0.35, 0.6))
