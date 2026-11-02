@@ -43,6 +43,7 @@ export function Footer() {
               ["/events", "Events we plan"],
               ["/chair-rentals", "Areas we serve"],
               ["/blog", "Ideas & guides"],
+              ["/tools", "Free planning tools"],
               ["/quiz", "Style quiz"],
               ["/seating-planner", "Seating planner"],
               ["/answers", "Quick answers"],
