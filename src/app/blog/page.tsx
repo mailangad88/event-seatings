@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PageHero, QuoteCta } from "@/components/ui";
 import { PostCard } from "@/components/PostCard";
 import { formatDate, getPosts, topicArt, topicSlug, topics } from "@/lib/blog";
-import { sceneFor, scenes } from "@/lib/scenes";
+import { render, sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -29,7 +29,7 @@ export default async function BlogPage() {
         meta={all.length > 0 && <p>{all.length} guides across {topics.filter((t) => count(t.name) > 0).length} topics</p>}
         media={
           <div className="media aspect-[16/11] shadow-lift">
-            <Image src={scenes.threeLooks.src} alt={scenes.threeLooks.alt} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <Image src={render("hero-layouts").src} alt={render("hero-layouts").alt} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </div>
         }
       />

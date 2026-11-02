@@ -1,3 +1,4 @@
+import { rentalImage } from "@/data/rental-images";
 import { site } from "./site";
 
 // Styled 3D tablescape renders (Blender) used for heroes and editorial bands.
@@ -57,10 +58,64 @@ export const scenes = {
   },
 } satisfies Record<string, Scene>;
 
-const tablescapes = [scenes.blushGarden, scenes.midnightGold, scenes.gildedIvory, scenes.midnightLongTable, scenes.blushLongTable, scenes.chairDetail];
+// A 3D render from the rentals set (public/rentals/...), as a Scene.
+export function render(slug: string): Scene {
+  const r = rentalImage(slug);
+  if (!r) throw new Error(`Missing render: ${slug}`);
+  return { src: r.src, alt: r.alt, caption: r.caption, width: r.width, height: r.height };
+}
 
-/** A stable scene for any slug, so every page gets a visual even without its own image. */
+// Event scenes (16:9) plus the styled tablescapes, so rotating bands don't repeat the same few images.
+const eventScenes = [
+  "wedding-reception",
+  "garden-ceremony",
+  "tent-reception-dusk",
+  "corporate-gala",
+  "farm-table-dinner",
+  "cocktail-hour",
+  "dance-party",
+  "sweetheart-stage",
+  "boho-lounge",
+  "graduation-party",
+  "baby-shower",
+  "winter-tent",
+  "buffet-setup",
+  "bar-setup",
+].filter((s) => rentalImage(s));
+const pool: Scene[] = [
+  ...eventScenes.map(render),
+  scenes.blushGarden,
+  scenes.midnightGold,
+  scenes.gildedIvory,
+  scenes.midnightLongTable,
+  scenes.blushLongTable,
+];
+
+// Stable pick per page or section, so the same page always shows the same image.
 export function sceneFor(slug: string): Scene {
-  const n = [...slug].reduce((a, ch) => a + ch.charCodeAt(0), 0);
-  return tablescapes[n % tablescapes.length];
+  const n = [...slug].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) >>> 0, 7);
+  return pool[n % pool.length];
+}
+
+// Header image for each rental category (nav ids): a category hero render, an event scene, or a product render.
+const categoryRender: Record<string, string> = {
+  chairs: "hero-chairs",
+  tables: "hero-tables",
+  linens: "hero-linens",
+  dinnerware: "hero-dinnerware",
+  flatware: "gold-flatware",
+  glassware: "hero-glassware",
+  "catering-equipment": "hero-catering",
+  tents: "tent-reception-dusk",
+  "dance-floors-staging": "hero-dance-decor",
+  lighting: "string-lights",
+  "heating-cooling": "winter-tent",
+  lounge: "hero-lounge",
+  decor: "flower-wall",
+  "games-kids": "hero-parties",
+};
+
+export function categoryScene(id: string): Scene | undefined {
+  const slug = categoryRender[id];
+  return slug && rentalImage(slug) ? render(slug) : undefined;
 }

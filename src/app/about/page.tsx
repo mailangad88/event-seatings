@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
 import { ProcessFlow } from "@/components/ProcessFlow";
 import { Figure, Icon, PageHero, Section } from "@/components/ui";
-import { scenes } from "@/lib/scenes";
+import { render, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -73,7 +73,7 @@ export default function AboutPage() {
       <Section eyebrow="How it works" title="From first idea to last dance">
         <ProcessFlow />
         <div className="relative mt-14 aspect-[16/7] overflow-hidden rounded-2xl">
-          <Image src={scenes.threeLooks.src} alt={scenes.threeLooks.alt} fill sizes="100vw" className="object-cover" />
+          <Image src={render("garden-ceremony").src} alt={render("garden-ceremony").alt} fill sizes="100vw" className="object-cover" />
         </div>
       </Section>
 
