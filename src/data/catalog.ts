@@ -97,10 +97,7 @@ export const offers: Record<string, Offer[]> = {
     o("halls-rental", 10, "Child's chair", HA),
   ],
   "throne-chair": [o("easy-breezy-bash-co", 275, "Throne chair", `${EB}table-and-chair-rentals/`)],
-  "bar-stool": [
-    o("arlington-rental", 7.75, "Bar stool, black padded", AR),
-    o("arlington-rental", 15.75, "Chiavari barstool w/ back", AR),
-  ],
+  "bar-stool": [o("arlington-rental", 15.75, "Chiavari barstool w/ back", AR, "Plain black padded bar stool is $7.75")],
 
   // Tables
   "round-48": [o("arlington-rental", 11.5, "48\" round table", AR)],
