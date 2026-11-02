@@ -3,8 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChairArt } from "@/components/ChairArt";
+import { DownloadGate } from "@/components/DownloadGate";
 import { PostBody } from "@/components/PostBody";
 import { ArticleLayout, JsonLd, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
+import { coverImage, getDownload } from "@/data/downloads";
 import { chairAlt, chairImage, getChair } from "@/data/chairs";
 import { formatDate, getPost, getPosts, getRelated, topicSlug } from "@/lib/blog";
 import { sceneFor } from "@/lib/scenes";
@@ -56,6 +58,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const chairImg = chair && chairImage(chair);
   const hero = post.hero ?? sceneFor(post.slug);
   const related = await getRelated(post);
+  const offer = getDownload(post.download ?? "") ?? getDownload("event-planning-kit")!;
   const url = `${site.url}/blog/${post.slug}`;
   const topicUrl = `/blog/topic/${topicSlug(post.topic)}`;
 
@@ -104,6 +107,15 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
         aside={
           <>
             <QuoteCard source={`blog-${post.slug}`} />
+            <a href="#free-download" className="group card card-hover block overflow-hidden">
+              <span className="relative block aspect-[4/3] bg-surface-2">
+                <Image src={coverImage(offer.slug)} alt={`Preview of the free ${offer.title}`} fill sizes="320px" className="object-cover object-top" />
+              </span>
+              <span className="block p-4">
+                <span className="block text-xs font-medium tracking-wide text-muted uppercase">Free download</span>
+                <span className="mt-1 block font-medium group-hover:text-gold">{offer.title}</span>
+              </span>
+            </a>
             {chair && (
               <Link href={`/chairs/${chair.slug}`} className="group card card-hover block overflow-hidden">
                 <ChairArt chair={chair} className="aspect-[4/3]" />
@@ -117,6 +129,15 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
         }
       >
         <PostBody html={html} faqs={faqs} />
+        <aside id="free-download" aria-label="Free download" className="mt-12 grid max-w-2xl scroll-mt-24 gap-6 sm:grid-cols-[160px_1fr]">
+          <Link href={`/downloads/${offer.slug}`} className="hidden sm:block">
+            <Image src={coverImage(offer.slug)} alt={`Cover of the free ${offer.title}`} width={160} height={207} className="rounded-lg border border-line shadow" />
+          </Link>
+          <div>
+            <p className="mb-3 text-sm text-muted">{offer.blurb} <Link href={`/downloads/${offer.slug}`} className="link">See what&apos;s inside</Link>.</p>
+            <DownloadGate slug={offer.slug} title={offer.title} files={offer.files} compact placement={`blog:${post.slug}`} />
+          </div>
+        </aside>
         {post.tags.length > 0 && (
           <ul className="mt-12 flex max-w-2xl flex-wrap gap-2 border-t border-line pt-6">
             {post.tags.map((t) => (

@@ -37,6 +37,7 @@ export const rentalCategories: NavCategory[] = categories.map((c) => ({
 export const primaryNav = [
   { href: "/rentals", label: "Rentals" },
   { href: "/blog", label: "Ideas & guides" },
+  { href: "/downloads", label: "Free kits" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/faq", label: "FAQ" },
 ];

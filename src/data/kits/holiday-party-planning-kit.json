@@ -1,0 +1,360 @@
+{
+  "slug": "holiday-party-planning-kit",
+  "title": "Holiday Party Planning Kit",
+  "subtitle": "Office and home holiday parties, from Friendsgiving through New Year's, with Chicago winter logistics",
+  "intro": "December is the busiest month for event bookings in the Chicago area, and the weather adds its own challenges. This kit helps you lock in a date early, plan food and drinks, and handle coats, snow, and parking so the party feels easy for your guests.",
+  "sections": [
+    {
+      "heading": "Planning Timeline",
+      "kind": "timeline",
+      "note": "For parties between Thanksgiving and New Year's, start in September or early October.",
+      "phases": [
+        {
+          "when": "10 to 12 weeks out (September)",
+          "tasks": [
+            "Decide the type of party: office party, family gathering, Friendsgiving, neighborhood open house, or New Year's Eve.",
+            "Pick two or three possible dates and avoid the busiest weekends if you can, such as the first and second Saturdays in December.",
+            "Set a total budget and a per-guest target.",
+            "Reserve a venue, restaurant room, or banquet space, or confirm your home hosting plan.",
+            "Request quotes for rentals now, since tables, chairs, linens, and glassware book up in December.",
+            "Book caterers, bartenders, or a food truck before their calendars fill."
+          ]
+        },
+        {
+          "when": "7 to 9 weeks out",
+          "tasks": [
+            "Create the guest list and note plus-ones, kids, and dietary needs.",
+            "Send a save-the-date by email or text.",
+            "Choose a theme: classic, cozy, winter white, glam, or ugly sweater.",
+            "Book DJ, live music, or plan a playlist.",
+            "Plan photo moments such as a backdrop or photo booth.",
+            "Ask a friend or coworker to join a small planning committee."
+          ]
+        },
+        {
+          "when": "4 to 6 weeks out",
+          "tasks": [
+            "Send formal invitations with an RSVP deadline.",
+            "Finalize the menu and drink list with your caterer or shopping plan.",
+            "Order rentals: chairs, tables, linens, dinnerware, glassware, and lounge furniture.",
+            "Plan decor and order lights, centerpieces, and table decor.",
+            "Plan a gift exchange or white elephant if you want one.",
+            "Check office policies on alcohol, hours, and guests."
+          ]
+        },
+        {
+          "when": "2 to 3 weeks out",
+          "tasks": [
+            "Follow up on RSVPs and update your headcount.",
+            "Plan coat check or a coat rack area, and boot trays for snowy days.",
+            "Plan parking: street, lot, valet, or rideshare drop-off.",
+            "Confirm rental delivery and pickup windows.",
+            "Confirm vendors' arrival times and menus.",
+            "Buy nonalcoholic drinks, ice, and paper goods if self-catering."
+          ]
+        },
+        {
+          "when": "The week of",
+          "tasks": [
+            "Give the final headcount to the caterer and rental company.",
+            "Check the forecast and plan for snow removal, salt, and shoveled paths.",
+            "Do a walk-through of the space and plan where coats, food, and drinks will go.",
+            "Prep make-ahead dishes and label them.",
+            "Send a reminder to guests with address, parking, and start time.",
+            "Charge speakers and test lights and music."
+          ]
+        },
+        {
+          "when": "Day of and after",
+          "tasks": [
+            "Set up tables and chairs at least 2 hours before guests arrive.",
+            "Salt the entrance and keep a mat and towels at the door.",
+            "Put out food in stages and refresh as needed.",
+            "Arrange safe rides home for guests who need them.",
+            "Return or ready rentals for pickup.",
+            "Send thank-you messages and share photos."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Party Type Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Office party",
+          "items": [
+            "Confirm budget and approval with leadership or HR.",
+            "Choose a time that works for different shifts or remote teams.",
+            "Plan inclusive food, drinks, and activities for all backgrounds.",
+            "Offer nonalcoholic options and clear end times.",
+            "Arrange for a gift exchange or recognition moment if appropriate.",
+            "Plan rides home or transit information.",
+            "Collect dietary needs by survey before ordering food."
+          ]
+        },
+        {
+          "title": "Home holiday party",
+          "items": [
+            "Set a guest limit based on your space and fire safety.",
+            "Plan coat storage, such as a bed or a rack.",
+            "Clear walkways and add runners for wet floors.",
+            "Set up a drink station away from the kitchen.",
+            "Plan trash and recycling bins.",
+            "Let neighbors know about the party and parking.",
+            "Move fragile decor and breakables out of walkways.",
+            "Check that smoke alarms work and exits are clear."
+          ]
+        },
+        {
+          "title": "Friendsgiving and Thanksgiving",
+          "items": [
+            "Pick the date, often the weekend before or after Thanksgiving Day.",
+            "Assign dishes so you do not end up with five pies.",
+            "Rent extra tables and chairs for a longer table.",
+            "Plan for vegetarian and allergy-friendly options.",
+            "Keep the oven and stovetop schedule on a sheet.",
+            "Ask guests to bring their own containers for leftovers.",
+            "Borrow or rent a second oven-safe warmer or chafing dishes."
+          ]
+        },
+        {
+          "title": "New Year's Eve",
+          "items": [
+            "Plan the midnight toast and glassware.",
+            "Provide nonalcoholic sparkling options.",
+            "Arrange safe transport and overnight options.",
+            "Set up a countdown clock or screen.",
+            "Plan late-night snacks.",
+            "Prepare a cleanup plan for the morning after.",
+            "Set a clear plan for sleeping arrangements or rides before the first drink."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Winter Logistics Checklist",
+      "kind": "checklist",
+      "note": "Chicago winters are unpredictable. A little planning keeps guests warm and safe.",
+      "groups": [
+        {
+          "title": "Coats and entry",
+          "items": [
+            "Set up a coat rack or coat check with numbered tickets.",
+            "Place boot trays and mats at the door.",
+            "Provide a towel station for wet shoes.",
+            "Have a place for umbrellas and hats.",
+            "Assign a helper to greet guests and take coats."
+          ]
+        },
+        {
+          "title": "Snow and parking",
+          "items": [
+            "Shovel and salt the walkway before guests arrive.",
+            "Check city parking rules, including winter overnight bans and snow routes.",
+            "Share rideshare drop-off instructions and an alternate parking option.",
+            "Add a snow date or a flexible start time if the forecast is severe.",
+            "Light the entrance and path clearly after dark.",
+            "Keep a shovel and salt near the door in case of a late snowfall."
+          ]
+        },
+        {
+          "title": "Heat and comfort",
+          "items": [
+            "Check the heating system a week before the party.",
+            "Plan for crowd warmth, since packed rooms heat up fast.",
+            "Add extra seating for older guests.",
+            "If using a tent, ask about heaters and sidewalls.",
+            "Plan warm drinks such as cider, cocoa, and coffee.",
+            "Keep a first aid kit and basic medicines nearby."
+          ]
+        },
+        {
+          "title": "Booking crunch",
+          "items": [
+            "Call venues and rental companies as early as September for December dates.",
+            "Ask caterers whether December has minimums or higher rates.",
+            "Book rideshare codes, shuttles, or a valet before the busiest weekends.",
+            "Have a backup date or a smaller-version plan if a vendor cancels.",
+            "Order decor, lights, and supplies early to avoid shipping delays."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Food and Drink Amounts",
+      "kind": "table",
+      "note": "Rough guidelines for a 3 to 4 hour party. Adjust based on whether you serve a meal or appetizers.",
+      "columns": [
+        "Item",
+        "20 guests",
+        "40 guests",
+        "75 guests",
+        "100 guests"
+      ],
+      "rows": [
+        [
+          "Appetizers (pieces, if no meal)",
+          "120 to 160",
+          "240 to 320",
+          "450 to 600",
+          "600 to 800"
+        ],
+        [
+          "Main dishes (entrees)",
+          "20 to 24 portions",
+          "40 to 48 portions",
+          "75 to 90 portions",
+          "100 to 120 portions"
+        ],
+        [
+          "Sides and salads",
+          "3 to 4 dishes",
+          "4 to 5 dishes",
+          "5 to 6 dishes",
+          "6 to 8 dishes"
+        ],
+        [
+          "Desserts",
+          "30 to 40 pieces",
+          "60 to 80 pieces",
+          "110 to 150 pieces",
+          "150 to 200 pieces"
+        ],
+        [
+          "Wine bottles (if serving)",
+          "6 to 8",
+          "12 to 16",
+          "22 to 30",
+          "30 to 40"
+        ],
+        [
+          "Beer (cans or bottles)",
+          "30 to 40",
+          "60 to 80",
+          "110 to 150",
+          "150 to 200"
+        ],
+        [
+          "Nonalcoholic drinks",
+          "40 to 60",
+          "80 to 120",
+          "150 to 225",
+          "200 to 300"
+        ],
+        [
+          "Coffee and hot drinks",
+          "1 large urn",
+          "2 large urns",
+          "3 large urns",
+          "4 large urns"
+        ],
+        [
+          "Ice",
+          "20 lbs",
+          "40 lbs",
+          "70 lbs",
+          "100 lbs"
+        ],
+        [
+          "Plates, napkins, cutlery",
+          "2 per guest",
+          "2 per guest",
+          "2 per guest",
+          "2 per guest"
+        ],
+        [
+          "Chairs",
+          "12 to 20",
+          "25 to 40",
+          "45 to 75",
+          "60 to 100"
+        ]
+      ]
+    },
+    {
+      "heading": "Budget Split",
+      "kind": "budget",
+      "note": "Rough starting shares. Office budgets often have a fixed per-person cap.",
+      "lines": [
+        {
+          "category": "Food and catering",
+          "share": 38,
+          "tip": "Heavy appetizers and stations can be a lower-cost alternative to a plated dinner."
+        },
+        {
+          "category": "Drinks and bar service",
+          "share": 18,
+          "tip": "A signature cocktail plus beer and wine reduces cost."
+        },
+        {
+          "category": "Venue or space",
+          "share": 12,
+          "tip": "Weeknight and daytime dates are often more affordable than weekend nights."
+        },
+        {
+          "category": "Rentals (tables, chairs, linens, glassware)",
+          "share": 12,
+          "tip": "Book early, since December inventory moves fast."
+        },
+        {
+          "category": "Decor and lighting",
+          "share": 8,
+          "tip": "String lights, greenery, and candles can have a big impact at a small cost."
+        },
+        {
+          "category": "Music and entertainment",
+          "share": 6,
+          "tip": "A curated playlist and speaker can work for smaller parties."
+        },
+        {
+          "category": "Staffing, coat check, and parking help",
+          "share": 3,
+          "tip": "Even one helper at the door makes arrival smoother."
+        },
+        {
+          "category": "Invitations and favors",
+          "share": 2,
+          "tip": "Digital invitations are often enough."
+        },
+        {
+          "category": "Contingency",
+          "share": 1,
+          "tip": "Set aside a little for extra ice, salt, or last-minute needs."
+        }
+      ]
+    },
+    {
+      "heading": "Tips for a Smooth Holiday Party",
+      "kind": "tips",
+      "items": [
+        "Book your venue and rentals before Halloween if you can. December weekends are the first to fill.",
+        "Pick an off-peak date such as a weeknight or an early December weekend for better availability.",
+        "Put a snack or small bite out early so guests are not hungry while they wait for dinner.",
+        "Make a quiet corner for guests who want a break from the noise.",
+        "Place drinks in more than one location to avoid lines.",
+        "Add a nonalcoholic option that feels festive, like a cider or a mocktail.",
+        "Plan for the unexpected with extra chairs, ice, and napkins.",
+        "Ask a friend to be the cleanup captain so you can enjoy the party."
+      ]
+    },
+    {
+      "heading": "Party Worksheet",
+      "kind": "worksheet",
+      "fields": [
+        "Party type and date",
+        "Start and end time",
+        "Venue or address",
+        "Expected guest count",
+        "Caterer or food plan",
+        "Bar and drinks plan",
+        "Rental company and delivery window",
+        "Coat storage plan",
+        "Parking plan",
+        "Snow plan",
+        "Music plan",
+        "Total budget"
+      ]
+    }
+  ]
+}

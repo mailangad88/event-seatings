@@ -42,3 +42,40 @@ export async function notifyOwner(lead: Lead) {
     console.error("notifyOwner failed", err);
   }
 }
+
+/**
+ * Emails a visitor the links to the free download they just unlocked (source "download:<slug>").
+ * Needs RESEND_API_KEY and NOTIFY_FROM on a verified sending domain; without them the visitor still gets
+ * the links on screen. This is also the first touch of the planning nurture sequence.
+ */
+export async function sendDownloadEmail(lead: Lead, title: string, files: { label: string; file: string }[]) {
+  const key = process.env.RESEND_API_KEY;
+  const from = process.env.NOTIFY_FROM;
+  if (!key || !from) return;
+  const hi = lead.name ? `Hi ${lead.name},` : "Hi,";
+  const text = [
+    hi,
+    "",
+    `Here is your free ${title}:`,
+    ...files.map((f) => `- ${f.label}: ${site.url}${f.file}`),
+    "",
+    "Two things that save planners the most time:",
+    `1. Price every rental on one list (chairs, tables, linens, tents, dishes): ${site.url}/quote`,
+    `2. Talk it through on a free 15-minute planning call: ${site.url}/book`,
+    "",
+    `More free kits and spreadsheets: ${site.url}/downloads`,
+    "",
+    `The ${site.name} team`,
+    "",
+    "You're getting this because you requested a download. Reply STOP or unsubscribe to get no more emails.",
+  ].join("\n");
+  try {
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ from, to: lead.email, subject: `Your free ${title}`, text }),
+    });
+  } catch (err) {
+    console.error("sendDownloadEmail failed", err);
+  }
+}

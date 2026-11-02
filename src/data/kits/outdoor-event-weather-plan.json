@@ -1,0 +1,256 @@
+{
+  "slug": "outdoor-event-weather-plan",
+  "title": "Outdoor Event Weather Plan",
+  "subtitle": "A Chicago-area guide to seasons, tents, backup plans, and go or no-go decisions",
+  "intro": "Chicago weather can change fast, and an outdoor event needs a plan for sun, rain, wind, and cold. This kit helps you choose a date and a tent, set a decision timeline, and make sure permits and utilities are handled well before the day.",
+  "sections": [
+    {
+      "heading": "Chicago Seasons at a Glance",
+      "kind": "table",
+      "note": "General seasonal patterns only. Weather varies year to year, so always check the forecast and talk to your rental company.",
+      "columns": ["Month", "General pattern", "Planning notes"],
+      "rows": [
+        ["January", "Cold, snowy, and windy", "Outdoor events are rare. Plan heated tents and snow removal if you must."],
+        ["February", "Cold with snow possible", "Consider indoor venues. Heaters and sidewalls are essential if outdoors."],
+        ["March", "Cold to cool and changeable", "Mud and thaw can affect tent installation and ground conditions."],
+        ["April", "Cool, often damp", "Rain and chilly evenings are common. Plan covered space and heaters."],
+        ["May", "Mild, with rain and storms possible", "Graduation season. Book tents early and plan for sudden showers."],
+        ["June", "Warm, with thunderstorms possible", "Popular wedding and party month. Plan for shade and storm backups."],
+        ["July", "Hot and humid", "Plan shade, fans, hydration, and cool seating."],
+        ["August", "Hot and humid, with storms", "Heat management and storm plans matter for guests and food."],
+        ["September", "Warm to mild, often pleasant", "Popular for events. Evenings can cool quickly."],
+        ["October", "Cool and crisp", "Plan heaters, blankets, and wind protection. Early dark times."],
+        ["November", "Cold and damp, shorter days", "Consider sidewalls and heaters. Plan lighting."],
+        ["December", "Cold and snowy", "Plan snow removal, heaters, and warm drinks."]
+      ]
+    },
+    {
+      "heading": "Tent Decision Checklist",
+      "kind": "checklist",
+      "note": "A tent is often the single best protection you can buy.",
+      "groups": [
+        {
+          "title": "Do you need a tent?",
+          "items": [
+            "Is your event during a month with frequent rain or storms?",
+            "Will the sun or heat be a concern for older guests or food?",
+            "Is there a shaded or covered backup space nearby?",
+            "Do you have a plan for wind, which can lift lightweight tents?",
+            "Would guests be uncomfortable if you had to move the party in a hurry?",
+            "Is the budget flexible enough to cover a tent as insurance?"
+          ]
+        },
+        {
+          "title": "Choosing the right tent",
+          "items": [
+            "Estimate how many guests need cover at one time.",
+            "Allow about 10 to 12 square feet per guest for seated dining and more for dancing.",
+            "Choose a frame tent if staking is not allowed, or a pole tent where staking is allowed.",
+            "Ask about sidewalls, clear walls, and heaters for cool weather.",
+            "Ask about flooring options for uneven ground or mud.",
+            "Plan for lighting, fans, and generators if needed."
+          ]
+        },
+        {
+          "title": "Site checks",
+          "items": [
+            "Measure the space, including clearances for trees, wires, and fences.",
+            "Check the ground slope and drainage.",
+            "Confirm that the rental company can access the site for delivery.",
+            "Mark irrigation heads, sprinklers, and any underground items.",
+            "Decide whether the tent needs stakes or weights."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Weather Plans by Condition",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Rain plan",
+          "items": [
+            "Reserve a covered or indoor backup space.",
+            "Arrange for tent sidewalls or a rain-ready configuration.",
+            "Bring umbrellas, towels, and mats for entrances.",
+            "Protect electronics and sound equipment.",
+            "Plan for wet ground with flooring or pathways.",
+            "Have a clear plan for who moves tables and decor."
+          ]
+        },
+        {
+          "title": "Heat plan",
+          "items": [
+            "Provide shade, fans, and misting stations.",
+            "Offer plenty of water and cool drinks.",
+            "Place food on ice and limit time at room temperature.",
+            "Schedule the event in the cooler part of the day.",
+            "Plan seating in shaded areas for older guests and kids.",
+            "Have sunscreen and cooling towels available."
+          ]
+        },
+        {
+          "title": "Wind plan",
+          "items": [
+            "Ask the rental company about anchoring and wind limits for your tent.",
+            "Use heavy centerpieces and secure linens.",
+            "Avoid tall, lightweight decor and balloon arches.",
+            "Plan to lower tent sidewalls on the windy side.",
+            "Know the wind speed that would trigger evacuation."
+          ]
+        },
+        {
+          "title": "Cold plan",
+          "items": [
+            "Rent heaters and verify fuel or power needs.",
+            "Add tent sidewalls to keep wind out.",
+            "Offer blankets, warm drinks, and hot food.",
+            "Plan a coat check or coat area.",
+            "Allow extra time for guests to arrive and warm up."
+          ]
+        },
+        {
+          "title": "Storm and lightning plan",
+          "items": [
+            "Name a person who will make the call to move guests.",
+            "Identify a sturdy indoor shelter, since tents do not protect from lightning.",
+            "Watch radar apps and weather alerts during the event.",
+            "Tell vendors and guests the plan before the party begins.",
+            "Plan how to secure equipment quickly."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Go or No-Go Decision Timeline",
+      "kind": "timeline",
+      "note": "Set your decision times in advance and tell your vendors.",
+      "phases": [
+        {
+          "when": "8 to 12 weeks out",
+          "tasks": [
+            "Choose the date and reserve a tent and a backup option.",
+            "Ask vendors about their weather policies and deadlines.",
+            "Decide who has the authority to make weather calls.",
+            "Write down your tent and no-go criteria, such as sustained wind or lightning risk."
+          ]
+        },
+        {
+          "when": "4 to 6 weeks out",
+          "tasks": [
+            "Confirm tent size, sidewalls, flooring, and heaters.",
+            "Schedule a site visit with the rental company.",
+            "Check permit requirements and utility locate needs.",
+            "Share the backup plan with key helpers."
+          ]
+        },
+        {
+          "when": "7 to 10 days out",
+          "tasks": [
+            "Begin watching the long-range forecast.",
+            "Confirm delivery and setup times.",
+            "Confirm final headcount and layout.",
+            "Prepare weather supplies like umbrellas, towels, and fans."
+          ]
+        },
+        {
+          "when": "3 to 5 days out",
+          "tasks": [
+            "Review the forecast and decide on tent add-ons such as sidewalls and heaters.",
+            "Notify vendors about any plan changes.",
+            "Tell guests about attire suggestions for the weather.",
+            "Confirm that the backup space is ready."
+          ]
+        },
+        {
+          "when": "48 hours out",
+          "tasks": [
+            "Make the final go or no-go call on the outdoor plan.",
+            "Confirm the plan with the caterer, DJ, and photographer.",
+            "Send a short update to guests.",
+            "Check that supplies are staged and accessible."
+          ]
+        },
+        {
+          "when": "Day of",
+          "tasks": [
+            "Check radar in the morning and at set intervals.",
+            "Walk the site for puddles, debris, and hazards.",
+            "Brief the helper team on the plan.",
+            "Be ready to adjust the timeline if conditions change."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Permits and Utility Reminders",
+      "kind": "checklist",
+      "note": "Rules vary by city, village, and park district. Always confirm with the local office.",
+      "groups": [
+        {
+          "title": "Permits",
+          "items": [
+            "Ask your municipality whether a tent permit is required for the size you want.",
+            "Ask about fire inspection requirements for tents and heaters.",
+            "Check park district rules for reservations, amplified sound, and alcohol.",
+            "Check whether street closures or parking permits are needed.",
+            "Ask about noise ordinances and quiet hours.",
+            "Allow plenty of lead time, since permits can take weeks."
+          ]
+        },
+        {
+          "title": "Utility locates",
+          "items": [
+            "If the tent will be staked, call 811 a few days before installation to have underground utilities marked.",
+            "Ask the rental company whether they will request locates or whether you must.",
+            "Mark private lines such as irrigation, lighting, and invisible fences.",
+            "Keep the locate ticket number for your records. Chicago and the surrounding suburbs use different locate services, so confirm which one applies to your address.",
+            "Do not stake over marked lines."
+          ]
+        },
+        {
+          "title": "Power and safety",
+          "items": [
+            "Calculate power needs for lights, heaters, fans, and sound.",
+            "Use outdoor-rated extension cords and covers.",
+            "Ask whether a generator is needed.",
+            "Locate fire extinguishers and exits.",
+            "Post a map of exits and a contact number."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Questions for Your Rental Company",
+      "kind": "questions",
+      "items": [
+        "What wind speed would cause you to recommend taking down or not installing the tent?",
+        "Can you stake on this surface, or do you use weights?",
+        "Do you request utility locates, or should I?",
+        "What is your cancellation or weather policy, and by when do I need to decide?",
+        "What sidewalls, heaters, fans, and flooring do you offer?",
+        "How early can you install the tent, and when will it be removed?",
+        "What is the capacity of the tent for dining versus standing?",
+        "Who do I call if there is a problem the night before or the morning of the event?"
+      ]
+    },
+    {
+      "heading": "Weather Worksheet",
+      "kind": "worksheet",
+      "fields": [
+        "Event date and month",
+        "Location and address",
+        "Expected guest count",
+        "Tent size and type",
+        "Backup space",
+        "Weather decision maker",
+        "Go or no-go deadline",
+        "Rental company contact",
+        "Permit office contact",
+        "Utility locate ticket number",
+        "Heater or fan needs",
+        "Guest notification plan"
+      ]
+    }
+  ]
+}

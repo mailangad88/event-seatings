@@ -1,0 +1,302 @@
+{
+  "slug": "gala-fundraiser-planning-kit",
+  "title": "Gala and Fundraiser Planning Kit",
+  "subtitle": "For nonprofit teams and volunteer committees planning a gala, benefit dinner, or auction fundraiser.",
+  "intro": "A fundraiser is a party with a purpose, and the details decide how much money you raise. This kit covers your committee, timeline, sponsorship tiers, auction planning, run of show, budget, volunteer roles, and donor follow-up. Use it to keep your team organized and your guests generous.",
+  "sections": [
+    {
+      "heading": "Committee Roles and Timeline",
+      "kind": "timeline",
+      "note": "Start 9 to 12 months out for a large gala. Smaller benefits can compress this to 4 to 6 months. Book a date early, since spring and fall Chicago calendars fill quickly.",
+      "phases": [
+        {
+          "when": "9 to 12 months out",
+          "tasks": [
+            "Recruit a chair or co-chairs and a committee of 6 to 12 people.",
+            "Set a fundraising goal and a net revenue target after expenses.",
+            "Choose the event theme, format, and approximate guest count.",
+            "Pick the date and avoid conflicts with other major Chicago-area galas and holidays.",
+            "Tour and book the venue.",
+            "Draft the budget and get board approval."
+          ]
+        },
+        {
+          "when": "6 to 8 months out",
+          "tasks": [
+            "Create the sponsorship packages and begin outreach to sponsors.",
+            "Recruit an honoree, keynote speaker, or emcee.",
+            "Book the caterer, DJ or band, photographer, and AV team.",
+            "Reserve rentals: tables, chairs, linens, glassware, staging, lighting, and tent if needed.",
+            "Start collecting auction items and experiences.",
+            "Set up an online ticketing and donation platform."
+          ]
+        },
+        {
+          "when": "4 to 5 months out",
+          "tasks": [
+            "Send save-the-dates to your donor list.",
+            "Confirm sponsor commitments and logos for printed materials.",
+            "Plan the program, run of show, and appeal moment.",
+            "Order invitations and sponsor recognition signage.",
+            "Choose the auction method: silent, live, mobile bidding, or all three.",
+            "Book auctioneer if holding a live auction."
+          ]
+        },
+        {
+          "when": "2 to 3 months out",
+          "tasks": [
+            "Send formal invitations with ticket and table purchase options.",
+            "Follow up personally with top donors and sponsors.",
+            "Finalize auction items and write descriptions.",
+            "Design the program book and ads.",
+            "Confirm the menu and dietary tracking.",
+            "Draft the seating plan strategy for sponsors, board members, and honorees."
+          ]
+        },
+        {
+          "when": "1 month out",
+          "tasks": [
+            "Send reminder emails and texts to unregistered supporters.",
+            "Finalize the guest list and table assignments.",
+            "Print bid sheets, signage, and programs.",
+            "Test the mobile bidding platform and payment processing.",
+            "Confirm volunteer shifts and send training materials.",
+            "Share the run of show with every vendor and speaker."
+          ]
+        },
+        {
+          "when": "1 week out",
+          "tasks": [
+            "Confirm final headcount with the caterer and rental company.",
+            "Prepare the guest check-in list and name badges.",
+            "Pack the day-of kit and cash box.",
+            "Hold a volunteer briefing.",
+            "Check the forecast and finalize the coat check and weather plan.",
+            "Pre-write thank-you messages for sponsors and donors."
+          ]
+        },
+        {
+          "when": "Day of",
+          "tasks": [
+            "Inspect the rental delivery and count tables, chairs, linens, and glassware.",
+            "Set up auction tables, bid sheets, and display items.",
+            "Test microphones, projector, and mobile bidding.",
+            "Brief volunteers and staff at the venue.",
+            "Greet sponsors and VIP guests first.",
+            "Keep the program on time and the appeal moment short and powerful."
+          ]
+        },
+        {
+          "when": "After the event",
+          "tasks": [
+            "Schedule the rental pickup and count items returned.",
+            "Pay winning bidders' receipts and distribute auction items.",
+            "Send thank-you messages to everyone within 48 hours.",
+            "Reconcile revenue and expenses within two weeks.",
+            "Hold a committee debrief and document lessons learned."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Sponsorship Tiers",
+      "kind": "table",
+      "note": "Sample structure only. The amounts are illustrations. Set your own levels based on your donor base and goals.",
+      "columns": ["Tier", "Sample commitment", "Typical benefits"],
+      "rows": [
+        ["Presenting sponsor", "Highest level (for example $25,000+)", "Naming rights, two reserved tables, speaking moment, logo on all materials, full-page program ad"],
+        ["Platinum", "For example $15,000", "Reserved table of 10, logo on signage and website, half-page ad, social media recognition"],
+        ["Gold", "For example $10,000", "Reserved table of 10, logo on signage, quarter-page ad, mention in the program"],
+        ["Silver", "For example $5,000", "Five tickets, name on signage, name in the program"],
+        ["Bronze", "For example $2,500", "Two tickets, name in the program"],
+        ["Table host", "Price of one table", "Seats for 8 or 10 guests, name on the table, recognition in the program"],
+        ["In-kind sponsor", "Donated goods or services", "Logo or name on signage, acknowledgment in the program, tax receipt where eligible"]
+      ]
+    },
+    {
+      "heading": "Silent and Live Auction Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Procuring items",
+          "items": [
+            "Set a target number of items based on guest count, with roughly one item for every 4 to 5 guests.",
+            "Ask local businesses, board members, and donors for experiences and goods.",
+            "Prioritize unique experiences, travel, and exclusive access over generic gift baskets.",
+            "Collect donation letters for tax purposes.",
+            "Record the fair market value of each item.",
+            "Photograph each item and write a short description."
+          ]
+        },
+        {
+          "title": "Silent auction setup",
+          "items": [
+            "Set a starting bid at about 40 to 50 percent of retail value.",
+            "Set bid increments and a buy-it-now option for popular items.",
+            "Arrange tables with linens at the height guests can easily read.",
+            "Print bid sheets and place pens at every table.",
+            "Number each item and match the bid sheet.",
+            "Set up mobile bidding with a clear link or QR code.",
+            "Choose a closing time and announce it multiple times."
+          ]
+        },
+        {
+          "title": "Live auction",
+          "items": [
+            "Choose five to ten high-value items for the live auction.",
+            "Hire a professional auctioneer or a charismatic volunteer.",
+            "Rehearse the order of items and the opening bids.",
+            "Prepare a fund-a-need appeal tied to a specific outcome.",
+            "Assign spotters to watch the room and call bids.",
+            "Build in time for the appeal after dinner while guests are attentive."
+          ]
+        },
+        {
+          "title": "Checkout",
+          "items": [
+            "Set up a checkout table near the exit with trained staff.",
+            "Print or send receipts to winning bidders.",
+            "Accept credit cards, mobile payments, and checks.",
+            "Match winning bidders with items and arrange pickup or shipping.",
+            "Keep a record of unsold items to reuse next year."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Gala Run of Show",
+      "kind": "table",
+      "note": "Sample for a 5:30 pm to 10:30 pm seated gala. Adjust to your venue and program.",
+      "columns": ["Time", "What happens", "Who is in charge"],
+      "rows": [
+        ["10:00 am", "Rental delivery: tables, chairs, linens, glassware, staging, lighting", "Event chair or planner"],
+        ["1:00 pm", "AV load-in and sound check", "AV team"],
+        ["2:00 pm", "Auction setup and signage", "Auction volunteers"],
+        ["3:30 pm", "Caterer arrives", "Caterer"],
+        ["4:30 pm", "Volunteer briefing and positions assigned", "Volunteer lead"],
+        ["5:00 pm", "Final walk-through and tech rehearsal", "Event chair"],
+        ["5:30 pm", "Doors open, check-in, silent auction opens", "Check-in team"],
+        ["6:30 pm", "Seating announcement, welcome from emcee", "Emcee"],
+        ["6:45 pm", "Dinner service begins", "Caterer"],
+        ["7:15 pm", "Mission moment or video", "Executive director"],
+        ["7:30 pm", "Honoree presentation", "Emcee and honoree"],
+        ["7:45 pm", "Live auction", "Auctioneer"],
+        ["8:15 pm", "Fund-a-need appeal", "Executive director and auctioneer"],
+        ["8:30 pm", "Silent auction closes, dessert and coffee", "Auction team and caterer"],
+        ["8:45 pm", "Dancing or entertainment begins", "DJ or band"],
+        ["9:30 pm", "Auction checkout opens", "Checkout team"],
+        ["10:15 pm", "Thank-you and send-off", "Chair"],
+        ["10:30 pm", "Load-out and rental breakdown", "Vendors and volunteers"]
+      ]
+    },
+    {
+      "heading": "Gala Budget Split",
+      "kind": "budget",
+      "note": "A typical starting point. Aim for the event to raise much more than it costs. Chicago-area venue and catering costs vary widely.",
+      "lines": [
+        { "category": "Venue and rentals", "share": 20, "tip": "Negotiate nonprofit rates and ask what is included with the venue fee." },
+        { "category": "Food and beverage", "share": 40, "tip": "Ask for a nonprofit discount and confirm service charge and gratuity." },
+        { "category": "Entertainment and AV", "share": 12, "tip": "Include microphones, projection, lighting, and a technician." },
+        { "category": "Printing and decor", "share": 8, "tip": "Use sponsor ads to offset the cost of the program book." },
+        { "category": "Auction and technology", "share": 6, "tip": "Mobile bidding platforms charge a fee or a percentage." },
+        { "category": "Marketing and invitations", "share": 5, "tip": "Email and social media reach your donors for less." },
+        { "category": "Staffing, security, and parking", "share": 4, "tip": "Valet and security are often required in downtown venues." },
+        { "category": "Contingency", "share": 5, "tip": "Hold this until the event is over." }
+      ]
+    },
+    {
+      "heading": "Volunteer Roles",
+      "kind": "checklist",
+      "note": "Assign each role a lead and a backup. Brief everyone one week before.",
+      "groups": [
+        {
+          "title": "Before doors open",
+          "items": [
+            "Setup crew: place tables, chairs, linens, table numbers, and centerpieces.",
+            "Signage lead: place directional signs, sponsor signs, and menu cards.",
+            "Auction setup lead: arrange items, bid sheets, and descriptions.",
+            "AV liaison: connect with the AV team and run the slides.",
+            "Vendor greeter: meet each vendor at the loading dock."
+          ]
+        },
+        {
+          "title": "During the event",
+          "items": [
+            "Check-in greeters: welcome guests, find names, hand out badges and bid numbers.",
+            "Coat check attendants: manage coats and bags, especially from November to March.",
+            "Auction spotters: call out bids in the live auction.",
+            "Checkout team: process payments and hand out items.",
+            "Table hosts: help guests find seats and introduce people.",
+            "Photographer liaison: point out sponsors, honorees, and key moments.",
+            "Floater: answer questions and fix problems fast."
+          ]
+        },
+        {
+          "title": "After the event",
+          "items": [
+            "Pack up auction items and unsold goods.",
+            "Collect centerpieces, signs, and decor.",
+            "Count rental items and stack them for pickup.",
+            "Gather lost-and-found items.",
+            "Take out the trash and leave the room clean."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Post-event Donor Follow-up",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Within 48 hours",
+          "items": [
+            "Send a thank-you email to every guest, sponsor, and volunteer.",
+            "Post photos and a short thank-you on social media.",
+            "Send tax receipts for gifts and ticket purchases.",
+            "Share the preliminary fundraising total."
+          ]
+        },
+        {
+          "title": "Within 2 weeks",
+          "items": [
+            "Call or write personal notes to top donors and sponsors.",
+            "Send a handwritten note to the honoree and keynote speaker.",
+            "Share a short impact story showing how funds will be used.",
+            "Update the donor database with every gift and bid.",
+            "Reconcile revenue and expenses."
+          ]
+        },
+        {
+          "title": "Within 3 months",
+          "items": [
+            "Send a progress update to donors showing results.",
+            "Invite sponsors to a debrief or renew early.",
+            "Survey guests about the event experience.",
+            "Document lessons learned and update the playbook.",
+            "Save the date for next year's event."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Gala Planning Worksheet",
+      "kind": "worksheet",
+      "fields": [
+        "Event name and theme",
+        "Date and venue",
+        "Fundraising goal and net target",
+        "Committee chair and phone",
+        "Expected guest count",
+        "Honoree or keynote speaker",
+        "Presenting sponsor",
+        "Caterer and menu",
+        "AV and entertainment vendors",
+        "Rental company and delivery window",
+        "Auction method and platform",
+        "Volunteer lead and phone",
+        "Weather and coat check plan",
+        "Follow-up deadlines"
+      ]
+    }
+  ]
+}

@@ -4,7 +4,8 @@ import { catalogItems } from "@/data/catalog";
 import { imagesFor } from "@/data/rental-images";
 import { priceQuote } from "@/lib/catalog-types";
 import { syncToCrm } from "@/lib/crm";
-import { notifyOwner } from "@/lib/notify";
+import { getDownload } from "@/data/downloads";
+import { notifyOwner, sendDownloadEmail } from "@/lib/notify";
 import { addLead, trackingFields, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
@@ -115,6 +116,13 @@ export async function POST(request: Request) {
   }
   // CRM sync and the owner email run after the visitor gets their answer, so a slow or failing CRM
   // never loses a lead: it's already saved above, and both helpers log their own errors.
-  after(() => Promise.allSettled([syncToCrm(saved), notifyOwner(saved)]));
+  const download = lead.source?.startsWith("download:") ? getDownload(lead.source.slice(9).split("@")[0]) : undefined;
+  after(() =>
+    Promise.allSettled([
+      syncToCrm(saved),
+      notifyOwner(saved),
+      ...(download ? [sendDownloadEmail(saved, download.title, download.files)] : []),
+    ]),
+  );
   return Response.json({ ok: true });
 }

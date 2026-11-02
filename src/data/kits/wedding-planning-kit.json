@@ -1,0 +1,344 @@
+{
+  "slug": "wedding-planning-kit",
+  "title": "Wedding Planning Kit",
+  "subtitle": "A 12-month timeline, budget guide, checklists, and rental numbers for couples planning a wedding in the Chicago area.",
+  "intro": "Planning a wedding is a long list of small decisions made in the right order. This kit gives you the order: when to book, what to ask, how much to spend, and how many chairs, tables, and plates you actually need. Print it, tick things off as you go, and bring the worksheet to your venue tour.",
+  "sections": [
+    {
+      "heading": "12-Month Wedding Timeline",
+      "kind": "timeline",
+      "note": "Chicago-area venues and vendors book fast for June through October Saturdays. Add a few months to your lead time for those dates.",
+      "phases": [
+        {
+          "when": "12 months out",
+          "tasks": [
+            "Talk about the type of wedding you want: size, style, season, and formality.",
+            "Agree on a total budget and who is contributing.",
+            "Draft a rough guest list to estimate your headcount.",
+            "Choose two or three possible dates, including weekday or Friday options that can save money.",
+            "Tour ceremony and reception venues and request written quotes.",
+            "Book your venue and officiant.",
+            "Hire a planner or day-of coordinator if you want one."
+          ]
+        },
+        {
+          "when": "10 to 11 months out",
+          "tasks": [
+            "Book your photographer and videographer.",
+            "Book your caterer if the venue does not provide food.",
+            "Book your DJ or band.",
+            "Send save-the-dates to out-of-town guests.",
+            "Start shopping for wedding attire.",
+            "Create a wedding website with travel and hotel information."
+          ]
+        },
+        {
+          "when": "8 to 9 months out",
+          "tasks": [
+            "Reserve a block of hotel rooms for guests.",
+            "Choose your wedding party and ask them.",
+            "Book your florist and decor vendors.",
+            "Reserve rental items: tent, tables, chairs, linens, dinnerware, lighting, and dance floor.",
+            "Book hair and makeup artists.",
+            "Order the wedding dress or suit and schedule fittings."
+          ]
+        },
+        {
+          "when": "6 to 7 months out",
+          "tasks": [
+            "Book transportation: shuttle, trolley, or classic car.",
+            "Choose your wedding cake or dessert baker.",
+            "Plan your rehearsal dinner and welcome event.",
+            "Register for gifts.",
+            "Order invitations and stationery.",
+            "Plan the honeymoon and check passport needs."
+          ]
+        },
+        {
+          "when": "4 to 5 months out",
+          "tasks": [
+            "Schedule the menu tasting with your caterer.",
+            "Plan the ceremony order, readings, and vows.",
+            "Meet with your officiant and complete any marriage license steps.",
+            "Select music for the ceremony, cocktail hour, and reception.",
+            "Order bridesmaid and groomsmen attire.",
+            "Plan photo locations and a shot list."
+          ]
+        },
+        {
+          "when": "3 months out",
+          "tasks": [
+            "Mail invitations 8 to 10 weeks before the wedding.",
+            "Set an RSVP deadline 3 to 4 weeks before the wedding.",
+            "Order rings and wedding party gifts.",
+            "Book a rain plan for outdoor ceremonies and receptions.",
+            "Draft the reception floor plan and seating strategy.",
+            "Book a hair and makeup trial."
+          ]
+        },
+        {
+          "when": "2 months out",
+          "tasks": [
+            "Apply for your marriage license in Illinois. Check timing rules with your county clerk.",
+            "Finalize the rental order with your rental company.",
+            "Confirm all vendors in writing.",
+            "Write your vows and finalize ceremony readings.",
+            "Order favors, signage, and the guest book.",
+            "Plan a wedding-day schedule and share it with family."
+          ]
+        },
+        {
+          "when": "1 month out",
+          "tasks": [
+            "Follow up with guests who have not RSVPed.",
+            "Give the caterer a final headcount and dietary list.",
+            "Build the seating chart and print escort cards.",
+            "Final dress and suit fittings.",
+            "Confirm the timeline with your photographer and DJ.",
+            "Write toasts and thank the people who are speaking."
+          ]
+        },
+        {
+          "when": "1 to 2 weeks out",
+          "tasks": [
+            "Send final payments and tips in labeled envelopes.",
+            "Confirm delivery times for rentals, flowers, and cake.",
+            "Check the 10-day forecast and decide on the weather plan.",
+            "Pack for the honeymoon and your wedding-day kit.",
+            "Hold the rehearsal and walk through the ceremony.",
+            "Assign someone to take gifts and cards home."
+          ]
+        },
+        {
+          "when": "Wedding day and after",
+          "tasks": [
+            "Eat breakfast, drink water, and start getting ready on schedule.",
+            "Hand the vendor contact sheet to your coordinator or best friend.",
+            "Enjoy the day and trust your team.",
+            "Return rentals, formalwear, and borrowed items the next day.",
+            "Send thank-you notes within two to three months.",
+            "Preserve the bouquet and request your photos and video."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Wedding Budget Split",
+      "kind": "budget",
+      "note": "A common starting framework. Chicago-area costs vary a lot by venue, season, and guest count, so treat these as rough percentages.",
+      "lines": [
+        { "category": "Reception venue and catering", "share": 45, "tip": "Includes food, drinks, service, and the cake. Ask if the per-person price includes taxes and service charge." },
+        { "category": "Photo and video", "share": 12, "tip": "Book early and ask for a sample gallery and an itemized list of what you receive." },
+        { "category": "Music and entertainment", "share": 8, "tip": "Check the cost of extra hours and a ceremony sound system." },
+        { "category": "Flowers and decor", "share": 8, "tip": "Repurpose ceremony flowers at the reception to stretch the budget." },
+        { "category": "Rentals", "share": 7, "tip": "Tent, tables, chairs, linens, glassware, lighting, and a dance floor add up. Get a package quote." },
+        { "category": "Attire and beauty", "share": 7, "tip": "Budget for alterations, shoes, accessories, and hair and makeup." },
+        { "category": "Stationery and signage", "share": 3, "tip": "Send digital save-the-dates and spend your print money on invitations and table numbers." },
+        { "category": "Officiant, license, and rings", "share": 4, "tip": "Rings vary widely. Set a limit before you shop." },
+        { "category": "Transportation and extras", "share": 3, "tip": "Valet, shuttles, favors, and guest bags." },
+        { "category": "Contingency", "share": 3, "tip": "Keep this money for overtime fees, weather changes, and last-minute needs." }
+      ]
+    },
+    {
+      "heading": "Guest List Steps",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Draft the list",
+          "items": [
+            "Ask each family contributor how many guests they would like to invite.",
+            "Divide the list into thirds: your side, your partner's side, and shared friends.",
+            "Rank guests as must-invite, hope-to-invite, and optional.",
+            "Decide on a children policy and print it on the invitation or website.",
+            "Decide whether guests can bring a plus-one, and apply the rule fairly.",
+            "Estimate that 75 to 85 percent of invited guests will attend, depending on travel."
+          ]
+        },
+        {
+          "title": "Collect information",
+          "items": [
+            "Gather mailing addresses in one spreadsheet.",
+            "Record email addresses and mobile numbers for reminders.",
+            "Note allergies and dietary restrictions as RSVPs come in.",
+            "Note guests with accessibility or transportation needs.",
+            "Keep a column for gifts received and thank-you notes sent."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Vendor Booking Order",
+      "kind": "checklist",
+      "note": "Book in this order, since the first items determine your date and the rest depend on them.",
+      "groups": [
+        {
+          "title": "First, book immediately",
+          "items": [
+            "Venue (ceremony and reception).",
+            "Photographer and videographer.",
+            "Caterer, if not included with the venue.",
+            "Officiant.",
+            "DJ or live band."
+          ]
+        },
+        {
+          "title": "Next, book within a few months",
+          "items": [
+            "Planner or day-of coordinator.",
+            "Florist and decor.",
+            "Rental company for tables, chairs, linens, tent, and lighting.",
+            "Hair and makeup artists.",
+            "Transportation.",
+            "Cake or dessert baker."
+          ]
+        },
+        {
+          "title": "Finally, finish by 3 months out",
+          "items": [
+            "Bartender or bar service if not included.",
+            "Photo booth, lounge furniture, or lawn games.",
+            "Stationery, calligraphy, and signage.",
+            "Rehearsal dinner venue.",
+            "Late-night snack vendor.",
+            "Valet or parking attendants."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Ceremony Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Setup",
+          "items": [
+            "Confirm the ceremony space and start time.",
+            "Order enough ceremony chairs for all guests plus a few extras.",
+            "Set up an aisle runner or marked path.",
+            "Arrange the arch, altar, or focal point.",
+            "Place programs, fans, or umbrellas at the entrance.",
+            "Test the microphone and speaker system."
+          ]
+        },
+        {
+          "title": "People and paperwork",
+          "items": [
+            "Confirm the officiant has the signed license and knows the order of events.",
+            "Brief the wedding party on where to stand and when to walk.",
+            "Assign ushers to seat guests and handle questions.",
+            "Prepare readings, vows, and ring bearer or flower girl instructions.",
+            "Arrange for two witnesses if your officiant requires them.",
+            "Have a plan for guests arriving late."
+          ]
+        },
+        {
+          "title": "Weather",
+          "items": [
+            "Reserve an indoor backup or a tent with sidewalls.",
+            "Set a decision deadline for the weather plan, usually 24 to 48 hours before.",
+            "Provide parasols or fans for hot summer ceremonies.",
+            "Provide blankets and heaters for spring and fall ceremonies."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Reception Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Room setup",
+          "items": [
+            "Confirm table count, sizes, and layout against the floor plan.",
+            "Check linens, napkins, runners, and centerpieces on every table.",
+            "Place escort cards, table numbers, and menu cards.",
+            "Set up the sweetheart table or head table in a visible spot.",
+            "Position the dance floor, DJ, bar, and buffet for easy movement.",
+            "Set up lighting such as uplights, string lights, or candles."
+          ]
+        },
+        {
+          "title": "Food and drink",
+          "items": [
+            "Confirm the menu, vegetarian options, and children's meals.",
+            "Confirm bar service, signature cocktails, and non-alcoholic options.",
+            "Plan the cake cutting time and who will serve it.",
+            "Schedule a late-night snack if the party runs long.",
+            "Make sure vendor meals are ready."
+          ]
+        },
+        {
+          "title": "Program",
+          "items": [
+            "Give the DJ the song list, announcement order, and do-not-play list.",
+            "Share the list of introductions and pronunciations.",
+            "Schedule toasts so they do not delay dinner.",
+            "Plan the grand entrance, first dance, and parent dances.",
+            "Choose a last song and a send-off.",
+            "Assign someone to collect gifts and cards at the end."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Rental Quantities by Guest Count",
+      "kind": "table",
+      "note": "Planning numbers for a seated reception with 60 in rounds (8 guests each). Add extras for the head table, DJ, and vendors. Confirm exact counts with your rental company.",
+      "columns": ["Item", "75 guests", "100 guests", "150 guests", "200 guests"],
+      "rows": [
+        ["Ceremony chairs", "80", "105", "155", "205"],
+        ["Reception chairs", "80", "105", "155", "205"],
+        ["60 in round tables", "10", "13", "19", "25"],
+        ["Cocktail tables", "4", "5", "8", "10"],
+        ["Buffet or bar tables (6 ft or 8 ft)", "4", "5", "6", "8"],
+        ["Dinner plates", "85", "110", "165", "220"],
+        ["Salad or dessert plates", "85", "110", "165", "220"],
+        ["Flatware sets", "85", "110", "165", "220"],
+        ["Water goblets", "85", "110", "165", "220"],
+        ["Wine glasses", "110", "150", "225", "300"],
+        ["Champagne flutes", "85", "110", "165", "220"],
+        ["Tablecloths and napkins", "10 and 90", "13 and 115", "19 and 170", "25 and 230"],
+        ["Dance floor (approx. size)", "12 x 12 ft", "15 x 15 ft", "18 x 18 ft", "21 x 21 ft"],
+        ["Tent (approx. size)", "30 x 40 ft", "40 x 60 ft", "40 x 80 ft", "60 x 80 ft"]
+      ]
+    },
+    {
+      "heading": "Questions to Ask Every Venue",
+      "kind": "questions",
+      "items": [
+        "Is our date available, and is there a hold we can place?",
+        "What is the maximum seated capacity and the maximum with a dance floor?",
+        "What is included in the rental fee: tables, chairs, linens, setup, and cleanup?",
+        "Can we bring in our own caterer, alcohol, or bakery, or must we use yours?",
+        "What is the food and beverage minimum?",
+        "What is the policy on outside rentals such as a tent, lighting, or lounge furniture?",
+        "How long do we have access for setup and load-out?",
+        "What are the noise and music curfew rules?",
+        "Is there a rain or heat plan for outdoor spaces?",
+        "What is the parking situation, and is valet available?",
+        "Do you require vendor insurance or a security deposit?",
+        "Are there restrictions on candles, confetti, sparklers, or decor attached to walls?"
+      ]
+    },
+    {
+      "heading": "Wedding Worksheet",
+      "kind": "worksheet",
+      "fields": [
+        "Couple names",
+        "Wedding date and ceremony time",
+        "Ceremony venue and address",
+        "Reception venue and address",
+        "Guest count (estimated and confirmed)",
+        "Total budget and contributors",
+        "Officiant and phone",
+        "Caterer and menu notes",
+        "Photographer and phone",
+        "DJ or band and phone",
+        "Florist and phone",
+        "Rental company and delivery window",
+        "Hotel block and cutoff date",
+        "Rain plan and decision deadline"
+      ]
+    }
+  ]
+}

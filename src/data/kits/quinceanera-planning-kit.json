@@ -1,0 +1,279 @@
+{
+  "slug": "quinceanera-planning-kit",
+  "title": "Quinceañera Planning Kit",
+  "subtitle": "A 12-month plan for the Mass, the reception, the court, and the padrinos",
+  "intro": "A quinceañera is a milestone for the whole family, and every family celebrates it a little differently. Use this kit as a flexible framework: keep the traditions that matter to you, skip the ones that do not, and keep track of the many people and details along the way.",
+  "sections": [
+    {
+      "heading": "12-Month Timeline",
+      "kind": "timeline",
+      "note": "Adjust the order to fit your parish, your venue, and your family's customs.",
+      "phases": [
+        {
+          "when": "12 months out",
+          "tasks": [
+            "Sit down as a family and talk about what the quinceañera should look and feel like.",
+            "Ask the quinceañera what matters most to her: the Mass, the dance, the dress, the food, or the party.",
+            "Set a realistic total budget and who is contributing.",
+            "Contact your parish about Mass dates, required classes, and any paperwork.",
+            "Pick two or three reception dates and tour venues or banquet halls.",
+            "Start a shared document or notebook for contacts and costs."
+          ]
+        },
+        {
+          "when": "9 to 10 months out",
+          "tasks": [
+            "Book the reception venue and get the contract reviewed.",
+            "Reserve the photographer and videographer.",
+            "Book the DJ or band, and ask about a choreographer or dance coaching.",
+            "Choose a theme, color palette, and overall style.",
+            "Start asking padrinos or sponsors and record each commitment.",
+            "Begin dress shopping or look for a seamstress."
+          ]
+        },
+        {
+          "when": "6 to 8 months out",
+          "tasks": [
+            "Choose the court of honor: damas and chambelanes.",
+            "Send the court and their families the date, rehearsal schedule, and attire details.",
+            "Order the dress, tiara, shoes, and accessories if you have not yet.",
+            "Choose a caterer or finalize the venue menu.",
+            "Book the cake baker and ask about tastings.",
+            "Start designing invitations and a tiered guest list."
+          ]
+        },
+        {
+          "when": "4 to 5 months out",
+          "tasks": [
+            "Begin dance rehearsals for the waltz and surprise dance.",
+            "Schedule dress fittings and court attire fittings.",
+            "Choose decorations, centerpieces, and the head table layout.",
+            "Order invitations and start addressing them.",
+            "Book rentals: chairs, tables, linens, charger plates, and a dance floor if needed.",
+            "Book hair, makeup, and transportation such as a limo or classic car."
+          ]
+        },
+        {
+          "when": "2 to 3 months out",
+          "tasks": [
+            "Mail invitations with an RSVP date about 4 weeks before the party.",
+            "Confirm the Mass time, readers, and music with the parish.",
+            "Order party favors and any items for traditions your family keeps, such as the last doll.",
+            "Finalize the program for the Mass and reception.",
+            "Make a seating chart draft.",
+            "Reconfirm rentals and add sparkle with uplighting or a lounge area if desired."
+          ]
+        },
+        {
+          "when": "4 to 6 weeks out",
+          "tasks": [
+            "Track RSVPs and call people who have not replied.",
+            "Do a full dress fitting with shoes and accessories.",
+            "Plan the day-of schedule from hair appointment through the last dance.",
+            "Confirm the DJ playlist, do-not-play list, and key song moments.",
+            "Order flowers, boutonnieres, and bouquet.",
+            "Share the schedule with the court, padrinos, and vendors."
+          ]
+        },
+        {
+          "when": "The final week",
+          "tasks": [
+            "Give the final headcount to the venue or caterer.",
+            "Finish the seating chart and print place cards.",
+            "Hold a full rehearsal of the entrance and dances.",
+            "Pack a day-of emergency kit with sewing kit, safety pins, tissues, and flat shoes.",
+            "Confirm all arrival times and the order of events with vendors.",
+            "Check the Chicago forecast and plan for coats, umbrellas, and parking help."
+          ]
+        },
+        {
+          "when": "After the party",
+          "tasks": [
+            "Return rentals and attire on time.",
+            "Send thank-you notes to guests, the court, and padrinos.",
+            "Order prints or an album from the photographer.",
+            "Save the dress, tiara, and keepsakes in a safe place."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Mass and Ceremony Checklist",
+      "kind": "checklist",
+      "note": "Every parish has its own process. Ask your priest or parish office what applies.",
+      "groups": [
+        {
+          "title": "Parish and Mass",
+          "items": [
+            "Ask whether your parish offers a quinceañera blessing during Mass or a separate service.",
+            "Ask about required preparation, classes, or sacramental records.",
+            "Confirm the date, time, and length of the Mass.",
+            "Choose readers and who will bring up the gifts.",
+            "Pick hymns and confirm the music arrangements.",
+            "Ask about decor rules for flowers, candles, and the processional."
+          ]
+        },
+        {
+          "title": "Items for the blessing",
+          "items": [
+            "Bible or prayer book, if your family gives one.",
+            "Rosary or medal from a godparent.",
+            "Tiara or crown for the blessing, if your family uses it.",
+            "Bouquet to be offered to the Virgin Mary, if that is part of your custom.",
+            "Reserved seating for the family, padrinos, and court."
+          ]
+        },
+        {
+          "title": "Transportation and photos",
+          "items": [
+            "Arrange arrival for the quinceañera and her court.",
+            "Plan a photo window before or after Mass.",
+            "Ask the photographer about church photography rules.",
+            "Plan travel time between the church and reception.",
+            "Account for parking and drop-off at the church."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Padrinos and Sponsors Tracker",
+      "kind": "table",
+      "note": "Padrinos (godparents or sponsors) often give or pay for a specific item. Write down who offered what so nothing gets duplicated or forgotten. Roles vary by family.",
+      "columns": ["Padrino or Sponsor", "Item or Role", "Confirmed (Y/N)", "Contact", "Thank-you sent"],
+      "rows": [
+        ["", "Cake", "", "", ""],
+        ["", "Dress or accessories", "", "", ""],
+        ["", "Tiara or crown", "", "", ""],
+        ["", "Bible or rosary", "", "", ""],
+        ["", "Photography or video", "", "", ""],
+        ["", "Bouquet or flowers", "", "", ""],
+        ["", "Music or DJ", "", "", ""],
+        ["", "Decorations", "", "", ""],
+        ["", "Favors", "", "", ""],
+        ["", "Champagne or toast drinks", "", "", ""],
+        ["", "Transportation", "", "", ""],
+        ["", "Invitations", "", "", ""]
+      ]
+    },
+    {
+      "heading": "Traditions Checklist",
+      "kind": "checklist",
+      "note": "Keep what fits your family. Customs differ by country, region, and household.",
+      "groups": [
+        {
+          "title": "Common reception moments",
+          "items": [
+            "Grand entrance of the quinceañera and her court.",
+            "Waltz or first dance, often with her father or a chosen family member.",
+            "Court of honor dance or choreographed surprise dance.",
+            "Changing of shoes, from flats to heels, if your family does it.",
+            "Last doll (ultima muñeca) presentation, if your family does it.",
+            "Toast and a blessing from a family member.",
+            "Cake cutting and cake service.",
+            "Photo with each table or a family photo line."
+          ]
+        },
+        {
+          "title": "Court of honor",
+          "items": [
+            "Pick damas and chambelanes, usually friends and family.",
+            "Choose a chambelan de honor and a main escort if you wish.",
+            "Set a rehearsal schedule that works around school.",
+            "Share attire details, shoe sizes, and fitting dates.",
+            "Plan thank-you gifts for the court.",
+            "Decide where the court will sit at the reception."
+          ]
+        },
+        {
+          "title": "Personal touches",
+          "items": [
+            "Photo slideshow or video of her life so far.",
+            "A message from the parents or godparents.",
+            "Family heirloom or keepsake displayed.",
+            "Favors that reflect her style or culture.",
+            "A moment of recognition for grandparents and elders."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Reception Rentals and Logistics",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Rentals",
+          "items": [
+            "Chairs for all guests, with cushions or covers if desired.",
+            "Round tables of 8 to 10 for dinner seating.",
+            "Head table or court table.",
+            "Linens, overlays, and napkins in the chosen colors.",
+            "Charger plates, dinnerware, and glassware if the venue does not supply them.",
+            "Dance floor sized for the court and guests.",
+            "Lounge furniture or a photo corner.",
+            "Uplighting and a backdrop for photos."
+          ]
+        },
+        {
+          "title": "Logistics",
+          "items": [
+            "Confirm load-in and load-out times with the venue.",
+            "Decide coat check and winter coat storage for Chicago-area cold months.",
+            "Plan valet or parking assistance.",
+            "Schedule the DJ and photographer arrival about 1 hour before guests.",
+            "Assign a family helper for gifts, cards, and the guest book.",
+            "Have a day-of coordinator or trusted family member keep the schedule."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Budget Split",
+      "kind": "budget",
+      "note": "A typical starting split. Padrinos can offset some of these categories.",
+      "lines": [
+        { "category": "Venue, food, and beverage", "share": 42, "tip": "Ask about per-person pricing and what is included in the package." },
+        { "category": "Dress, accessories, and hair and makeup", "share": 10, "tip": "Include alterations and a spare pair of comfortable shoes." },
+        { "category": "Photography and video", "share": 10, "tip": "Ask what is included for edited photos and the final video." },
+        { "category": "Music and entertainment", "share": 7, "tip": "Confirm dance coaching, MC services, and sound for the ceremony." },
+        { "category": "Rentals and decor", "share": 13, "tip": "Chairs, linens, dance floor, and lighting add up quickly." },
+        { "category": "Cake and desserts", "share": 4, "tip": "A smaller display cake with sheet cake in the kitchen can reduce cost." },
+        { "category": "Church, flowers, and ceremony items", "share": 5, "tip": "Ask the parish about donation expectations and decor rules." },
+        { "category": "Court of honor attire and gifts", "share": 3, "tip": "Decide who pays for attire before you ask people to join." },
+        { "category": "Invitations, favors, and transportation", "share": 4, "tip": "Digital invitations plus printed formal invites for elders can save money." },
+        { "category": "Contingency", "share": 2, "tip": "Keep a cushion for alterations and last-minute needs." }
+      ]
+    },
+    {
+      "heading": "Questions to Ask Vendors",
+      "kind": "questions",
+      "items": [
+        "Can you accommodate a court dance and a surprise dance in the schedule?",
+        "What is included in the venue package, and what rentals do I need to add?",
+        "How long do we have for setup, and when must we be out?",
+        "Are there restrictions on candles, confetti, or balloons?",
+        "What is your policy on outside cake or desserts, and is there a cake-cutting fee?",
+        "How many hours of coverage does the photographer provide, and does that include the church?",
+        "Can the DJ act as a bilingual MC and play both Spanish and English music?",
+        "What is the deposit schedule, and what is the cancellation policy?"
+      ]
+    },
+    {
+      "heading": "Party Worksheet",
+      "kind": "worksheet",
+      "fields": [
+        "Quinceañera's name",
+        "Mass date, time, and church",
+        "Reception date and time",
+        "Reception venue and address",
+        "Expected guest count",
+        "Court of honor names",
+        "Photographer and video contact",
+        "DJ or band contact",
+        "Cake baker and pickup time",
+        "Rental company and delivery window",
+        "Hair and makeup schedule",
+        "Total budget and deposits paid"
+      ]
+    }
+  ]
+}

@@ -45,6 +45,7 @@ export function Footer() {
               ["/chair-rentals", "Areas we serve"],
               ["/blog", "Ideas & guides"],
               ["/tools", "Free planning tools"],
+              ["/downloads", "Free planning kits & spreadsheets"],
               ["/quiz", "Style quiz"],
               ["/seating-planner", "Seating planner"],
               ["/answers", "Quick answers"],
