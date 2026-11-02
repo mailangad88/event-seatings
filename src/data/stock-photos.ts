@@ -164,6 +164,54 @@ const rules: [RegExp, StockPhotoKey[]][] = [
   [/carnival|\btoss\b|games?\b|arcade|basketball|skee|plinko|golf|mechanical bull|rock wall|wheel|challenge|interactive|bowling|soccer|tic.?tac/, ["carnival-game", "carnival-balls", "cornhole-play"]],
 ];
 
+// Featured items whose real photo shows the item accurately: the photo becomes the main image and
+// the 3D render steps back to a fallback (Angad asked for real photos over renders, 2026-11-02).
+// Chairs, tables, linens and most tableware stay on renders until vendor photos arrive, because
+// no free photo shows a Chiavari, ghost or cross-back chair cleanly.
+export const photoFirst: Record<string, StockPhotoKey[]> = {
+  "canopy-10x10": ["canopy-tent", "tent-field"],
+  "frame-tent-20x20": ["tent-field", "canopy-tent"],
+  "frame-tent-20x40": ["tent-field", "tent-wedding"],
+  "frame-tent-30x60": ["tent-wedding", "tent-field"],
+  "pole-tent-40x60": ["tent-wedding", "tent-reception"],
+  "dance-floor": ["dance-floor", "dance-floor-2"],
+  "stage-deck": ["wedding-stage"],
+  "string-lights": ["string-lights", "string-lights-trees"],
+  chandelier: ["chandelier"],
+  "patio-heater": ["patio-heater", "patio-heater-2"],
+  "lounge-sofa": ["white-sofa", "lounge-set"],
+  "ceremony-arch": ["arch", "arch-pink"],
+  "neon-sign": ["neon-party", "neon-birthday"],
+  "bounce-house": ["bounce-castle", "bounce-two", "bounce-park"],
+  "yard-games": ["cornhole", "cornhole-play"],
+  "popcorn-machine": ["popcorn-machine", "popcorn-night"],
+  "cotton-candy-machine": ["cotton-candy"],
+  "portable-restroom": ["portable-toilet", "portable-toilet-2"],
+  "pa-system": ["pa-system", "speakers-stack"],
+  "projection-screen": ["conference-screen"],
+  stanchion: ["stanchion", "barrier"],
+  barricade: ["barrier", "barrier-crowd"],
+  "chafing-dish": ["chafing-dishes", "buffet-line"],
+  "beverage-dispenser": ["beverage-dispensers"],
+  "serving-tray": ["silver-tray", "buffet-line"],
+  "coffee-cup-saucer": ["coffee-set"],
+  "dinner-plate": ["white-plate", "place-settings"],
+  "wine-glass": ["wine-glass-lot", "long-stem-glasses"],
+  "water-goblet": ["long-stem-glasses", "wine-glass-lot"],
+  "champagne-flute": ["champagne-flutes", "champagne-pour"],
+  "gold-flatware": ["gold-flatware"],
+  "dinner-fork": ["silver-flatware"],
+  teaspoon: ["silver-flatware"],
+  "cloth-napkins": ["white-linens", "tablecloth-settings"],
+  "round-floor-length": ["white-linens", "tables-white-cloths"],
+  "banquet-floor-length": ["white-linens", "tablecloth-settings"],
+  "chair-cover": ["chair-sheer"],
+  "farm-table": ["wood-table-set"],
+};
+
+/** True when a featured item should show its real photo before its 3D render. */
+export const isPhotoFirst = (id: string) => id in photoFirst;
+
 // When no rule matches, the category's general photo (shown as an example of the category, not the item).
 const categoryDefaults: Record<CategoryId, StockPhotoKey[]> = {
   chairs: ["banquet-room", "white-ceremony-chairs", "wood-chairs-row"],
@@ -210,6 +258,8 @@ export type ItemPhotos = {
 export function photosForItem(item: { id: string; name: string; section?: string; categoryId: CategoryId }): ItemPhotos {
   // The item name decides first; the vendor's section heading only when the name says nothing
   // (sections like "Tents, Tables & Chairs" would otherwise send a folding chair to the tent photos).
+  const first = photoFirst[item.id];
+  if (first) return { photos: first.map((k) => ({ key: k, ...stockPhotos[k] })), matched: true };
   const name = item.name.toLowerCase();
   const section = (item.section ?? "").toLowerCase();
   const rule = rules.find(([re]) => re.test(name)) ?? (section ? rules.find(([re]) => re.test(section)) : undefined);

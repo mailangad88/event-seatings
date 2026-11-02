@@ -5,7 +5,7 @@ import { Figure, FaqList, JsonLd, PageHero, StepFlow, type Faq } from "@/compone
 import { catalogItems } from "@/data/catalog";
 import { events, getEventPreset, getLook, looks } from "@/data/quote-presets";
 import { imagesFor, rentalImage } from "@/data/rental-images";
-import { photosForItem } from "@/data/stock-photos";
+import { isPhotoFirst, photosForItem } from "@/data/stock-photos";
 import { toPublicItem } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -76,8 +76,10 @@ export default async function QuotePage(props: PageProps<"/quote">) {
   // The ~2,500 non-featured inventory rows are sent lean (no description, image only when rendered)
   // to keep the page payload small.
   const items: QuoteItem[] = catalogItems.map((i) => {
-    const image = i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId);
-    const variants = imagesFor(i.id)
+    // Items with an accurate real photo show it instead of their 3D render (and drop render colour swatches).
+    const photoFirst = isPhotoFirst(i.id);
+    const image = photoFirst ? undefined : (i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId));
+    const variants = (photoFirst ? [] : imagesFor(i.id))
       .filter((img) => img.kind === "variant" && img.variant)
       .map((img) => ({ key: img.variant!, label: img.variant!.replace(/-/g, " "), src: img.src, alt: img.alt }));
     const item: QuoteItem = {
