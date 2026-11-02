@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
-import { imageCategories, productImages, sceneImages } from "@/data/rental-images";
+import { extraImages, imageCategories, productImages, sceneImages } from "@/data/rental-images";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ export default function GalleryPage() {
         name: `${site.name} 3D event rental gallery`,
         description: metadata.description,
         about: "Event rentals in the Chicago area",
-        image: [...sceneImages, ...productImages].map((i) => ({
+        image: [...sceneImages, ...productImages, ...extraImages].map((i) => ({
           "@type": "ImageObject",
           contentUrl: `${site.url}${i.src}`,
           url: `${site.url}${i.src}`,
@@ -66,7 +66,11 @@ export default function GalleryPage() {
   };
 
   const groups = imageCategories
-    .map((c) => ({ ...c, items: productImages.filter((i) => i.category === c.id) }))
+    .map((c) => ({
+      ...c,
+      items: productImages.filter((i) => i.category === c.id),
+      extras: extraImages.filter((i) => i.category === c.id),
+    }))
     .filter((g) => g.items.length);
 
   return (
@@ -78,7 +82,8 @@ export default function GalleryPage() {
           Every rental, <em className="text-gold">true to size</em> before you book
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted">
-          {productImages.length} event rentals and {sceneImages.length} full setups, rendered in 3D from real rental
+          {productImages.length} event rentals, {extraImages.length} extra colours and angles, and{" "}
+          {sceneImages.length} full setups, rendered in 3D from real rental
           dimensions so you can picture your Chicago event: chairs, tables, linens, tents, dinnerware, dance floors,
           lighting, lounge furniture, decor and games.
         </p>
@@ -135,6 +140,30 @@ export default function GalleryPage() {
                 </li>
               ))}
             </ul>
+            {g.extras.length > 0 && (
+              <details className="mt-8">
+                <summary className="cursor-pointer text-sm font-medium">
+                  More colours &amp; angles ({g.extras.length})
+                </summary>
+                <ul className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+                  {g.extras.map((it) => (
+                    <li key={it.slug}>
+                      <figure>
+                        <Image
+                          src={it.src}
+                          alt={it.alt}
+                          width={it.width}
+                          height={it.height}
+                          sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 16vw"
+                          className="aspect-square h-auto w-full bg-[#efe9df] object-cover"
+                        />
+                        <figcaption className="mt-1 text-xs text-muted">{it.caption}</figcaption>
+                      </figure>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
           </section>
         ))}
 

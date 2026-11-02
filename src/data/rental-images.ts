@@ -11,7 +11,10 @@ export type RentalImage = {
   caption: string;
   width: number;
   height: number;
-  kind: "product" | "scene";
+  kind: "product" | "scene" | "angle" | "variant";
+  // Angles and colour variants point at the base item they belong to.
+  parent?: string;
+  variant?: string;
 };
 
 const all = images as Record<string, RentalImage>;
@@ -23,6 +26,17 @@ export function rentalImage(slug: string): RentalImage | undefined {
 export const rentalImages = Object.entries(all).map(([slug, img]) => ({ slug, ...img }));
 export const productImages = rentalImages.filter((i) => i.kind === "product");
 export const sceneImages = rentalImages.filter((i) => i.kind === "scene");
+// Second camera angles and colour/finish variants (slug "<parent>--<variant>").
+export const extraImages = rentalImages.filter((i) => i.kind === "angle" || i.kind === "variant");
+
+// Every image of one item: the main render first, then its colour variants, then the second angle.
+export function imagesFor(slug: string) {
+  const main = all[slug] ? [{ slug, ...all[slug] }] : [];
+  const extras = extraImages
+    .filter((i) => i.parent === slug)
+    .sort((a, b) => (a.kind === b.kind ? a.slug.localeCompare(b.slug) : a.kind === "variant" ? -1 : 1));
+  return [...main, ...extras];
+}
 
 // Human labels for the gallery and captions, in display order.
 export const imageCategories: { id: string; label: string }[] = [

@@ -28,8 +28,8 @@ def _splayed_legs(bm, seat_z, top=0.17, foot=0.21, r=0.016, r2=0.012):
         add_rod(bm, (sx * top, sy * top, seat_z), (sx * foot, sy * foot, 0), r, r2)
 
 
-def bentwood():
-    w = lib.wood("Espresso", (0.16, 0.10, 0.07), (0.10, 0.06, 0.04), stretch=(6, 6, 1))
+def bentwood(m=None):
+    w = m or lib.wood("Espresso", (0.16, 0.10, 0.07), (0.10, 0.06, 0.04), stretch=(6, 6, 1))
     fr = bmesh.new()
     seat_z = 0.45
     r = 0.015
@@ -48,8 +48,8 @@ def bentwood():
     _round_seat(seat_z, 0.2, w)
 
 
-def louis_medallion():
-    frame = mat("WhiteFrame", (0.93, 0.91, 0.87), 0.0, 0.35, **{"Coat Weight": 0.3})
+def louis_medallion(m=None):
+    frame = m or mat("WhiteFrame", (0.93, 0.91, 0.87), 0.0, 0.35, **{"Coat Weight": 0.3})
     gold = lib.gold_metal(0.25)
     up = fabric("Ivory", (0.94, 0.92, 0.86), 0.7)
     fr = bmesh.new()
@@ -95,8 +95,8 @@ def rattan_garden():
     bevel(co, 0.035, 4)
 
 
-def wishbone():
-    oak = lib.wood("Oak", (0.74, 0.56, 0.36), (0.60, 0.43, 0.26), stretch=(6, 6, 1))
+def wishbone(m=None):
+    oak = m or lib.wood("Oak", (0.74, 0.56, 0.36), (0.60, 0.43, 0.26), stretch=(6, 6, 1))
     fr = bmesh.new()
     seat_z = 0.45
     for sx in (-1, 1):
@@ -117,8 +117,8 @@ def wishbone():
     bevel(so, 0.01, 2)
 
 
-def velvet_dining():
-    vel = lib.mat("Emerald", (0.012, 0.09, 0.05), 0.0, 0.8, **{"Sheen Weight": 0.6, "Sheen Tint": (0.2, 0.6, 0.4)})
+def velvet_dining(m=None):
+    vel = m or lib.mat("Emerald", (0.012, 0.09, 0.05), 0.0, 0.8, **{"Sheen Weight": 0.6, "Sheen Tint": (0.2, 0.6, 0.4)})
     s = bmesh.new()
     add_box(s, (0, 0, 0.44), (0.46, 0.46, 0.11))
     so = mesh_object("Seat", s, vel)
@@ -137,8 +137,8 @@ def velvet_dining():
     mesh_object("Legs", legs, lib.gold_metal(0.2))
 
 
-def infinity():
-    gold = lib.gold_metal(0.22)
+def infinity(m=None):
+    gold = m or lib.gold_metal(0.22)
     fr = bmesh.new()
     seat_z = 0.45
     for sx, sy in ((-1, -1), (1, -1)):
@@ -159,8 +159,8 @@ def infinity():
     C._seat_cushion(seat_z, size=(0.40, 0.40), color=lib.IVORY)
 
 
-def cane_back():
-    w = lib.wood("Natural", (0.62, 0.44, 0.27), (0.48, 0.32, 0.18), stretch=(6, 6, 1))
+def cane_back(m=None):
+    w = m or lib.wood("Natural", (0.62, 0.44, 0.27), (0.48, 0.32, 0.18), stretch=(6, 6, 1))
     fr = bmesh.new()
     seat_z = 0.46
     for sx in (-1, 1):
@@ -183,8 +183,8 @@ def cane_back():
     C._seat_cushion(seat_z - 0.02, size=(0.40, 0.40), color=(0.92, 0.89, 0.82), thick=0.045)
 
 
-def windsor():
-    paint = mat("AntiqueWhite", (0.90, 0.87, 0.80), 0.0, 0.45)
+def windsor(m=None):
+    paint = m or mat("AntiqueWhite", (0.90, 0.87, 0.80), 0.0, 0.45)
     fr = bmesh.new()
     seat_z = 0.45
     _splayed_legs(fr, seat_z - 0.03, top=0.15, foot=0.22, r=0.02, r2=0.014)
@@ -203,8 +203,8 @@ def windsor():
     subsurf(so, 1)
 
 
-def shell():
-    shellm = mat("ShellWhite", (0.92, 0.91, 0.88), 0.0, 0.3, **{"Coat Weight": 0.3})
+def shell(m=None):
+    shellm = m or mat("ShellWhite", (0.92, 0.91, 0.88), 0.0, 0.3, **{"Coat Weight": 0.3})
     bm = bmesh.new()
     n, m = 40, 24
     grid = []

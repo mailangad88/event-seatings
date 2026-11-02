@@ -40,6 +40,8 @@ def render_item(slug, args):
     item["build"]()
     cam = item.get("cam", {})
     w, h = (1600, 1600) if item.get("aspect", "1:1") == "1:1" else (1920, 1080)
+    if item.get("px"):  # smaller extras (angles, colour variants)
+        w, h = item["px"], item["px"] * h // w
     if bpy.context.scene.camera is not None:
         pass  # the builder placed its own camera (styled scenes)
     elif "camera" in item:
