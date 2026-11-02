@@ -110,6 +110,7 @@ export type QuoteLine = {
   line_total: number;
   vendor_id: string;
   vendor_price: number; // our cost per unit, back office only
+  variant?: string; // colour or finish the customer picked, e.g. "navy"
 };
 
 export type PricedQuote = { lines: QuoteLine[]; subtotal: number; cost: number; margin: number };

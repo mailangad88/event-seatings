@@ -47,6 +47,13 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 - **Completion audit (2026-11-02 PM)**: FAQs with FAQPage schema added to `/chairs` (5) and every `/chairs/[slug]` page (5, generated from the chair data). `/quiz` rebuilt answer-first with breadcrumbs, Chicago venue and season signals, a how-it-works flowchart, 4 FAQs and a book-a-call ending; results now offer "Book a free call". Home already carries 6 FAQs with FAQPage schema. Chair style guide, quiz, 404, privacy and terms moved onto the kit; CTA bands rotate scene images per page.
 - **Remaining**: `/rentals` routes come from the catalog thread; `/quote` builder from the quote thread (header and CTAs already point to both). Legal pages inherit the new styles but still have no hero visual.
 
+## Changes in this release (2026-11-02): quote builder + lead CRM
+
+- `/quote` is now a quote builder. Visitors enter a guest count, pick items from `src/data/catalog.ts` with quantities (chairs auto-fill to the guest count), and see a live estimate. Customer price = vendor price + 10%, computed only in `src/lib/catalog-types.ts`. The server re-prices every submission; vendor names and costs never reach the browser. FAQ section with FAQPage + OfferCatalog schema.
+- `/admin/leads` is the CRM: pipeline stages with counts and quote value, follow-ups due/overdue, search and filters, one-click "Mark contacted". `/admin/leads/[id]` shows contact + event, priced line items with vendor cost and margin, a copy-ready order per vendor, attribution (UTM first/last touch), and a form to change stage, assign a rental partner, set the next follow-up, record a lost reason and log calls/emails/texts/notes to a timeline.
+- Owner email and HubSpot deal now carry the quote total and items. CSV export includes stage, items, totals, vendor, follow-up and notes.
+- Remaining: real vendor catalog (in progress in a parallel branch), automatic follow-up reminders (daily email of due follow-ups), customer-facing proposal PDF, vendor availability confirmation flow.
+
 ## Changes in this release (2026-10-31)
 
 Shipped in this release:
@@ -69,6 +76,7 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 - **Flowchart:** `ProcessFlow` (choose → talk → proposal → delivered → collected) is an ordered list, so search engines read every step. It's used on /about, /faq and /quote.
 - **Chair strips:** `ChairStrip` adds captioned, linked chair images to /about, /quiz, /privacy and /terms.
 - **Sitemap:** chair pages and posts list their images (`image:loc`) for Google Images.
+- **3D rental renders (Blender, 2026-11-02):** every catalog item (98 rentals) has a 1600px studio render, plus 17 16:9 event scenes and topic heroes, in `public/rentals/<category>/<slug>.webp`. Alt text and captions live in `blender/rentals/catalog.py` and are published to `src/data/rental-images.json` (`rentalImage(slug)`, `productImages`, `sceneImages`). The 13 collection chairs now show their Blender render first. `/gallery` lists every image with ImageGallery + ImageObject schema, and the sitemap lists them as `image:loc`. How to add or re-render: `blender/rentals/README.md`.
 - **Videos (Remotion/Blender):** none are on the site yet. When one is added, render it with `VideoFeature` (`src/components/VideoFeature.tsx`). It requires a poster, title and description, takes an optional `.vtt` captions file, and outputs VideoObject schema. Put files in `public/videos/`.
 
 ---
@@ -79,9 +87,10 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 |---|---|---|---|---|---|---|---|---|
 | `/` | Home: hero 3D chair viewer, featured chairs, waitlist | 2026-10-31 | ✅ | ⚠️ | ⚠️ | ✅ | ❌ | ✅ |
 | `/chairs` | Browse/filter all chair styles | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
-| `/chairs/[slug]` (13 chairs) | Chair detail, 3D viewer, votes, quote link | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
+| `/chairs/[slug]` (13 chairs) | Chair detail, 3D viewer, votes, quote link (image now the Blender studio render) | 2026-11-02 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
+| `/gallery` | 3D rental gallery: 98 product renders + 17 event setups, by category | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `/quiz` | 4-question chair style quiz | 2026-11-01 | ✅ | ❌ | ❌ | ✅ | ❌ | ⚠️ |
-| `/quote` | Quote request form | 2026-11-01 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
+| `/quote` | Quote builder: pick items + quantities, live estimate (vendor price + 10%), FAQ + OfferCatalog schema | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `/book` | Book a 15-minute seating call | 2026-10-31 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
 | `/about` | Our story, service area | 2026-11-01 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
 | `/faq` | FAQ with FAQPage schema | 2026-11-01 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
@@ -142,6 +151,8 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 ---
 
 ## Remaining to improve
+
+- **3D renders (2026-11-02):** add finish variants (e.g. silver/black crossback, smoke ghost, terracotta shell) as separate renders; add 360-degree turntable clips for the top 10 items via `VideoFeature`; swap any render for a real photo once stock is photographed (set `image` on the chair or replace the WebP, keep the alt text accurate).
 
 **`/` Home**
 - Add a short answer-first "What we do / where we deliver" block naming Chicago neighborhoods and suburbs.

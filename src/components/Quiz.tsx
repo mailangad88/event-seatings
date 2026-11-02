@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { chairs, type Style } from "@/data/chairs";
+import { attributionFields } from "@/lib/attribution";
+import { BookingCta } from "./BookingCta";
 import { ChairCard } from "./ChairCard";
 
 type Option = { label: string; scores: Partial<Record<Style, number>> };
@@ -116,6 +118,7 @@ export function Quiz() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        ...attributionFields(),
         ...data,
         kind: "quiz",
         quiz_styles: topStyles,
@@ -153,9 +156,12 @@ export function Quiz() {
       </div>
       <div className="card mx-auto mt-16 max-w-xl p-8 text-center">
         {emailStatus === "done" ? (
-          <p className="font-serif text-2xl italic">
-            Thank you. We&apos;ll send your selections, styling notes and launch updates.
-          </p>
+          <div>
+            <p className="font-serif text-2xl italic">
+              Thank you. We&apos;ll send your selections, styling notes and launch updates.
+            </p>
+            <BookingCta content="quiz-thank-you" note="Prefer to talk it through? We'll match these chairs to your venue and guest count." />
+          </div>
         ) : (
           <>
             <p className="headline text-4xl">Receive your selections</p>

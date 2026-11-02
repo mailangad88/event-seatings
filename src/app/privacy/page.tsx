@@ -38,6 +38,14 @@ export default function PrivacyPage() {
             <strong>Chair votes:</strong> which chairs you save. Votes are tied to a random identifier stored in your
             browser, not to your name or email.
           </li>
+          <li>
+            <strong>How you found us:</strong> when you send a form, we include the website, search engine, ad or email
+            link that brought you here and the first page you visited, so we know which of our content is helpful.
+          </li>
+          <li>
+            <strong>Text messages:</strong> we only text you if you tick &ldquo;Text me about my quote.&rdquo; Reply STOP
+            to any message to opt out.
+          </li>
         </ul>
         <h2>How we use it</h2>
         <p>
@@ -46,8 +54,8 @@ export default function PrivacyPage() {
         </p>
         <h2>Who sees it</h2>
         <p>
-          Our team, plus the service providers that host the site and store data or send email on our behalf. They may
-          only use it to provide those services.
+          Our team, plus the service providers that host the site, store data, manage customer relationships (our
+          CRM), schedule calls or send email and texts on our behalf. They may only use it to provide those services.
         </p>
         <h2>Your choices</h2>
         <p>
@@ -56,8 +64,9 @@ export default function PrivacyPage() {
         </p>
         <h2>Cookies and local storage</h2>
         <p>
-          We store a random visitor identifier in your browser&apos;s local storage so your saved chairs persist. We
-          don&apos;t use advertising cookies.
+          We store a random visitor identifier in your browser&apos;s local storage so your saved chairs persist, and a
+          note of how you arrived (for example &ldquo;google / organic&rdquo; and your first page), which is only sent
+          to us if you submit a form. We don&apos;t use advertising cookies.
         </p>
       </div>
     </div>

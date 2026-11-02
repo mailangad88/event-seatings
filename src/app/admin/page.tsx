@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { chairs } from "@/data/chairs";
 import { getVoteCounts, listLeads } from "@/lib/store";
 
@@ -13,6 +14,9 @@ function tally<T>(items: T[], key: (t: T) => string | undefined) {
   }
   return Object.entries(out).sort((a, b) => b[1] - a[1]);
 }
+
+const sourceLabel = (source?: string, medium?: string) => (source ? [source, medium].filter(Boolean).join(" / ") : undefined);
+const pathOnly = (p?: string) => p?.split("?")[0];
 
 function Bars({ rows, empty }: { rows: [string, number][]; empty: string }) {
   const max = Math.max(1, ...rows.map(([, n]) => n));
@@ -60,7 +64,7 @@ export default async function AdminPage() {
     ["Guests in quotes", quotes.reduce((s, l) => s + (l.guest_count ?? 0), 0)],
   ];
 
-  const card = "rounded-2xl border border-line bg-surface p-6";
+  const card = "card p-6";
 
   return (
     <div className="container-x py-12">
@@ -69,7 +73,10 @@ export default async function AdminPage() {
           <p className="eyebrow">Admin</p>
           <h1 className="mt-1 font-serif text-5xl">Demand dashboard</h1>
         </div>
-        <a href="/admin/export" className="btn-ghost">Download leads (CSV)</a>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/admin/leads" className="btn-primary">Lead pipeline (CRM)</Link>
+          <a href="/admin/export" className="btn-ghost">Download leads (CSV)</a>
+        </div>
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5">
@@ -128,9 +135,34 @@ export default async function AdminPage() {
         </section>
       </div>
 
+      <section className="mt-12">
+        <h2 className="font-serif text-3xl">Where leads come from</h2>
+        <p className="mt-1 max-w-3xl text-sm text-muted">
+          Every form remembers how the visitor first found us (search engine, ad, email, social post) and which page they
+          landed on. Write more posts like the landing pages that produce leads, and spend more where the sources convert.
+        </p>
+        <div className="mt-6 grid gap-6 lg:grid-cols-3">
+          <section className={card}>
+            <h3 className="mb-4 font-serif text-2xl">First found us via</h3>
+            <Bars
+              rows={tally(leads, (l) => sourceLabel(l.first_utm_source ?? l.utm_source, l.first_utm_medium ?? l.utm_medium))}
+              empty="No tracked leads yet."
+            />
+          </section>
+          <section className={card}>
+            <h3 className="mb-4 font-serif text-2xl">Landing pages that convert</h3>
+            <Bars rows={tally(leads, (l) => pathOnly(l.first_landing_page ?? l.landing_page))} empty="No tracked leads yet." />
+          </section>
+          <section className={card}>
+            <h3 className="mb-4 font-serif text-2xl">Campaigns</h3>
+            <Bars rows={tally(leads, (l) => l.first_utm_campaign ?? l.utm_campaign)} empty="No campaign-tagged leads yet." />
+          </section>
+        </div>
+      </section>
+
       <section className={`${card} mt-8 overflow-x-auto`}>
         <h2 className="font-serif text-2xl">Recent leads</h2>
-        <table className="mt-4 w-full min-w-[760px] text-sm">
+        <table className="mt-4 w-full min-w-[900px] text-sm">
           <thead className="text-left text-muted">
             <tr className="border-b border-line">
               <th className="py-2 font-medium">Received</th>
@@ -138,6 +170,7 @@ export default async function AdminPage() {
               <th className="py-2 font-medium">Name / email</th>
               <th className="py-2 font-medium">Event</th>
               <th className="py-2 font-medium">Chairs</th>
+              <th className="py-2 font-medium">Source</th>
             </tr>
           </thead>
           <tbody>
@@ -146,7 +179,7 @@ export default async function AdminPage() {
                 <td className="py-2.5 whitespace-nowrap text-muted">{new Date(l.created_at).toLocaleDateString("en-US")}</td>
                 <td className="py-2.5"><span className="chip">{l.kind}</span></td>
                 <td className="py-2.5">
-                  {l.name && <div>{l.name}</div>}
+                  <Link href={`/admin/leads/${l.id}`} className="block font-medium text-accent">{l.name ?? "Open lead"}</Link>
                   <a href={`mailto:${l.email}`} className="text-accent">{l.email}</a>
                   {l.phone && <div className="text-muted">{l.phone}</div>}
                 </td>
@@ -157,6 +190,10 @@ export default async function AdminPage() {
                   {l.message && <div className="mt-1 max-w-xs text-muted">{l.message}</div>}
                 </td>
                 <td className="py-2.5">{l.chairs?.join(", ")}</td>
+                <td className="py-2.5 text-muted">
+                  {sourceLabel(l.first_utm_source ?? l.utm_source, l.first_utm_medium ?? l.utm_medium)}
+                  {(l.first_landing_page ?? l.landing_page) && <div className="text-xs">{pathOnly(l.first_landing_page ?? l.landing_page)}</div>}
+                </td>
               </tr>
             ))}
           </tbody>

@@ -42,6 +42,7 @@ export function Footer() {
               ["/how-it-works", "How it works"],
               ["/blog", "Ideas & guides"],
               ["/quiz", "Style quiz"],
+              ["/gallery", "3D gallery"],
               ["/faq", "FAQ"],
               ["/about", "About us"],
             ].map(([href, label]) => (

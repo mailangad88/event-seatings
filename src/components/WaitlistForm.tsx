@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { attributionFields } from "@/lib/attribution";
 
 // Email capture. Works on light and dark bands (it uses theme tokens); `dark` is kept for older call sites.
 export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
@@ -14,7 +15,7 @@ export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
     const res = await fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...data, kind: "waitlist", source }),
+      body: JSON.stringify({ ...attributionFields(), ...data, kind: "waitlist", source }),
     }).catch(() => null);
     if (res?.ok) return setStatus("done");
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");

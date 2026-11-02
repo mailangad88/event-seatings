@@ -8,7 +8,8 @@ It tests which chairs people want before any inventory is bought.
 - **Quote requests** (`/quote`) collecting date, event type, guest count, city and chairs. Copy is upfront that this is a pre-launch founding season
 - **Style quiz** (`/quiz`) that matches couples to chairs and captures emails
 - **Journal** (`/blog`) of Markdown posts that publish themselves on their date
-- **Admin dashboard** (`/admin`) ranking chairs by demand, with event months, event types, cities, all leads and CSV export
+- **Admin dashboard** (`/admin`) ranking chairs by demand, with event months, event types, cities, lead sources and converting landing pages, all leads and CSV export
+- **CRM sync**: every lead goes to HubSpot (contact, plus a deal for quote requests) and/or any webhook, with first- and last-touch UTM attribution. See `docs/crm-setup.md`
 
 ## Run locally
 ```bash
@@ -32,6 +33,7 @@ Votes and leads are saved to `.data/db.json` until Supabase is configured.
 3. In Vercel, set the env vars from `.env.example` (`ADMIN_PASSWORD`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SITE_URL`).
 4. Point the `beyondchiavari.com` domain at Vercel.
 5. Submit `https://beyondchiavari.com/sitemap.xml` in Google Search Console.
+6. Connect the CRM and booking page: follow `docs/crm-setup.md`.
 
 ## Animations and social videos (Remotion)
 Animated chair illustrations live in `src/remotion/` and are used in two ways:
