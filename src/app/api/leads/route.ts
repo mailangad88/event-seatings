@@ -1,6 +1,7 @@
 import { after } from "next/server";
 import { getChair } from "@/data/chairs";
 import { catalogItems } from "@/data/catalog";
+import { imagesFor } from "@/data/rental-images";
 import { priceQuote } from "@/lib/catalog-types";
 import { syncToCrm } from "@/lib/crm";
 import { notifyOwner } from "@/lib/notify";
@@ -62,6 +63,20 @@ export async function POST(request: Request) {
       .filter((p: unknown): p is { id: string; qty: number } => !!p && typeof (p as { id?: unknown }).id === "string")
       .map((p: { id: string; qty: unknown }) => ({ id: p.id, qty: Number(p.qty) }));
     const quote = priceQuote(picks, catalogItems);
+    // Colour choices: only keys that exist as a rendered variant of that item are kept.
+    const colours = new Map<string, string>(
+      body.items
+        .slice(0, 200)
+        .filter((p: { id?: unknown; variant?: unknown }) => typeof p?.id === "string" && typeof p?.variant === "string")
+        .map((p: { id: string; variant: string }) => [p.id, p.variant]),
+    );
+    for (const line of quote.lines) {
+      const v = colours.get(line.id);
+      if (v && imagesFor(line.id).some((img) => img.kind === "variant" && img.variant === v)) {
+        line.variant = v;
+        line.name = `${line.name} (${v.replace(/-/g, " ")})`;
+      }
+    }
     if (quote.lines.length) {
       lead.items = quote.lines;
       lead.quote_subtotal = quote.subtotal;

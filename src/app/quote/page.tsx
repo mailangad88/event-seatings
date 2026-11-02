@@ -4,7 +4,7 @@ import { rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Figure, FaqList, JsonLd, PageHero, StepFlow, type Faq } from "@/components/ui";
 import { catalogItems } from "@/data/catalog";
 import { events, getEventPreset, getLook, looks } from "@/data/quote-presets";
-import { rentalImage } from "@/data/rental-images";
+import { imagesFor, rentalImage } from "@/data/rental-images";
 import { toPublicItem } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -77,6 +77,10 @@ export default async function QuotePage(props: PageProps<"/quote">) {
     categoryId: i.categoryId,
     image: i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId),
     imageAlt: i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs),
+    // Rendered colour/finish options, shown as swatches on the item card.
+    variants: imagesFor(i.id)
+      .filter((img) => img.kind === "variant" && img.variant)
+      .map((img) => ({ key: img.variant!, label: img.variant!.replace(/-/g, " "), src: img.src, alt: img.alt })),
   }));
 
   // Starter lists shown as tappable cards: the three home page looks (with their tablescape renders) and event types.

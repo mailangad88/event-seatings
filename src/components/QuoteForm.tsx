@@ -14,7 +14,8 @@ import { ChairArt } from "./ChairArt";
 import { RentalIcon } from "./rentals/RentalIcon";
 import { Icon, PriceTag, formatPrice, type IconName } from "./ui";
 
-export type QuoteItem = PublicItem & { categoryId?: CategoryId };
+export type Swatch = { key: string; label: string; src: string; alt: string };
+export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[] };
 export type StarterPreset = {
   id: string;
   kind: "look" | "event";
@@ -58,7 +59,9 @@ const fromPreset = (lines: PresetLine[]) =>
   >;
 
 // The visual for an item: its 3D render, the chair illustration, or the category drawing.
-function ItemVisual({ item, sizes }: { item: QuoteItem; sizes: string }) {
+function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: string; variant?: string }) {
+  const sw = variant ? item.variants?.find((v) => v.key === variant) : undefined;
+  if (sw) return <Image src={sw.src} alt={sw.alt} fill sizes={sizes} className="object-cover" />;
   if (item.image)
     return <Image src={item.image} alt={item.imageAlt ?? `${item.name} rental`} fill sizes={sizes} className="object-cover" />;
   const chair = item.chairSlug ? getChair(item.chairSlug) : undefined;
@@ -130,6 +133,8 @@ export function QuoteForm({
     return out;
   });
   const [activePreset, setActivePreset] = useState(startPreset);
+  // Chosen colour per item (a rendered variant key); the default render when unset.
+  const [colours, setColours] = useState<Record<string, string>>({});
   const [eventType, setEventType] = useState(startPreset?.eventType ?? "");
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
@@ -233,7 +238,7 @@ export function QuoteForm({
         ...attributionFields(),
         ...data,
         guest_count: guests || data.guest_count,
-        items: lines.map((l) => ({ id: l.item.id, qty: l.qty })),
+        items: lines.map((l) => ({ id: l.item.id, qty: l.qty, variant: colours[l.item.id] })),
         kind: "quote",
         source: from ? `quote-builder:${from}` : activePreset ? `quote-builder:${activePreset.kind}-${activePreset.id}` : "quote-builder",
       }),
@@ -293,10 +298,13 @@ export function QuoteForm({
       {lines.map(({ item, qty }) => (
         <li key={item.id} className="flex items-center gap-3">
           <span className={`relative ${thumb} shrink-0 overflow-hidden rounded-xl border border-line bg-surface-2`}>
-            <ItemVisual item={item} sizes="56px" />
+            <ItemVisual item={item} sizes="56px" variant={colours[item.id]} />
           </span>
           <span className="min-w-0 flex-1">
             <span className="block truncate text-sm font-medium">{item.name}</span>
+            {colours[item.id] && (
+              <span className="block text-xs text-muted capitalize">{item.variants?.find((v) => v.key === colours[item.id])?.label}</span>
+            )}
             <span className="block text-xs text-muted tabular-nums">
               {formatPrice(item.price)} / {item.unit} · {formatPrice(item.price * qty)}
             </span>
@@ -497,7 +505,7 @@ export function QuoteForm({
                     {qty === 0 ? (
                       <button type="button" onClick={() => add(item)} className="group absolute inset-0" aria-label={`Add ${suggest} ${item.name}`}>
                         <span className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]">
-                          <ItemVisual item={item} sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 22vw" />
+                          <ItemVisual item={item} variant={colours[item.id]} sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 22vw" />
                         </span>
                         <span className="absolute right-3 bottom-3 flex items-center gap-1 rounded-full bg-ink py-1.5 pr-3 pl-2 text-sm font-medium text-bg shadow-soft">
                           <Icon name="plus" size={16} /> {suggest > 1 ? suggest.toLocaleString() : "Add"}
@@ -505,7 +513,7 @@ export function QuoteForm({
                       </button>
                     ) : (
                       <>
-                        <ItemVisual item={item} sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 22vw" />
+                        <ItemVisual item={item} variant={colours[item.id]} sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 22vw" />
                         <span className="badge absolute top-3 left-3 bg-surface/95"><Icon name="check" size={12} /> In your list</span>
                         <div className="absolute inset-x-2 bottom-2 flex justify-center">
                           <Stepper name={item.name} qty={qty} onChange={(n) => setQty(item.id, n)} />
@@ -516,6 +524,30 @@ export function QuoteForm({
                   <div className="flex flex-1 flex-col p-3 sm:p-4">
                     <h4 className="leading-snug font-medium">{item.name}</h4>
                     {item.specs && <p className="mt-0.5 line-clamp-1 text-xs text-muted">{item.specs}</p>}
+                    {item.variants && item.variants.length > 0 && (
+                      <div className="mt-2 flex flex-wrap items-center gap-1.5" role="radiogroup" aria-label={`${item.name} colour`}>
+                        {[{ key: "", label: "Standard", src: item.image ?? "", alt: item.imageAlt ?? item.name }, ...item.variants].map((v) => {
+                          const on = (colours[item.id] ?? "") === v.key;
+                          return (
+                            <button
+                              key={v.key || "standard"}
+                              type="button"
+                              role="radio"
+                              aria-checked={on}
+                              title={v.label}
+                              aria-label={v.label}
+                              onClick={() => setColours((c) => ({ ...c, [item.id]: v.key }))}
+                              className={`relative h-7 w-7 overflow-hidden rounded-full border-2 bg-surface-2 ${on ? "border-ink" : "border-line"}`}
+                            >
+                              {v.src && <Image src={v.src} alt="" fill sizes="28px" className="scale-[2.2] object-cover" />}
+                            </button>
+                          );
+                        })}
+                        {colours[item.id] && (
+                          <span className="text-xs text-muted capitalize">{item.variants.find((v) => v.key === colours[item.id])?.label}</span>
+                        )}
+                      </div>
+                    )}
                     <div className="mt-auto flex items-baseline justify-between gap-2 pt-2">
                       <PriceTag amount={item.price} unit={item.unit} size="sm" />
                       {qty > 0 && <span className="text-sm font-semibold tabular-nums">{formatPrice(item.price * qty)}</span>}
