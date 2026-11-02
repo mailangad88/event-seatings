@@ -23,6 +23,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-ink/75">
             {[
               ["/chairs", "The Collection"],
+              ["/gallery", "3D Gallery"],
               ["/quiz", "Style Quiz"],
               ["/blog", "Journal"],
               ["/book", "Book a Free Call"],

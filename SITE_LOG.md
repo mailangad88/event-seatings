@@ -58,6 +58,7 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 - **Flowchart:** `ProcessFlow` (choose → talk → proposal → delivered → collected) is an ordered list, so search engines read every step. It's used on /about, /faq and /quote.
 - **Chair strips:** `ChairStrip` adds captioned, linked chair images to /about, /quiz, /privacy and /terms.
 - **Sitemap:** chair pages and posts list their images (`image:loc`) for Google Images.
+- **3D rental renders (Blender, 2026-11-02):** every catalog item (98 rentals) has a 1600px studio render, plus 17 16:9 event scenes and topic heroes, in `public/rentals/<category>/<slug>.webp`. Alt text and captions live in `blender/rentals/catalog.py` and are published to `src/data/rental-images.json` (`rentalImage(slug)`, `productImages`, `sceneImages`). The 13 collection chairs now show their Blender render first. `/gallery` lists every image with ImageGallery + ImageObject schema, and the sitemap lists them as `image:loc`. How to add or re-render: `blender/rentals/README.md`.
 - **Videos (Remotion/Blender):** none are on the site yet. When one is added, render it with `VideoFeature` (`src/components/VideoFeature.tsx`). It requires a poster, title and description, takes an optional `.vtt` captions file, and outputs VideoObject schema. Put files in `public/videos/`.
 
 ---
@@ -68,7 +69,8 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 |---|---|---|---|---|---|---|---|---|
 | `/` | Home: hero 3D chair viewer, featured chairs, waitlist | 2026-10-31 | ✅ | ⚠️ | ⚠️ | ✅ | ❌ | ✅ |
 | `/chairs` | Browse/filter all chair styles | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
-| `/chairs/[slug]` (13 chairs) | Chair detail, 3D viewer, votes, quote link | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
+| `/chairs/[slug]` (13 chairs) | Chair detail, 3D viewer, votes, quote link (image now the Blender studio render) | 2026-11-02 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
+| `/gallery` | 3D rental gallery: 98 product renders + 17 event setups, by category | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `/quiz` | 4-question chair style quiz | 2026-11-01 | ✅ | ❌ | ❌ | ✅ | ❌ | ⚠️ |
 | `/quote` | Quote request form | 2026-11-01 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
 | `/book` | Book a 15-minute seating call | 2026-10-31 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
@@ -114,6 +116,8 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 ---
 
 ## Remaining to improve
+
+- **3D renders (2026-11-02):** add finish variants (e.g. silver/black crossback, smoke ghost, terracotta shell) as separate renders; add 360-degree turntable clips for the top 10 items via `VideoFeature`; swap any render for a real photo once stock is photographed (set `image` on the chair or replace the WebP, keep the alt text accurate).
 
 **`/` Home**
 - Add a short answer-first "What we do / where we deliver" block naming Chicago neighborhoods and suburbs.

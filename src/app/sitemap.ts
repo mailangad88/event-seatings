@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { chairImage, chairs, getChair } from "@/data/chairs";
+import { rentalImages } from "@/data/rental-images";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -20,5 +21,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   };
   const chairPages = chairs.map((c) => ({ url: `${site.url}/chairs/${c.slug}`, priority: 0.8, images: img(c.slug) }));
   const posts = (await getPosts()).map((p) => ({ url: `${site.url}/blog/${p.slug}`, lastModified: p.date, images: img(p.chair) }));
-  return [...pages, ...chairPages, ...posts];
+  const gallery = { url: `${site.url}/gallery`, priority: 0.7, images: rentalImages.map((i) => `${site.url}${i.src}`) };
+  return [...pages, gallery, ...chairPages, ...posts];
 }
