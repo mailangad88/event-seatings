@@ -96,7 +96,9 @@ hero("hero-dinnerware",
 hero("hero-glassware",
      "3D render of six rental glasses in a row: water goblet, wine glass, champagne flute, rocks, highball and pilsner glasses",
      "Glassware for bars and dinners",
-     lambda: lineup([(lambda k=k: TW.glass_shot(k)) for k in ("water-goblet", "wine-glass", "champagne-flute", "rocks-glass", "highball-glass", "pilsner-glass")], 0.13),
+     lambda: (lineup([(lambda k=k: setattr(TW.stemware(TW.GLASSES[k], k).location, "z", 0.0008))
+                      for k in ("water-goblet", "wine-glass", "champagne-flute", "rocks-glass", "highball-glass", "pilsner-glass")], 0.13),
+              TW.black_cards(spread=0.9, h=0.5)),  # one pair of flags, wide enough to stay out of frame
      cam=dict(az=-10, el=10, lens=85, pad=1.0))
 hero("hero-catering",
      "3D render of catering rentals: a roll-top chafing dish, a glass lemonade dispenser, a coffee urn and a gold cake stand",
