@@ -80,6 +80,28 @@
     "height": 1600,
     "kind": "product"
   },
+  "bentwood--black": {
+    "src": "/rentals/chairs/bentwood--black.webp",
+    "category": "chairs",
+    "alt": "3D render of a black bentwood bistro chair with a hoop back for Parisian-cafe themes",
+    "caption": "Bentwood chair in black",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "bentwood",
+    "variant": "black"
+  },
+  "bentwood--natural": {
+    "src": "/rentals/chairs/bentwood--natural.webp",
+    "category": "chairs",
+    "alt": "3D render of a natural wood bentwood bistro chair with a hoop back",
+    "caption": "Bentwood chair in natural",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "bentwood",
+    "variant": "natural"
+  },
   "black-padded-folding": {
     "src": "/rentals/chairs/black-padded-folding.webp",
     "category": "chairs",
@@ -98,6 +120,17 @@
     "height": 1600,
     "kind": "product"
   },
+  "cane-back--black": {
+    "src": "/rentals/chairs/cane-back--black.webp",
+    "category": "chairs",
+    "alt": "3D render of a black cane-back chair with a woven cane panel and linen cushion",
+    "caption": "Cane-back chair in black",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "cane-back",
+    "variant": "black"
+  },
   "clear-chiavari": {
     "src": "/rentals/chairs/clear-chiavari.webp",
     "category": "chairs",
@@ -107,6 +140,17 @@
     "height": 1600,
     "kind": "product"
   },
+  "clear-chiavari--angle": {
+    "src": "/rentals/chairs/clear-chiavari--angle.webp",
+    "category": "chairs",
+    "alt": "Another angle: 3D render of a clear acrylic Chiavari chair (ice Chiavari) with a white cushion, a modern rental for Chicago weddings",
+    "caption": "Clear (ice) Chiavari chair (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "clear-chiavari",
+    "variant": "angle"
+  },
   "crossback": {
     "src": "/rentals/chairs/crossback.webp",
     "category": "chairs",
@@ -115,6 +159,28 @@
     "width": 1600,
     "height": 1600,
     "kind": "product"
+  },
+  "crossback--black": {
+    "src": "/rentals/chairs/crossback--black.webp",
+    "category": "chairs",
+    "alt": "3D render of a matte black crossback chair with a rattan seat for modern farmhouse events",
+    "caption": "Crossback chair in matte black",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "crossback",
+    "variant": "black"
+  },
+  "crossback--natural": {
+    "src": "/rentals/chairs/crossback--natural.webp",
+    "category": "chairs",
+    "alt": "3D render of a natural oak crossback chair with a rattan seat for barn and vineyard weddings",
+    "caption": "Crossback chair in natural oak",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "crossback",
+    "variant": "natural"
   },
   "garden-folding": {
     "src": "/rentals/chairs/garden-folding.webp",
@@ -134,6 +200,17 @@
     "height": 1600,
     "kind": "product"
   },
+  "ghost--smoke": {
+    "src": "/rentals/chairs/ghost--smoke.webp",
+    "category": "chairs",
+    "alt": "3D render of a smoke grey Louis ghost chair with an oval medallion back for moody, modern receptions",
+    "caption": "Smoke ghost chair",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "ghost",
+    "variant": "smoke"
+  },
   "gold-chiavari": {
     "src": "/rentals/chairs/gold-chiavari.webp",
     "category": "chairs",
@@ -143,6 +220,50 @@
     "height": 1600,
     "kind": "product"
   },
+  "gold-chiavari--angle": {
+    "src": "/rentals/chairs/gold-chiavari--angle.webp",
+    "category": "chairs",
+    "alt": "Another angle: 3D render of a gold Chiavari chair with an ivory seat cushion, the classic wedding reception chair, available to rent in Chicago",
+    "caption": "Gold Chiavari chair with ivory cushion (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "gold-chiavari",
+    "variant": "angle"
+  },
+  "gold-chiavari--black": {
+    "src": "/rentals/chairs/gold-chiavari--black.webp",
+    "category": "chairs",
+    "alt": "3D render of a black Chiavari chair with a black cushion for modern black-tie events",
+    "caption": "Black Chiavari chair",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "gold-chiavari",
+    "variant": "black"
+  },
+  "gold-chiavari--fruitwood": {
+    "src": "/rentals/chairs/gold-chiavari--fruitwood.webp",
+    "category": "chairs",
+    "alt": "3D render of a fruitwood (honey) Chiavari chair with an ivory cushion for rustic and garden weddings",
+    "caption": "Fruitwood Chiavari chair",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "gold-chiavari",
+    "variant": "fruitwood"
+  },
+  "gold-chiavari--mahogany": {
+    "src": "/rentals/chairs/gold-chiavari--mahogany.webp",
+    "category": "chairs",
+    "alt": "3D render of a mahogany wood Chiavari chair with an ivory cushion for classic and fall weddings",
+    "caption": "Mahogany Chiavari chair",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "gold-chiavari",
+    "variant": "mahogany"
+  },
   "infinity": {
     "src": "/rentals/chairs/infinity.webp",
     "category": "chairs",
@@ -151,6 +272,28 @@
     "width": 1600,
     "height": 1600,
     "kind": "product"
+  },
+  "infinity--black": {
+    "src": "/rentals/chairs/infinity--black.webp",
+    "category": "chairs",
+    "alt": "3D render of a black infinity chair with a looped back and ivory cushion",
+    "caption": "Black infinity chair",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "infinity",
+    "variant": "black"
+  },
+  "infinity--silver": {
+    "src": "/rentals/chairs/infinity--silver.webp",
+    "category": "chairs",
+    "alt": "3D render of a silver infinity chair with a looped back and ivory cushion",
+    "caption": "Silver infinity chair",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "infinity",
+    "variant": "silver"
   },
   "kids-chair": {
     "src": "/rentals/chairs/kids-chair.webp",
@@ -170,6 +313,17 @@
     "height": 1600,
     "kind": "product"
   },
+  "louis-medallion--grey-silver": {
+    "src": "/rentals/chairs/louis-medallion--grey-silver.webp",
+    "category": "chairs",
+    "alt": "3D render of a grey and silver Louis medallion chair with an upholstered oval back",
+    "caption": "Louis medallion chair in grey & silver",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "louis-medallion",
+    "variant": "grey-silver"
+  },
   "rattan-garden": {
     "src": "/rentals/chairs/rattan-garden.webp",
     "category": "chairs",
@@ -187,6 +341,39 @@
     "width": 1600,
     "height": 1600,
     "kind": "product"
+  },
+  "shell--black": {
+    "src": "/rentals/chairs/shell--black.webp",
+    "category": "chairs",
+    "alt": "3D render of a black molded shell chair on maple legs for corporate events and launches",
+    "caption": "Shell chair in black",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "shell",
+    "variant": "black"
+  },
+  "shell--sage": {
+    "src": "/rentals/chairs/shell--sage.webp",
+    "category": "chairs",
+    "alt": "3D render of a sage green molded shell chair on maple legs for garden parties and showers",
+    "caption": "Shell chair in sage",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "shell",
+    "variant": "sage"
+  },
+  "shell--terracotta": {
+    "src": "/rentals/chairs/shell--terracotta.webp",
+    "category": "chairs",
+    "alt": "3D render of a terracotta molded shell chair on maple legs for boho and desert-palette events",
+    "caption": "Shell chair in terracotta",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "shell",
+    "variant": "terracotta"
   },
   "silver-chiavari": {
     "src": "/rentals/chairs/silver-chiavari.webp",
@@ -215,6 +402,39 @@
     "height": 1600,
     "kind": "product"
   },
+  "velvet-dining--blush": {
+    "src": "/rentals/chairs/velvet-dining--blush.webp",
+    "category": "chairs",
+    "alt": "3D render of a blush pink velvet dining chair with gold legs for romantic head tables and bridal showers",
+    "caption": "Velvet dining chair in blush",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "velvet-dining",
+    "variant": "blush"
+  },
+  "velvet-dining--champagne": {
+    "src": "/rentals/chairs/velvet-dining--champagne.webp",
+    "category": "chairs",
+    "alt": "3D render of a champagne velvet dining chair with gold legs for elegant receptions",
+    "caption": "Velvet dining chair in champagne",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "velvet-dining",
+    "variant": "champagne"
+  },
+  "velvet-dining--navy": {
+    "src": "/rentals/chairs/velvet-dining--navy.webp",
+    "category": "chairs",
+    "alt": "3D render of a navy velvet dining chair with gold legs for winter weddings and galas",
+    "caption": "Velvet dining chair in navy",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "velvet-dining",
+    "variant": "navy"
+  },
   "white-chiavari": {
     "src": "/rentals/chairs/white-chiavari.webp",
     "category": "chairs",
@@ -232,6 +452,17 @@
     "width": 1600,
     "height": 1600,
     "kind": "product"
+  },
+  "white-folding--angle": {
+    "src": "/rentals/chairs/white-folding--angle.webp",
+    "category": "chairs",
+    "alt": "Another angle: 3D render of a white resin folding chair, the standard ceremony and backyard party rental chair in Chicago",
+    "caption": "White folding chair (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "white-folding",
+    "variant": "angle"
   },
   "white-resin-folding": {
     "src": "/rentals/chairs/white-resin-folding.webp",
@@ -251,6 +482,28 @@
     "height": 1600,
     "kind": "product"
   },
+  "windsor--sage": {
+    "src": "/rentals/chairs/windsor--sage.webp",
+    "category": "chairs",
+    "alt": "3D render of a sage painted Windsor spindle chair for garden and farmhouse weddings",
+    "caption": "Windsor chair in sage",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "windsor",
+    "variant": "sage"
+  },
+  "windsor--walnut": {
+    "src": "/rentals/chairs/windsor--walnut.webp",
+    "category": "chairs",
+    "alt": "3D render of a walnut Windsor spindle chair with a bow back for rustic dinners",
+    "caption": "Windsor chair in walnut",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "windsor",
+    "variant": "walnut"
+  },
   "wishbone": {
     "src": "/rentals/chairs/wishbone.webp",
     "category": "chairs",
@@ -259,6 +512,17 @@
     "width": 1600,
     "height": 1600,
     "kind": "product"
+  },
+  "wishbone--black": {
+    "src": "/rentals/chairs/wishbone--black.webp",
+    "category": "chairs",
+    "alt": "3D render of a black wishbone chair with a natural cord seat for modern dinners",
+    "caption": "Wishbone chair in black",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "wishbone",
+    "variant": "black"
   },
   "candle-holder": {
     "src": "/rentals/decor/candle-holder.webp",
@@ -458,6 +722,50 @@
     "height": 1600,
     "kind": "product"
   },
+  "banquet-floor-length--black": {
+    "src": "/rentals/linens/banquet-floor-length--black.webp",
+    "category": "linens",
+    "alt": "3D render of a black 90 by 156 inch tablecloth draped floor-length over an 8-foot banquet table",
+    "caption": "Banquet tablecloth in black",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "banquet-floor-length",
+    "variant": "black"
+  },
+  "banquet-floor-length--blush": {
+    "src": "/rentals/linens/banquet-floor-length--blush.webp",
+    "category": "linens",
+    "alt": "3D render of a blush 90 by 156 inch tablecloth draped floor-length over an 8-foot banquet table",
+    "caption": "Banquet tablecloth in blush",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "banquet-floor-length",
+    "variant": "blush"
+  },
+  "banquet-floor-length--navy": {
+    "src": "/rentals/linens/banquet-floor-length--navy.webp",
+    "category": "linens",
+    "alt": "3D render of a navy 90 by 156 inch tablecloth draped floor-length over an 8-foot banquet table",
+    "caption": "Banquet tablecloth in navy",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "banquet-floor-length",
+    "variant": "navy"
+  },
+  "banquet-floor-length--sage": {
+    "src": "/rentals/linens/banquet-floor-length--sage.webp",
+    "category": "linens",
+    "alt": "3D render of a sage 90 by 156 inch tablecloth draped floor-length over an 8-foot banquet table",
+    "caption": "Banquet tablecloth in sage",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "banquet-floor-length",
+    "variant": "sage"
+  },
   "banquet-lap-length": {
     "src": "/rentals/linens/banquet-lap-length.webp",
     "category": "linens",
@@ -485,6 +793,61 @@
     "height": 1600,
     "kind": "product"
   },
+  "chair-sash--burgundy": {
+    "src": "/rentals/linens/chair-sash--burgundy.webp",
+    "category": "linens",
+    "alt": "3D render of a gold Chiavari chair dressed with a burgundy chiffon sash tied in a bow",
+    "caption": "Burgundy chiffon chair sash",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "chair-sash",
+    "variant": "burgundy"
+  },
+  "chair-sash--champagne": {
+    "src": "/rentals/linens/chair-sash--champagne.webp",
+    "category": "linens",
+    "alt": "3D render of a gold Chiavari chair dressed with a champagne chiffon sash tied in a bow",
+    "caption": "Champagne chiffon chair sash",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "chair-sash",
+    "variant": "champagne"
+  },
+  "chair-sash--dusty-blue": {
+    "src": "/rentals/linens/chair-sash--dusty-blue.webp",
+    "category": "linens",
+    "alt": "3D render of a gold Chiavari chair dressed with a dusty blue chiffon sash tied in a bow",
+    "caption": "Dusty blue chiffon chair sash",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "chair-sash",
+    "variant": "dusty-blue"
+  },
+  "chair-sash--navy": {
+    "src": "/rentals/linens/chair-sash--navy.webp",
+    "category": "linens",
+    "alt": "3D render of a gold Chiavari chair dressed with a navy chiffon sash tied in a bow",
+    "caption": "Navy chiffon chair sash",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "chair-sash",
+    "variant": "navy"
+  },
+  "chair-sash--sage": {
+    "src": "/rentals/linens/chair-sash--sage.webp",
+    "category": "linens",
+    "alt": "3D render of a gold Chiavari chair dressed with a sage chiffon sash tied in a bow",
+    "caption": "Sage chiffon chair sash",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "chair-sash",
+    "variant": "sage"
+  },
   "cloth-napkins": {
     "src": "/rentals/linens/cloth-napkins.webp",
     "category": "linens",
@@ -502,6 +865,94 @@
     "width": 1600,
     "height": 1600,
     "kind": "product"
+  },
+  "round-floor-length--black": {
+    "src": "/rentals/linens/round-floor-length--black.webp",
+    "category": "linens",
+    "alt": "3D render of a black 120-inch round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round tablecloth in black",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "round-floor-length",
+    "variant": "black"
+  },
+  "round-floor-length--blush": {
+    "src": "/rentals/linens/round-floor-length--blush.webp",
+    "category": "linens",
+    "alt": "3D render of a blush 120-inch round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round tablecloth in blush",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "round-floor-length",
+    "variant": "blush"
+  },
+  "round-floor-length--burgundy": {
+    "src": "/rentals/linens/round-floor-length--burgundy.webp",
+    "category": "linens",
+    "alt": "3D render of a burgundy 120-inch round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round tablecloth in burgundy",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "round-floor-length",
+    "variant": "burgundy"
+  },
+  "round-floor-length--champagne": {
+    "src": "/rentals/linens/round-floor-length--champagne.webp",
+    "category": "linens",
+    "alt": "3D render of a champagne 120-inch round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round tablecloth in champagne",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "round-floor-length",
+    "variant": "champagne"
+  },
+  "round-floor-length--dusty-blue": {
+    "src": "/rentals/linens/round-floor-length--dusty-blue.webp",
+    "category": "linens",
+    "alt": "3D render of a dusty blue 120-inch round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round tablecloth in dusty blue",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "round-floor-length",
+    "variant": "dusty-blue"
+  },
+  "round-floor-length--navy": {
+    "src": "/rentals/linens/round-floor-length--navy.webp",
+    "category": "linens",
+    "alt": "3D render of a navy 120-inch round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round tablecloth in navy",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "round-floor-length",
+    "variant": "navy"
+  },
+  "round-floor-length--sage": {
+    "src": "/rentals/linens/round-floor-length--sage.webp",
+    "category": "linens",
+    "alt": "3D render of a sage 120-inch round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round tablecloth in sage",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "round-floor-length",
+    "variant": "sage"
+  },
+  "round-floor-length--white": {
+    "src": "/rentals/linens/round-floor-length--white.webp",
+    "category": "linens",
+    "alt": "3D render of a white 120-inch round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round tablecloth in white",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "round-floor-length",
+    "variant": "white"
   },
   "round-lap-length": {
     "src": "/rentals/linens/round-lap-length.webp",
@@ -521,6 +972,17 @@
     "height": 1600,
     "kind": "product"
   },
+  "sequin-overlay--silver": {
+    "src": "/rentals/linens/sequin-overlay--silver.webp",
+    "category": "linens",
+    "alt": "3D render of a silver sequin round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "Silver sequin tablecloth",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "sequin-overlay",
+    "variant": "silver"
+  },
   "spandex-highboy": {
     "src": "/rentals/linens/spandex-highboy.webp",
     "category": "linens",
@@ -530,6 +992,39 @@
     "height": 1600,
     "kind": "product"
   },
+  "spandex-highboy--black": {
+    "src": "/rentals/linens/spandex-highboy--black.webp",
+    "category": "linens",
+    "alt": "3D render of a black fitted spandex cover on a cocktail highboy table",
+    "caption": "Spandex highboy cover in black",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "spandex-highboy",
+    "variant": "black"
+  },
+  "spandex-highboy--blush": {
+    "src": "/rentals/linens/spandex-highboy--blush.webp",
+    "category": "linens",
+    "alt": "3D render of a blush fitted spandex cover on a cocktail highboy table",
+    "caption": "Spandex highboy cover in blush",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "spandex-highboy",
+    "variant": "blush"
+  },
+  "spandex-highboy--navy": {
+    "src": "/rentals/linens/spandex-highboy--navy.webp",
+    "category": "linens",
+    "alt": "3D render of a navy fitted spandex cover on a cocktail highboy table",
+    "caption": "Spandex highboy cover in navy",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "spandex-highboy",
+    "variant": "navy"
+  },
   "table-runner": {
     "src": "/rentals/linens/table-runner.webp",
     "category": "linens",
@@ -538,6 +1033,50 @@
     "width": 1600,
     "height": 1600,
     "kind": "product"
+  },
+  "table-runner--blush": {
+    "src": "/rentals/linens/table-runner--blush.webp",
+    "category": "linens",
+    "alt": "3D render of a blush chiffon table runner over an ivory floor-length linen on an 8-foot banquet table",
+    "caption": "Blush chiffon table runner",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "table-runner",
+    "variant": "blush"
+  },
+  "table-runner--burgundy": {
+    "src": "/rentals/linens/table-runner--burgundy.webp",
+    "category": "linens",
+    "alt": "3D render of a burgundy chiffon table runner over an ivory floor-length linen on an 8-foot banquet table",
+    "caption": "Burgundy chiffon table runner",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "table-runner",
+    "variant": "burgundy"
+  },
+  "table-runner--champagne": {
+    "src": "/rentals/linens/table-runner--champagne.webp",
+    "category": "linens",
+    "alt": "3D render of a champagne chiffon table runner over an ivory floor-length linen on an 8-foot banquet table",
+    "caption": "Champagne chiffon table runner",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "table-runner",
+    "variant": "champagne"
+  },
+  "table-runner--dusty-blue": {
+    "src": "/rentals/linens/table-runner--dusty-blue.webp",
+    "category": "linens",
+    "alt": "3D render of a dusty blue chiffon table runner over an ivory floor-length linen on an 8-foot banquet table",
+    "caption": "Dusty blue chiffon table runner",
+    "width": 1200,
+    "height": 1200,
+    "kind": "variant",
+    "parent": "table-runner",
+    "variant": "dusty-blue"
   },
   "coffee-table": {
     "src": "/rentals/lounge/coffee-table.webp",
@@ -584,11 +1123,56 @@
     "height": 1080,
     "kind": "scene"
   },
+  "bar-setup": {
+    "src": "/rentals/scenes/bar-setup.webp",
+    "category": "scenes",
+    "alt": "3D render of an event bar setup: a 6-foot portable bar with gold Chiavari bar stools, a champagne wall and spandex cocktail tables",
+    "caption": "Bar and champagne wall",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "boho-lounge": {
+    "src": "/rentals/scenes/boho-lounge.webp",
+    "category": "scenes",
+    "alt": "3D render of a boho lounge with rattan chairs, an ivory velvet sofa, a gold coffee table and a floral hexagon arch",
+    "caption": "Boho lounge vignette",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "buffet-setup": {
+    "src": "/rentals/scenes/buffet-setup.webp",
+    "category": "scenes",
+    "alt": "3D render of a catered buffet line with chafing dishes on ivory linens, a beverage station with a lemonade dispenser and coffee urn, and a cake table",
+    "caption": "Buffet and beverage station",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
   "cocktail-hour": {
     "src": "/rentals/scenes/cocktail-hour.webp",
     "category": "scenes",
     "alt": "3D render of an outdoor cocktail hour with white spandex highboy tables, an ivory velvet lounge sofa and bistro string lights at dusk",
     "caption": "Cocktail hour under string lights",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "corporate-gala": {
+    "src": "/rentals/scenes/corporate-gala.webp",
+    "category": "scenes",
+    "alt": "3D render of a corporate gala with navy linens, silver Chiavari chairs, white florals and a skirted stage in a ballroom",
+    "caption": "Corporate gala",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "dance-party": {
+    "src": "/rentals/scenes/dance-party.webp",
+    "category": "scenes",
+    "alt": "3D render of a reception dance floor: a starlit LED dance floor, LOVE marquee letters and purple uplighting in a ballroom",
+    "caption": "Dance floor with LED and uplighting",
     "width": 1920,
     "height": 1080,
     "kind": "scene"
@@ -607,6 +1191,15 @@
     "category": "scenes",
     "alt": "3D render of an outdoor wedding ceremony with rows of white folding chairs, an ivory aisle runner with rose petals and a floral hexagon arch at golden hour",
     "caption": "Garden wedding ceremony",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "graduation-party": {
+    "src": "/rentals/scenes/graduation-party.webp",
+    "category": "scenes",
+    "alt": "3D render of a graduation party under a 20 by 20 foot frame tent with banquet tables, white folding chairs, string lights and yard games",
+    "caption": "Graduation party tent",
     "width": 1920,
     "height": 1080,
     "kind": "scene"
@@ -719,6 +1312,24 @@
     "height": 1080,
     "kind": "scene"
   },
+  "kids-party": {
+    "src": "/rentals/scenes/kids-party.webp",
+    "category": "scenes",
+    "alt": "3D render of a toddler party with a neutral soft play set, a kids' table with child-size chairs and a cotton candy cart",
+    "caption": "Kids' party setup",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "sweetheart-stage": {
+    "src": "/rentals/scenes/sweetheart-stage.webp",
+    "category": "scenes",
+    "alt": "3D render of a sweetheart stage with two gold throne chairs, a gold sequin table and a rose flower wall, flanked by guest tables, for weddings, quinceaneras and sangeets",
+    "caption": "Sweetheart stage with throne chairs",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
   "tent-reception-dusk": {
     "src": "/rentals/scenes/tent-reception-dusk.webp",
     "category": "scenes",
@@ -733,6 +1344,15 @@
     "category": "scenes",
     "alt": "3D render of a candlelit Chicago ballroom wedding reception with ivory floor-length linens, gold Chiavari chairs, gold chargers and blush rose centerpieces",
     "caption": "Ballroom wedding reception",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "winter-tent": {
+    "src": "/rentals/scenes/winter-tent.webp",
+    "category": "scenes",
+    "alt": "3D render of a winter-ready frame tent with cathedral-window sidewalls, patio heaters and a forced-air tent heater for cold-weather Chicago events",
+    "caption": "Heated winter tent",
     "width": 1920,
     "height": 1080,
     "kind": "scene"
