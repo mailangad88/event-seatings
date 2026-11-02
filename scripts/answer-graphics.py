@@ -169,4 +169,30 @@ for i,(n,h,sub) in enumerate(rows):
     b.append(text(842,y+26,sub,15,MUTED))
 b.append(text(600,700,"Schematic, not to scale. Every venue layout is different.",14,MUTED,SANS,"middle",400,1,True))
 write("quinceanera-seating-plan.svg",svg(1200,730,"Schematic quinceañera seating plan: a throne chair on the stage, court of honor tables beside it, family and padrinos tables near the dance floor, and guest round tables behind","\n".join(b)))
+# 8. Restaurant buyout chair swap timeline
+b=[eyebrow(600,70,"Restaurant buyout chair swap","middle"),
+   text(600,122,"The tight window between service and your guests",36,INK,SERIF,"middle",300)]
+steps=[("Weeks before","Confirm the plan","Where house chairs go, load-in door, COI"),
+       ("Service ends","Clear the room","Restaurant stacks or stores its chairs"),
+       ("Load-in","Swap and set","Rental chairs in, tables dressed"),
+       ("Your event","Guests arrive","Ceremony rows flip to dinner if needed"),
+       ("Close","Strike","Rentals out, house chairs back for tomorrow")]
+x0,x1=120,1080
+b.append(f'<line x1="{x0}" y1="260" x2="{x1}" y2="260" stroke="{GOLD}" stroke-opacity=".6" stroke-width="2"/>')
+b.append(f'<rect x="{x0+(x1-x0)/4-40:.0f}" y="236" width="{(x1-x0)/4+80:.0f}" height="48" fill="{GOLD}" fill-opacity=".12"/>')
+b.append(text((x0+x1)/2-(x1-x0)/8,226,"THE CRUNCH: OFTEN JUST A FEW HOURS",12,GOLD,SANS,"middle",500,2))
+for i,(t,h,sub) in enumerate(steps):
+    x=x0+i*(x1-x0)/4
+    b.append(f'<circle cx="{x:.0f}" cy="260" r="12" fill="{GOLD if i in (1,2) else BG}" stroke="{GOLD}" stroke-width="2"/>')
+    b.append(text(x,330,t.upper(),13,GOLD,SANS,"middle",500,2.5))
+    b.append(text(x,370,h,26,INK,SERIF,"middle"))
+    words=sub.split(); lines=[];cur=""
+    for w in words:
+        if len(cur)+len(w)>22: lines.append(cur.strip()); cur=""
+        cur+=w+" "
+    lines.append(cur.strip())
+    for j,l in enumerate(lines):
+        b.append(text(x,404+j*24,l,16,MUTED,SANS,"middle"))
+b.append(text(600,520,"Typical sequence. Every restaurant sets its own access times, so confirm yours in writing.",15,MUTED,SANS,"middle"))
+write("restaurant-buyout-chair-swap.svg",svg(1200,570,"Restaurant buyout chair swap timeline: confirm the plan weeks before, clear the room after service, swap in rental chairs, host the event, then strike and return the house chairs","\n".join(b)))
 print("ok")
