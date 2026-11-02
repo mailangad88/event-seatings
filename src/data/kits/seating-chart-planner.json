@@ -1,0 +1,236 @@
+{
+  "slug": "seating-chart-planner",
+  "title": "Seating Chart Planner",
+  "subtitle": "How to build a seating chart for any event, with table capacities, etiquette, and a printable worksheet.",
+  "intro": "A good seating chart makes guests feel looked after and keeps dinner moving. This planner shows you how to build one step by step, how many people fit at each kind of table, and how to handle the family situations everyone worries about. Use the worksheet to sketch your tables, then work through the checklist so every name card and sign is ready.",
+  "sections": [
+    {
+      "heading": "How to Build a Seating Chart in Seven Steps",
+      "kind": "timeline",
+      "note": "Work through the phases in order. Most people need two or three evenings.",
+      "phases": [
+        {
+          "when": "Step 1: Get the numbers right",
+          "tasks": [
+            "Wait until your RSVP deadline has passed so you know the real headcount.",
+            "Count every guest, including children, vendors who are eating, and your own table.",
+            "Decide whether you want assigned tables only or assigned seats too.",
+            "Note any guests who need wheelchair access, aisle seats, or a table close to a restroom.",
+            "Write down dietary needs next to each name so the caterer can find them."
+          ]
+        },
+        {
+          "when": "Step 2: Choose tables and measure the room",
+          "tasks": [
+            "Pick table shapes and sizes using the capacity table in this kit.",
+            "Get the venue floor plan with exact dimensions, doors, pillars, and power outlets.",
+            "Leave at least 5 feet between table edges so servers and wheelchairs can pass.",
+            "Reserve space for the dance floor, DJ, bar, buffet, cake table, and gift table.",
+            "Ask your rental company for the exact table diameters, since a few inches matter."
+          ]
+        },
+        {
+          "when": "Step 3: Make groups",
+          "tasks": [
+            "Sort guests into natural groups: immediate family, extended family, college friends, work friends, neighbors, and kids.",
+            "Keep couples and households together unless you are told otherwise.",
+            "Mark groups who do not get along and groups who adore each other.",
+            "Identify solo guests and place them with people they already know or will enjoy meeting.",
+            "Put a friendly connector at each table: someone who loves to talk and will include everyone."
+          ]
+        },
+        {
+          "when": "Step 4: Place the key tables first",
+          "tasks": [
+            "Seat the host, honoree, or head table closest to the focal point of the room.",
+            "Place parents and grandparents near the front but away from the speakers.",
+            "Put elderly guests away from the DJ speakers and close to restrooms.",
+            "Put the kids table near their parents but away from the bar.",
+            "Place the party-lovers and dancers near the dance floor."
+          ]
+        },
+        {
+          "when": "Step 5: Fill the remaining tables",
+          "tasks": [
+            "Fill tables to 80 to 90 percent of capacity so guests have elbow room.",
+            "Balance each table with a mix of ages and personalities where it makes sense.",
+            "Avoid a table made entirely of singles unless they are friends.",
+            "Avoid putting the only two people who do not know anyone together in a corner.",
+            "Keep a few empty chairs in the plan for last-minute additions."
+          ]
+        },
+        {
+          "when": "Step 6: Review and proof",
+          "tasks": [
+            "Ask a trusted friend or relative to look the plan over for conflicts you missed.",
+            "Check that every guest appears exactly once.",
+            "Double-check spelling of every name and title.",
+            "Confirm tables are numbered or named in a clear walking order.",
+            "Share the final plan with your caterer and day-of coordinator."
+          ]
+        },
+        {
+          "when": "Step 7: Finalize and print",
+          "tasks": [
+            "Freeze changes 5 to 7 days before the event.",
+            "Print the chart, escort cards, and table numbers.",
+            "Bring a master copy and a spare copy to the venue.",
+            "Take a photo of the final chart with your phone.",
+            "Assign one person to handle surprises on the day."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Table Size Capacity Guide",
+      "kind": "table",
+      "note": "Comfortable capacity leaves room for plates, centerpieces, and elbows. Maximum is a tight squeeze. Always confirm with your rental company.",
+      "columns": ["Table type", "Seats comfortably", "Seats at maximum", "Notes"],
+      "rows": [
+        ["48 in round", "6", "8", "Good for intimate dinners. Little room for large centerpieces."],
+        ["60 in round", "8", "10", "The most common choice. Works for most events."],
+        ["66 in round", "10", "12", "Room for a large centerpiece and family-style platters."],
+        ["72 in round", "10", "12", "Takes more floor space. Wider spacing makes conversation harder."],
+        ["6 ft banquet (rectangle)", "6", "8", "Seat guests on both sides, with or without ends."],
+        ["8 ft banquet (rectangle)", "8", "10", "Good for buffets, head tables, and long sit-down meals."],
+        ["8 ft farm table", "8", "10", "Wider than a banquet table. Seats one head at each end."],
+        ["10 ft farm table", "10", "12", "Great for family-style dinners and a rustic look."],
+        ["30 in cocktail or highboy table", "4 standing", "6 standing", "For mingling. Plan 1 table for every 15 to 20 guests."],
+        ["Sweetheart or 5 ft rectangle", "2", "4", "For a couple or small head table."]
+      ]
+    },
+    {
+      "heading": "Seating Etiquette and Tricky Situations",
+      "kind": "tips",
+      "items": [
+        "Seat divorced or separated family members at different tables, ideally in different parts of the room, but not so far that one parent looks excluded.",
+        "If both parents are involved, give each one a table of equal prominence so no one feels demoted.",
+        "Put grandparents at a table near the front with a clear path to the restroom and no loud speakers right beside them.",
+        "Do not seat guests at the kids table unless they are actually kids. If teens want to sit together, give them their own table with an older cousin as a monitor.",
+        "A table for 6 to 8 fills more naturally than a table for 10 to 12, so use smaller tables if the group has many strangers.",
+        "Seat unmarried couples together. Do not separate couples who have been together for a while, even if they are not engaged.",
+        "Treat a new partner like a spouse for seating purposes. Avoid sending them to a faraway table.",
+        "Do not hide the single friends in a corner. Mix them into tables with friendly couples.",
+        "Put coworkers at a table together only if they actually get along outside of work.",
+        "If someone has a feud with another guest, separate them by at least two tables and in different sight lines.",
+        "For difficult guests, assign a calm table host to keep the conversation going.",
+        "Reserve seats close to the exit for guests with babies or those who may need to leave early.",
+        "Give vendors such as the photographer and DJ a small table in the same room and a meal at a quiet time.",
+        "Ask older guests with mobility needs privately where they would like to sit. They will appreciate being asked.",
+        "If a guest asks to move tables, ask them to wait until after dinner so the flow is not interrupted."
+      ]
+    },
+    {
+      "heading": "Escort Cards, Place Cards, and Signage Checklist",
+      "kind": "checklist",
+      "note": "Escort cards tell guests which table. Place cards tell them which seat. Use one or both.",
+      "groups": [
+        {
+          "title": "Escort cards or seating display",
+          "items": [
+            "Choose a format: alphabetical list, table-by-table chart, or individual escort cards.",
+            "Pick a display style that fits your theme, such as a mirror, frame, board, or table with cards.",
+            "Write each guest name exactly as you want it to appear.",
+            "Add the table number or name to every card.",
+            "Alphabetize cards by last name if guests will pick them up.",
+            "Set out the display near the entrance where guests naturally pause.",
+            "Provide a second small display or an usher so lines do not back up."
+          ]
+        },
+        {
+          "title": "Place cards",
+          "items": [
+            "Decide whether you need seat assignments or just tables.",
+            "Print or hand-letter a card for every seated guest.",
+            "Mark meal choices on the card with a symbol or color so servers know what to serve.",
+            "Arrange the cards at each seat the day before or morning of the event.",
+            "Keep spare blank cards and a pen for last-minute changes."
+          ]
+        },
+        {
+          "title": "Table numbers and signs",
+          "items": [
+            "Print table numbers large enough to be read from the entrance.",
+            "Place numbers in holders at a height guests can see over centerpieces.",
+            "Create a welcome sign and a sign for the seating display.",
+            "Add signs for the bar, restrooms, gift table, and photo spot.",
+            "Print a menu card if you have choices or special dietary dishes.",
+            "Make a sign for the guest book and the card box.",
+            "Laminate or protect outdoor signs in case of wind and rain."
+          ]
+        },
+        {
+          "title": "Final checks",
+          "items": [
+            "Compare the final guest list against the cards and chart.",
+            "Have someone else proofread every name for spelling.",
+            "Give the caterer a list of special meals by table number.",
+            "Set the cards out early so you can fix problems.",
+            "Take a photo of the final setup for your records."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Rental Planning for Your Seating Plan",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Tables and chairs",
+          "items": [
+            "Order one chair per guest, plus two spare chairs per 50 guests.",
+            "Choose table sizes that match your seating plan, not the other way around.",
+            "Order extra tables for the gift table, guest book, cake, place cards, and DJ.",
+            "Confirm whether the tables have legs that fold and how much room each takes.",
+            "Ask about high chairs and booster seats for toddlers."
+          ]
+        },
+        {
+          "title": "Linens and layout",
+          "items": [
+            "Match the tablecloth to the table size, including floor-length cloths for banquet tables.",
+            "Order enough linens to replace one cloth per table in case of spills.",
+            "Check that the layout leaves 5 feet around every table.",
+            "Mark tables on a floor plan with their numbers before delivery.",
+            "Give the rental company the floor plan so they place tables correctly."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Seating Chart Worksheet",
+      "kind": "worksheet",
+      "note": "Fill in one worksheet per table. Photocopy this page as needed.",
+      "fields": [
+        "Table number or name",
+        "Table size and shape",
+        "Number of seats",
+        "Seat 1 name and meal choice",
+        "Seat 2 name and meal choice",
+        "Seat 3 name and meal choice",
+        "Seat 4 name and meal choice",
+        "Seat 5 name and meal choice",
+        "Seat 6 name and meal choice",
+        "Seat 7 name and meal choice",
+        "Seat 8 name and meal choice",
+        "Dietary or accessibility needs",
+        "Table host or connector",
+        "Notes and conflicts to avoid"
+      ]
+    },
+    {
+      "heading": "Questions to Ask Before You Finalize",
+      "kind": "questions",
+      "items": [
+        "Does the venue have a maximum capacity for the room with tables, a dance floor, and a buffet?",
+        "How many feet does the fire marshal require between tables and to exits?",
+        "Can the caterer serve a table more quickly if we label meal choices by seat?",
+        "Does the rental company deliver tables set up or flat-packed?",
+        "Who is responsible for setting out escort cards and place cards?",
+        "Are there any pillars, columns, or low ceilings that block sightlines?",
+        "Where will the speakers be, and how loud will they be at tables near the DJ?",
+        "What is the venue's policy if guests rearrange chairs or tables during the event?"
+      ]
+    }
+  ]
+}

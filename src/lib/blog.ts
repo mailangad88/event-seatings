@@ -3,6 +3,7 @@ import { existsSync, readFileSync, promises as fs } from "fs";
 import path from "path";
 import { marked } from "marked";
 import { chairs, getChair } from "@/data/chairs";
+import { downloadForPost } from "@/data/downloads";
 import { assignHeroes, type GuideHero } from "@/lib/guide-heroes";
 
 // Blog posts are Markdown files in /content/blog with a small header, e.g.
@@ -42,6 +43,8 @@ export type Post = {
   imageAlt?: string;
   keyword?: string;
   updated?: string;
+  /** Slug of the free download offered on this post (from `download:`, else matched in src/data/downloads.ts). */
+  download?: string;
   /** The first tag: the topic hub the post belongs to. */
   topic: string;
   /** A 3D render picked for this guide by keyword (see src/lib/guide-heroes.ts), when one exists. */
@@ -173,6 +176,7 @@ function parse(file: string, raw: string) {
     imageAlt: meta.imageAlt || undefined,
     keyword: meta.keyword || undefined,
     updated: meta.updated || undefined,
+    download: downloadForPost(file.replace(/\.md$/, ""), (meta.tags ?? "").split(","), meta.download || undefined).slug,
     topic: "",
   };
   const first = post.tags[0] ?? "";

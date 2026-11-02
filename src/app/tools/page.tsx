@@ -142,6 +142,30 @@ function problems(): Problem[] {
         },
       ],
     },
+    {
+      id: "organized",
+      problem: "I need a checklist or spreadsheet to stay organized",
+      intent: "Free printable kits and spreadsheets that do the math for you.",
+      tools: [
+        {
+          name: "Ultimate Event Planning Kit",
+          href: "/downloads/event-planning-kit",
+          text: "Printable timeline and checklists plus a workbook that sets every due date from your event date.",
+          outputs: ["PDF kit", "Excel workbook", "Auto due dates"],
+          image: "/dl/event-planning-kit/cover.png",
+          imageAlt: "Cover of the free Ultimate Event Planning Kit",
+          startHere: true,
+        },
+        {
+          name: "Rental Order Calculator",
+          href: "/downloads/rental-order-calculator",
+          text: "Type a guest count and service style to get chairs, tables, linens, plates, glasses and ice.",
+          outputs: ["30 quantities"],
+          image: "/dl/rental-order-calculator/cover.png",
+          imageAlt: "Preview of the free Rental Order Calculator spreadsheet",
+        },
+      ],
+    },
   ];
 }
 

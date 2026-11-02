@@ -1,0 +1,266 @@
+{
+  "slug": "birthday-party-planning-kit",
+  "title": "Birthday Party Planning Kit",
+  "subtitle": "For kids' parties and milestone adult birthdays: 1st, sweet 16, 21st, and every decade from 30 to 90.",
+  "intro": "A great birthday party is about the person, not the price tag. This kit gives you a timeline, checklists, food amounts, game ideas, and a budget guide for every age from a first birthday to a ninetieth. Pick the sections that fit and skip the rest.",
+  "sections": [
+    {
+      "heading": "Birthday Party Timeline",
+      "kind": "timeline",
+      "note": "Spring and early summer fill up quickly in Chicago-area party venues, so book those dates earlier.",
+      "phases": [
+        {
+          "when": "8 weeks out",
+          "tasks": [
+            "Choose the date and time, avoiding school breaks, holidays, and conflicts with big Chicago events.",
+            "Set a budget and decide who is paying for what.",
+            "Decide on a theme, color scheme, or activity for the guest of honor.",
+            "Make a first-draft guest list and set a maximum headcount.",
+            "Tour or book a venue: backyard, banquet hall, park pavilion, restaurant, or party room.",
+            "Check park district permit rules and deadlines if you are using a public space."
+          ]
+        },
+        {
+          "when": "6 weeks out",
+          "tasks": [
+            "Book entertainment: DJ, magician, face painter, balloon artist, bounce house, or live music.",
+            "Book a photographer or ask a friend to take photos.",
+            "Order or choose a cake, cupcakes, or dessert table.",
+            "Reserve rentals: tables, chairs, linens, tent, dinnerware, glassware, and lighting.",
+            "Send save-the-dates for milestone birthdays or out-of-town guests."
+          ]
+        },
+        {
+          "when": "4 weeks out",
+          "tasks": [
+            "Send invitations by mail, email, or text with an RSVP date.",
+            "Plan the menu and decide between catering, takeout, or home cooking.",
+            "Order decorations, balloons, banners, and tableware.",
+            "Plan the games, activities, or program.",
+            "Decide on party favors or goody bags.",
+            "Create a playlist with the guest of honor's favorites."
+          ]
+        },
+        {
+          "when": "2 weeks out",
+          "tasks": [
+            "Follow up on RSVPs and note allergies.",
+            "Confirm the headcount with the caterer, venue, and rental company.",
+            "Buy food, drinks, and supplies that can be stored.",
+            "Prepare a slideshow, memory book, or video tribute for milestone events.",
+            "Confirm delivery windows and setup time with every vendor.",
+            "Check the weather and arrange a tent or indoor space as backup."
+          ]
+        },
+        {
+          "when": "1 week out",
+          "tasks": [
+            "Finalize the schedule and share it with helpers.",
+            "Assign jobs: greeting guests, cake cutting, music, photos, cleanup.",
+            "Buy candles, lighter, and cake knife.",
+            "Pick up the gift table items and a card box.",
+            "Prepare a rain or cold-weather plan for outdoor parties."
+          ]
+        },
+        {
+          "when": "Day before",
+          "tasks": [
+            "Set up tables, chairs, and decorations if you can access the space.",
+            "Prepare make-ahead food and chill drinks.",
+            "Charge the camera and speaker.",
+            "Confirm rentals will arrive when planned.",
+            "Pack a party kit with tape, scissors, trash bags, and wipes."
+          ]
+        },
+        {
+          "when": "Party day",
+          "tasks": [
+            "Receive and inspect rental deliveries.",
+            "Finish decorations and food setup an hour before guests arrive.",
+            "Set out welcome signs, name tags, and games.",
+            "Greet each guest and introduce people who have not met.",
+            "Take a group photo near the start of the party before people leave.",
+            "Light the candles and sing at the time you planned."
+          ]
+        },
+        {
+          "when": "After the party",
+          "tasks": [
+            "Return or prepare rentals for pickup.",
+            "Send thank-you notes or messages within a week.",
+            "Share photos with guests.",
+            "Pay final vendor balances and tips.",
+            "Write down what worked for next year."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Party Planning Checklists by Age",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "1st birthday",
+          "items": [
+            "Keep the party short: 2 hours is plenty, ideally around nap schedules.",
+            "Invite family and close friends with babies for a calm, small gathering.",
+            "Set up a high chair for the guest of honor and extra seating for adults.",
+            "Plan a smash cake for the baby and a regular cake for guests.",
+            "Provide a quiet area for nursing, diaper changes, and naps.",
+            "Choose soft, safe toys and avoid small parts."
+          ]
+        },
+        {
+          "title": "Kids 2 to 12",
+          "items": [
+            "Plan 1.5 to 2 hours for young kids, and up to 3 hours for older kids.",
+            "Choose one main activity and a backup, such as a bounce house, crafts, or field games.",
+            "Ask parents about food allergies and whether they will stay or drop off.",
+            "Set up child-sized tables and chairs and a separate adult seating area.",
+            "Plan safe spaces for kids to run, with an adult watching each area.",
+            "Prepare goody bags and a simple thank-you handout."
+          ]
+        },
+        {
+          "title": "Sweet 16",
+          "items": [
+            "Ask the guest of honor what vibe they want: dance party, spa day, or dinner.",
+            "Book a DJ, photo booth, or videographer.",
+            "Create a guest list with a limit and decide whether parents attend.",
+            "Plan a candle-lighting ceremony or slideshow if they want one.",
+            "Arrange rides or a safe pickup plan for guests.",
+            "Set clear rules about phones, alcohol, and curfew."
+          ]
+        },
+        {
+          "title": "21st birthday",
+          "items": [
+            "Plan a venue with licensed service and ID checks.",
+            "Arrange rideshare, designated drivers, or a shuttle.",
+            "Plan food so guests do not drink on empty stomachs.",
+            "Offer non-alcoholic options and water.",
+            "Choose a few fun toasts or traditions.",
+            "Keep photos, cups, and decor within a reasonable budget."
+          ]
+        },
+        {
+          "title": "Milestone adult birthdays (30, 40, 50, 60, 70, 80, 90)",
+          "items": [
+            "Ask the guest of honor what feels right: surprise or planned, big or small.",
+            "Gather photos and stories from friends and family for a slideshow or memory book.",
+            "Choose seating with easy access, ample lighting, and low noise for older guests.",
+            "Arrange accessible parking and a shuttle if needed.",
+            "Plan a short, warm toast program rather than a long one.",
+            "Use rented comfortable chairs and enough tables so no one has to stand."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Food and Drink Amounts",
+      "kind": "table",
+      "note": "Rough planning quantities for a 2- to 3-hour party. Increase for dinner, longer events, or hearty eaters.",
+      "columns": ["Item", "Per person", "20 guests", "50 guests", "100 guests"],
+      "rows": [
+        ["Appetizers (before a meal)", "4 to 6 pieces", "100 pieces", "250 pieces", "500 pieces"],
+        ["Main dish (entree)", "6 to 8 oz", "8 lb", "20 lb", "40 lb"],
+        ["Side dishes (total)", "3 to 4 oz each", "2 sides", "3 sides", "3 sides"],
+        ["Pizza (slices)", "3 for kids, 2 to 3 for adults", "6 large pies", "15 large pies", "30 large pies"],
+        ["Cake", "1 slice", "1 half sheet", "2 half sheets", "1 full sheet and a half sheet"],
+        ["Cupcakes", "1.5", "30", "75", "150"],
+        ["Soda, juice, and water", "2 drinks first hour, 1 per hour after", "40 to 60", "100 to 150", "200 to 300"],
+        ["Ice", "1 to 1.5 lb", "25 lb", "60 lb", "125 lb"],
+        ["Coffee (for evening events)", "1 cup", "20 cups", "50 cups", "100 cups"],
+        ["Beer, wine, and cocktails (adult events)", "1 drink per hour per adult", "40 to 60", "100 to 150", "200 to 300"]
+      ]
+    },
+    {
+      "heading": "Games and Activities",
+      "kind": "tips",
+      "items": [
+        "For toddlers: bubbles, sensory bins, soft blocks, and a simple music-and-dance circle.",
+        "For ages 3 to 6: pin the tail, scavenger hunt, musical chairs, and a piñata.",
+        "For ages 7 to 12: relay races, sack races, water balloon toss, and capture the flag.",
+        "For teens: karaoke, a movie night, a photo booth with props, or a mini tournament.",
+        "For sweet 16: a dance floor, a DJ, a candy bar, and a polaroid guest book.",
+        "For adults: trivia about the guest of honor, a memory jar, and a toast circle.",
+        "Run a this-or-that photo wall with past photos for milestone birthdays.",
+        "Set up lawn games such as cornhole, giant Jenga, and bocce for backyard parties.",
+        "Have a craft table for younger kids: decorate a cookie, make a crown, or paint a mask.",
+        "Keep a quiet corner with coloring pages and books for kids who need a break.",
+        "For rainy days: build an indoor obstacle course, hold a dance contest, or run a movie.",
+        "Appoint an adult to run each game so the party stays on schedule."
+      ]
+    },
+    {
+      "heading": "Rental Checklist for Birthday Parties",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Seating and tables",
+          "items": [
+            "Order one adult chair for every adult guest.",
+            "Add kid-sized tables and chairs for children under 7.",
+            "Add a cake table, gift table, and drink station.",
+            "Order cocktail tables for mingling at adult parties.",
+            "Choose tablecloths in the party colors."
+          ]
+        },
+        {
+          "title": "Weather and ambiance",
+          "items": [
+            "Rent a tent for backyard parties from May through October.",
+            "Rent heaters for spring and fall evenings.",
+            "Order string lights or lanterns for evening gatherings.",
+            "Add a dance floor for teen and adult dance parties.",
+            "Ask the rental company about fans for hot afternoons."
+          ]
+        },
+        {
+          "title": "Tableware",
+          "items": [
+            "Rent plates, forks, and glasses to avoid disposable waste.",
+            "Order serving platters and chafing dishes if you are self-catering.",
+            "Add pitchers and drink dispensers.",
+            "Order extra napkins for cake and messy foods."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Birthday Budget Split",
+      "kind": "budget",
+      "note": "Rough guide. Chicago-area prices vary widely by venue and guest count.",
+      "lines": [
+        { "category": "Venue and rentals", "share": 25, "tip": "A backyard can cut this by half, but plan for tent and chair rentals." },
+        { "category": "Food and cake", "share": 35, "tip": "Order cake and desserts early and ask the caterer to pack leftovers." },
+        { "category": "Drinks", "share": 8, "tip": "Buy non-alcoholic drinks in bulk and rent a drink dispenser." },
+        { "category": "Entertainment and activities", "share": 12, "tip": "Book one memorable activity rather than many small ones." },
+        { "category": "Decor and invitations", "share": 8, "tip": "Use digital invitations and reusable decor." },
+        { "category": "Photos and keepsakes", "share": 5, "tip": "Ask a talented friend or hire a photographer for an hour." },
+        { "category": "Favors and thank-yous", "share": 3, "tip": "Skip favors or choose something useful." },
+        { "category": "Contingency", "share": 4, "tip": "Keep a cushion for extra guests and weather changes." }
+      ]
+    },
+    {
+      "heading": "Birthday Party Worksheet",
+      "kind": "worksheet",
+      "fields": [
+        "Guest of honor and age",
+        "Date and time",
+        "Venue and address",
+        "Theme or color scheme",
+        "Guest count (expected and confirmed)",
+        "Total budget",
+        "Caterer or food plan",
+        "Cake or dessert order",
+        "Entertainment and games",
+        "Rental delivery time",
+        "Helpers and their jobs",
+        "Allergies and special needs",
+        "Weather backup plan",
+        "Thank-you note list"
+      ]
+    }
+  ]
+}

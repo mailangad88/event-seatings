@@ -6,6 +6,7 @@ import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } fro
 import { rentalImages } from "@/data/rental-images";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { looks } from "@/data/looks";
+import { coverImage, downloads } from "@/data/downloads";
 import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";
@@ -14,7 +15,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/blog", "/about", "/privacy", "/terms", "/photo-credits"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/downloads", "/blog", "/about", "/privacy", "/terms", "/photo-credits"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -32,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: p.updated ?? p.date,
     images: p.image ? [`${site.url}${p.image}`] : img(p.chair),
   }));
+  const downloadPages = downloads.map((d) => ({ url: `${site.url}/downloads/${d.slug}`, priority: 0.8, images: [`${site.url}${coverImage(d.slug)}`] }));
   const hubs = topics
     .filter((t) => all.some((p) => p.topic === t.name))
     .map((t) => ({ url: `${site.url}/blog/topic/${topicSlug(t.name)}`, changeFrequency: "weekly" as const, priority: 0.6 }));
@@ -60,5 +62,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
   ]);
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
-  return [...pages, gallery, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts];
+  return [...pages, gallery, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }

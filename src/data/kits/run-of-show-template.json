@@ -1,0 +1,223 @@
+{
+  "slug": "run-of-show-template",
+  "title": "Day-of Timeline and Run of Show",
+  "subtitle": "Sample run-of-show schedules for a party, a wedding, and a corporate evening, plus load-in, emergency, and contact sheets.",
+  "intro": "A run of show is the minute-by-minute script that keeps your vendors, helpers, and guests moving in the same direction. Use the samples as a starting point, change the times to fit your event, and hand a copy to every vendor. The checklists and contact sheet make sure nobody is guessing on the big day.",
+  "sections": [
+    {
+      "heading": "How to Use a Run of Show",
+      "kind": "tips",
+      "items": [
+        "Work backward from the event start time and the venue curfew, then fill in the rest.",
+        "Add 10 to 15 minute buffers around meals, speeches, and anything involving a crowd.",
+        "List who is responsible for each item so no moment is left without an owner.",
+        "Send the final version to every vendor at least two weeks before the event and again the day before.",
+        "Print one copy for the host, one for the day-of coordinator, one for the DJ or emcee, and one for the caterer.",
+        "Use the same clock for everyone. Agree on whose phone or watch is the official time.",
+        "Build in a plan B for weather, late vendors, and running behind. Decide in advance what gets cut first.",
+        "Tape a short version of the schedule where vendors can see it in the back of the house."
+      ]
+    },
+    {
+      "heading": "Sample: 4-Hour Party Run of Show",
+      "kind": "table",
+      "note": "Example for a 6:00 pm to 10:00 pm birthday, anniversary, or graduation party with a seated or buffet dinner. Adjust all times.",
+      "columns": ["Time", "What happens", "Who is in charge"],
+      "rows": [
+        ["1:00 pm", "Rental delivery: tables, chairs, linens, tent if needed", "Host or helper receives and inspects"],
+        ["2:00 pm", "Caterer and bartender arrive and set up", "Caterer"],
+        ["3:00 pm", "Decor, signage, and seating display go up", "Host and helpers"],
+        ["4:30 pm", "DJ or musician arrives, sound check", "DJ"],
+        ["5:15 pm", "Final walk-through and photo of the setup", "Host"],
+        ["5:45 pm", "Host and family ready, staff in position", "Host"],
+        ["6:00 pm", "Doors open, welcome drinks and appetizers", "Bartender and servers"],
+        ["6:45 pm", "Welcome toast or short speech", "Host"],
+        ["7:00 pm", "Dinner service begins", "Caterer"],
+        ["7:45 pm", "Dessert or cake cutting", "Host and caterer"],
+        ["8:00 pm", "Toasts, tributes, or slideshow", "Emcee"],
+        ["8:30 pm", "Dancing and activities begin", "DJ"],
+        ["9:30 pm", "Last call and cake to go", "Bartender"],
+        ["9:50 pm", "Send-off, thank guests, hand out favors", "Host"],
+        ["10:00 pm", "Music ends, begin breakdown", "Everyone"],
+        ["11:00 pm", "Rentals stacked or packed, trash out, venue cleared", "Helpers and vendors"]
+      ]
+    },
+    {
+      "heading": "Sample: Wedding Day Run of Show",
+      "kind": "table",
+      "note": "Example for a 4:00 pm ceremony and an evening reception. Shift everything to match your actual start time.",
+      "columns": ["Time", "What happens", "Who is in charge"],
+      "rows": [
+        ["8:00 am", "Hair and makeup begin", "Hair and makeup team"],
+        ["10:00 am", "Florist delivers bouquets, boutonnieres, and arch pieces", "Florist"],
+        ["11:00 am", "Rental delivery: ceremony chairs, reception tables, linens, lighting", "Planner or venue coordinator"],
+        ["12:00 pm", "Light lunch for the wedding party", "Maid of honor or best man"],
+        ["1:00 pm", "Photographer arrives for getting-ready photos", "Photographer"],
+        ["2:00 pm", "DJ or band arrives and sets up", "DJ"],
+        ["2:30 pm", "Caterer starts setting up", "Caterer"],
+        ["3:00 pm", "Ceremony musicians arrive, final décor check", "Planner"],
+        ["3:15 pm", "Guests begin to arrive, ushers seat guests", "Ushers"],
+        ["3:50 pm", "Wedding party lines up", "Planner"],
+        ["4:00 pm", "Ceremony begins", "Officiant"],
+        ["4:30 pm", "Ceremony ends, family photos", "Photographer"],
+        ["4:45 pm", "Cocktail hour begins", "Caterer and bartender"],
+        ["5:30 pm", "Wedding party and couple photos continue", "Photographer"],
+        ["6:00 pm", "Grand entrance and first dance", "DJ"],
+        ["6:20 pm", "Welcome toast and dinner service", "Best man, maid of honor, caterer"],
+        ["7:30 pm", "Parent dances and cake cutting", "DJ"],
+        ["8:00 pm", "Open dancing", "DJ"],
+        ["9:30 pm", "Late-night snack, bouquet or garter moments if wanted", "Caterer and DJ"],
+        ["10:30 pm", "Last dance and send-off", "DJ and photographer"],
+        ["11:00 pm", "Gift collection, vendor breakdown", "Planner and helpers"],
+        ["12:00 am", "Venue empty, rentals ready for pickup", "Venue and rental company"]
+      ]
+    },
+    {
+      "heading": "Sample: Corporate Evening Event Run of Show",
+      "kind": "table",
+      "note": "Example for a 5:30 pm to 9:30 pm awards dinner or client reception.",
+      "columns": ["Time", "What happens", "Who is in charge"],
+      "rows": [
+        ["10:00 am", "Rental delivery: tables, chairs, linens, stage, lighting", "Event manager"],
+        ["12:00 pm", "AV load-in and sound check", "AV team"],
+        ["2:00 pm", "Decor, signage, and registration table setup", "Event staff"],
+        ["3:00 pm", "Caterer arrives", "Caterer"],
+        ["4:00 pm", "Tech rehearsal with the presenter or emcee", "Emcee and AV"],
+        ["4:45 pm", "Staff briefing and name-tag review", "Event manager"],
+        ["5:00 pm", "Registration opens", "Registration staff"],
+        ["5:30 pm", "Reception and cocktail hour", "Caterer and bartender"],
+        ["6:30 pm", "Guests seated, welcome remarks", "Emcee and CEO"],
+        ["6:45 pm", "Dinner service", "Caterer"],
+        ["7:30 pm", "Awards or keynote program", "Emcee"],
+        ["8:15 pm", "Dessert and networking", "Caterer"],
+        ["8:45 pm", "Closing remarks and thank-yous", "Emcee"],
+        ["9:00 pm", "Guests depart, favors handed out", "Event staff"],
+        ["9:30 pm", "Load-out begins", "AV and vendors"],
+        ["10:30 pm", "Venue cleared, rentals counted and stacked", "Event manager"]
+      ]
+    },
+    {
+      "heading": "Vendor Arrival and Load-in Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Before vendors arrive",
+          "items": [
+            "Confirm the venue load-in time, loading dock, and elevator rules in writing.",
+            "Reserve parking or a loading zone for delivery trucks.",
+            "Unlock doors, turn on lights, and set the thermostat before the first vendor arrives.",
+            "Clear the space of existing furniture and storage items.",
+            "Make sure restrooms and water access are available to vendors.",
+            "Post a sign or send a map showing where each vendor should unload."
+          ]
+        },
+        {
+          "title": "Rental delivery",
+          "items": [
+            "Have a floor plan on site so the driver knows where each table and chair set goes.",
+            "Count tables, chairs, linens, plates, glasses, and flatware against the order.",
+            "Check for stains, tears, cracks, and missing items before signing.",
+            "Take photos of any damage and note it on the delivery slip.",
+            "Confirm the pickup time and where items should be stacked.",
+            "Put tips for the delivery crew in a labeled envelope."
+          ]
+        },
+        {
+          "title": "Food and beverage",
+          "items": [
+            "Show the caterer the kitchen, power outlets, and sinks.",
+            "Confirm where hot boxes, coolers, and ice will be stored.",
+            "Give the bartender the bar location and the signature drink list.",
+            "Make sure licensed alcohol service is in place and permits are visible.",
+            "Plan a staff meal for caterers and vendors who work more than five hours."
+          ]
+        },
+        {
+          "title": "Entertainment, photo, and decor",
+          "items": [
+            "Give the DJ or band power access, a table, and a clear load-in path.",
+            "Tell the photographer the schedule, must-have shots, and family groupings.",
+            "Introduce the florist to the person who will approve placement.",
+            "Confirm the officiant, emcee, or speakers know their cues.",
+            "Keep a list of who has arrived, who is late, and who has left."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Day-of Emergency Kit",
+      "kind": "checklist",
+      "note": "Pack in a bin and hand it to your day-of coordinator.",
+      "groups": [
+        {
+          "title": "Repairs and tools",
+          "items": [
+            "Scissors, tape, fishing line, and double-sided tape.",
+            "Safety pins, sewing kit, and fabric glue.",
+            "Zip ties, clips, and wire.",
+            "Steamer or wrinkle spray for linens.",
+            "Extension cords, power strip, and spare batteries.",
+            "Flashlight and a headlamp for dark setup."
+          ]
+        },
+        {
+          "title": "Health and comfort",
+          "items": [
+            "First aid kit, bandages, and pain relievers.",
+            "Antacids, tissues, and allergy medicine.",
+            "Sunscreen and bug spray.",
+            "Umbrellas, ponchos, blankets, and hand warmers for cold Chicago nights.",
+            "Water bottles, granola bars, and a cooler of cold drinks.",
+            "Spare shoes, flip-flops, or blister bandages."
+          ]
+        },
+        {
+          "title": "Paper and money",
+          "items": [
+            "Master run of show and the contact sheet.",
+            "Copies of vendor contracts and permits.",
+            "Envelopes with tips and final payments.",
+            "Cash for parking and small purchases.",
+            "Pens, markers, and blank cards.",
+            "Garbage bags, cleaning wipes, and paper towels."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Day-of Contact Sheet",
+      "kind": "worksheet",
+      "note": "Fill this in, make four copies, and share with your coordinator, host, and key helpers.",
+      "fields": [
+        "Host name and cell",
+        "Day-of coordinator name and cell",
+        "Venue contact and cell",
+        "Caterer on-site lead and cell",
+        "Rental company dispatch number",
+        "DJ or band lead and cell",
+        "Photographer and cell",
+        "Videographer and cell",
+        "Florist and cell",
+        "Officiant or emcee and cell",
+        "Bartender and cell",
+        "Transportation or shuttle and cell",
+        "Nearest urgent care or hospital",
+        "Backup contact and relationship"
+      ]
+    },
+    {
+      "heading": "Questions to Ask Before the Day",
+      "kind": "questions",
+      "items": [
+        "What time can each vendor access the venue, and who unlocks the doors?",
+        "Where can vendors park, and do they need passes or permits?",
+        "Is there a freight elevator or only stairs?",
+        "What is the venue noise curfew, and when must the music end?",
+        "Who is authorized to approve changes on the day?",
+        "What is the weather backup plan, and who decides when to use it?",
+        "Who will collect gifts, cards, and personal items after the event?",
+        "What time must the venue be fully cleared and rentals ready for pickup?"
+      ]
+    }
+  ]
+}

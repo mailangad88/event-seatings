@@ -1,0 +1,279 @@
+{
+  "slug": "south-asian-wedding-planner",
+  "title": "South Asian Wedding Multi-Event Planner",
+  "subtitle": "Plan the roka through the reception: every event, every headcount, every rental",
+  "intro": "A South Asian wedding is often several events across several days, each with its own guest list, venue, attire, and rhythm. Traditions differ widely by region, religion, and family, so treat this planner as a framework and fill in what your families actually do.",
+  "sections": [
+    {
+      "heading": "Events at a Glance",
+      "kind": "table",
+      "note": "Copy this table and fill in your own details. Not every family holds every event, and names and order vary.",
+      "columns": ["Event", "Typical guests", "Venue ideas", "Attire notes", "Rental needs"],
+      "rows": [
+        ["Roka or engagement", "Immediate family, 20 to 100", "Home, banquet room, restaurant", "Festive formal; many families choose traditional wear", "Seating, linens, a small stage or backdrop"],
+        ["Mehndi", "Close family and friends, 50 to 150", "Home, hall, outdoor tented space", "Bright colors; sleeves that allow henna application", "Low seating or chairs, lounge area, string lights"],
+        ["Haldi", "Close family and friends, 30 to 100", "Backyard, patio, banquet room", "Old or yellow clothes that can be stained", "Tent or shade, tables, towels, floor protection"],
+        ["Sangeet", "Large mixed group, 100 to 400", "Banquet hall, ballroom, tented event", "Festive Indo-western or traditional wear", "Dance floor, staging, chairs, lighting, linens"],
+        ["Baraat", "Groom's side and friends, 50 to 200", "Hotel or venue entrance, street, parking lot", "Traditional groom attire; comfortable shoes", "Sound, tents if weather is a concern, signage"],
+        ["Ceremony", "Family, friends, elders, 100 to 500", "Temple, gurdwara, mosque, banquet hall, hotel", "Traditional attire; head coverings where required", "Mandap, chairs, aisle runner, linens"],
+        ["Reception", "All invited guests, 150 to 600", "Banquet hall, ballroom, large tent", "Formal; many choose gowns, lehengas, or suits", "Round tables, chairs, linens, dinnerware, dance floor, lounge"]
+      ]
+    },
+    {
+      "heading": "Master Timeline",
+      "kind": "timeline",
+      "note": "Chicago-area venues and decorators book early, so start 12 to 18 months out for large weddings.",
+      "phases": [
+        {
+          "when": "12 to 18 months out",
+          "tasks": [
+            "Talk with both families about which events will be held and the approximate guest count for each.",
+            "Choose possible dates, checking religious calendars, auspicious dates, and family availability.",
+            "Set a total budget and agree who is contributing to which events.",
+            "Book the main reception venue first, since large banquet halls fill quickly.",
+            "Reserve the ceremony location and confirm what religious or cultural officiant you need.",
+            "Start a master guest list with columns for each event."
+          ]
+        },
+        {
+          "when": "9 to 12 months out",
+          "tasks": [
+            "Book photographer and videographer for multiple days.",
+            "Hire a planner or coordinator with experience in multi-day weddings.",
+            "Book caterers for each event, or confirm the venue menu options.",
+            "Reserve the DJ, dhol player, band, or live musicians.",
+            "Hire a decorator for the mandap, stage, and floral design.",
+            "Reserve hotel room blocks for out-of-town guests."
+          ]
+        },
+        {
+          "when": "6 to 8 months out",
+          "tasks": [
+            "Order wedding attire for both partners and the wedding party.",
+            "Book henna artists for the mehndi.",
+            "Choose hair and makeup artists for each event.",
+            "Book pandit, granthi, imam, or other officiant and ask about preparation.",
+            "Place rental orders for tables, chairs, linens, tents, dance floor, and lounge.",
+            "Design invitations and save-the-dates for each event."
+          ]
+        },
+        {
+          "when": "3 to 5 months out",
+          "tasks": [
+            "Send save-the-dates if you have not yet.",
+            "Plan the baraat route, sound, and logistics with the venue and local rules.",
+            "Choreograph sangeet dances and schedule rehearsals.",
+            "Confirm menus, tastings, and dietary needs such as vegetarian, halal, and Jain.",
+            "Plan transportation for the groom, family, and elderly guests.",
+            "Finalize ceremony items and shopping lists."
+          ]
+        },
+        {
+          "when": "6 to 10 weeks out",
+          "tasks": [
+            "Mail formal invitations with RSVP dates for each event.",
+            "Confirm event schedules and share with vendors.",
+            "Schedule fittings for all outfits.",
+            "Confirm tent and weather plans for outdoor events.",
+            "Book permits or parking arrangements for baraat and large gatherings.",
+            "Assign family helpers for each event."
+          ]
+        },
+        {
+          "when": "2 to 4 weeks out",
+          "tasks": [
+            "Follow up on RSVPs and confirm headcount per event.",
+            "Finalize seating charts for the sangeet and reception.",
+            "Give vendors timelines and contact sheets.",
+            "Confirm rental delivery and load-in times for each location.",
+            "Prepare welcome bags for out-of-town guests."
+          ]
+        },
+        {
+          "when": "The week of",
+          "tasks": [
+            "Give final headcounts to each caterer and the rental company.",
+            "Confirm pickup times for outfits, jewelry, and ceremony items.",
+            "Assign a point person for each event, plus a vendor liaison.",
+            "Pack emergency kits with safety pins, fabric tape, and snacks.",
+            "Review the Chicago forecast and prepare for coats, rain, and parking.",
+            "Prepare envelopes for vendor tips and payments."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Ceremony Variations",
+      "kind": "tips",
+      "note": "Wedding customs vary greatly. These are general notes, so always follow your family's and your officiant's guidance.",
+      "items": [
+        "Hindu ceremonies commonly involve a mandap, a sacred fire, and rituals such as the saptapadi (seven steps). Confirm the length, language, and required items with your pandit.",
+        "Sikh weddings (Anand Karaj) take place in a gurdwara or other space with the Guru Granth Sahib. Plan for head coverings, floor seating or accessible seating, and shoes removed.",
+        "Muslim weddings include the nikah, with an imam, witnesses, and a mahr agreed by the couple. Confirm gender seating customs, timing around prayer, and halal catering.",
+        "Ask the officiant what the venue must provide, such as a specific space, fire permissions, or sound.",
+        "Confirm whether the ceremony takes place at a house of worship, a hall, or a hotel, and what that venue allows.",
+        "Share a program or explanation for guests unfamiliar with the traditions so everyone feels welcome.",
+        "If the families have different traditions, decide together which rituals to include and how to explain them."
+      ]
+    },
+    {
+      "heading": "Per-Event Planning Checklists",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Roka or engagement",
+          "items": [
+            "Confirm the date and time with both families.",
+            "Plan the exchange of gifts, rings, or sweets.",
+            "Choose a venue large enough for family seating.",
+            "Order sweets, snacks, and a simple meal.",
+            "Arrange for a photographer or a family member to take photos."
+          ]
+        },
+        {
+          "title": "Mehndi",
+          "items": [
+            "Book enough henna artists for the number of guests.",
+            "Plan seating that makes application comfortable and keeps outfits clean.",
+            "Set up a drying and care area.",
+            "Arrange snacks and drinks that guests can eat with limited hand use.",
+            "Plan music, dance, and decor in warm colors."
+          ]
+        },
+        {
+          "title": "Haldi",
+          "items": [
+            "Choose an outdoor or easy-to-clean space.",
+            "Prepare haldi paste and flowers.",
+            "Protect floors with tarps or mats.",
+            "Provide towels, wipes, and a changing area.",
+            "Have the photographer ready for candid moments."
+          ]
+        },
+        {
+          "title": "Sangeet",
+          "items": [
+            "Reserve a dance floor, stage, and sound system.",
+            "Plan performances and set a running order.",
+            "Book an MC to keep the show on schedule.",
+            "Test microphones and screens for slideshows.",
+            "Plan dinner timing around the performances."
+          ]
+        },
+        {
+          "title": "Baraat",
+          "items": [
+            "Confirm the route, start point, and end point.",
+            "Hire the dhol player or band.",
+            "Plan a horse, car, or vehicle if the family wishes.",
+            "Check venue and local rules for noise, street use, and permits.",
+            "Assign a family member to keep the group moving and safe."
+          ]
+        },
+        {
+          "title": "Ceremony",
+          "items": [
+            "Gather ceremony items listed by the officiant.",
+            "Set up the mandap or ceremonial space.",
+            "Seat elders near the front for visibility and ease.",
+            "Provide programs, water, and shade or heat as needed.",
+            "Plan photography around the schedule and rituals."
+          ]
+        },
+        {
+          "title": "Reception",
+          "items": [
+            "Choose a floor plan for dining, dancing, and the head table.",
+            "Plan entrances, speeches, and first dance.",
+            "Confirm dietary needs and menu labels.",
+            "Reserve the dance floor, lounge, and lighting.",
+            "Arrange for guests to find their seats easily."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Rentals Planning Table",
+      "kind": "table",
+      "note": "Use this to pull together quantities for each location. Adjust the seating style and table sizes to your venue.",
+      "columns": ["Item", "Mehndi", "Sangeet", "Ceremony", "Reception"],
+      "rows": [
+        ["Chairs", "Per guest or lounge", "Per guest", "Per guest", "Per guest"],
+        ["Round tables", "Optional", "Per 8 to 10 guests", "Optional", "Per 8 to 10 guests"],
+        ["Cocktail tables", "A few", "Several", "Few", "Several"],
+        ["Linens", "Colorful overlays", "Tablecloths and napkins", "Aisle and altar linens", "Tablecloths and napkins"],
+        ["Dance floor", "Optional", "Yes", "No", "Yes"],
+        ["Stage or backdrop", "Yes", "Yes", "Mandap", "Head table backdrop"],
+        ["Lighting", "String lights", "Uplighting", "Soft lighting", "Uplighting"],
+        ["Tent", "If outdoors", "If outdoors", "If outdoors", "If outdoors"],
+        ["Lounge furniture", "Yes", "Yes", "No", "Yes"],
+        ["Dinnerware and glassware", "Optional", "Yes", "No", "Yes"]
+      ]
+    },
+    {
+      "heading": "Vendor Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Core vendors",
+          "items": [
+            "Venue (reception, sangeet, ceremony)",
+            "Caterer for each event",
+            "Photographer and videographer",
+            "Decorator and florist",
+            "DJ, dhol, or band",
+            "Wedding planner or coordinator",
+            "Rental company for furniture and linens"
+          ]
+        },
+        {
+          "title": "Specialty vendors",
+          "items": [
+            "Henna artist",
+            "Hair and makeup artist",
+            "Officiant (pandit, granthi, imam)",
+            "Transportation and baraat services",
+            "Sweet and snack suppliers",
+            "Choreographer",
+            "Security or parking attendant if needed"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Budget Split",
+      "kind": "budget",
+      "note": "Use as a starting point. Families vary in how they divide costs across events.",
+      "lines": [
+        { "category": "Reception venue and catering", "share": 35, "tip": "Ask for a package that includes tables, chairs, and linens, or add rentals." },
+        { "category": "Other event venues and catering", "share": 15, "tip": "Plan mehndi, haldi, and sangeet needs separately to avoid surprises." },
+        { "category": "Attire, jewelry, and beauty", "share": 12, "tip": "Include alterations and multiple outfits." },
+        { "category": "Photography and video", "share": 10, "tip": "Multi-day coverage requires clear scheduling." },
+        { "category": "Decor and florals", "share": 10, "tip": "Mandap and stage designs can be reused across events." },
+        { "category": "Music, DJ, and entertainment", "share": 6, "tip": "Confirm sound requirements for each location." },
+        { "category": "Rentals", "share": 6, "tip": "Chairs, tables, linens, dance floors, and lounge groupings add up across events." },
+        { "category": "Officiant, ceremony items, and gifts", "share": 2, "tip": "Ask about expected donations or honoraria." },
+        { "category": "Invitations, favors, and transportation", "share": 2, "tip": "Digital invitations can reduce costs for smaller events." },
+        { "category": "Contingency", "share": 2, "tip": "Keep a cushion for last-minute needs." }
+      ]
+    },
+    {
+      "heading": "Wedding Worksheet",
+      "kind": "worksheet",
+      "fields": [
+        "Couple's names",
+        "Wedding dates",
+        "Events being held",
+        "Reception venue and address",
+        "Ceremony location and officiant",
+        "Guest count per event",
+        "Caterer contacts",
+        "Photographer and videographer",
+        "Decorator and florist",
+        "DJ, dhol, or band",
+        "Rental company and delivery windows",
+        "Total budget and deposits paid"
+      ]
+    }
+  ]
+}

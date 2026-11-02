@@ -1,0 +1,405 @@
+{
+  "slug": "backyard-party-planning-kit",
+  "title": "Backyard Party Planning Kit",
+  "subtitle": "Measure your yard, size your party, and plan shade, power, restrooms, and cleanup",
+  "intro": "A backyard party can feel effortless, but it takes a little math to get right. This kit starts with measuring your space and then walks through seating, shade, power, restrooms, neighbors, food, rentals, and cleanup.",
+  "sections": [
+    {
+      "heading": "Yard Measuring and Party Worksheet",
+      "kind": "worksheet",
+      "note": "Sketch your yard on the back of this page and mark each item below.",
+      "fields": [
+        "Party date and rain date",
+        "Expected guest count",
+        "Total usable yard length (feet)",
+        "Total usable yard width (feet)",
+        "Usable square footage (length x width)",
+        "Patio or deck size",
+        "Level, dry lawn area",
+        "Location of trees and shade",
+        "Location of outdoor outlets",
+        "Gate or path width for deliveries",
+        "Nearest restroom to the party",
+        "Where the food will be set up",
+        "Where guests will park",
+        "Backup space if it rains",
+        "Rental company and delivery window",
+        "Total budget"
+      ]
+    },
+    {
+      "heading": "Space Per Guest",
+      "kind": "table",
+      "note": "Rough planning numbers. Allow more room for dancing, games, or lots of kids.",
+      "columns": [
+        "Setup",
+        "Space per guest",
+        "Fits 25 guests",
+        "Fits 50 guests",
+        "Fits 100 guests"
+      ],
+      "rows": [
+        [
+          "Standing cocktail party",
+          "6 to 8 sq ft",
+          "150 to 200 sq ft",
+          "300 to 400 sq ft",
+          "600 to 800 sq ft"
+        ],
+        [
+          "Seated at round tables",
+          "10 to 12 sq ft",
+          "250 to 300 sq ft",
+          "500 to 600 sq ft",
+          "1,000 to 1,200 sq ft"
+        ],
+        [
+          "Mixed seating and mingling",
+          "12 to 15 sq ft",
+          "300 to 375 sq ft",
+          "600 to 750 sq ft",
+          "1,200 to 1,500 sq ft"
+        ],
+        [
+          "Seated with buffet and lawn games",
+          "15 to 20 sq ft",
+          "375 to 500 sq ft",
+          "750 to 1,000 sq ft",
+          "1,500 to 2,000 sq ft"
+        ],
+        [
+          "Dance floor (additional)",
+          "4 to 5 sq ft per dancer",
+          "Plan 8 x 8 ft",
+          "Plan 12 x 12 ft",
+          "Plan 16 x 16 ft"
+        ],
+        [
+          "Buffet or bar area (additional)",
+          "Allow 10 to 15 ft of table space",
+          "1 station",
+          "1 to 2 stations",
+          "2 to 3 stations"
+        ]
+      ]
+    },
+    {
+      "heading": "Planning Timeline",
+      "kind": "timeline",
+      "phases": [
+        {
+          "when": "6 to 8 weeks out",
+          "tasks": [
+            "Choose a date and a backup date if the weather is uncertain.",
+            "Measure the yard and decide on the number of guests.",
+            "Check city or village rules for tents, noise, fires, and street parking.",
+            "Request rental quotes for tent, tables, chairs, and linens.",
+            "Think through restroom, power, and lighting needs.",
+            "Choose a food style: grill, catering, food truck, or potluck."
+          ]
+        },
+        {
+          "when": "4 weeks out",
+          "tasks": [
+            "Send invitations with start and end times and parking notes.",
+            "Book rentals and confirm delivery windows.",
+            "Hire a caterer, bartender, or food truck if needed.",
+            "Order a cake or desserts.",
+            "Reserve a portable restroom if needed.",
+            "Plan games, music, and activities."
+          ]
+        },
+        {
+          "when": "2 weeks out",
+          "tasks": [
+            "Follow up on RSVPs.",
+            "Notify neighbors about the party, noise, and parking.",
+            "Mow, trim, and treat the lawn for bugs if needed.",
+            "Check the sprinkler schedule and turn it off for the party.",
+            "Buy drinks, ice, and paper goods.",
+            "Test string lights and extension cords."
+          ]
+        },
+        {
+          "when": "The week of",
+          "tasks": [
+            "Watch the forecast and decide on the tent or rain plan.",
+            "Give the final headcount to the caterer.",
+            "Prep make-ahead food.",
+            "Mark delivery spots and clear paths for rentals.",
+            "Set up coolers and ice plan.",
+            "Prepare a cleanup plan and trash bags."
+          ]
+        },
+        {
+          "when": "Day of",
+          "tasks": [
+            "Set up tables and chairs at least 2 hours before guests arrive.",
+            "Test lighting and music.",
+            "Put out bug spray, sunscreen, and water.",
+            "Check restrooms and supplies.",
+            "Keep food covered and cold until serving.",
+            "Greet guests and relax."
+          ]
+        },
+        {
+          "when": "After",
+          "tasks": [
+            "Bag trash and recycling promptly.",
+            "Stack rentals as instructed for pickup.",
+            "Check the lawn for litter, glass, and decorations.",
+            "Thank neighbors with a note or small treat.",
+            "Send photos and thank-yous."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Tent, Shade, Power, and Lighting",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Tent and shade",
+          "items": [
+            "Decide if you need a tent for rain, sun, or both.",
+            "Choose a tent size based on the table layout.",
+            "Ask about staking vs weights if you have a patio or concrete.",
+            "Check overhead trees and wires.",
+            "Plan shade for the food table and older guests.",
+            "Consider umbrellas or pop-up canopies for smaller areas."
+          ]
+        },
+        {
+          "title": "Power",
+          "items": [
+            "Identify outlets and which circuit breakers they use.",
+            "Avoid overloading circuits with coolers, speakers, and lights.",
+            "Use outdoor-rated extension cords.",
+            "Tape or cover cords to prevent tripping.",
+            "Plan battery or solar options for lighting.",
+            "Know where the breaker panel is."
+          ]
+        },
+        {
+          "title": "Lighting",
+          "items": [
+            "String lights over the eating area.",
+            "Path lights for steps and gates.",
+            "Lanterns or candles in safe containers.",
+            "Lighting near the bar and food area.",
+            "Bug-repelling candles or fans.",
+            "A flashlight or two for emergencies."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Restrooms, Neighbors, and Parking",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Restrooms",
+          "items": [
+            "Plan on one restroom per 25 to 30 guests for a short party, and more for longer events.",
+            "Stock extra toilet paper, soap, and hand towels.",
+            "Mark the path to the indoor bathroom.",
+            "Consider a portable restroom for 50 or more guests.",
+            "Add a trash can and a small light."
+          ]
+        },
+        {
+          "title": "Neighbors",
+          "items": [
+            "Tell neighbors about the date and hours.",
+            "Share your phone number in case of concerns.",
+            "Know your local noise rules and quiet hours.",
+            "Point speakers away from neighbors' homes.",
+            "Keep the party to the agreed end time."
+          ]
+        },
+        {
+          "title": "Parking and arrival",
+          "items": [
+            "Check street parking rules and any permits.",
+            "Reserve a driveway spot for deliveries and vendors.",
+            "Share parking tips and rideshare options.",
+            "Create a clear pathway from the street to the yard.",
+            "Set up signage for the gate or entrance."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Food and Drink Amounts",
+      "kind": "table",
+      "note": "Rough guidelines for a 3 to 4 hour party. Adjust for heat, appetite, and the mix of kids and adults.",
+      "columns": [
+        "Item",
+        "25 guests",
+        "50 guests",
+        "100 guests"
+      ],
+      "rows": [
+        [
+          "Burgers, hot dogs, or main proteins",
+          "30 to 40 portions",
+          "60 to 80 portions",
+          "120 to 160 portions"
+        ],
+        [
+          "Side salads",
+          "3 to 4 quarts",
+          "6 to 8 quarts",
+          "12 to 16 quarts"
+        ],
+        [
+          "Chips and snacks",
+          "3 lbs",
+          "6 lbs",
+          "12 lbs"
+        ],
+        [
+          "Watermelon or fruit",
+          "1 large",
+          "2 large",
+          "4 large"
+        ],
+        [
+          "Desserts",
+          "30 pieces",
+          "60 pieces",
+          "120 pieces"
+        ],
+        [
+          "Cold drinks (cans and bottles)",
+          "60 to 75",
+          "120 to 150",
+          "240 to 300"
+        ],
+        [
+          "Water (extra if hot)",
+          "2 cases",
+          "4 cases",
+          "8 cases"
+        ],
+        [
+          "Ice",
+          "25 lbs",
+          "50 lbs",
+          "100 lbs"
+        ],
+        [
+          "Plates, napkins, cups",
+          "50 each",
+          "100 each",
+          "200 each"
+        ]
+      ]
+    },
+    {
+      "heading": "Rentals Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Seating and tables",
+          "items": [
+            "Chairs for about 60 to 70 percent of guests at one time.",
+            "Round or banquet tables for dining.",
+            "Cocktail tables for mingling.",
+            "A kids' table with smaller chairs.",
+            "Lounge furniture for a relaxed corner.",
+            "Linens in a color that hides spills."
+          ]
+        },
+        {
+          "title": "Food and drink equipment",
+          "items": [
+            "Chafing dishes and fuel.",
+            "Drink dispensers and tubs.",
+            "Plates, cutlery, and glassware if not using disposables.",
+            "Grill or smoker if you do not own one.",
+            "Extra coolers.",
+            "Serving utensils."
+          ]
+        },
+        {
+          "title": "Weather and fun",
+          "items": [
+            "Tent or canopy.",
+            "Patio heaters for cool evenings.",
+            "Fans for hot days.",
+            "Dance floor or flooring over grass.",
+            "Lawn games and a small stage if needed.",
+            "String lights and pole supports."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Cleanup Plan",
+      "kind": "tips",
+      "items": [
+        "Place trash, recycling, and compost bins in obvious spots, with extra bags nearby.",
+        "Assign two helpers to empty bins during the party.",
+        "Keep a small bucket for tableware to avoid scattering items.",
+        "Before the party ends, ask guests to take home leftover food in containers you provide.",
+        "Return rentals clean and dry, following the rental company's instructions.",
+        "Walk the lawn with a bag and a magnet to pick up bits you missed.",
+        "Run the dishwasher or hand-wash glassware the next morning.",
+        "Take down string lights and decor in daylight."
+      ]
+    },
+    {
+      "heading": "Budget Split",
+      "kind": "budget",
+      "note": "Rough shares. Backyard parties usually cost less than renting a venue.",
+      "lines": [
+        {
+          "category": "Food and catering",
+          "share": 38,
+          "tip": "Mix catering with self-serve sides to keep costs down."
+        },
+        {
+          "category": "Drinks and ice",
+          "share": 12,
+          "tip": "Buy water and soda in bulk."
+        },
+        {
+          "category": "Rentals (tent, tables, chairs, linens)",
+          "share": 25,
+          "tip": "Order early for summer weekends."
+        },
+        {
+          "category": "Restrooms and utilities",
+          "share": 6,
+          "tip": "Share portable restroom costs if you can."
+        },
+        {
+          "category": "Lighting and decor",
+          "share": 7,
+          "tip": "String lights make a big impact."
+        },
+        {
+          "category": "Music and entertainment",
+          "share": 5,
+          "tip": "A playlist and speaker can be enough."
+        },
+        {
+          "category": "Cake and desserts",
+          "share": 4,
+          "tip": "Cupcakes can simplify serving."
+        },
+        {
+          "category": "Cleanup and supplies",
+          "share": 2,
+          "tip": "Buy extra trash bags and gloves."
+        },
+        {
+          "category": "Contingency",
+          "share": 1,
+          "tip": "Keep a little aside for ice or a last-minute need."
+        }
+      ]
+    }
+  ]
+}

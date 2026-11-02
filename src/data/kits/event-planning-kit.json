@@ -1,0 +1,343 @@
+{
+  "slug": "event-planning-kit",
+  "title": "Ultimate Event Planning Kit",
+  "subtitle": "A start-to-finish planner for any event: party, wedding, corporate gathering, or cultural celebration.",
+  "intro": "Every good event runs on the same bones: a date, a headcount, a budget, a team of vendors, and a timeline everyone can read. This kit walks you from six months out to the day after, with checklists you can tick off and worksheets you can fill in by hand. Print it, keep it on the fridge, and cross things off as you go.",
+  "sections": [
+    {
+      "heading": "Master Timeline: Six Months to the Day After",
+      "kind": "timeline",
+      "note": "Shorten or stretch this to fit your event. Small parties can compress it to 8 to 10 weeks.",
+      "phases": [
+        {
+          "when": "6 months out",
+          "tasks": [
+            "Set the purpose of the event in one sentence and write it at the top of your planning notes.",
+            "Pick a realistic total budget and name who is paying for what.",
+            "Draft a first guest list with a firm maximum headcount.",
+            "Choose two or three possible dates and check them against holidays, school breaks, and major Chicago events like Lollapalooza, the Marathon, and Bears home games.",
+            "Tour venues and get written quotes before you commit to a date.",
+            "Sign the venue contract and pay the deposit.",
+            "Ask the venue about rental policies, load-in times, and whether it provides tables, chairs, and linens."
+          ]
+        },
+        {
+          "when": "4 to 5 months out",
+          "tasks": [
+            "Book your highest-demand vendors first: caterer, photographer, DJ or band, and any entertainer.",
+            "Decide on a theme, color palette, and overall feel, and save inspiration photos in one folder.",
+            "Reserve rentals for tables, chairs, linens, and tableware, especially if your date falls in May, June, or September.",
+            "If you are going outdoors, ask about a tent, flooring, and heaters or fans.",
+            "Confirm whether the venue or city needs permits for tents, amplified sound, or street closures.",
+            "Create a shared planning document or spreadsheet for everyone helping you."
+          ]
+        },
+        {
+          "when": "3 months out",
+          "tasks": [
+            "Order or design invitations and save-the-dates.",
+            "Set up an RSVP method: online form, email, phone number, or reply cards.",
+            "Book hotel room blocks or share a list of nearby hotels for out-of-town guests.",
+            "Book transportation such as shuttles or valet if parking is tight.",
+            "Schedule a tasting with your caterer and choose the menu.",
+            "Plan the bar: what to serve, who pours, and how much to buy.",
+            "Book the cake or dessert vendor."
+          ]
+        },
+        {
+          "when": "2 months out",
+          "tasks": [
+            "Mail or send invitations with an RSVP deadline about 3 weeks before the event.",
+            "Finalize the rental list: chair style, table sizes, linen colors, glassware, flatware, and lighting.",
+            "Confirm all vendors in writing and collect their insurance certificates if the venue requires them.",
+            "Plan the program: speeches, toasts, games, presentations, and entertainment.",
+            "Order signage, name tags, favors, and printed menus.",
+            "Choose music for arrival, dinner, and dancing, plus a do-not-play list."
+          ]
+        },
+        {
+          "when": "1 month out",
+          "tasks": [
+            "Follow up with every guest who has not replied.",
+            "Collect meal choices and dietary needs from guests.",
+            "Build the seating plan and the floor plan, including the dance floor, bar, buffet, and photo spot.",
+            "Do a final walkthrough of the venue with your caterer or planner.",
+            "Write a draft run of show with times for every moment of the event.",
+            "Ask two or three friends or family members to be day-of helpers and give each one a clear job.",
+            "Check the long-range weather pattern and confirm your rain or cold-weather plan."
+          ]
+        },
+        {
+          "when": "2 weeks out",
+          "tasks": [
+            "Send the final headcount to the caterer, venue, and rental company.",
+            "Confirm delivery windows, load-in access, and parking for every vendor.",
+            "Send vendors the final run of show and the day-of contact sheet.",
+            "Print seating charts, escort cards, programs, and signage.",
+            "Prepare tips and final payments in labeled envelopes.",
+            "Break in any new shoes and pick up your outfit."
+          ]
+        },
+        {
+          "when": "1 week out",
+          "tasks": [
+            "Check the 10-day forecast and decide whether to switch to the rain or cold plan.",
+            "Pack the day-of kit and set it by the door.",
+            "Confirm the rental delivery time, the pickup time, and who will sign for both.",
+            "Reconfirm with the photographer, DJ, florist, and caterer by phone.",
+            "Assign someone to handle gifts, cards, and leftover food.",
+            "Get cash for last-minute tips and parking."
+          ]
+        },
+        {
+          "when": "Day before",
+          "tasks": [
+            "Drop off décor, signage, favors, and the seating chart at the venue if access is allowed.",
+            "Check that rental items are scheduled and that the order matches your final count.",
+            "Charge phones, cameras, and speakers.",
+            "Eat a real dinner and go to bed on time.",
+            "Send a short reminder text to your day-of helpers with arrival times."
+          ]
+        },
+        {
+          "when": "Day of",
+          "tasks": [
+            "Be at the venue early enough to meet the first vendor.",
+            "Inspect the rental delivery against the order before the driver leaves.",
+            "Walk the room one last time with the run of show in hand.",
+            "Eat something and drink water before guests arrive.",
+            "Hand a designated helper the day-of kit and the vendor contact sheet.",
+            "Enjoy your own event. Delegate problems to your helpers."
+          ]
+        },
+        {
+          "when": "Day after and the week after",
+          "tasks": [
+            "Return or confirm pickup of all rentals, with items counted and stacked as the company requires.",
+            "Collect gifts, decor, and personal items from the venue.",
+            "Pay final vendor balances and send tips you did not give on the day.",
+            "Send thank-you notes or emails within two weeks.",
+            "Review each vendor and leave honest feedback.",
+            "Save a copy of this kit with notes on what you would change next time."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Budget Split",
+      "kind": "budget",
+      "note": "A starting point for most events with a seated meal. Adjust to your priorities. Costs vary widely across Chicago and the suburbs.",
+      "lines": [
+        { "category": "Venue and rentals", "share": 25, "tip": "Includes space fee, tables, chairs, linens, tent, flooring, and lighting. Get itemized quotes." },
+        { "category": "Food and beverage", "share": 35, "tip": "Usually the biggest line. Ask if service charge and gratuity are included in the per-person price." },
+        { "category": "Entertainment and music", "share": 8, "tip": "DJ, band, or entertainer. Ask about overtime rates before signing." },
+        { "category": "Photo and video", "share": 8, "tip": "Check how many edited photos you get and how long delivery takes." },
+        { "category": "Decor and flowers", "share": 8, "tip": "Reuse ceremony pieces at the reception and choose one strong focal point." },
+        { "category": "Invitations, printing, and signage", "share": 4, "tip": "Digital invitations save money. Spend on clear welcome and direction signs." },
+        { "category": "Staffing, transportation, and permits", "share": 5, "tip": "Valet, security, shuttles, and event permits add up quickly in the city." },
+        { "category": "Contingency", "share": 7, "tip": "Set aside this money from day one. Weather, headcount, and overtime all show up eventually." }
+      ]
+    },
+    {
+      "heading": "Guest List and RSVP Steps",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Building the list",
+          "items": [
+            "Write a must-invite list first, then a nice-to-invite list in priority order.",
+            "Set a firm maximum headcount based on your venue capacity and budget.",
+            "Decide whether guests may bring a plus-one or children and state it clearly.",
+            "Collect full mailing addresses, email addresses, and phone numbers in one spreadsheet.",
+            "Mark guests who need accessible seating, rides, or lodging.",
+            "Track dietary needs and allergies in a separate column."
+          ]
+        },
+        {
+          "title": "Sending invitations",
+          "items": [
+            "Put the date, time, address, dress code, and RSVP deadline on the invitation.",
+            "Include a website or phone number for parking, directions, and questions.",
+            "Send invitations 6 to 8 weeks out for most events and 3 to 4 months out for destination weekends.",
+            "Set the RSVP deadline 3 weeks before the event so you can finalize the headcount.",
+            "Mention if the event is outdoors so guests can plan for weather."
+          ]
+        },
+        {
+          "title": "Tracking replies",
+          "items": [
+            "Log every reply the day it arrives, including meal choices.",
+            "Call or text non-responders one week after the deadline.",
+            "Plan for 10 to 15 percent of yes replies to be no-shows at casual events.",
+            "Send a reminder message 5 to 7 days before the event with parking and weather notes.",
+            "Keep a waiting list if you are at capacity and can invite more people as others decline."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Vendor Hiring Checklist",
+      "kind": "checklist",
+      "note": "Use this for every vendor: caterer, DJ, photographer, florist, rental company, and more.",
+      "groups": [
+        {
+          "title": "Before you sign",
+          "items": [
+            "Ask for at least three quotes for big-ticket services.",
+            "Read reviews and ask for two recent references.",
+            "Confirm the vendor is available on your exact date and time window.",
+            "Ask what is included and what costs extra: travel, setup, overtime, taxes, and fees.",
+            "Confirm the vendor carries liability insurance and can send the certificate your venue requires.",
+            "Ask about the backup plan if the main person is sick or the equipment fails."
+          ]
+        },
+        {
+          "title": "Contract details",
+          "items": [
+            "Get everything in writing, including date, hours, services, and total price.",
+            "Understand the deposit amount, payment schedule, and refund policy.",
+            "Check the cancellation and rescheduling terms.",
+            "Confirm the setup time, breakdown time, and any power or space needs.",
+            "Write down the name and cell phone of the person who will actually be on site."
+          ]
+        },
+        {
+          "title": "After you sign",
+          "items": [
+            "Put every payment due date in your calendar with a reminder.",
+            "Send each vendor a copy of the venue rules and load-in instructions.",
+            "Share the final run of show and the contact sheet two weeks out.",
+            "Confirm arrival times by phone one week out.",
+            "Plan meals for vendors who work longer than five hours."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Rental Checklist",
+      "kind": "checklist",
+      "note": "Rentals are easy to under-order. Count carefully and add a small buffer.",
+      "groups": [
+        {
+          "title": "Furniture",
+          "items": [
+            "Count one chair for every guest, plus extras for the DJ, band, and vendors.",
+            "Choose chair style: folding, Chiavari, cross-back, or padded.",
+            "Choose table shapes and sizes for dining, the cake, gifts, guest book, and bar.",
+            "Add cocktail tables or lounge seating for mingling.",
+            "Order a dance floor if the venue does not have one, and measure the space first."
+          ]
+        },
+        {
+          "title": "Linens and tableware",
+          "items": [
+            "Order tablecloths in the right size for each table, and napkins to match.",
+            "Choose runners or overlays for added color.",
+            "Order dinner plates, salad plates, flatware, and glasses for every course.",
+            "Count glassware by type: water, wine, champagne, and cocktail.",
+            "Ask whether the caterer provides any of the dishes, and order only what is left."
+          ]
+        },
+        {
+          "title": "Weather and atmosphere",
+          "items": [
+            "Reserve a tent with sidewalls if the event is outdoors.",
+            "Ask whether tent stakes are allowed and whether a utility check is needed.",
+            "Add heaters for spring and fall evenings and fans for summer.",
+            "Order string lights, uplighting, or lanterns for evening events.",
+            "Rent flooring or walkways if the ground may be soft or uneven."
+          ]
+        },
+        {
+          "title": "Delivery and return",
+          "items": [
+            "Confirm the delivery window, setup time, and pickup time in writing.",
+            "Name one person to receive and inspect the delivery.",
+            "Count every item against the order before the driver leaves.",
+            "Ask about fees for stairs, long carries, and elevators.",
+            "Know the damage and missing-item policy before the event."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Rental Quantity Quick Guide",
+      "kind": "table",
+      "note": "Rough planning numbers for a seated dinner. Always confirm with your rental company.",
+      "columns": ["Item", "50 guests", "100 guests", "150 guests", "200 guests"],
+      "rows": [
+        ["Chairs (guests only)", "50", "100", "150", "200"],
+        ["Round tables, 60 in (8 guests)", "7", "13", "19", "25"],
+        ["Cocktail tables (1 per 20 guests)", "3", "5", "8", "10"],
+        ["Dinner plates (guests + 10%)", "55", "110", "165", "220"],
+        ["Forks and knives per course", "55 each", "110 each", "165 each", "220 each"],
+        ["Water goblets", "55", "110", "165", "220"],
+        ["Wine glasses (1.5 per guest)", "75", "150", "225", "300"],
+        ["Champagne flutes for a toast", "55", "110", "165", "220"],
+        ["Tablecloths", "7", "13", "19", "25"],
+        ["Cloth napkins (guests + 15%)", "58", "115", "173", "230"]
+      ]
+    },
+    {
+      "heading": "Day-of Kit",
+      "kind": "checklist",
+      "note": "Pack a box or tote and give it to your day-of helper.",
+      "groups": [
+        {
+          "title": "Fix-it items",
+          "items": [
+            "Scissors, tape, clear packing tape, and painter's tape.",
+            "Safety pins, a mini sewing kit, and a lint roller.",
+            "Zip ties, binder clips, and command hooks.",
+            "Extension cords and a power strip.",
+            "Phone chargers and a portable battery.",
+            "Flashlight and extra batteries."
+          ]
+        },
+        {
+          "title": "People care",
+          "items": [
+            "Pain reliever, antacids, bandages, and allergy tablets.",
+            "Sunscreen and bug spray for outdoor events.",
+            "Hand warmers, umbrellas, and blankets for chilly Chicago evenings.",
+            "Water bottles and snacks for you and your helpers.",
+            "Tissues and stain remover pen.",
+            "Breath mints and a small mirror."
+          ]
+        },
+        {
+          "title": "Paper and payments",
+          "items": [
+            "Printed run of show, vendor contact sheet, and seating chart.",
+            "Labeled envelopes with final payments and tips.",
+            "Copies of contracts and permits.",
+            "A marker, pens, and sticky notes.",
+            "Cash for parking and unexpected needs.",
+            "Trash bags and a basket for gifts and cards."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Event Basics Worksheet",
+      "kind": "worksheet",
+      "note": "Fill this in first and tape it inside the cover of your planning binder.",
+      "fields": [
+        "Event name and purpose",
+        "Date and start/end time",
+        "Venue name and address",
+        "Venue contact name and phone",
+        "Expected guest count",
+        "Total budget",
+        "Caterer and phone",
+        "Rental company and delivery window",
+        "DJ or band and phone",
+        "Photographer and phone",
+        "Rain or cold-weather plan",
+        "RSVP deadline",
+        "Day-of helper names and jobs",
+        "Parking and load-in notes"
+      ]
+    }
+  ]
+}

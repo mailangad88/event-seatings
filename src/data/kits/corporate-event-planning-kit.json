@@ -1,0 +1,280 @@
+{
+  "slug": "corporate-event-planning-kit",
+  "title": "Corporate Event Planning Kit",
+  "subtitle": "For HR, marketing, and operations teams running conferences, galas, client dinners, and team events.",
+  "intro": "Corporate events succeed when the goals are clear, the logistics are tight, and the guest experience feels effortless. This kit walks you from the first brief to post-event ROI, with checklists for venues, AV, registration, accessibility, and dietary needs. Use it to keep stakeholders aligned and vendors accountable.",
+  "sections": [
+    {
+      "heading": "Event Brief and Goals Worksheet",
+      "kind": "worksheet",
+      "note": "Complete this first and get sign-off from your stakeholders before you book anything.",
+      "fields": [
+        "Event name and format (conference, dinner, retreat, launch)",
+        "Primary goal in one sentence",
+        "Secondary goals",
+        "Target audience and invitee list size",
+        "Expected attendance",
+        "Success measures (sign-ups, leads, satisfaction score)",
+        "Date options and event length",
+        "Total budget and approver",
+        "Preferred location or neighborhood",
+        "Required speakers or guests of honor",
+        "Executive sponsor",
+        "Key stakeholders and sign-off deadline",
+        "Branding and tone notes",
+        "Risks and constraints"
+      ]
+    },
+    {
+      "heading": "Corporate Event Timeline",
+      "kind": "timeline",
+      "note": "Adjust for event size. Conferences with 300 or more guests often need 6 to 9 months of lead time.",
+      "phases": [
+        {
+          "when": "4 to 6 months out",
+          "tasks": [
+            "Finalize goals, budget, and approval process with leadership.",
+            "Pick two or three possible dates, avoiding major Chicago conventions, holidays, and school breaks.",
+            "Issue a venue request for proposal and tour top choices.",
+            "Sign the venue contract after legal review.",
+            "Build a master timeline and assign owners to every task.",
+            "Book keynote speakers, hosts, and talent."
+          ]
+        },
+        {
+          "when": "3 months out",
+          "tasks": [
+            "Launch the registration page and open the invitation.",
+            "Book catering and confirm menu direction.",
+            "Reserve AV, staging, and lighting vendors.",
+            "Reserve rentals: tables, chairs, linens, tent, lounge furniture, and signage.",
+            "Plan transportation and parking for attendees.",
+            "Negotiate a hotel room block if guests travel."
+          ]
+        },
+        {
+          "when": "2 months out",
+          "tasks": [
+            "Confirm the agenda, session titles, and speaker bios.",
+            "Collect speaker slides and AV requirements.",
+            "Send reminders and track registration numbers weekly.",
+            "Order printed materials, badges, and swag.",
+            "Plan the accessibility and dietary processes.",
+            "Secure photography, video, and social media coverage."
+          ]
+        },
+        {
+          "when": "1 month out",
+          "tasks": [
+            "Finalize the floor plan, room layouts, and seating.",
+            "Send attendee logistics emails with parking, dress code, and agenda.",
+            "Confirm headcount estimates with the caterer.",
+            "Hold a vendor coordination call to align on load-in and rehearsal.",
+            "Print signage, name badges, and seating charts.",
+            "Test the registration and check-in system."
+          ]
+        },
+        {
+          "when": "2 weeks out",
+          "tasks": [
+            "Send the final headcount to catering, venue, and rental partners.",
+            "Distribute the run of show to staff, vendors, and speakers.",
+            "Confirm emergency contacts and a safety plan.",
+            "Assign staff roles and shifts.",
+            "Prepare onsite kits and registration materials.",
+            "Check the weather and arrange a rain plan for any outdoor component."
+          ]
+        },
+        {
+          "when": "Event week",
+          "tasks": [
+            "Confirm every vendor arrival time.",
+            "Walk the venue and test all AV equipment.",
+            "Brief the staff and volunteers.",
+            "Rehearse key sessions and speeches.",
+            "Prepare the final attendee list at registration.",
+            "Pack the emergency kit."
+          ]
+        },
+        {
+          "when": "Day of",
+          "tasks": [
+            "Arrive early for load-in and setup.",
+            "Inspect the rental delivery and count items.",
+            "Run a final tech check.",
+            "Open registration before the first attendee arrives.",
+            "Keep communication open with a group chat or radios.",
+            "Keep a running log of issues for the post-event debrief."
+          ]
+        },
+        {
+          "when": "After the event",
+          "tasks": [
+            "Confirm rental pickup and count returned items.",
+            "Pay final invoices and collect receipts.",
+            "Send a thank-you message and survey within 48 hours.",
+            "Share photos and recordings.",
+            "Hold an internal debrief within one week.",
+            "Deliver a post-event report to stakeholders."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Venue Questions",
+      "kind": "questions",
+      "items": [
+        "What is the maximum capacity for each room in theater, banquet, and reception styles?",
+        "What is included in the rental fee, and what is extra?",
+        "Is there a food and beverage minimum, and can we bring in outside catering?",
+        "What AV equipment is included, and can we bring our own vendor?",
+        "What are the load-in and load-out times, and is there a freight elevator?",
+        "Is there reliable Wi-Fi for the expected number of devices, and what is the bandwidth?",
+        "Are there power drops and enough outlets in each room?",
+        "What are the accessibility features: ramps, elevators, restrooms, and parking?",
+        "What is the policy on signage, banners, and branded displays?",
+        "Is there on-site parking, valet, or nearby garage pricing?",
+        "What is the cancellation and rescheduling policy?",
+        "Do you require certificates of insurance from vendors?"
+      ]
+    },
+    {
+      "heading": "AV and Room Setup Styles",
+      "kind": "table",
+      "note": "Space per person is approximate. Always confirm with your venue and rental company.",
+      "columns": ["Setup style", "Space per person", "Best for", "Rental notes"],
+      "rows": [
+        ["Theater", "8 to 10 sq ft", "Keynotes and large presentations", "Chairs only. Add a stage and podium."],
+        ["Classroom", "18 to 22 sq ft", "Training and note-taking", "6 ft tables and chairs facing front."],
+        ["Banquet rounds", "10 to 12 sq ft", "Meals, awards, and gala dinners", "60 in or 66 in rounds with linens."],
+        ["Boardroom", "25 to 30 sq ft", "Small meetings up to 20", "Conference table and comfortable chairs."],
+        ["U-shape", "30 to 40 sq ft", "Workshops and discussions", "Tables in a U with chairs on the outside."],
+        ["Hollow square", "25 to 30 sq ft", "Collaborative meetings", "Tables in a square, chairs around the outside."],
+        ["Cabaret", "15 to 18 sq ft", "Panels and entertainment with food", "Rounds with chairs on one side only."],
+        ["Reception or cocktail", "6 to 8 sq ft", "Networking and standing events", "Cocktail tables and lounge seating."]
+      ]
+    },
+    {
+      "heading": "Registration and Check-in Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Registration setup",
+          "items": [
+            "Choose a registration platform that handles tickets, payments, and attendee data.",
+            "Create a clear registration form that captures name, company, dietary needs, and accessibility needs.",
+            "Set up confirmation emails with a calendar invite and event details.",
+            "Include a code of conduct and photography policy.",
+            "Set a registration cutoff date.",
+            "Create a waitlist process if you reach capacity."
+          ]
+        },
+        {
+          "title": "Check-in prep",
+          "items": [
+            "Print badges alphabetically or by company.",
+            "Prepare a list of VIPs, speakers, and sponsors who need special handling.",
+            "Set up check-in tables with signs and a clear queue.",
+            "Provide a separate line for on-site registration.",
+            "Test the scanners, tablets, and Wi-Fi at the check-in area.",
+            "Create a backup paper list in case technology fails."
+          ]
+        },
+        {
+          "title": "On the day",
+          "items": [
+            "Open registration at least 30 minutes before the start.",
+            "Greet each attendee and hand out the badge, agenda, and any swag.",
+            "Direct attendees to coat check, restrooms, and the first session.",
+            "Track no-shows and walk-ins in real time.",
+            "Assign a floater to solve any problems quickly.",
+            "Close registration after the first session begins and reconcile the list."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Budget per Person",
+      "kind": "budget",
+      "note": "Typical split for a seated evening event. Rough Chicago-area guidance only. Costs vary by venue, season, and format.",
+      "lines": [
+        { "category": "Venue and rentals", "share": 25, "tip": "Include tables, chairs, linens, tent, staging, and lighting. Get an all-in quote." },
+        { "category": "Food and beverage", "share": 35, "tip": "Confirm service charge, gratuity, and tax in the per-person price." },
+        { "category": "AV and production", "share": 12, "tip": "Include microphones, projection, lighting, and a technician on site." },
+        { "category": "Speakers and entertainment", "share": 8, "tip": "Negotiate travel costs and overtime in the contract." },
+        { "category": "Marketing, printing, and signage", "share": 6, "tip": "Prioritize clear directional signage and branded badges." },
+        { "category": "Registration and technology", "share": 4, "tip": "Platform fees often scale by ticket." },
+        { "category": "Staffing and transportation", "share": 5, "tip": "Include valet, shuttles, and security." },
+        { "category": "Contingency", "share": 5, "tip": "Hold this until the event is over." }
+      ]
+    },
+    {
+      "heading": "Accessibility and Dietary Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Accessibility",
+          "items": [
+            "Ask about accessibility needs on the registration form.",
+            "Choose a venue with step-free entry, accessible restrooms, and elevators.",
+            "Leave 36 in minimum clear paths between tables and chairs.",
+            "Reserve accessible seating near the front and aisle seats for those who need them.",
+            "Provide large-print agendas and captioning or sign language interpreters when requested.",
+            "Offer a quiet room for guests who need a break.",
+            "Reserve accessible parking spaces close to the entrance.",
+            "Train staff on how to assist guests respectfully."
+          ]
+        },
+        {
+          "title": "Dietary needs",
+          "items": [
+            "Collect dietary requirements and allergies in advance.",
+            "Offer vegetarian, vegan, gluten-free, dairy-free, and nut-free options.",
+            "Label every dish clearly with ingredients and major allergens.",
+            "Separate prep and serving utensils for allergen-free dishes.",
+            "Provide kosher, halal, or other specialized meals if requested.",
+            "Brief the catering team on severe allergies.",
+            "Mark special meals on the seating chart and badges.",
+            "Offer water, non-alcoholic drinks, and coffee at all times."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Post-event ROI Checklist",
+      "kind": "checklist",
+      "groups": [
+        {
+          "title": "Collect data",
+          "items": [
+            "Send a short survey within 48 hours with 5 to 8 questions.",
+            "Record final attendance against registrations and no-show rate.",
+            "Track leads generated, meetings booked, or deals influenced.",
+            "Collect social media mentions and photos.",
+            "Gather vendor and staff feedback."
+          ]
+        },
+        {
+          "title": "Measure results",
+          "items": [
+            "Compare actual spend with the budget and note variances.",
+            "Calculate cost per attendee and cost per qualified lead.",
+            "Compare outcomes with the goals set in the brief.",
+            "Identify the top three sessions or moments from feedback.",
+            "Identify the top three problems and root causes."
+          ]
+        },
+        {
+          "title": "Report and follow up",
+          "items": [
+            "Send thank-you emails to attendees, speakers, and sponsors.",
+            "Share a summary report with key stakeholders within two weeks.",
+            "Add notes to the contact database and assign follow-up tasks.",
+            "Update the event playbook with lessons learned.",
+            "Archive contracts, invoices, and photos for future events."
+          ]
+        }
+      ]
+    }
+  ]
+}
