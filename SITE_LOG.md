@@ -36,6 +36,14 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-02): business model and payments
+
+- Business model chosen (plan: `/mnt/project-files/plans/business-model.md`): the customer pays a 10% booking fee (already inside every price) to Beyond Chiavari when they approve a vendor-confirmed proposal; rentals are paid to the vendor under its own agreement; vendors pay 0% for 90 days, then 5%.
+- **New pages:** `/booking-promise` (payments, deposits, damage, insurance, guarantee) and `/partners` (vendor sign-up; applications appear in `/admin/leads` as "Vendor application"). Re-run `supabase/schema.sql` so the `partner` form type is allowed.
+- `/how-it-works`, `/terms`, quote form footer, trust bar, footer, sitemap and llms.txt updated for the model.
+- **Booking opened now:** removed "first deliveries April 2027" notes (`site.launch` in `src/lib/site.ts`), guides, looks FAQ, OG image and geo copy.
+- Remaining: attorney review of `/terms` and `/booking-promise`; Stripe payment link for the fee; geo pages still describe "our" chairs and a St. Charles home base in places.
+
 ## Changes in this release (2026-11-02): real event photos
 
 - **74 real photos** (Unsplash License, free for commercial use) in `src/data/stock-photos.ts`, each checked on its Unsplash page for image id, photographer and free (not Unsplash+) status. Hotlinked from Unsplash's CDN with `auto=format`, so they skip Next's image optimizer.
@@ -117,7 +125,10 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 | `/blog` | Journal index: topic browser + latest 24 guides | 2026-11-02 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
 | `/blog/topic/[topic]` | 20 topic hubs (CollectionPage + ItemList + BreadcrumbList) | 2026-11-02 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
 | `/privacy` | Privacy policy | 2026-11-01 | ⚠️ | n/a | n/a | ✅ | ❌ | n/a |
-| `/terms` | Terms of use | 2026-11-01 | ⚠️ | n/a | n/a | ✅ | ❌ | n/a |
+| `/terms` | Terms of use: broker model, 10% booking fee, who you pay, Booking Promise, damage, liability cap | 2026-11-02 | ✅ | n/a | n/a | ✅ | ❌ | n/a |
+| `/how-it-works` | Four steps from quote to pickup, who you pay, Booking Promise summary, FAQ | 2026-11-02 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
+| `/booking-promise` | Payments, deposits, damage waiver, insurance/COI, six-point Booking Promise, payment StepFlow + schedule table, 8 FAQs | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners` | Vendor sign-up: why join, Founding Partner terms (0% for 90 days, then 5%), flow, application form (kind `partner`), 6 FAQs | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 404 (`not-found.tsx`) | Not-found page | 2026-11-01 | n/a | n/a | n/a | ✅ | ❌ | ⚠️ |
 
 ## Rental catalog (`/rentals`, added 2026-11-02)

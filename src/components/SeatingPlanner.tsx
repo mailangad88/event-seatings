@@ -360,7 +360,7 @@ export function SeatingPlanner() {
               </p>
               <p className="mt-2 leading-7 text-muted">
                 Want a second pair of eyes on your plan? Book a free 15-minute seating call and we&apos;ll suggest
-                chairs that suit your venue, season and budget. We&apos;re reserving our {site.launch.seasonLabel} now.
+                chairs that suit your venue, season and budget. Holiday and 2027 dates are filling now.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
                 {bookingUrl ? (

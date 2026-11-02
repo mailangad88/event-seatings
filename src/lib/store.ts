@@ -10,7 +10,8 @@ import type { QuoteLine } from "./catalog-types";
 // - Without them, data goes to a local JSON file (.data/db.json) so you can develop with no setup.
 
 // "chat" = a message sent from the chat dock when HubSpot live chat is not switched on.
-export type LeadKind = "quote" | "waitlist" | "quiz" | "call" | "chat";
+// "partner" = a rental company applying on /partners to receive leads.
+export type LeadKind = "quote" | "waitlist" | "quiz" | "call" | "chat" | "partner";
 
 export type Lead = {
   id: string;

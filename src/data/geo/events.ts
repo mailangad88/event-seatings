@@ -13,7 +13,7 @@ export const eventTypes: EventType[] = [
       "You can rent wedding chairs from us for ceremonies and receptions across Chicago and the suburbs, from city lofts to Fox Valley barns. We carry cross-back, ghost, bentwood, Louis medallion and sweetheart thrones, and delivery and setup are itemized in your quote. Start with a short planning call and we'll help you count, choose and schedule.",
     story: [
       "A Chicago wedding can mean a ceremony in a Gold Coast church and a reception in a West Loop loft, or vows under the oaks at a forest preserve and dinner in a St. Charles barn. Each space asks for something different from the chairs, and the chairs end up in nearly every photo.",
-      "We're a new rental company based in St. Charles, building our first Founding Season for 2027. That means we're taking a small number of weddings and planning each one closely: how many chairs for the ceremony versus dinner, whether a flip during cocktail hour is realistic, and which style suits your room and your florals.",
+      "We're a St. Charles-based booking team that matches each wedding with insured Chicago-area rental companies, and we plan every one closely: how many chairs for the ceremony versus dinner, whether a flip during cocktail hour is realistic, and which style suits your room and your florals.",
       "Lake wind, late spring storms and October chill are part of planning here. We'll talk through rain plans, indoor backups and which of our chairs are happy outdoors, so the seating doesn't become the thing you worry about the week of.",
     ],
     painPoints: [
@@ -60,7 +60,7 @@ export const eventTypes: EventType[] = [
     faqs: [
       {
         q: "How far in advance should I book wedding chairs in Chicago?",
-        a: "Popular weekends from May through October fill early across the Chicago area. Reaching out as soon as your venue and date are set gives you the best choice of styles. Our 2027 Founding Season calendar is open now for quote requests.",
+        a: "Popular weekends from May through October fill early across the Chicago area. Reaching out as soon as your venue and date are set gives you the best choice of styles. Our 2026-27 season calendar is open now for quote requests.",
       },
       {
         q: "Do you deliver to Chicago wedding venues and the suburbs?",

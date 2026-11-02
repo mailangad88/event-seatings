@@ -39,7 +39,7 @@ const faqs: [string, string][] = [
   ],
   [
     "When should I book event chairs in Chicago?",
-    `Book as soon as your date, venue and rough guest count are set. Popular Chicago-area dates in late spring, summer and fall fill first. The first ${site.name} events are in the ${site.launch.seasonLabel}.`,
+    `Book as soon as your date, venue and rough guest count are set. Popular Chicago-area dates in late spring, summer and fall fill first.`,
   ],
 ];
 

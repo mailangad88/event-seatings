@@ -21,7 +21,7 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ fontSize: 26, letterSpacing: 8, color: "#a88a5a", textTransform: "uppercase", display: "flex" }}>
-          2027 Founding Season · Chicago & Suburbs
+          Every event rental · Chicago & Suburbs
         </div>
         <div style={{ fontSize: 120, lineHeight: 1.02, display: "flex", flexDirection: "column" }}>
           <span>Seating, beyond</span>
