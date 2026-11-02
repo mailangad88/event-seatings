@@ -99,7 +99,7 @@ A 90-guest garden party needs about 12 rounds of 8 (96 seats) and 90 chairs. If 
 
 Geneva events tend to be photographed, so the details show. Think about what guests will see first and plan the list backward from there.
 
-- **Chairs for ceremony and dinner.** Many Geneva weddings use the same chairs for both, moved between spaces. A change in layout takes about an hour with a crew, so ask the venue about timing.
+- **Chairs for ceremony and dinner.** Many Geneva weddings use the same chairs for both, moved between spaces. Ask the venue how much time you have between the ceremony and dinner to flip the room.
 - **Linens that match the setting.** Brick and limestone downtown settings suit ivory or natural; a modern loft might want black or sage. Our [tablecloth size chart](/blog/tablecloth-size-chart) shows the correct sizes.
 - **Tables by function.** Beyond guest tables, count the cake table, gift table, guest book table and bar fronts. A 150-guest reception can easily have six to eight of these.
 - **Cover for the weather.** A tent is a rental and a permit question. Our [tent size guide](/blog/what-size-tent-do-i-need) explains how to size one for Chicago-area guest counts.

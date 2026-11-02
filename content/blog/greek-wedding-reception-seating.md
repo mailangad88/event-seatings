@@ -1,5 +1,5 @@
 ---
-title: "Greek Wedding Reception Seating: Tables, Dancing and Stefana Ceremony Needs"
+title: "Greek Wedding Reception Seating: Tables, Dancing and Stefana"
 description: Plan seating and rentals for a Greek Orthodox wedding in Chicago, from the stefana crowning to long family tables and a dance floor that handles circle dances.
 date: 2026-11-02
 tags: Cultural Celebrations, Weddings, Greek Wedding

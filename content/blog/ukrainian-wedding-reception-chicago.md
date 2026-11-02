@@ -1,5 +1,5 @@
 ---
-title: "Ukrainian Wedding Reception in Chicago: Korovai Table, Seating and Rentals"
+title: "Ukrainian Wedding Reception in Chicago: Korovai, Seating, Rentals"
 description: Plan seating and a reception layout for a Ukrainian wedding in Chicago, including the korovai bread table, long family tables, a dance floor and a rental checklist.
 date: 2026-11-02
 tags: Cultural Celebrations, Weddings, Ukrainian Wedding

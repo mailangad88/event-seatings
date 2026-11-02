@@ -101,6 +101,10 @@ Rural and semi-rural events reward preparation. A few habits help.
 
 If you are driving from Chicago for the day, build in a rain plan with a covered space, and let your guests know whether to wear shoes for grass. Oswego events are often more relaxed than banquet-hall events, and a simple, well-lit setup often looks better than a crowded one.
 
+## Keeping guests comfortable
+
+Comfort decides whether an outdoor event feels good. Provide shade in the afternoon, fans or heaters for the shoulder seasons, and a place to sit for every guest who wants one. Bug control matters near the river and fields, so ask your host about citronella or a spraying service. Clear signs to restrooms and parking help rural events run smoothly.
+
 ## Frequently asked questions
 
 ### Who runs parks in Oswego?

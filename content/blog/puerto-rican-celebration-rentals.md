@@ -1,5 +1,5 @@
 ---
-title: "Puerto Rican Celebration Rentals in Chicago: Parties, Weddings and Parrandas"
+title: "Puerto Rican Party Rentals in Chicago: Weddings and Cookouts"
 description: Plan seating, tables and tents for Puerto Rican family celebrations in Chicago, from backyard pig roasts to weddings and holiday parrandas, with counts and layouts.
 date: 2026-11-02
 tags: Cultural Celebrations, Parties, Puerto Rican

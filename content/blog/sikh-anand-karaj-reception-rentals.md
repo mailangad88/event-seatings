@@ -1,6 +1,6 @@
 ---
-title: "Sikh Wedding Reception Rentals: Anand Karaj, Gurdwara and Reception Seating"
-description: Understand what to rent for a Sikh wedding reception in Chicago, how Anand Karaj floor seating differs, and how to plan tables, chairs and a stage after the gurdwara ceremony.
+title: "Sikh Wedding Reception Rentals: Gurdwara and Hall Seating"
+description: What to rent for a Sikh wedding reception in Chicago, how Anand Karaj floor seating differs, and how to plan tables, chairs and a stage for the hall.
 date: 2026-11-02
 tags: Cultural Celebrations, Weddings, Sikh Wedding
 keyword: sikh wedding reception rentals

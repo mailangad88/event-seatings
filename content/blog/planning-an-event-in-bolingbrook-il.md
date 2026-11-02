@@ -105,6 +105,10 @@ Bolingbrook hosts many kinds of celebrations, and each has its own rental patter
 
 Whatever the event, plan the room in zones: arrival, seating, food, dance and photos. A clear zone map helps your guests move naturally and helps the delivery crew set up faster. Share the map with us when you request a quote. Many Chicago-area families also coordinate with a DJ or a band, so ask them for their space and power needs early.
 
+## A note on timing and noise
+
+Large family events often run late. Ask the village about noise rules and end times, especially if you plan live music or a DJ outdoors. Tell neighbors early. Plan the last hour of the event for slower music, a cake or dessert table and farewells, so guests leave gradually instead of all at once and the street stays calm.
+
 ## Frequently asked questions
 
 ### Where do I get a park permit in Bolingbrook?

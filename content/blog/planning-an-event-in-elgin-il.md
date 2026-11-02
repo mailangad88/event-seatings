@@ -106,6 +106,10 @@ Historic venues come with beauty and constraints. Use this order.
 
 Elgin is close to St. Charles, so a site visit is easy for us once we are operating, and we are happy to talk through your plan on a call before then. The more you know about the room before you order, the fewer changes you make late.
 
+## Parking and arrival
+
+Large events in Elgin parks and historic spaces depend on parking. Ask the city where guests can park and whether a shuttle is needed. Put signs at the entrance and tell guests where to enter. Plan a drop-off point for older guests, and keep accessible routes clear of cables and rental deliveries.
+
 ## Frequently asked questions
 
 ### Who runs Elgin's parks?

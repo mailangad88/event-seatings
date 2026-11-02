@@ -1,6 +1,6 @@
 ---
 title: "Nikah Ceremony Seating: Layouts, Chairs and Room Setup"
-description: How to arrange seating for a nikah ceremony in the Chicago area, including the couple's seats, family sections, the officiant and options for separate or shared seating.
+description: How to arrange seating for a nikah ceremony in Chicago, including the signing table, family sections and shared or separate seating options.
 date: 2026-11-02
 tags: Cultural Celebrations, Weddings, Nikah
 keyword: nikah ceremony seating
