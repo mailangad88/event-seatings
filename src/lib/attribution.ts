@@ -82,3 +82,10 @@ export function attributionFields(): Record<string, string> {
   pick(last, "");
   return out;
 }
+
+// Short label for the visit that brought this visitor in, sent with each page view (e.g. "google / organic").
+export function currentSource(): string | undefined {
+  if (typeof window === "undefined") return undefined;
+  const t = read().last;
+  return t?.utm_source ? [t.utm_source, t.utm_medium].filter(Boolean).join(" / ").slice(0, 100) : undefined;
+}

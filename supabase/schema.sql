@@ -74,5 +74,32 @@ alter table leads
 create index if not exists leads_status_idx on leads (status);
 create index if not exists leads_follow_up_idx on leads (follow_up_at) where follow_up_at is not null;
 
+-- Page views for the admin dashboard (visits and conversion rate per page). Safe to run again.
+create table if not exists page_views (
+  id bigint generated always as identity primary key,
+  path text not null,
+  visitor_id text not null,
+  source text,
+  created_at timestamptz not null default now()
+);
+create index if not exists page_views_created_idx on page_views (created_at);
+
+-- Referral relationship with each rental vendor, edited in /admin/vendors. Safe to run again.
+create table if not exists vendor_partners (
+  vendor_id text primary key,
+  status text not null default 'not_contacted',
+  contact_name text,
+  contact_role text,
+  contact_phone text,
+  contact_email text,
+  referral_terms text,
+  notes text,
+  last_contacted_at date,
+  activity jsonb not null default '[]'::jsonb,
+  updated_at timestamptz
+);
+
 alter table votes enable row level security;
 alter table leads enable row level security;
+alter table page_views enable row level security;
+alter table vendor_partners enable row level security;
