@@ -10,6 +10,7 @@
 
 import { customerPrice, type CatalogItem as BaseItem } from "@/lib/catalog-types";
 import { categories, products, type CategoryId, type Product } from "./catalog-products";
+import inventory from "./catalog-inventory.json";
 import { vendors, type Vendor } from "./vendors";
 
 export { vendors, categories, products, customerPrice };
@@ -31,6 +32,10 @@ export type CatalogItem = BaseItem & {
   backupVendorIds: string[];
   priceCheckedAt: string;
   keywords: string[];
+  /** Curated items (hand-written copy, sample budgets, renders). False for full vendor inventory rows. */
+  featured: boolean;
+  /** Vendor's own section heading, for grouping full-inventory items on category pages. */
+  section?: string;
 };
 
 const AR = "https://www.arlingtonrental.com/pricing";
@@ -267,6 +272,66 @@ export const offers: Record<string, Offer[]> = {
     o("house-of-rental", 265, "Moon walk 15x15 castle", `${HR}moon-walk-15x15-castle/18984`),
     o("playhouse-party-rentals", 595, "White wedding bounce house", PH),
   ],
+  // Added with the full vendor price lists (Nov 2026)
+  "popcorn-machine": [
+    o("easy-breezy-bash-co", 75, "Popcorn Machine Rental", "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"),
+    o("playhouse-party-rentals", 85, "Popcorn Machine", "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"),
+    o("house-of-rental", 103, "Popcorn, Table Top", "https://www.houseofrental.com/product/rentals/popcorn-table-top/18974"),
+  ],
+  "snow-cone-machine": [
+    o("easy-breezy-bash-co", 55, "Snow Cone Machine Rental", "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"),
+    o("playhouse-party-rentals", 85, "Sno Cone Machine", "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"),
+  ],
+  "nacho-cheese-warmer": [
+    o("house-of-rental", 79, "Nacho Cheese Dispenser", "https://www.houseofrental.com/product/rentals/nacho-cheese-dispenser/36471"),
+    o("the-jumper-store", 129, "Nacho Cheese Warmer", "https://www.thejumperstore.com/category/concessions/"),
+  ],
+  "hot-dog-roller": [
+    o("house-of-rental", 97, "Hot Dog Warmer - Steamin Demon", "https://www.houseofrental.com/product/rentals/hot-dog-warmer-steamin-demon/18970"),
+    o("the-jumper-store", 129, "Hot Dog Steamer", "https://www.thejumperstore.com/category/concessions/"),
+  ],
+  "cotton-candy-machine": [
+    o("easy-breezy-bash-co", 55, "Cotton Candy Machine Rental", "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"),
+    o("playhouse-party-rentals", 85, "Cotton Candy Machine", "https://www.playhousepartyrentals.com/category/concessions-and-add-ons/"),
+    o("house-of-rental", 103, "Cotton Candy Maker", "https://www.houseofrental.com/product/rentals/cotton-candy-maker/18976"),
+  ],
+  "hand-wash-station": [
+    o("house-of-rental", 208, "Hand Wash Station", "https://www.houseofrental.com/product/rentals/hand-wash-station/21605"),
+  ],
+  "cable-ramp": [
+    o("house-of-rental", 17, "Cable Protector, 40\" Straight Ramp", "https://www.houseofrental.com/product/rentals/cable-protector-40-straight-ramp/40976"),
+  ],
+  "stanchion": [
+    o("house-of-rental", 28, "Stanchion, Chrome Post W/6' Black Belt", "https://www.houseofrental.com/product/rentals/stanchion-chrome-post-w-6-black-belt/42986"),
+    o("halls-rental", 28.25, "Stanchion, Chrome", "https://www.hallsrental.com/price-guide-2026/"),
+  ],
+  "barricade": [
+    o("house-of-rental", 29, "Crowd Control Barrier 43\"X8'", "https://www.houseofrental.com/product/rentals/crowd-control-barrier-43-x8-/39928"),
+  ],
+  "generator-7kw": [
+    o("house-of-rental", 233, "Generator, 8000 Watt. 29-58 Amp", "https://www.houseofrental.com/product/rentals/generator-8000-watt-29-58-amp/20155"),
+  ],
+  "pa-system": [
+    o("house-of-rental", 168, "Pa, Fender Pro 150W 2 Spkr W/Microphone", "https://www.houseofrental.com/product/rentals/pa-fender-pro-150w-2-spkr-w-microphone/18616"),
+    o("playhouse-party-rentals", 100, "1000 Watt Bluetooth Speakers", "https://www.playhousepartyrentals.com/category/party-extras/"),
+  ],
+  "wireless-microphone": [
+    o("arlington-rental", 35, "Wireless Microphone (lapel)", "https://www.arlingtonrental.com/pricing"),
+  ],
+  "projector": [
+    o("arlington-rental", 100, "Sony LCD Projector 1200 Lumens", "https://www.arlingtonrental.com/pricing"),
+  ],
+  "projection-screen": [
+    o("arlington-rental", 50, "Projection Screen (8\u2019 x 8\u2019 tripod)", "https://www.arlingtonrental.com/pricing"),
+    o("house-of-rental", 81, "Proj, Screen 96X96", "https://www.houseofrental.com/product/rentals/proj-screen-96x96/18405"),
+  ],
+  "podium": [
+    o("arlington-rental", 35, "Speaker's Podium", "https://www.arlingtonrental.com/pricing"),
+    o("playhouse-party-rentals", 60, "Podium", "https://www.playhousepartyrentals.com/category/party-extras/"),
+  ],
+  "tv-with-stand": [
+    o("playhouse-party-rentals", 225, "60\" TV with Stand", "https://www.playhousepartyrentals.com/category/party-extras/"),
+  ],
   "yard-games": [o("arlington-rental", 25, "Ring toss / tic tac toe / limbo", AR)],
   "soft-play": [o("easy-breezy-bash-co", 225, "Mini soft play party", `${EB}kids-party-rentals/`)],
 };
@@ -290,6 +355,11 @@ const preferredQuoteVendor: Partial<Record<CategoryId, string>> = {
   lounge: "bowery-and-bash",
   decor: "tablescapes",
   "games-kids": "playhouse-party-rentals",
+  concessions: "playhouse-party-rentals",
+  "photo-booths": "easy-breezy-bash-co",
+  "av-sound": "complete-weddings-events",
+  "restrooms-power": "ez-tent-rentals",
+  "fencing-crowd-control": "playhouse-party-rentals",
 };
 
 const categoryName = (id: CategoryId) => categories.find((c) => c.id === id)!.name;
@@ -327,10 +397,60 @@ function build(p: Product): CatalogItem {
     ...(best && { sourceUrl: best.sourceUrl }),
     priceCheckedAt: PRICES_CHECKED_AT,
     keywords: p.keywords,
+    featured: true,
   };
 }
 
-export const catalogItems: CatalogItem[] = products.map(build);
+/**
+ * Full vendor inventories (every published price list row), generated by
+ * scripts/build-inventory.py from the vendor research. Rows that duplicate a curated
+ * product's offer are already removed there.
+ */
+type InventoryRow = {
+  id: string;
+  categoryId: CategoryId;
+  name: string;
+  specs: string;
+  unit: string;
+  section: string;
+  vendorId: string;
+  vendorPrice: number;
+  vendorItem: string;
+  sourceUrl: string;
+  checkedAt: string;
+  altOffers?: Offer[];
+};
+
+function buildInventory(r: InventoryRow): CatalogItem {
+  const cat = categories.find((c) => c.id === r.categoryId)!;
+  return {
+    id: r.id,
+    name: r.name,
+    category: cat.name,
+    categoryId: r.categoryId,
+    unit: r.unit,
+    specs: r.specs,
+    description: `${r.name}${r.specs ? ` (${r.specs})` : ""}, from our ${cat.name.toLowerCase()} range for events in Chicago and the suburbs. ${cat.blurb}.`,
+    vendorPrice: r.vendorPrice,
+    vendorId: r.vendorId,
+    priceSource: "published",
+    altOffers: r.altOffers ?? [],
+    backupVendorIds: quoteOnlyVendorsFor(r.categoryId).filter((id) => id !== r.vendorId),
+    sourceUrl: r.sourceUrl,
+    priceCheckedAt: r.checkedAt,
+    keywords: [`${r.name.toLowerCase()} rental chicago`],
+    featured: false,
+    section: r.section,
+  };
+}
+
+const curated = products.map(build);
+const curatedIds = new Set(curated.map((i) => i.id));
+
+export const catalogItems: CatalogItem[] = [
+  ...curated,
+  ...(inventory.items as InventoryRow[]).filter((r) => !curatedIds.has(r.id)).map(buildInventory),
+];
 
 export const getCatalogItem = (id: string) => catalogItems.find((i) => i.id === id);
 

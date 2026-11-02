@@ -17,7 +17,12 @@ export type CategoryId =
   | "heating-cooling"
   | "lounge"
   | "decor"
-  | "games-kids";
+  | "games-kids"
+  | "concessions"
+  | "photo-booths"
+  | "av-sound"
+  | "restrooms-power"
+  | "fencing-crowd-control";
 
 export type Category = {
   id: CategoryId;
@@ -304,6 +309,95 @@ export const categories: Category[] = [
       { q: "Can a bounce house be set up on concrete?", a: "Yes, with sandbags instead of stakes and a tarp underneath. Grass is preferred." },
     ],
   },
+  {
+    id: "concessions",
+    name: "Concessions",
+    imageFolder: "concessions",
+    blurb: "Popcorn, cotton candy, snow cone and dessert carts",
+    intro:
+      "Concession machines rent for about $75-125 a day in the Chicago area, with supplies priced per batch (popcorn kits, flavored sugar, syrup). One machine serves roughly 100-150 guests over a few hours, and styled carts for ice cream, coffee or charcuterie run $50-200.",
+    planning: [
+      { title: "Pick your treats", body: "Popcorn and cotton candy suit kids and school events; dessert and coffee carts suit weddings and corporate events." },
+      { title: "Count servings", body: "Plan 1-2 servings per guest; one popcorn kit makes about 20-25 servings." },
+      { title: "Power", body: "Most machines need a standard 15-20 amp outlet within 50 feet, or a generator outdoors." },
+      { title: "Staffing", body: "Machines are self-serve with a volunteer; carts often include an attendant, so check what is included." },
+    ],
+    faqs: [
+      { q: "How much does a popcorn machine rental cost in Chicago?", a: "About $75-125 for the day for a kettle machine with cart, plus about $1-2 per serving for supplies. Some rental companies bundle 50-100 servings." },
+      { q: "Do concession machines need electricity?", a: "Yes. Popcorn, cotton candy and snow cone machines each need a dedicated standard outlet. Outdoors, plan an extension cord run or a small generator." },
+      { q: "Are supplies included with concession rentals?", a: "Usually not. Supplies are priced per batch or bag; we list them on your quote so you can choose how many servings you want." },
+    ],
+  },
+  {
+    id: "photo-booths",
+    name: "Photo booths",
+    imageFolder: "photo-booths",
+    blurb: "360 booths, mirror booths, selfie stations and props",
+    intro:
+      "Photo booth rentals in Chicago run from about $150 for a self-serve selfie station to $400-800 for a mirror or 360 booth with an attendant for 3-4 hours. They are one of the most-used extras at weddings, quinceañeras and corporate parties, and the photos double as favors.",
+    planning: [
+      { title: "Choose the style", body: "360 booths make shareable video; mirror and open-air booths make printed photos." },
+      { title: "Space", body: "Allow about 10' x 10' for most booths and a 12' circle for a 360 platform." },
+      { title: "Hours", body: "Two to three hours during the reception is usually enough; peak use is after dinner." },
+      { title: "Backdrop", body: "Pair with a flower wall or sequin backdrop for better photos." },
+    ],
+    faqs: [
+      { q: "How much is a photo booth rental in Chicago?", a: "About $150-450 for a few hours depending on the booth type, prints and whether an attendant is included. 360 video booths and magic mirrors sit at the top of that range." },
+      { q: "How much space does a photo booth need?", a: "About 10' x 10' including a backdrop, or a 12-foot circle for a 360 platform, plus a standard outlet nearby." },
+    ],
+  },
+  {
+    id: "av-sound",
+    name: "AV & sound",
+    imageFolder: "av",
+    blurb: "Projectors, screens, speakers, microphones and TVs",
+    intro:
+      "AV rentals in Chicago start around $50-100 for a speaker with microphone and run $150-400 for a projector and screen package. Plan a microphone for every toast or speech, and a screen sized so the back row sits within six screen-heights.",
+    planning: [
+      { title: "Speeches", body: "One powered speaker and wireless mic covers up to about 150 guests indoors." },
+      { title: "Screens", body: "Pick screen height of at least 1/6 of the distance to the back row." },
+      { title: "Power and cables", body: "Each device needs an outlet; plan cable covers where guests walk." },
+    ],
+    faqs: [
+      { q: "Do I need a DJ for a microphone and speaker?", a: "No. A powered speaker with a wireless microphone is plug-and-play and is enough for toasts, ceremonies and announcements." },
+      { q: "What size projector screen do I need?", a: "Make the screen height about one sixth of the distance to the furthest seat: a 6' screen for a room about 36' deep." },
+    ],
+  },
+  {
+    id: "restrooms-power",
+    name: "Restrooms & power",
+    imageFolder: "restrooms-power",
+    blurb: "Portable restrooms, restroom trailers and generators",
+    intro:
+      "Portable restroom units rent for roughly $150-300 each and luxury restroom trailers for $1,000-3,000 a day in the Chicago area. Plan one unit per 50 guests for a four-hour event (more if alcohol is served), and a generator sized to every heater, light and caterer's appliance on site.",
+    planning: [
+      { title: "Count units", body: "About 1 restroom per 50 guests for 4 hours; add 20% if serving alcohol and an ADA unit." },
+      { title: "Hand washing", body: "Add a hand-wash station for every 2-3 restrooms if no sinks are nearby." },
+      { title: "Power load", body: "Add up the watts of lights, heaters, sound and catering; size the generator 20% above the total." },
+      { title: "Placement", body: "Restrooms need level ground and truck access; generators go downwind and away from guests." },
+    ],
+    faqs: [
+      { q: "How many portable restrooms do I need for 100 guests?", a: "Two standard units for a four-hour event, three if alcohol is served, plus a hand-wash station. A restroom trailer with 2-3 stalls covers about 100-150 guests." },
+      { q: "What size generator do I need for a tent wedding?", a: "Add up the watts of everything you will run (string lights, DJ, caterer's warmers, fans or heaters) and add 20%. Most 100-guest tents need about 7,000-10,000 watts; a vendor sizes it for you." },
+    ],
+  },
+  {
+    id: "fencing-crowd-control",
+    name: "Fencing & crowd control",
+    imageFolder: "fencing",
+    blurb: "Stanchions, red carpets, barricades and fencing",
+    intro:
+      "Crowd-control rentals in Chicago range from about $10-20 per stanchion post and $50-100 for a red carpet runner to $15-30 per barricade section. They guide lines at check-in, bars and VIP entrances, and keep festival and block-party areas safe.",
+    planning: [
+      { title: "Lines", body: "One stanchion every 6-8 feet along a queue." },
+      { title: "Perimeter", body: "Bike-rack barricades are about 8' long; divide the perimeter by 8." },
+      { title: "Entrances", body: "A 4' x 20' red carpet with 6 posts makes an entrance or step-and-repeat." },
+    ],
+    faqs: [
+      { q: "Do I need a permit for barricades on a Chicago street?", a: "Street closures for block parties need a City of Chicago permit, which comes with its own barricades in many wards. Private property events do not need a permit for rope-and-post stanchions." },
+      { q: "How many stanchions do I need?", a: "One post every 6-8 feet of line, plus one at each end and each turn." },
+    ],
+  },
 ];
 
 const P = (
@@ -495,15 +589,42 @@ export const products: Product[] = [
   P("candle-holder", "decor", "Candle holder", "Votive, hurricane or taper holder", "each", 2.5, 0.4, "Candlelight for every table.", ["candle holder rental"]),
 
   P("neon-sign", "decor", "Neon sign", "LED neon phrase sign, e.g. \"Better Together\" or \"Mr & Mrs\"", "each", 89, 0, "A glowing phrase over the bar, lounge or sweetheart table.", ["neon sign rental chicago"]),
-  P("photo-booth-360", "decor", "360 photo booth", "Platform with rotating video arm, attendant varies", "each", 149, 0, "Slow-motion 360 videos guests share all night.", ["360 photo booth rental chicago", "photo booth rental chicago"], { minQty: 1 }),
-  P("mirror-photo-booth", "decor", "Mirror photo booth", "Full-length touch-screen mirror with prints", "each", 395, 0, "The glam selfie mirror that prints photos on the spot.", ["mirror photo booth rental chicago"], { minQty: 1 }),
+  P("photo-booth-360", "photo-booths", "360 photo booth", "Platform with rotating video arm, attendant varies", "each", 149, 0, "Slow-motion 360 videos guests share all night.", ["360 photo booth rental chicago", "photo booth rental chicago"], { minQty: 1 }),
+  P("mirror-photo-booth", "photo-booths", "Mirror photo booth", "Full-length touch-screen mirror with prints", "each", 395, 0, "The glam selfie mirror that prints photos on the spot.", ["mirror photo booth rental chicago"], { minQty: 1 }),
 
   // Games & kids
   P("bounce-house", "games-kids", "Bounce house", "15' x 15' inflatable, needs 20' x 20' and power", "each", 225, 0, "The kids' party headliner for birthdays and picnics.", ["bounce house rental chicago"], { minQty: 1 }),
   P("yard-games", "games-kids", "Yard game", "Giant Jenga, cornhole, Connect 4 and more", "each", 45, 0, "Lawn games for graduation parties and picnics.", ["yard game rental chicago", "cornhole rental"]),
-  P("popcorn-machine", "games-kids", "Popcorn machine", "8 oz kettle with cart, supplies extra", "each", 95, 0, "Fresh popcorn for parties and school events.", ["popcorn machine rental chicago"]),
+  P("popcorn-machine", "concessions", "Popcorn machine", "8 oz kettle with cart, supplies extra", "each", 95, 0, "Fresh popcorn for parties and school events.", ["popcorn machine rental chicago"]),
+  // Concessions
+  P("snow-cone-machine", "concessions", "Snow cone machine", "Shaved-ice machine, syrups and cones extra", "each", 85, 0, "Icy treats for summer parties, picnics and school events.", ["snow cone machine rental chicago"]),
+  P("nacho-cheese-warmer", "concessions", "Nacho cheese warmer", "Countertop cheese dispenser, supplies extra", "each", 75, 0, "Warm nacho cheese on tap for graduations and game-day parties.", ["nacho machine rental chicago"]),
+  P("hot-dog-roller", "concessions", "Hot dog warmer", "Steamer or roller holding about 50-80 hot dogs", "each", 75, 0, "Hot dogs ready all party long with no grill needed.", ["hot dog machine rental chicago"]),
+
+  // Restrooms & power
+  P("portable-restroom", "restrooms-power", "Portable restroom", "Standard single unit with hand sanitizer", "each", 175, 1 / 50, "A clean single restroom unit for backyard parties, festivals and construction-free venues.", ["porta potty rental chicago", "portable toilet rental chicago"], { minQty: 1 }),
+  P("ada-restroom", "restrooms-power", "ADA accessible restroom", "Wheelchair accessible unit with ramp-level entry", "each", 225, 0, "The accessible unit to include at any public or large private event.", ["ada porta potty rental chicago"], { minQty: 1 }),
+  P("restroom-trailer", "restrooms-power", "Luxury restroom trailer", "2-3 stall trailer with flushing toilets, sinks, lights and climate control", "each", 1500, 0, "Wedding-grade restrooms with running water, mirrors and air conditioning.", ["restroom trailer rental chicago", "luxury bathroom trailer rental"], { minQty: 1 }),
+  P("hand-wash-station", "restrooms-power", "Hand-wash station", "Portable 2-sink station with fresh water and soap", "each", 95, 0, "Fresh-water hand washing next to portable restrooms or food service.", ["hand washing station rental chicago"]),
+  P("generator-7kw", "restrooms-power", "Generator, 7,000-8,000 watt", "Portable generator, fuel extra", "each", 225, 0, "Runs string lights, a DJ and a few caterer's warmers.", ["generator rental chicago", "party generator rental"]),
+  P("generator-20kw", "restrooms-power", "Generator, 20 kW towable", "Towable diesel generator with distribution, fuel extra", "each", 450, 0, "Powers a tent wedding with lighting, sound, heaters and catering.", ["tent generator rental chicago"]),
+  P("cable-ramp", "restrooms-power", "Cable ramp / cord cover", "5' section protecting cables where guests walk", "each", 15, 0, "Keeps guests from tripping over power runs.", ["cable cover rental"]),
+
+  // AV & sound
+  P("pa-system", "av-sound", "Portable PA system", "Powered speakers with a microphone, for toasts and announcements", "each", 150, 0, "Clear speeches, toasts and background music for up to about 300 guests.", ["pa system rental chicago", "speaker rental chicago"]),
+  P("wireless-microphone", "av-sound", "Wireless microphone", "Lapel or handheld wireless mic", "each", 35, 0, "Hands-free mic for officiants, speeches and presentations.", ["wireless microphone rental chicago"]),
+  P("projector", "av-sound", "Projector", "LCD projector, 1,200+ lumens", "each", 100, 0, "Slideshows, videos and presentations at receptions and corporate events.", ["projector rental chicago"]),
+  P("projection-screen", "av-sound", "Projection screen", "8' x 8' tripod screen", "each", 50, 0, "Pairs with a projector for slideshows and presentations.", ["projector screen rental chicago"]),
+  P("podium", "av-sound", "Podium", "Floor-standing lectern", "each", 60, 0, "A spot for speeches, awards and ceremonies.", ["podium rental chicago", "lectern rental"]),
+  P("tv-with-stand", "av-sound", "TV with stand", "60\" TV on a rolling stand", "each", 225, 0, "Shows slideshows, menus or the big game.", ["tv rental chicago event"]),
+
+  // Fencing & crowd control
+  P("stanchion", "fencing-crowd-control", "Stanchion post with rope", "Chrome or gold post with velvet rope", "each", 15, 0, "Guides lines at check-in, bars and VIP entrances.", ["stanchion rental chicago"]),
+  P("barricade", "fencing-crowd-control", "Steel barricade", "8' bike-rack style crowd barrier", "each", 20, 0, "Interlocking barriers for block parties, festivals and parking control.", ["barricade rental chicago"]),
+  P("temporary-fence", "fencing-crowd-control", "Temporary fence panel", "6' x 12' chain-link panel with stand", "each", 25, 0, "Perimeter fencing for festivals, beer gardens and outdoor events.", ["temporary fence rental chicago"]),
+
   P("soft-play", "games-kids", "Soft play set", "Toddler soft play blocks, ball pit and mats", "each", 225, 0, "A safe play zone for toddlers at birthdays and baby showers.", ["soft play rental chicago"], { minQty: 1 }),
-  P("cotton-candy-machine", "games-kids", "Cotton candy machine", "Commercial machine, supplies extra", "each", 95, 0, "Carnival treat for kids' events.", ["cotton candy machine rental"]),
+  P("cotton-candy-machine", "concessions", "Cotton candy machine", "Commercial machine, supplies extra", "each", 95, 0, "Carnival treat for kids' events.", ["cotton candy machine rental"]),
 ];
 
 export const getCategory = (id: string) => categories.find((c) => c.id === id);

@@ -72,16 +72,26 @@ export default async function QuotePage(props: PageProps<"/quote">) {
     .slice(0, 60);
 
   // Only customer-safe fields reach the browser; vendor names and costs stay on the server.
-  const items: QuoteItem[] = catalogItems.map((i) => ({
-    ...toPublicItem(i),
-    categoryId: i.categoryId,
-    image: i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId),
-    imageAlt: i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs),
-    // Rendered colour/finish options, shown as swatches on the item card.
-    variants: imagesFor(i.id)
+  // The ~2,500 non-featured inventory rows are sent lean (no description, image only when rendered)
+  // to keep the page payload small.
+  const items: QuoteItem[] = catalogItems.map((i) => {
+    const image = i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId);
+    const variants = imagesFor(i.id)
       .filter((img) => img.kind === "variant" && img.variant)
-      .map((img) => ({ key: img.variant!, label: img.variant!.replace(/-/g, " "), src: img.src, alt: img.alt })),
-  }));
+      .map((img) => ({ key: img.variant!, label: img.variant!.replace(/-/g, " "), src: img.src, alt: img.alt }));
+    const item: QuoteItem = {
+      ...toPublicItem(i),
+      ...(!i.featured && { description: undefined }),
+      categoryId: i.categoryId,
+      featured: i.featured,
+      image,
+      imageAlt: image ? (i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs)) : undefined,
+      // Rendered colour/finish options, shown as swatches on the item card.
+      ...(variants.length > 0 && { variants }),
+    };
+    // Drop empty fields: React serializes each undefined key as "$undefined", which adds up over 2,500 items.
+    return Object.fromEntries(Object.entries(item).filter(([, v]) => v !== undefined && v !== "")) as QuoteItem;
+  });
 
   // Starter lists shown as tappable cards: the three home page looks (with their tablescape renders) and event types.
   const lookScene = { "blush-garden": scenes.blushGarden, "midnight-gold": scenes.midnightGold, "gilded-ivory": scenes.gildedIvory } as const;

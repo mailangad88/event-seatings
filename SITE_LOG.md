@@ -39,7 +39,7 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 ## Changes in this release (2026-11-02): marketplace redesign
 
 - **New design system** for the event rental marketplace pivot: light ivory/ink/brass tokens with dark and sand tone scopes, restyled utilities (pill buttons, rounded cards, boxed form fields) and a UI kit in `src/components/ui` (ProductCard, PriceTag, CategoryTile, PageHero, Section, Breadcrumbs with JSON-LD, FaqList with FAQPage JSON-LD, StepFlow flowchart, Figure, ArticleLayout with TOC, QuoteCard, QuoteCta, Callout, TrustBar, StatRow, Icon). Guide: `docs/DESIGN_SYSTEM.md`.
-- **Header**: rentals mega menu (14 categories, `src/lib/nav.ts`), Book a call + Get a quote; mobile menu with category grid. **Footer**: rentals, plan and service-area columns.
+- **Header**: rentals mega menu (19 categories derived from the catalog, `src/lib/nav.ts`), Book a call + Get a quote; mobile menu with category grid. **Footer**: rentals, plan and service-area columns.
 - **Home** rebuilt as a marketplace: hero with Blender tablescape collage, trust bar, category grid, "Shop the look" (3 priced tablescapes), StepFlow, DIY vs us comparison, event types, service area, FAQ (FAQPage schema), guides, quote CTA.
 - **New page** `/how-it-works` (StepFlow, step cards, tip, FAQ, CTA).
 - **Restyled**: `/faq` (grouped topics, 16 marketplace answers), `/about` (marketplace story), `/blog` (scene-image cards), blog posts (ArticleLayout with breadcrumbs, TOC, quote sidebar, hero scene image added to BlogPosting schema), `/book` (scene image, broadened to all rentals), chair pages and cards.
@@ -102,20 +102,20 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 
 ## Rental catalog (`/rentals`, added 2026-11-02)
 
-Everything-for-an-event catalog: 98 items in 14 categories, each priced at partner vendor price + 10%. Data: `src/data/catalog-products.ts` (items, category FAQs and planning steps), `src/data/catalog.ts` (published vendor offers, routing, markup via `@/lib/catalog-types`), `src/data/vendors.ts` (23 partner vendors, back end only). Research and price sheet: `docs/vendor-research.md` and the shared folder `research/vendors/`.
+Everything-for-an-event catalog: about 2,570 items in 19 categories, each priced at partner vendor price + 10%. 111 curated "featured" products live in `src/data/catalog-products.ts` (items, category FAQs and planning steps) with offers in `src/data/catalog.ts`; about 2,450 more rows come from six vendors' complete public price lists, generated into `src/data/catalog-inventory.json` by `python3 scripts/build-inventory.py` from `docs/vendor-data/full-*.json`. Vendors: `src/data/vendors.ts` (24, back end only). Research and price sheet: `docs/vendor-research.md` and the shared folder `research/vendors/`.
 
 | Route | Purpose | Last touched | SEO | AEO | GEO | Visuals | FAQ | CTA |
 |---|---|---|---|---|---|---|---|---|
-| `/rentals` | Hub: 14 category tiles, how it works, three priced sample budgets | 2026-11-02 | ✅ | ✅ FAQPage | ✅ | ⚠️ icons + budget charts; no renders yet | ✅ 6 | ✅ quote, call |
-| `/rentals/[category]` (14) | Answer-first intro, item grid, planning steps, price bar chart, worked budget | 2026-11-02 | ✅ | ✅ FAQPage, ItemList | ✅ | ⚠️ renders pending (chair art for chairs) | ✅ 2-4 | ✅ |
-| `/rentals/[category]/[item]` (98) | Price, specs, quantity-and-cost table by guest count, planning, related items | 2026-11-02 | ✅ | ✅ Product/Offer, FAQPage, Breadcrumb | ✅ areaServed | ⚠️ renders pending | ✅ 5-6 | ✅ "Add to my quote" → `/quote?items=` |
+| `/rentals` | Hub: 19 category tiles, how it works, three priced sample budgets | 2026-11-02 | ✅ | ✅ FAQPage | ✅ | ✅ renders + budget charts | ✅ 6 | ✅ quote, call |
+| `/rentals/[category]` (19) | Answer-first intro, featured item grid, full price-list tables by vendor section, planning steps, price bar chart, worked budget | 2026-11-02 | ✅ | ✅ FAQPage, ItemList | ✅ | ✅ renders (icons for the 5 new categories until rendered) | ✅ 2-4 | ✅ |
+| `/rentals/[category]/[item]` (~2,570) | Price, specs, quantity-and-cost table by guest count, planning, related items | 2026-11-02 | ✅ | ✅ Product/Offer, FAQPage, Breadcrumb | ✅ areaServed | ⚠️ renders for featured items; inventory rows use category icons | ✅ 5-6 | ✅ "Add to my quote" → `/quote?items=` |
 
 **Remaining to improve**
-- Swap the category illustrations for 3D renders: `RentalVisual` picks up `public/rentals/<folder>/<id>.webp` automatically on the next build.
-- 18 items use estimated prices (marked "Est."). Replace with real quotes from the routed vendor.
+- Render the 13 new featured items and the 5 new category folders (concessions, photo-booths, av, restrooms-power, fencing).
+- Inventory item pages share category FAQs and icons, so they are thinner than featured pages; promote the most-searched rows to featured with a render and custom copy.
+- 21 items use estimated prices (marked "Est."). Replace with real quotes from the routed vendor.
+- Missing from vendor lists: Playhouse obstacle courses and dry slides, TheJumperStore obstacle courses, House of Rental staging and dance floors (quote-only).
 - Call each partner vendor to agree referral terms before routing real leads; none has been contacted.
-- Add the rentals nav link and mega menu (design-system thread owns Header).
-- Add `/rentals` lines to `llms.txt`.
 
 ## Blog posts (`content/blog/*.md` → `/blog/[slug]`)
 

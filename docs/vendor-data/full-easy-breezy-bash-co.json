@@ -1,0 +1,1522 @@
+{
+ "vendorId": "easy-breezy-bash-co",
+ "sources": [
+  "https://easybreezybashco.com/product-category/table-and-chair-rentals/",
+  "https://easybreezybashco.com/product-category/dance-floor-rentals/",
+  "https://easybreezybashco.com/product-category/wedding-lighting-rental/",
+  "https://easybreezybashco.com/product-category/photo-booth-rentals/",
+  "https://easybreezybashco.com/product-category/furniture-rentals/",
+  "https://easybreezybashco.com/product-category/arch-rentals/",
+  "https://easybreezybashco.com/product-category/marquee-letter-rentals/",
+  "https://easybreezybashco.com/product-category/flower-wall-rentals/",
+  "https://easybreezybashco.com/product-category/neon-sign-rentals/",
+  "https://easybreezybashco.com/product-category/all-backdrop-rentals/",
+  "https://easybreezybashco.com/product-category/carts-and-bars/",
+  "https://easybreezybashco.com/product-category/interactive-experiences/",
+  "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/",
+  "https://easybreezybashco.com/product-category/kids-party-rentals/",
+  "https://easybreezybashco.com/product-category/soft-play-party-rentals/",
+  "https://easybreezybashco.com/product-category/luxury-picnic-rental/",
+  "https://easybreezybashco.com/product-category/decor-rentals/",
+  "https://easybreezybashco.com/product-category/mobile-laser-tag-nerf-battle-parties/"
+ ],
+ "notes": "Prices shown without a unit (treated as per rental/each); delivery fee depends on distance and availability, pickup free per FAQ; no figures published. Items with no listed price skipped (Black and White Checkered Dance Floor, White Dance Floor, Whiskey Barrel Table, Blacklight, Cafe/Bistro Lighting, Customizable Flower Box Welcome Sign - quote only). Items duplicated across categories kept once. Soft play prices are current sale prices. Many items also appear in Interactive Experiences/Kids/Food pages (deduped).",
+ "items": [
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Peacock Chair Rental Sweetheart Chairs \"Adaline + Brielle\"",
+   "specs": "2 Peacock Chairs",
+   "unit": "each",
+   "vendorPrice": 150.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Rustic Farm Table Rental",
+   "specs": "6ft or 8ft",
+   "unit": "each",
+   "vendorPrice": 89.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Black Chiavari Chair Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.85,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Cocktail Table Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Farm Crossback Chair Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 8.85,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Fruitwood Chiavari Chair Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.85,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Gold Chiavari Chair Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.85,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Kid's Party Chairs Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 4.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Kid's Party Table Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Silver Chiavari Chair Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.85,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Sweetheart Table Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Throne Chair Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 275.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "Throne Sofa Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "White Chiavari Chair Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 7.85,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Table and Chair Rentals",
+   "name": "White Event Chair Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.85,
+   "sourceUrl": "https://easybreezybashco.com/product-category/table-and-chair-rentals/"
+  },
+  {
+   "section": "Dance Floor Rentals",
+   "name": "Portable Stage Rental - 48\" x 48\" Modular Event Stage",
+   "specs": "48\" x 48\" modular",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/dance-floor-rentals/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "7 Arm Gold Candelabra Centerpiece Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Cold Spark Machine Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Custom Monogram Light Rental, Gobo Projector Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Fairy Light Twinkling Flameless Candles",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Large Black Lantern Trio",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Mini Chandelier Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Moon Lamp Lighting Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Professional Photography Lighting Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 89.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Real Wax Flameless Flickering Candle Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Real Wax Flameless Flickering Tea Light Candle Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "All Lighting",
+   "name": "Uplighting Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/wedding-lighting-rental/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "360 Photo Booth Rental",
+   "specs": "rotating platform filming slow-motion video",
+   "unit": "each",
+   "vendorPrice": 149.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "7ft Telephone Booth Rental for Audio Guestbook",
+   "specs": "7ft",
+   "unit": "each",
+   "vendorPrice": 475.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Classic Mirror Photo Booth Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Draw Me Bot Caricature Robot",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Flower Wall, Neon Sign, and Ring Light Photo Booth Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 349.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Geometric Selfie Booth Photo Booth Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 445.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Glam Photo Booth Rental",
+   "specs": "props or custom backgrounds",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Green Screen Photo Booth Rental",
+   "specs": "props or custom backgrounds",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "LED Selfie Booth Photo Booth Rental",
+   "specs": "glowing selfie station",
+   "unit": "each",
+   "vendorPrice": 445.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Life Size Barbie Box Rental Photo Booth",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 185.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Magic Mirror Photo Booth Rental",
+   "specs": "interactive mirror",
+   "unit": "each",
+   "vendorPrice": 395.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Neon Sign and Disco Ball Bench Photo Booth",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 349.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Photo Booth Rentals",
+   "name": "Polaroid Guest Book Rental/Photo Booth Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/photo-booth-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "5ft Customizable Welcome Sign Rental",
+   "specs": "5ft, customizable",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "5ft Wooden Flower Pedestal Rental",
+   "specs": "5ft, wooden",
+   "unit": "each",
+   "vendorPrice": 59.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Any Color Cylinder Cake Pedestal Rental",
+   "specs": "any color",
+   "unit": "each",
+   "vendorPrice": 29.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Assorted Vintage Style Black Lanterns",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "\"Alana\" Children's Peacock Chair Rental (ages 3-8)",
+   "specs": "ages 3-8",
+   "unit": "each",
+   "vendorPrice": 39.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "\"Ella\" Bohemian Rattan Peacock Chair Rental",
+   "specs": "bohemian rattan",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "\"Marina\" Baby Peacock Chair Rental (ages 1-2)",
+   "specs": "ages 1-2",
+   "unit": "each",
+   "vendorPrice": 39.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Centerpiece Crystals Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 5.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Champagne Wall Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 145.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Confetti Cannon Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Cotton Candy Wall Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 149.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Customizable Hanging Wooden Welcome Sign Rental",
+   "specs": "hanging, wooden",
+   "unit": "each",
+   "vendorPrice": 125.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Disco Ball Centerpiece Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Favor Wall Display Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 145.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Flower Bar Rental and Bouquet Bar Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Giant 3ft Marquee Letter Rental",
+   "specs": "3ft",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Gold Flower Holder / Centerpiece Rental with Florals (any color)",
+   "specs": "any color florals",
+   "unit": "each",
+   "vendorPrice": 28.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Gold Pedestal Vase Centerpiece Rental with Florals (any color)",
+   "specs": "any color florals",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Gold Stanchion and Velvet Rope Rental",
+   "specs": "gold",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Gold Vase/Hanging Crystals Centerpiece Rental with Florals (any color)",
+   "specs": "any color florals",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Hurricane Glass Vases Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 2.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Large Donut Wall Rental (39-117 donuts)",
+   "specs": "39-117 donuts",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Natural Wood Slab Centerpieces and Coasters Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 3.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Pipe and Drape Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 119.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Premier Flower Cart Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "Rectangular Wooden Cake Pedestal Rental and Flower Pedestal Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 59.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "T-Shaped Gold Flower Holder / Centerpiece Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 85.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Decor and Centerpieces",
+   "name": "White Cherry Blossom Tree Centerpiece",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/furniture-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Crescent Moon Arch Rental with Cover",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Half Rounded Arch Rental with Covers",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 39.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "\"Juliette\" White Floral Curved Arch Duo Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "\"Luna\" Baby's Breath Arch Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 645.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Chuppah Rental/Wedding Canopy Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Crescent Moon Arch Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Crescent Moon Floral Backdrop Rental (any color florals)",
+   "specs": "any color florals",
+   "unit": "each",
+   "vendorPrice": 445.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Curved Arch Rental with Full Florals",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 385.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Half Rounded Arch Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Large Round Arch Trio Stage Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 375.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Medium Open Arch Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Open Arch Rental with Covers",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Red Rose Heart Arch Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Round Arch Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 35.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Round Arch Rental with Cover (any color)",
+   "specs": "any color",
+   "unit": "each",
+   "vendorPrice": 65.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Round Arch Rental with Sequin Cover (any color)",
+   "specs": "any color",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Round Arch Trio Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Round Arch Trio Rental with Covers (any color)",
+   "specs": "any color",
+   "unit": "each",
+   "vendorPrice": 115.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "The Sullivan Backdrop Set- Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 785.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "Triangle Arch Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 84.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Arch Rentals",
+   "name": "White Heart Arch Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/arch-rentals/"
+  },
+  {
+   "section": "Marquee Letters and Numbers",
+   "name": "Giant 3ft Marquee Number Rental",
+   "specs": "3ft",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/marquee-letter-rentals/"
+  },
+  {
+   "section": "Marquee Letters and Numbers",
+   "name": "LOVE Giant 3ft Marquee Letter Rental",
+   "specs": "3ft, LOVE",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/marquee-letter-rentals/"
+  },
+  {
+   "section": "Marquee Letters and Numbers",
+   "name": "MARRY ME Giant 3ft Marquee Letter Rental for Proposals",
+   "specs": "3ft",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/marquee-letter-rentals/"
+  },
+  {
+   "section": "Marquee Letters and Numbers",
+   "name": "X Years Giant 3ft Marquee Letter Rental for Anniversaries",
+   "specs": "3ft",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/marquee-letter-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Amelia Greenery Wall with White Florals Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Aria White Flower Wall Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Ava Red Rose Flower Wall Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Brianna Pretty Pink Flower Wall Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Cecilia Purple Flower Wall Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Chiara Yellow Flower Wall Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Gaia Boxwood Greenery Wall Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 199.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Olivia White Rose Flower Wall Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Zara Rainbow Flower Wall Rental",
+   "specs": "about 8ftx8ft free-standing",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Shimmer Wall Rental- Silver/Iridescent",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 215.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Flower Walls",
+   "name": "Twinkling Sheer Curtain Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/flower-wall-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"ALL U CAN EAT BUFFET\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Always & Forever\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"'Til Death\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Better Together\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Bride to Be\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"cheers\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"forever\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Happily Ever After\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 99.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Happy Birthday\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"let's party\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Let's Celebrate\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Lucky\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 99.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Miss to Mrs\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Mr & Mrs\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 89.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Oh Baby\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 49.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"she said yes!\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"the adventure begins\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 79.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Will you marry me?\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 45.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"you + me\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 99.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"American Flag\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Candy\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Hello Gorgeous\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Treat Yourself\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 49.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "Neon Sign Rentals",
+   "name": "Neon Sign \"Trick or Treat\"",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 24.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/neon-sign-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Black and Gold Congratulations Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Candy Cane Lane Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Champagne Glitter Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Christmas Holiday Light Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Dark Wood Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Green Screen Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Orange and Black Halloween Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Red Brick Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Shining Star Awards Ceremony Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Silver Glitter Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Silver Shimmer Backdrop",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Snow Day Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Solid Black Backdrop",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "Spooky Moon Halloween Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "White Backdrop Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "All Backdrops",
+   "name": "White Wood Backdrop",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/all-backdrop-rentals/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Boba Tea + Matcha Cart Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Candy Dispenser Wall Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 145.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Charcuterie Cart Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Chocolate Fountain & Fondue Cart Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 185.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Coffee and Hot Drink Bar Rental",
+   "specs": "package",
+   "unit": "each",
+   "vendorPrice": 59.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Dirty Soda Cart Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Ice Cream Cart Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Lemonade/Iced Tea Bar Rental Package",
+   "specs": "package",
+   "unit": "each",
+   "vendorPrice": 49.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Popcorn + Pretzel Bar Rental Package",
+   "specs": "package",
+   "unit": "each",
+   "vendorPrice": 49.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Premier Candy Cart Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Carts and Bars",
+   "name": "Waffle Pop Cart Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 165.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/carts-and-bars/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Arcade Machine Rental - 500+ Games",
+   "specs": "500+ games",
+   "unit": "each",
+   "vendorPrice": 285.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Audio Guestbook Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 99.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Basketball Arcade Game Rental (Pop-A-Shot Style Dual Shot)",
+   "specs": "dual shot",
+   "unit": "each",
+   "vendorPrice": 185.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Bubble House Igloo and Bounce House Rental Alternative",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 175.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Dancing on the Clouds Wedding Rental (Low-Lying Dry Ice Fog Effect)",
+   "specs": "low-lying dry ice fog",
+   "unit": "each",
+   "vendorPrice": 245.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Deluxe Soft Play Party Rental",
+   "specs": "sale price; original $625",
+   "unit": "each",
+   "vendorPrice": 425.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Dessert Wall Display Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 145.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Fluff and Fun - Mobile Stuffed Animal Making Parties",
+   "specs": "mobile party",
+   "unit": "each",
+   "vendorPrice": 25.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Foam Party Package",
+   "specs": "package",
+   "unit": "each",
+   "vendorPrice": 345.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Giant Yard Game Rental + Entertainment Bundle",
+   "specs": "bundle",
+   "unit": "each",
+   "vendorPrice": 125.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Grand Bubble Cannon Bubble Party and Bubble Send Off Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 125.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Karaoke Party Rental Package",
+   "specs": "package",
+   "unit": "each",
+   "vendorPrice": 125.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Luxury Picnic Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 125.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Luxury Tea Party Rentals",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 249.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Mini Soft Play Party Rental",
+   "specs": "sale price; original $425",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Mobile Laser Tag Party",
+   "specs": "mobile party",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Movie Under The Stars Party Rental Package",
+   "specs": "package",
+   "unit": "each",
+   "vendorPrice": 179.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Nerf Battle Party",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 295.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Playtime Paradise Soft Play Party Rental",
+   "specs": "sale price; original $725",
+   "unit": "each",
+   "vendorPrice": 525.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Puppet Theater Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 195.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Rainbows and Chocolate Fountains Party Rental Package",
+   "specs": "package",
+   "unit": "each",
+   "vendorPrice": 299.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Standard Soft Play Party Rental",
+   "specs": "sale price; original $525",
+   "unit": "each",
+   "vendorPrice": 325.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Sticker and Vending Machine and Tattoo Vending Machine Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 185.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Interactive Experiences",
+   "name": "Teepee + Luxury Sleepover and Birthday Party Package",
+   "specs": "package",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/interactive-experiences/"
+  },
+  {
+   "section": "Food and Beverage Related Rentals",
+   "name": "Cotton Candy Cart",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 225.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"
+  },
+  {
+   "section": "Food and Beverage Related Rentals",
+   "name": "Cotton Candy Machine Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"
+  },
+  {
+   "section": "Food and Beverage Related Rentals",
+   "name": "Four-Tier Wooden Dessert Display Rental",
+   "specs": "four tiers",
+   "unit": "each",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"
+  },
+  {
+   "section": "Food and Beverage Related Rentals",
+   "name": "Hand Sanitizer Station Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 15.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"
+  },
+  {
+   "section": "Food and Beverage Related Rentals",
+   "name": "Popcorn Machine Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"
+  },
+  {
+   "section": "Food and Beverage Related Rentals",
+   "name": "Snow Cone Machine Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 55.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"
+  },
+  {
+   "section": "Food and Beverage Related Rentals",
+   "name": "Three-Tier Wooden Dessert Display Rental",
+   "specs": "three tiers",
+   "unit": "each",
+   "vendorPrice": 14.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/food-and-beverage-related-rentals/"
+  },
+  {
+   "section": "Kids Party Rentals",
+   "name": "Giant Jungle Animal Plush Props Rental",
+   "specs": "",
+   "unit": "each",
+   "vendorPrice": 75.0,
+   "sourceUrl": "https://easybreezybashco.com/product-category/kids-party-rentals/"
+  }
+ ]
+}

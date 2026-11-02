@@ -39,6 +39,10 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
   if (!c) notFound();
   const items = itemsIn(c.id);
   const prices = items.map(customerPrice);
+  const featured = items.filter((i) => i.featured);
+  const inventory = items.filter((i) => !i.featured);
+  const inventoryCount = inventory.length;
+  const sections = [...Map.groupBy(inventory, (i) => i.section ?? c.name)].sort((a, b) => a[0].localeCompare(b[0]));
   const hero = items.find((i) => rentalImagePath(i.id, i.categoryId));
   const budget = sampleBudgets.find((b) => b.lines.some(([id]) => items.some((i) => i.id === id)));
   const url = `${site.url}/rentals/${c.id}`;
@@ -126,11 +130,47 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             {c.name} we rent
           </h2>
           <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
-            {items.map((i) => (
+            {featured.map((i) => (
               <RentalCard key={i.id} item={i} />
             ))}
           </div>
         </section>
+
+        {sections.length > 0 && (
+          <section className="mt-28" aria-labelledby="full-list">
+            <p className="eyebrow">Full price list</p>
+            <h2 id="full-list" className="headline mt-6 text-4xl">
+              Every {c.name.toLowerCase()} option, priced
+            </h2>
+            <p className="mt-3 max-w-2xl text-muted">
+              {inventoryCount} more styles, sizes and finishes from our {site.market}-area rental partners. Prices are per
+              unit for one event day.
+            </p>
+            <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-2">
+              {sections.map(([section, rows]) => (
+                <table key={section} className="w-full self-start text-sm">
+                  <caption className="pb-3 text-left text-[11px] font-medium tracking-[0.18em] text-muted uppercase">{section}</caption>
+                  <tbody>
+                    {rows.map((i) => (
+                      <tr key={i.id} className="border-t border-line">
+                        <td className="py-2.5 pr-3">
+                          <Link href={itemHref(i)} className="hover:text-gold">
+                            {i.name}
+                          </Link>
+                          {i.specs && <span className="block text-xs text-muted">{i.specs}</span>}
+                        </td>
+                        <td className="py-2.5 text-right whitespace-nowrap tabular-nums">
+                          {formatPrice(customerPrice(i))}
+                          <span className="block text-xs text-muted">{i.unit}</span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-28" aria-labelledby="plan">
           <p className="eyebrow">Plan it</p>
@@ -148,7 +188,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             <h2 id="prices" className="headline mt-6 mb-8 text-4xl">
               {c.name} rental prices in {site.market}
             </h2>
-            <PriceBars items={items} caption={`Per-unit rental price for one event day, ${site.marketLong}.`} />
+            <PriceBars items={featured} caption={`Per-unit rental price for one event day, ${site.marketLong}.`} />
           </div>
           {budget && (
             <div>

@@ -16,7 +16,7 @@ import { RentalIcon } from "./rentals/RentalIcon";
 import { Icon, PriceTag, formatPrice, type IconName } from "./ui";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
-export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[] };
+export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean };
 export type StarterPreset = {
   id: string;
   kind: "look" | "event";
@@ -139,6 +139,7 @@ export function QuoteForm({
   const [eventType, setEventType] = useState(startPreset?.eventType ?? "");
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const [showAll, setShowAll] = useState(false);
   const [sheet, setSheet] = useState(false);
   const [date, setDate] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
@@ -194,11 +195,16 @@ export function QuoteForm({
   };
 
   const q = search.trim().toLowerCase();
-  const shown = items.filter(
+  const matching = items.filter(
     (i) =>
       (category === "All" || i.category === category) &&
       (!q || `${i.name} ${i.category} ${i.description ?? ""} ${i.specs ?? ""}`.toLowerCase().includes(q)),
   );
+  // The full vendor inventory runs to hundreds of items; show the curated picks (and anything
+  // already on the list) until the visitor searches or asks for everything.
+  const collapsed = !q && !showAll && matching.some((i) => !i.featured);
+  const shown = collapsed ? matching.filter((i) => i.featured !== false || (picks[i.id]?.qty ?? 0) > 0) : matching;
+  const hiddenCount = matching.length - shown.length;
 
   function applyStarter(s: StarterPreset) {
     setPicks((p) => ({ ...p, ...fromPreset(s.lines) }));
@@ -560,6 +566,13 @@ export function QuoteForm({
             })}
             {shown.length === 0 && (
               <li className="col-span-full hint">Nothing matches that search yet. Tell us what you need in the notes below.</li>
+            )}
+            {hiddenCount > 0 && (
+              <li className="col-span-full">
+                <button type="button" className="btn-ghost w-full" onClick={() => setShowAll(true)}>
+                  Show all {matching.length} {category === "All" ? "items" : category.toLowerCase()}
+                </button>
+              </li>
             )}
           </ul>
 

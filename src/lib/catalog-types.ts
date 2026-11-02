@@ -85,6 +85,11 @@ export const categoryOrder = [
   "Heating & cooling",
   "Games & kids",
   "Catering equipment",
+  "Concessions",
+  "Photo booths",
+  "AV & sound",
+  "Restrooms & power",
+  "Fencing & crowd control",
 ];
 
 export function sortCategories(categories: string[]) {
