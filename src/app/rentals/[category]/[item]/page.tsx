@@ -8,6 +8,7 @@ import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogI
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
+import { allInEstimate } from "@/lib/fees";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -79,7 +80,7 @@ function itemFaqs(i: CatalogItem) {
   const faqs = [
     {
       q: `How much does it cost to rent ${withArticle(lower(i.name))} in ${site.market}?`,
-      a: `${price} ${unitLabel(i)} for one event day${i.priceSource === "estimated" ? ", based on current Chicago-area market rates" : ""}. Delivery, setup and pickup are quoted for your venue, along with an optional damage waiver and sales tax. Multi-day rentals are quoted on request.`,
+      a: `${price} ${unitLabel(i)} for one event day${i.priceSource === "estimated" ? ", based on current Chicago-area market rates" : ""}. Delivery and pickup (usually $150-$400 per order), setup, a damage waiver (about 10%) and sales tax are added for your venue, so a delivered order typically costs 35-60% more than the rental rates alone. Multi-day rentals are quoted on request.`,
     },
   ];
   if (i.perGuest) {
@@ -212,9 +213,42 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
                 Book a free call
               </Link>
             </div>
-            <p className="mt-4 text-sm text-muted">
-              Delivery, setup, damage waiver and tax are itemized in your proposal. Nothing is charged until you approve it.
-            </p>
+            {(() => {
+              // Show what a delivered order really costs, not just the rental rate.
+              const qty = i.perGuest ? Math.max(i.minQty ?? 1, Math.ceil(100 * i.perGuest)) : Math.max(1, i.minQty ?? 1);
+              const est = allInEstimate(price * qty, { categoryIds: [i.categoryId] });
+              return (
+                <div className="mt-6 border border-line bg-surface p-5 text-sm">
+                  <p className="font-medium">
+                    Delivered and set up: about {formatPrice(Math.round(est.total))}
+                    <span className="font-normal text-muted">
+                      {" "}
+                      for {qty.toLocaleString()} {qty === 1 ? "unit" : "units"}
+                      {i.perGuest ? " (100 guests)" : ""}
+                    </span>
+                  </p>
+                  <dl className="mt-3 space-y-1 text-muted">
+                    <div className="flex justify-between gap-4">
+                      <dt>Rental ({qty.toLocaleString()} × {formatPrice(price)})</dt>
+                      <dd className="tabular-nums">{formatPrice(est.rentals)}</dd>
+                    </div>
+                    {est.lines.map((l) => (
+                      <div key={l.label} className="flex justify-between gap-4">
+                        <dt>
+                          {l.label}
+                          {l.note && <span className="text-xs"> ({l.note})</span>}
+                        </dt>
+                        <dd className="tabular-nums">{formatPrice(l.amount)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className="mt-3 text-xs text-muted">
+                    Delivery is one charge per order, so it shrinks per item as your list grows. Your proposal confirms
+                    every fee for your venue. Nothing is charged until you approve it.
+                  </p>
+                </div>
+              );
+            })()}
 
             <dl className="mt-10 border-t border-line text-sm">
               {facts.map(([k, v]) => (

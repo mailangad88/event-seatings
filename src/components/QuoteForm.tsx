@@ -10,6 +10,7 @@ import { stockPhotos, stockSrc, stockSrcSet, type StockPhotoKey } from "@/data/s
 import { attributionFields } from "@/lib/attribution";
 import { trackLead } from "@/lib/analytics";
 import { sortCategories, suggestedQty, type PublicItem } from "@/lib/catalog-types";
+import { DELIVERY_MINIMUM_ORDER, allInEstimate } from "@/lib/fees";
 import { site } from "@/lib/site";
 import { BookingCta } from "./BookingCta";
 import { ChairArt } from "./ChairArt";
@@ -201,6 +202,9 @@ export function QuoteForm({
   const subtotal = lines.reduce((s, l) => s + l.item.price * l.qty, 0);
   const pieces = lines.reduce((s, l) => s + l.qty, 0);
   const anyEstimated = lines.some((l) => l.item.estimated);
+  const [withSetup, setWithSetup] = useState(true);
+  // Rental rates exclude delivery, setup, waiver and tax; show the realistic delivered total.
+  const allIn = allInEstimate(subtotal, { categoryIds: lines.map((l) => l.item.categoryId ?? ""), setup: withSetup });
   const addedIn = (c: string) => lines.filter((l) => l.item.category === c).length;
 
   // What a starter would cost at the current guest count (or 100), for the cards.
@@ -289,7 +293,7 @@ export function QuoteForm({
         </span>
         <h2 className="display-2 mt-6">Your quote is in</h2>
         <p className="lede mx-auto mt-6 max-w-xl">
-          We saved your estimate of <strong className="text-ink">{formatPrice(subtotal)}</strong> for {lines.length}{" "}
+          We saved your estimate of about <strong className="text-ink">{formatPrice(allIn.total)}</strong> all-in ({formatPrice(subtotal)} in rentals) for {lines.length}{" "}
           {lines.length === 1 ? "item" : "items"}. We&apos;ll check availability for your date with our rental partners
           and email a confirmed proposal, usually within one business day. Nothing is charged or held until you confirm.
         </p>
@@ -345,20 +349,42 @@ export function QuoteForm({
 
   const totals = (
     <>
+      <dl className="space-y-1.5 border-t border-line pt-4 text-sm">
+        <div className="flex justify-between gap-3">
+          <dt className="text-muted">
+            Rentals
+            <span className="block text-xs">
+              {lines.length} {lines.length === 1 ? "item" : "items"} · {pieces.toLocaleString()} pieces
+            </span>
+          </dt>
+          <dd className="tabular-nums">{formatPrice(subtotal)}</dd>
+        </div>
+        {allIn.lines.map((l) => (
+          <div key={l.label} className="flex justify-between gap-3 text-muted">
+            <dt>
+              {l.label}
+              {l.note && <span className="block text-xs">{l.note}</span>}
+            </dt>
+            <dd className="tabular-nums">{formatPrice(l.amount)}</dd>
+          </div>
+        ))}
+      </dl>
+      <label className="flex items-center gap-2 text-xs text-muted">
+        <input type="checkbox" checked={withSetup} onChange={(e) => setWithSetup(e.target.checked)} />
+        Include setup &amp; teardown
+      </label>
       <div className="flex items-baseline justify-between gap-3 border-t border-line pt-4">
-        <span className="text-sm text-muted">
-          Estimated total
-          <span className="block text-xs">
-            {lines.length} {lines.length === 1 ? "item" : "items"} · {pieces.toLocaleString()} pieces
-          </span>
-        </span>
+        <span className="text-sm text-muted">Estimated all-in</span>
         <span aria-live="polite">
-          <PriceTag amount={subtotal} unit="" size="lg" />
+          <PriceTag amount={allIn.total} unit="" size="lg" />
         </span>
       </div>
       <p className="hint text-xs leading-5">
-        {anyEstimated ? "Some prices are market estimates. " : ""}Delivery, setup, damage waiver and tax are quoted once we
-        confirm your date and venue.
+        {anyEstimated ? "Some prices are market estimates. " : ""}
+        {subtotal > 0 && subtotal < DELIVERY_MINIMUM_ORDER
+          ? `Most vendors need about ${formatPrice(DELIVERY_MINIMUM_ORDER)} in rentals for delivery. `
+          : ""}
+        Fees are typical Chicago-area rates; your proposal confirms each one for your date and venue.
       </p>
     </>
   );
@@ -628,7 +654,7 @@ export function QuoteForm({
                 ))}
               </span>
               <span className="min-w-0">
-                <span className="block text-base font-semibold tabular-nums">{formatPrice(subtotal)}</span>
+                <span className="block text-base font-semibold tabular-nums">{formatPrice(allIn.total)} all-in</span>
                 <span className="block text-xs text-muted underline">
                   {lines.length} {lines.length === 1 ? "item" : "items"} · view list
                 </span>
@@ -729,8 +755,9 @@ export function QuoteForm({
         <div className="max-w-xl">
           {lines.length > 0 && (
             <div className="flex items-baseline gap-3">
-              <span className="text-sm text-muted">Estimated total</span>
-              <PriceTag amount={subtotal} unit="" size="md" />
+              <span className="text-sm text-muted">Estimated all-in</span>
+              <PriceTag amount={allIn.total} unit="" size="md" />
+              <span className="text-xs text-muted">({formatPrice(subtotal)} rentals + delivery, setup, waiver, tax)</span>
             </div>
           )}
           <p className="hint">
