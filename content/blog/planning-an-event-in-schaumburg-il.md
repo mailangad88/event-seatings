@@ -95,6 +95,12 @@ Chicago's cold months last long, so winter events need coat space, and summer ev
 
 Ask for the answers in writing and send them with your [quote request](/quote), so we can match the delivery plan.
 
+## Corporate details people forget
+
+Company events have needs that weddings do not. Registration tables need a clean front, a floor-length cloth and a spot for name badges. A presentation or awards segment needs a head table or stage, a podium and a clear sight line from every seat, so avoid putting round tables directly beside the screen. Sponsor logos and signage need easels, so plan for a few. If speakers will use a microphone, put the sound system on the side of the room away from the kitchen doors.
+
+Seating charts matter more than hosts expect. Assigning tables by department mixes teams less than assigning by number, so decide whether you want networking or familiarity. Print table numbers large enough to read from 20 feet. Hold two or three spare seats at the back for late additions, and keep the last row of chairs by the entrance flexible. If your event runs long, pace the evening in blocks: arrival and drinks, dinner, program, then dancing or mingling. Our [string light guide](/blog/string-light-layouts-for-events) helps with softer lighting for outdoor receptions.
+
 ## Frequently asked questions
 
 ### Can I bring my own chairs to a Schaumburg banquet hall?
