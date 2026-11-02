@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="t d">
+<title id="t">A formal place setting with gold-rim china</title>
+<desc id="d">Top-down place setting: a gold charger, dinner plate and salad plate in the center, forks on the left, knife and spoon on the right, bread plate and glasses above.</desc>
+<defs>
+<radialGradient id="spot" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#3a2f22"/><stop offset=".55" stop-color="#221d17"/><stop offset="1" stop-color="#12100d"/></radialGradient>
+<linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1813"/><stop offset="1" stop-color="#0d0b09"/></linearGradient>
+<linearGradient id="brass" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="1000"><stop offset="0" stop-color="#e6cf98"/><stop offset=".5" stop-color="#c9a96a"/><stop offset="1" stop-color="#8a6d3b"/></linearGradient>
+<linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3ead8"/><stop offset="1" stop-color="#cfc3aa"/></linearGradient>
+</defs>
+<rect width="800" height="1000" fill="url(#spot)"/>
+<rect y="760" width="800" height="240" fill="url(#floor)"/>
+<line x1="0" y1="760" x2="800" y2="760" stroke="#3a3024" stroke-width="2"/>
+<rect x="28" y="28" width="744" height="944" fill="none" stroke="#c9a96a" stroke-opacity=".35"/>
+<circle cx="400" cy="500" r="190" fill="none" stroke="url(#brass)" stroke-width="14"/><circle cx="400" cy="500" r="160" fill="#fbf7ee"/><circle cx="400" cy="500" r="156" fill="none" stroke="#c9a96a" stroke-width="4"/><circle cx="400" cy="500" r="110" fill="#f3ecdd" stroke="#dcd0b8" stroke-width="2"/><circle cx="400" cy="500" r="70" fill="#fbf7ee" stroke="#c9a96a" stroke-width="3"/><rect x="150" y="380" width="10" height="250" rx="5" fill="url(#brass)"/><rect x="144" y="380" width="22" height="60" rx="6" fill="url(#brass)"/><rect x="185" y="380" width="10" height="250" rx="5" fill="url(#brass)"/><rect x="179" y="380" width="22" height="60" rx="6" fill="url(#brass)"/><rect x="610" y="370" width="12" height="270" rx="6" fill="url(#brass)"/><rect x="645" y="400" width="10" height="240" rx="5" fill="url(#brass)"/><ellipse cx="650" cy="400" rx="16" ry="24" fill="url(#brass)"/><circle cx="210" cy="250" r="55" fill="#fbf7ee" stroke="#c9a96a" stroke-width="3"/><line x1="185" y1="250" x2="240" y2="235" stroke="url(#brass)" stroke-width="7" stroke-linecap="round"/><circle cx="560" cy="250" r="40" fill="#efe4cf" fill-opacity=".12" stroke="#efe4cf" stroke-opacity=".7" stroke-width="3"/><circle cx="630" cy="280" r="34" fill="#efe4cf" fill-opacity=".12" stroke="#efe4cf" stroke-opacity=".7" stroke-width="3"/><circle cx="690" cy="320" r="28" fill="#efe4cf" fill-opacity=".12" stroke="#efe4cf" stroke-opacity=".7" stroke-width="3"/>
+</svg>
