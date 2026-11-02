@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostCard } from "@/components/PostCard";
 import { JsonLd, PageHero, QuoteCta } from "@/components/ui";
-import { getPosts, getTopic, topicSlug, topics } from "@/lib/blog";
+import { getPosts, getTopic, topicArt, topicSlug, topics } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -16,11 +16,12 @@ export async function generateMetadata(props: PageProps<"/blog/topic/[topic]">):
   const topic = getTopic((await props.params).topic);
   if (!topic) return {};
   const slug = topicSlug(topic.name);
+  const art = topicArt(slug, `${topic.name} guides`);
   return {
     title: `${topic.name} Guides for Chicago Events`,
     description: `${topic.blurb} Answers for planners in Chicago and the suburbs from ${site.name}.`,
     alternates: { canonical: `/blog/topic/${slug}` },
-    openGraph: { images: [{ url: `/blog/art/${slug}.svg`, alt: `${topic.name} guides` }] },
+    openGraph: { images: [{ url: art.src, alt: art.alt }] },
   };
 }
 
@@ -30,6 +31,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
   const slug = topicSlug(topic.name);
   const posts = (await getPosts()).filter((p) => p.topic === topic.name);
   const url = `${site.url}/blog/topic/${slug}`;
+  const art = topicArt(slug, `Illustration for ${topic.name.toLowerCase()} guides`);
 
   return (
     <>
@@ -40,6 +42,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
           name: `${topic.name} guides`,
           description: topic.blurb,
           url,
+          image: `${site.url}${art.src}`,
           isPartOf: { "@type": "Blog", name: `${site.name} ideas & guides`, url: `${site.url}/blog` },
           mainEntity: {
             "@type": "ItemList",
@@ -59,7 +62,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
         media={
           <div className="media aspect-[16/10] overflow-hidden bg-espresso shadow-lift">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
-            <img src={`/blog/art/${slug}.svg`} alt={`Illustration for ${topic.name.toLowerCase()} guides`} width={1200} height={750} className="h-full w-full object-cover" />
+            <img src={art.src} alt={art.alt} width={1200} height={750} className="h-full w-full object-cover" />
           </div>
         }
       />

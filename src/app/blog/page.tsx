@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero, QuoteCta } from "@/components/ui";
 import { PostCard } from "@/components/PostCard";
-import { formatDate, getPosts, topicSlug, topics } from "@/lib/blog";
+import { formatDate, getPosts, topicArt, topicSlug, topics } from "@/lib/blog";
 import { sceneFor, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
@@ -58,7 +58,7 @@ export default async function BlogPage() {
               <li key={t.name}>
                 <Link href={`/blog/topic/${topicSlug(t.name)}`} className="group card card-hover flex items-center gap-4 p-3">
                   {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
-                  <img src={`/blog/art/${topicSlug(t.name)}.svg`} alt="" width={96} height={64} loading="lazy" className="h-14 w-20 shrink-0 rounded-lg bg-espresso object-cover" />
+                  <img src={topicArt(topicSlug(t.name)).src} alt="" width={96} height={64} loading="lazy" className="h-14 w-20 shrink-0 rounded-lg bg-espresso object-cover" />
                   <span>
                     <span className="block font-serif text-lg leading-tight transition-colors group-hover:text-gold">{t.name}</span>
                     <span className="mt-0.5 block text-xs text-muted">{count(t.name)} guides</span>

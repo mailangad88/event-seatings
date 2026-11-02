@@ -1,5 +1,5 @@
 import "server-only";
-import { promises as fs } from "fs";
+import { existsSync, readFileSync, promises as fs } from "fs";
 import path from "path";
 import { marked } from "marked";
 import { chairs, getChair } from "@/data/chairs";
@@ -75,6 +75,42 @@ export function topicSlug(name: string) {
   return name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
+// Blender scene renders (from the rendering work) that replace each topic's illustrated art
+// once the file exists in public/rentals/scenes/. Until then the SVG art is used.
+const topicRenders: Record<string, string> = {
+  chairs: "hero-chairs", tables: "hero-tables", "linens-and-napkins": "hero-linens", dinnerware: "hero-dinnerware",
+  "glassware-and-bar": "hero-glassware", "catering-equipment": "hero-catering", "lounge-and-specialty": "hero-lounge",
+  "dance-floors-and-decor": "hero-dance-decor", parties: "hero-parties", "cultural-celebrations": "hero-celebrations",
+  "corporate-and-nonprofit": "hero-corporate", "layouts-and-floor-plans": "hero-layouts", weddings: "wedding-reception",
+  tents: "tent-reception-dusk", "lighting-and-power": "cocktail-hour", "seasons-and-venues": "tent-reception-dusk",
+  "chicago-planning": "garden-ceremony", planning: "garden-ceremony", "suburb-guides": "farm-table-dinner",
+  "budget-and-booking": "hero-dinnerware",
+};
+
+let renderAlts: Record<string, string> | null = null;
+function renderAlt(slug: string): string | undefined {
+  if (!renderAlts) {
+    renderAlts = {};
+    try {
+      const data = JSON.parse(readFileSync(path.join(process.cwd(), "src/data/rental-images.json"), "utf8"));
+      const list: unknown[] = Array.isArray(data) ? data : Object.entries(data).map(([k, v]) => ({ slug: k, ...(v as object) }));
+      for (const e of list as { slug?: string; alt?: string }[]) if (e.slug && e.alt) renderAlts[e.slug] = e.alt;
+    } catch {
+      // No render metadata yet.
+    }
+  }
+  return renderAlts[slug];
+}
+
+/** Hero art for a topic: the Blender render when it exists, otherwise the illustrated SVG. */
+export function topicArt(slug: string, fallbackAlt?: string): { src: string; alt: string; render: boolean } {
+  const render = topicRenders[slug];
+  if (render && existsSync(path.join(process.cwd(), "public/rentals/scenes", `${render}.webp`))) {
+    return { src: `/rentals/scenes/${render}.webp`, alt: renderAlt(render) ?? fallbackAlt ?? "", render: true };
+  }
+  return { src: `/blog/art/${slug}.svg`, alt: fallbackAlt ?? "", render: false };
+}
+
 export function getTopic(slug: string) {
   return topics.find((t) => topicSlug(t.name) === slug);
 }
@@ -138,6 +174,12 @@ function parse(file: string, raw: string) {
   };
   const first = post.tags[0] ?? "";
   post.topic = topics.find((t) => t.name.toLowerCase() === first.toLowerCase())?.name ?? "Planning";
+  const art = post.image?.match(/^\/blog\/art\/([a-z0-9-]+)\.svg$/);
+  if (art) {
+    const a = topicArt(art[1], post.imageAlt);
+    post.image = a.src;
+    post.imageAlt = a.render ? a.alt : post.imageAlt;
+  }
   return { post, body };
 }
 
