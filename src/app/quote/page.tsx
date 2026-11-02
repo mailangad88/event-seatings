@@ -48,6 +48,10 @@ export default async function QuotePage(props: PageProps<"/quote">) {
     ...list(sp.items),
   ].filter((id): id is string => !!id && ids.has(id));
 
+  const guests = Math.min(5000, Math.max(0, Math.floor(Number(sp.guests) || 0)));
+  // Where the visitor clicked through from (sample budget, rental page…), saved on the lead as the form source.
+  const from = typeof sp.from === "string" ? sp.from.replace(/[^\w-]/g, "").slice(0, 60) || undefined : undefined;
+
   // Only customer-safe fields reach the browser; vendor names and costs stay on the server.
   const items = catalogItems.map(toPublicItem);
 
@@ -85,7 +89,7 @@ export default async function QuotePage(props: PageProps<"/quote">) {
       </p>
       <ProcessFlow className="mt-16 border-y border-line py-10" />
       <div className="mt-20">
-        <QuoteForm items={items} initialItems={initial} />
+        <QuoteForm items={items} initialItems={initial} initialGuests={guests} from={from} />
       </div>
 
       <section className="mt-28 border-t border-line pt-16" aria-labelledby="quote-faq">

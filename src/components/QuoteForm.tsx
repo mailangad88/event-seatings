@@ -33,8 +33,18 @@ type Pick = { qty: number; auto: boolean };
 // Quote builder: pick items and quantities, see a live estimate, then send the enquiry.
 // Prices shown are the customer price (vendor price + our markup), computed on the server.
 // The server re-prices everything on submit, so the totals here are only for display.
-export function QuoteForm({ items, initialItems = [] }: { items: PublicItem[]; initialItems?: string[] }) {
-  const [guests, setGuests] = useState(0);
+export function QuoteForm({
+  items,
+  initialItems = [],
+  initialGuests = 0,
+  from,
+}: {
+  items: PublicItem[];
+  initialItems?: string[];
+  initialGuests?: number;
+  from?: string;
+}) {
+  const [guests, setGuests] = useState(initialGuests);
   const [picks, setPicks] = useState<Record<string, Pick>>(() =>
     Object.fromEntries(initialItems.map((id) => [id, { qty: 1, auto: true }])),
   );
@@ -100,7 +110,7 @@ export function QuoteForm({ items, initialItems = [] }: { items: PublicItem[]; i
         ...data,
         items: lines.map((l) => ({ id: l.item.id, qty: l.qty })),
         kind: "quote",
-        source: "quote-builder",
+        source: from ? `quote-builder:${from}` : "quote-builder",
       }),
     }).catch(() => null);
     if (res?.ok) {
@@ -196,6 +206,7 @@ export function QuoteForm({ items, initialItems = [] }: { items: PublicItem[]; i
               required
               className="field"
               placeholder="150"
+              defaultValue={initialGuests || undefined}
               onChange={(e) => setGuests(Math.max(0, Math.min(5000, Number(e.target.value) || 0)))}
             />
             <p className="mt-2 text-xs leading-5 text-muted">Chairs, tables and place settings fill in to match.</p>
