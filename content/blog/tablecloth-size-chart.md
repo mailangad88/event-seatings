@@ -25,10 +25,10 @@ Linen orders go wrong in one of two ways: the cloth stops a few inches short and
 The "drop" is how far the cloth hangs down from the tabletop edge. You count it twice because it hangs on both sides.
 
 <figure>
-<svg role="img" aria-labelledby="drop-t drop-d" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
+<svg role="img" aria-labelledby="drop-t drop-d" viewBox="0 0 760 370" xmlns="http://www.w3.org/2000/svg">
 <title id="drop-t">How tablecloth drop is measured on a 30-inch-tall table</title>
 <desc id="drop-d">Side view of a 60-inch round table with a cloth. A lap-length cloth hangs about 15 inches, halfway down the legs. A floor-length cloth hangs 30 inches, just touching the floor. The total cloth width equals 60 inches plus two drops.</desc>
-<rect x="0" y="0" width="720" height="360" fill="var(--surface)"/>
+<rect x="0" y="0" width="760" height="370" fill="var(--surface)"/>
 <line x1="40" y1="320" x2="680" y2="320" stroke="var(--line)" stroke-width="2"/>
 <g transform="translate(70 0)">
 <rect x="40" y="110" width="200" height="8" fill="var(--gold)"/>
@@ -36,17 +36,17 @@ The "drop" is how far the cloth hangs down from the tabletop edge. You count it 
 <line x1="80" y1="118" x2="80" y2="320" stroke="var(--muted)" stroke-width="4"/>
 <line x1="200" y1="118" x2="200" y2="320" stroke="var(--muted)" stroke-width="4"/>
 <line x1="265" y1="114" x2="265" y2="170" stroke="currentColor" stroke-width="1.5"/>
-<text x="140" y="90" text-anchor="middle" font-size="18" fill="currentColor">Lap length</text>
-<text x="275" y="148" font-size="15" fill="currentColor">15 in drop</text>
+<text x="140" y="90" text-anchor="middle" font-size="26" fill="currentColor">Lap length</text>
+<text x="262" y="148" font-size="22" fill="currentColor">15 in</text>
 </g>
 <g transform="translate(380 0)">
 <rect x="40" y="110" width="200" height="8" fill="var(--gold)"/>
 <path d="M30 114 L250 114 L252 320 L28 320 Z" fill="var(--gold)" opacity="0.35"/>
 <line x1="265" y1="114" x2="265" y2="320" stroke="currentColor" stroke-width="1.5"/>
-<text x="140" y="90" text-anchor="middle" font-size="18" fill="currentColor">Floor length</text>
-<text x="275" y="222" font-size="15" fill="currentColor">30 in drop</text>
+<text x="140" y="90" text-anchor="middle" font-size="26" fill="currentColor">Floor length</text>
+<text x="262" y="222" font-size="22" fill="currentColor">30 in</text>
 </g>
-<text x="360" y="350" text-anchor="middle" font-size="15" fill="var(--muted)">Standard rental tables stand 30 inches tall</text>
+<text x="380" y="360" text-anchor="middle" font-size="22" fill="var(--muted)">Standard rental tables stand 30 inches tall</text>
 </svg>
 <figcaption>Lap length shows the chair and a little leg; floor length hides the table completely.</figcaption>
 </figure>
