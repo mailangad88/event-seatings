@@ -113,6 +113,12 @@ Des Plaines has a park district and village-run facilities. If you want to use a
 
 We deliver from St. Charles, with deliveries starting in April 2027. For hotels, send the loading dock address, hours, elevator size and any union or vendor rules. Delivery fees depend on distance and access, so the [quote request](/quote) should include those details.
 
+## Corporate and association dinners
+
+Business groups that meet near the airport have a few special needs. Registration can run 30 minutes before the program, so give it a dedicated table and a short line. Name badges, printed agendas and sponsor signs all need table space, so count them. Breakout sessions may call for classroom tables in a second room, so ask the hotel what is available and how long the flip takes between sessions.
+
+Seating charts matter at these events. Assigned tables by company or committee make networking easier, while open seating can leave guests standing with plates. For awards, put a podium on a riser or a small stage, and test the microphone. Keep dessert and coffee stations open after the program, since people linger. If your group travels in Chicago-area winter weather, plan for late arrivals and a flexible start time.
+
 ## Frequently asked questions
 
 ### How many people fit in a 1,800 square foot ballroom?

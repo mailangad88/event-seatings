@@ -114,6 +114,12 @@ Many Park Ridge parties happen in cold months. Plan a coat solution, such as a r
 <div><strong>$5 to $7</strong><span>Garden folding estimate</span></div>
 </div>
 
+## Making a small space feel generous
+
+Small rooms feel crowded because of clutter, not only because of size. Before the party, move out extra furniture, rugs that catch chairs and anything breakable. Store it in a bedroom or the garage. Use mirrors and light colors to open the room, and keep the floor plan to a few big shapes instead of many little tables. Round tables are friendlier than rectangles in tight rooms because they have no corners to bump.
+
+Plan the flow around the kitchen, since guests naturally gather there. Put the drinks station in a spot that does not block the fridge or the sink, and keep the main food table away from the front door. If the party is in a Chicago-area winter, add a coat zone where it will not cut off the walkway. Finally, tell guests about parking early, so no one circles the block at the start of the party.
+
 ## Frequently asked questions
 
 ### How many people fit in a 20 x 30 foot room?

@@ -108,6 +108,12 @@ Gifts pile up fast. Dedicate a table near the entrance with a floor-length cloth
 
 We deliver from St. Charles, with deliveries starting in April 2027. Showers are small, so ask about minimums and delivery fees in your quote. Choose a delivery time that lets you decorate without stress, and confirm pickup so you are not stuck stacking chairs at the end of the party. Delivery costs depend on distance and access, so a [quote](/quote) is the only way to get a firm figure.
 
+## Décor that works with rentals
+
+Shower decor pairs best with a simple palette of two or three colors. Pick the chair and linen first, since they are the largest surfaces, then add flowers, signs and favors in your accent color. A white or ivory floor-length cloth lets the chairs and flowers stand out, and it hides a rack of folding tables. Centerpieces for a shower table can be small: a bud vase cluster, a low bowl or a cake stand with fruit. Keep them under 12 inches so guests can talk across the table.
+
+If you plan a games station, give it its own table and a clear sign. A welcome sign on an easel, a seating chart or a bubbly drink station near the door sets the tone. For a spring party in the Chicago area, bring a wrap basket and have an indoor option for the guest of honor's photos if the weather turns.
+
 ## Frequently asked questions
 
 ### How many chairs do I need for a 40-person shower?
