@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { chairs } from "@/data/chairs";
 import { getVoteCounts, listLeads } from "@/lib/store";
 
@@ -72,7 +73,10 @@ export default async function AdminPage() {
           <p className="eyebrow">Admin</p>
           <h1 className="mt-1 font-serif text-5xl">Demand dashboard</h1>
         </div>
-        <a href="/admin/export" className="btn-ghost">Download leads (CSV)</a>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/admin/leads" className="btn-primary">Lead pipeline (CRM)</Link>
+          <a href="/admin/export" className="btn-ghost">Download leads (CSV)</a>
+        </div>
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5">
@@ -175,7 +179,7 @@ export default async function AdminPage() {
                 <td className="py-2.5 whitespace-nowrap text-muted">{new Date(l.created_at).toLocaleDateString("en-US")}</td>
                 <td className="py-2.5"><span className="chip">{l.kind}</span></td>
                 <td className="py-2.5">
-                  {l.name && <div>{l.name}</div>}
+                  <Link href={`/admin/leads/${l.id}`} className="block font-medium text-accent">{l.name ?? "Open lead"}</Link>
                   <a href={`mailto:${l.email}`} className="text-accent">{l.email}</a>
                   {l.phone && <div className="text-muted">{l.phone}</div>}
                 </td>

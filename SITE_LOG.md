@@ -36,6 +36,13 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-02): quote builder + lead CRM
+
+- `/quote` is now a quote builder. Visitors enter a guest count, pick items from `src/data/catalog.ts` with quantities (chairs auto-fill to the guest count), and see a live estimate. Customer price = vendor price + 10%, computed only in `src/lib/catalog-types.ts`. The server re-prices every submission; vendor names and costs never reach the browser. FAQ section with FAQPage + OfferCatalog schema.
+- `/admin/leads` is the CRM: pipeline stages with counts and quote value, follow-ups due/overdue, search and filters, one-click "Mark contacted". `/admin/leads/[id]` shows contact + event, priced line items with vendor cost and margin, a copy-ready order per vendor, attribution (UTM first/last touch), and a form to change stage, assign a rental partner, set the next follow-up, record a lost reason and log calls/emails/texts/notes to a timeline.
+- Owner email and HubSpot deal now carry the quote total and items. CSV export includes stage, items, totals, vendor, follow-up and notes.
+- Remaining: real vendor catalog (in progress in a parallel branch), automatic follow-up reminders (daily email of due follow-ups), customer-facing proposal PDF, vendor availability confirmation flow.
+
 ## Changes in this release (2026-10-31)
 
 Shipped in this release:
@@ -70,7 +77,7 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 | `/chairs` | Browse/filter all chair styles | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
 | `/chairs/[slug]` (13 chairs) | Chair detail, 3D viewer, votes, quote link | 2026-10-31 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
 | `/quiz` | 4-question chair style quiz | 2026-11-01 | ✅ | ❌ | ❌ | ✅ | ❌ | ⚠️ |
-| `/quote` | Quote request form | 2026-11-01 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
+| `/quote` | Quote builder: pick items + quantities, live estimate (vendor price + 10%), FAQ + OfferCatalog schema | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `/book` | Book a 15-minute seating call | 2026-10-31 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
 | `/about` | Our story, service area | 2026-11-01 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ✅ |
 | `/faq` | FAQ with FAQPage schema | 2026-11-01 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |

@@ -57,5 +57,22 @@ alter table leads
   add column if not exists page_path text,
   add column if not exists sms_consent boolean;
 
+-- Quote builder + CRM (added with the lead pipeline). Safe to run again on an existing database.
+-- items = priced line items [{id, name, qty, unit_price, line_total, vendor_id, vendor_price…}];
+-- status/assigned_vendor/follow_up_at/activity are edited in /admin/leads.
+alter table leads
+  add column if not exists items jsonb,
+  add column if not exists quote_subtotal numeric(12, 2),
+  add column if not exists quote_cost numeric(12, 2),
+  add column if not exists status text not null default 'new',
+  add column if not exists assigned_vendor text,
+  add column if not exists follow_up_at date,
+  add column if not exists lost_reason text,
+  add column if not exists activity jsonb not null default '[]'::jsonb,
+  add column if not exists updated_at timestamptz;
+
+create index if not exists leads_status_idx on leads (status);
+create index if not exists leads_follow_up_idx on leads (follow_up_at) where follow_up_at is not null;
+
 alter table votes enable row level security;
 alter table leads enable row level security;

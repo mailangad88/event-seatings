@@ -98,7 +98,8 @@ async function sendToHubSpot(lead: Lead) {
     lead.guest_count && `${lead.guest_count} guests`,
     lead.city,
     lead.venue && `Venue: ${lead.venue}`,
-    lead.chairs?.length && `Chairs: ${lead.chairs.map(chairName).join(", ")}`,
+    lead.items?.length && `Items:\n${lead.items.map((i) => `${i.qty} x ${i.name}`).join("\n")}`,
+    !lead.items?.length && lead.chairs?.length && `Chairs: ${lead.chairs.map(chairName).join(", ")}`,
     lead.message && `Notes: ${lead.message}`,
     lead.utm_source && `Source: ${[lead.utm_source, lead.utm_medium, lead.utm_campaign].filter(Boolean).join(" / ")}`,
   ]
@@ -111,6 +112,7 @@ async function sendToHubSpot(lead: Lead) {
       pipeline: process.env.HUBSPOT_PIPELINE_ID || "default",
       dealstage: process.env.HUBSPOT_DEAL_STAGE_ID || "appointmentscheduled",
       ...(lead.event_date && { closedate: lead.event_date }),
+      ...(lead.quote_subtotal && { amount: String(lead.quote_subtotal) }),
       description,
     },
     // 3 = HubSpot's built-in "deal to contact" association.
@@ -128,7 +130,13 @@ async function sendToWebhook(lead: Lead) {
       event: "lead.created",
       brand: site.name,
       form: formLabel[lead.kind],
-      lead: { ...lead, chair_names: lead.chairs?.map(chairName) },
+      // Vendor costs stay out of third-party tools; the full quote is in /admin/leads.
+      lead: {
+        ...lead,
+        quote_cost: undefined,
+        items: lead.items?.map(({ id, name, qty, unit, unit_price, line_total }) => ({ id, name, qty, unit, unit_price, line_total })),
+        chair_names: lead.chairs?.map(chairName),
+      },
     }),
     signal: AbortSignal.timeout(10_000),
   });

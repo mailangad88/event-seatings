@@ -1,5 +1,7 @@
 import { after } from "next/server";
 import { getChair } from "@/data/chairs";
+import { catalogItems } from "@/data/catalog";
+import { priceQuote } from "@/lib/catalog-types";
 import { syncToCrm } from "@/lib/crm";
 import { notifyOwner } from "@/lib/notify";
 import { addLead, trackingFields, type LeadKind, type NewLead } from "@/lib/store";
@@ -53,8 +55,29 @@ export async function POST(request: Request) {
     return Response.json({ error: "Please add a phone number so we can call you." }, { status: 400 });
   }
 
-  if (kind === "quote" && (!lead.event_date || !lead.chairs?.length)) {
-    return Response.json({ error: "Please pick an event date and at least one chair." }, { status: 400 });
+  // Quote builder picks: re-priced here from the catalog, never from numbers the browser sent.
+  if (Array.isArray(body.items)) {
+    const picks = body.items
+      .slice(0, 200)
+      .filter((p: unknown): p is { id: string; qty: number } => !!p && typeof (p as { id?: unknown }).id === "string")
+      .map((p: { id: string; qty: unknown }) => ({ id: p.id, qty: Number(p.qty) }));
+    const quote = priceQuote(picks, catalogItems);
+    if (quote.lines.length) {
+      lead.items = quote.lines;
+      lead.quote_subtotal = quote.subtotal;
+      lead.quote_cost = quote.cost;
+      // Keep the chair list in step so chair demand stats and the CRM's "chairs wanted" still work.
+      const slugs = quote.lines
+        .map((l) => catalogItems.find((i) => i.id === l.id)?.chairSlug)
+        .filter((s): s is string => !!s && !!getChair(s));
+      lead.chairs = [...new Set([...(lead.chairs ?? []), ...slugs])];
+    }
+  }
+  lead.status = "new";
+  lead.activity = [{ at: new Date().toISOString(), type: "status", text: `Lead received from ${lead.source ?? kind}` }];
+
+  if (kind === "quote" && (!lead.event_date || !(lead.chairs?.length || lead.items?.length))) {
+    return Response.json({ error: "Please pick an event date and at least one item." }, { status: 400 });
   }
 
   const saved = await addLead(lead);

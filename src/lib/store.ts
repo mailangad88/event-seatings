@@ -3,6 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { attributionKeys } from "./attribution";
+import type { QuoteLine } from "./catalog-types";
 
 // Storage for votes and leads.
 // - With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, data goes to Supabase (use this in production).
@@ -28,7 +29,41 @@ export type Lead = {
   source?: string;
   // Only true when the visitor ticked "Text me about my quote" (needed before any automated SMS).
   sms_consent?: boolean;
+  // Quote builder: the priced line items (customer price + our vendor cost per line) and totals.
+  items?: QuoteLine[];
+  quote_subtotal?: number; // what the customer saw, vendor price + markup
+  quote_cost?: number; // what the vendors charge us
+  // CRM fields, edited in /admin/leads.
+  status?: LeadStatus;
+  assigned_vendor?: string;
+  follow_up_at?: string; // YYYY-MM-DD
+  lost_reason?: string;
+  activity?: LeadActivity[];
+  updated_at?: string;
 } & Partial<Record<TrackingField, string>>;
+
+// Pipeline stages, in order. Follows the customer success playbook, with a vendor step for the
+// referral model (we book the event with a partner rental company).
+export const leadStatuses = [
+  { id: "new", label: "New lead" },
+  { id: "contacted", label: "Contacted" },
+  { id: "consult_booked", label: "Consult booked" },
+  { id: "quote_sent", label: "Quote sent" },
+  { id: "vendor_confirmed", label: "Vendor confirmed" },
+  { id: "booked", label: "Booked" },
+  { id: "completed", label: "Completed" },
+  { id: "future_season", label: "Future season" },
+  { id: "lost", label: "Lost" },
+] as const;
+export type LeadStatus = (typeof leadStatuses)[number]["id"];
+export const statusLabel = (s?: string) => leadStatuses.find((x) => x.id === s)?.label ?? "New lead";
+export const isLeadStatus = (s: unknown): s is LeadStatus => leadStatuses.some((x) => x.id === s);
+
+export type LeadActivity = {
+  at: string;
+  type: "note" | "status" | "call" | "email" | "text" | "vendor" | "follow_up";
+  text: string;
+};
 
 // Marketing attribution saved with every lead: last touch (the visit that converted), first touch
 // (prefixed first_, the visit that discovered us) and the page the form was on.
@@ -129,4 +164,40 @@ export async function listLeads(): Promise<Lead[]> {
     return data ?? [];
   }
   return (await readLocal()).leads.sort((a, b) => b.created_at.localeCompare(a.created_at));
+}
+
+export async function getLead(id: string): Promise<Lead | undefined> {
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("leads").select("*").eq("id", id).maybeSingle();
+    if (error) throw error;
+    return data ?? undefined;
+  }
+  return (await readLocal()).leads.find((l) => l.id === id);
+}
+
+export type LeadPatch = Partial<Pick<Lead, "status" | "assigned_vendor" | "follow_up_at" | "lost_reason" | "activity">>;
+
+// Applies CRM edits and appends `log` to the lead's activity timeline in one write.
+export async function updateLead(id: string, patch: LeadPatch, log: Omit<LeadActivity, "at">[] = []) {
+  const lead = await getLead(id);
+  if (!lead) throw new Error(`Lead ${id} not found`);
+  const now = new Date().toISOString();
+  const activity = [...(lead.activity ?? []), ...log.map((a) => ({ ...a, at: now }))];
+  // Supabase needs explicit nulls to clear a column; undefined would be skipped.
+  const changes: Record<string, unknown> = { updated_at: now, activity };
+  for (const [k, v] of Object.entries(patch)) changes[k] = v === undefined || v === "" ? null : v;
+
+  const client = sb();
+  if (client) {
+    const { error } = await client.from("leads").update(changes).eq("id", id);
+    if (error) throw error;
+    return;
+  }
+  const db = await readLocal();
+  const i = db.leads.findIndex((l) => l.id === id);
+  const next = { ...db.leads[i], ...changes } as Record<string, unknown>;
+  for (const k of Object.keys(next)) if (next[k] === null) delete next[k];
+  db.leads[i] = next as Lead;
+  await writeLocal(db);
 }

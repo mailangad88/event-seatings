@@ -92,3 +92,16 @@ Playbook fields map to HubSpot built-ins where they exist, so they don't need cu
 - [ ] Phone field and SMS consent on the waitlist form, if SMS goes live for waitlist leads
 - [ ] Send Google Ads offline conversions from won deals using the saved `gclid`
 - [ ] Custom deal properties for the post-booking playbook fields (NPS, referral code, deposit date)
+
+## Built-in lead pipeline (/admin/leads)
+
+Every lead is saved in our own database first, then copied to HubSpot and the webhook. The site has its own CRM at `/admin/leads` (same `ADMIN_PASSWORD` as `/admin`), so you can work leads before HubSpot is set up:
+
+- **Pipeline:** New lead → Contacted → Consult booked → Quote sent → Vendor confirmed → Booked → Completed, plus Future season and Lost. Counts and open quote value per stage.
+- **Lead page:** contact and event details, the exact items and quantities the customer priced, our price, vendor cost and margin per line, a copy-ready order for each rental partner, and where the lead came from (UTMs, referrer, landing page).
+- **Working a lead:** change the stage, assign a rental partner, set the next follow-up date, note why a lead was lost, and log calls, emails, texts and vendor updates. Every change lands on the lead's timeline.
+- **Follow-ups due** show at the top of the pipeline, overdue ones in red.
+
+Database: re-run `supabase/schema.sql` in the Supabase SQL editor (it only adds missing columns) to get `items`, `quote_subtotal`, `quote_cost`, `status`, `assigned_vendor`, `follow_up_at`, `lost_reason`, `activity` and `updated_at`.
+
+Pricing: the quote builder reads `src/data/catalog.ts`. Store each vendor's own price in `vendorPrice`; the customer sees vendor price + 10% (`MARKUP` in `src/lib/catalog-types.ts`). HubSpot deals get the quote total as their amount. Vendor costs are never sent to the browser, HubSpot or the webhook.

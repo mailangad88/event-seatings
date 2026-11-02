@@ -1,4 +1,5 @@
 import "server-only";
+import { usd } from "./catalog-types";
 import { site } from "./site";
 import type { Lead } from "./store";
 
@@ -9,9 +10,22 @@ export async function notifyOwner(lead: Lead) {
   const to = process.env.NOTIFY_EMAIL;
   if (!key || !to) return;
 
-  const lines = Object.entries(lead)
-    .filter(([, v]) => v !== undefined && v !== "" && !(Array.isArray(v) && v.length === 0))
-    .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(", ") : v}`);
+  const skip = new Set(["items", "activity", "quote_cost", "id"]);
+  const quote = lead.items?.length
+    ? [
+        `QUOTE ${usd(lead.quote_subtotal ?? 0)} (vendor cost ${usd(lead.quote_cost ?? 0)}, margin ${usd((lead.quote_subtotal ?? 0) - (lead.quote_cost ?? 0))})`,
+        ...lead.items.map((i) => `  ${i.qty} x ${i.name} @ ${usd(i.unit_price)} = ${usd(i.line_total)}`),
+        "",
+      ]
+    : [];
+  const lines = [
+    ...quote,
+    ...Object.entries(lead)
+      .filter(([k, v]) => !skip.has(k) && v !== undefined && v !== "" && !(Array.isArray(v) && v.length === 0))
+      .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(", ") : v}`),
+    "",
+    `Open in CRM: ${site.url}/admin/leads/${lead.id}`,
+  ];
 
   try {
     await fetch("https://api.resend.com/emails", {
@@ -20,7 +34,7 @@ export async function notifyOwner(lead: Lead) {
       body: JSON.stringify({
         from: process.env.NOTIFY_FROM ?? `${site.name} <onboarding@resend.dev>`,
         to,
-        subject: `New ${lead.kind} lead: ${lead.name ?? lead.email}`,
+        subject: `New ${lead.kind} lead: ${lead.name ?? lead.email}${lead.quote_subtotal ? ` · ${usd(lead.quote_subtotal, 0)}` : ""}`,
         text: lines.join("\n"),
       }),
     });
