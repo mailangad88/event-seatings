@@ -90,6 +90,23 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 | `/terms` | Terms of use | 2026-11-01 | ⚠️ | n/a | n/a | ✅ | ❌ | n/a |
 | 404 (`not-found.tsx`) | Not-found page | 2026-11-01 | n/a | n/a | n/a | ✅ | ❌ | ⚠️ |
 
+## Rental catalog (`/rentals`, added 2026-11-02)
+
+Everything-for-an-event catalog: 98 items in 14 categories, each priced at partner vendor price + 10%. Data: `src/data/catalog-products.ts` (items, category FAQs and planning steps), `src/data/catalog.ts` (published vendor offers, routing, markup via `@/lib/catalog-types`), `src/data/vendors.ts` (23 partner vendors, back end only). Research and price sheet: `docs/vendor-research.md` and the shared folder `research/vendors/`.
+
+| Route | Purpose | Last touched | SEO | AEO | GEO | Visuals | FAQ | CTA |
+|---|---|---|---|---|---|---|---|---|
+| `/rentals` | Hub: 14 category tiles, how it works, three priced sample budgets | 2026-11-02 | ✅ | ✅ FAQPage | ✅ | ⚠️ icons + budget charts; no renders yet | ✅ 6 | ✅ quote, call |
+| `/rentals/[category]` (14) | Answer-first intro, item grid, planning steps, price bar chart, worked budget | 2026-11-02 | ✅ | ✅ FAQPage, ItemList | ✅ | ⚠️ renders pending (chair art for chairs) | ✅ 2-4 | ✅ |
+| `/rentals/[category]/[item]` (98) | Price, specs, quantity-and-cost table by guest count, planning, related items | 2026-11-02 | ✅ | ✅ Product/Offer, FAQPage, Breadcrumb | ✅ areaServed | ⚠️ renders pending | ✅ 5-6 | ✅ "Add to my quote" → `/quote?items=` |
+
+**Remaining to improve**
+- Swap the category illustrations for 3D renders: `RentalVisual` picks up `public/rentals/<folder>/<id>.webp` automatically on the next build.
+- 18 items use estimated prices (marked "Est."). Replace with real quotes from the routed vendor.
+- Call each partner vendor to agree referral terms before routing real leads; none has been contacted.
+- Add the rentals nav link and mega menu (design-system thread owns Header).
+- Add `/rentals` lines to `llms.txt`.
+
 ## Blog posts (`content/blog/*.md` → `/blog/[slug]`)
 
 All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD, quote CTA,  book-a-call CTA). Last touched is the `.md` file; template last touched 2026-10-04.

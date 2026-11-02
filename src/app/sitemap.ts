@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { rentalImagePath } from "@/components/rentals/RentalVisual";
+import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -20,5 +22,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   };
   const chairPages = chairs.map((c) => ({ url: `${site.url}/chairs/${c.slug}`, priority: 0.8, images: img(c.slug) }));
   const posts = (await getPosts()).map((p) => ({ url: `${site.url}/blog/${p.slug}`, lastModified: p.date, images: img(p.chair) }));
-  return [...pages, ...chairPages, ...posts];
+  const rentalPages = [
+    { url: `${site.url}/rentals`, priority: 0.9, lastModified: PRICES_CHECKED_AT },
+    ...categories.map((c) => ({ url: `${site.url}/rentals/${c.id}`, priority: 0.85, lastModified: PRICES_CHECKED_AT })),
+    ...catalogItems.map((i) => {
+      const src = rentalImagePath(i.id, i.categoryId);
+      return {
+        url: `${site.url}/rentals/${i.categoryId}/${i.id}`,
+        priority: 0.7,
+        lastModified: i.priceCheckedAt,
+        images: src ? [`${site.url}${src}`] : i.chairSlug ? img(i.chairSlug) : [],
+      };
+    }),
+  ];
+  return [...pages, ...chairPages, ...rentalPages, ...posts];
 }
