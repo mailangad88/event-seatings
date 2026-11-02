@@ -1,0 +1,236 @@
+{
+  "bar-stool": {
+    "src": "/rentals/chairs/bar-stool.webp",
+    "category": "chairs",
+    "alt": "3D render of a gold Chiavari bar stool with an ivory cushion for cocktail hours and bar seating",
+    "caption": "Gold Chiavari bar stool",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "black-padded-folding": {
+    "src": "/rentals/chairs/black-padded-folding.webp",
+    "category": "chairs",
+    "alt": "3D render of a black padded folding chair with a steel frame and black vinyl seat for corporate events and conferences",
+    "caption": "Black padded folding chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "clear-chiavari": {
+    "src": "/rentals/chairs/clear-chiavari.webp",
+    "category": "chairs",
+    "alt": "3D render of a clear acrylic Chiavari chair (ice Chiavari) with a white cushion, a modern rental for Chicago weddings",
+    "caption": "Clear (ice) Chiavari chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "crossback": {
+    "src": "/rentals/chairs/crossback.webp",
+    "category": "chairs",
+    "alt": "3D render of a walnut wood crossback chair with a woven rattan seat, a rustic farmhouse wedding rental in the Chicago area",
+    "caption": "Crossback chair in walnut with rattan seat",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "garden-folding": {
+    "src": "/rentals/chairs/garden-folding.webp",
+    "category": "chairs",
+    "alt": "3D render of a slatted teak wood garden folding chair for outdoor ceremonies",
+    "caption": "Wood garden folding chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "ghost": {
+    "src": "/rentals/chairs/ghost.webp",
+    "category": "chairs",
+    "alt": "3D render of a clear Louis ghost chair with an oval medallion back, a modern acrylic rental for Chicago events",
+    "caption": "Clear Louis ghost chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "gold-chiavari": {
+    "src": "/rentals/chairs/gold-chiavari.webp",
+    "category": "chairs",
+    "alt": "3D render of a gold Chiavari chair with an ivory seat cushion, the classic wedding reception chair, available to rent in Chicago",
+    "caption": "Gold Chiavari chair with ivory cushion",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "infinity": {
+    "src": "/rentals/chairs/infinity.webp",
+    "category": "chairs",
+    "alt": "3D render of a gold infinity chair with looped back and ivory cushion, a modern alternative to the Chiavari",
+    "caption": "Gold infinity chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "kids-chair": {
+    "src": "/rentals/chairs/kids-chair.webp",
+    "category": "chairs",
+    "alt": "3D render of a child-size white folding chair for kids' tables at weddings, birthdays and showers",
+    "caption": "Kids' white folding chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "louis-medallion": {
+    "src": "/rentals/chairs/louis-medallion.webp",
+    "category": "chairs",
+    "alt": "3D render of a white and gold Louis medallion chair with an upholstered ivory oval back for elegant receptions",
+    "caption": "Louis medallion chair (white & gold)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "rattan-garden": {
+    "src": "/rentals/chairs/rattan-garden.webp",
+    "category": "chairs",
+    "alt": "3D render of a honey rattan garden tub chair with a white cushion for boho lounges and garden parties",
+    "caption": "Rattan garden chair (honey)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "shell": {
+    "src": "/rentals/chairs/shell.webp",
+    "category": "chairs",
+    "alt": "3D render of a white molded shell chair on maple dowel legs for modern corporate events and lounges",
+    "caption": "Molded shell chair (white)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "silver-chiavari": {
+    "src": "/rentals/chairs/silver-chiavari.webp",
+    "category": "chairs",
+    "alt": "3D render of a silver Chiavari chair with a white seat cushion for weddings and galas in the Chicago area",
+    "caption": "Silver Chiavari chair with white cushion",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "throne-chair": {
+    "src": "/rentals/chairs/throne-chair.webp",
+    "category": "chairs",
+    "alt": "3D render of a tall gold royal throne chair with ivory tufted velvet, a statement rental for bridal showers, sweet sixteens and quinceaneras",
+    "caption": "Gold and ivory throne chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "velvet-dining": {
+    "src": "/rentals/chairs/velvet-dining.webp",
+    "category": "chairs",
+    "alt": "3D render of an emerald green velvet dining chair with gold legs for glam head tables",
+    "caption": "Velvet dining chair (emerald)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "white-chiavari": {
+    "src": "/rentals/chairs/white-chiavari.webp",
+    "category": "chairs",
+    "alt": "3D render of a white Chiavari chair with an ivory cushion for garden weddings and ceremonies near Chicago",
+    "caption": "White Chiavari chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "white-folding": {
+    "src": "/rentals/chairs/white-folding.webp",
+    "category": "chairs",
+    "alt": "3D render of a white resin folding chair, the standard ceremony and backyard party rental chair in Chicago",
+    "caption": "White folding chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "white-resin-folding": {
+    "src": "/rentals/chairs/white-resin-folding.webp",
+    "category": "chairs",
+    "alt": "3D render of a white resin folding chair with a padded white vinyl seat, a comfortable ceremony chair rental",
+    "caption": "White padded resin folding chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "banquet-6ft": {
+    "src": "/rentals/tables/banquet-6ft.webp",
+    "category": "tables",
+    "alt": "3D render of a 6-foot rectangular banquet table with folding legs, seats 6 guests or works as a buffet table",
+    "caption": "6 ft banquet table (seats 6)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "banquet-8ft": {
+    "src": "/rentals/tables/banquet-8ft.webp",
+    "category": "tables",
+    "alt": "3D render of an 8-foot rectangular banquet table with folding legs, seats 8 to 10 guests for family-style dinners",
+    "caption": "8 ft banquet table (seats 8-10)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "cocktail-highboy": {
+    "src": "/rentals/tables/cocktail-highboy.webp",
+    "category": "tables",
+    "alt": "3D render of a 30-inch round cocktail highboy table, 42 inches tall, for standing cocktail hours",
+    "caption": "30\" cocktail highboy table (42\" tall)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "cocktail-lowboy": {
+    "src": "/rentals/tables/cocktail-lowboy.webp",
+    "category": "tables",
+    "alt": "3D render of a 30-inch round cocktail lowboy table at seated height for lounges and small gatherings",
+    "caption": "30\" cocktail lowboy table (30\" tall)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "farm-table": {
+    "src": "/rentals/tables/farm-table.webp",
+    "category": "tables",
+    "alt": "3D render of an 8-foot rustic wood farm table with plank top for barn weddings and family-style dinners near Chicago",
+    "caption": "8 ft wood farm table",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "round-48": {
+    "src": "/rentals/tables/round-48.webp",
+    "category": "tables",
+    "alt": "3D render of a 48-inch round banquet table with a wood top and folding steel legs that seats 4 to 6 guests",
+    "caption": "48\" round table (seats 4-6)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "round-60": {
+    "src": "/rentals/tables/round-60.webp",
+    "category": "tables",
+    "alt": "3D render of a 60-inch round banquet table, the most popular wedding reception table, seating 8 to 10 guests",
+    "caption": "60\" round table (seats 8-10)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "round-72": {
+    "src": "/rentals/tables/round-72.webp",
+    "category": "tables",
+    "alt": "3D render of a 72-inch round banquet table that seats 10 to 12 guests for weddings and galas in Chicago",
+    "caption": "72\" round table (seats 10-12)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  }
+}

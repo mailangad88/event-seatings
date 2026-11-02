@@ -20,6 +20,7 @@ export async function GET() {
     `- [Chair collection](${site.url}/chairs)`,
     `- [FAQ](${site.url}/faq)`,
     `- [Style quiz](${site.url}/quiz)`,
+    `- [3D rental gallery](${site.url}/gallery): true-to-size 3D renders of every chair, table, linen, tent and event rental, plus complete event setups`,
     `- [About](${site.url}/about)`,
     "",
     "## Chairs for rent (estimated per-chair price, USD)",

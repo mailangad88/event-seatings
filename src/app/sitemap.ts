@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
+import { rentalImages } from "@/data/rental-images";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -35,5 +36,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       };
     }),
   ];
-  return [...pages, ...chairPages, ...rentalPages, ...posts];
+  const gallery = { url: `${site.url}/gallery`, priority: 0.7, images: rentalImages.map((i) => `${site.url}${i.src}`) };
+  return [...pages, gallery, ...chairPages, ...rentalPages, ...posts];
 }
