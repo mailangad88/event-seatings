@@ -6,7 +6,8 @@ import { CategoryTile, FaqList, Icon, QuoteCta, Section, StepFlow, TrustBar, typ
 import { getChair } from "@/data/chairs";
 import { formatDate, getPosts } from "@/lib/blog";
 import { rentalCategories } from "@/lib/nav";
-import { scenes } from "@/lib/scenes";
+import { catalogItems } from "@/data/catalog";
+import { categoryScene, render, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -119,10 +120,10 @@ export default async function Home() {
                 <Image src={scenes.blushGarden.src} alt={scenes.blushGarden.alt} fill priority sizes="(max-width: 1024px) 55vw, 30vw" className="object-cover" />
               </div>
               <div className="media aspect-square shadow-soft">
-                <Image src={scenes.chairDetail.src} alt={scenes.chairDetail.alt} fill sizes="(max-width: 1024px) 45vw, 22vw" className="object-cover object-[50%_35%]" />
+                <Image src={render("hero-chairs").src} alt={render("hero-chairs").alt} fill sizes="(max-width: 1024px) 45vw, 22vw" className="object-cover" />
               </div>
               <div className="media aspect-square shadow-soft">
-                <Image src={scenes.midnightGold.src} alt={scenes.midnightGold.alt} fill sizes="(max-width: 1024px) 45vw, 22vw" className="object-cover object-[50%_60%]" />
+                <Image src={render("tent-reception-dusk").src} alt={render("tent-reception-dusk").alt} fill sizes="(max-width: 1024px) 45vw, 22vw" className="object-cover" />
               </div>
             </div>
             <div className="card absolute -bottom-5 left-4 flex items-center gap-3 px-4 py-3 sm:left-6">
@@ -155,7 +156,14 @@ export default async function Home() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {rentalCategories.map((c, i) => (
             <Reveal key={c.id} delay={(i % 4) * 60}>
-              <CategoryTile href={`/rentals/${c.id}`} name={c.name} blurb={c.blurb} icon={c.icon} />
+              <CategoryTile
+                href={`/rentals/${c.id}`}
+                name={c.name}
+                blurb={c.blurb}
+                icon={c.icon}
+                image={categoryScene(c.id)}
+                count={catalogItems.filter((i) => i.categoryId === c.id).length || undefined}
+              />
             </Reveal>
           ))}
         </div>

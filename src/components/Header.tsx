@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { primaryNav, rentalCategories } from "@/lib/nav";
-import { scenes } from "@/lib/scenes";
+import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import Image from "next/image";
 import { MobileNav } from "./MobileNav";
@@ -82,7 +82,7 @@ export function Header() {
                   </Link>
                 </div>
                 <Link href="/quote" className="tone-dark group/promo relative block bg-espresso">
-                  <Image src={scenes.blushGarden.src} alt="" fill sizes="280px" className="object-cover opacity-70 transition-opacity group-hover/promo:opacity-90" />
+                  <Image src={render("wedding-reception").src} alt="" fill sizes="280px" className="object-cover opacity-70 transition-opacity group-hover/promo:opacity-90" />
                   <span className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" aria-hidden />
                   <span className="absolute inset-x-0 bottom-0 p-5 text-white">
                     <span className="block font-serif text-2xl leading-tight">Price your whole event</span>
