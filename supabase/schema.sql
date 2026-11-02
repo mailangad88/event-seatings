@@ -100,6 +100,22 @@ create table if not exists vendor_partners (
   updated_at timestamptz
 );
 
+-- Lead quality, consent and follow-up (added with the lead-gen playbook, Nov 2026). Safe to run again.
+-- email_consent / call_consent / sms_consent are recorded separately; opted_out_at stops all automated email.
+alter table leads
+  add column if not exists email_consent boolean,
+  add column if not exists call_consent boolean,
+  add column if not exists consent_at timestamptz,
+  add column if not exists opted_out_at timestamptz,
+  add column if not exists lead_score text,
+  add column if not exists lead_score_reasons text,
+  add column if not exists visitor_tz text,
+  add column if not exists pages_viewed text,
+  add column if not exists followup_step int not null default 0,
+  add column if not exists followup_last_at timestamptz;
+create index if not exists leads_email_idx on leads (lower(email));
+create index if not exists leads_created_idx on leads (created_at);
+
 alter table votes enable row level security;
 alter table leads enable row level security;
 alter table page_views enable row level security;

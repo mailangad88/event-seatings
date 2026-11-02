@@ -31,6 +31,22 @@ export type Lead = {
   source?: string;
   // Only true when the visitor ticked "Text me about my quote" (needed before any automated SMS).
   sms_consent?: boolean;
+  // Consent is recorded per channel. email_consent = OK to send planning tips and follow-ups beyond the reply to
+  // their own request; call_consent = OK to phone them. consent_at = when they gave it, with the form it came from.
+  email_consent?: boolean;
+  call_consent?: boolean;
+  consent_at?: string;
+  // Set by the unsubscribe link: no more automated email of any kind to this address.
+  opted_out_at?: string;
+  // A/B/C from lib/lead-score.ts, with the reasons, set when the lead arrives.
+  lead_score?: string;
+  lead_score_reasons?: string;
+  // Browser time zone and the pages the visitor viewed before sending (oldest first).
+  visitor_tz?: string;
+  pages_viewed?: string;
+  // Follow-up sequence progress (lib/followups.ts): how many emails went out and when the last one did.
+  followup_step?: number;
+  followup_last_at?: string;
   // Quote builder: the priced line items (customer price + our vendor cost per line) and totals.
   items?: QuoteLine[];
   quote_subtotal?: number; // what the customer saw, vendor price + markup
@@ -173,13 +189,30 @@ export async function getVisitorVotes(visitorId: string): Promise<string[]> {
   return (await allVotes()).filter((v) => v.visitor_id === visitorId).map((v) => v.chair_slug);
 }
 
+// Columns added after the first launch. Kept here so a not-yet-migrated database can still take leads.
+const newerLeadColumns = [
+  "email_consent", "call_consent", "consent_at", "opted_out_at", "lead_score", "lead_score_reasons",
+  "visitor_tz", "pages_viewed", "followup_step", "followup_last_at",
+] as const;
+
 export async function addLead(lead: NewLead): Promise<Lead> {
   const full: Lead = { ...lead, id: crypto.randomUUID(), created_at: new Date().toISOString() };
   const client = sb();
   if (client) {
     const { error } = await client.from("leads").insert(full);
-    if (error) throw error;
-    return full;
+    if (!error) return full;
+    // Database not migrated yet (supabase/schema.sql not re-run): save without the newer columns rather than lose
+    // the lead. The full lead still reaches the owner alert and the CRM sync.
+    if (error.code === "PGRST204" || /column/i.test(error.message)) {
+      const legacy: Record<string, unknown> = { ...full };
+      for (const k of newerLeadColumns) delete legacy[k];
+      const retry = await client.from("leads").insert(legacy);
+      if (!retry.error) {
+        console.warn("LEAD_SAVED_WITHOUT_NEW_COLUMNS: re-run supabase/schema.sql", error.message);
+        return full;
+      }
+    }
+    throw error;
   }
   const db = await readLocal();
   db.leads.push(full);
@@ -207,7 +240,9 @@ export async function getLead(id: string): Promise<Lead | undefined> {
   return (await readLocal()).leads.find((l) => l.id === id);
 }
 
-export type LeadPatch = Partial<Pick<Lead, "status" | "assigned_vendor" | "follow_up_at" | "lost_reason" | "activity">>;
+export type LeadPatch = Partial<
+  Pick<Lead, "status" | "assigned_vendor" | "follow_up_at" | "lost_reason" | "activity" | "followup_step" | "followup_last_at" | "opted_out_at">
+>;
 
 // Applies CRM edits and appends `log` to the lead's activity timeline in one write.
 export async function updateLead(id: string, patch: LeadPatch, log: Omit<LeadActivity, "at">[] = []) {
@@ -231,6 +266,44 @@ export async function updateLead(id: string, patch: LeadPatch, log: Omit<LeadAct
   for (const k of Object.keys(next)) if (next[k] === null) delete next[k];
   db.leads[i] = next as Lead;
   await writeLocal(db);
+}
+
+// Marks every lead with this email as opted out (unsubscribe link). Returns how many rows changed.
+export async function optOutEmail(email: string) {
+  const now = new Date().toISOString();
+  const target = email.trim().toLowerCase();
+  const client = sb();
+  if (client) {
+    const { data, error } = await client
+      .from("leads")
+      .update({ opted_out_at: now, updated_at: now })
+      .ilike("email", target)
+      .is("opted_out_at", null)
+      .select("id");
+    if (error) throw error;
+    return data?.length ?? 0;
+  }
+  const db = await readLocal();
+  let n = 0;
+  for (const l of db.leads) {
+    if (l.email.toLowerCase() === target && !l.opted_out_at) {
+      l.opted_out_at = now;
+      n++;
+    }
+  }
+  await writeLocal(db);
+  return n;
+}
+
+// Leads created since `since`, for the follow-up sequence and weekly report.
+export async function listLeadsSince(since: string): Promise<Lead[]> {
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("leads").select("*").gte("created_at", since).order("created_at");
+    if (error) throw error;
+    return data ?? [];
+  }
+  return (await readLocal()).leads.filter((l) => l.created_at >= since).sort((a, b) => a.created_at.localeCompare(b.created_at));
 }
 
 export async function addPageView(view: Omit<PageView, "created_at">) {
