@@ -71,7 +71,47 @@ export default function PrivacyPage() {
           <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer">browser add-on</a>. We don&apos;t
           use advertising cookies.
         </p>
+        <h2>Chat</h2>
+        <p>
+          If you message us through the chat button, what you type and the contact details you share are stored in our
+          customer system so we can reply. When live chat is on, it is provided by HubSpot, which loads only after you
+          open the chat and may set its own cookies to keep your conversation going.
+        </p>
+        <ChatDataFlow />
       </div>
     </div>
+  );
+}
+
+// Flowchart of where a chat message goes, so the policy is visual and not text only.
+const flow = [
+  { title: "You", note: "send a chat or message" },
+  { title: "Chat panel", note: "HubSpot or our form" },
+  { title: "Our customer system", note: "stored securely" },
+  { title: "Our team", note: "replies to you" },
+];
+
+function ChatDataFlow() {
+  return (
+    <figure className="my-10" aria-labelledby="chat-flow-caption">
+      <ol className="m-0 flex list-none flex-col items-stretch gap-2 p-0 sm:flex-row sm:items-center">
+        {flow.map((f, i) => (
+          <li key={f.title} className="m-0 flex flex-col items-center gap-2 sm:flex-1 sm:flex-row">
+            <div className="w-full rounded-md border border-gold/60 bg-surface px-3 py-3 text-center">
+              <span className="block font-serif text-lg leading-tight text-ink">{f.title}</span>
+              <span className="mt-1 block text-[11px] tracking-wide text-muted">{f.note}</span>
+            </div>
+            {i < flow.length - 1 && (
+              <svg width="14" height="14" viewBox="0 0 14 14" className="shrink-0 rotate-90 text-gold sm:rotate-0" aria-hidden>
+                <path d="M1 7h11M8 3l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.3" />
+              </svg>
+            )}
+          </li>
+        ))}
+      </ol>
+      <figcaption id="chat-flow-caption" className="mt-3 text-center text-xs text-muted">
+        How a chat message reaches us. We never sell it or use it for advertising.
+      </figcaption>
+    </figure>
   );
 }
