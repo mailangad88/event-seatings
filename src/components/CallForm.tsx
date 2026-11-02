@@ -1,5 +1,6 @@
 "use client";
 
+import { trackLead } from "@/lib/analytics";
 import { useState } from "react";
 import { site } from "@/lib/site";
 
@@ -25,7 +26,10 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
         source,
       }),
     }).catch(() => null);
-    if (res?.ok) return setStatus("done");
+    if (res?.ok) {
+      trackLead("call", source);
+      return setStatus("done");
+    }
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");
     setStatus("error");
   }

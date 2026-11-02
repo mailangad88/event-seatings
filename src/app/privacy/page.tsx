@@ -66,7 +66,10 @@ export default function PrivacyPage() {
         <p>
           We store a random visitor identifier in your browser&apos;s local storage so your saved chairs persist, and a
           note of how you arrived (for example &ldquo;google / organic&rdquo; and your first page), which is only sent
-          to us if you submit a form. We don&apos;t use advertising cookies.
+          to us if you submit a form. We use Google Analytics to understand, in aggregate, how visitors use the site; it
+          sets first-party cookies, and you can opt out with Google&apos;s{" "}
+          <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer">browser add-on</a>. We don&apos;t
+          use advertising cookies.
         </p>
       </div>
     </div>

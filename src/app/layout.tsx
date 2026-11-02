@@ -5,6 +5,7 @@ import { AttributionTracker } from "@/components/AttributionTracker";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VoteProvider } from "@/components/VoteProvider";
+import { Analytics } from "@/components/Analytics";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -54,6 +55,13 @@ export const metadata: Metadata = {
     siteName: site.name,
     type: "website",
     locale: "en_US",
+  },
+  // Search Console / Bing Webmaster ownership tags. Set the codes in Vercel env vars.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION }
+      : undefined,
   },
 };
 
@@ -121,6 +129,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="flex-1">{children}</main>
           <Footer />
         </VoteProvider>
+        <Analytics />
       </body>
     </html>
   );
