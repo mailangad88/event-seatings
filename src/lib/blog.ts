@@ -3,6 +3,7 @@ import { existsSync, readFileSync, promises as fs } from "fs";
 import path from "path";
 import { marked } from "marked";
 import { chairs, getChair } from "@/data/chairs";
+import { assignHeroes, type GuideHero } from "@/lib/guide-heroes";
 
 // Blog posts are Markdown files in /content/blog with a small header, e.g.
 //
@@ -43,6 +44,8 @@ export type Post = {
   updated?: string;
   /** The first tag: the topic hub the post belongs to. */
   topic: string;
+  /** A 3D render picked for this guide by keyword (see src/lib/guide-heroes.ts), when one exists. */
+  hero?: GuideHero;
 };
 
 export type Faq = { q: string; a: string };
@@ -185,12 +188,30 @@ function parse(file: string, raw: string) {
 
 const today = () => new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
 
-export async function getPosts(): Promise<Post[]> {
+let heroMap: Promise<Map<string, GuideHero>> | null = null;
+function heroes(posts: Post[]) {
+  heroMap ??= Promise.resolve(assignHeroes(posts));
+  return heroMap;
+}
+
+function withHero(post: Post, map: Map<string, GuideHero>) {
+  const hero = map.get(post.slug);
+  if (hero) Object.assign(post, { hero, image: hero.src, imageAlt: hero.alt });
+  return post;
+}
+
+async function readAll(): Promise<Post[]> {
   const files = (await fs.readdir(dir).catch(() => [])).filter((f) => f.endsWith(".md"));
-  const posts = await Promise.all(
-    files.map(async (f) => parse(f, await fs.readFile(path.join(dir, f), "utf8")).post),
-  );
-  return posts.filter((p) => p.date <= today()).sort((a, b) => b.date.localeCompare(a.date));
+  return Promise.all(files.map(async (f) => parse(f, await fs.readFile(path.join(dir, f), "utf8")).post));
+}
+
+export async function getPosts(): Promise<Post[]> {
+  const posts = await readAll();
+  const map = await heroes(posts);
+  return posts
+    .map((p) => withHero(p, map))
+    .filter((p) => p.date <= today())
+    .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export async function getPost(slug: string) {
@@ -199,6 +220,7 @@ export async function getPost(slug: string) {
   if (!raw) return null;
   const { post, body } = parse(`${slug}.md`, raw);
   if (post.date > today()) return null;
+  withHero(post, await heroes(await readAll()));
   return { post, html: await marked.parse(body), faqs: extractFaqs(body) };
 }
 

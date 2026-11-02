@@ -20,7 +20,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
   const found = await getPost((await props.params).slug);
   if (!found) return {};
   const { post } = found;
-  const hero = sceneFor(post.slug);
+  const hero = post.hero ?? sceneFor(post.slug);
   return {
     title: post.title,
     description: post.description,
@@ -54,7 +54,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const { html, toc } = withHeadingIds(found.html);
   const chair = getChair(post.chair);
   const chairImg = chair && chairImage(chair);
-  const hero = sceneFor(post.slug);
+  const hero = post.hero ?? sceneFor(post.slug);
   const related = await getRelated(post);
   const url = `${site.url}/blog/${post.slug}`;
   const topicUrl = `/blog/topic/${topicSlug(post.topic)}`;
@@ -68,7 +68,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
     dateModified: post.updated ?? post.date,
     image: [
       { "@type": "ImageObject", url: `${site.url}${hero.src}`, caption: hero.alt },
-      ...(post.image ? [{ "@type": "ImageObject", url: `${site.url}${post.image}`, caption: post.imageAlt ?? post.title }] : []),
+      ...(post.image && !post.hero ? [{ "@type": "ImageObject", url: `${site.url}${post.image}`, caption: post.imageAlt ?? post.title }] : []),
       ...(chairImg && chair ? [{ "@type": "ImageObject", url: `${site.url}${chairImg}`, caption: chairAlt(chair) }] : []),
     ],
     keywords: [post.keyword, ...post.tags].filter(Boolean).join(", "),
@@ -133,7 +133,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
                   <Link href={`/blog/${r.slug}`} className="group card card-hover flex h-full gap-4 overflow-hidden p-3">
                     <span className="relative h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-surface-2">
                       {r.image ? (
-                        <Image src={r.image} alt="" fill unoptimized sizes="80px" className="object-cover" />
+                        <Image src={r.image} alt="" fill unoptimized={r.image.endsWith(".svg")} sizes="80px" className="object-cover" />
                       ) : (
                         <Image src={sceneFor(r.slug).src} alt="" fill sizes="80px" className="object-cover" />
                       )}
