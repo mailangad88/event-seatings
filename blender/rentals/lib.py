@@ -531,7 +531,7 @@ def visible_bounds():
     deps = bpy.context.evaluated_depsgraph_get()
     for inst in deps.object_instances:
         ob = inst.object
-        if ob.type != "MESH" or ob.name.startswith(("Sweep", "Lawn", "Tree", "Trunks", "Ground", "Flags")):
+        if ob.type != "MESH" or ob.name.startswith(("Sweep", "Lawn", "Tree", "Trunks", "Ground", "Flags", "SetFloor", "SetWall")):
             continue
         for c in ob.bound_box:
             w = inst.matrix_world @ Vector(c)

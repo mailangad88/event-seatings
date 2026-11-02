@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
-import { extraImages, imageCategories, productImages, sceneImages } from "@/data/rental-images";
+import { extraImages, imageCategories, productImages, rentalImageJsonLd, sceneImages } from "@/data/rental-images";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "3D Event Rental Gallery: Chairs, Tables, Tents & Linens",
-  description: `See every event rental ${site.name} offers in the Chicago area as a true-to-size 3D render: chairs, tables, linens, tents, dinnerware, dance floors, lighting, lounge furniture and more.`,
+  title: "Event Rental Gallery: Chairs, Tables, Tents & Linens",
+  description: `See every event rental ${site.name} offers in the Chicago area, pictured true to size in real-world settings: chairs, tables, linens, tents, dinnerware, dance floors, lighting, lounge furniture and more.`,
   alternates: { canonical: "/gallery" },
   openGraph: sceneImages[0] ? { images: [{ url: sceneImages[0].src, alt: sceneImages[0].alt }] } : undefined,
 };
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "Are these photos of the actual rentals?",
-    a: `They are 3D renders built to each item's real rental dimensions, so you can compare styles and sizes before you book. Exact finishes vary slightly by partner vendor; ask on your free call and we will send photos of the specific stock reserved for your date.`,
+    a: `They are photorealistic visualizations built to each item's real rental dimensions and lit with real-world light, so you can compare styles and sizes before you book. Pages also show real event photos (marked "Example photo"). Exact finishes vary slightly by partner vendor; ask on your free call and we will send photos of the specific stock reserved for your date.`,
   },
   {
     q: "Can I see a whole table or tent set up before I rent?",
@@ -40,23 +40,10 @@ export default function GalleryPage() {
         "@type": "ImageGallery",
         "@id": `${url}#gallery`,
         url,
-        name: `${site.name} 3D event rental gallery`,
+        name: `${site.name} event rental gallery`,
         description: metadata.description,
         about: "Event rentals in the Chicago area",
-        image: [...sceneImages, ...productImages, ...extraImages].map((i) => ({
-          "@type": "ImageObject",
-          contentUrl: `${site.url}${i.src}`,
-          url: `${site.url}${i.src}`,
-          name: i.caption,
-          caption: i.caption,
-          description: i.alt,
-          width: i.width,
-          height: i.height,
-          encodingFormat: "image/webp",
-          creditText: site.name,
-          creator: { "@type": "Organization", name: site.name },
-          copyrightNotice: `© ${site.name}`,
-        })),
+        image: [...sceneImages, ...productImages, ...extraImages].map((i) => rentalImageJsonLd(i)),
       },
       {
         "@type": "FAQPage",
@@ -77,14 +64,14 @@ export default function GalleryPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container-x py-20">
-        <p className="eyebrow">3D gallery</p>
+        <p className="eyebrow">Gallery</p>
         <h1 className="headline mt-6 max-w-4xl text-5xl leading-[0.98] sm:text-7xl">
           Every rental, <em className="text-gold">true to size</em> before you book
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted">
           {productImages.length} event rentals, {extraImages.length} extra colours and angles, and{" "}
-          {sceneImages.length} full setups, rendered in 3D from real rental
-          dimensions so you can picture your Chicago event: chairs, tables, linens, tents, dinnerware, dance floors,
+          {sceneImages.length} full setups, built from real rental dimensions and pictured in real-world light
+          so you can picture your Chicago event: chairs, tables, linens, tents, dinnerware, dance floors,
           lighting, lounge furniture, decor and games.
         </p>
         <nav aria-label="Gallery sections" className="mt-8 flex flex-wrap gap-3 text-sm">
