@@ -35,7 +35,7 @@ export const eventTypes: EventType[] = [
       {
         problem: "Tight delivery windows at the venue.",
         solution:
-          "Many venues limit load-in times. We'll confirm your venue's window and any certificate of insurance requirements early, and build the delivery around them.",
+          "Many venues limit load-in times. We'll confirm your venue's window early and build the delivery around it. If the venue requires a vendor certificate of insurance, tell us first: we can't issue one yet.",
       },
     ],
     seatingMath: [
@@ -80,7 +80,7 @@ export const eventTypes: EventType[] = [
       },
       {
         q: "Do I need to give my venue a certificate of insurance?",
-        a: "Many Chicago venues, especially hotels and high-rise event spaces, ask outside vendors for a COI. Check with your venue coordinator, and let us know early so we can handle it before delivery day.",
+        a: "Many Chicago venues, especially hotels and high-rise event spaces, ask outside vendors for a COI. We can't issue a certificate of insurance yet, so check with your venue coordinator before you book and tell us what they require.",
       },
     ],
     relatedPosts: [
@@ -96,13 +96,13 @@ export const eventTypes: EventType[] = [
     shortName: "Corporate Events",
     metaTitle: "Corporate Event Chair Rentals in Chicago",
     metaDescription:
-      "Chair rentals for Chicago-area offsites, launches, panels and client dinners. Stackable modern styles, COI support and itemized quotes. Book a planning call.",
+      "Chair rentals for Chicago-area offsites, launches, panels and client dinners. Stackable modern styles, dock planning and itemized quotes. Book a planning call.",
     headline: "Chairs for *corporate events* that look intentional",
     intro:
       "We rent chairs for corporate events across Chicago and the suburbs, including product launches, panels, offsites and client dinners. Our modern and stackable styles work for theater rows, banquet rounds and lounge areas. Request a quote or book a quick call and we'll plan around your building's rules.",
     story: [
       "Corporate events in Chicago happen in a lot of different rooms: a River North showroom after hours, a Loop office floor cleared for an all-hands, a suburban campus courtyard in Oak Brook or Schaumburg. The chairs need to suit the brand and still be easy to move in and out on a tight schedule.",
-      "Office buildings come with rules. Freight elevator reservations, loading dock times and certificates of insurance are routine downtown, and we'd rather sort those out on the first call than on event day. Tell us the building and we'll ask the right questions.",
+      "Office buildings come with rules. Freight elevator reservations, loading dock times and vendor certificates of insurance are routine downtown. We can't issue certificates yet, so we'd rather sort out what your building needs on the first call than on event day. Tell us the building and we'll ask the right questions.",
       "As a new company, we can't point you to a client list, and we won't pretend otherwise. What we can do is plan carefully, give you an itemized quote you can send to finance, and keep the setup quiet and on time.",
     ],
     painPoints: [
@@ -124,7 +124,7 @@ export const eventTypes: EventType[] = [
       {
         problem: "Finance needs clear paperwork.",
         solution:
-          "Your quote lists chairs, delivery and setup separately, and we can provide a COI for your building or venue.",
+          "Your quote lists chairs, delivery and setup separately, so it's easy to approve.",
       },
     ],
     seatingMath: [
@@ -153,7 +153,7 @@ export const eventTypes: EventType[] = [
       },
       {
         q: "Do you provide a certificate of insurance for corporate venues?",
-        a: "We can provide a COI when your building or venue asks for one. Send us the exact wording they require, ideally a week or more before the event.",
+        a: "Not yet. We don't issue certificates of insurance today, though we plan to as we grow. If your building or venue requires one, check before you book and tell us on your planning call.",
       },
       {
         q: "How many chairs fit in our event space?",
@@ -376,7 +376,7 @@ export const eventTypes: EventType[] = [
       {
         problem: "Hundreds of guests and a short ballroom load-in.",
         solution:
-          "Stackable gold infinity chairs load in faster. We'll confirm the hotel's dock times and any COI requirement early.",
+          "Stackable gold infinity chairs load in faster. We'll confirm the hotel's dock times early.",
       },
     ],
     seatingMath: [
@@ -523,7 +523,7 @@ export const eventTypes: EventType[] = [
     story: [
       "Chicago's benefit season runs nearly year-round, with spring luncheons, summer garden parties on the North Shore, fall galas downtown and winter holiday benefits. Committees work hard on décor, and the chairs set the tone the moment guests walk in.",
       "Galas are logistics-heavy. There's a program, a paddle raise, maybe a live auction and a band, and the room often has to be set the same afternoon. Chairs that look upscale but stack well save the setup crew precious time.",
-      "We're new and building our 2027 season, so we'll be upfront: we can't list past galas. We can give your committee an itemized quote, work through your venue's COI and dock rules, and plan carefully with your event chair or producer.",
+      "We're new and building our 2027 season, so we'll be upfront: we can't list past galas. We can give your committee an itemized quote, work through your venue's dock rules, and plan carefully with your event chair or producer.",
     ],
     painPoints: [
       {
@@ -569,7 +569,7 @@ export const eventTypes: EventType[] = [
     faqs: [
       {
         q: "Can we rent upscale chairs for a gala in downtown Chicago?",
-        a: "Yes, we deliver across Chicago and the suburbs. Many downtown venues require a COI and set dock times, so share those details early and we'll plan around them.",
+        a: "Yes, we deliver across Chicago and the suburbs. Many downtown venues set dock times and require a vendor certificate of insurance, which we can't issue yet, so share your venue's rules early.",
       },
       {
         q: "How many guests fit at a gala table?",
@@ -880,7 +880,7 @@ export const eventTypes: EventType[] = [
       {
         problem: "Office party in a building with strict rules.",
         solution:
-          "We'll work with your building's freight elevator, dock times and COI requirements.",
+          "We'll work with your building's freight elevator and dock times.",
       },
     ],
     seatingMath: [
@@ -1195,7 +1195,7 @@ export const eventTypes: EventType[] = [
     story: [
       "School events run on schedules and budgets. A spring sports banquet in a gym, a PTO auction in a cafeteria, a prom in a hotel ballroom or a commencement on the football field each need lots of chairs, set up quickly and taken down after.",
       "Outdoor commencements in late May and June bring their own challenges: hundreds of chairs on turf, early setup, and a backup plan if storms roll through. We'll talk through timing with your facilities team and plan the drop-off around their schedule.",
-      "Schools and districts usually need paperwork: a quote for approval, a COI and sometimes a W-9. Your quote itemizes chairs, delivery and setup so it's easy to send through purchasing.",
+      "Schools and districts usually need paperwork. Your quote itemizes chairs, delivery and setup so it's easy to send through purchasing. Some districts also require a vendor certificate of insurance, which we can't issue yet, so check first.",
     ],
     painPoints: [
       {
@@ -1211,7 +1211,7 @@ export const eventTypes: EventType[] = [
       {
         problem: "District purchasing and paperwork.",
         solution:
-          "We'll provide an itemized quote and can supply a COI when your school requires one.",
+          "We'll provide an itemized quote that's easy to send through purchasing.",
       },
       {
         problem: "Weather backup for outdoor ceremonies.",
@@ -1245,7 +1245,7 @@ export const eventTypes: EventType[] = [
       },
       {
         q: "Do you provide a COI for schools?",
-        a: "Yes, we can provide a certificate of insurance when your school or district requires one. Send us the exact wording needed.",
+        a: "Not yet. We don't issue certificates of insurance today. If your school or district requires one from every vendor, check before you book so there are no surprises.",
       },
       {
         q: "What chairs work best for prom?",

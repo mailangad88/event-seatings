@@ -21,7 +21,7 @@ const promises: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "check",
     title: "Insured, vetted rental companies",
-    text: "We only book Chicago-area rental companies that carry general liability insurance and give us a certificate of insurance, which we can send to your venue.",
+    text: "We only book Chicago-area rental companies that carry general liability insurance and give us a certificate of insurance. We can't issue certificates to venues ourselves yet.",
   },
   {
     icon: "users",
@@ -80,7 +80,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Does my venue need a certificate of insurance?",
-    a: "Many Chicago venues require one from every vendor. We collect the rental company's certificate of insurance and send it to your venue. Some venues also ask hosts for one-day event liability insurance, and we'll tell you on your call if yours does.",
+    a: "Many Chicago venues require one from every vendor. We can't issue or send certificates of insurance to venues yet, so check your venue's rules before you book and tell us what they require. Some venues also ask hosts for one-day event liability insurance, and we'll tell you on your call if yours does.",
   },
   {
     q: "What if the rental company cancels?",
@@ -180,8 +180,8 @@ export default function BookingPromisePage() {
             <Icon name="check" size={26} className="text-gold" />
             <h3 className="display-3 mt-4">Vendor insurance</h3>
             <p className="mt-3 leading-7 text-muted">
-              Every rental company we book carries general liability insurance. We keep their certificate on file and
-              send it to your venue, which most Chicago venues ask for before load-in.
+              Every rental company we book carries general liability insurance. We can&apos;t issue or send
+              certificates of insurance to venues yet, so if yours asks for one before load-in, tell us before you book.
             </p>
           </article>
           <article className="card p-7">
