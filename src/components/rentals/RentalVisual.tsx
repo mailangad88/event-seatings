@@ -4,13 +4,16 @@ import Image from "next/image";
 import { ChairArt } from "@/components/ChairArt";
 import { getCategory, type CategoryId } from "@/data/catalog-products";
 import { getChair } from "@/data/chairs";
+import { photosForItem, stockAlt } from "@/data/stock-photos";
 import { site } from "@/lib/site";
 import { RentalIcon } from "./RentalIcon";
+import { ExampleChip, StockImg } from "./StockPhoto";
 
 // Picks the best visual for a rental item, in order:
 // 1. the 3D render at public/rentals/<category folder>/<id>.webp (from the render pipeline),
 // 2. the chair render/illustration from the chair collection,
-// 3. a styled category illustration.
+// 3. a real photo of the same item type at an event (Unsplash, labelled "Example photo"),
+// 4. a styled category illustration.
 // Runs on the server at build time, so a render appears as soon as the file is committed.
 
 type ManifestEntry = { src: string; alt?: string; caption?: string };
@@ -47,11 +50,14 @@ export function RentalVisual({
   className = "",
   priority = false,
   sizes = "(max-width: 768px) 100vw, 33vw",
+  photoWidth = 480,
 }: {
-  item: { id: string; name: string; specs: string; categoryId: CategoryId; chairSlug?: string };
+  item: { id: string; name: string; specs: string; categoryId: CategoryId; chairSlug?: string; section?: string };
   className?: string;
   priority?: boolean;
   sizes?: string;
+  /** Display width in CSS pixels for real photos (they are served from Unsplash's CDN at this size). */
+  photoWidth?: number;
 }) {
   const src = rentalImagePath(item.id, item.categoryId);
   const alt = rentalAlt(item.name, item.specs, item.id);
@@ -64,6 +70,16 @@ export function RentalVisual({
   }
   const chair = item.chairSlug ? getChair(item.chairSlug) : undefined;
   if (chair) return <ChairArt chair={chair} className={className} priority={priority} />;
+  // Only a photo of the same item type; a general category photo would misrepresent the item.
+  const { photos, matched } = photosForItem(item);
+  if (matched) {
+    return (
+      <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
+        <StockImg photo={photos[0]} alt={stockAlt(photos[0], item.name, true, site.market)} width={photoWidth} priority={priority} />
+        <ExampleChip />
+      </div>
+    );
+  }
   return (
     <div
       className={`relative flex items-center justify-center overflow-hidden bg-surface-2 text-gold ${className}`}

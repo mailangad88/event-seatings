@@ -9,6 +9,8 @@ import { RentalVisual, rentalImagePath } from "@/components/rentals/RentalVisual
 import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
+import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
+import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { categoryScene } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -26,11 +28,15 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]">):
   const items = itemsIn(c.id);
   const from = Math.min(...items.map(customerPrice));
   const first = items.map((i) => rentalImagePath(i.id, i.categoryId)).find(Boolean);
+  const photo = categoryPhotos(c.id)[0];
+  const og = first
+    ? { url: first, alt: `${c.name} for rent in ${site.market}` }
+    : { url: stockSrc(photo, 1200, 630), width: 1200, height: 630, alt: `${photo.alt}: ${c.name} for rent in ${site.market}` };
   return {
     title: `${c.name} Rental ${site.market}: Prices from ${formatPrice(from)}`,
     description: `${c.name} for rent in ${site.market} and the suburbs: ${c.blurb.toLowerCase()}. ${items.length} options from ${formatPrice(from)}, with sizing guides and FAQs. Get one quote.`,
     alternates: { canonical: `/rentals/${c.id}` },
-    ...(first && { openGraph: { images: [{ url: first, alt: `${c.name} for rent in ${site.market}` }] } }),
+    openGraph: { images: [og] },
   };
 }
 
@@ -46,6 +52,8 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
   const hero = items.find((i) => rentalImagePath(i.id, i.categoryId));
   const budget = sampleBudgets.find((b) => b.lines.some(([id]) => items.some((i) => i.id === id)));
   const url = `${site.url}/rentals/${c.id}`;
+  const photos = categoryPhotos(c.id);
+  const photoAlt = (p: (typeof photos)[number]) => `${p.alt}: example of ${c.name.toLowerCase()} rentals at a real event (photo by ${p.by} on Unsplash)`;
 
   const jsonLd = [
     {
@@ -71,6 +79,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
       ],
     },
     faqJsonLd(c.faqs),
+    ...photos.slice(0, 4).map((p) => ({ "@context": "https://schema.org", ...stockImageJsonLd(p, photoAlt(p)) })),
   ];
 
   return (
@@ -119,9 +128,15 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
           ) : hero ? (
             <RentalVisual item={hero} priority className="hidden aspect-square md:block" sizes="40vw" />
           ) : (
-            <div className="hidden aspect-square items-center justify-center border border-line bg-surface text-gold md:flex">
-              <RentalIcon category={c.id} className="h-1/2 w-1/2" title={`${c.name} illustration`} />
-            </div>
+            <figure>
+              <div className="media relative aspect-video overflow-hidden shadow-lift">
+                <StockImg photo={photos[0]} alt={photoAlt(photos[0])} width={720} height={405} priority />
+                <ExampleChip />
+              </div>
+              <figcaption className="mt-3 text-sm text-muted">
+                {photos[0].alt}. <PhotoCredit photo={photos[0]} />
+              </figcaption>
+            </figure>
           )}
         </header>
 
@@ -132,6 +147,29 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
           <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((i) => (
               <RentalCard key={i.id} item={i} />
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-24" aria-labelledby="real-photos">
+          <p className="eyebrow">Real event photos</p>
+          <h2 id="real-photos" className="headline mt-6 text-4xl">
+            {c.name} at real events
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm text-muted">
+            Example photos of {c.name.toLowerCase()} in use, to help you picture your event. Exact items and finishes vary by
+            rental partner; ask for photos of the actual pieces with your quote.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {photos.slice(0, 4).map((p) => (
+              <figure key={p.key}>
+                <div className="media relative aspect-[4/3] overflow-hidden">
+                  <StockImg photo={p} alt={photoAlt(p)} width={400} height={300} />
+                </div>
+                <figcaption className="mt-2 text-xs text-muted">
+                  {p.alt}. <PhotoCredit photo={p} />
+                </figcaption>
+              </figure>
             ))}
           </div>
         </section>
@@ -151,8 +189,21 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                 <table key={section} className="w-full self-start text-sm">
                   <caption className="pb-3 text-left text-[11px] font-medium tracking-[0.18em] text-muted uppercase">{section}</caption>
                   <tbody>
-                    {rows.map((i) => (
+                    {rows.map((i) => {
+                      const thumb = photosForItem(i);
+                      return (
                       <tr key={i.id} className="border-t border-line">
+                        <td className="w-14 py-2.5 pr-3 align-top">
+                          {thumb.matched ? (
+                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
+                              <StockImg photo={thumb.photos[0]} alt={stockAlt(thumb.photos[0], i.name, true, site.market)} width={44} />
+                            </span>
+                          ) : (
+                            <span className="grid h-11 w-11 place-items-center rounded-sm bg-surface-2 text-gold/80">
+                              <RentalIcon category={c.id} className="h-6 w-6" title={`${i.name} illustration`} />
+                            </span>
+                          )}
+                        </td>
                         <td className="py-2.5 pr-3">
                           <Link href={itemHref(i)} className="hover:text-gold">
                             {i.name}
@@ -164,7 +215,8 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                           <span className="block text-xs text-muted">{i.unit}</span>
                         </td>
                       </tr>
-                    ))}
+                      );
+                    })}
                   </tbody>
                 </table>
               ))}

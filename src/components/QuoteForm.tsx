@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getChair } from "@/data/chairs";
 import type { CategoryId } from "@/data/catalog-products";
 import type { PresetLine } from "@/data/quote-presets";
+import { stockPhotos, stockSrc, stockSrcSet, type StockPhotoKey } from "@/data/stock-photos";
 import { attributionFields } from "@/lib/attribution";
 import { trackLead } from "@/lib/analytics";
 import { sortCategories, suggestedQty, type PublicItem } from "@/lib/catalog-types";
@@ -16,7 +17,7 @@ import { RentalIcon } from "./rentals/RentalIcon";
 import { Icon, PriceTag, formatPrice, type IconName } from "./ui";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
-export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean };
+export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey };
 export type StarterPreset = {
   id: string;
   kind: "look" | "event";
@@ -67,6 +68,25 @@ function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: string; 
     return <Image src={item.image} alt={item.imageAlt ?? `${item.name} rental`} fill sizes={sizes} className="object-cover" />;
   const chair = item.chairSlug ? getChair(item.chairSlug) : undefined;
   if (chair) return <ChairArt chair={chair} className="absolute inset-0" />;
+  const photo = item.photo ? stockPhotos[item.photo] : undefined;
+  if (photo)
+    return (
+      <>
+        {/* Real photo of this item type from Unsplash's CDN (credited on /photo-credits). */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={stockSrc(photo, 320)}
+          srcSet={stockSrcSet(photo, 320)}
+          alt={`${photo.alt}: example photo of ${item.name} style rentals (photo by ${photo.by} on Unsplash)`}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-[9px] tracking-[0.1em] text-white uppercase">
+          Example
+        </span>
+      </>
+    );
   return (
     <div className="grid h-full place-items-center bg-surface-2 text-gold/80">
       {item.categoryId ? <RentalIcon category={item.categoryId} className="h-1/2 w-1/2" /> : <Icon name="spark" size={40} />}
@@ -153,7 +173,7 @@ export function QuoteForm({
     const out = new Map<string, QuoteItem>();
     for (const c of categories) {
       const inCat = items.filter((i) => i.category === c);
-      out.set(c, inCat.find((i) => i.image) ?? inCat[0]);
+      out.set(c, inCat.find((i) => i.image) ?? inCat.find((i) => i.photo) ?? inCat[0]);
     }
     return out;
   }, [categories, items]);
