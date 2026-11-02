@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero, QuoteCta } from "@/components/ui";
-import { formatDate, getPosts } from "@/lib/blog";
+import { PostCard } from "@/components/PostCard";
+import { formatDate, getPosts, topicArt, topicSlug, topics } from "@/lib/blog";
 import { sceneFor, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
@@ -15,8 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const [lead, ...rest] = await getPosts();
-  const tags = [...new Set([lead, ...rest].filter(Boolean).flatMap((p) => p!.tags))].slice(0, 12);
+  const all = await getPosts();
+  const [lead, ...rest] = all;
+  const count = (name: string) => all.filter((p) => p.topic === name).length;
   return (
     <>
       <PageHero
@@ -24,15 +26,7 @@ export default async function BlogPage() {
         eyebrow="Ideas & guides"
         title="Plan a better event in Chicago"
         intro="Costs, quantities, layouts, venue rules and styling ideas for weddings, parties and corporate events, written by people who plan them."
-        meta={
-          tags.length > 0 && (
-            <ul className="flex flex-wrap gap-2">
-              {tags.map((t) => (
-                <li key={t} className="chip">{t}</li>
-              ))}
-            </ul>
-          )
-        }
+        meta={all.length > 0 && <p>{all.length} guides across {topics.filter((t) => count(t.name) > 0).length} topics</p>}
         media={
           <div className="media aspect-[16/11] shadow-lift">
             <Image src={scenes.threeLooks.src} alt={scenes.threeLooks.alt} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
@@ -57,25 +51,27 @@ export default async function BlogPage() {
           </Link>
         )}
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((p) => {
-            const s = sceneFor(p.slug);
-            return (
-              <Link key={p.slug} href={`/blog/${p.slug}`} className="group card card-hover flex flex-col overflow-hidden">
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image src={s.src} alt={s.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  {p.tags[0] && <p className="text-xs font-medium tracking-wide text-gold uppercase">{p.tags[0]}</p>}
-                  <h2 className="mt-2 font-serif text-2xl leading-tight transition-colors group-hover:text-gold">{p.title}</h2>
-                  <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{p.description}</p>
-                  <p className="mt-auto pt-5 text-xs text-muted">
-                    {formatDate(p.date)} · {p.readingMinutes} min read
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
+        <nav aria-label="Guide topics" className="mt-16">
+          <h2 className="eyebrow">Browse by topic</h2>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {topics.filter((t) => count(t.name) > 0).map((t) => (
+              <li key={t.name}>
+                <Link href={`/blog/topic/${topicSlug(t.name)}`} className="group card card-hover flex items-center gap-4 p-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
+                  <img src={topicArt(topicSlug(t.name)).src} alt="" width={96} height={64} loading="lazy" className="h-14 w-20 shrink-0 rounded-lg bg-espresso object-cover" />
+                  <span>
+                    <span className="block font-serif text-lg leading-tight transition-colors group-hover:text-gold">{t.name}</span>
+                    <span className="mt-0.5 block text-xs text-muted">{count(t.name)} guides</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <h2 className="eyebrow mt-16">Latest guides</h2>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {rest.slice(0, 24).map((p) => <PostCard key={p.slug} post={p} />)}
         </div>
         {!lead && <p className="mt-16 font-serif text-2xl text-muted italic">The first guides arrive soon.</p>}
       </div>

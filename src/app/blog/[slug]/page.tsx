@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChairArt } from "@/components/ChairArt";
-import { chairAlt, chairImage, getChair } from "@/data/chairs";
-import { formatDate, getPost, getPosts } from "@/lib/blog";
+import { PostBody } from "@/components/PostBody";
 import { ArticleLayout, JsonLd, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
+import { chairAlt, chairImage, getChair } from "@/data/chairs";
+import { formatDate, getPost, getPosts, getRelated, topicSlug } from "@/lib/blog";
 import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
@@ -17,16 +19,18 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const found = await getPost((await props.params).slug);
   if (!found) return {};
-  const chair = getChair(found.post.chair);
-  const img = chair && chairImage(chair);
+  const { post } = found;
+  const hero = post.hero ?? sceneFor(post.slug);
   return {
-    title: found.post.title,
-    description: found.post.description,
-    alternates: { canonical: `/blog/${found.post.slug}` },
+    title: post.title,
+    description: post.description,
+    keywords: [post.keyword, ...post.tags].filter(Boolean) as string[],
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
-      publishedTime: found.post.date,
-      ...(img && chair && { images: [{ url: img, alt: chairAlt(chair) }] }),
+      publishedTime: post.date,
+      modifiedTime: post.updated ?? post.date,
+      images: [{ url: hero.src, alt: hero.alt }],
     },
   };
 }
@@ -35,7 +39,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
 function withHeadingIds(html: string) {
   const toc: TocItem[] = [];
   const out = html.replace(/<h2>(.*?)<\/h2>/g, (_, inner: string) => {
-    const label = inner.replace(/<[^>]+>/g, "");
+    const label = inner.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"');
     const id = label.toLowerCase().replace(/&[a-z#0-9]+;/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
     toc.push({ id, label });
     return `<h2 id="${id}">${inner}</h2>`;
@@ -46,11 +50,14 @@ function withHeadingIds(html: string) {
 export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const found = await getPost((await props.params).slug);
   if (!found) notFound();
-  const { post } = found;
+  const { post, faqs } = found;
   const { html, toc } = withHeadingIds(found.html);
   const chair = getChair(post.chair);
-  const img = chair && chairImage(chair);
-  const hero = sceneFor(post.slug);
+  const chairImg = chair && chairImage(chair);
+  const hero = post.hero ?? sceneFor(post.slug);
+  const related = await getRelated(post);
+  const url = `${site.url}/blog/${post.slug}`;
+  const topicUrl = `/blog/topic/${topicSlug(post.topic)}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -58,13 +65,18 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    dateModified: post.updated ?? post.date,
     image: [
       { "@type": "ImageObject", url: `${site.url}${hero.src}`, caption: hero.alt },
-      ...(img && chair ? [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: chairAlt(chair) }] : []),
+      ...(post.image && !post.hero ? [{ "@type": "ImageObject", url: `${site.url}${post.image}`, caption: post.imageAlt ?? post.title }] : []),
+      ...(chairImg && chair ? [{ "@type": "ImageObject", url: `${site.url}${chairImg}`, caption: chairAlt(chair) }] : []),
     ],
-    keywords: post.tags.join(", "),
-    url: `${site.url}/blog/${post.slug}`,
-    mainEntityOfPage: `${site.url}/blog/${post.slug}`,
+    keywords: [post.keyword, ...post.tags].filter(Boolean).join(", "),
+    articleSection: post.topic,
+    inLanguage: "en-US",
+    spatialCoverage: { "@type": "Place", name: "Chicago metropolitan area, Illinois" },
+    url,
+    mainEntityOfPage: url,
     author: { "@type": "Organization", name: site.name, url: site.url },
     publisher: { "@id": `${site.url}/#business` },
   };
@@ -75,14 +87,16 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
       <ArticleLayout
         breadcrumbs={[
           { name: "Ideas & guides", href: "/blog" },
+          { name: post.topic, href: topicUrl },
           { name: post.title, href: `/blog/${post.slug}` },
         ]}
-        eyebrow={post.tags[0] ?? "Guide"}
+        eyebrow={<Link href={topicUrl} className="hover:underline">{post.topic}</Link>}
         title={post.title}
         intro={post.description}
         meta={
           <>
             {formatDate(post.date)} · {post.readingMinutes} min read · By the {site.name} team
+            {post.updated && post.updated !== post.date && <> · Updated {formatDate(post.updated)}</>}
           </>
         }
         hero={{ src: hero.src, alt: hero.alt, caption: hero.caption }}
@@ -102,13 +116,35 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
           </>
         }
       >
-        <div className="prose-post max-w-2xl" dangerouslySetInnerHTML={{ __html: html }} />
+        <PostBody html={html} faqs={faqs} />
         {post.tags.length > 0 && (
-          <ul className="mt-12 flex flex-wrap gap-2 border-t border-line pt-6">
+          <ul className="mt-12 flex max-w-2xl flex-wrap gap-2 border-t border-line pt-6">
             {post.tags.map((t) => (
               <li key={t} className="chip">{t}</li>
             ))}
           </ul>
+        )}
+        {related.length > 0 && (
+          <section aria-labelledby="related" className="mt-14 max-w-2xl">
+            <p id="related" className="eyebrow">Related guides</p>
+            <ul className="mt-5 grid gap-4 sm:grid-cols-2">
+              {related.map((r) => (
+                <li key={r.slug}>
+                  <Link href={`/blog/${r.slug}`} className="group card card-hover flex h-full gap-4 overflow-hidden p-3">
+                    <span className="relative h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-surface-2">
+                      {r.image ? (
+                        <Image src={r.image} alt="" fill unoptimized={r.image.endsWith(".svg")} sizes="80px" className="object-cover" />
+                      ) : (
+                        <Image src={sceneFor(r.slug).src} alt="" fill sizes="80px" className="object-cover" />
+                      )}
+                    </span>
+                    <span className="self-center font-serif text-lg leading-snug transition-colors group-hover:text-gold">{r.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link href={topicUrl} className="link-line mt-6 inline-block">More in {post.topic}</Link>
+          </section>
         )}
       </ArticleLayout>
       <QuoteCta source={`blog-${post.slug}`} title="Ready to price your event?" />

@@ -277,3 +277,39 @@ body {
 .prose-post td {
   @apply border-b border-line px-3 py-3 text-left align-top;
 }
+
+/* ---------- Journal guide blocks left in prose (see src/components/PostBody.tsx) ---------- */
+.prose-post .table-wrap {
+  @apply my-8 overflow-x-auto rounded-xl border border-line;
+}
+.prose-post .table-wrap table {
+  @apply my-0 min-w-[36rem];
+}
+.prose-post .chair-pair {
+  @apply my-8 grid grid-cols-2 gap-4;
+}
+.prose-post .chair-pair img {
+  @apply my-0 aspect-[4/5] w-full bg-surface-2 object-cover;
+}
+/* Fallbacks if a block doesn't match PostBody's patterns. */
+.prose-post figure {
+  @apply my-10 rounded-2xl border border-line bg-surface p-4 sm:p-6;
+}
+.prose-post figure svg {
+  @apply mx-auto block h-auto w-full;
+}
+.prose-post figcaption {
+  @apply mt-3 text-sm leading-6 text-muted;
+}
+.prose-post .answer-box {
+  @apply my-8 rounded-2xl border border-gold/40 bg-gold-soft/60 px-6 py-2;
+}
+.prose-post .stat-grid {
+  @apply my-8 grid grid-cols-2 gap-4 md:grid-cols-3;
+}
+.prose-post .stat-grid strong {
+  @apply block font-serif text-3xl text-gold;
+}
+.prose-post .stat-grid span {
+  @apply text-sm text-muted;
+}
