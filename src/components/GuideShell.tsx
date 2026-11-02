@@ -134,7 +134,7 @@ export function GuideShell(p: GuideProps) {
 
         <p className="mt-12 max-w-3xl text-sm text-muted">
           Figures are planning rules of thumb and our own estimates, last reviewed {GUIDES_UPDATED}. Your venue&apos;s posted capacity, fire code and
-          final quote always take precedence. Deliveries begin {site.launch.firstEventDate}.
+          final quote always take precedence.
         </p>
       </div>
       <CallCta source={p.source} />

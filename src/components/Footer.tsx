@@ -40,6 +40,7 @@ export function Footer() {
               ["/quote", "Build a quote"],
               ["/book", "Book a free call"],
               ["/how-it-works", "How it works"],
+              ["/booking-promise", "Payments & Booking Promise"],
               ["/events", "Events we plan"],
               ["/chair-rentals", "Areas we serve"],
               ["/blog", "Ideas & guides"],
@@ -51,6 +52,7 @@ export function Footer() {
               ["/gallery", "3D gallery"],
               ["/faq", "FAQ"],
               ["/about", "About us"],
+              ["/partners", "For rental companies"],
             ].map(([href, label]) => (
               <li key={href}>
                 <Link href={href} className="transition-colors hover:text-ink">{label}</Link>

@@ -36,11 +36,12 @@ export const site = {
   // When empty, /book shows a call-request form instead.
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
   callLength: "15-minute",
-  // Pre-launch: the first season we will actually deliver chairs.
-  // Quote requests for earlier dates get an honest "we're not delivering yet" note.
+  // Booking is open now: partner rental companies deliver year-round (business-model plan, Nov 2 2026).
+  // Quote requests for dates before firstEventDate get a "we're not delivering yet" note, so keep it in the past
+  // unless booking ever has to pause.
   launch: {
-    seasonLabel: "2027 Founding Season",
-    firstEventDate: "2027-04-01",
+    seasonLabel: "Now booking holidays & 2027",
+    firstEventDate: "2026-11-02",
   },
   // The free 15-minute seating consult every form and email points to.
   // Set NEXT_PUBLIC_BOOKING_URL to a HubSpot Meetings, Calendly or Cal.com link. Until it's set, booking buttons stay hidden.

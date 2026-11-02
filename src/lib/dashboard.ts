@@ -23,6 +23,7 @@ export const kindLabels: Record<string, string> = {
   chat: "Chat message",
   quiz: "Style quiz",
   waitlist: "Waitlist",
+  partner: "Vendor application",
 };
 
 const TZ = "America/Chicago";

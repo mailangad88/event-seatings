@@ -19,6 +19,7 @@ const formLabel: Record<Lead["kind"], string> = {
   quiz: "Style quiz",
   call: "Call request",
   chat: "Chat message",
+  partner: "Vendor application",
 };
 
 function splitName(name?: string) {

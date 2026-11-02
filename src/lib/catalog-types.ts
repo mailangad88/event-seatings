@@ -59,6 +59,8 @@ export function toPublicItem(i: CatalogItem): PublicItem {
 
 // Our margin on top of every vendor price (10%).
 export const MARKUP = 0.1;
+// How the fee is written in customer copy (booking promise, terms, how it works). Follows MARKUP.
+export const BOOKING_FEE_LABEL = `${Math.round(MARKUP * 100)}%`;
 
 const cents = (n: number) => Math.round(n * 100) / 100;
 

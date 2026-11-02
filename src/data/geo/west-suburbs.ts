@@ -14,7 +14,7 @@ export const westSuburbs: Location[] = [
       "Event chair rentals in St. Charles, IL, from a team based right here on the Fox. Cross-back, ghost and garden chairs for weddings, barns and backyard parties.",
     headline: "Event chairs from our home base in *St. Charles*",
     intro:
-      "You can rent event chairs in St. Charles from us, and we're based right here in town, so most St. Charles deliveries are a short drive from our door. We carry 13 styles, from cross-back vineyard chairs to clear ghost chairs and velvet dining chairs, for weddings, showers and backyard parties. We're booking our 2027 Founding Season now: request a quote or set up a quick planning call to get started.",
+      "You can rent event chairs in St. Charles from us, and we're based right here in town, so most St. Charles deliveries are a short drive from our door. We carry 13 styles, from cross-back vineyard chairs to clear ghost chairs and velvet dining chairs, for weddings, showers and backyard parties. We're booking our 2026-27 season now: request a quote or set up a quick planning call to get started.",
     story: [
       "St. Charles is where we live and work, which makes it the easiest place in the Chicago area for us to get to know a site before the truck shows up. The Fox River splits the town into east and west sides, and the two bridges downtown can back up on a Saturday afternoon. Knowing that kind of thing is part of planning a clean delivery window.",
       "Celebrations here tend to lean toward the river and the open land west of Randall Road. People gather in historic downtown event spaces, on estate lawns, in restored barns out toward the county line and in backyards along quiet streets near Pottawatomie Park. Each one asks something different of a chair: level ground for a ceremony row, a sturdy frame on a plank floor, or a look that holds up in photos by the water.",
@@ -62,7 +62,7 @@ export const westSuburbs: Location[] = [
     faqs: [
       {
         q: "Where can I rent event chairs in St. Charles, IL?",
-        a: "Right here: our home base is in St. Charles, so you're working with neighbors rather than a warehouse an hour away. We're taking 2027 Founding Season requests now, and a short note with your date and rough headcount is all it takes to begin.",
+        a: "Right here: our home base is in St. Charles, so you're working with neighbors rather than a warehouse an hour away. We're taking 2026-27 season requests now, and a short note with your date and rough headcount is all it takes to begin.",
       },
       {
         q: "Do I need a permit for a tent party in St. Charles?",

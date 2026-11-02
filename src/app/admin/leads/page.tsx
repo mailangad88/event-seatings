@@ -122,6 +122,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
           <option value="call">Call request</option>
           <option value="waitlist">Waitlist</option>
           <option value="quiz">Style quiz</option>
+          <option value="partner">Vendor application</option>
         </select>
         <button className="btn-ghost">Filter</button>
       </form>

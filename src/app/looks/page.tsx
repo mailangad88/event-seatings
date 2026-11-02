@@ -38,7 +38,7 @@ const faqs: [string, string][] = [
   ],
   [
     "When can I book?",
-    `We're reserving the ${site.launch.seasonLabel}, with first events from April 2027. Founding-season dates are limited, so the earlier you ask, the more likely your date is open.`,
+    `Now. Our partner rental companies deliver year-round, from holiday parties to summer weddings. Popular Saturdays fill first, so the earlier you ask, the more likely your date is open.`,
   ],
 ];
 

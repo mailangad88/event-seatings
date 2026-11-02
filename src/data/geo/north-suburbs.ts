@@ -14,7 +14,7 @@ export const northSuburbs: Location[] = [
       "Rent event chairs in Elgin, IL for Fox River weddings, quinceaneras and backyard parties. Cross-back, Louis and throne chairs. Request a 2027 quote today.",
     headline: "Chairs for celebrations along the *Fox River* in Elgin",
     intro:
-      "You can rent event chairs in Elgin from us, delivered from our home base just down the Fox River in St. Charles. We bring wedding, party and ceremony seating to Elgin homes, halls and riverfront settings, and setup is itemized in your quote. Book a short planning call or request a quote to reserve a spot in our 2027 Founding Season.",
+      "You can rent event chairs in Elgin from us, delivered from our home base just down the Fox River in St. Charles. We bring wedding, party and ceremony seating to Elgin homes, halls and riverfront settings, and setup is itemized in your quote. Book a short planning call or request a quote to reserve a spot in our 2026-27 season.",
     story: [
       "Elgin wears its history openly. The old watch factory city still has Victorian and Queen Anne houses in neighborhoods like Gifford Park, a downtown of brick storefronts stepping down toward the river, and long stretches of the Fox River Trail that make an easy backdrop for photos. A lot of celebrations here start in a church or a parish hall and finish in a backyard or a rented banquet room on the west side.",
       "It is also one of the most multigenerational and bilingual cities in the Fox Valley, which shows up in the calendar: quinceaneras with a court of damas and chambelanes, graduation parties that fill a whole cul-de-sac, and weddings where the guest list easily clears 200. Those events need a lot of chairs that look good, plus one or two pieces that look unforgettable.",
@@ -74,7 +74,7 @@ export const northSuburbs: Location[] = [
       },
       {
         q: "How far ahead should I book chairs for a summer event in Elgin?",
-        a: "Summer weekends with graduations and weddings fill quickly across the Fox Valley. Since we are opening our 2027 Founding Season, requesting a quote early is the best way to hold your date.",
+        a: "Summer weekends with graduations and weddings fill quickly across the Fox Valley. Since we are opening our 2026-27 season, requesting a quote early is the best way to hold your date.",
       },
       {
         q: "Do you set up the chairs or just drop them off?",
@@ -242,7 +242,7 @@ export const northSuburbs: Location[] = [
       },
       {
         q: "How far in advance should I reserve chairs for a Schaumburg wedding?",
-        a: "As early as you can, especially for spring through fall Saturdays. We are booking our 2027 Founding Season now, and a quote request holds your place in line.",
+        a: "As early as you can, especially for spring through fall Saturdays. We are booking our 2026-27 season now, and a quote request holds your place in line.",
       },
     ],
     nearby: ["arlington-heights", "barrington", "elgin", "oak-brook"],
@@ -406,7 +406,7 @@ export const northSuburbs: Location[] = [
       },
       {
         q: "When should I book chairs for a summer bar mitzvah in Highland Park?",
-        a: "As early as possible, especially for June dates. We are taking quote requests now for our 2027 Founding Season.",
+        a: "As early as possible, especially for June dates. We are taking quote requests now for our 2026-27 season.",
       },
     ],
     nearby: ["lake-forest", "wilmette", "evanston", "skokie"],
@@ -570,7 +570,7 @@ export const northSuburbs: Location[] = [
       },
       {
         q: "How early should I book chairs for a fall barn wedding?",
-        a: "Fall weekends are popular for barn weddings, so earlier is better. We are booking our 2027 Founding Season now, and a quote request holds your date.",
+        a: "Fall weekends are popular for barn weddings, so earlier is better. We are booking our 2026-27 season now, and a quote request holds your date.",
       },
     ],
     nearby: ["arlington-heights", "schaumburg", "elgin", "lake-forest"],
@@ -734,7 +734,7 @@ export const northSuburbs: Location[] = [
       },
       {
         q: "When should I book chairs for a spring bar or bat mitzvah?",
-        a: "Book as soon as you have the date. We are taking quote requests now for our 2027 Founding Season, and early requests are first in line.",
+        a: "Book as soon as you have the date. We are taking quote requests now for our 2026-27 season, and early requests are first in line.",
       },
     ],
     nearby: ["evanston", "skokie", "highland-park", "lake-forest", "gold-coast"],

@@ -4,7 +4,6 @@ import type { GuideProps } from "@/components/GuideShell";
 import { chairs, getChair, type Chair } from "@/data/chairs";
 import { getSeatingEvent, seatingEvents, type SeatingEvent } from "@/data/seating-events";
 import { banquetLayout, plural, priceRange, roomCapacity, theaterLayout, usd } from "@/lib/planning";
-import { site } from "@/lib/site";
 
 export type GuideFamily = {
   key: string;
@@ -176,7 +175,7 @@ function buildLayout(slug: string): GuideProps | null {
     faqs: [
       ...ev.faqs.map((f) => ({ q: fill(f.q, vars), a: fill(f.a, vars) })),
       { q: "Is this the venue's maximum capacity?", a: "No. This is a planning estimate of clear floor space. The venue's posted capacity, fire code, exits and any permits always take precedence, so check with the venue before you commit." },
-      { q: `How much will ${chairsN} chairs cost?`, a: `Based on our current estimates, ${usd(costRows[0].lo)} to ${usd(costRows[0].hi)} for the ${costRows[0].c.name}. Final pricing, delivery and setup are confirmed in your quote, and deliveries begin ${site.launch.firstEventDate}.` },
+      { q: `How much will ${chairsN} chairs cost?`, a: `Based on our current estimates, ${usd(costRows[0].lo)} to ${usd(costRows[0].hi)} for the ${costRows[0].c.name}. Final pricing, delivery and setup are confirmed in your quote.` },
     ],
     related: [
       ...(prev ? [{ href: `/seating-layouts/${layoutSlug(ev, prev)}`, label: `${ev.name} for ${prev} guests` }] : []),
@@ -610,7 +609,7 @@ function buildCost(slug: string): GuideProps | null {
     faqs: [
       { q: `Is ${usd(lo)}–${usd(hi)} the full price for ${n} chairs?`, a: "It is our estimate for the chairs only. Delivery, setup, pickup, cushions and linens are quoted separately in your personal quote." },
       { q: "Is there a discount for larger orders?", a: "We have not published volume pricing yet. Ask on a free call and we will include any available discount in your quote." },
-      { q: "When do deliveries start?", a: `Our first deliveries begin ${site.launch.firstEventDate}. You can request a quote now for events after that date.` },
+      { q: "How far ahead should I book?", a: "Our partner rental companies deliver year-round. Book as soon as your date and venue are set: peak Saturdays from May to October and December holiday weekends fill first." },
     ],
     related: [
       ...QTYS.filter((q) => q !== n).slice(0, 3).map((q) => ({ href: `/chair-rental-cost/${costSlug(c, q)}`, label: `${short(c)} × ${q} chairs` })),
@@ -864,7 +863,7 @@ const months = [
   { slug: "january", name: "January", lvl: 0, wx: "Deep winter. Cold, snow and ice are likely, and lake wind makes outdoor events impractical.", ev: "Indoor winter events: galas, corporate kickoffs and milestone birthdays.", tip: "Plan for delivery time around snow and salted entrances, and ask the venue about a coat check." },
   { slug: "february", name: "February", lvl: 0, wx: "Still winter, with cold snaps. Indoor venues only.", ev: "Engagement parties, fundraisers and Valentine's dinners.", tip: "Snow days can move deliveries, so avoid tight load-in windows." },
   { slug: "march", name: "March", lvl: 1, wx: "Unsettled: thaw, rain and the occasional late snow. Outdoor events remain risky.", ev: "Showers, graduations planning, corporate events and early spring parties.", tip: "Lawn and parking areas are often wet and soft, so ask about ground protection." },
-  { slug: "april", name: "April", lvl: 2, wx: "Spring warms up, but rain and cool days are common. Tents or indoor backups are wise.", ev: "Early outdoor ceremonies, showers and rehearsal dinners.", tip: `Our first deliveries are planned for ${site.launch.firstEventDate}, which makes April the start of our founding season.` },
+  { slug: "april", name: "April", lvl: 2, wx: "Spring warms up, but rain and cool days are common. Tents or indoor backups are wise.", ev: "Early outdoor ceremonies, showers and rehearsal dinners.", tip: "Spring Saturdays start filling in January, so lock in tents and statement chairs early." },
   { slug: "may", name: "May", lvl: 3, wx: "Mild and green, with the occasional storm. A popular month for outdoor events.", ev: "Graduation parties, weddings and corporate spring events.", tip: "Weekend dates book up fast. Confirm weather backup space before ordering chairs." },
   { slug: "june", name: "June", lvl: 3, wx: "Warm and long days, with a chance of summer thunderstorms.", ev: "Peak wedding season, graduations and outdoor parties.", tip: "Choose outdoor-friendly chairs and consider shade, since sun can be hot for ceremony guests." },
   { slug: "july", name: "July", lvl: 3, wx: "Hot and humid, with pop-up storms. Shade and water matter.", ev: "Outdoor weddings, family reunions and festivals.", tip: "Light chairs that do not trap heat are more comfortable than dark upholstery." },
@@ -917,7 +916,7 @@ function buildMonth(slug: string): GuideProps | null {
     sections: [
       { h: `What ${m.name} is like for events`, body: <><p>{m.wx}</p><p>Typical events: {m.ev}</p></> },
       { h: "Chair and logistics tips", body: <><p>{m.tip}</p><p>{m.lvl >= 2 ? "Outdoor ceremonies need chairs that handle damp ground and a plan for rain. Stackable styles also make it easy to move indoors." : "Indoor events let you choose on style and comfort rather than weather resistance."}</p></> },
-      { h: "When to book", body: <p>{post ? "Weekend dates in this season book earlier, so start a quote as soon as your date and venue are fixed." : "Booking a few months ahead is usually enough, but December and holiday weekends fill early."} {i < 3 || i > 9 ? `Note that our first deliveries begin ${site.launch.firstEventDate}, so events before then cannot be served yet.` : ""}</p> },
+      { h: "When to book", body: <p>{post ? "Weekend dates in this season book earlier, so start a quote as soon as your date and venue are fixed." : "Booking a few months ahead is usually enough, but December and holiday weekends fill early."}</p> },
     ],
     faqs: [
       { q: `Can I hold an outdoor event in Chicago in ${m.name}?`, a: m.lvl >= 2 ? "Yes, with a backup plan for weather. Tents, indoor alternatives and outdoor-friendly chairs reduce the risk." : "It is risky. Most events this month are indoors, so look at indoor venues first." },

@@ -14,7 +14,7 @@ export const chicagoLocations: Location[] = [
       "Rent event chairs across Chicago, from Loop lofts to Pilsen halls and Lakeview backyards. Cross-back, ghost, velvet and more styles. Request a free quote.",
     headline: "Event chairs for *every Chicago neighborhood*",
     intro:
-      "You can rent event chairs in Chicago from us, with delivery, setup and pickup to neighborhoods from the Loop and River North to Hyde Park, Pilsen and Andersonville. We carry 13 styles, from cross-back vineyard chairs to ghost chairs and sweetheart thrones, and we're taking quote requests now for our 2027 Founding Season. Tell us your date and venue on a quick planning call and we'll put together an itemized quote.",
+      "You can rent event chairs in Chicago from us, with delivery, setup and pickup to neighborhoods from the Loop and River North to Hyde Park, Pilsen and Andersonville. We carry 13 styles, from cross-back vineyard chairs to ghost chairs and sweetheart thrones, and we're taking quote requests now for our 2026-27 season. Tell us your date and venue on a quick planning call and we'll put together an itemized quote.",
     story: [
       "Chicago doesn't celebrate in one kind of room. A single summer Saturday might hold a rooftop rehearsal dinner in River North, a quinceañera in a Pilsen banquet hall, a church wedding in Hyde Park and a backyard graduation party behind a Lakeview two-flat. Each of those asks something different of the chairs and of the people delivering them, which is why we plan every order around the actual building, block and loading situation rather than a generic drop-off window.",
       "The city also has its own rhythm. Lakefront wind can flip a lightweight chair on a June afternoon, winter pushes events indoors and into tighter freight schedules, and a lot of the best spaces are up three flights of stairs or behind an alley with a single loading spot. We're a new company based in St. Charles, and our first deliveries are planned for 2027, so we're building our Chicago routes now with those realities in mind instead of learning them on your event day.",
@@ -62,7 +62,7 @@ export const chicagoLocations: Location[] = [
     faqs: [
       {
         q: "Where can I rent chairs for an event in Chicago?",
-        a: "We rent event chairs throughout Chicago and its suburbs, with delivery, setup and pickup itemized in your quote. We're currently booking our 2027 Founding Season, so request a quote or schedule a planning call and tell us your neighborhood, venue and headcount.",
+        a: "We rent event chairs throughout Chicago and its suburbs, with delivery, setup and pickup itemized in your quote. We're currently booking our 2026-27 season, so request a quote or schedule a planning call and tell us your neighborhood, venue and headcount.",
       },
       {
         q: "Do I need a permit to put chairs in a Chicago park?",
