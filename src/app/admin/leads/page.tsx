@@ -62,7 +62,8 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
           <h1 className="mt-1 font-serif text-5xl">Lead pipeline</h1>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Link href="/admin" className="btn-ghost">Demand dashboard</Link>
+          <Link href="/admin" className="btn-ghost">Dashboard</Link>
+          <Link href="/admin/vendors" className="btn-ghost">Vendors</Link>
           <a href="/admin/export" className="btn-ghost">Download CSV</a>
         </div>
       </div>

@@ -79,7 +79,36 @@ export type NewLead = Omit<Lead, "id" | "created_at">;
 
 type Vote = { chair_slug: string; visitor_id: string; created_at: string };
 
-type LocalDb = { votes: Vote[]; leads: Lead[] };
+// One row per page view, sent by PageViewTracker. Powers visits and conversion rates in /admin.
+export type PageView = { path: string; visitor_id: string; source?: string; created_at: string };
+
+// Our relationship with each rental vendor (the vendor list itself is in src/data/vendors.ts). Edited in /admin/vendors.
+export const partnerStatuses = [
+  { id: "not_contacted", label: "Not contacted" },
+  { id: "contacted", label: "Contacted" },
+  { id: "talking", label: "In talks" },
+  { id: "signed", label: "Referral deal signed" },
+  { id: "declined", label: "Declined" },
+] as const;
+export type PartnerStatus = (typeof partnerStatuses)[number]["id"];
+export const partnerStatusLabel = (s?: string) => partnerStatuses.find((x) => x.id === s)?.label ?? "Not contacted";
+export const isPartnerStatus = (s: unknown): s is PartnerStatus => partnerStatuses.some((x) => x.id === s);
+
+export type VendorPartner = {
+  vendor_id: string;
+  status: PartnerStatus;
+  contact_name?: string; // the person to ask for
+  contact_role?: string;
+  contact_phone?: string; // direct line, if different from the main number
+  contact_email?: string;
+  referral_terms?: string; // e.g. "10% referral fee on rental subtotal"
+  notes?: string;
+  last_contacted_at?: string; // YYYY-MM-DD
+  activity?: LeadActivity[];
+  updated_at?: string;
+};
+
+type LocalDb = { votes: Vote[]; leads: Lead[]; views?: PageView[]; partners?: VendorPartner[] };
 
 let supabase: SupabaseClient | null | undefined;
 function sb() {
@@ -97,7 +126,7 @@ async function readLocal(): Promise<LocalDb> {
   try {
     return JSON.parse(await fs.readFile(dbFile, "utf8"));
   } catch {
-    return { votes: [], leads: [] };
+    return { votes: [], leads: [], views: [] };
   }
 }
 
@@ -200,5 +229,83 @@ export async function updateLead(id: string, patch: LeadPatch, log: Omit<LeadAct
   const next = { ...db.leads[i], ...changes } as Record<string, unknown>;
   for (const k of Object.keys(next)) if (next[k] === null) delete next[k];
   db.leads[i] = next as Lead;
+  await writeLocal(db);
+}
+
+export async function addPageView(view: Omit<PageView, "created_at">) {
+  const row: PageView = { ...view, created_at: new Date().toISOString() };
+  const client = sb();
+  if (client) {
+    const { error } = await client.from("page_views").insert(row);
+    if (error) throw error;
+    return;
+  }
+  const db = await readLocal();
+  // The local file is for development only, so keep it small.
+  db.views = [...(db.views ?? []), row].slice(-20_000);
+  await writeLocal(db);
+}
+
+// Page views since `since` (ISO time), newest last. Paged so a busy month still loads in full (capped at 200k rows).
+export async function listPageViews(since?: string): Promise<PageView[]> {
+  const client = sb();
+  if (client) {
+    const out: PageView[] = [];
+    const size = 1000;
+    for (let from = 0; from < 200_000; from += size) {
+      let q = client.from("page_views").select("path, visitor_id, source, created_at");
+      if (since) q = q.gte("created_at", since);
+      const { data, error } = await q.order("created_at", { ascending: true }).range(from, from + size - 1);
+      if (error) {
+        // Table not created yet: the dashboard still works, just without visit counts.
+        if (error.code === "42P01" || /page_views/.test(error.message)) return [];
+        throw error;
+      }
+      out.push(...(data ?? []));
+      if (!data || data.length < size) break;
+    }
+    return out;
+  }
+  const views = (await readLocal()).views ?? [];
+  return since ? views.filter((v) => v.created_at >= since) : views;
+}
+
+export async function listPartners(): Promise<VendorPartner[]> {
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("vendor_partners").select("*");
+    if (error) {
+      // Table not created yet: every vendor shows as "Not contacted".
+      if (error.code === "42P01" || /vendor_partners/.test(error.message)) return [];
+      throw error;
+    }
+    return data ?? [];
+  }
+  return (await readLocal()).partners ?? [];
+}
+
+export type PartnerPatch = Partial<Omit<VendorPartner, "vendor_id" | "activity" | "updated_at">>;
+
+// Saves CRM edits for one vendor and appends `log` to its activity timeline.
+export async function savePartner(vendorId: string, patch: PartnerPatch, log: Omit<LeadActivity, "at">[] = []) {
+  const current = (await listPartners()).find((p) => p.vendor_id === vendorId);
+  const now = new Date().toISOString();
+  const row: Record<string, unknown> = {
+    status: "not_contacted",
+    ...current,
+    vendor_id: vendorId,
+    updated_at: now,
+    activity: [...(current?.activity ?? []), ...log.map((a) => ({ ...a, at: now }))],
+  };
+  for (const [k, v] of Object.entries(patch)) row[k] = v === undefined || v === "" ? null : v;
+
+  const client = sb();
+  if (client) {
+    const { error } = await client.from("vendor_partners").upsert(row, { onConflict: "vendor_id" });
+    if (error) throw error;
+    return;
+  }
+  const db = await readLocal();
+  db.partners = [...(db.partners ?? []).filter((p) => p.vendor_id !== vendorId), row as VendorPartner];
   await writeLocal(db);
 }

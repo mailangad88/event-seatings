@@ -105,3 +105,17 @@ Every lead is saved in our own database first, then copied to HubSpot and the we
 Database: re-run `supabase/schema.sql` in the Supabase SQL editor (it only adds missing columns) to get `items`, `quote_subtotal`, `quote_cost`, `status`, `assigned_vendor`, `follow_up_at`, `lost_reason`, `activity` and `updated_at`.
 
 Pricing: the quote builder reads `src/data/catalog.ts`. Store each vendor's own price in `vendorPrice`; the customer sees vendor price + 10% (`MARKUP` in `src/lib/catalog-types.ts`). HubSpot deals get the quote total as their amount. Vendor costs are never sent to the browser, HubSpot or the webhook.
+
+## Admin dashboard (/admin) and vendors (/admin/vendors)
+
+- **/admin** shows enquiries per day (or week), by type and form, with a date range (7/30/90 days, 12 months, all time) and the change against the previous period. It also covers:
+  - channels (organic, paid, social, email, AI assistants, referral, direct) with visitors and conversion
+  - source/medium, referring sites, campaigns, first landing page, and which link or preset was used
+  - conversion by page (visitors and views against the enquiries sent from that page)
+  - pipeline by stage with value, and lost reasons
+  - top items, categories, event types, months, cities and guest counts
+  - quote value, margin, booked value, win rate and median first-response time
+  - vendor routing: who supplies the requested items, and which partner each lead was handed to
+- Visits are counted first-party: `AttributionTracker` beacons each page to `/api/views` (bots, headless browsers and /admin are skipped). Rows go to the `page_views` table. Re-run `supabase/schema.sql` to create it; until then the dashboard shows "–" for visitors.
+- **Who to contact**: each lead page groups its items by vendor. Each group shows the person to ask for, a tap-to-call phone, the email (with the order prefilled), the website, a Maps link for the address, a "Copy order" button, and backup vendors that carry the same items.
+- **/admin/vendors** lists all catalog vendors with item counts, quotes and value routed to them. It also tracks the referral relationship (Not contacted, Contacted, In talks, Signed, Declined), the named contact, direct phone, email, terms, notes, last-contacted date and a call/email log. These are saved in the `vendor_partners` table. Most vendors publish no email, so add one here when you get it and the lead pages pick it up.
