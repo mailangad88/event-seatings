@@ -71,7 +71,7 @@ Many parks limit when you can access the pavilion and whether vehicles can drive
 <desc id="pv-time-d">Timeline: reserve the pavilion first, confirm rules and power four weeks out, order rentals three weeks out, confirm delivery one week out, setup on the day, teardown before the permit ends.</desc>
 <rect x="0" y="0" width="720" height="310" fill="var(--surface)"/>
 <line x1="216" y1="30" x2="216" y2="286" stroke="var(--line)" stroke-width="3"/>
-<text x="190" y="50" text-anchor="end" font-size="22" fill="currentColor" font-weight="700">As early as allowed</text>
+<text x="190" y="50" text-anchor="end" font-size="22" fill="currentColor" font-weight="700">ASAP</text>
 <circle cx="216" cy="42" r="9" fill="var(--gold)"/>
 <text x="240" y="50" text-anchor="start" font-size="22" fill="currentColor">Reserve the pavilion</text>
 <text x="190" y="106" text-anchor="end" font-size="22" fill="currentColor" font-weight="700">4 weeks</text>

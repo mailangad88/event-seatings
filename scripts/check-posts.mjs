@@ -72,6 +72,10 @@ for (const file of files) {
     if (!/<desc[^>]*>[^<]{20,}<\/desc>/.test(svg)) errors.push("each <svg> needs a <desc> describing what it shows");
     if (!/viewBox="/.test(svg)) errors.push("each <svg> needs a viewBox");
     if (/\n\s*\n/.test(svg)) errors.push("an <svg> contains a blank line (Markdown would break it)");
+    const vbw = Number(svg.match(/viewBox="[\d.-]+ [\d.-]+ ([\d.]+)/)?.[1] ?? 720);
+    const minFont = Math.round(vbw / 36); // ~10.5px on a 380px-wide phone column
+    const small = [...svg.matchAll(/font-size="([\d.]+)"/g)].map((x) => Number(x[1])).filter((n) => n < minFont);
+    if (small.length) errors.push(`svg text too small for phones: font-size ${[...new Set(small)].join(", ")} (minimum ${minFont} for a ${vbw}-wide viewBox)`);
     if (/#fff\b|#ffffff|white"/i.test(svg) && !/var\(--/.test(svg)) warns.push("svg uses hard-coded white; prefer var(--surface)/currentColor so it works on dark and light pages");
   }
   for (const fig of body.matchAll(/<figure[\s\S]*?<\/figure>/g)) {

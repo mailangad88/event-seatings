@@ -54,7 +54,7 @@ imageAlt: One sentence describing the hero image (only with image:)
    - **Inline SVG diagram** in a `<figure>` with a `<figcaption>`: floor plans, top-down table layouts, size comparisons, place-setting diagrams, timelines, bar charts of counts, tent footprints, decision trees. Rules:
      - `<svg role="img" aria-labelledby="<id>-t <id>-d" viewBox="0 0 W H" xmlns="http://www.w3.org/2000/svg">` with `<title id="<id>-t">` and `<desc id="<id>-d">` (a full sentence describing what it shows; this is the alt text Google and AI read). Use ids unique within the post.
      - Colors only from page variables so it works on dark and light pages: `fill="var(--surface)"` for the background rect, `var(--gold)` for highlights, `var(--line)` for lines/grid, `var(--muted)` for secondary, `currentColor` for text. Use `opacity` for tints. No hard-coded white/black.
-     - Text in the SVG: `font-size` 13-20, real labels with numbers and units. Keep it legible at phone width (viewBox about 720 wide).
+     - Text in the SVG: with a viewBox about 720 wide, use `font-size` 22-28 for labels (minimum 20). The diagram is shown about 380px wide on phones, so smaller text becomes unreadable. Fewer, larger labels beat many tiny ones.
      - **No blank lines anywhere inside `<figure>`…`</figure>`** (Markdown breaks raw HTML at blank lines). Keep it compact: 15-60 elements. Draw something specific to the post, never a generic decoration.
    - **Markdown table** (wrap in `<div class="table-wrap">` + blank line + table + blank line + `</div>` if it has 4+ columns): size charts, comparisons, checklists with counts.
    - **Flowchart**: `<ol class="flow"><li><strong>Step</strong> detail</li>…</ol>` on one block with no blank lines.

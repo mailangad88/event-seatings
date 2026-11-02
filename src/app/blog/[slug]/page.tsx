@@ -138,7 +138,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
               );
             })}
           </ul>
-          <Link href={topicUrl} className="link-line mt-8">All {post.topic.toLowerCase()} guides</Link>
+          <Link href={topicUrl} className="link-line mt-8">More in {post.topic}</Link>
         </aside>
       )}
       <div className="mx-auto mt-24 max-w-2xl border-t border-gold/40 pt-12 text-center">

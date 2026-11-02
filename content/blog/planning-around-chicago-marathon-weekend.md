@@ -47,9 +47,9 @@ Fox 32 Chicago's closure guide for the 2026 race reported:
 <text x="300" y="120" text-anchor="middle" font-size="24" fill="currentColor">9:30</text>
 <text x="300" y="270" text-anchor="middle" font-size="22" fill="var(--muted)">Spectators</text>
 <text x="560" y="150" text-anchor="middle" font-size="24" fill="currentColor">4 pm</text>
-<text x="560" y="240" text-anchor="middle" font-size="22" fill="var(--muted)">Michigan</text>
+<text x="560" y="240" text-anchor="middle" font-size="22" fill="var(--muted)">Mich.</text>
 <text x="660" y="150" text-anchor="end" font-size="24" fill="currentColor">6 pm</text>
-<text x="660" y="240" text-anchor="end" font-size="22" fill="var(--muted)">Columbus</text>
+<text x="660" y="270" text-anchor="end" font-size="22" fill="var(--muted)">Columbus</text>
 </svg>
 <figcaption>Times from 2026 reporting. Each year's schedule is published by the race organizers.</figcaption>
 </figure>

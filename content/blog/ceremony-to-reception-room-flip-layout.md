@@ -1,9 +1,9 @@
 ---
-title: "Ceremony to Reception Room Flip: Layout, Timing and Crew"
-description: How to flip one room from ceremony seating to reception tables during cocktail hour: layout, timing, crew size, storage and what to rent.
+title: "Ceremony and Reception in One Room: Floor Plans That Flip"
+description: Floor plans for holding the ceremony and reception in one room: where rows and tables go, where chairs are staged, and the crew and timing a flip needs.
 date: 2026-11-02
 tags: Layouts & Floor Plans, Weddings, Seasons & Venues
-keyword: ceremony to reception room flip
+keyword: ceremony and reception in same room layout
 image: /blog/art/layouts-and-floor-plans.svg
 imageAlt: Timeline showing a ceremony, cocktail hour and a room flip before dinner
 ---
@@ -27,9 +27,9 @@ Many Chicago-area weddings use one room for both the ceremony and the reception,
 <rect x="0" y="0" width="720" height="250" fill="var(--surface)"/>
 <line x1="40" y1="170" x2="680" y2="170" stroke="var(--line)" stroke-width="2"/>
 <rect x="40" y="70" width="80" height="60" rx="4" fill="var(--gold)" opacity="0.55"/>
-<text x="80" y="108" text-anchor="middle" font-size="22" fill="currentColor">Ceremony</text>
+<text x="80" y="60" text-anchor="middle" font-size="22" fill="currentColor">Ceremony</text>
 <rect x="130" y="70" width="240" height="60" rx="4" fill="var(--gold)" opacity="0.25"/>
-<text x="250" y="108" text-anchor="middle" font-size="22" fill="currentColor">Cocktail hour (guests away)</text>
+<text x="250" y="108" text-anchor="middle" font-size="22" fill="currentColor">Cocktail hour</text>
 <rect x="130" y="140" width="190" height="24" rx="4" fill="var(--muted)" opacity="0.5"/>
 <text x="225" y="158" text-anchor="middle" font-size="20" fill="currentColor">Crew flips room</text>
 <rect x="380" y="70" width="300" height="60" rx="4" fill="var(--gold)" opacity="0.55"/>

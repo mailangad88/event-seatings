@@ -29,7 +29,7 @@ Couples ask whether to serve plated, buffet or family style and compare menus. T
 <g fill="none" stroke="var(--gold)" stroke-width="3"><circle cx="120" cy="140" r="50"/><circle cx="120" cy="140" r="32"/><circle cx="360" cy="140" r="26"/><circle cx="600" cy="140" r="44"/></g>
 <g stroke="var(--muted)" stroke-width="4"><line x1="55" y1="100" x2="55" y2="180"/><line x1="185" y1="100" x2="185" y2="180"/><line x1="290" y1="110" x2="290" y2="170"/><line x1="430" y1="110" x2="430" y2="170"/><line x1="540" y1="100" x2="540" y2="180"/><line x1="660" y1="100" x2="660" y2="180"/></g>
 <g fill="var(--gold)" opacity="0.5"><circle cx="85" cy="70" r="12"/><circle cx="160" cy="70" r="12"/><circle cx="360" cy="70" r="12"/><ellipse cx="600" cy="225" rx="50" ry="22"/><circle cx="545" cy="270" r="16"/><circle cx="655" cy="270" r="16"/></g>
-<g font-size="22" fill="currentColor" text-anchor="middle"><text x="120" y="232">Charger, flatware,</text><text x="120" y="252">bread plate, glasses</text><text x="360" y="232">Napkin, flatware</text><text x="360" y="252">plates at the line</text><text x="600" y="315">Shared platters</text></g>
+<g font-size="22" fill="currentColor" text-anchor="middle"><text x="120" y="232">Charger, flatware,</text><text x="120" y="258">bread plate, glasses</text><text x="360" y="232">Napkin, flatware</text><text x="360" y="258">plates at the line</text><text x="600" y="315">Shared platters</text></g>
 </svg>
 <figcaption>Plated has the most per-guest pieces; buffet has the fewest; family style adds shared platters.</figcaption>
 </figure>
