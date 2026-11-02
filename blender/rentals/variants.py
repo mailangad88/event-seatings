@@ -110,9 +110,12 @@ for parent, key, build, alt, cap in VARIANTS:
     _variant(parent, key, build, alt, cap)
 
 
+# Clear stemware needs its black flags just out of frame; from the flipped angle they show, so skip those.
+NO_ANGLE = {"champagne-flute", "pilsner-glass", "water-goblet", "wine-glass"}
+
 # --- A second camera angle for every product ----------------------------------------
 
-for slug in [s for s, it in list(ITEMS.items()) if it["cat"] != "scenes" and "parent" not in it]:
+for slug in [s for s, it in list(ITEMS.items()) if it["cat"] != "scenes" and "parent" not in it and s not in NO_ANGLE]:
     p = ITEMS[slug]
     cam = dict(p.get("cam", {}))
     az = cam.get("az", -35)
