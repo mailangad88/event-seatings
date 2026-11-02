@@ -105,7 +105,7 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
 
           <p className="mt-8 leading-8">{chair.description}</p>
 
-          <div className="mt-10 flex items-baseline gap-3 border-y border-line py-5">
+          <div className="well mt-10 flex items-baseline gap-3 px-5 py-4">
             <span className="text-[11px] tracking-[0.2em] text-muted uppercase">Estimated</span>
             <span className="headline text-3xl">{chair.estPrice}</span>
             {!chair.estPrice.includes("/") && <span className="text-sm text-muted">per chair</span>}

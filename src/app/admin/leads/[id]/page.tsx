@@ -54,7 +54,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
   const lines = lead.items ?? [];
   const subtotal = lead.quote_subtotal ?? 0;
   const cost = lead.quote_cost ?? 0;
-  const card = "rounded-2xl border border-line bg-surface p-6";
+  const card = "card p-6";
   const first = lead.name?.split(" ")[0] ?? "there";
   const mail = `mailto:${lead.email}?subject=${encodeURIComponent(`Your ${lead.event_type ?? "event"} rental quote`)}&body=${encodeURIComponent(`Hi ${first},\n\nThanks for sending your list. `)}`;
 

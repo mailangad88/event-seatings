@@ -16,7 +16,7 @@ export default async function ChairsPage(props: PageProps<"/chairs">) {
   return (
     <div className="container-x py-20">
       <p className="eyebrow">The collection</p>
-      <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-8xl">
+      <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-7xl">
         Beyond <em className="text-gold">Chiavari</em>
       </h1>
       <p className="mt-6 max-w-xl text-lg leading-8 text-muted">

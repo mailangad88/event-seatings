@@ -64,7 +64,7 @@ export default async function AdminPage() {
     ["Guests in quotes", quotes.reduce((s, l) => s + (l.guest_count ?? 0), 0)],
   ];
 
-  const card = "rounded-2xl border border-line bg-surface p-6";
+  const card = "card p-6";
 
   return (
     <div className="container-x py-12">

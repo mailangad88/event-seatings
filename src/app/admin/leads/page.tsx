@@ -16,7 +16,8 @@ const ago = (iso: string) => {
   return h < 1 ? `${Math.max(1, Math.round(h * 60))}m ago` : h < 48 ? `${Math.round(h)}h ago` : `${Math.round(h / 24)}d ago`;
 };
 const vendorName = (id?: string) => vendors.find((v) => v.id === id)?.name ?? "";
-const source = (l: Lead) => [l.utm_source, l.utm_medium].filter(Boolean).join(" / ") || l.source || "";
+const source = (l: Lead) =>
+  [[l.utm_source, l.utm_medium].filter(Boolean).join(" / "), l.source].filter(Boolean).join(" · ");
 
 export default async function LeadsPage(props: PageProps<"/admin/leads">) {
   const sp = await props.searchParams;
@@ -46,7 +47,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
   const pipelineValue = open.reduce((s, l) => s + (l.quote_subtotal ?? 0), 0);
   const pipelineMargin = open.reduce((s, l) => s + ((l.quote_subtotal ?? 0) - (l.quote_cost ?? 0)), 0);
 
-  const card = "rounded-2xl border border-line bg-surface p-6";
+  const card = "card p-6";
   const href = (p: Record<string, string>) => {
     const u = new URLSearchParams({ ...(status && { status }), ...(kind && { kind }), ...(q && { q }), ...p });
     for (const [k, v] of [...u]) if (!v) u.delete(k);
@@ -131,7 +132,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
               <th className="py-2 font-medium">Received</th>
               <th className="py-2 font-medium">Lead</th>
               <th className="py-2 font-medium">Event</th>
-              <th className="py-2 text-right font-medium">Quote</th>
+              <th className="py-2 pr-6 text-right font-medium">Quote</th>
               <th className="py-2 font-medium">Stage</th>
               <th className="py-2 font-medium">Vendor</th>
               <th className="py-2 font-medium">Follow-up</th>
@@ -156,7 +157,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
                     {[day(l.event_date), l.guest_count && `${l.guest_count} guests`, l.city].filter(Boolean).join(" · ")}
                   </div>
                 </td>
-                <td className="py-2.5 text-right tabular-nums">
+                <td className="py-2.5 pr-6 text-right tabular-nums">
                   {l.quote_subtotal ? usd(l.quote_subtotal, 0) : ""}
                   {l.items?.length ? <div className="text-muted">{l.items.length} items</div> : null}
                 </td>
