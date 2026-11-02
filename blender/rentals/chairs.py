@@ -162,9 +162,9 @@ def build_crossback(col=None, w=None):
     bevel(so, 0.006, 2)
 
 
-def build_ghost(col=None):
+def build_ghost(col=None, tint=(0.95, 0.97, 1.0)):
     """Louis-style ghost chair in clear polycarbonate with an oval medallion back."""
-    m = acrylic()
+    m = acrylic(tint)
     g = bmesh.new()
     seat_z = 0.46
     add_box(g, (0, 0, seat_z - 0.02), (0.44, 0.42, 0.04))
@@ -181,7 +181,7 @@ def build_ghost(col=None):
     from mathutils import Matrix
     bmesh.ops.create_cone(disc, cap_ends=True, segments=48, radius1=0.19, radius2=0.19, depth=0.012,
                           matrix=Matrix.Translation(center) @ Matrix.Rotation(math.pi / 2, 4, "X") @ Matrix.Diagonal((1.0, 1.25, 1.0, 1)))
-    mesh_object("Medallion", disc, acrylic(thin=True), collection=col)
+    mesh_object("Medallion", disc, acrylic(tint, thin=True), collection=col)
     for sx in (-1, 1):  # posts joining back to seat
         add_rod(g, (sx * 0.14, 0.2, seat_z), (sx * 0.17, 0.215, 0.62), 0.02)
     ob = mesh_object("Ghost", g, m, collection=col)

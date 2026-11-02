@@ -46,6 +46,9 @@ def main():
             "height": h,
             "kind": "scene" if it["cat"] == "scenes" else "product",
         }
+        if it.get("parent"):
+            manifest[slug].update(parent=it["parent"], variant=it["variant"],
+                                  kind="angle" if it["variant"] == "angle" else "variant")
     manifest = dict(sorted(manifest.items(), key=lambda kv: (kv[1]["category"], kv[0])))
     with open(MANIFEST, "w") as f:
         json.dump(manifest, f, indent=2)
