@@ -45,3 +45,5 @@ next-env.d.ts
 /.data
 
 /out
+out/
+__pycache__/

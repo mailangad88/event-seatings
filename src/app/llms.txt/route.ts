@@ -1,5 +1,5 @@
 import { chairs } from "@/data/chairs";
-import { getPosts } from "@/lib/blog";
+import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 // llms.txt: a plain-text map of the site for AI answer engines (ChatGPT, Perplexity, Gemini, Claude).
@@ -20,6 +20,7 @@ export async function GET() {
     `- [Chair collection](${site.url}/chairs)`,
     `- [FAQ](${site.url}/faq)`,
     `- [Style quiz](${site.url}/quiz)`,
+    `- [3D rental gallery](${site.url}/gallery): true-to-size 3D renders of every chair, table, linen, tent and event rental, plus complete event setups`,
     `- [About](${site.url}/about)`,
     "",
     "## Chairs for rent (estimated per-chair price, USD)",
@@ -27,8 +28,16 @@ export async function GET() {
       (c) => `- [${c.name}](${site.url}/chairs/${c.slug}): ${c.tagline}. ${c.estPrice}. Best for ${c.uses.join(", ").toLowerCase()}.`,
     ),
     "",
-    "## Guides",
-    ...posts.map((p) => `- [${p.title}](${site.url}/blog/${p.slug}): ${p.description}`),
+    "## Guides by topic",
+    ...topics.flatMap((t) => {
+      const list = posts.filter((p) => p.topic === t.name);
+      if (!list.length) return [];
+      return [
+        "",
+        `### [${t.name}](${site.url}/blog/topic/${topicSlug(t.name)})`,
+        ...list.map((p) => `- [${p.title}](${site.url}/blog/${p.slug}): ${p.description}`),
+      ];
+    }),
     "",
     "## Contact",
     `- Email: ${site.email}`,

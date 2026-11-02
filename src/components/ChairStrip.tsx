@@ -19,8 +19,8 @@ export function ChairStrip({
         {list.map((c) => (
           <li key={c.slug}>
             <Link href={`/chairs/${c.slug}`} className="group block">
-              <ChairArt chair={c} className="aspect-[4/5] transition-opacity group-hover:opacity-85" />
-              <span className="mt-2 block text-[11px] tracking-[0.18em] text-muted uppercase group-hover:text-ink">{c.name}</span>
+              <ChairArt chair={c} className="aspect-[4/5] rounded-xl transition-opacity group-hover:opacity-85" />
+              <span className="mt-2 block text-sm text-muted group-hover:text-ink">{c.name}</span>
             </Link>
           </li>
         ))}

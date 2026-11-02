@@ -1,39 +1,47 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ChairArt } from "./ChairArt";
-import { getChair } from "@/data/chairs";
+import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { Icon } from "./ui/Icon";
 
-// Sitewide "book a call" band. The main lead magnet: a free seating consult.
+// Sitewide "talk to a planner" band: full-bleed dark, designed to sit flush on the footer
+// (pages wrap it in `-mb-32`). For an inset card version use <QuoteCta /> from ui.
 export function CallCta({ title, source }: { title?: React.ReactNode; source?: string }) {
-  const chair = getChair("velvet-dining") ?? getChair("cross-back");
-  const href = source ? `/book?from=${encodeURIComponent(source)}` : "/book";
+  const q = source ? `?from=${encodeURIComponent(source)}` : "";
+  const scene = sceneFor(`call-${source ?? "site"}`);
   return (
-    <section className="bg-espresso text-ink">
-      <div className="container-x grid items-center gap-12 py-20 md:grid-cols-[1.4fr_1fr] md:py-24">
+    <section className="tone-dark relative overflow-hidden bg-espresso">
+      <div className="container-x grid items-center gap-12 py-16 md:grid-cols-[1.3fr_1fr] md:py-24">
         <div>
-          <p className="eyebrow">Free {site.callLength} seating call</p>
-          <h2 className="headline mt-6 text-5xl leading-[1.05] sm:text-6xl">
+          <p className="eyebrow">Free {site.callLength} planning call</p>
+          <h2 className="display-2 mt-4 max-w-xl">
             {title ?? (
               <>
-                Not sure which chairs, or how <em className="text-gold">many</em>?
+                Not sure what you need, or how <em className="text-gold">much</em>?
               </>
             )}
           </h2>
-          <ul className="mt-8 space-y-3 text-ink/75">
-            <li>· The right chair for your venue, season and guest count</li>
-            <li>· Ceremony-to-reception flips and head-table pairings</li>
-            <li>· An honest estimate, with delivery and setup itemized</li>
+          <ul className="mt-7 space-y-3 text-ink/85">
+            {[
+              "Quantities for your guest count and floor plan",
+              "Which chairs, tables and linens suit your venue",
+              "An honest estimate with delivery and setup itemized",
+            ].map((t) => (
+              <li key={t} className="flex items-start gap-3">
+                <Icon name="check" size={18} className="mt-1 shrink-0 text-gold" /> {t}
+              </li>
+            ))}
           </ul>
-          <div className="mt-10 flex flex-wrap items-center gap-8">
-            <Link href={href} className="btn-primary">Book a free call</Link>
-            <Link href="/quote" className="link-line">Or request a written quote</Link>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link href={`/book${q}`} className="btn-accent btn-lg">Book a free call</Link>
+            <Link href={`/quote${q}`} className="btn btn-lg border border-ink/25 text-ink hover:bg-ink hover:text-bg">
+              Build a quote instead
+            </Link>
           </div>
         </div>
-        {chair && (
-          <div className="mx-auto hidden w-full max-w-sm md:block" aria-hidden>
-            <ChairArt chair={chair} className="aspect-[4/5]" />
-          </div>
-        )}
+        <div className="relative hidden aspect-[4/5] max-h-[460px] overflow-hidden rounded-2xl md:block">
+          <Image src={scene.src} alt={scene.alt} fill sizes="40vw" className="object-cover" />
+        </div>
       </div>
     </section>
   );

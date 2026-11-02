@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="t d">
+<title id="t">Ivory linens draped to the floor with a folded napkin</title>
+<desc id="d">A round table dressed in an ivory floor-length tablecloth with a gold runner, a folded dinner napkin standing on a plate in front.</desc>
+<defs>
+<radialGradient id="spot" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#3a2f22"/><stop offset=".55" stop-color="#221d17"/><stop offset="1" stop-color="#12100d"/></radialGradient>
+<linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1813"/><stop offset="1" stop-color="#0d0b09"/></linearGradient>
+<linearGradient id="brass" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="1000"><stop offset="0" stop-color="#e6cf98"/><stop offset=".5" stop-color="#c9a96a"/><stop offset="1" stop-color="#8a6d3b"/></linearGradient>
+<linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3ead8"/><stop offset="1" stop-color="#cfc3aa"/></linearGradient>
+</defs>
+<rect width="800" height="1000" fill="url(#spot)"/>
+<rect y="760" width="800" height="240" fill="url(#floor)"/>
+<line x1="0" y1="760" x2="800" y2="760" stroke="#3a3024" stroke-width="2"/>
+<rect x="28" y="28" width="744" height="944" fill="none" stroke="#c9a96a" stroke-opacity=".35"/>
+<ellipse cx="400" cy="868" rx="322.4" ry="18" fill="#000" opacity=".45"/><path d="M140.0 560 Q126.0 740.0 132.0 860 L668.0 860 Q674.0 740.0 660.0 560 Z" fill="url(#cloth)"/><path d="M205.0 568 Q211.0 740.0 205.0 860" stroke="#b8ab90" stroke-width="2" fill="none" opacity=".6"/><path d="M270.0 568 Q276.0 740.0 270.0 860" stroke="#b8ab90" stroke-width="2" fill="none" opacity=".6"/><path d="M335.0 568 Q341.0 740.0 335.0 860" stroke="#b8ab90" stroke-width="2" fill="none" opacity=".6"/><path d="M400.0 568 Q406.0 740.0 400.0 860" stroke="#b8ab90" stroke-width="2" fill="none" opacity=".6"/><path d="M465.0 568 Q471.0 740.0 465.0 860" stroke="#b8ab90" stroke-width="2" fill="none" opacity=".6"/><path d="M530.0 568 Q536.0 740.0 530.0 860" stroke="#b8ab90" stroke-width="2" fill="none" opacity=".6"/><path d="M595.0 568 Q601.0 740.0 595.0 860" stroke="#b8ab90" stroke-width="2" fill="none" opacity=".6"/><ellipse cx="400" cy="560" rx="260.0" ry="83.2" fill="#f7f0e2"/><path d="M330 560 L470 560 L520 860 L280 860 Z" fill="#c9a96a" opacity=".55"/><ellipse cx="400" cy="575" rx="70" ry="26.6" fill="#fbf7ee" stroke="#d9cdb3" stroke-width="2"/><ellipse cx="400" cy="575" rx="68.6" ry="25.9" fill="none" stroke="#c9a96a" stroke-width="3"/><ellipse cx="400" cy="575" rx="43.4" ry="16.1" fill="none" stroke="#e3d8c2" stroke-width="2"/><path d="M400 470 L440 568 L360 568 Z" fill="#fbf7ee" stroke="#d9cdb3" stroke-width="2"/><line x1="400" y1="470" x2="400" y2="568" stroke="#d9cdb3" stroke-width="2"/>
+</svg>

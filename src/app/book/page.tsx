@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CallForm } from "@/components/CallForm";
-import { ChairArt } from "@/components/ChairArt";
-import { getChair } from "@/data/chairs";
+import { Figure } from "@/components/ui";
+import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `Book a Free Seating Call | Event Chair Rentals in ${site.market}`,
-  description: `Book a free ${site.callLength} call with ${site.name}. Get chair recommendations, quantities and an honest estimate for your wedding, corporate event or party in Chicago and the suburbs.`,
+  title: `Book a Free Event Planning Call | Event Rentals in ${site.market}`,
+  description: `Book a free ${site.callLength} call with ${site.name}. Get rental recommendations, quantities and an honest estimate for your wedding, corporate event or party in Chicago and the suburbs.`,
   alternates: { canonical: "/book" },
 };
 
 const agenda: [string, string][] = [
-  ["Your room", "Venue, layout and guest count, so we can recommend the right chair and how many you actually need."],
-  ["Your look", "Two or three styles that suit your palette and season, plus ceremony and head-table pairings."],
-  ["Your budget", "An honest per-chair range with delivery, setup and pickup itemized. No surprises later."],
+  ["Your room", "Venue, layout and guest count, so we can recommend the right chairs, tables and linens and how many you actually need."],
+  ["Your look", "Styles that suit your palette and season, from ceremony chairs to tablescapes, lighting and tents."],
+  ["Your budget", "An honest estimate for everything on your list, with delivery, setup and pickup itemized. No surprises later."],
 ];
 
 const faqs: [string, string][] = [
@@ -26,7 +26,6 @@ const faqs: [string, string][] = [
 export default async function BookPage(props: PageProps<"/book">) {
   const { from } = await props.searchParams;
   const source = typeof from === "string" && /^[a-z0-9-]{1,80}$/.test(from) ? `book-page:${from}` : "book-page";
-  const chairs = ["cross-back", "ghost", "rattan-garden"].map((s) => getChair(s)).filter((c) => c !== undefined);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -38,34 +37,30 @@ export default async function BookPage(props: PageProps<"/book">) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <div className="grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-end">
         <div>
-          <p className="eyebrow">Free {site.callLength} seating call</p>
-          <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-8xl">
-            Let&apos;s talk <em className="text-gold">seating</em>
+          <p className="eyebrow">Free {site.callLength} planning call</p>
+          <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-7xl">
+            Let&apos;s plan your <em className="text-gold">event</em>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
             Planning a wedding, corporate event or party in Chicago or the suburbs? In {site.callLength.replace("-", " ")}s
-            we&apos;ll recommend chairs for your venue, tell you how many you need, and give you an honest estimate.
+            we&apos;ll recommend rentals for your venue, tell you how much you need, and give you an honest estimate.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-3" aria-hidden>
-          {chairs.map((c) => (
-            <ChairArt key={c.slug} chair={c} className="aspect-[3/4]" />
-          ))}
-        </div>
+        <Figure {...scenes.blushGarden} ratio="4/3" priority sizes="(max-width: 768px) 100vw, 45vw" />
       </div>
 
-      <ol className="mt-20 grid gap-10 border-t border-gold/40 pt-10 md:grid-cols-3">
+      <ol className="mt-16 grid gap-5 md:grid-cols-3">
         {agenda.map(([t, d], i) => (
-          <li key={t}>
-            <span className="headline text-6xl text-gold/70">0{i + 1}</span>
-            <h2 className="mt-3 text-[11px] font-medium tracking-[0.25em] uppercase">{t}</h2>
+          <li key={t} className="well p-6">
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-surface font-serif text-xl text-gold shadow-soft">{i + 1}</span>
+            <h2 className="mt-4 text-lg font-medium">{t}</h2>
             <p className="mt-3 leading-7 text-muted">{d}</p>
           </li>
         ))}
       </ol>
 
       <section className="mt-24 grid gap-14 md:grid-cols-[1.6fr_1fr]">
-        <div className="border border-line bg-surface p-6 sm:p-10">
+        <div className="card p-6 sm:p-10">
           {site.bookingUrl ? (
             <>
               <h2 className="headline text-4xl">Pick a time</h2>
@@ -97,7 +92,7 @@ export default async function BookPage(props: PageProps<"/book">) {
           <dl className="mt-6 border-t border-line">
             {faqs.map(([q, a]) => (
               <div key={q} className="border-b border-line py-5">
-                <dt className="font-serif text-xl">{q}</dt>
+                <dt className="font-medium">{q}</dt>
                 <dd className="mt-2 leading-7 text-muted">{a}</dd>
               </div>
             ))}

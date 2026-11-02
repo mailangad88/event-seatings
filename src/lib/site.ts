@@ -42,6 +42,12 @@ export const site = {
     seasonLabel: "2027 Founding Season",
     firstEventDate: "2027-04-01",
   },
+  // The free 15-minute seating consult every form and email points to.
+  // Set NEXT_PUBLIC_BOOKING_URL to a HubSpot Meetings, Calendly or Cal.com link. Until it's set, booking buttons stay hidden.
+  booking: {
+    url: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
+    label: "Book a free 15-minute seating consult",
+  },
 };
 
 export type Site = typeof site;

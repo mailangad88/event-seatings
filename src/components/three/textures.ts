@@ -111,17 +111,17 @@ export function cordWeave(repeat: [number, number] = [3, 3]) {
   );
 }
 
-// Dark polished marble with fine pale and gold veining.
+// Pale honed marble with soft grey and gold veining (light gallery floor).
 export function marble() {
   return canvasTexture(1024, 1024, (ctx) => {
     const r = rng(23);
-    ctx.fillStyle = "#1b1612";
+    ctx.fillStyle = "#efe8dc";
     ctx.fillRect(0, 0, 1024, 1024);
     // soft clouds
     for (let i = 0; i < 40; i++) {
       const x = r() * 1024, y = r() * 1024, rad = 80 + r() * 220;
       const g = ctx.createRadialGradient(x, y, 0, x, y, rad);
-      g.addColorStop(0, `rgba(${r() > 0.5 ? "70,58,44" : "10,8,6"},${0.1 + r() * 0.16})`);
+      g.addColorStop(0, `rgba(${r() > 0.5 ? "255,255,255" : "196,184,166"},${0.1 + r() * 0.16})`);
       g.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = g;
       ctx.fillRect(x - rad, y - rad, rad * 2, rad * 2);
@@ -130,7 +130,7 @@ export function marble() {
     ctx.lineCap = "round";
     for (let i = 0; i < 46; i++) {
       const gold = r() > 0.78;
-      ctx.strokeStyle = gold ? `rgba(198,165,105,${0.12 + r() * 0.18})` : `rgba(236,224,200,${0.05 + r() * 0.16})`;
+      ctx.strokeStyle = gold ? `rgba(170,136,80,${0.12 + r() * 0.18})` : `rgba(150,138,122,${0.05 + r() * 0.14})`;
       ctx.lineWidth = 0.5 + r() * (gold ? 1.6 : 2.2);
       let x = r() * 1024, y = r() * 1024, a = r() * Math.PI * 2;
       ctx.beginPath();

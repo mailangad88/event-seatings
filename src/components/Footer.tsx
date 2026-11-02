@@ -1,33 +1,50 @@
 import Link from "next/link";
+import { rentalCategories } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { Logo } from "./Header";
+import { Icon } from "./ui/Icon";
 import { WaitlistForm } from "./WaitlistForm";
 
 export function Footer() {
   return (
-    <footer className="mt-32 bg-espresso text-ink">
-      <div className="container-x grid gap-14 py-20 md:grid-cols-[1.5fr_1fr_1fr]">
+    <footer className="tone-dark mt-32 bg-espresso">
+      <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo light />
-          <p className="mt-6 max-w-sm text-sm leading-7 text-ink/65">
-            A curated collection of distinctive chairs for weddings, corporate events and celebrations, delivered
-            and set up across Chicago and the suburbs.
+          <p className="mt-5 max-w-sm text-sm leading-7 text-muted">
+            One place to price and book everything for your event: chairs, tables, linens, dinnerware, tents and more
+            from trusted rental houses across {site.marketLong}.
           </p>
-          <div className="mt-10 max-w-sm">
-            <p className="mb-3 text-[11px] tracking-[0.25em] text-ink/80 uppercase">The private list</p>
+          <div className="mt-8 max-w-sm">
+            <p className="mb-2 text-sm font-medium">Planning tips and seasonal offers</p>
             <WaitlistForm source="footer" dark />
           </div>
         </div>
         <div>
-          <p className="mb-5 text-[11px] tracking-[0.25em] text-gold uppercase">Explore</p>
-          <ul className="space-y-3 text-sm text-ink/75">
+          <p className="eyebrow">Rentals</p>
+          <ul className="mt-4 space-y-2.5 text-sm text-muted">
+            {rentalCategories.slice(0, 8).map((c) => (
+              <li key={c.id}>
+                <Link href={`/rentals/${c.id}`} className="transition-colors hover:text-ink">{c.name}</Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/rentals" className="font-medium text-ink hover:text-gold">All rentals →</Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p className="eyebrow">Plan</p>
+          <ul className="mt-4 space-y-2.5 text-sm text-muted">
             {[
-              ["/chairs", "The Collection"],
-              ["/quiz", "Style Quiz"],
-              ["/blog", "Journal"],
-              ["/book", "Book a Free Call"],
-              ["/quote", "Request a Quote"],
+              ["/quote", "Build a quote"],
+              ["/book", "Book a free call"],
+              ["/how-it-works", "How it works"],
+              ["/blog", "Ideas & guides"],
+              ["/quiz", "Style quiz"],
+              ["/gallery", "3D gallery"],
               ["/faq", "FAQ"],
+              ["/about", "About us"],
             ].map(([href, label]) => (
               <li key={href}>
                 <Link href={href} className="transition-colors hover:text-ink">{label}</Link>
@@ -36,22 +53,31 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="mb-5 text-[11px] tracking-[0.25em] text-gold uppercase">Service Area</p>
-          <p className="text-sm leading-7 text-ink/75">{site.serviceArea.join(" · ")}</p>
-          <p className="mt-6 text-sm">
-            <a href={`mailto:${site.email}`} className="text-ink/90 underline decoration-gold underline-offset-4">
-              {site.email}
-            </a>
-          </p>
-          <p className="mt-4 flex gap-6 text-[11px] tracking-[0.22em] text-ink/75 uppercase">
+          <p className="eyebrow">Service area</p>
+          <p className="mt-4 text-sm leading-7 text-muted">{site.serviceArea.join(" · ")} and surrounding suburbs</p>
+          <ul className="mt-6 space-y-2.5 text-sm">
+            <li>
+              <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2 hover:text-gold">
+                <Icon name="chat" size={16} className="text-gold" /> {site.email}
+              </a>
+            </li>
+            {site.phone && (
+              <li>
+                <a href={`tel:${site.phone}`} className="inline-flex items-center gap-2 hover:text-gold">
+                  <Icon name="phone" size={16} className="text-gold" /> {site.phone}
+                </a>
+              </li>
+            )}
+          </ul>
+          <p className="mt-6 flex gap-5 text-sm text-muted">
             <a href={site.instagram} className="hover:text-ink">Instagram</a>
             <a href={site.pinterest} className="hover:text-ink">Pinterest</a>
           </p>
         </div>
       </div>
-      <div className="border-t border-ink/10">
-        <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-[10px] tracking-[0.25em] text-ink/45 uppercase sm:flex-row">
-          <span>© {new Date().getFullYear()} {site.name}</span>
+      <div className="border-t border-line">
+        <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-muted sm:flex-row">
+          <span>© {new Date().getFullYear()} {site.name}. Prices shown are estimates until confirmed in your quote.</span>
           <span className="flex gap-6">
             <Link href="/privacy" className="hover:text-ink">Privacy</Link>
             <Link href="/terms" className="hover:text-ink">Terms</Link>

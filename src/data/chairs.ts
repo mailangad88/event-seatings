@@ -1,4 +1,5 @@
 import renders from "./renders.json";
+import { chairRenderSlug, rentalImage } from "./rental-images";
 
 // The chair catalog. To add your own chair, copy one entry and change it.
 // Photos: drop a file in /public/chairs/ and set `image: "/chairs/your-file.jpg"`.
@@ -342,5 +343,7 @@ export function chairAlt(chair: Chair) {
 }
 
 export function chairImage(chair: Chair) {
-  return chair.image ?? (renders.includes(chair.slug) ? `/chairs/render/${chair.slug}.jpg` : undefined);
+  // Prefer a real photo, then the Blender studio render, then the older WebGL render.
+  const blender = rentalImage(chairRenderSlug[chair.slug] ?? "")?.src;
+  return chair.image ?? blender ?? (renders.includes(chair.slug) ? `/chairs/render/${chair.slug}.jpg` : undefined);
 }
