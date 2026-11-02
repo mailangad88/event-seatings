@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
-import { rentalImagePath } from "@/components/rentals/RentalVisual";
+import { RentalVisual, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
@@ -37,6 +37,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
   if (!c) notFound();
   const items = itemsIn(c.id);
   const prices = items.map(customerPrice);
+  const hero = items.find((i) => rentalImagePath(i.id, i.categoryId));
   const budget = sampleBudgets.find((b) => b.lines.some(([id]) => items.some((i) => i.id === id)));
   const url = `${site.url}/rentals/${c.id}`;
 
@@ -95,9 +96,13 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
               </Link>
             </div>
           </div>
-          <div className="hidden aspect-square items-center justify-center border border-line bg-surface text-gold md:flex">
-            <RentalIcon category={c.id} className="h-1/2 w-1/2" title={`${c.name} illustration`} />
-          </div>
+          {hero ? (
+            <RentalVisual item={hero} priority className="hidden aspect-square md:block" sizes="40vw" />
+          ) : (
+            <div className="hidden aspect-square items-center justify-center border border-line bg-surface text-gold md:flex">
+              <RentalIcon category={c.id} className="h-1/2 w-1/2" title={`${c.name} illustration`} />
+            </div>
+          )}
         </header>
 
         <section className="mt-20" aria-labelledby="items">

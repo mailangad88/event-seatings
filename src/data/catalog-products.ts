@@ -369,8 +369,8 @@ export const products: Product[] = [
   P("throne-chair", "chairs", "Throne chair", "High-back king/queen chair, gold or silver frame, velvet upholstery", "each", 150, 0,
     "A statement chair for quinceañeras, sweet 16s, baby showers and bride-and-groom portraits.",
     ["throne chair rental chicago", "quinceanera throne chair rental"], { minQty: 1, chairSlug: "royal-throne" }),
-  P("bar-stool", "chairs", "Bar stool", "30\" seat height, for 42\" highboy tables", "each", 12, 0,
-    "Seating for highboy cocktail tables, bars and lounge counters.", ["bar stool rental chicago"]),
+  P("bar-stool", "chairs", "Chiavari bar stool", "Gold Chiavari stool with back, 30\" seat height, for 42\" highboy tables", "each", 15.75, 0,
+    "Chiavari-style seating for highboy cocktail tables, bars and lounge counters.", ["bar stool rental chicago"]),
 
   // Tables
   P("round-48", "tables", "48\" round table", "Seats 6, 30\" high", "each", 10, 1 / 6,

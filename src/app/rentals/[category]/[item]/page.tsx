@@ -31,7 +31,7 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]/[it
     title: `${i.name} Rental ${site.market}: ${formatPrice(customerPrice(i))} ${unitLabel(i)}`,
     description: `Rent a ${lower(i.name)} in ${site.market} and the suburbs for ${formatPrice(customerPrice(i))} ${unitLabel(i)}. ${i.specs}. ${i.description} Delivery and setup available.`,
     alternates: { canonical: itemHref(i) },
-    ...(img && { openGraph: { images: [{ url: img, alt: rentalAlt(i.name, i.specs) }] } }),
+    ...(img && { openGraph: { images: [{ url: img, alt: rentalAlt(i.name, i.specs, i.id) }] } }),
   };
 }
 
@@ -102,7 +102,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
       url: pageUrl,
       category: `${c.name} rental`,
       brand: { "@type": "Brand", name: site.name },
-      ...(img && { image: { "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs) } }),
+      ...(img && { image: { "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) } }),
       offers: {
         "@type": "Offer",
         price: price.toFixed(2),
