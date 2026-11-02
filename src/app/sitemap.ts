@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
+import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
 import { rentalImages } from "@/data/rental-images";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -45,5 +46,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   ];
   const gallery = { url: `${site.url}/gallery`, priority: 0.7, images: rentalImages.map((i) => `${site.url}${i.src}`) };
-  return [...pages, gallery, ...chairPages, ...rentalPages, ...hubs, ...posts];
+  const geoPages = [
+    { url: `${site.url}/chair-rentals`, priority: 0.8, lastModified: geoContentUpdated },
+    { url: `${site.url}/events`, priority: 0.8, lastModified: geoContentUpdated },
+    ...locations.map((l) => ({ url: `${site.url}${locationPath(l)}`, priority: 0.7, lastModified: geoContentUpdated })),
+    ...eventTypes.map((e) => ({ url: `${site.url}${eventPath(e)}`, priority: 0.7, lastModified: geoContentUpdated })),
+  ];
+  return [...pages, gallery, ...geoPages, ...chairPages, ...rentalPages, ...hubs, ...posts];
 }

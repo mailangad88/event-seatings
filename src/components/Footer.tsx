@@ -40,6 +40,8 @@ export function Footer() {
               ["/quote", "Build a quote"],
               ["/book", "Book a free call"],
               ["/how-it-works", "How it works"],
+              ["/events", "Events we plan"],
+              ["/chair-rentals", "Areas we serve"],
               ["/blog", "Ideas & guides"],
               ["/quiz", "Style quiz"],
               ["/gallery", "3D gallery"],
