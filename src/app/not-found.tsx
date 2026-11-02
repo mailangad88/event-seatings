@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="container-x grid items-center gap-12 py-28 md:grid-cols-[1fr_1fr]">
       <div className="text-center md:text-left">
         <p className="eyebrow justify-center md:justify-start">404</p>
-        <h1 className="headline mt-6 text-6xl sm:text-8xl">
+        <h1 className="headline mt-6 text-6xl sm:text-7xl">
           This seat is <em className="text-gold">empty</em>
         </h1>
         <p className="mt-6 text-muted">We couldn&apos;t find the page you were looking for.</p>

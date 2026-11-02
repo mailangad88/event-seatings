@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChairArt } from "@/components/ChairArt";
+import { PostBody } from "@/components/PostBody";
+import { ArticleLayout, JsonLd, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
 import { chairAlt, chairImage, getChair } from "@/data/chairs";
 import { formatDate, getPost, getPosts, getRelated, topicSlug } from "@/lib/blog";
+import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -16,9 +20,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
   const found = await getPost((await props.params).slug);
   if (!found) return {};
   const { post } = found;
-  const chair = getChair(post.chair);
-  const img = post.image ?? (chair && chairImage(chair));
-  const alt = post.image ? post.imageAlt ?? post.title : chair && chairAlt(chair);
+  const hero = sceneFor(post.slug);
   return {
     title: post.title,
     description: post.description,
@@ -28,130 +30,124 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
       type: "article",
       publishedTime: post.date,
       modifiedTime: post.updated ?? post.date,
-      // SVG art can't be a social preview, so sharing falls back to the chair photo.
-      ...(img && !img.endsWith(".svg") ? { images: [{ url: img, alt }] } : chair && chairImage(chair) ? { images: [{ url: chairImage(chair)!, alt: chairAlt(chair) }] } : {}),
+      images: [{ url: hero.src, alt: hero.alt }],
     },
   };
+}
+
+// Give each <h2> an id so the table of contents can link to it.
+function withHeadingIds(html: string) {
+  const toc: TocItem[] = [];
+  const out = html.replace(/<h2>(.*?)<\/h2>/g, (_, inner: string) => {
+    const label = inner.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"');
+    const id = label.toLowerCase().replace(/&[a-z#0-9]+;/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    toc.push({ id, label });
+    return `<h2 id="${id}">${inner}</h2>`;
+  });
+  return { html: out, toc };
 }
 
 export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const found = await getPost((await props.params).slug);
   if (!found) notFound();
-  const { post, html, faqs } = found;
+  const { post, faqs } = found;
+  const { html, toc } = withHeadingIds(found.html);
   const chair = getChair(post.chair);
-  const img = post.image ?? (chair && chairImage(chair));
-  const alt = post.image ? post.imageAlt ?? post.title : chair ? chairAlt(chair) : "";
+  const chairImg = chair && chairImage(chair);
+  const hero = sceneFor(post.slug);
   const related = await getRelated(post);
   const url = `${site.url}/blog/${post.slug}`;
   const topicUrl = `/blog/topic/${topicSlug(post.topic)}`;
 
-  const jsonLd: Record<string, unknown>[] = [
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: post.title,
-      description: post.description,
-      datePublished: post.date,
-      dateModified: post.updated ?? post.date,
-      ...(img && { image: { "@type": "ImageObject", url: `${site.url}${img}`, caption: alt } }),
-      keywords: [post.keyword, ...post.tags].filter(Boolean).join(", "),
-      articleSection: post.topic,
-      url,
-      mainEntityOfPage: url,
-      inLanguage: "en-US",
-      spatialCoverage: { "@type": "Place", name: "Chicago metropolitan area, Illinois" },
-      author: { "@type": "Organization", name: site.name, url: site.url },
-      publisher: { "@id": `${site.url}/#business` },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Journal", item: `${site.url}/blog` },
-        { "@type": "ListItem", position: 2, name: post.topic, item: `${site.url}${topicUrl}` },
-        { "@type": "ListItem", position: 3, name: post.title, item: url },
-      ],
-    },
-  ];
-  if (faqs.length) {
-    jsonLd.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-    });
-  }
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.updated ?? post.date,
+    image: [
+      { "@type": "ImageObject", url: `${site.url}${hero.src}`, caption: hero.alt },
+      ...(post.image ? [{ "@type": "ImageObject", url: `${site.url}${post.image}`, caption: post.imageAlt ?? post.title }] : []),
+      ...(chairImg && chair ? [{ "@type": "ImageObject", url: `${site.url}${chairImg}`, caption: chairAlt(chair) }] : []),
+    ],
+    keywords: [post.keyword, ...post.tags].filter(Boolean).join(", "),
+    articleSection: post.topic,
+    inLanguage: "en-US",
+    spatialCoverage: { "@type": "Place", name: "Chicago metropolitan area, Illinois" },
+    url,
+    mainEntityOfPage: url,
+    author: { "@type": "Organization", name: site.name, url: site.url },
+    publisher: { "@id": `${site.url}/#business` },
+  };
 
   return (
-    <article className="container-x max-w-4xl py-20">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <div className="text-center">
-        <nav aria-label="Breadcrumb" className="text-[11px] tracking-[0.22em] text-muted uppercase">
-          <Link href="/blog" className="hover:text-ink">The journal</Link>
-          <span aria-hidden> / </span>
-          <Link href={topicUrl} className="hover:text-ink">{post.topic}</Link>
-        </nav>
-        <p className="mt-10 text-[11px] tracking-[0.22em] text-gold uppercase">
-          {formatDate(post.date)} · {post.readingMinutes} min read
-        </p>
-        <h1 className="headline mt-6 text-5xl leading-[1.02] sm:text-7xl">{post.title}</h1>
-        <p className="mx-auto mt-6 max-w-2xl font-serif text-2xl leading-snug font-light text-muted italic">
-          {post.description}
-        </p>
-        {post.updated && post.updated !== post.date && (
-          <p className="mt-6 text-[11px] tracking-[0.22em] text-muted uppercase">Updated {formatDate(post.updated)}</p>
+    <>
+      <JsonLd data={jsonLd} />
+      <ArticleLayout
+        breadcrumbs={[
+          { name: "Ideas & guides", href: "/blog" },
+          { name: post.topic, href: topicUrl },
+          { name: post.title, href: `/blog/${post.slug}` },
+        ]}
+        eyebrow={<Link href={topicUrl} className="hover:underline">{post.topic}</Link>}
+        title={post.title}
+        intro={post.description}
+        meta={
+          <>
+            {formatDate(post.date)} · {post.readingMinutes} min read · By the {site.name} team
+            {post.updated && post.updated !== post.date && <> · Updated {formatDate(post.updated)}</>}
+          </>
+        }
+        hero={{ src: hero.src, alt: hero.alt, caption: hero.caption }}
+        toc={toc}
+        aside={
+          <>
+            <QuoteCard source={`blog-${post.slug}`} />
+            {chair && (
+              <Link href={`/chairs/${chair.slug}`} className="group card card-hover block overflow-hidden">
+                <ChairArt chair={chair} className="aspect-[4/3]" />
+                <span className="block p-4">
+                  <span className="block text-xs font-medium tracking-wide text-muted uppercase">Featured piece</span>
+                  <span className="mt-1 block font-medium group-hover:text-gold">{chair.name}</span>
+                </span>
+              </Link>
+            )}
+          </>
+        }
+      >
+        <PostBody html={html} faqs={faqs} />
+        {post.tags.length > 0 && (
+          <ul className="mt-12 flex max-w-2xl flex-wrap gap-2 border-t border-line pt-6">
+            {post.tags.map((t) => (
+              <li key={t} className="chip">{t}</li>
+            ))}
+          </ul>
         )}
-        <span className="mx-auto mt-10 block h-px w-16 bg-gold" aria-hidden />
-      </div>
-      {post.image ? (
-        <figure className="mx-auto mt-12 max-w-md">
-          {/* eslint-disable-next-line @next/next/no-img-element -- SVG art renders crisp without the image optimizer */}
-          <img src={post.image} alt={alt} width={800} height={1000} className="aspect-[4/5] w-full object-cover" />
-          {post.imageAlt && <figcaption className="mt-3 text-sm text-muted">{post.imageAlt}</figcaption>}
-        </figure>
-      ) : chair && (
-        <figure className="mx-auto mt-12 max-w-md">
-          <ChairArt chair={chair} priority className="aspect-[4/5]" />
-          <figcaption className="mt-3 text-sm text-muted">
-            Pictured: the <Link href={`/chairs/${chair.slug}`} className="underline decoration-gold underline-offset-4">{chair.name}</Link>, {chair.tagline.charAt(0).toLowerCase()}{chair.tagline.slice(1)}.
-          </figcaption>
-        </figure>
-      )}
-      <div className="prose-post mx-auto mt-12 max-w-2xl" dangerouslySetInnerHTML={{ __html: html }} />
-      {related.length > 0 && (
-        <aside className="mx-auto mt-20 max-w-2xl border-t border-line pt-10">
-          <p className="text-[11px] tracking-[0.22em] text-gold uppercase">Related guides</p>
-          <ul className="mt-6 grid gap-6 sm:grid-cols-2">
-            {related.map((r) => {
-              const rc = getChair(r.chair);
-              return (
+        {related.length > 0 && (
+          <section aria-labelledby="related" className="mt-14 max-w-2xl">
+            <p id="related" className="eyebrow">Related guides</p>
+            <ul className="mt-5 grid gap-4 sm:grid-cols-2">
+              {related.map((r) => (
                 <li key={r.slug}>
-                  <Link href={`/blog/${r.slug}`} className="group flex gap-4">
-                    {r.image ? (
-                      // eslint-disable-next-line @next/next/no-img-element -- small SVG thumbnail
-                      <img src={r.image} alt={r.imageAlt ?? ""} width={80} height={100} loading="lazy" className="h-[100px] w-[80px] shrink-0 object-cover" />
-                    ) : rc ? (
-                      <ChairArt chair={rc} className="aspect-[4/5] w-[80px] shrink-0" />
-                    ) : null}
-                    <span className="font-serif text-xl leading-snug transition-colors group-hover:text-gold">{r.title}</span>
+                  <Link href={`/blog/${r.slug}`} className="group card card-hover flex h-full gap-4 overflow-hidden p-3">
+                    <span className="relative h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-surface-2">
+                      {r.image ? (
+                        <Image src={r.image} alt="" fill unoptimized sizes="80px" className="object-cover" />
+                      ) : (
+                        <Image src={sceneFor(r.slug).src} alt="" fill sizes="80px" className="object-cover" />
+                      )}
+                    </span>
+                    <span className="self-center font-serif text-lg leading-snug transition-colors group-hover:text-gold">{r.title}</span>
                   </Link>
                 </li>
-              );
-            })}
-          </ul>
-          <Link href={topicUrl} className="link-line mt-8">More in {post.topic}</Link>
-        </aside>
-      )}
-      <div className="mx-auto mt-24 max-w-2xl border-t border-gold/40 pt-12 text-center">
-        <p className="headline text-4xl">
-          Planning your <em className="text-gold">seating</em>?
-        </p>
-        <p className="mt-3 text-muted">Explore the collection, or tell us about your celebration.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link href="/chairs" className="btn-ghost">The collection</Link>
-          <Link href="/quote" className="btn-ghost">Request a quote</Link>
-          <Link href={`/book?from=blog-${post.slug}`} className="btn-primary">Book a free call</Link>
-        </div>
-      </div>
-    </article>
+              ))}
+            </ul>
+            <Link href={topicUrl} className="link-line mt-6 inline-block">More in {post.topic}</Link>
+          </section>
+        )}
+      </ArticleLayout>
+      <QuoteCta source={`blog-${post.slug}`} title="Ready to price your event?" />
+    </>
   );
 }

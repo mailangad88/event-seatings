@@ -97,12 +97,12 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
               <label
                 key={c.slug}
                 className={`flex cursor-pointer items-center gap-3 border border-line px-4 py-4 text-sm transition-colors ${
-                  on ? "bg-gold text-[#0a0806]" : "bg-surface hover:bg-surface-2"
+                  on ? "bg-gold text-accent-ink" : "bg-surface hover:bg-surface-2"
                 }`}
               >
                 <input type="checkbox" checked={on} onChange={() => toggle(c.slug)} className="sr-only" />
                 <span
-                  className={`grid h-4 w-4 shrink-0 place-items-center border text-[10px] ${on ? "border-[#0a0806] bg-[#0a0806] text-gold" : "border-ink/40"}`}
+                  className={`grid h-4 w-4 shrink-0 place-items-center border text-[10px] ${on ? "border-accent-ink bg-accent-ink text-gold" : "border-ink/40"}`}
                   aria-hidden
                 >
                   {on ? "✓" : ""}

@@ -1,24 +1,27 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ChairArt } from "@/components/ChairArt";
-import { getChair } from "@/data/chairs";
 import type { Post } from "@/lib/blog";
+import { sceneFor } from "@/lib/scenes";
 
-// A journal card: the post's hero art (or its chair photo), title and summary.
+// A guide card in the kit's card style: topic art (or a scene render), topic, title, summary.
 export function PostCard({ post }: { post: Post }) {
-  const chair = getChair(post.chair);
+  const scene = sceneFor(post.slug);
   return (
-    <Link href={`/blog/${post.slug}`} className="group block border-t border-line pt-6">
-      {post.image ? (
-        // eslint-disable-next-line @next/next/no-img-element -- SVG art renders crisp without the image optimizer
-        <img src={post.image} alt={post.imageAlt ?? ""} width={800} height={600} loading="lazy" className="mb-6 aspect-[4/3] w-full object-cover" />
-      ) : chair ? (
-        <ChairArt chair={chair} className="mb-6 aspect-[4/3]" />
-      ) : null}
-      <p className="text-[11px] tracking-[0.2em] text-muted uppercase">
-        {post.topic} · {post.readingMinutes} min read
-      </p>
-      <h2 className="headline mt-4 text-3xl leading-tight transition-colors group-hover:text-gold">{post.title}</h2>
-      <p className="mt-3 line-clamp-3 leading-7 text-muted">{post.description}</p>
+    <Link href={`/blog/${post.slug}`} className="group card card-hover flex flex-col overflow-hidden">
+      <div className="relative aspect-[16/10] overflow-hidden bg-espresso">
+        {post.image ? (
+          // eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer
+          <img src={post.image} alt={post.imageAlt ?? ""} width={800} height={500} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+        ) : (
+          <Image src={scene.src} alt={scene.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+        )}
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <p className="text-xs font-medium tracking-wide text-gold uppercase">{post.topic}</p>
+        <h2 className="mt-2 font-serif text-2xl leading-tight transition-colors group-hover:text-gold">{post.title}</h2>
+        <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{post.description}</p>
+        <p className="mt-auto pt-5 text-xs text-muted">{post.readingMinutes} min read</p>
+      </div>
     </Link>
   );
 }

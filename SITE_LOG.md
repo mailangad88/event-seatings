@@ -36,6 +36,16 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-02): marketplace redesign
+
+- **New design system** for the event rental marketplace pivot: light ivory/ink/brass tokens with dark and sand tone scopes, restyled utilities (pill buttons, rounded cards, boxed form fields) and a UI kit in `src/components/ui` (ProductCard, PriceTag, CategoryTile, PageHero, Section, Breadcrumbs with JSON-LD, FaqList with FAQPage JSON-LD, StepFlow flowchart, Figure, ArticleLayout with TOC, QuoteCard, QuoteCta, Callout, TrustBar, StatRow, Icon). Guide: `docs/DESIGN_SYSTEM.md`.
+- **Header**: rentals mega menu (14 categories, `src/lib/nav.ts`), Book a call + Get a quote; mobile menu with category grid. **Footer**: rentals, plan and service-area columns.
+- **Home** rebuilt as a marketplace: hero with Blender tablescape collage, trust bar, category grid, "Shop the look" (3 priced tablescapes), StepFlow, DIY vs us comparison, event types, service area, FAQ (FAQPage schema), guides, quote CTA.
+- **New page** `/how-it-works` (StepFlow, step cards, tip, FAQ, CTA).
+- **Restyled**: `/faq` (grouped topics, 16 marketplace answers), `/about` (marketplace story), `/blog` (scene-image cards), blog posts (ArticleLayout with breadcrumbs, TOC, quote sidebar, hero scene image added to BlogPosting schema), `/book` (scene image, broadened to all rentals), chair pages and cards.
+- **3D**: chair studio re-lit as a light gallery (pale marble floor, light walls), all 13 chair stills re-rendered; Blender tablescape stills added under `public/images/scenes/` with alt text and captions (`src/lib/scenes.ts`).
+- **Remaining**: `/rentals` routes come from the catalog thread; `/quote` builder from the quote thread (header and CTAs already point to both). Legal pages inherit the new styles but still have no hero visual.
+
 ## Changes in this release (2026-10-31)
 
 Shipped in this release:

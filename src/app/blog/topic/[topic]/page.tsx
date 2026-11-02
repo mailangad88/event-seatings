@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostCard } from "@/components/PostCard";
+import { JsonLd, PageHero, QuoteCta } from "@/components/ui";
 import { getPosts, getTopic, topicSlug, topics } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -14,68 +15,73 @@ export function generateStaticParams() {
 export async function generateMetadata(props: PageProps<"/blog/topic/[topic]">): Promise<Metadata> {
   const topic = getTopic((await props.params).topic);
   if (!topic) return {};
+  const slug = topicSlug(topic.name);
   return {
     title: `${topic.name} Guides for Chicago Events`,
     description: `${topic.blurb} Answers for planners in Chicago and the suburbs from ${site.name}.`,
-    alternates: { canonical: `/blog/topic/${topicSlug(topic.name)}` },
+    alternates: { canonical: `/blog/topic/${slug}` },
+    openGraph: { images: [{ url: `/blog/art/${slug}.svg`, alt: `${topic.name} guides` }] },
   };
 }
 
 export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">) {
   const topic = getTopic((await props.params).topic);
   if (!topic) notFound();
+  const slug = topicSlug(topic.name);
   const posts = (await getPosts()).filter((p) => p.topic === topic.name);
-  const url = `${site.url}/blog/topic/${topicSlug(topic.name)}`;
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      name: `${topic.name} guides`,
-      description: topic.blurb,
-      url,
-      isPartOf: { "@type": "Blog", name: `${site.name} Journal`, url: `${site.url}/blog` },
-      mainEntity: {
-        "@type": "ItemList",
-        itemListElement: posts.map((p, i) => ({ "@type": "ListItem", position: i + 1, url: `${site.url}/blog/${p.slug}`, name: p.title })),
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Journal", item: `${site.url}/blog` },
-        { "@type": "ListItem", position: 2, name: topic.name, item: url },
-      ],
-    },
-  ];
+  const url = `${site.url}/blog/topic/${slug}`;
 
   return (
-    <div className="container-x py-20">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <Link href="/blog" className="text-[11px] tracking-[0.22em] text-muted uppercase hover:text-ink">← The journal</Link>
-      <p className="eyebrow mt-10">{posts.length} guides</p>
-      <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-7xl">{topic.name}</h1>
-      <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{topic.blurb}</p>
-      <div className="mt-16 grid gap-x-10 gap-y-14 md:grid-cols-3">
-        {posts.map((p) => <PostCard key={p.slug} post={p} />)}
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: `${topic.name} guides`,
+          description: topic.blurb,
+          url,
+          isPartOf: { "@type": "Blog", name: `${site.name} ideas & guides`, url: `${site.url}/blog` },
+          mainEntity: {
+            "@type": "ItemList",
+            numberOfItems: posts.length,
+            itemListElement: posts.map((p, i) => ({ "@type": "ListItem", position: i + 1, url: `${site.url}/blog/${p.slug}`, name: p.title })),
+          },
+        }}
+      />
+      <PageHero
+        breadcrumbs={[
+          { name: "Ideas & guides", href: "/blog" },
+          { name: topic.name, href: `/blog/topic/${slug}` },
+        ]}
+        eyebrow={`${posts.length} guides`}
+        title={topic.name}
+        intro={topic.blurb}
+        media={
+          <div className="media aspect-[16/10] overflow-hidden bg-espresso shadow-lift">
+            {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
+            <img src={`/blog/art/${slug}.svg`} alt={`Illustration for ${topic.name.toLowerCase()} guides`} width={1200} height={750} className="h-full w-full object-cover" />
+          </div>
+        }
+      />
+
+      <div className="container-x section-y">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((p) => <PostCard key={p.slug} post={p} />)}
+        </div>
+        {!posts.length && <p className="font-serif text-2xl text-muted italic">Guides for this topic arrive soon.</p>}
+
+        <nav aria-label="Guide topics" className="mt-20 border-t border-line pt-10">
+          <p className="eyebrow">More topics</p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {topics.filter((t) => t.name !== topic.name).map((t) => (
+              <li key={t.name}>
+                <Link href={`/blog/topic/${topicSlug(t.name)}`} className="chip transition-colors hover:border-gold hover:text-gold">{t.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-      {!posts.length && <p className="mt-16 font-serif text-2xl text-muted italic">Guides for this topic arrive soon.</p>}
-      <TopicNav current={topic.name} />
-    </div>
-  );
-}
-
-function TopicNav({ current }: { current: string }) {
-  return (
-    <nav aria-label="Journal topics" className="mt-24 border-t border-line pt-10">
-      <p className="text-[11px] tracking-[0.22em] text-gold uppercase">More topics</p>
-      <ul className="mt-6 flex flex-wrap gap-3">
-        {topics.filter((t) => t.name !== current).map((t) => (
-          <li key={t.name}>
-            <Link href={`/blog/topic/${topicSlug(t.name)}`} className="btn-ghost">{t.name}</Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+      <QuoteCta source={`blog-topic-${slug}`} />
+    </>
   );
 }

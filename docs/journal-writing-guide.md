@@ -6,6 +6,10 @@ Model post: [`content/blog/tablecloth-size-chart.md`](../content/blog/tablecloth
 
 Check your work: `node scripts/check-posts.mjs content/blog/<slug>.md` (no arguments checks every post). A post must pass before it ships.
 
+## How posts render
+
+Posts are Markdown, but `src/components/PostBody.tsx` maps the special blocks onto the UI kit (`docs/DESIGN_SYSTEM.md`): the answer box becomes a `Callout`, `ol.flow` a vertical `StepFlow`, `div.stat-grid` a `StatRow`, a `<figure>` with an inline SVG a `Figure`, and the FAQ section a `FaqList` (which emits FAQPage schema). The page itself is an `ArticleLayout` with a scene render hero, a table of contents built from `##` headings, a `QuoteCard` aside and a `QuoteCta` at the end. Keep the block shapes below exactly so the mapping works.
+
 ## The business (what we can and can't say)
 
 - **Beyond Chiavari** (beyondchiavari.com) rents event chairs and helps clients plan the full rental list (tables, linens, dinnerware, glassware, tents, lighting and more) for events in **Chicago and the suburbs**. Base: St. Charles, IL. Primary market: Chicago.

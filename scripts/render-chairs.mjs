@@ -26,7 +26,7 @@ const page = await browser.newPage({ viewport: { width: 1000, height: 1250 }, de
 
 const done = new Set(fs.existsSync(manifest) ? JSON.parse(fs.readFileSync(manifest, "utf8")) : []);
 for (const slug of slugs) {
-  await page.goto(`${base}/render/${slug}`, { waitUntil: "networkidle" });
+  await page.goto(`${base}/render/${slug}`, { waitUntil: "load" });
   await page.waitForFunction(() => window.__chairReady === true, null, { timeout: 120000 });
   await page.waitForTimeout(400);
   await page.locator("#shot").screenshot({ path: path.join(out, `${slug}.jpg`), type: "jpeg", quality: 90 });
