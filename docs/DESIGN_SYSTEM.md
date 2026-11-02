@@ -74,7 +74,7 @@ Fonts: Cormorant Garamond (`font-serif`, display) and Jost (`font-sans`, UI and 
 | `Callout` | tips, notes and key takeaways inside content |
 | `TrustBar` | four value props under a hero |
 | `StatRow` | big numbers (real figures only) |
-| `Icon` | 36 line icons (`chair`, `table`, `linen`, `plate`, `glass`, `flatware`, `tent`, `light`, `sofa`, `arch`, `floor`, `candle`, `chafer`, `heat`, `truck`, `quote`…) |
+| `Icon` | 37 line icons (`chair`, `table`, `linen`, `plate`, `glass`, `flatware`, `tent`, `light`, `sofa`, `arch`, `floor`, `candle`, `chafer`, `heat`, `truck`, `quote`…) |
 | `JsonLd` | any other schema.org block |
 
 Older shared pieces still work and now match: `CallCta` (full-bleed dark band, wrap in `-mb-32` to sit on the
