@@ -5,6 +5,7 @@ import { CallCta } from "@/components/CallCta";
 import { ChairViewer } from "@/components/ChairViewer";
 import { ChairCard } from "@/components/ChairCard";
 import { VoteButton } from "@/components/VoteProvider";
+import { FaqList, type Faq } from "@/components/ui";
 import { chairAlt, chairImage, chairs, getChair } from "@/data/chairs";
 import { site } from "@/lib/site";
 
@@ -67,7 +68,7 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-        { "@type": "ListItem", position: 2, name: "Chairs", item: `${site.url}/chairs` },
+        { "@type": "ListItem", position: 2, name: "Chair styles", item: `${site.url}/chairs` },
         { "@type": "ListItem", position: 3, name: chair.name, item: pageUrl },
       ],
     },
@@ -82,13 +83,45 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
     ["Pairs with", chair.pairsWith],
   ];
 
+  const faqs: Faq[] = [
+    {
+      q: `How much does it cost to rent a ${chair.name} in Chicago?`,
+      a: `Expect about ${chair.estPrice} per chair for a one-day event in Chicago and the suburbs. Delivery, setup and pickup are itemized separately in your quote, and per-chair rates usually drop for larger orders.`,
+    },
+    {
+      q: `What events is the ${chair.name} best for?`,
+      a: `It works best for ${chair.uses.join(", ").toLowerCase()}, and suits ${chair.styles.join(", ").toLowerCase()} styles. It pairs well with ${chair.pairsWith.charAt(0).toLowerCase()}${chair.pairsWith.slice(1)}.`,
+    },
+    {
+      q: `Can the ${chair.name} be used outdoors?`,
+      a: chair.outdoorFriendly
+        ? "Yes. It handles lawns, patios and tents well. On soft grass, ask us about floor boards or a level setup area."
+        : "We recommend it indoors or under a tent with flooring, because rain and soft ground can damage the finish.",
+    },
+    {
+      q: "Does it come with a cushion?",
+      a:
+        chair.cushion === "Included"
+          ? "Yes, a seat cushion is included in the rental price."
+          : chair.cushion === "Optional"
+            ? "Cushions are optional. Add them to your quote in the colour you want."
+            : "No cushion is needed; the seat is designed to be used as is.",
+    },
+    {
+      q: "How many should I order?",
+      a: "Plan one per seated guest, plus 3 to 5 percent extra for vendors and late RSVPs. If your ceremony and reception are in different spaces with no flip time, you may need a second set.",
+    },
+  ];
+
   return (
     <>
     <div className="container-x py-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <nav className="text-[11px] tracking-[0.2em] text-muted uppercase" aria-label="Breadcrumb">
-        <Link href="/chairs" className="hover:text-ink">The collection</Link>
-        <span className="mx-3 text-gold" aria-hidden>/</span>
+      <nav className="text-sm text-muted" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-gold">Home</Link>
+        <span className="mx-2 text-line" aria-hidden>/</span>
+        <Link href="/chairs" className="hover:text-gold">Chair styles</Link>
+        <span className="mx-2 text-line" aria-hidden>/</span>
         {chair.name}
       </nav>
 
@@ -121,13 +154,13 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
             <VoteButton slug={chair.slug} size="lg" />
           </div>
           <p className="mt-4 text-sm text-muted">
-            Final pricing is confirmed in your personal quote. Saved pieces help shape our {site.launch.seasonLabel}.
+            Final pricing is confirmed in your personal quote. Save pieces to compare them later.
           </p>
 
           <dl className="mt-12 border-t border-line text-sm">
             {facts.map(([k, v]) => (
               <div key={k} className="grid grid-cols-[150px_1fr] gap-4 border-b border-line py-4">
-                <dt className="text-[11px] tracking-[0.2em] text-muted uppercase">{k}</dt>
+                <dt className="font-medium text-muted">{k}</dt>
                 <dd>{v}</dd>
               </div>
             ))}
@@ -135,13 +168,22 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
         </div>
       </div>
 
+      <section className="mt-24 grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+        <div>
+          <p className="eyebrow">Questions</p>
+          <h2 className="display-2 mt-3">About the {chair.name}</h2>
+          <p className="lede mt-4">Price, fit and planning answers for Chicago-area events.</p>
+        </div>
+        <FaqList faqs={faqs} />
+      </section>
+
       {related.length > 0 && (
-        <section className="mt-32">
+        <section className="mt-24">
           <p className="eyebrow">Also consider</p>
-          <h2 className="headline mt-6 text-5xl">
+          <h2 className="display-2 mt-3">
             Pieces in a <em>similar</em> spirit
           </h2>
-          <div className="mt-12 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((c) => (
               <ChairCard key={c.slug} chair={c} index={chairs.indexOf(c)} />
             ))}

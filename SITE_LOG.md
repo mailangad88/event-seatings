@@ -44,6 +44,7 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 - **New page** `/how-it-works` (StepFlow, step cards, tip, FAQ, CTA).
 - **Restyled**: `/faq` (grouped topics, 16 marketplace answers), `/about` (marketplace story), `/blog` (scene-image cards), blog posts (ArticleLayout with breadcrumbs, TOC, quote sidebar, hero scene image added to BlogPosting schema), `/book` (scene image, broadened to all rentals), chair pages and cards.
 - **3D**: chair studio re-lit as a light gallery (pale marble floor, light walls), all 13 chair stills re-rendered; Blender tablescape stills added under `public/images/scenes/` with alt text and captions (`src/lib/scenes.ts`).
+- **Completion audit (2026-11-02 PM)**: FAQs with FAQPage schema added to `/chairs` (5) and every `/chairs/[slug]` page (5, generated from the chair data). `/quiz` rebuilt answer-first with breadcrumbs, Chicago venue and season signals, a how-it-works flowchart, 4 FAQs and a book-a-call ending; results now offer "Book a free call". Home already carries 6 FAQs with FAQPage schema. Chair style guide, quiz, 404, privacy and terms moved onto the kit; CTA bands rotate scene images per page.
 - **Remaining**: `/rentals` routes come from the catalog thread; `/quote` builder from the quote thread (header and CTAs already point to both). Legal pages inherit the new styles but still have no hero visual.
 
 ## Changes in this release (2026-10-31)

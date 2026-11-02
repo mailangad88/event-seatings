@@ -182,9 +182,10 @@ export function Quiz() {
       </div>
       <div className="mt-14 flex flex-wrap justify-center gap-4">
         <Link href={`/quote?chairs=${picks.map((c) => c.slug).join(",")}`} className="btn-primary">
-          Request a quote
+          Price these chairs
         </Link>
-        <button onClick={() => setAnswers([])} className="btn-ghost">Retake the quiz</button>
+        <Link href="/book?from=style-quiz" className="btn-ghost">Book a free call</Link>
+        <button onClick={() => setAnswers([])} className="link-line">Retake the quiz</button>
       </div>
     </div>
   );
