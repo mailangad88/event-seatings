@@ -26,6 +26,15 @@
     "height": 1600,
     "kind": "product"
   },
+  "champagne-wall": {
+    "src": "/rentals/catering/champagne-wall.webp",
+    "category": "catering",
+    "alt": "3D render of a white champagne wall holding 36 filled champagne flutes on gold holders for a welcome-drink display",
+    "caption": "Champagne wall (36 flutes)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
   "coffee-urn": {
     "src": "/rentals/catering/coffee-urn.webp",
     "category": "catering",
@@ -341,6 +350,51 @@
     "height": 1600,
     "kind": "product"
   },
+  "bounce-house": {
+    "src": "/rentals/games/bounce-house.webp",
+    "category": "games",
+    "alt": "3D render of a red, blue and yellow inflatable castle bounce house for kids' birthday parties",
+    "caption": "Castle bounce house",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "cotton-candy-machine": {
+    "src": "/rentals/games/cotton-candy-machine.webp",
+    "category": "games",
+    "alt": "3D render of a pink cotton candy machine cart with spun pink and blue cotton candy",
+    "caption": "Cotton candy machine",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "popcorn-machine": {
+    "src": "/rentals/games/popcorn-machine.webp",
+    "category": "games",
+    "alt": "3D render of a red vintage popcorn machine cart filled with fresh popcorn for parties and school events",
+    "caption": "Popcorn machine cart",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "soft-play": {
+    "src": "/rentals/games/soft-play.webp",
+    "category": "games",
+    "alt": "3D render of a neutral-toned toddler soft play set with padded fence, steps, arch and balls",
+    "caption": "Toddler soft play set",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "yard-games": {
+    "src": "/rentals/games/yard-games.webp",
+    "category": "games",
+    "alt": "3D render of giant wooden tumble tower blocks and a cornhole board with bean bags for outdoor parties",
+    "caption": "Giant tumble tower and cornhole",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
   "patio-heater": {
     "src": "/rentals/heating/patio-heater.webp",
     "category": "heating",
@@ -511,6 +565,159 @@
     "width": 1600,
     "height": 1600,
     "kind": "product"
+  },
+  "baby-shower": {
+    "src": "/rentals/scenes/baby-shower.webp",
+    "category": "scenes",
+    "alt": "3D render of a baby shower setup with blush linens, clear ghost chairs, a rose flower wall, a cake table and an ivory armchair",
+    "caption": "Baby shower setup",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "cocktail-hour": {
+    "src": "/rentals/scenes/cocktail-hour.webp",
+    "category": "scenes",
+    "alt": "3D render of an outdoor cocktail hour with white spandex highboy tables, an ivory velvet lounge sofa and bistro string lights at dusk",
+    "caption": "Cocktail hour under string lights",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "farm-table-dinner": {
+    "src": "/rentals/scenes/farm-table-dinner.webp",
+    "category": "scenes",
+    "alt": "3D render of a rustic farm table dinner with walnut crossback chairs, a sage runner, rattan chargers and string lights",
+    "caption": "Farm table dinner with crossback chairs",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "garden-ceremony": {
+    "src": "/rentals/scenes/garden-ceremony.webp",
+    "category": "scenes",
+    "alt": "3D render of an outdoor wedding ceremony with rows of white folding chairs, an ivory aisle runner with rose petals and a floral hexagon arch at golden hour",
+    "caption": "Garden wedding ceremony",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-catering": {
+    "src": "/rentals/scenes/hero-catering.webp",
+    "category": "scenes",
+    "alt": "3D render of catering rentals: a roll-top chafing dish, a glass lemonade dispenser, a coffee urn and a gold cake stand",
+    "caption": "Catering and buffet equipment",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-celebrations": {
+    "src": "/rentals/scenes/hero-celebrations.webp",
+    "category": "scenes",
+    "alt": "3D render of a gold and ivory throne chair pair in front of a blush and ivory rose flower wall for quinceaneras, sweet sixteens and showers",
+    "caption": "Throne chairs and flower walls for celebrations",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-chairs": {
+    "src": "/rentals/scenes/hero-chairs.webp",
+    "category": "scenes",
+    "alt": "3D render of five rental chairs side by side: gold Chiavari, walnut crossback, clear ghost, emerald velvet and white folding",
+    "caption": "Chair styles for Chicago events",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-corporate": {
+    "src": "/rentals/scenes/hero-corporate.webp",
+    "category": "scenes",
+    "alt": "3D render of a corporate event setup with rows of black padded chairs facing a skirted stage, ivory pipe and drape and cocktail highboys",
+    "caption": "Corporate and conference seating",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-dance-decor": {
+    "src": "/rentals/scenes/hero-dance-decor.webp",
+    "category": "scenes",
+    "alt": "3D render of a black and white dance floor with light-up LOVE marquee letters and a floral hexagon ceremony arch",
+    "caption": "Dance floors and decor",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-dinnerware": {
+    "src": "/rentals/scenes/hero-dinnerware.webp",
+    "category": "scenes",
+    "alt": "3D render of a complete wedding place setting: gold beaded charger, white china dinner and salad plates, stainless flatware and crystal stemware on ivory linen",
+    "caption": "A full place setting, ready to rent",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-glassware": {
+    "src": "/rentals/scenes/hero-glassware.webp",
+    "category": "scenes",
+    "alt": "3D render of six rental glasses in a row: water goblet, wine glass, champagne flute, rocks, highball and pilsner glasses",
+    "caption": "Glassware for bars and dinners",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-linens": {
+    "src": "/rentals/scenes/hero-linens.webp",
+    "category": "scenes",
+    "alt": "3D render of an ivory floor-length round tablecloth, a gold sequin round tablecloth and a white spandex highboy cover",
+    "caption": "Tablecloths, sequin overlays and spandex covers",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-lounge": {
+    "src": "/rentals/scenes/hero-lounge.webp",
+    "category": "scenes",
+    "alt": "3D render of an event lounge vignette: ivory velvet sofa, matching armchair and gold glass coffee table",
+    "caption": "Lounge furniture for cocktail hour",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-parties": {
+    "src": "/rentals/scenes/hero-parties.webp",
+    "category": "scenes",
+    "alt": "3D render of party rentals: a red popcorn machine, a pink cotton candy cart, a neon sign and giant tumble tower blocks",
+    "caption": "Party and kids' rentals",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-tables": {
+    "src": "/rentals/scenes/hero-tables.webp",
+    "category": "scenes",
+    "alt": "3D render of a 60-inch round table, a 6-foot banquet table and a cocktail highboy, the three most rented event tables",
+    "caption": "Round, banquet and cocktail tables",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "tent-reception-dusk": {
+    "src": "/rentals/scenes/tent-reception-dusk.webp",
+    "category": "scenes",
+    "alt": "3D render of a clear-top frame tent glowing at twilight with string lights, round tables and gold Chiavari chairs on a lawn",
+    "caption": "Clear-top tent reception at twilight",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "wedding-reception": {
+    "src": "/rentals/scenes/wedding-reception.webp",
+    "category": "scenes",
+    "alt": "3D render of a candlelit Chicago ballroom wedding reception with ivory floor-length linens, gold Chiavari chairs, gold chargers and blush rose centerpieces",
+    "caption": "Ballroom wedding reception",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
   },
   "banquet-6ft": {
     "src": "/rentals/tables/banquet-6ft.webp",
