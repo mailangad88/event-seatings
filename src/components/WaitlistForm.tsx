@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { attributionFields } from "@/lib/attribution";
+import { trackLead } from "@/lib/analytics";
 
 // Email capture. Works on light and dark bands (it uses theme tokens); `dark` is kept for older call sites.
 export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
@@ -17,7 +18,10 @@ export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...attributionFields(), ...data, kind: "waitlist", source }),
     }).catch(() => null);
-    if (res?.ok) return setStatus("done");
+    if (res?.ok) {
+      trackLead("waitlist", source);
+      return setStatus("done");
+    }
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");
     setStatus("error");
   }

@@ -1,0 +1,265 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ChairArt } from "@/components/ChairArt";
+import { DecoFrame } from "@/components/DecoFrame";
+import { Reveal } from "@/components/Reveal";
+import { AreaMap } from "@/components/geo/AreaMap";
+import { Breadcrumbs } from "@/components/geo/Breadcrumbs";
+import { CallButton, CallCta } from "@/components/geo/CallCta";
+import { Emphasis } from "@/components/geo/Emphasis";
+import { FaqList } from "@/components/geo/FaqList";
+import { JsonLd } from "@/components/geo/JsonLd";
+import { RecommendedChairs } from "@/components/geo/RecommendedChairs";
+import { chairs, getChair } from "@/data/chairs";
+import { eventPath, getEventType, getLocation, homeBase, locationPath, locations, milesFrom } from "@/data/geo";
+import { site } from "@/lib/site";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return locations.map((l) => ({ slug: l.slug }));
+}
+
+export async function generateMetadata(props: PageProps<"/chair-rentals/[slug]">): Promise<Metadata> {
+  const loc = getLocation((await props.params).slug);
+  if (!loc) return {};
+  const path = locationPath(loc);
+  return {
+    title: loc.metaTitle,
+    description: loc.metaDescription,
+    alternates: { canonical: path },
+    openGraph: { title: `${loc.metaTitle} | ${site.name}`, description: loc.metaDescription, url: path },
+    other: { "geo.region": "US-IL", "geo.placename": loc.name, "geo.position": `${loc.lat};${loc.lng}`, ICBM: `${loc.lat}, ${loc.lng}` },
+  };
+}
+
+const numerals = ["I", "II", "III", "IV", "V", "VI"];
+
+export default async function LocationPage(props: PageProps<"/chair-rentals/[slug]">) {
+  const loc = getLocation((await props.params).slug);
+  if (!loc) notFound();
+
+  const miles = milesFrom(homeBase, loc);
+  const events = loc.popularEvents.flatMap((s) => {
+    const e = getEventType(s);
+    return e ? [e] : [];
+  });
+  const nearby = loc.nearby.flatMap((s) => {
+    const l = getLocation(s);
+    return l ? [l] : [];
+  });
+  const crumbs = [{ href: "/chair-rentals", label: "Areas we serve" }];
+  if (loc.kind === "neighborhood") crumbs.push({ href: "/chair-rentals/chicago", label: "Chicago" });
+  crumbs.push({ href: locationPath(loc), label: loc.name });
+
+  const place = loc.kind === "neighborhood" ? `${loc.name}, Chicago` : `${loc.name}, IL`;
+
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: `Event chair rentals in ${place}`,
+          serviceType: "Event chair rental, delivery and setup",
+          description: loc.metaDescription,
+          url: `${site.url}${locationPath(loc)}`,
+          provider: {
+            "@type": "LocalBusiness",
+            name: site.name,
+            url: site.url,
+            email: site.email,
+            address: { "@type": "PostalAddress", addressLocality: "St. Charles", addressRegion: "IL", addressCountry: "US" },
+          },
+          areaServed: {
+            "@type": loc.kind === "neighborhood" ? "Place" : "City",
+            name: place,
+            geo: { "@type": "GeoCoordinates", latitude: loc.lat, longitude: loc.lng },
+            ...(loc.zips.length ? { postalCode: loc.zips.join(", ") } : {}),
+          },
+          offers: loc.recommendedChairs.flatMap((r) => {
+            const c = getChair(r.slug);
+            return c ? [{ "@type": "Offer", name: `${c.name} rental`, description: `Estimated ${c.estPrice} per chair` }] : [];
+          }),
+        }}
+      />
+      <div className="container-x pt-14">
+        <Breadcrumbs items={crumbs} />
+
+        {/* Hero */}
+        <section className="mt-10 grid items-center gap-14 md:grid-cols-[1.1fr_1fr] md:gap-16">
+          <div className="animate-rise">
+            <p className="eyebrow">
+              {loc.region} · Chair rentals
+            </p>
+            <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+              <Emphasis text={loc.headline} />
+            </h1>
+            <p className="mt-8 max-w-xl text-lg leading-8 text-muted">{loc.intro}</p>
+            <div className="mt-10 flex flex-wrap items-center gap-6">
+              <CallButton />
+              <Link href="/quote" className="link-line">
+                Request a quote
+              </Link>
+            </div>
+            <dl className="mt-12 grid grid-cols-3 border-y border-line text-center">
+              {[
+                [loc.slug === "st-charles" ? "Home" : `~${miles} mi`, "from our base"],
+                [String(chairs.length), "chair styles"],
+                ["Full", "delivery & setup"],
+              ].map(([v, k]) => (
+                <div key={k} className="border-line py-5 not-last:border-r">
+                  <dt className="sr-only">{k}</dt>
+                  <dd>
+                    <span className="headline block text-3xl text-gold">{v}</span>
+                    <span className="mt-1 block text-[10px] tracking-[0.2em] text-muted uppercase">{k}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div className="animate-rise [animation-delay:200ms]">
+            <DecoFrame label={loc.kind === "city" ? "Chicagoland" : loc.name}>
+              <AreaMap active={loc} />
+            </DecoFrame>
+            {loc.zips.length > 0 && (
+              <p className="mt-4 text-center text-[11px] tracking-[0.2em] text-muted uppercase">
+                Serving ZIP {loc.zips.join(" · ")}
+              </p>
+            )}
+          </div>
+        </section>
+
+        <RecommendedChairs
+          picks={loc.recommendedChairs}
+          eyebrow={`Chosen for ${loc.name}`}
+          heading={
+            <>
+              Three chairs that suit <em className="text-gold">{loc.name}</em>
+            </>
+          }
+        />
+
+        {/* Story + settings */}
+        <section className="mt-32 grid gap-14 md:grid-cols-[1.4fr_1fr] md:gap-20">
+          <div>
+            <p className="eyebrow">Celebrating in {loc.name}</p>
+            <div className="prose-post mt-8">
+              {loc.story.map((p) => (
+                <p key={p.slice(0, 24)}>{p}</p>
+              ))}
+            </div>
+          </div>
+          <div className="md:pt-14">
+            <h2 className="headline text-3xl">Where people celebrate</h2>
+            <ul className="mt-6 border-t border-gold/40">
+              {loc.settings.map((s, i) => (
+                <li key={s.name} className="grid grid-cols-[2.5rem_1fr] border-b border-line py-5">
+                  <span className="font-serif text-lg text-gold italic">{numerals[i]}.</span>
+                  <div>
+                    <h3 className="font-serif text-xl">{s.name}</h3>
+                    <p className="mt-1 text-sm leading-6 text-muted">{s.note}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      {/* Logistics on marble */}
+      <section className="paper mt-32">
+        <div className="container-x grid gap-14 py-24 md:grid-cols-[1fr_1.4fr] md:gap-20">
+          <div>
+            <p className="eyebrow">Delivery notes</p>
+            <h2 className="headline mt-6 text-5xl leading-[1.02]">
+              Know before we <em className="text-gold">arrive</em>
+            </h2>
+            <p className="mt-6 leading-7 text-muted">
+              Every {loc.name} venue is a little different. These are the things we ask about on a planning call so
+              chairs are placed and ready before your first guest walks in.
+            </p>
+          </div>
+          <ol className="grid gap-6 sm:grid-cols-2">
+            {loc.logistics.map((t, i) => (
+              <Reveal key={t.slice(0, 24)} delay={i * 90}>
+                <li className="h-full border border-line bg-surface p-6">
+                  <span className="font-serif text-3xl text-gold">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="mt-3 leading-7">{t}</p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <div className="container-x">
+        {events.length > 0 && (
+          <section className="mt-32">
+            <p className="eyebrow">Popular in {loc.name}</p>
+            <h2 className="headline mt-6 text-5xl">
+              Seating for every <em className="text-gold">occasion</em>
+            </h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {events.map((e) => {
+                const chair = getChair(e.recommendedChairs[0]?.slug ?? "");
+                return (
+                  <Link key={e.slug} href={eventPath(e)} className="group relative block overflow-hidden border border-line">
+                    {chair && (
+                      <ChairArt chair={chair} className="aspect-[4/3] transition-transform duration-[1.2s] group-hover:scale-[1.05]" />
+                    )}
+                    <div className="p-5">
+                      <h3 className="font-serif text-2xl">{e.shortName}</h3>
+                      <p className="mt-1 text-[11px] tracking-[0.2em] text-gold uppercase">
+                        {e.shortName} in {loc.name} →
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        <FaqList
+          faqs={loc.faqs}
+          title={
+            <>
+              Renting chairs in <em className="text-gold">{loc.name}</em>
+            </>
+          }
+        />
+      </div>
+
+      <CallCta
+        place={loc.name}
+        heading={
+          <>
+            Planning something in <em className="text-gold">{loc.name}</em>?
+          </>
+        }
+      />
+
+      {nearby.length > 0 && (
+        <section className="container-x mt-24">
+          <p className="eyebrow">Nearby</p>
+          <ul className="mt-6 flex flex-wrap gap-3">
+            {nearby.map((n) => (
+              <li key={n.slug}>
+                <Link href={locationPath(n)} className="chip transition-colors hover:border-gold hover:text-ink">
+                  Chair rentals in {n.name}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/chair-rentals" className="chip border-gold/60 text-gold hover:text-ink">
+                All areas
+              </Link>
+            </li>
+          </ul>
+        </section>
+      )}
+    </>
+  );
+}

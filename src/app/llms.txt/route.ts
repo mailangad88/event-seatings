@@ -1,5 +1,8 @@
 import { chairs } from "@/data/chairs";
+import { categories } from "@/data/catalog";
+import { eventPath, eventTypes, locationPath, locations } from "@/data/geo";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
+import { families } from "@/lib/guide-content";
 import { site } from "@/lib/site";
 
 // llms.txt: a plain-text map of the site for AI answer engines (ChatGPT, Perplexity, Gemini, Claude).
@@ -12,7 +15,7 @@ export async function GET() {
     "",
     `> ${site.description}`,
     "",
-    `${site.name} (${site.domain}) is an event chair rental company serving ${site.serviceArea.join(", ")} and the wider Chicago area. Delivery, setup and pickup are included in full-service rentals. We are preparing our ${site.launch.seasonLabel}; first deliveries begin ${site.launch.firstEventDate}. Quotes are free and nothing is charged until the client confirms.`,
+    `${site.name} (${site.domain}) is a one-stop event rental marketplace for ${site.serviceArea.join(", ")} and the wider Chicago area. Planners build one itemized quote for chairs, tables, linens, dinnerware, glassware, tents, lighting, dance floors and more; we book it with vetted Chicago-area rental companies and coordinate delivery, setup and pickup. Prices shown are partner rates plus our 10% service fee, and quotes are free.`,
     "",
     "## Start here",
     `- [Book a free ${site.callLength} seating call](${site.url}/book): recommendations, quantities and an estimate for your event`,
@@ -38,6 +41,24 @@ export async function GET() {
         ...list.map((p) => `- [${p.title}](${site.url}/blog/${p.slug}): ${p.description}`),
       ];
     }),
+    "",
+    "## Rental categories",
+    ...categories.map((c) => `- [${c.name}](${site.url}/rentals/${c.id})`),
+    "",
+    "## Planning guides (computed chair counts, floor plans and estimates)",
+    ...families.map((f) => `- [${f.hubTitle}](${site.url}${f.base}): ${f.hubDescription} (${f.slugs().length} guides)`),
+    "",
+    "## Areas we serve",
+    ...locations.map((l) => `- [${l.name}](${site.url}${locationPath(l)})`),
+    "",
+    "## Events",
+    ...eventTypes.map((e) => `- [${e.name}](${site.url}${eventPath(e)})`),
+    "",
+    "## Tools",
+    `- [Quote builder](${site.url}/quote): pick items, see live prices, send one request`,
+    `- [Seating planner](${site.url}/seating-planner)`,
+    `- [Style quiz](${site.url}/quiz)`,
+    `- [Quick answers](${site.url}/answers)`,
     "",
     "## Contact",
     `- Email: ${site.email}`,

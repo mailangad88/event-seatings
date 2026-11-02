@@ -40,8 +40,14 @@ export function Footer() {
               ["/quote", "Build a quote"],
               ["/book", "Book a free call"],
               ["/how-it-works", "How it works"],
+              ["/events", "Events we plan"],
+              ["/chair-rentals", "Areas we serve"],
               ["/blog", "Ideas & guides"],
+              ["/tools", "Free planning tools"],
               ["/quiz", "Style quiz"],
+              ["/seating-planner", "Seating planner"],
+              ["/answers", "Quick answers"],
+              ["/looks", "The Look Book"],
               ["/gallery", "3D gallery"],
               ["/faq", "FAQ"],
               ["/about", "About us"],
@@ -74,6 +80,22 @@ export function Footer() {
             <a href={site.pinterest} className="hover:text-ink">Pinterest</a>
           </p>
         </div>
+      </div>
+      <div className="border-t border-line">
+        <nav aria-label="Planning guides" className="container-x flex flex-wrap gap-x-6 gap-y-2 py-5 text-xs text-muted">
+          <span className="font-medium text-ink">Planning guides:</span>
+          {[
+            ["/seating-layouts", "Seating layouts"],
+            ["/room-size-guides", "Room sizes"],
+            ["/table-seating-guides", "Table seating"],
+            ["/chair-comparisons", "Chair comparisons"],
+            ["/chair-rental-cost", "Chair rental cost"],
+            ["/chair-fit", "Chair fit"],
+            ["/chicago-event-seasons", "Chicago event seasons"],
+          ].map(([href, label]) => (
+            <Link key={href} href={href} className="hover:text-ink">{label}</Link>
+          ))}
+        </nav>
       </div>
       <div className="border-t border-line">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-muted sm:flex-row">

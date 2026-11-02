@@ -7,7 +7,7 @@ import { syncToCrm } from "@/lib/crm";
 import { notifyOwner } from "@/lib/notify";
 import { addLead, trackingFields, type LeadKind, type NewLead } from "@/lib/store";
 
-const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call"];
+const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat"];
 
 const str = (v: unknown, max = 200) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined;
@@ -50,6 +50,10 @@ export async function POST(request: Request) {
   for (const f of trackingFields) {
     const v = str(body[f], 300);
     if (v) lead[f] = v;
+  }
+
+  if (kind === "chat" && !lead.message) {
+    return Response.json({ error: "Please type your question." }, { status: 400 });
   }
 
   if (kind === "call" && !lead.phone) {

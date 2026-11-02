@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { chairs, type Style } from "@/data/chairs";
 import { attributionFields } from "@/lib/attribution";
+import { track, trackLead } from "@/lib/analytics";
 import { BookingCta } from "./BookingCta";
 import { ChairCard } from "./ChairCard";
 
@@ -77,7 +78,10 @@ export function Quiz() {
           {options.map((o) => (
             <button
               key={o.label}
-              onClick={() => setAnswers([...answers, options.indexOf(o)])}
+              onClick={() => {
+                if (step + 1 === questions.length) track("quiz_complete");
+                setAnswers([...answers, options.indexOf(o)]);
+              }}
               className="group card card-hover flex items-center justify-between gap-4 px-6 py-5 text-left hover:border-ink"
             >
               <span className="text-lg leading-snug font-medium">{o.label}</span>
@@ -114,7 +118,7 @@ export function Quiz() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setEmailStatus("sending");
-    await fetch("/api/leads", {
+    const res = await fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -126,6 +130,7 @@ export function Quiz() {
         source: "style-quiz",
       }),
     }).catch(() => null);
+    if (res?.ok) trackLead("quiz", "style-quiz", { quiz_style: topStyles[0] });
     setEmailStatus("done");
   }
 
