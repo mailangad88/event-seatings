@@ -50,8 +50,13 @@ export const imageCategories: { id: string; label: string }[] = [
   { id: "lighting", label: "Lighting & drape" },
   { id: "heating", label: "Heating" },
   { id: "lounge", label: "Lounge furniture" },
-  { id: "decor", label: "Decor & photo booths" },
+  { id: "decor", label: "Decor" },
+  { id: "photo-booths", label: "Photo booths" },
+  { id: "concessions", label: "Concessions" },
   { id: "games", label: "Games & kids" },
+  { id: "av", label: "AV & sound" },
+  { id: "restrooms-power", label: "Restrooms & power" },
+  { id: "fencing", label: "Fencing & crowd control" },
 ];
 
 // Chair collection slugs (src/data/chairs.ts) that have a matching Blender render.
