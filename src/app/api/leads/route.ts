@@ -5,7 +5,7 @@ import { imagesFor } from "@/data/rental-images";
 import { priceQuote } from "@/lib/catalog-types";
 import { syncToCrm } from "@/lib/crm";
 import { notifyOwner } from "@/lib/notify";
-import { addLead, trackingFields, type LeadKind, type NewLead } from "@/lib/store";
+import { addLead, trackingFields, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat"];
 
@@ -99,7 +99,16 @@ export async function POST(request: Request) {
     return Response.json({ error: "Please pick an event date and at least one item." }, { status: 400 });
   }
 
-  const saved = await addLead(lead);
+  let saved: Lead;
+  try {
+    saved = await addLead(lead);
+  } catch (error) {
+    // Storage is down or not configured (for example Supabase env vars missing on Vercel, where the
+    // local JSON fallback can't write). Never lose the lead: log it in full so it can be recovered from
+    // the function logs, still email the owner and sync the CRM, and thank the visitor as normal.
+    saved = { ...lead, id: crypto.randomUUID(), created_at: new Date().toISOString() };
+    console.error("LEAD_SAVE_FAILED", error, JSON.stringify(saved));
+  }
   // CRM sync and the owner email run after the visitor gets their answer, so a slow or failing CRM
   // never loses a lead: it's already saved above, and both helpers log their own errors.
   after(() => Promise.allSettled([syncToCrm(saved), notifyOwner(saved)]));

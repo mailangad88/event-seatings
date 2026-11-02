@@ -22,7 +22,21 @@ async function load(props: PageProps<"/rentals/[category]/[item]">) {
 }
 
 const unitLabel = (i: CatalogItem) => (i.unit === "each" ? "each" : i.unit);
-const lower = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
+// Item names are used as written mid-sentence ("Rent a Stainless Steel Table"). Lowercasing them broke
+// brand and style names (Igloo, Americana, Imperial Onyx) and left half-lowercased names before.
+const lower = (s: string) => s;
+/** "a" or "an" for a phrase: "an oblong table", "an 8' banquet table", "a uniform cover". */
+const article = (s: string) => (/^(8|11|18)\b|^(?!one|uni|use|eu)[aeiou]/i.test(s) ? "an" : "a");
+const withArticle = (s: string) => `${article(s)} ${s}`;
+
+// Names shared by several items (sizes or finishes of one product) get their specs in the title,
+// so every page has a unique title in search results.
+const nameCounts = catalogItems.reduce((m, x) => m.set(x.name, (m.get(x.name) ?? 0) + 1), new Map<string, number>());
+const titleName = (i: CatalogItem) => {
+  if ((nameCounts.get(i.name) ?? 0) < 2 || !i.specs) return i.name;
+  const spec = i.specs.length > 40 ? `${i.specs.slice(0, 38).replace(/[\s,;]+\S*$/, "")}…` : i.specs;
+  return `${i.name} (${spec})`;
+};
 const plural = (s: string) => (/(s|x|ch|sh)$/.test(s) ? `${s}es` : `${s}s`);
 
 export async function generateMetadata(props: PageProps<"/rentals/[category]/[item]">): Promise<Metadata> {
@@ -36,8 +50,8 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]/[it
       ? { url: stockSrc(real.photos[0], 1200, 630), width: 1200, height: 630, alt: stockAlt(real.photos[0], i.name, true, site.market) }
       : undefined;
   return {
-    title: `${i.name} Rental ${site.market}: ${formatPrice(customerPrice(i))} ${unitLabel(i)}`,
-    description: `Rent a ${lower(i.name)} in ${site.market} and the suburbs for ${formatPrice(customerPrice(i))} ${unitLabel(i)}. ${i.specs}. ${i.description} Delivery and setup available.`,
+    title: `${titleName(i)} Rental ${site.market}: ${formatPrice(customerPrice(i))} ${unitLabel(i)}`,
+    description: `Rent ${withArticle(lower(i.name))} in ${site.market} and the suburbs for ${formatPrice(customerPrice(i))} ${unitLabel(i)}. ${i.specs}. ${i.description} Delivery and setup available.`,
     alternates: { canonical: itemHref(i) },
     ...(og && { openGraph: { images: [og] } }),
   };
@@ -64,7 +78,7 @@ function itemFaqs(i: CatalogItem) {
   const c = getCategory(i.categoryId)!;
   const faqs = [
     {
-      q: `How much does it cost to rent a ${lower(i.name)} in ${site.market}?`,
+      q: `How much does it cost to rent ${withArticle(lower(i.name))} in ${site.market}?`,
       a: `${price} ${unitLabel(i)} for one event day${i.priceSource === "estimated" ? ", based on current Chicago-area market rates" : ""}. Delivery, setup and pickup are quoted for your venue, along with an optional damage waiver and sales tax. Multi-day rentals are quoted on request.`,
     },
   ];
@@ -77,7 +91,7 @@ function itemFaqs(i: CatalogItem) {
   }
   faqs.push(
     {
-      q: `Can you deliver a ${lower(i.name)} to my venue?`,
+      q: `Can you deliver ${withArticle(lower(i.name))} to my venue?`,
       a: `Yes. We arrange delivery, setup and pickup anywhere in ${site.marketLong}, including ${site.serviceArea.slice(1, 6).join(", ")} and nearby towns. Tell us about stairs, elevators or load-in windows and we include them in the quote.`,
     },
     {
@@ -97,7 +111,11 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const rows = quantityRows(i);
   const maxRow = Math.max(...rows.map((r) => r.qty * price), 1);
   const faqs = itemFaqs(i);
-  const related = catalogItems.filter((x) => x.categoryId === i.categoryId && x.id !== i.id).slice(0, 4);
+  // Related: the next items in the same category (wrapping round), so every item links to different
+  // neighbours instead of every page showing the same first four.
+  const siblings = catalogItems.filter((x) => x.categoryId === i.categoryId);
+  const at = siblings.findIndex((x) => x.id === i.id);
+  const related = [1, 2, 3, 4].map((n) => siblings[(at + n) % siblings.length]).filter((x, n, a) => x.id !== i.id && a.indexOf(x) === n);
   const pageUrl = `${site.url}${itemHref(i)}`;
   const img = rentalImagePath(i.id, i.categoryId);
   // Real event photos: the same item type when we have it, otherwise general photos of the category.
@@ -150,7 +168,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
 
   const facts: [string, string][] = [
     ["Specs", i.specs],
-    ["Priced", unitLabel(i)],
+    ...(i.unit === "each" ? [] : ([["Priced", unitLabel(i)]] as [string, string][])),
     ["Category", c.name],
     ...(i.minQty ? ([["Minimum", `${i.minQty} ${i.unit === "each" ? "" : i.unit}`.trim()]] as [string, string][]) : []),
     ...(i.perGuest
@@ -173,7 +191,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             <p className="font-serif text-lg text-gold italic">{c.name} rental · {site.market}</p>
             <h1 className="headline mt-4 text-5xl leading-[1] sm:text-6xl">{i.name}</h1>
             <p className="mt-6 text-lg leading-8">
-              Rent a {lower(i.name)} in {site.market} and the suburbs for{" "}
+              Rent {withArticle(lower(i.name))} in {site.market} and the suburbs for{" "}
               <strong className="font-medium">
                 {formatPrice(price)} {unitLabel(i)}
               </strong>
@@ -312,6 +330,19 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             </p>
           </section>
         )}
+
+        {/* Phones: keep the price and "Add to my quote" in reach while reading specs and FAQs. */}
+        <div className="sticky bottom-0 z-40 -mx-4 mt-16 flex items-center gap-3 border-t border-line bg-surface/95 py-3 pr-20 pl-4 backdrop-blur md:hidden">
+          <span className="min-w-0 flex-1">
+            <span className="block truncate text-sm">{i.name}</span>
+            <span className="text-xs text-muted">
+              <strong className="font-medium text-ink">{formatPrice(price)}</strong> {unitLabel(i)}
+            </span>
+          </span>
+          <Link href={`/quote?items=${i.id}&from=item-bar-${i.id}`} className="btn-primary shrink-0 !px-4 !py-2.5 text-sm">
+            Add to quote
+          </Link>
+        </div>
       </div>
       <div className="mt-24 -mb-32">
         <CallCta title={<>Need help planning your <em className="text-gold">{c.name.toLowerCase()}</em>?</>} source={`item-${i.id}`} />

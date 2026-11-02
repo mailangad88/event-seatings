@@ -134,7 +134,8 @@ export default async function QuotePage(props: PageProps<"/quote">) {
           </>
         }
         breadcrumbs={[{ name: "Get a quote", href: "/quote" }]}
-        media={<Figure src={hero.src} alt={hero.alt} caption={hero.caption} width={hero.width} height={hero.height} ratio="4/3" priority />}
+        // Hidden on phones: the builder below is full of pictures, and the hero image pushed it off the first screen.
+        media={<div className="hidden lg:block"><Figure src={hero.src} alt={hero.alt} caption={hero.caption} width={hero.width} height={hero.height} ratio="4/3" priority /></div>}
       />
 
       <div className="container-x section-y">
