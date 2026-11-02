@@ -72,7 +72,7 @@ item("chair-sash", "linens", _turned(lambda: C.build_chiavari(sash=lib.BLUSH)),
      "3D render of a gold Chiavari chair dressed with a blush chiffon sash tied in a bow on the chair back",
      "Blush chiffon chair sash on a gold Chiavari", cam=dict(az=-30, el=12, lens=85, pad=1.18))
 
-for mod in ("collection_chairs", "tables", "tableware", "tents", "misc", "scenes", "heroes", "scenes2", "variants"):
+for mod in ("collection_chairs", "tables", "tableware", "tents", "misc", "scenes", "heroes", "services", "scenes2", "variants"):
     try:
         __import__(mod)
     except ImportError as e:

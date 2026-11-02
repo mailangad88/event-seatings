@@ -1,4 +1,124 @@
 {
+  "pa-system": {
+    "src": "/rentals/av/pa-system.webp",
+    "category": "av",
+    "alt": "3D render of a portable PA system: two powered speakers on tripod stands, a small mixer and a microphone on a boom stand, for toasts, ceremonies and DJs",
+    "caption": "Portable PA system",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "pa-system--angle": {
+    "src": "/rentals/av/pa-system--angle.webp",
+    "category": "av",
+    "alt": "Another angle: 3D render of a portable PA system: two powered speakers on tripod stands, a small mixer and a microphone on a boom stand, for toasts, ceremonies and DJs",
+    "caption": "Portable PA system (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "pa-system",
+    "variant": "angle"
+  },
+  "podium": {
+    "src": "/rentals/av/podium.webp",
+    "category": "av",
+    "alt": "3D render of a wood floor lectern podium with a slanted top and gooseneck microphone, for speeches and ceremonies",
+    "caption": "Podium (floor lectern)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "podium--angle": {
+    "src": "/rentals/av/podium--angle.webp",
+    "category": "av",
+    "alt": "Another angle: 3D render of a wood floor lectern podium with a slanted top and gooseneck microphone, for speeches and ceremonies",
+    "caption": "Podium (floor lectern) (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "podium",
+    "variant": "angle"
+  },
+  "projection-screen": {
+    "src": "/rentals/av/projection-screen.webp",
+    "category": "av",
+    "alt": "3D render of an 8-foot tripod projection screen with a black border for slideshows, ceremonies and corporate events",
+    "caption": "8' tripod projection screen",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "projection-screen--angle": {
+    "src": "/rentals/av/projection-screen--angle.webp",
+    "category": "av",
+    "alt": "Another angle: 3D render of an 8-foot tripod projection screen with a black border for slideshows, ceremonies and corporate events",
+    "caption": "8' tripod projection screen (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "projection-screen",
+    "variant": "angle"
+  },
+  "projector": {
+    "src": "/rentals/av/projector.webp",
+    "category": "av",
+    "alt": "3D render of a white event projector with a front lens for slideshows and presentations",
+    "caption": "Projector",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "projector--angle": {
+    "src": "/rentals/av/projector--angle.webp",
+    "category": "av",
+    "alt": "Another angle: 3D render of a white event projector with a front lens for slideshows and presentations",
+    "caption": "Projector (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "projector",
+    "variant": "angle"
+  },
+  "tv-with-stand": {
+    "src": "/rentals/av/tv-with-stand.webp",
+    "category": "av",
+    "alt": "3D render of a 60-inch TV on a rolling stand with a shelf, for slideshows, sponsor loops and presentations",
+    "caption": "60\" TV with rolling stand",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "tv-with-stand--angle": {
+    "src": "/rentals/av/tv-with-stand--angle.webp",
+    "category": "av",
+    "alt": "Another angle: 3D render of a 60-inch TV on a rolling stand with a shelf, for slideshows, sponsor loops and presentations",
+    "caption": "60\" TV with rolling stand (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "tv-with-stand",
+    "variant": "angle"
+  },
+  "wireless-microphone": {
+    "src": "/rentals/av/wireless-microphone.webp",
+    "category": "av",
+    "alt": "3D render of a black handheld wireless microphone with its receiver, for wedding toasts and speeches",
+    "caption": "Wireless microphone",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "wireless-microphone--angle": {
+    "src": "/rentals/av/wireless-microphone--angle.webp",
+    "category": "av",
+    "alt": "Another angle: 3D render of a black handheld wireless microphone with its receiver, for wedding toasts and speeches",
+    "caption": "Wireless microphone (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "wireless-microphone",
+    "variant": "angle"
+  },
   "beverage-dispenser": {
     "src": "/rentals/catering/beverage-dispenser.webp",
     "category": "catering",
@@ -810,6 +930,106 @@
     "parent": "wishbone",
     "variant": "black"
   },
+  "cotton-candy-machine": {
+    "src": "/rentals/concessions/cotton-candy-machine.webp",
+    "category": "concessions",
+    "alt": "3D render of a pink cotton candy machine cart with spun pink and blue cotton candy",
+    "caption": "Cotton candy machine",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "cotton-candy-machine--angle": {
+    "src": "/rentals/concessions/cotton-candy-machine--angle.webp",
+    "category": "concessions",
+    "alt": "Another angle: 3D render of a pink cotton candy machine cart with spun pink and blue cotton candy",
+    "caption": "Cotton candy machine (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "cotton-candy-machine",
+    "variant": "angle"
+  },
+  "hot-dog-roller": {
+    "src": "/rentals/concessions/hot-dog-roller.webp",
+    "category": "concessions",
+    "alt": "3D render of a stainless steel steamer-style hot dog warmer with a glass display hood, hot dogs on the steam tray and a bun drawer",
+    "caption": "Hot dog warmer",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "hot-dog-roller--angle": {
+    "src": "/rentals/concessions/hot-dog-roller--angle.webp",
+    "category": "concessions",
+    "alt": "Another angle: 3D render of a stainless steel steamer-style hot dog warmer with a glass display hood, hot dogs on the steam tray and a bun drawer",
+    "caption": "Hot dog warmer (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "hot-dog-roller",
+    "variant": "angle"
+  },
+  "nacho-cheese-warmer": {
+    "src": "/rentals/concessions/nacho-cheese-warmer.webp",
+    "category": "concessions",
+    "alt": "3D render of a stainless steel nacho cheese warmer with a pump dispenser and a tray of tortilla chips with cheese",
+    "caption": "Nacho cheese warmer",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "nacho-cheese-warmer--angle": {
+    "src": "/rentals/concessions/nacho-cheese-warmer--angle.webp",
+    "category": "concessions",
+    "alt": "Another angle: 3D render of a stainless steel nacho cheese warmer with a pump dispenser and a tray of tortilla chips with cheese",
+    "caption": "Nacho cheese warmer (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "nacho-cheese-warmer",
+    "variant": "angle"
+  },
+  "popcorn-machine": {
+    "src": "/rentals/concessions/popcorn-machine.webp",
+    "category": "concessions",
+    "alt": "3D render of a red vintage popcorn machine cart filled with fresh popcorn for parties and school events",
+    "caption": "Popcorn machine cart",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "popcorn-machine--angle": {
+    "src": "/rentals/concessions/popcorn-machine--angle.webp",
+    "category": "concessions",
+    "alt": "Another angle: 3D render of a red vintage popcorn machine cart filled with fresh popcorn for parties and school events",
+    "caption": "Popcorn machine cart (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "popcorn-machine",
+    "variant": "angle"
+  },
+  "snow-cone-machine": {
+    "src": "/rentals/concessions/snow-cone-machine.webp",
+    "category": "concessions",
+    "alt": "3D render of a blue snow cone machine with a clear ice cabinet and three cups of shaved ice in cherry, blue raspberry and lemon, for Chicago-area summer parties",
+    "caption": "Snow cone machine",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "snow-cone-machine--angle": {
+    "src": "/rentals/concessions/snow-cone-machine--angle.webp",
+    "category": "concessions",
+    "alt": "Another angle: 3D render of a blue snow cone machine with a clear ice cabinet and three cups of shaved ice in cherry, blue raspberry and lemon, for Chicago-area summer parties",
+    "caption": "Snow cone machine (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "snow-cone-machine",
+    "variant": "angle"
+  },
   "candle-holder": {
     "src": "/rentals/decor/candle-holder.webp",
     "category": "decor",
@@ -890,26 +1110,6 @@
     "parent": "marquee-letters",
     "variant": "angle"
   },
-  "mirror-photo-booth": {
-    "src": "/rentals/decor/mirror-photo-booth.webp",
-    "category": "decor",
-    "alt": "3D render of a gold-framed interactive mirror photo booth with glowing animated text",
-    "caption": "Mirror photo booth",
-    "width": 1600,
-    "height": 1600,
-    "kind": "product"
-  },
-  "mirror-photo-booth--angle": {
-    "src": "/rentals/decor/mirror-photo-booth--angle.webp",
-    "category": "decor",
-    "alt": "Another angle: 3D render of a gold-framed interactive mirror photo booth with glowing animated text",
-    "caption": "Mirror photo booth (side view)",
-    "width": 1200,
-    "height": 1200,
-    "kind": "angle",
-    "parent": "mirror-photo-booth",
-    "variant": "angle"
-  },
   "neon-sign": {
     "src": "/rentals/decor/neon-sign.webp",
     "category": "decor",
@@ -930,24 +1130,64 @@
     "parent": "neon-sign",
     "variant": "angle"
   },
-  "photo-booth-360": {
-    "src": "/rentals/decor/photo-booth-360.webp",
-    "category": "decor",
-    "alt": "3D render of a 360 photo booth platform with a rotating camera arm, LED ring and gold stanchions",
-    "caption": "360 photo booth",
+  "barricade": {
+    "src": "/rentals/fencing/barricade.webp",
+    "category": "fencing",
+    "alt": "3D render of a steel bike-rack crowd control barricade, 8 feet long with flat bridge feet, for festivals and street events",
+    "caption": "Crowd control barricade",
     "width": 1600,
     "height": 1600,
     "kind": "product"
   },
-  "photo-booth-360--angle": {
-    "src": "/rentals/decor/photo-booth-360--angle.webp",
-    "category": "decor",
-    "alt": "Another angle: 3D render of a 360 photo booth platform with a rotating camera arm, LED ring and gold stanchions",
-    "caption": "360 photo booth (side view)",
+  "barricade--angle": {
+    "src": "/rentals/fencing/barricade--angle.webp",
+    "category": "fencing",
+    "alt": "Another angle: 3D render of a steel bike-rack crowd control barricade, 8 feet long with flat bridge feet, for festivals and street events",
+    "caption": "Crowd control barricade (side view)",
     "width": 1200,
     "height": 1200,
     "kind": "angle",
-    "parent": "photo-booth-360",
+    "parent": "barricade",
+    "variant": "angle"
+  },
+  "stanchion": {
+    "src": "/rentals/fencing/stanchion.webp",
+    "category": "fencing",
+    "alt": "3D render of two gold stanchion posts with a red velvet rope for VIP lines, red carpets and entrances",
+    "caption": "Stanchion with velvet rope",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "stanchion--angle": {
+    "src": "/rentals/fencing/stanchion--angle.webp",
+    "category": "fencing",
+    "alt": "Another angle: 3D render of two gold stanchion posts with a red velvet rope for VIP lines, red carpets and entrances",
+    "caption": "Stanchion with velvet rope (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "stanchion",
+    "variant": "angle"
+  },
+  "temporary-fence": {
+    "src": "/rentals/fencing/temporary-fence.webp",
+    "category": "fencing",
+    "alt": "3D render of a 6 by 10 foot temporary fence panel with welded wire mesh, clamps, weighted feet and sandbags, for outdoor event perimeters",
+    "caption": "Temporary fence panel",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "temporary-fence--angle": {
+    "src": "/rentals/fencing/temporary-fence--angle.webp",
+    "category": "fencing",
+    "alt": "Another angle: 3D render of a 6 by 10 foot temporary fence panel with welded wire mesh, clamps, weighted feet and sandbags, for outdoor event perimeters",
+    "caption": "Temporary fence panel (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "temporary-fence",
     "variant": "angle"
   },
   "dance-floor": {
@@ -1028,46 +1268,6 @@
     "height": 1200,
     "kind": "angle",
     "parent": "bounce-house",
-    "variant": "angle"
-  },
-  "cotton-candy-machine": {
-    "src": "/rentals/games/cotton-candy-machine.webp",
-    "category": "games",
-    "alt": "3D render of a pink cotton candy machine cart with spun pink and blue cotton candy",
-    "caption": "Cotton candy machine",
-    "width": 1600,
-    "height": 1600,
-    "kind": "product"
-  },
-  "cotton-candy-machine--angle": {
-    "src": "/rentals/games/cotton-candy-machine--angle.webp",
-    "category": "games",
-    "alt": "Another angle: 3D render of a pink cotton candy machine cart with spun pink and blue cotton candy",
-    "caption": "Cotton candy machine (side view)",
-    "width": 1200,
-    "height": 1200,
-    "kind": "angle",
-    "parent": "cotton-candy-machine",
-    "variant": "angle"
-  },
-  "popcorn-machine": {
-    "src": "/rentals/games/popcorn-machine.webp",
-    "category": "games",
-    "alt": "3D render of a red vintage popcorn machine cart filled with fresh popcorn for parties and school events",
-    "caption": "Popcorn machine cart",
-    "width": 1600,
-    "height": 1600,
-    "kind": "product"
-  },
-  "popcorn-machine--angle": {
-    "src": "/rentals/games/popcorn-machine--angle.webp",
-    "category": "games",
-    "alt": "Another angle: 3D render of a red vintage popcorn machine cart filled with fresh popcorn for parties and school events",
-    "caption": "Popcorn machine cart (side view)",
-    "width": 1200,
-    "height": 1200,
-    "kind": "angle",
-    "parent": "popcorn-machine",
     "variant": "angle"
   },
   "soft-play": {
@@ -1774,6 +1974,186 @@
     "height": 1200,
     "kind": "angle",
     "parent": "lounge-sofa",
+    "variant": "angle"
+  },
+  "mirror-photo-booth": {
+    "src": "/rentals/photo-booths/mirror-photo-booth.webp",
+    "category": "photo-booths",
+    "alt": "3D render of a gold-framed interactive mirror photo booth with glowing animated text",
+    "caption": "Mirror photo booth",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "mirror-photo-booth--angle": {
+    "src": "/rentals/photo-booths/mirror-photo-booth--angle.webp",
+    "category": "photo-booths",
+    "alt": "Another angle: 3D render of a gold-framed interactive mirror photo booth with glowing animated text",
+    "caption": "Mirror photo booth (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "mirror-photo-booth",
+    "variant": "angle"
+  },
+  "photo-booth-360": {
+    "src": "/rentals/photo-booths/photo-booth-360.webp",
+    "category": "photo-booths",
+    "alt": "3D render of a 360 photo booth platform with a rotating camera arm, LED ring and gold stanchions",
+    "caption": "360 photo booth",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "photo-booth-360--angle": {
+    "src": "/rentals/photo-booths/photo-booth-360--angle.webp",
+    "category": "photo-booths",
+    "alt": "Another angle: 3D render of a 360 photo booth platform with a rotating camera arm, LED ring and gold stanchions",
+    "caption": "360 photo booth (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "photo-booth-360",
+    "variant": "angle"
+  },
+  "ada-restroom": {
+    "src": "/rentals/restrooms-power/ada-restroom.webp",
+    "category": "restrooms-power",
+    "alt": "3D render of a wheelchair-accessible ADA portable restroom with a wide blue door, ground-level entry and accessibility sign",
+    "caption": "ADA accessible portable restroom",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "ada-restroom--angle": {
+    "src": "/rentals/restrooms-power/ada-restroom--angle.webp",
+    "category": "restrooms-power",
+    "alt": "Another angle: 3D render of a wheelchair-accessible ADA portable restroom with a wide blue door, ground-level entry and accessibility sign",
+    "caption": "ADA accessible portable restroom (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "ada-restroom",
+    "variant": "angle"
+  },
+  "cable-ramp": {
+    "src": "/rentals/restrooms-power/cable-ramp.webp",
+    "category": "restrooms-power",
+    "alt": "3D render of two linked yellow and black cable protector ramps covering power cables, for safe walkways at events",
+    "caption": "Cable protector ramp",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "cable-ramp--angle": {
+    "src": "/rentals/restrooms-power/cable-ramp--angle.webp",
+    "category": "restrooms-power",
+    "alt": "Another angle: 3D render of two linked yellow and black cable protector ramps covering power cables, for safe walkways at events",
+    "caption": "Cable protector ramp (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "cable-ramp",
+    "variant": "angle"
+  },
+  "generator-20kw": {
+    "src": "/rentals/restrooms-power/generator-20kw.webp",
+    "category": "restrooms-power",
+    "alt": "3D render of a towable 20 kW enclosed generator on a trailer, sized to power a full tent wedding with lighting, heaters and catering",
+    "caption": "20 kW towable generator",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "generator-20kw--angle": {
+    "src": "/rentals/restrooms-power/generator-20kw--angle.webp",
+    "category": "restrooms-power",
+    "alt": "Another angle: 3D render of a towable 20 kW enclosed generator on a trailer, sized to power a full tent wedding with lighting, heaters and catering",
+    "caption": "20 kW towable generator (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "generator-20kw",
+    "variant": "angle"
+  },
+  "generator-7kw": {
+    "src": "/rentals/restrooms-power/generator-7kw.webp",
+    "category": "restrooms-power",
+    "alt": "3D render of a portable 7,000-8,000 watt open-frame generator with a red fuel tank, wheels and fold-out handle, for tent lighting and catering power",
+    "caption": "Portable generator, 7,000-8,000 watt",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "generator-7kw--angle": {
+    "src": "/rentals/restrooms-power/generator-7kw--angle.webp",
+    "category": "restrooms-power",
+    "alt": "Another angle: 3D render of a portable 7,000-8,000 watt open-frame generator with a red fuel tank, wheels and fold-out handle, for tent lighting and catering power",
+    "caption": "Portable generator, 7,000-8,000 watt (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "generator-7kw",
+    "variant": "angle"
+  },
+  "hand-wash-station": {
+    "src": "/rentals/restrooms-power/hand-wash-station.webp",
+    "category": "restrooms-power",
+    "alt": "3D render of a portable hand wash station with two basins, foot pumps and soap and towel dispensers",
+    "caption": "Portable hand wash station",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "hand-wash-station--angle": {
+    "src": "/rentals/restrooms-power/hand-wash-station--angle.webp",
+    "category": "restrooms-power",
+    "alt": "Another angle: 3D render of a portable hand wash station with two basins, foot pumps and soap and towel dispensers",
+    "caption": "Portable hand wash station (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "hand-wash-station",
+    "variant": "angle"
+  },
+  "portable-restroom": {
+    "src": "/rentals/restrooms-power/portable-restroom.webp",
+    "category": "restrooms-power",
+    "alt": "3D render of a standard tan portable restroom with a white translucent roof and vent pipe, for outdoor events and construction-style sites",
+    "caption": "Standard portable restroom",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "portable-restroom--angle": {
+    "src": "/rentals/restrooms-power/portable-restroom--angle.webp",
+    "category": "restrooms-power",
+    "alt": "Another angle: 3D render of a standard tan portable restroom with a white translucent roof and vent pipe, for outdoor events and construction-style sites",
+    "caption": "Standard portable restroom (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "portable-restroom",
+    "variant": "angle"
+  },
+  "restroom-trailer": {
+    "src": "/rentals/restrooms-power/restroom-trailer.webp",
+    "category": "restrooms-power",
+    "alt": "3D render of a white luxury restroom trailer with wood doors, separate men's and women's entries, stairs with railings and frosted windows, for weddings on a Chicago-area lawn",
+    "caption": "Luxury restroom trailer",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "restroom-trailer--angle": {
+    "src": "/rentals/restrooms-power/restroom-trailer--angle.webp",
+    "category": "restrooms-power",
+    "alt": "Another angle: 3D render of a white luxury restroom trailer with wood doors, separate men's and women's entries, stairs with railings and frosted windows, for weddings on a Chicago-area lawn",
+    "caption": "Luxury restroom trailer (side view)",
+    "width": 1200,
+    "height": 1200,
+    "kind": "angle",
+    "parent": "restroom-trailer",
     "variant": "angle"
   },
   "baby-shower": {

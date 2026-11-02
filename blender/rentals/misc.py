@@ -692,10 +692,10 @@ item("candle-holder", "decor", candle_holder,
 item("neon-sign", "decor", neon_sign,
      "3D render of a pink LED neon sign with a heart and script on a clear acrylic backer for weddings, showers and birthdays",
      "Custom-style LED neon sign", cam=dict(az=-10, el=4, lens=70, pad=1.1))
-item("photo-booth-360", "decor", photo_booth_360,
+item("photo-booth-360", "photo-booths", photo_booth_360,
      "3D render of a 360 photo booth platform with a rotating camera arm, LED ring and gold stanchions",
      "360 photo booth", cam=dict(az=-30, el=14, lens=50, pad=1.12))
-item("mirror-photo-booth", "decor", mirror_booth,
+item("mirror-photo-booth", "photo-booths", mirror_booth,
      "3D render of a gold-framed interactive mirror photo booth with glowing animated text",
      "Mirror photo booth", cam=dict(az=-28, el=8, lens=70, pad=1.12))
 item("champagne-wall", "catering", champagne_wall,
@@ -707,10 +707,10 @@ item("bounce-house", "games", bounce_house,
 item("yard-games", "games", yard_games,
      "3D render of giant wooden tumble tower blocks and a cornhole board with bean bags for outdoor parties",
      "Giant tumble tower and cornhole", env="lawn", lawn=dict(sun_elev=30, sun_rot=210), cam=dict(az=-25, el=18, lens=50, pad=1.15))
-item("popcorn-machine", "games", popcorn_machine,
+item("popcorn-machine", "concessions", popcorn_machine,
      "3D render of a red vintage popcorn machine cart filled with fresh popcorn for parties and school events",
      "Popcorn machine cart", cam=dict(az=-30, el=12, lens=70, pad=1.1))
-item("cotton-candy-machine", "games", cotton_candy,
+item("cotton-candy-machine", "concessions", cotton_candy,
      "3D render of a pink cotton candy machine cart with spun pink and blue cotton candy",
      "Cotton candy machine", cam=dict(az=-30, el=12, lens=70, pad=1.12))
 item("soft-play", "games", soft_play,
