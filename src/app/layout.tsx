@@ -37,13 +37,16 @@ const body = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `Event Chair Rentals in ${site.market} & Suburbs | ${site.name}`,
+    default: `Event Rentals ${site.market}: Chairs, Tables, Linens & Tents | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
   alternates: { canonical: "/" },
   keywords: [
+    "event rentals Chicago",
+    "party rentals Chicago",
+    "chair and table rental Chicago",
     "chair rental Chicago",
     "event chair rentals Chicago",
     "wedding chair rental Chicago",

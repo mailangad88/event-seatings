@@ -5,6 +5,7 @@ import { ImageResponse } from "next/og";
 import { CallCta } from "@/components/CallCta";
 import { ChairArt } from "@/components/ChairArt";
 import { GuideShell, HubLinks } from "@/components/GuideShell";
+import { FaqList } from "@/components/ui";
 import { chairs } from "@/data/chairs";
 import { type GuideFamily } from "@/lib/guide-content";
 import { site } from "@/lib/site";
@@ -81,6 +82,14 @@ export function guideHub(family: GuideFamily, intro: string) {
             </div>
             <p className="mt-3 text-sm text-muted">Photos: a few of the chairs these guides recommend.</p>
             <HubLinks items={items} />
+            {family.hubFaqs && (
+              <section className="mt-16 max-w-3xl" aria-labelledby="hub-faq">
+                <h2 id="hub-faq" className="headline text-3xl sm:text-4xl">
+                  Quick answers
+                </h2>
+                <FaqList faqs={family.hubFaqs} className="mt-6" />
+              </section>
+            )}
             <p className="mt-10 text-sm text-muted">
               Not sure? <Link href="/book?from=hub" className="underline">Book a free seating call</Link> or try the <Link href="/seating-planner" className="underline">seating planner</Link>.
             </p>

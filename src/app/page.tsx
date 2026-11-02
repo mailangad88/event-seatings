@@ -153,7 +153,7 @@ export default async function Home() {
         intro="From the first chair to the last candle. Browse by category, or start a quote and add as you go."
         action={<Link href="/rentals" className="link-line">All rentals <Icon name="arrow" size={16} /></Link>}
       >
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-4">
           {rentalCategories.map((c, i) => (
             <Reveal key={c.id} delay={(i % 4) * 60}>
               <CategoryTile

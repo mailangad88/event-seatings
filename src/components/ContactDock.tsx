@@ -196,12 +196,13 @@ export function ContactDock() {
         onClick={() => (open ? setOpen(false) : show())}
         aria-expanded={open}
         aria-controls="contact-dock"
-        className={`fixed right-4 bottom-4 z-50 flex items-center gap-2.5 rounded-full border border-gold/60 bg-espresso/95 py-3 pr-5 pl-4 text-ink shadow-[0_10px_40px_rgba(0,0,0,0.45)] backdrop-blur transition-all hover:border-gold hover:text-gold sm:right-6 sm:bottom-6 ${
+        className={`fixed right-4 bottom-4 z-50 flex items-center gap-2.5 rounded-full border border-gold/60 bg-espresso/95 p-3 text-ink shadow-[0_10px_40px_rgba(0,0,0,0.45)] backdrop-blur transition-all hover:border-gold hover:text-gold sm:right-6 sm:bottom-6 sm:py-3 sm:pr-5 sm:pl-4 ${
           open ? "max-sm:hidden" : ""
         }`}
       >
         {open ? <CloseIcon /> : <ChatIcon />}
-        <span className="text-[11px] tracking-[0.22em] uppercase">{open ? "Close" : "Questions? Chat"}</span>
+        {/* Icon only on phones so the button never covers page buttons; the label stays for screen readers. */}
+        <span className="text-[11px] tracking-[0.22em] uppercase max-sm:sr-only">{open ? "Close" : "Questions? Chat"}</span>
       </button>
     </>
   );

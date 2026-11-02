@@ -36,6 +36,16 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-02): site review fixes
+
+- Full crawl of 3,601 URLs: all 200, 0 broken internal links, 0 duplicate titles after this release. Review and prioritised list: project files `reviews/site-review-2026-11-02.md`.
+- Home title, site description (LocalBusiness schema, llms.txt) and /events meta now describe the whole rental marketplace, not just chairs.
+- Item pages: unique titles for same-name sizes, correct "a/an" and name casing, rotating related items (internal links reach every item), sticky price + "Add to quote" bar on phones, "Priced: each" row dropped.
+- Mobile: chat button is icon-only on phones (it covered buttons), home categories in 2 columns, /quote hero image desktop-only so the builder starts on screen one.
+- 7 guide hubs gained 3 FAQs each with FAQPage schema.
+- /api/leads: if storage fails, the lead is logged in full (`LEAD_SAVE_FAILED`) and still emailed/synced instead of being lost.
+- Remaining: FAQs on 38 pages (11 old posts, 20 blog topic pages, a few hubs), long titles/descriptions, real item photos, analytics + Supabase env vars on Vercel.
+
 ## Changes in this release (2026-11-02): marketplace redesign
 
 - **New design system** for the event rental marketplace pivot: light ivory/ink/brass tokens with dark and sand tone scopes, restyled utilities (pill buttons, rounded cards, boxed form fields) and a UI kit in `src/components/ui` (ProductCard, PriceTag, CategoryTile, PageHero, Section, Breadcrumbs with JSON-LD, FaqList with FAQPage JSON-LD, StepFlow flowchart, Figure, ArticleLayout with TOC, QuoteCard, QuoteCta, Callout, TrustBar, StatRow, Icon). Guide: `docs/DESIGN_SYSTEM.md`.
