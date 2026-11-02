@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { scenes } from "@/lib/scenes";
+import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { Icon } from "./ui/Icon";
 
@@ -8,6 +8,7 @@ import { Icon } from "./ui/Icon";
 // (pages wrap it in `-mb-32`). For an inset card version use <QuoteCta /> from ui.
 export function CallCta({ title, source }: { title?: React.ReactNode; source?: string }) {
   const q = source ? `?from=${encodeURIComponent(source)}` : "";
+  const scene = sceneFor(`call-${source ?? "site"}`);
   return (
     <section className="tone-dark relative overflow-hidden bg-espresso">
       <div className="container-x grid items-center gap-12 py-16 md:grid-cols-[1.3fr_1fr] md:py-24">
@@ -39,7 +40,7 @@ export function CallCta({ title, source }: { title?: React.ReactNode; source?: s
           </div>
         </div>
         <div className="relative hidden aspect-[4/5] max-h-[460px] overflow-hidden rounded-2xl md:block">
-          <Image src={scenes.gildedIvory.src} alt={scenes.gildedIvory.alt} fill sizes="40vw" className="object-cover" />
+          <Image src={scene.src} alt={scene.alt} fill sizes="40vw" className="object-cover" />
         </div>
       </div>
     </section>

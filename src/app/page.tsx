@@ -15,14 +15,14 @@ const looks = [
   {
     id: "blush-garden",
     name: "Blush Garden",
-    scene: scenes.blushGarden,
+    scene: scenes.blushLongTable,
     for: "Garden weddings, showers, spring brunches",
     items: ["Rose-gold bamboo chairs", "Blush banquet linen", "Gold-rim chargers", "Taper candles & low florals"],
   },
   {
     id: "midnight-gold",
     name: "Midnight Gold",
-    scene: scenes.midnightGold,
+    scene: scenes.midnightLongTable,
     for: "Evening receptions, galas, sangeet nights",
     items: ["Gold bamboo chairs", "Charcoal linen", "Gold chargers & flatware", "String-light backdrop"],
   },

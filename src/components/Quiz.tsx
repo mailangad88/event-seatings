@@ -63,7 +63,7 @@ export function Quiz() {
     return (
       <div className="mx-auto max-w-3xl">
         <div className="mb-12 flex items-center gap-6">
-          <span className="text-[11px] tracking-[0.25em] text-muted uppercase">
+          <span className="rounded-full bg-gold-soft px-3 py-1 text-xs font-semibold text-gold">
             {String(step + 1).padStart(2, "0")} / {String(questions.length).padStart(2, "0")}
           </span>
           <span className="relative h-px flex-1 bg-line">
@@ -76,9 +76,9 @@ export function Quiz() {
             <button
               key={o.label}
               onClick={() => setAnswers([...answers, options.indexOf(o)])}
-              className="group flex items-center justify-between gap-4 border border-line bg-surface px-6 py-6 text-left transition-colors hover:bg-gold hover:text-accent-ink"
+              className="group card card-hover flex items-center justify-between gap-4 px-6 py-5 text-left hover:border-ink"
             >
-              <span className="font-serif text-xl leading-snug">{o.label}</span>
+              <span className="text-lg leading-snug font-medium">{o.label}</span>
               <span className="text-gold transition-transform group-hover:translate-x-1" aria-hidden>→</span>
             </button>
           ))}
@@ -146,12 +146,12 @@ export function Quiz() {
         </h2>
         <p className="mt-6 leading-7 text-muted">Three pieces we would place in your room. Save any that speak to you.</p>
       </div>
-      <div className="mt-16 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {picks.map((c) => (
           <ChairCard key={c.slug} chair={c} index={chairs.indexOf(c)} />
         ))}
       </div>
-      <div className="mx-auto mt-20 max-w-xl border-t border-line pt-12 text-center">
+      <div className="card mx-auto mt-16 max-w-xl p-8 text-center">
         {emailStatus === "done" ? (
           <p className="font-serif text-2xl italic">
             Thank you. We&apos;ll send your selections, styling notes and launch updates.
@@ -162,7 +162,7 @@ export function Quiz() {
             <p className="mt-3 text-muted">
               With styling notes for {(topStyles[0] ?? "your").toLowerCase()} celebrations.
             </p>
-            <form onSubmit={saveEmail} className="mt-8 flex items-end gap-4 border-b border-ink/30 text-left focus-within:border-gold">
+            <form onSubmit={saveEmail} className="mt-8 flex gap-2 rounded-full border border-line bg-surface p-1.5 text-left focus-within:border-gold">
               <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
               <label className="sr-only" htmlFor="quiz-email">Email address</label>
               <input
@@ -171,10 +171,10 @@ export function Quiz() {
                 type="email"
                 required
                 placeholder="Your email address"
-                className="min-w-0 flex-1 border-0 bg-transparent px-0 py-3 focus:ring-0 focus:outline-none"
+                className="min-w-0 flex-1 border-0 bg-transparent px-3 focus:ring-0 focus:outline-none"
               />
-              <button className="py-3 text-[11px] font-medium tracking-[0.25em] uppercase hover:text-gold" disabled={emailStatus === "sending"}>
-                Send →
+              <button className="btn-primary btn-sm shrink-0" disabled={emailStatus === "sending"}>
+                Send
               </button>
             </form>
           </>

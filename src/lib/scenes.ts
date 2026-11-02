@@ -57,7 +57,7 @@ export const scenes = {
   },
 } satisfies Record<string, Scene>;
 
-const tablescapes = [scenes.blushGarden, scenes.midnightGold, scenes.gildedIvory, scenes.midnightLongTable, scenes.blushLongTable];
+const tablescapes = [scenes.blushGarden, scenes.midnightGold, scenes.gildedIvory, scenes.midnightLongTable, scenes.blushLongTable, scenes.chairDetail];
 
 /** A stable scene for any slug, so every page gets a visual even without its own image. */
 export function sceneFor(slug: string): Scene {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { scenes } from "@/lib/scenes";
+import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { Icon } from "./Icon";
 
@@ -15,6 +15,7 @@ export function QuoteCta({
   source?: string;
 }) {
   const q = source ? `?from=${encodeURIComponent(source)}` : "";
+  const scene = sceneFor(`cta-${source ?? "site"}`);
   return (
     <section className="container-x py-12 md:py-16">
       <div className="tone-dark relative grid overflow-hidden rounded-3xl bg-espresso md:grid-cols-[1.3fr_1fr]">
@@ -39,7 +40,7 @@ export function QuoteCta({
           </div>
         </div>
         <div className="relative min-h-64 md:min-h-full">
-          <Image src={scenes.midnightLongTable.src} alt={scenes.midnightLongTable.alt} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover" />
+          <Image src={scene.src} alt={scene.alt} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover" />
           <span className="absolute inset-0 bg-gradient-to-r from-espresso via-espresso/30 to-transparent max-md:bg-gradient-to-b" aria-hidden />
         </div>
       </div>
