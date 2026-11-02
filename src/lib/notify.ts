@@ -1,4 +1,5 @@
 import "server-only";
+import { site } from "./site";
 import type { Lead } from "./store";
 
 // Emails the owner when a lead comes in, if RESEND_API_KEY and NOTIFY_EMAIL are set.
@@ -17,7 +18,7 @@ export async function notifyOwner(lead: Lead) {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: process.env.NOTIFY_FROM ?? "Beyond Chiavari <onboarding@resend.dev>",
+        from: process.env.NOTIFY_FROM ?? `${site.name} <onboarding@resend.dev>`,
         to,
         subject: `New ${lead.kind} lead: ${lead.name ?? lead.email}`,
         text: lines.join("\n"),

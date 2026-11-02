@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import { chairs } from "@/data/chairs";
+import { attributionFields } from "@/lib/attribution";
 import { site } from "@/lib/site";
+import { BookingCta } from "./BookingCta";
 
 const eventTypes = [
   "Wedding (ceremony + reception)",
@@ -25,6 +27,7 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
   const [date, setDate] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
+  const [contact, setContact] = useState<{ name?: string; email?: string }>({});
 
   const today = new Date().toLocaleDateString("en-CA");
   const beforeLaunch = date !== "" && date < site.launch.firstEventDate;
@@ -45,9 +48,10 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
     const res = await fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...data, chairs: selected, kind: "quote", source: "quote-form" }),
+      body: JSON.stringify({ ...attributionFields(), ...data, chairs: selected, kind: "quote", source: "quote-form" }),
     }).catch(() => null);
     if (res?.ok) {
+      setContact({ name: String(data.name ?? ""), email: String(data.email ?? "") });
       setStatus("done");
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -68,6 +72,11 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
           email your personal proposal, with pricing and availability for your date, as soon as it&apos;s ready.
           Nothing is charged or held until you confirm.
         </p>
+        <BookingCta
+          {...contact}
+          content="quote-thank-you"
+          note="Want to talk it through sooner? Pick a time and we'll walk your layout, chair count and delivery together."
+        />
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link href="/chairs" className="btn-ghost">Continue browsing</Link>
           <Link href="/blog" className="btn-ghost">Read the journal</Link>
@@ -171,6 +180,12 @@ export function QuoteForm({ initialChairs = [] }: { initialChairs?: string[] }) 
         <div>
           <label className="label" htmlFor="phone">Phone, optional</label>
           <input id="phone" name="phone" type="tel" autoComplete="tel" className="field" />
+          <label className="mt-3 flex cursor-pointer items-start gap-3 text-xs leading-5 text-muted">
+            <input type="checkbox" name="sms_consent" value="yes" className="mt-0.5 accent-[var(--gold)]" />
+            <span>
+              Text me about my quote. Message and data rates may apply; reply STOP to opt out at any time.
+            </span>
+          </label>
         </div>
         <div className="sm:col-span-2">
           <label className="label" htmlFor="message">Anything else we should know</label>

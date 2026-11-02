@@ -2,6 +2,7 @@ import "server-only";
 import { promises as fs } from "fs";
 import path from "path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { attributionKeys } from "./attribution";
 
 // Storage for votes and leads.
 // - With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, data goes to Supabase (use this in production).
@@ -25,7 +26,18 @@ export type Lead = {
   message?: string;
   quiz_styles?: string[];
   source?: string;
-};
+  // Only true when the visitor ticked "Text me about my quote" (needed before any automated SMS).
+  sms_consent?: boolean;
+} & Partial<Record<TrackingField, string>>;
+
+// Marketing attribution saved with every lead: last touch (the visit that converted), first touch
+// (prefixed first_, the visit that discovered us) and the page the form was on.
+export const trackingFields = [
+  ...attributionKeys,
+  ...attributionKeys.map((k) => `first_${k}` as const),
+  "page_path",
+] as const;
+export type TrackingField = (typeof trackingFields)[number];
 
 export type NewLead = Omit<Lead, "id" | "created_at">;
 
