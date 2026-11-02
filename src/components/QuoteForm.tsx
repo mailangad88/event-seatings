@@ -7,6 +7,7 @@ import { getChair } from "@/data/chairs";
 import type { CategoryId } from "@/data/catalog-products";
 import type { PresetLine } from "@/data/quote-presets";
 import { attributionFields } from "@/lib/attribution";
+import { trackLead } from "@/lib/analytics";
 import { sortCategories, suggestedQty, type PublicItem } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 import { BookingCta } from "./BookingCta";
@@ -244,6 +245,7 @@ export function QuoteForm({
       }),
     }).catch(() => null);
     if (res?.ok) {
+      trackLead("quote", "quote-builder", { guest_count: Number(guests || data.guest_count) || undefined, item_count: lines.length });
       setContact({ name: String(data.name ?? ""), email: String(data.email ?? "") });
       setStatus("done");
       window.scrollTo({ top: 0, behavior: "smooth" });

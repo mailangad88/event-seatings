@@ -61,6 +61,7 @@ export default async function AdminPage() {
     ["Call requests", leads.filter((l) => l.kind === "call").length],
     ["Waitlist", leads.filter((l) => l.kind === "waitlist").length],
     ["Quiz emails", leads.filter((l) => l.kind === "quiz").length],
+    ["Chat messages", leads.filter((l) => l.kind === "chat").length],
     ["Guests in quotes", quotes.reduce((s, l) => s + (l.guest_count ?? 0), 0)],
   ];
 
@@ -79,7 +80,7 @@ export default async function AdminPage() {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5">
+      <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
         {stats.map(([label, n]) => (
           <div key={label} className={card}>
             <p className="text-xs uppercase tracking-wider text-muted">{label}</p>

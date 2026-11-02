@@ -9,7 +9,8 @@ import type { QuoteLine } from "./catalog-types";
 // - With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, data goes to Supabase (use this in production).
 // - Without them, data goes to a local JSON file (.data/db.json) so you can develop with no setup.
 
-export type LeadKind = "quote" | "waitlist" | "quiz" | "call";
+// "chat" = a message sent from the chat dock when HubSpot live chat is not switched on.
+export type LeadKind = "quote" | "waitlist" | "quiz" | "call" | "chat";
 
 export type Lead = {
   id: string;

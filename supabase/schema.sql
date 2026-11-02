@@ -11,7 +11,7 @@ create table if not exists votes (
 
 create table if not exists leads (
   id uuid primary key,
-  kind text not null check (kind in ('quote', 'waitlist', 'quiz', 'call')),
+  kind text not null check (kind in ('quote', 'waitlist', 'quiz', 'call', 'chat')),
   created_at timestamptz not null default now(),
   name text,
   email text not null,
@@ -27,9 +27,9 @@ create table if not exists leads (
   source text
 );
 
--- Already ran an older version of this file? Allow call requests with:
+-- Already ran an older version of this file? Allow call requests and chat-dock messages with:
 --   alter table leads drop constraint leads_kind_check;
---   alter table leads add constraint leads_kind_check check (kind in ('quote', 'waitlist', 'quiz', 'call'));
+--   alter table leads add constraint leads_kind_check check (kind in ('quote', 'waitlist', 'quiz', 'call', 'chat'));
 
 -- Marketing attribution (added with the CRM setup). Safe to run again on an existing database.
 -- Last touch = the visit that converted; first_ = the visit that first found us; page_path = page the form was on.

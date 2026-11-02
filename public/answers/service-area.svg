@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-labelledby="t"><title id="t">Schematic of the delivery area from St. Charles across the Fox Valley, west suburbs and Chicago</title>
+<rect width="1200" height="720" fill="#1a1713"/><rect x="12" y="12" width="1176" height="696" fill="none" stroke="#c9a96a" stroke-opacity=".45"/>
+<text x="600" y="70" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="3">WHERE WE DELIVER</text>
+<text x="600" y="122" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="40" fill="#efe4cf" text-anchor="middle" font-weight="300" letter-spacing="0">From the Fox Valley to the city</text>
+<circle cx="600" cy="400" r="70" fill="none" stroke="#c9a96a" stroke-opacity=".45" stroke-dasharray="4 6"/>
+<circle cx="600" cy="400" r="165" fill="none" stroke="#c9a96a" stroke-opacity=".45" stroke-dasharray="4 6"/>
+<circle cx="600" cy="400" r="260" fill="none" stroke="#c9a96a" stroke-opacity=".45" stroke-dasharray="4 6"/>
+<circle cx="600" cy="400" r="8" fill="#c9a96a"/>
+<text x="600" y="378" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="20" fill="#efe4cf" text-anchor="middle" font-weight="400" letter-spacing="0">St. Charles</text>
+<circle cx="623" cy="465" r="5" fill="#efe4cf"/>
+<text x="633.2937140592269" y="470.1999932745121" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Geneva</text>
+<circle cx="561" cy="509" r="5" fill="#efe4cf"/>
+<text x="571.1771432346219" y="513.6666554575202" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Batavia</text>
+<circle cx="658" cy="325" r="5" fill="#efe4cf"/>
+<text x="667.5" y="330.3053089235922" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Elgin</text>
+<circle cx="591" cy="584" r="5" fill="#efe4cf"/>
+<text x="601.4496233078872" y="588.6380644647588" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Aurora</text>
+<circle cx="738" cy="524" r="5" fill="#efe4cf"/>
+<text x="748.1993360826059" y="528.5246664529352" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Naperville</text>
+<circle cx="792" cy="425" r="5" fill="#efe4cf"/>
+<text x="802.0375118373806" y="430.39604598378855" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Wheaton</text>
+<circle cx="765" cy="296" r="5" fill="#efe4cf"/>
+<text x="774.6995552705803" y="301.3504979380455" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Schaumburg</text>
+<circle cx="836" cy="472" r="5" fill="#efe4cf"/>
+<text x="846.4318829145308" y="476.6435109907932" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Oak Brook</text>
+<circle cx="930" cy="390" r="5" fill="#efe4cf"/>
+<text x="940" y="395" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Chicago</text>
+<text x="140" y="240" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="1" font-style="italic">Schematic, not to scale</text></svg>

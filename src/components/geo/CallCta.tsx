@@ -1,0 +1,53 @@
+import Link from "next/link";
+import { site } from "@/lib/site";
+
+export function CallButton({ label = "Schedule a planning call", className = "btn-primary" }) {
+  // /book shows the calendar when a booking link is set, and a call-back form until then.
+  return (
+    <Link href="/book?from=local-page" className={className}>
+      {label}
+    </Link>
+  );
+}
+
+// Full-width closing band: the page's main conversion moment.
+export function CallCta({ heading, place }: { heading: React.ReactNode; place?: string }) {
+  return (
+    <section className="relative mt-32 -mb-32 overflow-hidden bg-espresso">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{ background: "radial-gradient(700px 300px at 50% 0%, rgba(201,169,106,0.18), transparent 70%)" }}
+        aria-hidden
+      />
+      <div className="container-x relative py-24 text-center md:py-32">
+        <span className="ornament" aria-hidden />
+        <p className="eyebrow mt-8 justify-center before:hidden">{site.launch.seasonLabel}</p>
+        <h2 className="headline mx-auto mt-8 max-w-4xl text-4xl leading-[1.1] sm:text-6xl">{heading}</h2>
+        <p className="mx-auto mt-6 max-w-xl leading-8 text-muted">
+          A 15-minute call is the fastest way to a plan: guest count, chair styles, delivery window
+          {place ? ` and access at your ${place} venue` : " and venue access"}. Prefer email? Send a quote request and
+          we&apos;ll reply with pricing.
+        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+          <CallButton />
+          <Link href="/quote" className="btn-ghost">
+            Request a quote
+          </Link>
+        </div>
+        <ol className="mx-auto mt-16 grid max-w-3xl gap-8 text-left sm:grid-cols-3">
+          {[
+            ["Tell us the basics", "Date, guest count and the look you want."],
+            ["Get a clear quote", "Chairs, delivery, setup and pickup, itemized."],
+            ["We handle the rest", "Placed before guests arrive, collected after."],
+          ].map(([t, d], i) => (
+            <li key={t} className="border-t border-gold/40 pt-4">
+              <span className="font-serif text-lg text-gold italic">{["I", "II", "III"][i]}.</span>
+              <p className="mt-2 font-serif text-xl">{t}</p>
+              <p className="mt-1 text-sm leading-6 text-muted">{d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}

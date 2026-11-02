@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" width="1200" height="650" role="img" aria-labelledby="t"><title id="t">How to count event chairs: guests plus vendors plus a buffer equals reception chairs, with separate counts for ceremony, cocktail hour and head table</title>
+<rect width="1200" height="650" fill="#1a1713"/><rect x="12" y="12" width="1176" height="626" fill="none" stroke="#c9a96a" stroke-opacity=".45"/>
+<text x="600" y="70" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="3">HOW TO COUNT CHAIRS</text>
+<text x="600" y="122" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="40" fill="#efe4cf" text-anchor="middle" font-weight="300" letter-spacing="0">One chair per guest is only the start</text>
+<rect x="70" y="170" width="245" height="150" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".6"/>
+<text x="192" y="240" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="30" fill="#efe4cf" text-anchor="middle" font-weight="400" letter-spacing="0">Guests</text>
+<text x="192" y="278" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">Confirmed RSVPs</text>
+<rect x="345" y="170" width="245" height="150" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".6"/>
+<text x="467" y="240" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="30" fill="#efe4cf" text-anchor="middle" font-weight="400" letter-spacing="0">+ Vendors</text>
+<text x="467" y="278" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">Who sit to eat</text>
+<rect x="620" y="170" width="245" height="150" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".6"/>
+<text x="742" y="240" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="30" fill="#efe4cf" text-anchor="middle" font-weight="400" letter-spacing="0">+ Buffer</text>
+<text x="742" y="278" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">Late RSVPs, a few %</text>
+<rect x="895" y="170" width="245" height="150" fill="#c9a96a" stroke="#c9a96a" stroke-opacity=".6"/>
+<text x="1017" y="240" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="30" fill="#0a0806" text-anchor="middle" font-weight="400" letter-spacing="0">= Reception</text>
+<text x="1017" y="278" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#0a0806" text-anchor="middle" font-weight="400" letter-spacing="0">Chairs to order</text>
+<g transform="translate(80,398) scale(0.8)" fill="none" stroke="#c9a96a" stroke-width="2.2" stroke-linecap="round"><path d="M4 -34 V0 M22 -34 V0 M4 -16 H24 M24 -16 V0 M4 -34 H22 M4 -26 H22"/></g>
+<text x="120" y="390" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#c9a96a" text-anchor="start" font-weight="500" letter-spacing="2.5">CEREMONY</text>
+<text x="330" y="390" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Seat everyone, or flip reception chairs during cocktail hour</text>
+<line x1="70" y1="412" x2="1130" y2="412" stroke="#3a3024"/>
+<g transform="translate(80,460) scale(0.8)" fill="none" stroke="#c9a96a" stroke-width="2.2" stroke-linecap="round"><path d="M4 -34 V0 M22 -34 V0 M4 -16 H24 M24 -16 V0 M4 -34 H22 M4 -26 H22"/></g>
+<text x="120" y="452" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#c9a96a" text-anchor="start" font-weight="500" letter-spacing="2.5">COCKTAIL HOUR</text>
+<text x="330" y="452" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Seats for a portion of guests, older relatives first</text>
+<line x1="70" y1="474" x2="1130" y2="474" stroke="#3a3024"/>
+<g transform="translate(80,522) scale(0.8)" fill="none" stroke="#c9a96a" stroke-width="2.2" stroke-linecap="round"><path d="M4 -34 V0 M22 -34 V0 M4 -16 H24 M24 -16 V0 M4 -34 H22 M4 -26 H22"/></g>
+<text x="120" y="514" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#c9a96a" text-anchor="start" font-weight="500" letter-spacing="2.5">HEAD TABLE</text>
+<text x="330" y="514" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">One statement pair or a row for the wedding party</text>
+<line x1="70" y1="536" x2="1130" y2="536" stroke="#3a3024"/>
+<text x="600" y="612" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="1">Free planner with exact counts at /seating-planner</text></svg>

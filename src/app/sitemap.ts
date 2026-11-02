@@ -2,15 +2,19 @@ import type { MetadataRoute } from "next";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
+import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
 import { rentalImages } from "@/data/rental-images";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
+import { looks } from "@/data/looks";
+import { families } from "@/lib/guide-content";
+import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/quiz", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -45,5 +49,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   ];
   const gallery = { url: `${site.url}/gallery`, priority: 0.7, images: rentalImages.map((i) => `${site.url}${i.src}`) };
-  return [...pages, gallery, ...chairPages, ...rentalPages, ...hubs, ...posts];
+  const geoPages = [
+    { url: `${site.url}/chair-rentals`, priority: 0.8, lastModified: geoContentUpdated },
+    { url: `${site.url}/events`, priority: 0.8, lastModified: geoContentUpdated },
+    ...locations.map((l) => ({ url: `${site.url}${locationPath(l)}`, priority: 0.7, lastModified: geoContentUpdated })),
+    ...eventTypes.map((e) => ({ url: `${site.url}${eventPath(e)}`, priority: 0.7, lastModified: geoContentUpdated })),
+  ];
+  const guidePages = families.flatMap((f) => [
+    { url: `${site.url}${f.base}`, lastModified: GUIDES_UPDATED, priority: 0.7 },
+    ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
+  ]);
+  const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
+  return [...pages, gallery, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts];
 }

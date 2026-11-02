@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
@@ -9,6 +10,7 @@ import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, item
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { sampleBudgets } from "@/data/sample-budgets";
+import { categoryScene } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -96,7 +98,21 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
               </Link>
             </div>
           </div>
-          {hero ? (
+          {categoryScene(c.id) ? (
+            <figure>
+              <div className="media relative aspect-video shadow-lift">
+                <Image
+                  src={categoryScene(c.id)!.src}
+                  alt={categoryScene(c.id)!.alt}
+                  fill
+                  priority
+                  sizes="40vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 text-sm text-muted">{categoryScene(c.id)!.caption}</figcaption>
+            </figure>
+          ) : hero ? (
             <RentalVisual item={hero} priority className="hidden aspect-square md:block" sizes="40vw" />
           ) : (
             <div className="hidden aspect-square items-center justify-center border border-line bg-surface text-gold md:flex">
