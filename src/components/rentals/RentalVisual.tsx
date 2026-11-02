@@ -4,12 +4,12 @@ import Image from "next/image";
 import { ChairArt } from "@/components/ChairArt";
 import { getCategory, type CategoryId } from "@/data/catalog-products";
 import { getChair } from "@/data/chairs";
-import { photosForItem, stockAlt } from "@/data/stock-photos";
+import { isPhotoFirst, photosForItem, stockAlt } from "@/data/stock-photos";
 import { site } from "@/lib/site";
 import { RentalIcon } from "./RentalIcon";
 import { ExampleChip, StockImg } from "./StockPhoto";
 
-// Picks the best visual for a rental item, in order:
+// Picks the best visual for a rental item, in order (items in `photoFirst` skip straight to 3):
 // 1. the 3D render at public/rentals/<category folder>/<id>.webp (from the render pipeline),
 // 2. the chair render/illustration from the chair collection,
 // 3. a real photo of the same item type at an event (Unsplash, labelled "Example photo"),
@@ -59,7 +59,8 @@ export function RentalVisual({
   /** Display width in CSS pixels for real photos (they are served from Unsplash's CDN at this size). */
   photoWidth?: number;
 }) {
-  const src = rentalImagePath(item.id, item.categoryId);
+  const photoFirst = isPhotoFirst(item.id);
+  const src = photoFirst ? undefined : rentalImagePath(item.id, item.categoryId);
   const alt = rentalAlt(item.name, item.specs, item.id);
   if (src) {
     return (

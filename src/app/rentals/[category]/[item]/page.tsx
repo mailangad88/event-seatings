@@ -6,7 +6,7 @@ import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/R
 import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
-import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
+import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { site } from "@/lib/site";
 
@@ -42,7 +42,7 @@ const plural = (s: string) => (/(s|x|ch|sh)$/.test(s) ? `${s}es` : `${s}s`);
 export async function generateMetadata(props: PageProps<"/rentals/[category]/[item]">): Promise<Metadata> {
   const i = await load(props);
   if (!i) return {};
-  const img = rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
   const real = photosForItem(i);
   const og = img
     ? { url: img, alt: rentalAlt(i.name, i.specs, i.id) }
@@ -117,7 +117,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const at = siblings.findIndex((x) => x.id === i.id);
   const related = [1, 2, 3, 4].map((n) => siblings[(at + n) % siblings.length]).filter((x, n, a) => x.id !== i.id && a.indexOf(x) === n);
   const pageUrl = `${site.url}${itemHref(i)}`;
-  const img = rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
   // Real event photos: the same item type when we have it, otherwise general photos of the category.
   const real = photosForItem(i);
   const gallery = (real.matched ? real.photos : categoryPhotos(i.categoryId)).slice(0, 3);
