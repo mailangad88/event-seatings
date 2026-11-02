@@ -36,6 +36,16 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-02): real event photos
+
+- **74 real photos** (Unsplash License, free for commercial use) in `src/data/stock-photos.ts`, each checked on its Unsplash page for image id, photographer and free (not Unsplash+) status. Hotlinked from Unsplash's CDN with `auto=format`, so they skip Next's image optimizer.
+- **Price-list items:** 2,318 of 2,447 items that only had a category icon now show a real photo of the same item type (bounce houses, glassware, chafing dishes, tents, linens, neon signs…), matched by name then vendor section. Every one carries an "Example photo" label. 41 items (generators, cords, fans, trash cans, game tables) keep their icon on purpose because no honest photo exists yet; 88 more show the icon in lists and category photos on their page.
+- **Item pages:** new "Real event photos" gallery (3 photos + credits + disclaimer), ImageObject schema with creator, creditText, license and acquireLicensePage, and an OG image when there is no render.
+- **Category pages:** "At real events" strip (4 photos), 44px photo thumbnails in the full price list, real photo instead of the icon in the header when a category has no scene render, ImageObject schema.
+- **Quote builder:** non-rendered items show their photo (sent as a short key to keep the payload small).
+- **New page `/photo-credits`:** every photo with credit, ImageGallery schema; linked from the footer and in the sitemap.
+- 3D renders still win wherever they exist. Vendor product photos need written permission first: `marketing/vendor-photo-permission-request.md` in the shared folder.
+
 ## Changes in this release (2026-11-02): marketplace redesign
 
 - **New design system** for the event rental marketplace pivot: light ivory/ink/brass tokens with dark and sand tone scopes, restyled utilities (pill buttons, rounded cards, boxed form fields) and a UI kit in `src/components/ui` (ProductCard, PriceTag, CategoryTile, PageHero, Section, Breadcrumbs with JSON-LD, FaqList with FAQPage JSON-LD, StepFlow flowchart, Figure, ArticleLayout with TOC, QuoteCard, QuoteCta, Callout, TrustBar, StatRow, Icon). Guide: `docs/DESIGN_SYSTEM.md`.

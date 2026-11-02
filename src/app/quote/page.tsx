@@ -5,6 +5,7 @@ import { Figure, FaqList, JsonLd, PageHero, StepFlow, type Faq } from "@/compone
 import { catalogItems } from "@/data/catalog";
 import { events, getEventPreset, getLook, looks } from "@/data/quote-presets";
 import { imagesFor, rentalImage } from "@/data/rental-images";
+import { photosForItem } from "@/data/stock-photos";
 import { toPublicItem } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -86,6 +87,8 @@ export default async function QuotePage(props: PageProps<"/quote">) {
       featured: i.featured,
       image,
       imageAlt: image ? (i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs)) : undefined,
+      // No render: a real photo of the same item type (sent as a short key; the client builds the URL).
+      ...(!image && !i.chairSlug && photosForItem(i).matched && { photo: photosForItem(i).photos[0].key }),
       // Rendered colour/finish options, shown as swatches on the item card.
       ...(variants.length > 0 && { variants }),
     };

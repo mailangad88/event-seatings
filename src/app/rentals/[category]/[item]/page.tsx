@@ -6,6 +6,8 @@ import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/R
 import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
+import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
+import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -27,11 +29,17 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]/[it
   const i = await load(props);
   if (!i) return {};
   const img = rentalImagePath(i.id, i.categoryId);
+  const real = photosForItem(i);
+  const og = img
+    ? { url: img, alt: rentalAlt(i.name, i.specs, i.id) }
+    : real.matched
+      ? { url: stockSrc(real.photos[0], 1200, 630), width: 1200, height: 630, alt: stockAlt(real.photos[0], i.name, true, site.market) }
+      : undefined;
   return {
     title: `${i.name} Rental ${site.market}: ${formatPrice(customerPrice(i))} ${unitLabel(i)}`,
     description: `Rent a ${lower(i.name)} in ${site.market} and the suburbs for ${formatPrice(customerPrice(i))} ${unitLabel(i)}. ${i.specs}. ${i.description} Delivery and setup available.`,
     alternates: { canonical: itemHref(i) },
-    ...(img && { openGraph: { images: [{ url: img, alt: rentalAlt(i.name, i.specs, i.id) }] } }),
+    ...(og && { openGraph: { images: [og] } }),
   };
 }
 
@@ -92,6 +100,10 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const related = catalogItems.filter((x) => x.categoryId === i.categoryId && x.id !== i.id).slice(0, 4);
   const pageUrl = `${site.url}${itemHref(i)}`;
   const img = rentalImagePath(i.id, i.categoryId);
+  // Real event photos: the same item type when we have it, otherwise general photos of the category.
+  const real = photosForItem(i);
+  const gallery = (real.matched ? real.photos : categoryPhotos(i.categoryId)).slice(0, 3);
+  const galleryAlt = (p: (typeof gallery)[number]) => stockAlt(p, i.name, real.matched, site.market);
 
   const jsonLd = [
     {
@@ -102,7 +114,10 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
       url: pageUrl,
       category: `${c.name} rental`,
       brand: { "@type": "Brand", name: site.name },
-      ...(img && { image: { "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) } }),
+      image: [
+        ...(img ? [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }] : []),
+        ...(real.matched ? gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))) : []),
+      ],
       offers: {
         "@type": "Offer",
         price: price.toFixed(2),
@@ -152,7 +167,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
 
         <div className="mt-10 grid gap-12 md:grid-cols-[1.1fr_1fr] md:gap-20">
           <div className="md:sticky md:top-32 md:self-start">
-            <RentalVisual item={i} priority className="aspect-square" sizes="(max-width: 768px) 100vw, 50vw" />
+            <RentalVisual item={i} priority photoWidth={720} className="aspect-square" sizes="(max-width: 768px) 100vw, 50vw" />
           </div>
           <div className="md:py-4">
             <p className="font-serif text-lg text-gold italic">{c.name} rental · {site.market}</p>
@@ -200,6 +215,33 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             )}
           </div>
         </div>
+
+        {gallery.length > 0 && (
+          <section className="mt-24" aria-labelledby="real-photos">
+            <p className="eyebrow">Real event photos</p>
+            <h2 id="real-photos" className="headline mt-6 text-4xl">
+              {real.matched ? `${i.name} style at real events` : `${c.name} at real events`}
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-muted">
+              {real.matched
+                ? "Example photos of this type of rental at real events, so you can picture it. Our rental partner's exact item, colour and finish may differ; ask for a photo of the actual piece in your quote."
+                : `Example photos of ${c.name.toLowerCase()} at real events. Ask us for a photo of this exact item when you request a quote.`}
+            </p>
+            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+              {gallery.map((p) => (
+                <figure key={p.key}>
+                  <div className="media relative aspect-[4/3] overflow-hidden">
+                    <StockImg photo={p} alt={galleryAlt(p)} width={480} height={360} />
+                    <ExampleChip />
+                  </div>
+                  <figcaption className="mt-2 text-xs text-muted">
+                    {p.alt}. <PhotoCredit photo={p} />
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-28 grid gap-16 lg:grid-cols-2" aria-labelledby="howmany">
           <figure>
