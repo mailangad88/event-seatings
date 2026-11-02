@@ -8,11 +8,29 @@
     "height": 1600,
     "kind": "product"
   },
+  "bentwood": {
+    "src": "/rentals/chairs/bentwood.webp",
+    "category": "chairs",
+    "alt": "3D render of an espresso bentwood bistro chair with a hoop back and round seat, a Parisian-cafe rental for Chicago weddings",
+    "caption": "Bentwood bistro chair (espresso)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
   "black-padded-folding": {
     "src": "/rentals/chairs/black-padded-folding.webp",
     "category": "chairs",
     "alt": "3D render of a black padded folding chair with a steel frame and black vinyl seat for corporate events and conferences",
     "caption": "Black padded folding chair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "cane-back": {
+    "src": "/rentals/chairs/cane-back.webp",
+    "category": "chairs",
+    "alt": "3D render of a natural wood cane-back chair with woven cane panel and linen seat cushion",
+    "caption": "Cane-back chair (natural)",
     "width": 1600,
     "height": 1600,
     "kind": "product"
@@ -161,6 +179,105 @@
     "height": 1600,
     "kind": "product"
   },
+  "windsor": {
+    "src": "/rentals/chairs/windsor.webp",
+    "category": "chairs",
+    "alt": "3D render of an antique white Windsor spindle chair with a bow back and saddle seat for farmhouse weddings",
+    "caption": "Windsor spindle chair (antique white)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "wishbone": {
+    "src": "/rentals/chairs/wishbone.webp",
+    "category": "chairs",
+    "alt": "3D render of a natural oak wishbone chair with a woven cord seat, a modern Scandinavian dinner chair rental",
+    "caption": "Wishbone chair (natural oak)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "banquet-floor-length": {
+    "src": "/rentals/linens/banquet-floor-length.webp",
+    "category": "linens",
+    "alt": "3D render of a 90 by 156 inch ivory rectangular tablecloth draped floor-length over an 8-foot banquet table",
+    "caption": "90\" x 156\" banquet floor-length tablecloth",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "banquet-lap-length": {
+    "src": "/rentals/linens/banquet-lap-length.webp",
+    "category": "linens",
+    "alt": "3D render of a 60 by 120 inch white rectangular tablecloth at lap length on an 8-foot banquet table",
+    "caption": "60\" x 120\" banquet lap-length tablecloth",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "chair-cover": {
+    "src": "/rentals/linens/chair-cover.webp",
+    "category": "linens",
+    "alt": "3D render of a banquet chair in a fitted ivory chair cover tied with a champagne satin sash and bow",
+    "caption": "Ivory chair cover with champagne sash",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "chair-sash": {
+    "src": "/rentals/linens/chair-sash.webp",
+    "category": "linens",
+    "alt": "3D render of a gold Chiavari chair dressed with a blush chiffon sash tied in a bow on the chair back",
+    "caption": "Blush chiffon chair sash on a gold Chiavari",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "round-floor-length": {
+    "src": "/rentals/linens/round-floor-length.webp",
+    "category": "linens",
+    "alt": "3D render of a 120-inch ivory round tablecloth draped floor-length over a 60-inch round table",
+    "caption": "120\" round floor-length tablecloth (ivory)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "round-lap-length": {
+    "src": "/rentals/linens/round-lap-length.webp",
+    "category": "linens",
+    "alt": "3D render of a 90-inch white round tablecloth at lap length on a 60-inch round table",
+    "caption": "90\" round lap-length tablecloth (white)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "sequin-overlay": {
+    "src": "/rentals/linens/sequin-overlay.webp",
+    "category": "linens",
+    "alt": "3D render of a gold sequin round tablecloth draped floor-length over a 60-inch round table for glam receptions",
+    "caption": "Gold sequin tablecloth",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "spandex-highboy": {
+    "src": "/rentals/linens/spandex-highboy.webp",
+    "category": "linens",
+    "alt": "3D render of a white fitted spandex cover on a cocktail highboy table, cinched at the waist",
+    "caption": "Spandex highboy cover (white)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "table-runner": {
+    "src": "/rentals/linens/table-runner.webp",
+    "category": "linens",
+    "alt": "3D render of a sage green chiffon table runner draped over an ivory floor-length linen on an 8-foot banquet table",
+    "caption": "Sage chiffon table runner",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
   "banquet-6ft": {
     "src": "/rentals/tables/banquet-6ft.webp",
     "category": "tables",
@@ -206,6 +323,15 @@
     "height": 1600,
     "kind": "product"
   },
+  "kids-table": {
+    "src": "/rentals/tables/kids-table.webp",
+    "category": "tables",
+    "alt": "3D render of a kids' height 6-foot white table, 22 inches tall, for children's parties and kids' tables at weddings",
+    "caption": "Kids' 6 ft table (22\" tall)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
   "round-48": {
     "src": "/rentals/tables/round-48.webp",
     "category": "tables",
@@ -229,6 +355,15 @@
     "category": "tables",
     "alt": "3D render of a 72-inch round banquet table that seats 10 to 12 guests for weddings and galas in Chicago",
     "caption": "72\" round table (seats 10-12)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "sweetheart-table": {
+    "src": "/rentals/tables/sweetheart-table.webp",
+    "category": "tables",
+    "alt": "3D render of a 4-foot sweetheart table for the couple, dressed in gold sequin linen with ivory and blush roses and two gold Chiavari chairs",
+    "caption": "Sweetheart table with gold sequin linen",
     "width": 1600,
     "height": 1600,
     "kind": "product"

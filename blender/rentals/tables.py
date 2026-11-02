@@ -200,7 +200,7 @@ def bud_vase(x, y, z, flower=(0.98, 0.94, 0.92)):
 
 
 def build_runner(length, drop, color, h=30 * IN):
-    m = mat("Chiffon", color, 0.0, 0.6, **{"Sheen Weight": 0.8, "Subsurface Weight": 0.2})
+    m = mat("Chiffon", tuple(c * 0.7 for c in color), 0.0, 0.7, **{"Sheen Weight": 0.15})
     bm = bmesh.new()
     w = 0.36
     nx, ny = 160, 10

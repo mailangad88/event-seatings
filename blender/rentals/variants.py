@@ -96,7 +96,7 @@ for key, col in LINEN_COLOURS[:4]:
 for key, col in (("black", (0.02, 0.02, 0.022)), ("navy", (0.04, 0.06, 0.16)), ("blush", lib.BLUSH)):
     VARIANTS.append(("spandex-highboy", key, (lambda c: lambda: T.build_spandex_highboy(c))(col),
                      f"3D render of a {key} fitted spandex cover on a cocktail highboy table", f"Spandex highboy cover in {key}"))
-for key, col in (("blush", lib.BLUSH), ("burgundy", (0.35, 0.03, 0.07)), ("dusty-blue", (0.45, 0.56, 0.68)), ("champagne", (0.82, 0.70, 0.50))):
+for key, col in (("blush", (0.86, 0.56, 0.56)), ("burgundy", (0.35, 0.03, 0.07)), ("dusty-blue", (0.45, 0.56, 0.68)), ("champagne", (0.82, 0.70, 0.50))):
     label = key.replace("-", " ")
     VARIANTS.append(("table-runner", key, (lambda c: lambda: (T.build_banquet(8 * FT), T.rect_cloth(8 * FT, 30 * IN, 30 * IN, 30 * IN, T.linen()), T.build_runner(8 * FT, 0.35, c)))(col),
                      f"3D render of a {label} chiffon table runner over an ivory floor-length linen on an 8-foot banquet table",
