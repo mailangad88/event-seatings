@@ -1,4 +1,58 @@
 {
+  "beverage-dispenser": {
+    "src": "/rentals/catering/beverage-dispenser.webp",
+    "category": "catering",
+    "alt": "3D render of a glass beverage dispenser filled with lemonade on a silver stand",
+    "caption": "Glass beverage dispenser",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "cake-stand": {
+    "src": "/rentals/catering/cake-stand.webp",
+    "category": "catering",
+    "alt": "3D render of a gold pedestal cake stand holding a two-tier white wedding cake with blush roses",
+    "caption": "Gold cake stand",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "chafing-dish": {
+    "src": "/rentals/catering/chafing-dish.webp",
+    "category": "catering",
+    "alt": "3D render of a stainless steel roll-top chafing dish with fuel cans for keeping buffet food hot",
+    "caption": "Roll-top chafing dish",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "coffee-urn": {
+    "src": "/rentals/catering/coffee-urn.webp",
+    "category": "catering",
+    "alt": "3D render of a stainless steel 100-cup coffee urn for catered events",
+    "caption": "100-cup coffee urn",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "portable-bar": {
+    "src": "/rentals/catering/portable-bar.webp",
+    "category": "catering",
+    "alt": "3D render of a 6-foot portable event bar with a white front, brass trim and black stone top",
+    "caption": "6 ft portable bar",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "serving-tray": {
+    "src": "/rentals/catering/serving-tray.webp",
+    "category": "catering",
+    "alt": "3D render of a round silver serving tray with three champagne flutes for passed drinks",
+    "caption": "Silver serving tray",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
   "bar-stool": {
     "src": "/rentals/chairs/bar-stool.webp",
     "category": "chairs",
@@ -197,6 +251,150 @@
     "height": 1600,
     "kind": "product"
   },
+  "candle-holder": {
+    "src": "/rentals/decor/candle-holder.webp",
+    "category": "decor",
+    "alt": "3D render of a gold three-arm candelabra with ivory taper candles for reception centerpieces",
+    "caption": "Gold candelabra",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "ceremony-arch": {
+    "src": "/rentals/decor/ceremony-arch.webp",
+    "category": "decor",
+    "alt": "3D render of a wooden hexagon wedding ceremony arch draped with ivory chiffon and blush and ivory roses",
+    "caption": "Hexagon ceremony arch with florals",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "flower-wall": {
+    "src": "/rentals/decor/flower-wall.webp",
+    "category": "decor",
+    "alt": "3D render of an 8 by 8 foot blush and ivory rose flower wall on a gold stand, a photo backdrop for weddings and showers",
+    "caption": "8' x 8' rose flower wall",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "marquee-letters": {
+    "src": "/rentals/decor/marquee-letters.webp",
+    "category": "decor",
+    "alt": "3D render of 4-foot light-up marquee letters spelling LOVE with warm bulbs for weddings and engagement parties",
+    "caption": "4 ft LOVE marquee letters",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "mirror-photo-booth": {
+    "src": "/rentals/decor/mirror-photo-booth.webp",
+    "category": "decor",
+    "alt": "3D render of a gold-framed interactive mirror photo booth with glowing animated text",
+    "caption": "Mirror photo booth",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "neon-sign": {
+    "src": "/rentals/decor/neon-sign.webp",
+    "category": "decor",
+    "alt": "3D render of a pink LED neon sign with a heart and script on a clear acrylic backer for weddings, showers and birthdays",
+    "caption": "Custom-style LED neon sign",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "photo-booth-360": {
+    "src": "/rentals/decor/photo-booth-360.webp",
+    "category": "decor",
+    "alt": "3D render of a 360 photo booth platform with a rotating camera arm, LED ring and gold stanchions",
+    "caption": "360 photo booth",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "dance-floor": {
+    "src": "/rentals/floors/dance-floor.webp",
+    "category": "floors",
+    "alt": "3D render of a 16 by 16 foot black and white checkerboard dance floor with silver trim for wedding receptions",
+    "caption": "16' x 16' black and white dance floor",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "led-dance-floor": {
+    "src": "/rentals/floors/led-dance-floor.webp",
+    "category": "floors",
+    "alt": "3D render of a 16 by 16 foot black starlit LED dance floor glowing with twinkling white lights",
+    "caption": "16' x 16' starlit LED dance floor",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "stage-deck": {
+    "src": "/rentals/floors/stage-deck.webp",
+    "category": "floors",
+    "alt": "3D render of a 16 by 8 foot event stage deck, 24 inches high, with black carpet, pleated skirting and steps",
+    "caption": "16' x 8' stage with skirt and steps",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "patio-heater": {
+    "src": "/rentals/heating/patio-heater.webp",
+    "category": "heating",
+    "alt": "3D render of a stainless steel mushroom propane patio heater for fall and winter outdoor events in Chicago",
+    "caption": "Propane patio heater",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "tent-heater": {
+    "src": "/rentals/heating/tent-heater.webp",
+    "category": "heating",
+    "alt": "3D render of a forced-air tent heater with flexible silver ducting for warming tents at cold-weather Chicago events",
+    "caption": "Forced-air tent heater",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "chandelier": {
+    "src": "/rentals/lighting/chandelier.webp",
+    "category": "lighting",
+    "alt": "3D render of a two-tier gold and crystal chandelier with candle bulbs for tent and ballroom ceilings",
+    "caption": "Gold crystal chandelier",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "pipe-and-drape": {
+    "src": "/rentals/lighting/pipe-and-drape.webp",
+    "category": "lighting",
+    "alt": "3D render of an ivory pipe and drape backdrop, 8 feet tall and 20 feet wide, on silver uprights",
+    "caption": "Ivory pipe and drape backdrop",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "string-lights": {
+    "src": "/rentals/lighting/string-lights.webp",
+    "category": "lighting",
+    "alt": "3D render of warm white bistro string lights draped between two black poles for patios, tents and backyard weddings",
+    "caption": "Bistro string lights",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "uplight": {
+    "src": "/rentals/lighting/uplight.webp",
+    "category": "lighting",
+    "alt": "3D render of a wireless LED uplight casting a pink wash of light up a wall, used to color venue walls and drapes",
+    "caption": "Wireless LED uplight",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
   "banquet-floor-length": {
     "src": "/rentals/linens/banquet-floor-length.webp",
     "category": "linens",
@@ -229,6 +427,15 @@
     "category": "linens",
     "alt": "3D render of a gold Chiavari chair dressed with a blush chiffon sash tied in a bow on the chair back",
     "caption": "Blush chiffon chair sash on a gold Chiavari",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "cloth-napkins": {
+    "src": "/rentals/linens/cloth-napkins.webp",
+    "category": "linens",
+    "alt": "3D render of a stack of folded cloth dinner napkins in ivory, blush, sage, navy and burgundy beside a place setting",
+    "caption": "Cloth dinner napkins in five colors",
     "width": 1600,
     "height": 1600,
     "kind": "product"
@@ -274,6 +481,33 @@
     "category": "linens",
     "alt": "3D render of a sage green chiffon table runner draped over an ivory floor-length linen on an 8-foot banquet table",
     "caption": "Sage chiffon table runner",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "coffee-table": {
+    "src": "/rentals/lounge/coffee-table.webp",
+    "category": "lounge",
+    "alt": "3D render of a gold frame coffee table with a glass top and marble shelf for event lounge areas",
+    "caption": "Gold and glass coffee table",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "lounge-armchair": {
+    "src": "/rentals/lounge/lounge-armchair.webp",
+    "category": "lounge",
+    "alt": "3D render of an ivory tufted velvet lounge armchair with gold legs",
+    "caption": "Ivory velvet lounge armchair",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "lounge-sofa": {
+    "src": "/rentals/lounge/lounge-sofa.webp",
+    "category": "lounge",
+    "alt": "3D render of an ivory tufted velvet lounge sofa with gold legs for cocktail hour and VIP lounges",
+    "caption": "Ivory velvet lounge sofa",
     "width": 1600,
     "height": 1600,
     "kind": "product"
@@ -364,6 +598,231 @@
     "category": "tables",
     "alt": "3D render of a 4-foot sweetheart table for the couple, dressed in gold sequin linen with ivory and blush roses and two gold Chiavari chairs",
     "caption": "Sweetheart table with gold sequin linen",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "bread-plate": {
+    "src": "/rentals/tableware/bread-plate.webp",
+    "category": "tableware",
+    "alt": "3D render of a 6-inch white china bread and butter plate",
+    "caption": "White china bread plate",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "champagne-flute": {
+    "src": "/rentals/tableware/champagne-flute.webp",
+    "category": "tableware",
+    "alt": "3D render of a clear crystal champagne flute for weddings, bars and catered events",
+    "caption": "Champagne flute",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "charger-plate": {
+    "src": "/rentals/tableware/charger-plate.webp",
+    "category": "tableware",
+    "alt": "3D render of a 13-inch gold beaded charger plate for wedding place settings",
+    "caption": "Gold beaded charger plate",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "coffee-cup-saucer": {
+    "src": "/rentals/tableware/coffee-cup-saucer.webp",
+    "category": "tableware",
+    "alt": "3D render of a white china coffee cup and saucer for dessert and coffee service",
+    "caption": "White coffee cup and saucer",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "dinner-fork": {
+    "src": "/rentals/tableware/dinner-fork.webp",
+    "category": "tableware",
+    "alt": "3D render of a polished stainless steel dinner fork for event place settings",
+    "caption": "Stainless dinner fork",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "dinner-knife": {
+    "src": "/rentals/tableware/dinner-knife.webp",
+    "category": "tableware",
+    "alt": "3D render of a polished stainless steel dinner knife for event place settings",
+    "caption": "Stainless dinner knife",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "dinner-plate": {
+    "src": "/rentals/tableware/dinner-plate.webp",
+    "category": "tableware",
+    "alt": "3D render of a 10.5-inch white china dinner plate for weddings and catered events",
+    "caption": "White china dinner plate",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "gold-flatware": {
+    "src": "/rentals/tableware/gold-flatware.webp",
+    "category": "tableware",
+    "alt": "3D render of a gold flatware set with salad fork, dinner fork, knife and teaspoon for glam wedding tables",
+    "caption": "Gold flatware set",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "highball-glass": {
+    "src": "/rentals/tableware/highball-glass.webp",
+    "category": "tableware",
+    "alt": "3D render of a clear crystal highball glass for weddings, bars and catered events",
+    "caption": "Highball glass",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "pilsner-glass": {
+    "src": "/rentals/tableware/pilsner-glass.webp",
+    "category": "tableware",
+    "alt": "3D render of a clear crystal pilsner beer glass for weddings, bars and catered events",
+    "caption": "Pilsner beer glass",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "rocks-glass": {
+    "src": "/rentals/tableware/rocks-glass.webp",
+    "category": "tableware",
+    "alt": "3D render of a clear crystal rocks glass for weddings, bars and catered events",
+    "caption": "Rocks glass",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "salad-fork": {
+    "src": "/rentals/tableware/salad-fork.webp",
+    "category": "tableware",
+    "alt": "3D render of a polished stainless steel salad fork for event place settings",
+    "caption": "Stainless salad fork",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "salad-plate": {
+    "src": "/rentals/tableware/salad-plate.webp",
+    "category": "tableware",
+    "alt": "3D render of an 8-inch white china salad plate",
+    "caption": "White china salad plate",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "soup-bowl": {
+    "src": "/rentals/tableware/soup-bowl.webp",
+    "category": "tableware",
+    "alt": "3D render of a white china soup bowl for plated dinners",
+    "caption": "White china soup bowl",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "teaspoon": {
+    "src": "/rentals/tableware/teaspoon.webp",
+    "category": "tableware",
+    "alt": "3D render of a polished stainless steel teaspoon for event place settings",
+    "caption": "Stainless teaspoon",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "water-goblet": {
+    "src": "/rentals/tableware/water-goblet.webp",
+    "category": "tableware",
+    "alt": "3D render of a clear crystal water goblet for weddings, bars and catered events",
+    "caption": "Water goblet",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "wine-glass": {
+    "src": "/rentals/tableware/wine-glass.webp",
+    "category": "tableware",
+    "alt": "3D render of a clear crystal wine glass for weddings, bars and catered events",
+    "caption": "Wine glass",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "canopy-10x10": {
+    "src": "/rentals/tents/canopy-10x10.webp",
+    "category": "tents",
+    "alt": "3D render of a white 10 by 10 foot pop-up canopy tent on a lawn for backyard parties, vendor booths and small gatherings",
+    "caption": "10' x 10' pop-up canopy",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "clear-top-tent": {
+    "src": "/rentals/tents/clear-top-tent.webp",
+    "category": "tents",
+    "alt": "3D render of a 20 by 40 foot clear-top frame tent with bistro string lights and dressed round tables at twilight",
+    "caption": "Clear-top tent at twilight",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "frame-tent-20x20": {
+    "src": "/rentals/tents/frame-tent-20x20.webp",
+    "category": "tents",
+    "alt": "3D render of a white 20 by 20 foot frame tent on a lawn with round tables and gold Chiavari chairs, seating about 40 guests",
+    "caption": "20' x 20' frame tent (seats ~40)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "frame-tent-20x40": {
+    "src": "/rentals/tents/frame-tent-20x40.webp",
+    "category": "tents",
+    "alt": "3D render of a white 20 by 40 foot frame tent on a lawn set with round tables and gold Chiavari chairs, seating about 80 guests",
+    "caption": "20' x 40' frame tent (seats ~80)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "frame-tent-30x60": {
+    "src": "/rentals/tents/frame-tent-30x60.webp",
+    "category": "tents",
+    "alt": "3D render of a white 30 by 60 foot frame tent on a lawn for weddings of about 180 guests, no center poles",
+    "caption": "30' x 60' frame tent (seats ~180)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "pole-tent-40x60": {
+    "src": "/rentals/tents/pole-tent-40x60.webp",
+    "category": "tents",
+    "alt": "3D render of a white 40 by 60 foot high-peak pole tent with guy ropes on a lawn, seating about 240 guests for a backyard wedding",
+    "caption": "40' x 60' pole tent (seats ~240)",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "sailcloth-tent": {
+    "src": "/rentals/tents/sailcloth-tent.webp",
+    "category": "tents",
+    "alt": "3D render of a glowing sailcloth tent with tall wooden poles and string lights at dusk, a luxury wedding tent near Chicago",
+    "caption": "Sailcloth tent at dusk",
+    "width": 1600,
+    "height": 1600,
+    "kind": "product"
+  },
+  "tent-sidewall": {
+    "src": "/rentals/tents/tent-sidewall.webp",
+    "category": "tents",
+    "alt": "3D render of a 20 by 20 foot frame tent with white cathedral-window sidewalls on three sides for wind and cold-weather protection",
+    "caption": "Tent sidewalls with cathedral windows",
     "width": 1600,
     "height": 1600,
     "kind": "product"
