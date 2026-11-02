@@ -5,6 +5,7 @@ import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
 import { rentalImages } from "@/data/rental-images";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
+import { looks } from "@/data/looks";
 import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";
@@ -13,7 +14,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -58,5 +59,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${site.url}${f.base}`, lastModified: GUIDES_UPDATED, priority: 0.7 },
     ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
   ]);
-  return [...pages, gallery, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts];
+  const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
+  return [...pages, gallery, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts];
 }

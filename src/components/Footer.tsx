@@ -47,6 +47,7 @@ export function Footer() {
               ["/quiz", "Style quiz"],
               ["/seating-planner", "Seating planner"],
               ["/answers", "Quick answers"],
+              ["/looks", "The Look Book"],
               ["/gallery", "3D gallery"],
               ["/faq", "FAQ"],
               ["/about", "About us"],
