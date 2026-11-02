@@ -1,7 +1,9 @@
 import images from "./rental-images.json";
+import { site } from "@/lib/site";
 
-// 3D-rendered product and event-scene images (Blender, see blender/rentals/README.md).
-// Product shots are 1:1 at 1600px on a warm #EFE9DF studio sweep; scenes are 16:9 at 1920x1080.
+// Photorealistic product and event-scene images built in Blender (see blender/rentals/README.md): real HDRI
+// lighting, photo-scanned floors and lawns, depth of field and a camera finish. Product shots are 1:1
+// (room, linen tabletop or park lawn sets); scenes are 16:9 at 1920x1080.
 // Slugs match the catalog item ids. Regenerate with `python blender/rentals/publish.py`.
 
 export type RentalImage = {
@@ -12,6 +14,8 @@ export type RentalImage = {
   width: number;
   height: number;
   kind: "product" | "scene" | "angle" | "variant";
+  /** Where it's pictured: room, table, park, park-dusk, scene, or classic (older studio-sweep render). */
+  setting?: string;
   // Angles and colour variants point at the base item they belong to.
   parent?: string;
   variant?: string;
@@ -75,3 +79,25 @@ export const chairRenderSlug: Record<string, string> = {
   "garden-folding": "garden-folding",
   "royal-throne": "throne-chair",
 };
+
+/** schema.org ImageObject for one of our own images, with the caption, alt description and licence details
+ *  Google Images and AI search read. */
+export function rentalImageJsonLd(img: Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height">) {
+  const url = `${site.url}${img.src}`;
+  return {
+    "@type": "ImageObject",
+    contentUrl: url,
+    url,
+    name: img.caption,
+    caption: img.caption,
+    description: img.alt,
+    width: img.width,
+    height: img.height,
+    encodingFormat: "image/webp",
+    creditText: site.name,
+    creator: { "@type": "Organization", name: site.name },
+    copyrightNotice: `© ${site.name}`,
+    license: `${site.url}/terms`,
+    acquireLicensePage: `${site.url}/terms`,
+  };
+}

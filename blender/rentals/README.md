@@ -3,8 +3,12 @@
 Every rental item on the site has a 3D render built in code with Blender's Python API, to real rental
 dimensions. Nothing is a stock photo, so we own every image outright.
 
-* **Product shots**: 1600 x 1600, item centred on a warm light seamless sweep (#EFE9DF), soft top-left key
-  light and a contact shadow. Tents and outdoor games are shot on a lawn at golden hour or dusk.
+* **Product shots (photoreal, default)**: 1400 x 1400. Furniture stands in a room corner (photo-scanned
+  herringbone oak floor, cream plaster wall), tableware sits on a natural flax linen tablecloth, and tents and lawn
+  games stand on a real park lawn whose trees and sky are the HDRI photograph itself. Every set is lit by a
+  real HDRI, every material gets roughness variation, hard edges get a 1.5 mm bevel, the camera has depth of
+  field, and `publish.py` adds a camera finish (grain, vignette, lens fringing). See `photoreal.py`,
+  `photo_finish.py` and `assets.py`. `--classic` gives the old flat-sweep look.
 * **Scenes and topic heroes**: 1920 x 1080 styled setups (ballroom reception, garden ceremony, cocktail hour,
   tent at twilight, farm-table dinner, corporate, floor plan from above, and line-ups per category).
 
@@ -12,6 +16,9 @@ dimensions. Nothing is a stock photo, so we own every image outright.
 
 | File | What it builds |
 |---|---|
+| `assets.py` | downloads the CC0 HDRIs and scanned textures (Poly Haven / ambientCG, via GitHub mirrors) into `out/assets/` |
+| `photoreal.py` | room, tabletop and park sets, HDRI worlds, the realism pass (bevels, roughness variation), depth of field |
+| `photo_finish.py` | post-render camera finish: film grain (port of MIT-licensed filmgrainer), vignette, chromatic aberration, bloom |
 | `lib.py` | mesh helpers, materials, the studio sweep, the lawn, cameras, render settings |
 | `catalog.py` | the registry: slug, category, builder, camera, **alt text and caption** (plus the original chairs) |
 | `chairs.py`, `collection_chairs.py` | Chiavari, folding, crossback, ghost, throne, bar stool, chair cover/sash, and the 10 collection chairs |
@@ -29,7 +36,8 @@ Slugs match the catalog item ids, and categories match the image folders the sit
 Blender runs headless from PyPI (no desktop install needed):
 
 ```bash
-python3.13 -m venv ~/bvenv && ~/bvenv/bin/pip install bpy==5.2.3 pillow
+python3.13 -m venv ~/bvenv && ~/bvenv/bin/pip install bpy==5.2.3 pillow numpy
+python3 blender/rentals/assets.py                                                         # real HDRIs + textures
 ~/bvenv/bin/python blender/rentals/render.py --list
 ~/bvenv/bin/python blender/rentals/render.py gold-chiavari round-60 --scale 25 --samples 16   # quick preview
 ~/bvenv/bin/python blender/rentals/render.py --all --samples 40 --skip-existing               # final
@@ -50,5 +58,7 @@ Add `--save-blend` to keep a `.blend` next to each PNG for tweaking in the Blend
 2. Register it with `item(slug, category, builder, alt, caption, cam=dict(az, el, lens, pad))`.
 3. Preview with `--scale 25`, render, publish, and add the item to `SITE_LOG.md`.
 
-Alt text rule: start with "3D render of", say what it is, its size or capacity, its finish, and what event it
-suits; mention Chicago where it reads naturally.
+Alt text rule (registry): start with "3D render of", say what it is, its size or capacity, its finish, and what
+event it suits; mention Chicago where it reads naturally. `publish.py` rewrites it for photoreal images: drops
+the prefix, adds the setting ("on a natural flax linen tablecloth") and ends with "(photorealistic visualization)" so
+the alt stays honest. Filenames are the catalog slug (`/rentals/chairs/gold-chiavari.webp`).

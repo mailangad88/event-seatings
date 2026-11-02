@@ -7,6 +7,7 @@ import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from
 import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
+import { imagesFor, rentalImage, rentalImageJsonLd } from "@/data/rental-images";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { allInEstimate } from "@/lib/fees";
 import { PriceDisclaimer } from "@/components/ui";
@@ -135,8 +136,12 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
       category: `${c.name} rental`,
       brand: { "@type": "Brand", name: site.name },
       image: [
-        ...(img ? [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }] : []),
-        ...(real.matched ? gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))) : []),
+        ...(img
+          ? rentalImage(i.id)
+            ? imagesFor(i.id).map((m) => rentalImageJsonLd(m))
+            : [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }]
+          : []),
+        ...gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))),
       ],
       offers: {
         "@type": "Offer",
