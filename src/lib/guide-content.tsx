@@ -16,6 +16,8 @@ export type GuideFamily = {
   build: (slug: string) => GuideProps | null;
   /** Short label for hub lists. */
   label: (slug: string) => { label: string; note?: string };
+  /** Answer-first FAQs shown on the hub page (with FAQPage schema). */
+  hubFaqs?: { q: string; a: string }[];
 };
 
 const fill = (t: string, v: Record<string, string | number>) => t.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? `{${k}}`));
@@ -190,6 +192,11 @@ function buildLayout(slug: string): GuideProps | null {
 
 export const layoutsFamily: GuideFamily = {
   key: "layouts",
+  hubFaqs: [
+    { q: "How much space do I need per guest for a seated dinner?", a: "Plan about 10-12 square feet per guest for a seated dinner at round tables, plus extra for a dance floor (about 3-4 square feet per dancing guest), a head table, bars and buffets. Each layout guide works this out for its exact guest count." },
+    { q: "Round or long tables: which seats more people?", a: "Long banquet or farm tables seat more people in the same room because there is less dead space between tables. Rounds are easier for conversation and service. A 60-inch round seats 8-10; an 8-foot banquet table seats 8, or 10 with one guest at each end." },
+    { q: "How many extra chairs should I rent?", a: "Add 3-5% spare chairs for seated dinners and about 5-10% for ceremonies, so late RSVPs, vendors and the officiant always have a seat." },
+  ],
   base: "/seating-layouts",
   hubTitle: "Seating Layouts by Event Type and Guest Count",
   hubDescription: "To-scale floor plans, chair counts, table counts and room sizes for weddings, galas, corporate dinners, parties and more, from 12 to 500 guests.",
@@ -338,6 +345,11 @@ function buildRoom(slug: string): GuideProps | null {
 
 export const roomsFamily: GuideFamily = {
   key: "rooms",
+  hubFaqs: [
+    { q: "How many people fit in a room at round tables?", a: "Divide the usable floor area by 10-12 square feet per guest. For example, a 40 x 60 foot room (2,400 sq ft) seats about 200-240 at rounds before you take out space for a dance floor, bars and a stage." },
+    { q: "How much space does ceremony or theater seating need?", a: "Theater rows need about 6-8 square feet per guest, including a center aisle at least 4-6 feet wide. That is why the same room holds roughly twice as many guests for a ceremony as for dinner." },
+    { q: "How much space does a standing cocktail reception need?", a: "Plan about 6-8 square feet per guest for a standing reception, with highboy tables for about a third of guests and some lounge or perch seating for older guests." },
+  ],
   base: "/room-size-guides",
   hubTitle: "How Many Chairs Fit in My Room? Room Size Guides",
   hubDescription: "Look up your room's dimensions to see how many people fit at round tables, in ceremony rows, classroom style and at a standing cocktail reception.",
@@ -492,6 +504,11 @@ function buildCompare(slug: string): GuideProps | null {
 
 export const compareFamily: GuideFamily = {
   key: "compare",
+  hubFaqs: [
+    { q: "What is the most popular wedding chair to rent in Chicago?", a: "Chiavari chairs are still the most requested for ballrooms, while cross-back and other wood chairs are the favorite for barns, vineyards and lofts. Ghost chairs suit modern venues where you want the decor to stand out." },
+    { q: "Which rental chairs are the most comfortable?", a: "Padded and upholstered chairs (velvet dining, padded folding and chairs with seat cushions) are the most comfortable for long dinners. Chiavari and cross-back chairs are comfortable for 2-3 hours with a seat pad." },
+    { q: "Which chairs are best for outdoor events?", a: "Resin, metal and wood folding chairs handle grass and weather best. Avoid upholstered chairs outdoors unless you have a tent, and add floor or plywood under thin legs on soft lawns." },
+  ],
   base: "/chair-comparisons",
   hubTitle: "Event Chair Comparisons: Which Chair Should You Rent?",
   hubDescription: "Side-by-side comparisons of every chair in our collection: price, comfort, outdoor use, stacking and the events each suits best.",
@@ -605,6 +622,11 @@ function buildCost(slug: string): GuideProps | null {
 }
 export const costFamily: GuideFamily = {
   key: "cost",
+  hubFaqs: [
+    { q: "How much does it cost to rent chairs in Chicago?", a: "Basic folding chairs rent for about $2-4 each, Chiavari and cross-back chairs for about $7-11, and ghost or upholstered chairs for about $10-30 per event day. Delivery, setup and pickup are quoted separately for your venue." },
+    { q: "Is delivery included in the chair price?", a: "No. The per-chair price covers one event day. Delivery, setup, pickup, any stairs or long carries, a damage waiver and sales tax are itemized in your proposal before you approve anything." },
+    { q: "How can I lower my chair rental cost?", a: "Use premium chairs only where guests see them most (ceremony aisle, head table) and simpler chairs elsewhere, book early for May-October weekends, and bundle chairs with tables and linens in one quote so delivery is shared." },
+  ],
   base: "/chair-rental-cost",
   hubTitle: "Event Chair Rental Cost in Chicago: Price by Chair and Quantity",
   hubDescription: "Estimated rental cost for every chair style at 50, 100 and 200 chairs, with what is included and how to lower the total.",
@@ -713,6 +735,11 @@ function buildFit(slug: string): GuideProps | null {
 }
 export const fitFamily: GuideFamily = {
   key: "fit",
+  hubFaqs: [
+    { q: "How do I choose the right chair for my event?", a: "Start with the venue style, then check comfort for the length of the event, whether the chairs will be outside, how many fit around your tables and your budget. Each fit guide runs this 5-step check for one event and chair." },
+    { q: "Can I mix chair styles at one event?", a: "Yes. A common approach is one style for guest tables and a statement chair for the head or sweetheart table. Keep the finishes in the same family (all gold, or all natural wood) so the room still looks planned." },
+    { q: "Do I need different chairs for the ceremony and the reception?", a: "Not always. If both happen in the same space, one style flipped between them saves money. Use a second set only when the ceremony and reception run at the same time in different rooms." },
+  ],
   base: "/chair-fit",
   hubTitle: "Which Chair Fits Your Event? Chair Fit Guides",
   hubDescription: "Find the right rental chair for weddings, galas, corporate dinners, parties and more, with a 5-step fit check for every pairing.",
@@ -819,6 +846,11 @@ function buildTable(slug: string): GuideProps | null {
 }
 export const tablesFamily: GuideFamily = {
   key: "tables",
+  hubFaqs: [
+    { q: "How many people sit at a 60-inch round table?", a: "A 60-inch round seats 8 comfortably and 10 snugly. A 72-inch round seats 10-12. Use 120-inch round linens for 60-inch tables and 132-inch for 72-inch tables if you want them floor length." },
+    { q: "How many people sit at an 8-foot banquet table?", a: "An 8-foot (96-inch) banquet table seats 8, four on each side, or 10 with one guest at each end. A 6-foot table seats 6, or 8 with the ends." },
+    { q: "How many chairs fit at a cocktail table?", a: "Highboy cocktail tables are for standing and usually have no chairs. Low 30-inch cocktail tables seat 2-4. Plan one highboy per 8-10 standing guests." },
+  ],
   base: "/table-seating-guides",
   hubTitle: "Table Seating Guides: How Many Chairs Per Table",
   hubDescription: "Seating capacity, floor footprint and table counts for round, rectangular, cocktail, farm and head tables.",
@@ -902,6 +934,11 @@ function buildMonth(slug: string): GuideProps | null {
 }
 export const seasonsFamily: GuideFamily = {
   key: "seasons",
+  hubFaqs: [
+    { q: "When is peak event season in Chicago?", a: "May through October, with June, September and October Saturdays booking first. Reserve tents, specialty chairs and dance floors 2-4 months ahead for those dates." },
+    { q: "What should I rent for a winter event in Chicago?", a: "Plan for indoor venues or tents with sidewalls and heaters, floor protection for wet or salted boots, and padded or upholstered chairs that feel warmer. Allow extra delivery time when snow is in the forecast." },
+    { q: "What happens if it rains on my outdoor event?", a: "Book a tent or an indoor backup at the same time as your chairs. Resin and metal chairs handle rain; wood and upholstered chairs need cover. Your quote can include a tent so the plan B is already priced." },
+  ],
   base: "/chicago-event-seasons",
   hubTitle: "Chicago Event Seasons: Month-by-Month Chair Rental Planning",
   hubDescription: "How Chicago weather and demand shape chair choices, delivery and booking, for every month of the year.",

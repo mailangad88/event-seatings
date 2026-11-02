@@ -8,9 +8,9 @@ import { getChair } from "@/data/chairs";
 import { eventPath, eventTypes } from "@/data/geo";
 
 export const metadata: Metadata = {
-  title: "Chair Rentals for Every Event in Chicago",
+  title: "Event Rentals for Every Occasion in Chicago",
   description:
-    "Chair rentals for weddings, quinceañeras, corporate events, graduations, galas, showers and more across Chicago and the suburbs, with delivery and setup.",
+    "Chairs, tables, linens, tents and more for weddings, quinceañeras, corporate events, graduations, galas and showers across Chicago and the suburbs, with prices upfront, delivery and setup.",
   alternates: { canonical: "/events" },
 };
 

@@ -28,9 +28,9 @@ export function CategoryTile({
       >
         <Image src={image.src} alt={image.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.05]" />
         <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" aria-hidden />
-        <span className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
-          <span className="block font-serif text-2xl leading-tight sm:text-3xl">{name}</span>
-          <span className="mt-1 flex items-center gap-1.5 text-sm text-white/85">
+        <span className="absolute inset-x-0 bottom-0 p-3 text-white sm:p-5">
+          <span className="block font-serif text-xl leading-tight sm:text-3xl">{name}</span>
+          <span className="mt-1 flex items-center gap-1.5 text-xs text-white/85 sm:text-sm">
             {count !== undefined ? `${count} items` : blurb}
             <Icon name="arrow" size={16} className="transition-transform group-hover:translate-x-1" />
           </span>

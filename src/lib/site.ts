@@ -3,12 +3,12 @@ export const site = {
   name: "Beyond Chiavari",
   domain: "beyondchiavari.com",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://beyondchiavari.com",
-  tagline: "Event chair rentals beyond Chiavari",
+  tagline: "Every event rental in Chicago, one quote",
   // Primary market shown in titles and copy.
   market: "Chicago",
   marketLong: "Chicago & suburbs",
   description:
-    "Beyond Chiavari rents distinctive chairs for weddings, corporate events, galas and parties across Chicago and the suburbs: cross-back, ghost, rattan, bentwood, velvet, Chiavari alternatives and more, delivered and set up.",
+    "Beyond Chiavari is Chicago's event rental marketplace: chairs, tables, linens, dinnerware, glassware, tents, dance floors, lighting and more from trusted local rental houses. See prices upfront, build one quote, and we coordinate delivery and setup across Chicago and the suburbs.",
   // Where the business is based (used for the LocalBusiness address).
   city: "St. Charles, IL",
   locality: "St. Charles",
