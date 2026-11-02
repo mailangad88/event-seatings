@@ -1095,3 +1095,16 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 | `/blog/restaurant-private-room-vs-full-venue` | Restaurant Private Room vs Full Venue: Which Is Right | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `vendor-tracker` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/event-signage-wording-guide` | Event Signage Wording Guide: What to Say and Where | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `event-planning-kit` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/planning-an-event-for-older-guests` | Planning an Event for Older Guests: Comfort and Access | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `seating-chart-planner` | Add a real photo or render; check rankings in Search Console after 30 days |
+
+## Lead-gen playbook (2 Nov 2026, PR #31)
+
+| Page / area | Last touched | What changed | Remaining |
+|---|---|---|---|
+| Every page (phones) | 2026-11-02 | Sticky "Get a free quote / Call" bar | Watch form starts vs sends in /admin |
+| /api/leads, alerts, emails | 2026-11-02 | Disposable-email block, consent per channel, A/B/C score, richer owner alert, visitor confirmation, follow-ups (off until FOLLOWUPS_ENABLED), booking webhook, unsubscribe | Angad: set env vars in docs/lead-flow-setup.md, re-run supabase/schema.sql |
+| /solutions + 6 pages | 2026-11-02 | Problem pages: short answer, before/after, FAQ, one CTA | Fill search volume + difficulty from Search Console / Keyword Planner |
+| /compare + 3 pages | 2026-11-02 | Honest booking-model comparisons (no vendor names) | Named "vs" pages need Angad's call (vendors are partners) |
+| /tools/rental-calculator | 2026-11-02 | Guest count to priced list, opens quote builder | Add tents and dance floor sizing |
+| /glossary | 2026-11-02 | 31 rental terms with DefinedTermSet schema, linked to money pages | Add terms from real customer questions |
+| /blog/* | 2026-11-02 | "Ready to rent?" links to the matching money pages | |
+| IndexNow | 2026-11-02 | Key file + `npm run indexnow` | Run after the domain points at Vercel |
