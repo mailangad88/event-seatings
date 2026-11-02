@@ -44,6 +44,8 @@ export function Footer() {
               ["/chair-rentals", "Areas we serve"],
               ["/blog", "Ideas & guides"],
               ["/quiz", "Style quiz"],
+              ["/seating-planner", "Seating planner"],
+              ["/answers", "Quick answers"],
               ["/gallery", "3D gallery"],
               ["/faq", "FAQ"],
               ["/about", "About us"],

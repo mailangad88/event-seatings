@@ -16,7 +16,7 @@ Aim for 3–5 strong posts a week before trying for daily. Each post should answ
 | 8 | ✅ Winter wedding seating: velvet, jewel tones, warmth | winter wedding decor chairs | Seasonal |
 | 9 | ✅ Sweetheart table chair ideas | sweetheart table chairs | Styles |
 | 10 | ✅ Mandap and sangeet seating for South Asian weddings | indian wedding chairs rental chicago | Cultural |
-| 11 | Quinceañera throne chairs & seating ideas | quinceanera throne chair | Cultural |
+| 11 | ✅ Quinceañera throne chairs & seating ideas | quinceanera throne chair | Cultural |
 | 12 | ✅ Wedding chair rental cost: what to budget | wedding chair rental cost | Planning |
 | 13 | Chair covers vs. better chairs: the real cost | chair covers vs chiavari | Comparisons |
 | 14 | Long tables vs. round tables (and which chairs suit each) | long tables vs round tables wedding | Planning |

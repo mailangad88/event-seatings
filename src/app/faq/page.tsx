@@ -121,7 +121,9 @@ export default function FaqPage() {
         intro={
           <>
             Pricing, delivery, quantities and timing for event rentals across {site.marketLong}. Still curious? Email{" "}
-            <a href={`mailto:${site.email}`} className="link">{site.email}</a>.
+            <a href={`mailto:${site.email}`} className="link">{site.email}</a>. Counting chairs or tables? Try the{" "}
+            <Link href="/seating-planner" className="link">free seating planner</Link> or browse{" "}
+            <Link href="/answers" className="link">quick Chicago answers</Link>.
           </>
         }
         actions={

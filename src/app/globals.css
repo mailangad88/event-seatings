@@ -313,3 +313,28 @@ body {
 .prose-post .stat-grid span {
   @apply text-sm text-muted;
 }
+.prose-post figure {
+  @apply my-10;
+}
+.prose-post figure img,
+.prose-post > p > img {
+  @apply mx-auto block h-auto w-full;
+}
+.prose-post figcaption {
+  @apply mt-3 text-center text-sm text-muted italic;
+}
+.prose-post .answer-box {
+  @apply my-8 border border-gold/50 bg-gold-soft/40 px-6 py-5;
+}
+.prose-post .answer-box p {
+  @apply my-0;
+}
+.prose-post .answer-box strong:first-child {
+  @apply mb-1 block text-[11px] font-medium tracking-[0.22em] text-gold uppercase;
+}
+.prose-post .chair-pair {
+  @apply my-10 grid grid-cols-2 gap-4;
+}
+.prose-post .chair-pair img {
+  @apply aspect-[4/5] w-full object-cover;
+}
