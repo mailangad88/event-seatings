@@ -5,6 +5,8 @@ import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
 import { rentalImages } from "@/data/rental-images";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
+import { families } from "@/lib/guide-content";
+import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -52,5 +54,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...locations.map((l) => ({ url: `${site.url}${locationPath(l)}`, priority: 0.7, lastModified: geoContentUpdated })),
     ...eventTypes.map((e) => ({ url: `${site.url}${eventPath(e)}`, priority: 0.7, lastModified: geoContentUpdated })),
   ];
-  return [...pages, gallery, ...geoPages, ...chairPages, ...rentalPages, ...hubs, ...posts];
+  const guidePages = families.flatMap((f) => [
+    { url: `${site.url}${f.base}`, lastModified: GUIDES_UPDATED, priority: 0.7 },
+    ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
+  ]);
+  return [...pages, gallery, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts];
 }
