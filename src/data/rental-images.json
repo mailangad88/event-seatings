@@ -575,6 +575,15 @@
     "height": 1080,
     "kind": "scene"
   },
+  "backyard-birthday": {
+    "src": "/rentals/scenes/backyard-birthday.webp",
+    "category": "scenes",
+    "alt": "3D render of a backyard birthday party with a pop-up canopy over a kids' table, a castle bounce house and a popcorn machine",
+    "caption": "Backyard birthday party",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
   "cocktail-hour": {
     "src": "/rentals/scenes/cocktail-hour.webp",
     "category": "scenes",
@@ -661,6 +670,15 @@
     "category": "scenes",
     "alt": "3D render of six rental glasses in a row: water goblet, wine glass, champagne flute, rocks, highball and pilsner glasses",
     "caption": "Glassware for bars and dinners",
+    "width": 1920,
+    "height": 1080,
+    "kind": "scene"
+  },
+  "hero-layouts": {
+    "src": "/rentals/scenes/hero-layouts.webp",
+    "category": "scenes",
+    "alt": "Overhead 3D render of a reception floor plan: five 60-inch round tables with gold Chiavari chairs around a 16 by 16 foot dance floor",
+    "caption": "Reception floor plan from above",
     "width": 1920,
     "height": 1080,
     "kind": "scene"
