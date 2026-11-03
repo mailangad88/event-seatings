@@ -9,7 +9,10 @@ import { isDisposableEmail } from "@/lib/disposable-email";
 import { scoreLead } from "@/lib/lead-score";
 import { notifyOwner, sendConfirmation, sendDownloadEmail } from "@/lib/notify";
 import { cleanCode } from "@/lib/referrals";
-import { addLead, trackingFields, type Lead, type LeadKind, type NewLead } from "@/lib/store";
+import { sequenceLabel } from "@/lib/followups";
+import { interestsFor, interestSummary } from "@/lib/interests";
+import { deviceFromUserAgent, locationFromHeaders, parseJourney } from "@/lib/journey";
+import { addLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
 
@@ -94,7 +97,12 @@ export async function POST(request: Request) {
     call_consent: (body.call_consent === "yes" || kind === "call") && Boolean(str(body.phone, 40)) ? true : undefined,
     visitor_tz: str(body.visitor_tz, 60),
     pages_viewed: str(body.pages_viewed, 1500),
+    ip_location: locationFromHeaders(request.headers),
   };
+  // Pages, clicks and visits from the visitor's browser (empty if they turned it off), plus device and rough
+  // location worked out here from the request.
+  const journey = parseJourney(body.journey);
+  if (journey) lead.journey = { ...journey, device: deviceFromUserAgent(request.headers.get("user-agent")), location: lead.ip_location };
   if (lead.email_consent || lead.call_consent || lead.sms_consent) lead.consent_at = new Date().toISOString();
   for (const f of trackingFields) {
     const v = str(body[f], 300);
@@ -150,6 +158,8 @@ export async function POST(request: Request) {
   lead.lead_score = score.grade;
   lead.lead_score_reasons = score.reasons.join("; ");
   lead.status = "new";
+  lead.interests = interestSummary(interestsFor(lead)).slice(0, 300) || undefined;
+  lead.sequence = sequenceLabel({ ...lead, id: "", created_at: new Date().toISOString() });
   lead.activity = [{ at: new Date().toISOString(), type: "status", text: `Lead received from ${lead.source ?? kind}` }];
 
   if (kind === "quote" && (!lead.event_date || !(lead.chairs?.length || lead.items?.length))) {
@@ -169,15 +179,22 @@ export async function POST(request: Request) {
   // CRM sync and the owner email run after the visitor gets their answer, so a slow or failing CRM
   // never loses a lead: it's already saved above, and both helpers log their own errors.
   const download = lead.source?.startsWith("download:") ? getDownload(lead.source.slice(9).split("@")[0]) : undefined;
-  after(() =>
-    Promise.allSettled([
+  after(async () => {
+    const [, alert, visitor] = await Promise.allSettled([
       syncToCrm(saved),
       notifyOwner(saved),
       // At most one automated visitor email per address per day (download links win over a confirmation).
-      ...(firstEmailToday(saved.email)
-        ? [download ? sendDownloadEmail(saved, download.title, download.files) : sendConfirmation(saved)]
-        : []),
-    ]),
-  );
+      firstEmailToday(saved.email)
+        ? download
+          ? sendDownloadEmail(saved, download.title, download.files)
+          : sendConfirmation(saved)
+        : Promise.resolve(undefined),
+    ]);
+    // Log every email on the lead's timeline, so the record in /admin shows what went out and when.
+    const log: { type: "email"; text: string }[] = [];
+    if (alert.status === "fulfilled" && alert.value) log.push({ type: "email", text: "Lead alert emailed to you" });
+    if (visitor.status === "fulfilled" && visitor.value) log.push({ type: "email", text: `Sent to ${saved.email}: "${visitor.value}"` });
+    if (log.length) await updateLead(saved.id, {}, log).catch((e) => console.error("email log not saved", saved.id, e));
+  });
   return Response.json({ ok: true });
 }

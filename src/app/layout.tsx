@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { AttributionTracker } from "@/components/AttributionTracker";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ConsentNotice } from "@/components/ConsentNotice";
 import { ContactDock } from "@/components/ContactDock";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { VoteProvider } from "@/components/VoteProvider";
@@ -140,6 +141,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer />
           <MobileCtaBar />
           <ContactDock />
+          <ConsentNotice />
         </VoteProvider>
         <Analytics />
       </body>

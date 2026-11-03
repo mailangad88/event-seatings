@@ -4,6 +4,7 @@ import path from "path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { attributionKeys } from "./attribution";
 import type { QuoteLine } from "./catalog-types";
+import type { Journey } from "./journey";
 
 // Storage for votes and leads.
 // - With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, data goes to Supabase (use this in production).
@@ -44,6 +45,13 @@ export type Lead = {
   // Browser time zone and the pages the visitor viewed before sending (oldest first).
   visitor_tz?: string;
   pages_viewed?: string;
+  // Pages (with titles and times), clicks, visits, device and approximate location before the form (lib/journey.ts).
+  journey?: Journey;
+  ip_location?: string;
+  // Top interests when the lead arrived (lib/interests.ts), e.g. "Tents, Lighting · Weddings", and the follow-up
+  // email set picked from them (lib/followups.ts), e.g. "request:tents".
+  interests?: string;
+  sequence?: string;
   // Follow-up sequence progress (lib/followups.ts): how many emails went out and when the last one did.
   followup_step?: number;
   followup_last_at?: string;
@@ -209,6 +217,7 @@ export async function getVisitorVotes(visitorId: string): Promise<string[]> {
 const newerLeadColumns = [
   "email_consent", "call_consent", "consent_at", "opted_out_at", "lead_score", "lead_score_reasons",
   "visitor_tz", "pages_viewed", "followup_step", "followup_last_at", "referral_code",
+  "journey", "ip_location", "interests", "sequence",
 ] as const;
 
 export async function addLead(lead: NewLead): Promise<Lead> {
@@ -345,6 +354,18 @@ export async function optOutEmail(email: string) {
   }
   await writeLocal(db);
   return n;
+}
+
+// Every lead from this email address, newest first (earlier enquiries from the same person).
+export async function listLeadsByEmail(email: string): Promise<Lead[]> {
+  const target = email.trim().toLowerCase();
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("leads").select("*").ilike("email", target.replace(/[%_\\]/g, "\\$&")).order("created_at", { ascending: false }).limit(50);
+    if (error) throw error;
+    return data ?? [];
+  }
+  return (await readLocal()).leads.filter((l) => l.email.toLowerCase() === target).sort((a, b) => b.created_at.localeCompare(a.created_at));
 }
 
 // Leads created since `since`, for the follow-up sequence and weekly report.

@@ -114,6 +114,14 @@ alter table leads
   add column if not exists followup_step int not null default 0,
   add column if not exists followup_last_at timestamptz;
 create index if not exists leads_email_idx on leads (lower(email));
+
+-- Visitor path and interests (added with the rich lead alerts, Nov 3 2026). Safe to run again.
+-- journey = first visit, visits, pages with titles and times, clicks, device and approximate location (lib/journey.ts).
+alter table leads
+  add column if not exists journey jsonb,
+  add column if not exists ip_location text,
+  add column if not exists interests text,
+  add column if not exists sequence text;
 create index if not exists leads_created_idx on leads (created_at);
 
 -- Customer proposals and the booking fee (added with the Stripe Checkout flow). Safe to run again.
