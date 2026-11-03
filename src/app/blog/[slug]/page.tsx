@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChairArt } from "@/components/ChairArt";
 import { DownloadGate } from "@/components/DownloadGate";
+import { PlanningLoop } from "@/components/myevents/PlanningLoop";
 import { buyerLinksFor } from "@/data/buyer-pages";
 import { PostBody } from "@/components/PostBody";
 import { ArticleLayout, JsonLd, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
@@ -156,6 +157,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
             ))}
           </ul>
         </section>
+        <PlanningLoop text={`${post.title} ${post.tags.join(" ")}`} className="mt-6 max-w-2xl" />
         {related.length > 0 && (
           <section aria-labelledby="related" className="mt-14 max-w-2xl">
             <p id="related" className="eyebrow">Related guides</p>

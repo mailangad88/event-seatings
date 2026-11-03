@@ -47,6 +47,14 @@ function problems(): Problem[] {
           imageAlt: "Frame tent reception lit at dusk, the image for the monthly event ideas hub",
         },
         {
+          name: "Vendor guide",
+          href: "/vendor-guide",
+          text: "Who to hire for your kind of event, in the order to book them, with the questions to ask each one.",
+          outputs: ["Booking order", "Questions to ask"],
+          image: "/rentals/scenes/wedding-reception.webp",
+          imageAlt: "Wedding reception with round tables, the image for the event vendor guide",
+        },
+        {
           name: "Free planning kits",
           href: "/downloads",
           text: "Printable checklists and spreadsheets for weddings, parties and corporate events.",
@@ -173,6 +181,14 @@ function problems(): Problem[] {
           image: "/chairs/render/windsor.jpg",
           imageAlt: "Windsor chair, the image for the Chicago chair rental answers",
           startHere: true,
+        },
+        {
+          name: "Event weather & sunset planner",
+          href: "/tools/event-weather",
+          text: "Your date's normal high, sunset, golden light and when it gets dark, with what to plan for lights, heat and rain.",
+          outputs: ["Sunset", "Dark by", "What to rent"],
+          image: "/rentals/scenes/tent-reception-dusk.webp",
+          imageAlt: "Tent reception at dusk, the image for the event weather and sunset planner",
         },
         {
           name: "Winter seating guide",
