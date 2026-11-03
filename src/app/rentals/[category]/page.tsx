@@ -6,7 +6,7 @@ import { CallCta } from "@/components/CallCta";
 import { PlanningLoop } from "@/components/myevents/PlanningLoop";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
-import { RentalVisual, rentalImagePath } from "@/components/rentals/RentalVisual";
+import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
@@ -208,10 +208,15 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                   <tbody>
                     {rows.map((i) => {
                       const thumb = photosForItem(i);
+                      const own = rentalImagePath(i.id, i.categoryId);
                       return (
                       <tr key={i.id} className="border-t border-line">
                         <td className="w-14 py-2.5 pr-3 align-top">
-                          {thumb.matched ? (
+                          {own ? (
+                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-[#efe9df]">
+                              <Image src={own} alt={rentalAlt(i.name, i.specs, i.id)} fill sizes="44px" loading="lazy" className="object-cover" />
+                            </span>
+                          ) : thumb.matched ? (
                             <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
                               <StockImg photo={thumb.photos[0]} alt={stockAlt(thumb.photos[0], i.name, true, site.market)} width={44} />
                             </span>

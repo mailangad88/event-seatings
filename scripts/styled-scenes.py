@@ -148,6 +148,33 @@ SOLO_SETTINGS = {
     "floors": "empty and lit before guests arrive, uplighting around it",
 }
 
+# Product photos: the first image on every card and item page. Angad (Nov 3): "the first should show the actual
+# chair image... but realistic". A clean catalogue photo of the real item, not a render, not a scene.
+PHOTO_PROMPT = (
+    "Create a realistic professional catalogue photograph of a standard event-rental {caption} ({specs}), the "
+    "real model that Chicago party rental companies stock. Draw the true real-world design of this product with "
+    "accurate construction and proportions; the reference image is a simplified 3D model, so use it only for the "
+    "colour, finish and general style. {count} on a seamless warm off-white studio backdrop (#EFE9DF) with a soft "
+    "natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and "
+    "centred with space around it, sharp focus. Real materials: true wood grain, real metal reflections, real "
+    "fabric weave, real glass refraction. Shot on a full-frame camera with an 85mm lens. Must look like a real "
+    "photograph, not a 3D render or illustration. No people, no props, no text, no logos, no watermark."
+)
+
+# Catalog rows with no render (~2,400 vendor inventory items): a product photo from the name and specs alone.
+INVENTORY_PROMPT = (
+    "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world "
+    "model that Chicago party rental companies stock: \"{name}\"{specs} (rental category: {section}). Show the "
+    "item exactly as that product really looks, with accurate construction, proportions, colour and material; "
+    "if the name gives a size or quantity, show one unit (or the set it names). {count} on a seamless warm "
+    "off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, "
+    "three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look "
+    "like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV or licensed "
+    "character theme, show a generic unbranded version in similar colours with no characters. No people, no "
+    "props, no text, no logos, no brand names, no watermark."
+)
+NOT_PHYSICAL = re.compile(r"\b(attendant|setup service|set-up service|delivery|fee|deposit|waiver|labor|labour)\b", re.I)
+
 HERO_PROMPT = (
     "Create a photograph: {scene}. Any rental items shown in the reference images must keep their exact design "
     "and colour. {look}"
@@ -195,7 +222,7 @@ def call_gemini(key, prompt, refs, aspect):
                 if e.code == 404:
                     res = None
                     break
-                if e.code == 429 and "limit: 0" in msg:
+                if (e.code == 429 and "limit: 0" in msg) or (e.code == 402 and "prepayment" in msg):
                     raise Quota(msg)
                 if e.code in (429, 500, 503) and attempt < 4:
                     time.sleep(2 ** (attempt + 2))
@@ -222,7 +249,7 @@ def call_gemini(key, prompt, refs, aspect):
     raise RuntimeError("no image model available for this key")
 
 
-def describe(key, img, caption):
+def describe(key, img, caption, photo=False):
     """One-sentence alt text for a finished image, naming the rental. Empty string if it fails."""
     buf = io.BytesIO()
     small = img.copy()
@@ -230,7 +257,10 @@ def describe(key, img, caption):
     small.save(buf, "JPEG", quality=85)
     prompt = (f"Write alt text for this event photo in one sentence of 20 to 35 words. Name the rental item "
               f"({caption}), how it is being used, and the setting. Do not start with 'image of' or 'photo of'. "
-              "Plain text only.")
+              "Plain text only.") if not photo else (
+              f"Write alt text for this product photo in one sentence of 15 to 30 words. Name the rental item "
+              f"({caption}) and describe its shape, colour, material and details. Do not start with 'image of' or "
+              "'photo of'. Plain text only.")
     body = {"contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": "image/jpeg",
                                                                        "data": base64.b64encode(buf.getvalue()).decode()}}]}]}
     for model in ALT_MODELS:
@@ -258,6 +288,18 @@ def clean_alt(text):
     return text if 20 <= len(text) <= 260 else ""
 
 
+def load_specs():
+    """id -> spec text from src/data/catalog-products.ts (P("id", "cat", "Name", "specs", ...))."""
+    try:
+        src = open(os.path.join(ROOT, "src", "data", "catalog-products.ts")).read()
+    except OSError:
+        return {}
+    return {m.group(1): m.group(2).replace('\\"', '"') for m in re.finditer(r'P\(\s*"([^"]+)",\s*"[^"]+",\s*"[^"]*",\s*"((?:[^"\\]|\\.)*)"', src)}
+
+
+SPECS = load_specs()
+
+
 def jobs(args, rentals):
     """(slug, kind, category, caption, reference paths, size, prompt) for everything requested."""
     out = []
@@ -273,6 +315,26 @@ def jobs(args, rentals):
             scene = scene.format(event=event)
             prompt = PRODUCT_PROMPT.format(scene=scene, caption=r["caption"], look=LOOK)
         out.append((slug, r["kind"], r["category"], r["caption"], [ref], (r["width"], r["height"]), prompt))
+    if args.photo:
+        for slug, r in rentals.items():
+            ref = os.path.join(ROOT, "public", r["src"].lstrip("/"))
+            if r["kind"] not in ("product", "variant") or not os.path.exists(ref):
+                continue
+            many = r["category"] in ("tableware",) and "set" in r["caption"].lower()
+            count = "The items" if many else "Exactly one of it, alone,"
+            prompt = PHOTO_PROMPT.format(caption=r["caption"], specs=SPECS.get(slug.split("--")[0], ""), count=count)
+            out.append((f"{slug}--photo", "photo", r["category"], r["caption"], [ref], (1, 1), prompt))
+    if args.inventory:
+        inv = json.load(open(os.path.join(ROOT, "src", "data", "catalog-inventory.json")))["items"]
+        for it in inv:
+            if it["id"] in rentals or NOT_PHYSICAL.search(it["name"]):
+                continue
+            spec = re.sub(r"^group:\s*", "", it.get("specs") or "")
+            specs = f" ({spec})" if spec and spec.lower() not in it["name"].lower() else ""
+            name = re.sub(r"[®™]", "", it["name"])
+            prompt = INVENTORY_PROMPT.format(name=name, specs=specs, section=it.get("section") or it["categoryId"],
+                                             count="Shown alone")
+            out.append((f"{it['id']}--photo", "photo", it["categoryId"], it["name"], [], (1, 1), prompt))
     if args.solo:
         for slug, r in rentals.items():
             ref = os.path.join(ROOT, "public", r["src"].lstrip("/"))
@@ -295,12 +357,19 @@ def jobs(args, rentals):
             paths = [os.path.join(ROOT, "public", rentals[s]["src"].lstrip("/")) for s in refs if s in rentals]
             scene = desc.format(event=pick(slug, CELEBRATIONS))
             out.append((slug, "hero", cat, caption, paths, (1920, 1080), HERO_PROMPT.format(scene=scene, look=LOOK)))
-    order = {"scene": 0, "tablescape": 0, "hero": 0, "product": 1, "solo": 1, "variant": 2, "angle": 3}
+    order = {"scene": 0, "tablescape": 0, "hero": 0, "product": 1, "solo": 1, "photo": 1, "variant": 2, "angle": 3}
     out.sort(key=lambda j: (order.get(j[1], 4), j[0]))
     if args.slugs:
-        out = [j for j in out if j[0] in args.slugs]
+        if args.photo or args.inventory:
+            out = [j for j in out if j[1] == "photo" and j[0][: -len("--photo")] in args.slugs]
+        else:
+            out = [j for j in out if j[0] in args.slugs]
     elif args.kind:
         out = [j for j in out if j[1] in args.kind]
+    elif args.inventory and not args.all:
+        out = [j for j in out if j[1] == "photo" and (not args.category or j[2] in args.category)]
+    elif args.photo and not args.all:
+        out = [j for j in out if j[1] == "photo" and (not args.category or j[2] in args.category)]
     elif args.solo and not args.all:
         out = [j for j in out if j[1] == "solo"]
     elif not (args.all or args.new_heroes):
@@ -320,9 +389,9 @@ def run_one(key, job, styled):
     slug, kind, category, caption, refs, (w, h), prompt = job
     img, _, model = call_gemini(key, prompt, refs, ratio(w, h))
     img = img.convert("RGB")
-    alt = describe(key, img, caption)
-    # Same aspect as the image it replaces, no bigger than the original.
-    scale = min(1.0, max(w, h) / max(img.size))
+    alt = describe(key, img, caption, photo=kind == "photo")
+    # Same aspect as the image it replaces, no bigger than the original (photos: at most 1400px).
+    scale = min(1.0, (1400 if kind == "photo" else max(w, h)) / max(img.size))
     if scale < 1:
         img = img.resize((round(img.width * scale), round(img.height * scale)), Image.LANCZOS)
     out = os.path.join(OUT_DIR, f"{slug}.webp")
@@ -334,8 +403,8 @@ def run_one(key, job, styled):
         "category": category,
         "kind": kind,
         "alt": alt if alt.lower().startswith(what.split()[0].lower()) or what.lower() in alt.lower() else f"{alt} ({what})",
-        "caption": f"{caption}{' on its own' if kind == 'solo' else ', styled at an event'}",
-        **({"parent": slug[: -len("--solo")]} if kind == "solo" else {}),
+        "caption": caption if kind == "photo" else f"{caption}{' on its own' if kind == 'solo' else ', styled at an event'}",
+        **({"parent": slug.rsplit("--", 1)[0]} if kind in ("solo", "photo") else {}),
         "width": img.width,
         "height": img.height,
         "model": model,
@@ -351,9 +420,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("slugs", nargs="*")
     ap.add_argument("--all", action="store_true")
-    ap.add_argument("--kind", action="append", choices=["scene", "tablescape", "product", "variant", "angle", "hero", "solo"])
+    ap.add_argument("--kind", action="append", choices=["scene", "tablescape", "product", "variant", "angle", "hero", "solo", "photo"])
     ap.add_argument("--new-heroes", action="store_true")
     ap.add_argument("--solo", action="store_true", help="single-piece shots of every product (<slug>--solo)")
+    ap.add_argument("--photo", action="store_true", help="realistic studio product photos, the lead image (<slug>--photo)")
+    ap.add_argument("--category", action="append", help="with --photo or --inventory: only these categories")
+    ap.add_argument("--inventory", action="store_true", help="product photos for catalog rows with no render, from name and specs")
     ap.add_argument("--skip-existing", action="store_true")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--dry-run", action="store_true")

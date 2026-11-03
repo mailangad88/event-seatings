@@ -14,7 +14,7 @@ export type RentalImage = {
   caption: string;
   width: number;
   height: number;
-  kind: "product" | "scene" | "angle" | "variant" | "solo";
+  kind: "product" | "scene" | "angle" | "variant" | "solo" | "photo";
   /** Where it's pictured: room, table, park, park-dusk, scene, or classic (older studio-sweep render). */
   setting?: string;
   // Angles and colour variants point at the base item they belong to.
@@ -28,14 +28,23 @@ export type RentalImage = {
 // replaces the render with the same slug everywhere on the site, keeps its category/kind/parent, and is always
 // marked as AI-made only in the machine-readable schema (IPTC digitalSourceType), per Angad on Nov 3.
 // Styled-only entries (no render behind them, e.g. hero-concessions) are new event scenes.
-type StyledEntry = Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height" | "category"> & { kind?: string };
-const styledAll = styled as Record<string, StyledEntry>;
+// Realistic product photos (`<id>--photo`, kind "photo") lead everywhere: they take the item's own slug, ahead of
+// the event scene, which becomes the second image (styledImage). Items with no render get one this way too.
+type StyledEntry = Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height" | "category"> & { kind?: string; parent?: string };
+const styledEntries = Object.entries(styled as Record<string, StyledEntry>);
+const styledAll = Object.fromEntries(styledEntries.filter(([, s]) => s.kind !== "photo"));
+const photoAll = Object.fromEntries(styledEntries.filter(([, s]) => s.kind === "photo" && s.parent).map(([, s]) => [s.parent!, s]));
 const originals = images as Record<string, RentalImage>;
+const lay = (img: Partial<RentalImage>, s: StyledEntry): RentalImage =>
+  ({ ...img, src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, category: img.category ?? s.category, ai: true }) as RentalImage;
 const all: Record<string, RentalImage> = Object.fromEntries([
   ...Object.entries(originals).map(([slug, img]) => {
-    const s = styledAll[slug];
-    return [slug, s ? { ...img, src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true } : img];
+    const s = photoAll[slug] ?? styledAll[slug];
+    return [slug, s ? lay(img, s) : img];
   }),
+  ...Object.entries(photoAll)
+    .filter(([slug]) => !originals[slug])
+    .map(([slug, s]) => [slug, lay({ kind: "photo" }, s)]),
   ...Object.entries(styledAll)
     .filter(([slug]) => !originals[slug])
     .map(([slug, s]) => [
@@ -131,6 +140,7 @@ export function rentalImageJsonLd(img: Pick<RentalImage, "src" | "alt" | "captio
 /** Single-piece styled shot of an item (`<slug>--solo`), if one exists. */
 export const soloImage = (slug: string): RentalImage | undefined => all[`${slug}--solo`];
 
-/** The styled event scene for a slug, if Gemini has made one. */
-export const styledImage = (slug: string) => (styledAll[slug] ? all[slug] : undefined);
+/** The styled event scene for a slug (the second image once a product photo leads), if Gemini has made one. */
+export const styledImage = (slug: string): RentalImage | undefined =>
+  styledAll[slug] ? lay(originals[slug] ?? { kind: "scene" }, styledAll[slug]) : undefined;
 export const styledImages = rentalImages.filter((i) => i.ai);
