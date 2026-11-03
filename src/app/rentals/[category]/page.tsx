@@ -182,7 +182,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             </h2>
             <p className="mt-3 max-w-2xl text-muted">
               {inventoryCount} more styles, sizes and finishes from our {site.market}-area rental partners. Prices are per
-              unit for one event day.
+              unit for one event day, before delivery, setup, damage waiver and tax (typically 35-60% more all-in).
             </p>
             <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-2">
               {sections.map(([section, rows]) => (

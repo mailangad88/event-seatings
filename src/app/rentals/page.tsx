@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Are the prices on this page final?",
-    a: "They are current per-item rental rates for one event day. Your proposal adds delivery, setup, damage waiver and tax for your venue. Items marked \"Est.\" use Chicago-area market rates and are confirmed in your quote.",
+    a: "They are current per-item rental rates for one event day. A delivered event adds delivery and pickup (usually $150-$400 per order), setup and teardown, a damage waiver of about 10% and sales tax, so plan on 35-60% more than the rental total. The quote builder shows that all-in estimate as you go. Items marked \"Est.\" use Chicago-area market rates and are confirmed in your quote.",
   },
   {
     q: "Do you deliver to the suburbs?",
