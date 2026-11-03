@@ -60,9 +60,24 @@ export function PlanningAssistant({ aiWording }: { aiWording: boolean }) {
     track("assistant_ask");
   }
 
-  const addOnIds = plan ? plan.addOns.filter((a) => picked.has(a.extra)).flatMap((a) => a.lines.map((l) => l.id)) : [];
+  const addOnIds = plan
+    ? [
+        ...plan.addOns.filter((a) => picked.has(a.extra)).flatMap((a) => a.lines.map((l) => l.id)),
+        ...plan.themes.filter((t) => picked.has(`theme:${t.slug}`)).flatMap((t) => t.lines.map((l) => l.id)),
+      ]
+    : [];
   const quoteHref = plan ? plan.quoteHref.replace(/items=([^&]*)/, (_, ids) => `items=${[...new Set([...ids.split(","), ...addOnIds])].join(",")}`) : "/quote";
-  const addOnTotal = plan ? plan.addOns.filter((a) => picked.has(a.extra)).reduce((s, a) => s + a.total, 0) : 0;
+  const addOnTotal = plan
+    ? plan.addOns.filter((a) => picked.has(a.extra)).reduce((s, a) => s + a.total, 0) +
+      plan.themes.filter((t) => picked.has(`theme:${t.slug}`)).reduce((s, t) => s + t.total, 0)
+    : 0;
+  const toggle = (key: string) =>
+    setPicked((p) => {
+      const next = new Set(p);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
   const groups = plan ? [...new Set(plan.lines.map((l) => l.group))] : [];
 
   return (
@@ -186,6 +201,83 @@ export function PlanningAssistant({ aiWording }: { aiWording: boolean }) {
             </div>
           </div>
 
+          {plan.themes.length > 0 && (
+            <section>
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <h2 className="display-3">Theme ideas</h2>
+                  <p className="mt-2 text-sm text-muted">Pick a look and its extra rentals are added to your quote. Props and crafts are listed for you to source.</p>
+                </div>
+                {plan.ideasHref && <Link href={plan.ideasHref} className="text-sm text-accent">All ideas for this event →</Link>}
+              </div>
+              <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {plan.themes.map((t) => {
+                  const key = `theme:${t.slug}`;
+                  const on = picked.has(key);
+                  return (
+                    <li key={t.slug}>
+                      <div className={`card flex h-full flex-col p-5 ${on ? "ring-2 ring-gold" : ""}`}>
+                        <div className="flex gap-1" aria-label={`Palette: ${t.palette.map((c) => c.name).join(", ")}`}>
+                          {t.palette.map((c) => (
+                            <span key={c.hex} className="h-5 w-5 rounded-full border border-line" style={{ background: c.hex }} title={c.name} />
+                          ))}
+                        </div>
+                        <label className="mt-3 flex cursor-pointer items-start justify-between gap-3">
+                          <span>
+                            <span className="font-medium">{t.name}</span>
+                            <span className="mt-1 block text-sm text-muted">{t.tagline}</span>
+                          </span>
+                          <input type="checkbox" checked={on} onChange={() => toggle(key)} className="mt-1" />
+                        </label>
+                        <p className="mt-3 text-sm leading-6">{t.setup}</p>
+                        {t.activities.length > 0 && <p className="mt-2 text-xs text-muted">Activities: {t.activities.join(", ")}</p>}
+                        {t.props.length > 0 && <p className="mt-1 text-xs text-muted">Props to source: {t.props.join(", ")}</p>}
+                        <p className="mt-3 flex-1 text-xs text-muted">{t.lines.length ? `Adds ${t.lines.map((l) => `${l.qty} ${l.name}`).join(", ")}` : "Uses rentals already on your list"}</p>
+                        <span className="mt-3 flex items-center justify-between text-sm">
+                          <span className="font-medium">{t.total ? `about +${usd(t.total)}` : "no extra rentals"}</span>
+                          <Link href={t.href} className="text-accent">See the look →</Link>
+                        </span>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          )}
+
+          {(plan.setupIdeas.length > 0 || plan.activities.length > 0) && (
+            <div className="grid gap-6 lg:grid-cols-2">
+              {plan.setupIdeas.length > 0 && (
+                <section className="card p-6">
+                  <h2 className="display-3">Layouts that work</h2>
+                  <ul className="mt-4 grid gap-4">
+                    {plan.setupIdeas.map((x) => (
+                      <li key={x.title}>
+                        <p className="font-medium">{x.title} <span className="badge ml-1">{x.where}</span></p>
+                        <p className="mt-1 text-sm leading-6 text-muted">{x.text}</p>
+                        {x.rentals.length > 0 && <p className="mt-1 text-xs text-muted">Rentals: {x.rentals.join(", ")}</p>}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+              {plan.activities.length > 0 && (
+                <section className="card p-6">
+                  <h2 className="display-3">Activities and games</h2>
+                  <ul className="mt-4 grid gap-4">
+                    {plan.activities.map((a) => (
+                      <li key={a.name}>
+                        <p className="font-medium">{a.name}</p>
+                        <p className="mt-1 text-sm leading-6 text-muted">{a.text}</p>
+                        {a.rentals.length > 0 && <p className="mt-1 text-xs text-muted">Rent: {a.rentals.join(", ")}</p>}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
+          )}
+
           {plan.addOns.length > 0 && (
             <section>
               <h2 className="display-3">Add-ons and activities</h2>
@@ -201,12 +293,7 @@ export function PlanningAssistant({ aiWording }: { aiWording: boolean }) {
                           <input
                             type="checkbox"
                             checked={on}
-                            onChange={() => setPicked((p) => {
-                              const next = new Set(p);
-                              if (next.has(a.extra)) next.delete(a.extra);
-                              else next.add(a.extra);
-                              return next;
-                            })}
+                            onChange={() => toggle(a.extra)}
                           />
                         </span>
                         <span className="mt-1 text-sm text-muted">{a.text}</span>
