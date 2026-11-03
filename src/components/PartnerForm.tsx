@@ -4,7 +4,7 @@ import { useState } from "react";
 import { attributionFields } from "@/lib/attribution";
 import { track } from "@/lib/analytics";
 
-const categories = [
+export const partnerCategories = [
   "Chairs",
   "Tables",
   "Linens",
@@ -109,7 +109,7 @@ export function PartnerForm() {
       <fieldset className="sm:col-span-2">
         <legend className="label">What do you rent?</legend>
         <div className="mt-2 flex flex-wrap gap-2">
-          {categories.map((c) => (
+          {partnerCategories.map((c) => (
             <label key={c} className="chip cursor-pointer has-[:checked]:border-gold has-[:checked]:bg-gold-soft">
               <input type="checkbox" name="categories" value={c} className="sr-only" />
               {c}
