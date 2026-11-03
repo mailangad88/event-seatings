@@ -18,16 +18,16 @@ export function Breadcrumbs({ items }: { items: { href: string; label: string }[
           })),
         }}
       />
-      <nav className="text-[11px] tracking-[0.2em] text-muted uppercase" aria-label="Breadcrumb">
+      <nav className="text-sm text-muted" aria-label="Breadcrumb">
         {all.map((c, i) => (
           <span key={c.href}>
             {i > 0 && (
-              <span className="mx-3 text-gold" aria-hidden>
+              <span className="mx-2 text-line" aria-hidden>
                 /
               </span>
             )}
             {i < all.length - 1 ? (
-              <Link href={c.href} className="hover:text-ink">
+              <Link href={c.href} className="inline-block py-1 hover:text-ink">
                 {c.label}
               </Link>
             ) : (

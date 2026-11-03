@@ -11,14 +11,14 @@ const items: { icon: IconName; title: string; text: string }[] = [
 // Value props strip, used under heroes.
 export function TrustBar({ className = "" }: { className?: string }) {
   return (
-    <ul className={`grid grid-cols-2 gap-x-6 gap-y-6 lg:grid-cols-4 ${className}`}>
+    <ul className={`grid gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-4 ${className}`}>
       {items.map((i) => (
         <li key={i.title} className="flex items-start gap-3">
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gold-soft text-gold">
             <Icon name={i.icon} size={20} />
           </span>
           <span>
-            <span className="block text-sm font-semibold">{i.title}</span>
+            <span className="block text-[15px] font-semibold">{i.title}</span>
             <span className="block text-sm leading-6 text-muted">{i.text}</span>
           </span>
         </li>

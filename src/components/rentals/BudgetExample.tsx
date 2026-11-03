@@ -46,7 +46,7 @@ export function BudgetExample({ budget }: { budget: SampleBudget }) {
           {lines.map(({ item, qty, total: t }) => (
             <tr key={item.id} className="border-t border-line">
               <td className="py-2 pr-2">
-                <Link href={itemHref(item)} className="hover:text-gold">
+                <Link href={itemHref(item)} className="inline-block py-0.5 hover:text-gold">
                   {item.name}
                 </Link>
               </td>

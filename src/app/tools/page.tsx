@@ -3,9 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { bookingHref, firstRoute } from "@/lib/routes";
 import { site } from "@/lib/site";
+import { liveTools, toolImage } from "@/components/tools/ToolShell";
+import { toolGroups, type ToolGroup } from "@/data/tools";
 
-const title = "Free Event Seating Tools for Chicago Weddings and Events";
-const description = `Free planning tools from ${site.name}: a seating readiness score, chair and table calculator, chair style quiz, decor looks and cost guides. Pick your problem and start with the right tool.`;
+const title = "Free Event Planning Tools and Calculators for Chicago Events";
+const description = `Free event planning tools from ${site.name}: tables and chairs, tent size, venue capacity, tablecloth, string light and dance floor calculators, a timeline builder, budget splitter, rain plan checklist and more. No sign-up.`;
 
 export const metadata: Metadata = {
   title,
@@ -228,14 +230,15 @@ function problems(): Problem[] {
 const faqs: [string, string][] = [
   ["Are these tools free?", `Yes. Every ${site.name} tool is free and shows its result right away, with no sign-up.`],
   ["Which tool should I start with?", "If you're not sure, start with the Seating Readiness Score. It shows which part of your seating plan to settle first and links you to the right next tool."],
-  ["Can I share my results?", "Yes. The readiness score keeps your answers in the page link, so you can send it to a partner, planner or venue coordinator."],
+  ["Can I share my results?", "Yes. Every calculator keeps your answers in the page link, so you can send it to a partner, planner or venue coordinator and they see the same result."],
   ["Do the tools work for events other than weddings?", "Yes. They work for any seated event: corporate dinners, galas, showers, milestone birthdays and cultural celebrations."],
   ["Can someone help me with my results?", `Yes. Book a free 15-minute seating call and ${site.name} will turn your results into a chair count, a style shortlist and a timeline.`],
 ];
 
 export default function ToolsPage() {
   const list = problems();
-  const allTools = list.flatMap((p) => p.tools);
+  const live = liveTools();
+  const allTools = [...live.map((t) => ({ name: t.name, href: `/tools/${t.slug}` })), ...list.flatMap((p) => p.tools).filter((t) => !live.some((l) => `/tools/${l.slug}` === t.href))];
   const book = bookingHref("tools-hub");
 
   const jsonLd = [
@@ -288,6 +291,43 @@ export default function ToolsPage() {
         ))}
       </nav>
 
+
+      <section aria-labelledby="all-tools" className="mt-20">
+        <h2 id="all-tools" className="headline text-4xl sm:text-5xl">Every free tool</h2>
+        <p className="mt-3 max-w-2xl text-muted">Calculators that show their working, plans that count back from your date, and checklists you can print. Your answers stay in your browser and the page link.</p>
+        {(Object.keys(toolGroups) as ToolGroup[]).map((g) => {
+          const group = live.filter((t) => t.group === g);
+          if (!group.length) return null;
+          return (
+            <div key={g} className="mt-12">
+              <h3 className="eyebrow">{toolGroups[g].title}</h3>
+              <p className="mt-2 text-sm text-muted">{toolGroups[g].intro}</p>
+              <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {group.map((t) => {
+                  const img = toolImage(t);
+                  return (
+                    <li key={t.slug}>
+                      <Link href={`/tools/${t.slug}`} className="card card-hover block h-full overflow-hidden">
+                        <div className="media aspect-[4/3] rounded-none">
+                          <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw" className="object-cover" />
+                        </div>
+                        <div className="p-5">
+                          <p className="font-serif text-xl">{t.name}</p>
+                          <p className="mt-1 text-sm leading-6 text-muted">{t.short}</p>
+                          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="What you get">
+                            {t.outputs.map((o) => <li key={o} className="chip">{o}</li>)}
+                          </ul>
+                        </div>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })}
+      </section>
+
       <figure className="mt-20 border-y border-line py-10">
         <p className="eyebrow">Not sure? Follow the route</p>
         <ol className="mt-8 grid gap-6 sm:grid-cols-4">
@@ -317,7 +357,7 @@ export default function ToolsPage() {
                   <Link href={t.href} className="group grid grid-cols-[120px_1fr] gap-6 border border-line bg-surface p-5 transition-colors hover:border-gold">
                     <Image src={t.image} alt={t.imageAlt} width={1000} height={1250} sizes="120px" className="aspect-[4/5] w-full object-cover" />
                     <div className="flex flex-col">
-                      {t.startHere && <span className="w-fit bg-gold px-2 py-1 text-[10px] tracking-[0.2em] text-[#0a0806] uppercase">Start here</span>}
+                      {t.startHere && <span className="w-fit bg-gold px-2 py-1 text-[10px] font-medium tracking-[0.2em] text-accent-ink uppercase">Start here</span>}
                       <h3 className="mt-3 font-serif text-2xl group-hover:text-gold">{t.name}</h3>
                       <p className="mt-2 text-sm leading-6 text-muted">{t.text}</p>
                       <ul className="mt-auto flex flex-wrap gap-2 pt-4" aria-label="What you get">

@@ -30,6 +30,7 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 | Google Business Profile | ❌ todo | Create a service-area business (St. Charles base, Chicago + suburbs). Use the same name/phone/area as the schema. |
 | Email sequences | ❌ todo | Waitlist welcome, quote follow-up, post-call recap. Leads currently arrive via `/api/leads`. |
 | Competitor analysis | ❌ todo | Handled in another workstream. |
+| Typography & UX audit | ✅ 2026-11-03 | `npm run audit:ux` (Playwright + axe-core + design lint, 390px and 1440px). 10 key pages: 0 axe violations (was 9 pages with contrast fails), Lighthouse a11y/BP/SEO 100, perf 86-90. Brass darkened to #7a5a22, real Jost 600, 44px buttons, full-width phone CTAs, mobile footer/breadcrumb tap targets, photo tiles on /rentals. Remaining: photo-credit links are 18px tall, Lighthouse perf (hero image weight), long comparison tables could use a scroll hint. |
 | Reviews | ❌ by design | Add Review schema and testimonials only once real customer reviews exist. Never fabricate. |
 
 **Parallel workstreams:** Chicago neighborhood landing pages (e.g. Chicago, Evanston, Oak Park, Naperville) and FAQ/blog content are being built separately. Add their rows here as they ship.
@@ -1164,3 +1165,20 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 - The plan downloads as a PDF (jsPDF, built in the browser). It has the list and prices, an assessment, space needs and a dated checklist. A "Book a free call" button and the next steps sit on the plan page.
 - /admin/availability: tap a day to block or open it, block a range with a private reason, and see enquiry and booked counts on each day. Blocked dates are stored in the `blocked_dates` table (or .data/availability.json locally) and served by /api/availability. The planner and quote form date pickers refuse blocked dates.
 - Owner: re-run supabase/schema.sql to create `blocked_dates`. Until then every date shows as open.
+
+## 2026-11-03: Free planning tools suite and event countdown
+- New calculators under /tools, each with a hero render, a 40-60 word `data-answer`, a "how we work out the numbers" section, 5-6 FAQs (FAQPage), WebApplication + HowTo schema, related tools and a quote band:
+  - /tools/guest-count (invited by group x your own yes rate, low/high range, chairs to order)
+  - /tools/tables-and-chairs (rounds or banquets, extras, highboys, ceremony chairs, rough catalog prices)
+  - /tools/tent-size (sq ft by layout + extras, matched to standard tent sizes, SVG top view)
+  - /tools/venue-capacity (capacity per layout, capped at the posted occupancy limit)
+  - /tools/linens (cloth size by table and drop, napkins, runners)
+  - /tools/lighting (string light feet by pattern, bulbs, uplights, SVG pattern)
+  - /tools/dance-floor (3' panels, SVG floor)
+  - /tools/timeline (backward timeline per event type, "do now" flags, .ics download)
+  - /tools/budget-splitter (sliders that always total 100%, lock lines, per guest, split between hosts)
+  - /tools/rain-plan (checklist saved in the browser, tent and weather-call dates, print)
+- /countdown: live shareable countdown, next deadlines from the timeline, add-to-calendar, reminder sign-up saved as a `waitlist` lead with source `countdown:<event>`. Reminder emails are NOT sent yet; copy says they start soon. To switch on: a daily cron that emails leads whose milestone date is today (needs Resend).
+- All results live in the page URL (shareable). Starting percentages (guest yes rates, budget split) are labelled as placeholders, not data. Prices come from the catalog (vendor rate + fee) with the standard disclaimer.
+- Registry: src/data/tools.ts (hub, related tools and sitemap read it). /tools/event-date and /tools/floor-plan belong to the reviews/floor-plans thread and appear automatically once their pages exist.
+- Remaining: Search Console check after 30 days; switch on countdown reminder emails; add Gemini hero images per tool (currently reuses existing renders).
