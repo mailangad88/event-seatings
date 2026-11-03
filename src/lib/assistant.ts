@@ -27,11 +27,36 @@ import { ideaPath, ideaQty, ideasForPlannerEvent, partyTypes, typePath } from "@
 // The planning assistant (/planning-assistant). Free by default: the plan comes from the same rules as the
 // /quote planner (src/lib/event-plan.ts), prices from the live catalog, and answers from our own guides.
 // Optional AI wording: with ASSISTANT_AI=gemini and GEMINI_API_KEY set, Gemini rewrites the summary and answers
-// follow-up questions, but only from the facts we pass it. That mode costs money, so it stays off until Angad
-// approves it. Nothing here invents prices, items or claims: every number comes from the catalog or the rules.
+// follow-up questions, but only from the facts we pass it. Angad approved the cost on Nov 3, 2026, with a cap:
+// each server instance makes at most ASSISTANT_AI_DAILY_CAP Gemini calls a day (default 300) and each visitor
+// at most ASSISTANT_AI_PER_VISITOR (default 12). Past either cap the assistant quietly uses the free wording.
+// Nothing here invents prices, items or claims: every number comes from the catalog or the rules.
 
 export const assistantEnabled = () => process.env.NEXT_PUBLIC_PLANNING_ASSISTANT === "on";
 export const aiMode = () => (process.env.ASSISTANT_AI === "gemini" && process.env.GEMINI_API_KEY ? "gemini" : "free");
+
+// Spend cap. Counters reset at midnight Chicago time. They live in memory, so the cap is per server instance;
+// a Google Cloud budget alert on the Gemini project is the backstop.
+const capNum = (v: string | undefined, d: number) => (Number.isFinite(Number(v)) && Number(v) >= 0 && v !== "" && v !== undefined ? Number(v) : d);
+let aiDay = "";
+let aiTotal = 0;
+const aiByVisitor = new Map<string, number>();
+/** Takes one Gemini call from today's budget for this visitor; false means use the free wording. */
+export function takeAiCredit(visitor: string) {
+  if (aiMode() !== "gemini") return false;
+  const day = new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+  if (day !== aiDay) {
+    aiDay = day;
+    aiTotal = 0;
+    aiByVisitor.clear();
+  }
+  const mine = aiByVisitor.get(visitor) ?? 0;
+  if (aiTotal >= capNum(process.env.ASSISTANT_AI_DAILY_CAP, 300) || mine >= capNum(process.env.ASSISTANT_AI_PER_VISITOR, 12)) return false;
+  aiTotal++;
+  if (aiByVisitor.size > 20_000) aiByVisitor.clear();
+  aiByVisitor.set(visitor, mine + 1);
+  return true;
+}
 
 export type AssistantInput = {
   event: string;
@@ -111,7 +136,7 @@ export function cleanInput(body: Record<string, unknown>): AssistantInput | null
   return { event, guests: Math.min(guests, 2000), setting, budget, date, question: question || undefined };
 }
 
-export async function buildPlan(input: AssistantInput): Promise<AssistantPlan> {
+export async function buildPlan(input: AssistantInput, useAi = false): Promise<AssistantPlan> {
   const ev = getPlannerEvent(input.event) ?? plannerEvents[0];
   const setting = settings.find((s) => s.id === input.setting)!;
   const base = { event: ev.id, guests: input.guests, setting: input.setting, extras: ev.extras, date: input.date };
@@ -212,22 +237,23 @@ export async function buildPlan(input: AssistantInput): Promise<AssistantPlan> {
   const summary = `For a ${ev.name.toLowerCase()} with ${input.guests} guests (${setting.name.toLowerCase()}), we'd start with the ${styleName(chosen.id)} package: ${lines.length} rental items for about ${usd(total)}, roughly ${usd(perGuest)} per guest, before delivery and tax.`;
   const quoteHref = `/quote?items=${lines.map((l) => l.id).join(",")}&guests=${input.guests}&from=assistant`;
 
-  const plan: AssistantPlan = { summary, style: { id: chosen.id, name: styleName(chosen.id) }, lines, total, perGuest, setup, notes, addOns, setupIdeas, activities, themes, ideasHref, guides, answer, quoteHref, mode: aiMode() };
+  const plan: AssistantPlan = { summary, style: { id: chosen.id, name: styleName(chosen.id) }, lines, total, perGuest, setup, notes, addOns, setupIdeas, activities, themes, ideasHref, guides, answer, quoteHref, mode: useAi ? "gemini" : "free" };
   if (plan.mode === "gemini") {
     const better = await geminiSummary(plan, input).catch(() => null);
     if (better) plan.summary = better;
+    else plan.mode = "free";
   }
   return plan;
 }
 
 /** Answers a question from our guides. Free mode quotes the best passages; Gemini mode writes from them. */
-export async function answerQuestion(question: string): Promise<{ text: string; sources: GuideLink[] }> {
+export async function answerQuestion(question: string, useAi = false): Promise<{ text: string; sources: GuideLink[] }> {
   const hits = await searchGuides(question, 3);
   const sources = hits.map((h) => ({ url: h.url, title: h.title, heading: h.heading, snippet: snippet(h.text, 260) }));
   if (!hits.length) {
     return { text: "I couldn't find that in our guides. Send it to the team with the chat button and a person will answer.", sources: [] };
   }
-  if (aiMode() === "gemini") {
+  if (useAi) {
     const text = await gemini(
       `Answer the event planner's question in 2 to 4 sentences, using ONLY the guide excerpts below. If they don't answer it, say so and suggest asking our team. Do not invent prices, statistics, vendors or promises.\n\nQuestion: ${question}\n\n${hits.map((h, i) => `[${i + 1}] ${h.title}${h.heading ? ` — ${h.heading}` : ""}: ${h.text}`).join("\n\n")}`,
     ).catch(() => null);
@@ -238,19 +264,19 @@ export async function answerQuestion(question: string): Promise<{ text: string; 
 
 async function geminiSummary(plan: AssistantPlan, input: AssistantInput) {
   return gemini(
-    `You are the friendly planning assistant for Beyond Chiavari, a Chicago event rental marketplace. Write a warm 3 to 4 sentence summary of this plan for the host. Use ONLY these facts; do not add prices, items, statistics or promises that aren't here.\n\n` +
+    `You help hosts plan events with rentals from Chicago-area vendors. Write a warm, plain 3 to 4 sentence summary of this plan, speaking directly to the host. Start with the plan itself: no greeting, no company name, and never say you are summarizing. Mention the package name, the estimated total and the per-guest cost, and one or two standout items or theme ideas. Use ONLY these facts. Do not add prices, items, statistics, deadlines, availability, urgency or promises that aren't here. The total is an estimate before delivery and tax.\n\n` +
       JSON.stringify({ input, package: plan.style.name, total: Math.round(plan.total), perGuest: Math.round(plan.perGuest), items: plan.lines.map((l) => `${l.qty} ${l.name}`), setup: plan.setup, notes: plan.notes.map((n) => n.text), addOns: plan.addOns.map((a) => `${a.name}: about $${a.total}`), themes: plan.themes.map((t) => `${t.name}: ${t.tagline}`), activities: plan.activities.map((a) => a.name) }),
   );
 }
 
 async function gemini(prompt: string): Promise<string | null> {
   const key = process.env.GEMINI_API_KEY;
-  const model = process.env.ASSISTANT_GEMINI_MODEL || "gemini-2.5-flash";
+  const model = process.env.ASSISTANT_GEMINI_MODEL || "gemini-flash-lite-latest";
   if (!key) return null;
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": key },
-    body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { temperature: 0.4, maxOutputTokens: 400 } }),
+    body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { temperature: 0.4, maxOutputTokens: 500 } }),
     signal: AbortSignal.timeout(12_000),
   });
   if (!res.ok) return null;
