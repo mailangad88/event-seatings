@@ -90,6 +90,21 @@ All prices on these pages are computed from the catalog at build time. Content l
 - `[event] rentals chicago` (wedding rentals chicago, graduation party rentals chicago): extend `/events/[type]` with the full rental list instead of adding competing pages.
 - Replace estimated keyword bands in `docs/seo-data/chicago-keywords.csv` with Keyword Planner / Search Console numbers once those accounts exist.
 
+## Changes in this release (2026-11-03): reviews, layout builder, date checker, planning assistant, referrals, branded emails
+
+All built with free, open-source libraries (React Email, MiniSearch, SunCalc) and public-domain US government weather data. Nothing here sends email, charges money or invents content.
+
+- **Reviews** (`/reviews`, `/reviews/write`, `/admin/reviews`). Real reviews only: every submission waits as "pending" until approved; wording can't be edited, only replied to. Personal review links (made per booked/completed lead in admin, HMAC-signed with `REVIEW_LINK_SECRET` or `ADMIN_PASSWORD`) mark a review "Verified booking". Review + AggregateRating schema appears only once an approved review exists; until then the page says plainly that we're new and have none.
+- **Seating layout builder** (`/tools/floor-plan`). Drag-and-drop SVG floor plan in feet: rounds, banquets, farm, head and sweetheart tables, highboys, dance floor, stage, bar, buffet, DJ, lounge, ceremony rows. Auto-layout by guest count, 6" snap, rotate/duplicate/delete, keyboard nudging, red/amber warnings for out-of-room or under-3-ft walkways, live seat counts, share link (layout in the URL hash), PNG/SVG download, print, "Price this layout" handoff to /quote and "Ask us to check this layout" (saved as a chat lead, source `floor-plan`).
+- **Event date checker** (`/tools/event-date?date=&place=`). NWS forecast within a week, otherwise NOAA daily records for the same date ± 3 days over the last 10 years at the nearest long-record station (O'Hare or Midway), via `/api/weather`. Sunset, golden hour and dusk (SunCalc), holidays within 4 days, add-to-calendar .ics, and rental tips (tent, heat, cooling, wind) driven by the data.
+- **Planning assistant** (`/planning-assistant`, **off until `NEXT_PUBLIC_PLANNING_ASSISTANT=on`**). Event type, guests, setting, budget, date → the fullest package that fits the budget (same rules as the /quote planner, priced from the live catalog), setup ideas, priced add-on ideas you can tick into the quote, matching guides, and follow-up questions answered from our 600+ guides and /answers with source links (MiniSearch, no API). Optional AI wording with `ASSISTANT_AI=gemini` uses `GEMINI_API_KEY`; that costs money, so it stays off until Angad approves. Shortcut in the chat dock only when enabled. Party-ideas content from the party-ideas thread will be added when it merges.
+- **Referrals** (`/refer`, `/admin/referrals`). Anyone can make a share link (`/?ref=<code>`); the code is kept 90 days in the visitor's browser and saved on any lead as `referral_code`. No reward is promised unless `REFERRAL_REWARD` is set to a real, approved offer.
+- **Branded emails** (`src/emails`, previews at `/admin/emails`). Every email `sendEmail` sends now carries a branded HTML version (React Email) alongside the existing plain text, with links clickable; owner alert, confirmations and download emails keep their wording from the lead-gen thread. New: new-review alert to the owner, and a review-request email that is only ever sent by hand from /admin/reviews.
+- **Local SEO**: `/service-area.kml` lists every area page with coordinates (for Google Business Profile service areas and maps). The towns hub itself is `/chair-rentals` (other thread).
+- Sitemap and llms.txt list the new public pages; `/reviews/write` is noindex and disallowed.
+- **Owner setup**: re-run `supabase/schema.sql` (new `reviews` and `referrers` tables, `leads.referral_code`; leads still save before you do). Optional env: `NEXT_PUBLIC_PLANNING_ASSISTANT=on`, `REFERRAL_REWARD`, `REVIEW_LINK_SECRET`.
+- Remaining: link /reviews, /refer and the two tools from the footer and /tools hub (owned by the UX and tools threads); add party ideas to the assistant; ask happy customers for reviews once events happen.
+
 ## Changes in this release (2026-11-03): month-by-month and venue-type planning guides
 
 Angad asked for guides for people planning events in each month (what to watch out for) and for booking barns, halls and convention centers around Chicago.
@@ -99,6 +114,16 @@ Angad asked for guides for people planning events in each month (what to watch o
 - `/chicago-event-seasons/<month>` pages now link to the matching month guide and the calendar hub. `types-of-event-venues-chicago-compared`, `best-month-to-host-an-event-in-chicago` and `farm-venue-weddings-illinois` link into the new series.
 - `scripts/check-posts.mjs` now accepts links to `/rentals/<category>`, `/chair-rentals/<area>`, `/events/<type>`, `/chicago-event-seasons/<month>`, `/downloads/<kit>` and a few hub pages.
 - Remaining: confirm 2027 festival dates when the city announces them (Taste, Lollapalooza, Air and Water Show, St. Patrick's parade, Pride) and update the July, August, March and June posts; add a November calendar table to the existing November post; once PR #40's area pages merge, link month and venue posts to county pages (Kane, McHenry for barns).
+
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 2
+
+- **New `/tools/event-weather`** (Last touched 2026-11-03). Chicago event weather and sunset planner: date, setting and start/end time in; normal high, sunset, golden light (hour before sunset), dark-by (end of civil twilight), daylight and a day strip showing the event against daylight and twilight; flags for lighting past dark, frost season heaters, heat and shade, rain plans and winter logistics, each linked to a guide or rental category. Server-rendered month-by-month table for crawlers. WebApplication + FAQPage schema. SEO ✅ AEO ✅ GEO ✅ Visuals ✅ FAQ ✅ CTA ✅.
+- **New `/vendor-guide`** (Last touched 2026-11-03). Who to hire for 8 event types (essential vs often added), a booking-order timeline chart, and 14 vendor roles with what they do, when to book, questions to ask, and where each overlaps with rentals. No vendors named. HowTo + FAQPage schema. Data: `src/data/vendor-guide.ts`.
+- `src/lib/chicago-climate.ts` gains `lightTimes()` (golden light, civil dusk, daylight; checked Jun 21 dusk 9:03 PM). My Events links its weather card to the new tool. Tools hub, footer, sitemap and llms.txt list both pages.
+- **My Events: vendors and budget.** Each saved event now lists its vendor team (from the vendor guide, essentials flagged) with a booked tick, estimate and paid per vendor, a total budget and "left to plan" / "over budget". Amounts stay on the device and are left out of share links.
+- **Header countdown.** The "My events" nav link shows the days to the visitor's next saved event (e.g. "My events 42d"), so return visits open with the countdown.
+- **"Keep planning" strip** (`src/components/myevents/PlanningLoop.tsx`) on every blog post (after "Ready to rent?") and every rental category page: save your date (My Events opens with the occasion guessed from the page, via `?new=<type>`), ideas for this month, vendor guide and the weather planner. All blog post and category rows: Last touched 2026-11-03.
+- Remaining: per-event vendor pages (`/vendor-guide/<event>`) if search data shows demand; add hourly forecast once the event is within 10 days (needs a weather API key).
 
 ## Changes in this release (2026-11-03): repeat-visit planning hub, batch 1
 
@@ -1519,3 +1544,10 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 - Alerts: src/instrumentation.ts (server errors) and src/instrumentation-client.ts -> /api/client-errors (browser errors, max 3 per page view) post to ALERT_WEBHOOK_URL (Slack or Discord, free) with a 10-minute throttle; logged only when unset. /api/health for uptime. .github/workflows/uptime.yml checks 6 URLs every 15 minutes; a failed run notifies the repo owner, plus the webhook if the ALERT_WEBHOOK_URL repo secret is set. Uses the SITE_URL repo variable, default beyondchiavari.vercel.app.
 - Owner to-dos (all free, none required): create a Slack/Discord webhook and set ALERT_WEBHOOK_URL in Vercel and as a GitHub secret; create a free GrowthBook Cloud account, add the `tool-quote-cta` feature with variants and set NEXT_PUBLIC_GROWTHBOOK_CLIENT_KEY; set the GitHub variable SITE_URL=https://beyondchiavari.com once DNS points at Vercel.
 - Quote PDF: already shipped by the planner thread on Nov 3 (planner plan downloads as a PDF via jsPDF), so no second PDF library was added.
+
+## 2026-11-03: Four more free tools and embeddable widgets
+- /tools/what-do-i-need: everything an event like yours uses (same rules as the /quote planner, prefilled from the planner's answers on the same device), mark "have it" or "venue provides", priced list of what's left with a one-tap quote link.
+- /tools/bar-and-glassware: drinks (rule-of-thumb 2 then 1 per hour, editable), wine and spirit bottles by pour maths, beer, ice, bartenders, glassware to rent with catalog prices and a responsible-serving note.
+- /tools/parking: cars to park, shortfall vs venue spaces, overflow area, shuttle count from seats, round trip and arrival window. All starting numbers labelled as placeholders.
+- Embeds: /embed/<tool> (10 calculators, noindex, canonical to the tool page, links open in a new tab tagged utm_source=<ref>, utm_medium=embed, auto-resizing via postMessage). /tools/embed has a snippet builder with a credit backlink under each iframe. Linked from the /tools hub.
+- Remaining: pitch the embed page to venues and planners (backlinks); Search Console check after 30 days.

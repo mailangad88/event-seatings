@@ -4,6 +4,7 @@ import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import Image from "next/image";
 import { MobileNav } from "./MobileNav";
+import { MyEventsNavLink } from "./myevents/MyEventsNavLink";
 import { Icon } from "./ui/Icon";
 
 // Kept for older imports (MobileNav, Footer): the flat list of primary links.
@@ -94,11 +95,15 @@ export function Header() {
               </div>
             </div>
           </div>
-          {rest.map((item) => (
-            <Link key={item.href} href={item.href} className={linkClass}>
-              {item.label}
-            </Link>
-          ))}
+          {rest.map((item) =>
+            item.href === "/my-events" ? (
+              <MyEventsNavLink key={item.href} className={linkClass} label={item.label} />
+            ) : (
+              <Link key={item.href} href={item.href} className={linkClass}>
+                {item.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">

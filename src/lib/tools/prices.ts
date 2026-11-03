@@ -1,5 +1,5 @@
 import "server-only";
-import { getCatalogItem } from "@/data/catalog";
+import { catalogItems, getCatalogItem } from "@/data/catalog";
 import { toPublicItem } from "@/lib/catalog-types";
 import type { ToolPrice } from "@/components/tools/controls";
 
@@ -13,4 +13,9 @@ export function toolPrices(ids: string[]): Record<string, ToolPrice> {
     out[id] = { id, name: p.name, price: p.price, unit: item.unit, estimated: p.estimated };
   }
   return out;
+}
+
+/** Prices for every curated (featured) catalog item: the ids the planner can recommend. */
+export function featuredPrices(): Record<string, ToolPrice> {
+  return toolPrices(catalogItems.filter((i) => i.featured).map((i) => i.id));
 }

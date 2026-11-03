@@ -48,6 +48,14 @@ function problems(): Problem[] {
           imageAlt: "Frame tent reception lit at dusk, the image for the monthly event ideas hub",
         },
         {
+          name: "Vendor guide",
+          href: "/vendor-guide",
+          text: "Who to hire for your kind of event, in the order to book them, with the questions to ask each one.",
+          outputs: ["Booking order", "Questions to ask"],
+          image: "/rentals/scenes/wedding-reception.webp",
+          imageAlt: "Wedding reception with round tables, the image for the event vendor guide",
+        },
+        {
           name: "Free planning kits",
           href: "/downloads",
           text: "Printable checklists and spreadsheets for weddings, parties and corporate events.",
@@ -176,6 +184,14 @@ function problems(): Problem[] {
           startHere: true,
         },
         {
+          name: "Event weather & sunset planner",
+          href: "/tools/event-weather",
+          text: "Your date's normal high, sunset, golden light and when it gets dark, with what to plan for lights, heat and rain.",
+          outputs: ["Sunset", "Dark by", "What to rent"],
+          image: "/rentals/scenes/tent-reception-dusk.webp",
+          imageAlt: "Tent reception at dusk, the image for the event weather and sunset planner",
+        },
+        {
           name: "Winter seating guide",
           href: "/blog/winter-wedding-seating",
           text: "How to seat a cold-weather Chicago event without losing the look.",
@@ -280,7 +296,7 @@ export default function ToolsPage() {
 
       <section aria-labelledby="all-tools" className="mt-20">
         <h2 id="all-tools" className="headline text-4xl sm:text-5xl">Every free tool</h2>
-        <p className="mt-3 max-w-2xl text-muted">Calculators that show their working, plans that count back from your date, and checklists you can print. Your answers stay in your browser and the page link.</p>
+        <p className="mt-3 max-w-2xl text-muted">Calculators that show their working, plans that count back from your date, and checklists you can print. Your answers stay in your browser and the page link. Run a venue or planning business? <Link href="/tools/embed" className="link">Embed these calculators on your site</Link>.</p>
         {(Object.keys(toolGroups) as ToolGroup[]).map((g) => {
           const group = live.filter((t) => t.group === g);
           if (!group.length) return null;

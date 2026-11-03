@@ -9,19 +9,20 @@ export const itemHref = (i: Pick<CatalogItem, "categoryId" | "id">) => `/rentals
 
 export function RentalCard({ item }: { item: CatalogItem }) {
   return (
-    <article className="group relative flex flex-col">
+    <article className="group relative flex h-full flex-col">
       <RentalVisual
         item={item}
         className="aspect-square transition-transform duration-700 ease-out group-hover:scale-[1.02]"
       />
-      <h3 className="mt-4 font-serif text-2xl leading-tight font-light">
+      <h3 className="mt-3 font-serif text-lg leading-tight font-medium sm:mt-4 sm:text-2xl">
         <Link href={itemHref(item)} className="after:absolute after:inset-0">
           {item.name}
         </Link>
       </h3>
-      <p className="mt-1 text-sm text-muted">{item.specs}</p>
-      <p className="mt-3 flex items-baseline gap-2 border-t border-line pt-3">
-        <span className="font-serif text-2xl">{formatPrice(customerPrice(item))}</span>
+      <p className="mt-1 line-clamp-2 text-xs leading-5 text-muted sm:text-sm sm:leading-6">{item.specs}</p>
+      <span className="min-h-3 flex-1" aria-hidden />
+      <p className="mt-auto flex flex-wrap items-baseline gap-x-2 border-t border-line pt-3">
+        <span className="font-serif text-xl sm:text-2xl">{formatPrice(customerPrice(item))}</span>
         <span className="text-xs text-muted">{item.unit === "each" ? "each" : item.unit}</span>
         {item.priceSource === "estimated" && <span className="chip ml-auto">Est.</span>}
       </p>

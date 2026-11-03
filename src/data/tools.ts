@@ -88,6 +88,22 @@ export const tools: ToolEntry[] = [
     outputs: ["Floor size", "Panels", "Square feet"],
   },
   {
+    slug: "bar-and-glassware",
+    name: "Bar and glassware calculator",
+    short: "Drinks, bottles, ice, bartenders and every glass to rent for your guest count.",
+    group: "calculators",
+    scene: "bar-setup",
+    outputs: ["Bottles", "Glassware", "Bartenders"],
+  },
+  {
+    slug: "parking",
+    name: "Parking and shuttle estimator",
+    short: "Cars to park, spaces you're short, overflow area and how many shuttles to book.",
+    group: "calculators",
+    scene: "garden-ceremony",
+    outputs: ["Cars", "Overflow area", "Shuttles"],
+  },
+  {
     slug: "timeline",
     name: "Event timeline builder",
     short: "Enter your date and get every planning task with a real deadline, ready for your calendar.",
@@ -102,6 +118,14 @@ export const tools: ToolEntry[] = [
     group: "plans",
     scene: "buffet-setup",
     outputs: ["Category budget", "Per guest", "Who pays what"],
+  },
+  {
+    slug: "event-weather",
+    name: "Event weather and sunset planner",
+    short: "Your date's normal high, sunset, golden light and dark-by time, with what to plan for lights, heat and rain.",
+    group: "plans",
+    scene: "tent-reception-dusk",
+    outputs: ["Sunset", "Dark by", "What to rent"],
   },
   {
     slug: "event-date",
@@ -120,6 +144,14 @@ export const tools: ToolEntry[] = [
     scene: "hero-layouts",
     outputs: ["Floor plan", "Table count", "Share link"],
     external: true,
+  },
+  {
+    slug: "what-do-i-need",
+    name: "What do I still need? checklist",
+    short: "Everything an event like yours uses. Tick off what you have and get a list of what's left to rent.",
+    group: "checks",
+    scene: "hero-celebrations",
+    outputs: ["Full list", "Still to rent", "Quote link"],
   },
   {
     slug: "rain-plan",

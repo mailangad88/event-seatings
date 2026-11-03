@@ -45,6 +45,8 @@ export function Footer() {
               ["/chair-rentals", "Areas we serve"],
               ["/ideas", "Event ideas by month"],
               ["/my-events", "My events: countdown & checklist"],
+              ["/vendor-guide", "Vendor guide: who to hire"],
+              ["/tools/event-weather", "Event weather & sunset"],
               ["/blog", "Planning guides"],
               ["/tools", "Free planning tools"],
               ["/countdown", "Event countdown"],

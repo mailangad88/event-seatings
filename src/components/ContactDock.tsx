@@ -45,7 +45,7 @@ function loadHubSpotChat(portalId: string) {
   }
 }
 
-const hidden = ["/admin", "/render"];
+const hidden = ["/admin", "/render", "/embed"];
 
 export function ContactDock() {
   const pathname = usePathname() ?? "/";
@@ -142,6 +142,20 @@ export function ContactDock() {
 
           <div className="flex-1 overflow-y-auto">
             <ContactSteps />
+            {/* Planning assistant shortcut, only while NEXT_PUBLIC_PLANNING_ASSISTANT=on. */}
+            {process.env.NEXT_PUBLIC_PLANNING_ASSISTANT === "on" && (
+              <Link
+                href="/planning-assistant"
+                onClick={() => {
+                  track("contact_click", { method: "assistant", page: pathname });
+                  setOpen(false);
+                }}
+                className="mx-6 mb-2 block rounded-xl border border-line px-4 py-3 text-sm transition-colors hover:border-gold"
+              >
+                <span className="font-medium">Plan it in a minute →</span>
+                <span className="block text-xs text-muted">Event, guests, budget: get a priced rental list and ideas instantly.</span>
+              </Link>
+            )}
             {hubspot ? (
               <div id={HUBSPOT_SLOT} className="h-[440px] w-full" />
             ) : (
