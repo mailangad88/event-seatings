@@ -12,6 +12,7 @@ import { coverImage, downloads } from "@/data/downloads";
 import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";
+import { toolSitemapEntries } from "@/lib/tools/sitemap";
 
 export const revalidate = 3600;
 
@@ -22,12 +23,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
   }));
-  // Reviews, referrals and planning tools (reviews/floor plan/event date thread). The planning assistant is
+  // Reviews, referrals and the planning assistant (/tools/floor-plan and /tools/event-date come from toolSitemapEntries). The planning assistant is
   // listed only while NEXT_PUBLIC_PLANNING_ASSISTANT=on, because the page 404s otherwise.
-  const toolPages = ["/reviews", "/refer", "/tools/floor-plan", "/tools/event-date", ...(process.env.NEXT_PUBLIC_PLANNING_ASSISTANT === "on" ? ["/planning-assistant"] : [])].map((p) => ({
+  const featurePages = ["/reviews", "/refer", ...(process.env.NEXT_PUBLIC_PLANNING_ASSISTANT === "on" ? ["/planning-assistant"] : [])].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
-    priority: p.startsWith("/tools") || p === "/planning-assistant" ? 0.7 : 0.5,
+    priority: p === "/planning-assistant" ? 0.7 : 0.5,
   }));
   // Image entries help Google Images and AI search find every chair photo.
   const img = (slug: string) => {
@@ -99,5 +100,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
   ]);
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
-  return [...pages, ...buyer, ...toolPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  // Free tools, countdown, comparison and vendor onboarding pages (src/lib/tools/sitemap.ts).
+  const toolPages = toolSitemapEntries(["/countdown"]);
+  return [...pages, ...toolPages, ...featurePages, ...buyer, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }

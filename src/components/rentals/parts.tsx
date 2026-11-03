@@ -103,12 +103,12 @@ export function JsonLd({ data }: { data: unknown }) {
 
 export function Breadcrumb({ trail }: { trail: { name: string; href?: string }[] }) {
   return (
-    <nav className="text-[11px] tracking-[0.2em] text-muted uppercase" aria-label="Breadcrumb">
+    <nav className="text-sm text-muted" aria-label="Breadcrumb">
       {trail.map((t, n) => (
         <span key={t.name}>
-          {n > 0 && <span className="mx-3 text-gold" aria-hidden>/</span>}
+          {n > 0 && <span className="mx-2 text-line" aria-hidden>/</span>}
           {t.href ? (
-            <Link href={t.href} className="hover:text-ink">
+            <Link href={t.href} className="inline-block py-1 hover:text-ink">
               {t.name}
             </Link>
           ) : (
