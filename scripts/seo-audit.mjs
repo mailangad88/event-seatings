@@ -82,8 +82,12 @@ const clean = (s) => s.replace(/\s+/g, " ").trim();
 async function get(url, tries = 3) {
   for (let i = 0; i < tries; i++) {
     try {
-      const res = await fetch(url, { redirect: "manual", headers: { "user-agent": "seo-audit" } });
+      // A hung request must not stall the crawl (CI has a 40 minute job limit).
+      const started = Date.now();
+      const res = await fetch(url, { redirect: "manual", headers: { "user-agent": "seo-audit" }, signal: AbortSignal.timeout(30_000) });
       const body = res.status === 200 ? await res.text() : "";
+      const ms = Date.now() - started;
+      if (ms > 10_000) console.warn(`  slow: ${url} took ${Math.round(ms / 1000)}s`);
       return { status: res.status, body, location: res.headers.get("location") };
     } catch (e) {
       if (i === tries - 1) return { status: 0, body: "", error: String(e) };
@@ -303,7 +307,8 @@ async function startServer() {
     process.exit(2);
   }
   BASE = `http://127.0.0.1:${PORT}`;
-  server = spawn("npx", ["next", "start", "-p", String(PORT)], { stdio: ["ignore", "pipe", "pipe"], env: { ...process.env, PORT: String(PORT) } });
+  // stdout is ignored: a pipe nobody reads fills up and blocks the server once it has logged ~64 KB.
+  server = spawn("npx", ["next", "start", "-p", String(PORT)], { stdio: ["ignore", "ignore", "pipe"], detached: true, env: { ...process.env, PORT: String(PORT) } });
   server.stderr.on("data", (d) => process.stderr.write(d));
   for (let i = 0; i < 120; i++) {
     const r = await get(`${BASE}/robots.txt`, 1);
@@ -488,7 +493,7 @@ async function main() {
   for (const s of site) console.log(`  site  ${s.rule}: ${s.detail}`);
   console.log(`Report: ${path.join(OUT_DIR, "seo-audit.md")}`);
 
-  server?.kill();
+  stopServer();
   if (CI && (blocking.length || site.length || report.score < MIN_SCORE)) {
     console.error(`\nSEO audit failed: ${blocking.length} pages with blocking errors, ${site.length} site issues, score ${report.score} (min ${MIN_SCORE}).`);
     for (const p of blocking.slice(0, 30)) console.error(`  ${p.path}: ${p.issues.filter((i) => RULES[i.rule]?.level === "error").map((i) => `${i.rule}${i.detail ? ` (${i.detail})` : ""}`).join("; ")}`);
@@ -496,4 +501,12 @@ async function main() {
   }
 }
 
-main().catch((e) => { console.error(e); server?.kill(); process.exit(2); });
+// Kill the whole process group: killing npx alone leaves next-server running, which keeps
+// this process alive after a passing audit (the CI job then hangs until its timeout).
+function stopServer() {
+  if (!server) return;
+  try { process.kill(-server.pid, "SIGTERM"); } catch { server.kill(); }
+  server = null;
+}
+
+main().then(() => { stopServer(); process.exit(0); }, (e) => { console.error(e); stopServer(); process.exit(2); });
