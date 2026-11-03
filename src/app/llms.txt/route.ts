@@ -1,3 +1,4 @@
+import { buyerPagesOf } from "@/data/buyer-pages";
 import { chairs } from "@/data/chairs";
 import { categories } from "@/data/catalog";
 import { eventPath, eventTypes, locationPath, locations } from "@/data/geo";
@@ -25,7 +26,17 @@ export async function GET() {
     `- [How it works](${site.url}/how-it-works): the four steps from quote to pickup`,
     `- [Payments & Booking Promise](${site.url}/booking-promise): who you pay and when, deposits, damage waivers, insurance, price lock and backup guarantee`,
     `- [For rental companies](${site.url}/partners): become a partner and receive itemized Chicago event bookings`,
+    `- [Rental calculator](${site.url}/tools/rental-calculator): guest count in, quantities and prices out`,
+    `- [Event rental glossary](${site.url}/glossary): damage waiver, drop length, load-in and other quote terms`,
+    `- [Event ideas by month](${site.url}/ideas): what Chicago hosts plan and book each month, normal highs, and what to book now for later dates`,
+    `- [My Events planner](${site.url}/my-events): free countdown, dated checklist, Chicago weather and sunset for an event date, calendar reminders, no account`,
     `- [FAQ](${site.url}/faq)`,
+    "",
+    "## Rental problems solved",
+    ...buyerPagesOf("solutions").map((p) => `- [${p.title}](${site.url}/solutions/${p.slug}): ${p.answer}`),
+    "",
+    "## Comparisons",
+    ...buyerPagesOf("compare").map((p) => `- [${p.title}](${site.url}/compare/${p.slug}): ${p.answer}`),
     `- [Style quiz](${site.url}/quiz)`,
     `- [3D rental gallery](${site.url}/gallery): true-to-size 3D renders of every chair, table, linen, tent and event rental, plus complete event setups`,
     `- [About](${site.url}/about)`,

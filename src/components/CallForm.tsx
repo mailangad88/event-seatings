@@ -1,10 +1,19 @@
 "use client";
 
 import { trackLead } from "@/lib/analytics";
+import { attributionFields } from "@/lib/attribution";
 import { useState } from "react";
 import { site } from "@/lib/site";
 
 const times = ["Weekday morning", "Weekday afternoon", "Weekday evening", "Weekend", "Any time"];
+// Guest count as a dropdown (a qualifying question); the value is the band's midpoint, used for lead scoring.
+const guestBands: [string, string][] = [
+  ["Under 50", "35"],
+  ["50 to 99", "75"],
+  ["100 to 199", "150"],
+  ["200 to 299", "250"],
+  ["300 or more", "350"],
+];
 const eventTypes = ["Wedding", "Corporate event", "Gala or fundraiser", "Party or celebration", "Cultural or religious event", "Other"];
 
 export function CallForm({ source = "book-page" }: { source?: string }) {
@@ -20,6 +29,7 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        ...attributionFields(),
         ...rest,
         message: [best_time && `Best time to call: ${best_time}`, rest.message].filter(Boolean).join("\n"),
         kind: "call",
@@ -84,6 +94,21 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
       <div>
         <label className="label" htmlFor="call_date">Event date, if known</label>
         <input id="call_date" name="event_date" type="date" className="field" />
+      </div>
+      <div>
+        <label className="label" htmlFor="call_guests">Guest count</label>
+        <select id="call_guests" name="guest_count" className="field" defaultValue="">
+          <option value="">Not sure yet</option>
+          {guestBands.map(([label, value]) => (
+            <option key={value} value={value}>{label}</option>
+          ))}
+        </select>
+      </div>
+      <div className="flex items-end">
+        <label className="flex cursor-pointer items-start gap-3 text-xs leading-5 text-muted">
+          <input type="checkbox" name="sms_consent" value="yes" className="mt-0.5 accent-[var(--gold)]" />
+          <span>You can text me to set the time. Message and data rates may apply; reply STOP to opt out.</span>
+        </label>
       </div>
       <div className="sm:col-span-2">
         <label className="label" htmlFor="call_msg">What would you like to talk through?</label>

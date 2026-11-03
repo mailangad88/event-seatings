@@ -85,7 +85,10 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
       <Link href="/admin/leads" className="text-sm text-accent">← All leads</Link>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="eyebrow">{statusLabel(lead.status)} · {lead.kind}</p>
+          <p className="eyebrow">
+            {lead.lead_score && <span title={lead.lead_score_reasons}>{lead.lead_score} lead · </span>}
+            {statusLabel(lead.status)} · {lead.kind}
+          </p>
           <h1 className="mt-1 font-serif text-5xl">{lead.name ?? lead.email}</h1>
           <p className="mt-2 text-muted">
             Received {new Date(lead.created_at).toLocaleString("en-US", { timeZone: "America/Chicago" })} Chicago time
@@ -107,6 +110,10 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                 <Row label="Email"><a href={`mailto:${lead.email}`} className="text-accent">{lead.email}</a></Row>
                 <Row label="Phone">{lead.phone}</Row>
                 <Row label="Texting OK">{lead.phone ? (lead.sms_consent ? "Yes" : "No consent") : undefined}</Row>
+                <Row label="Calling OK">{lead.phone ? (lead.call_consent ? "Yes" : "Not asked") : undefined}</Row>
+                <Row label="Tips by email">{lead.opted_out_at ? `Unsubscribed ${day(lead.opted_out_at.slice(0, 10))}` : lead.email_consent ? "Yes" : "No"}</Row>
+                <Row label="Follow-ups sent">{lead.followup_step ? `${lead.followup_step} (stop by moving out of New lead)` : undefined}</Row>
+                <Row label="Score">{lead.lead_score ? `${lead.lead_score}: ${lead.lead_score_reasons}` : undefined}</Row>
               </div>
               <div>
                 <Row label="Event date">{day(lead.event_date)}</Row>
@@ -116,6 +123,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                 <Row label="Venue">{lead.venue}</Row>
               </div>
             </dl>
+            {lead.pages_viewed && <p className="mt-4 text-xs leading-5 text-muted">Pages viewed: {lead.pages_viewed}</p>}
             {lead.message && <p className="mt-4 border-l border-gold pl-4 text-sm leading-6 whitespace-pre-line">{lead.message}</p>}
             {!lines.length && lead.chairs?.length ? (
               <p className="mt-4 text-sm">Chairs: {lead.chairs.map((s) => getChair(s)?.name ?? s).join(", ")}</p>

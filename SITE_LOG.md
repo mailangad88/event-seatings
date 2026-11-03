@@ -46,6 +46,16 @@ Angad asked for guides for people planning events in each month (what to watch o
 - `scripts/check-posts.mjs` now accepts links to `/rentals/<category>`, `/chair-rentals/<area>`, `/events/<type>`, `/chicago-event-seasons/<month>`, `/downloads/<kit>` and a few hub pages.
 - Remaining: confirm 2027 festival dates when the city announces them (Taste, Lollapalooza, Air and Water Show, St. Patrick's parade, Pride) and update the July, August, March and June posts; add a November calendar table to the existing November post; once PR #40's area pages merge, link month and venue posts to county pages (Kane, McHenry for barns).
 
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 1
+
+Goal: give planners a reason to come back between their first visit and their event (research notes: The Knot and Zola keep couples returning with a saved checklist, budget and countdown; PartySlate and Pinterest with fresh seasonal inspiration).
+
+- **New `/my-events`** (Last touched 2026-11-03). Free event plans saved in the browser, no account: countdown, a checklist dated back from the event (same milestones as the `/quote` planner via `timeline()`), progress bar, "Next up" tasks, Chicago normal high plus calculated sunrise and sunset for the date, notes, multiple events ("Plan another event"), `.ics` calendar file with a reminder for each upcoming milestone, share link (`?e=`) that opens the same plan on another device, print view, and import from an in-progress `/quote` plan. Optional "free planning check-in" email is saved as a `waitlist` lead with source `my-events` plus event type, date and guests. SEO ✅ AEO ✅ (WebApplication + FAQPage) GEO ✅ Visuals ✅ FAQ ✅ CTA ✅. Code: `src/lib/my-events.ts`, `src/components/myevents/MyEvents.tsx`.
+- **New `/ideas`** (Last touched 2026-11-03). Monthly ideas hub that re-renders daily: this month's occasions with guides, rentals people book now, a "book now for later" list (event month = today + each occasion's lead time), the next three months, all 12 months with normal highs, a monthly ideas letter signup (`waitlist`, source `ideas-monthly`) and FAQs. CollectionPage + FAQPage schema. Data: `src/data/ideas.ts`.
+- **Weather facts** in `src/lib/chicago-climate.ts`: NWS Chicago 1991-2020 normal highs at O'Hare and median freeze dates (Apr 21, Oct 19); sunrise and sunset computed with NOAA solar equations (checked: Jun 21 sunset 8:29 PM, Dec 21 4:22 PM). Lows and precipitation were left out because the source table could not be fetched to verify them.
+- Header nav is now Rentals, Ideas, Guides, Free tools, My events, How it works (FAQ and Free kits stay in the footer and the tools hub). Tools hub has a new first problem "I want to keep my event on track". Footer, sitemap and llms.txt list both pages.
+- Remaining: magic-link accounts so plans sync across devices (needs Supabase env vars); emailed milestone reminders (needs Resend and the PR #31 cron); the monthly ideas letter is a list Angad sends by hand until email is connected.
+
 ## Changes in this release (2026-11-03): photo-style product images
 
 - All 117 product shots (`public/rentals/<category>/<id>.webp`) re-rendered with the photoreal pipeline (`blender/rentals/photoreal.py`): real HDRI light (Poly Haven, CC0), photo-scanned floors and lawn, edge bevels, depth of field, and a camera finish (grain, vignette, lens fringing) in `photo_finish.py`. Furniture is pictured in a room corner, tableware on a linen tablecloth, tents and lawn items in a real park photo.
@@ -1142,6 +1152,19 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 | `/blog/restaurant-private-room-vs-full-venue` | Restaurant Private Room vs Full Venue: Which Is Right | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `vendor-tracker` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/event-signage-wording-guide` | Event Signage Wording Guide: What to Say and Where | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `event-planning-kit` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/planning-an-event-for-older-guests` | Planning an Event for Older Guests: Comfort and Access | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `seating-chart-planner` | Add a real photo or render; check rankings in Search Console after 30 days |
+
+## Lead-gen playbook (2 Nov 2026, PR #31)
+
+| Page / area | Last touched | What changed | Remaining |
+|---|---|---|---|
+| Every page (phones) | 2026-11-02 | Sticky "Get a free quote / Call" bar | Watch form starts vs sends in /admin |
+| /api/leads, alerts, emails | 2026-11-02 | Disposable-email block, consent per channel, A/B/C score, richer owner alert, visitor confirmation, follow-ups (off until FOLLOWUPS_ENABLED), booking webhook, unsubscribe | Angad: set env vars in docs/lead-flow-setup.md, re-run supabase/schema.sql |
+| /solutions + 6 pages | 2026-11-02 | Problem pages: short answer, before/after, FAQ, one CTA | Fill search volume + difficulty from Search Console / Keyword Planner |
+| /compare + 3 pages | 2026-11-02 | Honest booking-model comparisons (no vendor names) | Named "vs" pages need Angad's call (vendors are partners) |
+| /tools/rental-calculator | 2026-11-02 | Guest count to priced list, opens quote builder | Add tents and dance floor sizing |
+| /glossary | 2026-11-02 | 31 rental terms with DefinedTermSet schema, linked to money pages | Add terms from real customer questions |
+| /blog/* | 2026-11-02 | "Ready to rent?" links to the matching money pages | |
+| IndexNow | 2026-11-02 | Key file + `npm run indexnow` | Run after the domain points at Vercel |
 
 ## 2026-11-03: Step-by-step event planner on /quote
 - /quote now opens a guided planner. It asks for the occasion, guests, style (simple, classic or lavish), setting (venue, backyard, tent or park), extras, date or month, and rental budget.

@@ -23,6 +23,38 @@ function problems(): Problem[] {
   const answers = firstRoute("/answers", "/faq");
   return [
     {
+      id: "on-track",
+      problem: "I want to keep my event on track",
+      intent: "Save your date once and come back to a countdown, a dated checklist and reminders.",
+      tools: [
+        {
+          name: "My Events",
+          href: "/my-events",
+          text: "A countdown, a checklist dated back from your event, Chicago weather and sunset for your date, and calendar reminders. No account.",
+          outputs: ["Countdown", "Dated checklist", "Calendar file", "Share link"],
+          image: "/rentals/scenes/garden-ceremony.webp",
+          imageAlt: "Garden ceremony with white chairs facing a floral arch, the image for the My Events planner",
+          startHere: true,
+        },
+        {
+          name: "Event ideas by month",
+          href: "/ideas",
+          text: "What Chicago hosts are planning this month, what to book now for later dates, and the guides to read.",
+          outputs: ["This month", "Book-now list", "Guides"],
+          image: "/rentals/scenes/tent-reception-dusk.webp",
+          imageAlt: "Frame tent reception lit at dusk, the image for the monthly event ideas hub",
+        },
+        {
+          name: "Free planning kits",
+          href: "/downloads",
+          text: "Printable checklists and spreadsheets for weddings, parties and corporate events.",
+          outputs: ["PDF kits", "Spreadsheets"],
+          image: "/rentals/scenes/farm-table-dinner.webp",
+          imageAlt: "Long farm table dinner, the image for the free planning kits",
+        },
+      ],
+    },
+    {
       id: "not-ready",
       problem: "I'm not sure we're ready to book",
       intent: "Check what is still open before you request pricing.",
@@ -51,6 +83,14 @@ function problems(): Problem[] {
           image: "/chairs/render/garden-folding.jpg",
           imageAlt: "Garden folding chair, the image for the chair and table count tool",
           startHere: true,
+        },
+        {
+          name: "Rental calculator",
+          href: "/tools/rental-calculator",
+          text: "Guest count in: chairs, tables, linens, plates, flatware and glasses out, priced from current Chicago rental lists.",
+          outputs: ["Quantities", "Price estimate", "Send as quote"],
+          image: "/chairs/render/infinity.jpg",
+          imageAlt: "Infinity chair render, the image for the event rental calculator",
         },
       ],
     },
