@@ -37,6 +37,13 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): new logo
+
+- **Logo**: a Chiavari chair inside an arched doorway, next to the name in Cormorant Garamond and "Event rentals · Chicago". Drawn as SVG outlines, so it no longer waits for the logo font (it was the home page's largest paint on phones). Header and footer use `src/components/brand/BrandLogo.tsx`; colours come from the `--brand-*` tokens in `globals.css` and flip by themselves in dark bands. Last touched 2026-11-03.
+- **Favicon, phone home-screen icon and favicon.ico**: `src/app/icon.svg`, `src/app/apple-icon.png`, `src/app/favicon.ico` (replaces the old "BC" text icon).
+- **Share images**: the home page card and every guide / local page card now carry the logo (`src/components/brand/logo-svg.ts`). Google's business logo field points at `/brand/logo-512.png`.
+- **Logo files** for print, social profiles and email: `public/brand/` (light, dark, one-colour; side-by-side, stacked, mark only). Rebuild with `python3 scripts/brand/build-logo.py && node scripts/brand/render-logo-png.mjs`.
+
 ## Changes in this release (2026-11-03): menus and footer in clear sections
 
 - Header: every top menu (Rentals, Plan & book, Ideas, Guides, Free tools, About) now opens a picture dropdown with labelled groups, icons and a one-line note per link. Rentals is split into Seating & tables, Table settings & food, Tents, floors & power, Fun & decor.

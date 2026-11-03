@@ -81,7 +81,7 @@ const localBusiness = {
       url: site.url,
       email: site.email,
       ...(site.phone && { telephone: site.phone }),
-      logo: `${site.url}/icon`,
+      logo: `${site.url}/brand/logo-512.png`,
       image: `${site.url}/opengraph-image`,
       priceRange: "$$",
       address: { "@type": "PostalAddress", addressLocality: site.locality, addressRegion: site.region, addressCountry: "US" },
