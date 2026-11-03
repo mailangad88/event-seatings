@@ -36,6 +36,7 @@ function read(): Attribution {
 export function recordVisit() {
   if (typeof window === "undefined") return;
   const params = new URLSearchParams(window.location.search);
+  saveReferral(params.get("ref"));
   const touch: Touch = {};
   for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", ...clickIds] as const) {
     const v = params.get(k);
@@ -80,7 +81,32 @@ export function attributionFields(): Record<string, string> {
   };
   pick(first, "first_");
   pick(last, "");
+  const ref = readReferral();
+  if (ref) out.referral_code = ref;
   return out;
+}
+
+// Referral links (/refer) look like beyondchiavari.com/?ref=priya-7k2m. The code is kept for 90 days and sent
+// with every lead as referral_code. The latest friend's link wins if someone clicks two.
+const referralKey = "lead-referral";
+const referralDays = 90;
+
+function saveReferral(raw: string | null) {
+  const code = raw?.trim().toLowerCase();
+  if (!code || !/^[a-z0-9][a-z0-9-]{2,31}$/.test(code)) return;
+  try {
+    localStorage.setItem(referralKey, JSON.stringify({ code, at: new Date().toISOString() }));
+  } catch {}
+}
+
+export function readReferral(): string | undefined {
+  try {
+    const saved = JSON.parse(localStorage.getItem(referralKey) ?? "null") as { code?: string; at?: string } | null;
+    if (!saved?.code || !saved.at) return undefined;
+    return Date.now() - new Date(saved.at).getTime() < referralDays * 864e5 ? saved.code : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 // Short label for the visit that brought this visitor in, sent with each page view (e.g. "google / organic").

@@ -5,7 +5,8 @@ import { imagesFor } from "@/data/rental-images";
 import { priceQuote } from "@/lib/catalog-types";
 import { syncToCrm } from "@/lib/crm";
 import { getDownload } from "@/data/downloads";
-import { notifyOwner, sendDownloadEmail } from "@/lib/notify";
+import { notifyOwner, sendDownloadEmail, sendQuoteConfirmation } from "@/lib/notify";
+import { cleanCode } from "@/lib/referrals";
 import { addLead, trackingFields, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
@@ -46,6 +47,7 @@ export async function POST(request: Request) {
       ? body.quiz_styles.filter((s: unknown) => typeof s === "string").slice(0, 8)
       : undefined,
     source: str(body.source, 100),
+    referral_code: cleanCode(body.referral_code),
     sms_consent: body.sms_consent === "yes" && Boolean(str(body.phone, 40)) ? true : undefined,
   };
   for (const f of trackingFields) {
@@ -122,6 +124,7 @@ export async function POST(request: Request) {
     Promise.allSettled([
       syncToCrm(saved),
       notifyOwner(saved),
+      sendQuoteConfirmation(saved),
       ...(download ? [sendDownloadEmail(saved, download.title, download.files)] : []),
     ]),
   );

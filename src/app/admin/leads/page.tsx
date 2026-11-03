@@ -65,6 +65,8 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
           <Link href="/admin" className="btn-ghost">Dashboard</Link>
           <Link href="/admin/vendors" className="btn-ghost">Vendors</Link>
           <Link href="/admin/availability" className="btn-ghost">Availability</Link>
+          <Link href="/admin/reviews" className="btn-ghost">Reviews</Link>
+          <Link href="/admin/referrals" className="btn-ghost">Referrals</Link>
           <a href="/admin/export" className="btn-ghost">Download CSV</a>
         </div>
       </div>

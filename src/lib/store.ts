@@ -50,6 +50,8 @@ export type Lead = {
   fee_amount?: number; // USD charged at checkout (booking fee or hold)
   fee_paid_at?: string;
   stripe_session_id?: string;
+  // Referral link code (/refer, ?ref=<code>) that brought this visitor in, kept 90 days in their browser.
+  referral_code?: string;
 } & Partial<Record<TrackingField, string>>;
 
 export type FeeStatus = "unpaid" | "paid" | "refunded";
@@ -187,7 +189,13 @@ export async function addLead(lead: NewLead): Promise<Lead> {
   const full: Lead = { ...lead, id: crypto.randomUUID(), created_at: new Date().toISOString() };
   const client = sb();
   if (client) {
-    const { error } = await client.from("leads").insert(full);
+    let { error } = await client.from("leads").insert(full);
+    // Database not yet updated with the referral_code column (supabase/schema.sql): keep the lead, note the code.
+    if (error && full.referral_code && /referral_code/.test(error.message)) {
+      const { referral_code, ...rest } = full;
+      const activity = [...(rest.activity ?? []), { at: full.created_at, type: "note" as const, text: `Referral code: ${referral_code}` }];
+      ({ error } = await client.from("leads").insert({ ...rest, activity }));
+    }
     if (error) throw error;
     return full;
   }

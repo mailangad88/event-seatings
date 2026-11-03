@@ -14,6 +14,8 @@
     "remotion:reels": "for t in gilded-ivory midnight-gold blush-garden; do remotion render DecorReel-$t out/reels/$t-reel.mp4; done"
   },
   "dependencies": {
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.2.0",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",
     "@remotion/bundler": "4.0.532",
@@ -23,11 +25,13 @@
     "@supabase/supabase-js": "^2.117.2",
     "jspdf": "^4.2.1",
     "marked": "^18.0.14",
+    "minisearch": "^7.2.0",
     "next": "16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "remotion": "4.0.532",
     "server-only": "^0.0.1",
+    "suncalc": "^2.1.1",
     "three": "^0.186.1",
     "zod": "4.5.4"
   },
@@ -38,6 +42,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/suncalc": "^1.9.2",
     "@types/three": "^0.186.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",

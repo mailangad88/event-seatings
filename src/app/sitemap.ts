@@ -21,6 +21,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
   }));
+  // Reviews, referrals and planning tools (reviews/floor plan/event date thread). The planning assistant is
+  // listed only while NEXT_PUBLIC_PLANNING_ASSISTANT=on, because the page 404s otherwise.
+  const toolPages = ["/reviews", "/refer", "/tools/floor-plan", "/tools/event-date", ...(process.env.NEXT_PUBLIC_PLANNING_ASSISTANT === "on" ? ["/planning-assistant"] : [])].map((p) => ({
+    url: `${site.url}${p}`,
+    changeFrequency: "weekly" as const,
+    priority: p.startsWith("/tools") || p === "/planning-assistant" ? 0.7 : 0.5,
+  }));
   // Image entries help Google Images and AI search find every chair photo.
   const img = (slug: string) => {
     const c = getChair(slug);
@@ -90,5 +97,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
   ]);
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
-  return [...pages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  return [...pages, ...toolPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }
