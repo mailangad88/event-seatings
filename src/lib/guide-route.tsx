@@ -10,6 +10,7 @@ import { chairs } from "@/data/chairs";
 import { type GuideFamily } from "@/lib/guide-content";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { logoDataUri, logoWidth } from "@/components/brand/logo-svg";
 
 type P = { params: Promise<{ slug: string }> };
 
@@ -44,9 +45,9 @@ export function ogCard(title: string, eyebrow: string) {
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#f7f3ec", color: "#1b1815", padding: 70, fontFamily: "serif" }}>
         <div style={{ fontSize: 26, letterSpacing: 6, color: "#a88a5a", textTransform: "uppercase", display: "flex" }}>{eyebrow}</div>
         <div style={{ fontSize: title.length > 70 ? 54 : 66, lineHeight: 1.1, display: "flex" }}>{title}</div>
-        <div style={{ fontSize: 30, display: "flex", justifyContent: "space-between" }}>
-          <span>{site.name}</span>
-          <span style={{ color: "#a88a5a" }}>Chicago event chair rentals</span>
+        <div style={{ fontSize: 30, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+          <img src={logoDataUri("light")} width={logoWidth(64)} height={64} />
         </div>
       </div>
     ),

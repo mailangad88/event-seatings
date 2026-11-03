@@ -42,6 +42,11 @@
   --blue-soft: #e1ebf3;
   --sage: var(--green); /* old name, kept so existing pages keep working */
 
+  /* Logo (src/components/brand/BrandLogo.tsx) */
+  --brand-arch: #7a1f2e;
+  --brand-chair: #d9b26a;
+  --brand-name: #2a1519;
+
   --accent: var(--wine);
   --accent-deep: var(--wine-deep);
   --accent-ink: #ffffff;
@@ -68,6 +73,9 @@
   --amber: #f2c27a;
   --rose: #f4a59d;
   --blue: #a9c9e3;
+  --brand-arch: #d9b26a;
+  --brand-chair: #2a1519;
+  --brand-name: #f6ece2;
   --accent: #d9b26a; /* gold buttons on dark bands */
   --accent-deep: #e8c98e;
   --accent-ink: #2a1519;

@@ -6,20 +6,24 @@ import Image from "next/image";
 import { MobileNav } from "./MobileNav";
 import { MyEventsNavLink } from "./myevents/MyEventsNavLink";
 import { Icon } from "./ui/Icon";
+import { BrandMark, BrandName } from "./brand/BrandLogo";
 
 // Kept for older imports (MobileNav, Footer): the flat list of primary links.
 export const nav = primaryNav;
 
-export function Logo({ light = false, center = false }: { light?: boolean; center?: boolean }) {
+export function Logo({ center = false }: { light?: boolean; center?: boolean }) {
   return (
     <Link
       href="/"
       aria-label={`${site.name} home`}
-      className={`flex shrink-0 flex-col leading-none ${center ? "items-center" : "items-start"} text-ink`}
+      className={`flex shrink-0 items-center gap-2 sm:gap-3 ${center ? "justify-center" : ""}`}
     >
-      <span className="font-brand text-xl font-medium tracking-[0.04em] whitespace-nowrap uppercase sm:text-2xl">{site.name}</span>
-      <span className={`mt-1.5 text-xs font-medium tracking-[0.12em] uppercase sm:tracking-[0.2em] ${light ? "text-ink/60" : "text-gold"}`}>
-        Event Rentals · Chicago
+      <BrandMark className="h-9 w-9 shrink-0 sm:h-12 sm:w-12" />
+      <span className="flex flex-col items-start leading-none">
+        <BrandName className="h-3 w-auto max-[374px]:h-2.5 sm:h-4" />
+        <span className="mt-1.5 text-xs font-medium tracking-[0.06em] whitespace-nowrap text-gold max-[374px]:hidden sm:mt-2 uppercase sm:tracking-[0.2em]">
+          Event Rentals · Chicago
+        </span>
       </span>
     </Link>
   );
