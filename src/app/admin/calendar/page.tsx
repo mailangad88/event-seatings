@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { vendors } from "@/data/catalog";
-import { AdminHeader, Empty, StagePill } from "@/components/admin/AdminUi";
-import { chicagoDay, eventLine, isConfirmed, prettyDay, stage } from "@/lib/admin-view";
+import { Empty, StagePill } from "@/components/admin/AdminUi";
+import { chicagoDay, eventLine, money0, prettyDay } from "@/lib/admin-view";
 import { listBlockedDates } from "@/lib/availability";
+import { dayLoad, eventsPerDay, guestsPerDay, LIMITED_AT, type DayLoad } from "@/lib/capacity";
 import { listLeads, type Lead } from "@/lib/store";
+import { blockRange, toggleDate } from "../availability/actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Calendar", robots: { index: false } };
@@ -12,12 +14,41 @@ export const metadata: Metadata = { title: "Calendar", robots: { index: false } 
 const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const pad = (n: number) => String(n).padStart(2, "0");
 const vendorName = (id?: string) => vendors.find((v) => v.id === id)?.name;
+const isDay = (d: unknown): d is string => typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d);
+
+const cellTone = (load: DayLoad, blocked: boolean) =>
+  blocked ? "bg-surface-2" : load.level === "full" ? "bg-rose-soft" : load.level === "limited" ? "bg-amber-soft" : "bg-surface";
+const barTone = (load: DayLoad) => (load.level === "full" ? "bg-rose" : load.level === "limited" ? "bg-amber" : "bg-green");
+
+function DayBadge({ load, blocked }: { load: DayLoad; blocked: boolean }) {
+  if (blocked) return <span className="badge-rose">Blocked</span>;
+  if (load.level === "full") return <span className="badge-rose">Full</span>;
+  if (load.level === "limited") return <span className="badge-amber">Limited</span>;
+  return null;
+}
+
+function EventRow({ l, pending }: { l: Lead; pending?: boolean }) {
+  const partner = vendorName(l.assigned_vendor);
+  return (
+    <li className="grid gap-2 py-3 sm:grid-cols-[1fr_auto] sm:items-start">
+      <div className="min-w-0">
+        <Link href={`/admin/leads/${l.id}`} className="font-medium text-accent">{l.name || l.email}</Link>
+        <p className="text-xs text-muted">{[eventLine(l), l.venue].filter(Boolean).join(" · ") || l.kind}</p>
+        {!pending && <p className={`text-xs ${partner ? "text-muted" : "text-rose"}`}>{partner ?? "No rental partner yet"}</p>}
+      </div>
+      <div className="flex flex-wrap items-center gap-2 text-xs sm:justify-end">
+        {l.quote_subtotal ? <span className="tabular-nums text-muted">{money0(l.quote_subtotal)}</span> : null}
+        <StagePill status={l.status} />
+      </div>
+    </li>
+  );
+}
 
 export default async function CalendarPage(props: PageProps<"/admin/calendar">) {
   const sp = await props.searchParams;
   const today = chicagoDay();
-  const showLost = sp.lost === "1";
-  const month = typeof sp.month === "string" && /^\d{4}-\d{2}$/.test(sp.month) ? sp.month : today.slice(0, 7);
+  const selected = isDay(sp.day) ? sp.day : undefined;
+  const month = typeof sp.month === "string" && /^\d{4}-\d{2}$/.test(sp.month) ? sp.month : (selected ?? today).slice(0, 7);
   const [y, m] = month.split("-").map(Number);
   const first = new Date(Date.UTC(y, m - 1, 1)).getUTCDay();
   const days = new Date(Date.UTC(y, m, 0)).getUTCDate();
@@ -28,102 +59,216 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
 
   const [leads, blockedRows] = await Promise.all([listLeads(), listBlockedDates(`${month}-01`)]);
   const blocked = new Map(blockedRows.map((b) => [b.date, b]));
-  const inMonth = leads
-    .filter((l) => l.kind !== "partner" && l.event_date?.startsWith(month) && (showLost || stage(l) !== "lost"))
-    .sort((a, b) => a.event_date!.localeCompare(b.event_date!) || Number(isConfirmed(b)) - Number(isConfirmed(a)));
   const byDay = new Map<string, Lead[]>();
-  for (const l of inMonth) byDay.set(l.event_date!, [...(byDay.get(l.event_date!) ?? []), l]);
-  const confirmed = inMonth.filter(isConfirmed).length;
-  const q = (p: Record<string, string>) => `/admin/calendar?${new URLSearchParams({ month, ...(showLost && { lost: "1" }), ...p })}`;
+  for (const l of leads) {
+    if (l.kind === "partner" || !l.event_date?.startsWith(month)) continue;
+    byDay.set(l.event_date, [...(byDay.get(l.event_date) ?? []), l]);
+  }
+  const dates = Array.from({ length: days }, (_, i) => `${month}-${pad(i + 1)}`);
+  const loads = new Map(dates.map((d) => [d, dayLoad(byDay.get(d) ?? [])]));
+  const totals = [...loads.values()].reduce((t, l) => ({ events: t.events + l.confirmed.length, guests: t.guests + l.guests, pending: t.pending + l.pending.length }), { events: 0, guests: 0, pending: 0 });
+  const busy = dates.filter((d) => blocked.has(d) || loads.get(d)!.level !== "open");
+  const capE = eventsPerDay();
+  const capG = guestsPerDay();
+  const dayHref = (d: string) => `/admin/calendar?month=${month}&day=${d}#day`;
+  const sel = selected ? { date: selected, load: dayLoad(leads.filter((l) => l.kind !== "partner" && l.event_date === selected)), block: blocked.get(selected) } : undefined;
 
   return (
     <div className="container-x py-10">
-      <AdminHeader
-        group="Daily"
-        title="Calendar"
-        intro="Every event date people asked about, by month. Green means a rental partner has confirmed it. Tap a name to open the lead."
-        actions={
-          <>
-            <Link href={q({ month: prev })} className="btn-ghost btn-sm">← {short(prev)}</Link>
-            <Link href="/admin/calendar" className="btn-ghost btn-sm">This month</Link>
-            <Link href={q({ month: next })} className="btn-ghost btn-sm">{short(next)} →</Link>
-          </>
-        }
-      />
-
-      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-        <h2 className="font-serif text-3xl">{title}</h2>
-        <span className="text-muted">{inMonth.length} event{inMonth.length === 1 ? "" : "s"} · {confirmed} confirmed</span>
-        <span className="flex items-center gap-2 text-xs text-muted"><span className="h-3 w-3 rounded bg-sage" /> Confirmed</span>
-        <span className="flex items-center gap-2 text-xs text-muted"><span className="h-3 w-3 rounded bg-gold-soft ring-1 ring-gold" /> Still a request</span>
-        <span className="flex items-center gap-2 text-xs text-muted"><span className="h-3 w-3 rounded bg-rose" /> Blocked</span>
-        <Link href={showLost ? `/admin/calendar?month=${month}` : `/admin/calendar?month=${month}&lost=1`} className="text-xs text-accent">{showLost ? "Hide lost" : "Show lost"}</Link>
-        <Link href={`/admin/availability?month=${month}`} className="text-xs text-accent">Block or open dates →</Link>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="eyebrow">Bookings calendar</p>
+          <h1 className="mt-1 font-serif text-4xl sm:text-5xl">{title}</h1>
+          <p className="mt-2 text-sm text-muted">
+            {totals.events} confirmed event{totals.events === 1 ? "" : "s"} · {totals.guests.toLocaleString()} guests · {totals.pending} pending ·
+            capacity {capG.toLocaleString()} guests / {capE} events a day
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <Link href={`/admin/calendar?month=${prev}`} className="btn-ghost btn-sm">← {short(prev)}</Link>
+          <Link href={`/admin/calendar?month=${next}`} className="btn-ghost btn-sm">{short(next)} →</Link>
+          <details className="relative">
+            <summary className="btn-primary btn-sm cursor-pointer list-none [&::-webkit-details-marker]:hidden">Block a day</summary>
+            <form action={blockRange} className="card absolute right-0 z-20 mt-2 grid w-80 gap-3 p-4 shadow-lift">
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="label" htmlFor="from">From</label>
+                  <input id="from" name="from" type="date" required min={today} defaultValue={selected && selected >= today ? selected : undefined} className="field" />
+                </div>
+                <div>
+                  <label className="label" htmlFor="to">To (optional)</label>
+                  <input id="to" name="to" type="date" min={today} className="field" />
+                </div>
+              </div>
+              <div>
+                <label className="label" htmlFor="reason">Reason (only you see this)</label>
+                <input id="reason" name="reason" className="field" placeholder="Away, fully booked, holiday…" />
+              </div>
+              <div className="flex gap-2">
+                <button type="submit" name="mode" value="block" className="btn-primary btn-sm">Block</button>
+                <button type="submit" name="mode" value="open" className="btn-ghost btn-sm">Open again</button>
+              </div>
+              <p className="text-xs text-muted">Blocked days can&apos;t be picked in the quote form or the event planner.</p>
+            </form>
+          </details>
+        </div>
       </div>
 
-      {/* Month grid on tablets and up; phones get the list below. */}
-      <div className="card mt-4 hidden overflow-hidden md:block">
-        <div className="grid grid-cols-7 border-b border-line bg-surface-2 text-center text-xs text-muted">
-          {weekdays.map((w) => <span key={w} className="py-2">{w}</span>)}
+      {sel && (
+        <section id="day" className="card mt-6 scroll-mt-24 p-6">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h2 className="font-serif text-2xl">{prettyDay(sel.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</h2>
+              <p className="mt-1 text-sm text-muted">
+                {sel.load.confirmed.length} confirmed · {sel.load.guests} / {capG} guests · {sel.load.pending.length} pending
+                {sel.block && <> · <span className="text-rose">Blocked{sel.block.reason ? `: ${sel.block.reason}` : ""}</span></>}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {sel.date >= today && (
+                <form action={toggleDate}>
+                  <input type="hidden" name="date" value={sel.date} />
+                  <input type="hidden" name="blocked" value={sel.block ? "0" : "1"} />
+                  <button type="submit" className="btn-ghost btn-sm">{sel.block ? "Open this day" : "Block this day"}</button>
+                </form>
+              )}
+              <Link href={`/admin/calendar?month=${month}`} className="btn-ghost btn-sm">Close</Link>
+            </div>
+          </div>
+          <div className="mt-4 grid gap-6 md:grid-cols-2">
+            <div>
+              <h3 className="text-xs tracking-wider text-muted uppercase">Confirmed</h3>
+              {sel.load.confirmed.length ? <ul className="divide-y divide-line">{sel.load.confirmed.map((l) => <EventRow key={l.id} l={l} />)}</ul> : <div className="mt-2"><Empty>Nothing confirmed.</Empty></div>}
+            </div>
+            <div>
+              <h3 className="text-xs tracking-wider text-muted uppercase">Pending requests and quotes</h3>
+              {sel.load.pending.length ? <ul className="divide-y divide-line">{sel.load.pending.map((l) => <EventRow key={l.id} l={l} pending />)}</ul> : <div className="mt-2"><Empty>No open requests.</Empty></div>}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Month grid on tablets and up. */}
+      <div className="card mt-6 hidden overflow-hidden p-0 md:block">
+        <div className="grid grid-cols-7 border-b border-line bg-surface-2 text-center text-xs font-semibold tracking-wider text-muted uppercase">
+          {weekdays.map((w) => <span key={w} className="py-2.5">{w}</span>)}
         </div>
         <div className="grid grid-cols-7">
-          {Array.from({ length: first }, (_, i) => <div key={`b${i}`} className="min-h-28 border-r border-b border-line bg-surface-2/40" />)}
-          {Array.from({ length: days }, (_, i) => {
-            const date = `${month}-${pad(i + 1)}`;
-            const evs = byDay.get(date) ?? [];
+          {Array.from({ length: first }, (_, i) => <div key={`b${i}`} className="min-h-28 border-r border-b border-line bg-surface-2" />)}
+          {dates.map((date, i) => {
+            const load = loads.get(date)!;
             const b = blocked.get(date);
+            const isSel = date === selected;
             return (
-              <div key={date} className={`min-h-28 min-w-0 border-r border-b border-line p-1.5 ${date < today ? "opacity-60" : ""}`}>
-                <div className="flex items-center justify-between text-xs">
-                  <span className={date === today ? "rounded-full bg-accent px-1.5 font-bold text-accent-ink" : "text-muted"}>{i + 1}</span>
-                  {b && <span className="rounded bg-rose px-1 text-[10px] text-white" title={b.reason}>Blocked</span>}
+              <Link
+                key={date}
+                href={dayHref(date)}
+                aria-label={`${prettyDay(date)}: ${load.confirmed.length} events, ${load.guests} guests, ${load.pending.length} pending${b ? ", blocked" : ""}`}
+                className={`relative block min-h-28 min-w-0 border-r border-b border-line p-2 transition hover:ring-2 hover:ring-accent/40 hover:ring-inset ${cellTone(load, !!b)} ${date < today ? "opacity-60" : ""} ${isSel || date === today ? "ring-2 ring-accent ring-inset" : ""}`}
+              >
+                <div className="flex items-start justify-between gap-1">
+                  <span className={`text-sm font-semibold ${date === today ? "text-accent" : ""}`}>{i + 1}</span>
+                  <DayBadge load={load} blocked={!!b} />
                 </div>
-                <ul className="mt-1 space-y-1">
-                  {evs.slice(0, 3).map((l) => (
-                    <li key={l.id}>
-                      <Link
-                        href={`/admin/leads/${l.id}`}
-                        title={`${l.name || l.email}: ${eventLine(l)}`}
-                        className={`block truncate rounded px-1.5 py-0.5 text-xs ${isConfirmed(l) ? "bg-sage text-white" : stage(l) === "lost" ? "bg-surface-2 text-muted line-through" : "bg-gold-soft ring-1 ring-gold/40"}`}
-                      >
-                        {l.name?.split(" ")[0] || l.email.split("@")[0]}
-                        {l.guest_count ? ` · ${l.guest_count}` : ""}
-                      </Link>
-                    </li>
-                  ))}
-                  {evs.length > 3 && <li className="text-[11px] text-muted">+ {evs.length - 3} more</li>}
-                </ul>
-              </div>
+                <p className="mt-1 flex items-baseline justify-between gap-1 text-xs">
+                  <span className="text-sm font-semibold tabular-nums">{load.guests}</span>
+                  <span className="truncate text-muted">/ {capG} guests</span>
+                </p>
+                <div className="mt-1 h-1.5 rounded-full bg-line/70">
+                  <div className={`h-1.5 rounded-full ${barTone(load)}`} style={{ width: `${Math.min(100, Math.round(load.share * 100))}%` }} />
+                </div>
+                <p className="mt-1.5 text-xs text-muted">
+                  {load.confirmed.length} event{load.confirmed.length === 1 ? "" : "s"}
+                  {load.pending.length ? ` · ${load.pending.length} pending` : ""}
+                </p>
+                {b ? (
+                  <p className="truncate text-[11px] text-rose">{b.reason || "Blocked"}</p>
+                ) : load.level === "full" ? (
+                  <p className="text-[11px] text-rose">Fully booked</p>
+                ) : load.level === "limited" ? (
+                  <p className="text-[11px] text-amber">Limited availability</p>
+                ) : null}
+              </Link>
             );
           })}
+          {Array.from({ length: (7 - ((first + days) % 7)) % 7 }, (_, i) => <div key={`a${i}`} className="min-h-28 border-r border-b border-line bg-surface-2" />)}
         </div>
       </div>
 
-      <section className="card mt-6 p-6">
-        <h2 className="font-serif text-2xl">Events in {title}</h2>
-        {inMonth.length === 0 ? (
-          <div className="mt-3"><Empty>No events this month.</Empty></div>
+      {/* Phones: only the days with something on them. */}
+      <section className="card mt-6 p-5 md:hidden">
+        <h2 className="font-serif text-2xl">Days with events</h2>
+        {dates.filter((d) => blocked.has(d) || loads.get(d)!.confirmed.length || loads.get(d)!.pending.length).length === 0 ? (
+          <div className="mt-2"><Empty>Nothing this month.</Empty></div>
         ) : (
-          <ul className="mt-3 divide-y divide-line">
-            {inMonth.map((l) => {
-              const partner = vendorName(l.assigned_vendor);
-              return (
-                <li key={l.id} className="grid gap-2 py-3 sm:grid-cols-[9rem_1fr_auto] sm:items-start">
-                  <span className="text-sm font-medium">{prettyDay(l.event_date)}</span>
-                  <div className="min-w-0">
-                    <Link href={`/admin/leads/${l.id}`} className="font-medium text-accent">{l.name || l.email}</Link>
-                    <p className="text-xs text-muted">{[eventLine(l), l.venue].filter(Boolean).join(" · ")}</p>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-2 text-xs sm:justify-end">
-                    <span className={partner || !isConfirmed(l) ? "text-muted" : "text-rose"}>{partner ?? "No partner yet"}</span>
-                    <StagePill status={l.status} />
-                  </div>
-                </li>
-              );
-            })}
+          <ul className="mt-2 divide-y divide-line">
+            {dates
+              .filter((d) => blocked.has(d) || loads.get(d)!.confirmed.length || loads.get(d)!.pending.length)
+              .map((d) => {
+                const load = loads.get(d)!;
+                return (
+                  <li key={d}>
+                    <Link href={dayHref(d)} className="flex items-center justify-between gap-3 py-3 text-sm">
+                      <span>
+                        <span className="font-medium">{prettyDay(d)}</span>
+                        <span className="block text-xs text-muted">
+                          {load.confirmed.length} events · {load.guests} guests{load.pending.length ? ` · ${load.pending.length} pending` : ""}
+                        </span>
+                      </span>
+                      <DayBadge load={load} blocked={blocked.has(d)} />
+                    </Link>
+                  </li>
+                );
+              })}
           </ul>
         )}
       </section>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <section className="card p-6">
+          <h2 className="font-serif text-2xl">Blocked and limited days</h2>
+          {busy.length === 0 ? (
+            <p className="mt-3 text-sm text-muted">None this month. Use Block a day when you are away or already at capacity.</p>
+          ) : (
+            <ul className="mt-3 divide-y divide-line text-sm">
+              {busy.map((d) => {
+                const b = blocked.get(d);
+                const load = loads.get(d)!;
+                return (
+                  <li key={d} className="flex items-center justify-between gap-3 py-2">
+                    <Link href={dayHref(d)} className="min-w-0">
+                      <span className="font-medium">{prettyDay(d)}</span>
+                      <span className="text-muted"> · {b ? b.reason || "blocked" : `${load.confirmed.length} event${load.confirmed.length === 1 ? "" : "s"}, ${load.guests} guests`}</span>
+                    </Link>
+                    <span className="flex shrink-0 items-center gap-2">
+                      <DayBadge load={load} blocked={!!b} />
+                      {b && d >= today && (
+                        <form action={toggleDate}>
+                          <input type="hidden" name="date" value={d} />
+                          <input type="hidden" name="blocked" value="0" />
+                          <button type="submit" className="text-xs text-accent">Open</button>
+                        </form>
+                      )}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </section>
+        <section className="card p-6">
+          <h2 className="font-serif text-2xl">How to read this</h2>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
+            <li>Events and guests count bookings a rental partner has confirmed or the customer has paid for. Requests and quotes still open show as pending.</li>
+            <li>
+              The bar shows how full the day is against our limit of {capE} events or {capG.toLocaleString()} guests a day, whichever runs out first. It
+              turns gold at {Math.round(LIMITED_AT * 100)}% (limited) and red when full. Change the limits with EVENTS_PER_DAY and GUESTS_PER_DAY in Vercel.
+            </li>
+            <li>Blocked days can&apos;t be picked in the quote form or the event planner. Block a day when you&apos;re away or a partner has no stock left.</li>
+            <li>Click a day to see who is booked and who is still asking.</li>
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }

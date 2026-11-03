@@ -15,7 +15,6 @@ export const adminNav: { group: string; items: Item[] }[] = [
       { href: "/admin", label: "Today", icon: "home" },
       { href: "/admin/week", label: "This week", icon: "clock" },
       { href: "/admin/calendar", label: "Calendar", icon: "calendar" },
-      { href: "/admin/availability", label: "Block dates", icon: "block" },
     ],
   },
   {
