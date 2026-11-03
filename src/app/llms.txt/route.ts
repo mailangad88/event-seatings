@@ -4,7 +4,7 @@ import { categories } from "@/data/catalog";
 import { eventPath, eventTypes, locationPath, locations } from "@/data/geo";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { families } from "@/lib/guide-content";
-import { areaRentalsPath, costCategories, costPath } from "@/data/local-rentals";
+import { areaRentalsPath, costCategories, costPath, localAreas } from "@/data/local-rentals";
 import { getCategory } from "@/data/catalog-products";
 import { site } from "@/lib/site";
 
@@ -71,7 +71,7 @@ export async function GET() {
     "",
     "## Party rentals by area (local prices, venue notes, delivery tips)",
     `- [All areas](${site.url}/party-rentals)`,
-    ...locations.map((l) => `- [Party rentals in ${l.name}](${site.url}${areaRentalsPath(l.slug)}): tents, tables, linens, dance floors, bounce houses, photo booths, lighting, heaters, dinnerware and concessions`),
+    ...localAreas.map((l) => `- [Party rentals in ${l.name}](${site.url}${areaRentalsPath(l.slug)}): tents, tables, linens, dance floors, bounce houses, photo booths, lighting, heaters, dinnerware and concessions`),
     "",
     "## Rental cost guides (Chicago price ranges computed from the catalog)",
     `- [All cost guides](${site.url}/rental-cost)`,

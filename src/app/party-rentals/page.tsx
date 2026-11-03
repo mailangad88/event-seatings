@@ -3,8 +3,8 @@ import Link from "next/link";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { Breadcrumbs, FaqList, Figure, JsonLd, QuoteCta, Section } from "@/components/ui";
 import { catalogItems } from "@/data/catalog";
-import { locations, type Location } from "@/data/geo";
-import { areaRentalsPath, localCategories, localCategoryPath } from "@/data/local-rentals";
+import { type Location } from "@/data/geo";
+import { areaRentalsPath, localAreas as locations, localCategories, localCategoryPath } from "@/data/local-rentals";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
 

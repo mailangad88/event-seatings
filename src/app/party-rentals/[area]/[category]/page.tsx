@@ -7,11 +7,12 @@ import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumbs, FaqList, Figure, JsonLd, PriceDisclaimer, QuoteCta, Section, StatRow } from "@/components/ui";
 import { catalogItems, customerPrice, formatPrice, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
-import { getLocation, locationPath, locations } from "@/data/geo";
+import { getLocation, locationPath } from "@/data/geo";
 import {
   LOCAL_RENTALS_UPDATED,
   areaRentalsPath,
   getLocalCategory,
+  localAreas,
   guestRows,
   localCategories,
   localCategoryPath,
@@ -25,7 +26,7 @@ import { site } from "@/lib/site";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return locations.flatMap((l) => localCategories.map((c) => ({ area: l.slug, category: c.slug })));
+  return localAreas.flatMap((l) => localCategories.map((c) => ({ area: l.slug, category: c.slug })));
 }
 
 type Props = { params: Promise<{ area: string; category: string }> };
@@ -79,7 +80,7 @@ export default async function AreaCategoryPage(props: Props) {
   const shown = pick(items, 6, loc.slug);
   const bars = pick(items, 10, `${loc.slug}-bars`).filter((i, k, a) => a.findIndex((x) => x.id === i.id) === k);
   const rows = guestRows(lc);
-  const nearby = loc.nearby.flatMap((s) => getLocation(s) ?? []);
+  const nearby = loc.nearby.flatMap((s) => localAreas.find((l) => l.slug === s) ?? []);
   const others = localCategories.filter((c) => c.slug !== lc.slug);
   const lower = lc.label.toLowerCase();
 

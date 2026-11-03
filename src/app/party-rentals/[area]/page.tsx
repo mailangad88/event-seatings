@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { Breadcrumbs, FaqList, Figure, JsonLd, PriceDisclaimer, QuoteCta, Section } from "@/components/ui";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
-import { getEventType, getLocation, locationPath, locations, eventPath } from "@/data/geo";
-import { LOCAL_RENTALS_UPDATED, areaRentalsPath, localCategories, localCategoryPath, settingKind, costPath } from "@/data/local-rentals";
+import { getEventType, getLocation, locationPath, eventPath } from "@/data/geo";
+import { LOCAL_RENTALS_UPDATED, areaRentalsPath, localAreas, localCategories, localCategoryPath, settingKind, costPath } from "@/data/local-rentals";
 import { render } from "@/lib/scenes";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -13,7 +13,7 @@ import { site } from "@/lib/site";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return locations.map((l) => ({ area: l.slug }));
+  return localAreas.map((l) => ({ area: l.slug }));
 }
 
 type Props = { params: Promise<{ area: string }> };
@@ -55,7 +55,7 @@ export default async function AreaRentalsPage(props: Props) {
   const scene = render("hero-celebrations");
   const total = catalogItems.length;
   const events = loc.popularEvents.flatMap((s) => getEventType(s) ?? []);
-  const nearby = loc.nearby.flatMap((s) => getLocation(s) ?? []);
+  const nearby = loc.nearby.flatMap((s) => localAreas.find((l) => l.slug === s) ?? []);
   const kinds = [...new Set(loc.settings.map((s) => settingKind(s.name)))];
 
   const answer = `${site.name} rents party and event equipment in ${place}: tents, tables, chairs, linens, dinnerware, dance floors, lighting, heaters, bounce houses and more, ${total.toLocaleString()} items in all from Chicago-area rental partners. Prices are shown up front, and one free itemized quote covers delivery, setup and pickup in ${loc.name}.`;

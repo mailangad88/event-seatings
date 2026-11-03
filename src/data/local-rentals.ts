@@ -495,3 +495,8 @@ export const costCategories: CostCategory[] = [
 
 export const getCostCategory = (id: string) => costCategories.find((c) => c.id === id);
 export const costPath = (id: string) => `/rental-cost/${id}`;
+
+// Areas that get /party-rentals pages: only those with their own venue settings, delivery notes and
+// story, so every page has local content (thinner area entries keep just their chair page).
+import { locations } from "./geo";
+export const localAreas = locations.filter((l) => (l.settings?.length ?? 0) >= 2 && (l.logistics?.length ?? 0) >= 2 && (l.story?.length ?? 0) >= 1);

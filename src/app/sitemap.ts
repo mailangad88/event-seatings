@@ -11,7 +11,7 @@ import { looks } from "@/data/looks";
 import { coverImage, downloads } from "@/data/downloads";
 import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
-import { LOCAL_RENTALS_UPDATED, areaRentalsPath, costCategories, costPath, localCategories, localCategoryPath } from "@/data/local-rentals";
+import { LOCAL_RENTALS_UPDATED, areaRentalsPath, localAreas, costCategories, costPath, localCategories, localCategoryPath } from "@/data/local-rentals";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -95,8 +95,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // "[item] rental [area]", "party rentals [area]" and "[item] rental cost" landing pages.
   const localPages = [
     { url: `${site.url}/party-rentals`, priority: 0.8, lastModified: LOCAL_RENTALS_UPDATED },
-    ...locations.map((l) => ({ url: `${site.url}${areaRentalsPath(l.slug)}`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED })),
-    ...locations.flatMap((l) => localCategories.map((c) => ({ url: `${site.url}${localCategoryPath(l.slug, c)}`, priority: 0.6, lastModified: LOCAL_RENTALS_UPDATED }))),
+    ...localAreas.map((l) => ({ url: `${site.url}${areaRentalsPath(l.slug)}`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED })),
+    ...localAreas.flatMap((l) => localCategories.map((c) => ({ url: `${site.url}${localCategoryPath(l.slug, c)}`, priority: 0.6, lastModified: LOCAL_RENTALS_UPDATED }))),
     { url: `${site.url}/rental-cost`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED },
     ...costCategories.map((c) => ({ url: `${site.url}${costPath(c.id)}`, priority: 0.7, lastModified: LOCAL_RENTALS_UPDATED })),
   ];

@@ -6,8 +6,7 @@ import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumbs, FaqList, Figure, JsonLd, PriceDisclaimer, QuoteCta, Section, StatRow } from "@/components/ui";
 import { catalogItems, customerPrice, formatPrice, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
-import { locations } from "@/data/geo";
-import { LOCAL_RENTALS_UPDATED, costCategories, costPath, getCostCategory, localCategories, localCategoryPath } from "@/data/local-rentals";
+import { LOCAL_RENTALS_UPDATED, localAreas, costCategories, costPath, getCostCategory, localCategories, localCategoryPath } from "@/data/local-rentals";
 import { allInEstimate } from "@/lib/fees";
 import { sceneFor } from "@/lib/scenes";
 import { seo } from "@/lib/seo";
@@ -222,7 +221,7 @@ export default async function RentalCostPage(props: Props) {
             <nav aria-label={`${lc.label} by area`}>
               <h3 className="font-medium">{lc.label} by area</h3>
               <ul className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
-                {locations.slice(0, 12).map((l) => (
+                {localAreas.slice(0, 12).map((l) => (
                   <li key={l.slug}><Link href={localCategoryPath(l.slug, lc)} className="link-line">{lc.label} in {l.name}</Link></li>
                 ))}
               </ul>
