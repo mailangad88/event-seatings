@@ -15,16 +15,16 @@ export const metadata: Metadata = seo({
 });
 
 const values = [
-  { icon: "quote", title: "Transparent prices", text: "Every item shows its price. Your quote totals as you go, with delivery and setup itemized." },
-  { icon: "users", title: "Trusted vendors", text: "We work with established rental houses and match each item to the vendor that does it best." },
-  { icon: "chat", title: "One point of contact", text: "From the first question to pickup, you deal with one team, not five." },
+  { icon: "quote", title: "Prices you can see", text: "Every item shows its price. Your quote totals as you go, with delivery and setup itemized." },
+  { icon: "users", title: "Established rental companies", text: "We work with established local rental companies and book each item with one that carries it." },
+  { icon: "chat", title: "One point of contact", text: "From the first question to pickup, you deal with one person instead of five companies." },
   { icon: "pin", title: "Locally owned", text: `Based in ${site.city}, serving the whole Chicago area from the Loop to the Fox Valley.` },
 ] as const;
 
 const aboutFaqs = [
   {
     q: `What is ${site.name}?`,
-    a: `${site.name} is a Chicago-area event rental marketplace. You pick chairs, tables, linens, dinnerware, tents and more in one quote, and we book each item with a vetted local rental company, then coordinate delivery, setup and pickup as your single point of contact.`,
+    a: `${site.name} is a Chicago-area event rental marketplace. You pick chairs, tables, linens, dinnerware, tents and more in one quote, and we book each item with an established local rental company, then coordinate delivery, setup and pickup as your single point of contact.`,
   },
   {
     q: `Does ${site.name} own the rentals?`,
@@ -55,8 +55,8 @@ export default function AboutPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
           <blockquote className="font-serif text-3xl leading-snug italic sm:text-4xl">
-            &ldquo;Hosts spend months on florals and lighting, then lose weekends chasing rental quotes. We wanted
-            that part to take minutes.&rdquo;
+            Getting rental quotes from five companies takes a lot of phone calls. We wanted it to be one list and
+            one quote.
           </blockquote>
           <div className="prose-post">
             <p>
@@ -66,7 +66,7 @@ export default function AboutPage() {
               windows.
             </p>
             <p>
-              So we built a marketplace. You browse everything an event needs, see prices up front and send one quote
+              So we built one site for all of it. You browse everything an event needs, see prices up front and send one quote
               request. We confirm availability with trusted local rental houses, coordinate delivery and pickup, and
               stay your single point of contact.
             </p>
@@ -97,7 +97,7 @@ export default function AboutPage() {
         </ul>
       </Section>
 
-      <Section eyebrow="How it works" title="From first idea to last dance">
+      <Section eyebrow="How it works" title="From quote to pickup">
         <ProcessFlow />
         <div className="relative mt-14 aspect-[16/7] overflow-hidden rounded-2xl">
           <Image src={render("garden-ceremony").src} alt={render("garden-ceremony").alt} fill sizes="100vw" className="object-cover" />

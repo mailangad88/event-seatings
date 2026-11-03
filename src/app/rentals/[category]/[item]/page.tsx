@@ -59,7 +59,7 @@ function answerExtras(i: CatalogItem, price: number): string {
     qty ? `A 100-guest event needs about ${qty.toLocaleString()}, or ${formatPrice(Math.round(qty * price * 100) / 100)} before delivery.` : "",
     i.minQty ? `The minimum order is ${i.minQty}.` : "",
     "Delivery, setup and pickup are added to the same itemized quote, and the quote is free.",
-    `We book it with a vetted ${site.market}-area rental company.`,
+    `We book it with an established ${site.market}-area rental company.`,
   ].filter(Boolean);
   let out = "";
   const lead = 12; // words in "Rent a … in Chicago and the suburbs for $x each."

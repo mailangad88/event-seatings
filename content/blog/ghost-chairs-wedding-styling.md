@@ -1,6 +1,6 @@
 ---
 title: Ghost Chairs at Weddings: How to Style Them Well
-description: Clear acrylic chairs can look dated or breathtaking. Here is how to make them work, and when to choose something else.
+description: Clear acrylic chairs can look dated or great. Here is how to make them work, and when to choose something else.
 date: 2026-10-05
 tags: Ghost chairs, Styling
 chair: ghost

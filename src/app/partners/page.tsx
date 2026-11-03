@@ -8,20 +8,20 @@ import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Become a Rental Partner: Chicago Event Rental Leads",
-  description: `Chicago-area rental companies: get pre-qualified, itemized event bookings from ${site.name}. Free for 90 days, then 5% only on orders we send that book. No monthly fee, no exclusivity.`,
+  description: `Chicago-area rental companies: get event bookings with items and quantities already listed from ${site.name}. Free for 90 days, then 5% only on orders we send that book. No monthly fee, no exclusivity.`,
   alternates: { canonical: "/partners" },
 });
 
 const reasons: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "quote",
-    title: "Itemized, pre-qualified leads",
+    title: "Orders with the details filled in",
     text: "Every enquiry arrives with the date, venue, guest count and exact items and quantities, confirmed on a call before it reaches you.",
   },
   {
     icon: "search",
     title: "Customers you don't reach today",
-    text: "Thousands of pages built for long-tail and cultural searches across Chicagoland, plus AI answer engines. We bring demand you aren't paying for.",
+    text: "Our site has pages for thousands of Chicago-area searches, from town names to cultural celebrations. People find us there, and we send their orders to you.",
   },
   {
     icon: "calendar",
@@ -36,11 +36,11 @@ const reasons: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "chat",
     title: "We handle the back-and-forth",
-    text: "Questions, changes, venue paperwork and day-of calls come through one coordinator, so your team quotes less and delivers more.",
+    text: "Questions, changes, venue paperwork and day-of calls come through one coordinator, so your team spends less time on the phone.",
   },
   {
     icon: "spark",
-    title: "Free marketing for your inventory",
+    title: "Your items listed for free",
     text: "Your items in our catalog with 3D renders, a partner card, and reviews that say “Booked through Beyond Chiavari”.",
   },
 ];
@@ -95,8 +95,8 @@ export default function PartnersPage() {
       <PageHero
         breadcrumbs={[{ name: "Rental partners", href: "/partners" }]}
         eyebrow="For rental companies"
-        title="Get booked Chicago events, not just clicks."
-        intro={`${site.name} sends Chicago-area rental companies itemized, pre-qualified event bookings from planners who have already chosen items and quantities. It's free for 90 days, then 5% only on orders that book. No monthly fees, no exclusivity, and you keep your own prices, contract and deposit.`}
+        title="Get booked Chicago events sent to you."
+        intro={`${site.name} sends Chicago-area rental companies event bookings with the items and quantities already listed, from planners who have already chosen items and quantities. It's free for 90 days, then 5% only on orders that book. No monthly fees, no exclusivity, and you keep your own prices, contract and deposit.`}
         actions={
           <>
             <a href="#apply" className="btn-primary">Apply as a partner</a>
@@ -106,7 +106,7 @@ export default function PartnersPage() {
         media={<Figure {...scenes.midnightLongTable} ratio="4/5" priority sizes="(max-width: 1024px) 100vw, 40vw" className="mx-auto max-w-md" />}
       />
 
-      <Section eyebrow="Why partners join" title="New business at zero acquisition cost">
+      <Section eyebrow="Why partners join" title="New customers you don't pay to find">
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.map((r) => (
             <li key={r.title} className="card p-7">

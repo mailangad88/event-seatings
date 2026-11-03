@@ -9,7 +9,7 @@ import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Payments, Deposits & Our Booking Promise",
-  description: `Who you pay, when, and what's protected when you book event rentals through ${site.name} in ${site.market}: free quotes, a ${BOOKING_FEE_LABEL} booking fee only after your vendor confirms, price lock, vetted vendors and a backup guarantee.`,
+  description: `Who you pay, when, and what's protected when you book event rentals through ${site.name} in ${site.market}: free quotes, a ${BOOKING_FEE_LABEL} booking fee only after your vendor confirms, locked prices, insured rental companies and a backup if one cancels.`,
   alternates: { canonical: "/booking-promise" },
 });
 
@@ -21,7 +21,7 @@ const promises: { icon: IconName; title: string; text: string }[] = [
   },
   {
     icon: "check",
-    title: "Vetted rental companies",
+    title: "Insured rental companies",
     text: "We ask every Chicago-area rental company we book for proof of general liability insurance, and we tell you before you pay if one hasn't provided it yet. We don't issue certificates of insurance ourselves.",
   },
   {
@@ -56,7 +56,7 @@ const payments = [
 
 const flow = [
   { icon: "quote" as const, title: "Free quote", text: "Build your list online. No card, no commitment." },
-  { icon: "users" as const, title: "Vendor confirms", text: "We check your date with vetted local rental companies." },
+  { icon: "users" as const, title: "Vendor confirms", text: "We check your date with local rental companies we know." },
   { icon: "check" as const, title: "You approve", text: `Pay the ${BOOKING_FEE_LABEL} booking fee securely. Your vendor is locked in.` },
   { icon: "calendar" as const, title: "Deposit & contract", text: "The rental company sends its agreement and deposit invoice. We're copied in." },
   { icon: "truck" as const, title: "Delivered & collected", text: "Balance due before the event. We track delivery and pickup." },
@@ -85,7 +85,7 @@ const faqs: Faq[] = [
   },
   {
     q: "What if the rental company cancels?",
-    a: "Our backup guarantee kicks in: we find a comparable replacement, cover any price difference up to the full amount of your booking fee, and refund the booking fee if we can't replace your order.",
+    a: "Our backup guarantee applies: we find a comparable replacement, cover any price difference up to the full amount of your booking fee, and refund the booking fee if we can't replace your order.",
   },
   {
     q: "What if I need to cancel or postpone?",
@@ -107,7 +107,7 @@ export default function BookingPromisePage() {
         ]}
         eyebrow="Payments & protection"
         title="Know exactly who you pay, when, and what's protected."
-        intro={`Booking rentals through ${site.name} costs nothing until a rental company confirms your date. Then every price is locked, every vendor is vetted, and one person looks after your event from quote to pickup.`}
+        intro={`Booking rentals through ${site.name} costs nothing until a rental company confirms your date. Then your prices are locked, the rental company has shown us proof of insurance, and one person looks after your event from quote to pickup.`}
         actions={
           <>
             <Link href="/quote?from=booking-promise" className="btn-primary">Start my free quote</Link>

@@ -6,8 +6,8 @@ import { Icon } from "./Icon";
 
 // Sitewide conversion band: build a quote or book a call. Put one near the end of every page.
 export function QuoteCta({
-  title = "Price your whole event in minutes",
-  text = "Pick chairs, tables, linens, dinnerware and more, see live prices, and we line up Chicago's best rental houses for your date.",
+  title = "Get a price for your whole event",
+  text = "Pick chairs, tables, linens, dinnerware and more, see live prices, and we check your date with local rental companies.",
   source,
 }: {
   title?: React.ReactNode;

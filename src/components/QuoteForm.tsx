@@ -784,7 +784,7 @@ export function QuoteForm({
             </div>
           )}
           <p className="hint">
-            We confirm availability with vetted {site.market}-area rental companies and send one itemized proposal. No
+            We confirm availability with established {site.market}-area rental companies and send one itemized proposal. No
             payment and no commitment until a vendor confirms and you approve.{" "}
             <Link href="/booking-promise" className="link" target="_blank">How payments work</Link>
           </p>

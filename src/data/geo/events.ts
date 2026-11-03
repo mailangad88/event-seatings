@@ -13,7 +13,7 @@ export const eventTypes: EventType[] = [
       "You can rent wedding chairs from us for ceremonies and receptions across Chicago and the suburbs, from city lofts to Fox Valley barns. We carry cross-back, ghost, bentwood, Louis medallion and sweetheart thrones, and delivery and setup are itemized in your quote. Start with a short planning call and we'll help you count, choose and schedule.",
     story: [
       "A Chicago wedding can mean a ceremony in a Gold Coast church and a reception in a West Loop loft, or vows under the oaks at a forest preserve and dinner in a St. Charles barn. Each space asks for something different from the chairs, and the chairs end up in nearly every photo.",
-      "We're a St. Charles-based booking team that matches each wedding with vetted Chicago-area rental companies, and we plan every one closely: how many chairs for the ceremony versus dinner, whether a flip during cocktail hour is realistic, and which style suits your room and your florals.",
+      "We're a St. Charles-based booking team that matches each wedding with established Chicago-area rental companies, and we plan every one closely: how many chairs for the ceremony versus dinner, whether a flip during cocktail hour is realistic, and which style suits your room and your florals.",
       "Lake wind, late spring storms and October chill are part of planning here. We'll talk through rain plans, indoor backups and which of our chairs are happy outdoors, so the seating doesn't become the thing you worry about the week of.",
     ],
     painPoints: [
