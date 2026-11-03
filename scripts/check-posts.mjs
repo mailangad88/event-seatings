@@ -16,7 +16,24 @@ const topics = [
 const topicSlug = (n) => n.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const chairs = [...fs.readFileSync(path.join(root, "src/data/chairs.ts"), "utf8").matchAll(/^\s{4}slug: "([a-z-]+)"/gm)].map((m) => m[1]);
 const allSlugs = new Set(fs.readdirSync(blogDir).filter((f) => f.endsWith(".md")).map((f) => f.slice(0, -3)));
-const staticRoutes = new Set(["/", "/chairs", "/quote", "/book", "/quiz", "/faq", "/blog", "/about"]);
+const staticRoutes = new Set(["/", "/chairs", "/quote", "/book", "/quiz", "/faq", "/blog", "/about", "/rentals", "/chair-rentals", "/events", "/chicago-event-seasons", "/tools", "/downloads", "/answers", "/seating-planner", "/how-it-works", "/booking-promise"]);
+// Site directory pages posts may link to: rental categories, area pages, event types and months.
+const readSrc = (f) => (fs.existsSync(path.join(root, f)) ? fs.readFileSync(path.join(root, f), "utf8") : "");
+const geoDir = path.join(root, "src/data/geo");
+const geoFiles = fs.existsSync(geoDir)
+  ? fs.readdirSync(geoDir, { recursive: true }).filter((f) => String(f).endsWith(".ts")).map((f) => readSrc(path.join("src/data/geo", String(f)))).join("\n")
+  : "";
+const areaSlugs = new Set([...geoFiles.matchAll(/slug: "([a-z0-9-]+)",\s*\n\s*name: "[^"]+",\s*\n\s*kind: "/g)].map((m) => m[1]));
+const eventSlugs = new Set([...readSrc("src/data/geo/events.ts").matchAll(/^\s{4}slug: "([a-z0-9-]+)"/gm)].map((m) => m[1]));
+const rentalCategories = new Set([...readSrc("src/data/catalog-products.ts").matchAll(/^\s{4}id: "([a-z0-9-]+)",/gm)].map((m) => m[1]));
+const downloadSlugs = new Set([...readSrc("src/data/downloads.ts").matchAll(/^\s{4}slug: "([a-z0-9-]+)"/gm)].map((m) => m[1]));
+const monthSlugs = new Set(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]);
+const dirRoute = (l) =>
+  (l.startsWith("/chair-rentals/") && areaSlugs.has(l.slice(15))) ||
+  (l.startsWith("/events/") && eventSlugs.has(l.slice(8))) ||
+  (l.startsWith("/rentals/") && rentalCategories.has(l.slice(9))) ||
+  (l.startsWith("/chicago-event-seasons/") && monthSlugs.has(l.slice(23))) ||
+  (l.startsWith("/downloads/") && downloadSlugs.has(l.slice(11)));
 const banned = [/award[- ]winning/i, /\b\d+\+? years of experience/i, /happy (clients|customers|couples)/i, /5[- ]star/i, /our (past )?clients (say|love)/i, /we('ve| have) (served|delivered|set up) /i, /as seen in/i, /trusted by/i, /lorem/i, /TODO|TBD/];
 
 const files = process.argv.slice(2).length
@@ -104,6 +121,7 @@ for (const file of files) {
   for (const l of links) {
     const ok =
       staticRoutes.has(l) ||
+      dirRoute(l) ||
       (l.startsWith("/chairs/") && chairs.includes(l.slice(8))) ||
       (l.startsWith("/blog/topic/") && topics.map(topicSlug).includes(l.slice(12))) ||
       (l.startsWith("/blog/") && allSlugs.has(l.slice(6)));

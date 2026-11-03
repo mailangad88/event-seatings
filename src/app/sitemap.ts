@@ -4,7 +4,7 @@ import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
-import { imagesFor, originalImage, rentalImages, styledImage } from "@/data/rental-images";
+import { imagesFor, originalImage, rentalImages, soloImage, styledImage } from "@/data/rental-images";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockPhotos, stockSrc } from "@/data/stock-photos";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { looks } from "@/data/looks";
@@ -19,7 +19,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/downloads", "/blog", "/about", "/privacy", "/terms", "/photo-credits"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/downloads", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -75,6 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         images: [
           ...own,
           ...(own.length || !i.chairSlug ? [] : img(i.chairSlug)),
+          ...(soloImage(i.id) ? [`${site.url}${soloImage(i.id)!.src}`] : []),
           ...(styledImage(i.id) && originalImage(i.id) ? [`${site.url}${originalImage(i.id)!.src}`] : []),
           ...gallery.map((p) => stockSrc(p, 1200, 1200)),
         ],

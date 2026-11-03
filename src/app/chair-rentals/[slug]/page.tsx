@@ -12,7 +12,17 @@ import { FaqList } from "@/components/geo/FaqList";
 import { JsonLd } from "@/components/geo/JsonLd";
 import { RecommendedChairs } from "@/components/geo/RecommendedChairs";
 import { chairs, getChair } from "@/data/chairs";
-import { eventPath, getEventType, getLocation, homeBase, locationPath, locations, milesFrom } from "@/data/geo";
+import {
+  countyOf,
+  eventPath,
+  getEventType,
+  getLocation,
+  homeBase,
+  locationPath,
+  locations,
+  milesFrom,
+  placesInCounty,
+} from "@/data/geo";
 import { site } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -49,9 +59,22 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
     const l = getLocation(s);
     return l ? [l] : [];
   });
+  const countyName = countyOf(loc);
+  const countyPage = loc.kind !== "county" ? locations.find((l) => l.kind === "county" && l.name === countyName) : undefined;
   const crumbs = [{ href: "/chair-rentals", label: "Areas we serve" }];
+  if (countyPage) crumbs.push({ href: locationPath(countyPage), label: countyPage.name });
   if (loc.kind === "neighborhood") crumbs.push({ href: "/chair-rentals/chicago", label: "Chicago" });
   crumbs.push({ href: locationPath(loc), label: loc.name });
+
+  // County pages list every town we cover inside them; town pages link a few more in the same county.
+  const inCounty = loc.kind === "county" ? placesInCounty(loc).sort((a, b) => a.name.localeCompare(b.name)) : [];
+  const sameCounty =
+    loc.kind !== "county" && countyName
+      ? locations
+          .filter((l) => l.kind !== "county" && l.slug !== loc.slug && countyOf(l) === countyName && !loc.nearby.includes(l.slug))
+          .sort((a, b) => milesFrom(loc, a) - milesFrom(loc, b))
+          .slice(0, 8)
+      : [];
 
   const place = loc.kind === "neighborhood" ? `${loc.name}, Chicago` : `${loc.name}, IL`;
 
@@ -65,15 +88,9 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
           serviceType: "Event chair rental, delivery and setup",
           description: loc.metaDescription,
           url: `${site.url}${locationPath(loc)}`,
-          provider: {
-            "@type": "LocalBusiness",
-            name: site.name,
-            url: site.url,
-            email: site.email,
-            address: { "@type": "PostalAddress", addressLocality: "St. Charles", addressRegion: "IL", addressCountry: "US" },
-          },
+          provider: { "@id": `${site.url}/#business` },
           areaServed: {
-            "@type": loc.kind === "neighborhood" ? "Place" : "City",
+            "@type": loc.kind === "neighborhood" ? "Place" : loc.kind === "county" ? "AdministrativeArea" : "City",
             name: place,
             geo: { "@type": "GeoCoordinates", latitude: loc.lat, longitude: loc.lng },
             ...(loc.zips.length ? { postalCode: loc.zips.join(", ") } : {}),
@@ -241,6 +258,24 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
         }
       />
 
+      {inCounty.length > 0 && (
+        <section className="container-x mt-24">
+          <p className="eyebrow">Towns we cover in {loc.name}</p>
+          <h2 className="headline mt-4 text-3xl">
+            {inCounty.length} local guides in <em className="text-gold">{loc.name}</em>
+          </h2>
+          <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3 lg:grid-cols-4">
+            {inCounty.map((n) => (
+              <li key={n.slug}>
+                <Link href={locationPath(n)} className="link-line text-sm">
+                  {n.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {nearby.length > 0 && (
         <section className="container-x mt-24">
           <p className="eyebrow">Nearby</p>
@@ -252,6 +287,20 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
                 </Link>
               </li>
             ))}
+            {sameCounty.map((n) => (
+              <li key={n.slug}>
+                <Link href={locationPath(n)} className="chip transition-colors hover:border-gold hover:text-ink">
+                  {n.name}
+                </Link>
+              </li>
+            ))}
+            {countyPage && (
+              <li>
+                <Link href={locationPath(countyPage)} className="chip transition-colors hover:border-gold hover:text-ink">
+                  All of {countyPage.name}
+                </Link>
+              </li>
+            )}
             <li>
               <Link href="/chair-rentals" className="chip border-gold/60 text-gold hover:text-ink">
                 All areas

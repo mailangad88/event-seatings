@@ -30,7 +30,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Corporate kickoffs", idea: "Theater or classroom rows for the talk, then highboys for the mixer.", guide: "conference-seating-styles-theater-classroom-banquet-u-shape" },
     ],
     rent: ["lounge", "linens", "lighting", "heating-cooling"],
-    guides: ["chicago-winter-event-planning", "coat-racks-for-winter-events-chicago", "winter-event-lighting-chicago-sunset", "hot-cocoa-bar-winter-event"],
+    guides: ["planning-an-event-in-chicago-in-january", "chicago-winter-event-planning", "coat-racks-for-winter-events-chicago", "winter-event-lighting-chicago-sunset", "hot-cocoa-bar-winter-event"],
   },
   {
     slug: "february", name: "February", season: "winter",
@@ -43,7 +43,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Bridal shows and tastings", idea: "If your wedding is this summer or fall, this is the month to lock in tents and chairs.", guide: "spring-wedding-rentals-chicago" },
     ],
     rent: ["av-sound", "dance-floors-staging", "linens", "decor"],
-    guides: ["gala-stage-decor-ideas", "charity-gala-rental-checklist", "fundraiser-auction-setup-rentals"],
+    guides: ["planning-an-event-in-chicago-in-february", "gala-stage-decor-ideas", "charity-gala-rental-checklist", "fundraiser-auction-setup-rentals"],
   },
   {
     slug: "march", name: "March", season: "spring",
@@ -56,7 +56,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Graduation party planning", idea: "May and June open houses need tents booked now.", guide: "graduation-party-rentals-checklist" },
     ],
     rent: ["tables", "linens", "dinnerware", "tents"],
-    guides: ["baby-shower-rentals-and-seating", "bridal-shower-table-setup", "tent-flooring-and-subfloors"],
+    guides: ["planning-an-event-in-chicago-in-march", "baby-shower-rentals-and-seating", "bridal-shower-table-setup", "tent-flooring-and-subfloors"],
   },
   {
     slug: "april", name: "April", season: "spring",
@@ -69,7 +69,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Prom and post-prom", idea: "Post-prom lock-ins need games, lounge seating and food stations.", guide: "post-prom-party-planning" },
     ],
     rent: ["tents", "games-kids", "catering-equipment", "tables"],
-    guides: ["baptism-christening-party-rentals", "rain-plan-with-a-tent", "umbrella-stands-and-rain-plans"],
+    guides: ["planning-an-event-in-chicago-in-april", "baptism-christening-party-rentals", "rain-plan-with-a-tent", "umbrella-stands-and-rain-plans"],
   },
   {
     slug: "may", name: "May", season: "spring",
@@ -82,7 +82,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Spring weddings", idea: "Ceremony chairs that move to the reception save money.", guide: "spring-wedding-rentals-chicago" },
     ],
     rent: ["tents", "tables", "chairs", "catering-equipment"],
-    guides: ["graduation-party-tent-rental", "garden-party-rentals-layout", "backyard-party-layout-plan"],
+    guides: ["planning-an-event-in-chicago-in-may", "graduation-party-tent-rental", "garden-party-rentals-layout", "backyard-party-layout-plan"],
   },
   {
     slug: "june", name: "June", season: "summer",
@@ -95,7 +95,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Father's Day cookouts", idea: "Picnic tables, a canopy for shade and a cooler station.", guide: "mothers-day-and-fathers-day-gatherings" },
     ],
     rent: ["tents", "dance-floors-staging", "lighting", "chairs"],
-    guides: ["chicago-summer-event-season-planning", "tented-wedding-rentals", "backyard-party-lighting-ideas"],
+    guides: ["planning-an-event-in-chicago-in-june", "chicago-summer-event-season-planning", "tented-wedding-rentals", "backyard-party-lighting-ideas"],
   },
   {
     slug: "july", name: "July", season: "summer",
@@ -108,7 +108,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Block parties", idea: "Chicago block parties need a city permit, so apply weeks ahead.", guide: "chicago-block-party-permit" },
     ],
     rent: ["heating-cooling", "tents", "games-kids", "concessions"],
-    guides: ["summer-event-heat-plan-chicago", "misting-and-shade-for-summer-events", "fans-and-coolers-for-summer-events", "outdoor-events-chicago-in-july"],
+    guides: ["planning-an-event-in-chicago-in-july", "summer-event-heat-plan-chicago", "misting-and-shade-for-summer-events", "fans-and-coolers-for-summer-events", "outdoor-events-chicago-in-july"],
   },
   {
     slug: "august", name: "August", season: "summer",
@@ -121,7 +121,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Late-summer weddings", idea: "Farm tables and cross-back chairs fit an outdoor dinner.", guide: "backyard-wedding-rental-checklist" },
     ],
     rent: ["games-kids", "concessions", "av-sound", "tables"],
-    guides: ["corporate-picnic-games-chicago", "outdoor-corporate-summer-party-chicago", "picnic-tables-for-casual-events"],
+    guides: ["planning-an-event-in-chicago-in-august", "corporate-picnic-games-chicago", "outdoor-corporate-summer-party-chicago", "picnic-tables-for-casual-events"],
   },
   {
     slug: "september", name: "September", season: "fall",
@@ -134,7 +134,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Fall fundraisers", idea: "A tented gala outdoors needs heaters on standby.", guide: "school-fundraiser-rentals-chicago" },
     ],
     rent: ["tents", "lighting", "heating-cooling", "linens"],
-    guides: ["heating-a-tent-in-fall", "chicago-fall-wedding-linen-colors", "tent-lighting-ideas"],
+    guides: ["planning-an-event-in-chicago-in-september", "heating-a-tent-in-fall", "chicago-fall-wedding-linen-colors", "tent-lighting-ideas"],
   },
   {
     slug: "october", name: "October", season: "fall",
@@ -147,7 +147,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Harvest and Friendsgiving dinners", idea: "Long tables with real dinnerware for a seated meal.", guide: "fall-and-holiday-decor-rentals-chicago" },
     ],
     rent: ["heating-cooling", "decor", "photo-booths", "lounge"],
-    guides: ["patio-heaters-how-many-per-guests", "tent-sidewalls-clear-window-solid", "tent-heater-vs-patio-heater"],
+    guides: ["planning-an-event-in-chicago-in-october", "patio-heaters-how-many-per-guests", "tent-sidewalls-clear-window-solid", "tent-heater-vs-patio-heater"],
   },
   {
     slug: "november", name: "November", season: "fall",
@@ -160,7 +160,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "Holiday office parties", idea: "December Fridays fill first. Lock in now.", guide: "company-holiday-party-planning-timeline" },
     ],
     rent: ["dinnerware", "tables", "linens", "glassware"],
-    guides: ["chicago-winter-holiday-party-season-booking", "holiday-office-party-rentals-chicago", "holiday-party-at-home-rentals-chicago"],
+    guides: ["planning-a-november-event-chicago", "chicago-winter-holiday-party-season-booking", "holiday-office-party-rentals-chicago", "holiday-party-at-home-rentals-chicago"],
   },
   {
     slug: "december", name: "December", season: "winter",
@@ -173,7 +173,7 @@ export const monthIdeas: MonthIdeas[] = [
       { name: "New Year's Eve", idea: "Cocktail tables, a dance floor and champagne flutes.", guide: "new-years-eve-party-at-home" },
     ],
     rent: ["glassware", "dance-floors-staging", "lighting", "lounge"],
-    guides: ["kwanzaa-celebration-planning", "coat-racks-for-winter-events-chicago", "winter-wedding-seating"],
+    guides: ["planning-an-event-in-chicago-in-december", "kwanzaa-celebration-planning", "coat-racks-for-winter-events-chicago", "winter-wedding-seating"],
   },
 ];
 
