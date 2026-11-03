@@ -114,7 +114,7 @@ export default function MyEventsPage() {
       <Section eyebrow="Questions" title="About My Events">
         <FaqList faqs={faqs} />
         <p className="mt-8 text-center text-sm text-muted">
-          More free planning help: <Link href="/tools" className="link">all tools</Link> · <Link href="/ideas" className="link">seasonal ideas</Link> · <Link href="/downloads" className="link">free kits</Link>
+          More free planning help: <Link href="/tools" className="link">all tools</Link> · <Link href="/ideas" className="link">seasonal ideas</Link> · <Link href="/downloads" className="link">free kits</Link> · <Link href="/quote" className="link">free quote</Link> · <Link href="/blog" className="link">planning guides</Link>
         </p>
       </Section>
     </>

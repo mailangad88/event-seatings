@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { ChairStrip } from "@/components/ChairStrip";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Privacy Policy",
-  description: `How ${site.name} collects and uses your information.`,
+  description: `How ${site.name} collects, uses and protects the information you share when you request a quote, book a call or download a planning kit.`,
   alternates: { canonical: "/privacy" },
-};
+});
 
 export default function PrivacyPage() {
   return (

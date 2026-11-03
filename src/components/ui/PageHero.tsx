@@ -30,7 +30,7 @@ export function PageHero({
           <div className="animate-rise">
             {eyebrow && <p className="eyebrow">{eyebrow}</p>}
             <h1 className="display-1 mt-4">{title}</h1>
-            {intro && <div className="lede mt-6 max-w-2xl">{intro}</div>}
+            {intro && <div className="lede mt-6 max-w-2xl" data-answer>{intro}</div>}
             {actions && <div className="cta-row mt-8">{actions}</div>}
             {meta && <div className="mt-8 text-sm text-muted">{meta}</div>}
           </div>

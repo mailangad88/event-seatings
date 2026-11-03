@@ -73,7 +73,7 @@ export function BuyerPageView({ page }: { page: BuyerPage }) {
         eyebrow={hubLabel[page.kind]}
         title={page.title}
         intro={
-          <span id="short-answer" className="block">
+          <span id="short-answer" className="block" data-answer>
             <strong className="text-ink">Short answer: </strong>
             {page.answer}
           </span>

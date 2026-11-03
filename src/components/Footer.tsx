@@ -63,6 +63,8 @@ export function Footer() {
               ["/gallery", "3D gallery"],
               ["/faq", "FAQ"],
               ["/about", "About us"],
+              ["/reviews", "Reviews"],
+              ["/refer", "Refer a friend"],
               ["/partners", "For rental companies"],
               ["/vendor-listings", "Vendor listings & opt-out"],
             ].map(([href, label]) => (

@@ -4,12 +4,13 @@ import { ChairStrip } from "@/components/ChairStrip";
 import { Quiz } from "@/components/Quiz";
 import { Breadcrumbs, FaqList, Section, StepFlow, type Faq } from "@/components/ui";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Wedding & Event Chair Style Quiz for Chicago Venues",
   description: `Answer four quick questions about your Chicago-area venue, season and style, and ${site.name} matches you with the three event chairs that fit best, with prices.`,
   alternates: { canonical: "/quiz" },
-};
+});
 
 const faqs: Faq[] = [
   {

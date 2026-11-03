@@ -7,6 +7,7 @@ import { FaqList, JsonLd, PageHero, Section } from "@/components/ui";
 import { coverImage, downloads, getDownload } from "@/data/downloads";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export function generateStaticParams() {
   return downloads.map((d) => ({ slug: d.slug }));
@@ -16,13 +17,13 @@ export async function generateMetadata(props: PageProps<"/downloads/[slug]">): P
   const d = getDownload((await props.params).slug);
   if (!d) return {};
   const title = `Free ${d.title} (${[...new Set(d.files.map((f) => f.format))].join(" + ")})`;
-  return {
+  return seo({
     title,
     description: d.description,
     keywords: [d.keyword, `free ${d.keyword}`, `${d.keyword} template`, `${d.keyword} chicago`],
     alternates: { canonical: `/downloads/${d.slug}` },
     openGraph: { title, description: d.description, url: `/downloads/${d.slug}`, images: [{ url: coverImage(d.slug), alt: `Cover of the free ${d.title}` }] },
-  };
+  });
 }
 
 export default async function DownloadPage(props: PageProps<"/downloads/[slug]">) {

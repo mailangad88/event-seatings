@@ -9,6 +9,15 @@ import { rentalCategories } from "@/lib/nav";
 import { catalogItems } from "@/data/catalog";
 import { categoryScene, render, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
+
+export const metadata: Metadata = seo({
+  title: { absolute: "Beyond Chiavari | Chicago Event Rentals: Chairs, Tables, Tents" },
+  description:
+    "Chicago event rentals in one quote: chairs, tables, linens, dinnerware, tents and more from trusted local rental houses, with prices up front and delivery and setup.",
+  alternates: { canonical: "/" },
+});
 
 export const revalidate = 3600;
 
@@ -89,9 +98,10 @@ export default async function Home() {
             <h1 className="headline mt-5 text-[2.9rem] leading-[1.02] sm:text-6xl lg:text-[4.6rem]">
               Everything for your event. <em className="text-gold">One</em> simple quote.
             </h1>
-            <p className="lede mt-6 max-w-xl">
-              Chairs, tables, linens, dinnerware, tents and lighting from {site.market}&apos;s trusted rental houses. Pick
-              what you need, see prices instantly, and we coordinate every vendor for you.
+            <p className="lede mt-6 max-w-xl" data-answer>
+              Chairs, tables, linens, dinnerware, tents and lighting from {site.market}&apos;s trusted rental houses,
+              delivered across the city and suburbs. Pick what you need, see prices instantly with our 10% fee
+              included, and we coordinate delivery, setup and pickup with every vendor for you.
             </p>
             <div className="cta-row mt-8">
               <Link href="/quote?from=home-hero" className="btn-primary btn-lg">

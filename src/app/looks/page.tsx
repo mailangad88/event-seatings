@@ -7,8 +7,9 @@ import { Reveal } from "@/components/Reveal";
 import { getChair } from "@/data/chairs";
 import { looks } from "@/data/looks";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Elegant Wedding Decor Looks & the Chairs Behind Them",
   description: `Ten of the most elegant wedding and event decor themes, from gilded ballroom to garden estate, each built around one statement chair. Get any look sent to you with pricing for your Chicagoland date.`,
   alternates: { canonical: "/looks" },
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "/looks",
     images: [{ url: "/chairs/render/louis-medallion.jpg", width: 1000, height: 1250 }],
   },
-};
+});
 
 const faqs: [string, string][] = [
   [

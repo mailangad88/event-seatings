@@ -1,0 +1,44 @@
+name: SEO audit
+
+# Builds the site and crawls every sitemap page with scripts/seo-audit.mjs.
+# The job fails when any page has a blocking SEO / AEO / GEO error (missing H1, title,
+# description or canonical, invalid schema, no FAQs or direct answer, missing alt text,
+# thin or duplicate content, broken links, orphan pages) or the site score drops below 90.
+# The full report is attached to every run as an artifact.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: seo-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Type check
+        run: npx next typegen && npx tsc --noEmit
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+      - name: SEO audit
+        run: npm run seo-audit -- --ci
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-audit-report
+          path: reports/
+          if-no-files-found: ignore

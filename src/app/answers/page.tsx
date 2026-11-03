@@ -4,15 +4,16 @@ import Link from "next/link";
 import { allAnswers, answerTopics, answersUpdated } from "@/data/answers";
 import { formatDate, getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Chicago Event Chair Rental Answers: Cost, Counts, Venues & Delivery",
   description:
     "Straight answers to the questions Chicago hosts ask before renting event chairs: how many you need, Chiavari vs. folding cost, winter and outdoor events, venue rules, last-minute rentals and suburban delivery.",
   alternates: { canonical: "/answers" },
-};
+});
 
 // Posts written to go deeper on these answers. Shown when published.
 const deepDives = [
@@ -60,9 +61,10 @@ export default async function AnswersPage() {
           <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
             Every question about renting <em className="text-gold">chairs</em>, answered
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
+          <p className="mt-6 max-w-xl text-lg leading-8 text-muted" data-answer>
             Counts, costs, Chicago weather, venue rules and delivery. Straight answers from a local event seating
-            company in {site.city}, written so you can plan in minutes.
+            company in {site.city}, written so you can plan in minutes: how many chairs you need, what they cost,
+            which styles survive a Chicago summer and how delivery works at your venue.
           </p>
           <p className="mt-4 text-[11px] tracking-[0.22em] text-muted uppercase">
             Updated {formatDate(answersUpdated)} · {allAnswers.length} answers

@@ -13,14 +13,16 @@ import {
   milesFrom,
   type Location,
 } from "@/data/geo";
+import { HubFaqs } from "@/components/ui";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Event Rentals Across Chicago, Every Suburb & County",
   description:
     "Event chair, table and party rentals for every Chicago neighborhood and suburb in Cook, DuPage, Lake, Kane, McHenry, Will and Kendall counties. Find your town.",
   alternates: { canonical: "/chair-rentals" },
-};
+});
 
 const byName = (a: Location, b: Location) => a.name.localeCompare(b.name);
 const suburbsIn =
@@ -177,6 +179,15 @@ export default function AreasPage() {
           </div>
         </section>
       </div>
+      <HubFaqs
+        faqs={[
+          { q: "Which Chicago areas do you deliver chairs to?", a: `We arrange delivery to Chicago and its neighborhoods plus ${locations.length - 1} suburbs listed on this page, from the North Shore to DuPage County and the Fox Valley. If your town is not listed, ask: most of the metro area is covered.` },
+          { q: "Does delivery cost more in the suburbs?", a: "Delivery is priced per order by the rental partner and depends mostly on distance, stairs and timing. Expect roughly $150 to $400 per order; the exact amount appears on your itemized quote before you book." },
+          { q: "How far ahead should I book chairs?", a: "For Saturdays from May to October, book 3 to 6 months ahead, especially for popular styles like Chiavari and cross-back. Weekday and winter events can often be booked 2 to 4 weeks out." },
+          { q: "Can you deliver to downtown venues with loading docks or elevators?", a: "Yes. Tell us the load-in window, dock or elevator rules and any certificate requirements your venue has, and we plan delivery around them. We do not issue certificates of insurance ourselves." },
+        ]}
+        title="Chair delivery across Chicagoland: questions"
+      />
       <CallCta heading={<>Tell us where the party is</>} />
     </>
   );

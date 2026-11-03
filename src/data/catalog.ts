@@ -468,3 +468,17 @@ export function routeItems(itemIds: string[]) {
 
 export const formatPrice = (n: number) =>
   n.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: n % 1 ? 2 : 0 });
+
+/**
+ * Some price lists carry the same item twice (same name and specs, for example two colour rows that
+ * read identically). The first one is the canonical page; later copies point their canonical to it
+ * and stay out of the sitemap, so search engines see one page per real item.
+ */
+const firstByKey = new Map<string, CatalogItem>();
+for (const i of catalogItems) {
+  const key = `${i.categoryId}|${i.name.toLowerCase()}|${(i.specs ?? "").toLowerCase()}`;
+  if (!firstByKey.has(key)) firstByKey.set(key, i);
+}
+export function canonicalItem(i: CatalogItem): CatalogItem {
+  return firstByKey.get(`${i.categoryId}|${i.name.toLowerCase()}|${(i.specs ?? "").toLowerCase()}`) ?? i;
+}

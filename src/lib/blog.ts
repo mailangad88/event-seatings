@@ -242,3 +242,21 @@ export function formatDate(date: string) {
     year: "numeric",
   });
 }
+
+/**
+ * FAQs for a hub page, taken from the posts it lists: the first question of each post, until there
+ * are `n` distinct questions. Keeps hub FAQs real (each one is answered in full on its post).
+ */
+export async function hubFaqs(posts: Post[], n = 5): Promise<(Faq & { slug: string })[]> {
+  const out: (Faq & { slug: string })[] = [];
+  const seen = new Set<string>();
+  for (const p of posts) {
+    if (out.length >= n) break;
+    const raw = await fs.readFile(path.join(dir, `${p.slug}.md`), "utf8").catch(() => "");
+    const f = extractFaqs(raw).find((x) => x.a && !seen.has(x.q.toLowerCase()));
+    if (!f) continue;
+    seen.add(f.q.toLowerCase());
+    out.push({ ...f, slug: p.slug });
+  }
+  return out;
+}

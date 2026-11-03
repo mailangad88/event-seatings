@@ -47,7 +47,9 @@ SECTION_MAP = [
     ("catering-equipment", r"bar acc|busing|punch|champagne|coffee|sugar|grill|serving|buffet|chaf|kitchen|tray|melamine|bowls \("),
     ("chairs", r"chair|seating"),
     ("linens", r"linen|napkin|tablecloth"),
-    ("tables", r"table"),
+    # "inflatable" contains "table", so inflatables and table games are matched before tables.
+    ("games-kids", r"inflat|table games"),
+    ("tables", r"\btables?\b"),
     ("dinnerware", r"china|dinnerware|plate|dish"),
     ("flatware", r"flatware|silverware|cutlery"),
     ("glassware", r"glass"),
@@ -73,7 +75,7 @@ RULES = [
     ("dance-floors-staging", r"dance ?floor|stage|riser"),
     ("tents", r"\btent|canopy|sidewall"),
     ("games-kids", r"fog machine|bubble machine|foam machine|air dancer|face paint|basketball|striker|bounce|inflatable|moon ?walk|bouncer|obstacle|game|toss|tug of war|limbo|dunk|bingo|jenga|cornhole|soft play|ball pit|laser tag|foam party|kids?'? party"),
-    ("linens", r"linen|napkin|tablecloth|runner|overlay|sash|chair (cover|tie)|skirt|spandex"),
+    ("linens", r"linen|napkin|table ?cloth|runner|overlay|sash|chair (cover|tie)|skirt|spandex"),
     ("chairs", r"chair|stool|chiavari|throne|bench"),
     ("tables", r"\btables?\b|highboy|serpentine"),
     ("dinnerware", r"plate|charger|bowl|\bcups?\b|saucer|mug"),
@@ -94,7 +96,10 @@ def classify(name: str, specs: str, section: str):
             if cat == "concessions" and re.search(r"backdrop|neon|\bwall\b|letter|bounce|inflat|slide|playland", text):
                 continue
             return cat
-    for cat, pat in SECTION_MAP:
+    # Mixed vendor sections ("Tables and Chairs", "Tents, Tables & Chairs") say nothing about the
+    # item, so those items are classified by name.
+    mixed = re.search(r"tables? (and|&) chairs?|tents?, tables", sec)
+    for cat, pat in [] if mixed else SECTION_MAP:
         if re.search(pat, sec):
             if cat in ("flatware", "dinnerware", "glassware") and re.search(SERVING, text):
                 return "catering-equipment"

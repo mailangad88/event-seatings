@@ -80,7 +80,7 @@ export default async function IdeasPage() {
         breadcrumbs={[{ name: "Ideas", href: "/ideas" }]}
         eyebrow={`This month in Chicago · ${current.name}`}
         title={current.headline}
-        intro={current.mood}
+        intro={<>{current.mood} Below: the occasions Chicago hosts plan in {current.name}, the rentals they book this month, what to reserve now for events later in the year, and normal weather and sunset for every month.</>}
         actions={
           <>
             <Link href="/my-events" className="btn-primary">Save my event date</Link>

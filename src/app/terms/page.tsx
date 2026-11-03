@@ -3,12 +3,13 @@ import Link from "next/link";
 import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 import { ChairStrip } from "@/components/ChairStrip";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Terms of Use",
   description: `Terms for using the ${site.name} website and booking event rentals through us: our booking fee, who you pay, the Booking Promise, damage and liability.`,
   alternates: { canonical: "/terms" },
-};
+});
 
 export default function TermsPage() {
   return (

@@ -4,16 +4,17 @@ import Link from "next/link";
 import { FaqList, JsonLd, PageHero, Section } from "@/components/ui";
 import { coverImage, downloadGroups, downloads } from "@/data/downloads";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 const title = "Free Event Planning Kits, Checklists and Spreadsheets";
 const description = `${downloads.length} free event planning downloads from ${site.name}: printable kits, checklists, budget and guest list spreadsheets, seating chart and rental calculators for any event.`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title,
   description,
   alternates: { canonical: "/downloads" },
   openGraph: { title, description, url: "/downloads", images: [{ url: coverImage("event-planning-kit"), alt: "Cover of the free Ultimate Event Planning Kit" }] },
-};
+});
 
 const faqs = [
   { q: "Are these planning downloads free?", a: "Yes. Every kit, checklist and spreadsheet is free. Enter your email once per download and the links appear right away." },

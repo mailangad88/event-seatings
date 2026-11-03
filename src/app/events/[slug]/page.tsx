@@ -13,6 +13,7 @@ import { getChair } from "@/data/chairs";
 import { eventPath, eventTypes, getEventType, locationPath, locations } from "@/data/geo";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -24,12 +25,12 @@ export async function generateMetadata(props: PageProps<"/events/[slug]">): Prom
   const ev = getEventType((await props.params).slug);
   if (!ev) return {};
   const path = eventPath(ev);
-  return {
+  return seo({
     title: ev.metaTitle,
     description: ev.metaDescription,
     alternates: { canonical: path },
     openGraph: { title: `${ev.metaTitle} | ${site.name}`, description: ev.metaDescription, url: path },
-  };
+  });
 }
 
 export default async function EventPage(props: PageProps<"/events/[slug]">) {

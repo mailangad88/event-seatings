@@ -5,12 +5,13 @@ import { ProcessFlow } from "@/components/ProcessFlow";
 import { Figure, FaqList, Icon, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Event Rental FAQ: Chicago Chairs, Tables, Linens & More",
   description: `Answers about renting chairs, tables, linens, dinnerware, tents and more for events in Chicago and the suburbs: pricing, delivery, setup, deposits, timing and damage.`,
   alternates: { canonical: "/faq" },
-};
+});
 
 const groups: { id: string; title: string; faqs: Faq[] }[] = [
   {

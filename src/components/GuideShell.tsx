@@ -86,7 +86,7 @@ export function GuideShell(p: GuideProps) {
           <aside className="self-start rounded-xl border border-gold bg-gold-soft p-6">
             <p className="text-[11px] tracking-[0.2em] text-gold uppercase">Quick answer</p>
             <h2 className="mt-3 font-serif text-2xl leading-snug">{p.quick.q}</h2>
-            <p className="mt-4 leading-7">{p.quick.a}</p>
+            <p className="mt-4 leading-7" data-answer>{p.quick.a}</p>
             <Link href={`/book?from=${p.source}`} className="btn-primary mt-6 inline-block">Book a free call</Link>
           </aside>
         </div>

@@ -12,12 +12,13 @@ import { isPhotoFirst, photosForItem } from "@/data/stock-photos";
 import { toPublicItem } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Instant Event Rental Quote: Chairs, Tables, Linens & More",
   description: `Build your event rental list and see a live price. Chairs, tables, linens, tableware, tents and more for weddings and events in ${site.market} and the suburbs.`,
   alternates: { canonical: "/quote" },
-};
+});
 
 const faqs: Faq[] = [
   {

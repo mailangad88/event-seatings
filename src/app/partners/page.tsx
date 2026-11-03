@@ -1,15 +1,16 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PartnerForm } from "@/components/PartnerForm";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Become a Rental Partner: Chicago Event Rental Leads",
   description: `Chicago-area rental companies: get pre-qualified, itemized event bookings from ${site.name}. Free for 90 days, then 5% only on orders we send that book. No monthly fee, no exclusivity.`,
   alternates: { canonical: "/partners" },
-};
+});
 
 const reasons: { icon: IconName; title: string; text: string }[] = [
   {
@@ -95,7 +96,7 @@ export default function PartnersPage() {
         breadcrumbs={[{ name: "Rental partners", href: "/partners" }]}
         eyebrow="For rental companies"
         title="Get booked Chicago events, not just clicks."
-        intro={`${site.name} sends Chicago-area rental companies itemized, pre-qualified event bookings. It's free for 90 days, then 5% only on orders that book. No monthly fees, no exclusivity.`}
+        intro={`${site.name} sends Chicago-area rental companies itemized, pre-qualified event bookings from planners who have already chosen items and quantities. It's free for 90 days, then 5% only on orders that book. No monthly fees, no exclusivity, and you keep your own prices, contract and deposit.`}
         actions={
           <>
             <a href="#apply" className="btn-primary">Apply as a partner</a>
@@ -129,6 +130,13 @@ export default function PartnersPage() {
           steps={steps}
           caption={`How rental partners work with ${site.name}: apply, share a price sheet, receive itemized enquiries with a quote ID, then book and deliver under your own contract.`}
         />
+        <p className="mt-8 max-w-3xl leading-7 text-muted">
+          See what customers see: the <Link href="/rentals" className="link-line">rental catalog with prices</Link>, the{" "}
+          <Link href="/quote" className="link-line">quote builder</Link>, <Link href="/how-it-works" className="link-line">how booking works</Link>,
+          the <Link href="/booking-promise" className="link-line">Booking Promise</Link> and the{" "}
+          <Link href="/chair-rentals" className="link-line">areas we serve</Link>. Already listed without asking?{" "}
+          <Link href="/vendor-listings" className="link-line">Manage or remove your listing</Link>.
+        </p>
       </Section>
 
       <Section id="terms" eyebrow="Founding Partner terms" title="Simple, and free until it works">

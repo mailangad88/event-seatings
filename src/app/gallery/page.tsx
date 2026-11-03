@@ -6,13 +6,14 @@ import { SaveIdea } from "@/components/myevents/SaveIdea";
 import { getProduct } from "@/data/catalog-products";
 import { extraImages, imageCategories, productImages, rentalImageJsonLd, sceneImages } from "@/data/rental-images";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Event Rental Gallery: Chairs, Tables, Tents & Linens",
   description: `See every event rental ${site.name} offers in the Chicago area, pictured true to size in real-world settings: chairs, tables, linens, tents, dinnerware, dance floors, lighting, lounge furniture and more.`,
   alternates: { canonical: "/gallery" },
   openGraph: sceneImages[0] ? { images: [{ url: sceneImages[0].src, alt: sceneImages[0].alt }] } : undefined,
-};
+});
 
 const faqs = [
   {

@@ -667,7 +667,7 @@ function buildFit(slug: string): GuideProps | null {
     intro: `${c.tagline}. Here is how the ${c.name} holds up for ${e.noun}, checked against what that event actually needs.`,
     quick: {
       q: `Is the ${short(c)} chair good for ${e.noun}?`,
-      a: `${outcome}. It matches ${f.styleHits.length ? `the ${f.styleHits.join(" and ").toLowerCase()} styles` : "the event"} and ${f.useHits.length ? `works for the ${f.useHits.join(" and ").toLowerCase()}` : "is flexible"}. ${e.outdoorLikely ? (c.outdoorFriendly ? "It is outdoor friendly, which matters for this event." : "It is better indoors or in a tent.") : ""} At ${rep} guests, expect roughly ${usd(r.low * rep)} to ${usd(r.high * rep)} for the chairs.`,
+      a: `${outcome}. It matches ${f.styleHits.length ? `the ${f.styleHits.join(" and ").toLowerCase()} styles` : "the event"} and ${f.useHits.length ? `works for the ${f.useHits.join(" and ").toLowerCase()}` : "is flexible"}. ${e.outdoorLikely ? (c.outdoorFriendly ? "It is outdoor friendly, which matters for this event." : "It is better indoors or in a tent.") : ""} At ${rep} guests, expect roughly ${usd(r.low * rep)} to ${usd(r.high * rep)} for the chairs, with delivery, setup and pickup added on one free itemized quote.`,
     },
     visual: (
       <div className="grid items-start gap-6 sm:grid-cols-[0.45fr_1.6fr]">
@@ -782,7 +782,7 @@ function buildTable(slug: string): GuideProps | null {
     intro: `${t.note} Here is what it seats, how much floor it takes and how many you need for your guest count.`,
     quick: {
       q: `How many chairs at a ${t.name}?`,
-      a: `${t.seatsMin === t.seatsMax ? `${t.seatsMin} chairs.` : `${t.seatsMin} to ${t.seatsMax} chairs: ${t.seatsMin} is comfortable, ${t.seatsMax} is the tight maximum.`} Allow ${t.footprint}. Best for ${t.use}.`,
+      a: `${t.seatsMin === t.seatsMax ? `${t.seatsMin} chairs.` : `${t.seatsMin} to ${t.seatsMax} chairs: ${t.seatsMin} is comfortable, ${t.seatsMax} is the tight maximum.`} Allow ${t.footprint}. Best for ${t.use}. Add 3 to 5% spare chairs for late RSVPs and vendors, and confirm the count against the venue's floor plan before you order.`,
     },
     visual: (
       <div className="mx-auto max-w-md">
@@ -849,6 +849,8 @@ export const tablesFamily: GuideFamily = {
     { q: "How many people sit at a 60-inch round table?", a: "A 60-inch round seats 8 comfortably and 10 snugly. A 72-inch round seats 10-12. Use 120-inch round linens for 60-inch tables and 132-inch for 72-inch tables if you want them floor length." },
     { q: "How many people sit at an 8-foot banquet table?", a: "An 8-foot (96-inch) banquet table seats 8, four on each side, or 10 with one guest at each end. A 6-foot table seats 6, or 8 with the ends." },
     { q: "How many chairs fit at a cocktail table?", a: "Highboy cocktail tables are for standing and usually have no chairs. Low 30-inch cocktail tables seat 2-4. Plan one highboy per 8-10 standing guests." },
+    { q: "How many tables do I need for 100 guests?", a: "Thirteen 60-inch rounds seat 100 guests at 8 per table, or ten if you seat 10 per table. Add tables for the cake, gifts, DJ and one buffet table per 50 guests, so most 100-guest events order 16 to 18 tables in all." },
+    { q: "Round or rectangular tables: which fits more guests?", a: "Rectangular banquet and farm tables usually fit more guests in the same room, because long rows waste less floor than circles. Rounds make conversation easier and suit square rooms. Many planners mix both, with a long head table and rounds for guests." },
   ],
   base: "/table-seating-guides",
   hubTitle: "Table Seating Guides: How Many Chairs Per Table",
@@ -890,7 +892,7 @@ function buildMonth(slug: string): GuideProps | null {
     intro: `${m.wx} That shapes which chairs make sense, how early to book and how to plan delivery for a ${m.name} event in Chicago and the suburbs.`,
     quick: {
       q: `What chairs should I rent for a ${m.name} event in Chicago?`,
-      a: `${m.lvl >= 2 ? `Choose outdoor-friendly, stackable chairs such as the ${outdoorOk.map(short).join(", ")}.` : `Most ${m.name} events are indoors, so you can choose on style: the ${indoor.map(short).join(", ")} are popular starting points.`} ${m.tip}`,
+      a: `${m.lvl >= 2 ? `Choose outdoor-friendly, stackable chairs such as the ${outdoorOk.map(short).join(", ")}.` : `Most ${m.name} events are indoors, so you can choose on style: the ${indoor.map(short).join(", ")} are popular starting points.`} ${m.tip} Delivery, setup and pickup are priced on the same free quote, and we confirm availability with Chicago-area rental partners before you pay.`,
     },
     visual: (
       <MonthStrip
@@ -939,6 +941,8 @@ export const seasonsFamily: GuideFamily = {
     { q: "When is peak event season in Chicago?", a: "May through October, with June, September and October Saturdays booking first. Reserve tents, specialty chairs and dance floors 2-4 months ahead for those dates." },
     { q: "What should I rent for a winter event in Chicago?", a: "Plan for indoor venues or tents with sidewalls and heaters, floor protection for wet or salted boots, and padded or upholstered chairs that feel warmer. Allow extra delivery time when snow is in the forecast." },
     { q: "What happens if it rains on my outdoor event?", a: "Book a tent or an indoor backup at the same time as your chairs. Resin and metal chairs handle rain; wood and upholstered chairs need cover. Your quote can include a tent so the plan B is already priced." },
+    { q: "How far ahead should I book rentals for a Chicago summer event?", a: "Three to six months for June to September Saturdays, especially for tents, dance floors and specialty chairs, which sell out first. Weekday events and the shoulder months of April, May and October can often be booked four to eight weeks out." },
+    { q: "Do I need heaters for a fall event in Chicago?", a: "Often, yes. Evenings from late September onward regularly drop below 60 degrees, and a tent with sidewalls plus one patio heater per 10 to 12 guests keeps an outdoor reception comfortable. Order propane with the heaters so they run all night." },
   ],
   base: "/chicago-event-seasons",
   hubTitle: "Chicago Event Seasons: Month-by-Month Chair Rental Planning",

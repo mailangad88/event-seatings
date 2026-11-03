@@ -4,12 +4,13 @@ import { CallForm } from "@/components/CallForm";
 import { Figure } from "@/components/ui";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: `Book a Free Event Planning Call | Event Rentals in ${site.market}`,
   description: `Book a free ${site.callLength} call with ${site.name}. Get rental recommendations, quantities and an honest estimate for your wedding, corporate event or party in Chicago and the suburbs.`,
   alternates: { canonical: "/book" },
-};
+});
 
 const agenda: [string, string][] = [
   ["Your room", "Venue, layout and guest count, so we can recommend the right chairs, tables and linens and how many you actually need."],

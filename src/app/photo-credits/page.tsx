@@ -4,12 +4,13 @@ import { PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { JsonLd } from "@/components/rentals/parts";
 import { UNSPLASH_LICENSE, UNSPLASH_URL, stockImageJsonLd, stockPhotos } from "@/data/stock-photos";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Photo Credits",
   description: `Credits for the real event photos used across ${site.name}: photographers on Unsplash, licence and how we label example photos.`,
   alternates: { canonical: "/photo-credits" },
-};
+});
 
 const photos = Object.entries(stockPhotos).map(([key, p]) => ({ key, ...p }));
 

@@ -3,18 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { bookingHref, firstRoute } from "@/lib/routes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 import { liveTools, toolImage } from "@/components/tools/ToolShell";
 import { toolGroups, type ToolGroup } from "@/data/tools";
 
 const title = "Free Event Planning Tools and Calculators for Chicago Events";
 const description = `Free event planning tools from ${site.name}: tables and chairs, tent size, venue capacity, tablecloth, string light and dance floor calculators, a timeline builder, budget splitter, rain plan checklist and more. No sign-up.`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title,
   description,
   alternates: { canonical: "/tools" },
   openGraph: { title, description, url: "/tools", images: [{ url: "/chairs/render/ghost.jpg", alt: `Ghost chair from ${site.name}` }] },
-};
+});
 
 type Tool = { name: string; href: string; text: string; outputs: string[]; image: string; imageAlt: string; startHere?: boolean };
 type Problem = { id: string; problem: string; intent: string; tools: Tool[] };
@@ -276,9 +277,10 @@ export default function ToolsPage() {
         <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
           Start with your <em className="text-gold">problem</em>
         </h1>
-        <p className="mt-6 text-lg leading-8 text-muted">
-          Free planning tools for weddings and events across the Chicago area. Pick what&apos;s on your mind and
-          we&apos;ll point you to the tool that answers it. No sign-up needed.
+        <p className="mt-6 text-lg leading-8 text-muted" data-answer>
+          Free planning tools for weddings and events across the Chicago area: a seating planner, a readiness score,
+          a style quiz and the quote builder. Pick what&apos;s on your mind and we&apos;ll point you to the tool that
+          answers it. No sign-up needed.
         </p>
       </div>
 

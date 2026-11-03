@@ -17,3 +17,4 @@ export { Section, type Tone } from "./Section";
 export { StatRow } from "./StatRow";
 export { StepFlow, type Step } from "./StepFlow";
 export { TrustBar } from "./TrustBar";
+export { HubFaqs } from "./HubFaqs";

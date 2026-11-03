@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Figure, Icon, JsonLd, PageHero, QuoteCta, Section, type IconName } from "@/components/ui";
+import { Figure, HubFaqs, Icon, JsonLd, PageHero, QuoteCta, Section, type IconName } from "@/components/ui";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 const title = "Event Rental Glossary: Terms on Every Rental Quote";
 const description =
   "Plain-English definitions of the terms on event rental quotes and contracts: damage waiver, drop length, load-in, Chiavari, highboy, frame tent and more.";
 
-export const metadata: Metadata = { title, description, alternates: { canonical: "/glossary" } };
+export const metadata: Metadata = seo({ title, description, alternates: { canonical: "/glossary" } });
 
 type Term = { term: string; def: string; link?: { href: string; label: string } };
 type Group = { id: string; label: string; icon: IconName; terms: Term[] };
@@ -108,7 +109,7 @@ export default function Page() {
         breadcrumbs={[{ name: "Glossary", href: "/glossary" }]}
         eyebrow="Event rentals, explained"
         title="Event rental glossary"
-        intro={`${all.length} terms you will meet on rental quotes, contracts and product pages, in plain English. Each one links to where you can price it or read more.`}
+        intro={`${all.length} terms you will meet on event rental quotes, contracts and product pages, in plain English: from damage waivers and flip fees to frame tents, chargers and 120-inch rounds. Each definition links to the page where you can price that item or read more before you book.`}
         media={<Figure {...scenes.chairDetail} ratio="4/5" priority sizes="(max-width: 1024px) 100vw, 40vw" className="mx-auto max-w-md" />}
       />
       <nav aria-label="Glossary sections" className="container-x -mt-4 mb-4 flex flex-wrap gap-2">
@@ -136,6 +137,14 @@ export default function Page() {
           </dl>
         </Section>
       ))}
+      <HubFaqs
+        title="Rental terms people ask about"
+        faqs={[
+          { q: "What is a damage waiver on an event rental?", a: "A fee, usually about 10% of the rental total, that covers accidental damage such as a chipped plate or a torn linen. It does not cover loss, theft or misuse, and most rental companies add it to every order." },
+          { q: "What is a flip fee?", a: "A labor charge to move chairs or tables from the ceremony layout to the reception layout during cocktail hour. It usually costs less than renting a second set of chairs." },
+          { q: "What does 'rented in dozens' mean?", a: "Some items, such as plates, flatware and napkins, are only rented in packs of 12, so quantities round up to the next dozen on your quote." },
+        ]}
+      />
       <QuoteCta source="glossary" />
     </>
   );

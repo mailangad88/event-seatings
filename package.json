@@ -12,6 +12,7 @@
     "render:chairs": "node scripts/render-chairs.mjs",
     "crm:setup": "node scripts/hubspot-setup.mjs",
     "remotion:reels": "for t in gilded-ivory midnight-gold blush-garden; do remotion render DecorReel-$t out/reels/$t-reel.mp4; done",
+    "seo-audit": "node scripts/seo-audit.mjs",
     "indexnow": "node scripts/indexnow.mjs",
     "audit:ux": "node scripts/ux-audit.mjs"
   },
@@ -51,6 +52,7 @@
     "axe-core": "^4.14.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
+    "node-html-parser": "^7.1.0",
     "playwright-core": "^1.63.0",
     "tailwindcss": "^4",
     "typescript": "^5"
