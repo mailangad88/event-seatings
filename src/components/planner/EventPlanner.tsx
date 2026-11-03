@@ -127,6 +127,12 @@ export function EventPlanner({
   );
   // The visitor's own changes on top of our suggestions: a new quantity (0 = removed) or an item they added.
   const [overrides, setOverrides] = useState<Record<string, number>>({});
+  // Items the visitor changed to another one: our suggested item id → the item they picked instead.
+  const [swaps, setSwaps] = useState<Record<string, string>>({});
+  // Items the visitor added from a list section ("Add another"), so they show in that section: item id → section.
+  const [placed, setPlaced] = useState<Record<string, string>>({});
+  // The open "Change" or "Add another" picker.
+  const [picker, setPicker] = useState<{ mode: "swap"; row: Row } | { mode: "add"; group: string; cats: string[] } | null>(null);
   const [adding, setAdding] = useState(false);
   const [addCat, setAddCat] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
@@ -152,18 +158,31 @@ export function EventPlanner({
   useEffect(() => {
     if (!a.event) return;
     try {
-      localStorage.setItem(STORE, JSON.stringify({ a, overrides, step, done }));
+      localStorage.setItem(STORE, JSON.stringify({ a, overrides, swaps, placed, step, done }));
     } catch {}
-  }, [a, overrides, step, done]);
+  }, [a, overrides, swaps, placed, step, done]);
 
   const date = a.date || (a.month ? `${a.month}-15` : undefined);
   const dateBlocked = !!a.date && blocked.has(a.date);
   const ev = getPlannerEvent(a.event);
 
-  const recFor = (over: Partial<PlanInput> = {}, picked: string[] = a.ideas ?? []): RecLine[] => {
+  const recFor = (over: Partial<PlanInput> = {}, picked: string[] = a.ideas ?? [], swapped: Record<string, string> = swaps): RecLine[] => {
     if (!a.event) return [];
     const base: PlanInput = { event: a.event, guests: a.guests, style: a.style ?? "classic", setting: a.setting ?? "venue", extras: a.extras, date, ...over };
-    return withIdeas(recommend(base), base.guests, picked).filter((l) => byId.has(l.id));
+    return withSwaps(withIdeas(recommend(base), base.guests, picked).filter((l) => byId.has(l.id)), swapped);
+  };
+  // Put the visitor's picks in place of our suggestions, keeping the quantity, section and reason.
+  // If the new pick is already on the list, the two lines merge and keep the larger quantity.
+  const withSwaps = (rec: RecLine[], swapped: Record<string, string>) => {
+    const out: RecLine[] = [];
+    for (const l of rec) {
+      const to = swapped[l.id];
+      const id = to && byId.has(to) ? to : l.id;
+      const have = out.find((o) => o.id === id);
+      if (have) have.qty = Math.max(have.qty, l.qty);
+      else out.push({ ...l, id });
+    }
+    return out;
   };
   // A picked party idea adds its rentals; an item already on the list keeps the larger quantity.
   const withIdeas = (rec: RecLine[], guests: number, picked: string[]) => {
@@ -186,7 +205,7 @@ export function EventPlanner({
   const applyOverrides = (rec: RecLine[]) => {
     const rows: Row[] = rec.map((l) => ({ id: l.id, qty: overrides[l.id] ?? l.qty, item: byId.get(l.id)!, group: l.group, why: l.why }));
     for (const [id, qty] of Object.entries(overrides)) {
-      if (!rec.some((l) => l.id === id) && byId.has(id)) rows.push({ id, qty, item: byId.get(id)!, group: "Added by you" });
+      if (!rec.some((l) => l.id === id) && byId.has(id)) rows.push({ id, qty, item: byId.get(id)!, group: placed[id] ?? "Added by you" });
     }
     return rows.filter((r) => r.qty > 0);
   };
@@ -208,11 +227,63 @@ export function EventPlanner({
       if (!v?.a) return;
       setA(v.a);
       setOverrides(v.overrides ?? {});
+      setSwaps(v.swaps ?? {});
+      setPlaced(v.placed ?? {});
       setDone(v.done ?? {});
       go(Math.min(v.step ?? 0, 6));
     } catch {}
   };
   const setQty = (id: string, q: number) => setOverrides((p) => ({ ...p, [id]: Math.max(0, Math.min(10000, Math.floor(q) || 0)) }));
+  const resetList = () => {
+    setOverrides({});
+    setSwaps({});
+    setPlaced({});
+  };
+  // Change one item on the list to another, keeping its quantity and section.
+  const swapItem = (row: Row, to: string) => {
+    if (to === row.id || !byId.has(to)) return;
+    const unswapped = recFor({}, a.ideas ?? [], {});
+    const orig = Object.keys(swaps).find((k) => swaps[k] === row.id) ?? row.id;
+    if (unswapped.some((l) => l.id === orig)) {
+      // One of our suggestions: remember the swap so it follows guest-count changes.
+      setSwaps((p) => {
+        const n = { ...p };
+        if (to === orig) delete n[orig];
+        else n[orig] = to;
+        return n;
+      });
+      setOverrides((p) => {
+        const n = { ...p };
+        delete n[row.id];
+        if (row.qty !== (unswapped.find((l) => l.id === orig)?.qty ?? 0)) n[to] = row.qty;
+        else delete n[to];
+        return n;
+      });
+    } else {
+      // Something the visitor added: replace it in place.
+      setOverrides((p) => {
+        const n = { ...p };
+        delete n[row.id];
+        n[to] = row.qty;
+        return n;
+      });
+      setPlaced((p) => {
+        const n = { ...p };
+        delete n[row.id];
+        n[to] = row.group;
+        return n;
+      });
+    }
+    setPicker(null);
+  };
+  // Add another item to a section of the list, e.g. a second chair style under Seating.
+  const addToGroup = (id: string, group: string) => {
+    const it = byId.get(id)!;
+    const have = rows.find((r) => r.id === id);
+    if (!have) setPlaced((p) => ({ ...p, [id]: group }));
+    setQty(id, Math.max(have?.qty ?? 0, it.perGuest ? Math.ceil(a.guests * it.perGuest) : Math.max(1, it.minQty ?? 1)));
+    setPicker(null);
+  };
   const toggleExtra = (x: ExtraId) =>
     setA((p) => ({ ...p, extrasTouched: true, extras: p.extras.includes(x) ? p.extras.filter((e) => e !== x) : [...p.extras, x] }));
 
@@ -302,6 +373,16 @@ export function EventPlanner({
                     <div className="flex min-w-0 flex-1 flex-col">
                       <p className="font-medium leading-snug">{l.item.name}</p>
                       {l.why && <p className="mt-0.5 text-xs leading-5 text-muted">{l.why}</p>}
+                      {featuredIn(l.item.category).length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => setPicker({ mode: "swap", row: l })}
+                          aria-label={`Change ${l.item.name} to another item`}
+                          className="mt-1 self-start text-xs font-medium text-accent underline underline-offset-4"
+                        >
+                          Change
+                        </button>
+                      )}
                       <div className="mt-auto flex items-center justify-between gap-2 pt-2">
                         <Stepper name={l.item.name} qty={l.qty} onChange={(q) => setQty(l.id, q)} size="sm" />
                         <span className="text-sm tabular-nums">{formatPrice(l.item.price * l.qty)}</span>
@@ -313,13 +394,42 @@ export function EventPlanner({
                   </li>
                 ))}
             </ul>
+            {(() => {
+              const cats = [...new Set(list.filter((l) => l.group === g).map((l) => l.item.category))];
+              return (
+                <button
+                  type="button"
+                  onClick={() => setPicker({ mode: "add", group: g, cats })}
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent"
+                >
+                  <Icon name="plus" size={14} /> {g === "Added by you" ? "Add something else" : `Add to ${g.toLowerCase()}`}
+                </button>
+              );
+            })()}
           </div>
         ))}
     </div>
   );
+  const featuredIn = (cat: string) => items.filter((i) => i.featured !== false && i.category === cat);
 
   return (
     <div ref={top} className="scroll-mt-28">
+      {picker && (
+        <ItemPicker
+          title={picker.mode === "swap" ? `Change ${picker.row.item.name.toLowerCase()}` : picker.group === "Added by you" ? "Add something else" : `Add to ${picker.group.toLowerCase()}`}
+          intro={
+            picker.mode === "swap"
+              ? `Pick one to use instead. We'll keep your quantity of ${picker.row.qty}.`
+              : "Pick one to add. You can change the quantity after."
+          }
+          cats={picker.mode === "swap" ? [picker.row.item.category] : picker.cats}
+          items={items}
+          current={picker.mode === "swap" ? picker.row : undefined}
+          onList={(id) => rows.some((r) => r.id === id)}
+          onPick={(id) => (picker.mode === "swap" ? swapItem(picker.row, id) : addToGroup(id, picker.group))}
+          onClose={() => setPicker(null)}
+        />
+      )}
       {/* Progress */}
       <div className="sticky top-[6.8rem] z-20 -mx-4 border-b border-line bg-bg/95 px-4 py-3 backdrop-blur sm:mx-0 sm:rounded-2xl sm:border">
         <div className="flex items-center justify-between gap-3 text-sm">
@@ -440,7 +550,7 @@ export function EventPlanner({
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {styles.map((s) => {
                 const chair = byId.get(s.chair);
-                const est = priceOf(recFor({ style: s.id }));
+                const est = priceOf(recFor({ style: s.id }, a.ideas ?? [], {}));
                 return (
                   <button
                     key={s.id}
@@ -448,7 +558,7 @@ export function EventPlanner({
                     aria-pressed={a.style === s.id}
                     onClick={() => {
                       setA((p) => ({ ...p, style: s.id }));
-                      setOverrides({});
+                      resetList();
                       go(4);
                     }}
                     className={`relative overflow-hidden rounded-2xl border bg-surface text-left shadow-soft transition ${a.style === s.id ? "border-gold ring-2 ring-gold" : "border-line hover:border-gold/60"}`}
@@ -486,8 +596,8 @@ export function EventPlanner({
               </p>
             </div>
             <div className="mt-8">{listSection("ess", essentials)}</div>
-            {Object.values(overrides).length > 0 && (
-              <button type="button" className="mt-6 text-sm text-accent underline underline-offset-4" onClick={() => setOverrides({})}>
+            {Object.keys(overrides).length + Object.keys(swaps).length > 0 && (
+              <button type="button" className="mt-6 text-sm text-accent underline underline-offset-4" onClick={resetList}>
                 Reset to our suggestions
               </button>
             )}
@@ -697,6 +807,105 @@ export function EventPlanner({
           <Link href="/book?from=planner" className="text-accent underline">book a free 15-minute call</Link>.
         </p>
       )}
+    </div>
+  );
+}
+
+// "Change" and "Add another" picker: items from the same category with their photo and price.
+function ItemPicker({
+  title,
+  intro,
+  cats,
+  items,
+  current,
+  onList,
+  onPick,
+  onClose,
+}: {
+  title: string;
+  intro: string;
+  cats: string[];
+  items: QuoteItem[];
+  current?: Row;
+  onList: (id: string) => boolean;
+  onPick: (id: string) => void;
+  onClose: () => void;
+}) {
+  const [cat, setCat] = useState(cats[0]);
+  const shown = items.filter((i) => i.featured !== false && i.category === cat);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+      <button type="button" aria-label="Close" className="absolute inset-0 bg-black/45" onClick={onClose} />
+      <div className="relative flex max-h-[88vh] w-full max-w-4xl flex-col rounded-t-3xl bg-surface p-5 shadow-2xl sm:rounded-3xl sm:p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h2 id="picker-title" className="font-serif text-2xl leading-tight">{title}</h2>
+            <p className="mt-1 text-sm text-muted">{intro}</p>
+          </div>
+          <button type="button" onClick={onClose} className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line" aria-label="Close">
+            <Icon name="close" size={16} />
+          </button>
+        </div>
+        {cats.length > 1 && (
+          <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1">
+            {cats.map((c) => (
+              <button key={c} type="button" onClick={() => setCat(c)} className={`${c === cat ? "chip chip-active" : "chip"} shrink-0`}>
+                {c}
+              </button>
+            ))}
+          </div>
+        )}
+        <ul className="mt-4 grid min-h-0 grid-cols-2 gap-3 overflow-y-auto pb-1 sm:grid-cols-3 lg:grid-cols-4">
+          {shown.map((i) => {
+            const isCurrent = current?.id === i.id;
+            const taken = !isCurrent && onList(i.id);
+            const diff = current ? (i.price - current.item.price) * current.qty : 0;
+            return (
+              <li key={i.id}>
+                <button
+                  type="button"
+                  disabled={isCurrent || taken}
+                  onClick={() => onPick(i.id)}
+                  className={`group flex h-full w-full flex-col overflow-hidden rounded-xl border text-left transition ${isCurrent ? "border-gold ring-2 ring-gold" : "border-line hover:border-gold/60"} bg-surface disabled:cursor-default`}
+                >
+                  <div className="relative aspect-square w-full bg-surface-2">
+                    <ItemVisual item={i} sizes="(min-width: 1024px) 220px, 45vw" />
+                    {(isCurrent || taken) && (
+                      <span className="absolute top-2 right-2 rounded-full bg-gold px-2 py-0.5 text-[11px] font-medium text-accent-ink">
+                        {isCurrent ? "Your pick" : "On your list"}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-2.5 text-xs">
+                    <p className="text-sm font-medium leading-snug">{i.name}</p>
+                    <p className="mt-0.5 text-muted tabular-nums">
+                      {formatPrice(i.price)} {i.unit !== "each" ? i.unit : "each"}
+                    </p>
+                    {current && !isCurrent && (
+                      <p className="mt-1 font-medium tabular-nums">
+                        {formatPrice(i.price * current.qty)} for {current.qty}
+                        <span className={diff > 0 ? "text-muted" : "text-accent"}>
+                          {" "}({diff >= 0 ? "+" : "−"}{formatPrice(Math.abs(diff))})
+                        </span>
+                      </p>
+                    )}
+                  </div>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
