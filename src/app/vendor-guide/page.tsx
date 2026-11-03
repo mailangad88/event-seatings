@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/vendor-guide" },
-  openGraph: { title, description, url: "/vendor-guide", images: [{ url: "/rentals/scenes/wedding-reception.webp", alt: "Wedding reception with round tables, gold chairs and candlelight" }] },
+  openGraph: { title, description, url: "/vendor-guide", images: [{ url: "/rentals/styled/wedding-reception.webp", alt: "Wedding reception with round tables, gold chairs and candlelight" }] },
 };
 
 const faqs: Faq[] = [
@@ -42,7 +42,7 @@ export default function VendorGuidePage() {
         title="Who to hire for your event, and when."
         intro="Every vendor your event might need, in the order to book them, with the questions to ask and where each one overlaps with rentals so nothing gets missed or booked twice."
         actions={<><a href="#by-event" className="btn-primary">Find my vendor list</a><Link href="/my-events" className="btn-ghost">Track it in My Events</Link></>}
-        media={<Figure src="/rentals/scenes/wedding-reception.webp" alt="Wedding reception with round tables, gold Chiavari chairs and candlelight" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="A big event can mean a dozen vendors arriving on one day." />}
+        media={<Figure src="/rentals/styled/wedding-reception.webp" alt="Wedding reception with round tables, gold Chiavari chairs and candlelight" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="A big event can mean a dozen vendors arriving on one day." />}
       />
 
       <Section eyebrow="The booking timeline" title="Book in this order" intro="Typical months before the event to reserve each vendor for a peak-season date. Smaller and off-peak events can move faster.">

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/ideas" },
-  openGraph: { title, description, url: "/ideas", images: [{ url: "/rentals/scenes/tent-reception-dusk.webp", alt: "Frame tent reception lit at dusk" }] },
+  openGraph: { title, description, url: "/ideas", images: [{ url: "/rentals/styled/tent-reception-dusk.webp", alt: "Frame tent reception lit at dusk" }] },
 };
 
 const faqs: Faq[] = [
