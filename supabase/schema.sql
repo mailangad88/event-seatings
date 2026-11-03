@@ -115,3 +115,11 @@ alter table votes enable row level security;
 alter table leads enable row level security;
 alter table page_views enable row level security;
 alter table vendor_partners enable row level security;
+
+-- Availability calendar (/admin/availability): dates we can't take new events on. Safe to run again.
+create table if not exists blocked_dates (
+  date date primary key,
+  reason text,
+  created_at timestamptz not null default now()
+);
+alter table blocked_dates enable row level security;

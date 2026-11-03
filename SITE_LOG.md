@@ -1118,3 +1118,17 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 - The free personalised plan unlocks with name and email. It includes an assessment (lead time, Chicago weather, peak Saturdays, permits), a dated checklist with tick boxes, a floor plan sketch and a budget breakdown.
 - Unlocking saves the lead with all items: kind "quote" when a date or month is given, otherwise "quiz". The source is `planner:<event>-<style>`.
 - Logic lives in src/lib/event-plan.ts and the UI in src/components/planner/. The full catalog builder is still at /quote?browse=1, and ?items=, ?chairs= and ?look= links still open it. ?event=<id> starts the planner at that occasion.
+
+## 2026-11-03: Planner v2, downloadable plan, availability calendar
+- New planner order on /quote:
+  1. Occasion
+  2. Guests
+  3. Where: backyard, indoors, outdoor venue or tent, or park
+  4. Package: Simple, Signature or Lavish, each priced for the guest count and setting
+  5. Essentials: seating, tables, linens, tableware, glass
+  6. Add-ons: each shows its price for the guest count, and setting-specific needs are recommended
+  7. Date and details
+  8. Your plan
+- The plan downloads as a PDF (jsPDF, built in the browser). It has the list and prices, an assessment, space needs and a dated checklist. A "Book a free call" button and the next steps sit on the plan page.
+- /admin/availability: tap a day to block or open it, block a range with a private reason, and see enquiry and booked counts on each day. Blocked dates are stored in the `blocked_dates` table (or .data/availability.json locally) and served by /api/availability. The planner and quote form date pickers refuse blocked dates.
+- Owner: re-run supabase/schema.sql to create `blocked_dates`. Until then every date shows as open.

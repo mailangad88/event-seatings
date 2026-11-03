@@ -8,6 +8,7 @@ import type { CategoryId } from "@/data/catalog-products";
 import type { PresetLine } from "@/data/quote-presets";
 import { stockPhotos, stockSrc, stockSrcSet, type StockPhotoKey } from "@/data/stock-photos";
 import { attributionFields } from "@/lib/attribution";
+import { blockedMessage, useBlockedDates } from "@/lib/use-blocked-dates";
 import { trackLead } from "@/lib/analytics";
 import { sortCategories, suggestedQty, type PublicItem } from "@/lib/catalog-types";
 import { DELIVERY_MINIMUM_ORDER, allInEstimate } from "@/lib/fees";
@@ -163,6 +164,8 @@ export function QuoteForm({
   const [showAll, setShowAll] = useState(false);
   const [sheet, setSheet] = useState(false);
   const [date, setDate] = useState("");
+  const blockedDates = useBlockedDates();
+  const dateBlocked = !!date && blockedDates.has(date);
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
   const [contact, setContact] = useState<{ name?: string; email?: string }>({});
@@ -258,6 +261,12 @@ export function QuoteForm({
       setError("Add at least one item to your list.");
       setStatus("error");
       document.getElementById("builder")?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    if (dateBlocked) {
+      setError(blockedMessage);
+      setStatus("error");
+      document.getElementById("event_date")?.focus();
       return;
     }
     const data = Object.fromEntries(new FormData(e.currentTarget));
@@ -695,7 +704,12 @@ export function QuoteForm({
             value={date}
             onChange={(e) => setDate(e.target.value)}
             className="field"
+            aria-invalid={dateBlocked || undefined}
+            aria-describedby={dateBlocked ? "event_date_blocked" : undefined}
           />
+          {dateBlocked && (
+            <p id="event_date_blocked" className="hint text-rose" role="alert">{blockedMessage}</p>
+          )}
           {beforeLaunch && (
             <p className="hint">
               Our first deliveries begin {fmt(site.launch.firstEventDate)}. Send your list anyway; we&apos;ll tell you
