@@ -1,0 +1,490 @@
+{
+ "note": "Catalog items whose category changed. next.config.ts redirects the old URLs (308).",
+ "moved": [
+  {
+   "id": "moon-walk-13x13-castle-13x13x13-tall",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "moon-walk-22x19-bouncer-w-slide-max-6-riders-delivery-extra",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "moon-walk-8x10-toddler-castle-fits-3-kids-under-4",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "inflatable-34-ft-obstacle-course-34-ft-l-x-12-ft-w-x-12-ft-6-in-h",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "inflatable-35-ft-double-water-slide-36x11x9",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "inflatable-sport-game-5-sports-in-one-delivery-extr",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "inflatable-animal-kingdom-18x17x9-ft-6-in",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "standard-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "boom-box-bounce",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "disco-dance-dome",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "massive-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "large-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "spiderman-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "ferris-wheel-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "princess-castle-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "pink-castle-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "round-cake-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "pool-party-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "gracies-corner-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "graduation-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "merry-christmas-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "donuts-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "happy-birthday-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "tik-tok-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "circus-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "juneteenth-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "crayon-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "sports-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "trick-or-treat-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "haunted-house-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "cake-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "balloon-carnival-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "monster-truck-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "dinosaurs-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "easter-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "frozen-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "hello-kitty-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "summer-time-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "justice-league-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "monster-high-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "princess-banner-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "rainbow-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "roblox-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "spiderman-banner-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "strawberry-shortcake-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "superman-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "mickey-minnie-bounce-house",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "pink-purple-castle",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "indoor-outdoor-bounce-house-low-ceiling-height",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "candy-playland-toddler-inflatable-ages-1-4",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "mini-lego-blocks-bounce-house-with-slide-ages-1-4",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "lego-blocks-inflatable-playground-ages-1-4",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "mickey-mouse-play-house-inflatable-playground",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "mini-castle-bounce-house-with-slide-ages-1-4",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "2-n-1-inflatable-sports-playground-ages-1-4",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "little-builders-inflatable-playground-ages-1-4",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "toddler-town-inflatable-playground-ages-1-4",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "ping-pong-tennis-table-rental",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "air-hockey-table",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "foosball-table",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "9ft-shuffleboard-table-rental-9ft",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "craps-table-rental",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "black-jacktable-rental",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "poker-table-rental",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "9ft-skeet-ball-rental-9ft",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "oktober-fest-inflatable-pub",
+   "from": "tables",
+   "to": "games-kids"
+  },
+  {
+   "id": "6ft-rectangle-folding-banquet-table-6ft-rectangle",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "hi-boy-cocktail-table",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "8ft-banquet-table-8ft",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "table-setup-service-per-individual-rental-item",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "60in-round-folding-table-60in-round",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "square-banquet-card-table",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "6ft-kids-table-6ft",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "foldable-toddler-picnic-table",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "72in-round-folding-table-72in-round",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "disposable-table-cover",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "fill-n-chill-table-2",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "10x10-tent-white-10x10-white",
+   "from": "chairs",
+   "to": "tents"
+  },
+  {
+   "id": "10x20-tent-white-10x20-white",
+   "from": "chairs",
+   "to": "tents"
+  },
+  {
+   "id": "high-peak-tent-20x20-20x20-high-peak",
+   "from": "chairs",
+   "to": "tents"
+  },
+  {
+   "id": "red-carnival-tent-red-carnival",
+   "from": "chairs",
+   "to": "tents"
+  },
+  {
+   "id": "adult-4ft-table-4ft",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "adult-6ft-table-6ft",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "adult-8ft-table-8ft",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "adult-round-table-round",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "card-table",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "black-highboy-table",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "white-highboy-table",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "fill-and-chill-party-table",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "kids-table-2",
+   "from": "chairs",
+   "to": "tables"
+  },
+  {
+   "id": "6ft-black-table-cloth-6ft",
+   "from": "chairs",
+   "to": "linens"
+  },
+  {
+   "id": "6ft-white-table-cloth-6ft",
+   "from": "chairs",
+   "to": "linens"
+  },
+  {
+   "id": "8ft-black-table-cloth-8ft",
+   "from": "chairs",
+   "to": "linens"
+  },
+  {
+   "id": "8ft-white-table-cloth-8ft",
+   "from": "chairs",
+   "to": "linens"
+  },
+  {
+   "id": "round-white-table-cloth-round",
+   "from": "chairs",
+   "to": "linens"
+  },
+  {
+   "id": "black-highboy-table-cloth",
+   "from": "chairs",
+   "to": "linens"
+  },
+  {
+   "id": "white-highboy-table-cloth",
+   "from": "chairs",
+   "to": "linens"
+  }
+ ]
+}

@@ -8,12 +8,13 @@ import { catalogItems, categories, customerPrice, formatPrice } from "@/data/cat
 import { sampleBudgets } from "@/data/sample-budgets";
 import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: `Event Rentals in ${site.market}: Chairs, Tables, Linens, Tents & Tableware Prices`,
   description: `Rent everything for your event in ${site.market} and the suburbs: chairs, tables, linens, dishes, glassware, tents, dance floors, lighting and more. See prices upfront, build a list and get one quote.`,
   alternates: { canonical: "/rentals" },
-};
+});
 
 const faqs = [
   {

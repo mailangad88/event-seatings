@@ -8,6 +8,7 @@ import { GuideShell, HubLinks } from "@/components/GuideShell";
 import { FaqList } from "@/components/ui";
 import { chairs } from "@/data/chairs";
 import { type GuideFamily } from "@/lib/guide-content";
+import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 type P = { params: Promise<{ slug: string }> };
@@ -18,12 +19,12 @@ export function guideRoute(family: GuideFamily) {
     async generateMetadata({ params }: P): Promise<Metadata> {
       const g = family.build((await params).slug);
       if (!g) return {};
-      return {
+      return seo({
         title: g.title,
         description: g.description,
         alternates: { canonical: g.path },
         openGraph: { title: g.title, description: g.description, type: "article", url: g.path, images: [{ url: `${g.path}/opengraph-image`, alt: g.visualAlt, width: 1200, height: 630 }] },
-      };
+      });
     },
     async Page({ params }: P) {
       const g = family.build((await params).slug);
@@ -57,15 +58,23 @@ export function guideHub(family: GuideFamily, intro: string) {
   const slugs = family.slugs();
   const sample = [chairs[0], chairs[2], chairs[5]];
   return {
-    metadata: {
+    metadata: seo({
       title: family.hubTitle,
       description: family.hubDescription,
       alternates: { canonical: family.base },
-    } satisfies Metadata,
+    }),
     Page() {
       const items = slugs.map((s) => ({ href: `${family.base}/${s}`, ...family.label(s) }));
       const jsonLd = [
         { "@context": "https://schema.org", "@type": "CollectionPage", name: family.hubTitle, description: family.hubDescription, url: `${site.url}${family.base}` },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+            { "@type": "ListItem", position: 2, name: family.hubTitle, item: `${site.url}${family.base}` },
+          ],
+        },
         { "@context": "https://schema.org", "@type": "ItemList", itemListElement: items.slice(0, 200).map((it, i) => ({ "@type": "ListItem", position: i + 1, url: `${site.url}${it.href}`, name: it.label })) },
       ];
       return (
@@ -74,7 +83,7 @@ export function guideHub(family: GuideFamily, intro: string) {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
             <p className="eyebrow">Planning guides</p>
             <h1 className="headline mt-5 max-w-3xl text-4xl leading-[1.05] sm:text-6xl">{family.hubTitle}</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">{intro}</p>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-muted" data-answer>{intro}</p>
             <div className="mt-10 grid max-w-3xl grid-cols-3 gap-4">
               {sample.map((c) => (
                 <ChairArt key={c.slug} chair={c} className="aspect-[4/5] rounded-lg" />

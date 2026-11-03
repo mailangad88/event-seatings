@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
 import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
-import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
+import { canonicalItem, catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
 import { imagesFor, originalImage, rentalImage, rentalImageJsonLd, styledImage } from "@/data/rental-images";
@@ -12,6 +12,7 @@ import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPh
 import { allInEstimate } from "@/lib/fees";
 import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export function generateStaticParams() {
   return catalogItems.map((i) => ({ category: i.categoryId, item: i.id }));
@@ -37,10 +38,36 @@ const withArticle = (s: string) => `${article(s)} ${s}`;
 const nameCounts = catalogItems.reduce((m, x) => m.set(x.name, (m.get(x.name) ?? 0) + 1), new Map<string, number>());
 const titleName = (i: CatalogItem) => {
   if ((nameCounts.get(i.name) ?? 0) < 2 || !i.specs) return i.name;
-  const spec = i.specs.length > 40 ? `${i.specs.slice(0, 38).replace(/[\s,;]+\S*$/, "")}…` : i.specs;
-  return `${i.name} (${spec})`;
+  // The spec goes first so it survives when a long title is cut to fit search results.
+  const raw = i.specs.replace(/^group:\s*/i, "");
+  const spec = raw.length > 40 ? `${raw.slice(0, 38).replace(/[\s,;]+\S*$/, "")}…` : raw;
+  return `${spec} ${i.name}`;
 };
 const plural = (s: string) => (/(s|x|ch|sh)$/.test(s) ? `${s}es` : `${s}s`);
+
+const wc = (s: string) => s.split(/\s+/).filter(Boolean).length;
+
+/**
+ * The rest of the direct answer under the H1: the item description, then planning facts until the
+ * answer reaches about 40-60 words (what the SEO audit checks for answer engines).
+ */
+function answerExtras(i: CatalogItem, price: number): string {
+  const qty = i.perGuest ? Math.max(i.minQty ?? 1, Math.ceil(100 * i.perGuest)) : 0;
+  const extras = [
+    i.description ?? "",
+    qty ? `A 100-guest event needs about ${qty.toLocaleString()}, or ${formatPrice(Math.round(qty * price * 100) / 100)} before delivery.` : "",
+    i.minQty ? `The minimum order is ${i.minQty}.` : "",
+    "Delivery, setup and pickup are added to the same itemized quote, and the quote is free.",
+    `We book it with a vetted ${site.market}-area rental company.`,
+  ].filter(Boolean);
+  let out = "";
+  const lead = 12; // words in "Rent a … in Chicago and the suburbs for $x each."
+  for (const e of extras) {
+    if (wc(out) + lead >= 40 && wc(out) + wc(e) + lead > 60) break;
+    out = out ? `${out} ${e}` : e;
+  }
+  return out;
+}
 
 export async function generateMetadata(props: PageProps<"/rentals/[category]/[item]">): Promise<Metadata> {
   const i = await load(props);
@@ -52,12 +79,12 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]/[it
     : real.matched
       ? { url: stockSrc(real.photos[0], 1200, 630), width: 1200, height: 630, alt: stockAlt(real.photos[0], i.name, true, site.market) }
       : undefined;
-  return {
+  return seo({
     title: `${titleName(i)} Rental ${site.market}: ${formatPrice(customerPrice(i))} ${unitLabel(i)}`,
-    description: `Rent ${withArticle(lower(i.name))} in ${site.market} and the suburbs for ${formatPrice(customerPrice(i))} ${unitLabel(i)}. ${i.specs}. ${i.description} Delivery and setup available.`,
-    alternates: { canonical: itemHref(i) },
+    description: `Rent ${withArticle(lower(titleName(i)))} in ${site.market} and the suburbs for ${formatPrice(customerPrice(i))} ${unitLabel(i)}. ${i.specs}. ${i.description} Delivery and setup available.`,
+    alternates: { canonical: itemHref(canonicalItem(i)) },
     ...(og && { openGraph: { images: [og] } }),
-  };
+  });
 }
 
 /** Quantities to show in the "how many" table: by guest count when the item scales with guests. */
@@ -120,6 +147,13 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const at = siblings.findIndex((x) => x.id === i.id);
   const related = [1, 2, 3, 4].map((n) => siblings[(at + n) % siblings.length]).filter((x, n, a) => x.id !== i.id && a.indexOf(x) === n);
   const pageUrl = `${site.url}${itemHref(i)}`;
+  // Where this item sits in its own range (same vendor section, else category), by price. Gives every
+  // item page a comparison that is specific to it.
+  const range = (i.section ? siblings.filter((x) => x.section === i.section) : siblings).slice().sort((a, b) => customerPrice(a) - customerPrice(b) || a.name.localeCompare(b.name));
+  const rank = range.findIndex((x) => x.id === i.id);
+  const cheaper = range.slice(Math.max(0, rank - 2), rank).filter((x) => x.name !== i.name);
+  const pricier = range.slice(rank + 1, rank + 3).filter((x) => x.name !== i.name);
+  const rangeName = (i.section ?? c.name).toLowerCase();
   const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
   // Real event photos: the same item type when we have it, otherwise general photos of the category.
   const real = photosForItem(i);
@@ -201,12 +235,12 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           <div className="md:py-4">
             <p className="font-serif text-lg text-gold italic">{c.name} rental · {site.market}</p>
             <h1 className="headline mt-4 text-5xl leading-[1] sm:text-6xl">{i.name}</h1>
-            <p className="mt-6 text-lg leading-8">
+            <p className="mt-6 text-lg leading-8" data-answer>
               Rent {withArticle(lower(i.name))} in {site.market} and the suburbs for{" "}
               <strong className="font-medium">
                 {formatPrice(price)} {unitLabel(i)}
               </strong>
-              . {i.description}
+              . {answerExtras(i, price)}
             </p>
 
             <div className="mt-8 flex items-baseline gap-3 border-y border-line py-5">
@@ -377,6 +411,40 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </h2>
           <Faqs faqs={faqs} />
         </section>
+
+        {range.length > 2 && (
+          <section className="mt-28 max-w-4xl" aria-labelledby="compare">
+            <p className="eyebrow">How it compares</p>
+            <h2 id="compare" className="headline mt-6 text-4xl">
+              {i.name} vs similar {rangeName}
+            </h2>
+            <p className="mt-6 leading-8">
+              At {formatPrice(price)} {unitLabel(i)}, the {i.name.toLowerCase()} is number {rank + 1} of {range.length} in our{" "}
+              {rangeName} range by price, which runs from {formatPrice(customerPrice(range[0]))} to{" "}
+              {formatPrice(customerPrice(range[range.length - 1]))}.
+              {cheaper.length > 0 && (
+                <>
+                  {" "}For less, consider {cheaper.map((x, n) => (
+                    <span key={x.id}>
+                      {n > 0 ? " or " : ""}
+                      <Link href={itemHref(x)} className="link-line">{x.name.toLowerCase()}</Link> ({formatPrice(customerPrice(x))})
+                    </span>
+                  ))}.
+                </>
+              )}
+              {pricier.length > 0 && (
+                <>
+                  {" "}One step up: {pricier.map((x, n) => (
+                    <span key={x.id}>
+                      {n > 0 ? " or " : ""}
+                      <Link href={itemHref(x)} className="link-line">{x.name.toLowerCase()}</Link> ({formatPrice(customerPrice(x))})
+                    </span>
+                  ))}.
+                </>
+              )}
+            </p>
+          </section>
+        )}
 
         {related.length > 0 && (
           <section className="mt-28" aria-labelledby="related">

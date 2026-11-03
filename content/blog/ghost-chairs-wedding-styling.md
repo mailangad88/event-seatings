@@ -4,7 +4,17 @@ description: Clear acrylic chairs can look dated or breathtaking. Here is how to
 date: 2026-10-05
 tags: Ghost chairs, Styling
 chair: ghost
+updated: 2026-11-03
 ---
+
+<div class="answer-box">
+
+**Quick answer**
+
+Ghost chairs are clear acrylic chairs that let florals, linens and venue details show through. They suit modern ballrooms, lofts and garden tents, fit about 8 to 10 per 60-inch round and rent for about $10 to $16 each in the Chicago area, plus delivery and setup.
+
+</div>
+
 
 Ghost chairs are the most polarizing option on the Chiavari-alternative list. Done well, they let your florals, linens and architecture carry the room. Done poorly, they look like a hotel banquet from 2012.
 
@@ -26,3 +36,17 @@ Ghost chairs are the most polarizing option on the Chiavari-alternative list. Do
 If your venue is already visually quiet, such as a plain white tent, a transparent chair has nothing to frame. A textured chair like [rattan](/chairs/rattan-garden) or [cross-back](/chairs/cross-back) gives the room more character.
 
 [See the Ghost Chair](/chairs/ghost) or [compare all styles](/chairs).
+
+## Frequently asked questions
+
+### Are ghost chairs comfortable?
+
+They are firm and smooth, which is fine for a dinner of two or three hours. A clear or white seat cushion adds comfort without hiding the look.
+
+### Do ghost chairs work outdoors?
+
+Yes, on level ground. Acrylic does not mind light rain but shows scratches and water spots, so wipe them before guests sit and avoid soft grass where legs sink.
+
+### What linens go with ghost chairs?
+
+Floor-length linens in a strong color or texture work best, because the chair shows everything around it. Sequins, velvet and bold florals look especially good through clear chairs.

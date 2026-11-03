@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostCard } from "@/components/PostCard";
-import { JsonLd, PageHero, QuoteCta } from "@/components/ui";
-import { getPosts, getTopic, topicArt, topicSlug, topics } from "@/lib/blog";
+import { HubFaqs, JsonLd, PageHero, QuoteCta } from "@/components/ui";
+import { getPosts, getTopic, hubFaqs, topicArt, topicSlug, topics } from "@/lib/blog";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export const revalidate = 3600;
 
@@ -17,12 +18,12 @@ export async function generateMetadata(props: PageProps<"/blog/topic/[topic]">):
   if (!topic) return {};
   const slug = topicSlug(topic.name);
   const art = topicArt(slug, `${topic.name} guides`);
-  return {
+  return seo({
     title: `${topic.name} Guides for Chicago Events`,
     description: `${topic.blurb} Answers for planners in Chicago and the suburbs from ${site.name}.`,
     alternates: { canonical: `/blog/topic/${slug}` },
     openGraph: { images: [{ url: art.src, alt: art.alt }] },
-  };
+  });
 }
 
 export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">) {
@@ -30,6 +31,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
   if (!topic) notFound();
   const slug = topicSlug(topic.name);
   const posts = (await getPosts()).filter((p) => p.topic === topic.name);
+  const faqs = await hubFaqs(posts, 5);
   const url = `${site.url}/blog/topic/${slug}`;
   const art = topicArt(slug, `Illustration for ${topic.name.toLowerCase()} guides`);
 
@@ -58,7 +60,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
         ]}
         eyebrow={`${posts.length} guides`}
         title={topic.name}
-        intro={topic.blurb}
+        intro={`${topic.blurb} ${posts.length} free guides on this topic, each with a quick answer, real Chicago-area price ranges and planning FAQs, so you can work out what to rent before you build a quote.`}
         media={
           <div className="media aspect-[16/10] overflow-hidden bg-espresso shadow-lift">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
@@ -84,6 +86,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
           </ul>
         </nav>
       </div>
+      <HubFaqs faqs={faqs} title={`${topic.name}: common questions`} />
       <QuoteCta source={`blog-topic-${slug}`} />
     </>
   );

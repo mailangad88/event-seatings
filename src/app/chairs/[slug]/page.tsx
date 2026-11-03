@@ -8,6 +8,7 @@ import { VoteButton } from "@/components/VoteProvider";
 import { FaqList, type Faq } from "@/components/ui";
 import { chairAlt, chairImage, chairs, getChair } from "@/data/chairs";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export function generateStaticParams() {
   return chairs.map((c) => ({ slug: c.slug }));
@@ -16,14 +17,14 @@ export function generateStaticParams() {
 export async function generateMetadata(props: PageProps<"/chairs/[slug]">): Promise<Metadata> {
   const chair = getChair((await props.params).slug);
   if (!chair) return {};
-  return {
+  return seo({
     title: `${chair.name} Rental in ${site.market}`,
     alternates: { canonical: `/chairs/${chair.slug}` },
     ...(chairImage(chair) && {
       openGraph: { images: [{ url: chairImage(chair)!, alt: chairAlt(chair) }] },
     }),
     description: `${chair.tagline}. Rent the ${chair.name} for weddings, corporate events and parties in Chicago and the suburbs. Delivery and setup included.`,
-  };
+  });
 }
 
 export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
@@ -136,7 +137,11 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
           <h1 className="headline mt-4 text-5xl leading-[1] sm:text-7xl">{chair.name}</h1>
           <p className="mt-5 font-serif text-2xl leading-snug font-light text-muted italic">{chair.tagline}</p>
 
-          <p className="mt-8 leading-8">{chair.description}</p>
+          <p className="mt-8 leading-8" data-answer>
+            {chair.description} In {site.market} the {chair.name} rents for about {chair.estPrice} per chair,
+            {chair.stackable ? " stacks for quick setup" : " does not stack"} and is {chair.outdoorFriendly ? "fine outdoors" : "best indoors or under a tent"}. It suits{" "}
+            {chair.uses.slice(0, 3).join(", ").toLowerCase()}.
+          </p>
 
           <div className="well mt-10 flex items-baseline gap-3 px-5 py-4">
             <span className="text-[11px] tracking-[0.2em] text-muted uppercase">Estimated</span>

@@ -4,7 +4,17 @@ description: A side-by-side look at the two most-requested wedding chairs, cover
 date: 2026-10-02
 tags: Cross-back, Chiavari alternatives, Rustic
 chair: cross-back
+updated: 2026-11-03
 ---
+
+<div class="answer-box">
+
+**Quick answer**
+
+Cross-back chairs are wooden, rustic and wider, so they suit barns, gardens and farm tables at about 8 per 60-inch round. Chiavari chairs are slim and formal, fit 10 per round and suit ballrooms and tents. Both rent for about $10 to $16 each in Chicago.
+
+</div>
+
 
 If you're choosing between a cross-back chair and a Chiavari chair, you're choosing between two different feelings. Here's how they compare.
 
@@ -41,3 +51,17 @@ If you like Chiavari's polish but want something less expected, look at:
 Pick the chair that matches the *room*, then the *mood*. A barn wants wood. A ballroom can go glam or classic. A garden can go almost anywhere.
 
 [See the Cross-Back Vineyard Chair](/chairs/cross-back) or [compare all our chairs](/chairs).
+
+## Frequently asked questions
+
+### Which is more comfortable, cross-back or Chiavari?
+
+Cross-back chairs have a wider seat and back, so many guests find them more comfortable for long dinners. Chiavari chairs are lighter and smaller and usually come with a seat pad.
+
+### Do cross-back chairs fit 10 at a 60-inch round?
+
+Not comfortably. Plan 8 cross-back chairs per 60-inch round, or use 72-inch rounds or farm tables if you need more seats per table.
+
+### Which costs more to rent?
+
+They are close. Both usually rent for about $10 to $16 per chair in the Chicago area, with cushions and delivery quoted separately.

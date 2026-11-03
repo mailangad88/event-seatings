@@ -5,6 +5,7 @@ import { FaqList, Figure, Icon, PageHero, QuoteCta, Section, type Faq } from "@/
 import { allStyles, type Style } from "@/data/chairs";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 const faqs: Faq[] = [
   {
@@ -29,11 +30,11 @@ const faqs: Faq[] = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Chair Styles for Rent in Chicago: Chiavari Alternatives for Every Event",
   description: `Browse cross-back, ghost, rattan, bentwood, velvet and more event and wedding chair styles for rent in Chicago and the suburbs, delivered and set up.`,
   alternates: { canonical: "/chairs" },
-};
+});
 
 export default async function ChairsPage(props: PageProps<"/chairs">) {
   const { style } = await props.searchParams;
@@ -45,7 +46,7 @@ export default async function ChairsPage(props: PageProps<"/chairs">) {
         breadcrumbs={[{ name: "Chair styles", href: "/chairs" }]}
         eyebrow="Chair style guide"
         title={<>Find your chair, <em className="text-gold">beyond</em> Chiavari</>}
-        intro="Explore 13 chair styles in 3D by aesthetic and occasion, save the ones you love, then see live prices in the rentals catalog."
+        intro="Explore 13 event chair styles for rent in Chicago, from Chiavari alternatives like cross-back, ghost and rattan to velvet and throne chairs. Each style shows its estimated price, the events and venues it suits and how many fit at a table, then you can add it to one free quote."
         actions={
           <>
             <Link href="/rentals/chairs" className="btn-primary">

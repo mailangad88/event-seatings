@@ -15,6 +15,7 @@ import { sampleBudgets } from "@/data/sample-budgets";
 import { categoryScene } from "@/lib/scenes";
 import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ category: c.id }));
@@ -33,12 +34,12 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]">):
   const og = first
     ? { url: first, alt: `${c.name} for rent in ${site.market}` }
     : { url: stockSrc(photo, 1200, 630), width: 1200, height: 630, alt: `${photo.alt}: ${c.name} for rent in ${site.market}` };
-  return {
+  return seo({
     title: `${c.name} Rental ${site.market}: Prices from ${formatPrice(from)}`,
     description: `${c.name} for rent in ${site.market} and the suburbs: ${c.blurb.toLowerCase()}. ${items.length} options from ${formatPrice(from)}, with sizing guides and FAQs. Get one quote.`,
     alternates: { canonical: `/rentals/${c.id}` },
     openGraph: { images: [og] },
-  };
+  });
 }
 
 export default async function CategoryPage(props: PageProps<"/rentals/[category]">) {
@@ -54,6 +55,19 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
   const budget = sampleBudgets.find((b) => b.lines.some(([id]) => items.some((i) => i.id === id)));
   const url = `${site.url}/rentals/${c.id}`;
   const photos = categoryPhotos(c.id);
+  // Category FAQs from the data, plus two pricing/booking questions every category gets.
+  const name = c.name.toLowerCase();
+  const faqs = [
+    ...c.faqs,
+    {
+      q: `Do ${name} rental prices include delivery?`,
+      a: `No. The prices shown are per item for one event day: the partner rate plus our 10% fee. Delivery and pickup, setup, a damage waiver and sales tax are added for your venue on the same itemized quote, so you see the all-in total before you book.`,
+    },
+    {
+      q: `How far ahead should I book ${name} in ${site.market}?`,
+      a: `For Saturdays from May to October, book 3 to 6 months ahead, because the most popular items sell out first. Weekday and winter events can often be booked 2 to 4 weeks out. Send a quote and we confirm availability with partner rental companies before you pay anything.`,
+    },
+  ].slice(0, Math.max(c.faqs.length, 5));
   const photoAlt = (p: (typeof photos)[number]) => `${p.alt}: example of ${c.name.toLowerCase()} rentals at a real event (photo by ${p.by} on Unsplash)`;
 
   const jsonLd = [
@@ -79,7 +93,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
         { "@type": "ListItem", position: 3, name: c.name, item: url },
       ],
     },
-    faqJsonLd(c.faqs),
+    faqJsonLd(faqs),
     ...photos.slice(0, 4).map((p) => ({ "@context": "https://schema.org", ...stockImageJsonLd(p, photoAlt(p)) })),
   ];
 
@@ -260,7 +274,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
           <h2 id="faq" className="headline mt-6 mb-8 text-4xl sm:text-5xl">
             {c.name} rental FAQs
           </h2>
-          <Faqs faqs={c.faqs} />
+          <Faqs faqs={faqs} />
         </section>
 
         <section className="mt-28" aria-labelledby="more">

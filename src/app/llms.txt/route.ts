@@ -3,6 +3,8 @@ import { categories } from "@/data/catalog";
 import { eventPath, eventTypes, locationPath, locations } from "@/data/geo";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { families } from "@/lib/guide-content";
+import { areaRentalsPath, costCategories, costPath } from "@/data/local-rentals";
+import { getCategory } from "@/data/catalog-products";
 import { site } from "@/lib/site";
 
 // llms.txt: a plain-text map of the site for AI answer engines (ChatGPT, Perplexity, Gemini, Claude).
@@ -57,6 +59,14 @@ export async function GET() {
     "",
     "## Events",
     ...eventTypes.map((e) => `- [${e.name}](${site.url}${eventPath(e)})`),
+    "",
+    "## Party rentals by area (local prices, venue notes, delivery tips)",
+    `- [All areas](${site.url}/party-rentals)`,
+    ...locations.map((l) => `- [Party rentals in ${l.name}](${site.url}${areaRentalsPath(l.slug)}): tents, tables, linens, dance floors, bounce houses, photo booths, lighting, heaters, dinnerware and concessions`),
+    "",
+    "## Rental cost guides (Chicago price ranges computed from the catalog)",
+    `- [All cost guides](${site.url}/rental-cost)`,
+    ...costCategories.map((c) => `- [${getCategory(c.id)?.name ?? c.id} rental cost](${site.url}${costPath(c.id)}): ${c.question}`),
     "",
     "## Tools",
     `- [Quote builder](${site.url}/quote): pick items, see live prices, send one request`,

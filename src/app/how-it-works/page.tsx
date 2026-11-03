@@ -5,12 +5,13 @@ import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq }
 import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "How Event Rentals Work: One Quote for Everything",
   description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more, pay nothing until a vendor confirms, and we coordinate vetted Chicago-area rental companies from delivery to pickup.`,
   alternates: { canonical: "/how-it-works" },
-};
+});
 
 const detail = [
   {
@@ -64,7 +65,7 @@ export default function HowItWorksPage() {
         breadcrumbs={[{ name: "How it works", href: "/how-it-works" }]}
         eyebrow="How it works"
         title="One list. One quote. Every rental handled."
-        intro={`Here is exactly what happens from the moment you start browsing to the moment the last chair leaves your venue.`}
+        intro={`Booking with ${site.name} takes four steps: pick your rentals and see live prices, send one free quote request, approve a proposal we confirm with a vetted Chicago-area rental company, then get delivery, setup and pickup on your date. Here is exactly what happens at each step.`}
         actions={
           <>
             <Link href="/quote?from=how-it-works" className="btn-primary">Start my quote</Link>

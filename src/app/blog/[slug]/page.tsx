@@ -11,6 +11,7 @@ import { chairAlt, chairImage, getChair } from "@/data/chairs";
 import { formatDate, getPost, getPosts, getRelated, topicSlug } from "@/lib/blog";
 import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export const revalidate = 3600;
 
@@ -23,7 +24,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
   if (!found) return {};
   const { post } = found;
   const hero = post.hero ?? sceneFor(post.slug);
-  return {
+  return seo({
     title: post.title,
     description: post.description,
     keywords: [post.keyword, ...post.tags].filter(Boolean) as string[],
@@ -34,7 +35,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
       modifiedTime: post.updated ?? post.date,
       images: [{ url: hero.src, alt: hero.alt }],
     },
-  };
+  });
 }
 
 // Give each <h2> an id so the table of contents can link to it.
@@ -154,9 +155,9 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
                   <Link href={`/blog/${r.slug}`} className="group card card-hover flex h-full gap-4 overflow-hidden p-3">
                     <span className="relative h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-surface-2">
                       {r.image ? (
-                        <Image src={r.image} alt="" fill unoptimized={r.image.endsWith(".svg")} sizes="80px" className="object-cover" />
+                        <Image src={r.image} alt={r.imageAlt ?? `Cover image for the guide: ${r.title}`} fill unoptimized={r.image.endsWith(".svg")} sizes="80px" className="object-cover" />
                       ) : (
-                        <Image src={sceneFor(r.slug).src} alt="" fill sizes="80px" className="object-cover" />
+                        <Image src={sceneFor(r.slug).src} alt={sceneFor(r.slug).alt} fill sizes="80px" className="object-cover" />
                       )}
                     </span>
                     <span className="self-center font-serif text-lg leading-snug transition-colors group-hover:text-gold">{r.title}</span>

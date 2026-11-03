@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
-import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
+import { canonicalItem, catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
 import { imagesFor, originalImage, rentalImages, styledImage } from "@/data/rental-images";
@@ -10,13 +10,14 @@ import { looks } from "@/data/looks";
 import { coverImage, downloads } from "@/data/downloads";
 import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
+import { LOCAL_RENTALS_UPDATED, areaRentalsPath, costCategories, costPath, localCategories, localCategoryPath } from "@/data/local-rentals";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/downloads", "/blog", "/about", "/privacy", "/terms", "/photo-credits"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/downloads", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -54,7 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           .map((src) => `${site.url}${src}`),
       ],
     })),
-    ...catalogItems.map((i) => {
+    ...catalogItems.filter((i) => canonicalItem(i) === i).map((i) => {
       // Every image on the item page: its own render (main, colour variants, second angle) unless a real
       // photo leads, the chair art, then the real event photos in its gallery.
       const own = isPhotoFirst(i.id) && !styledImage(i.id)
@@ -89,6 +90,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${site.url}${f.base}`, lastModified: GUIDES_UPDATED, priority: 0.7 },
     ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
   ]);
+  // "[item] rental [area]", "party rentals [area]" and "[item] rental cost" landing pages.
+  const localPages = [
+    { url: `${site.url}/party-rentals`, priority: 0.8, lastModified: LOCAL_RENTALS_UPDATED },
+    ...locations.map((l) => ({ url: `${site.url}${areaRentalsPath(l.slug)}`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED })),
+    ...locations.flatMap((l) => localCategories.map((c) => ({ url: `${site.url}${localCategoryPath(l.slug, c)}`, priority: 0.6, lastModified: LOCAL_RENTALS_UPDATED }))),
+    { url: `${site.url}/rental-cost`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED },
+    ...costCategories.map((c) => ({ url: `${site.url}${costPath(c.id)}`, priority: 0.7, lastModified: LOCAL_RENTALS_UPDATED })),
+  ];
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
-  return [...pages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  return [...pages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }

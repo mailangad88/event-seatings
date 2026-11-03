@@ -96,7 +96,7 @@ export function PostBody({ html, faqs }: { html: string; faqs: Faq[] }) {
           case "answer":
             return (
               <Callout key={i} kind="check" title="Quick answer" className="my-8">
-                <div className="[&_p]:my-0" dangerouslySetInnerHTML={{ __html: b.html }} />
+                <div className="[&_p]:my-0" data-answer dangerouslySetInnerHTML={{ __html: b.html }} />
               </Callout>
             );
           case "flow":

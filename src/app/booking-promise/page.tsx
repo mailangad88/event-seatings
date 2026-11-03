@@ -5,12 +5,13 @@ import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq, 
 import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Payments, Deposits & Our Booking Promise",
   description: `Who you pay, when, and what's protected when you book event rentals through ${site.name} in ${site.market}: free quotes, a ${BOOKING_FEE_LABEL} booking fee only after your vendor confirms, price lock, vetted vendors and a backup guarantee.`,
   alternates: { canonical: "/booking-promise" },
-};
+});
 
 const promises: { icon: IconName; title: string; text: string }[] = [
   {

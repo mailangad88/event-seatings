@@ -5,12 +5,13 @@ import { Callout, FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, ty
 import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "For Rental Companies: How We List Prices, and How to Opt Out",
   description: `How ${site.name} uses Chicago-area rental companies' published rates, why your company name is never shown, and how to correct or remove your items in one step.`,
   alternates: { canonical: "/vendor-listings" },
-};
+});
 
 const facts: { icon: IconName; title: string; text: string }[] = [
   {

@@ -1,22 +1,25 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PageHero, QuoteCta } from "@/components/ui";
+import { HubFaqs, PageHero, QuoteCta } from "@/components/ui";
 import { PostCard } from "@/components/PostCard";
-import { formatDate, getPosts, topicArt, topicSlug, topics } from "@/lib/blog";
+import { formatDate, getPosts, hubFaqs, topicArt, topicSlug, topics } from "@/lib/blog";
 import { render, sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Event Planning Ideas & Rental Guides for Chicago",
   description: `Event rental guides, costs, quantities, layouts and styling ideas for weddings, parties and corporate events in Chicago, from ${site.name}.`,
   alternates: { canonical: "/blog" },
-};
+});
 
 export default async function BlogPage() {
   const all = await getPosts();
+  // One question from each of the newest posts in different topics.
+  const faqs = await hubFaqs(topics.map((t) => all.find((x) => x.topic === t.name)).filter((x) => !!x), 6);
   const [lead, ...rest] = all;
   const count = (name: string) => all.filter((p) => p.topic === name).length;
   return (
@@ -25,7 +28,7 @@ export default async function BlogPage() {
         breadcrumbs={[{ name: "Ideas & guides", href: "/blog" }]}
         eyebrow="Ideas & guides"
         title="Plan a better event in Chicago"
-        intro="Costs, quantities, layouts, venue rules and styling ideas for weddings, parties and corporate events, written by people who plan them."
+        intro="Free planning guides for Chicago-area events: what rentals cost, how many chairs, tables and linens you need, tent sizes, floor plans, venue rules and styling ideas for weddings, cultural celebrations, parties and corporate events. Every guide starts with a quick answer and ends with the questions planners ask most."
         meta={all.length > 0 && <p>{all.length} guides across {topics.filter((t) => count(t.name) > 0).length} topics</p>}
         media={
           <div className="media aspect-[16/11] shadow-lift">
@@ -58,7 +61,7 @@ export default async function BlogPage() {
               <li key={t.name}>
                 <Link href={`/blog/topic/${topicSlug(t.name)}`} className="group card card-hover flex items-center gap-4 p-3">
                   {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
-                  <img src={topicArt(topicSlug(t.name)).src} alt="" width={96} height={64} loading="lazy" className="h-14 w-20 shrink-0 rounded-lg bg-espresso object-cover" />
+                  <img src={topicArt(topicSlug(t.name)).src} alt={`Illustration for ${t.name.toLowerCase()} rental guides`} width={96} height={64} loading="lazy" className="h-14 w-20 shrink-0 rounded-lg bg-espresso object-cover" />
                   <span>
                     <span className="block font-serif text-lg leading-tight transition-colors group-hover:text-gold">{t.name}</span>
                     <span className="mt-0.5 block text-xs text-muted">{count(t.name)} guides</span>
@@ -75,6 +78,7 @@ export default async function BlogPage() {
         </div>
         {!lead && <p className="mt-16 font-serif text-2xl text-muted italic">The first guides arrive soon.</p>}
       </div>
+      <HubFaqs faqs={faqs} title="Questions these guides answer" />
       <QuoteCta source="blog" />
     </>
   );

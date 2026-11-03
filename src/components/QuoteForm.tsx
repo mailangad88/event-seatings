@@ -594,7 +594,7 @@ export function QuoteForm({
                               onClick={() => setColours((c) => ({ ...c, [item.id]: v.key }))}
                               className={`relative h-7 w-7 overflow-hidden rounded-full border-2 bg-surface-2 ${on ? "border-ink" : "border-line"}`}
                             >
-                              {v.src && <Image src={v.src} alt="" fill sizes="28px" className="scale-[2.2] object-cover" />}
+                              {v.src && <Image src={v.src} alt={`${item.name} in ${v.label}`} fill sizes="28px" className="scale-[2.2] object-cover" />}
                             </button>
                           );
                         })}

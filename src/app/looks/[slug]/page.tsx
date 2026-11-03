@@ -10,6 +10,7 @@ import { VideoFeature } from "@/components/VideoFeature";
 import { chairs, getChair } from "@/data/chairs";
 import { getLook, looks } from "@/data/looks";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export function generateStaticParams() {
   return looks.map((l) => ({ slug: l.slug }));
@@ -20,7 +21,7 @@ export async function generateMetadata(props: PageProps<"/looks/[slug]">): Promi
   if (!look) return {};
   const chair = getChair(look.heroChair);
   const description = `${look.kicker}. How to get the ${look.name} look for your wedding or event, built around the ${chair?.name}. Delivered and set up across Chicagoland.`;
-  return {
+  return seo({
     title: `${look.name} Wedding Decor Look`,
     description,
     alternates: { canonical: `/looks/${look.slug}` },
@@ -34,7 +35,7 @@ export async function generateMetadata(props: PageProps<"/looks/[slug]">): Promi
           : { url: `/chairs/render/${look.heroChair}.jpg`, width: 1000, height: 1250 },
       ],
     },
-  };
+  });
 }
 
 export default async function LookPage(props: PageProps<"/looks/[slug]">) {
@@ -110,7 +111,10 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
             <p className="font-serif text-lg text-gold italic">{look.season}</p>
             <h1 className="headline mt-3 text-5xl leading-[1] sm:text-7xl">{look.name}</h1>
             <p className="mt-4 font-serif text-2xl leading-snug font-light text-muted italic">{look.kicker}</p>
-            <p className="mt-6 leading-8">{look.story}</p>
+            <p className="mt-6 leading-8" data-answer>
+              {look.story} Price the whole look in one free quote, then swap any chair, linen or piece of decor
+              for your Chicago-area venue.
+            </p>
 
             <div id="get" className="mt-10 scroll-mt-32">
               <DecoFrame label="Get this look">

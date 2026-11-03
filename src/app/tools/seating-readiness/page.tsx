@@ -5,16 +5,17 @@ import { ReadinessScore } from "@/components/ReadinessScore";
 import { bands, readinessAreas, statementCount } from "@/data/readiness";
 import { bookingHref, firstLink } from "@/lib/routes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 const title = "Seating Readiness Score: Are You Ready to Book Event Chairs?";
 const description = `Free ${statementCount}-question check for weddings and events in the Chicago area. Score your guest count, venue, layout, chair style and weather plan out of 100, see your weakest area, and get the fix.`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title,
   description,
   alternates: { canonical: "/tools/seating-readiness" },
   openGraph: { title, description, url: "/tools/seating-readiness", images: [{ url: "/chairs/render/cross-back.jpg", alt: `Cross-back chair from ${site.name}` }] },
-};
+});
 
 const faqs: [string, string][] = [
   [

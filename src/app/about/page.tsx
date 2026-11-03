@@ -3,15 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
 import { ProcessFlow } from "@/components/ProcessFlow";
-import { Figure, Icon, PageHero, Section } from "@/components/ui";
+import { Figure, HubFaqs, Icon, PageHero, Section } from "@/components/ui";
 import { render, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "About Us: Chicago's Event Rental Marketplace",
   description: `${site.name} is a locally owned Chicago-area event rental marketplace. One quote for chairs, tables, linens, dinnerware, tents and more, coordinated with trusted local rental houses.`,
   alternates: { canonical: "/about" },
-};
+});
 
 const values = [
   { icon: "quote", title: "Transparent prices", text: "Every item shows its price. Your quote totals as you go, with delivery and setup itemized." },
@@ -19,6 +20,25 @@ const values = [
   { icon: "chat", title: "One point of contact", text: "From the first question to pickup, you deal with one team, not five." },
   { icon: "pin", title: "Locally owned", text: `Based in ${site.city}, serving the whole Chicago area from the Loop to the Fox Valley.` },
 ] as const;
+
+const aboutFaqs = [
+  {
+    q: `What is ${site.name}?`,
+    a: `${site.name} is a Chicago-area event rental marketplace. You pick chairs, tables, linens, dinnerware, tents and more in one quote, and we book each item with a vetted local rental company, then coordinate delivery, setup and pickup as your single point of contact.`,
+  },
+  {
+    q: `Does ${site.name} own the rentals?`,
+    a: "No. The items belong to established Chicago-area rental houses we partner with. We match each item to the partner that carries it, confirm availability, and keep one itemized quote and one contact for you.",
+  },
+  {
+    q: "How do you make money?",
+    a: "Prices on the site are the partner rental rate plus our 10% service fee, shown up front. There is no charge for a quote or a planning call.",
+  },
+  {
+    q: "Where are you based and where do you deliver?",
+    a: `We are based in ${site.city} and arrange delivery across Chicago and the suburbs, from the Loop and the North Shore to DuPage County and the Fox Valley.`,
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -51,7 +71,14 @@ export default function AboutPage() {
               stay your single point of contact.
             </p>
             <h2>Where we deliver</h2>
-            <p>{site.serviceArea.join(", ")} and surrounding suburbs. Not sure we reach your venue? Just ask.</p>
+            <p>
+              {site.serviceArea.join(", ")} and surrounding suburbs. See every{" "}
+              <Link href="/chair-rentals">area we serve</Link>, browse{" "}
+              <Link href="/rentals">all rentals with prices</Link>, read{" "}
+              <Link href="/how-it-works">how booking works</Link> and{" "}
+              <Link href="/booking-promise">who you pay and when</Link>, or{" "}
+              <Link href="/quote">start a free quote</Link>. Not sure we reach your venue? Just ask.
+            </p>
           </div>
         </div>
       </Section>
@@ -76,6 +103,8 @@ export default function AboutPage() {
           <Image src={render("garden-ceremony").src} alt={render("garden-ceremony").alt} fill sizes="100vw" className="object-cover" />
         </div>
       </Section>
+
+      <HubFaqs faqs={aboutFaqs} title={`About ${site.name}: common questions`} />
 
       <div className="-mb-32">
         <CallCta source="about" />

@@ -14,6 +14,7 @@ import { RecommendedChairs } from "@/components/geo/RecommendedChairs";
 import { chairs, getChair } from "@/data/chairs";
 import { eventPath, getEventType, getLocation, homeBase, locationPath, locations, milesFrom } from "@/data/geo";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -25,13 +26,13 @@ export async function generateMetadata(props: PageProps<"/chair-rentals/[slug]">
   const loc = getLocation((await props.params).slug);
   if (!loc) return {};
   const path = locationPath(loc);
-  return {
+  return seo({
     title: loc.metaTitle,
     description: loc.metaDescription,
     alternates: { canonical: path },
     openGraph: { title: `${loc.metaTitle} | ${site.name}`, description: loc.metaDescription, url: path },
     other: { "geo.region": "US-IL", "geo.placename": loc.name, "geo.position": `${loc.lat};${loc.lng}`, ICBM: `${loc.lat}, ${loc.lng}` },
-  };
+  });
 }
 
 const numerals = ["I", "II", "III", "IV", "V", "VI"];

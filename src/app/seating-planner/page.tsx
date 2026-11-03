@@ -3,13 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { SeatingPlanner } from "@/components/SeatingPlanner";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Free Event Seating Planner: How Many Chairs & Tables Do I Need?",
   description:
     "Free Chicago event seating calculator. Enter your guest count to get exact chair and table numbers for the ceremony, cocktail hour and reception, plus a printable planning checklist.",
   alternates: { canonical: "/seating-planner" },
-};
+});
 
 const howTo = [
   ["Count reception seats", "Guests, plus vendors who sit to eat, plus a buffer of a few percent for late RSVPs."],
@@ -58,7 +59,7 @@ export default function SeatingPlannerPage() {
             <Image
               key={s}
               src={`/chairs/render/${s}.jpg`}
-              alt=""
+              alt={`${s.replace(/-/g, " ")} event chair, one of the styles the seating planner suggests`}
               width={1000}
               height={1250}
               sizes="12vw"
