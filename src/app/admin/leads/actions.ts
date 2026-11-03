@@ -77,6 +77,12 @@ export async function createProposal(formData: FormData) {
   const id = text(formData.get("id"), 64);
   const lead = await getLead(id);
   if (!lead || lead.proposal_token) return;
+  // Stripe needs at least $0.50; leads without priced items (waitlist, call, chat) have no fee to charge.
+  if (amountDue(lead) < 0.5) {
+    await updateLead(id, {}, [{ type: "note", text: "Proposal not created: this lead has no priced items, so there is no fee to charge." }]);
+    revalidatePath(`/admin/leads/${id}`);
+    return;
+  }
   await updateLead(
     id,
     { proposal_token: newProposalToken(), proposal_created_at: new Date().toISOString(), fee_status: "unpaid", fee_amount: amountDue(lead) },

@@ -74,7 +74,7 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
                 <tbody>
                   {lines.map((l) => (
                     <tr key={`${l.id}-${l.variant ?? ""}`} className="border-b border-line/60">
-                      <td className="py-2 pr-3">{l.name}{l.variant ? ` (${l.variant})` : ""}</td>
+                      <td className="py-2 pr-3">{l.name}</td>
                       <td className="py-2 text-right tabular-nums">{l.qty}</td>
                       <td className="py-2 text-right tabular-nums">{usd(l.unit_price)}</td>
                       <td className="py-2 text-right tabular-nums">{usd(l.line_total)}</td>
@@ -132,11 +132,18 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
                   </p>
                 </div>
                 {stripeEnabled() ? (
+                  <>
+                  {sp.checkout === "error" && (
+                    <p role="alert" className="mb-3 text-sm text-red-700">
+                      Checkout couldn&apos;t open just now. Please try again, or reply to our email and we&apos;ll help.
+                    </p>
+                  )}
                   <form action={startCheckout}>
                     <input type="hidden" name="token" value={token} />
                     <button className="btn-primary w-full">Secure my booking</button>
                     <p className="mt-2 text-center text-xs text-muted">Secure card or bank payment by Stripe.</p>
                   </form>
+                  </>
                 ) : (
                   <p className="rounded-xl border border-line p-4 text-muted">
                     Ready to book? Reply to your coordinator&apos;s email
