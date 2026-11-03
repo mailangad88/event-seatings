@@ -37,6 +37,15 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): link-worthy assets for backlinks and press
+
+- New `/data/chicago-rental-prices`: Chicago Event Rental Price Index. 26 like-for-like items from 6 Chicago-area rental companies' published prices (no company names), gap chart, full table, method, suggested credit and link code, Dataset + FAQ schema. Data in `src/data/price-index.ts`.
+- New `/data/chicago-rental-prices.csv`: free CSV of the index.
+- New `/press`: quick facts, story ideas, topics, press FAQ, Organization schema with founder.
+- Linked from the footer, `/rental-cost` and llms.txt; both pages added to the sitemap.
+- Favicon now shows "BC" (it still said "ES" from the old Event Seatings name).
+- Remaining: add 4 to 8 more companies to the index before the January press push; founder photo on /press and /about; a downloadable logo file. Plan: `growth/backlinks-and-brand-plan.md` in project files.
+
 ## Changes in this release (2026-11-03): SEO / AEO / GEO audit and local landing pages
 
 **Automated audit.** `npm run seo-audit` (`scripts/seo-audit.mjs`) builds nothing itself: after `npm run build` it starts the production server, reads `/sitemap.xml`, `/robots.txt` and `/llms.txt`, crawls every sitemap URL and scores each page out of 100. GitHub Actions (`.github/workflows/seo-audit.yml`) runs it on every pull request and push to main, and fails on any blocking error or a site score under 90. The report is written to `reports/seo-audit.md` and `.json` (uploaded as a CI artifact, not committed).
