@@ -3,7 +3,8 @@ import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
-import { rentalImages } from "@/data/rental-images";
+import { imagesFor, originalImage, rentalImages, styledImage } from "@/data/rental-images";
+import { categoryPhotos, isPhotoFirst, photosForItem, stockPhotos, stockSrc } from "@/data/stock-photos";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { looks } from "@/data/looks";
 import { coverImage, downloads } from "@/data/downloads";
@@ -39,18 +40,45 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((t) => ({ url: `${site.url}/blog/topic/${topicSlug(t.name)}`, changeFrequency: "weekly" as const, priority: 0.6 }));
   const rentalPages = [
     { url: `${site.url}/rentals`, priority: 0.9, lastModified: PRICES_CHECKED_AT },
-    ...categories.map((c) => ({ url: `${site.url}/rentals/${c.id}`, priority: 0.85, lastModified: PRICES_CHECKED_AT })),
+    ...categories.map((c) => ({
+      url: `${site.url}/rentals/${c.id}`,
+      priority: 0.85,
+      lastModified: PRICES_CHECKED_AT,
+      // The category header and "real events" strip photos, then the item images shown in its grid.
+      images: [
+        ...categoryPhotos(c.id).slice(0, 4).map((p) => stockSrc(p, 1200, 800)),
+        ...catalogItems
+          .filter((i) => i.categoryId === c.id && (!isPhotoFirst(i.id) || !!styledImage(i.id)))
+          .map((i) => rentalImagePath(i.id, i.categoryId))
+          .filter((src): src is string => !!src)
+          .map((src) => `${site.url}${src}`),
+      ],
+    })),
     ...catalogItems.map((i) => {
-      const src = rentalImagePath(i.id, i.categoryId);
+      // Every image on the item page: its own render (main, colour variants, second angle) unless a real
+      // photo leads, the chair art, then the real event photos in its gallery.
+      const own = isPhotoFirst(i.id) && !styledImage(i.id)
+        ? []
+        : imagesFor(i.id).length
+          ? imagesFor(i.id).map((m) => `${site.url}${m.src}`)
+          : [rentalImagePath(i.id, i.categoryId)].filter((src): src is string => !!src).map((src) => `${site.url}${src}`);
+      const { photos, matched } = photosForItem(i);
+      const gallery = (matched ? photos : categoryPhotos(i.categoryId)).slice(0, 3);
       return {
         url: `${site.url}/rentals/${i.categoryId}/${i.id}`,
         priority: 0.7,
         lastModified: i.priceCheckedAt,
-        images: src ? [`${site.url}${src}`] : i.chairSlug ? img(i.chairSlug) : [],
+        images: [
+          ...own,
+          ...(own.length || !i.chairSlug ? [] : img(i.chairSlug)),
+          ...(styledImage(i.id) && originalImage(i.id) ? [`${site.url}${originalImage(i.id)!.src}`] : []),
+          ...gallery.map((p) => stockSrc(p, 1200, 1200)),
+        ],
       };
     }),
   ];
   const gallery = { url: `${site.url}/gallery`, priority: 0.7, images: rentalImages.map((i) => `${site.url}${i.src}`) };
+  const credits = { url: `${site.url}/photo-credits`, priority: 0.3, images: Object.values(stockPhotos).map((p) => stockSrc(p, 1200, 800)) };
   const geoPages = [
     { url: `${site.url}/chair-rentals`, priority: 0.8, lastModified: geoContentUpdated },
     { url: `${site.url}/events`, priority: 0.8, lastModified: geoContentUpdated },
@@ -62,5 +90,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
   ]);
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
-  return [...pages, gallery, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  return [...pages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }

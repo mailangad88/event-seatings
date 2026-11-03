@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChairArt } from "@/components/ChairArt";
 import { Reveal } from "@/components/Reveal";
+import { ExampleChip } from "@/components/rentals/StockPhoto";
 import { CategoryTile, FaqList, Icon, QuoteCta, Section, StepFlow, TrustBar, type Faq } from "@/components/ui";
 import { getChair } from "@/data/chairs";
 import { formatDate, getPosts } from "@/lib/blog";
@@ -118,6 +119,7 @@ export default async function Home() {
             <div className="grid grid-cols-[1.25fr_1fr] gap-3 sm:gap-4">
               <div className="media row-span-2 aspect-[9/14] shadow-lift">
                 <Image src={scenes.blushGarden.src} alt={scenes.blushGarden.alt} fill priority sizes="(max-width: 1024px) 55vw, 30vw" className="object-cover" />
+                {scenes.blushGarden.ai && <ExampleChip label="AI-generated example" className="bottom-auto top-2" />}
               </div>
               <div className="media aspect-square shadow-soft">
                 <Image src={render("hero-chairs").src} alt={render("hero-chairs").alt} fill sizes="(max-width: 1024px) 45vw, 22vw" className="object-cover" />

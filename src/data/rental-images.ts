@@ -1,7 +1,10 @@
 import images from "./rental-images.json";
+import styled from "./styled-images.json";
+import { site } from "@/lib/site";
 
-// 3D-rendered product and event-scene images (Blender, see blender/rentals/README.md).
-// Product shots are 1:1 at 1600px on a warm #EFE9DF studio sweep; scenes are 16:9 at 1920x1080.
+// Photorealistic product and event-scene images built in Blender (see blender/rentals/README.md): real HDRI
+// lighting, photo-scanned floors and lawns, depth of field and a camera finish. Product shots are 1:1
+// (room, linen tabletop or park lawn sets); scenes are 16:9 at 1920x1080.
 // Slugs match the catalog item ids. Regenerate with `python blender/rentals/publish.py`.
 
 export type RentalImage = {
@@ -12,12 +15,34 @@ export type RentalImage = {
   width: number;
   height: number;
   kind: "product" | "scene" | "angle" | "variant";
+  /** Where it's pictured: room, table, park, park-dusk, scene, or classic (older studio-sweep render). */
+  setting?: string;
   // Angles and colour variants point at the base item they belong to.
   parent?: string;
   variant?: string;
+  /** True when this is a Gemini styled event scene (scripts/styled-scenes.py) laid over the Blender render. */
+  ai?: boolean;
 };
 
-const all = images as Record<string, RentalImage>;
+// Styled event scenes made with Gemini from our own render as the reference (scripts/styled-scenes.py). Each one
+// replaces the render with the same slug everywhere on the site, keeps its category/kind/parent, and is always
+// labelled as an AI-generated example (alt text, chip, IPTC digitalSourceType in the schema).
+// Styled-only entries (no render behind them, e.g. hero-concessions) are new event scenes.
+type StyledEntry = Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height" | "category"> & { kind?: string };
+const styledAll = styled as Record<string, StyledEntry>;
+const originals = images as Record<string, RentalImage>;
+const all: Record<string, RentalImage> = Object.fromEntries([
+  ...Object.entries(originals).map(([slug, img]) => {
+    const s = styledAll[slug];
+    return [slug, s ? { ...img, src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true } : img];
+  }),
+  ...Object.entries(styledAll)
+    .filter(([slug]) => !originals[slug])
+    .map(([slug, s]) => [slug, { src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, category: s.category, kind: "scene" as const, ai: true }]),
+]);
+
+/** The original Blender render, ignoring any styled scene laid over it. */
+export const originalImage = (slug: string): RentalImage | undefined => originals[slug];
 
 export function rentalImage(slug: string): RentalImage | undefined {
   return all[slug];
@@ -75,3 +100,31 @@ export const chairRenderSlug: Record<string, string> = {
   "garden-folding": "garden-folding",
   "royal-throne": "throne-chair",
 };
+
+/** schema.org ImageObject for one of our own images, with the caption, alt description and licence details
+ *  Google Images and AI search read. */
+export function rentalImageJsonLd(img: Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height"> & { ai?: boolean }) {
+  const url = `${site.url}${img.src}`;
+  return {
+    "@type": "ImageObject",
+    contentUrl: url,
+    url,
+    name: img.caption,
+    caption: img.caption,
+    description: img.alt,
+    width: img.width,
+    height: img.height,
+    encodingFormat: "image/webp",
+    creditText: site.name,
+    creator: { "@type": "Organization", name: site.name },
+    copyrightNotice: `© ${site.name}`,
+    license: `${site.url}/terms`,
+    acquireLicensePage: `${site.url}/terms`,
+    ...(img.ai ? { digitalSourceType: "http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia" } : {}),
+  };
+}
+
+
+/** The styled event scene for a slug, if Gemini has made one. */
+export const styledImage = (slug: string) => (styledAll[slug] ? all[slug] : undefined);
+export const styledImages = rentalImages.filter((i) => i.ai);
