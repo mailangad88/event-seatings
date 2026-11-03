@@ -45,7 +45,7 @@ export function StockImg({
 export function ExampleChip({ className = "", label = "Example photo" }: { className?: string; label?: string }) {
   return (
     <span
-      className={`pointer-events-none absolute bottom-2 left-2 rounded-full bg-black/55 px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] text-white uppercase backdrop-blur-sm ${className}`}
+      className={`pointer-events-none absolute bottom-2 left-2 rounded-full bg-black/55 px-2.5 py-1 text-xs font-medium tracking-[0.12em] text-white uppercase backdrop-blur-sm ${className}`}
     >
       {label}
     </span>

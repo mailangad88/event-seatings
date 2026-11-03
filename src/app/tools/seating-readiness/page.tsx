@@ -105,7 +105,7 @@ export default function SeatingReadinessPage() {
       <div className="mt-10 grid items-end gap-10 md:grid-cols-[1.5fr_1fr]">
         <div>
           <p className="eyebrow">Free planning tool</p>
-          <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+          <h1 className="display-1 mt-6">
             Are you <em className="text-gold">ready</em> to book your chairs?
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
@@ -127,7 +127,7 @@ export default function SeatingReadinessPage() {
           {steps.map(([name], i) => (
             <g key={name}>
               <circle cx={60 + i * 280} cy="30" r="22" fill="none" stroke="var(--gold)" strokeWidth="1.25" />
-              <text x={60 + i * 280} y="36" textAnchor="middle" fill="var(--gold)" fontSize="18" fontFamily="var(--font-display)">{i + 1}</text>
+              <text x={60 + i * 280} y="36" textAnchor="middle" fill="var(--gold)" fontSize="18" fontFamily="var(--font-body)">{i + 1}</text>
               <text x={60 + i * 280} y="78" textAnchor="middle" fill="var(--ink)" fontSize="14">{name}</text>
               {i < steps.length - 1 && <line x1={90 + i * 280} y1="30" x2={310 + i * 280} y2="30" stroke="var(--line)" strokeWidth="1.25" />}
             </g>
@@ -144,12 +144,12 @@ export default function SeatingReadinessPage() {
 
       <section className="mt-28 border-t border-gold/40 pt-16">
         <p className="eyebrow">The method</p>
-        <h2 className="headline mt-6 text-4xl sm:text-5xl">What the score checks</h2>
+        <h2 className="display-2 mt-6">What the score checks</h2>
         <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {readinessAreas.map((a) => (
             <li key={a.key} className="border-t border-line pt-6">
               <Image src={a.image} alt={a.imageAlt} width={1000} height={1250} sizes="(min-width: 1024px) 18vw, 45vw" className="aspect-[4/5] w-full object-cover" />
-              <h3 className="mt-5 font-serif text-2xl">{a.name}</h3>
+              <h3 className="display-3 mt-5">{a.name}</h3>
               <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
                 {a.statements.map((s) => <li key={s}>{s}</li>)}
               </ul>
@@ -161,12 +161,12 @@ export default function SeatingReadinessPage() {
       <section className="mt-28 grid gap-14 border-t border-gold/40 pt-16 md:grid-cols-[1fr_1.6fr]">
         <div>
           <p className="eyebrow">Questions</p>
-          <h2 className="headline mt-6 text-4xl sm:text-5xl">About the score</h2>
+          <h2 className="display-2 mt-6">About the score</h2>
         </div>
         <dl className="divide-y divide-line border-y border-line">
           {faqs.map(([q, a]) => (
             <div key={q} className="py-6">
-              <dt className="font-serif text-2xl">{q}</dt>
+              <dt className="font-heading font-semibold text-2xl">{q}</dt>
               <dd className="mt-3 leading-7 text-muted">{a}</dd>
             </div>
           ))}

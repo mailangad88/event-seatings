@@ -38,9 +38,45 @@ Use them as Tailwind colours: `bg-surface`, `text-muted`, `border-line`, `text-g
 - `tone-dark` (or any `bg-espresso…` class): dark wine-black band, light text, gold buttons.
 - `tone-sand` (alias `.paper`): sand band.
 
-Fonts: Cormorant Garamond (`font-serif`, display; 400 for the page H1, 500 for `display-2`/`display-3` so smaller
-headings don't look faint) and Jost (`font-sans`, UI and body; 300/400/500/600 loaded, so `font-semibold` is real, not
-faked), self-hosted in `src/app/fonts`.
+### Fonts (Nov 3: readability first)
+
+- **Inter** for everything people read: headings, body, buttons, prices, numbers, admin. Clear, even digits, so a
+  price like `$21,175` can't be misread. One variable file (`src/app/fonts/inter-latin-wght-normal.woff2`) covers
+  every weight. Use `font-heading` (or `headline` / `display-*`) for headings, `font-sans` is the default.
+- **Cormorant Garamond 500** only for the logo wordmark (`font-brand`, in `Logo` in `src/components/Header.tsx`).
+  Never use it for headings, prices or numbers. `font-serif` is banned by the design check.
+- No slanted type: `<em>` inside a heading shows as colour (`text-gold`), not italics.
+- Prices, totals and table columns use `tabular-nums` (tables, `.tabular` and `[data-price]` get it automatically), so
+  digits line up.
+- Weights: 400 body, 500 labels and small UI, 600 headings, buttons and prices. Nothing lighter than 400.
+
+### Type scale: the only font sizes
+
+| Class | Size | Use |
+|---|---|---|
+| `text-xs` | 12px | eyebrows, badges, stat labels, captions in tight spots |
+| `text-sm` | 14px | secondary text, buttons, nav, form hints |
+| `text-base` | 16px | body copy (never smaller on phones) |
+| `text-lg` | 18px | `lede` intro text, long-form articles on desktop |
+| `text-xl` | 20px | small headings, `display-3` on phones |
+| `text-2xl` | 24px | card headings (`display-3`) |
+| `text-3xl` / `text-4xl` | 30 / 36px | section headings (`display-2`), stat numbers |
+| `text-5xl` / `text-6xl` | 48 / 56px | page titles (`display-1` steps 36 → 48 → 56) |
+
+`text-7xl` and `text-8xl` are capped at 56px. Prefer the roles over raw sizes: `display-1` for the one H1,
+`display-2` for H2s, `display-3` for card and block headings, `lede` for intros, `eyebrow` for labels.
+
+### Spacing
+
+Tailwind's 4px scale only (`2` = 8px, `3` = 12px, `4` = 16px, `6` = 24px, `8` = 32px, `12` = 48px, `16` = 64px). Cards
+use `p-5`/`p-6`, sections use `section-y`, page width uses `container-x`. No `p-[13px]`-style one-offs.
+
+### The design check (CI)
+
+`npm run check:design` (`scripts/check-design.mjs`) fails the build on: font sizes off the scale (`text-[15px]`),
+`text-7xl`/`text-8xl`, `font-serif`, hex colours in classes (`bg-[#efe9df]`), raw Tailwind palette colours
+(`text-red-400`, use `text-rose`), and one-off spacing (`p-[18px]`). A real exception can stay if the line explains
+why and includes `design-ok`.
 
 ## 2. Utility classes
 
@@ -48,8 +84,8 @@ faked), self-hosted in `src/app/fonts`.
 |---|---|
 | `container-x` / `container-narrow` | page width (7xl) / reading width (3xl) |
 | `section-y` | standard vertical section padding |
-| `display-1` / `display-2` / `display-3` | serif headings: page H1 / section H2 / card H3 |
-| `headline` | serif heading base (custom sizes) |
+| `display-1` / `display-2` / `display-3` | headings: page H1 / section H2 / card H3 (Inter 600, sizes from the scale) |
+| `headline` | heading base (font, weight, tracking); prefer a `display-*` role over custom sizes |
 | `lede` | large muted intro paragraph |
 | `eyebrow` | small brass uppercase label above headings |
 | `cta-row` | wrapper for hero/section buttons: full-width stacked buttons on phones, inline from `sm` |

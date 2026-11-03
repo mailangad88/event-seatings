@@ -8,7 +8,7 @@ export function AdminHeader({ group, title, intro, actions }: { group: string; t
     <div className="flex flex-wrap items-end justify-between gap-4">
       <div>
         <p className="eyebrow">{group}</p>
-        <h1 className="mt-1 font-serif text-4xl sm:text-5xl">{title}</h1>
+        <h1 className="display-2 mt-1">{title}</h1>
         {intro && <p className="mt-2 max-w-2xl text-sm text-muted">{intro}</p>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
@@ -48,7 +48,7 @@ export function Panel({ title, more, children, className = "" }: { title: string
   return (
     <section className={`card min-w-0 p-6 ${className}`}>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="font-serif text-2xl">{title}</h2>
+        <h2 className="display-3">{title}</h2>
         {more && <Link href={more.href} className="text-sm text-accent">{more.label} →</Link>}
       </div>
       <div className="mt-4">{children}</div>

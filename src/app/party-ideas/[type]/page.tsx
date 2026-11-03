@@ -81,9 +81,9 @@ export default async function PartyTypePage(props: PageProps<"/party-ideas/[type
             return (
               <li key={s.title} className="card p-6">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gold text-accent-ink font-serif text-lg">{n + 1}</span>
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gold text-accent-ink font-heading font-semibold text-lg">{n + 1}</span>
                   <div>
-                    <h3 className="font-serif text-2xl leading-tight">{s.title}</h3>
+                    <h3 className="display-3">{s.title}</h3>
                     <p className="text-xs tracking-wide text-muted uppercase">{s.where}</p>
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import type { LeadAlert, Row } from "@/lib/lead-alert";
 // The full picture of one enquiry on /admin/leads/[id]: what to do first, what they care about, every page they
 // visited and button they clicked, consent, and earlier enquiries from the same email. Same data as the alert email.
 
-const toneClass = { good: "text-green-700 dark:text-green-400", bad: "font-semibold text-red-700 dark:text-red-400", note: "text-muted" };
+const toneClass = { good: "text-green", bad: "font-semibold text-rose", note: "text-muted" };
 
 function Rows({ rows }: { rows: Row[] }) {
   return (
@@ -24,7 +24,7 @@ function Rows({ rows }: { rows: Row[] }) {
 export function LeadOutreach({ alert: a }: { alert: LeadAlert }) {
   return (
     <section className="card p-6" aria-labelledby="outreach">
-      <h2 id="outreach" className="font-serif text-2xl">What to do first</h2>
+      <h2 id="outreach" className="font-heading font-semibold text-2xl">What to do first</h2>
       <p className="mt-3 text-sm leading-6"><strong>Next step:</strong> {a.outreach.nextStep}</p>
       {a.outreach.warning && <p className="mt-3 rounded-lg bg-gold/15 px-3 py-2 text-sm">{a.outreach.warning}</p>}
       <p className="mt-3 border-l-2 border-gold bg-bg px-4 py-3 text-sm leading-6">
@@ -76,7 +76,7 @@ export function LeadJourney({ alert: a }: { alert: LeadAlert }) {
   const j = a.journey;
   return (
     <section className="card p-6" aria-labelledby="pages-visited">
-      <h2 id="pages-visited" className="font-serif text-2xl">Pages they visited</h2>
+      <h2 id="pages-visited" className="font-heading font-semibold text-2xl">Pages they visited</h2>
       {!j ? (
         <p className="mt-2 text-sm text-muted">
           No page history for this one. They either said no in the privacy notice, their browser asks sites not to track,
@@ -87,7 +87,7 @@ export function LeadJourney({ alert: a }: { alert: LeadAlert }) {
           <div className="mt-4 grid grid-cols-2 gap-2 md:grid-cols-4">
             {[["First visit", j.firstVisit], ["Came from", j.cameFrom], ["Visits", j.visits], ["Campaign", j.campaign]].map(([k, v]) => (
               <div key={k} className="rounded-xl border border-line bg-bg p-3">
-                <p className="text-[0.65rem] tracking-widest text-muted uppercase">{k}</p>
+                <p className="text-xs tracking-widest text-muted uppercase">{k}</p>
                 <p className="mt-1 text-sm">{v}</p>
               </div>
             ))}

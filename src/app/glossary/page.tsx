@@ -122,7 +122,7 @@ export default function Page() {
           <dl className="grid gap-x-10 gap-y-6 md:grid-cols-2">
             {g.terms.map((t) => (
               <div key={t.term} id={slug(t.term)} className="scroll-mt-28">
-                <dt className="font-serif text-xl">{t.term}</dt>
+                <dt className="font-heading font-semibold text-xl">{t.term}</dt>
                 <dd className="mt-1 text-sm leading-7 text-muted">
                   {t.def}
                   {t.link && (

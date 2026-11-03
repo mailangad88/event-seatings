@@ -566,7 +566,7 @@ export function FloorPlanBuilder({ quotableIds }: { quotableIds: string[] }) {
         <div className="grid gap-4 md:grid-cols-2">
           <div className="card p-5">
             <p className="label">This layout</p>
-            <p className="mt-2 font-serif text-4xl">{totals.receptionSeats} <span className="text-base text-muted">seats at tables</span></p>
+            <p className="mt-2 font-heading font-semibold text-4xl">{totals.receptionSeats} <span className="text-base text-muted">seats at tables</span></p>
             {totals.ceremonySeats > 0 && <p className="text-sm text-muted">+ {totals.ceremonySeats} ceremony chairs</p>}
             <ul className="mt-3 grid gap-1 text-sm">
               {[...totals.counts.entries()].map(([k, n]) => (
@@ -579,7 +579,7 @@ export function FloorPlanBuilder({ quotableIds }: { quotableIds: string[] }) {
             {(warnCount.out > 0 || warnCount.tight > 0) && (
               <p className="mt-3 text-sm" role="status">
                 {warnCount.out > 0 && <span className="text-rose">{warnCount.out} item{warnCount.out === 1 ? "" : "s"} outside the room. </span>}
-                {warnCount.tight > 0 && <span className="text-[#a3651f]">{warnCount.tight} item{warnCount.tight === 1 ? " is" : "s are"} closer than a 3 ft walkway between chair backs.</span>}
+                {warnCount.tight > 0 && <span className="text-amber">{warnCount.tight} item{warnCount.tight === 1 ? " is" : "s are"} closer than a 3 ft walkway between chair backs.</span>}
               </p>
             )}
           </div>

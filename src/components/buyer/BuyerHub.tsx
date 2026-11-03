@@ -22,7 +22,7 @@ export function BuyerHub({ kind, title, intro, faqs }: { kind: BuyerPage["kind"]
             <li key={p.slug}>
               <Link href={`/${kind}/${p.slug}`} className="card flex h-full flex-col gap-3 p-6 transition-colors hover:border-gold">
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-gold-soft text-gold"><Icon name={p.icon} size={20} /></span>
-                <span className="font-serif text-2xl leading-tight">{p.title}</span>
+                <span className="font-heading font-semibold text-2xl leading-tight">{p.title}</span>
                 <span className="text-sm leading-6 text-muted">{p.description}</span>
               </Link>
             </li>

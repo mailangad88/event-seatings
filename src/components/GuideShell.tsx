@@ -74,7 +74,7 @@ export function GuideShell(p: GuideProps) {
 
         <header className="mt-10 max-w-3xl">
           <p className="eyebrow">{p.eyebrow}</p>
-          <h1 className="headline mt-5 text-4xl leading-[1.05] sm:text-6xl">{p.title}</h1>
+          <h1 className="display-1 mt-5">{p.title}</h1>
           <p className="mt-6 text-lg leading-8 text-muted">{p.intro}</p>
         </header>
 
@@ -84,8 +84,8 @@ export function GuideShell(p: GuideProps) {
             <figcaption className="mt-4 text-sm text-muted">{p.visualCaption}</figcaption>
           </figure>
           <aside className="self-start rounded-xl border border-gold bg-gold-soft p-6">
-            <p className="text-[11px] tracking-[0.2em] text-gold uppercase">Quick answer</p>
-            <h2 className="mt-3 font-serif text-2xl leading-snug">{p.quick.q}</h2>
+            <p className="text-xs tracking-[0.2em] text-gold uppercase">Quick answer</p>
+            <h2 className="display-3 mt-3">{p.quick.q}</h2>
             <p className="mt-4 leading-7" data-answer>{p.quick.a}</p>
             <Link href={`/book?from=${p.source}`} className="btn-primary mt-6 inline-block">Book a free call</Link>
           </aside>
@@ -94,7 +94,7 @@ export function GuideShell(p: GuideProps) {
         <div className="mt-16 max-w-3xl space-y-12">
           {p.sections.map((s) => (
             <section key={s.h}>
-              <h2 className="headline text-3xl sm:text-4xl">{s.h}</h2>
+              <h2 className="display-2">{s.h}</h2>
               <div className="mt-5 space-y-4 leading-8">{s.body}</div>
             </section>
           ))}
@@ -108,11 +108,11 @@ export function GuideShell(p: GuideProps) {
         )}
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="headline text-3xl sm:text-4xl">Frequently asked questions</h2>
+          <h2 className="display-2">Frequently asked questions</h2>
           <div className="mt-6 divide-y divide-line border-y border-line">
             {p.faqs.map((f) => (
               <details key={f.q} className="group py-5">
-                <summary className="cursor-pointer font-serif text-xl">{f.q}</summary>
+                <summary className="cursor-pointer font-heading font-semibold text-xl">{f.q}</summary>
                 <p className="mt-3 leading-8 text-muted">{f.a}</p>
               </details>
             ))}
@@ -121,7 +121,7 @@ export function GuideShell(p: GuideProps) {
 
         {p.related.length > 0 && (
           <section className="mt-16 max-w-3xl">
-            <h2 className="headline text-3xl">Keep planning</h2>
+            <h2 className="display-2">Keep planning</h2>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {p.related.map((r) => (
                 <li key={r.href}>

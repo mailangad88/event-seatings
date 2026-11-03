@@ -47,7 +47,7 @@ function Reminders({ date, event, name }: { date: string; event: string; name: s
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");
     setStatus("error");
   }
-  if (status === "done") return <p className="font-serif text-xl">You&apos;re signed up. We&apos;ll email your milestones once reminders start.</p>;
+  if (status === "done") return <p className="font-heading font-semibold text-xl">You&apos;re signed up. We&apos;ll email your milestones once reminders start.</p>;
   return (
     <form onSubmit={submit} className="space-y-3">
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
@@ -123,12 +123,12 @@ export function CountdownTool({ available }: { available: string[] }) {
             <div className="mx-auto mt-10 grid max-w-2xl grid-cols-4 gap-3 sm:gap-6" role="timer" aria-live="off">
               {parts.map(([label, n]) => (
                 <div key={label} className="rounded-2xl border border-ink/15 p-3 sm:p-5">
-                  <p className="font-serif text-4xl tabular-nums sm:text-6xl">{now === null ? "–" : n}</p>
+                  <p className="font-heading font-semibold text-4xl tabular-nums sm:text-6xl">{now === null ? "–" : n}</p>
                   <p className="mt-1 text-xs tracking-[0.2em] text-ink/70 uppercase">{label}</p>
                 </div>
               ))}
             </div>
-            {now !== null && left === 0 && <p className="mt-8 font-serif text-2xl">{tl?.past ? "This date has passed. Pick a new date to start a new countdown." : "It's here. Have a wonderful day."}</p>}
+            {now !== null && left === 0 && <p className="mt-8 font-heading font-semibold text-2xl">{tl?.past ? "This date has passed. Pick a new date to start a new countdown." : "It's here. Have a wonderful day."}</p>}
             <div className="mt-10 flex flex-wrap justify-center gap-3 print:hidden">
               <button
                 type="button"

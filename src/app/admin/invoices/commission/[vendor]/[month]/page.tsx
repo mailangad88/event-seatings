@@ -41,11 +41,11 @@ export default async function StatementPage(props: PageProps<"/admin/invoices/co
       <article data-print-doc className="card mx-auto max-w-3xl p-8 sm:p-10">
         <header className="flex flex-wrap items-start justify-between gap-6">
           <div>
-            <p className="font-serif text-3xl">{site.name}</p>
+            <p className="font-heading font-semibold text-3xl">{site.name}</p>
             <p className="mt-1 text-sm text-muted">{site.city}<br />{site.email}</p>
           </div>
           <div className="text-right text-sm">
-            <p className="font-serif text-2xl">Commission statement</p>
+            <p className="font-heading font-semibold text-2xl">Commission statement</p>
             <p className="mt-1 text-muted">No. {number}</p>
             <p className="text-muted">Issued {prettyDay(issued, long)}</p>
             <p className="text-muted">Due {prettyDay(addDays(issued, 15), long)}</p>

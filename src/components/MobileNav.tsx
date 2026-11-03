@@ -41,7 +41,7 @@ export function MobileNav({ menus }: { menus: MobileMenu[] }) {
         >
           {menus.map((m) => (
             <details key={m.id} className="group/sec border-b border-line">
-              <summary className="flex cursor-pointer list-none items-center justify-between py-4 font-serif text-2xl [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between py-4 font-heading font-semibold text-2xl [&::-webkit-details-marker]:hidden">
                 {m.label}
                 <Icon name="plus" size={18} className="text-accent transition-transform group-open/sec:rotate-45" />
               </summary>

@@ -27,7 +27,7 @@ export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
   }
 
   if (status === "done") {
-    return <p className="font-serif text-xl italic">Thank you. You&apos;re on the list.</p>;
+    return <p className="font-heading font-semibold text-xl">Thank you. You&apos;re on the list.</p>;
   }
 
   return (

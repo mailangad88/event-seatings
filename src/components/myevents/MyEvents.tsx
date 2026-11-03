@@ -186,7 +186,7 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
           <div className="flex flex-wrap items-start justify-between gap-6">
             <div className="min-w-0 flex-1">
               <label className="label" htmlFor="ev-name">Event name</label>
-              <input id="ev-name" className="field mt-1 font-serif text-2xl" value={current.name} maxLength={80} onChange={(e) => update({ name: e.target.value })} />
+              <input id="ev-name" className="field mt-1 font-heading font-semibold text-2xl" value={current.name} maxLength={80} onChange={(e) => update({ name: e.target.value })} />
               <h2 id="ev-title" className="sr-only">{current.name}</h2>
             </div>
             <div className="text-center" aria-live="polite">
@@ -194,11 +194,11 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
                 <p className="text-sm text-muted">Add a date to start the countdown</p>
               ) : days > 0 ? (
                 <>
-                  <p className="font-serif text-6xl leading-none text-gold">{days}</p>
+                  <p className="font-heading font-semibold text-6xl leading-none text-gold">{days}</p>
                   <p className="mt-1 text-sm text-muted">{days === 1 ? "day to go" : "days to go"}</p>
                 </>
               ) : days === 0 ? (
-                <p className="font-serif text-3xl text-gold">It&apos;s today!</p>
+                <p className="font-heading font-semibold text-3xl text-gold">It&apos;s today!</p>
               ) : (
                 <p className="text-sm text-muted">This event was {-days} days ago</p>
               )}
@@ -261,7 +261,7 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
         {/* Next up + weather */}
         <aside className="space-y-6">
           <section className="card p-6" aria-labelledby="next-up">
-            <h2 id="next-up" className="font-serif text-2xl">Next up</h2>
+            <h2 id="next-up" className="font-heading font-semibold text-2xl">Next up</h2>
             {next.length ? (
               <ul className="mt-4 space-y-3">
                 {next.map((t) => (
@@ -281,19 +281,19 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
 
           {wx && sun && current.date && (
             <section className="card p-6" aria-labelledby="wx-title">
-              <h2 id="wx-title" className="font-serif text-2xl">Your date in Chicago</h2>
+              <h2 id="wx-title" className="font-heading font-semibold text-2xl">Your date in Chicago</h2>
               <dl className="mt-4 grid grid-cols-3 gap-3 text-center">
                 <div className="well p-3">
                   <dt className="text-xs text-muted">Normal high</dt>
-                  <dd className="font-serif text-2xl">{Math.round(wx.high)}°F</dd>
+                  <dd className="font-heading font-semibold text-2xl">{Math.round(wx.high)}°F</dd>
                 </div>
                 <div className="well p-3">
                   <dt className="text-xs text-muted">Sunrise</dt>
-                  <dd className="font-serif text-xl">{sun.sunrise}</dd>
+                  <dd className="font-heading font-semibold text-xl">{sun.sunrise}</dd>
                 </div>
                 <div className="well p-3">
                   <dt className="text-xs text-muted">Sunset</dt>
-                  <dd className="font-serif text-xl">{sun.sunset}</dd>
+                  <dd className="font-heading font-semibold text-xl">{sun.sunset}</dd>
                 </div>
               </dl>
               {wx.notes.length > 0 && (
@@ -313,7 +313,7 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
 
       {days !== undefined && days >= 0 && days <= 30 && steps.some((s) => s.kind === "rush") && (
         <section className="card mt-10 border-gold/40 p-6 sm:p-8 print:hidden" aria-labelledby="rush-title">
-          <h2 id="rush-title" className="font-serif text-2xl">
+          <h2 id="rush-title" className="font-heading font-semibold text-2xl">
             {days <= 1 ? "Your event is almost here" : `${days} days to go: here's what still works`}
           </h2>
           <p className="mt-2 max-w-2xl text-muted">
@@ -328,7 +328,7 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
       )}
       {days !== undefined && days < 0 && (
         <section className="card mt-10 p-6 sm:p-8 print:hidden" aria-labelledby="past-title">
-          <h2 id="past-title" className="font-serif text-2xl">This date has passed</h2>
+          <h2 id="past-title" className="font-heading font-semibold text-2xl">This date has passed</h2>
           <p className="mt-2 max-w-2xl text-muted">If your event moved, change the date above and your checklist rebuilds from the days left. If it&apos;s over, here are a few things to wrap up.</p>
         </section>
       )}
@@ -341,7 +341,7 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
           {steps.map((s) => (
             <li key={s.when} className={s.kind === "rush" ? "card border-gold/50 p-5" : "card p-5"}>
               <p className="flex items-baseline justify-between gap-3">
-                <span className="font-serif text-xl">{s.when}</span>
+                <span className="font-heading font-semibold text-xl">{s.when}</span>
                 {s.date && <span className="text-sm text-muted">{s.date}</span>}
               </p>
               <ul className="mt-3 space-y-2">
@@ -363,7 +363,7 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
 
       <section className="mt-10 grid gap-6 md:grid-cols-2 print:hidden">
         <div className="card p-6">
-          <label htmlFor="ev-notes" className="font-serif text-2xl">Notes</label>
+          <label htmlFor="ev-notes" className="font-heading font-semibold text-2xl">Notes</label>
           <textarea id="ev-notes" className="field mt-3 min-h-32" placeholder="Venue contact, colours, ideas you saved…" value={current.notes ?? ""} maxLength={4000} onChange={(e) => update({ notes: e.target.value })} />
         </div>
         <CheckIn event={current} siteName={site.name} />
@@ -441,12 +441,12 @@ function CheckIn({ event, siteName }: { event: SavedEvent; siteName: string }) {
   }
   return (
     <div className="card p-6">
-      <h2 className="font-serif text-2xl">Want a free planning check-in?</h2>
+      <h2 className="display-3">Want a free planning check-in?</h2>
       <p className="mt-2 text-sm leading-6 text-muted">
         Leave your email and a {siteName} planner will reach out once before your first rental milestone, with what to book and when. No spam, and you can say no thanks.
       </p>
       {status === "done" ? (
-        <p className="mt-4 font-serif text-xl italic">Thank you. We&apos;ll be in touch.</p>
+        <p className="mt-4 font-heading font-semibold text-xl">Thank you. We&apos;ll be in touch.</p>
       ) : (
         <form onSubmit={submit} className="mt-4 flex gap-2">
           <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />

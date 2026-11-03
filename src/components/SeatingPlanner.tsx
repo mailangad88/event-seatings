@@ -142,7 +142,7 @@ export function SeatingPlanner() {
   const radio = <T extends string>(name: string, value: T, current: T, set: (v: T) => void, label: string) => (
     <label
       className={`flex cursor-pointer items-center justify-center border px-3 py-3 text-center text-sm transition-colors ${
-        current === value ? "border-gold bg-gold text-[#0a0806]" : "border-line bg-surface hover:bg-surface-2"
+        current === value ? "border-gold bg-gold text-accent-ink" : "border-line bg-surface hover:bg-surface-2"
       }`}
     >
       <input type="radio" name={name} value={value} checked={current === value} onChange={() => set(value)} className="sr-only" />
@@ -171,7 +171,7 @@ export function SeatingPlanner() {
               max={5000}
               value={guests}
               onChange={(e) => setGuests(Math.min(5000, Number(e.target.value)))}
-              className="field font-serif text-3xl"
+              className="field font-heading font-semibold text-3xl"
             />
           </div>
           <div>
@@ -271,15 +271,15 @@ export function SeatingPlanner() {
       {/* Results */}
       <div>
         <div className="border border-gold/60 bg-surface p-8 sm:p-10" aria-live="polite">
-          <p className="text-[11px] tracking-[0.25em] text-gold uppercase">Your seating plan</p>
-          <p className="headline mt-4 text-7xl leading-none sm:text-8xl">{plan.rentals}</p>
+          <p className="text-xs tracking-[0.25em] text-gold uppercase">Your seating plan</p>
+          <p className="headline mt-4 text-6xl leading-none sm:text-6xl">{plan.rentals}</p>
           <p className="mt-2 text-muted">estimated chairs to rent for {guests || 0} guests</p>
 
           <dl className="mt-8 grid grid-cols-2 gap-px bg-line">
             {stats.map(([k, v, hint]) => (
               <div key={k} className="bg-surface p-4">
-                <dt className="text-[10px] tracking-[0.2em] text-muted uppercase">{k}</dt>
-                <dd className="mt-1 font-serif text-4xl">{v}</dd>
+                <dt className="text-xs tracking-[0.2em] text-muted uppercase">{k}</dt>
+                <dd className="mt-1 font-heading font-semibold text-4xl">{v}</dd>
                 <dd className="text-xs text-muted">{hint}</dd>
               </div>
             ))}
@@ -300,7 +300,7 @@ export function SeatingPlanner() {
 
         <div className="mt-10">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="headline text-3xl">Your planning checklist</h2>
+            <h2 className="display-2">Your planning checklist</h2>
             {unlocked && (
               <button type="button" onClick={() => window.print()} className="link-line text-gold print:hidden">
                 Print or save as PDF
@@ -316,7 +316,7 @@ export function SeatingPlanner() {
                   className={`flex gap-4 border-b border-line pb-4 leading-7 ${hidden ? "select-none blur-[5px] print:hidden" : ""}`}
                   aria-hidden={hidden || undefined}
                 >
-                  <span className="font-serif text-xl text-gold italic">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-heading font-semibold text-xl text-gold">{String(i + 1).padStart(2, "0")}</span>
                   <span>{item}</span>
                 </li>
               );

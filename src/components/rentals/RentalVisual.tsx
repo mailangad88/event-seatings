@@ -53,7 +53,7 @@ export function RentalVisual({
   const alt = rentalAlt(item.name, item.specs, item.id);
   if (src) {
     return (
-      <div className={`relative overflow-hidden bg-[#efe9df] ${className}`}>
+      <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
         <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" />
       </div>
     );

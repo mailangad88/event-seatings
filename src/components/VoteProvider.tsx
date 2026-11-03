@@ -86,10 +86,10 @@ export function VoteButton({ slug, size = "sm" }: { slug: string; size?: "sm" | 
       aria-pressed={on}
       className={`inline-flex items-center gap-2 transition-colors duration-300 ${
         size === "lg"
-          ? `rounded-full border px-6 py-3 text-[15px] font-medium ${
+          ? `rounded-full border px-6 py-3 text-sm font-medium ${
               on ? "border-gold bg-gold text-accent-ink" : "border-gold/70 text-ink hover:bg-gold hover:text-accent-ink"
             }`
-          : `rounded-full bg-espresso/70 px-3 py-2 text-[10px] tracking-[0.18em] uppercase backdrop-blur ${
+          : `rounded-full bg-espresso/70 px-3 py-2 text-xs tracking-[0.18em] uppercase backdrop-blur ${
               on ? "text-gold" : "text-ink hover:text-gold"
             }`
       }`}

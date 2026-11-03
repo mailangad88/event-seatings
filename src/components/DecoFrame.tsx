@@ -17,7 +17,7 @@ export function DecoFrame({
       <span className={`${corner} -right-px -bottom-px border-r-2 border-b-2`} aria-hidden />
       {children}
       {label ? (
-        <span className="absolute -top-px left-1/2 -translate-x-1/2 -translate-y-1/2 bg-bg px-4 text-[10px] tracking-[0.38em] whitespace-nowrap text-gold uppercase">
+        <span className="absolute -top-px left-1/2 -translate-x-1/2 -translate-y-1/2 bg-bg px-4 text-xs tracking-[0.38em] whitespace-nowrap text-gold uppercase">
           {label}
         </span>
       ) : null}

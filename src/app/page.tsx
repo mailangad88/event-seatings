@@ -96,7 +96,7 @@ export default async function Home() {
             <p className="eyebrow">
               <Icon name="pin" size={14} /> Event rentals in Chicago and the suburbs
             </p>
-            <h1 className="headline mt-5 text-[2.9rem] leading-[1.02] sm:text-6xl lg:text-[4.6rem]">
+            <h1 className="display-1 mt-5">
               Everything for your event. <em className="text-gold">One</em> simple quote.
             </h1>
             <p className="lede mt-6 max-w-xl" data-answer>
@@ -195,7 +195,7 @@ export default async function Home() {
                   <Image src={l.scene.src} alt={l.scene.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-serif text-3xl">{l.name}</h3>
+                  <h3 className="display-2">{l.name}</h3>
                   <p className="mt-1 text-sm text-muted">{l.for}</p>
                   <ul className="mt-4 space-y-1.5 text-sm">
                     {l.items.map((it) => (
@@ -359,7 +359,7 @@ export default async function Home() {
                     <p className="text-xs text-muted">
                       {formatDate(p.date)} · {p.readingMinutes} min read
                     </p>
-                    <h3 className="mt-2 font-serif text-2xl leading-tight transition-colors group-hover:text-gold">{p.title}</h3>
+                    <h3 className="display-3 mt-2 transition-colors group-hover:text-gold">{p.title}</h3>
                     <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted">{p.description}</p>
                   </div>
                 </Link>

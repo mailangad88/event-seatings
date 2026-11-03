@@ -28,7 +28,7 @@ export default async function ApplicationsPage(props: PageProps<"/admin/applicat
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Admin</p>
-          <h1 className="mt-1 font-serif text-5xl">Vendor applications</h1>
+          <h1 className="display-2 mt-1">Vendor applications</h1>
           <p className="mt-2 max-w-2xl text-sm text-muted">
             Rental companies that signed up on /partners/onboard. Call each one, check their prices, then approve. Approving
             emails them (if you tick the box) and, when linked to a catalog vendor, moves that vendor to &ldquo;In talks&rdquo;.

@@ -66,7 +66,7 @@ export default function PartyIdeasHub() {
                     <Image src={sc.src} alt={`${t.name} ideas: ${t.sceneAlt}`} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover transition duration-700 group-hover:scale-[1.03]" />
                   </div>
                   <div className="p-4">
-                    <p className="font-serif text-xl leading-tight">{t.name}</p>
+                    <p className="font-heading font-semibold text-xl leading-tight">{t.name}</p>
                     <p className="mt-1 text-xs text-muted">{ideasFor(t.slug).length} themes · {t.setups.length} setups · {t.activities.length} activities</p>
                   </div>
                 </Link>

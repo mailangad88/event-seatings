@@ -68,7 +68,7 @@ export default function GalleryPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container-x py-20">
         <p className="eyebrow">Gallery</p>
-        <h1 className="headline mt-6 max-w-4xl text-5xl leading-[0.98] sm:text-7xl">
+        <h1 className="display-1 mt-6 max-w-4xl">
           Every rental, <em className="text-gold">true to size</em> before you book
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted">
@@ -128,7 +128,7 @@ export default function GalleryPage() {
                       width={it.width}
                       height={it.height}
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="aspect-square h-auto w-full bg-[#efe9df] object-cover"
+                      className="aspect-square h-auto w-full bg-surface-2 object-cover"
                     />
                     <figcaption className="mt-2 text-sm">{it.caption}</figcaption>
                   </figure>
@@ -150,7 +150,7 @@ export default function GalleryPage() {
                           width={it.width}
                           height={it.height}
                           sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 16vw"
-                          className="aspect-square h-auto w-full bg-[#efe9df] object-cover"
+                          className="aspect-square h-auto w-full bg-surface-2 object-cover"
                         />
                         <figcaption className="mt-1 text-xs text-muted">{it.caption}</figcaption>
                       </figure>
@@ -167,7 +167,7 @@ export default function GalleryPage() {
           <dl className="mt-8 space-y-8">
             {faqs.map((f) => (
               <div key={f.q}>
-                <dt className="font-serif text-2xl">{f.q}</dt>
+                <dt className="font-heading font-semibold text-2xl">{f.q}</dt>
                 <dd className="mt-2 text-muted">{f.a}</dd>
               </div>
             ))}

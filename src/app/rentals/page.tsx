@@ -122,20 +122,20 @@ export default function RentalsPage() {
                 ) : (
                   <div className="grid aspect-[4/3] place-items-center rounded-xl bg-gold-soft"><RentalIcon category={c.id} className="h-14 w-14 text-gold" /></div>
                 )}
-                <h3 className="mt-3 font-serif text-xl leading-tight font-medium sm:mt-4 sm:text-2xl">
+                <h3 className="display-3 mt-3 sm:mt-4">
                   <Link href={`/rentals/${c.id}`} className="after:absolute after:inset-0">
                     {c.name}
                   </Link>
                 </h3>
                 <p className="mt-1 line-clamp-2 text-sm leading-6 text-muted max-sm:hidden">{c.blurb}</p>
-                <p className="mt-2 text-[13px] font-medium text-gold sm:mt-3">
+                <p className="mt-2 text-sm font-medium text-gold sm:mt-3">
                   {items.length} items · from {formatPrice(from)}
                 </p>
               </li>
             ))}
             <li className="col-span-2 flex flex-col justify-between gap-6 bg-surface p-6">
               <div>
-                <h3 className="font-serif text-2xl font-medium">Need something not listed?</h3>
+                <h3 className="display-3">Need something not listed?</h3>
                 <p className="mt-2 max-w-md text-sm text-muted">
                   Generators, restrooms, staging, specialty linens, AV and more. Add it to your enquiry notes and we
                   source it from our partner network.

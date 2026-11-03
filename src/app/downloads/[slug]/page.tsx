@@ -85,7 +85,7 @@ export default async function DownloadPage(props: PageProps<"/downloads/[slug]">
                 </li>
               ))}
             </ul>
-            <h2 className="mt-10 font-serif text-2xl">Files you get</h2>
+            <h2 className="display-3 mt-10">Files you get</h2>
             <ul className="mt-4 grid gap-3">
               {d.files.map((f) => (
                 <li key={f.file} className="rounded-xl border border-line px-4 py-3">

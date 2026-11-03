@@ -229,7 +229,7 @@ export default async function AreaCategoryPage(props: Props) {
           <ul className="divide-y divide-line border-y border-line">
             {settings.map((s) => (
               <li key={s.name} className="py-6">
-                <h3 className="font-serif text-2xl">{s.name}</h3>
+                <h3 className="display-3">{s.name}</h3>
                 <p className="mt-2 leading-7 text-muted">{s.note}</p>
                 <p className="mt-2 leading-7">
                   <strong className="font-medium">{cat.name} here:</strong> {s.tip}
@@ -241,7 +241,7 @@ export default async function AreaCategoryPage(props: Props) {
             <Figure caption={`${loc.name} (${loc.region}) on our Chicagoland delivery map.`}>
               <AreaMap active={loc} />
             </Figure>
-            <h3 className="mt-10 font-serif text-2xl">Delivery notes for {loc.name}</h3>
+            <h3 className="display-3 mt-10">Delivery notes for {loc.name}</h3>
             <ul className="mt-4 space-y-3 leading-7 text-muted">
               {logistics.map((t) => (
                 <li key={t.slice(0, 24)}>{t}</li>
@@ -255,7 +255,7 @@ export default async function AreaCategoryPage(props: Props) {
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {cat.planning.map((p, i) => (
             <li key={p.title} className="card p-6">
-              <span className="font-serif text-3xl text-gold">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-heading font-semibold text-3xl text-gold">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-3 text-lg font-medium">{p.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{p.body}</p>
             </li>

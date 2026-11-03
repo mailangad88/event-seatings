@@ -91,7 +91,7 @@ export function DownloadGate({
     return (
       <div className="rounded-2xl border border-gold/40 bg-surface p-6" role="status">
         <p className="eyebrow">Your download is ready</p>
-        <p className="mt-2 font-serif text-2xl">{title}</p>
+        <p className="mt-2 font-heading font-semibold text-2xl">{title}</p>
         <ul className="mt-5 space-y-3">
           {files.map((f) => (
             <li key={f.file}>
@@ -117,7 +117,7 @@ export function DownloadGate({
     <form onSubmit={submit} className="rounded-2xl border border-line bg-surface p-6">
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
       <p className="eyebrow">Free download</p>
-      <p className="mt-2 font-serif text-2xl">Get the {title}</p>
+      <p className="mt-2 font-heading font-semibold text-2xl">Get the {title}</p>
       <p className="mt-1 text-sm text-muted">
         {files.map((f) => f.format).filter((v, i, a) => a.indexOf(v) === i).join(" + ")} · Instant access, no account needed.
       </p>

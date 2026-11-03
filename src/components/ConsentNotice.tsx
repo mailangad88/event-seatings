@@ -25,7 +25,7 @@ export function ConsentNotice() {
     <div
       role="region"
       aria-label="Privacy choice"
-      className="fixed inset-x-3 bottom-20 z-40 rounded-2xl border border-line bg-surface p-3.5 text-[0.8rem] sm:p-4 sm:text-sm text-ink shadow-[0_12px_40px_rgb(0_0_0/0.18)] sm:right-auto sm:bottom-6 sm:left-6 sm:max-w-sm"
+      className="fixed inset-x-3 bottom-20 z-40 rounded-2xl border border-line bg-surface p-3.5 text-sm sm:p-4 text-ink shadow-[0_12px_40px_rgb(0_0_0/0.18)] sm:right-auto sm:bottom-6 sm:left-6 sm:max-w-sm"
     >
       <p className="leading-5 sm:leading-6">
         We remember the pages you look at here, in your browser, and send them with any form you fill in so we know

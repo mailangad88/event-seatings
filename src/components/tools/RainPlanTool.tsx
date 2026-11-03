@@ -67,7 +67,7 @@ export function RainPlanTool({ sections, eventDateHref }: { sections: RainSectio
             <div className="h-3 flex-1 overflow-hidden rounded-full bg-surface-2" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label="Rain plan progress">
               <div className="h-full rounded-full bg-gold transition-[width]" style={{ width: `${pct}%` }} />
             </div>
-            <span className="font-serif text-2xl tabular-nums">{pct}%</span>
+            <span className="font-heading font-semibold text-2xl tabular-nums">{pct}%</span>
           </div>
           <div className="mt-6 space-y-5">
             {sections.map((sec) => (

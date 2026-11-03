@@ -20,7 +20,7 @@ export function TrustBar({ className = "" }: { className?: string }) {
             <Icon name={i.icon} size={20} />
           </span>
           <span>
-            <span className="block text-[15px] font-semibold">{i.title}</span>
+            <span className="block text-sm font-semibold">{i.title}</span>
             <span className="block text-sm leading-6 text-muted">{i.text}</span>
           </span>
         </li>

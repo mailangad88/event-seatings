@@ -49,7 +49,7 @@ export default async function VendorsPage(props: PageProps<"/admin/vendors">) {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Admin</p>
-          <h1 className="mt-1 font-serif text-5xl">Rental partners</h1>
+          <h1 className="display-2 mt-1">Rental partners</h1>
           <p className="mt-2 max-w-2xl text-sm text-muted">
             Every Chicago-area rental company in the catalog, who to call, and where each referral deal stands. Sorted by
             the quote value our leads have sent their way.
@@ -70,7 +70,7 @@ export default async function VendorsPage(props: PageProps<"/admin/vendors">) {
       </nav>
 
       <section className={`${card} mt-6 overflow-x-auto`}>
-        <h2 className="font-serif text-2xl">At a glance</h2>
+        <h2 className="display-3">At a glance</h2>
         <table className="mt-4 w-full min-w-[820px] text-sm">
           <thead className="text-left text-muted">
             <tr className="border-b border-line">
@@ -105,7 +105,7 @@ export default async function VendorsPage(props: PageProps<"/admin/vendors">) {
         {rows.map(({ v, p, s }) => (
           <section key={v.id} id={v.id} className={`${card} scroll-mt-24`}>
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h2 className="font-serif text-2xl">{v.name}</h2>
+              <h2 className="display-3">{v.name}</h2>
               <span className="text-xs text-muted tabular-nums">
                 {s.items.toLocaleString()} items · {s.quotes} quotes{s.value ? ` · ${usd(s.value, 0)}` : ""}
               </span>

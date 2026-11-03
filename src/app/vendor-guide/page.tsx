@@ -89,7 +89,7 @@ export default function VendorGuidePage() {
             <tbody className="divide-y divide-line">
               {occasions.map((o) => (
                 <tr key={o.id} className="align-top">
-                  <th className="p-3 font-serif text-lg font-normal">{o.name}</th>
+                  <th className="p-3 font-heading text-lg font-medium">{o.name}</th>
                   <td className="p-3">
                     <ul className="flex flex-wrap gap-1.5">
                       {o.essential.map((id) => <li key={id}><a href={`#${id}`} className="chip chip-active">{roles.find((r) => r.id === id)!.name}</a></li>)}
@@ -113,7 +113,7 @@ export default function VendorGuidePage() {
             <li key={r.id} id={r.id} className="card scroll-mt-24 p-6">
               <div className="flex items-center gap-3">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line text-gold"><Icon name={r.icon} size={22} /></span>
-                <h2 className="font-serif text-2xl">{r.name}</h2>
+                <h2 className="display-3">{r.name}</h2>
               </div>
               <p className="mt-3 leading-7 text-muted">{r.does}</p>
               <p className="mt-3 text-sm"><strong className="font-medium">When to book:</strong> {r.book}</p>

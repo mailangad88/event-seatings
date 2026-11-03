@@ -78,7 +78,7 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Bookings calendar</p>
-          <h1 className="mt-1 font-serif text-4xl sm:text-5xl">{title}</h1>
+          <h1 className="display-2 mt-1">{title}</h1>
           <p className="mt-2 text-sm text-muted">
             {totals.events} confirmed event{totals.events === 1 ? "" : "s"} · {totals.guests.toLocaleString()} guests · {totals.pending} pending ·
             capacity {capG.toLocaleString()} guests / {capE} events a day
@@ -118,7 +118,7 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
         <section id="day" className="card mt-6 scroll-mt-24 p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h2 className="font-serif text-2xl">{prettyDay(sel.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</h2>
+              <h2 className="display-3">{prettyDay(sel.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</h2>
               <p className="mt-1 text-sm text-muted">
                 {sel.load.confirmed.length} confirmed · {sel.load.guests} / {capG} guests · {sel.load.pending.length} pending
                 {sel.block && <> · <span className="text-rose">Blocked{sel.block.reason ? `: ${sel.block.reason}` : ""}</span></>}
@@ -182,11 +182,11 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
                   {load.pending.length ? ` · ${load.pending.length} pending` : ""}
                 </p>
                 {b ? (
-                  <p className="truncate text-[11px] text-rose">{b.reason || "Blocked"}</p>
+                  <p className="truncate text-xs text-rose">{b.reason || "Blocked"}</p>
                 ) : load.level === "full" ? (
-                  <p className="text-[11px] text-rose">Fully booked</p>
+                  <p className="text-xs text-rose">Fully booked</p>
                 ) : load.level === "limited" ? (
-                  <p className="text-[11px] text-amber">Limited availability</p>
+                  <p className="text-xs text-amber">Limited availability</p>
                 ) : null}
               </Link>
             );
@@ -197,7 +197,7 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
 
       {/* Phones: only the days with something on them. */}
       <section className="card mt-6 p-5 md:hidden">
-        <h2 className="font-serif text-2xl">Days with events</h2>
+        <h2 className="display-3">Days with events</h2>
         {dates.filter((d) => blocked.has(d) || loads.get(d)!.confirmed.length || loads.get(d)!.pending.length).length === 0 ? (
           <div className="mt-2"><Empty>Nothing this month.</Empty></div>
         ) : (
@@ -226,7 +226,7 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <section className="card p-6">
-          <h2 className="font-serif text-2xl">Blocked and limited days</h2>
+          <h2 className="display-3">Blocked and limited days</h2>
           {busy.length === 0 ? (
             <p className="mt-3 text-sm text-muted">None this month. Use Block a day when you are away or already at capacity.</p>
           ) : (
@@ -257,7 +257,7 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
           )}
         </section>
         <section className="card p-6">
-          <h2 className="font-serif text-2xl">How to read this</h2>
+          <h2 className="display-3">How to read this</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
             <li>Events and guests count bookings a rental partner has confirmed or the customer has paid for. Requests and quotes still open show as pending.</li>
             <li>

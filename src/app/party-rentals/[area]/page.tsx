@@ -134,7 +134,7 @@ export default async function AreaRentalsPage(props: Props) {
                   <img src={s.src} alt={`${s.alt} (${c.label.toLowerCase()} in ${loc.name})`} width={480} height={270} loading="lazy" className="h-full w-full object-cover" />
                 </div>
                 <div className="p-5">
-                  <h2 className="font-serif text-2xl">
+                  <h2 className="display-3">
                     <Link href={localCategoryPath(loc.slug, c)} className="after:absolute after:inset-0">{c.label}</Link>
                   </h2>
                   <p className="mt-1 text-sm text-muted">
@@ -178,7 +178,7 @@ export default async function AreaRentalsPage(props: Props) {
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {events.map((e) => (
               <li key={e.slug} className="card p-5">
-                <h3 className="font-serif text-xl">
+                <h3 className="font-heading font-semibold text-xl">
                   <Link href={eventPath(e)} className="link-line">{e.shortName}</Link>
                 </h3>
                 <p className="mt-2 line-clamp-3 text-sm text-muted">{e.intro}</p>

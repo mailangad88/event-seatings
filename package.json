@@ -15,7 +15,8 @@
     "seo-audit": "node scripts/seo-audit.mjs",
     "indexnow": "node scripts/indexnow.mjs",
     "audit:ux": "node scripts/ux-audit.mjs",
-    "check:copy": "node scripts/check-copy.mjs"
+    "check:copy": "node scripts/check-copy.mjs",
+    "check:design": "node scripts/check-design.mjs"
   },
   "dependencies": {
     "@growthbook/growthbook": "^2.0.0",

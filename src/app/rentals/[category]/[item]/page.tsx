@@ -242,8 +242,8 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             )}
           </div>
           <div className="md:py-4">
-            <p className="font-serif text-lg text-gold italic">{c.name} rental · {site.market}</p>
-            <h1 className="headline mt-4 text-5xl leading-[1] sm:text-6xl">{i.name}</h1>
+            <p className="font-heading font-semibold text-lg text-gold">{c.name} rental · {site.market}</p>
+            <h1 className="display-1 mt-4">{i.name}</h1>
             <p className="mt-6 text-lg leading-8" data-answer>
               Rent {withArticle(lower(i.name))} in {site.market} and the suburbs for{" "}
               <strong className="font-medium">
@@ -307,7 +307,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             <dl className="mt-10 border-t border-line text-sm">
               {facts.map(([k, v]) => (
                 <div key={k} className="grid grid-cols-[130px_1fr] gap-4 border-b border-line py-4">
-                  <dt className="text-[11px] tracking-[0.2em] text-muted uppercase">{k}</dt>
+                  <dt className="text-xs tracking-[0.2em] text-muted uppercase">{k}</dt>
                   <dd>{v}</dd>
                 </div>
               ))}
@@ -383,7 +383,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             </figcaption>
             <table className="mt-6 w-full text-sm">
               <thead>
-                <tr className="text-left text-[10px] tracking-[0.18em] text-muted uppercase">
+                <tr className="text-left text-xs tracking-[0.18em] text-muted uppercase">
                   <th className="pb-2 font-medium">{i.perGuest ? "Event size" : "Quantity"}</th>
                   <th className="pb-2 text-right font-medium">Qty</th>
                   <th className="w-2/5 pb-2" aria-hidden />
@@ -409,7 +409,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </figure>
           <div>
             <p className="eyebrow">Planning tips</p>
-            <h2 className="headline mt-6 mb-8 text-4xl">Getting {c.name.toLowerCase()} right</h2>
+            <h2 className="display-2 mt-6 mb-8">Getting {c.name.toLowerCase()} right</h2>
             <Steps steps={c.planning.slice(0, 4)} compact />
           </div>
         </section>

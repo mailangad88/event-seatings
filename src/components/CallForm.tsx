@@ -48,7 +48,7 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
     return (
       <div className="border border-line bg-surface px-6 py-14 text-center sm:px-12">
         <p className="eyebrow justify-center">Call requested</p>
-        <h2 className="headline mt-6 text-5xl">
+        <h2 className="display-2 mt-6">
           Talk <em className="text-gold">soon</em>.
         </h2>
         <p className="mx-auto mt-5 max-w-md leading-8 text-muted">

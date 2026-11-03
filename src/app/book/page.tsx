@@ -39,7 +39,7 @@ export default async function BookPage(props: PageProps<"/book">) {
       <div className="grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-end">
         <div>
           <p className="eyebrow">Free {site.callLength} planning call</p>
-          <h1 className="headline mt-6 text-6xl leading-[0.95] sm:text-7xl">
+          <h1 className="display-1 mt-6">
             Let&apos;s plan your <em className="text-gold">event</em>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
@@ -53,7 +53,7 @@ export default async function BookPage(props: PageProps<"/book">) {
       <ol className="mt-16 grid gap-5 md:grid-cols-3">
         {agenda.map(([t, d], i) => (
           <li key={t} className="well p-6">
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-surface font-serif text-xl text-gold shadow-soft">{i + 1}</span>
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-surface font-heading font-semibold text-xl text-gold shadow-soft">{i + 1}</span>
             <h2 className="mt-4 text-lg font-medium">{t}</h2>
             <p className="mt-3 leading-7 text-muted">{d}</p>
           </li>
@@ -64,7 +64,7 @@ export default async function BookPage(props: PageProps<"/book">) {
         <div className="card p-6 sm:p-10">
           {site.bookingUrl ? (
             <>
-              <h2 className="headline text-4xl">Pick a time</h2>
+              <h2 className="display-2">Pick a time</h2>
               <p className="mt-3 text-muted">Choose any open slot. You&apos;ll get a calendar invite right away.</p>
               <iframe
                 src={site.bookingUrl}
@@ -82,7 +82,7 @@ export default async function BookPage(props: PageProps<"/book">) {
             </>
           ) : (
             <>
-              <h2 className="headline text-4xl">Request your call</h2>
+              <h2 className="display-2">Request your call</h2>
               <p className="mt-3 mb-10 text-muted">Tell us when suits you and we&apos;ll call within one business day.</p>
               <CallForm source={source} />
             </>

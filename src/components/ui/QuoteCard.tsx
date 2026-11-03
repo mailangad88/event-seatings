@@ -10,7 +10,7 @@ export function QuoteCard({ source, title = "Planning an event?" }: { source?: s
       <span className="grid h-11 w-11 place-items-center rounded-full bg-gold-soft text-gold">
         <Icon name="quote" size={22} />
       </span>
-      <p className="mt-4 font-serif text-2xl leading-tight">{title}</p>
+      <p className="mt-4 font-heading font-semibold text-2xl leading-tight">{title}</p>
       <p className="mt-2 text-sm leading-6 text-muted">
         Pick your rentals, see live prices and get one quote for everything, delivered across {site.marketLong}.
       </p>

@@ -82,7 +82,7 @@ export function guideHub(family: GuideFamily, intro: string) {
           <div className="container-x py-14">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
             <p className="eyebrow">Planning guides</p>
-            <h1 className="headline mt-5 max-w-3xl text-4xl leading-[1.05] sm:text-6xl">{family.hubTitle}</h1>
+            <h1 className="display-1 mt-5 max-w-3xl">{family.hubTitle}</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-muted" data-answer>{intro}</p>
             <div className="mt-10 grid max-w-3xl grid-cols-3 gap-4">
               {sample.map((c) => (

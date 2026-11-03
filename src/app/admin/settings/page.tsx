@@ -75,7 +75,7 @@ export default function SettingsPage() {
                   <div className="min-w-0">
                     <p className="font-medium">{r.name}</p>
                     <p className="text-xs text-muted">{r.what}</p>
-                    {!r.ok && <p className="mt-1 font-mono text-[11px] text-muted [overflow-wrap:anywhere]">{r.keys}</p>}
+                    {!r.ok && <p className="mt-1 font-mono text-xs text-muted [overflow-wrap:anywhere]">{r.keys}</p>}
                   </div>
                   <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs ${r.ok ? "bg-sage text-white" : "bg-surface-2 text-muted"}`}>{r.ok ? "On" : "Off"}</span>
                 </li>

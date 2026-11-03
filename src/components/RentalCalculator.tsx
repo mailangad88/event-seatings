@@ -76,7 +76,7 @@ export function RentalCalculator({ chairs, groups }: { chairs: CalcItem[]; group
           </p>
           <p className="text-right">
             <span className="block text-xs text-muted">Rental estimate before delivery, setup and tax</span>
-            <span className="font-serif text-4xl tabular-nums" aria-live="polite">{usd(total)}</span>
+            <span className="font-heading font-semibold text-4xl tabular-nums" aria-live="polite">{usd(total)}</span>
           </p>
         </div>
         <ul className="mt-6 divide-y divide-line rounded-2xl border border-line bg-surface">

@@ -58,7 +58,7 @@ function Links({ path }: { path: string }) {
     <nav aria-label="Admin" className="space-y-6">
       {adminNav.map((g) => (
         <div key={g.group}>
-          <p className="px-3 text-[11px] font-medium tracking-[0.18em] text-muted uppercase">{g.group}</p>
+          <p className="px-3 text-xs font-medium tracking-[0.18em] text-muted uppercase">{g.group}</p>
           <ul className="mt-2 space-y-1">
             {g.items.map((it) => {
               const on = isActive(path, it.href);
@@ -67,7 +67,7 @@ function Links({ path }: { path: string }) {
                   <Link
                     href={it.href}
                     aria-current={on ? "page" : undefined}
-                    className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2 text-[15px] transition-colors ${
+                    className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors ${
                       on ? "bg-accent text-accent-ink" : "text-ink hover:bg-surface-2"
                     }`}
                   >
@@ -99,7 +99,7 @@ export function AdminMobileNav() {
   const current = adminNav.flatMap((g) => g.items).find((it) => isActive(path, it.href));
   return (
     <details ref={ref} className="group border-b border-line bg-surface lg:hidden">
-      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 text-[15px] font-medium [&::-webkit-details-marker]:hidden">
+      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 text-sm font-medium [&::-webkit-details-marker]:hidden">
         <span className="flex items-center gap-2">
           <Icon name="menu" size={18} />
           {current?.label ?? "Menu"}

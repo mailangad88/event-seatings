@@ -58,7 +58,7 @@ export default async function AnswersPage() {
       <div className="grid items-end gap-12 md:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="eyebrow">Chicago event chair answers</p>
-          <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+          <h1 className="display-1 mt-6">
             Every question about renting <em className="text-gold">chairs</em>, answered
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-muted" data-answer>
@@ -66,7 +66,7 @@ export default async function AnswersPage() {
             company in {site.city}, written so you can plan in minutes: how many chairs you need, what they cost,
             which styles survive a Chicago summer and how delivery works at your venue.
           </p>
-          <p className="mt-4 text-[11px] tracking-[0.22em] text-muted uppercase">
+          <p className="mt-4 text-xs tracking-[0.22em] text-muted uppercase">
             Updated {formatDate(answersUpdated)} · {allAnswers.length} answers
           </p>
         </div>
@@ -74,7 +74,7 @@ export default async function AnswersPage() {
           href="/seating-planner"
           className="group block border border-gold/60 bg-gold-soft/40 p-8 transition-colors hover:bg-gold-soft"
         >
-          <p className="text-[11px] tracking-[0.25em] text-gold uppercase">Free tool</p>
+          <p className="text-xs tracking-[0.25em] text-gold uppercase">Free tool</p>
           <p className="headline mt-3 text-3xl leading-tight">The Chicago event seating planner</p>
           <p className="mt-3 leading-7 text-muted">
             Your exact chair and table count in 60 seconds, plus a printable planning checklist.
@@ -95,10 +95,10 @@ export default async function AnswersPage() {
         <section key={topic.id} id={topic.id} className="scroll-mt-40 border-b border-line py-20">
           <div className="grid gap-12 md:grid-cols-[1fr_1.3fr] md:gap-16">
             <div className={i % 2 ? "md:order-2" : ""}>
-              <p className="text-[11px] tracking-[0.25em] text-gold uppercase">
+              <p className="text-xs tracking-[0.25em] text-gold uppercase">
                 {String(i + 1).padStart(2, "0")} / {String(answerTopics.length).padStart(2, "0")}
               </p>
-              <h2 className="headline mt-4 text-4xl leading-tight sm:text-5xl">{topic.title}</h2>
+              <h2 className="display-2 mt-4">{topic.title}</h2>
               <p className="mt-4 leading-7 text-muted">{topic.intro}</p>
               <Image
                 src={topic.image.src}
@@ -115,7 +115,7 @@ export default async function AnswersPage() {
               {topic.answers.map((x, j) => (
                 <details key={x.q} className="group border-b border-line" open={j === 0}>
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
-                    <h3 className="font-serif text-2xl leading-snug">{x.q}</h3>
+                    <h3 className="display-3">{x.q}</h3>
                     <span
                       className="text-xl font-light text-gold transition-transform duration-300 group-open:rotate-45"
                       aria-hidden
@@ -141,7 +141,7 @@ export default async function AnswersPage() {
       {posts.length > 0 && (
         <section className="py-20">
           <p className="eyebrow">Go deeper</p>
-          <h2 className="headline mt-6 text-4xl sm:text-5xl">Guides for Chicago hosts</h2>
+          <h2 className="display-2 mt-6">Guides for Chicago hosts</h2>
           <div className="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-3">
             {posts.map((p) => (
               <Link key={p.slug} href={`/blog/${p.slug}`} className="group block border-t border-line pt-6">
@@ -155,8 +155,8 @@ export default async function AnswersPage() {
                     className="mb-6 aspect-[4/5] w-full object-cover"
                   />
                 )}
-                <p className="text-[11px] tracking-[0.2em] text-muted uppercase">{p.readingMinutes} min read</p>
-                <h3 className="headline mt-3 text-2xl leading-tight transition-colors group-hover:text-gold">
+                <p className="text-xs tracking-[0.2em] text-muted uppercase">{p.readingMinutes} min read</p>
+                <h3 className="display-3 mt-3 transition-colors group-hover:text-gold">
                   {p.title}
                 </h3>
                 <p className="mt-3 line-clamp-3 leading-7 text-muted">{p.description}</p>
@@ -168,7 +168,7 @@ export default async function AnswersPage() {
 
       <section className="paper mt-8 px-6 py-16 text-center sm:px-16">
         <p className="eyebrow">Still deciding?</p>
-        <h2 className="headline mt-6 text-4xl sm:text-6xl">
+        <h2 className="display-2 mt-6">
           Talk it through with a <em className="text-gold">seating</em> specialist
         </h2>
         <p className="mx-auto mt-5 max-w-xl leading-8 text-muted">

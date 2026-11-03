@@ -24,7 +24,7 @@ export default async function AdminReferralsPage() {
   return (
     <div className="container-x py-12">
       <p className="eyebrow mt-3">Admin</p>
-      <h1 className="mt-1 font-serif text-5xl">Referrals</h1>
+      <h1 className="display-2 mt-1">Referrals</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted">
         People who made a share link on /refer, and the leads that came in through it (kept for 90 days in the visitor&apos;s browser).
         {reward ? ` Reward shown on the site: ${reward}.` : " No reward is promised on the site; set REFERRAL_REWARD once you've chosen a real one."}
@@ -37,7 +37,7 @@ export default async function AdminReferralsPage() {
         ].map(([label, n]) => (
           <div key={label} className="card p-5">
             <p className="text-sm text-muted">{label}</p>
-            <p className="mt-1 font-serif text-4xl">{n}</p>
+            <p className="mt-1 font-heading font-semibold text-4xl">{n}</p>
           </div>
         ))}
       </div>

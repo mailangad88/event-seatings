@@ -38,7 +38,7 @@ export function ThisOrThat() {
         <p className="mx-auto mt-4 max-w-md text-muted">
           Your choices have been saved to your wishlist and counted toward our founding collection.
         </p>
-        <ul className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-x-6 gap-y-2 font-serif text-xl italic">
+        <ul className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-x-6 gap-y-2 font-heading font-semibold text-xl">
           {picks.map((c) => (
             <li key={c.slug}>
               <Link href={`/chairs/${c.slug}`} className="hover:text-gold">{c.name}</Link>
@@ -68,7 +68,7 @@ export function ThisOrThat() {
   return (
     <div>
       <div className="mb-6 flex items-center justify-between gap-6">
-        <span className="text-[11px] tracking-[0.25em] text-muted uppercase">
+        <span className="text-xs tracking-[0.25em] text-muted uppercase">
           {String(round + 1).padStart(2, "0")} / {String(matchups.length).padStart(2, "0")}
         </span>
         <span className="relative h-px flex-1 bg-line">
@@ -85,13 +85,13 @@ export function ThisOrThat() {
             <span className="block overflow-hidden">
               <ChairArt chair={chair} className="aspect-[4/5] transition-transform duration-700 group-hover:scale-[1.04]" />
             </span>
-            <span className="mt-3 block font-serif text-lg leading-tight font-light sm:text-2xl">{chair.name}</span>
-            <span className="mt-1 block text-[10px] tracking-[0.22em] text-muted uppercase transition-colors group-hover:text-gold">
+            <span className="mt-3 block font-heading text-lg leading-tight font-medium sm:text-2xl">{chair.name}</span>
+            <span className="mt-1 block text-xs tracking-[0.22em] text-muted uppercase transition-colors group-hover:text-gold">
               Choose →
             </span>
           </button>
         ))}
-        <span className="order-2 font-serif text-2xl text-gold italic sm:text-4xl">or</span>
+        <span className="order-2 font-heading font-semibold text-2xl text-gold sm:text-4xl">or</span>
       </div>
     </div>
   );

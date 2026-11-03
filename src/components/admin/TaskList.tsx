@@ -18,7 +18,7 @@ export function TaskList({ tasks, today, showDue = true }: { tasks: EventTask[];
         <li key={`${t.lead.id}-${t.key}`} className="flex flex-wrap items-start justify-between gap-3 py-3">
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <span className={`rounded-full px-2 py-0.5 text-[11px] ${kindTone[t.kind]}`}>{kindLabel[t.kind]}</span>
+              <span className={`rounded-full px-2 py-0.5 text-xs ${kindTone[t.kind]}`}>{kindLabel[t.kind]}</span>
               <span className="font-medium">{t.title}</span>
               {showDue && t.due < today && <span className="text-xs text-rose">overdue since {prettyDay(t.due)}</span>}
             </div>

@@ -32,11 +32,11 @@ export default async function ReceiptPage(props: PageProps<"/admin/invoices/rece
       <article data-print-doc className="card mx-auto max-w-2xl p-8 sm:p-10">
         <header className="flex flex-wrap items-start justify-between gap-6">
           <div>
-            <p className="font-serif text-3xl">{site.name}</p>
+            <p className="font-heading font-semibold text-3xl">{site.name}</p>
             <p className="mt-1 text-sm text-muted">{site.city}<br />{site.email}{site.phone && <><br />{site.phone}</>}</p>
           </div>
           <div className="text-right text-sm">
-            <p className="font-serif text-2xl">Receipt</p>
+            <p className="font-heading font-semibold text-2xl">Receipt</p>
             <p className="mt-1 text-muted">No. {number}</p>
             <p className="text-muted">Paid {prettyDay(chicagoDay(lead.fee_paid_at ?? lead.created_at), long)}</p>
           </div>

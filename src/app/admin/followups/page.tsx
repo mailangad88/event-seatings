@@ -94,7 +94,7 @@ export default async function FollowupsPage() {
       </Panel>
 
       <section className="mt-6 text-sm text-muted">
-        <h2 className="font-serif text-2xl text-ink">How the automatic follow-ups work</h2>
+        <h2 className="display-3 text-ink">How the automatic follow-ups work</h2>
         <ul className="mt-2 list-disc space-y-1 pl-5">
           <li>Quote and call requests get up to 4 emails over 2 weeks, but only while the lead is still New. Move it on when you reply and they stop.</li>
           <li>Download and quiz sign-ups who said yes to tips get 3 planning emails.</li>
