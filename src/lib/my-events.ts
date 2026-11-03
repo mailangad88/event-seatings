@@ -4,7 +4,7 @@
 import { plannerEvents, timeline, type PlanInput, type SettingId, type StyleId } from "./event-plan";
 
 export const EVENTS_KEY = "bc-events-v1";
-export const PLANNER_KEY = "bc-planner-v1"; // written by the /quote planner (EventPlanner.tsx)
+export const PLANNER_KEYS = ["bc-planner-v2", "bc-planner-v1"]; // written by the /quote planner (EventPlanner.tsx), newest first
 
 export type SavedEvent = {
   id: string;

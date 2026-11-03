@@ -9,7 +9,7 @@ import { CLIMATE_SOURCE, sunTimes, weatherNotes } from "@/lib/chicago-climate";
 import { plannerEvents, settings, styles } from "@/lib/event-plan";
 import {
   EVENTS_KEY,
-  PLANNER_KEY,
+  PLANNER_KEYS,
   blankEvent,
   checklist,
   daysUntil,
@@ -59,7 +59,7 @@ const fmtLong = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString(
 
 export function MyEvents({ site }: { site: { name: string; url: string } }) {
   const raw = useSyncExternalStore(subscribe, () => readKey(EVENTS_KEY), () => null);
-  const plannerRaw = useSyncExternalStore(noop, () => readKey(PLANNER_KEY), () => null);
+  const plannerRaw = useSyncExternalStore(noop, () => PLANNER_KEYS.map(readKey).find(Boolean) ?? null, () => null);
   const search = useSyncExternalStore(noop, () => window.location.search, () => "");
   const hydrated = useSyncExternalStore(noop, () => true, () => false);
 
