@@ -745,6 +745,10 @@ export function QuoteForm({
         <div>
           <label className="label" htmlFor="email">Email</label>
           <input id="email" name="email" type="email" required autoComplete="email" className="field" />
+          <label className="mt-3 flex cursor-pointer items-start gap-3 text-xs leading-5 text-muted">
+            <input type="checkbox" name="email_consent" value="yes" className="mt-0.5 accent-[var(--gold)]" />
+            <span>Also email me planning tips and reminders for my date. Unsubscribe in one click.</span>
+          </label>
         </div>
         <div>
           <label className="label" htmlFor="phone">Phone, optional</label>
@@ -752,6 +756,10 @@ export function QuoteForm({
           <label className="mt-3 flex cursor-pointer items-start gap-3 text-xs leading-5 text-muted">
             <input type="checkbox" name="sms_consent" value="yes" className="mt-0.5 accent-[var(--gold)]" />
             <span>Text me about my quote. Message and data rates may apply; reply STOP to opt out at any time.</span>
+          </label>
+          <label className="mt-2 flex cursor-pointer items-start gap-3 text-xs leading-5 text-muted">
+            <input type="checkbox" name="call_consent" value="yes" className="mt-0.5 accent-[var(--gold)]" />
+            <span>It&apos;s OK to call me about this quote.</span>
           </label>
         </div>
         <div className="sm:col-span-2">

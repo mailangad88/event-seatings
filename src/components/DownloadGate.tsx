@@ -160,9 +160,12 @@ export function DownloadGate({
         {status === "sending" ? "Unlocking…" : "Send me the free download"}
       </button>
       {status === "error" && <p className="mt-2 text-sm text-rose">{error}</p>}
-      <p className="mt-3 text-xs text-muted">
-        We&apos;ll send occasional planning tips. Unsubscribe any time. See our <a className="link" href="/privacy">privacy policy</a>.
-      </p>
+      <label className="mt-3 flex cursor-pointer items-start gap-2 text-xs leading-5 text-muted">
+        <input type="checkbox" name="email_consent" value="yes" className="mt-0.5 accent-[var(--gold)]" />
+        <span>
+          Also send me occasional planning tips. Unsubscribe in one click. See our <a className="link" href="/privacy">privacy policy</a>.
+        </span>
+      </label>
     </form>
   );
 }
