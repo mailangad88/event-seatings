@@ -144,7 +144,7 @@ export const chicagoLocations: Location[] = [
     faqs: [
       {
         q: "Can you deliver event chairs to an office building in the Loop?",
-        a: "Yes. We schedule Loop deliveries around your building's dock and freight elevator times, Many buildings also require a certificate of insurance, which we can't issue yet, so share your building's vendor rules when you request a quote and we'll tell you up front whether we can meet them.",
+        a: "Yes. We schedule Loop deliveries around your building's dock and freight elevator times. Many buildings also require a certificate of insurance, which we can't issue yet, so share your building's vendor rules when you request a quote and we'll tell you up front whether we can meet them.",
       },
       {
         q: "What is a COI and why does my Loop venue want one?",
@@ -390,7 +390,7 @@ export const chicagoLocations: Location[] = [
     faqs: [
       {
         q: "Can you deliver chairs to a doorman building in the Gold Coast?",
-        a: "Yes. We coordinate with your building on the service entrance, elevator reservation Many buildings also require a vendor certificate of insurance, which we can't issue yet, so check the building's vendor rules and share them when you request a quote.",
+        a: "Yes. We coordinate with your building on the service entrance, elevator reservation and any building rules. Many buildings also require a vendor certificate of insurance, which we can't issue yet, so check the building's vendor rules and share them when you request a quote.",
       },
       {
         q: "What chairs work for a formal dinner party at home?",

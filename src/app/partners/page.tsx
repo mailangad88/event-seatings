@@ -147,6 +147,14 @@ export default function PartnersPage() {
         </div>
       </Section>
 
+      <Section eyebrow="Already listed?" title="Your rates, your call">
+        <Callout title="We use published rates, and you can opt out any time">
+          Our price estimates use rates rental companies publish on their own websites. We never show your company name, and most
+          companies listed haven&apos;t signed anything with us. To correct or remove your items, use the{" "}
+          <a href="/vendor-listings" className="text-accent">listing request form</a>. Removals take up to 2 business days.
+        </Callout>
+      </Section>
+
       <Section eyebrow="Questions" title="Partner FAQ">
         <FaqList faqs={faqs} className="max-w-3xl" />
       </Section>
