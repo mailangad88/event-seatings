@@ -7,7 +7,7 @@ import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from
 import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
-import { imagesFor, originalImage, rentalImage, rentalImageJsonLd, styledImage } from "@/data/rental-images";
+import { imagesFor, originalImage, rentalImage, rentalImageJsonLd, soloImage, styledImage } from "@/data/rental-images";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { allInEstimate } from "@/lib/fees";
 import { PriceDisclaimer } from "@/components/ui";
@@ -128,6 +128,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   // When the hero is a styled event scene, also show the plain render so the exact piece is clear.
   const scene = styledImage(i.id);
   const plain = scene ? originalImage(i.id) : undefined;
+  const solo = soloImage(i.id);
 
   const jsonLd = [
     {
@@ -144,6 +145,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             ? imagesFor(i.id).map((m) => rentalImageJsonLd(m))
             : [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }]
           : []),
+        ...(solo ? [rentalImageJsonLd(solo)] : []),
         ...(plain ? [rentalImageJsonLd(plain)] : []),
         ...gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))),
       ],
@@ -279,23 +281,27 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </div>
         </div>
 
-        {scene && plain && (
+        {(solo || (scene && plain)) && (
           <section className="mt-24" aria-labelledby="piece-itself">
             <p className="eyebrow">The piece itself</p>
             <h2 id="piece-itself" className="headline mt-6 text-4xl">
               {i.name} on its own
             </h2>
             <p className="mt-4 max-w-2xl text-muted">
-              The photo at the top is an AI-generated example of how this rental can be styled; the guests and venue are
-              not real. This render shows the item itself, built from the rental&apos;s real dimensions.
+              A closer look at a single piece, so you can see its shape, finish and colour.
+              {plain && " The plain render is built from the rental\u2019s real dimensions."}
             </p>
-            <figure className="mt-8 max-w-xl">
-              <div className="media relative overflow-hidden" style={{ aspectRatio: `${plain.width} / ${plain.height}` }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={plain.src} alt={plain.alt} width={plain.width} height={plain.height} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-              </div>
-              <figcaption className="mt-2 text-xs text-muted">{plain.caption}</figcaption>
-            </figure>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+              {[solo, plain].filter((m): m is NonNullable<typeof m> => !!m).map((m) => (
+                <figure key={m.src}>
+                  <div className="media relative overflow-hidden" style={{ aspectRatio: `${m.width} / ${m.height}` }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={m.src} alt={m.alt} width={m.width} height={m.height} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+                  </div>
+                  <figcaption className="mt-2 text-xs text-muted">{m.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
           </section>
         )}
 
