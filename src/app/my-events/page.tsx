@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/my-events" },
-  openGraph: { title, description, url: "/my-events", images: [{ url: "/rentals/scenes/garden-ceremony.webp", alt: "Garden ceremony set with white chairs and an arch" }] },
+  openGraph: { title, description, url: "/my-events", images: [{ url: "/rentals/styled/garden-ceremony.webp", alt: "Garden ceremony set with white chairs and an arch" }] },
 };
 
 const faqs: Faq[] = [
@@ -87,7 +87,7 @@ export default function MyEventsPage() {
         eyebrow="Free event planner"
         title="Your event, counted down and checked off."
         intro="Save your date once and come back any time: a countdown, a checklist dated back from your event, Chicago weather and sunset for your date, and reminders in your own calendar. No sign-up."
-        media={<Figure src="/rentals/scenes/garden-ceremony.webp" alt="Garden ceremony set with white chairs facing a floral arch" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="Plan the ceremony, reception and everything around it in one place." />}
+        media={<Figure src="/rentals/styled/garden-ceremony.webp" alt="Garden ceremony set with white chairs facing a floral arch" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="Plan the ceremony, reception and everything around it in one place." />}
       />
 
       <Section>

@@ -73,7 +73,7 @@ function answerExtras(i: CatalogItem, price: number): string {
 export async function generateMetadata(props: PageProps<"/rentals/[category]/[item]">): Promise<Metadata> {
   const i = await load(props);
   if (!i) return {};
-  const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) && !rentalImage(i.id)?.ai ? undefined : rentalImagePath(i.id, i.categoryId);
   const real = photosForItem(i);
   const og = img
     ? { url: img, alt: rentalAlt(i.name, i.specs, i.id) }
@@ -155,15 +155,17 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const cheaper = range.slice(Math.max(0, rank - 2), rank).filter((x) => x.name !== i.name);
   const pricier = range.slice(rank + 1, rank + 3).filter((x) => x.name !== i.name);
   const rangeName = (i.section ?? c.name).toLowerCase();
-  const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) && !rentalImage(i.id)?.ai ? undefined : rentalImagePath(i.id, i.categoryId);
   // Real event photos: the same item type when we have it, otherwise general photos of the category.
   const real = photosForItem(i);
   const gallery = (real.matched ? real.photos : categoryPhotos(i.categoryId)).slice(0, 3);
   const galleryAlt = (p: (typeof gallery)[number]) => stockAlt(p, i.name, real.matched, site.market);
-  // When the hero is a styled event scene, also show the plain render so the exact piece is clear.
-  const scene = styledImage(i.id);
-  const plain = scene ? originalImage(i.id) : undefined;
+  // The hero is the realistic product photo; the event scene and the single-piece shot come second.
+  const lead = rentalImage(i.id);
+  const sceneImg = styledImage(i.id);
+  const scene = sceneImg && sceneImg.src !== lead?.src ? sceneImg : undefined;
   const solo = soloImage(i.id);
+  const plain = !scene && sceneImg ? originalImage(i.id) : undefined;
 
   const jsonLd = [
     {
@@ -180,6 +182,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             ? imagesFor(i.id).map((m) => rentalImageJsonLd(m))
             : [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }]
           : []),
+        ...(scene ? [rentalImageJsonLd(scene)] : []),
         ...(solo ? [rentalImageJsonLd(solo)] : []),
         ...(plain ? [rentalImageJsonLd(plain)] : []),
         ...gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))),
@@ -319,18 +322,15 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </div>
         </div>
 
-        {(solo || (scene && plain)) && (
-          <section className="mt-24" aria-labelledby="piece-itself">
-            <p className="eyebrow">The piece itself</p>
-            <h2 id="piece-itself" className="headline mt-6 text-4xl">
-              {i.name} on its own
+        {(scene || solo || plain) && (
+          <section className="mt-24" aria-labelledby="at-an-event">
+            <p className="eyebrow">At an event</p>
+            <h2 id="at-an-event" className="headline mt-6 text-4xl">
+              {i.name} styled for a celebration
             </h2>
-            <p className="mt-4 max-w-2xl text-muted">
-              A closer look at a single piece, so you can see its shape, finish and colour.
-              {plain && " The plain render is built from the rental\u2019s real dimensions."}
-            </p>
+            <p className="mt-4 max-w-2xl text-muted">How this rental can look at a styled event, and a closer look at a single piece.</p>
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              {[solo, plain].filter((m): m is NonNullable<typeof m> => !!m).map((m) => (
+              {[scene, solo, plain].filter((m): m is NonNullable<typeof m> => !!m).map((m) => (
                 <figure key={m.src}>
                   <div className="media relative overflow-hidden" style={{ aspectRatio: `${m.width} / ${m.height}` }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}

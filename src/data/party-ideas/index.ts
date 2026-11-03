@@ -27,7 +27,7 @@ export function plannerIdeas(): PlannerIdea[] {
       name: i.name,
       tagline: i.tagline,
       events: [t.planner],
-      image: `/rentals/scenes/${i.scene}.webp`,
+      image: `/rentals/styled/${i.scene}.webp`,
       alt: i.sceneAlt,
       href: ideaPath(i),
       lines: i.rentals,

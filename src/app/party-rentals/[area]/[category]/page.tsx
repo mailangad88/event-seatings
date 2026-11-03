@@ -48,7 +48,8 @@ async function load(props: Props) {
 function pick(items: CatalogItem[], n: number, seed: string): CatalogItem[] {
   const featured = items.filter((i) => i.featured);
   const rest = items.filter((i) => !i.featured && rentalImagePath(i.id, i.categoryId));
-  const pool = rest.length ? rest : items.filter((i) => !i.featured);
+  // A small pictured pool would give every area the same picks (near-duplicate pages), so fall back to all of them.
+  const pool = rest.length >= 3 * n ? rest : items.filter((i) => !i.featured);
   const h = [...seed].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
   const rotated = pool.map((_, k) => pool[(k + h) % pool.length]);
   return [...featured, ...rotated].slice(0, n);

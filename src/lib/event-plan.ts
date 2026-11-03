@@ -20,7 +20,7 @@ export type PlannerEvent = {
   leadMonths: number; // how far ahead most hosts book rentals for this occasion
 };
 
-const scene = (n: string) => `/rentals/scenes/${n}.webp`;
+const scene = (n: string) => `/rentals/styled/${n}.webp`;
 
 export const plannerEvents: PlannerEvent[] = [
   { id: "wedding", name: "Wedding", eventType: "Wedding (ceremony + reception)", image: scene("wedding-reception"), alt: "Wedding reception with round tables, gold Chiavari chairs and candlelight", meal: true, formal: true, defaultGuests: 150, extras: ["ceremony", "dancing", "bar"], leadMonths: 9 },
