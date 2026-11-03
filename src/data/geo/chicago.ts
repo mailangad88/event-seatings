@@ -339,7 +339,7 @@ export const chicagoLocations: Location[] = [
     zips: ["60610", "60611"],
     metaTitle: "Chair Rentals in the Gold Coast, Chicago",
     metaDescription:
-      "Elegant event chairs for Gold Coast galas, brownstone parties and lakefront high-rises. White-glove setup with careful building access. Request a quote.",
+      "Elegant event chairs for Gold Coast galas, brownstone parties and lakefront high-rises. Setup planned around your building's elevator and dock. Get a quote.",
     headline: "Refined seating for the *Gold Coast*",
     intro:
       "We rent elegant event chairs in the Gold Coast for private dinners, galas, engagement parties and intimate weddings, with careful delivery, setup and pickup. Whether you're hosting in a historic mansion, a greystone or a lakefront condo, we plan around doormen, service entrances and building rules. Request a quote or schedule a short call to talk through your 2027 event.",

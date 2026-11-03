@@ -21,7 +21,7 @@ export const metadata: Metadata = seo({
 const faqs = [
   {
     q: `How does renting through ${site.name} work?`,
-    a: `Pick the items you need and send one enquiry. We match each item with a vetted local rental partner, confirm availability for your date and venue, and send you a single itemized proposal. You deal with one team instead of calling five rental companies.`,
+    a: `Pick the items you need and send one enquiry. We match each item with an established local rental company, confirm availability for your date and venue, and send you a single itemized proposal. You deal with one team instead of calling five rental companies.`,
   },
   {
     q: "Are the prices on this page final?",

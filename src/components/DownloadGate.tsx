@@ -157,7 +157,7 @@ export function DownloadGate({
         )}
       </div>
       <button className="btn-accent mt-5 w-full sm:w-auto" disabled={status === "sending"}>
-        {status === "sending" ? "Unlocking…" : "Send me the free download"}
+        {status === "sending" ? "Sending…" : "Send me the free download"}
       </button>
       {status === "error" && <p className="mt-2 text-sm text-rose">{error}</p>}
       <label className="mt-3 flex cursor-pointer items-start gap-2 text-xs leading-5 text-muted">

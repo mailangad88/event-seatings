@@ -93,7 +93,7 @@ export default async function Home() {
         <div className="container-x grid items-center gap-12 pt-10 pb-16 md:pt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-24">
           <div className="animate-rise">
             <p className="eyebrow">
-              <Icon name="pin" size={14} /> Chicago&apos;s event rental marketplace
+              <Icon name="pin" size={14} /> Event rentals in Chicago and the suburbs
             </p>
             <h1 className="headline mt-5 text-[2.9rem] leading-[1.02] sm:text-6xl lg:text-[4.6rem]">
               Everything for your event. <em className="text-gold">One</em> simple quote.
@@ -141,7 +141,7 @@ export default async function Home() {
                 <Icon name="quote" size={20} />
               </span>
               <span className="text-sm leading-5">
-                <span className="block font-semibold">Live pricing</span>
+                <span className="block font-semibold">Prices as you go</span>
                 <span className="text-muted">Totals update as you pick</span>
               </span>
             </div>
@@ -159,8 +159,8 @@ export default async function Home() {
       {/* Categories */}
       <Section
         eyebrow="Shop by category"
-        title="Every rental, one place"
-        intro="From the first chair to the last candle. Browse by category, or start a quote and add as you go."
+        title="Browse by category"
+        intro="Chairs, tables, linens, tents, lighting and more. Look around, or start a quote and add items as you go."
         action={<Link href="/rentals" className="link-line">All rentals <Icon name="arrow" size={16} /></Link>}
       >
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-4">
@@ -183,7 +183,7 @@ export default async function Home() {
       <Section
         tone="sand"
         eyebrow="Shop the look"
-        title={<>Start from a styled <em>tablescape</em></>}
+        title={<>Start from a <em>finished table</em></>}
         intro="Each look is a full table: chairs, linen, dinnerware and decor. Price it as is, then swap anything you like."
       >
         <div className="grid gap-6 md:grid-cols-3">
@@ -216,8 +216,8 @@ export default async function Home() {
       {/* How it works */}
       <Section
         eyebrow="How it works"
-        title="Plan in minutes, not phone calls"
-        intro="Skip calling five rental companies. Build one list, get one quote, and let us handle the rest."
+        title="How booking works"
+        intro="Instead of calling five rental companies, make one list and send it to us. We book the rentals and handle delivery."
         action={<Link href="/how-it-works" className="link-line">The full process <Icon name="arrow" size={16} /></Link>}
       >
         <StepFlow
@@ -296,8 +296,8 @@ export default async function Home() {
             <p className="eyebrow">Where we deliver</p>
             <h2 className="display-2 mt-3">{site.market} and every suburb around it</h2>
             <p className="lede mt-4">
-              Lofts in the West Loop, estates on the North Shore, barns in the Fox Valley. We plan around venue rules,
-              loading docks and stairs so delivery day is calm.
+              Lofts in the West Loop, homes on the North Shore, barns in the Fox Valley. We check venue rules, loading
+              docks and stairs ahead of time so delivery goes smoothly.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {site.serviceArea.map((c) => (
@@ -324,7 +324,7 @@ export default async function Home() {
           <div>
             <p className="eyebrow">Questions</p>
             <h2 className="display-2 mt-3">Good to know</h2>
-            <p className="lede mt-4">Straight answers on pricing, delivery and booking.</p>
+            <p className="lede mt-4">Pricing, delivery and booking, answered.</p>
             <Link href="/faq" className="link-line mt-6">All FAQs <Icon name="arrow" size={16} /></Link>
           </div>
           <FaqList faqs={faqs} />
@@ -335,7 +335,7 @@ export default async function Home() {
       {posts.length > 0 && (
         <Section
           eyebrow="Ideas & guides"
-          title="Plan smarter"
+          title="Planning guides"
           action={<Link href="/blog" className="link-line">All guides <Icon name="arrow" size={16} /></Link>}
         >
           <div className="grid gap-6 md:grid-cols-3">

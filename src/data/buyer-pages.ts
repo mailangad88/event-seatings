@@ -340,7 +340,7 @@ export const buyerPages: BuyerPage[] = [
     },
     faqs: [
       { q: "Is it cheaper to book event rentals directly?", a: "Yes, by our 10% booking fee, if you book the same items from the same company. You also do the comparing, contracts and coordination yourself." },
-      { q: "Who delivers if I book through Beyond Chiavari?", a: "A vetted Chicago-area rental company (we ask for proof of insurance), named once you approve your proposal. Its rental agreement covers delivery, setup and pickup, and we coordinate between you." },
+      { q: "Who delivers if I book through Beyond Chiavari?", a: "An established Chicago-area rental company (we ask for proof of insurance), named once you approve your proposal. Its rental agreement covers delivery, setup and pickup, and we coordinate between you." },
       { q: "Can I see the vendor's price and your fee separately?", a: "Yes. Your proposal shows the rental company's price and our booking fee, so you can check the difference." },
     ],
     cta: { title: "See the full price before you decide", text: "Build your list, see every line, and decide whether booking through us is worth it." },

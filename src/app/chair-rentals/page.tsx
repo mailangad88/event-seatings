@@ -111,8 +111,8 @@ export default function AreasPage() {
               <em className="text-gold">Chicagoland</em>
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
-              We help you book event chairs, tables, linens and more from vetted
-              Chicago-area rental vendors, with delivery and setup across
+              We help you book event chairs, tables, linens and more from established
+              Chicago-area rental companies, with delivery and setup across
               Chicago, every collar county and the towns beyond. We&apos;re
               based in {homeBase.name}. Find your neighborhood or town for local
               venue tips, rental picks and FAQs.

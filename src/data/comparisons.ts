@@ -84,11 +84,11 @@ export const comparisons: Comparison[] = [
     description: "Clear-top or white tent for your Chicago wedding or party? Compare the view, heat, light, privacy and decor, with rental prices and tools to size your tent and plan lighting.",
     a: { id: "clear-top-tent", name: "Clear-top tent", item: "clear-top-tent" },
     b: { id: "frame-tent-20x40", name: "White frame tent", item: "frame-tent-20x40" },
-    answer: "A clear-top tent shows the sky, trees and stars and makes an evening with string lights feel magical, but it lets in sun and heat during the day. A white tent gives shade, softer light for photos and privacy. Choose clear for evening events with a view, white for daytime and hot afternoons.",
+    answer: "A clear-top tent shows the sky, trees and stars and looks great at night with string lights, but it lets in sun and heat during the day. A white tent gives shade, softer light for photos and privacy. Choose clear for evening events with a view, white for daytime and hot afternoons.",
     rows: [
       ["View", "Sky, trees and stars", "Enclosed, bright white ceiling"],
       ["Daytime sun", "Lets sun and heat through", "Shades guests"],
-      ["Evening", "Stunning with string lights", "Glows warmly from inside"],
+      ["Evening", "Beautiful with string lights", "Glows warmly from inside"],
       ["Photos", "Can be harsh in midday sun", "Soft, even light"],
       ["Decor", "Lights and greenery hang inside", "Draping and lights hide the frame"],
     ],
@@ -174,7 +174,7 @@ export const comparisons: Comparison[] = [
       ["Best for", "Weddings, galas, any style", "Sweet 16s, quinceañeras, parties"],
       ["Photos", "Neutral background", "Colourful, lively"],
     ],
-    chooseA: ["You want a timeless look", "There's no power near the floor", "Budget matters more than wow factor"],
+    chooseA: ["You want a timeless look", "There's no power near the floor", "Budget matters more than the look"],
     chooseB: ["The dance floor is the main event", "It's a teen party, quinceañera or celebration with a DJ", "You want colour that matches the theme"],
     body: [
       { h: "Sizing", p: ["Both are sized by how many guests dance at once. Give each dancer about 9 square feet, one 3' x 3' panel, and keep the floor close to square. The dance floor calculator does the maths and shows rough prices for both."] },

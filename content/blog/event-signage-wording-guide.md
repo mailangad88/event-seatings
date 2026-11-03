@@ -30,7 +30,7 @@ Guests do not read long signs. They glance, decide and move. When signs are miss
 
 ## Where signs help most
 
-Think of the guest journey: arrival, check-in, coat drop, seating, food and drink, restrooms, entertainment, exit. Put a sign wherever a guest could hesitate. At weddings, popular signs include a welcome sign, an unplugged ceremony sign, a seating chart and a card box sign; see [mr and mrs chair signs](/blog/mr-and-mrs-chair-signs), [reception table names and seating map](/blog/reception-table-names-and-seating-map), [table numbers and placement](/blog/table-numbers-and-placement), [mirror seating chart display](/blog/mirror-seating-chart-display-guide) and [reserved seating and signage layout](/blog/reserved-seating-and-signage-layout).
+Think about the order guests move through the event: arrival, check-in, coat drop, seating, food and drink, restrooms, entertainment, exit. Put a sign wherever a guest could hesitate. At weddings, popular signs include a welcome sign, an unplugged ceremony sign, a seating chart and a card box sign; see [mr and mrs chair signs](/blog/mr-and-mrs-chair-signs), [reception table names and seating map](/blog/reception-table-names-and-seating-map), [table numbers and placement](/blog/table-numbers-and-placement), [mirror seating chart display](/blog/mirror-seating-chart-display-guide) and [reserved seating and signage layout](/blog/reserved-seating-and-signage-layout).
 
 For easels, frames and display tips, see [signage and easels for events](/blog/signage-and-easels-for-events) and [card box and gift table ideas](/blog/card-box-and-gift-table-ideas).
 

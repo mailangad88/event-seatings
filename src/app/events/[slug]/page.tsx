@@ -127,7 +127,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
         <section className="mt-32">
           <p className="eyebrow">What usually goes wrong</p>
           <h2 className="headline mt-6 max-w-3xl text-5xl leading-[1.02] sm:text-6xl">
-            The seating <em className="text-gold">headaches</em>, solved
+            Common seating <em className="text-gold">problems</em> and fixes
           </h2>
           <div className="mt-14 grid gap-6 md:grid-cols-2">
             {ev.painPoints.map((p, i) => (
