@@ -81,10 +81,40 @@ export function attributionFields(): Record<string, string> {
   };
   pick(first, "first_");
   pick(last, "");
+  const trail = readTrail();
+  if (trail.length) out.pages_viewed = trail.join(" > ").slice(0, 1500);
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz) out.visitor_tz = tz.slice(0, 60);
+  } catch {}
   const ref = readReferral();
   if (ref) out.referral_code = ref;
   return out;
 }
+
+// The last pages this visitor looked at (this session and earlier ones), oldest first. Sent with each lead so the
+// owner alert can say what they read before asking, e.g. "/rentals/chairs > /quote".
+const trailKey = "lead-trail";
+const trailMax = 15;
+
+function readTrail(): string[] {
+  try {
+    const t = JSON.parse(localStorage.getItem(trailKey) ?? "[]");
+    return Array.isArray(t) ? t.filter((x) => typeof x === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+export function recordPage(path: string) {
+  if (typeof window === "undefined" || path.startsWith("/admin")) return;
+  const trail = readTrail();
+  if (trail[trail.length - 1] === path) return;
+  try {
+    localStorage.setItem(trailKey, JSON.stringify([...trail, path.slice(0, 120)].slice(-trailMax)));
+  } catch {}
+}
+
 
 // Referral links (/refer) look like beyondchiavari.com/?ref=priya-7k2m. The code is kept for 90 days and sent
 // with every lead as referral_code. The latest friend's link wins if someone clicks two.

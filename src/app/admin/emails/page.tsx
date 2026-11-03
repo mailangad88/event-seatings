@@ -2,36 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createElement } from "react";
 import { render } from "@react-email/render";
-import { DownloadEmail, NewReviewEmail, OwnerLeadEmail, QuoteReceivedEmail, ReviewRequestEmail } from "@/emails/templates";
-import { replyPromise, site } from "@/lib/site";
-import type { Lead } from "@/lib/store";
+import { NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
+import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Email previews", robots: { index: false } };
 
-// Sample data, clearly fake, only for previewing layouts here. Never shown on the public site.
-const sampleLead: Lead = {
-  id: "00000000-0000-0000-0000-000000000000",
-  kind: "quote",
-  created_at: new Date().toISOString(),
-  name: "Sample Customer",
-  email: "sample@example.com",
-  event_date: "2027-06-12",
-  guest_count: 120,
-  city: "Naperville",
-  items: [
-    { id: "sample-chair", name: "Sample chair", category: "chairs", unit: "each", qty: 120, unit_price: 9, line_total: 1080, vendor_id: "sample", vendor_price: 8 },
-    { id: "sample-table", name: "Sample 72in round table", category: "tables", unit: "each", qty: 12, unit_price: 16.5, line_total: 198, vendor_id: "sample", vendor_price: 15 },
-  ],
-  quote_subtotal: 1278,
-  quote_cost: 1158,
-};
+// Sample text only, for previewing the layout. The real wording lives in src/lib/notify.ts.
+const sampleText = [
+  "Hi Sam,",
+  "",
+  "Thanks, we have your quote request for Sat, Jun 12, 2027 (estimate $1,278).",
+  "",
+  "What happens next:",
+  "1. We check your date with our Chicago-area rental partners.",
+  "2. You get a confirmed proposal by email.",
+  "",
+  `While you wait, draw your floor plan: ${site.url}/tools/floor-plan`,
+  "",
+  `The ${site.name} team`,
+].join("\n");
 
 export default async function EmailPreviewsPage() {
   const emails = [
-    { name: "New lead (to you)", when: "Every form submission, when RESEND_API_KEY and NOTIFY_EMAIL are set.", el: createElement(OwnerLeadEmail, { lead: sampleLead }) },
-    { name: "Quote received (to customer)", when: "Only with CONFIRMATION_EMAILS=on, plus RESEND_API_KEY and a verified NOTIFY_FROM.", el: createElement(QuoteReceivedEmail, { lead: sampleLead, replyPromise }) },
-    { name: "Free download (to visitor)", when: "When someone unlocks a kit on /downloads, with RESEND_API_KEY and NOTIFY_FROM.", el: createElement(DownloadEmail, { name: "Sample", title: "Wedding Seating Kit", files: [{ label: "Seating chart (PDF)", file: "/downloads/sample.pdf" }] }) },
+    { name: "Any email (branded wrapper)", when: "Every email sendEmail sends (confirmations, downloads, follow-ups, owner alerts) gets this HTML around its plain text.", el: createElement(TextEmail, { subject: "We got your quote request", text: sampleText, unsubscribe: `${site.url}/unsubscribe` }) },
     { name: "Review request (you send by hand)", when: "Never automatic. Copy from /admin/reviews.", el: createElement(ReviewRequestEmail, { name: "Sample", link: `${site.url}/reviews/write` }) },
     { name: "New review (to you)", when: "When a review is submitted, with RESEND_API_KEY and NOTIFY_EMAIL.", el: createElement(NewReviewEmail, { rating: 5, name: "Sample Customer", body: "Sample review text for layout only.", verified: true }) },
   ];

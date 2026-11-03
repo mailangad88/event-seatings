@@ -11,7 +11,8 @@
     "remotion:render": "remotion render ChairShowcase out/chair-showcase.mp4 && remotion render LaunchStory out/launch-story.mp4",
     "render:chairs": "node scripts/render-chairs.mjs",
     "crm:setup": "node scripts/hubspot-setup.mjs",
-    "remotion:reels": "for t in gilded-ivory midnight-gold blush-garden; do remotion render DecorReel-$t out/reels/$t-reel.mp4; done"
+    "remotion:reels": "for t in gilded-ivory midnight-gold blush-garden; do remotion render DecorReel-$t out/reels/$t-reel.mp4; done",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",

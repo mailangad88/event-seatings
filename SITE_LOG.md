@@ -45,11 +45,21 @@ All built with free, open-source libraries (React Email, MiniSearch, SunCalc) an
 - **Event date checker** (`/tools/event-date?date=&place=`). NWS forecast within a week, otherwise NOAA daily records for the same date ± 3 days over the last 10 years at the nearest long-record station (O'Hare or Midway), via `/api/weather`. Sunset, golden hour and dusk (SunCalc), holidays within 4 days, add-to-calendar .ics, and rental tips (tent, heat, cooling, wind) driven by the data.
 - **Planning assistant** (`/planning-assistant`, **off until `NEXT_PUBLIC_PLANNING_ASSISTANT=on`**). Event type, guests, setting, budget, date → the fullest package that fits the budget (same rules as the /quote planner, priced from the live catalog), setup ideas, priced add-on ideas you can tick into the quote, matching guides, and follow-up questions answered from our 600+ guides and /answers with source links (MiniSearch, no API). Optional AI wording with `ASSISTANT_AI=gemini` uses `GEMINI_API_KEY`; that costs money, so it stays off until Angad approves. Shortcut in the chat dock only when enabled. Party-ideas content from the party-ideas thread will be added when it merges.
 - **Referrals** (`/refer`, `/admin/referrals`). Anyone can make a share link (`/?ref=<code>`); the code is kept 90 days in the visitor's browser and saved on any lead as `referral_code`. No reward is promised unless `REFERRAL_REWARD` is set to a real, approved offer.
-- **Branded emails** (`src/emails`, previews at `/admin/emails`). React Email templates for the owner lead alert, download email, new-review alert, review request (sent by hand only) and a customer quote confirmation that stays **off unless `CONFIRMATION_EMAILS=on`**. Each email has HTML plus a plain-text part.
+- **Branded emails** (`src/emails`, previews at `/admin/emails`). Every email `sendEmail` sends now carries a branded HTML version (React Email) alongside the existing plain text, with links clickable; owner alert, confirmations and download emails keep their wording from the lead-gen thread. New: new-review alert to the owner, and a review-request email that is only ever sent by hand from /admin/reviews.
 - **Local SEO**: `/service-area.kml` lists every area page with coordinates (for Google Business Profile service areas and maps). The towns hub itself is `/chair-rentals` (other thread).
 - Sitemap and llms.txt list the new public pages; `/reviews/write` is noindex and disallowed.
-- **Owner setup**: re-run `supabase/schema.sql` (new `reviews` and `referrers` tables, `leads.referral_code`; leads still save before you do). Optional env: `NEXT_PUBLIC_PLANNING_ASSISTANT=on`, `REFERRAL_REWARD`, `CONFIRMATION_EMAILS=on`, `REVIEW_LINK_SECRET`.
+- **Owner setup**: re-run `supabase/schema.sql` (new `reviews` and `referrers` tables, `leads.referral_code`; leads still save before you do). Optional env: `NEXT_PUBLIC_PLANNING_ASSISTANT=on`, `REFERRAL_REWARD`, `REVIEW_LINK_SECRET`.
 - Remaining: link /reviews, /refer and the two tools from the footer and /tools hub (owned by the UX and tools threads); add party ideas to the assistant; ask happy customers for reviews once events happen.
+
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 1
+
+Goal: give planners a reason to come back between their first visit and their event (research notes: The Knot and Zola keep couples returning with a saved checklist, budget and countdown; PartySlate and Pinterest with fresh seasonal inspiration).
+
+- **New `/my-events`** (Last touched 2026-11-03). Free event plans saved in the browser, no account: countdown, a checklist dated back from the event (same milestones as the `/quote` planner via `timeline()`), progress bar, "Next up" tasks, Chicago normal high plus calculated sunrise and sunset for the date, notes, multiple events ("Plan another event"), `.ics` calendar file with a reminder for each upcoming milestone, share link (`?e=`) that opens the same plan on another device, print view, and import from an in-progress `/quote` plan. Optional "free planning check-in" email is saved as a `waitlist` lead with source `my-events` plus event type, date and guests. SEO ✅ AEO ✅ (WebApplication + FAQPage) GEO ✅ Visuals ✅ FAQ ✅ CTA ✅. Code: `src/lib/my-events.ts`, `src/components/myevents/MyEvents.tsx`.
+- **New `/ideas`** (Last touched 2026-11-03). Monthly ideas hub that re-renders daily: this month's occasions with guides, rentals people book now, a "book now for later" list (event month = today + each occasion's lead time), the next three months, all 12 months with normal highs, a monthly ideas letter signup (`waitlist`, source `ideas-monthly`) and FAQs. CollectionPage + FAQPage schema. Data: `src/data/ideas.ts`.
+- **Weather facts** in `src/lib/chicago-climate.ts`: NWS Chicago 1991-2020 normal highs at O'Hare and median freeze dates (Apr 21, Oct 19); sunrise and sunset computed with NOAA solar equations (checked: Jun 21 sunset 8:29 PM, Dec 21 4:22 PM). Lows and precipitation were left out because the source table could not be fetched to verify them.
+- Header nav is now Rentals, Ideas, Guides, Free tools, My events, How it works (FAQ and Free kits stay in the footer and the tools hub). Tools hub has a new first problem "I want to keep my event on track". Footer, sitemap and llms.txt list both pages.
+- Remaining: magic-link accounts so plans sync across devices (needs Supabase env vars); emailed milestone reminders (needs Resend and the PR #31 cron); the monthly ideas letter is a list Angad sends by hand until email is connected.
 
 ## Changes in this release (2026-11-03): photo-style product images
 
@@ -1126,6 +1136,19 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 | `/blog/restaurant-private-room-vs-full-venue` | Restaurant Private Room vs Full Venue: Which Is Right | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `vendor-tracker` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/event-signage-wording-guide` | Event Signage Wording Guide: What to Say and Where | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `event-planning-kit` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/planning-an-event-for-older-guests` | Planning an Event for Older Guests: Comfort and Access | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `seating-chart-planner` | Add a real photo or render; check rankings in Search Console after 30 days |
+
+## Lead-gen playbook (2 Nov 2026, PR #31)
+
+| Page / area | Last touched | What changed | Remaining |
+|---|---|---|---|
+| Every page (phones) | 2026-11-02 | Sticky "Get a free quote / Call" bar | Watch form starts vs sends in /admin |
+| /api/leads, alerts, emails | 2026-11-02 | Disposable-email block, consent per channel, A/B/C score, richer owner alert, visitor confirmation, follow-ups (off until FOLLOWUPS_ENABLED), booking webhook, unsubscribe | Angad: set env vars in docs/lead-flow-setup.md, re-run supabase/schema.sql |
+| /solutions + 6 pages | 2026-11-02 | Problem pages: short answer, before/after, FAQ, one CTA | Fill search volume + difficulty from Search Console / Keyword Planner |
+| /compare + 3 pages | 2026-11-02 | Honest booking-model comparisons (no vendor names) | Named "vs" pages need Angad's call (vendors are partners) |
+| /tools/rental-calculator | 2026-11-02 | Guest count to priced list, opens quote builder | Add tents and dance floor sizing |
+| /glossary | 2026-11-02 | 31 rental terms with DefinedTermSet schema, linked to money pages | Add terms from real customer questions |
+| /blog/* | 2026-11-02 | "Ready to rent?" links to the matching money pages | |
+| IndexNow | 2026-11-02 | Key file + `npm run indexnow` | Run after the domain points at Vercel |
 
 ## 2026-11-03: Step-by-step event planner on /quote
 - /quote now opens a guided planner. It asks for the occasion, guests, style (simple, classic or lavish), setting (venue, backyard, tent or park), extras, date or month, and rental budget.

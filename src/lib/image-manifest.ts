@@ -21,9 +21,13 @@ export type ManifestEntry = {
 
 let cache: Record<string, ManifestEntry> | undefined;
 
-function readJson(rel: string): Record<string, ManifestEntry> {
+// Literal paths, so the build traces just these two files instead of the whole project.
+const RENDERS = path.join(process.cwd(), "src/data/rental-images.json");
+const STYLED = path.join(process.cwd(), "src/data/styled-images.json");
+
+function readJson(file: string): Record<string, ManifestEntry> {
   try {
-    return JSON.parse(readFileSync(path.join(process.cwd(), rel), "utf8"));
+    return JSON.parse(readFileSync(file, "utf8"));
   } catch {
     return {};
   }
@@ -31,8 +35,8 @@ function readJson(rel: string): Record<string, ManifestEntry> {
 
 export function readImageManifest(): Record<string, ManifestEntry> {
   if (cache) return cache;
-  const base = readJson("src/data/rental-images.json");
-  const styled = readJson("src/data/styled-images.json");
+  const base = readJson(RENDERS);
+  const styled = readJson(STYLED);
   const out: Record<string, ManifestEntry> = { ...base };
   for (const [slug, s] of Object.entries(styled)) {
     if (!s.src || !existsSync(path.join(process.cwd(), "public", s.src))) continue;
@@ -44,4 +48,4 @@ export function readImageManifest(): Record<string, ManifestEntry> {
 }
 
 /** The original Blender render for a slug, ignoring any styled scene laid over it. */
-export const originalManifestEntry = (slug: string): ManifestEntry | undefined => readJson("src/data/rental-images.json")[slug];
+export const originalManifestEntry = (slug: string): ManifestEntry | undefined => readJson(RENDERS)[slug];

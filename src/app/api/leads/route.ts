@@ -5,7 +5,9 @@ import { imagesFor } from "@/data/rental-images";
 import { priceQuote } from "@/lib/catalog-types";
 import { syncToCrm } from "@/lib/crm";
 import { getDownload } from "@/data/downloads";
-import { notifyOwner, sendDownloadEmail, sendQuoteConfirmation } from "@/lib/notify";
+import { isDisposableEmail } from "@/lib/disposable-email";
+import { scoreLead } from "@/lib/lead-score";
+import { notifyOwner, sendConfirmation, sendDownloadEmail } from "@/lib/notify";
 import { cleanCode } from "@/lib/referrals";
 import { addLead, trackingFields, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
@@ -26,6 +28,12 @@ export async function POST(request: Request) {
   const email = str(body.email, 254);
   if (!kinds.includes(kind) || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return Response.json({ error: "Please enter a valid email address." }, { status: 400 });
+  }
+  if (isDisposableEmail(email)) {
+    return Response.json(
+      { error: "That looks like a temporary inbox. Please use an email you check, so your quote and files reach you." },
+      { status: 400 },
+    );
   }
 
   const eventDate = str(body.event_date, 10);
@@ -49,7 +57,13 @@ export async function POST(request: Request) {
     source: str(body.source, 100),
     referral_code: cleanCode(body.referral_code),
     sms_consent: body.sms_consent === "yes" && Boolean(str(body.phone, 40)) ? true : undefined,
+    // Consent per channel, each from its own tick box. Asking for a call is consent to be called about it.
+    email_consent: body.email_consent === "yes" ? true : undefined,
+    call_consent: (body.call_consent === "yes" || kind === "call") && Boolean(str(body.phone, 40)) ? true : undefined,
+    visitor_tz: str(body.visitor_tz, 60),
+    pages_viewed: str(body.pages_viewed, 1500),
   };
+  if (lead.email_consent || lead.call_consent || lead.sms_consent) lead.consent_at = new Date().toISOString();
   for (const f of trackingFields) {
     const v = str(body[f], 300);
     if (v) lead[f] = v;
@@ -100,6 +114,9 @@ export async function POST(request: Request) {
       lead.chairs = [...new Set([...(lead.chairs ?? []), ...slugs])];
     }
   }
+  const score = scoreLead({ ...lead, id: "", created_at: new Date().toISOString() });
+  lead.lead_score = score.grade;
+  lead.lead_score_reasons = score.reasons.join("; ");
   lead.status = "new";
   lead.activity = [{ at: new Date().toISOString(), type: "status", text: `Lead received from ${lead.source ?? kind}` }];
 
@@ -124,7 +141,7 @@ export async function POST(request: Request) {
     Promise.allSettled([
       syncToCrm(saved),
       notifyOwner(saved),
-      sendQuoteConfirmation(saved),
+      sendConfirmation(saved),
       ...(download ? [sendDownloadEmail(saved, download.title, download.files)] : []),
     ]),
   );
