@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
+import { SaveIdea } from "@/components/myevents/SaveIdea";
+import { getProduct } from "@/data/catalog-products";
 import { extraImages, imageCategories, productImages, rentalImageJsonLd, sceneImages } from "@/data/rental-images";
 import { site } from "@/lib/site";
 
@@ -87,7 +89,8 @@ export default function GalleryPage() {
             <h2 id="setups" className="headline text-4xl">Complete event setups</h2>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               {sceneImages.map((s, i) => (
-                <figure key={s.slug} className={i === 0 ? "md:col-span-2" : ""}>
+                <figure key={s.slug} className={`relative ${i === 0 ? "md:col-span-2" : ""}`}>
+                  <SaveIdea idea={{ src: s.src, alt: s.alt, caption: s.caption }} className="absolute top-3 right-3 z-10" />
                   <Image
                     src={s.src}
                     alt={s.alt}
@@ -113,7 +116,11 @@ export default function GalleryPage() {
             <ul className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
               {g.items.map((it) => (
                 <li key={it.slug}>
-                  <figure>
+                  <figure className="relative">
+                    <SaveIdea
+                      idea={{ src: it.src, alt: it.alt, caption: it.caption, href: getProduct(it.slug) ? `/rentals/${getProduct(it.slug)!.category}/${it.slug}` : undefined }}
+                      className="absolute top-2 right-2 z-10"
+                    />
                     <Image
                       src={it.src}
                       alt={it.alt}

@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { Icon } from "@/components/ui/Icon";
+import Image from "next/image";
 import { attributionFields } from "@/lib/attribution";
+import { parseIdeas, readIdeasRaw, subscribeIdeas, writeIdeas } from "./ideas-store";
 import { track, trackLead } from "@/lib/analytics";
 import { CLIMATE_SOURCE, sunTimes, weatherNotes } from "@/lib/chicago-climate";
 import { occasions, roles } from "@/data/vendor-guide";
@@ -334,6 +336,8 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
 
       <VendorBudget event={current} update={update} />
 
+      <IdeaBoard />
+
       <section className="mt-10 grid gap-6 md:grid-cols-2 print:hidden">
         <div className="card p-6">
           <label htmlFor="ev-notes" className="font-serif text-2xl">Notes</label>
@@ -500,6 +504,37 @@ function VendorBudget({ event, update }: { event: SavedEvent; update: (p: Partia
         </table>
       </div>
       <p className="hint mt-3">Amounts stay on this device and aren&apos;t included in share links. For rentals, <Link href={`/quote?event=${event.type}&from=my-events-budget`} className="link">get a free itemized quote</Link> to fill in that line.</p>
+    </section>
+  );
+}
+
+// Images the visitor hearted in the gallery (and anywhere else SaveIdea appears).
+function IdeaBoard() {
+  const ideas = parseIdeas(useSyncExternalStore(subscribeIdeas, readIdeasRaw, () => "[]"));
+  return (
+    <section className="mt-10" aria-labelledby="ib-title">
+      <h2 id="ib-title" className="display-3">Saved ideas</h2>
+      {ideas.length ? (
+        <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {ideas.map((i) => (
+            <li key={i.src} className="group relative">
+              <Image src={i.src} alt={i.alt} width={400} height={400} sizes="(max-width: 640px) 50vw, 20vw" className="aspect-square w-full rounded-xl object-cover" />
+              <button
+                className="absolute top-2 right-2 grid h-8 w-8 place-items-center rounded-full bg-black/50 text-white opacity-90 hover:bg-black/70 print:hidden"
+                aria-label={`Remove ${i.caption}`}
+                onClick={() => writeIdeas(ideas.filter((x) => x.src !== i.src))}
+              >
+                <Icon name="close" size={14} />
+              </button>
+              <p className="mt-2 text-sm leading-5">{i.href ? <Link href={i.href} className="hover:text-gold">{i.caption}</Link> : i.caption}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-3 text-muted">
+          Tap the heart on any picture in the <Link href="/gallery" className="link">gallery</Link> to collect chairs, tables and setups you love here.
+        </p>
+      )}
     </section>
   );
 }
