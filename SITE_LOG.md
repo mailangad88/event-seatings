@@ -37,6 +37,10 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 6
+
+- Hearts (save to My Events idea board) now also on every rental item page's main picture and on every look card in `/looks`. `/looks` and all `/rentals/<category>/<item>` rows: Last touched 2026-11-03.
+
 ## Changes in this release (2026-11-03): reviews, layout builder, date checker, planning assistant, referrals, branded emails
 
 All built with free, open-source libraries (React Email, MiniSearch, SunCalc) and public-domain US government weather data. Nothing here sends email, charges money or invents content.
