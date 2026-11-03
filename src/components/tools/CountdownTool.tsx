@@ -82,7 +82,8 @@ export function CountdownTool({ available }: { available: string[] }) {
     ["Seconds", Math.floor(left / 1000) % 60],
   ] as const;
   const tl = useMemo(() => (today && s.d ? buildTimeline({ event: s.t, date: s.d, today, outdoor: ev.outdoorDefault, available: avail }) : null), [s.d, s.t, today, ev.outdoorDefault, avail]);
-  const upcoming = tl?.tasks.filter((t) => !t.overdue && t.date >= today).slice(0, 4) ?? [];
+  // Late tasks are already moved to today, so the next deadlines always start with what to do now.
+  const upcoming = tl?.tasks.filter((t) => t.date >= today).slice(0, 4) ?? [];
   const fmt = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
   const [copied, setCopied] = useState(false);
 
@@ -127,7 +128,7 @@ export function CountdownTool({ available }: { available: string[] }) {
                 </div>
               ))}
             </div>
-            {now !== null && left === 0 && <p className="mt-8 font-serif text-2xl">It&apos;s here. Have a wonderful day.</p>}
+            {now !== null && left === 0 && <p className="mt-8 font-serif text-2xl">{tl?.past ? "This date has passed. Pick a new date to start a new countdown." : "It's here. Have a wonderful day."}</p>}
             <div className="mt-10 flex flex-wrap justify-center gap-3 print:hidden">
               <button
                 type="button"
@@ -145,7 +146,7 @@ export function CountdownTool({ available }: { available: string[] }) {
                 type="button"
                 className="btn border border-ink/25 text-ink hover:bg-ink hover:text-bg"
                 onClick={() => {
-                  const items = [...(tl?.tasks ?? []).filter((t) => !t.overdue)];
+                  const items = [...(tl?.tasks ?? [])];
                   downloadFile(`${name.replace(/[^\w]+/g, "-").toLowerCase()}.ics`, toICS(name, items, window.location.href), "text/calendar");
                   track("tool_calendar_download", { tool: "countdown" });
                 }}
@@ -162,7 +163,7 @@ export function CountdownTool({ available }: { available: string[] }) {
                 <ol className="mt-5 space-y-4">
                   {upcoming.map((t) => (
                     <li key={t.id} className="flex gap-4">
-                      <span className="w-24 shrink-0 text-sm font-medium text-gold">{fmt(t.date)}</span>
+                      <span className="w-24 shrink-0 text-sm font-medium text-gold">{t.date === today ? "Today" : fmt(t.date)}</span>
                       <span>
                         <span className="font-medium">{t.title}</span>
                         {t.href && (
@@ -176,7 +177,7 @@ export function CountdownTool({ available }: { available: string[] }) {
                   ))}
                 </ol>
               ) : (
-                <p className="mt-4 text-muted">No deadlines left before the day.</p>
+                <p className="mt-4 text-muted">{tl?.past ? "This date has passed." : "No deadlines left before the day."}</p>
               )}
               <Link href={`/tools/timeline?event=${s.t}&date=${s.d}${s.n ? `&name=${encodeURIComponent(s.n)}` : ""}`} className="mt-6 inline-block link">See the full timeline</Link>
             </section>
