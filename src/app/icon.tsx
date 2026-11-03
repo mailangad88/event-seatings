@@ -3,6 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
+// Favicon: Beyond Chiavari initials.
 export default function Icon() {
   return new ImageResponse(
     (
@@ -15,11 +16,11 @@ export default function Icon() {
           justifyContent: "center",
           background: "#26201b",
           color: "#d8c29a",
-          fontSize: 42,
+          fontSize: 36,
           fontFamily: "serif",
         }}
       >
-        ES
+        BC
       </div>
     ),
     size,

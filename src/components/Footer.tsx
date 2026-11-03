@@ -64,6 +64,7 @@ export function Footer() {
               ["/gallery", "3D gallery"],
               ["/faq", "FAQ"],
               ["/about", "About us"],
+              ["/press", "Press"],
               ["/reviews", "Reviews"],
               ["/refer", "Refer a friend"],
               ["/how-we-work", "How we work"],
@@ -111,6 +112,7 @@ export function Footer() {
             ["/chair-comparisons", "Chair comparisons"],
             ["/rental-comparisons", "Rental comparisons"],
             ["/chair-rental-cost", "Chair rental cost"],
+            ["/data/chicago-rental-prices", "Chicago rental price index"],
             ["/chair-fit", "Chair fit"],
             ["/chicago-event-seasons", "Chicago event seasons"],
           ].map(([href, label]) => (

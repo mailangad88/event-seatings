@@ -86,6 +86,8 @@ export async function GET() {
     "",
     "## Rental cost guides (Chicago price ranges computed from the catalog)",
     `- [All cost guides](${site.url}/rental-cost)`,
+    `- [Chicago event rental price index](${site.url}/data/chicago-rental-prices): what the same item costs at different Chicago-area rental companies, with a free CSV`,
+    `- [Press and media](${site.url}/press): facts, story ideas and contact for writers`,
     ...costCategories.map((c) => `- [${getCategory(c.id)?.name ?? c.id} rental cost](${site.url}${costPath(c.id)}): ${c.question}`),
     "",
     "## Tools",
