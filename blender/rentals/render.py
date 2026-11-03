@@ -70,7 +70,7 @@ def render_item(slug, args):
     else:
         lib.shoot(aspect=w / h, **cam)
     if photo and not (bpy.context.scene.camera.data.dof.use_dof):
-        fstop = 8.0 if env == "lawn" else 2.8 if big < 0.75 else 5.6 if big < 2.5 else 8.0
+        fstop = 8.0 if env == "lawn" else 4.0 if big < 0.75 else 5.6 if big < 2.5 else 8.0
         if item["cat"] == "scenes":
             fstop = 6.3
         photoreal.add_depth_of_field(fstop)
