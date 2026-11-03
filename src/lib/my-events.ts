@@ -1,7 +1,7 @@
 // "My events": event plans saved on the visitor's device (localStorage), so people can come back to a
 // countdown, a personalised checklist and calendar reminders without an account.
 // Pure helpers only (no React), shared by the dashboard and its tests.
-import { plannerEvents, timeline, type PlanInput, type SettingId, type StyleId } from "./event-plan";
+import { planStages, plannerEvents, timeline, type PlanInput, type PlanStepKind, type SettingId, type StyleId } from "./event-plan";
 
 export const EVENTS_KEY = "bc-events-v1";
 export const PLANNER_KEYS = ["bc-planner-v2", "bc-planner-v1"]; // written by the /quote planner (EventPlanner.tsx), newest first
@@ -34,26 +34,35 @@ export function planInput(e: SavedEvent): PlanInput {
   return { event: ev.id, guests: e.guests, style: e.style, setting: e.setting, extras: ev.extras, date: e.date };
 }
 
-export const taskKey = (stepIndex: number, task: string) => `${stepIndex}:${task.slice(0, 60)}`;
+// Ticks are keyed by a stable task id, so a tick stays put when a late task moves into the "Today" list.
+export const taskKey = (id: string) => id;
 
-export type ChecklistStep = { when: string; date?: string; iso?: string; tasks: { key: string; text: string }[] };
+export type ChecklistStep = { when: string; date?: string; iso?: string; kind: PlanStepKind; tasks: { key: string; text: string }[] };
 
-// Same milestones as the /quote planner, so the two never disagree.
+// Same plan as the /quote planner, so the two never disagree. Built from the days left, so it changes as the date gets closer.
 export function checklist(e: SavedEvent, today = new Date()): ChecklistStep[] {
-  const steps = timeline(planInput(e), today);
-  const offsets = milestoneOffsets(e);
-  return steps.map((s, i) => ({
+  return timeline(planInput(e), today).map((s) => ({
     when: s.when,
     date: s.date,
-    iso: e.date ? shiftDays(e.date, offsets[i] ?? 0) : undefined,
-    tasks: s.tasks.map((t) => ({ key: taskKey(i, t), text: t })),
+    iso: s.iso,
+    kind: s.kind,
+    tasks: s.items.map((t) => ({ key: taskKey(t.id), text: t.text })),
   }));
 }
 
-// Day offsets of each timeline() step, in order (kept in step with event-plan.ts).
-function milestoneOffsets(e: SavedEvent) {
-  const ev = plannerEvents.find((p) => p.id === e.type) ?? plannerEvents[0];
-  return [-30 * Math.max(ev.leadMonths, 3), -60, -30, -14, -7, -1, 0];
+// Plans saved before Nov 2026 keyed ticks as "<stage index>:<task text>". Map those to task ids.
+export function migrateDone(e: SavedEvent): SavedEvent {
+  const keys = Object.keys(e.done ?? {});
+  if (!keys.some((k) => /^\d+:/.test(k))) return e;
+  const byText = new Map<string, string>();
+  for (const st of planStages(planInput(e))) for (const t of st.items) byText.set(t.text.slice(0, 60), t.id);
+  const done: Record<string, boolean> = {};
+  for (const k of keys) {
+    const m = /^\d+:([\s\S]*)$/.exec(k);
+    const id = m ? byText.get(m[1]) : k;
+    if (id && e.done[k]) done[id] = true;
+  }
+  return { ...e, done };
 }
 
 export function shiftDays(iso: string, days: number) {
@@ -61,6 +70,8 @@ export function shiftDays(iso: string, days: number) {
   d.setDate(d.getDate() + days);
   return d.toISOString().slice(0, 10);
 }
+
+const localIso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
 export function daysUntil(iso?: string, today = new Date()) {
   if (!iso) return undefined;
@@ -77,7 +88,7 @@ export function progress(e: SavedEvent, steps = checklist(e)) {
 
 // The open tasks whose milestone has arrived (or the next milestone if none has).
 export function nextUp(e: SavedEvent, today = new Date(), steps = checklist(e, today)) {
-  const todayIso = today.toISOString().slice(0, 10);
+  const todayIso = localIso(today);
   const open = steps.map((s) => ({ ...s, tasks: s.tasks.filter((t) => !e.done[t.key]) })).filter((s) => s.tasks.length);
   const due = open.filter((s) => !s.iso || s.iso <= todayIso);
   return (due.length ? due : open.slice(0, 1)).flatMap((s) => s.tasks.map((t) => ({ ...t, when: s.when }))).slice(0, 4);
@@ -92,11 +103,11 @@ const fold = (line: string) => (line.length <= 74 ? line : line.match(/.{1,74}/g
 export function eventIcs(e: SavedEvent, site: { name: string; url: string }, today = new Date()) {
   if (!e.date) return undefined;
   const stamp = today.toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z");
-  const todayIso = today.toISOString().slice(0, 10);
+  const todayIso = localIso(today);
   const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:-//${site.name}//My events//EN`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
   for (const s of checklist(e, today)) {
-    if (!s.iso || (s.iso < todayIso && s.when !== "Event day")) continue;
-    const isDay = s.iso === e.date;
+    if (!s.iso || s.iso < todayIso) continue;
+    const isDay = s.kind === "event";
     const end = shiftDays(s.iso, 1);
     lines.push(
       "BEGIN:VEVENT",
@@ -104,7 +115,7 @@ export function eventIcs(e: SavedEvent, site: { name: string; url: string }, tod
       `DTSTAMP:${stamp}`,
       `DTSTART;VALUE=DATE:${icsDate(s.iso)}`,
       `DTEND;VALUE=DATE:${icsDate(end)}`,
-      fold(`SUMMARY:${icsEscape(isDay ? `${e.name}: event day` : `${e.name}: ${s.when.replace(/ \(do now\)$/, "")} to-dos`)}`),
+      fold(`SUMMARY:${icsEscape(isDay ? `${e.name}: event day` : s.kind === "rush" ? `${e.name}: to-dos (${s.when.toLowerCase()})` : `${e.name}: ${s.when.toLowerCase()} to-dos`)}`),
       fold(`DESCRIPTION:${icsEscape(s.tasks.map((t) => `- ${t.text}`).join("\n") + `\n\nYour checklist: ${site.url}/my-events`)}`),
       "BEGIN:VALARM",
       "ACTION:DISPLAY",
@@ -137,7 +148,7 @@ export function fromShareParam(p: string): SavedEvent | undefined {
     const setting = (["venue", "backyard", "tent", "park"] as const).find((x) => x === s.setting) ?? "venue";
     const style = (["simple", "classic", "lavish"] as const).find((x) => x === s.style) ?? "classic";
     const done = Object.fromEntries((Array.isArray(s.d) ? s.d : []).filter((k) => typeof k === "string").slice(0, 200).map((k) => [k, true]));
-    return { id: newId(), name: s.name.slice(0, 80), type: s.type, date, guests, setting, style, done, created: new Date().toISOString() };
+    return migrateDone({ id: newId(), name: s.name.slice(0, 80), type: s.type, date, guests, setting, style, done, created: new Date().toISOString() });
   } catch {
     return undefined;
   }

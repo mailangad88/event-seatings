@@ -60,32 +60,69 @@ export const parseISO = (s: string) => {
   return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])) : undefined;
 };
 
+// When time is short, these come first among the things to do today.
+const urgentFirst = ["rentals", "venue", "budget", "guests", "tent", "permits", "final"];
+const urgency = (id: string) => (urgentFirst.includes(id) ? urgentFirst.indexOf(id) : urgentFirst.length);
+
 export function buildTimeline(input: { event: string; date: string; today: string; outdoor: boolean; available?: Set<string> }): {
   tasks: DatedTask[];
   runway: number;
   compressed: boolean;
+  /** Days from today to the event (negative = the date has passed). */
+  until: number;
+  past: boolean;
 } {
   const ev = timelineEvents.find((e) => e.id === input.event) ?? timelineEvents[0];
   const date = parseISO(input.date);
   const today = parseISO(input.today) ?? new Date();
-  if (!date) return { tasks: [], runway: 0, compressed: false };
+  if (!date) return { tasks: [], runway: 0, compressed: false, until: 0, past: false };
   const until = Math.round((date.getTime() - today.getTime()) / DAY);
+  if (until < 0) return { tasks: [], runway: 0, compressed: false, until, past: true };
   const runway = Math.max(1, Math.min(ev.runwayDays, until));
   const compressed = until < ev.runwayDays;
   const list = tasks
     .filter((t) => !t.only || t.only.includes(ev.id))
     .filter((t) => !t.outdoor || input.outdoor)
+    // Save-the-dates make no sense once invitations are due.
+    .filter((t) => !(t.id === "save" && until < 60))
     // Links to tools that are not in this build are dropped; the task stays.
     .map((t) => (t.href && input.available && !input.available.has(t.href) ? { ...t, href: undefined } : t))
+    .map((t) => shortNotice(t, until))
     .map((t) => {
       let daysBefore = t.days ?? Math.round((t.frac ?? 0) * runway);
       // Fractional tasks never land inside the last three weeks (fixed tasks own that stretch).
       if (t.days === undefined) daysBefore = Math.max(daysBefore, Math.min(runway, 22));
+      // A deadline that is today or already passed is "do now", and never shows a past date.
+      // With a few days to spare, only the urgent ones land today; the rest go to tomorrow.
+      const overdue = daysBefore >= until && t.days !== 0 && until > 0;
+      if (overdue) daysBefore = until > 3 && !urgentFirst.includes(t.id) ? until - 1 : until;
       const d = new Date(date.getTime() - daysBefore * DAY);
-      return { ...t, daysBefore, date: toISO(d), overdue: d.getTime() < today.getTime() && t.days !== 0 };
+      return { ...t, daysBefore, date: toISO(d), overdue };
     })
-    .sort((a, b) => b.daysBefore - a.daysBefore);
-  return { tasks: list, runway, compressed };
+    .sort((a, b) => b.daysBefore - a.daysBefore || urgency(a.id) - urgency(b.id));
+  return { tasks: list, runway, compressed, until, past: false };
+}
+
+// Wording for a short runway: say what still works in the days that are left.
+function shortNotice(t: Task, until: number): Task {
+  if (until > 21) return t;
+  const days = until === 1 ? "one day" : `${until} days`;
+  switch (t.id) {
+    case "rentals":
+      return { ...t, title: "Send your rental list today", why: `With ${days} to go, ask what is still free for your date. Expect fewer styles to choose from, and call if it's this week.` };
+    case "venue":
+      return { ...t, title: "Confirm your space and what it already has", why: "Ask the venue which tables, chairs and linens they supply, so you only rent what's missing." };
+    case "invites":
+      return { ...t, title: "Send invitations now if they haven't gone out", why: "A text or e-invite is fine this close. Ask for a quick yes or no." };
+    case "catering":
+      return { ...t, title: "Book catering this week", why: "If your first choice is full, ask about drop-off trays, and confirm who brings plates and chafers." };
+    case "tent":
+      return { ...t, why: "Tents book out first. If none is free, plan on canopies or an indoor backup." };
+    case "permits":
+      return { ...t, title: "Ask about permits today", why: "Some permits take weeks. Ask what you can do without one, or pick a space that doesn't need it." };
+    default:
+      return t;
+  }
 }
 
 /** An .ics calendar file with one all-day entry per task. */

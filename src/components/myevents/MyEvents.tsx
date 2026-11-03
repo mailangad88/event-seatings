@@ -20,6 +20,7 @@ import {
   eventIcs,
   fromPlannerStore,
   fromShareParam,
+  migrateDone,
   nextUp,
   progress,
   shareParam,
@@ -54,7 +55,7 @@ function save(list: SavedEvent[]) {
 const parse = (raw: string | null): SavedEvent[] => {
   try {
     const v = JSON.parse(raw ?? "[]");
-    return Array.isArray(v) ? v.filter((e) => e && typeof e.id === "string") : [];
+    return Array.isArray(v) ? v.filter((e) => e && typeof e.id === "string").map((e) => migrateDone({ ...e, done: e.done ?? {} })) : [];
   } catch {
     return [];
   }
@@ -310,13 +311,35 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
         </aside>
       </div>
 
+      {days !== undefined && days >= 0 && days <= 30 && steps.some((s) => s.kind === "rush") && (
+        <section className="card mt-10 border-gold/40 p-6 sm:p-8 print:hidden" aria-labelledby="rush-title">
+          <h2 id="rush-title" className="font-serif text-2xl">
+            {days <= 1 ? "Your event is almost here" : `${days} days to go: here's what still works`}
+          </h2>
+          <p className="mt-2 max-w-2xl text-muted">
+            We moved everything that was due earlier into one short list, with the most important things first. Rentals go fast this close to the date, so send us your list today
+            {days <= 7 ? " and call us" : ""}. We check what is still free for your date and get back to you, usually within one business day.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            <Link href={`/quote?event=${current.type}&from=my-events-rush`} className="btn-primary btn-sm">Send my rental list</Link>
+            <Link href="/book" className="btn-ghost btn-sm">Book a call</Link>
+          </div>
+        </section>
+      )}
+      {days !== undefined && days < 0 && (
+        <section className="card mt-10 p-6 sm:p-8 print:hidden" aria-labelledby="past-title">
+          <h2 id="past-title" className="font-serif text-2xl">This date has passed</h2>
+          <p className="mt-2 max-w-2xl text-muted">If your event moved, change the date above and your checklist rebuilds from the days left. If it&apos;s over, here are a few things to wrap up.</p>
+        </section>
+      )}
+
       {/* Full checklist */}
       <section className="mt-10" aria-labelledby="full-list">
-        <h2 id="full-list" className="display-3">Your {ev.name.toLowerCase()} checklist</h2>
+        <h2 id="full-list" className="display-3">{days !== undefined && days < 0 ? `After your ${ev.name.toLowerCase()}` : `Your ${ev.name.toLowerCase()} checklist`}</h2>
         <p className="mt-2 text-muted">Built for {current.guests} guests at {settings.find((s) => s.id === current.setting)?.name.toLowerCase()}. Ticks are saved on this device.</p>
         <ol className="mt-6 grid gap-4 md:grid-cols-2">
           {steps.map((s) => (
-            <li key={s.when} className="card p-5">
+            <li key={s.when} className={s.kind === "rush" ? "card border-gold/50 p-5" : "card p-5"}>
               <p className="flex items-baseline justify-between gap-3">
                 <span className="font-serif text-xl">{s.when}</span>
                 {s.date && <span className="text-sm text-muted">{s.date}</span>}

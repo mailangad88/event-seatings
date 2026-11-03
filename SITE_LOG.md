@@ -37,6 +37,11 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): 58 occasion and party rental guides
+
+- Added 58 posts (see "Occasion and party rental guides" below): Thanksgiving week delivery timing, Diwali card parties, Wigilia, Feast of the Seven Fishes, Las Posadas, tamaladas, Noche Buena, Christmas dinner for 20, Santa photos, craft fairs, New Year's Day open house, Orthodox Christmas, Three Kings Day, Lohri, hot pot, Tet, Seollal, Paczki Day, Valentine's, Nowruz, St. Patrick's, Pascha, Vaisakhi, Cinco de Mayo, Derby, Pride, El Grito, Oktoberfest, Yom Kippur, Sukkot, Mid-Autumn, Durga Puja, Griha Pravesh, and 15+ rental tip guides.
+- Remaining: occasion-specific hero images (posts use topic art), re-check cultural details with someone from each community when possible.
+
 ## Changes in this release (2026-11-03): SEO / AEO / GEO audit and local landing pages
 
 **Automated audit.** `npm run seo-audit` (`scripts/seo-audit.mjs`) builds nothing itself: after `npm run build` it starts the production server, reads `/sitemap.xml`, `/robots.txt` and `/llms.txt`, crawls every sitemap URL and scores each page out of 100. GitHub Actions (`.github/workflows/seo-audit.yml`) runs it on every pull request and push to main, and fails on any blocking error or a site score under 90. The report is written to `reports/seo-audit.md` and `.json` (uploaded as a CI artifact, not committed).
@@ -154,6 +159,7 @@ Angad asked for guides for people planning events in each month (what to watch o
 
 Goal: give planners a reason to come back between their first visit and their event (research notes: The Knot and Zola keep couples returning with a saved checklist, budget and countdown; PartySlate and Pinterest with fresh seasonal inspiration).
 
+- **Checklists follow the days left** (2026-11-03). `/my-events`, the `/quote` planner checklist and PDF, `/tools/timeline` and `/countdown` no longer show past dates or "9 months before (do now)". Stages whose date has passed fold into "Today" / "Tomorrow" / "Next few days" (two weeks or less), "Catch up now" (15 to 60 days) or "Start now" (more time), with tasks rewritten for short notice (send your list today, call us, 811 notice, drop-off catering, playlist if no DJ). Past events get an "After your event" list; event day gets one "Today" list; far-out events get a short "Start now" step. A rush card on `/my-events` links to the quote and booking pages. Ticks are now keyed by task id and old ticks migrate. Code: `timeline()` in `src/lib/event-plan.ts`, `buildTimeline()` in `src/lib/tools/timeline.ts`.
 - **New `/my-events`** (Last touched 2026-11-03). Free event plans saved in the browser, no account: countdown, a checklist dated back from the event (same milestones as the `/quote` planner via `timeline()`), progress bar, "Next up" tasks, Chicago normal high plus calculated sunrise and sunset for the date, notes, multiple events ("Plan another event"), `.ics` calendar file with a reminder for each upcoming milestone, share link (`?e=`) that opens the same plan on another device, print view, and import from an in-progress `/quote` plan. Optional "free planning check-in" email is saved as a `waitlist` lead with source `my-events` plus event type, date and guests. SEO ✅ AEO ✅ (WebApplication + FAQPage) GEO ✅ Visuals ✅ FAQ ✅ CTA ✅. Code: `src/lib/my-events.ts`, `src/components/myevents/MyEvents.tsx`.
 - **New `/ideas`** (Last touched 2026-11-03). Monthly ideas hub that re-renders daily: this month's occasions with guides, rentals people book now, a "book now for later" list (event month = today + each occasion's lead time), the next three months, all 12 months with normal highs, a monthly ideas letter signup (`waitlist`, source `ideas-monthly`) and FAQs. CollectionPage + FAQPage schema. Data: `src/data/ideas.ts`.
 - **Weather facts** in `src/lib/chicago-climate.ts`: NWS Chicago 1991-2020 normal highs at O'Hare and median freeze dates (Apr 21, Oct 19); sunrise and sunset computed with NOAA solar equations (checked: Jun 21 sunset 8:29 PM, Dec 21 4:22 PM). Lows and precipitation were left out because the source table could not be fetched to verify them.
@@ -267,7 +273,11 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 | `/terms` | Terms of use: broker model, 10% booking fee, who you pay, Booking Promise, damage, liability cap | 2026-11-02 | ✅ | n/a | n/a | ✅ | ❌ | n/a |
 | `/how-it-works` | Four steps from quote to pickup, who you pay, Booking Promise summary, FAQ | 2026-11-02 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
 | `/booking-promise` | Payments, deposits, damage waiver, insurance/COI, six-point Booking Promise, payment StepFlow + schedule table, 8 FAQs | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/partners` | Vendor sign-up: why join, Founding Partner terms (0% for 90 days, then 5%), flow, application form (kind `partner`), 6 FAQs | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners` | Vendor sign-up: why join, Founding Partner terms (0% for 90 days, then 5%), flow, application form (kind `partner`), 6 FAQs | 2026-11-03 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners/onboard` | 6-step vendor sign-up: company, rentals and area, schedule (days, events per day, full dates), CSV price list upload with preview, payments and billing (no bank details), photos and terms. Saves to `vendor_applications`, draft kept in the browser | 2026-11-03 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners/faq` | 23 rental-company questions in 4 groups (signing up, orders, money, listing), FAQPage schema, step flow | 2026-11-03 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/how-we-work` | Hosts and rental companies: who does what diagram, both step flows, who pays whom, timing, what each side can count on, HowTo + FAQPage schema | 2026-11-03 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners/status/<token>` | Vendor's own application status page (noindex) | 2026-11-03 | n/a | n/a | n/a | ⚠️ | n/a | ✅ |
 | 404 (`not-found.tsx`) | Not-found page | 2026-11-01 | n/a | n/a | n/a | ✅ | ❌ | ⚠️ |
 
 ## Rental catalog (`/rentals`, added 2026-11-02)
@@ -936,6 +946,71 @@ Columns: SEO = title, description, keyword, canonical; AEO = answer box + FAQ sc
 | `/blog/summer-event-heat-plan-chicago` | summer event heat plan chicago | 2026-11-02 | 1088 | 7 | Real photo hero; review after Search Console data |
 | `/blog/warehouse-and-raw-space-event-venues` | warehouse event venue rental checklist | 2026-11-02 | 1071 | 7 | Real photo hero; review after Search Console data |
 
+## Occasion and party rental guides (added 2026-11-03)
+
+58 new posts: holidays and cultural occasions from Thanksgiving through next fall (seasonal ones first), plus party rental tips most hosts learn too late (hidden fees, lead times, counting items, winter delivery, snow load, propane, floors). Every post: answer box, inline SVG figure plus 2+ more visual blocks, 6 FAQs (FAQPage schema), Chicago notes, /book and /quote CTA. All pass `check-posts.mjs` and `check-copy.mjs`.
+
+| Route | Keyword | Last touched | Topic | Words | FAQs | Visuals | Remaining to improve |
+|---|---|---|---|---|---|---|---|
+| `/blog/christmas-dinner-for-20-rentals-and-seating` | christmas dinner for 20 rentals | 2026-11-03 | Parties | 1362 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/christmas-pageant-and-concert-seating` | christmas pageant seating | 2026-11-03 | Corporate & Nonprofit | 1042 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/cinco-de-mayo-party-planning` | cinco de mayo party planning | 2026-11-03 | Parties | 1065 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/diwali-card-party-table-setup` | diwali card party table setup | 2026-11-03 | Cultural Celebrations | 1268 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/durga-puja-community-celebration-planning` | durga puja community celebration planning | 2026-11-03 | Cultural Celebrations | 1503 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/el-grito-mexican-independence-day-party` | el grito mexican independence day party | 2026-11-03 | Cultural Celebrations | 1410 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/event-rental-hidden-fees-checklist` | event rental hidden fees | 2026-11-03 | Budget & Booking | 1181 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/event-rental-order-minimums` | event rental order minimum | 2026-11-03 | Budget & Booking | 1001 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/feast-of-the-seven-fishes-dinner-setup` | feast of the seven fishes dinner setup | 2026-11-03 | Cultural Celebrations | 1322 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/first-time-renting-party-equipment-guide` | first time renting party equipment | 2026-11-03 | Budget & Booking | 1298 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/galentines-day-brunch-party` | galentines day brunch party | 2026-11-03 | Parties | 1098 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/griha-pravesh-housewarming-puja-setup` | griha pravesh housewarming puja setup | 2026-11-03 | Cultural Celebrations | 1506 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/holiday-cookie-exchange-party-setup` | holiday cookie exchange party setup | 2026-11-03 | Parties | 1246 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/holiday-craft-fair-vendor-tables-setup` | holiday craft fair vendor tables setup | 2026-11-03 | Corporate & Nonprofit | 1101 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/holiday-weekend-event-rentals-chicago` | holiday weekend event rentals chicago | 2026-11-03 | Budget & Booking | 1431 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/hot-pot-party-for-a-crowd-setup` | hot pot party setup | 2026-11-03 | Cultural Celebrations | 1214 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/how-to-count-rentals-at-delivery-and-pickup` | count rentals at delivery | 2026-11-03 | Budget & Booking | 927 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/how-to-negotiate-an-event-rental-quote` | how to negotiate an event rental quote | 2026-11-03 | Budget & Booking | 1189 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/keeping-rentals-safe-overnight-outdoors` | rental chairs left outside overnight | 2026-11-03 | Budget & Booking | 948 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/kentucky-derby-party-planning` | kentucky derby party planning | 2026-11-03 | Parties | 1491 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/las-posadas-party-planning-chicago` | las posadas party planning | 2026-11-03 | Cultural Celebrations | 1236 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/lohri-bonfire-night-planning` | lohri bonfire night planning | 2026-11-03 | Cultural Celebrations | 1111 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/marriage-proposal-setup-rentals` | marriage proposal setup rentals | 2026-11-03 | Parties | 1166 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/measure-before-you-rent-doors-gates-stairs` | measure doors gates before renting event equipment | 2026-11-03 | Budget & Booking | 1106 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/mid-autumn-festival-mooncake-gathering` | mid-autumn festival gathering | 2026-11-03 | Cultural Celebrations | 1384 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/new-years-day-brunch-open-house` | new year's day brunch open house | 2026-11-03 | Parties | 1071 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/noche-buena-filipino-christmas-eve-party` | noche buena filipino christmas eve party | 2026-11-03 | Cultural Celebrations | 1165 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/nowruz-haft-sin-party-planning` | nowruz haft sin party | 2026-11-03 | Cultural Celebrations | 1145 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/oktoberfest-party-at-home` | oktoberfest party at home | 2026-11-03 | Parties | 1279 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/orthodox-christmas-eve-dinner-january` | orthodox christmas eve dinner | 2026-11-03 | Cultural Celebrations | 1145 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/orthodox-easter-pascha-lamb-roast-party` | orthodox easter party | 2026-11-03 | Cultural Celebrations | 1137 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/paczki-day-and-mardi-gras-party` | paczki day party | 2026-11-03 | Parties | 1046 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/patio-heater-propane-how-much-and-who-supplies` | patio heater propane tank how long does it last | 2026-11-03 | Lighting & Power | 1342 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/photos-with-santa-event-setup` | photos with santa event setup | 2026-11-03 | Corporate & Nonprofit | 1214 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/pride-party-planning-chicago` | pride party planning chicago | 2026-11-03 | Parties | 1349 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/protecting-floors-for-a-home-party` | protect floors rental chairs tables home party | 2026-11-03 | Budget & Booking | 964 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/rental-booking-lead-times-by-item` | how far ahead to book event rentals | 2026-11-03 | Budget & Booking | 1250 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/renting-a-space-for-a-new-years-eve-party-chicago` | new years eve party venue rental chicago | 2026-11-03 | Parties | 1312 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/seollal-korean-new-year-gathering` | seollal korean new year gathering | 2026-11-03 | Cultural Celebrations | 1184 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/st-patricks-day-party-planning-chicago` | st patricks day party chicago | 2026-11-03 | Parties | 1043 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/sukkot-sukkah-dinner-seating` | sukkah dinner seating | 2026-11-03 | Cultural Celebrations | 1449 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/tailgate-party-rentals-chicago` | tailgate party rentals chicago | 2026-11-03 | Parties | 1248 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/tamalada-tamale-making-party-setup` | tamalada tamale making party setup | 2026-11-03 | Cultural Celebrations | 1224 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/tent-in-winter-snow-load-chicago` | winter tent rental Chicago snow load | 2026-11-03 | Tents | 1095 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/tet-vietnamese-new-year-celebration` | tet vietnamese new year celebration | 2026-11-03 | Cultural Celebrations | 1073 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/thanksgiving-week-rental-delivery-and-pickup` | thanksgiving rental delivery and pickup | 2026-11-03 | Parties | 1345 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/three-kings-day-rosca-party` | three kings day rosca party | 2026-11-03 | Cultural Celebrations | 1077 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/ugly-sweater-party-planning` | ugly sweater party planning | 2026-11-03 | Parties | 1173 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/us-citizenship-celebration-party` | us citizenship celebration party ideas | 2026-11-03 | Parties | 1354 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/vaisakhi-celebration-planning` | vaisakhi celebration planning | 2026-11-03 | Cultural Celebrations | 1048 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/valentines-day-dinner-party-at-home` | valentines day dinner party at home | 2026-11-03 | Parties | 1029 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/wake-and-visitation-at-home-seating` | wake at home seating setup | 2026-11-03 | Parties | 1344 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/weekend-event-rental-pricing-friday-to-monday` | weekend event rental pricing | 2026-11-03 | Budget & Booking | 972 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/wigilia-polish-christmas-eve-dinner-setup` | wigilia dinner setup | 2026-11-03 | Cultural Celebrations | 1425 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/winter-event-rental-delivery-snow-and-ice` | winter event rental delivery Chicago snow | 2026-11-03 | Seasons & Venues | 1060 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/winter-kids-birthday-party-indoors-chicago` | winter kids birthday party indoors | 2026-11-03 | Parties | 1441 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/wrong-or-short-rental-order-what-to-do` | rental order wrong or short what to do | 2026-11-03 | Budget & Booking | 1399 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/yom-kippur-break-fast-for-a-crowd` | yom kippur break-fast for a crowd | 2026-11-03 | Cultural Celebrations | 1327 | 6 | 3 | Add a styled scene photo for this occasion |
+
 ## Generated, metadata and API routes
 
 | Route | Purpose | Last touched | Status / notes |
@@ -1592,3 +1667,11 @@ Angad asked for researched party ideas per party type, including activities, gam
 
 - Planner (`/quote`): the Add-ons step now shows "Party ideas for your <occasion>" tiles with the price each adds for the guest count. Picking one adds its rentals under "From your party ideas" (an item already on the list keeps the larger quantity). The plan page and PDF show each picked idea's setup (indoor or backyard text by setting), activities and props. The CRM message gets "Party ideas: …". `?idea=<slug>` preselects a theme and its occasion.
 - Linked from the footer, the /ideas monthly page, sitemap and llms.txt (the header now has "Ideas" → /ideas from another PR).
+
+## Changes in this release (2026-11-03, vendor sign-up)
+
+- /partners/onboard rebuilt as a 6-step sign-up that saves structured applications (new `vendor_applications` table, re-run `supabase/schema.sql`; until then they fall back to partner leads). CSV price lists are read in the browser and stored as rows.
+- Vendors get an email and a private status page (/partners/status/<token>).
+- Admin: /admin/applications (list, filters, search) and /admin/applications/<id> (review, status with optional email to the vendor, link to a catalog vendor, notes, history, price list CSV download). Approving a linked catalog vendor moves it to "In talks" in /admin/vendors.
+- New /partners/faq and /how-we-work, linked from the footer, /partners, /partners/onboard and /how-it-works, and added to the sitemap.
+- Remaining: vendor self-service edits after approval (vendor login), automatic catalog import from approved price lists, Stripe Connect payouts once 3+ vendors sign.
