@@ -32,14 +32,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur-md">
       <div className="bg-espresso text-[13px]">
-        <div className="container-x flex items-center justify-center gap-2 py-2 text-ink/85 sm:justify-between">
+        <div className="container-x flex items-center justify-center gap-2 py-1 text-ink/85 sm:justify-between">
           <span className="hidden items-center gap-2 sm:flex">
             <Icon name="pin" size={14} className="text-gold" /> Delivering across {site.marketLong}
           </span>
           <span className="flex items-center gap-4">
             <span>Free quotes in one business day</span>
             <span aria-hidden className="text-gold">·</span>
-            <Link href="/book" className="font-medium text-ink underline decoration-gold underline-offset-4">
+            <Link href="/book" className="inline-block py-1 font-medium text-ink underline decoration-gold underline-offset-4">
               Book a free call
             </Link>
           </span>

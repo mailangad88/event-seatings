@@ -42,8 +42,11 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
     return c ? [c] : [];
   });
   const posts = (await getPosts()).filter((p) => ev.relatedPosts.includes(p.slug)).slice(0, 3);
-  const areas = locations.filter((l) => l.popularEvents.includes(ev.slug));
-  const otherAreas = locations.filter((l) => !areas.includes(l));
+  // Lead with Chicago and the county guides, then towns where this event is popular. Capped so the
+  // page stays readable now that we cover ~300 areas; the full list lives on /chair-rentals.
+  const areas = locations.filter((l) => l.popularEvents.includes(ev.slug) && l.kind !== "county");
+  const otherAreas = locations.filter((l) => l.kind === "county" || l.slug === "chicago").filter((l) => !areas.includes(l));
+  const shownAreas = [...otherAreas, ...areas].slice(0, 60);
   const others = eventTypes.filter((e) => e.slug !== ev.slug);
 
   return (
@@ -56,10 +59,10 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
           serviceType: `${ev.shortName} chair rental`,
           description: ev.metaDescription,
           url: `${site.url}${eventPath(ev)}`,
-          provider: { "@type": "LocalBusiness", name: site.name, url: site.url, email: site.email },
+          provider: { "@id": `${site.url}/#business` },
           areaServed: [
             { "@type": "City", name: "Chicago, IL" },
-            ...locations.filter((l) => l.kind === "suburb").map((l) => ({ "@type": "City", name: `${l.name}, IL` })),
+            ...locations.filter((l) => l.kind === "county").map((l) => ({ "@type": "AdministrativeArea", name: `${l.name}, IL` })),
           ],
         }}
       />
@@ -185,7 +188,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
             {ev.shortName} across <em className="text-gold">Chicagoland</em>
           </h2>
           <ul className="mt-10 flex flex-wrap gap-3">
-            {[...areas, ...otherAreas].map((l) => (
+            {shownAreas.map((l) => (
               <li key={l.slug}>
                 <Link
                   href={locationPath(l)}
@@ -195,6 +198,11 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/chair-rentals" className="chip border-gold/60 text-gold hover:text-ink">
+                All {locations.length} areas →
+              </Link>
+            </li>
           </ul>
         </div>
       </section>

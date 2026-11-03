@@ -927,6 +927,8 @@ function buildMonth(slug: string): GuideProps | null {
     ],
     related: [
       ...[months[(i + 11) % 12], months[(i + 1) % 12]].map((x) => ({ href: `/chicago-event-seasons/${x.slug}`, label: `${x.name} events in Chicago` })),
+      { href: m.slug === "november" ? "/blog/planning-a-november-event-chicago" : `/blog/planning-an-event-in-chicago-in-${m.slug}`, label: `Planning an event in ${m.name}: what to watch for` },
+      { href: "/blog/chicago-event-planning-calendar-month-by-month", label: "Chicago event planning calendar" },
       { href: "/answers", label: "Chicago chair answers" },
       { href: "/chicago-event-seasons", label: "All months" },
     ],

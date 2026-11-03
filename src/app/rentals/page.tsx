@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
@@ -7,6 +8,7 @@ import { Faqs, JsonLd, Steps, faqJsonLd } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { PriceDisclaimer } from "@/components/ui";
+import { categoryScene, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -67,46 +69,72 @@ export default function RentalsPage() {
     <>
       <div className="container-x py-20">
         <JsonLd data={jsonLd} />
-        <p className="eyebrow">Event rentals · {site.marketLong}</p>
-        <h1 className="headline mt-6 max-w-5xl text-5xl leading-[0.98] sm:text-7xl">
-          Everything for your event, <em className="text-gold">priced upfront</em>
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-          {catalogItems.length} rental items across {categories.length} categories, from chairs and tables to dishes,
-          glassware, tents and dance floors. See the price, build your list, and get one itemized quote delivered
-          anywhere in {site.marketLong}.
-        </p>
-        <div className="mt-10 flex flex-wrap gap-4">
-          <Link href="/quote" className="btn-primary">
-            Build your rental list
-          </Link>
-          <Link href="/book?from=rentals" className="btn-ghost">
-            Book a free planning call
-          </Link>
+        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+          <div>
+            <p className="eyebrow">Event rentals · {site.marketLong}</p>
+            <h1 className="display-1 mt-5 max-w-3xl">
+              Everything for your event, <em className="text-gold">priced upfront</em>
+            </h1>
+            <p className="lede mt-6 max-w-2xl">
+              {catalogItems.length.toLocaleString("en-US")} rental items across {categories.length} categories, from
+              chairs and tables to dishes, glassware, tents and dance floors. See the price, build your list, and get one
+              itemized quote delivered anywhere in {site.marketLong}.
+            </p>
+            <div className="cta-row mt-8">
+              <Link href="/quote?from=rentals-hero" className="btn-primary btn-lg">
+                Build your rental list
+              </Link>
+              <Link href="/book?from=rentals" className="btn-ghost btn-lg">
+                Book a free planning call
+              </Link>
+            </div>
+          </div>
+          <figure className="media aspect-[4/3] shadow-lift lg:aspect-[5/6]">
+            <Image
+              src={scenes.gildedIvory.src}
+              alt={scenes.gildedIvory.alt}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="object-cover"
+            />
+          </figure>
         </div>
 
         <section className="mt-20" aria-labelledby="cats">
           <h2 id="cats" className="sr-only">
             Rental categories
           </h2>
-          <ul className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
             {byCategory.map(({ c, items, from }) => (
-              <li key={c.id} className="group relative bg-bg p-6 transition-colors hover:bg-surface">
-                <RentalIcon category={c.id} className="h-14 w-14 text-gold" />
-                <h3 className="mt-5 font-serif text-2xl font-light">
+              <li key={c.id} className="group relative bg-bg p-4 transition-colors hover:bg-surface sm:p-6">
+                {categoryScene(c.id) ? (
+                  <div className="media aspect-[4/3]">
+                    <Image
+                      src={categoryScene(c.id)!.src}
+                      alt={categoryScene(c.id)!.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                  </div>
+                ) : (
+                  <div className="grid aspect-[4/3] place-items-center rounded-xl bg-gold-soft"><RentalIcon category={c.id} className="h-14 w-14 text-gold" /></div>
+                )}
+                <h3 className="mt-3 font-serif text-xl leading-tight font-medium sm:mt-4 sm:text-2xl">
                   <Link href={`/rentals/${c.id}`} className="after:absolute after:inset-0">
                     {c.name}
                   </Link>
                 </h3>
-                <p className="mt-1 text-sm text-muted">{c.blurb}</p>
-                <p className="mt-4 text-[11px] tracking-[0.18em] text-muted uppercase">
+                <p className="mt-1 line-clamp-2 text-sm leading-6 text-muted max-sm:hidden">{c.blurb}</p>
+                <p className="mt-2 text-[13px] font-medium text-gold sm:mt-3">
                   {items.length} items · from {formatPrice(from)}
                 </p>
               </li>
             ))}
-            <li className="flex flex-col justify-between gap-6 bg-surface p-6 sm:col-span-2">
+            <li className="col-span-2 flex flex-col justify-between gap-6 bg-surface p-6">
               <div>
-                <h3 className="font-serif text-2xl font-light">Need something not listed?</h3>
+                <h3 className="font-serif text-2xl font-medium">Need something not listed?</h3>
                 <p className="mt-2 max-w-md text-sm text-muted">
                   Generators, restrooms, staging, specialty linens, AV and more. Add it to your enquiry notes and we
                   source it from our partner network.

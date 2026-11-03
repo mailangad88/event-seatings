@@ -96,9 +96,9 @@ export default function SeatingReadinessPage() {
     <div className="container-x py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
-      <nav aria-label="Breadcrumb" className="text-[11px] tracking-[0.25em] text-muted uppercase">
-        <Link href="/tools" className="hover:text-ink">Free tools</Link>
-        <span className="mx-3 text-gold" aria-hidden>·</span>
+      <nav aria-label="Breadcrumb" className="text-sm text-muted">
+        <Link href="/tools" className="inline-block py-1 hover:text-ink">Free tools</Link>
+        <span className="mx-2 text-line" aria-hidden>·</span>
         <span>Seating Readiness Score</span>
       </nav>
 

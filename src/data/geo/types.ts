@@ -21,7 +21,7 @@ export type Faq = { q: string; a: string };
 export type Location = {
   slug: string; // url segment, e.g. "lincoln-park"
   name: string; // "Lincoln Park"
-  kind: "city" | "neighborhood" | "suburb";
+  kind: "city" | "neighborhood" | "suburb" | "county";
   region: string; // "North Side" or "DuPage County"
   lat: number;
   lng: number;

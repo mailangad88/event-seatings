@@ -81,9 +81,9 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb).replace(/</g, "\\u003c") }} />
 
       <div className="container-x pt-8 md:pt-14">
-        <nav className="text-[11px] tracking-[0.2em] text-muted uppercase" aria-label="Breadcrumb">
-          <Link href="/looks" className="hover:text-ink">The look book</Link>
-          <span className="mx-3 text-gold" aria-hidden>/</span>
+        <nav className="text-sm text-muted" aria-label="Breadcrumb">
+          <Link href="/looks" className="inline-block py-1 hover:text-ink">The look book</Link>
+          <span className="mx-2 text-line" aria-hidden>/</span>
           {look.name}
         </nav>
 
@@ -212,7 +212,7 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
       </section>
 
       {/* Sticky mobile call to action */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/95 p-3 backdrop-blur md:hidden">
+      <div data-bottom-bar className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/95 p-3 backdrop-blur md:hidden">
         <a href="#get" className="btn-primary w-full">Get this look</a>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { canonicalItem, catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
-import { imagesFor, originalImage, rentalImages, styledImage } from "@/data/rental-images";
+import { imagesFor, originalImage, rentalImages, soloImage, styledImage } from "@/data/rental-images";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockPhotos, stockSrc } from "@/data/stock-photos";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { looks } from "@/data/looks";
@@ -13,12 +13,13 @@ import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { LOCAL_RENTALS_UPDATED, areaRentalsPath, localAreas, costCategories, costPath, localCategories, localCategoryPath } from "@/data/local-rentals";
 import { site } from "@/lib/site";
+import { toolSitemapEntries } from "@/lib/tools/sitemap";
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/downloads", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/downloads", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -74,6 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         images: [
           ...own,
           ...(own.length || !i.chairSlug ? [] : img(i.chairSlug)),
+          ...(soloImage(i.id) ? [`${site.url}${soloImage(i.id)!.src}`] : []),
           ...(styledImage(i.id) && originalImage(i.id) ? [`${site.url}${originalImage(i.id)!.src}`] : []),
           ...gallery.map((p) => stockSrc(p, 1200, 1200)),
         ],
@@ -101,5 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...costCategories.map((c) => ({ url: `${site.url}${costPath(c.id)}`, priority: 0.7, lastModified: LOCAL_RENTALS_UPDATED })),
   ];
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
-  return [...pages, ...buyer, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  // Free tools, countdown, comparison and vendor onboarding pages (src/lib/tools/sitemap.ts).
+  const toolPages = toolSitemapEntries(["/countdown"]);
+  return [...pages, ...toolPages, ...buyer, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }

@@ -62,12 +62,12 @@ export function GuideShell(p: GuideProps) {
     <>
       <div className="container-x py-14">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-        <nav className="text-[11px] tracking-[0.2em] text-muted uppercase" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-ink">Home</Link>
+        <nav className="text-sm text-muted" aria-label="Breadcrumb">
+          <Link href="/" className="inline-block py-1 hover:text-ink">Home</Link>
           {p.crumbs.map((c, i) => (
             <span key={c.href}>
-              <span className="mx-3 text-gold" aria-hidden>/</span>
-              {i === p.crumbs.length - 1 ? c.name : <Link href={c.href} className="hover:text-ink">{c.name}</Link>}
+              <span className="mx-2 text-line" aria-hidden>/</span>
+              {i === p.crumbs.length - 1 ? c.name : <Link href={c.href} className="inline-block py-1 hover:text-ink">{c.name}</Link>}
             </span>
           ))}
         </nav>

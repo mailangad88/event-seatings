@@ -38,18 +38,23 @@ export function CategoryTile({
       </Link>
     );
   }
+  // Icon tile: stacked on phones (two-up grid is too narrow for icon + text + arrow in a row), a row from sm.
   return (
-    <Link href={href} className="group card card-hover flex items-center gap-4 p-4">
-      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gold-soft text-gold">
-        <Icon name={icon} size={24} />
+    <Link href={href} className="group card card-hover relative flex flex-col items-start gap-3 p-4 sm:flex-row sm:items-center sm:gap-4">
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gold-soft text-gold sm:h-12 sm:w-12">
+        <Icon name={icon} size={22} />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block font-medium">{name}</span>
+        <span className="block leading-snug font-medium">{name}</span>
         {(blurb || count !== undefined) && (
-          <span className="block truncate text-sm text-muted">{count !== undefined ? `${count} items` : blurb}</span>
+          <span className="mt-0.5 block text-sm text-muted sm:truncate">{count !== undefined ? `${count} items` : blurb}</span>
         )}
       </span>
-      <Icon name="arrow" size={18} className="text-muted transition-transform group-hover:translate-x-1 group-hover:text-gold" />
+      <Icon
+        name="arrow"
+        size={18}
+        className="absolute top-4 right-4 text-muted transition-transform group-hover:translate-x-1 group-hover:text-gold sm:static"
+      />
     </Link>
   );
 }

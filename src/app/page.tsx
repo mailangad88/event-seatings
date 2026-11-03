@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChairArt } from "@/components/ChairArt";
 import { Reveal } from "@/components/Reveal";
-import { ExampleChip } from "@/components/rentals/StockPhoto";
 import { CategoryTile, FaqList, Icon, QuoteCta, Section, StepFlow, TrustBar, type Faq } from "@/components/ui";
 import { getChair } from "@/data/chairs";
 import { formatDate, getPosts } from "@/lib/blog";
@@ -104,7 +103,7 @@ export default async function Home() {
               delivered across the city and suburbs. Pick what you need, see prices instantly with our 10% fee
               included, and we coordinate delivery, setup and pickup with every vendor for you.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="cta-row mt-8">
               <Link href="/quote?from=home-hero" className="btn-primary btn-lg">
                 Build your quote <Icon name="arrow" size={18} />
               </Link>
@@ -129,7 +128,6 @@ export default async function Home() {
             <div className="grid grid-cols-[1.25fr_1fr] gap-3 sm:gap-4">
               <div className="media row-span-2 aspect-[9/14] shadow-lift">
                 <Image src={scenes.blushGarden.src} alt={scenes.blushGarden.alt} fill priority sizes="(max-width: 1024px) 55vw, 30vw" className="object-cover" />
-                {scenes.blushGarden.ai && <ExampleChip label="AI-generated example" className="bottom-auto top-2" />}
               </div>
               <div className="media aspect-square shadow-soft">
                 <Image src={render("hero-chairs").src} alt={render("hero-chairs").alt} fill sizes="(max-width: 1024px) 45vw, 22vw" className="object-cover" />

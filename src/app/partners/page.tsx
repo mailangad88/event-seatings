@@ -153,6 +153,10 @@ export default function PartnersPage() {
       <Section id="apply" tone="sand" eyebrow="Apply" title="Become a Founding Partner" intro="Takes two minutes. We'll call you within one business day.">
         <div className="max-w-3xl">
           <PartnerForm />
+          <p className="mt-4 text-sm text-muted">
+            Prefer to set everything up now (lead time, minimums, setup and your price list)?{" "}
+            <Link href="/partners/onboard" className="link">Use the full onboarding form</Link>.
+          </p>
         </div>
       </Section>
 

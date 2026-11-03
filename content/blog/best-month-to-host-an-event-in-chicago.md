@@ -127,6 +127,10 @@ The Ultimate Event Planning Kit gives you a timeline you can work backward from 
 
 [Get the free Ultimate Event Planning Kit](/downloads/event-planning-kit)
 
+## Month-by-month guides
+
+For the 2027 holidays, city events and booking lead times in each month, start with the [Chicago event planning calendar](/blog/chicago-event-planning-calendar-month-by-month), then open the guide for your month, such as [June](/blog/planning-an-event-in-chicago-in-june), [September](/blog/planning-an-event-in-chicago-in-september) or [October](/blog/planning-an-event-in-chicago-in-october).
+
 ## Frequently asked questions
 
 ### What is the best month for an outdoor event in Chicago?

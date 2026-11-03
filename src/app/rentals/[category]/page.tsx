@@ -137,7 +137,6 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                   sizes="40vw"
                   className="object-cover"
                 />
-                {categoryScene(c.id)!.ai && <ExampleChip label="AI-generated example" />}
               </div>
               <figcaption className="mt-3 text-sm text-muted">{categoryScene(c.id)!.caption}</figcaption>
             </figure>

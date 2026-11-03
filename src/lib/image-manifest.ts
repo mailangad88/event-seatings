@@ -40,7 +40,7 @@ export function readImageManifest(): Record<string, ManifestEntry> {
   const out: Record<string, ManifestEntry> = { ...base };
   for (const [slug, s] of Object.entries(styled)) {
     if (!s.src || !existsSync(path.join(process.cwd(), "public", s.src))) continue;
-    const b = base[slug] ?? { kind: "scene", category: s.category };
+    const b = base[slug] ?? { kind: s.kind === "solo" ? "solo" : "scene", category: s.category, parent: s.parent };
     out[slug] = { ...b, src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true };
   }
   cache = out;
