@@ -383,7 +383,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             <h2 id="related" className="headline text-4xl">
               More {c.name.toLowerCase()}
             </h2>
-            <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-10 sm:mt-10 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-4">
               {related.map((r) => (
                 <RentalCard key={r.id} item={r} />
               ))}

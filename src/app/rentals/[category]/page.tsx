@@ -146,7 +146,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
           <h2 id="items" className="headline text-4xl">
             {c.name} we rent
           </h2>
-          <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-10 sm:mt-10 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-4">
             {featured.map((i) => (
               <RentalCard key={i.id} item={i} />
             ))}
