@@ -85,14 +85,14 @@ export default async function EmailPreviewsPage() {
     <div className="container-x py-12">
       <Link href="/admin" className="text-sm text-accent">← Dashboard</Link>
       <p className="eyebrow mt-3">Admin</p>
-      <h1 className="mt-1 font-serif text-5xl">Email previews</h1>
+      <h1 className="display-2 mt-1">Email previews</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted">
         Branded emails built with React Email (src/emails). Sample data only. Customer emails need a verified sending domain in Resend.
       </p>
       <div className="mt-10 grid gap-10 lg:grid-cols-2">
         {emails.map((e, i) => (
           <section key={e.name}>
-            <h2 className="font-serif text-2xl">{e.name}</h2>
+            <h2 className="display-3">{e.name}</h2>
             <p className="mt-1 text-sm text-muted">{e.when}</p>
             <iframe title={`${e.name} preview`} srcDoc={html[i]} className="mt-4 h-[620px] w-full rounded-2xl border border-line bg-white" />
           </section>

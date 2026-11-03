@@ -93,7 +93,7 @@ export function ReadinessScore({
     <div className="grid gap-16 lg:grid-cols-[1.6fr_1fr]">
       <div>
         <div className="sticky top-24 z-10 mb-10 flex items-center gap-6 bg-bg/90 py-3 backdrop-blur" aria-live="polite">
-          <span className="text-[11px] tracking-[0.25em] text-muted uppercase">
+          <span className="text-xs tracking-[0.25em] text-muted uppercase">
             {answered} of {statementCount} answered
           </span>
           <span className="relative h-px flex-1 bg-line" aria-hidden>
@@ -107,11 +107,11 @@ export function ReadinessScore({
               <div className="flex items-center gap-5">
                 <Image src={area.image} alt={area.imageAlt} width={1000} height={1250} sizes="64px" className="aspect-[4/5] w-16 object-cover" />
                 <div>
-                  <p className="text-[11px] tracking-[0.25em] text-gold uppercase">Area {ai + 1} of {readinessAreas.length}</p>
-                  <h3 className="headline mt-1 text-3xl">{area.name}</h3>
+                  <p className="text-xs tracking-[0.25em] text-gold uppercase">Area {ai + 1} of {readinessAreas.length}</p>
+                  <h3 className="display-2 mt-1">{area.name}</h3>
                 </div>
                 {areaScores[ai] !== null && (
-                  <span className="ml-auto font-serif text-3xl text-gold">
+                  <span className="ml-auto font-heading font-semibold text-3xl text-gold">
                     {areaScores[ai]}
                     <span className="text-base text-muted">/100</span>
                   </span>
@@ -133,8 +133,8 @@ export function ReadinessScore({
                               role="radio"
                               aria-checked={on}
                               onClick={() => answer(i, o.value)}
-                              className={`min-w-20 border px-3 py-2 text-[11px] tracking-[0.18em] uppercase transition-colors ${
-                                on ? "border-gold bg-gold text-[#0a0806]" : "border-line text-ink/80 hover:border-gold"
+                              className={`min-w-20 border px-3 py-2 text-xs tracking-[0.18em] uppercase transition-colors ${
+                                on ? "border-gold bg-gold text-accent-ink" : "border-line text-ink/80 hover:border-gold"
                               }`}
                             >
                               {o.label}
@@ -155,12 +155,12 @@ export function ReadinessScore({
         <div className="border border-line bg-surface p-8">
           <p className="eyebrow">Your result</p>
           {overall === null ? (
-            <p className="mt-6 font-serif text-2xl leading-snug text-muted">
+            <p className="mt-6 font-heading font-semibold text-2xl leading-snug text-muted">
               Answer all {statementCount} statements to see your score. Area scores appear as you finish each area.
             </p>
           ) : (
             <>
-              <p className="mt-6 font-serif text-7xl text-gold">
+              <p className="mt-6 font-heading font-semibold text-6xl text-gold">
                 {overall}
                 <span className="text-2xl text-muted">/100</span>
               </p>
@@ -176,7 +176,7 @@ export function ReadinessScore({
                 const weak = focus?.key === a.key;
                 return (
                   <li key={a.key}>
-                    <div className="flex justify-between text-[11px] tracking-[0.18em] uppercase">
+                    <div className="flex justify-between text-xs tracking-[0.18em] uppercase">
                       <span className={weak ? "text-gold" : "text-ink/80"}>{a.name}{weak ? " · focus" : ""}</span>
                       <span className="text-muted">{s === null ? "–" : s}</span>
                     </div>
@@ -201,7 +201,7 @@ export function ReadinessScore({
 
           {done && focus && (
             <div className="mt-8 border-t border-line pt-6">
-              <p className="text-[11px] tracking-[0.25em] text-gold uppercase">Start with {focus.name.toLowerCase()}</p>
+              <p className="text-xs tracking-[0.25em] text-gold uppercase">Start with {focus.name.toLowerCase()}</p>
               <p className="mt-3 leading-7">{focus.fix}</p>
               <Link href={guides[focus.key].href} className="mt-3 inline-block text-sm underline decoration-gold underline-offset-4">
                 {guides[focus.key].label} →
@@ -224,7 +224,7 @@ export function ReadinessScore({
 
           {done && (
             <div className="mt-8 border-t border-line pt-6">
-              <p className="font-serif text-2xl leading-snug">
+              <p className="font-heading font-semibold text-2xl leading-snug">
                 {focus ? `Want help with ${focus.name.toLowerCase()}?` : "Ready to reserve your chairs?"}
               </p>
               <p className="mt-2 text-sm leading-6 text-muted">
@@ -234,7 +234,7 @@ export function ReadinessScore({
             </div>
           )}
 
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[11px] tracking-[0.2em] uppercase">
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs tracking-[0.2em] uppercase">
             <button type="button" onClick={() => copy("link")} className="text-ink/80 hover:text-gold" disabled={answered === 0}>
               {copied === "link" ? "Link copied" : "Copy share link"}
             </button>
@@ -285,7 +285,7 @@ function EmailResult({ resultText, focus, siteName }: { resultText: string; focu
 
   if (status === "done") {
     return (
-      <p className="mt-6 border border-line p-6 font-serif text-xl italic">
+      <p className="mt-6 border border-line p-6 font-heading font-semibold text-xl">
         Thank you. {siteName} will email you your score with tips for your weakest area.
       </p>
     );
@@ -293,19 +293,19 @@ function EmailResult({ resultText, focus, siteName }: { resultText: string; focu
 
   return (
     <form onSubmit={submit} className="mt-6 border border-line p-6">
-      <p className="font-serif text-xl">Email me my score and tips</p>
+      <p className="font-heading font-semibold text-xl">Email me my score and tips</p>
       <p className="mt-1 text-xs leading-5 text-muted">Optional. We&apos;ll reply with your result and may follow up about your event.</p>
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
       <div className="mt-4 grid gap-3">
-        <label className="text-[11px] tracking-[0.2em] text-muted uppercase">
+        <label className="text-xs tracking-[0.2em] text-muted uppercase">
           First name
           <input name="name" autoComplete="given-name" className="mt-1 w-full border-0 border-b border-line bg-transparent px-0 py-2 text-base normal-case tracking-normal text-ink focus:border-gold focus:ring-0 focus:outline-none" />
         </label>
-        <label className="text-[11px] tracking-[0.2em] text-muted uppercase">
+        <label className="text-xs tracking-[0.2em] text-muted uppercase">
           Email
           <input name="email" type="email" required autoComplete="email" className="mt-1 w-full border-0 border-b border-line bg-transparent px-0 py-2 text-base normal-case tracking-normal text-ink focus:border-gold focus:ring-0 focus:outline-none" />
         </label>
-        <label className="text-[11px] tracking-[0.2em] text-muted uppercase">
+        <label className="text-xs tracking-[0.2em] text-muted uppercase">
           Event date (optional)
           <input name="event_date" type="date" className="mt-1 w-full border-0 border-b border-line bg-transparent px-0 py-2 text-base normal-case tracking-normal text-ink focus:border-gold focus:ring-0 focus:outline-none" />
         </label>

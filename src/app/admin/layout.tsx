@@ -9,8 +9,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="bg-bg">
       <div className="bg-espresso" data-admin-chrome>
         <div className="mx-auto flex max-w-[96rem] items-center justify-between gap-4 px-4 py-2.5 sm:px-6">
-          <p className="font-serif text-lg text-ink">
-            {site.name} <span className="text-muted italic">staff</span>
+          <p className="font-heading font-semibold text-lg text-ink">
+            {site.name} <span className="font-normal text-muted">staff</span>
           </p>
           <Link href="/" className="text-sm text-gold">View website →</Link>
         </div>

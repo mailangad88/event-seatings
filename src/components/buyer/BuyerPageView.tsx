@@ -13,7 +13,7 @@ function BeforeAfter({ page }: { page: BuyerPage }) {
       <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
         <div className="rounded-2xl border border-line bg-surface-2 p-6">
           <p className="text-xs font-semibold tracking-wide text-muted uppercase">Before</p>
-          <p className="mt-1 font-serif text-2xl">{page.before.title}</p>
+          <p className="mt-1 font-heading font-semibold text-2xl">{page.before.title}</p>
           <ul className="mt-4 space-y-3 text-sm">
             {page.before.points.map((t) => (
               <li key={t} className="flex gap-3">
@@ -29,7 +29,7 @@ function BeforeAfter({ page }: { page: BuyerPage }) {
         </div>
         <div className="rounded-2xl border border-gold/40 bg-gold-soft/60 p-6">
           <p className="text-xs font-semibold tracking-wide text-gold uppercase">After</p>
-          <p className="mt-1 font-serif text-2xl">{page.after.title}</p>
+          <p className="mt-1 font-heading font-semibold text-2xl">{page.after.title}</p>
           <ul className="mt-4 space-y-3 text-sm">
             {page.after.points.map((t) => (
               <li key={t} className="flex gap-3">

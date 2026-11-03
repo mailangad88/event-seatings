@@ -22,7 +22,7 @@ export function ChairCard({ chair, index }: { chair: Chair; index?: number }) {
       </div>
       <div className="flex items-start justify-between gap-4 px-5 pt-5">
         <div>
-          <h3 className="font-serif text-2xl leading-tight">
+          <h3 className="display-3">
             <Link href={`/chairs/${chair.slug}`} className="after:absolute after:inset-0">
               {chair.name}
             </Link>

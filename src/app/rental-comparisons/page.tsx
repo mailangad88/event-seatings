@@ -67,7 +67,7 @@ export default function RentalComparisonsIndex() {
                     <div className="media aspect-square rounded-none"><Image src={b.src} alt={b.alt} fill sizes="(min-width: 1024px) 11vw, 25vw" className="object-cover" /></div>
                   </div>
                   <div className="p-5">
-                    <h2 className="font-serif text-xl">{c.title.split(":")[0]}</h2>
+                    <h2 className="display-3">{c.title.split(":")[0]}</h2>
                     <p className="mt-1 text-sm text-muted">{c.answer.split(". ")[0]}.</p>
                   </div>
                 </Link>

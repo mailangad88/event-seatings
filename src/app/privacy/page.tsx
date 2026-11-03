@@ -13,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <div className="container-x max-w-3xl py-20">
       <p className="eyebrow">Legal</p>
-      <h1 className="headline mt-6 text-5xl sm:text-6xl">Privacy policy</h1>
+      <h1 className="display-1 mt-6">Privacy policy</h1>
       <p className="mt-4 text-sm text-muted">Last updated October 2026</p>
       <ChairStrip className="mt-10" slugs={["ghost", "bentwood", "cane-back"]} caption="We collect only what we need to plan your event." />
       <div className="prose-post mt-10">
@@ -106,8 +106,8 @@ function ChatDataFlow() {
         {flow.map((f, i) => (
           <li key={f.title} className="m-0 flex flex-col items-center gap-2 sm:flex-1 sm:flex-row">
             <div className="w-full rounded-md border border-gold/60 bg-surface px-3 py-3 text-center">
-              <span className="block font-serif text-lg leading-tight text-ink">{f.title}</span>
-              <span className="mt-1 block text-[11px] tracking-wide text-muted">{f.note}</span>
+              <span className="block font-heading font-semibold text-lg leading-tight text-ink">{f.title}</span>
+              <span className="mt-1 block text-xs tracking-wide text-muted">{f.note}</span>
             </div>
             {i < flow.length - 1 && (
               <svg width="14" height="14" viewBox="0 0 14 14" className="shrink-0 rotate-90 text-gold sm:rotate-0" aria-hidden>

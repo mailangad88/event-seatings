@@ -20,7 +20,7 @@ export function RecommendedChairs({
   return (
     <section className="mt-32">
       <p className="eyebrow">{eyebrow}</p>
-      <h2 className="headline mt-6 max-w-3xl text-5xl leading-[1.02] sm:text-6xl">{heading}</h2>
+      <h2 className="display-2 mt-6 max-w-3xl">{heading}</h2>
       <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {items.map(({ chair, why }, i) => (
           <Reveal key={chair.slug} delay={i * 120}>
@@ -30,12 +30,12 @@ export function RecommendedChairs({
                 className="aspect-[4/5] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
               />
               <div className="flex items-baseline justify-between gap-4 pt-5">
-                <h3 className="font-serif text-[1.65rem] leading-tight font-light">
+                <h3 className="display-3">
                   <Link href={`/chairs/${chair.slug}`} className="after:absolute after:inset-0">
                     {chair.name}
                   </Link>
                 </h3>
-                <span className="shrink-0 text-[11px] tracking-[0.18em] text-gold uppercase">{chair.estPrice}</span>
+                <span className="shrink-0 text-xs tracking-[0.18em] text-gold uppercase">{chair.estPrice}</span>
               </div>
               <p className="mt-3 border-t border-line pt-3 text-sm leading-6 text-muted">{why}</p>
             </article>

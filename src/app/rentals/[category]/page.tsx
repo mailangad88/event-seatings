@@ -107,7 +107,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
         <header className="mt-10 grid items-center gap-10 md:grid-cols-[1.5fr_1fr]">
           <div>
             <p className="eyebrow">{c.name} rental · {site.marketLong}</p>
-            <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+            <h1 className="display-1 mt-6">
               {c.name} <em className="text-gold">rental</em> in {site.market}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{c.intro}</p>
@@ -204,7 +204,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-2">
               {sections.map(([section, rows]) => (
                 <table key={section} className="w-full self-start text-sm">
-                  <caption className="pb-3 text-left text-[11px] font-medium tracking-[0.18em] text-muted uppercase">{section}</caption>
+                  <caption className="pb-3 text-left text-xs font-medium tracking-[0.18em] text-muted uppercase">{section}</caption>
                   <tbody>
                     {rows.map((i) => {
                       const thumb = photosForItem(i);

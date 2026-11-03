@@ -14,7 +14,7 @@ export function RentalCard({ item }: { item: CatalogItem }) {
         item={item}
         className="aspect-square transition-transform duration-700 ease-out group-hover:scale-[1.02]"
       />
-      <h3 className="mt-3 font-serif text-lg leading-tight font-medium sm:mt-4 sm:text-2xl">
+      <h3 className="display-3 mt-3 sm:mt-4">
         <Link href={itemHref(item)} className="after:absolute after:inset-0">
           {item.name}
         </Link>
@@ -22,7 +22,7 @@ export function RentalCard({ item }: { item: CatalogItem }) {
       <p className="mt-1 line-clamp-2 text-xs leading-5 text-muted sm:text-sm sm:leading-6">{item.specs}</p>
       <span className="min-h-3 flex-1" aria-hidden />
       <p className="mt-auto flex flex-wrap items-baseline gap-x-2 border-t border-line pt-3">
-        <span className="font-serif text-xl text-wine sm:text-2xl">{formatPrice(customerPrice(item))}</span>
+        <span className="font-heading font-semibold text-xl text-wine sm:text-2xl">{formatPrice(customerPrice(item))}</span>
         <span className="text-xs text-muted">{item.unit === "each" ? "each" : item.unit}</span>
         {item.priceSource === "estimated" && <span className="chip ml-auto">Est.</span>}
       </p>
@@ -63,7 +63,7 @@ export function Steps({ steps, compact = false }: { steps: { title: string; body
     <ol className={`grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 ${compact ? "" : "lg:grid-cols-4"}`}>
       {steps.map((s, n) => (
         <li key={s.title} className="bg-bg p-6">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold font-serif text-lg text-gold">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold font-heading font-semibold text-lg text-gold">
             {n + 1}
           </span>
           <h3 className="mt-4 text-sm font-medium tracking-[0.12em] uppercase">{s.title}</h3>
@@ -79,7 +79,7 @@ export function Faqs({ faqs }: { faqs: { q: string; a: string }[] }) {
     <div className="divide-y divide-line border-y border-line">
       {faqs.map((f) => (
         <details key={f.q} className="group py-5" open={false}>
-          <summary className="flex cursor-pointer list-none items-start justify-between gap-6 font-serif text-xl font-light">
+          <summary className="flex cursor-pointer list-none items-start justify-between gap-6 font-heading text-xl font-medium">
             <h3>{f.q}</h3>
             <span className="text-gold transition-transform group-open:rotate-45" aria-hidden>
               +

@@ -84,7 +84,7 @@ export function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: s
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-[9px] tracking-[0.1em] text-white uppercase">
+        <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-xs tracking-[0.1em] text-white uppercase">
           Example
         </span>
       </>
@@ -549,7 +549,7 @@ export function QuoteForm({
                 </span>
                 <span className={`mt-1.5 block text-xs leading-tight ${on ? "font-semibold" : ""}`}>{c === "All" ? "Everything" : c}</span>
                 {n > 0 && (
-                  <span className="absolute -top-1.5 -right-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[11px] font-semibold text-accent-ink">
+                  <span className="absolute -top-1.5 -right-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-xs font-semibold text-accent-ink">
                     {n}
                   </span>
                 )}

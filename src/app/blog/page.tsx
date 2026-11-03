@@ -63,7 +63,7 @@ export default async function BlogPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
                   <img src={topicArt(topicSlug(t.name)).src} alt={`Illustration for ${t.name.toLowerCase()} rental guides`} width={96} height={64} loading="lazy" className="h-14 w-20 shrink-0 rounded-lg bg-espresso object-cover" />
                   <span>
-                    <span className="block font-serif text-lg leading-tight transition-colors group-hover:text-gold">{t.name}</span>
+                    <span className="block font-heading font-semibold text-lg leading-tight transition-colors group-hover:text-gold">{t.name}</span>
                     <span className="mt-0.5 block text-xs text-muted">{count(t.name)} guides</span>
                   </span>
                 </Link>
@@ -76,7 +76,7 @@ export default async function BlogPage() {
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {rest.slice(0, 24).map((p) => <PostCard key={p.slug} post={p} />)}
         </div>
-        {!lead && <p className="mt-16 font-serif text-2xl text-muted italic">The first guides arrive soon.</p>}
+        {!lead && <p className="mt-16 font-heading font-semibold text-2xl text-muted">The first guides arrive soon.</p>}
       </div>
       <HubFaqs faqs={faqs} title="Questions these guides answer" />
       <QuoteCta source="blog" />

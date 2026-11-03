@@ -44,7 +44,7 @@ export default async function ApplicationPage(props: PageProps<"/admin/applicati
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Vendor application · {applicationStatusLabel(app.status)}</p>
-          <h1 className="mt-1 font-serif text-5xl">{app.company}</h1>
+          <h1 className="display-2 mt-1">{app.company}</h1>
           <p className="mt-2 text-sm text-muted">Sent {when(app.created_at)}{app.source ? ` from ${app.source}` : ""}</p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -57,7 +57,7 @@ export default async function ApplicationPage(props: PageProps<"/admin/applicati
       <div className="mt-8 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <div className="space-y-6">
           <section className={card}>
-            <h2 className="font-serif text-2xl">Company</h2>
+            <h2 className="display-3">Company</h2>
             <dl className="mt-3 text-sm">
               <Row label="Contact">{[app.contact_name, app.contact_role].filter(Boolean).join(", ")}</Row>
               <Row label="Email">{app.email}</Row>
@@ -67,7 +67,7 @@ export default async function ApplicationPage(props: PageProps<"/admin/applicati
             </dl>
           </section>
           <section className={card}>
-            <h2 className="font-serif text-2xl">Rentals, area and schedule</h2>
+            <h2 className="display-3">Rentals, area and schedule</h2>
             <dl className="mt-3 text-sm">
               <Row label="Rents">{app.categories.join(", ")}</Row>
               <Row label="Delivers to">{app.areas.join(", ")}</Row>
@@ -83,7 +83,7 @@ export default async function ApplicationPage(props: PageProps<"/admin/applicati
           </section>
           <section className={card}>
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="font-serif text-2xl">Price list</h2>
+              <h2 className="display-3">Price list</h2>
               {!!app.price_items?.length && (
                 <a href={`/admin/applications/${app.id}/prices`} className="btn-ghost btn-sm">Download CSV ({app.price_items.length} rows)</a>
               )}
@@ -117,7 +117,7 @@ export default async function ApplicationPage(props: PageProps<"/admin/applicati
             )}
           </section>
           <section className={card}>
-            <h2 className="font-serif text-2xl">Payments, insurance and photos</h2>
+            <h2 className="display-3">Payments, insurance and photos</h2>
             <dl className="mt-3 text-sm">
               <Row label="Deposit">{app.deposit_policy}</Row>
               <Row label="Customers pay by">{app.payment_methods?.join(", ")}</Row>
@@ -135,7 +135,7 @@ export default async function ApplicationPage(props: PageProps<"/admin/applicati
 
         <div className="space-y-6">
           <form key={app.updated_at ?? app.created_at} action={saveApplication} className={`${card} space-y-4`}>
-            <h2 className="font-serif text-2xl">Review</h2>
+            <h2 className="display-3">Review</h2>
             <input type="hidden" name="id" value={app.id} />
             <div>
               <label className="label" htmlFor="a-status">Status</label>
@@ -178,7 +178,7 @@ export default async function ApplicationPage(props: PageProps<"/admin/applicati
           </form>
 
           <section className={card}>
-            <h2 className="font-serif text-2xl">History</h2>
+            <h2 className="display-3">History</h2>
             <ol className="mt-3 space-y-3 text-sm">
               <li><span className="text-muted">{when(app.created_at)}</span> · Application sent</li>
               {(app.activity ?? []).map((a, i) => (
@@ -187,7 +187,7 @@ export default async function ApplicationPage(props: PageProps<"/admin/applicati
             </ol>
           </section>
           <section className={`${card} text-sm text-muted`}>
-            <h2 className="font-serif text-2xl text-ink">After approval</h2>
+            <h2 className="display-3 text-ink">After approval</h2>
             <ol className="mt-3 list-decimal space-y-1 pl-5">
               <li>Send the one-page partner agreement (terms on {site.url.replace(/^https?:\/\//, "")}/partners#terms).</li>
               <li>Ask for their insurance certificate if they have one.</li>

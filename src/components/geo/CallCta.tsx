@@ -22,7 +22,7 @@ export function CallCta({ heading, place }: { heading: React.ReactNode; place?: 
       <div className="container-x relative py-24 text-center md:py-32">
         <span className="ornament" aria-hidden />
         <p className="eyebrow mt-8 justify-center before:hidden">{site.launch.seasonLabel}</p>
-        <h2 className="headline mx-auto mt-8 max-w-4xl text-4xl leading-[1.1] sm:text-6xl">{heading}</h2>
+        <h2 className="display-2 mx-auto mt-8 max-w-4xl">{heading}</h2>
         <p className="mx-auto mt-6 max-w-xl leading-8 text-muted">
           A 15-minute call is the fastest way to a plan: guest count, chair styles, delivery window
           {place ? ` and access at your ${place} venue` : " and venue access"}. Prefer email? Send a quote request and
@@ -41,8 +41,8 @@ export function CallCta({ heading, place }: { heading: React.ReactNode; place?: 
             ["We handle the rest", "Placed before guests arrive, collected after."],
           ].map(([t, d], i) => (
             <li key={t} className="border-t border-gold/40 pt-4">
-              <span className="font-serif text-lg text-gold italic">{["I", "II", "III"][i]}.</span>
-              <p className="mt-2 font-serif text-xl">{t}</p>
+              <span className="font-heading font-semibold text-lg text-gold">{["I", "II", "III"][i]}.</span>
+              <p className="mt-2 font-heading font-semibold text-xl">{t}</p>
               <p className="mt-1 text-sm leading-6 text-muted">{d}</p>
             </li>
           ))}

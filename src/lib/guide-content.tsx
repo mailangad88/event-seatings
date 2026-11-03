@@ -164,7 +164,7 @@ function buildLayout(slug: string): GuideProps | null {
             {costRows.map(({ c, lo, hi }) => (
               <a key={c.slug} href={`/chairs/${c.slug}`} className="block">
                 <ChairArt chair={c} className="aspect-[4/5] rounded-lg" />
-                <p className="mt-3 font-serif text-lg">{c.name}</p>
+                <p className="mt-3 font-heading font-semibold text-lg">{c.name}</p>
                 <p className="text-sm text-muted">{c.estPrice} per chair · {usd(lo)}–{usd(hi)} for {chairsN}</p>
               </a>
             ))}

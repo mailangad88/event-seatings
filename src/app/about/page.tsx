@@ -54,7 +54,7 @@ export default function AboutPage() {
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
-          <blockquote className="font-serif text-3xl leading-snug italic sm:text-4xl">
+          <blockquote className="font-heading font-semibold text-3xl leading-snug sm:text-4xl">
             Getting rental quotes from five companies takes a lot of phone calls. We wanted it to be one list and
             one quote.
           </blockquote>

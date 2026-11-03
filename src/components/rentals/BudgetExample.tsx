@@ -29,13 +29,13 @@ export function BudgetExample({ budget }: { budget: SampleBudget }) {
   return (
     <figure className="border border-line bg-surface p-6 sm:p-8">
       <figcaption>
-        <h3 className="font-serif text-3xl font-light">{budget.title}</h3>
+        <h3 className="display-2">{budget.title}</h3>
         <p className="mt-2 text-sm leading-6 text-muted">{budget.summary}</p>
       </figcaption>
       <table className="mt-6 w-full text-sm">
         <caption className="sr-only">Rental line items for a {budget.title}</caption>
         <thead>
-          <tr className="text-left text-[10px] tracking-[0.18em] text-muted uppercase">
+          <tr className="text-left text-xs tracking-[0.18em] text-muted uppercase">
             <th className="pb-2 font-medium">Item</th>
             <th className="pb-2 text-right font-medium">Qty</th>
             <th className="hidden w-1/4 pb-2 sm:table-cell" aria-hidden />
@@ -64,7 +64,7 @@ export function BudgetExample({ budget }: { budget: SampleBudget }) {
               Rental subtotal
             </th>
             <td className="hidden sm:table-cell" />
-            <td className="pt-3 text-right font-serif text-2xl text-wine tabular-nums">{formatPrice(total)}</td>
+            <td className="pt-3 text-right font-heading font-semibold text-2xl text-wine tabular-nums">{formatPrice(total)}</td>
           </tr>
         </tfoot>
       </table>

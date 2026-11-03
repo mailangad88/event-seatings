@@ -106,7 +106,7 @@ export default function AreasPage() {
             <p className="eyebrow">
               Chicagoland · {locations.length} local guides
             </p>
-            <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+            <h1 className="display-1 mt-6">
               Event chairs, delivered across{" "}
               <em className="text-gold">Chicagoland</em>
             </h1>
@@ -144,7 +144,7 @@ export default function AreasPage() {
               if (items.length === 0) return null;
               return (
                 <section key={g.id} id={g.id} className="scroll-mt-32">
-                  <h2 className="headline border-b border-gold/40 pb-4 text-3xl">
+                  <h2 className="display-2 border-b border-gold/40 pb-4">
                     {g.title}{" "}
                     <span className="text-base text-muted">
                       ({items.length})
@@ -157,10 +157,10 @@ export default function AreasPage() {
                           href={locationPath(l)}
                           className="group flex items-baseline justify-between gap-4 py-3"
                         >
-                          <span className="font-serif text-xl transition-colors group-hover:text-gold">
+                          <span className="font-heading font-semibold text-xl transition-colors group-hover:text-gold">
                             {l.name}
                           </span>
-                          <span className="shrink-0 text-[11px] tracking-[0.2em] text-muted uppercase">
+                          <span className="shrink-0 text-xs tracking-[0.2em] text-muted uppercase">
                             {l.slug === "st-charles"
                               ? "Home base"
                               : `~${milesFrom(homeBase, l)} mi`}

@@ -56,7 +56,7 @@ export function IdeaCard({ idea }: { idea: PartyIdea }) {
       </div>
       <div className="flex flex-1 flex-col p-5">
         <p className="text-xs font-medium tracking-wide text-muted uppercase">{getPartyType(idea.type)?.name}</p>
-        <h3 className="mt-1 font-serif text-2xl leading-tight">
+        <h3 className="display-3 mt-1">
           <Link href={ideaPath(idea)} className="after:absolute after:inset-0 after:content-['']">
             {idea.name}
           </Link>
@@ -128,7 +128,7 @@ export function IdeaRentals({ lines, guests = 100 }: { lines: IdeaLine[]; guests
       </div>
       <div className="mt-8 flex flex-wrap items-baseline justify-between gap-3 rounded-2xl border border-line bg-surface p-5">
         <p className="text-sm text-muted">These add-ons for {guests} guests, before delivery, setup and tax</p>
-        <p className="font-serif text-3xl tabular-nums">{formatPrice(total)}</p>
+        <p className="font-heading font-semibold text-3xl tabular-nums">{formatPrice(total)}</p>
       </div>
       <PriceDisclaimer />
     </div>

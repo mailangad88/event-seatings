@@ -123,7 +123,7 @@ export function ContactDock() {
                 className="mt-0.5 size-[52px] shrink-0 rounded-full border border-gold/50 object-cover"
               />
               <div>
-                <p className="font-serif text-2xl font-light">How can we help?</p>
+                <p className="font-heading text-2xl font-medium">How can we help?</p>
                 <p className="mt-1 text-xs leading-5 text-muted">{contact.replyPromise}</p>
               </div>
             </div>
@@ -173,7 +173,7 @@ export function ContactDock() {
                     target={c.method === "whatsapp" ? "_blank" : undefined}
                     rel={c.method === "whatsapp" ? "noopener" : undefined}
                     onClick={() => track("contact_click", { method: c.method, page: pathname })}
-                    className="flex items-center justify-center gap-2 border border-line py-2.5 text-[11px] tracking-[0.18em] uppercase transition-colors hover:border-gold hover:text-gold"
+                    className="flex items-center justify-center gap-2 border border-line py-2.5 text-xs tracking-[0.18em] uppercase transition-colors hover:border-gold hover:text-gold"
                   >
                     <c.icon />
                     {c.label}
@@ -187,7 +187,7 @@ export function ContactDock() {
                 target="_blank"
                 rel="noopener"
                 onClick={() => track("contact_click", { method: "booking", page: pathname })}
-                className="block bg-gold py-3 text-center text-[11px] font-medium tracking-[0.22em] text-accent-ink uppercase transition-opacity hover:opacity-90"
+                className="block bg-gold py-3 text-center text-xs font-medium tracking-[0.22em] text-accent-ink uppercase transition-opacity hover:opacity-90"
               >
                 Book a free 15-minute seating call
               </a>
@@ -195,7 +195,7 @@ export function ContactDock() {
               <Link
                 href="/quote"
                 onClick={() => setOpen(false)}
-                className="block bg-gold py-3 text-center text-[11px] font-medium tracking-[0.22em] text-accent-ink uppercase transition-opacity hover:opacity-90"
+                className="block bg-gold py-3 text-center text-xs font-medium tracking-[0.22em] text-accent-ink uppercase transition-opacity hover:opacity-90"
               >
                 Request a free quote
               </Link>
@@ -217,7 +217,7 @@ export function ContactDock() {
       >
         {open ? <CloseIcon /> : <ChatIcon />}
         {/* Icon only on phones so the button never covers page buttons; the label stays for screen readers. */}
-        <span className="text-[11px] tracking-[0.22em] uppercase max-sm:sr-only">{open ? "Close" : "Questions? Chat"}</span>
+        <span className="text-xs tracking-[0.22em] uppercase max-sm:sr-only">{open ? "Close" : "Questions? Chat"}</span>
       </button>
     </>
   );
@@ -240,7 +240,7 @@ function ContactSteps() {
             <span className="flex size-8 items-center justify-center rounded-full border border-gold/50 text-gold">
               <s.icon />
             </span>
-            <span className="text-[10px] leading-tight tracking-[0.08em] text-muted uppercase">{s.label}</span>
+            <span className="text-xs leading-tight tracking-[0.08em] text-muted uppercase">{s.label}</span>
           </span>
           {i < steps.length - 1 && (
             <svg width="22" height="8" viewBox="0 0 22 8" className="mb-4 text-gold/60" aria-hidden>
@@ -285,7 +285,7 @@ function QuickMessage({
   if (status === "done") {
     return (
       <div className="px-6 py-8">
-        <p className="font-serif text-2xl font-light italic">Got it, thank you.</p>
+        <p className="font-heading text-2xl font-medium">Got it, thank you.</p>
         <p className="mt-2 text-sm leading-6 text-muted">
           Your message is with our team. We&apos;ll reply by text or email, whichever you left us.
         </p>
@@ -340,7 +340,7 @@ function QuickMessage({
       <input id="chat-phone" name="phone" type="tel" autoComplete="tel" placeholder="Mobile, if you'd prefer a text back" className={field} />
       <button
         disabled={status === "sending"}
-        className="mt-1 w-full border border-gold py-3 text-[11px] font-medium tracking-[0.22em] text-gold uppercase transition-colors hover:bg-gold hover:text-accent-ink disabled:opacity-60"
+        className="mt-1 w-full border border-gold py-3 text-xs font-medium tracking-[0.22em] text-gold uppercase transition-colors hover:bg-gold hover:text-accent-ink disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Send message"}
       </button>

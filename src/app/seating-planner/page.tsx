@@ -46,7 +46,7 @@ export default function SeatingPlannerPage() {
       <div className="grid items-end gap-10 md:grid-cols-[1.5fr_1fr] print:hidden">
         <div>
           <p className="eyebrow">Free planning tool</p>
-          <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+          <h1 className="display-1 mt-6">
             How many <em className="text-gold">chairs</em> do you need?
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
@@ -75,11 +75,11 @@ export default function SeatingPlannerPage() {
 
       <section className="mt-28 border-t border-gold/40 pt-16 print:hidden">
         <p className="eyebrow">The method</p>
-        <h2 className="headline mt-6 text-4xl sm:text-5xl">How the planner counts</h2>
+        <h2 className="display-2 mt-6">How the planner counts</h2>
         <ol className="mt-12 grid gap-10 md:grid-cols-4">
           {howTo.map(([title, text], i) => (
             <li key={title} className="border-t border-line pt-6">
-              <span className="font-serif text-3xl text-gold italic">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-heading font-semibold text-3xl text-gold">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-3 text-lg font-medium">{title}</h3>
               <p className="mt-2 leading-7 text-muted">{text}</p>
             </li>

@@ -46,7 +46,7 @@ export default async function WeekPage(props: PageProps<"/admin/week">) {
 
       {overdue.length > 0 && (
         <section className="card mt-8 border-rose/40 p-6">
-          <h2 className="font-serif text-2xl text-rose">Overdue</h2>
+          <h2 className="display-3 text-rose">Overdue</h2>
           <TaskList tasks={overdue} today={today} />
         </section>
       )}
@@ -57,7 +57,7 @@ export default async function WeekPage(props: PageProps<"/admin/week">) {
           return (
             <section key={d.day} className={`card p-6 ${empty ? "opacity-70" : ""}`}>
               <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h2 className="font-serif text-2xl">
+                <h2 className="display-3">
                   {d.day === today ? "Today" : d.day === addDays(today, 1) ? "Tomorrow" : prettyDay(d.day, { weekday: "long" })}
                   <span className="ml-2 text-base text-muted">{prettyDay(d.day, { month: "short", day: "numeric" })}</span>
                 </h2>

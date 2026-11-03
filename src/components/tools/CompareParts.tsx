@@ -19,7 +19,7 @@ export function SideCard({ side, price, label }: { side: Side; price?: ToolPrice
       </div>
       <figcaption className="p-4">
         <span className="badge">{label}</span>
-        <p className="mt-2 font-serif text-xl">{side.name}</p>
+        <p className="mt-2 font-heading font-semibold text-xl">{side.name}</p>
         {price && (
           <p className="mt-1 text-sm text-muted">
             From {formatPrice(price.price)} {price.unit}

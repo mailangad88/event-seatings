@@ -15,7 +15,7 @@ export default function TermsPage() {
   return (
     <div className="container-x max-w-3xl py-20">
       <p className="eyebrow">Legal</p>
-      <h1 className="headline mt-6 text-5xl sm:text-6xl">Terms of use</h1>
+      <h1 className="display-1 mt-6">Terms of use</h1>
       <p className="mt-4 text-sm text-muted">Last updated November 2, 2026</p>
       <ChairStrip className="mt-10" slugs={["windsor", "shell", "garden-folding"]} caption="Plain-language terms for using this site." />
       <div className="prose-post mt-10">

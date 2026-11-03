@@ -18,7 +18,7 @@ function Stat({ label, value, note }: { label: string; value: string; note?: Rea
   return (
     <div className={card}>
       <p className="text-xs uppercase tracking-wider text-muted">{label}</p>
-      <p className="mt-2 font-serif text-4xl tabular-nums">{value}</p>
+      <p className="mt-2 font-heading font-semibold text-4xl tabular-nums">{value}</p>
       {note && <p className="mt-1 text-xs text-muted">{note}</p>}
     </div>
   );
@@ -154,7 +154,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Money</p>
-          <h1 className="mt-1 font-serif text-5xl">Sales report</h1>
+          <h1 className="display-2 mt-1">Sales report</h1>
           <p className="mt-2 text-sm text-muted">Times in Chicago time. Today is {shortDay(dayKey(new Date()))}.</p>
         </div>
         <a href="/admin/export" className="btn-ghost btn-sm">Download all leads (CSV)</a>
@@ -181,7 +181,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
 
       <section className={`${card} mt-8`}>
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="font-serif text-2xl">Enquiries per {weekly ? "week" : "day"}</h2>
+          <h2 className="display-3">Enquiries per {weekly ? "week" : "day"}</h2>
           <p className="text-sm text-muted">Hover a column for quotes, value and visitors.</p>
         </div>
         <div className="mt-4">
@@ -212,13 +212,13 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
       </section>
 
       <section className="mt-12">
-        <h2 className="font-serif text-3xl">Where they came from</h2>
+        <h2 className="display-2">Where they came from</h2>
         <p className="mt-1 max-w-3xl text-sm text-muted">
           Each lead carries the search, ad, post or link that brought the visitor in (the converting visit), plus the
           page and form they used. Spend more where channels convert; write more pages like the ones that produce enquiries.
         </p>
         <div className={`${card} mt-6`}>
-          <h3 className="font-serif text-2xl">Channels</h3>
+          <h3 className="display-3">Channels</h3>
           <div className="mt-4">
             <Table
               head={["Channel", "Visitors", "Enquiries", "Conversion", "Quote value"]}
@@ -229,29 +229,29 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         </div>
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Source / medium</h3>
+            <h3 className="display-3 mb-4">Source / medium</h3>
             <Bars rows={d.sources} empty="No tracked enquiries yet." />
           </section>
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Referring sites</h3>
+            <h3 className="display-3 mb-4">Referring sites</h3>
             <Bars rows={d.referrers} empty="No referring sites yet." />
           </section>
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Campaigns</h3>
+            <h3 className="display-3 mb-4">Campaigns</h3>
             <Bars rows={d.campaigns} empty="No campaign-tagged enquiries yet. Add ?utm_campaign= to ad and email links." />
           </section>
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">First landing page</h3>
+            <h3 className="display-3 mb-4">First landing page</h3>
             <Bars rows={d.landing} empty="No tracked enquiries yet." />
           </section>
           <section className={`${card} lg:col-span-2`}>
-            <h3 className="mb-4 font-serif text-2xl">Which link or preset</h3>
+            <h3 className="display-3 mb-4">Which link or preset</h3>
             <Bars rows={d.formLinks} empty="No preset or link-tagged enquiries yet." />
           </section>
         </div>
 
         <section className={`${card} mt-6`}>
-          <h3 className="font-serif text-2xl">Conversion by page</h3>
+          <h3 className="display-3">Conversion by page</h3>
           <p className="mt-1 text-sm text-muted">The page each form was sent from, against the unique visitors who saw it.</p>
           <div className="mt-4">
             <Table
@@ -273,10 +273,10 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
       </section>
 
       <section className="mt-12">
-        <h2 className="font-serif text-3xl">Pipeline</h2>
+        <h2 className="display-2">Pipeline</h2>
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
           <section className={`${card} lg:col-span-2`}>
-            <h3 className="mb-4 font-serif text-2xl">Enquiries by stage</h3>
+            <h3 className="display-3 mb-4">Enquiries by stage</h3>
             <ul className="space-y-2.5 text-sm">
               {stageRows.map((s) => (
                 <li key={s.id}>
@@ -297,24 +297,24 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
             </ul>
           </section>
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Why we lost</h3>
+            <h3 className="display-3 mb-4">Why we lost</h3>
             <Bars rows={d.lostReasons} empty="No lost leads in this period." />
           </section>
         </div>
       </section>
 
       <section className="mt-12">
-        <h2 className="font-serif text-3xl">What people want</h2>
+        <h2 className="display-2">What people want</h2>
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <section className={card}>
-            <h3 className="font-serif text-2xl">Top items</h3>
+            <h3 className="display-3">Top items</h3>
             <div className="mt-4">
               <Table head={["Item", "Quotes", "Qty", "Value"]} rows={d.items.map((i) => [i.label, i.quotes, i.qty.toLocaleString(), money(i.value)])} min={420} />
               {d.items.length === 0 && <p className="mt-3 text-sm text-muted">No priced quotes in this period.</p>}
             </div>
           </section>
           <section className={card}>
-            <h3 className="font-serif text-2xl">Categories</h3>
+            <h3 className="display-3">Categories</h3>
             <div className="mt-4">
               <Table head={["Category", "Quotes", "Qty", "Value"]} rows={d.categories.map((c) => [c.label, c.quotes, c.qty.toLocaleString(), money(c.value)])} min={420} />
               {d.categories.length === 0 && <p className="mt-3 text-sm text-muted">No priced quotes in this period.</p>}
@@ -323,19 +323,19 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         </div>
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Event types</h3>
+            <h3 className="display-3 mb-4">Event types</h3>
             <Bars rows={d.eventTypes} empty="No quotes yet." value />
           </section>
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Event months</h3>
+            <h3 className="display-3 mb-4">Event months</h3>
             <Bars rows={d.eventMonths} empty="No quotes yet." limit={12} />
           </section>
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Cities</h3>
+            <h3 className="display-3 mb-4">Cities</h3>
             <Bars rows={d.cities} empty="No quotes yet." />
           </section>
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Guest count</h3>
+            <h3 className="display-3 mb-4">Guest count</h3>
             <Bars rows={d.guestBands} empty="No quotes yet." />
             <p className="mt-3 text-xs text-muted">{k.guests.toLocaleString()} guests across all quotes</p>
           </section>
@@ -344,7 +344,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
 
       <section className="mt-12">
         <div className="flex flex-wrap items-end justify-between gap-3">
-          <h2 className="font-serif text-3xl">Vendor routing</h2>
+          <h2 className="display-2">Vendor routing</h2>
           <Link href="/admin/vendors" className="text-sm text-accent">All vendors and contacts →</Link>
         </div>
         {d.unassignedOpen > 0 && (
@@ -355,7 +355,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         )}
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
           <section className={`${card} lg:col-span-2`}>
-            <h3 className="font-serif text-2xl">Who the requested items come from</h3>
+            <h3 className="display-3">Who the requested items come from</h3>
             <p className="mt-1 text-sm text-muted">Quote lines grouped by the vendor each item is priced from.</p>
             <div className="mt-4">
               <Table
@@ -367,7 +367,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
             </div>
           </section>
           <section className={card}>
-            <h3 className="mb-4 font-serif text-2xl">Leads handed to</h3>
+            <h3 className="display-3 mb-4">Leads handed to</h3>
             <Bars rows={d.assigned} empty="No leads assigned to a partner yet." value />
           </section>
         </div>
@@ -375,7 +375,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
 
       {demand.length > 0 && (
         <section className={`${card} mt-12`}>
-          <h2 className="font-serif text-2xl">Chair demand (votes + quotes)</h2>
+          <h2 className="display-3">Chair demand (votes + quotes)</h2>
           <p className="mt-1 text-sm text-muted">Score = all-time votes + 5 × quotes in this period that include the chair.</p>
           <div className="mt-4">
             <Table head={["Chair", "Votes", "Quotes", "Score"]} rows={demand.map((x) => [x.chair.name, x.votes, x.quotes, x.score])} min={420} />
@@ -384,7 +384,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
       )}
 
       <section className={`${card} mt-12`}>
-        <h2 className="font-serif text-2xl">Latest enquiries</h2>
+        <h2 className="display-3">Latest enquiries</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[900px] text-sm">
             <thead className="text-left text-muted">

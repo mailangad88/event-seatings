@@ -95,7 +95,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
 
         {!locked && (
           <fieldset className="mt-6 border-t border-line pt-5">
-            <legend className="font-serif text-xl">Add a line</legend>
+            <legend className="font-heading font-semibold text-xl">Add a line</legend>
             <p className="text-xs text-muted">For delivery, setup, or anything the rental company adds that isn&apos;t in the catalog.</p>
             <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
               <div className="lg:col-span-2">

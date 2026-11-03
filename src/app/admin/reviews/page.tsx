@@ -31,7 +31,7 @@ function ReviewRow({ r }: { r: Review }) {
         </div>
         <span className="text-sm text-muted">{new Date(r.created_at).toLocaleString("en-US", { timeZone: "America/Chicago" })}</span>
       </div>
-      {r.title && <p className="mt-3 font-serif text-xl">{r.title}</p>}
+      {r.title && <p className="mt-3 font-heading font-semibold text-xl">{r.title}</p>}
       <p className="mt-2 leading-7 whitespace-pre-line">{r.body}</p>
       <p className="mt-2 text-sm text-muted">
         {[r.event_type, r.city, r.event_month, r.email].filter(Boolean).join(" · ")}
@@ -66,7 +66,7 @@ export default async function AdminReviewsPage(props: PageProps<"/admin/reviews"
   return (
     <div className="container-x py-12">
       <p className="eyebrow">Grow</p>
-      <h1 className="mt-1 font-serif text-5xl">Reviews</h1>
+      <h1 className="display-2 mt-1">Reviews</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted">
         Reviews from /reviews/write wait here until you publish them. Publish everything real, including critical reviews; hide only spam,
         abuse or other people&apos;s personal details. You can&apos;t edit wording, only reply.
@@ -84,7 +84,7 @@ export default async function AdminReviewsPage(props: PageProps<"/admin/reviews"
       </ul>
 
       <section className="mt-16">
-        <h2 className="font-serif text-3xl">Ask a customer for a review</h2>
+        <h2 className="display-2">Ask a customer for a review</h2>
         <p className="mt-2 max-w-2xl text-sm text-muted">
           Booked and completed leads without a review. Each link is personal: a review sent through it is tied to the lead and marked
           &quot;Verified booking&quot; when the lead is booked or completed. Nothing is emailed automatically; use the Email button to send it yourself.

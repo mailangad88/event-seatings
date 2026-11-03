@@ -170,7 +170,7 @@ export function Toggles({
 export function Stat({ value, label, note, big = false }: { value: React.ReactNode; label: string; note?: React.ReactNode; big?: boolean }) {
   return (
     <div className="rounded-2xl border border-line bg-surface p-5">
-      <p className={`font-serif tabular-nums ${big ? "text-5xl" : "text-3xl"}`}>{value}</p>
+      <p className={`font-heading font-semibold tabular-nums ${big ? "text-5xl" : "text-3xl"}`}>{value}</p>
       <p className="mt-1 text-sm font-medium">{label}</p>
       {note && <p className="mt-1 text-xs leading-5 text-muted">{note}</p>}
     </div>

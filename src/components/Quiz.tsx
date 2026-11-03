@@ -73,7 +73,7 @@ export function Quiz() {
             <span className="absolute inset-y-0 left-0 bg-gold transition-all duration-500" style={{ width: `${(step / questions.length) * 100}%` }} />
           </span>
         </div>
-        <h2 className="headline text-center text-4xl leading-tight sm:text-6xl">{q}</h2>
+        <h2 className="display-2 text-center">{q}</h2>
         <div className="mt-12 grid gap-2 sm:grid-cols-2">
           {options.map((o) => (
             <button
@@ -138,7 +138,7 @@ export function Quiz() {
     <div>
       <div className="mx-auto max-w-2xl text-center">
         <p className="eyebrow justify-center">Your aesthetic</p>
-        <h2 className="headline mt-6 text-6xl leading-[1] sm:text-7xl">
+        <h2 className="display-2 mt-6">
           {topStyles.length ? (
             <>
               {topStyles[0]}
@@ -162,7 +162,7 @@ export function Quiz() {
       <div className="card mx-auto mt-16 max-w-xl p-8 text-center">
         {emailStatus === "done" ? (
           <div>
-            <p className="font-serif text-2xl italic">
+            <p className="font-heading font-semibold text-2xl">
               Thank you. We&apos;ll send your selections, styling notes and launch updates.
             </p>
             <BookingCta content="quiz-thank-you" note="Prefer to talk it through? We'll match these chairs to your venue and guest count." />

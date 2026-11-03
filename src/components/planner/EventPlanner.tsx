@@ -93,7 +93,7 @@ function Tile({
       )}
       <div className="p-4">
         <div className="flex items-start justify-between gap-2">
-          <p className="font-serif text-xl leading-tight">{title}</p>
+          <p className="font-heading font-semibold text-xl leading-tight">{title}</p>
           {badge && <span className="shrink-0 rounded-full bg-gold-soft px-2 py-0.5 text-xs font-medium tabular-nums">{badge}</span>}
         </div>
         {text && <p className="mt-1 text-sm leading-6 text-muted">{text}</p>}
@@ -517,7 +517,7 @@ export function EventPlanner({
             </div>
             {packages.length > 0 && (
               <div className="mt-10">
-                <h3 className="font-serif text-2xl">In a hurry? Start from a ready-made package</h3>
+                <h3 className="display-3">In a hurry? Start from a ready-made package</h3>
                 <p className="mt-1 text-sm text-muted">One tap builds the whole list. You can change the guest count or any item after.</p>
                 <ul className="-mx-4 mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
                   {packages.map((pk) => (
@@ -559,7 +559,7 @@ export function EventPlanner({
                 aria-label="Number of guests"
                 value={a.guests || ""}
                 onChange={(e) => setA((p) => ({ ...p, guests: Math.min(5000, Math.max(0, Math.floor(Number(e.target.value)))) }))}
-                className="w-40 border-b-2 border-gold bg-transparent font-serif text-7xl tabular-nums outline-none"
+                className="w-40 border-b-2 border-gold bg-transparent font-heading font-semibold text-6xl tabular-nums outline-none"
               />
               <span className="pb-3 text-lg text-muted">guests</span>
             </div>
@@ -639,7 +639,7 @@ export function EventPlanner({
                     <div className="p-5">
                       <p className="eyebrow">{s.tagline}</p>
                       <div className="mt-1 flex items-baseline justify-between gap-2">
-                        <p className="font-serif text-3xl">{s.name}</p>
+                        <p className="font-heading font-semibold text-3xl">{s.name}</p>
                         <span className="text-lg tabular-nums">~{formatPrice(Math.round(est))}</span>
                       </div>
                       <p className="mt-1 text-sm leading-6 text-muted">{s.blurb}</p>
@@ -673,7 +673,7 @@ export function EventPlanner({
               </div>
               <p className="text-right">
                 <span className="text-sm text-muted">Essentials </span>
-                <strong className="font-serif text-3xl tabular-nums">{formatPrice(Math.round(priceOf(essentials)))}</strong>
+                <strong className="font-heading font-semibold text-3xl tabular-nums">{formatPrice(Math.round(priceOf(essentials)))}</strong>
               </p>
             </div>
             <div className="mt-8">{listSection("ess", essentials)}</div>
@@ -955,7 +955,7 @@ function PackageCompare({
               </th>
               {lists.map((l) => (
                 <th key={l.id} scope="col" className={`border-b border-line px-3 py-2 align-bottom ${current === l.id ? "bg-gold-soft" : ""}`}>
-                  <span className="font-serif text-lg">{l.name}</span>
+                  <span className="font-heading font-semibold text-lg">{l.name}</span>
                   <span className="block text-xs font-normal text-muted tabular-nums">~{formatPrice(Math.round(priceOf(l.lines)))} in rentals</span>
                 </th>
               ))}
@@ -1027,7 +1027,7 @@ function ItemPicker({
       <div className="relative flex max-h-[88vh] w-full max-w-4xl flex-col rounded-t-3xl bg-surface p-5 shadow-2xl sm:rounded-3xl sm:p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 id="picker-title" className="font-serif text-2xl leading-tight">{title}</h2>
+            <h2 id="picker-title" className="font-heading font-semibold text-2xl leading-tight">{title}</h2>
             <p className="mt-1 text-sm text-muted">{intro}</p>
           </div>
           <button type="button" onClick={onClose} className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line" aria-label="Close">
@@ -1059,7 +1059,7 @@ function ItemPicker({
                   <div className="relative aspect-square w-full bg-surface-2">
                     <ItemVisual item={i} sizes="(min-width: 1024px) 220px, 45vw" />
                     {(isCurrent || taken) && (
-                      <span className="absolute top-2 right-2 rounded-full bg-gold px-2 py-0.5 text-[11px] font-medium text-accent-ink">
+                      <span className="absolute top-2 right-2 rounded-full bg-gold px-2 py-0.5 text-xs font-medium text-accent-ink">
                         {isCurrent ? "Your pick" : "On your list"}
                       </span>
                     )}
@@ -1254,7 +1254,7 @@ function PlanView({
                   <Image src={i.image} alt={i.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="p-5">
-                  <p className="font-serif text-xl">{i.name}</p>
+                  <p className="font-heading font-semibold text-xl">{i.name}</p>
                   <p className="mt-2 text-sm leading-6">
                     <span className="font-medium">Setup: </span>
                     {ideaSetup(i)}

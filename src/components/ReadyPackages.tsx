@@ -13,12 +13,12 @@ export function PackageCard({ p, compact = false }: { p: ReadyPackage; compact?:
         <span className="absolute top-3 left-3 rounded-full bg-surface/95 px-3 py-1 text-xs font-medium">{p.guests} guests</span>
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-serif text-2xl leading-tight">{p.name}</h3>
+        <h3 className="display-3">{p.name}</h3>
         <p className="mt-1 text-xs text-muted">
           {p.settingName} · {p.styleName} package · {p.itemCount} items
         </p>
         <p className="mt-3">
-          <span className="font-serif text-3xl tabular-nums">{formatPrice(p.allIn)}</span>
+          <span className="font-heading font-semibold text-3xl tabular-nums">{formatPrice(p.allIn)}</span>
           <span className="text-sm text-muted"> all-in est.</span>
         </p>
         <p className="text-xs text-muted tabular-nums">

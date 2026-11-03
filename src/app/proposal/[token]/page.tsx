@@ -54,12 +54,12 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
   return (
     <div className="container-x py-12 md:py-16">
       <p className="eyebrow">{site.name} proposal</p>
-      <h1 className="mt-2 font-serif text-4xl md:text-5xl">{lead.name ? `${lead.name.split(" ")[0]}, here's your rental plan` : "Your rental plan"}</h1>
+      <h1 className="display-1 mt-2">{lead.name ? `${lead.name.split(" ")[0]}, here's your rental plan` : "Your rental plan"}</h1>
       {event && <p className="mt-3 text-muted">{event}</p>}
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_24rem]">
         <section className="card p-6 md:p-8" aria-labelledby="items">
-          <h2 id="items" className="font-serif text-2xl">Your items</h2>
+          <h2 id="items" className="font-heading font-semibold text-2xl">Your items</h2>
           {lines.length ? (
             <div className="mt-4 overflow-x-auto">
               <table className="w-full min-w-[28rem] text-sm">
@@ -99,13 +99,13 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
 
         <aside className="space-y-6">
           <section className="card p-6" aria-labelledby="partner">
-            <h2 id="partner" className="font-serif text-2xl">Your rental company</h2>
+            <h2 id="partner" className="font-heading font-semibold text-2xl">Your rental company</h2>
             {paid ? (
               <div className="mt-3 space-y-2 text-sm leading-6">
                 <p className="flex items-center gap-2 font-medium text-ink"><Icon name="check" size={18} className="text-gold" /> Booking secured. Thank you!</p>
                 {vendor ? (
                   <>
-                    <p className="text-lg font-serif">{vendor.name}</p>
+                    <p className="text-lg font-heading font-semibold">{vendor.name}</p>
                     {vendor.phone && <p>Phone: <a href={`tel:${vendor.phone}`} className="text-accent">{vendor.phone}</a></p>}
                     {vendor.website && <p><a href={vendor.website} className="text-accent" rel="noopener" target="_blank">Website</a></p>}
                     <p className="text-muted">
@@ -124,7 +124,7 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
                 </p>
                 <div className="rounded-xl bg-gold-soft/50 p-4">
                   <p className="text-muted">{chargeLabel()}</p>
-                  <p className="mt-1 font-serif text-3xl tabular-nums">{usd(due)}</p>
+                  <p className="mt-1 font-heading font-semibold text-3xl tabular-nums">{usd(due)}</p>
                   <p className="mt-1 text-xs text-muted">
                     {chargeMode() === "hold"
                       ? "Fully refundable for 72 hours. Counts toward your booking fee."

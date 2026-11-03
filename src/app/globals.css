@@ -113,8 +113,42 @@
   --color-accent-deep: var(--accent-deep);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+  /* Fonts: Inter for everything people read (headings, body, prices, numbers). The serif is
+     only for the logo wordmark. font-serif is kept as an alias so nothing falls back to Times. */ /* design-ok */
   --font-sans: var(--font-body);
-  --font-serif: var(--font-display);
+  --font-heading: var(--font-body);
+  --font-serif: var(--font-body);
+  --font-brand: var(--font-logo);
+
+  /* Type scale: the only font sizes on the site (scripts/check-design.mjs fails CI on any other).
+     xs 12 labels, badges · sm 14 secondary text, buttons · base 16 body · lg 18 lead text
+     xl 20 small headings · 2xl 24 card headings · 3xl 30 section headings (phone)
+     4xl 36 section headings / page titles (phone) · 5xl 48 page titles · 6xl 56 home hero only.
+     7xl and 8xl are capped at the 6xl size so old pages can't grow past the scale. */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.125rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.375rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.625rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.375rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.75rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 3.5rem;
+  --text-6xl: 3.5rem;
+  --text-6xl--line-height: 4rem;
+  --text-6xl: 3.5rem;
+  --text-6xl--line-height: 4rem;
+  --text-6xl: 3.5rem;
+  --text-6xl--line-height: 4rem;
   --shadow-soft: var(--shadow);
   --shadow-lift: var(--shadow-lg);
   --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -142,6 +176,14 @@ body {
 /* Headings and short copy wrap evenly; long paragraphs avoid one-word last lines. */
 h1, h2, h3, h4 {
   text-wrap: balance;
+}
+/* Emphasis inside headings is shown with colour (text-gold / text-accent), never slanted type. */
+:where(h1, h2, h3, h4, .headline) :where(em, i) {
+  font-style: normal;
+}
+/* Numbers that sit in columns or change (prices, totals, counts, tables) line up digit for digit. */
+:where(table, .tabular, [data-price]) {
+  font-variant-numeric: lining-nums tabular-nums;
 }
 p, li, dd, figcaption {
   text-wrap: pretty;
@@ -208,22 +250,22 @@ p, li, dd, figcaption {
 }
 
 /* ---------- Type ---------- */
-/* Cormorant has hairline strokes: 500 keeps section and card headings legible at smaller sizes,
-   the big page H1 stays at 400 where the contrast reads as elegant rather than faint. */
+/* Headings: Inter semibold with slightly tight letter spacing. Sizes come from the type scale only.
+   display-1 = page title (H1), display-2 = section heading (H2), display-3 = card / block heading (H3). */
 @utility headline {
-  @apply font-serif font-normal tracking-[-0.015em] text-balance;
+  @apply font-heading font-semibold tracking-tight text-balance;
 }
 @utility display-1 {
-  @apply headline text-[2.75rem] leading-[1.04] sm:text-6xl sm:leading-[1.02] lg:text-7xl;
+  @apply headline text-4xl sm:text-5xl lg:text-6xl;
 }
 @utility display-2 {
-  @apply headline text-[2.15rem] leading-[1.1] font-medium sm:text-5xl sm:leading-[1.08];
+  @apply headline text-3xl sm:text-4xl;
 }
 @utility display-3 {
-  @apply headline text-2xl leading-tight font-medium sm:text-3xl;
+  @apply headline text-xl sm:text-2xl;
 }
 @utility lede {
-  @apply text-[17px] leading-7 text-muted sm:text-lg sm:leading-8;
+  @apply text-base text-muted sm:text-lg;
 }
 /* Action row: buttons go full width on phones so the main CTA is an easy, even tap target. */
 @utility cta-row {
@@ -235,7 +277,7 @@ p, li, dd, figcaption {
 
 /* ---------- Actions ---------- */
 @utility btn {
-  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium tracking-normal whitespace-nowrap normal-case transition-[background-color,color,border-color,box-shadow,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-accent active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-normal whitespace-nowrap normal-case transition-[background-color,color,border-color,box-shadow,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-accent active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
 }
 /* Main action: deep wine on light pages, gold on dark bands (the tokens flip inside tone-dark). */
 @utility btn-primary {
@@ -257,7 +299,7 @@ p, li, dd, figcaption {
   @apply min-h-13 px-8 py-4 text-base;
 }
 @utility link-line {
-  @apply relative inline-flex items-center gap-1.5 pb-0.5 text-[15px] font-medium text-ink after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:bg-accent after:transition-transform after:duration-300 hover:text-accent hover:after:scale-x-50;
+  @apply relative inline-flex items-center gap-1.5 pb-0.5 text-sm font-semibold text-ink after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:bg-accent after:transition-transform after:duration-300 hover:text-accent hover:after:scale-x-50;
 }
 @utility link {
   @apply text-accent underline decoration-accent/40 decoration-1 underline-offset-4 transition-colors hover:decoration-accent;
@@ -300,7 +342,7 @@ p, li, dd, figcaption {
   @apply chip border-accent bg-accent text-accent-ink;
 }
 @utility badge {
-  @apply inline-flex items-center gap-1 rounded-full bg-gold-soft px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-gold uppercase;
+  @apply inline-flex items-center gap-1 rounded-full bg-gold-soft px-2.5 py-0.5 text-xs font-semibold tracking-wide text-gold uppercase;
 }
 /* Status badges: one colour per meaning, used the same way everywhere (site and admin). */
 @utility badge-wine {
@@ -331,7 +373,7 @@ p, li, dd, figcaption {
   @apply text-xs font-semibold tracking-wider text-muted uppercase;
 }
 @utility stat-value {
-  @apply mt-2 font-serif text-4xl leading-none font-medium tabular-nums;
+  @apply mt-2 font-heading text-4xl font-semibold tracking-tight tabular-nums;
   color: var(--stat, var(--wine));
 }
 @utility stat-wine {
@@ -361,13 +403,13 @@ p, li, dd, figcaption {
 
 /* ---------- Long-form article typography ---------- */
 .prose-post {
-  @apply text-[17px] leading-[1.75] text-ink sm:text-lg sm:leading-8;
+  @apply text-base text-ink sm:text-lg sm:leading-8;
 }
 .prose-post h2 {
-  @apply mt-12 mb-4 scroll-mt-28 font-serif text-[1.85rem] leading-tight font-medium sm:mt-14 sm:text-4xl;
+  @apply mt-12 mb-4 scroll-mt-28 font-heading text-2xl font-semibold tracking-tight sm:mt-14 sm:text-3xl;
 }
 .prose-post h3 {
-  @apply mt-8 mb-2 text-lg font-semibold;
+  @apply mt-8 mb-2 text-xl font-semibold;
 }
 .prose-post p {
   @apply my-5;
@@ -395,7 +437,7 @@ p, li, dd, figcaption {
   @apply my-8 rounded-xl;
 }
 .prose-post blockquote {
-  @apply my-8 rounded-r-xl border-l-4 border-wine bg-wine-soft/60 py-4 pr-4 pl-6 font-serif text-2xl italic;
+  @apply my-8 rounded-r-xl border-l-4 border-wine bg-wine-soft/60 py-4 pr-4 pl-6 text-xl font-medium;
 }
 .prose-post table {
   @apply my-8 w-full border-collapse overflow-hidden rounded-xl text-sm;
@@ -450,7 +492,7 @@ p, li, dd, figcaption {
   @apply my-8 grid grid-cols-2 gap-4 md:grid-cols-3;
 }
 .prose-post .stat-grid strong {
-  @apply block font-serif text-3xl text-wine;
+  @apply block font-heading text-3xl font-semibold text-wine tabular-nums;
 }
 .prose-post .stat-grid span {
   @apply text-sm text-muted;
@@ -463,7 +505,7 @@ p, li, dd, figcaption {
   @apply mx-auto block h-auto w-full;
 }
 .prose-post figcaption {
-  @apply mt-3 text-center text-sm text-muted italic;
+  @apply mt-3 text-center text-sm text-muted;
 }
 .prose-post .answer-box {
   @apply my-8 rounded-2xl border border-l-4 border-gold/50 border-l-gold bg-gold-soft/60 px-6 py-5;
@@ -472,7 +514,7 @@ p, li, dd, figcaption {
   @apply my-0;
 }
 .prose-post .answer-box strong:first-child {
-  @apply mb-1 block text-[11px] font-medium tracking-[0.22em] text-gold uppercase;
+  @apply mb-1 block text-xs font-semibold tracking-[0.2em] text-gold uppercase;
 }
 .prose-post .chair-pair {
   @apply my-10 grid grid-cols-2 gap-4;

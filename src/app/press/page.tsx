@@ -120,7 +120,7 @@ export default function PressPage() {
         <div className="grid gap-6 md:grid-cols-2">
           {angles.map((a) => (
             <Link key={a.title} href={a.href} className="rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-gold">
-              <h3 className="font-serif text-xl">{a.title}</h3>
+              <h3 className="font-heading font-semibold text-xl">{a.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted">{a.text}</p>
               <span className="mt-4 inline-block text-sm text-gold">See the page →</span>
             </Link>

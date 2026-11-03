@@ -28,7 +28,7 @@ export default function PhotoCreditsPage() {
       />
       <div className="max-w-3xl">
         <p className="eyebrow">Credits</p>
-        <h1 className="headline mt-6 text-5xl sm:text-6xl">Photo credits</h1>
+        <h1 className="display-1 mt-6">Photo credits</h1>
         <p className="mt-6 text-lg leading-8">
           Alongside our 3D renders, {site.name} shows real photos of event rentals in use so you can picture your day. These
           photos come from photographers on{" "}

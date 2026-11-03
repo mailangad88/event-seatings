@@ -29,7 +29,7 @@ export function StepFlow({
               />
             )}
             <span className="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-accent-ink shadow-soft ring-4 ring-accent-soft">
-              {s.icon ? <Icon name={s.icon} size={22} /> : <span className="font-serif text-xl">{i + 1}</span>}
+              {s.icon ? <Icon name={s.icon} size={22} /> : <span className="font-heading font-semibold text-xl">{i + 1}</span>}
             </span>
             <span className={h("md:mt-2")}>
               <span className="text-xs font-semibold tracking-wide text-accent uppercase">Step {i + 1}</span>

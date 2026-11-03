@@ -78,11 +78,11 @@ export function AreaMap({ active, className = "" }: { active?: Location; classNa
         <rect width={W} height={H} fill="var(--surface)" />
         <rect width={W} height={H} fill="url(#map-grid)" />
         <path d={lake} fill="url(#map-lake)" stroke="var(--gold)" strokeOpacity="0.5" strokeWidth="1.2" />
-        <text x={px(-87.52)} y={py(42.3)} transform={`rotate(90 ${px(-87.52)} ${py(42.3)})`} fill="var(--muted)" fontSize="15" fontStyle="italic" fontFamily="var(--font-display)" letterSpacing="3">
+        <text x={px(-87.52)} y={py(42.3)} transform={`rotate(90 ${px(-87.52)} ${py(42.3)})`} fill="var(--muted)" fontSize="15" fontFamily="var(--font-body)" letterSpacing="3">
           Lake Michigan
         </text>
         <path d={river} fill="none" stroke="#6f8f9b" strokeWidth="2" strokeDasharray="1 5" strokeLinecap="round" opacity="0.9" />
-        <text x={px(-88.19)} y={py(42.45)} fill="var(--muted)" fontSize="12" fontStyle="italic" fontFamily="var(--font-display)">
+        <text x={px(-88.19)} y={py(42.45)} fill="var(--muted)" fontSize="12" fontFamily="var(--font-body)">
           Fox River
         </text>
 
@@ -121,7 +121,7 @@ export function AreaMap({ active, className = "" }: { active?: Location; classNa
                     textAnchor={l.lng > -87.75 ? "end" : "start"}
                     fill={on ? "var(--ink)" : "var(--muted)"}
                     fontSize={on ? 22 : 14}
-                    fontFamily="var(--font-display)"
+                    fontFamily="var(--font-body)"
                   >
                     {l.name}
                   </text>

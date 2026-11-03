@@ -85,7 +85,7 @@ export function ChairViewer({ chair }: { chair: Chair }) {
               role="radio"
               aria-checked={i === finish}
               onClick={() => setFinish(i)}
-              className="flex items-center gap-2 text-[11px] tracking-[0.18em] text-muted uppercase"
+              className="flex items-center gap-2 text-xs tracking-[0.18em] text-muted uppercase"
             >
               <span
                 className={`h-6 w-6 rounded-full ring-1 ring-offset-2 ring-offset-bg transition ${i === finish ? "ring-gold" : "ring-ink/20"}`}
@@ -95,7 +95,7 @@ export function ChairViewer({ chair }: { chair: Chair }) {
             </button>
           ))}
         </div>
-        <span className="hidden text-[10px] tracking-[0.3em] text-gold uppercase sm:block">Drag to rotate</span>
+        <span className="hidden text-xs tracking-[0.3em] text-gold uppercase sm:block">Drag to rotate</span>
       </div>
     </div>
   );

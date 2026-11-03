@@ -173,7 +173,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
                         <Image src={sceneFor(r.slug).src} alt={sceneFor(r.slug).alt} fill sizes="80px" className="object-cover" />
                       )}
                     </span>
-                    <span className="self-center font-serif text-lg leading-snug transition-colors group-hover:text-gold">{r.title}</span>
+                    <span className="self-center font-heading font-semibold text-lg leading-snug transition-colors group-hover:text-gold">{r.title}</span>
                   </Link>
                 </li>
               ))}

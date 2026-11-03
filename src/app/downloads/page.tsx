@@ -82,7 +82,7 @@ export default function DownloadsPage() {
                     </div>
                     <div className="p-5">
                       <p className="text-xs uppercase tracking-widest text-gold">{[...new Set(d.files.map((f) => f.format))].join(" + ")}</p>
-                      <h2 className="mt-2 font-serif text-2xl">{d.title}</h2>
+                      <h2 className="display-3 mt-2">{d.title}</h2>
                       <p className="mt-2 text-sm text-muted">{d.blurb}</p>
                     </div>
                   </Link>

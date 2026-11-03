@@ -125,7 +125,7 @@ export function EventWeather({ defaultDate }: { defaultDate: string }) {
               ].map(([k, v]) => (
                 <div key={k} className="well p-3">
                   <dt className="text-xs text-muted">{k}</dt>
-                  <dd className="font-serif text-xl">{v}</dd>
+                  <dd className="font-heading font-semibold text-xl">{v}</dd>
                 </div>
               ))}
             </dl>
@@ -171,16 +171,16 @@ function DayBar({ sunrise, sunset, dark, start, end }: { sunrise: number; sunset
   return (
     <figure className="mt-4">
       <div className="relative h-10 overflow-hidden rounded-full bg-espresso" role="img" aria-label={`Daylight until ${clock(sunset)}, twilight until ${clock(dark)}, your event from ${clock(start)} to ${clock(end % 1440)}`}>
-        <div className="absolute inset-y-0 bg-[#f3e2b8]" style={{ left: x(sunrise), width: w(sunrise, sunset) }} />
-        <div className="absolute inset-y-0 bg-[#c98f5a]" style={{ left: x(sunset), width: w(sunset, dark) }} />
+        <div className="absolute inset-y-0 bg-gold-soft" style={{ left: x(sunrise), width: w(sunrise, sunset) }} />
+        <div className="absolute inset-y-0 bg-gold-bright" style={{ left: x(sunset), width: w(sunset, dark) }} />
         <div className="absolute inset-y-1 rounded-full border-2 border-gold bg-gold/25" style={{ left: x(start), width: w(start, end) }} />
       </div>
-      <figcaption className="mt-2 flex justify-between text-[11px] text-muted">
+      <figcaption className="mt-2 flex justify-between text-xs text-muted">
         <span>6 AM</span><span>Noon</span><span>6 PM</span><span>Midnight</span><span>2 AM</span>
       </figcaption>
       <p className="mt-1 flex flex-wrap gap-4 text-xs text-muted">
-        <span><span className="mr-1 inline-block h-2 w-3 rounded bg-[#f3e2b8] align-middle" />Daylight</span>
-        <span><span className="mr-1 inline-block h-2 w-3 rounded bg-[#c98f5a] align-middle" />Twilight</span>
+        <span><span className="mr-1 inline-block h-2 w-3 rounded bg-gold-soft align-middle" />Daylight</span>
+        <span><span className="mr-1 inline-block h-2 w-3 rounded bg-gold-bright align-middle" />Twilight</span>
         <span><span className="mr-1 inline-block h-2 w-3 rounded border border-gold bg-gold/25 align-middle" />Your event</span>
       </p>
     </figure>

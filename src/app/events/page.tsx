@@ -23,7 +23,7 @@ export default function EventsPage() {
         <Breadcrumbs items={[{ href: "/events", label: "Events" }]} />
         <section className="mt-10 max-w-4xl animate-rise">
           <p className="eyebrow">Every occasion</p>
-          <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+          <h1 className="display-1 mt-6">
             The right chair for <em className="text-gold">every</em> celebration
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-8 text-muted">
@@ -43,7 +43,7 @@ export default function EventsPage() {
                   {chair && (
                     <ChairArt chair={chair} className="aspect-[4/3] transition-transform duration-[1.2s] group-hover:scale-[1.04]" />
                   )}
-                  <h2 className="mt-5 font-serif text-3xl font-light">
+                  <h2 className="display-2 mt-5">
                     <Link href={eventPath(e)} className="after:absolute after:inset-0">
                       {e.shortName}
                     </Link>

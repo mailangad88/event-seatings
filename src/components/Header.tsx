@@ -17,8 +17,8 @@ export function Logo({ light = false, center = false }: { light?: boolean; cente
       aria-label={`${site.name} home`}
       className={`flex shrink-0 flex-col leading-none ${center ? "items-center" : "items-start"} text-ink`}
     >
-      <span className="font-serif text-[1.3rem] tracking-[0.04em] whitespace-nowrap uppercase sm:text-[1.7rem]">{site.name}</span>
-      <span className={`mt-1 text-[9px] font-medium tracking-[0.38em] uppercase ${light ? "text-ink/60" : "text-gold"}`}>
+      <span className="font-brand text-xl font-medium tracking-[0.04em] whitespace-nowrap uppercase sm:text-2xl">{site.name}</span>
+      <span className={`mt-1.5 text-xs font-medium tracking-[0.12em] uppercase sm:tracking-[0.2em] ${light ? "text-ink/60" : "text-gold"}`}>
         Event Rentals · Chicago
       </span>
     </Link>
@@ -26,7 +26,7 @@ export function Logo({ light = false, center = false }: { light?: boolean; cente
 }
 
 const linkClass =
-  "inline-flex items-center gap-1 rounded-full px-2.5 py-2 text-[15px] font-medium text-ink/80 transition-colors hover:bg-surface-2 hover:text-ink xl:px-3";
+  "inline-flex items-center gap-1 rounded-full px-2.5 py-2 text-sm font-medium text-ink/80 transition-colors hover:bg-surface-2 hover:text-ink xl:px-3";
 
 const cols: Record<number, string> = { 1: "grid-cols-1", 2: "grid-cols-2", 3: "grid-cols-3", 4: "grid-cols-4" };
 
@@ -75,7 +75,7 @@ function MegaMenu({ menu }: { menu: Menu }) {
             <Image src={promo.src} alt={promo.alt} fill sizes="280px" className="object-cover opacity-70 transition-opacity group-hover/promo:opacity-90" />
             <span className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" aria-hidden />
             <span className="absolute inset-x-0 bottom-0 p-5 text-white">
-              <span className="block font-serif text-2xl leading-tight">{menu.promo.title}</span>
+              <span className="block font-heading font-semibold text-2xl leading-tight">{menu.promo.title}</span>
               <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium">
                 {menu.promo.cta} <Icon name="arrow" size={16} />
               </span>
@@ -90,7 +90,7 @@ function MegaMenu({ menu }: { menu: Menu }) {
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur-md">
-      <div className="bg-espresso text-[13px]">
+      <div className="bg-espresso text-sm">
         <div className="container-x flex items-center justify-center gap-2 py-1 text-ink/85 sm:justify-between">
           <span className="hidden items-center gap-2 sm:flex">
             <Icon name="pin" size={14} className="text-gold" /> Delivering across {site.marketLong}

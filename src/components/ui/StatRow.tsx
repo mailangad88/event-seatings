@@ -8,7 +8,7 @@ export function StatRow({ stats, className = "" }: { stats: { value: string; lab
       {stats.map((s, i) => (
         <div key={s.label} className={`border-l-4 pl-4 ${tones[i % tones.length]}`} style={{ borderColor: "var(--stat)" }}>
           <dt className="sr-only">{s.label}</dt>
-          <dd className="font-serif text-4xl leading-none font-medium sm:text-5xl" style={{ color: "var(--stat)" }}>{s.value}</dd>
+          <dd className="font-heading text-4xl leading-none font-medium sm:text-5xl" style={{ color: "var(--stat)" }}>{s.value}</dd>
           <dd className="mt-2 text-sm text-muted">{s.label}</dd>
         </div>
       ))}
