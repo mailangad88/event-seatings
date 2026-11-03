@@ -120,6 +120,14 @@ export const tools: ToolEntry[] = [
     outputs: ["Category budget", "Per guest", "Who pays what"],
   },
   {
+    slug: "event-weather",
+    name: "Event weather and sunset planner",
+    short: "Your date's normal high, sunset, golden light and dark-by time, with what to plan for lights, heat and rain.",
+    group: "plans",
+    scene: "tent-reception-dusk",
+    outputs: ["Sunset", "Dark by", "What to rent"],
+  },
+  {
     slug: "event-date",
     name: "Chicago event date checker",
     short: "Weather history, sunset and golden hour, and holidays near your date.",

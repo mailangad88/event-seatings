@@ -66,6 +66,8 @@ export type Lead = {
   fee_amount?: number; // USD charged at checkout (booking fee or hold)
   fee_paid_at?: string;
   stripe_session_id?: string;
+  // Referral link code (/refer, ?ref=<code>) that brought this visitor in, kept 90 days in their browser.
+  referral_code?: string;
 } & Partial<Record<TrackingField, string>>;
 
 export type FeeStatus = "unpaid" | "paid" | "refunded";
@@ -206,7 +208,7 @@ export async function getVisitorVotes(visitorId: string): Promise<string[]> {
 // Columns added after the first launch. Kept here so a not-yet-migrated database can still take leads.
 const newerLeadColumns = [
   "email_consent", "call_consent", "consent_at", "opted_out_at", "lead_score", "lead_score_reasons",
-  "visitor_tz", "pages_viewed", "followup_step", "followup_last_at",
+  "visitor_tz", "pages_viewed", "followup_step", "followup_last_at", "referral_code",
 ] as const;
 
 export async function addLead(lead: NewLead): Promise<Lead> {

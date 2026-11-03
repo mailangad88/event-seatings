@@ -6,11 +6,13 @@ import { Icon } from "@/components/ui/Icon";
 import { attributionFields } from "@/lib/attribution";
 import { track, trackLead } from "@/lib/analytics";
 import { CLIMATE_SOURCE, sunTimes, weatherNotes } from "@/lib/chicago-climate";
+import { occasions, roles } from "@/data/vendor-guide";
 import { plannerEvents, settings, styles } from "@/lib/event-plan";
 import {
   EVENTS_KEY,
   PLANNER_KEYS,
   blankEvent,
+  budgetTotals,
   checklist,
   daysUntil,
   eventIcs,
@@ -19,6 +21,7 @@ import {
   nextUp,
   progress,
   shareParam,
+  vendorOccasionFor,
   type SavedEvent,
 } from "@/lib/my-events";
 
@@ -69,6 +72,10 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
     return p ? fromShareParam(p) : undefined;
   }, [search]);
   const fromPlanner = useMemo(() => fromPlannerStore(plannerRaw), [plannerRaw]);
+  const startType = useMemo(() => {
+    const t = new URLSearchParams(search).get("new");
+    return plannerEvents.some((e) => e.id === t) ? t! : "wedding";
+  }, [search]);
   const [dismissedShare, setDismissedShare] = useState(false);
   const [selected, setSelected] = useState<string | undefined>();
   const [copied, setCopied] = useState(false);
@@ -117,7 +124,7 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
     return (
       <div>
         {shareBanner}
-        <StartForm onStart={(e) => add(e, "new")} fromPlanner={fromPlanner} onImport={() => fromPlanner && add(fromPlanner, "planner")} />
+        <StartForm key={startType} initialType={startType} onStart={(e) => add(e, "new")} fromPlanner={fromPlanner} onImport={() => fromPlanner && add(fromPlanner, "planner")} />
       </div>
     );
   }
@@ -293,7 +300,8 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
               )}
               <p className="mt-4 text-xs text-muted">
                 Normal high from {CLIMATE_SOURCE}. Sunset calculated for downtown Chicago.{" "}
-                <Link href={`/chicago-event-seasons/${wx.slug}`} className="link">Planning in {wx.month}</Link>
+                <Link href={`/chicago-event-seasons/${wx.slug}`} className="link">Planning in {wx.month}</Link> ·{" "}
+                <Link href="/tools/event-weather" className="link">Golden light and dark-by times</Link>
               </p>
             </section>
           )}
@@ -324,6 +332,8 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
         </ol>
       </section>
 
+      <VendorBudget event={current} update={update} />
+
       <section className="mt-10 grid gap-6 md:grid-cols-2 print:hidden">
         <div className="card p-6">
           <label htmlFor="ev-notes" className="font-serif text-2xl">Notes</label>
@@ -339,8 +349,8 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
   );
 }
 
-function StartForm({ onStart, fromPlanner, onImport }: { onStart: (e: SavedEvent) => void; fromPlanner?: SavedEvent; onImport: () => void }) {
-  const [type, setType] = useState("wedding");
+function StartForm({ initialType, onStart, fromPlanner, onImport }: { initialType: string; onStart: (e: SavedEvent) => void; fromPlanner?: SavedEvent; onImport: () => void }) {
+  const [type, setType] = useState(initialType);
   const [date, setDate] = useState("");
   return (
     <div className="card p-6 sm:p-10">
@@ -420,5 +430,76 @@ function CheckIn({ event, siteName }: { event: SavedEvent; siteName: string }) {
       )}
       {status === "error" && <p className="mt-2 text-sm text-rose">Something went wrong. Please try again.</p>}
     </div>
+  );
+}
+
+const usd0 = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+const num = (v: string) => {
+  const n = Math.round(Number(v.replace(/[^\d.]/g, "")));
+  return Number.isFinite(n) && n > 0 ? Math.min(n, 10_000_000) : undefined;
+};
+
+// Vendor team for this kind of event (from the vendor guide), with booked ticks and a simple budget.
+function VendorBudget({ event, update }: { event: SavedEvent; update: (p: Partial<SavedEvent>) => void }) {
+  const occ = occasions.find((o) => o.id === vendorOccasionFor(event.type)) ?? occasions[0];
+  const ids = [...occ.essential, ...occ.often];
+  const rows = [...ids.map((id) => ({ id, name: roles.find((r) => r.id === id)!.name, essential: occ.essential.includes(id) })), { id: "other", name: "Everything else (attire, favors, stationery)", essential: false }];
+  const costs = event.costs ?? {};
+  const t = budgetTotals(event);
+  const booked = ids.filter((id) => event.vendors?.[id]).length;
+  const setCost = (id: string, k: "est" | "paid", v: string) => update({ costs: { ...costs, [id]: { ...costs[id], [k]: num(v) } } });
+  return (
+    <section className="mt-10" aria-labelledby="vb-title">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 id="vb-title" className="display-3">Vendors and budget</h2>
+          <p className="mt-2 text-muted">
+            {booked} of {ids.length} vendors booked. <Link href="/vendor-guide" className="link">When to book each one</Link>
+          </p>
+        </div>
+        <div className="flex items-end gap-3">
+          <div>
+            <label className="label" htmlFor="vb-budget">Total budget</label>
+            <input id="vb-budget" inputMode="numeric" className="field mt-1 w-36" placeholder="$" value={event.budget ?? ""} onChange={(e) => update({ budget: num(e.target.value) })} />
+          </div>
+        </div>
+      </div>
+      <div className="mt-6 overflow-x-auto rounded-2xl border border-line bg-surface">
+        <table className="w-full min-w-[560px] text-left text-sm">
+          <caption className="sr-only">Vendor team with booked status, estimated cost and amount paid</caption>
+          <thead className="border-b border-line text-muted">
+            <tr><th className="p-3 font-medium">Booked</th><th className="p-3 font-medium">Vendor</th><th className="p-3 font-medium">Estimate</th><th className="p-3 font-medium">Paid</th></tr>
+          </thead>
+          <tbody className="divide-y divide-line">
+            {rows.map((r) => (
+              <tr key={r.id}>
+                <td className="p-3">
+                  {r.id !== "other" && (
+                    <input type="checkbox" className="accent-[var(--gold)]" aria-label={`${r.name} booked`} checked={!!event.vendors?.[r.id]} onChange={(e) => update({ vendors: { ...event.vendors, [r.id]: e.target.checked } })} />
+                  )}
+                </td>
+                <td className="p-3">
+                  {r.id === "other" ? r.name : <a href={`/vendor-guide#${r.id}`} className="hover:text-gold">{r.name}</a>}
+                  {r.essential && <span className="badge ml-2">Essential</span>}
+                </td>
+                <td className="p-2"><input inputMode="numeric" aria-label={`${r.name} estimate`} className="field w-28" placeholder="$" value={costs[r.id]?.est ?? ""} onChange={(e) => setCost(r.id, "est", e.target.value)} /></td>
+                <td className="p-2"><input inputMode="numeric" aria-label={`${r.name} paid`} className="field w-28" placeholder="$" value={costs[r.id]?.paid ?? ""} onChange={(e) => setCost(r.id, "paid", e.target.value)} /></td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot className="border-t border-line font-medium">
+            <tr>
+              <td className="p-3" colSpan={2}>
+                Total
+                {t.left !== undefined && <span className={`ml-3 text-sm font-normal ${t.left < 0 ? "text-rose" : "text-muted"}`}>{t.left < 0 ? `${usd0(-t.left)} over budget` : `${usd0(t.left)} left to plan`}</span>}
+              </td>
+              <td className="p-3">{usd0(t.est)}</td>
+              <td className="p-3">{usd0(t.paid)}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p className="hint mt-3">Amounts stay on this device and aren&apos;t included in share links. For rentals, <Link href={`/quote?event=${event.type}&from=my-events-budget`} className="link">get a free itemized quote</Link> to fill in that line.</p>
+    </section>
   );
 }

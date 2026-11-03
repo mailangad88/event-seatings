@@ -15,22 +15,42 @@ export const firstFallFreeze = "October 19";
 const CHI = { lat: 41.8781, lon: -87.6298 };
 const rad = (d: number) => (d * Math.PI) / 180;
 
-/** Sunrise and sunset in Chicago local time for a YYYY-MM-DD date. */
-export function sunTimes(iso: string) {
+/** Minutes after local midnight (UTC-based) for sunrise/sunset at a given solar zenith. */
+function solar(iso: string, zenith: number) {
   const [y, m, d] = iso.split("-").map(Number);
-  const start = Date.UTC(y, 0, 1);
-  const n = Math.floor((Date.UTC(y, m - 1, d) - start) / 864e5) + 1;
+  const n = Math.floor((Date.UTC(y, m - 1, d) - Date.UTC(y, 0, 1)) / 864e5) + 1;
   const g = ((2 * Math.PI) / 365) * (n - 1);
   const eq = 229.18 * (0.000075 + 0.001868 * Math.cos(g) - 0.032077 * Math.sin(g) - 0.014615 * Math.cos(2 * g) - 0.040849 * Math.sin(2 * g));
   const decl =
     0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g) - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g);
-  const ha = Math.acos(Math.cos(rad(90.833)) / (Math.cos(rad(CHI.lat)) * Math.cos(decl)) - Math.tan(rad(CHI.lat)) * Math.tan(decl));
+  const ha = Math.acos(Math.cos(rad(zenith)) / (Math.cos(rad(CHI.lat)) * Math.cos(decl)) - Math.tan(rad(CHI.lat)) * Math.tan(decl));
   const haDeg = (ha * 180) / Math.PI;
-  const riseUtcMin = 720 - 4 * (CHI.lon + haDeg) - eq;
-  const setUtcMin = 720 - 4 * (CHI.lon - haDeg) - eq;
-  const fmt = (min: number) =>
-    new Date(Date.UTC(y, m - 1, d, 0, Math.round(min))).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago" });
-  return { sunrise: fmt(riseUtcMin), sunset: fmt(setUtcMin) };
+  const at = (min: number) => new Date(Date.UTC(y, m - 1, d, 0, Math.round(min)));
+  return { rise: at(720 - 4 * (CHI.lon + haDeg) - eq), set: at(720 - 4 * (CHI.lon - haDeg) - eq) };
+}
+
+export const chicagoTime = (d: Date) => d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago" });
+
+/** Sunrise and sunset in Chicago local time for a YYYY-MM-DD date. */
+export function sunTimes(iso: string) {
+  const s = solar(iso, 90.833);
+  return { sunrise: chicagoTime(s.rise), sunset: chicagoTime(s.set) };
+}
+
+/** Sunrise, sunset, the hour before sunset (golden light) and end of civil twilight (when it is fully dark enough to need lights). */
+export function lightTimes(iso: string) {
+  const s = solar(iso, 90.833);
+  const civil = solar(iso, 96);
+  const golden = new Date(s.set.getTime() - 60 * 6e4);
+  const dayMin = Math.round((s.set.getTime() - s.rise.getTime()) / 6e4);
+  return {
+    sunrise: chicagoTime(s.rise),
+    sunset: chicagoTime(s.set),
+    goldenStart: chicagoTime(golden),
+    dark: chicagoTime(civil.set),
+    daylight: `${Math.floor(dayMin / 60)} h ${dayMin % 60} min`,
+    sunsetDate: s.set,
+  };
 }
 
 /** Plain-language weather notes for an event date. */

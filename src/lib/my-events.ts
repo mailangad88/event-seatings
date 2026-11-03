@@ -16,7 +16,9 @@ export type SavedEvent = {
   style: StyleId;
   done: Record<string, boolean>; // checklist task key -> ticked
   notes?: string;
-  budget?: number; // overall rentals budget the host set, USD
+  budget?: number; // overall event budget the host set, USD
+  vendors?: Record<string, boolean>; // vendor role id -> booked
+  costs?: Record<string, { est?: number; paid?: number }>; // vendor role id (or "other") -> USD
   created: string; // ISO
 };
 
@@ -164,4 +166,16 @@ export function fromPlannerStore(raw: string | null): SavedEvent | undefined {
   } catch {
     return undefined;
   }
+}
+
+// ---- Vendor team + budget ---------------------------------------------------------------------
+// Which /vendor-guide occasion each planner event maps to.
+const vendorOccasionOf: Record<string, string> = { wedding: "wedding", "indian-wedding": "indian-wedding", corporate: "corporate", quinceanera: "quinceanera", shower: "shower", graduation: "graduation", birthday: "backyard", kids: "backyard" };
+export const vendorOccasionFor = (type: string) => vendorOccasionOf[type] ?? "backyard";
+
+export function budgetTotals(e: SavedEvent) {
+  const rows = Object.values(e.costs ?? {});
+  const est = rows.reduce((a, r) => a + (r.est ?? 0), 0);
+  const paid = rows.reduce((a, r) => a + (r.paid ?? 0), 0);
+  return { est, paid, left: e.budget ? e.budget - est : undefined };
 }

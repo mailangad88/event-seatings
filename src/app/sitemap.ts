@@ -19,10 +19,17 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/downloads", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
+  }));
+  // Reviews, referrals and the planning assistant (/tools/floor-plan and /tools/event-date come from toolSitemapEntries). The planning assistant is
+  // listed only while NEXT_PUBLIC_PLANNING_ASSISTANT=on, because the page 404s otherwise.
+  const featurePages = ["/reviews", "/refer", ...(process.env.NEXT_PUBLIC_PLANNING_ASSISTANT === "on" ? ["/planning-assistant"] : [])].map((p) => ({
+    url: `${site.url}${p}`,
+    changeFrequency: "weekly" as const,
+    priority: p === "/planning-assistant" ? 0.7 : 0.5,
   }));
   // Image entries help Google Images and AI search find every chair photo.
   const img = (slug: string) => {
@@ -104,5 +111,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   // Free tools, countdown, comparison and vendor onboarding pages (src/lib/tools/sitemap.ts).
   const toolPages = toolSitemapEntries(["/countdown"]);
-  return [...pages, ...toolPages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  return [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }
