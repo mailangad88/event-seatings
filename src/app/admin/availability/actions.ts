@@ -20,6 +20,7 @@ export async function toggleDate(formData: FormData) {
   if (!isDay(date)) return;
   await setDateBlocked(date, formData.get("blocked") === "1", text(formData.get("reason")));
   revalidatePath("/admin/availability");
+  revalidatePath("/admin/calendar");
 }
 
 // Blocks (or opens) every day from `from` to `to`, at most a year at a time.
@@ -37,4 +38,5 @@ export async function blockRange(formData: FormData) {
     await setDateBlocked(d, block, reason);
   }
   revalidatePath("/admin/availability");
+  revalidatePath("/admin/calendar");
 }

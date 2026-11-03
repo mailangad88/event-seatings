@@ -196,7 +196,7 @@ export default async function TodayPage() {
           </dl>
           <Link href="/admin/reports" className="mt-4 inline-block text-sm text-accent">Full sales report →</Link>
         </Panel>
-        <Panel title="Blocked in the next 2 weeks" more={{ href: "/admin/availability", label: "Block dates" }}>
+        <Panel title="Blocked in the next 2 weeks" more={{ href: "/admin/calendar", label: "Calendar" }}>
           {blockedSoon.length === 0 ? (
             <Empty>Every date is open for requests.</Empty>
           ) : (
