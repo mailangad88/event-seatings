@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { QuoteForm, type QuoteItem, type StarterPreset } from "@/components/QuoteForm";
+import { EventPlanner } from "@/components/planner/EventPlanner";
 import { rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Figure, FaqList, JsonLd, PageHero, StepFlow, type Faq } from "@/components/ui";
 import { catalogItems } from "@/data/catalog";
@@ -110,6 +111,12 @@ export default async function QuotePage(props: PageProps<"/quote">) {
 
   const hero = scenes.gildedIvory;
 
+  // The step-by-step planner is the default. Links that already know what they want (?items=, ?chairs=, ?look=)
+  // and "browse the full catalog" (?browse=1) open the full builder instead. ?event= starts the planner at that occasion.
+  const eventId = str(sp.event);
+  const plannerEvent = eventId === "gala" ? "corporate" : eventId;
+  const planner = !str(sp.browse) && !str(sp.look) && initial.length === 0;
+
   return (
     <>
       <JsonLd
@@ -127,13 +134,20 @@ export default async function QuotePage(props: PageProps<"/quote">) {
         }}
       />
       <PageHero
-        eyebrow="Instant quote"
-        title="Price your event in minutes"
+        eyebrow={planner ? "Free event planner" : "Instant quote"}
+        title={planner ? "Plan your event in a few taps" : "Price your event in minutes"}
         intro={
+          planner ? (
+            <>
+              Tell us the occasion, guest count and style. We&apos;ll build your rental list with pictures and live prices,
+              then give you a free personalised plan: checklist, floor plan and budget. No payment, no commitment.
+            </>
+          ) : (
           <>
             Pick chairs, tables, linens, tableware and more, set quantities and watch your total add up. Send it when
             you&apos;re ready and we&apos;ll confirm availability with a personal proposal. No payment, no commitment.
           </>
+          )
         }
         breadcrumbs={[{ name: "Get a quote", href: "/quote" }]}
         // Hidden on phones: the builder below is full of pictures, and the hero image pushed it off the first screen.
@@ -141,7 +155,15 @@ export default async function QuotePage(props: PageProps<"/quote">) {
       />
 
       <div className="container-x section-y">
+        {planner ? (
+          <EventPlanner items={items.filter((i) => i.featured)} initialEvent={plannerEvent} from={str(sp.from)?.replace(/[^\w-]/g, "").slice(0, 40)} />
+        ) : (
         <div>
+          {!str(sp.look) && initial.length === 0 && (
+            <p className="mb-6 text-sm text-muted">
+              Not sure what you need? <a href="/quote" className="text-accent underline">Use the step-by-step planner</a>.
+            </p>
+          )}
           <QuoteForm
             items={items}
             initialItems={initial}
@@ -151,6 +173,7 @@ export default async function QuotePage(props: PageProps<"/quote">) {
             from={from}
           />
         </div>
+        )}
 
         <section className="mt-24" aria-labelledby="quote-next">
           <p className="eyebrow">After you send it</p>

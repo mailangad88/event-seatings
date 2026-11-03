@@ -1095,3 +1095,10 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 | `/blog/restaurant-private-room-vs-full-venue` | Restaurant Private Room vs Full Venue: Which Is Right | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `vendor-tracker` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/event-signage-wording-guide` | Event Signage Wording Guide: What to Say and Where | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `event-planning-kit` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/planning-an-event-for-older-guests` | Planning an Event for Older Guests: Comfort and Access | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `seating-chart-planner` | Add a real photo or render; check rankings in Search Console after 30 days |
+
+## 2026-11-03: Step-by-step event planner on /quote
+- /quote now opens a guided planner. It asks for the occasion, guests, style (simple, classic or lavish), setting (venue, backyard, tent or park), extras, date or month, and rental budget.
+- Each answer builds a picture-first recommended list with tap-to-adjust steppers and a reason for every line. Style cards show the live price for that guest count. A budget meter offers a one-tap "switch style and save".
+- The free personalised plan unlocks with name and email. It includes an assessment (lead time, Chicago weather, peak Saturdays, permits), a dated checklist with tick boxes, a floor plan sketch and a budget breakdown.
+- Unlocking saves the lead with all items: kind "quote" when a date or month is given, otherwise "quiz". The source is `planner:<event>-<style>`.
+- Logic lives in src/lib/event-plan.ts and the UI in src/components/planner/. The full catalog builder is still at /quote?browse=1, and ?items=, ?chairs= and ?look= links still open it. ?event=<id> starts the planner at that occasion.
