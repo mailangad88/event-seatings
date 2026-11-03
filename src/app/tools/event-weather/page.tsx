@@ -3,6 +3,7 @@ import Link from "next/link";
 import { EventWeather } from "@/components/tools/EventWeather";
 import { FaqList, Figure, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
 import { CLIMATE_SOURCE, firstFallFreeze, lastSpringFreeze, lightTimes, monthNames, monthSlugs, normalHighF } from "@/lib/chicago-climate";
+import { routeExists } from "@/lib/routes";
 import { site } from "@/lib/site";
 
 export const revalidate = 86400;
@@ -97,7 +98,7 @@ export default function EventWeatherPage() {
       <Section eyebrow="Questions" title="Chicago event weather">
         <FaqList faqs={faqs} />
         <p className="mt-8 text-center text-sm text-muted">
-          Next: <Link href="/my-events" className="link">save your date in My Events</Link> · <Link href="/ideas" className="link">ideas for this month</Link> · <Link href="/tools" className="link">all free tools</Link>
+          Next: {routeExists("/tools/event-date") && <><Link href="/tools/event-date" className="link">forecast and weather history for your date</Link> · </>}<Link href="/my-events" className="link">save your date in My Events</Link> · <Link href="/ideas" className="link">ideas for this month</Link> · <Link href="/tools" className="link">all free tools</Link>
         </p>
       </Section>
     </>
