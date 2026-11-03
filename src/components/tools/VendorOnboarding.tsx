@@ -154,7 +154,7 @@ export function VendorOnboarding({ templateHref }: { templateHref: string }) {
           const id = typeof o === "string" ? o : o.id;
           const text = typeof o === "string" ? o : o.label;
           return (
-            <button key={id} type="button" aria-pressed={v(k) === id} onClick={() => set(k, id)} className={`rounded-full border px-4 py-2 text-sm ${v(k) === id ? "border-ink bg-ink text-bg" : "border-line bg-surface hover:border-gold"}`}>
+            <button key={id} type="button" aria-pressed={v(k) === id} onClick={() => set(k, id)} className={`rounded-full border px-4 py-2 text-sm ${v(k) === id ? "border-accent bg-accent text-accent-ink" : "border-line bg-surface hover:border-gold"}`}>
               {text}
             </button>
           );

@@ -134,7 +134,7 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
                 {stripeEnabled() ? (
                   <>
                   {sp.checkout === "error" && (
-                    <p role="alert" className="mb-3 text-sm text-red-700">
+                    <p role="alert" className="mb-3 text-sm text-rose">
                       Checkout couldn&apos;t open just now. Please try again, or reply to our email and we&apos;ll help.
                     </p>
                   )}

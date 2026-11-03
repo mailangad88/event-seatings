@@ -144,7 +144,7 @@ export function CountdownTool({ available }: { available: string[] }) {
               </button>
               <button
                 type="button"
-                className="btn border border-ink/25 text-ink hover:bg-ink hover:text-bg"
+                className="btn border border-ink/25 text-ink hover:border-accent hover:bg-accent-soft hover:text-accent"
                 onClick={() => {
                   const items = [...(tl?.tasks ?? [])];
                   downloadFile(`${name.replace(/[^\w]+/g, "-").toLowerCase()}.ics`, toICS(name, items, window.location.href), "text/calendar");

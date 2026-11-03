@@ -27,7 +27,7 @@ export function PriceTag({
   return (
     <p className={`flex flex-wrap items-baseline gap-x-1.5 ${className}`}>
       {from && <span className="text-sm text-muted">from</span>}
-      <span className={`font-semibold tabular-nums text-ink ${big}`}>{formatPrice(amount)}</span>
+      <span className={`font-semibold tabular-nums text-wine ${big}`}>{formatPrice(amount)}</span>
       {compareAt && compareAt > amount && (
         <s className="text-sm text-muted tabular-nums">{formatPrice(compareAt)}</s>
       )}
