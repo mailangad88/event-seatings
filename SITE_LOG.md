@@ -36,6 +36,59 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): SEO / AEO / GEO audit and local landing pages
+
+**Automated audit.** `npm run seo-audit` (`scripts/seo-audit.mjs`) builds nothing itself: after `npm run build` it starts the production server, reads `/sitemap.xml`, `/robots.txt` and `/llms.txt`, crawls every sitemap URL and scores each page out of 100. GitHub Actions (`.github/workflows/seo-audit.yml`) runs it on every pull request and push to main, and fails on any blocking error or a site score under 90. The report is written to `reports/seo-audit.md` and `.json` (uploaded as a CI artifact, not committed).
+
+| Check | Level | What it means |
+|---|---|---|
+| One H1, title, meta description, self canonical, `<html lang>` | error | Basic SEO on every page |
+| Title 30-65 chars, description 70-165 chars, unique | warn / error for duplicate titles | Fits search results. The `seo()` helper in `src/lib/seo.ts` trims both on every page |
+| JSON-LD parses; FAQPage, BreadcrumbList, Product, ImageObject, VideoObject have their required fields | error | Valid rich-result schema |
+| Direct answer near the top (`data-answer` element, 30-100 words) | error; 40-60 words is the target (warn outside) | AEO: what answer engines quote |
+| 3+ FAQs with FAQPage schema | error (tools, forms and legal pages exempt) | AEO |
+| Every image has alt text; at least one visual | error | No text-only pages; image search |
+| 300+ words of main content (500+ warn) | error | Thin content |
+| Near-duplicate main content (64-bit simhash, 5-word shingles, distance 3 or less) | error; warn between sibling catalog variants | Duplicate content |
+| 5+ internal links in the content, no broken internal links, linked from at least one page | error | Crawlability, orphans |
+| Sitemap: no duplicates, no noindex pages, every linked page listed; llms.txt starts with `# Name` and its links are in the sitemap; robots.txt points to the sitemap | site error | Discovery and GEO |
+| Images without width/height, lazy first image, HTML over 600 KB | warn | Core Web Vitals hints |
+
+**Results.** First run: 3,747 pages, score 88.1, 958 pages with blocking errors. After the fixes: see the latest CI report (last local run before merge in the PR description).
+
+**Sitewide fixes in this release**
+
+- `seo()` wraps the metadata of every public page and the guide families: titles cut to 65 characters (brand suffix dropped when it would not fit), descriptions to 160. 2,979 long titles and 2,662 long descriptions fixed. Home page now has its own title and description.
+- Direct answers: marked with `data-answer` in PageHero, GuideShell quick answers, blog quick-answer boxes, guide hub intros, rental item pages (answer now sized to about 40-60 words from description, quantity for 100 guests and delivery), chair pages, looks, home, tools, answers, how-it-works and partners. Hub intros rewritten as answers.
+- FAQs added: `/blog`, every `/blog/topic/*` (questions pulled from the guides they list), `/about`, `/chair-rentals`, `/events`, every `/rentals/[category]` (two more questions, so each has 4-5), and 11 original posts that had none (each also got a quick-answer box).
+- Alt text on header promo, related-guide thumbnails, topic art, seating-planner chairs and quote-builder colour swatches (641 blog pages failed this).
+- Catalog: 97 inventory items were in the wrong category (66 inflatables and table games under Tables because "inflatable" contains "table"; 31 tables, tents and tablecloths under Chairs from mixed vendor sections). Classifier fixed in `scripts/build-inventory.py` (re-running it reproduces the JSON), old URLs 308-redirect via `next.config.ts` from `src/data/moved-items.json`.
+- Duplicate price-list rows (same name and specs) point their canonical to the first copy and are left out of the sitemap (`canonicalItem` in `src/data/catalog.ts`). Item titles for shared names put the spec first so they stay unique when cut.
+- Item pages gained a "How it compares" paragraph (rank in its range, cheaper and pricier neighbours with links).
+- Thin hubs (`/chicago-event-seasons`, `/table-seating-guides`) got more FAQs; guide hubs emit BreadcrumbList.
+- `/about` and `/partners` got contextual internal links; duplicate `/photo-credits` sitemap entry removed.
+- PR #31 pages (`/solutions/*`, `/compare/*`, `/glossary`, `/tools/rental-calculator`) wrapped in `seo()` and their short answers marked.
+
+**New landing pages (search-intent map: `docs/seo-data/search-intent-map.md`)**
+
+| Route | Pages | Search intent | Visuals | FAQ | Schema |
+|---|---|---|---|---|---|
+| `/party-rentals` | 1 | party rentals near me | Area map | 3 | ItemList, BreadcrumbList, FAQPage |
+| `/party-rentals/[area]` | 35 | party rentals [town], event rentals [town] | Area map, 10 category scene thumbnails, scene image | 4-5 | Service (areaServed, OfferCatalog), BreadcrumbList, FAQPage |
+| `/party-rentals/[area]/[category]` | 350 | tent / table / linen / dance floor / bounce house / photo booth / lighting / heater / dinnerware / concession rental [town] | Scene image, 6 product images, price chart, area map | 5 | Service with AggregateOffer, ImageObject, BreadcrumbList, FAQPage |
+| `/rental-cost` | 1 | how much do event rentals cost | Scene image, price table | 3 | ItemList, BreadcrumbList, FAQPage |
+| `/rental-cost/[category]` | 19 | how much does [category] rental cost in Chicago | Scene image, price-band chart, price bars, product images | 4 | Article + Product AggregateOffer, BreadcrumbList, FAQPage |
+
+All prices on these pages are computed from the catalog at build time. Content lives in `src/data/local-rentals.ts` (category tips per kind of venue, sizing rules of thumb, booking lead times, cost drivers) and `src/data/geo/*.ts` (areas). Last touched 2026-11-03.
+
+**Remaining to improve**
+
+- 40-60 word target: about 1,300 answers are outside it (most blog quick answers run 61-97 words; most chair-comparison quick answers 30-39). Warn only; tighten as posts are edited.
+- 135 pages between 300 and 500 words (mostly chair comparisons and chair-fit guides).
+- Core Web Vitals hints: about 600 pages lazy-load their first image, 46 blog posts have markdown images without width/height, `/gallery` HTML is 1.2 MB.
+- `[event] rentals chicago` (wedding rentals chicago, graduation party rentals chicago): extend `/events/[type]` with the full rental list instead of adding competing pages.
+- Replace estimated keyword bands in `docs/seo-data/chicago-keywords.csv` with Keyword Planner / Search Console numbers once those accounts exist.
+
 ## Changes in this release (2026-11-03): photo-style product images
 
 - All 117 product shots (`public/rentals/<category>/<id>.webp`) re-rendered with the photoreal pipeline (`blender/rentals/photoreal.py`): real HDRI light (Poly Haven, CC0), photo-scanned floors and lawn, edge bevels, depth of field, and a camera finish (grain, vignette, lens fringing) in `photo_finish.py`. Furniture is pictured in a room corner, tableware on a linen tablecloth, tents and lawn items in a real park photo.

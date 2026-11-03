@@ -7,12 +7,13 @@ import { catalogItems } from "@/data/catalog";
 import { toPublicItem } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { seo } from "@/lib/seo";
 
 const title = "Event Rental Calculator: Chairs, Tables, Linens and Dishes";
 const description =
   "Free event rental calculator: enter your guest count to get chairs, tables, linens, plates, flatware and glasses, priced from current Chicago rental lists.";
 
-export const metadata: Metadata = { title, description, alternates: { canonical: "/tools/rental-calculator" } };
+export const metadata: Metadata = seo({ title, description, alternates: { canonical: "/tools/rental-calculator" } });
 
 function item(id: string): CalcItem {
   const raw = catalogItems.find((i) => i.id === id);
@@ -70,7 +71,7 @@ export default function Page() {
         eyebrow="Free tool"
         title="Event rental calculator"
         intro={
-          <span id="short-answer">
+          <span id="short-answer" data-answer>
             Plan one chair per guest, one 60-inch round per eight guests with a floor-length linen each, and one of every plate, fork, knife and glass per guest for a plated dinner. Enter your guest count below to see the full list priced from current Chicago rental price lists, then send it as a quote.
           </span>
         }

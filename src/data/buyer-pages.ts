@@ -340,7 +340,7 @@ export const buyerPages: BuyerPage[] = [
     },
     faqs: [
       { q: "Is it cheaper to book event rentals directly?", a: "Yes, by our 10% booking fee, if you book the same items from the same company. You also do the comparing, contracts and coordination yourself." },
-      { q: "Who delivers if I book through Beyond Chiavari?", a: "An insured Chicago-area rental company, named in your proposal. Its rental agreement covers delivery, setup and pickup, and we coordinate between you." },
+      { q: "Who delivers if I book through Beyond Chiavari?", a: "A vetted Chicago-area rental company (we ask for proof of insurance), named once you approve your proposal. Its rental agreement covers delivery, setup and pickup, and we coordinate between you." },
       { q: "Can I see the vendor's price and your fee separately?", a: "Yes. Your proposal shows the rental company's price and our booking fee, so you can check the difference." },
     ],
     cta: { title: "See the full price before you decide", text: "Build your list, see every line, and decide whether booking through us is worth it." },
@@ -385,6 +385,7 @@ export const buyerPages: BuyerPage[] = [
     faqs: [
       { q: "Can I rent from a party store and a full-service house for the same event?", a: "Yes, and many planners do. The work is coordinating two deliveries; one combined proposal handles that." },
       { q: "Which is cheaper for chairs?", a: "For standard folding chairs, party stores are usually cheaper per piece. For Chiavari, cross-back or ghost chairs, full-service houses carry more choice." },
+      { q: "Do party stores deliver and set up?", a: "Some deliver, but most expect you to pick up and return items yourself, and few set up. Full-service rental houses deliver, set up and collect, which matters for large orders, tents and heavy furniture." },
     ],
     cta: { title: "Get the right mix on one list", text: "We route each item to the kind of rental house that fits it, and show the total." },
     related: [
@@ -424,6 +425,7 @@ export const buyerPages: BuyerPage[] = [
     faqs: [
       { q: "Is it cheaper to rent or buy chairs for a wedding?", a: "For a single wedding, renting is almost always cheaper once you count delivery, storage and resale effort." },
       { q: "When does buying event chairs make sense?", a: "When you host often in the same space and have storage, such as a church hall, venue or office." },
+      { q: "How many uses before buying chairs pays off?", a: "Divide the purchase price per chair, plus storage and transport, by the rental price per chair. For basic folding chairs that is often several events; for Chiavari or cross-back chairs it is usually many more, and only if you have somewhere to store them." },
     ],
     cta: { title: "Price chairs for your date", text: "See current rental prices for every chair style in Chicago." },
     related: [
