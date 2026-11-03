@@ -1,5 +1,5 @@
 import styled from "@/data/styled-images.json";
-import { rentalImage } from "@/data/rental-images";
+import { rentalImage, styledImage } from "@/data/rental-images";
 import { site } from "./site";
 
 // Styled 3D tablescape renders (Blender) used for heroes and editorial bands.
@@ -136,5 +136,9 @@ const categoryRender: Record<string, string> = {
 
 export function categoryScene(id: string): Scene | undefined {
   const slug = categoryRender[id];
-  return slug && rentalImage(slug) ? render(slug) : undefined;
+  if (!slug) return undefined;
+  // Heroes keep the styled event scene even when the slug is a product (e.g. gold-flatware), whose own image is the piece.
+  const s = styledImage(slug);
+  if (s) return { src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true };
+  return rentalImage(slug) ? render(slug) : undefined;
 }

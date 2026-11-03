@@ -35,11 +35,14 @@ const styledEntries = Object.entries(styled as Record<string, StyledEntry>);
 const styledAll = Object.fromEntries(styledEntries.filter(([, s]) => s.kind !== "photo"));
 const photoAll = Object.fromEntries(styledEntries.filter(([, s]) => s.kind === "photo" && s.parent).map(([, s]) => [s.parent!, s]));
 const originals = images as Record<string, RentalImage>;
+const ITEM_KINDS = new Set<string>(["product", "variant", "angle"]);
 const lay = (img: Partial<RentalImage>, s: StyledEntry): RentalImage =>
   ({ ...img, src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, category: img.category ?? s.category, ai: true }) as RentalImage;
 const all: Record<string, RentalImage> = Object.fromEntries([
   ...Object.entries(originals).map(([slug, img]) => {
-    const s = photoAll[slug] ?? styledAll[slug];
+    // Item shots (product, colour variant, second angle) must show the piece itself, so only a product photo
+    // replaces them; the event scene stays the second image (styledImage). Scenes still get their styled version.
+    const s = photoAll[slug] ?? (ITEM_KINDS.has(img.kind) ? undefined : styledAll[slug]);
     return [slug, s ? lay(img, s) : img];
   }),
   ...Object.entries(photoAll)
