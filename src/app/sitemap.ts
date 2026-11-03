@@ -1,3 +1,4 @@
+import { buyerPages } from "@/data/buyer-pages";
 import type { MetadataRoute } from "next";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
@@ -17,7 +18,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/downloads", "/blog", "/about", "/privacy", "/terms", "/photo-credits"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/downloads", "/blog", "/about", "/privacy", "/terms", "/photo-credits"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -28,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const src = c && chairImage(c);
     return src ? [`${site.url}${src}`] : [];
   };
+  const buyer = buyerPages.map((p) => ({ url: `${site.url}/${p.kind}/${p.slug}`, changeFrequency: "monthly" as const, priority: 0.7 }));
   const chairPages = chairs.map((c) => ({ url: `${site.url}/chairs/${c.slug}`, priority: 0.8, images: img(c.slug) }));
   const all = await getPosts();
   const posts = all.map((p) => ({
@@ -98,5 +100,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...partyTypes.map((t) => ({ url: `${site.url}${typePath(t.slug)}`, priority: 0.75, lastModified: PARTY_IDEAS_UPDATED, images: [sceneUrl(t.scene)] })),
     ...ideas.map((i) => ({ url: `${site.url}${ideaPath(i)}`, priority: 0.7, lastModified: PARTY_IDEAS_UPDATED, images: [sceneUrl(i.scene)] })),
   ];
-  return [...pages, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  return [...pages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }

@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 
 const cols = [
   "created_at", "kind", "status", "name", "email", "phone", "event_date", "event_type",
-  "guest_count", "city", "venue", "chairs", "quiz_styles", "message", "source", "sms_consent",
+  "guest_count", "city", "venue", "chairs", "quiz_styles", "message", "source", "sms_consent", "email_consent", "call_consent", "opted_out_at", "lead_score", "lead_score_reasons", "pages_viewed",
   "items", "quote_subtotal", "quote_cost", "assigned_vendor", "follow_up_at", "lost_reason", "notes", ...trackingFields,
 ] as const;
 
