@@ -278,7 +278,7 @@ export default function ToolsPage() {
 
       <section aria-labelledby="all-tools" className="mt-20">
         <h2 id="all-tools" className="headline text-4xl sm:text-5xl">Every free tool</h2>
-        <p className="mt-3 max-w-2xl text-muted">Calculators that show their working, plans that count back from your date, and checklists you can print. Your answers stay in your browser and the page link.</p>
+        <p className="mt-3 max-w-2xl text-muted">Calculators that show their working, plans that count back from your date, and checklists you can print. Your answers stay in your browser and the page link. Run a venue or planning business? <Link href="/tools/embed" className="link">Embed these calculators on your site</Link>.</p>
         {(Object.keys(toolGroups) as ToolGroup[]).map((g) => {
           const group = live.filter((t) => t.group === g);
           if (!group.length) return null;

@@ -10,7 +10,7 @@ const description = "Free tent size calculator for weddings, graduation parties 
 export const metadata = toolMetadata(slug, title, description);
 
 const faqs = [
-  { q: "What size tent do I need for 100 guests?", a: "For a seated dinner at round tables, 100 guests need about 1,200 sq ft for tables alone. Add a dance floor, bar, buffet and DJ and the total comes to about 1,800 sq ft: a 30' x 60' is the tightest fit and a 40' x 60' gives room to move. Use the calculator to see your exact mix." },
+  { q: "What size tent do I need for 100 guests?", a: "For a seated dinner at round tables, 100 guests need about 1,200 sq ft for tables alone. Add a dance floor, bar, buffet and DJ and the total comes to about 2,000 sq ft, which fits a 40' x 60' tent. Use the calculator to see your exact mix." },
   { q: "How many square feet per guest under a tent?", a: "This calculator uses about 12 sq ft per guest for round-table dinners, 10 for long banquet tables, 8 for a mostly standing cocktail party and 7 for ceremony rows. These are common planning figures and include aisles between tables." },
   { q: "Why does the tool suggest a bigger tent than the tightest fit?", a: "The comfortable size leaves at least 15% extra for walkways, service paths and tent poles. The tightest fit is shown too if space or budget is tight." },
   { q: "Frame tent or pole tent?", a: "A frame tent has no centre poles and can go on grass, concrete or a deck. A pole tent needs stakes in the ground and has poles inside, but it has the classic peaked look. Ask your rental company what your surface allows." },
@@ -26,7 +26,7 @@ export default function Page() {
       description={description}
       title={<>What size <em className="text-gold">tent</em> do you need?</>}
       intro="Tell us your guests, layout and what else goes under cover. We add up the square feet and match it to standard tent sizes."
-      answer="Multiply guests by square feet per person (about 12 for a round-table dinner, 10 for long tables, 8 for cocktails), then add space for a dance floor, bar, buffet and band. Pick a tent with about 15% more area for walkways. 100 seated guests with dancing usually needs a 30' x 60' or larger."
+      answer="Multiply guests by square feet per person (about 12 for a round-table dinner, 10 for long tables, 8 for cocktails), then add space for a dance floor, bar, buffet and band. Pick a tent with about 15% more area for walkways. 100 seated guests with dancing, a bar and a buffet need about a 40' x 60'."
       steps={[
         { title: "Guests and layout", text: "Seated dinner, ceremony rows or cocktails.", icon: "users" },
         { title: "Add what goes under cover", text: "Dance floor, bar, buffet, band, lounge.", icon: "tent" },

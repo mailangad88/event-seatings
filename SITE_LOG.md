@@ -1466,3 +1466,10 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 - Alerts: src/instrumentation.ts (server errors) and src/instrumentation-client.ts -> /api/client-errors (browser errors, max 3 per page view) post to ALERT_WEBHOOK_URL (Slack or Discord, free) with a 10-minute throttle; logged only when unset. /api/health for uptime. .github/workflows/uptime.yml checks 6 URLs every 15 minutes; a failed run notifies the repo owner, plus the webhook if the ALERT_WEBHOOK_URL repo secret is set. Uses the SITE_URL repo variable, default beyondchiavari.vercel.app.
 - Owner to-dos (all free, none required): create a Slack/Discord webhook and set ALERT_WEBHOOK_URL in Vercel and as a GitHub secret; create a free GrowthBook Cloud account, add the `tool-quote-cta` feature with variants and set NEXT_PUBLIC_GROWTHBOOK_CLIENT_KEY; set the GitHub variable SITE_URL=https://beyondchiavari.com once DNS points at Vercel.
 - Quote PDF: already shipped by the planner thread on Nov 3 (planner plan downloads as a PDF via jsPDF), so no second PDF library was added.
+
+## 2026-11-03: Four more free tools and embeddable widgets
+- /tools/what-do-i-need: everything an event like yours uses (same rules as the /quote planner, prefilled from the planner's answers on the same device), mark "have it" or "venue provides", priced list of what's left with a one-tap quote link.
+- /tools/bar-and-glassware: drinks (rule-of-thumb 2 then 1 per hour, editable), wine and spirit bottles by pour maths, beer, ice, bartenders, glassware to rent with catalog prices and a responsible-serving note.
+- /tools/parking: cars to park, shortfall vs venue spaces, overflow area, shuttle count from seats, round trip and arrival window. All starting numbers labelled as placeholders.
+- Embeds: /embed/<tool> (10 calculators, noindex, canonical to the tool page, links open in a new tab tagged utm_source=<ref>, utm_medium=embed, auto-resizing via postMessage). /tools/embed has a snippet builder with a credit backlink under each iframe. Linked from the /tools hub.
+- Remaining: pitch the embed page to venues and planners (backlinks); Search Console check after 30 days.
