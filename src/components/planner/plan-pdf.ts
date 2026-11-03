@@ -3,10 +3,12 @@ import { assessment, extras, getPlannerEvent, settings, spaceNeeded, styleName, 
 import { site } from "@/lib/site";
 
 type Line = { name: string; qty: number; unit: string; price: number; group: string };
+/** A party idea the visitor picked, with the setup text that fits their setting. */
+export type PdfIdea = { name: string; setup: string; activities: string[]; props: string[] };
 
 const money = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: n < 100 ? 2 : 0 });
 
-export async function downloadPlanPdf({ input, lines, name }: { input: PlanInput; lines: Line[]; name?: string }) {
+export async function downloadPlanPdf({ input, lines, name, ideas = [] }: { input: PlanInput; lines: Line[]; name?: string; ideas?: PdfIdea[] }) {
   const { jsPDF } = await import("jspdf");
   const doc = new jsPDF({ unit: "pt", format: "letter" });
   const W = doc.internal.pageSize.getWidth();
@@ -91,6 +93,18 @@ export async function downloadPlanPdf({ input, lines, name }: { input: PlanInput
   doc.text(money(total), W - M, y, { align: "right" });
   y += 16;
   text("Prices are current rental rates. Your proposal confirms availability, delivery, setup, damage waiver and tax for your venue.", 8.5, muted);
+
+  if (ideas.length) {
+    heading("Your party ideas");
+    for (const i of ideas) {
+      ensure(30);
+      text(i.name, 11, ink, "bold");
+      text(`Setup: ${i.setup}`, 10, ink, "normal", 8);
+      for (const a of i.activities) text(`•  ${a}`, 10, ink, "normal", 8);
+      if (i.props.length) text(`Props to buy or make: ${i.props.join(", ")}`, 10, muted, "normal", 8);
+      y += 4;
+    }
+  }
 
   heading("Space and layout");
   text(`Plan for about ${space.total.toLocaleString()} sq ft of usable floor:`, 10);

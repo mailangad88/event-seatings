@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { QuoteForm, type QuoteItem, type StarterPreset } from "@/components/QuoteForm";
 import { EventPlanner } from "@/components/planner/EventPlanner";
+import { ideaScene } from "@/components/party-ideas/parts";
+import { getIdea, plannerIdeas } from "@/data/party-ideas";
 import { rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Figure, FaqList, JsonLd, PageHero, StepFlow, type Faq } from "@/components/ui";
 import { catalogItems } from "@/data/catalog";
@@ -116,6 +118,12 @@ export default async function QuotePage(props: PageProps<"/quote">) {
   const eventId = str(sp.event);
   const plannerEvent = eventId === "gala" ? "corporate" : eventId;
   const planner = !str(sp.browse) && !str(sp.look) && initial.length === 0;
+  // Party ideas shown as picks on the planner's Add-ons step; ?idea=<slug> (from /party-ideas pages) preselects one.
+  const ideaOptions = plannerIdeas().map((i) => {
+    const sc = ideaScene(getIdea(i.slug)!.scene, i.alt);
+    return { ...i, image: sc.src };
+  });
+  const ideaParam = str(sp.idea)?.replace(/[^\w-]/g, "");
 
   return (
     <>
@@ -156,7 +164,13 @@ export default async function QuotePage(props: PageProps<"/quote">) {
 
       <div className="container-x section-y">
         {planner ? (
-          <EventPlanner items={items.filter((i) => i.featured)} initialEvent={plannerEvent} from={str(sp.from)?.replace(/[^\w-]/g, "").slice(0, 40)} />
+          <EventPlanner
+            items={items.filter((i) => i.featured)}
+            initialEvent={plannerEvent}
+            from={str(sp.from)?.replace(/[^\w-]/g, "").slice(0, 40)}
+            ideas={ideaOptions}
+            initialIdea={ideaParam}
+          />
         ) : (
         <div>
           {!str(sp.look) && initial.length === 0 && (

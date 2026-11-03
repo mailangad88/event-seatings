@@ -42,6 +42,7 @@ export function Footer() {
               ["/how-it-works", "How it works"],
               ["/booking-promise", "Payments & Booking Promise"],
               ["/events", "Events we plan"],
+              ["/party-ideas", "Party ideas & themes"],
               ["/chair-rentals", "Areas we serve"],
               ["/ideas", "Event ideas by month"],
               ["/my-events", "My events: countdown & checklist"],

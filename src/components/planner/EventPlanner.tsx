@@ -26,6 +26,7 @@ import {
   type StyleId,
 } from "@/lib/event-plan";
 import { blockedMessage, useBlockedDates } from "@/lib/use-blocked-dates";
+import { ideaQty, type PlannerIdea } from "@/data/party-ideas/types";
 import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
 import { Icon, formatPrice, type IconName } from "../ui";
 import { FloorPlan } from "./FloorPlan";
@@ -45,12 +46,14 @@ type Answers = {
   date?: string;
   month?: string; // YYYY-MM when only the month is known
   noDate?: boolean;
+  ideas?: string[]; // party idea slugs picked on the Add-ons step (src/data/party-ideas)
 };
 
 const steps = ["Occasion", "Guests", "Where", "Package", "Essentials", "Add-ons", "Date & details", "Your plan"] as const;
 const STORE = "bc-planner-v2";
 const guestPicks = [25, 50, 75, 100, 150, 200, 300];
-const groupOrder = [...essentialGroups, "Tent & weather", "Restrooms & power", "Bar", "Catering", "Dance & stage", "Sound & AV", "Decor & lighting", "Lounge", "Fun", "Added by you"];
+const IDEA_GROUP = "From your party ideas";
+const groupOrder = [...essentialGroups, IDEA_GROUP, "Tent & weather", "Restrooms & power", "Bar", "Catering", "Dance & stage", "Sound & AV", "Decor & lighting", "Lounge", "Fun", "Added by you"];
 const settingGroups = ["Tent & weather", "Restrooms & power"];
 
 function Tile({
@@ -100,13 +103,26 @@ function Tile({
 
 type Row = { id: string; qty: number; item: QuoteItem; group: string; why?: string };
 
-export function EventPlanner({ items, initialEvent, from }: { items: QuoteItem[]; initialEvent?: string; from?: string }) {
+export function EventPlanner({
+  items,
+  initialEvent,
+  from,
+  ideas = [],
+  initialIdea,
+}: {
+  items: QuoteItem[];
+  initialEvent?: string;
+  from?: string;
+  ideas?: PlannerIdea[];
+  initialIdea?: string;
+}) {
   const byId = useMemo(() => new Map(items.map((i) => [i.id, i])), [items]);
-  const startEvent = getPlannerEvent(initialEvent);
+  const startIdea = ideas.find((i) => i.slug === initialIdea);
+  const startEvent = getPlannerEvent(initialEvent ?? startIdea?.events[0]);
   const [step, setStep] = useState(startEvent ? 1 : 0);
   const [a, setA] = useState<Answers>(
     startEvent
-      ? { guests: startEvent.defaultGuests, extras: startEvent.extras, extrasTouched: false, event: startEvent.id }
+      ? { guests: startEvent.defaultGuests, extras: startEvent.extras, extrasTouched: false, event: startEvent.id, ideas: startIdea ? [startIdea.slug] : [] }
       : { guests: 100, extras: [], extrasTouched: false },
   );
   // The visitor's own changes on top of our suggestions: a new quantity (0 = removed) or an item they added.
@@ -144,11 +160,28 @@ export function EventPlanner({ items, initialEvent, from }: { items: QuoteItem[]
   const dateBlocked = !!a.date && blocked.has(a.date);
   const ev = getPlannerEvent(a.event);
 
-  const recFor = (over: Partial<PlanInput> = {}): RecLine[] => {
+  const recFor = (over: Partial<PlanInput> = {}, picked: string[] = a.ideas ?? []): RecLine[] => {
     if (!a.event) return [];
     const base: PlanInput = { event: a.event, guests: a.guests, style: a.style ?? "classic", setting: a.setting ?? "venue", extras: a.extras, date, ...over };
-    return recommend(base).filter((l) => byId.has(l.id));
+    return withIdeas(recommend(base), base.guests, picked).filter((l) => byId.has(l.id));
   };
+  // A picked party idea adds its rentals; an item already on the list keeps the larger quantity.
+  const withIdeas = (rec: RecLine[], guests: number, picked: string[]) => {
+    const out = rec.map((l) => ({ ...l }));
+    for (const idea of ideas.filter((i) => picked.includes(i.slug))) {
+      for (const l of idea.lines) {
+        const qty = ideaQty(l, guests);
+        const have = out.find((o) => o.id === l.id);
+        if (have) have.qty = Math.max(have.qty, qty);
+        else out.push({ id: l.id, qty, group: IDEA_GROUP, why: `${idea.name}: ${l.why}` });
+      }
+    }
+    return out;
+  };
+  const eventIdeas = ideas.filter((i) => a.event && i.events.includes(a.event));
+  const pickedIdeas = ideas.filter((i) => (a.ideas ?? []).includes(i.slug));
+  const toggleIdea = (slug: string) =>
+    setA((p) => ({ ...p, ideas: (p.ideas ?? []).includes(slug) ? (p.ideas ?? []).filter((s) => s !== slug) : [...(p.ideas ?? []), slug] }));
   const priceOf = (rec: { id: string; qty: number }[]) => rec.reduce((s, l) => s + (byId.get(l.id)?.price ?? 0) * l.qty, 0);
   const applyOverrides = (rec: RecLine[]) => {
     const rows: Row[] = rec.map((l) => ({ id: l.id, qty: overrides[l.id] ?? l.qty, item: byId.get(l.id)!, group: l.group, why: l.why }));
@@ -185,7 +218,14 @@ export function EventPlanner({ items, initialEvent, from }: { items: QuoteItem[]
 
   const pickEvent = (id: string) => {
     const e = getPlannerEvent(id)!;
-    setA((p) => ({ ...p, event: id, guests: p.event ? p.guests : e.defaultGuests, extras: p.extrasTouched ? p.extras : e.extras }));
+    setA((p) => ({
+      ...p,
+      event: id,
+      guests: p.event ? p.guests : e.defaultGuests,
+      extras: p.extrasTouched ? p.extras : e.extras,
+      // Keep only the party ideas that belong to the new occasion.
+      ideas: (p.ideas ?? []).filter((s) => ideas.find((i) => i.slug === s)?.events.includes(id)),
+    }));
     go(1);
   };
 
@@ -209,6 +249,7 @@ export function EventPlanner({ items, initialEvent, from }: { items: QuoteItem[]
     const summary = [
       `Planner: ${ev?.name}, ${a.guests} guests, ${settings.find((s) => s.id === a.setting)?.name}, ${styleName(a.style)} package.`,
       a.extras.length ? `Add-ons: ${a.extras.map((x) => extraOptions.find((o) => o.id === x)?.name).join(", ")}.` : "",
+      pickedIdeas.length ? `Party ideas: ${pickedIdeas.map((i) => i.name).join(", ")}.` : "",
       a.month && !a.date ? `Date: only the month is known (${a.month}).` : "",
       a.noDate ? "Date: not set yet." : "",
       fd.message ? `\n${fd.message}` : "",
@@ -457,6 +498,39 @@ export function EventPlanner({ items, initialEvent, from }: { items: QuoteItem[]
           <section aria-labelledby="q-add">
             <h2 id="q-add" className="display-2">Add the extras</h2>
             <p className="lede mt-2">We ticked what&apos;s typical for a {ev?.name.toLowerCase()}. Tap to add or remove; prices are for your guest count.</p>
+            {eventIdeas.length > 0 && (
+              <div className="mt-6">
+                <h3 className="eyebrow">Party ideas for your {ev?.name.toLowerCase()}</h3>
+                <p className="mt-1 text-sm text-muted">
+                  Pick a theme or two. We&apos;ll add its rentals below and put its setup, activities and props in your plan.
+                </p>
+                <div className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+                  {eventIdeas.map((idea) => {
+                    const picked = a.ideas ?? [];
+                    const on = picked.includes(idea.slug);
+                    const without = picked.filter((x) => x !== idea.slug);
+                    const delta = priceOf(recFor({}, [...without, idea.slug])) - priceOf(recFor({}, without));
+                    return (
+                      <div key={idea.slug} className="flex flex-col">
+                        <Tile
+                          selected={on}
+                          onClick={() => toggleIdea(idea.slug)}
+                          image={idea.image}
+                          alt={idea.alt}
+                          title={idea.name}
+                          text={idea.tagline}
+                          badge={delta > 0 ? `${on ? "" : "+"}${formatPrice(delta)}` : undefined}
+                        />
+                        <Link href={idea.href} target="_blank" className="mt-1.5 px-1 text-xs text-accent underline">
+                          See the full idea
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+                <h3 className="eyebrow mt-8">Extras</h3>
+              </div>
+            )}
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {extraOptions.map((o) => {
                 const on = a.extras.includes(o.id);
@@ -600,7 +674,7 @@ export function EventPlanner({ items, initialEvent, from }: { items: QuoteItem[]
         )}
 
         {step === 7 && input && (
-          <PlanView input={input} list={rows} total={total} name={contact.name} email={contact.email} done={done} setDone={setDone} onEdit={() => go(5)} />
+          <PlanView input={input} list={rows} total={total} name={contact.name} email={contact.email} done={done} setDone={setDone} onEdit={() => go(5)} ideas={pickedIdeas} />
         )}
       </div>
 
@@ -685,6 +759,7 @@ function PlanView({
   done,
   setDone,
   onEdit,
+  ideas = [],
 }: {
   input: PlanInput;
   list: Row[];
@@ -694,7 +769,10 @@ function PlanView({
   done: Record<string, boolean>;
   setDone: (f: (p: Record<string, boolean>) => Record<string, boolean>) => void;
   onEdit: () => void;
+  ideas?: PlannerIdea[];
 }) {
+  // The setup text that fits where the event is: indoors for venues, the backyard version for everything else.
+  const ideaSetup = (i: PlannerIdea) => (input.setting === "venue" ? i.setup.indoors : i.setup.backyard);
   const [pdf, setPdf] = useState<"idle" | "making" | "error">("idle");
   const ev = getPlannerEvent(input.event);
   const notes = assessment(input, total);
@@ -714,6 +792,7 @@ function PlanView({
         input,
         name,
         lines: list.map((l) => ({ name: l.item.name, qty: l.qty, unit: l.item.unit, price: l.item.price, group: l.group })),
+        ideas: ideas.map((i) => ({ name: i.name, setup: ideaSetup(i), activities: i.activities, props: i.props })),
       });
       setPdf("idle");
     } catch {
@@ -777,6 +856,41 @@ function PlanView({
           ))}
         </ul>
       </section>
+
+      {ideas.length > 0 && (
+        <section className="mt-12" aria-labelledby="plan-ideas">
+          <h3 id="plan-ideas" className="display-3">Your party ideas</h3>
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            {ideas.map((i) => (
+              <article key={i.slug} className="overflow-hidden rounded-2xl border border-line bg-surface">
+                <div className="relative aspect-[16/7] bg-surface-2">
+                  <Image src={i.image} alt={i.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+                </div>
+                <div className="p-5">
+                  <p className="font-serif text-xl">{i.name}</p>
+                  <p className="mt-2 text-sm leading-6">
+                    <span className="font-medium">Setup: </span>
+                    {ideaSetup(i)}
+                  </p>
+                  <p className="mt-3 text-sm font-medium">Activities and games</p>
+                  <ul className="mt-1 space-y-1 text-sm leading-6 text-muted">
+                    {i.activities.map((x) => (
+                      <li key={x}>• {x}</li>
+                    ))}
+                  </ul>
+                  <p className="mt-3 text-sm">
+                    <span className="font-medium">Props to buy or make: </span>
+                    <span className="text-muted">{i.props.join(", ")}</span>
+                  </p>
+                  <Link href={i.href} target="_blank" className="mt-3 inline-block text-sm text-accent underline">
+                    See the full idea
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mt-12" aria-labelledby="plan-time">
         <h3 id="plan-time" className="display-3">Your checklist</h3>

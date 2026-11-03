@@ -84,6 +84,7 @@ export default async function IdeasPage() {
           <>
             <Link href="/my-events" className="btn-primary">Save my event date</Link>
             <a href="#year" className="btn-ghost">See every month</a>
+            <Link href="/party-ideas" className="btn-ghost">Party ideas by occasion</Link>
           </>
         }
         meta={`Mid-${current.name}: normal high ${Math.round(normalHighF[mi])}°F at O'Hare, sunset about ${sun.sunset}.`}
