@@ -1,7 +1,11 @@
 import "server-only";
+import { createElement } from "react";
+import { render } from "@react-email/render";
+import { NewReviewEmail, TextEmail } from "@/emails/templates";
 import { usd } from "./catalog-types";
 import { scoreLead, suggestedReply, visitorLocalTime } from "./lead-score";
 import { site } from "./site";
+import type { Review } from "./reviews";
 import type { Lead } from "./store";
 import { unsubscribeUrl } from "./unsubscribe";
 
@@ -9,11 +13,23 @@ import { unsubscribeUrl } from "./unsubscribe";
 // anything sent to a visitor also needs NOTIFY_FROM on a verified sending domain (never the resend.dev test sender).
 // Failures are logged, never shown to the visitor.
 
-type Mail = { to: string; subject: string; text: string; from?: string; unsubscribe?: string };
+type Mail = { to: string; subject: string; text: string; from?: string; unsubscribe?: string; html?: string };
 
-export async function sendEmail({ to, subject, text, from, unsubscribe }: Mail) {
+// Branded HTML (React Email, src/emails) built from the plain text, so every email looks like the site while
+// the text part stays exactly as written. A caller can pass its own `html` instead.
+async function brandedHtml(subject: string, text: string, unsubscribe?: string) {
+  try {
+    return await render(createElement(TextEmail, { subject, text, unsubscribe }));
+  } catch (err) {
+    console.error("email html render failed", err);
+    return undefined;
+  }
+}
+
+export async function sendEmail({ to, subject, text, from, unsubscribe, html }: Mail) {
   const key = process.env.RESEND_API_KEY;
   if (!key) return false;
+  html ??= await brandedHtml(subject, text, unsubscribe);
   const headers: Record<string, string> = {};
   if (unsubscribe?.startsWith("http")) {
     headers["List-Unsubscribe"] = `<${unsubscribe}>`;
@@ -28,6 +44,7 @@ export async function sendEmail({ to, subject, text, from, unsubscribe }: Mail) 
         to,
         subject,
         text,
+        ...(html ? { html } : {}),
         // Replies from visitors land in the owner's inbox, not a no-reply box.
         ...(process.env.NOTIFY_EMAIL && to !== process.env.NOTIFY_EMAIL ? { reply_to: process.env.NOTIFY_EMAIL } : {}),
         ...(Object.keys(headers).length ? { headers } : {}),
@@ -193,4 +210,20 @@ export async function sendDownloadEmail(lead: Lead, title: string, files: { labe
     ...signOff(lead.email),
   ].join("\n");
   await sendEmail({ to: lead.email, subject: `Your free ${title}`, text, unsubscribe: unsubscribeUrl(lead.email) });
+}
+
+/** Tells the owner a review is waiting in /admin/reviews. */
+export async function notifyOwnerOfReview(review: Review) {
+  const to = process.env.NOTIFY_EMAIL;
+  if (!process.env.RESEND_API_KEY || !to) return;
+  const subject = `New ${review.rating}-star review from ${review.name} (waiting for approval)`;
+  const text = [
+    `${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)} from ${review.name}${review.verified ? " (verified booking)" : ""}`,
+    "",
+    review.body,
+    "",
+    `Publish or hide: ${site.url}/admin/reviews`,
+  ].join("\n");
+  const html = await render(createElement(NewReviewEmail, { rating: review.rating, name: review.name, body: review.body, verified: review.verified })).catch(() => undefined);
+  await sendEmail({ to, subject, text, html });
 }
