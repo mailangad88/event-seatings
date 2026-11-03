@@ -70,6 +70,8 @@ export function suggestedReply(lead: Lead): string {
     case "partner":
       return `${hi} thanks for applying to partner with Beyond Chiavari. Could we set up a 15-minute call this week to walk through how referrals and pricing work?`;
     default:
+      if (lead.source?.startsWith("planner:"))
+        return `${hi} thanks for building your ${event} plan with our planner. ${when ? `When you're ready for ${when}, ` : "Once you have a date, "}reply with it and your venue and I'll confirm prices and availability for the whole list.`;
       return `${hi} thanks for grabbing the ${lead.source?.startsWith("download:") ? "planning kit" : "guide"}. ${when ? `Your ${event} on ${when} is on our radar. ` : ""}If you want rentals priced for your date, reply with your guest count and venue and I'll send a list.`;
   }
 }
