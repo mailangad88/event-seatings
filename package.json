@@ -12,6 +12,7 @@
     "render:chairs": "node scripts/render-chairs.mjs",
     "crm:setup": "node scripts/hubspot-setup.mjs",
     "remotion:reels": "for t in gilded-ivory midnight-gold blush-garden; do remotion render DecorReel-$t out/reels/$t-reel.mp4; done",
+    "indexnow": "node scripts/indexnow.mjs",
     "audit:ux": "node scripts/ux-audit.mjs"
   },
   "dependencies": {

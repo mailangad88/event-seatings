@@ -5,6 +5,7 @@ import { AttributionTracker } from "@/components/AttributionTracker";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ContactDock } from "@/components/ContactDock";
+import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { VoteProvider } from "@/components/VoteProvider";
 import { Analytics } from "@/components/Analytics";
 import { site } from "@/lib/site";
@@ -134,6 +135,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <MobileCtaBar />
           <ContactDock />
         </VoteProvider>
         <Analytics />
