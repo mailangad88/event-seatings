@@ -445,7 +445,7 @@ export function EventPlanner({
         </div>
         <ol className="mt-2 grid grid-cols-8 gap-1" aria-label="Planner progress">
           {steps.map((s, i) => (
-            <li key={s} className={`h-1.5 rounded-full transition-colors duration-500 ${i <= step ? "bg-gold" : "bg-surface-2"}`}>
+            <li key={s} className={`h-1.5 rounded-full transition-colors duration-500 ${i < step ? "bg-green" : i === step ? "bg-accent" : "bg-line"}`}>
               <span className="sr-only">{`${s}${i < step ? " (done)" : i === step ? " (current)" : ""}`}</span>
             </li>
           ))}

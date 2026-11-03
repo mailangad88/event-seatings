@@ -101,7 +101,7 @@ export function VendorOnboarding({ templateHref }: { templateHref: string }) {
       <legend className="label">{label}</legend>
       <div className="flex flex-wrap gap-2">
         {options.map((o) => (
-          <button key={o} type="button" aria-pressed={v(k) === o} onClick={() => set(k, o)} className={`rounded-full border px-4 py-2 text-sm ${v(k) === o ? "border-ink bg-ink text-bg" : "border-line bg-surface hover:border-gold"}`}>
+          <button key={o} type="button" aria-pressed={v(k) === o} onClick={() => set(k, o)} className={`rounded-full border px-4 py-2 text-sm ${v(k) === o ? "border-accent bg-accent text-accent-ink" : "border-line bg-surface hover:border-gold"}`}>
             {o}
           </button>
         ))}

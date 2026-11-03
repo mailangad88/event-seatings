@@ -121,7 +121,7 @@ export function Choice<K extends string>({
             aria-pressed={value === o.id}
             title={o.note}
             onClick={() => onChange(o.id)}
-            className={`rounded-full border px-4 py-2 text-sm transition-colors ${value === o.id ? "border-ink bg-ink text-bg" : "border-line bg-surface hover:border-gold"}`}
+            className={`rounded-full border px-4 py-2 text-sm transition-colors ${value === o.id ? "border-accent bg-accent text-accent-ink" : "border-line bg-surface hover:border-gold"}`}
           >
             {o.label}
           </button>

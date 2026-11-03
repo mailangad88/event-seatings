@@ -34,7 +34,7 @@ export function CallCta({ title, source }: { title?: React.ReactNode; source?: s
           </ul>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link href={`/book${q}`} className="btn-accent btn-lg">Book a free call</Link>
-            <Link href={`/quote${q}`} className="btn btn-lg border border-ink/25 text-ink hover:bg-ink hover:text-bg">
+            <Link href={`/quote${q}`} className="btn btn-lg border border-ink/25 text-ink hover:border-accent hover:bg-accent-soft hover:text-accent">
               Build a quote instead
             </Link>
           </div>
