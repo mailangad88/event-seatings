@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ActivityGrid, IdeaCard, ideaScene, plannerHref } from "@/components/party-ideas/parts";
 import { FaqList, Figure, Icon, JsonLd, PageHero, QuoteCta, Section } from "@/components/ui";
 import { customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
-import { getPartyType, ideaPath, ideasFor, PARTY_IDEAS_UPDATED, partyTypes, typePath } from "@/data/party-ideas";
+import { getPartyType, ideaPath, ideasFor, fullAnswer, withPartyFaqs, PARTY_IDEAS_UPDATED, partyTypes, typePath } from "@/data/party-ideas";
 import { site } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -53,7 +53,7 @@ export default async function PartyTypePage(props: PageProps<"/party-ideas/[type
       <PageHero
         eyebrow={`${t.name} ideas`}
         title={`${t.name}: themes, setups and activities`}
-        intro={t.intro}
+        intro={fullAnswer(t.intro, `This page lists ${list.length} ${t.single} themes, each with a palette, setups for backyards, tents and indoor rooms, activities, and the rentals it needs with live ${site.market} prices.`)}
         breadcrumbs={[
           { name: "Party ideas", href: "/party-ideas" },
           { name: t.name, href: typePath(t.slug) },
@@ -108,7 +108,7 @@ export default async function PartyTypePage(props: PageProps<"/party-ideas/[type
       </Section>
 
       <Section eyebrow="Questions" title={`${t.name} FAQs`}>
-        <FaqList faqs={t.faqs} className="max-w-3xl" />
+        <FaqList faqs={withPartyFaqs(t.faqs, t.single)} className="max-w-3xl" />
       </Section>
 
       <Section eyebrow="More ideas" title="Other kinds of party">
