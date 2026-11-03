@@ -64,6 +64,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
         <div className="flex flex-wrap gap-3">
           <Link href="/admin" className="btn-ghost">Dashboard</Link>
           <Link href="/admin/vendors" className="btn-ghost">Vendors</Link>
+          <Link href="/admin/availability" className="btn-ghost">Availability</Link>
           <a href="/admin/export" className="btn-ghost">Download CSV</a>
         </div>
       </div>
