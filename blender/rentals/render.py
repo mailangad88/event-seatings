@@ -42,12 +42,21 @@ def render_item(slug, args):
     elif env == "lawn":
         photoreal.park_set(dusk=item.get("lawn", {}).get("dusk", False))
     item["build"]()
+    if photo and item.get("photo_drop_top"):
+        # Builders that model a bare floating tabletop: drop the top and lower everything onto the set's table.
+        z = item["photo_drop_top"]
+        for ob in list(bpy.context.scene.objects):
+            if ob.name == "Top":
+                bpy.data.objects.remove(ob)
+            elif ob.parent is None and ob.type == "MESH":
+                ob.location.z -= z
     lo, hi = lib.visible_bounds()
     big = max(hi - lo)
     if photo:
         if env == "studio":
-            # Tableware and other small pieces sit on a wooden table; furniture stands in a room corner.
-            photoreal.room_set(lo, hi, tabletop=big < 0.75 and item.get("studio_scale", 1.0) == 1.0,
+            # Tableware and other small pieces sit on a linen-dressed table; furniture stands in a room corner.
+            table = item.get("photo_set") == "table" or (big < 0.75 and item.get("studio_scale", 1.0) == 1.0)
+            photoreal.room_set(lo, hi, tabletop=table,
                                scale=None if item.get("studio_scale", 1.0) == 1.0 else 3.0)
         photoreal.realism_pass()
     cam = item.get("cam", {})
@@ -84,7 +93,7 @@ def render_item(slug, args):
         if env == "lawn":
             setting = "park-dusk" if item.get("lawn", {}).get("dusk") else "park"
         elif env == "studio":
-            setting = "scene" if item.get("studio_scale", 1.0) != 1.0 else "table" if big < 0.75 else "room"
+            setting = "scene" if item.get("studio_scale", 1.0) != 1.0 else "table" if table else "room"
         else:
             setting = "scene"
     with open(out.replace(".png", ".json"), "w") as f:
