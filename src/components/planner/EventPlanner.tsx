@@ -528,7 +528,7 @@ export function EventPlanner({
                         className="flex h-full w-full gap-3 rounded-2xl border border-line bg-surface p-3 text-left shadow-soft transition hover:border-gold/60"
                       >
                         <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-surface-2">
-                          <Image src={pk.image} alt="" fill sizes="64px" className="object-cover" />
+                          <Image src={pk.image} alt={pk.alt} fill sizes="64px" className="object-cover" />
                         </span>
                         <span className="min-w-0">
                           <span className="block font-medium leading-snug">{pk.name}</span>

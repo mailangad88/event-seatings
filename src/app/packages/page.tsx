@@ -130,6 +130,13 @@ export default function PackagesPage() {
           </table>
         </div>
         <PriceDisclaimer className="mt-4" />
+        <p className="mt-6 text-sm text-muted">
+          Want to pick item by item instead? <Link href="/rentals" className="text-accent underline">Browse every rental</Link>, find a
+          theme in <Link href="/party-ideas" className="text-accent underline">party ideas</Link>, check quantities with the{" "}
+          <Link href="/tools/rental-calculator" className="text-accent underline">rental calculator</Link>, or read{" "}
+          <Link href="/how-it-works" className="text-accent underline">how booking works</Link> and our{" "}
+          <Link href="/booking-promise" className="text-accent underline">Booking Promise</Link>.
+        </p>
       </Section>
 
       <Section eyebrow="How it works" title="From package to delivered party">
