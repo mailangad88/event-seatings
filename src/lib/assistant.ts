@@ -22,6 +22,7 @@ import {
   type StyleId,
 } from "./event-plan";
 import { searchGuides, snippet } from "./guide-search";
+import { ideaPath, ideaQty, ideasForPlannerEvent, partyTypes, typePath } from "@/data/party-ideas";
 
 // The planning assistant (/planning-assistant). Free by default: the plan comes from the same rules as the
 // /quote planner (src/lib/event-plan.ts), prices from the live catalog, and answers from our own guides.
@@ -45,6 +46,10 @@ export type AssistantInput = {
 export type PlanLine = { id: string; name: string; qty: number; unit: string; unit_price: number; line_total: number; group: string; why: string };
 export type AddOnIdea = { extra: ExtraId; name: string; text: string; lines: PlanLine[]; total: number };
 export type GuideLink = { url: string; title: string; heading?: string; snippet: string };
+// From the party-ideas content (src/data/party-ideas): layouts for this kind of space, activities, and theme looks.
+export type SetupIdeaOut = { title: string; where: string; text: string; rentals: string[] };
+export type ActivityOut = { name: string; text: string; rentals: string[] };
+export type ThemeIdea = { slug: string; name: string; tagline: string; href: string; palette: { name: string; hex: string }[]; setup: string; activities: string[]; props: string[]; lines: PlanLine[]; total: number };
 
 export type AssistantPlan = {
   summary: string;
@@ -55,6 +60,10 @@ export type AssistantPlan = {
   setup: string[];
   notes: { tone: "good" | "watch"; text: string }[];
   addOns: AddOnIdea[];
+  setupIdeas: SetupIdeaOut[];
+  activities: ActivityOut[];
+  themes: ThemeIdea[];
+  ideasHref?: string;
   guides: GuideLink[];
   answer?: { text: string; sources: GuideLink[] };
   quoteHref: string;
@@ -149,6 +158,48 @@ export async function buildPlan(input: AssistantInput): Promise<AssistantPlan> {
     .filter((a) => a.lines.length > 0);
 
   const notes = assessment(planInput, total, input.budget);
+
+  // Party ideas for this occasion: setups that suit the space, activities, and theme looks priced as add-ons.
+  const where = { venue: "Indoors", backyard: "Backyard", tent: "Tent or lawn", park: "Park" }[input.setting];
+  const types = partyTypes.filter((t) => t.planner === ev.id);
+  const itemName = (id: string) => catalogItems.find((i) => i.id === id)?.name;
+  const names = (ids: string[]) => ids.map(itemName).filter((n): n is string => !!n);
+  const allSetups = types.flatMap((t) => t.setups);
+  const setupIdeas = [
+    ...allSetups.filter((x) => x.where === where),
+    ...allSetups.filter((x) => x.where === "Any space"),
+    ...allSetups.filter((x) => x.where !== where && x.where !== "Any space"),
+  ]
+    .slice(0, 3)
+    .map((x) => ({ title: x.title, where: x.where, text: x.text, rentals: names(x.rentals) }));
+  const activities = types
+    .flatMap((t) => t.activities)
+    .slice(0, 6)
+    .map((a) => ({ name: a.name, text: a.text, rentals: names(a.rentals ?? []) }));
+  const onList = new Map(lines.map((l) => [l.id, l.qty]));
+  const themes: ThemeIdea[] = ideasForPlannerEvent(ev.id)
+    .slice(0, 6)
+    .map((idea) => {
+      // Only what the theme adds beyond the package (the larger quantity wins, as in the /quote planner).
+      const extra = idea.rentals
+        .map((l) => ({ id: l.id, qty: ideaQty(l, input.guests) - (onList.get(l.id) ?? 0), why: l.why }))
+        .filter((l) => l.qty > 0);
+      const q = priceQuote(extra, catalogItems);
+      const why = new Map(extra.map((l) => [l.id, l.why]));
+      return {
+        slug: idea.slug,
+        name: idea.name,
+        tagline: idea.tagline,
+        href: ideaPath(idea),
+        palette: idea.palette,
+        setup: input.setting === "venue" ? idea.setup.indoors : idea.setup.backyard,
+        activities: idea.activities.map((a) => a.name),
+        props: idea.props.slice(0, 4),
+        lines: q.lines.map((l) => ({ id: l.id, name: l.name, qty: l.qty, unit: l.unit, unit_price: l.unit_price, line_total: l.line_total, group: idea.name, why: why.get(l.id) ?? "" })),
+        total: Math.round(q.subtotal),
+      };
+    });
+  const ideasHref = types[0] ? typePath(types[0].slug) : undefined;
   // Guides that match every word of the occasion first (e.g. "graduation party"), then broader matches.
   const topic = ev.name.split(/ or |,/)[0].replace(/'s?/g, "");
   const strict = await searchGuides(`${topic} planning`, 4, "AND");
@@ -161,7 +212,7 @@ export async function buildPlan(input: AssistantInput): Promise<AssistantPlan> {
   const summary = `For a ${ev.name.toLowerCase()} with ${input.guests} guests (${setting.name.toLowerCase()}), we'd start with the ${styleName(chosen.id)} package: ${lines.length} rental items for about ${usd(total)}, roughly ${usd(perGuest)} per guest, before delivery and tax.`;
   const quoteHref = `/quote?items=${lines.map((l) => l.id).join(",")}&guests=${input.guests}&from=assistant`;
 
-  const plan: AssistantPlan = { summary, style: { id: chosen.id, name: styleName(chosen.id) }, lines, total, perGuest, setup, notes, addOns, guides, answer, quoteHref, mode: aiMode() };
+  const plan: AssistantPlan = { summary, style: { id: chosen.id, name: styleName(chosen.id) }, lines, total, perGuest, setup, notes, addOns, setupIdeas, activities, themes, ideasHref, guides, answer, quoteHref, mode: aiMode() };
   if (plan.mode === "gemini") {
     const better = await geminiSummary(plan, input).catch(() => null);
     if (better) plan.summary = better;
@@ -188,7 +239,7 @@ export async function answerQuestion(question: string): Promise<{ text: string; 
 async function geminiSummary(plan: AssistantPlan, input: AssistantInput) {
   return gemini(
     `You are the friendly planning assistant for Beyond Chiavari, a Chicago event rental marketplace. Write a warm 3 to 4 sentence summary of this plan for the host. Use ONLY these facts; do not add prices, items, statistics or promises that aren't here.\n\n` +
-      JSON.stringify({ input, package: plan.style.name, total: Math.round(plan.total), perGuest: Math.round(plan.perGuest), items: plan.lines.map((l) => `${l.qty} ${l.name}`), setup: plan.setup, notes: plan.notes.map((n) => n.text), addOns: plan.addOns.map((a) => `${a.name}: about $${a.total}`) }),
+      JSON.stringify({ input, package: plan.style.name, total: Math.round(plan.total), perGuest: Math.round(plan.perGuest), items: plan.lines.map((l) => `${l.qty} ${l.name}`), setup: plan.setup, notes: plan.notes.map((n) => n.text), addOns: plan.addOns.map((a) => `${a.name}: about $${a.total}`), themes: plan.themes.map((t) => `${t.name}: ${t.tagline}`), activities: plan.activities.map((a) => a.name) }),
   );
 }
 

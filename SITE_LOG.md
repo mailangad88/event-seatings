@@ -37,6 +37,13 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): party ideas in the planning assistant
+
+- /planning-assistant plans now include up to 6 theme ideas from /party-ideas for the chosen event. Each one shows its palette, setup for the chosen space, activities and props, plus only the extra rentals beyond the package, priced at vendor +10%. Ticking a theme adds those rentals to the quote handoff.
+- Plans also list 3 layouts that fit the space (backyard, indoors, tent or park) and up to 6 activities, with a link to the event's ideas page.
+- The assistant's guide search now indexes party-type FAQs, setups and theme summaries.
+- Remaining: the assistant stays off until NEXT_PUBLIC_PLANNING_ASSISTANT=on; Gemini wording stays off until Angad approves the cost.
+
 ## Changes in this release (2026-11-03): reviews, layout builder, date checker, planning assistant, referrals, branded emails
 
 All built with free, open-source libraries (React Email, MiniSearch, SunCalc) and public-domain US government weather data. Nothing here sends email, charges money or invents content.
