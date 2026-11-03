@@ -92,6 +92,8 @@ export default async function AreaCategoryPage(props: Props) {
   // Two delivery notes for the area, rotated by category so sibling pages differ.
   const k = localCategories.indexOf(lc);
   const logistics = [loc.logistics[k % loc.logistics.length], loc.logistics[(k + 1) % loc.logistics.length]];
+  // One paragraph of local copy, also rotated by category.
+  const story = loc.story[k % loc.story.length];
 
   const sub = (s: string) => s.replaceAll("{area}", loc.name);
   const faqs = [
@@ -219,6 +221,7 @@ export default async function AreaCategoryPage(props: Props) {
       </Section>
 
       <Section eyebrow={`Celebrating in ${loc.name}`} title={`Where ${loc.name} hosts use ${cat.name.toLowerCase()}`}>
+        {story && <p className="mb-10 max-w-3xl leading-7 text-muted">{story}</p>}
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
           <ul className="divide-y divide-line border-y border-line">
             {settings.map((s) => (

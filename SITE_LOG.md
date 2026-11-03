@@ -75,12 +75,12 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 | Route | Pages | Search intent | Visuals | FAQ | Schema |
 |---|---|---|---|---|---|
 | `/party-rentals` | 1 | party rentals near me | Area map | 3 | ItemList, BreadcrumbList, FAQPage |
-| `/party-rentals/[area]` | 35 | party rentals [town], event rentals [town] | Area map, 10 category scene thumbnails, scene image | 4-5 | Service (areaServed, OfferCatalog), BreadcrumbList, FAQPage |
-| `/party-rentals/[area]/[category]` | 350 | tent / table / linen / dance floor / bounce house / photo booth / lighting / heater / dinnerware / concession rental [town] | Scene image, 6 product images, price chart, area map | 5 | Service with AggregateOffer, ImageObject, BreadcrumbList, FAQPage |
+| `/party-rentals/[area]` | 281 | party rentals [town], event rentals [town] | Area map, 10 category scene thumbnails, scene image | 4-5 | Service (areaServed, OfferCatalog), BreadcrumbList, FAQPage |
+| `/party-rentals/[area]/[category]` | 2,810 | tent / table / linen / dance floor / bounce house / photo booth / lighting / heater / dinnerware / concession rental [town] | Scene image, 6 product images, price chart, area map | 5 | Service with AggregateOffer, ImageObject, BreadcrumbList, FAQPage |
 | `/rental-cost` | 1 | how much do event rentals cost | Scene image, price table | 3 | ItemList, BreadcrumbList, FAQPage |
 | `/rental-cost/[category]` | 19 | how much does [category] rental cost in Chicago | Scene image, price-band chart, price bars, product images | 4 | Article + Product AggregateOffer, BreadcrumbList, FAQPage |
 
-All prices on these pages are computed from the catalog at build time. Content lives in `src/data/local-rentals.ts` (category tips per kind of venue, sizing rules of thumb, booking lead times, cost drivers) and `src/data/geo/*.ts` (areas). Last touched 2026-11-03.
+All prices on these pages are computed from the catalog at build time. Content lives in `src/data/local-rentals.ts` (category tips per kind of venue, sizing rules of thumb, booking lead times, cost drivers) and `src/data/geo/*.ts` (areas; only areas with at least 2 venue settings, 2 delivery notes and a local story get pages, see `localAreas`). Each category page rotates one local story paragraph and two delivery notes so sibling pages differ. Last touched 2026-11-03.
 
 **Remaining to improve**
 
