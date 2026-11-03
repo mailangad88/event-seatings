@@ -282,3 +282,82 @@ export function rebalance(lines: BudgetLine[], id: string, pct: number, locked: 
   }
   return next;
 }
+
+/* ---------------- Bar and glassware ---------------- */
+
+export type DrinkMix = { wine: number; beer: number; cocktails: number; soft: number };
+
+// Bottle maths: a 750 ml bottle of wine pours five 5 oz glasses; a 750 ml bottle of spirits pours
+// about sixteen 1.5 oz shots. Beer and soft drinks count one per serving.
+export function barPlan(input: {
+  guests: number;
+  hours: number;
+  firstHour: number;
+  laterHours: number;
+  mix: DrinkMix;
+  glassesPerGuest: number;
+  toast: boolean;
+  water: boolean;
+  icePerGuest: number;
+  guestsPerBartender: number;
+}) {
+  const g = Math.max(0, Math.round(input.guests));
+  const h = Math.max(0, input.hours);
+  const perGuest = h <= 0 ? 0 : input.firstHour + Math.max(0, h - 1) * input.laterHours;
+  const drinks = Math.round(g * perGuest);
+  const total = input.mix.wine + input.mix.beer + input.mix.cocktails + input.mix.soft || 1;
+  const share = (n: number) => Math.round((drinks * n) / total);
+  const wineDrinks = share(input.mix.wine);
+  const beerDrinks = share(input.mix.beer);
+  const cocktailDrinks = share(input.mix.cocktails);
+  const softDrinks = share(input.mix.soft);
+  const glasses = (on: boolean) => (on ? up(g * input.glassesPerGuest) : 0);
+  return {
+    perGuest,
+    drinks,
+    wineDrinks,
+    beerDrinks,
+    cocktailDrinks,
+    softDrinks,
+    wineBottles: up(wineDrinks / 5),
+    beer: beerDrinks,
+    spiritBottles: up(cocktailDrinks / 16),
+    softServings: softDrinks,
+    glassware: {
+      "wine-glass": glasses(input.mix.wine > 0),
+      "pilsner-glass": glasses(input.mix.beer > 0),
+      "rocks-glass": glasses(input.mix.cocktails > 0),
+      "highball-glass": glasses(input.mix.soft > 0 || input.mix.cocktails > 0),
+      "champagne-flute": input.toast ? g : 0,
+      "water-goblet": input.water ? g : 0,
+    } as Record<string, number>,
+    iceLbs: up(g * input.icePerGuest),
+    bartenders: g ? Math.max(1, up(g / Math.max(10, input.guestsPerBartender))) : 0,
+  };
+}
+
+/* ---------------- Parking and shuttles ---------------- */
+
+export function parkingPlan(input: {
+  guests: number;
+  perCar: number;
+  rideSharePct: number;
+  shuttlePct: number;
+  onSite: number;
+  sqftPerSpace: number;
+  shuttleSeats: number;
+  roundTripMin: number;
+  windowMin: number;
+}) {
+  const g = Math.max(0, Math.round(input.guests));
+  const shuttleRiders = Math.round((g * clamp(input.shuttlePct, 0, 100)) / 100);
+  const rideShare = Math.round((g * clamp(input.rideSharePct, 0, 100 - clamp(input.shuttlePct, 0, 100))) / 100);
+  const drivers = Math.max(0, g - shuttleRiders - rideShare);
+  const cars = up(drivers / Math.max(1, input.perCar));
+  const overflow = Math.max(0, cars - Math.max(0, input.onSite));
+  const lotSqft = Math.round(overflow * Math.max(150, input.sqftPerSpace));
+  const tripsPerVehicle = Math.max(1, Math.floor(Math.max(1, input.windowMin) / Math.max(5, input.roundTripMin)));
+  const seatsPerVehicle = Math.max(1, input.shuttleSeats) * tripsPerVehicle;
+  const shuttles = shuttleRiders ? up(shuttleRiders / seatsPerVehicle) : 0;
+  return { shuttleRiders, rideShare, drivers, cars, overflow, lotSqft, tripsPerVehicle, shuttles };
+}

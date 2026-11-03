@@ -12,12 +12,15 @@ import { site } from "@/lib/site";
 import "./globals.css";
 
 // Self-hosted fonts (next/font/local): no build-time fetch from Google, so builds work anywhere.
+// Only the weights the site uses are loaded (fewer preloads = faster first paint; the logo text is the LCP element).
+// font-light (300) falls back to 400, which also reads better on screens.
 const display = localFont({
   variable: "--font-display",
   display: "swap",
+  // Serif fallback with metrics adjusted to Cormorant, so the swap doesn't shift the layout.
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  adjustFontFallback: "Times New Roman",
   src: [
-    { path: "./fonts/cormorant-garamond-latin-300-normal.woff2", weight: "300", style: "normal" },
-    { path: "./fonts/cormorant-garamond-latin-300-italic.woff2", weight: "300", style: "italic" },
     { path: "./fonts/cormorant-garamond-latin-400-normal.woff2", weight: "400", style: "normal" },
     { path: "./fonts/cormorant-garamond-latin-400-italic.woff2", weight: "400", style: "italic" },
     { path: "./fonts/cormorant-garamond-latin-500-normal.woff2", weight: "500", style: "normal" },
@@ -28,8 +31,8 @@ const display = localFont({
 const body = localFont({
   variable: "--font-body",
   display: "swap",
+  fallback: ["system-ui", "Arial", "sans-serif"],
   src: [
-    { path: "./fonts/jost-latin-300-normal.woff2", weight: "300", style: "normal" },
     { path: "./fonts/jost-latin-400-normal.woff2", weight: "400", style: "normal" },
     { path: "./fonts/jost-latin-500-normal.woff2", weight: "500", style: "normal" },
     // 600 is used by font-semibold (prices, badges, card titles); without it browsers fake the bold.

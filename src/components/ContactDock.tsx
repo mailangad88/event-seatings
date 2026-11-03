@@ -45,7 +45,7 @@ function loadHubSpotChat(portalId: string) {
   }
 }
 
-const hidden = ["/admin", "/render"];
+const hidden = ["/admin", "/render", "/embed"];
 
 export function ContactDock() {
   const pathname = usePathname() ?? "/";
