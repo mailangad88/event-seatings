@@ -37,6 +37,14 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): quicker rental decisions
+
+- **New `/packages`** (Last touched 2026-11-03). Eight ready-made packages (backyard birthday 50, graduation 80, shower 40, kids' party 30, wedding 150, tented wedding 150, sangeet 250, company dinner 120), each priced all-in (rentals plus delivery, setup, waiver, tax) from the live catalog with the same rules as the `/quote` planner. Cards, a side-by-side comparison table, how-it-works steps, FAQs. SEO ✅ AEO ✅ (ItemList of Products with Offers + FAQPage) GEO ✅ Visuals ✅ FAQ ✅ CTA ✅. Code: `src/lib/packages.ts`, `src/components/ReadyPackages.tsx`. In the header, footer, sitemap and llms.txt.
+- **One-tap packages**: shown on the home page, on `/rentals` and on the first planner step. A package opens the planner on the built list (`/quote?event=&guests=&setting=&style=`), skipping four questions. `?event=&guests=&setting=` opens on the package step.
+- **Planner**: "Compare what's in each package" table on the package step (Simple vs Signature vs Lavish, row by row), all-in estimate in the progress bar next to the rental total, whole-dollar prices, and a sticky Back / total / Next bar on phones so nobody scrolls a long list to find Next.
+- **Header**: on 1024-1279px screens "My events" and "How it works" move out of the top bar (still in the phone menu and footer) so the bar no longer wraps onto three lines.
+- **Remaining**: package images reuse the planner's event scenes; a styled photo per package would help. Packages are fixed at their guest counts on the card; the planner changes them after one tap.
+
 ## Changes in this release (2026-11-03): 58 occasion and party rental guides
 
 - Added 58 posts (see "Occasion and party rental guides" below): Thanksgiving week delivery timing, Diwali card parties, Wigilia, Feast of the Seven Fishes, Las Posadas, tamaladas, Noche Buena, Christmas dinner for 20, Santa photos, craft fairs, New Year's Day open house, Orthodox Christmas, Three Kings Day, Lohri, hot pot, Tet, Seollal, Paczki Day, Valentine's, Nowruz, St. Patrick's, Pascha, Vaisakhi, Cinco de Mayo, Derby, Pride, El Grito, Oktoberfest, Yom Kippur, Sukkot, Mid-Autumn, Durga Puja, Griha Pravesh, and 15+ rental tip guides.

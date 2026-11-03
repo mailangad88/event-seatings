@@ -38,6 +38,7 @@ export function Footer() {
           <ul className="mt-3 space-y-0.5 text-sm text-muted">
             {[
               ["/quote", "Build a quote"],
+              ["/packages", "Ready-made packages"],
               ["/book", "Book a free call"],
               ["/how-it-works", "How it works"],
               ["/booking-promise", "Payments & Booking Promise"],

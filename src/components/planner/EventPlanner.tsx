@@ -26,6 +26,7 @@ import {
   type StyleId,
 } from "@/lib/event-plan";
 import { blockedMessage, useBlockedDates } from "@/lib/use-blocked-dates";
+import { allInEstimate } from "@/lib/fees";
 import { ideaQty, type PlannerIdea } from "@/data/party-ideas/types";
 import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
 import { Icon, formatPrice, type IconName } from "../ui";
@@ -101,6 +102,9 @@ function Tile({
   );
 }
 
+/** A ready-made package, as the planner's first step shows it (built on the server in src/lib/packages.ts). */
+export type PlannerPackage = { id: string; name: string; event: string; setting: SettingId; style: StyleId; guests: number; allIn: number; perGuest: number; image: string; alt: string; href: string; styleName: string; settingName: string };
+
 type Row = { id: string; qty: number; item: QuoteItem; group: string; why?: string };
 
 export function EventPlanner({
@@ -109,20 +113,46 @@ export function EventPlanner({
   from,
   ideas = [],
   initialIdea,
+  initialGuests,
+  initialSetting,
+  initialStyle,
+  packages = [],
 }: {
   items: QuoteItem[];
   initialEvent?: string;
   from?: string;
   ideas?: PlannerIdea[];
   initialIdea?: string;
+  initialGuests?: number;
+  initialSetting?: string;
+  initialStyle?: string;
+  packages?: PlannerPackage[];
 }) {
   const byId = useMemo(() => new Map(items.map((i) => [i.id, i])), [items]);
   const startIdea = ideas.find((i) => i.slug === initialIdea);
   const startEvent = getPlannerEvent(initialEvent ?? startIdea?.events[0]);
-  const [step, setStep] = useState(startEvent ? 1 : 0);
+  // A ready-made package link (?event=&guests=&setting=&style=) skips the questions and opens the built list.
+  const startSetting = settings.find((s) => s.id === initialSetting)?.id;
+  const startStyle = styles.find((s) => s.id === initialStyle)?.id;
+  const startGuests = initialGuests && initialGuests > 0 ? initialGuests : undefined;
+  const ready = !!(startEvent && startSetting && startStyle);
+  const [step, setStep] = useState(ready ? 4 : startEvent ? (startGuests ? (startSetting ? 3 : 2) : 1) : 0);
+  // Opened from a package: bring the built list into view instead of leaving the page header on screen.
+  useEffect(() => {
+    if (ready) top.current?.scrollIntoView({ block: "start" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [a, setA] = useState<Answers>(
     startEvent
-      ? { guests: startEvent.defaultGuests, extras: startEvent.extras, extrasTouched: false, event: startEvent.id, ideas: startIdea ? [startIdea.slug] : [] }
+      ? {
+          guests: startGuests ?? startEvent.defaultGuests,
+          extras: startEvent.extras,
+          extrasTouched: false,
+          event: startEvent.id,
+          setting: startSetting,
+          style: startStyle,
+          ideas: startIdea ? [startIdea.slug] : [],
+        }
       : { guests: 100, extras: [], extrasTouched: false },
   );
   // The visitor's own changes on top of our suggestions: a new quantity (0 = removed) or an item they added.
@@ -214,6 +244,8 @@ export function EventPlanner({
     a.event && a.style && a.setting ? { event: a.event, guests: a.guests, style: a.style, setting: a.setting, extras: a.extras, date } : undefined;
   const rows = input ? applyOverrides(recFor()) : [];
   const total = priceOf(rows);
+  // Delivered, set up, waiver and tax: the number people compare against other rental quotes.
+  const allIn = Math.round(allInEstimate(total, { categoryIds: rows.map((r) => r.item.categoryId ?? "") }).total);
   const essentials = rows.filter((r) => essentialGroups.includes(r.group));
   const addons = rows.filter((r) => !essentialGroups.includes(r.group));
 
@@ -300,6 +332,15 @@ export function EventPlanner({
     go(1);
   };
 
+  // Start from a ready-made package: fill in every answer and open the built list.
+  const pickPackage = (pk: PlannerPackage) => {
+    const e = getPlannerEvent(pk.event);
+    if (!e) return;
+    setA((p) => ({ ...p, event: e.id, guests: pk.guests, setting: pk.setting, style: pk.style, extras: e.extras, extrasTouched: false, ideas: [] }));
+    resetList();
+    go(4);
+  };
+
   const canNext = [!!a.event, a.guests > 0, !!a.setting, !!a.style, essentials.length > 0, true, false, true][step];
 
   async function send(e: React.FormEvent<HTMLFormElement>) {
@@ -353,6 +394,7 @@ export function EventPlanner({
     }
   }
 
+  const nextLabel = step === 5 ? "Next: date & details" : step === 4 ? "Next: add-ons" : "Next";
   const progress = Math.round((step / (steps.length - 1)) * 100);
   const listSection = (title: string, list: Row[], intro?: string) => (
     <div className="space-y-10">
@@ -413,7 +455,7 @@ export function EventPlanner({
   const featuredIn = (cat: string) => items.filter((i) => i.featured !== false && i.category === cat);
 
   return (
-    <div ref={top} className="scroll-mt-28">
+    <div ref={top} className={`scroll-mt-28 ${step > 0 && step < 6 ? "pb-20 sm:pb-0" : ""}`}>
       {picker && (
         <ItemPicker
           title={picker.mode === "swap" ? `Change ${picker.row.item.name.toLowerCase()}` : picker.group === "Added by you" ? "Add something else" : `Add to ${picker.group.toLowerCase()}`}
@@ -437,9 +479,10 @@ export function EventPlanner({
             <span className="text-muted">Step {step + 1} of {steps.length}:</span> <strong>{steps[step]}</strong>
           </p>
           {input && step < 7 ? (
-            <p className="tabular-nums">
-              <span className="text-muted">Est. </span>
-              <strong>{formatPrice(total)}</strong>
+            <p className="text-right leading-tight tabular-nums">
+              <span className="text-muted">All-in est. </span>
+              <strong>{formatPrice(allIn)}</strong>
+              <span className="block text-xs text-muted">{formatPrice(total)} rentals + delivery, setup, tax</span>
             </p>
           ) : null}
         </div>
@@ -472,6 +515,34 @@ export function EventPlanner({
                 <Tile key={e.id} selected={a.event === e.id} onClick={() => pickEvent(e.id)} image={e.image} alt={e.alt} title={e.name} />
               ))}
             </div>
+            {packages.length > 0 && (
+              <div className="mt-10">
+                <h3 className="font-serif text-2xl">In a hurry? Start from a ready-made package</h3>
+                <p className="mt-1 text-sm text-muted">One tap builds the whole list. You can change the guest count or any item after.</p>
+                <ul className="-mx-4 mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
+                  {packages.map((pk) => (
+                    <li key={pk.id} className="w-[72%] shrink-0 snap-start sm:w-auto">
+                      <button
+                        type="button"
+                        onClick={() => pickPackage(pk)}
+                        className="flex h-full w-full gap-3 rounded-2xl border border-line bg-surface p-3 text-left shadow-soft transition hover:border-gold/60"
+                      >
+                        <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-surface-2">
+                          <Image src={pk.image} alt={pk.alt} fill sizes="64px" className="object-cover" />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block font-medium leading-snug">{pk.name}</span>
+                          <span className="block text-xs text-muted">{pk.guests} guests · {pk.settingName.toLowerCase()}</span>
+                          <span className="mt-1 block text-sm tabular-nums">
+                            <strong>{formatPrice(pk.allIn)}</strong> <span className="text-xs text-muted">all-in est.</span>
+                          </span>
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
         )}
 
@@ -569,7 +640,7 @@ export function EventPlanner({
                       <p className="eyebrow">{s.tagline}</p>
                       <div className="mt-1 flex items-baseline justify-between gap-2">
                         <p className="font-serif text-3xl">{s.name}</p>
-                        <span className="text-lg tabular-nums">~{formatPrice(est)}</span>
+                        <span className="text-lg tabular-nums">~{formatPrice(Math.round(est))}</span>
                       </div>
                       <p className="mt-1 text-sm leading-6 text-muted">{s.blurb}</p>
                       <p className="mt-2 text-xs text-muted">About {formatPrice(a.guests ? est / a.guests : 0)} per guest in rentals</p>
@@ -578,6 +649,16 @@ export function EventPlanner({
                 );
               })}
             </div>
+            <PackageCompare
+              lists={styles.map((st) => ({ id: st.id, name: st.name, lines: recFor({ style: st.id }, a.ideas ?? [], {}) }))}
+              byId={byId}
+              current={a.style}
+              onPick={(id) => {
+                setA((p) => ({ ...p, style: id }));
+                resetList();
+                go(4);
+              }}
+            />
           </section>
         )}
 
@@ -592,7 +673,7 @@ export function EventPlanner({
               </div>
               <p className="text-right">
                 <span className="text-sm text-muted">Essentials </span>
-                <strong className="font-serif text-3xl tabular-nums">{formatPrice(priceOf(essentials))}</strong>
+                <strong className="font-serif text-3xl tabular-nums">{formatPrice(Math.round(priceOf(essentials)))}</strong>
               </p>
             </div>
             <div className="mt-8">{listSection("ess", essentials)}</div>
@@ -790,15 +871,38 @@ export function EventPlanner({
 
       {/* Navigation */}
       {step < 7 && (
-        <div className="mt-10 flex items-center justify-between gap-3 border-t border-line pt-6">
+        <div className={`mt-10 items-center justify-between gap-3 border-t border-line pt-6 ${step === 6 ? "flex" : "hidden sm:flex"}`}>
           <button type="button" className="btn-ghost" onClick={() => go(Math.max(0, step - 1))} disabled={step === 0}>
             Back
           </button>
           {step < 6 && (
             <button type="button" className="btn-primary" disabled={!canNext} onClick={() => go(step + 1)}>
-              {step === 5 ? "Next: date & details" : step === 4 ? "Next: add-ons" : "Next"} <Icon name="arrow" size={16} />
+              {nextLabel} <Icon name="arrow" size={16} />
             </button>
           )}
+        </div>
+      )}
+      {/* Phones: Back, the running total and Next stay on screen, so nobody scrolls a long list to find the button. */}
+      {step > 0 && step < 6 && (
+        <div data-bottom-bar className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/95 px-4 py-3 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] backdrop-blur sm:hidden">
+          <div className="flex items-center gap-3">
+            <button type="button" className="btn-ghost btn-sm shrink-0" onClick={() => go(step - 1)}>
+              Back
+            </button>
+            <p className="min-w-0 flex-1 text-xs leading-tight tabular-nums">
+              {input ? (
+                <>
+                  <strong className="text-base">{formatPrice(allIn)}</strong>
+                  <span className="block text-muted">all-in est. · {rows.length} items</span>
+                </>
+              ) : (
+                <span className="text-muted">Step {step + 1} of {steps.length}</span>
+              )}
+            </p>
+            <button type="button" className="btn-primary btn-sm shrink-0" disabled={!canNext} onClick={() => go(step + 1)}>
+              {nextLabel} <Icon name="arrow" size={14} />
+            </button>
+          </div>
         </div>
       )}
       {step === 0 && (
@@ -808,6 +912,80 @@ export function EventPlanner({
         </p>
       )}
     </div>
+  );
+}
+
+// Side by side: what each package puts on the table, row by row, so the difference is easy to see.
+function PackageCompare({
+  lists,
+  byId,
+  current,
+  onPick,
+}: {
+  lists: { id: StyleId; name: string; lines: RecLine[] }[];
+  byId: Map<string, QuoteItem>;
+  current?: StyleId;
+  onPick: (id: StyleId) => void;
+}) {
+  const rowsFor = (g: string) => lists.map((l) => l.lines.filter((x) => x.group === g));
+  const groups = essentialGroups.filter((g) => lists.some((l) => l.lines.some((x) => x.group === g)));
+  const extraGroups = [...new Set(lists.flatMap((l) => l.lines.map((x) => x.group)))].filter((g) => !essentialGroups.includes(g));
+  const priceOf = (lines: RecLine[]) => lines.reduce((s, l) => s + (byId.get(l.id)?.price ?? 0) * l.qty, 0);
+  const cell = (lines: RecLine[]) =>
+    lines.length ? (
+      <ul className="space-y-1">
+        {lines.map((l) => (
+          <li key={l.id}>
+            <span className="tabular-nums text-muted">{l.qty.toLocaleString()}</span> {byId.get(l.id)?.name}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <span className="text-muted">None</span>
+    );
+  return (
+    <details className="mt-8 rounded-2xl border border-line bg-surface p-4 sm:p-5" open>
+      <summary className="cursor-pointer font-medium">Compare what&apos;s in each package</summary>
+      <div className="-mx-4 mt-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+        <table className="w-full min-w-[36rem] border-collapse text-left text-xs leading-5 sm:text-sm">
+          <thead>
+            <tr>
+              <th scope="col" className="w-28 border-b border-line py-2 pr-3 font-medium text-muted">
+                <span className="sr-only">Section</span>
+              </th>
+              {lists.map((l) => (
+                <th key={l.id} scope="col" className={`border-b border-line px-3 py-2 align-bottom ${current === l.id ? "bg-gold-soft" : ""}`}>
+                  <span className="font-serif text-lg">{l.name}</span>
+                  <span className="block text-xs font-normal text-muted tabular-nums">~{formatPrice(Math.round(priceOf(l.lines)))} in rentals</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {[...groups, ...extraGroups].map((g) => (
+              <tr key={g} className="align-top">
+                <th scope="row" className="border-b border-line py-2 pr-3 font-medium">{g}</th>
+                {rowsFor(g).map((lines, i) => (
+                  <td key={lists[i].id} className={`border-b border-line px-3 py-2 ${current === lists[i].id ? "bg-gold-soft" : ""}`}>
+                    {cell(lines)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+            <tr>
+              <td />
+              {lists.map((l) => (
+                <td key={l.id} className={`px-3 pt-3 ${current === l.id ? "bg-gold-soft" : ""}`}>
+                  <button type="button" className={current === l.id ? "btn-primary btn-sm" : "btn-ghost btn-sm"} onClick={() => onPick(l.id)}>
+                    {current === l.id ? `Keep ${l.name}` : `Pick ${l.name}`}
+                  </button>
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
   );
 }
 

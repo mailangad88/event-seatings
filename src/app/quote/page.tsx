@@ -12,6 +12,7 @@ import { isPhotoFirst, photosForItem } from "@/data/stock-photos";
 import { toPublicItem } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { readyPackages } from "@/lib/packages";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
@@ -148,8 +149,9 @@ export default async function QuotePage(props: PageProps<"/quote">) {
         intro={
           planner ? (
             <>
-              Tell us the occasion, guest count and style. We&apos;ll build your rental list with pictures and live prices,
-              then give you a free personalised plan: checklist, floor plan and budget. No payment, no commitment.
+              Tell us the occasion, guest count and style, or pick a ready-made package. We&apos;ll build your rental list
+              with pictures and prices<span className="hidden sm:inline">, then give you a free plan: checklist, floor plan and budget</span>.
+              No payment, no commitment.
             </>
           ) : (
           <>
@@ -171,6 +173,24 @@ export default async function QuotePage(props: PageProps<"/quote">) {
             from={str(sp.from)?.replace(/[^\w-]/g, "").slice(0, 40)}
             ideas={ideaOptions}
             initialIdea={ideaParam}
+            initialGuests={guestsParam || undefined}
+            initialSetting={str(sp.setting)}
+            initialStyle={str(sp.style)}
+            packages={readyPackages.map((p) => ({
+              id: p.id,
+              name: p.name,
+              event: p.event,
+              setting: p.setting,
+              style: p.style,
+              guests: p.guests,
+              allIn: p.allIn,
+              perGuest: p.perGuest,
+              image: p.image,
+              alt: p.alt,
+              href: p.href,
+              styleName: p.styleName,
+              settingName: p.settingName,
+            }))}
           />
         ) : (
         <div>
