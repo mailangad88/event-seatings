@@ -71,7 +71,8 @@ export async function POST(request: Request) {
     return Response.json({ error: "Please type your question." }, { status: 400 });
   }
 
-  if (kind === "partner" && (!lead.name || !lead.phone || !lead.venue)) {
+  // Listing correction/removal requests from /vendor-listings don't need a phone number.
+  if (kind === "partner" && (!lead.name || !lead.venue || (!lead.phone && lead.source !== "vendor-listings"))) {
     return Response.json({ error: "Please add your name, company and phone number." }, { status: 400 });
   }
 

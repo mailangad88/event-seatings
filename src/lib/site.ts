@@ -36,6 +36,10 @@ export const site = {
   // When empty, /book shows a call-request form instead.
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
   callLength: "15-minute",
+  // When someone is actually answering enquiries, e.g. "Mon–Sat, 9am–6pm". Set NEXT_PUBLIC_BUSINESS_HOURS only once those
+  // hours are covered: with it set the site promises a reply within one business hour in those hours; without it,
+  // the promise is "within one business day".
+  hours: process.env.NEXT_PUBLIC_BUSINESS_HOURS?.trim() ?? "",
   // Booking is open now: partner rental companies deliver year-round (business-model plan, Nov 2 2026).
   // Quote requests for dates before firstEventDate get a "we're not delivering yet" note, so keep it in the past
   // unless booking ever has to pause.
@@ -52,3 +56,8 @@ export const site = {
 };
 
 export type Site = typeof site;
+
+// The reply-time promise used in trust copy. Only promises a one-hour reply when business hours are configured.
+export const replyPromise = site.hours
+  ? `replies within one business hour (${site.hours}, Central time)`
+  : "replies within one business day";

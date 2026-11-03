@@ -7,7 +7,10 @@ import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from
 import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
+import { imagesFor, originalImage, rentalImage, rentalImageJsonLd, styledImage } from "@/data/rental-images";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
+import { allInEstimate } from "@/lib/fees";
+import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -42,7 +45,7 @@ const plural = (s: string) => (/(s|x|ch|sh)$/.test(s) ? `${s}es` : `${s}s`);
 export async function generateMetadata(props: PageProps<"/rentals/[category]/[item]">): Promise<Metadata> {
   const i = await load(props);
   if (!i) return {};
-  const img = isPhotoFirst(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
   const real = photosForItem(i);
   const og = img
     ? { url: img, alt: rentalAlt(i.name, i.specs, i.id) }
@@ -79,7 +82,7 @@ function itemFaqs(i: CatalogItem) {
   const faqs = [
     {
       q: `How much does it cost to rent ${withArticle(lower(i.name))} in ${site.market}?`,
-      a: `${price} ${unitLabel(i)} for one event day${i.priceSource === "estimated" ? ", based on current Chicago-area market rates" : ""}. Delivery, setup and pickup are quoted for your venue, along with an optional damage waiver and sales tax. Multi-day rentals are quoted on request.`,
+      a: `${price} ${unitLabel(i)} for one event day${i.priceSource === "estimated" ? ", based on current Chicago-area market rates" : ""}. Delivery and pickup (usually $150-$400 per order), setup, a damage waiver (about 10%) and sales tax are added for your venue, so a delivered order typically costs 35-60% more than the rental rates alone. Multi-day rentals are quoted on request.`,
     },
   ];
   if (i.perGuest) {
@@ -117,11 +120,14 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const at = siblings.findIndex((x) => x.id === i.id);
   const related = [1, 2, 3, 4].map((n) => siblings[(at + n) % siblings.length]).filter((x, n, a) => x.id !== i.id && a.indexOf(x) === n);
   const pageUrl = `${site.url}${itemHref(i)}`;
-  const img = isPhotoFirst(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
   // Real event photos: the same item type when we have it, otherwise general photos of the category.
   const real = photosForItem(i);
   const gallery = (real.matched ? real.photos : categoryPhotos(i.categoryId)).slice(0, 3);
   const galleryAlt = (p: (typeof gallery)[number]) => stockAlt(p, i.name, real.matched, site.market);
+  // When the hero is a styled event scene, also show the plain render so the exact piece is clear.
+  const scene = styledImage(i.id);
+  const plain = scene ? originalImage(i.id) : undefined;
 
   const jsonLd = [
     {
@@ -133,8 +139,13 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
       category: `${c.name} rental`,
       brand: { "@type": "Brand", name: site.name },
       image: [
-        ...(img ? [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }] : []),
-        ...(real.matched ? gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))) : []),
+        ...(img
+          ? rentalImage(i.id)
+            ? imagesFor(i.id).map((m) => rentalImageJsonLd(m))
+            : [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }]
+          : []),
+        ...(plain ? [rentalImageJsonLd(plain)] : []),
+        ...gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))),
       ],
       offers: {
         "@type": "Offer",
@@ -212,9 +223,43 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
                 Book a free call
               </Link>
             </div>
-            <p className="mt-4 text-sm text-muted">
-              Delivery, setup, damage waiver and tax are itemized in your proposal. Nothing is charged until you approve it.
-            </p>
+            {(() => {
+              // Show what a delivered order really costs, not just the rental rate.
+              const qty = i.perGuest ? Math.max(i.minQty ?? 1, Math.ceil(100 * i.perGuest)) : Math.max(1, i.minQty ?? 1);
+              const est = allInEstimate(price * qty, { categoryIds: [i.categoryId] });
+              return (
+                <div className="mt-6 border border-line bg-surface p-5 text-sm">
+                  <p className="font-medium">
+                    Delivered and set up: about {formatPrice(Math.round(est.total))}
+                    <span className="font-normal text-muted">
+                      {" "}
+                      for {qty.toLocaleString()} {qty === 1 ? "unit" : "units"}
+                      {i.perGuest ? " (100 guests)" : ""}
+                    </span>
+                  </p>
+                  <dl className="mt-3 space-y-1 text-muted">
+                    <div className="flex justify-between gap-4">
+                      <dt>Rental ({qty.toLocaleString()} × {formatPrice(price)})</dt>
+                      <dd className="tabular-nums">{formatPrice(est.rentals)}</dd>
+                    </div>
+                    {est.lines.map((l) => (
+                      <div key={l.label} className="flex justify-between gap-4">
+                        <dt>
+                          {l.label}
+                          {l.note && <span className="text-xs"> ({l.note})</span>}
+                        </dt>
+                        <dd className="tabular-nums">{formatPrice(l.amount)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className="mt-3 text-xs text-muted">
+                    Delivery is one charge per order, so it shrinks per item as your list grows. Your proposal confirms
+                    every fee for your venue. Nothing is charged until you approve it.
+                  </p>
+                  <PriceDisclaimer className="mt-2" vendorLink />
+                </div>
+              );
+            })()}
 
             <dl className="mt-10 border-t border-line text-sm">
               {facts.map(([k, v]) => (
@@ -233,6 +278,26 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             )}
           </div>
         </div>
+
+        {scene && plain && (
+          <section className="mt-24" aria-labelledby="piece-itself">
+            <p className="eyebrow">The piece itself</p>
+            <h2 id="piece-itself" className="headline mt-6 text-4xl">
+              {i.name} on its own
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted">
+              The photo at the top is an AI-generated example of how this rental can be styled; the guests and venue are
+              not real. This render shows the item itself, built from the rental&apos;s real dimensions.
+            </p>
+            <figure className="mt-8 max-w-xl">
+              <div className="media relative overflow-hidden" style={{ aspectRatio: `${plain.width} / ${plain.height}` }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={plain.src} alt={plain.alt} width={plain.width} height={plain.height} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+              </div>
+              <figcaption className="mt-2 text-xs text-muted">{plain.caption}</figcaption>
+            </figure>
+          </section>
+        )}
 
         {gallery.length > 0 && (
           <section className="mt-24" aria-labelledby="real-photos">

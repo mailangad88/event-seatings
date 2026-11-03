@@ -550,7 +550,7 @@ export const products: Product[] = [
   P("serving-tray", "catering-equipment", "Serving tray / platter", "Stainless or silver, assorted sizes", "each", 6, 0, "For passed appetizers and buffet display.", ["serving tray rental"]),
   P("cake-stand", "catering-equipment", "Cake stand", "Silver, gold or glass pedestal", "each", 15, 0, "Pedestal stand for wedding and birthday cakes.", ["cake stand rental"]),
   P("champagne-wall", "catering-equipment", "Champagne wall", "Display wall holding about 30-50 glasses", "each", 145, 0, "Guests grab a glass of bubbly from a styled wall as they arrive.", ["champagne wall rental chicago"], { minQty: 1 }),
-  P("portable-bar", "catering-equipment", "Portable bar", "6'-8' front bar with back shelf", "each", 125, 0, "A finished bar front for bartenders, indoors or under a tent.", ["portable bar rental chicago"]),
+  P("portable-bar", "catering-equipment", "Portable bar", "4'-6' folding bar with skirt; wood and barrel bars cost more", "each", 125, 0, "A finished bar front for bartenders, indoors or under a tent.", ["portable bar rental chicago"]),
 
   // Tents
   P("canopy-10x10", "tents", "10' x 10' canopy", "Pop-up or frame canopy, 100 sq ft", "each", 125, 0, "Shade for check-in, food service or a vendor booth.", ["canopy rental chicago", "10x10 tent rental"]),

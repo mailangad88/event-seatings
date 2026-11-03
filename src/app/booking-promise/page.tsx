@@ -4,11 +4,11 @@ import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
 import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
-import { site } from "@/lib/site";
+import { replyPromise, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Payments, Deposits & Our Booking Promise",
-  description: `Who you pay, when, and what's protected when you book event rentals through ${site.name} in ${site.market}: free quotes, a ${BOOKING_FEE_LABEL} booking fee only after your vendor confirms, price lock, insured vendors and a backup guarantee.`,
+  description: `Who you pay, when, and what's protected when you book event rentals through ${site.name} in ${site.market}: free quotes, a ${BOOKING_FEE_LABEL} booking fee only after your vendor confirms, price lock, vetted vendors and a backup guarantee.`,
   alternates: { canonical: "/booking-promise" },
 };
 
@@ -20,8 +20,8 @@ const promises: { icon: IconName; title: string; text: string }[] = [
   },
   {
     icon: "check",
-    title: "Insured, vetted rental companies",
-    text: "We only book Chicago-area rental companies that carry general liability insurance and give us a certificate of insurance, which we can send to your venue.",
+    title: "Vetted rental companies",
+    text: "We ask every Chicago-area rental company we book for proof of general liability insurance, and we tell you before you pay if one hasn't provided it yet. We don't issue certificates of insurance ourselves.",
   },
   {
     icon: "users",
@@ -31,7 +31,7 @@ const promises: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "chat",
     title: "One person, start to finish",
-    text: "One coordinator handles every vendor, change and question, and replies within one business hour during business hours.",
+    text: `One coordinator handles every vendor, change and question, and ${replyPromise}.`,
   },
   {
     icon: "calendar",
@@ -55,7 +55,7 @@ const payments = [
 
 const flow = [
   { icon: "quote" as const, title: "Free quote", text: "Build your list online. No card, no commitment." },
-  { icon: "users" as const, title: "Vendor confirms", text: "We check your date with insured local rental companies." },
+  { icon: "users" as const, title: "Vendor confirms", text: "We check your date with vetted local rental companies." },
   { icon: "check" as const, title: "You approve", text: `Pay the ${BOOKING_FEE_LABEL} booking fee securely. Your vendor is locked in.` },
   { icon: "calendar" as const, title: "Deposit & contract", text: "The rental company sends its agreement and deposit invoice. We're copied in." },
   { icon: "truck" as const, title: "Delivered & collected", text: "Balance due before the event. We track delivery and pickup." },
@@ -80,7 +80,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Does my venue need a certificate of insurance?",
-    a: "Many Chicago venues require one from every vendor. We collect the rental company's certificate of insurance and send it to your venue. Some venues also ask hosts for one-day event liability insurance, and we'll tell you on your call if yours does.",
+    a: "Many Chicago venues require one from every vendor. We can't issue or send certificates of insurance to venues yet, so check your venue's rules before you book and tell us what they require. Some venues also ask hosts for one-day event liability insurance, and we'll tell you on your call if yours does.",
   },
   {
     q: "What if the rental company cancels?",
@@ -88,7 +88,7 @@ const faqs: Faq[] = [
   },
   {
     q: "What if I need to cancel or postpone?",
-    a: "Your booking fee is fully refundable for 72 hours after you pay. After that it can move to a new date within 12 months. Deposits paid to the rental company follow its cancellation policy, which is in your proposal before you approve.",
+    a: "Your booking fee is fully refundable for 72 hours after you pay. After that it can move to a new date within 12 months. Deposits paid to the rental company follow its cancellation policy. If you don't accept the rental company's agreement once we share it, your booking fee is refunded in full.",
   },
   {
     q: "How do I pay?",
@@ -106,7 +106,7 @@ export default function BookingPromisePage() {
         ]}
         eyebrow="Payments & protection"
         title="Know exactly who you pay, when, and what's protected."
-        intro={`Booking rentals through ${site.name} costs nothing until a rental company confirms your date. Then every price is locked, every vendor is insured, and one person looks after your event from quote to pickup.`}
+        intro={`Booking rentals through ${site.name} costs nothing until a rental company confirms your date. Then every price is locked, every vendor is vetted, and one person looks after your event from quote to pickup.`}
         actions={
           <>
             <Link href="/quote?from=booking-promise" className="btn-primary">Start my free quote</Link>
@@ -180,8 +180,9 @@ export default function BookingPromisePage() {
             <Icon name="check" size={26} className="text-gold" />
             <h3 className="display-3 mt-4">Vendor insurance</h3>
             <p className="mt-3 leading-7 text-muted">
-              Every rental company we book carries general liability insurance. We keep their certificate on file and
-              send it to your venue, which most Chicago venues ask for before load-in.
+              We ask every rental company we book for proof of general liability insurance. We don&apos;t issue
+              certificates of insurance ourselves, so if your venue asks for one before load-in, tell us before you book and
+              we&apos;ll ask the rental company whether it can provide one.
             </p>
           </article>
           <article className="card p-7">

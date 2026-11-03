@@ -1,5 +1,6 @@
 import "server-only";
-import { existsSync, readFileSync } from "fs";
+import { existsSync } from "fs";
+import { readImageManifest } from "./image-manifest";
 import path from "path";
 
 // Picks a distinct Blender render for each guide's hero, by keyword. Reads the render
@@ -35,12 +36,8 @@ const topicCategories: Record<string, string[]> = {
 };
 
 function loadRenders(): Render[] {
-  let data: Record<string, Record<string, unknown>>;
-  try {
-    data = JSON.parse(readFileSync(path.join(process.cwd(), "src/data/rental-images.json"), "utf8"));
-  } catch {
-    return [];
-  }
+  // Renders with the Gemini styled scenes laid over them (src/lib/image-manifest.ts).
+  const data = readImageManifest() as Record<string, Record<string, unknown>>;
   const out: Render[] = [];
   for (const [id, v] of Object.entries(data)) {
     const src = typeof v.src === "string" ? v.src : "";

@@ -116,6 +116,17 @@ alter table leads
 create index if not exists leads_email_idx on leads (lower(email));
 create index if not exists leads_created_idx on leads (created_at);
 
+-- Customer proposals and the booking fee (added with the Stripe Checkout flow). Safe to run again.
+-- The proposal page hides the rental partner's name until fee_status = 'paid'.
+alter table leads
+  add column if not exists proposal_token text,
+  add column if not exists proposal_created_at timestamptz,
+  add column if not exists fee_status text not null default 'unpaid',
+  add column if not exists fee_amount numeric(12, 2),
+  add column if not exists fee_paid_at timestamptz,
+  add column if not exists stripe_session_id text;
+create unique index if not exists leads_proposal_token_idx on leads (proposal_token) where proposal_token is not null;
+
 alter table votes enable row level security;
 alter table leads enable row level security;
 alter table page_views enable row level security;

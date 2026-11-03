@@ -13,6 +13,7 @@ import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } f
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { categoryScene } from "@/lib/scenes";
+import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -122,6 +123,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                   sizes="40vw"
                   className="object-cover"
                 />
+                {categoryScene(c.id)!.ai && <ExampleChip label="AI-generated example" />}
               </div>
               <figcaption className="mt-3 text-sm text-muted">{categoryScene(c.id)!.caption}</figcaption>
             </figure>
@@ -181,9 +183,10 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
               Every {c.name.toLowerCase()} option, priced
             </h2>
             <p className="mt-3 max-w-2xl text-muted">
-              {inventoryCount} more styles, sizes and finishes from our {site.market}-area rental partners. Prices are per
-              unit for one event day.
+              {inventoryCount} more styles, sizes and finishes from {site.market}-area rental companies. Prices are per
+              unit for one event day, before delivery, setup, damage waiver and tax (typically 35-60% more all-in).
             </p>
+            <PriceDisclaimer className="mt-2 max-w-2xl" vendorLink />
             <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-2">
               {sections.map(([section, rows]) => (
                 <table key={section} className="w-full self-start text-sm">

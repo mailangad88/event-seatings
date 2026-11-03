@@ -58,7 +58,17 @@ export type Lead = {
   lost_reason?: string;
   activity?: LeadActivity[];
   updated_at?: string;
+  // Customer proposal (/proposal/<token>). The rental partner's name stays hidden on it until fee_status is "paid",
+  // so the booking fee (or a refundable hold) is collected before the customer can go to the vendor directly.
+  proposal_token?: string;
+  proposal_created_at?: string;
+  fee_status?: FeeStatus;
+  fee_amount?: number; // USD charged at checkout (booking fee or hold)
+  fee_paid_at?: string;
+  stripe_session_id?: string;
 } & Partial<Record<TrackingField, string>>;
+
+export type FeeStatus = "unpaid" | "paid" | "refunded";
 
 // Pipeline stages, in order. Follows the customer success playbook, with a vendor step for the
 // referral model (we book the event with a partner rental company).
@@ -241,8 +251,36 @@ export async function getLead(id: string): Promise<Lead | undefined> {
 }
 
 export type LeadPatch = Partial<
-  Pick<Lead, "status" | "assigned_vendor" | "follow_up_at" | "lost_reason" | "activity" | "followup_step" | "followup_last_at" | "opted_out_at">
+  Pick<
+    Lead,
+    | "status"
+    | "assigned_vendor"
+    | "follow_up_at"
+    | "lost_reason"
+    | "activity"
+    | "proposal_token"
+    | "proposal_created_at"
+    | "fee_status"
+    | "fee_amount"
+    | "fee_paid_at"
+    | "stripe_session_id"
+    | "followup_step"
+    | "followup_last_at"
+    | "opted_out_at"
+  >
 >;
+
+// Looks up the lead behind a customer proposal link. Tokens are random 32-character strings, so the link is the key.
+export async function getLeadByProposalToken(token: string): Promise<Lead | undefined> {
+  if (!/^[a-f0-9]{32}$/.test(token)) return undefined;
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("leads").select("*").eq("proposal_token", token).maybeSingle();
+    if (error) throw error;
+    return data ?? undefined;
+  }
+  return (await readLocal()).leads.find((l) => l.proposal_token === token);
+}
 
 // Applies CRM edits and appends `log` to the lead's activity timeline in one write.
 export async function updateLead(id: string, patch: LeadPatch, log: Omit<LeadActivity, "at">[] = []) {

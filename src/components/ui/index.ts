@@ -8,6 +8,7 @@ export { Figure } from "./Figure";
 export { Icon, iconNames, type IconName } from "./Icon";
 export { JsonLd } from "./JsonLd";
 export { PageHero } from "./PageHero";
+export { PriceDisclaimer, PRICE_DISCLAIMER } from "./PriceDisclaimer";
 export { PriceTag, formatPrice } from "./PriceTag";
 export { ProductCard, ProductGrid, type ProductImage } from "./ProductCard";
 export { QuoteCard } from "./QuoteCard";

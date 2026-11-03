@@ -58,6 +58,7 @@ export function Footer() {
               ["/faq", "FAQ"],
               ["/about", "About us"],
               ["/partners", "For rental companies"],
+              ["/vendor-listings", "Vendor listings & opt-out"],
             ].map(([href, label]) => (
               <li key={href}>
                 <Link href={href} className="transition-colors hover:text-ink">{label}</Link>

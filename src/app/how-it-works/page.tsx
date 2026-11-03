@@ -4,11 +4,11 @@ import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
 import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
-import { site } from "@/lib/site";
+import { replyPromise, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "How Event Rentals Work: One Quote for Everything",
-  description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more, pay nothing until a vendor confirms, and we coordinate insured Chicago-area rental companies from delivery to pickup.`,
+  description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more, pay nothing until a vendor confirms, and we coordinate vetted Chicago-area rental companies from delivery to pickup.`,
   alternates: { canonical: "/how-it-works" },
 };
 
@@ -28,13 +28,13 @@ const detail = [
   {
     icon: "users",
     title: "3. We confirm with vendors",
-    text: "After a quick call, we check your date with insured Chicago-area rental companies and send one proposal naming each vendor, usually within one business day.",
+    text: "After a quick call, we check your date with vetted Chicago-area rental companies and send one itemized proposal, usually within one business day.",
     points: ["Every fee and policy shown up front", "Substitutes if something is booked", "One contact for every vendor"],
   },
   {
     icon: "truck",
     title: "4. Approve, then relax",
-    text: `Approve your proposal and pay our ${BOOKING_FEE_LABEL} booking fee. The rental company sends its agreement and deposit invoice, and we coordinate delivery, setup and pickup.`,
+    text: `Approve your proposal and pay our ${BOOKING_FEE_LABEL} booking fee to secure it. We then introduce your rental company, which sends its agreement and deposit invoice, and we coordinate delivery, setup and pickup.`,
     points: ["Price locked once you approve", "Backup guarantee if a vendor cancels", "Pickup the same night or next morning"],
   },
 ] as const;
@@ -45,7 +45,7 @@ const faqs: Faq[] = [
   { q: "What if an item is unavailable?", a: "We suggest the closest match in style and price, and you choose whether to swap it." },
   {
     q: `Who actually delivers my rentals?`,
-    a: `Independent Chicago-area rental companies that we vet and that carry liability insurance. ${site.name} is the booking and coordination service: we name your rental company in your proposal, and its rental agreement covers delivery, setup and pickup.`,
+    a: `Independent Chicago-area rental companies that we vet. We ask each one for proof of general liability insurance before we book it. ${site.name} is the booking and coordination service: we share your rental company's name and agreement as soon as you secure your booking, and its rental agreement covers delivery, setup and pickup.`,
   },
   {
     q: "When do I pay, and who do I pay?",
@@ -135,9 +135,9 @@ export default function HowItWorksPage() {
             <ul className="mt-5 space-y-3 text-sm">
               {[
                 "Price lock on your approved proposal",
-                "Only insured, vetted rental companies",
+                "Vetted rental companies, asked for proof of insurance",
                 "Backup guarantee if a vendor cancels",
-                "One coordinator, replies within one business hour",
+                `One coordinator, ${replyPromise}`,
                 "Free changes until 14 days before",
                 "72-hour full refund on our booking fee",
               ].map((t) => (

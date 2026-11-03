@@ -6,6 +6,7 @@ import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { Faqs, JsonLd, Steps, faqJsonLd } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { sampleBudgets } from "@/data/sample-budgets";
+import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ const faqs = [
   },
   {
     q: "Are the prices on this page final?",
-    a: "They are current per-item rental rates for one event day. Your proposal adds delivery, setup, damage waiver and tax for your venue. Items marked \"Est.\" use Chicago-area market rates and are confirmed in your quote.",
+    a: "They are current per-item rental rates for one event day. A delivered event adds delivery and pickup (usually $150-$400 per order), setup and teardown, a damage waiver of about 10% and sales tax, so plan on 35-60% more than the rental total. The quote builder shows that all-in estimate as you go. Items marked \"Est.\" use Chicago-area market rates. Prices are based on local rental companies' published rates plus our booking fee, and your final quote is confirmed by the rental company.",
   },
   {
     q: "Do you deliver to the suburbs?",
@@ -143,6 +144,7 @@ export default function RentalsPage() {
             Three common {site.market} events, priced line by line with today&apos;s rates. Start from one and change
             anything.
           </p>
+          <PriceDisclaimer className="mt-3 max-w-2xl" vendorLink />
           <div className="mt-10 grid gap-8 lg:grid-cols-3">
             {sampleBudgets.map((b) => (
               <BudgetExample key={b.id} budget={b} />

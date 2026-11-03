@@ -70,7 +70,7 @@ export const chicagoLocations: Location[] = [
       },
       {
         q: "Can you deliver chairs to a high-rise building in Chicago?",
-        a: "Yes, we plan high-rise deliveries around freight elevator reservations and loading dock times. Most buildings ask for a certificate of insurance in advance, so share your building's requirements with us when you request a quote.",
+        a: "Yes, we plan high-rise deliveries around freight elevator reservations and loading dock times. Most buildings also ask vendors for a certificate of insurance. We can't issue one ourselves yet, so check your building's rules first and tell us about them when you request a quote.",
       },
       {
         q: "How far ahead should I book chair rentals in Chicago?",
@@ -93,7 +93,7 @@ export const chicagoLocations: Location[] = [
     zips: ["60601", "60602", "60603", "60604", "60606"],
     metaTitle: "Event Chair Rentals in the Loop, Chicago",
     metaDescription:
-      "Chair rentals for Loop corporate events, galas and rooftop weddings. We plan around freight elevators, COIs and dock times. Request a quote for your event.",
+      "Chair rentals for Loop corporate events, galas and rooftop weddings. We plan around freight elevators and dock times. Request a quote for your event.",
     headline: "Chair rentals built for *Loop high-rises*",
     intro:
       "If you need event chairs in the Loop, we deliver, set up and pick up at downtown offices, rooftop decks, historic ballrooms and loft venues. Our planning starts with your building's freight elevator and dock rules so load-in runs on schedule. We're booking 2027 events now; request a quote or set up a quick call to get started.",
@@ -122,7 +122,7 @@ export const chicagoLocations: Location[] = [
     ],
     logistics: [
       "Reserve the freight elevator as early as possible and confirm the cab dimensions. We'll plan stack heights and cart sizes around them.",
-      "Most Loop buildings require a certificate of insurance naming the building and management company. Send us the exact wording your property manager requests.",
+      "Most Loop buildings require a certificate of insurance from vendors. We can't issue one yet, so confirm your building's rules before booking and mention them on your planning call.",
       "Street loading downtown is limited and often ticketed. If your building has a dock, ask for a reserved time; if not, tell us so we can plan the shortest legal stop.",
       "Weekday events usually mean after-hours load-in. Let us know the earliest and latest times the building allows so we can quote setup accurately.",
     ],
@@ -144,11 +144,11 @@ export const chicagoLocations: Location[] = [
     faqs: [
       {
         q: "Can you deliver event chairs to an office building in the Loop?",
-        a: "Yes. We schedule Loop deliveries around your building's dock and freight elevator times, and we can provide a certificate of insurance when the building requires one. Share your building's vendor rules when you request a quote.",
+        a: "Yes. We schedule Loop deliveries around your building's dock and freight elevator times. Many buildings also require a certificate of insurance, which we can't issue yet, so share your building's vendor rules when you request a quote and we'll tell you up front whether we can meet them.",
       },
       {
         q: "What is a COI and why does my Loop venue want one?",
-        a: "A certificate of insurance shows that a vendor carries liability coverage, and many downtown buildings require one before any vendor can load in. Your property manager will usually specify who must be named on it, so pass that wording along to us.",
+        a: "A certificate of insurance shows that a vendor carries liability coverage, and many downtown buildings require one before any vendor can load in. We don't issue certificates of insurance yet, so if your building requires one, tell us before you book and we'll be upfront about whether we can help.",
       },
       {
         q: "Can chairs be set up after business hours downtown?",
@@ -316,7 +316,7 @@ export const chicagoLocations: Location[] = [
       },
       {
         q: "Do you handle corporate offsites in West Loop offices?",
-        a: "Yes, we can deliver to offices for offsites and all-hands meetings, including after-hours setup. Most buildings want a certificate of insurance, which we can provide when you book.",
+        a: "Yes, we can deliver to offices for offsites and all-hands meetings, including after-hours setup. Many buildings also want a certificate of insurance from vendors. We can't issue one yet, so check with your building first.",
       },
       {
         q: "What chairs fit best at long family-style tables?",
@@ -390,7 +390,7 @@ export const chicagoLocations: Location[] = [
     faqs: [
       {
         q: "Can you deliver chairs to a doorman building in the Gold Coast?",
-        a: "Yes. We coordinate with your building on the service entrance, elevator reservation and any insurance certificate it requires. Let us know the building's vendor rules when you request a quote.",
+        a: "Yes. We coordinate with your building on the service entrance, elevator reservation and any building rules. Many buildings also require a vendor certificate of insurance, which we can't issue yet, so check the building's vendor rules and share them when you request a quote.",
       },
       {
         q: "What chairs work for a formal dinner party at home?",
@@ -804,7 +804,7 @@ export const chicagoLocations: Location[] = [
       },
       {
         q: "Can you deliver chairs to my condo building's party room?",
-        a: "Yes. Most condo buildings require advance notice, a reserved service elevator and a certificate of insurance. Ask your management office for its vendor rules and send them to us.",
+        a: "Yes. Most condo buildings require advance notice, a reserved service elevator and often a vendor certificate of insurance. We can't issue a certificate yet, so ask your management office for its vendor rules and share them with us before you book.",
       },
       {
         q: "Will a McCormick Place convention affect my delivery?",

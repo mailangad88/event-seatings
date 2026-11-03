@@ -7,7 +7,9 @@ import { getVendor, type Vendor } from "@/data/vendors";
 import { VendorContact } from "@/components/admin/VendorContact";
 import { usd, type QuoteLine } from "@/lib/catalog-types";
 import { getLead, leadStatuses, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
-import { saveLead } from "../actions";
+import { amountDue, chargeLabel, stripeEnabled } from "@/lib/payments";
+import { site } from "@/lib/site";
+import { createProposal, saveLead, setFeeStatus } from "../actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Lead", robots: { index: false } };
@@ -239,7 +241,47 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
         </div>
 
         <aside className="space-y-6">
-          <form action={saveLead} className={`${card} space-y-4 lg:sticky lg:top-24`}>
+          <section className={card} aria-labelledby="proposal">
+            <h2 id="proposal" className="font-serif text-2xl">Customer proposal</h2>
+            <p className="mt-1 text-sm text-muted">
+              The customer link hides the rental partner until the {chargeLabel().toLowerCase()} is paid.
+              {stripeEnabled() ? " Stripe Checkout is on." : " Stripe is off (no STRIPE_SECRET_KEY), so send a payment link yourself and mark it paid here."}
+            </p>
+            {lead.proposal_token ? (
+              <div className="mt-4 space-y-3 text-sm">
+                <p className="break-all rounded-lg bg-gold-soft/40 p-3 font-mono text-xs">{`${site.url}/proposal/${lead.proposal_token}`}</p>
+                <p>
+                  Fee: <strong>{lead.fee_status === "paid" ? "Paid" : lead.fee_status === "refunded" ? "Refunded" : "Not paid"}</strong>
+                  {" · "}{usd(lead.fee_amount ?? amountDue(lead))}
+                  {lead.fee_paid_at ? ` · ${new Date(lead.fee_paid_at).toLocaleDateString("en-US", { timeZone: "America/Chicago" })}` : ""}
+                </p>
+                {!lead.assigned_vendor && <p className="text-muted">Assign a rental partner below so the customer sees it after paying.</p>}
+                <div className="flex flex-wrap gap-2">
+                  <a href={`/proposal/${lead.proposal_token}`} target="_blank" rel="noopener" className="btn-ghost">Preview</a>
+                  {lead.fee_status === "paid" ? (
+                    <form action={setFeeStatus}>
+                      <input type="hidden" name="id" value={lead.id} />
+                      <input type="hidden" name="fee_status" value="refunded" />
+                      <button className="btn-ghost">Mark refunded</button>
+                    </form>
+                  ) : (
+                    <form action={setFeeStatus}>
+                      <input type="hidden" name="id" value={lead.id} />
+                      <input type="hidden" name="fee_status" value="paid" />
+                      <button className="btn-ghost">Mark paid</button>
+                    </form>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <form action={createProposal} className="mt-4">
+                <input type="hidden" name="id" value={lead.id} />
+                <button className="btn-primary w-full">Create proposal link</button>
+              </form>
+            )}
+          </section>
+
+          <form action={saveLead} className={`${card} space-y-4`}>
             <h2 className="font-serif text-2xl">Update lead</h2>
             <input type="hidden" name="id" value={lead.id} />
             <div>
