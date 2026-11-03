@@ -6,7 +6,7 @@ import { track } from "@/lib/analytics";
 
 // Sticky "Get a quote" bar on phones, on every page that doesn't already have its own bottom bar.
 // Item pages (add to quote), /looks/* (get this look), /quote (continue) and the admin have their own.
-const hidden = [/^\/quote/, /^\/admin/, /^\/rentals\/[^/]+\/[^/]+/, /^\/looks\/[^/]+/, /^\/book/, /^\/partners/];
+const hidden = [/^\/quote/, /^\/admin/, /^\/embed/, /^\/rentals\/[^/]+\/[^/]+/, /^\/looks\/[^/]+/, /^\/book/, /^\/partners/];
 
 export function MobileCtaBar() {
   const pathname = usePathname() ?? "/";
