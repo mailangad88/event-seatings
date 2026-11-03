@@ -54,7 +54,7 @@ export default async function ProposalsPage(props: PageProps<"/admin/proposals">
 
       <nav aria-label="Proposal status" className="mt-8 flex flex-wrap gap-2">
         {tabs.map((t) => (
-          <Link key={t.id} href={t.id === "waiting" ? "/admin/proposals" : `/admin/proposals?tab=${t.id}`} className={t.id === tab ? "chip chip-active" : "chip"} aria-current={t.id === tab ? "page" : undefined}>
+          <Link key={t.id} href={t.id === "waiting" ? "/admin/proposals" : `/admin/proposals?tab=${t.id}`} className={t.id === tab ? "chip-active" : "chip"} aria-current={t.id === tab ? "page" : undefined}>
             {t.label} ({groups[t.id].length})
           </Link>
         ))}
@@ -73,10 +73,13 @@ export default async function ProposalsPage(props: PageProps<"/admin/proposals">
                 <td className="text-right tabular-nums">{money2(amountDue(l))}</td>
                 <td><StagePill status={l.status} /></td>
                 <td className="text-right">
-                  <form action={createProposal}>
-                    <input type="hidden" name="id" value={l.id} />
-                    <button type="submit" className="btn-ghost btn-sm">Create proposal</button>
-                  </form>
+                  <div className="flex flex-wrap justify-end gap-2">
+                    <Link href={`/admin/leads/${l.id}/quote`} className="btn-ghost btn-sm">Edit quote</Link>
+                    <form action={createProposal}>
+                      <input type="hidden" name="id" value={l.id} />
+                      <button type="submit" className="btn-ghost btn-sm">Create proposal</button>
+                    </form>
+                  </div>
                 </td>
               </tr>
             ))}
@@ -94,6 +97,8 @@ export default async function ProposalsPage(props: PageProps<"/admin/proposals">
                 <td>
                   <div className="flex flex-wrap justify-end gap-2">
                     <a href={`/proposal/${l.proposal_token}`} target="_blank" rel="noopener" className="btn-ghost btn-sm">View</a>
+                    {tab === "waiting" && <Link href={`/admin/leads/${l.id}/quote`} className="btn-ghost btn-sm">Edit quote</Link>}
+                    {tab === "paid" && <Link href={`/admin/invoices/receipt/${l.id}`} className="btn-ghost btn-sm">Receipt</Link>}
                     {tab === "waiting" && (
                       <form action={setFeeStatus}>
                         <input type="hidden" name="id" value={l.id} />

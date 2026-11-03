@@ -135,6 +135,8 @@ export type VendorPartner = {
   referral_terms?: string; // e.g. "10% referral fee on rental subtotal"
   notes?: string;
   last_contacted_at?: string; // YYYY-MM-DD
+  // Commission statements (/admin/invoices): month YYYY-MM -> when the statement was sent and when they paid.
+  commission_log?: Record<string, { sent_at?: string; paid_at?: string; amount?: number }>;
   activity?: LeadActivity[];
   updated_at?: string;
 };
@@ -284,6 +286,9 @@ export type LeadPatch = Partial<
     | "followup_last_at"
     | "opted_out_at"
     | "tasks_done"
+    | "items"
+    | "quote_subtotal"
+    | "quote_cost"
   >
 >;
 

@@ -25,6 +25,7 @@ export const adminNav: { group: string; items: Item[] }[] = [
       { href: "/admin/proposals", label: "Proposals", icon: "quote" },
       { href: "/admin/customers", label: "Customers", icon: "users" },
       { href: "/admin/vendors", label: "Vendors", icon: "truck" },
+      { href: "/admin/pricing", label: "Pricing", icon: "chart" },
       { href: "/admin/applications", label: "Vendor applications", icon: "plus" },
     ],
   },
@@ -41,6 +42,7 @@ export const adminNav: { group: string; items: Item[] }[] = [
     group: "Money",
     items: [
       { href: "/admin/payments", label: "Booking fees", icon: "wallet" },
+      { href: "/admin/invoices", label: "Invoices", icon: "quote" },
       { href: "/admin/reports", label: "Sales report", icon: "chart" },
     ],
   },

@@ -37,6 +37,7 @@ export default async function FollowupsPage() {
   }
   const sent = leads.reduce((s, l) => s + (l.followup_step ?? 0), 0);
   const optedOut = new Set(leads.filter((l) => l.opted_out_at).map((l) => l.email.toLowerCase())).size;
+  const eventSending = process.env.EVENT_EMAILS_ENABLED === "true" && !!process.env.RESEND_API_KEY && !!process.env.NOTIFY_FROM;
   const eventEmails = allTasks(leads, partners, today).filter((t) => t.kind === "email" && t.due <= addDays(today, 14));
 
   return (
@@ -83,8 +84,11 @@ export default async function FollowupsPage() {
 
       <Panel title="Event emails, next 2 weeks" className="mt-6">
         <p className="mb-3 text-sm text-muted">
-          For booked events: two weeks out, the day before, and a thank-you after. These are drafts for now. Tap Email draft to open it in your
-          mail app, check it, send it, then tap Done. Due {prettyDay(today)} or earlier shows on Today.
+          For booked events: two weeks out, the day before, and a thank-you after.{" "}
+          {eventSending
+            ? "Automatic sending is on: each one goes out on its day and is ticked off by itself."
+            : "Automatic sending is off, so these are drafts. Tap Email draft to open it in your mail app, send it, then tap Done. Turn on automatic sending in Site settings."}{" "}
+          Anything due {prettyDay(today)} or earlier also shows on Today.
         </p>
         {eventEmails.length === 0 ? <Empty>No event emails due in the next two weeks.</Empty> : <TaskList tasks={eventEmails} today={today} />}
       </Panel>

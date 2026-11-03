@@ -162,7 +162,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
 
       <nav aria-label="Date range" className="mt-6 flex flex-wrap gap-2">
         {ranges.map((r) => (
-          <Link key={r.id} href={r.id === "30" ? "/admin/reports" : `/admin/reports?range=${r.id}`} className={r.id === range.id ? "chip chip-active" : "chip"} aria-current={r.id === range.id ? "page" : undefined}>
+          <Link key={r.id} href={r.id === "30" ? "/admin/reports" : `/admin/reports?range=${r.id}`} className={r.id === range.id ? "chip-active" : "chip"} aria-current={r.id === range.id ? "page" : undefined}>
             {r.label}
           </Link>
         ))}

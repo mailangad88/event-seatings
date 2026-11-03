@@ -58,11 +58,11 @@ export default async function VendorsPage(props: PageProps<"/admin/vendors">) {
       </div>
 
       <nav aria-label="Filter by status" className="mt-6 flex flex-wrap gap-2">
-        <Link href="/admin/vendors" className={!filter ? "chip chip-active" : "chip"}>All {vendors.length}</Link>
+        <Link href="/admin/vendors" className={!filter ? "chip-active" : "chip"}>All {vendors.length}</Link>
         {partnerStatuses.map((s) => {
           const n = vendors.filter((v) => statusOf(v.id) === s.id).length;
           return (
-            <Link key={s.id} href={`/admin/vendors?status=${s.id}`} className={filter === s.id ? "chip chip-active" : "chip"}>
+            <Link key={s.id} href={`/admin/vendors?status=${s.id}`} className={filter === s.id ? "chip-active" : "chip"}>
               {s.label} {n}
             </Link>
           );

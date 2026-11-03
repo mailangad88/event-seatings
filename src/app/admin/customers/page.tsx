@@ -90,7 +90,7 @@ export default async function CustomersPage(props: PageProps<"/admin/customers">
       <div className="mt-8 flex flex-wrap items-center gap-3">
         <nav aria-label="Filter customers" className="flex flex-wrap gap-2">
           {filters.map((f) => (
-            <Link key={f.id} href={href(f.id)} className={f.id === filter ? "chip chip-active" : "chip"}>{f.label}</Link>
+            <Link key={f.id} href={href(f.id)} className={f.id === filter ? "chip-active" : "chip"}>{f.label}</Link>
           ))}
         </nav>
         <form className="ml-auto flex gap-2" action="/admin/customers">

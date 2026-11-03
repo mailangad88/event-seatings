@@ -38,8 +38,8 @@ export default async function WeekPage(props: PageProps<"/admin/week">) {
         intro={`Everything to cover from ${prettyDay(today)} to ${prettyDay(end)}: events, reminder calls, emails, rental partner checks and follow-ups. ${total} to-do${total === 1 ? "" : "s"} in all.`}
         actions={
           <>
-            <Link href="/admin/week" className={span === 7 ? "chip chip-active" : "chip"}>7 days</Link>
-            <Link href="/admin/week?days=14" className={span === 14 ? "chip chip-active" : "chip"}>14 days</Link>
+            <Link href="/admin/week" className={span === 7 ? "chip-active" : "chip"}>7 days</Link>
+            <Link href="/admin/week?days=14" className={span === 14 ? "chip-active" : "chip"}>14 days</Link>
           </>
         }
       />

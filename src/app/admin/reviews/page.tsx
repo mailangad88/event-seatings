@@ -74,7 +74,7 @@ export default async function AdminReviewsPage(props: PageProps<"/admin/reviews"
 
       <nav className="mt-8 flex gap-2">
         {tabs.map((t) => (
-          <Link key={t.id} href={`/admin/reviews?tab=${t.id}`} className={t.id === tab ? "chip chip-active" : "chip"}>
+          <Link key={t.id} href={`/admin/reviews?tab=${t.id}`} className={t.id === tab ? "chip-active" : "chip"}>
             {t.label} ({reviews.filter((r) => r.status === t.id).length})
           </Link>
         ))}

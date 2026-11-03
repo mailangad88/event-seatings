@@ -18,6 +18,7 @@ const groups: { title: string; rows: { name: string; what: string; ok: boolean; 
       { name: "Email sending", what: "Confirmations to customers and new-lead alerts to you.", ok: on("RESEND_API_KEY", "NOTIFY_FROM"), keys: "RESEND_API_KEY, NOTIFY_FROM" },
       { name: "Your alert inbox", what: "Where new requests and paid fees are sent.", ok: on("NOTIFY_EMAIL"), keys: "NOTIFY_EMAIL" },
       { name: "Automatic follow-ups", what: "Daily follow-up emails after someone sends a form.", ok: process.env.FOLLOWUPS_ENABLED === "true" && on("CRON_SECRET"), keys: "FOLLOWUPS_ENABLED=true, CRON_SECRET" },
+      { name: "Automatic event emails", what: "Two-weeks-out, day-before and thank-you emails to customers, and order details to rental partners.", ok: process.env.EVENT_EMAILS_ENABLED === "true" && on("CRON_SECRET"), keys: "EVENT_EMAILS_ENABLED=true, CRON_SECRET" },
       { name: "Admin password", what: "Locks this back office.", ok: on("ADMIN_PASSWORD"), keys: "ADMIN_PASSWORD" },
     ],
   },
