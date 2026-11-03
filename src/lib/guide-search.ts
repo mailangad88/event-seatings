@@ -3,6 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import MiniSearch from "minisearch";
 import { answerTopics } from "@/data/answers";
+import { ideaPath, ideas, partyTypes, typePath } from "@/data/party-ideas";
 
 // Full-text search over the site's own guides (content/blog) and the /answers hub, used by the planning
 // assistant. MiniSearch (MIT) runs in memory; the index is built once per server instance on first use.
@@ -54,6 +55,12 @@ async function passages(): Promise<Passage[]> {
   );
   for (const t of answerTopics)
     t.answers.forEach((a, i) => out.push({ id: `answers-${t.id}-${i}`, url: a.link?.href ?? `/answers#${t.id}`, title: t.title, heading: a.q, text: a.a }));
+  // Party ideas: each type's FAQs and setups, and each theme's summary.
+  for (const t of partyTypes) {
+    t.faqs.forEach((f, i) => out.push({ id: `party-${t.slug}-faq-${i}`, url: typePath(t.slug), title: `${t.name} ideas`, heading: f.q, text: f.a }));
+    t.setups.forEach((x, i) => out.push({ id: `party-${t.slug}-setup-${i}`, url: typePath(t.slug), title: `${t.name} ideas`, heading: `${x.title} (${x.where})`, text: x.text }));
+  }
+  for (const idea of ideas) out.push({ id: `idea-${idea.slug}`, url: ideaPath(idea), title: idea.name, heading: idea.tagline, text: idea.summary });
   return out;
 }
 
