@@ -37,6 +37,11 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): 58 occasion and party rental guides
+
+- Added 58 posts (see "Occasion and party rental guides" below): Thanksgiving week delivery timing, Diwali card parties, Wigilia, Feast of the Seven Fishes, Las Posadas, tamaladas, Noche Buena, Christmas dinner for 20, Santa photos, craft fairs, New Year's Day open house, Orthodox Christmas, Three Kings Day, Lohri, hot pot, Tet, Seollal, Paczki Day, Valentine's, Nowruz, St. Patrick's, Pascha, Vaisakhi, Cinco de Mayo, Derby, Pride, El Grito, Oktoberfest, Yom Kippur, Sukkot, Mid-Autumn, Durga Puja, Griha Pravesh, and 15+ rental tip guides.
+- Remaining: occasion-specific hero images (posts use topic art), re-check cultural details with someone from each community when possible.
+
 ## Changes in this release (2026-11-03): SEO / AEO / GEO audit and local landing pages
 
 **Automated audit.** `npm run seo-audit` (`scripts/seo-audit.mjs`) builds nothing itself: after `npm run build` it starts the production server, reads `/sitemap.xml`, `/robots.txt` and `/llms.txt`, crawls every sitemap URL and scores each page out of 100. GitHub Actions (`.github/workflows/seo-audit.yml`) runs it on every pull request and push to main, and fails on any blocking error or a site score under 90. The report is written to `reports/seo-audit.md` and `.json` (uploaded as a CI artifact, not committed).
@@ -935,6 +940,71 @@ Columns: SEO = title, description, keyword, canonical; AEO = answer box + FAQ sc
 | `/blog/suburban-park-district-pavilion-rentals` | park pavilion rental chicago suburbs | 2026-11-02 | 1199 | 7 | Real photo hero; review after Search Console data |
 | `/blog/summer-event-heat-plan-chicago` | summer event heat plan chicago | 2026-11-02 | 1088 | 7 | Real photo hero; review after Search Console data |
 | `/blog/warehouse-and-raw-space-event-venues` | warehouse event venue rental checklist | 2026-11-02 | 1071 | 7 | Real photo hero; review after Search Console data |
+
+## Occasion and party rental guides (added 2026-11-03)
+
+58 new posts: holidays and cultural occasions from Thanksgiving through next fall (seasonal ones first), plus party rental tips most hosts learn too late (hidden fees, lead times, counting items, winter delivery, snow load, propane, floors). Every post: answer box, inline SVG figure plus 2+ more visual blocks, 6 FAQs (FAQPage schema), Chicago notes, /book and /quote CTA. All pass `check-posts.mjs` and `check-copy.mjs`.
+
+| Route | Keyword | Last touched | Topic | Words | FAQs | Visuals | Remaining to improve |
+|---|---|---|---|---|---|---|---|
+| `/blog/christmas-dinner-for-20-rentals-and-seating` | christmas dinner for 20 rentals | 2026-11-03 | Parties | 1362 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/christmas-pageant-and-concert-seating` | christmas pageant seating | 2026-11-03 | Corporate & Nonprofit | 1042 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/cinco-de-mayo-party-planning` | cinco de mayo party planning | 2026-11-03 | Parties | 1065 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/diwali-card-party-table-setup` | diwali card party table setup | 2026-11-03 | Cultural Celebrations | 1268 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/durga-puja-community-celebration-planning` | durga puja community celebration planning | 2026-11-03 | Cultural Celebrations | 1503 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/el-grito-mexican-independence-day-party` | el grito mexican independence day party | 2026-11-03 | Cultural Celebrations | 1410 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/event-rental-hidden-fees-checklist` | event rental hidden fees | 2026-11-03 | Budget & Booking | 1181 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/event-rental-order-minimums` | event rental order minimum | 2026-11-03 | Budget & Booking | 1001 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/feast-of-the-seven-fishes-dinner-setup` | feast of the seven fishes dinner setup | 2026-11-03 | Cultural Celebrations | 1322 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/first-time-renting-party-equipment-guide` | first time renting party equipment | 2026-11-03 | Budget & Booking | 1298 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/galentines-day-brunch-party` | galentines day brunch party | 2026-11-03 | Parties | 1098 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/griha-pravesh-housewarming-puja-setup` | griha pravesh housewarming puja setup | 2026-11-03 | Cultural Celebrations | 1506 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/holiday-cookie-exchange-party-setup` | holiday cookie exchange party setup | 2026-11-03 | Parties | 1246 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/holiday-craft-fair-vendor-tables-setup` | holiday craft fair vendor tables setup | 2026-11-03 | Corporate & Nonprofit | 1101 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/holiday-weekend-event-rentals-chicago` | holiday weekend event rentals chicago | 2026-11-03 | Budget & Booking | 1431 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/hot-pot-party-for-a-crowd-setup` | hot pot party setup | 2026-11-03 | Cultural Celebrations | 1214 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/how-to-count-rentals-at-delivery-and-pickup` | count rentals at delivery | 2026-11-03 | Budget & Booking | 927 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/how-to-negotiate-an-event-rental-quote` | how to negotiate an event rental quote | 2026-11-03 | Budget & Booking | 1189 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/keeping-rentals-safe-overnight-outdoors` | rental chairs left outside overnight | 2026-11-03 | Budget & Booking | 948 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/kentucky-derby-party-planning` | kentucky derby party planning | 2026-11-03 | Parties | 1491 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/las-posadas-party-planning-chicago` | las posadas party planning | 2026-11-03 | Cultural Celebrations | 1236 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/lohri-bonfire-night-planning` | lohri bonfire night planning | 2026-11-03 | Cultural Celebrations | 1111 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/marriage-proposal-setup-rentals` | marriage proposal setup rentals | 2026-11-03 | Parties | 1166 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/measure-before-you-rent-doors-gates-stairs` | measure doors gates before renting event equipment | 2026-11-03 | Budget & Booking | 1106 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/mid-autumn-festival-mooncake-gathering` | mid-autumn festival gathering | 2026-11-03 | Cultural Celebrations | 1384 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/new-years-day-brunch-open-house` | new year's day brunch open house | 2026-11-03 | Parties | 1071 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/noche-buena-filipino-christmas-eve-party` | noche buena filipino christmas eve party | 2026-11-03 | Cultural Celebrations | 1165 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/nowruz-haft-sin-party-planning` | nowruz haft sin party | 2026-11-03 | Cultural Celebrations | 1145 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/oktoberfest-party-at-home` | oktoberfest party at home | 2026-11-03 | Parties | 1279 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/orthodox-christmas-eve-dinner-january` | orthodox christmas eve dinner | 2026-11-03 | Cultural Celebrations | 1145 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/orthodox-easter-pascha-lamb-roast-party` | orthodox easter party | 2026-11-03 | Cultural Celebrations | 1137 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/paczki-day-and-mardi-gras-party` | paczki day party | 2026-11-03 | Parties | 1046 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/patio-heater-propane-how-much-and-who-supplies` | patio heater propane tank how long does it last | 2026-11-03 | Lighting & Power | 1342 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/photos-with-santa-event-setup` | photos with santa event setup | 2026-11-03 | Corporate & Nonprofit | 1214 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/pride-party-planning-chicago` | pride party planning chicago | 2026-11-03 | Parties | 1349 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/protecting-floors-for-a-home-party` | protect floors rental chairs tables home party | 2026-11-03 | Budget & Booking | 964 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/rental-booking-lead-times-by-item` | how far ahead to book event rentals | 2026-11-03 | Budget & Booking | 1250 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/renting-a-space-for-a-new-years-eve-party-chicago` | new years eve party venue rental chicago | 2026-11-03 | Parties | 1312 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/seollal-korean-new-year-gathering` | seollal korean new year gathering | 2026-11-03 | Cultural Celebrations | 1184 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/st-patricks-day-party-planning-chicago` | st patricks day party chicago | 2026-11-03 | Parties | 1043 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/sukkot-sukkah-dinner-seating` | sukkah dinner seating | 2026-11-03 | Cultural Celebrations | 1449 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/tailgate-party-rentals-chicago` | tailgate party rentals chicago | 2026-11-03 | Parties | 1248 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/tamalada-tamale-making-party-setup` | tamalada tamale making party setup | 2026-11-03 | Cultural Celebrations | 1224 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/tent-in-winter-snow-load-chicago` | winter tent rental Chicago snow load | 2026-11-03 | Tents | 1095 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/tet-vietnamese-new-year-celebration` | tet vietnamese new year celebration | 2026-11-03 | Cultural Celebrations | 1073 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/thanksgiving-week-rental-delivery-and-pickup` | thanksgiving rental delivery and pickup | 2026-11-03 | Parties | 1345 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/three-kings-day-rosca-party` | three kings day rosca party | 2026-11-03 | Cultural Celebrations | 1077 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/ugly-sweater-party-planning` | ugly sweater party planning | 2026-11-03 | Parties | 1173 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/us-citizenship-celebration-party` | us citizenship celebration party ideas | 2026-11-03 | Parties | 1354 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/vaisakhi-celebration-planning` | vaisakhi celebration planning | 2026-11-03 | Cultural Celebrations | 1048 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/valentines-day-dinner-party-at-home` | valentines day dinner party at home | 2026-11-03 | Parties | 1029 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/wake-and-visitation-at-home-seating` | wake at home seating setup | 2026-11-03 | Parties | 1344 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/weekend-event-rental-pricing-friday-to-monday` | weekend event rental pricing | 2026-11-03 | Budget & Booking | 972 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/wigilia-polish-christmas-eve-dinner-setup` | wigilia dinner setup | 2026-11-03 | Cultural Celebrations | 1425 | 6 | 3 | Add a styled scene photo for this occasion |
+| `/blog/winter-event-rental-delivery-snow-and-ice` | winter event rental delivery Chicago snow | 2026-11-03 | Seasons & Venues | 1060 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/winter-kids-birthday-party-indoors-chicago` | winter kids birthday party indoors | 2026-11-03 | Parties | 1441 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/wrong-or-short-rental-order-what-to-do` | rental order wrong or short what to do | 2026-11-03 | Budget & Booking | 1399 | 6 | 4 | Add a styled scene photo for this occasion |
+| `/blog/yom-kippur-break-fast-for-a-crowd` | yom kippur break-fast for a crowd | 2026-11-03 | Cultural Celebrations | 1327 | 6 | 3 | Add a styled scene photo for this occasion |
 
 ## Generated, metadata and API routes
 
