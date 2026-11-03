@@ -6,6 +6,7 @@ import { addDays, ago, chicagoDay, eventLine, isClosed, isConfirmed, isoDaysAgo,
 import { listBlockedDates } from "@/lib/availability";
 import { allTasks } from "@/lib/event-tasks";
 import { listLeads, listPartners, type Lead } from "@/lib/store";
+import { listVendorApplications } from "@/lib/vendor-applications";
 import { TaskList } from "@/components/admin/TaskList";
 import { markContacted } from "./leads/actions";
 
@@ -34,7 +35,7 @@ function LeadRow({ l, right, action }: { l: Lead; right?: React.ReactNode; actio
 export default async function TodayPage() {
   const today = chicagoDay();
   const weekEnd = addDays(today, 7);
-  const [leads, blocked, partners] = await Promise.all([listLeads(), listBlockedDates(today), listPartners()]);
+  const [leads, blocked, partners, applications] = await Promise.all([listLeads(), listBlockedDates(today), listPartners(), listVendorApplications()]);
   const people = leads.filter((l) => l.kind !== "partner");
 
   const fresh = people
@@ -49,7 +50,11 @@ export default async function TodayPage() {
   const confirmedThisWeek = thisWeek.filter(isConfirmed);
   const unpaid = people.filter((l) => l.proposal_token && (l.fee_status ?? "unpaid") === "unpaid");
   const unpaidTotal = unpaid.reduce((s, l) => s + (l.fee_amount ?? 0), 0);
-  const vendorApps = leads.filter((l) => l.kind === "partner" && stage(l) === "new");
+  // Rental companies waiting on us: full applications (/partners) plus older short partner forms still marked New.
+  const vendorApps = [
+    ...applications.filter((a) => a.status === "submitted").map((a) => ({ id: a.id, name: a.company, at: a.created_at, href: `/admin/applications/${a.id}` })),
+    ...leads.filter((l) => l.kind === "partner" && stage(l) === "new").map((l) => ({ id: l.id, name: l.name || l.email, at: l.created_at, href: `/admin/leads/${l.id}` })),
+  ].sort((a, b) => b.at.localeCompare(a.at));
 
   const tasks = allTasks(people, partners, today);
   const tasksDue = tasks.filter((t) => t.due <= today);
@@ -70,10 +75,10 @@ export default async function TodayPage() {
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Tile label="New, not contacted" value={fresh.length} note="Reply within a business hour" href="/admin/leads?status=new" alert={fresh.length > 0} />
-        <Tile label="To-dos due" value={tasksDue.length + due.length} note={`${calls} call${calls === 1 ? "" : "s"} · ${due.length} follow-up${due.length === 1 ? "" : "s"}`} href="/admin/week" alert={tasksDue.length + due.length > 0} />
-        <Tile label="Events in the next 7 days" value={thisWeek.length} note={`${confirmedThisWeek.length} confirmed with a rental partner`} href="/admin/calendar" />
-        <Tile label="Fees waiting" value={money0(unpaidTotal)} note={`${unpaid.length} proposal${unpaid.length === 1 ? "" : "s"} not paid yet`} href="/admin/proposals" />
+        <Tile tone="wine" label="New, not contacted" value={fresh.length} note="Reply within a business hour" href="/admin/leads?status=new" alert={fresh.length > 0} />
+        <Tile tone="gold" label="To-dos due" value={tasksDue.length + due.length} note={`${calls} call${calls === 1 ? "" : "s"} · ${due.length} follow-up${due.length === 1 ? "" : "s"}`} href="/admin/week" alert={tasksDue.length + due.length > 0} />
+        <Tile tone="blue" label="Events in the next 7 days" value={thisWeek.length} note={`${confirmedThisWeek.length} confirmed with a rental partner`} href="/admin/calendar" />
+        <Tile tone="amber" label="Fees waiting" value={money0(unpaidTotal)} note={`${unpaid.length} proposal${unpaid.length === 1 ? "" : "s"} not paid yet`} href="/admin/proposals" />
       </div>
 
       <Panel title="Calls, emails and vendor checks due" more={{ href: "/admin/week", label: "This week" }} className="mt-8">
@@ -202,15 +207,15 @@ export default async function TodayPage() {
             </ul>
           )}
         </Panel>
-        <Panel title="Rental companies asking to join" more={{ href: "/admin/leads?kind=partner", label: "See them" }}>
+        <Panel title="Rental companies asking to join" more={{ href: "/admin/applications", label: "Vendor applications" }}>
           {vendorApps.length === 0 ? (
             <Empty>No new sign-ups from rental companies.</Empty>
           ) : (
             <ul className="space-y-1.5 text-sm">
-              {vendorApps.slice(0, 6).map((l) => (
-                <li key={l.id}>
-                  <Link href={`/admin/leads/${l.id}`} className="text-accent">{l.name || l.email}</Link>
-                  <span className="text-muted"> · {ago(l.created_at)}</span>
+              {vendorApps.slice(0, 6).map((a) => (
+                <li key={a.id}>
+                  <Link href={a.href} className="text-accent">{a.name}</Link>
+                  <span className="text-muted"> · {ago(a.at)}</span>
                 </li>
               ))}
             </ul>

@@ -16,18 +16,31 @@ export function AdminHeader({ group, title, intro, actions }: { group: string; t
   );
 }
 
-export function Tile({ label, value, note, href, alert }: { label: string; value: React.ReactNode; note?: React.ReactNode; href?: string; alert?: boolean }) {
+const toneClass = {
+  wine: "stat-wine",
+  green: "stat-green",
+  gold: "stat-gold",
+  amber: "stat-amber",
+  blue: "stat-blue",
+  rose: "stat-rose",
+} as const;
+export type Tone = keyof typeof toneClass;
+
+// Stat card with a coloured top border: wine = sales, green = money in, amber = waiting or owed,
+// blue = dates and events, gold = quotes, rose = needs attention now (alert).
+export function Tile({ label, value, note, href, alert, tone = "wine" }: { label: string; value: React.ReactNode; note?: React.ReactNode; href?: string; alert?: boolean; tone?: Tone }) {
+  const cls = `stat-card block ${toneClass[alert ? "rose" : tone]}`;
   const body = (
     <>
-      <p className="text-xs tracking-wider text-muted uppercase">{label}</p>
-      <p className={`mt-2 font-serif text-4xl tabular-nums ${alert ? "text-rose" : ""}`}>{value}</p>
-      {note && <p className="mt-1 text-xs text-muted">{note}</p>}
+      <p className="stat-label">{label}</p>
+      <p className="stat-value">{value}</p>
+      {note && <p className="mt-2 text-xs text-muted">{note}</p>}
     </>
   );
   return href ? (
-    <Link href={href} className="card card-hover block min-w-0 p-5">{body}</Link>
+    <Link href={href} className={`${cls} card-hover`}>{body}</Link>
   ) : (
-    <div className="card min-w-0 p-5">{body}</div>
+    <div className={cls}>{body}</div>
   );
 }
 
@@ -46,26 +59,26 @@ export function Panel({ title, more, children, className = "" }: { title: string
 export const Empty = ({ children }: { children: React.ReactNode }) => <p className="text-sm text-muted">{children}</p>;
 
 const tones: Record<string, string> = {
-  new: "bg-gold-soft text-ink ring-1 ring-gold/40",
-  contacted: "bg-surface-2 text-ink",
-  consult_booked: "bg-surface-2 text-ink",
-  quote_sent: "bg-surface-2 text-ink",
-  vendor_confirmed: "bg-sage text-white",
-  booked: "bg-sage text-white",
-  completed: "bg-ink text-bg",
-  future_season: "bg-surface-2 text-muted",
-  lost: "bg-surface-2 text-muted line-through",
+  new: "badge-amber",
+  contacted: "badge-blue",
+  consult_booked: "badge-blue",
+  quote_sent: "badge-wine",
+  vendor_confirmed: "badge-green",
+  booked: "badge-green",
+  completed: "badge",
+  future_season: "badge",
+  lost: "badge-rose",
 };
 
 export function StagePill({ status }: { status?: string }) {
-  return <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs whitespace-nowrap ${tones[status ?? "new"] ?? tones.new}`}>{statusLabel(status)}</span>;
+  return <span className={`${tones[status ?? "new"] ?? tones.new} whitespace-nowrap`}>{statusLabel(status)}</span>;
 }
 
 export function FeePill({ status }: { status?: string }) {
   const s = status ?? "unpaid";
-  const tone = s === "paid" ? "bg-sage text-white" : s === "refunded" ? "bg-surface-2 text-muted" : "bg-rose text-white";
+  const tone = s === "paid" ? "badge-green" : s === "refunded" ? "badge" : "badge-amber";
   const label = s === "paid" ? "Paid" : s === "refunded" ? "Refunded" : "Not paid";
-  return <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs whitespace-nowrap ${tone}`}>{label}</span>;
+  return <span className={`${tone} whitespace-nowrap`}>{label}</span>;
 }
 
 export function Table({ head, children, min = 640, right = [] }: { head: string[]; children: React.ReactNode; min?: number; right?: number[] }) {

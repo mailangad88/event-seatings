@@ -57,10 +57,10 @@ export default async function PricingPage(props: PageProps<"/admin/pricing">) {
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Tile label="Items" value={rows.length.toLocaleString()} href="/admin/pricing" />
-        <Tile label="Estimated prices" value={rows.filter((r) => r.estimated).length.toLocaleString()} note="No public price from the vendor" href={href({ f: "estimated" })} />
-        <Tile label="Not checked in 90 days" value={rows.filter((r) => r.stale).length.toLocaleString()} href={href({ f: "stale" })} />
-        <Tile label="Cheaper elsewhere" value={rows.filter((r) => r.cheapest).length.toLocaleString()} note="Another vendor lists it for less" href={href({ f: "cheaper" })} />
+        <Tile tone="wine" label="Items" value={rows.length.toLocaleString()} href="/admin/pricing" />
+        <Tile tone="amber" label="Estimated prices" value={rows.filter((r) => r.estimated).length.toLocaleString()} note="No public price from the vendor" href={href({ f: "estimated" })} />
+        <Tile tone="amber" label="Not checked in 90 days" value={rows.filter((r) => r.stale).length.toLocaleString()} href={href({ f: "stale" })} />
+        <Tile tone="gold" label="Cheaper elsewhere" value={rows.filter((r) => r.cheapest).length.toLocaleString()} note="Another vendor lists it for less" href={href({ f: "cheaper" })} />
       </div>
 
       <div className="mt-8 flex flex-wrap items-center gap-3">

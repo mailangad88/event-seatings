@@ -41,10 +41,10 @@ export default async function PaymentsPage() {
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Tile label="Collected, all time" value={money0(sum(paid))} note={`${paid.length} payments`} />
-        <Tile label="Collected this month" value={money0(sum(monthPaid))} note={`${monthPaid.length} payments`} />
-        <Tile label="Waiting on payment" value={money0(sum(waiting))} note={`${waiting.length} proposals`} href="/admin/proposals" />
-        <Tile label="Refunded" value={money0(sum(refunded))} note={`${refunded.length} refunds`} />
+        <Tile tone="green" label="Collected, all time" value={money0(sum(paid))} note={`${paid.length} payments`} />
+        <Tile tone="green" label="Collected this month" value={money0(sum(monthPaid))} note={`${monthPaid.length} payments`} />
+        <Tile tone="amber" label="Waiting on payment" value={money0(sum(waiting))} note={`${waiting.length} proposals`} href="/admin/proposals" />
+        <Tile tone="rose" label="Refunded" value={money0(sum(refunded))} note={`${refunded.length} refunds`} />
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_22rem]">

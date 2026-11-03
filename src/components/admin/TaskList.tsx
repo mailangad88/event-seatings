@@ -4,7 +4,7 @@ import { eventLine, prettyDay } from "@/lib/admin-view";
 import { kindLabel, mailto, type EventTask } from "@/lib/event-tasks";
 
 const kindTone: Record<EventTask["kind"], string> = {
-  call: "bg-ink text-bg",
+  call: "bg-accent text-accent-ink",
   email: "bg-gold-soft text-ink ring-1 ring-gold/40",
   vendor: "bg-sage text-white",
   check: "bg-surface-2 text-ink",

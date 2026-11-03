@@ -46,10 +46,10 @@ export default async function ProposalsPage(props: PageProps<"/admin/proposals">
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Tile label="Waiting on payment" value={money0(sum(groups.waiting))} note={`${groups.waiting.length} proposals`} href="/admin/proposals" />
-        <Tile label="Ready for a proposal" value={groups.ready.length} note="Priced quotes with no proposal yet" href="/admin/proposals?tab=ready" />
-        <Tile label="Fees paid" value={money0(sum(groups.paid))} note={`${groups.paid.length} paid`} href="/admin/proposals?tab=paid" />
-        <Tile label="Refunded" value={money0(sum(groups.refunded))} note={`${groups.refunded.length} refunded`} href="/admin/proposals?tab=refunded" />
+        <Tile tone="amber" label="Waiting on payment" value={money0(sum(groups.waiting))} note={`${groups.waiting.length} proposals`} href="/admin/proposals" />
+        <Tile tone="gold" label="Ready for a proposal" value={groups.ready.length} note="Priced quotes with no proposal yet" href="/admin/proposals?tab=ready" />
+        <Tile tone="green" label="Fees paid" value={money0(sum(groups.paid))} note={`${groups.paid.length} paid`} href="/admin/proposals?tab=paid" />
+        <Tile tone="rose" label="Refunded" value={money0(sum(groups.refunded))} note={`${groups.refunded.length} refunded`} href="/admin/proposals?tab=refunded" />
       </div>
 
       <nav aria-label="Proposal status" className="mt-8 flex flex-wrap gap-2">

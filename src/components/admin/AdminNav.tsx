@@ -69,7 +69,7 @@ function Links({ path }: { path: string }) {
                     href={it.href}
                     aria-current={on ? "page" : undefined}
                     className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2 text-[15px] transition-colors ${
-                      on ? "bg-ink text-bg" : "text-ink hover:bg-surface-2"
+                      on ? "bg-accent text-accent-ink" : "text-ink hover:bg-surface-2"
                     }`}
                   >
                     <Icon name={it.icon} size={18} />

@@ -75,7 +75,7 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
             return (
               <div key={date} className={`min-h-28 min-w-0 border-r border-b border-line p-1.5 ${date < today ? "opacity-60" : ""}`}>
                 <div className="flex items-center justify-between text-xs">
-                  <span className={date === today ? "rounded-full bg-ink px-1.5 font-bold text-bg" : "text-muted"}>{i + 1}</span>
+                  <span className={date === today ? "rounded-full bg-accent px-1.5 font-bold text-accent-ink" : "text-muted"}>{i + 1}</span>
                   {b && <span className="rounded bg-rose px-1 text-[10px] text-white" title={b.reason}>Blocked</span>}
                 </div>
                 <ul className="mt-1 space-y-1">

@@ -81,10 +81,10 @@ export default async function CustomersPage(props: PageProps<"/admin/customers">
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Tile label="People" value={all.length.toLocaleString()} />
-        <Tile label="Booked with us" value={bookedCount} note={all.length ? `${Math.round((bookedCount / all.length) * 100)}% of everyone` : undefined} />
-        <Tile label="Booked value" value={money0(all.reduce((s, c) => s + c.booked, 0))} note="Rental totals on confirmed events" />
-        <Tile label="Asked more than once" value={all.filter((c) => c.leads.length > 1).length} />
+        <Tile tone="blue" label="People" value={all.length.toLocaleString()} />
+        <Tile tone="green" label="Booked with us" value={bookedCount} note={all.length ? `${Math.round((bookedCount / all.length) * 100)}% of everyone` : undefined} />
+        <Tile tone="green" label="Booked value" value={money0(all.reduce((s, c) => s + c.booked, 0))} note="Rental totals on confirmed events" />
+        <Tile tone="gold" label="Asked more than once" value={all.filter((c) => c.leads.length > 1).length} />
       </div>
 
       <div className="mt-8 flex flex-wrap items-center gap-3">

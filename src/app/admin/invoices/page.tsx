@@ -36,10 +36,10 @@ export default async function InvoicesPage(props: PageProps<"/admin/invoices">) 
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Tile label="Statements to send" value={notSent.length} note={money0(notSent.reduce((t, s) => t + s.commission, 0))} alert={notSent.length > 0} />
-        <Tile label="Commission owed to us" value={money0(unpaid.reduce((t, s) => t + s.commission, 0))} note={`${unpaid.length} statements not paid`} />
-        <Tile label="Commission received" value={money0(paidTotal)} />
-        <Tile label="Customer receipts" value={receipts.length} href="/admin/invoices?tab=receipts" />
+        <Tile tone="amber" label="Statements to send" value={notSent.length} note={money0(notSent.reduce((t, s) => t + s.commission, 0))} alert={notSent.length > 0} />
+        <Tile tone="amber" label="Commission owed to us" value={money0(unpaid.reduce((t, s) => t + s.commission, 0))} note={`${unpaid.length} statements not paid`} />
+        <Tile tone="green" label="Commission received" value={money0(paidTotal)} />
+        <Tile tone="blue" label="Customer receipts" value={receipts.length} href="/admin/invoices?tab=receipts" />
       </div>
 
       <nav aria-label="Invoice type" className="mt-8 flex flex-wrap gap-2">

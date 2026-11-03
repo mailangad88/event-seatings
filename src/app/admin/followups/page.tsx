@@ -50,10 +50,10 @@ export default async function FollowupsPage() {
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Tile label="Automatic sending" value={sending ? "On" : "Off"} note={sending ? "Runs once a day" : "Turn on in Site settings"} href="/admin/settings" alert={!sending} />
-        <Tile label="Ready to go out" value={queue.length} note={sending ? "Goes out in the next daily run" : "Would go out if sending were on"} />
-        <Tile label="Follow-ups sent" value={sent} note="All time" />
-        <Tile label="Unsubscribed" value={optedOut} note="Never emailed again" />
+        <Tile tone="green" label="Automatic sending" value={sending ? "On" : "Off"} note={sending ? "Runs once a day" : "Turn on in Site settings"} href="/admin/settings" alert={!sending} />
+        <Tile tone="blue" label="Ready to go out" value={queue.length} note={sending ? "Goes out in the next daily run" : "Would go out if sending were on"} />
+        <Tile tone="green" label="Follow-ups sent" value={sent} note="All time" />
+        <Tile tone="gold" label="Unsubscribed" value={optedOut} note="Never emailed again" />
       </div>
 
       <Panel title="Next follow-ups" className="mt-8">
