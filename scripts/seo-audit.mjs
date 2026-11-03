@@ -37,7 +37,7 @@ let BASE = opt("base", "");
 
 // Pages that are tools, forms or legal text: they still need a title, canonical, H1 and alt text,
 // but not a long article, a direct answer or FAQs.
-const UTILITY = [/^\/(quote|book|privacy|terms|photo-credits|vendor-listings|quiz|seating-planner|tools\/[^/]+|gallery)$/];
+const UTILITY = [/^\/(quote|book|privacy|terms|photo-credits|vendor-listings|quiz|seating-planner|tools\/[^/]+|gallery|reviews|refer)$/];
 const isUtility = (p) => UTILITY.some((re) => re.test(p));
 
 const RULES = {
@@ -411,6 +411,8 @@ async function main() {
     await pool([...unknown], CONCURRENCY, async (l) => {
       const r = await get(`${BASE}${l}`, 2);
       unknownStatus.set(l, r.status);
+      // noindex pages (forms like /reviews/write) are meant to stay out of the sitemap.
+      if (/<meta name="robots" content="[^"]*noindex/i.test(r.body)) canonicalElsewhere.add(l);
       // A page whose canonical points to another URL is a duplicate by design and belongs out of the sitemap.
       const canon = r.body.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
       if (canon) {
