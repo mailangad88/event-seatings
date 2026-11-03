@@ -1,12 +1,24 @@
+import styled from "@/data/styled-images.json";
 import { rentalImage } from "@/data/rental-images";
 import { site } from "./site";
 
 // Styled 3D tablescape renders (Blender) used for heroes and editorial bands.
 // Portrait 9:16 at 900x1600, plus one wide triptych. Alt text is written for
 // search and AI: what is in the frame, the palette and the occasion.
-export type Scene = { src: string; alt: string; caption: string; width: number; height: number };
+export type Scene = { src: string; alt: string; caption: string; width: number; height: number; ai?: boolean };
 
-export const scenes = {
+// Gemini styled versions (scripts/styled-scenes.py) replace a tablescape when one exists, keyed by file stem.
+const styledAll = styled as Record<string, Omit<Scene, "ai">>;
+function withStyled<T extends Record<string, Scene>>(set: T): { [K in keyof T]: Scene } {
+  return Object.fromEntries(
+    Object.entries(set).map(([k, v]) => {
+      const s = styledAll[v.src.split("/").pop()!.replace(/\.webp$/, "")];
+      return [k, s ? { src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true } : v];
+    }),
+  ) as { [K in keyof T]: Scene };
+}
+
+const baseScenes = {
   blushGarden: {
     src: "/images/scenes/blush-garden-tablescape.webp",
     alt: `Blush garden wedding tablescape rendered by ${site.name}: rose-gold bamboo chairs with ivory cushions, a blush linen banquet table, taper candles and a low white floral runner in front of a twinkle-light drape`,
@@ -57,12 +69,13 @@ export const scenes = {
     height: 1067,
   },
 } satisfies Record<string, Scene>;
+export const scenes = withStyled(baseScenes);
 
 // A 3D render from the rentals set (public/rentals/...), as a Scene.
 export function render(slug: string): Scene {
   const r = rentalImage(slug);
   if (!r) throw new Error(`Missing render: ${slug}`);
-  return { src: r.src, alt: r.alt, caption: r.caption, width: r.width, height: r.height };
+  return { src: r.src, alt: r.alt, caption: r.caption, width: r.width, height: r.height, ai: r.ai };
 }
 
 // Event scenes (16:9) plus the styled tablescapes, so rotating bands don't repeat the same few images.
@@ -113,6 +126,12 @@ const categoryRender: Record<string, string> = {
   lounge: "hero-lounge",
   decor: "flower-wall",
   "games-kids": "hero-parties",
+  // New Gemini event scenes (scripts/styled-scenes.py --new-heroes); skipped until they exist.
+  concessions: "hero-concessions",
+  "photo-booths": "hero-photo-booths",
+  "av-sound": "hero-av",
+  "restrooms-power": "hero-restrooms-power",
+  "fencing-crowd-control": "hero-fencing",
 };
 
 export function categoryScene(id: string): Scene | undefined {

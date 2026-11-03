@@ -3,7 +3,7 @@ import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
-import { imagesFor, rentalImages, styledImage } from "@/data/rental-images";
+import { imagesFor, originalImage, rentalImages, styledImage } from "@/data/rental-images";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockPhotos, stockSrc } from "@/data/stock-photos";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { looks } from "@/data/looks";
@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       images: [
         ...categoryPhotos(c.id).slice(0, 4).map((p) => stockSrc(p, 1200, 800)),
         ...catalogItems
-          .filter((i) => i.categoryId === c.id && !isPhotoFirst(i.id))
+          .filter((i) => i.categoryId === c.id && (!isPhotoFirst(i.id) || !!styledImage(i.id)))
           .map((i) => rentalImagePath(i.id, i.categoryId))
           .filter((src): src is string => !!src)
           .map((src) => `${site.url}${src}`),
@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...catalogItems.map((i) => {
       // Every image on the item page: its own render (main, colour variants, second angle) unless a real
       // photo leads, the chair art, then the real event photos in its gallery.
-      const own = isPhotoFirst(i.id)
+      const own = isPhotoFirst(i.id) && !styledImage(i.id)
         ? []
         : imagesFor(i.id).length
           ? imagesFor(i.id).map((m) => `${site.url}${m.src}`)
@@ -71,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         images: [
           ...own,
           ...(own.length || !i.chairSlug ? [] : img(i.chairSlug)),
-          ...(styledImage(i.id) ? [`${site.url}${styledImage(i.id)!.src}`] : []),
+          ...(styledImage(i.id) && originalImage(i.id) ? [`${site.url}${originalImage(i.id)!.src}`] : []),
           ...gallery.map((p) => stockSrc(p, 1200, 1200)),
         ],
       };

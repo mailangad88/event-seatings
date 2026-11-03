@@ -5,32 +5,20 @@ import { ChairArt } from "@/components/ChairArt";
 import { getCategory, type CategoryId } from "@/data/catalog-products";
 import { getChair } from "@/data/chairs";
 import { isPhotoFirst, photosForItem, stockAlt } from "@/data/stock-photos";
+import { readImageManifest } from "@/lib/image-manifest";
 import { site } from "@/lib/site";
 import { RentalIcon } from "./RentalIcon";
 import { ExampleChip, StockImg } from "./StockPhoto";
 
 // Picks the best visual for a rental item, in order (items in `photoFirst` skip straight to 3):
-// 1. the 3D render at public/rentals/<category folder>/<id>.webp (from the render pipeline),
+// 1. the styled event scene (Gemini, labelled "AI-generated example") or else the 3D render at public/rentals/<category folder>/<id>.webp (from the render pipeline),
 // 2. the chair render/illustration from the chair collection,
 // 3. a real photo of the same item type at an event (Unsplash, labelled "Example photo"),
 // 4. a styled category illustration.
 // Runs on the server at build time, so a render appears as soon as the file is committed.
 
-type ManifestEntry = { src: string; alt?: string; caption?: string };
-
-// Optional manifest from the render pipeline (src/data/rental-images.json) with richer alt text.
-// Read from disk so the site still builds before the renders land.
-let manifest: Record<string, ManifestEntry> | undefined;
-function readManifest() {
-  if (!manifest) {
-    try {
-      manifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/rental-images.json"), "utf8"));
-    } catch {
-      manifest = {};
-    }
-  }
-  return manifest!;
-}
+// Render manifest with the Gemini styled event scenes laid over it (see src/lib/image-manifest.ts).
+const readManifest = readImageManifest;
 
 const exists = (rel: string) => fs.existsSync(path.join(process.cwd(), "public", rel));
 
@@ -59,13 +47,16 @@ export function RentalVisual({
   /** Display width in CSS pixels for real photos (they are served from Unsplash's CDN at this size). */
   photoWidth?: number;
 }) {
-  const photoFirst = isPhotoFirst(item.id);
+  // Photo-first items skip the plain render, but a styled event scene beats a stock photo.
+  const photoFirst = isPhotoFirst(item.id) && !readManifest()[item.id]?.ai;
   const src = photoFirst ? undefined : rentalImagePath(item.id, item.categoryId);
   const alt = rentalAlt(item.name, item.specs, item.id);
   if (src) {
+    const ai = readManifest()[item.id]?.ai && readManifest()[item.id]?.src === src;
     return (
       <div className={`relative overflow-hidden bg-[#efe9df] ${className}`}>
         <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" />
+        {ai && <ExampleChip label="AI-generated example" />}
       </div>
     );
   }

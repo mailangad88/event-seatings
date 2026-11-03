@@ -20,9 +20,29 @@ export type RentalImage = {
   // Angles and colour variants point at the base item they belong to.
   parent?: string;
   variant?: string;
+  /** True when this is a Gemini styled event scene (scripts/styled-scenes.py) laid over the Blender render. */
+  ai?: boolean;
 };
 
-const all = images as Record<string, RentalImage>;
+// Styled event scenes made with Gemini from our own render as the reference (scripts/styled-scenes.py). Each one
+// replaces the render with the same slug everywhere on the site, keeps its category/kind/parent, and is always
+// labelled as an AI-generated example (alt text, chip, IPTC digitalSourceType in the schema).
+// Styled-only entries (no render behind them, e.g. hero-concessions) are new event scenes.
+type StyledEntry = Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height" | "category"> & { kind?: string };
+const styledAll = styled as Record<string, StyledEntry>;
+const originals = images as Record<string, RentalImage>;
+const all: Record<string, RentalImage> = Object.fromEntries([
+  ...Object.entries(originals).map(([slug, img]) => {
+    const s = styledAll[slug];
+    return [slug, s ? { ...img, src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true } : img];
+  }),
+  ...Object.entries(styledAll)
+    .filter(([slug]) => !originals[slug])
+    .map(([slug, s]) => [slug, { src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, category: s.category, kind: "scene" as const, ai: true }]),
+]);
+
+/** The original Blender render, ignoring any styled scene laid over it. */
+export const originalImage = (slug: string): RentalImage | undefined => originals[slug];
 
 export function rentalImage(slug: string): RentalImage | undefined {
   return all[slug];
@@ -83,7 +103,7 @@ export const chairRenderSlug: Record<string, string> = {
 
 /** schema.org ImageObject for one of our own images, with the caption, alt description and licence details
  *  Google Images and AI search read. */
-export function rentalImageJsonLd(img: Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height">) {
+export function rentalImageJsonLd(img: Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height"> & { ai?: boolean }) {
   const url = `${site.url}${img.src}`;
   return {
     "@type": "ImageObject",
@@ -100,12 +120,11 @@ export function rentalImageJsonLd(img: Pick<RentalImage, "src" | "alt" | "captio
     copyrightNotice: `© ${site.name}`,
     license: `${site.url}/terms`,
     acquireLicensePage: `${site.url}/terms`,
+    ...(img.ai ? { digitalSourceType: "http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia" } : {}),
   };
 }
 
-// Styled event scenes made with Gemini from our product image (scripts/styled-scenes.py). Always labelled
-// as AI-generated examples.
-export type StyledImage = Pick<RentalImage, "src" | "category" | "alt" | "caption" | "width" | "height"> & { parent: string };
-const styledAll = styled as Record<string, StyledImage>;
-export const styledImage = (slug: string): StyledImage | undefined => styledAll[slug];
-export const styledImages = Object.entries(styledAll).map(([slug, img]) => ({ slug, ...img }));
+
+/** The styled event scene for a slug, if Gemini has made one. */
+export const styledImage = (slug: string) => (styledAll[slug] ? all[slug] : undefined);
+export const styledImages = rentalImages.filter((i) => i.ai);

@@ -1,5 +1,6 @@
 import "server-only";
-import { existsSync, readFileSync, promises as fs } from "fs";
+import { existsSync, promises as fs } from "fs";
+import { readImageManifest } from "./image-manifest";
 import path from "path";
 import { marked } from "marked";
 import { chairs, getChair } from "@/data/chairs";
@@ -93,26 +94,12 @@ const topicRenders: Record<string, string> = {
   "budget-and-booking": "hero-dinnerware",
 };
 
-let renderAlts: Record<string, string> | null = null;
-function renderAlt(slug: string): string | undefined {
-  if (!renderAlts) {
-    renderAlts = {};
-    try {
-      const data = JSON.parse(readFileSync(path.join(process.cwd(), "src/data/rental-images.json"), "utf8"));
-      const list: unknown[] = Array.isArray(data) ? data : Object.entries(data).map(([k, v]) => ({ slug: k, ...(v as object) }));
-      for (const e of list as { slug?: string; alt?: string }[]) if (e.slug && e.alt) renderAlts[e.slug] = e.alt;
-    } catch {
-      // No render metadata yet.
-    }
-  }
-  return renderAlts[slug];
-}
-
-/** Hero art for a topic: the Blender render when it exists, otherwise the illustrated SVG. */
+/** Hero art for a topic: the styled event scene or Blender render when it exists, otherwise the illustrated SVG. */
 export function topicArt(slug: string, fallbackAlt?: string): { src: string; alt: string; render: boolean } {
   const render = topicRenders[slug];
-  if (render && existsSync(path.join(process.cwd(), "public/rentals/scenes", `${render}.webp`))) {
-    return { src: `/rentals/scenes/${render}.webp`, alt: renderAlt(render) ?? fallbackAlt ?? "", render: true };
+  const entry = render ? readImageManifest()[render] : undefined;
+  if (entry && existsSync(path.join(process.cwd(), "public", entry.src))) {
+    return { src: entry.src, alt: entry.alt ?? fallbackAlt ?? "", render: true };
   }
   return { src: `/blog/art/${slug}.svg`, alt: fallbackAlt ?? "", render: false };
 }

@@ -78,7 +78,7 @@ export default async function QuotePage(props: PageProps<"/quote">) {
   // to keep the page payload small.
   const items: QuoteItem[] = catalogItems.map((i) => {
     // Items with an accurate real photo show it instead of their 3D render (and drop render colour swatches).
-    const photoFirst = isPhotoFirst(i.id);
+    const photoFirst = isPhotoFirst(i.id) && !rentalImage(i.id)?.ai;
     const image = photoFirst ? undefined : (i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId));
     const variants = (photoFirst ? [] : imagesFor(i.id))
       .filter((img) => img.kind === "variant" && img.variant)

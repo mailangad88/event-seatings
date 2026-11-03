@@ -7,7 +7,7 @@ import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from
 import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
-import { imagesFor, rentalImage, rentalImageJsonLd, styledImage } from "@/data/rental-images";
+import { imagesFor, originalImage, rentalImage, rentalImageJsonLd, styledImage } from "@/data/rental-images";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { allInEstimate } from "@/lib/fees";
 import { PriceDisclaimer } from "@/components/ui";
@@ -45,7 +45,7 @@ const plural = (s: string) => (/(s|x|ch|sh)$/.test(s) ? `${s}es` : `${s}s`);
 export async function generateMetadata(props: PageProps<"/rentals/[category]/[item]">): Promise<Metadata> {
   const i = await load(props);
   if (!i) return {};
-  const img = isPhotoFirst(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
   const real = photosForItem(i);
   const og = img
     ? { url: img, alt: rentalAlt(i.name, i.specs, i.id) }
@@ -120,12 +120,14 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const at = siblings.findIndex((x) => x.id === i.id);
   const related = [1, 2, 3, 4].map((n) => siblings[(at + n) % siblings.length]).filter((x, n, a) => x.id !== i.id && a.indexOf(x) === n);
   const pageUrl = `${site.url}${itemHref(i)}`;
-  const img = isPhotoFirst(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
   // Real event photos: the same item type when we have it, otherwise general photos of the category.
   const real = photosForItem(i);
   const gallery = (real.matched ? real.photos : categoryPhotos(i.categoryId)).slice(0, 3);
   const galleryAlt = (p: (typeof gallery)[number]) => stockAlt(p, i.name, real.matched, site.market);
+  // When the hero is a styled event scene, also show the plain render so the exact piece is clear.
   const scene = styledImage(i.id);
+  const plain = scene ? originalImage(i.id) : undefined;
 
   const jsonLd = [
     {
@@ -142,7 +144,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             ? imagesFor(i.id).map((m) => rentalImageJsonLd(m))
             : [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }]
           : []),
-        ...(scene ? [{ ...rentalImageJsonLd(scene), digitalSourceType: "http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia" }] : []),
+        ...(plain ? [rentalImageJsonLd(plain)] : []),
         ...gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))),
       ],
       offers: {
@@ -277,23 +279,22 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </div>
         </div>
 
-        {scene && (
-          <section className="mt-24" aria-labelledby="styled-scene">
-            <p className="eyebrow">At an event</p>
-            <h2 id="styled-scene" className="headline mt-6 text-4xl">
-              {i.name} styled for an event
+        {scene && plain && (
+          <section className="mt-24" aria-labelledby="piece-itself">
+            <p className="eyebrow">The piece itself</p>
+            <h2 id="piece-itself" className="headline mt-6 text-4xl">
+              {i.name} on its own
             </h2>
-            <figure className="mt-8">
-              <div className="media relative overflow-hidden" style={{ aspectRatio: `${scene.width} / ${scene.height}` }}>
+            <p className="mt-4 max-w-2xl text-muted">
+              The photo at the top is an AI-generated example of how this rental can be styled; the guests and venue are
+              not real. This render shows the item itself, built from the rental&apos;s real dimensions.
+            </p>
+            <figure className="mt-8 max-w-xl">
+              <div className="media relative overflow-hidden" style={{ aspectRatio: `${plain.width} / ${plain.height}` }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={scene.src} alt={scene.alt} width={scene.width} height={scene.height} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-                <span className="pointer-events-none absolute bottom-2 left-2 rounded-full bg-black/55 px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] text-white uppercase backdrop-blur-sm">
-                  AI-generated example
-                </span>
+                <img src={plain.src} alt={plain.alt} width={plain.width} height={plain.height} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
               </div>
-              <figcaption className="mt-2 text-xs text-muted">
-                {scene.caption}. An illustration of how this rental can be styled; the guests and venue are not real.
-              </figcaption>
+              <figcaption className="mt-2 text-xs text-muted">{plain.caption}</figcaption>
             </figure>
           </section>
         )}
