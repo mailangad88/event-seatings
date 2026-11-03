@@ -897,13 +897,20 @@ Columns: SEO = title, description, keyword, canonical; AEO = answer box + FAQ sc
 
 ## Local pages: Local landing pages (Chicago neighborhoods + suburbs)
 
-Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts`
+Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts` + `src/data/geo/areas/*.ts` (Nov 3 2026: 246 more areas, 281 total incl. 10 county pages). Check with `npx tsx scripts/check-geo.ts`.
+
+**Fact-check, 2026-11-03 (246 new area pages in `src/data/geo/areas/`):**
+- ZIP codes: all 411 ZIPs across all 281 area pages were checked against a public USPS ZIP dataset (the `zipcodes` npm package). Every one is a real Illinois ZIP. Each sits within 8 miles of its place's coordinates (4 for Chicago neighborhoods, 40 for counties). Where a village shares its ZIP with a neighbor (for example Kildeer, Long Grove and Hawthorn Woods on 60047), the post office name differs; that is expected. Census ZCTA files were blocked from the build environment.
+- Landmarks: nine reviewers checked every named park, forest preserve, Metra/CTA line and station, street, landmark, institution, festival and park-district name against official village, park-district, forest-preserve, Metra and county sources via web search. Totals are approximate, counted by hand: about 1,100 claims checked, about 230 corrected and about 130 removed or softened to general statements. Wikipedia was blocked, so a minority of well-known facts rest on general knowledge plus partial search hits.
+  - Examples of fixes: the Des Plaines McDonald's museum was removed (demolished 2018). Hegewisch is on the South Shore Line, not Metra. Lincolnwood, Libertyville, Lake Zurich and Countryside have no park district. Campton Hills is now described as a village incorporated in 2007.
+  - Per-file logs: project files `reviews/geo-factcheck-2026-11-03/`.
+- Still worth an owner spot-check: claims kept as well-known but not source-confirmed. Each per-file log lists them under "Unresolved".
 
 Every page has: unique local copy, stylised area map, 3 chair picks with renders, venue settings, delivery notes, links to popular event pages, 5 local FAQs, Service + FAQPage + BreadcrumbList schema, geo meta tags, a per-page social card, a "schedule a planning call" CTA, and links to nearby areas.
 
 | Page | URL | Last touched | Remaining |
 |---|---|---|---|
-| Areas hub | /chair-rentals | 2026-10-31 | Add real venue photos; add a short video |
+| Areas hub | /chair-rentals | 2026-11-03 | Grouped by county with jump links (281 areas). Add real venue photos; add a short video |
 | Chicago | /chair-rentals/chicago | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
 | The Loop | /chair-rentals/the-loop | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
 | River North | /chair-rentals/river-north | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
@@ -939,6 +946,252 @@ Every page has: unique local copy, stylised area map, 3 chair picks with renders
 | Barrington | /chair-rentals/barrington | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
 | Skokie | /chair-rentals/skokie | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
 | Wilmette | /chair-rentals/wilmette | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
+| Rogers Park (Cook County) | /chair-rentals/rogers-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Edgewater (Cook County) | /chair-rentals/edgewater | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Uptown (Cook County) | /chair-rentals/uptown | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lincoln Square (Cook County) | /chair-rentals/lincoln-square | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| North Center (Cook County) | /chair-rentals/north-center | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Roscoe Village (Cook County) | /chair-rentals/roscoe-village | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Ravenswood (Cook County) | /chair-rentals/ravenswood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Albany Park (Cook County) | /chair-rentals/albany-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Irving Park (Cook County) | /chair-rentals/irving-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Portage Park (Cook County) | /chair-rentals/portage-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Jefferson Park (Cook County) | /chair-rentals/jefferson-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Norwood Park (Cook County) | /chair-rentals/norwood-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Edison Park (Cook County) | /chair-rentals/edison-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Sauganash (Cook County) | /chair-rentals/sauganash | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| West Ridge (Cook County) | /chair-rentals/west-ridge | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Avondale (Cook County) | /chair-rentals/avondale | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Humboldt Park (Cook County) | /chair-rentals/humboldt-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Ukrainian Village (Cook County) | /chair-rentals/ukrainian-village | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| West Town (Cook County) | /chair-rentals/west-town | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Old Town (Cook County) | /chair-rentals/old-town | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Streeterville (Cook County) | /chair-rentals/streeterville | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Belmont Cragin (Cook County) | /chair-rentals/belmont-cragin | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Dunning (Cook County) | /chair-rentals/dunning | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| North Park (Cook County) | /chair-rentals/north-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Forest Glen (Cook County) | /chair-rentals/forest-glen | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bronzeville (Cook County) | /chair-rentals/bronzeville | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Chinatown (Cook County) | /chair-rentals/chinatown | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bridgeport (Cook County) | /chair-rentals/bridgeport | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Little Italy (Cook County) | /chair-rentals/little-italy | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| McKinley Park (Cook County) | /chair-rentals/mckinley-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Brighton Park (Cook County) | /chair-rentals/brighton-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Little Village (Cook County) | /chair-rentals/little-village | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| East Garfield Park (Cook County) | /chair-rentals/east-garfield-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Austin (Cook County) | /chair-rentals/austin | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| North Lawndale (Cook County) | /chair-rentals/north-lawndale | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Back of the Yards (Cook County) | /chair-rentals/back-of-the-yards | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Beverly (Cook County) | /chair-rentals/beverly | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Mount Greenwood (Cook County) | /chair-rentals/mount-greenwood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Morgan Park (Cook County) | /chair-rentals/morgan-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Kenwood (Cook County) | /chair-rentals/kenwood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Woodlawn (Cook County) | /chair-rentals/woodlawn | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| South Shore (Cook County) | /chair-rentals/south-shore | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Chatham (Cook County) | /chair-rentals/chatham | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Pullman (Cook County) | /chair-rentals/pullman | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Hegewisch (Cook County) | /chair-rentals/hegewisch | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| South Chicago (Cook County) | /chair-rentals/south-chicago | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Washington Park (Cook County) | /chair-rentals/washington-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Englewood (Cook County) | /chair-rentals/englewood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Ashburn (Cook County) | /chair-rentals/ashburn | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Garfield Ridge (Cook County) | /chair-rentals/garfield-ridge | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Archer Heights (Cook County) | /chair-rentals/archer-heights | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| West Lawn (Cook County) | /chair-rentals/west-lawn | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Auburn Gresham (Cook County) | /chair-rentals/auburn-gresham | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Calumet Heights (Cook County) | /chair-rentals/calumet-heights | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Roseland (Cook County) | /chair-rentals/roseland | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| East Side (Cook County) | /chair-rentals/east-side | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Clearing (Cook County) | /chair-rentals/clearing | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Glencoe (Cook County) | /chair-rentals/glencoe | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Winnetka (Cook County) | /chair-rentals/winnetka | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Kenilworth (Cook County) | /chair-rentals/kenilworth | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Northbrook (Cook County) | /chair-rentals/northbrook | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Glenview (Cook County) | /chair-rentals/glenview | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Northfield (Cook County) | /chair-rentals/northfield | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Deerfield (Cook County) | /chair-rentals/deerfield | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lincolnwood (Cook County) | /chair-rentals/lincolnwood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Morton Grove (Cook County) | /chair-rentals/morton-grove | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Niles (Cook County) | /chair-rentals/niles | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Park Ridge (Cook County) | /chair-rentals/park-ridge | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Des Plaines (Cook County) | /chair-rentals/des-plaines | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Mount Prospect (Cook County) | /chair-rentals/mount-prospect | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Prospect Heights (Cook County) | /chair-rentals/prospect-heights | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Wheeling (Cook County) | /chair-rentals/wheeling | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Buffalo Grove (Cook County) | /chair-rentals/buffalo-grove | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Palatine (Cook County) | /chair-rentals/palatine | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Rolling Meadows (Cook County) | /chair-rentals/rolling-meadows | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Hoffman Estates (Cook County) | /chair-rentals/hoffman-estates | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Streamwood (Cook County) | /chair-rentals/streamwood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Elk Grove Village (Cook County) | /chair-rentals/elk-grove-village | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Inverness (Cook County) | /chair-rentals/inverness | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| South Barrington (Cook County) | /chair-rentals/south-barrington | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Harwood Heights (Cook County) | /chair-rentals/harwood-heights | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Norridge (Cook County) | /chair-rentals/norridge | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Rosemont (Cook County) | /chair-rentals/rosemont | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Waukegan (Lake County) | /chair-rentals/waukegan | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| North Chicago (Lake County) | /chair-rentals/north-chicago | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Gurnee (Lake County) | /chair-rentals/gurnee | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Libertyville (Lake County) | /chair-rentals/libertyville | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Mundelein (Lake County) | /chair-rentals/mundelein | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Vernon Hills (Lake County) | /chair-rentals/vernon-hills | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lincolnshire (Lake County) | /chair-rentals/lincolnshire | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Long Grove (Lake County) | /chair-rentals/long-grove | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lake Zurich (Lake County) | /chair-rentals/lake-zurich | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lake Bluff (Lake County) | /chair-rentals/lake-bluff | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Grayslake (Lake County) | /chair-rentals/grayslake | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Round Lake (Lake County) | /chair-rentals/round-lake | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Antioch (Lake County) | /chair-rentals/antioch | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lake Villa (Lake County) | /chair-rentals/lake-villa | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Fox Lake (Lake County) | /chair-rentals/fox-lake | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Zion (Lake County) | /chair-rentals/zion | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Highwood (Lake County) | /chair-rentals/highwood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bannockburn (Lake County) | /chair-rentals/bannockburn | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Hawthorn Woods (Lake County) | /chair-rentals/hawthorn-woods | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Kildeer (Lake County) | /chair-rentals/kildeer | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Wauconda (Lake County) | /chair-rentals/wauconda | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Island Lake (Lake County) | /chair-rentals/island-lake | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Riverwoods (Lake County) | /chair-rentals/riverwoods | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lake Barrington (Lake County) | /chair-rentals/lake-barrington | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Deer Park (Lake County) | /chair-rentals/deer-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Winthrop Harbor (Lake County) | /chair-rentals/winthrop-harbor | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Crystal Lake (McHenry County) | /chair-rentals/crystal-lake | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| McHenry (McHenry County) | /chair-rentals/mchenry | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Woodstock (McHenry County) | /chair-rentals/woodstock | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Algonquin (McHenry County) | /chair-rentals/algonquin | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lake in the Hills (McHenry County) | /chair-rentals/lake-in-the-hills | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Huntley (McHenry County) | /chair-rentals/huntley | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Cary (McHenry County) | /chair-rentals/cary | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Fox River Grove (McHenry County) | /chair-rentals/fox-river-grove | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Harvard (McHenry County) | /chair-rentals/harvard | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Marengo (McHenry County) | /chair-rentals/marengo | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Johnsburg (McHenry County) | /chair-rentals/johnsburg | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Richmond (McHenry County) | /chair-rentals/richmond | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Carpentersville (Kane County) | /chair-rentals/carpentersville | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| East Dundee (Kane County) | /chair-rentals/east-dundee | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| West Dundee (Kane County) | /chair-rentals/west-dundee | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Gilberts (Kane County) | /chair-rentals/gilberts | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Hampshire (Kane County) | /chair-rentals/hampshire | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Pingree Grove (Kane County) | /chair-rentals/pingree-grove | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| South Elgin (Kane County) | /chair-rentals/south-elgin | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bartlett (DuPage County) | /chair-rentals/bartlett | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Hanover Park (Cook County) | /chair-rentals/hanover-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Campton Hills (Kane County) | /chair-rentals/campton-hills | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Elburn (Kane County) | /chair-rentals/elburn | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Sugar Grove (Kane County) | /chair-rentals/sugar-grove | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| North Aurora (Kane County) | /chair-rentals/north-aurora | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Montgomery (Kane County) | /chair-rentals/montgomery | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Oswego (Kendall County) | /chair-rentals/oswego | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Yorkville (Kendall County) | /chair-rentals/yorkville | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Plano (Kendall County) | /chair-rentals/plano | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Addison (DuPage County) | /chair-rentals/addison | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bensenville (DuPage County) | /chair-rentals/bensenville | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Wood Dale (DuPage County) | /chair-rentals/wood-dale | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Itasca (DuPage County) | /chair-rentals/itasca | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Roselle (DuPage County) | /chair-rentals/roselle | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bloomingdale (DuPage County) | /chair-rentals/bloomingdale | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Carol Stream (DuPage County) | /chair-rentals/carol-stream | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Glendale Heights (DuPage County) | /chair-rentals/glendale-heights | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lombard (DuPage County) | /chair-rentals/lombard | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Villa Park (DuPage County) | /chair-rentals/villa-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Elmhurst (DuPage County) | /chair-rentals/elmhurst | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| West Chicago (DuPage County) | /chair-rentals/west-chicago | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Winfield (DuPage County) | /chair-rentals/winfield | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Warrenville (DuPage County) | /chair-rentals/warrenville | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lisle (DuPage County) | /chair-rentals/lisle | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Woodridge (DuPage County) | /chair-rentals/woodridge | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bolingbrook (Will County) | /chair-rentals/bolingbrook | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Darien (DuPage County) | /chair-rentals/darien | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Westmont (DuPage County) | /chair-rentals/westmont | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Clarendon Hills (DuPage County) | /chair-rentals/clarendon-hills | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Burr Ridge (DuPage County) | /chair-rentals/burr-ridge | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Willowbrook (DuPage County) | /chair-rentals/willowbrook | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Oakbrook Terrace (DuPage County) | /chair-rentals/oakbrook-terrace | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Wayne (DuPage County) | /chair-rentals/wayne | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Forest Park (Cook County) | /chair-rentals/forest-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| River Forest (Cook County) | /chair-rentals/river-forest | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Elmwood Park (Cook County) | /chair-rentals/elmwood-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Maywood (Cook County) | /chair-rentals/maywood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Melrose Park (Cook County) | /chair-rentals/melrose-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Berwyn (Cook County) | /chair-rentals/berwyn | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Cicero (Cook County) | /chair-rentals/cicero | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Riverside (Cook County) | /chair-rentals/riverside | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Brookfield (Cook County) | /chair-rentals/brookfield | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| La Grange (Cook County) | /chair-rentals/la-grange | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| La Grange Park (Cook County) | /chair-rentals/la-grange-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Western Springs (Cook County) | /chair-rentals/western-springs | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Countryside (Cook County) | /chair-rentals/countryside | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lyons (Cook County) | /chair-rentals/lyons | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Summit (Cook County) | /chair-rentals/summit | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Burbank (Cook County) | /chair-rentals/burbank | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Oak Lawn (Cook County) | /chair-rentals/oak-lawn | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Evergreen Park (Cook County) | /chair-rentals/evergreen-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Hickory Hills (Cook County) | /chair-rentals/hickory-hills | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Palos Hills (Cook County) | /chair-rentals/palos-hills | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Palos Park (Cook County) | /chair-rentals/palos-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Palos Heights (Cook County) | /chair-rentals/palos-heights | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Worth (Cook County) | /chair-rentals/worth | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Chicago Ridge (Cook County) | /chair-rentals/chicago-ridge | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Alsip (Cook County) | /chair-rentals/alsip | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bridgeview (Cook County) | /chair-rentals/bridgeview | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Willow Springs (Cook County) | /chair-rentals/willow-springs | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lemont (Cook County) | /chair-rentals/lemont | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Orland Hills (Cook County) | /chair-rentals/orland-hills | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Tinley Park (Cook County) | /chair-rentals/tinley-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Oak Forest (Cook County) | /chair-rentals/oak-forest | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Midlothian (Cook County) | /chair-rentals/midlothian | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Blue Island (Cook County) | /chair-rentals/blue-island | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Calumet City (Cook County) | /chair-rentals/calumet-city | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Dolton (Cook County) | /chair-rentals/dolton | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lansing (Cook County) | /chair-rentals/lansing | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| South Holland (Cook County) | /chair-rentals/south-holland | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Homewood (Cook County) | /chair-rentals/homewood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Flossmoor (Cook County) | /chair-rentals/flossmoor | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Olympia Fields (Cook County) | /chair-rentals/olympia-fields | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Matteson (Cook County) | /chair-rentals/matteson | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Park Forest (Cook County) | /chair-rentals/park-forest | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Chicago Heights (Cook County) | /chair-rentals/chicago-heights | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Country Club Hills (Cook County) | /chair-rentals/country-club-hills | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Hazel Crest (Cook County) | /chair-rentals/hazel-crest | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Richton Park (Cook County) | /chair-rentals/richton-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| New Lenox (Will County) | /chair-rentals/new-lenox | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Mokena (Will County) | /chair-rentals/mokena | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Frankfort (Will County) | /chair-rentals/frankfort | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lockport (Will County) | /chair-rentals/lockport | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Homer Glen (Will County) | /chair-rentals/homer-glen | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Plainfield (Will County) | /chair-rentals/plainfield | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Romeoville (Will County) | /chair-rentals/romeoville | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Shorewood (Will County) | /chair-rentals/shorewood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Minooka (Grundy County) | /chair-rentals/minooka | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Channahon (Will County) | /chair-rentals/channahon | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Crest Hill (Will County) | /chair-rentals/crest-hill | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Manhattan (Will County) | /chair-rentals/manhattan | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Monee (Will County) | /chair-rentals/monee | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Crete (Will County) | /chair-rentals/crete | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| University Park (Will County) | /chair-rentals/university-park | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Wilmington (Will County) | /chair-rentals/wilmington | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Cook County | /chair-rentals/cook-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| DuPage County | /chair-rentals/dupage-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| Lake County | /chair-rentals/lake-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| Kane County | /chair-rentals/kane-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| McHenry County | /chair-rentals/mchenry-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| Will County | /chair-rentals/will-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| Kendall County | /chair-rentals/kendall-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| Grundy County | /chair-rentals/grundy-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| DeKalb County | /chair-rentals/dekalb-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| Kankakee County | /chair-rentals/kankakee-county | 2026-11-03 | Real county photo; owner review of facts; add more towns as the vendor network grows |
+| DeKalb (DeKalb County) | /chair-rentals/dekalb | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Sycamore (DeKalb County) | /chair-rentals/sycamore | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Sandwich (DeKalb County) | /chair-rentals/sandwich | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Morris (Grundy County) | /chair-rentals/morris | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Kankakee (Kankakee County) | /chair-rentals/kankakee | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Bourbonnais (Kankakee County) | /chair-rentals/bourbonnais | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Harvey (Cook County) | /chair-rentals/harvey | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Steger (Cook County) | /chair-rentals/steger | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Sauk Village (Cook County) | /chair-rentals/sauk-village | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Lynwood (Cook County) | /chair-rentals/lynwood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Peotone (Will County) | /chair-rentals/peotone | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
+| Braidwood (Will County) | /chair-rentals/braidwood | 2026-11-03 | Real local photo; owner fact-check of landmarks/ZIPs; vary the shared FAQ closing lines; reviews block after first events |
 
 ## Local pages: Event-type pages
 
@@ -1183,3 +1436,12 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 - All results live in the page URL (shareable). Starting percentages (guest yes rates, budget split) are labelled as placeholders, not data. Prices come from the catalog (vendor rate + fee) with the standard disclaimer.
 - Registry: src/data/tools.ts (hub, related tools and sitemap read it). /tools/event-date and /tools/floor-plan belong to the reviews/floor-plans thread and appear automatically once their pages exist.
 - Remaining: Search Console check after 30 days; switch on countdown reminder emails; add Gemini hero images per tool (currently reuses existing renders).
+
+## 2026-11-03: Rental comparisons, vendor onboarding, Lighthouse CI, A/B tests, uptime and error alerts
+- /rental-comparisons + 8 pages (/rental-comparisons/<slug>): round vs banquet tables, frame vs pole tent, clear-top vs white tent, floor vs lap tablecloths, string lights vs uplights, wood-look vs LED dance floor, highboy vs lowboy, patio vs tent heater. Each has two renders, a data-answer, a side-by-side table, "choose X if" verdicts, detail sections, FAQs, Article schema, catalog price links and calculator links. Data: src/data/comparisons.ts. (/compare already holds the booking-model comparisons from the lead-gen thread; the two hubs link to each other.)
+- /partners/onboard: 4-step vendor self-onboarding (company, categories and areas, lead time/minimum/setup, price list and terms). Saved as a `partner` lead, source `partner-onboard`, with every answer in the message. Price list template: /dl/vendor-onboarding/price-list-template.csv. Linked from /partners.
+- Lighthouse CI (.github/workflows/lighthouse.yml + lighthouserc.json): runs after each Vercel production deploy, weekly on Mondays and on demand, against 6 key pages. Warn-only assertions for performance, image formats/sizing, LCP, CLS, a11y and SEO. Reports go to Lighthouse's free temporary storage (links in the run log).
+- GrowthBook A/B tests (src/lib/experiments.ts, `useFeatureValue`): off until NEXT_PUBLIC_GROWTHBOOK_CLIENT_KEY is set. First test wired: feature `tool-quote-cta` = the label of the main button under every calculator (default "Price these rentals"). Exposures go to GA4 as `experiment_viewed`.
+- Alerts: src/instrumentation.ts (server errors) and src/instrumentation-client.ts -> /api/client-errors (browser errors, max 3 per page view) post to ALERT_WEBHOOK_URL (Slack or Discord, free) with a 10-minute throttle; logged only when unset. /api/health for uptime. .github/workflows/uptime.yml checks 6 URLs every 15 minutes; a failed run notifies the repo owner, plus the webhook if the ALERT_WEBHOOK_URL repo secret is set. Uses the SITE_URL repo variable, default beyondchiavari.vercel.app.
+- Owner to-dos (all free, none required): create a Slack/Discord webhook and set ALERT_WEBHOOK_URL in Vercel and as a GitHub secret; create a free GrowthBook Cloud account, add the `tool-quote-cta` feature with variants and set NEXT_PUBLIC_GROWTHBOOK_CLIENT_KEY; set the GitHub variable SITE_URL=https://beyondchiavari.com once DNS points at Vercel.
+- Quote PDF: already shipped by the planner thread on Nov 3 (planner plan downloads as a PDF via jsPDF), so no second PDF library was added.
