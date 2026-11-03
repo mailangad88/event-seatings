@@ -1,10 +1,10 @@
-import { aiMode, answerQuestion, assistantEnabled, buildPlan, cleanInput } from "@/lib/assistant";
+import { aiMode, answerQuestion, assistantEnabled, buildPlan, cleanInput, takeAiCredit } from "@/lib/assistant";
 
 // Planning assistant API. Off (404) unless NEXT_PUBLIC_PLANNING_ASSISTANT=on.
 // { kind: "plan", event, guests, setting, budget, date?, question? } -> a priced plan with ideas and guide links.
 // { kind: "ask", question } -> an answer from our guides, with sources.
 
-// A light per-instance limit so a script can't run up Gemini costs when AI mode is on.
+// A light per-instance burst limit; the daily Gemini spend cap is takeAiCredit in src/lib/assistant.ts.
 const hits = new Map<string, number[]>();
 function limited(ip: string) {
   const now = Date.now();
@@ -12,7 +12,7 @@ function limited(ip: string) {
   recent.push(now);
   hits.set(ip, recent);
   if (hits.size > 5000) hits.clear();
-  return recent.length > (aiMode() === "gemini" ? 20 : 60);
+  return recent.length > (aiMode() === "gemini" ? 15 : 60);
 }
 
 export async function POST(request: Request) {
@@ -26,10 +26,10 @@ export async function POST(request: Request) {
   if (body.kind === "ask") {
     const q = typeof body.question === "string" ? body.question.trim().slice(0, 500) : "";
     if (q.length < 3) return Response.json({ error: "Please type a question." }, { status: 400 });
-    return Response.json(await answerQuestion(q));
+    return Response.json(await answerQuestion(q, takeAiCredit(ip)));
   }
 
   const input = cleanInput(body);
   if (!input) return Response.json({ error: "Please choose the event type, setting and guest count." }, { status: 400 });
-  return Response.json(await buildPlan(input));
+  return Response.json(await buildPlan(input, takeAiCredit(ip)));
 }
