@@ -14,7 +14,7 @@ export type RentalImage = {
   caption: string;
   width: number;
   height: number;
-  kind: "product" | "scene" | "angle" | "variant";
+  kind: "product" | "scene" | "angle" | "variant" | "solo";
   /** Where it's pictured: room, table, park, park-dusk, scene, or classic (older studio-sweep render). */
   setting?: string;
   // Angles and colour variants point at the base item they belong to.
@@ -26,7 +26,7 @@ export type RentalImage = {
 
 // Styled event scenes made with Gemini from our own render as the reference (scripts/styled-scenes.py). Each one
 // replaces the render with the same slug everywhere on the site, keeps its category/kind/parent, and is always
-// labelled as an AI-generated example (alt text, chip, IPTC digitalSourceType in the schema).
+// marked as AI-made only in the machine-readable schema (IPTC digitalSourceType), per Angad on Nov 3.
 // Styled-only entries (no render behind them, e.g. hero-concessions) are new event scenes.
 type StyledEntry = Pick<RentalImage, "src" | "alt" | "caption" | "width" | "height" | "category"> & { kind?: string };
 const styledAll = styled as Record<string, StyledEntry>;
@@ -38,7 +38,10 @@ const all: Record<string, RentalImage> = Object.fromEntries([
   }),
   ...Object.entries(styledAll)
     .filter(([slug]) => !originals[slug])
-    .map(([slug, s]) => [slug, { src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, category: s.category, kind: "scene" as const, ai: true }]),
+    .map(([slug, s]) => [
+      slug,
+      { src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, category: s.category, kind: s.kind === "solo" ? ("solo" as const) : ("scene" as const), ai: true },
+    ]),
 ]);
 
 /** The original Blender render, ignoring any styled scene laid over it. */
@@ -124,6 +127,9 @@ export function rentalImageJsonLd(img: Pick<RentalImage, "src" | "alt" | "captio
   };
 }
 
+
+/** Single-piece styled shot of an item (`<slug>--solo`), if one exists. */
+export const soloImage = (slug: string): RentalImage | undefined => all[`${slug}--solo`];
 
 /** The styled event scene for a slug, if Gemini has made one. */
 export const styledImage = (slug: string) => (styledAll[slug] ? all[slug] : undefined);

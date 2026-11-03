@@ -37,6 +37,16 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): month-by-month and venue-type planning guides
+
+Angad asked for guides for people planning events in each month (what to watch out for) and for booking barns, halls and convention centers around Chicago.
+- 12 new month posts: `/blog/planning-an-event-in-chicago-in-<month>` for every month except November (already covered by `/blog/planning-a-november-event-chicago`), plus the hub `/blog/chicago-event-planning-calendar-month-by-month`. Each has a 2027 date table and SVG timeline (holidays, city events), NWS O'Hare normals, 2027 sunset times, booking lead times, rental categories (links to `/rentals/<category>`), area directory links (`/chair-rentals/<area>`), event links, a styled scene image, flow checklist, 5-6 FAQs (FAQPage schema) and a planner CTA.
+- 9 new venue-type booking guides: barn, banquet hall, hotel ballroom, convention center (McCormick Place, Rosemont, Schaumburg, Tinley Park), conservatory/garden, forest preserve, VFW/Legion/lodge hall, boat charter, dry-hire vs all-inclusive. Only well-known public venues are named; no venue prices or invented rules. Conservatory facts (Chicago Park District approved rental list) checked Nov 2026.
+- Verified: 2027 Marathon Oct 10 (organizer release); Lunar New Year Feb 6; Passover eve Apr 21; Rosh Hashanah eve Oct 1; Diwali Oct 29; Hanukkah eve Dec 24; Ramadan/Eids marked moon-dependent. Taste of Chicago, Lollapalooza and Air and Water Show give 2026 dates and say to confirm 2027.
+- `/chicago-event-seasons/<month>` pages now link to the matching month guide and the calendar hub. `types-of-event-venues-chicago-compared`, `best-month-to-host-an-event-in-chicago` and `farm-venue-weddings-illinois` link into the new series.
+- `scripts/check-posts.mjs` now accepts links to `/rentals/<category>`, `/chair-rentals/<area>`, `/events/<type>`, `/chicago-event-seasons/<month>`, `/downloads/<kit>` and a few hub pages.
+- Remaining: confirm 2027 festival dates when the city announces them (Taste, Lollapalooza, Air and Water Show, St. Patrick's parade, Pride) and update the July, August, March and June posts; add a November calendar table to the existing November post; once PR #40's area pages merge, link month and venue posts to county pages (Kane, McHenry for barns).
+
 ## Changes in this release (2026-11-03): repeat-visit planning hub, batch 2
 
 - **New `/tools/event-weather`** (Last touched 2026-11-03). Chicago event weather and sunset planner: date, setting and start/end time in; normal high, sunset, golden light (hour before sunset), dark-by (end of civil twilight), daylight and a day strip showing the event against daylight and twilight; flags for lighting past dark, frost season heaters, heat and shade, rain plans and winter logistics, each linked to a guide or rental category. Server-rendered month-by-month table for crawlers. WebApplication + FAQPage schema. SEO ✅ AEO ✅ GEO ✅ Visuals ✅ FAQ ✅ CTA ✅.
@@ -806,6 +816,27 @@ Columns: SEO = title, description, keyword, canonical; AEO = answer box + FAQ sc
 | `/blog/outdoor-events-chicago-in-october` | outdoor events in chicago in october | 2026-11-02 | 1096 | 7 | Real photo hero; review after Search Console data |
 | `/blog/outdoor-events-chicago-in-september` | outdoor events in chicago in september | 2026-11-02 | 1035 | 7 | Real photo hero; review after Search Console data |
 | `/blog/planning-a-november-event-chicago` | planning a november event in chicago | 2026-11-02 | 1065 | 7 | Real photo hero; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-april` | planning an event in chicago in april | 2026-11-03 | 1143 | 5 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-august` | planning an event in chicago in august | 2026-11-03 | 1115 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-december` | planning an event in chicago in december | 2026-11-03 | 1073 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-february` | planning an event in chicago in february | 2026-11-03 | 1212 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-january` | planning an event in chicago in january | 2026-11-03 | 1315 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-july` | planning an event in chicago in july | 2026-11-03 | 1144 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-june` | planning an event in chicago in june | 2026-11-03 | 1161 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-march` | planning an event in chicago in march | 2026-11-03 | 1229 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-may` | planning an event in chicago in may | 2026-11-03 | 1171 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-october` | planning an event in chicago in october | 2026-11-03 | 1124 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/planning-an-event-in-chicago-in-september` | planning an event in chicago in september | 2026-11-03 | 1053 | 5 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/chicago-event-planning-calendar-month-by-month` | chicago event planning calendar | 2026-11-03 | 1238 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/booking-a-barn-venue-near-chicago` | barn venue near chicago | 2026-11-03 | 1228 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/booking-a-banquet-hall-chicago` | banquet hall chicago | 2026-11-03 | 1128 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/hotel-ballroom-event-rental-rules-chicago` | hotel ballroom event chicago | 2026-11-03 | 1033 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/convention-center-events-chicago` | convention center event chicago | 2026-11-03 | 1160 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/conservatory-and-botanic-garden-venues-chicago` | garden wedding venue chicago | 2026-11-03 | 958 | 5 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/forest-preserve-picnic-events-chicago` | forest preserve picnic permit chicago | 2026-11-03 | 1038 | 5 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/vfw-legion-and-lodge-hall-rentals-chicago` | vfw hall rental near chicago | 2026-11-03 | 941 | 6 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/boat-and-yacht-charter-events-chicago` | private boat party chicago | 2026-11-03 | 914 | 5 | New. Confirm 2027 festival dates when announced; review after Search Console data |
+| `/blog/dry-hire-vs-all-inclusive-venues-chicago` | dry hire venue chicago | 2026-11-03 | 933 | 5 | New. Confirm 2027 festival dates when announced; review after Search Console data |
 | `/blog/rain-on-event-day-chicago` | rain on event day chicago | 2026-11-02 | 1065 | 7 | Real photo hero; review after Search Console data |
 | `/blog/spring-wedding-rentals-chicago` | spring wedding rentals chicago | 2026-11-02 | 1125 | 7 | Real photo hero; review after Search Console data |
 | `/blog/suburban-park-district-pavilion-rentals` | park pavilion rental chicago suburbs | 2026-11-02 | 1199 | 7 | Real photo hero; review after Search Console data |

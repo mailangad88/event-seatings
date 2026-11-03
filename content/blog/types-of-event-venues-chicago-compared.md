@@ -124,6 +124,22 @@ The Vendor Comparison and Contact Tracker lets you line up each venue on the sam
 
 [Get the free Vendor Comparison and Contact Tracker](/downloads/vendor-tracker)
 
+## Booking guides by venue type
+
+Each venue type has its own checklist. Read the one that matches your shortlist:
+
+- [Booking a barn venue near Chicago: 12 things to check](/blog/booking-a-barn-venue-near-chicago)
+- [Booking a banquet hall in Chicago](/blog/booking-a-banquet-hall-chicago)
+- [Hotel ballroom events: rules and outside rentals](/blog/hotel-ballroom-event-rental-rules-chicago)
+- [Planning an event at a Chicago-area convention center](/blog/convention-center-events-chicago)
+- [Conservatory and garden venues in Chicago](/blog/conservatory-and-botanic-garden-venues-chicago)
+- [Forest preserve events: permits, groves and rentals](/blog/forest-preserve-picnic-events-chicago)
+- [Renting a VFW, Legion or lodge hall](/blog/vfw-legion-and-lodge-hall-rentals-chicago)
+- [Planning an event on a Chicago boat or yacht charter](/blog/boat-and-yacht-charter-events-chicago)
+- [Dry-hire vs all-inclusive venues](/blog/dry-hire-vs-all-inclusive-venues-chicago)
+
+Picking a date too? The [Chicago event planning calendar](/blog/chicago-event-planning-calendar-month-by-month) lists the weather, holidays and city events for every month of 2027.
+
 ## Frequently asked questions
 
 ### What are the main types of event venues in Chicago?
