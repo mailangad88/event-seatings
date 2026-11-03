@@ -28,6 +28,8 @@ export async function GET() {
     `- [For rental companies](${site.url}/partners): become a partner and receive itemized Chicago event bookings`,
     `- [Rental calculator](${site.url}/tools/rental-calculator): guest count in, quantities and prices out`,
     `- [Event rental glossary](${site.url}/glossary): damage waiver, drop length, load-in and other quote terms`,
+    `- [Event ideas by month](${site.url}/ideas): what Chicago hosts plan and book each month, normal highs, and what to book now for later dates`,
+    `- [My Events planner](${site.url}/my-events): free countdown, dated checklist, Chicago weather and sunset for an event date, calendar reminders, no account`,
     `- [FAQ](${site.url}/faq)`,
     "",
     "## Rental problems solved",
