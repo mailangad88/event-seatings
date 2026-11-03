@@ -11,7 +11,7 @@ import { RentalIcon } from "./RentalIcon";
 import { ExampleChip, StockImg } from "./StockPhoto";
 
 // Picks the best visual for a rental item, in order (items in `photoFirst` skip straight to 3):
-// 1. the styled event scene (Gemini, labelled "AI-generated example") or else the 3D render at public/rentals/<category folder>/<id>.webp (from the render pipeline),
+// 1. the styled event scene (Gemini, scripts/styled-scenes.py) or else the 3D render at public/rentals/<category folder>/<id>.webp (from the render pipeline),
 // 2. the chair render/illustration from the chair collection,
 // 3. a real photo of the same item type at an event (Unsplash, labelled "Example photo"),
 // 4. a styled category illustration.
@@ -52,11 +52,9 @@ export function RentalVisual({
   const src = photoFirst ? undefined : rentalImagePath(item.id, item.categoryId);
   const alt = rentalAlt(item.name, item.specs, item.id);
   if (src) {
-    const ai = readManifest()[item.id]?.ai && readManifest()[item.id]?.src === src;
     return (
       <div className={`relative overflow-hidden bg-[#efe9df] ${className}`}>
         <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" />
-        {ai && <ExampleChip label="AI-generated example" />}
       </div>
     );
   }

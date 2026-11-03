@@ -4,7 +4,7 @@ import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
-import { imagesFor, originalImage, rentalImages, styledImage } from "@/data/rental-images";
+import { imagesFor, originalImage, rentalImages, soloImage, styledImage } from "@/data/rental-images";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockPhotos, stockSrc } from "@/data/stock-photos";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { looks } from "@/data/looks";
@@ -73,6 +73,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         images: [
           ...own,
           ...(own.length || !i.chairSlug ? [] : img(i.chairSlug)),
+          ...(soloImage(i.id) ? [`${site.url}${soloImage(i.id)!.src}`] : []),
           ...(styledImage(i.id) && originalImage(i.id) ? [`${site.url}${originalImage(i.id)!.src}`] : []),
           ...gallery.map((p) => stockSrc(p, 1200, 1200)),
         ],
