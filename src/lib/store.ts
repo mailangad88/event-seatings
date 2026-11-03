@@ -66,6 +66,8 @@ export type Lead = {
   fee_amount?: number; // USD charged at checkout (booking fee or hold)
   fee_paid_at?: string;
   stripe_session_id?: string;
+  // Event to-dos ticked off in /admin (lib/event-tasks.ts): task key -> when it was done.
+  tasks_done?: Record<string, string>;
   // Referral link code (/refer, ?ref=<code>) that brought this visitor in, kept 90 days in their browser.
   referral_code?: string;
 } & Partial<Record<TrackingField, string>>;
@@ -281,6 +283,7 @@ export type LeadPatch = Partial<
     | "followup_step"
     | "followup_last_at"
     | "opted_out_at"
+    | "tasks_done"
   >
 >;
 

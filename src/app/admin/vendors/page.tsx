@@ -46,8 +46,7 @@ export default async function VendorsPage(props: PageProps<"/admin/vendors">) {
 
   return (
     <div className="container-x py-12">
-      <Link href="/admin" className="text-sm text-accent">← Dashboard</Link>
-      <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Admin</p>
           <h1 className="mt-1 font-serif text-5xl">Rental partners</h1>
@@ -56,7 +55,6 @@ export default async function VendorsPage(props: PageProps<"/admin/vendors">) {
             the quote value our leads have sent their way.
           </p>
         </div>
-        <Link href="/admin/leads" className="btn-ghost">Lead pipeline</Link>
       </div>
 
       <nav aria-label="Filter by status" className="mt-6 flex flex-wrap gap-2">

@@ -23,7 +23,6 @@ export default async function AdminReferralsPage() {
 
   return (
     <div className="container-x py-12">
-      <Link href="/admin" className="text-sm text-accent">← Dashboard</Link>
       <p className="eyebrow mt-3">Admin</p>
       <h1 className="mt-1 font-serif text-5xl">Referrals</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted">

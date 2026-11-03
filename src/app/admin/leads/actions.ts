@@ -69,6 +69,7 @@ export async function markContacted(formData: FormData) {
     await updateLead(id, { status: "contacted" }, [{ type: "status", text: "Stage: New lead → Contacted" }]);
   }
   revalidatePath("/admin/leads");
+  revalidatePath("/admin");
 }
 
 // Creates the customer proposal link (/proposal/<token>) for a lead. The link hides the rental partner until the fee is paid.
@@ -89,6 +90,7 @@ export async function createProposal(formData: FormData) {
     [{ type: "note", text: "Proposal link created." }],
   );
   revalidatePath(`/admin/leads/${id}`);
+  revalidatePath("/admin/proposals");
 }
 
 // Manual override for fees paid outside Stripe (bank transfer, Zelle) or refunds.
@@ -103,4 +105,7 @@ export async function setFeeStatus(formData: FormData) {
     await updateLead(id, { fee_status: status, fee_paid_at: "" }, [{ type: "note", text: `Booking fee marked ${status}.` }]);
   }
   revalidatePath(`/admin/leads/${id}`);
+  revalidatePath("/admin/proposals");
+  revalidatePath("/admin/payments");
+  revalidatePath("/admin");
 }
