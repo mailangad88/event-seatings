@@ -74,7 +74,7 @@ export default function LooksPage() {
             Steal the look. <em className="text-gold">Rent the chairs.</em>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-muted">
-            Event looks we like, each built around one chair. Tap a look to see everything in it, and
+            Event looks we like for Chicago weddings and parties, each built around one chair. Tap a look to see the chairs, linens and decor in it, and
             we&apos;ll send it to you with pricing for your date.
           </p>
         </div>
