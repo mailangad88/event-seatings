@@ -30,6 +30,7 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 | Google Business Profile | ❌ todo | Create a service-area business (St. Charles base, Chicago + suburbs). Use the same name/phone/area as the schema. |
 | Email sequences | ❌ todo | Waitlist welcome, quote follow-up, post-call recap. Leads currently arrive via `/api/leads`. |
 | Competitor analysis | ❌ todo | Handled in another workstream. |
+| Typography & UX audit | ✅ 2026-11-03 | `npm run audit:ux` (Playwright + axe-core + design lint, 390px and 1440px). 10 key pages: 0 axe violations (was 9 pages with contrast fails), Lighthouse a11y/BP/SEO 100, perf 86-90. Brass darkened to #7a5a22, real Jost 600, 44px buttons, full-width phone CTAs, mobile footer/breadcrumb tap targets, photo tiles on /rentals. Remaining: photo-credit links are 18px tall, Lighthouse perf (hero image weight), long comparison tables could use a scroll hint. |
 | Reviews | ❌ by design | Add Review schema and testimonials only once real customer reviews exist. Never fabricate. |
 
 **Parallel workstreams:** Chicago neighborhood landing pages (e.g. Chicago, Evanston, Oak Park, Naperville) and FAQ/blog content are being built separately. Add their rows here as they ship.

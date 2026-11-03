@@ -212,7 +212,12 @@ export async function getPost(slug: string) {
   const { post, body } = parse(`${slug}.md`, raw);
   if (post.date > today()) return null;
   withHero(post, await heroes(await readAll()));
-  return { post, html: await marked.parse(body), faqs: extractFaqs(body) };
+  // Scrollable tables must be keyboard-focusable (axe: scrollable-region-focusable).
+  const html = (await marked.parse(body)).replace(
+    /<div class="table-wrap">/g,
+    '<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table">',
+  );
+  return { post, html, faqs: extractFaqs(body) };
 }
 
 /** Up to `n` other posts from the same topic, then from shared tags. */

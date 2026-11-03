@@ -15,7 +15,7 @@ export function MobileCtaBar() {
     <>
       {/* Keeps the footer's last links clear of the bar. */}
       <div aria-hidden className="h-[72px] md:hidden" />
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t border-line bg-surface/95 py-3 pr-20 pl-4 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] backdrop-blur md:hidden">
+      <nav aria-label="Quick actions" className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t border-line bg-surface/95 py-3 pr-20 pl-4 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] backdrop-blur md:hidden">
         <Link
           href="/quote?from=mobile-bar"
           className="btn-primary btn-sm flex-1"
@@ -30,7 +30,7 @@ export function MobileCtaBar() {
         >
           Call
         </Link>
-      </div>
+      </nav>
     </>
   );
 }
