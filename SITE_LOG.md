@@ -36,6 +36,16 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 1
+
+Goal: give planners a reason to come back between their first visit and their event (research notes: The Knot and Zola keep couples returning with a saved checklist, budget and countdown; PartySlate and Pinterest with fresh seasonal inspiration).
+
+- **New `/my-events`** (Last touched 2026-11-03). Free event plans saved in the browser, no account: countdown, a checklist dated back from the event (same milestones as the `/quote` planner via `timeline()`), progress bar, "Next up" tasks, Chicago normal high plus calculated sunrise and sunset for the date, notes, multiple events ("Plan another event"), `.ics` calendar file with a reminder for each upcoming milestone, share link (`?e=`) that opens the same plan on another device, print view, and import from an in-progress `/quote` plan. Optional "free planning check-in" email is saved as a `waitlist` lead with source `my-events` plus event type, date and guests. SEO ✅ AEO ✅ (WebApplication + FAQPage) GEO ✅ Visuals ✅ FAQ ✅ CTA ✅. Code: `src/lib/my-events.ts`, `src/components/myevents/MyEvents.tsx`.
+- **New `/ideas`** (Last touched 2026-11-03). Monthly ideas hub that re-renders daily: this month's occasions with guides, rentals people book now, a "book now for later" list (event month = today + each occasion's lead time), the next three months, all 12 months with normal highs, a monthly ideas letter signup (`waitlist`, source `ideas-monthly`) and FAQs. CollectionPage + FAQPage schema. Data: `src/data/ideas.ts`.
+- **Weather facts** in `src/lib/chicago-climate.ts`: NWS Chicago 1991-2020 normal highs at O'Hare and median freeze dates (Apr 21, Oct 19); sunrise and sunset computed with NOAA solar equations (checked: Jun 21 sunset 8:29 PM, Dec 21 4:22 PM). Lows and precipitation were left out because the source table could not be fetched to verify them.
+- Header nav is now Rentals, Ideas, Guides, Free tools, My events, How it works (FAQ and Free kits stay in the footer and the tools hub). Tools hub has a new first problem "I want to keep my event on track". Footer, sitemap and llms.txt list both pages.
+- Remaining: magic-link accounts so plans sync across devices (needs Supabase env vars); emailed milestone reminders (needs Resend and the PR #31 cron); the monthly ideas letter is a list Angad sends by hand until email is connected.
+
 ## Changes in this release (2026-11-03): photo-style product images
 
 - All 117 product shots (`public/rentals/<category>/<id>.webp`) re-rendered with the photoreal pipeline (`blender/rentals/photoreal.py`): real HDRI light (Poly Haven, CC0), photo-scanned floors and lawn, edge bevels, depth of field, and a camera finish (grain, vignette, lens fringing) in `photo_finish.py`. Furniture is pictured in a room corner, tableware on a linen tablecloth, tents and lawn items in a real park photo.
