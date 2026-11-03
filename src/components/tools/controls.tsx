@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { track } from "@/lib/analytics";
+import { useFeatureValue } from "@/lib/experiments";
 
 // Small shared inputs and result blocks for the /tools calculators.
 
@@ -190,11 +191,13 @@ export function ToolFrame({ inputs, results }: { inputs: React.ReactNode; result
 
 export function ShareBar({ tool, quoteHref }: { tool: string; quoteHref?: string }) {
   const [copied, setCopied] = useState(false);
+  // A/B test (GrowthBook feature "tool-quote-cta"): the label on the main button under every calculator.
+  const ctaLabel = useFeatureValue("tool-quote-cta", "Price these rentals");
   return (
     <div className="mt-6 flex flex-wrap gap-3 print:hidden">
       {quoteHref && (
-        <Link href={quoteHref} className="btn-accent" onClick={() => track("tool_quote_click", { tool })}>
-          Price these rentals
+        <Link href={quoteHref} className="btn-accent" onClick={() => track("tool_quote_click", { tool, label: ctaLabel })}>
+          {ctaLabel}
         </Link>
       )}
       <button

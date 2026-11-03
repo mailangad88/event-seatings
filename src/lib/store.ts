@@ -184,9 +184,13 @@ export async function setVote(chairSlug: string, visitorId: string, on: boolean)
 async function allVotes(): Promise<Vote[]> {
   const client = sb();
   if (client) {
-    const { data, error } = await client.from("votes").select("chair_slug, visitor_id, created_at");
-    if (error) throw error;
-    return data ?? [];
+    const rows: Vote[] = [];
+    for (let from = 0; ; from += 1000) {
+      const { data, error } = await client.from("votes").select("chair_slug, visitor_id, created_at").range(from, from + 999);
+      if (error) throw error;
+      rows.push(...(data ?? []));
+      if (!data || data.length < 1000) return rows;
+    }
   }
   return (await readLocal()).votes;
 }
@@ -235,9 +239,17 @@ export async function addLead(lead: NewLead): Promise<Lead> {
 export async function listLeads(): Promise<Lead[]> {
   const client = sb();
   if (client) {
-    const { data, error } = await client.from("leads").select("*").order("created_at", { ascending: false });
-    if (error) throw error;
-    return data ?? [];
+    const rows: Lead[] = [];
+    for (let from = 0; ; from += 1000) {
+      const { data, error } = await client
+        .from("leads")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .range(from, from + 999);
+      if (error) throw error;
+      rows.push(...(data ?? []));
+      if (!data || data.length < 1000) return rows;
+    }
   }
   return (await readLocal()).leads.sort((a, b) => b.created_at.localeCompare(a.created_at));
 }

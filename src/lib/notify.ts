@@ -148,7 +148,8 @@ const signOff = (email: string) => [
 // what happens next, the booking link and what to have ready. Downloads have their own email below.
 export async function sendConfirmation(lead: Lead) {
   if (!process.env.NOTIFY_FROM || !["quote", "call", "chat"].includes(lead.kind) || lead.opted_out_at) return;
-  const hi = lead.name ? `Hi ${lead.name.split(/\s+/)[0]},` : "Hi,";
+  // Fixed greeting: the name comes from an unauthenticated form, so never echo it into an email to an arbitrary address.
+  const hi = "Hi,";
   const date = prettyDate(lead.event_date);
   const body: Record<string, string[]> = {
     quote: [
@@ -193,7 +194,8 @@ export async function sendConfirmation(lead: Lead) {
  */
 export async function sendDownloadEmail(lead: Lead, title: string, files: { label: string; file: string }[]) {
   if (!process.env.NOTIFY_FROM || lead.opted_out_at) return;
-  const hi = lead.name ? `Hi ${lead.name},` : "Hi,";
+  // Fixed greeting: the name comes from an unauthenticated form, so never echo it into an email to an arbitrary address.
+  const hi = "Hi,";
   const text = [
     hi,
     "",

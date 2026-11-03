@@ -16,6 +16,7 @@
     "audit:ux": "node scripts/ux-audit.mjs"
   },
   "dependencies": {
+    "@growthbook/growthbook": "^2.0.0",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.2.0",
     "@react-three/drei": "^10.7.9",
