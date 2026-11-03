@@ -1,4 +1,5 @@
 import images from "./rental-images.json";
+import styled from "./styled-images.json";
 import { site } from "@/lib/site";
 
 // Photorealistic product and event-scene images built in Blender (see blender/rentals/README.md): real HDRI
@@ -101,3 +102,10 @@ export function rentalImageJsonLd(img: Pick<RentalImage, "src" | "alt" | "captio
     acquireLicensePage: `${site.url}/terms`,
   };
 }
+
+// Styled event scenes made with Gemini from our product image (scripts/styled-scenes.py). Always labelled
+// as AI-generated examples.
+export type StyledImage = Pick<RentalImage, "src" | "category" | "alt" | "caption" | "width" | "height"> & { parent: string };
+const styledAll = styled as Record<string, StyledImage>;
+export const styledImage = (slug: string): StyledImage | undefined => styledAll[slug];
+export const styledImages = Object.entries(styledAll).map(([slug, img]) => ({ slug, ...img }));

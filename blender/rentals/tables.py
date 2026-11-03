@@ -393,4 +393,5 @@ def _napkins():
 
 item("cloth-napkins", "linens", _napkins,
      "3D render of a stack of folded cloth dinner napkins in ivory, blush, sage, navy and burgundy beside a place setting",
-     "Cloth dinner napkins in five colors", cam=dict(az=-25, el=38, lens=85, pad=1.05))
+     "Cloth dinner napkins in five colors", cam=dict(az=-25, el=38, lens=85, pad=1.05),
+     photo_drop_top=30 * IN - 0.0, photo_set="table")
