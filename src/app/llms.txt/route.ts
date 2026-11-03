@@ -30,6 +30,8 @@ export async function GET() {
     `- [Event rental glossary](${site.url}/glossary): damage waiver, drop length, load-in and other quote terms`,
     `- [Event ideas by month](${site.url}/ideas): what Chicago hosts plan and book each month, normal highs, and what to book now for later dates`,
     `- [My Events planner](${site.url}/my-events): free countdown, dated checklist, Chicago weather and sunset for an event date, calendar reminders, no account`,
+    `- [Chicago event weather and sunset planner](${site.url}/tools/event-weather): normal high, sunset, golden light and darkness for any date, with a month-by-month table`,
+    `- [Event vendor guide](${site.url}/vendor-guide): which vendors each event type needs, when to book them, what to ask and where they overlap with rentals`,
     `- [FAQ](${site.url}/faq)`,
     "",
     "## Rental problems solved",

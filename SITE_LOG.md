@@ -36,6 +36,13 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 2
+
+- **New `/tools/event-weather`** (Last touched 2026-11-03). Chicago event weather and sunset planner: date, setting and start/end time in; normal high, sunset, golden light (hour before sunset), dark-by (end of civil twilight), daylight and a day strip showing the event against daylight and twilight; flags for lighting past dark, frost season heaters, heat and shade, rain plans and winter logistics, each linked to a guide or rental category. Server-rendered month-by-month table for crawlers. WebApplication + FAQPage schema. SEO ✅ AEO ✅ GEO ✅ Visuals ✅ FAQ ✅ CTA ✅.
+- **New `/vendor-guide`** (Last touched 2026-11-03). Who to hire for 8 event types (essential vs often added), a booking-order timeline chart, and 14 vendor roles with what they do, when to book, questions to ask, and where each overlaps with rentals. No vendors named. HowTo + FAQPage schema. Data: `src/data/vendor-guide.ts`.
+- `src/lib/chicago-climate.ts` gains `lightTimes()` (golden light, civil dusk, daylight; checked Jun 21 dusk 9:03 PM). My Events links its weather card to the new tool. Tools hub, footer, sitemap and llms.txt list both pages.
+- Remaining: per-event vendor pages (`/vendor-guide/<event>`) if search data shows demand; add hourly forecast once the event is within 10 days (needs a weather API key).
+
 ## Changes in this release (2026-11-03): repeat-visit planning hub, batch 1
 
 Goal: give planners a reason to come back between their first visit and their event (research notes: The Knot and Zola keep couples returning with a saved checklist, budget and countdown; PartySlate and Pinterest with fresh seasonal inspiration).

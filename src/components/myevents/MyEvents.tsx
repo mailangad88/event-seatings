@@ -293,7 +293,8 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
               )}
               <p className="mt-4 text-xs text-muted">
                 Normal high from {CLIMATE_SOURCE}. Sunset calculated for downtown Chicago.{" "}
-                <Link href={`/chicago-event-seasons/${wx.slug}`} className="link">Planning in {wx.month}</Link>
+                <Link href={`/chicago-event-seasons/${wx.slug}`} className="link">Planning in {wx.month}</Link> ·{" "}
+                <Link href="/tools/event-weather" className="link">Golden light and dark-by times</Link>
               </p>
             </section>
           )}
