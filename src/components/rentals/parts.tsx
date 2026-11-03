@@ -22,7 +22,7 @@ export function RentalCard({ item }: { item: CatalogItem }) {
       <p className="mt-1 line-clamp-2 text-xs leading-5 text-muted sm:text-sm sm:leading-6">{item.specs}</p>
       <span className="min-h-3 flex-1" aria-hidden />
       <p className="mt-auto flex flex-wrap items-baseline gap-x-2 border-t border-line pt-3">
-        <span className="font-serif text-xl sm:text-2xl">{formatPrice(customerPrice(item))}</span>
+        <span className="font-serif text-xl text-wine sm:text-2xl">{formatPrice(customerPrice(item))}</span>
         <span className="text-xs text-muted">{item.unit === "each" ? "each" : item.unit}</span>
         {item.priceSource === "estimated" && <span className="chip ml-auto">Est.</span>}
       </p>

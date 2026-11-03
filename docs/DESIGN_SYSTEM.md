@@ -1,7 +1,7 @@
 # Beyond Chiavari design system
 
 The site is a premium, highly visual **event rental marketplace** for Chicago and the suburbs: light, gallery-like
-pages (warm ivory paper, ink type, aged-brass accents), white product cards, rounded imagery and dark espresso bands
+pages (warm cream paper, ink type, deep wine actions, gold accents and clear status colours), white product cards, rounded imagery and dark espresso bands
 for conversion moments. Everything is built from tokens and a small UI kit so that every thread's pages look like one
 site.
 
@@ -12,22 +12,30 @@ invent new card/button styles. If you need something new, add it to the kit.
 
 | Token | Light (default) | Use |
 |---|---|---|
-| `bg` | `#faf7f2` ivory | page background |
+| `bg` | `#f6efe4` cream | page background |
 | `surface` | `#ffffff` | cards, inputs |
-| `surface-2` | `#f2ece3` sand | image wells, sand bands |
-| `ink` | `#1d1a16` | text, primary buttons |
-| `muted` | `#655d52` | secondary text (AA) |
-| `line` | `#e4dbcd` | borders, dividers |
-| `gold` | `#7a5a22` | eyebrows, accents, links (AA on ivory, sand and gold-soft) |
-| `gold-soft` | `#f3eadb` | icon wells, badges, selected states |
-| `espresso` | `#1b1814` | dark bands |
-| `sage` / `rose` | `#55704f` / `#a4473b` | success / alert |
+| `surface-2` | `#ede3d2` sand | image wells, sand bands |
+| `ink` | `#1f1916` | text |
+| `muted` | `#5c5247` | secondary text (AA) |
+| `line` | `#dccfbb` | borders, dividers |
+| `wine` / `wine-deep` / `wine-soft` | `#7a1f2e` / `#5c1521` / `#f7e4e4` | **primary**: main buttons, eyebrows, links, selected states, prices |
+| `accent` / `accent-deep` / `accent-soft` | wine on light pages, gold on dark bands | use these in shared components so they flip inside `tone-dark` |
+| `gold` / `gold-soft` | `#835a12` / `#f6e8cc` | gold accents, ornaments, icon wells, tips |
+| `espresso` | `#2a1519` | dark bands (deep wine-black) |
+| `green` / `green-soft` | `#2d6a3e` / `#e2efe0` | money in, paid, booked, done (`sage` is an alias) |
+| `amber` / `amber-soft` | `#9a4f0a` / `#fbeacd` | waiting, balance owed, needs a reply |
+| `rose` / `rose-soft` | `#a3302b` / `#f9e1dd` | problems, overdue, form errors |
+| `blue` / `blue-soft` | `#2b5878` / `#e1ebf3` | info, dates, events |
+
+**Colour means the same thing everywhere** (public site and admin): wine = the main action, green = money in or done,
+amber = waiting, rose = problem, blue = dates and info, gold = accent. Every text colour passes WCAG AA on `bg`,
+`surface`, `surface-2` and its own `-soft` tint.
 
 Use them as Tailwind colours: `bg-surface`, `text-muted`, `border-line`, `text-gold`, `bg-gold-soft`…
 
 **Tone scopes** re-theme everything inside them, no extra classes needed:
 
-- `tone-dark` (or any `bg-espresso…` class): dark band, ivory text, brighter brass.
+- `tone-dark` (or any `bg-espresso…` class): dark wine-black band, light text, gold buttons.
 - `tone-sand` (alias `.paper`): sand band.
 
 Fonts: Cormorant Garamond (`font-serif`, display; 400 for the page H1, 500 for `display-2`/`display-3` so smaller
@@ -45,8 +53,8 @@ faked), self-hosted in `src/app/fonts`.
 | `lede` | large muted intro paragraph |
 | `eyebrow` | small brass uppercase label above headings |
 | `cta-row` | wrapper for hero/section buttons: full-width stacked buttons on phones, inline from `sm` |
-| `btn-primary` | ink pill, main action ("Build your quote") |
-| `btn-accent` | brass pill, main action on dark bands |
+| `btn-primary` | wine pill (gold on dark bands), main action ("Build your quote") |
+| `btn-accent` | gold pill, secondary highlight action |
 | `btn-ghost` | outline pill, secondary action |
 | `btn-light` | white pill on images |
 | `btn-sm` / `btn-lg` | size modifiers |
@@ -56,6 +64,9 @@ faked), self-hosted in `src/app/fonts`.
 | `media` | rounded image frame with sand fill |
 | `field` / `label` / `hint` | form inputs, labels, helper text |
 | `chip` / `chip-active` / `badge` | filter chips, tags, small labels |
+| `badge-wine` / `badge-green` / `badge-amber` / `badge-rose` / `badge-blue` | status pills, colour = meaning (see above) |
+| `stat-card` + `stat-label` + `stat-value` | white card with a coloured 4px top border and a big coloured number (dashboards, admin) |
+| `stat-wine` / `stat-green` / `stat-gold` / `stat-amber` / `stat-blue` / `stat-rose` | pick a stat card's colour (also used by `StatRow`) |
 | `prose-post` | long-form article typography (markdown output) |
 
 ## 3. Components (`import { … } from "@/components/ui"`)

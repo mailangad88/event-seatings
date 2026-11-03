@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { track } from "@/lib/analytics";
-import { currentSource, recordPage, recordVisit } from "@/lib/attribution";
+import { currentSource, recordClick, recordPage, recordVisit } from "@/lib/attribution";
 
 function visitorId() {
   try {
@@ -41,6 +41,27 @@ export function AttributionTracker() {
       }
     } catch {}
   }, [pathname]);
+
+  // Clicks on links and buttons, so the owner can see what caught their eye (labels and targets only).
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const el = (e.target as Element | null)?.closest?.<HTMLElement>("a[href], button, [role=button], summary");
+      if (!el || el.closest("[data-no-track]")) return;
+      const path = window.location.pathname;
+      const label = el.getAttribute("aria-label") || el.dataset.trackLabel || el.textContent || el.getAttribute("title") || "";
+      let href: string | undefined;
+      const raw = el.getAttribute("href");
+      if (raw) {
+        try {
+          const u = new URL(raw, window.location.href);
+          href = u.host === window.location.host ? u.pathname + u.search : u.protocol.startsWith("http") ? u.host : u.protocol.replace(":", "");
+        } catch {}
+      }
+      recordClick(label, href, path);
+    };
+    document.addEventListener("click", onClick, { capture: true });
+    return () => document.removeEventListener("click", onClick, { capture: true });
+  }, []);
 
   // "Form started": the first time a visitor types into any form on a page. Compared with sends in /admin,
   // this shows where people give up. Counted once per page per visit.

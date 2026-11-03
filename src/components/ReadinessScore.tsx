@@ -313,7 +313,7 @@ function EmailResult({ resultText, focus, siteName }: { resultText: string; focu
       <button className="btn-ghost mt-5 w-full justify-center" disabled={status === "sending"}>
         {status === "sending" ? "Sending…" : "Send my score"}
       </button>
-      {status === "error" && <p className="mt-2 text-sm text-red-400">{error}</p>}
+      {status === "error" && <p className="mt-2 text-sm text-rose">{error}</p>}
     </form>
   );
 }

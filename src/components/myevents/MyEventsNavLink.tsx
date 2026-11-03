@@ -23,7 +23,7 @@ export function MyEventsNavLink({ className, label }: { className?: string; labe
     <Link href="/my-events" className={className}>
       {label}
       {days >= 0 && (
-        <span className="ml-1.5 rounded-full bg-gold/15 px-2 py-0.5 text-[11px] font-medium text-gold" aria-label={`${days} days to your next event`}>
+        <span className="ml-1.5 rounded-full bg-wine-soft px-2 py-0.5 text-[11px] font-semibold text-wine" aria-label={`${days} days to your next event`}>
           {days === 0 ? "today" : `${days}d`}
         </span>
       )}

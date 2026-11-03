@@ -1,4 +1,6 @@
 import "server-only";
+import { categories } from "@/data/catalog-products";
+import { interestsFor, topCategories, type Interest } from "./interests";
 import { site } from "./site";
 import type { Lead } from "./store";
 
@@ -12,6 +14,59 @@ import type { Lead } from "./store";
 // - a download lead later sends a quote or call request (they get that sequence instead), or
 // - the event date has passed.
 // Replies to these emails go to NOTIFY_EMAIL; move the lead out of "New lead" when you answer and the emails stop.
+//
+// Personal to each person: the steps below read what they looked at and clicked (lib/interests.ts). Someone who
+// spent their visit on tents gets tent planning tips and the tent size calculator; someone on linens gets linen
+// tips and the linen calculator; their occasion page is linked when we know it. With no clear interest, the
+// general version goes out. The set picked is saved on the lead as `sequence`, e.g. "nurture:tents+weddings".
+
+type Focus = { category?: Interest; categories: Interest[]; occasion?: Interest; tools: Interest[] };
+
+export function focusFor(lead: Lead): Focus {
+  const list = interestsFor(lead);
+  const cats = topCategories(list, 2);
+  return { category: cats[0], categories: cats, occasion: list.find((i) => i.kind === "occasion" && i.href), tools: list.filter((i) => i.kind === "tool") };
+}
+
+// The calculator that goes with each kind of rental.
+const toolFor: Partial<Record<string, { name: string; href: string }>> = {
+  chairs: { name: "Tables and chairs calculator", href: "/tools/tables-and-chairs" },
+  tables: { name: "Tables and chairs calculator", href: "/tools/tables-and-chairs" },
+  linens: { name: "Linen size calculator", href: "/tools/linens" },
+  tents: { name: "Tent size calculator", href: "/tools/tent-size" },
+  glassware: { name: "Bar and glassware calculator", href: "/tools/bar-and-glassware" },
+  "dance-floors-staging": { name: "Dance floor size calculator", href: "/tools/dance-floor" },
+  lighting: { name: "Lighting planner", href: "/tools/lighting" },
+};
+
+const planningTips = (categoryId: string, n: number) => categories.find((c) => c.id === categoryId)?.planning.slice(0, n) ?? [];
+
+// "Picked for you" lines added to the request emails: tips and a calculator for what they looked at most.
+function pickedFor(l: Lead): string[] {
+  const f = focusFor(l);
+  if (!f.category) return [];
+  const tips = planningTips(f.category.key, 2);
+  const tool = toolFor[f.category.key];
+  return [
+    "",
+    `Since you looked at ${f.categories.map((c) => c.label.toLowerCase()).join(" and ")}:`,
+    ...tips.map((t) => `- ${t.title}: ${t.body}`),
+    ...(tool ? [`- ${tool.name}: ${site.url}${tool.href}`] : []),
+  ];
+}
+
+function occasionLine(l: Lead): string[] {
+  const o = focusFor(l).occasion;
+  return o ? ["", `Our ${o.label.toLowerCase()} page has a sample rental list and prices: ${site.url}${o.href}`] : [];
+}
+
+export function sequenceLabel(lead: Lead): string | undefined {
+  const seq = sequenceFor(lead);
+  if (!seq) return undefined;
+  const f = focusFor(lead);
+  const parts = [f.category?.key, f.occasion?.key].filter(Boolean);
+  return parts.length ? `${seq.name}:${parts.join("+")}` : seq.name;
+}
 
 export type Step = { day: number; subject: (l: Lead) => string; body: (l: Lead) => string[] };
 
@@ -53,6 +108,7 @@ const requestSteps: Step[] = [
       "3. Damage waiver and deposit. Ask what percent, and what it covers.",
       "",
       `We put all three on one itemized proposal. Your list is saved; change it any time at ${site.url}/quote`,
+      ...pickedFor(l),
     ],
   },
   {
@@ -84,25 +140,47 @@ const requestSteps: Step[] = [
 const nurtureSteps: Step[] = [
   {
     day: 2,
-    subject: () => "The one rental list most planners forget",
-    body: (l) => [
-      hi(l),
-      "",
-      "Chairs and tables get booked first. What gets missed: linens sized to the tables, cake and gift tables, a check-in table, chargers and enough glassware for a second drink.",
-      "",
-      `Our quote builder starts from your guest count and suggests quantities for each: ${site.url}/quote`,
-    ],
+    subject: (l) => {
+      const f = focusFor(l);
+      return f.category ? `Planning ${f.category.label.toLowerCase()} for your ${event(l)}: what to check` : "The one rental list most planners forget";
+    },
+    body: (l) => {
+      const f = focusFor(l);
+      if (!f.category)
+        return [
+          hi(l),
+          "",
+          "Chairs and tables get booked first. What gets missed: linens sized to the tables, cake and gift tables, a check-in table, chargers and enough glassware for a second drink.",
+          "",
+          `Our quote builder starts from your guest count and suggests quantities for each: ${site.url}/quote`,
+        ];
+      const tool = toolFor[f.category.key];
+      return [
+        hi(l),
+        "",
+        `You were looking at ${f.category.label.toLowerCase()}, so here's what to check before you book:`,
+        ...planningTips(f.category.key, 3).map((t, i) => `${i + 1}. ${t.title}. ${t.body}`),
+        "",
+        ...(tool ? [`Work out how much you need: ${site.url}${tool.href}`] : []),
+        `See ${f.category.label.toLowerCase()} with prices: ${site.url}${f.category.href}`,
+        `Or price your whole list in one go: ${site.url}/quote`,
+      ];
+    },
   },
   {
     day: 6,
     subject: () => "Free tools for your seating plan",
-    body: (l) => [
-      hi(l),
-      "",
-      "Two free tools people use most:",
-      `- Seating planner (drag tables onto a floor plan): ${site.url}/seating-planner`,
-      `- Seating readiness score (2 minutes, tells you what's still open): ${site.url}/tools/seating-readiness`,
-    ],
+    body: (l) => {
+      const f = focusFor(l);
+      const used = new Set(f.tools.map((t) => t.href));
+      const picks = f.categories.map((c) => toolFor[c.key]).filter((t): t is { name: string; href: string } => !!t && !used.has(t.href));
+      const lines = [
+        ...new Map(picks.map((t) => [t.href, `- ${t.name}: ${site.url}${t.href}`])).values(),
+        ...(used.has("/seating-planner") ? [] : [`- Seating planner (drag tables onto a floor plan): ${site.url}/seating-planner`]),
+        ...(used.has("/tools/seating-readiness") ? [] : [`- Seating readiness score (2 minutes, tells you what's still open): ${site.url}/tools/seating-readiness`]),
+      ].slice(0, 3);
+      return [hi(l), "", picks.length ? "Free tools that fit what you were planning:" : "Two free tools people use most:", ...lines];
+    },
   },
   {
     day: 13,
@@ -113,6 +191,7 @@ const nurtureSteps: Step[] = [
       "If you have a date and a rough guest count, a 15-minute call is usually enough to price every rental and catch what's missing. It's free.",
       "",
       booking(),
+      ...occasionLine(l),
     ],
   },
 ];

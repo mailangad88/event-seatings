@@ -347,7 +347,7 @@ export function SeatingPlanner() {
                   <input id="sp-city" name="city" className="field" placeholder="Naperville, Chicago, St. Charles…" />
                 </div>
               </div>
-              {status === "error" && <p className="mt-4 text-sm text-red-400">{error}</p>}
+              {status === "error" && <p className="mt-4 text-sm text-rose">{error}</p>}
               <button className="btn-primary mt-8 w-full sm:w-auto" disabled={status === "sending"}>
                 {status === "sending" ? "Sending…" : "Show my full checklist"}
               </button>
