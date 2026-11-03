@@ -36,6 +36,12 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): photo-style product images
+
+- All 117 product shots (`public/rentals/<category>/<id>.webp`) re-rendered with the photoreal pipeline (`blender/rentals/photoreal.py`): real HDRI light (Poly Haven, CC0), photo-scanned floors and lawn, edge bevels, depth of field, and a camera finish (grain, vignette, lens fringing) in `photo_finish.py`. Furniture is pictured in a room corner, tableware on a linen tablecloth, tents and lawn items in a real park photo.
+- Alt text now describes the item and its setting and ends "(photorealistic visualization)"; manifest entries carry `setting`. These images are also the references the Gemini styled scenes are built from.
+- Remaining: 141 colour variants and angles plus 28 setups are still the older studio renders (`setting: "classic"`); re-render with `render.py --all --skip-existing` after deleting their PNGs.
+
 ## Changes in this release (2026-11-03): launch-risk fixes from the AI Council review
 
 - **Fee before vendor name.** New customer proposal page `/proposal/<token>` (noindex, disallowed in robots). It shows the items, the rental company's price and our fee as separate lines, and hides the rental company's name, phone and website until the booking fee (or a refundable hold, `BOOKING_CHARGE=hold`) is paid. Created from the new "Customer proposal" card on `/admin/leads/<id>`, with Mark paid / Mark refunded for payments outside Stripe.
