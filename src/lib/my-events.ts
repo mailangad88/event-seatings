@@ -179,3 +179,7 @@ export function budgetTotals(e: SavedEvent) {
   const paid = rows.reduce((a, r) => a + (r.paid ?? 0), 0);
   return { est, paid, left: e.budget ? e.budget - est : undefined };
 }
+
+// ---- Saved ideas (an idea board, like pinning) ---------------------------------------------------
+export const IDEAS_KEY = "bc-ideas-v1";
+export type SavedIdea = { src: string; alt: string; caption: string; href?: string; saved: string };

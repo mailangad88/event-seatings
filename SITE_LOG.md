@@ -90,6 +90,17 @@ All prices on these pages are computed from the catalog at build time. Content l
 - `[event] rentals chicago` (wedding rentals chicago, graduation party rentals chicago): extend `/events/[type]` with the full rental list instead of adding competing pages.
 - Replace estimated keyword bands in `docs/seo-data/chicago-keywords.csv` with Keyword Planner / Search Console numbers once those accounts exist.
 
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 6
+
+- Hearts (save to My Events idea board) now also on every rental item page's main picture and on every look card in `/looks`. `/looks` and all `/rentals/<category>/<item>` rows: Last touched 2026-11-03.
+
+## Changes in this release (2026-11-03): party ideas in the planning assistant
+
+- /planning-assistant plans now include up to 6 theme ideas from /party-ideas for the chosen event. Each one shows its palette, setup for the chosen space, activities and props, plus only the extra rentals beyond the package, priced at vendor +10%. Ticking a theme adds those rentals to the quote handoff.
+- Plans also list 3 layouts that fit the space (backyard, indoors, tent or park) and up to 6 activities, with a link to the event's ideas page.
+- The assistant's guide search now indexes party-type FAQs, setups and theme summaries.
+- Remaining: the assistant stays off until NEXT_PUBLIC_PLANNING_ASSISTANT=on; Gemini wording stays off until Angad approves the cost.
+
 ## Changes in this release (2026-11-03): reviews, layout builder, date checker, planning assistant, referrals, branded emails
 
 All built with free, open-source libraries (React Email, MiniSearch, SunCalc) and public-domain US government weather data. Nothing here sends email, charges money or invents content.
@@ -104,6 +115,12 @@ All built with free, open-source libraries (React Email, MiniSearch, SunCalc) an
 - Sitemap and llms.txt list the new public pages; `/reviews/write` is noindex and disallowed.
 - **Owner setup**: re-run `supabase/schema.sql` (new `reviews` and `referrers` tables, `leads.referral_code`; leads still save before you do). Optional env: `NEXT_PUBLIC_PLANNING_ASSISTANT=on`, `REFERRAL_REWARD`, `REVIEW_LINK_SECRET`.
 - Remaining: link /reviews, /refer and the two tools from the footer and /tools hub (owned by the UX and tools threads); add party ideas to the assistant; ask happy customers for reviews once events happen.
+
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 5
+
+- **Idea board.** A heart button (`src/components/myevents/SaveIdea.tsx`) on every setup and product picture in `/gallery` saves it to a "Saved ideas" board in `/my-events` (browser storage, `bc-ideas-v1`), with links back to the rental item. `/gallery` Last touched 2026-11-03.
+- `/ideas` now leads each month's reading list with the new month guide (`/blog/planning-an-event-in-chicago-in-<month>`, November: `/blog/planning-a-november-event-chicago`) and links it from every month card.
+- Remaining: hearts on `/looks` and rental item pages; let a share link carry saved ideas.
 
 ## Changes in this release (2026-11-03): month-by-month and venue-type planning guides
 
@@ -1551,3 +1568,19 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 - /tools/parking: cars to park, shortfall vs venue spaces, overflow area, shuttle count from seats, round trip and arrival window. All starting numbers labelled as placeholders.
 - Embeds: /embed/<tool> (10 calculators, noindex, canonical to the tool page, links open in a new tab tagged utm_source=<ref>, utm_medium=embed, auto-resizing via postMessage). /tools/embed has a snippet builder with a credit backlink under each iframe. Linked from the /tools hub.
 - Remaining: pitch the embed page to venues and planners (backlinks); Search Console check after 30 days.
+
+## 2026-11-03: Party ideas, setups and activities in the quote flow
+
+Angad asked for researched party ideas per party type, including activities, games, props and setup ideas, with matching add-ons selectable during quoting.
+
+- Data: `src/data/party-ideas/` (12 party types in `party-types.ts`, 34 themes in `ideas-*.ts`). Every rental is a featured catalog id; props and crafts are marked DIY (not rentals). Validate with `npx tsx scripts/check-party-ideas.ts`.
+- New routes (last touched 2026-11-03):
+
+| Route | SEO | AEO | GEO | Visuals | FAQ | CTA | Remaining to improve |
+|---|---|---|---|---|---|---|---|
+| `/party-ideas` | ✅ | ✅ CollectionPage + ItemList, FAQPage | ⚠️ Chicago in copy | ✅ scene images, palette bars | ✅ | ✅ planner + QuoteCta | Dedicated styled images per theme (most themes reuse 14 event scenes) |
+| `/party-ideas/[type]` (12) | ✅ | ✅ CollectionPage, FAQPage, breadcrumbs | ⚠️ Chicago-specific tips in FAQs | ✅ hero scene, theme cards | ✅ | ✅ "Plan your …" → `/quote?event=` | Link from matching `/events/[slug]` pages; more themes per type |
+| `/party-ideas/[type]/[idea]` (34) | ✅ | ✅ HowTo (supplies, tools, steps), FAQPage | ⚠️ | ✅ scene, palette SVG, setup sketches, rental renders | ✅ | ✅ "Plan this party" → `/quote?event=&idea=` | Own Gemini scene per theme; real event photos once we have them |
+
+- Planner (`/quote`): the Add-ons step now shows "Party ideas for your <occasion>" tiles with the price each adds for the guest count. Picking one adds its rentals under "From your party ideas" (an item already on the list keeps the larger quantity). The plan page and PDF show each picked idea's setup (indoor or backyard text by setting), activities and props. The CRM message gets "Party ideas: …". `?idea=<slug>` preselects a theme and its occasion.
+- Linked from the footer, the /ideas monthly page, sitemap and llms.txt (the header now has "Ideas" → /ideas from another PR).

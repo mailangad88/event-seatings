@@ -48,7 +48,8 @@ export default async function IdeasPage() {
   const current = monthIdeas[mi];
   const upcoming = [1, 2, 3].map((k) => monthIdeas[(mi + k) % 12]);
   const posts = new Map((await getPosts()).map((p) => [p.slug, p]));
-  const guidesFor = (m: MonthIdeas) => [...m.moments.map((x) => x.guide), ...m.guides].filter((s): s is string => !!s && posts.has(s)).map((s) => posts.get(s)!);
+  const monthGuide = (m: MonthIdeas) => [`planning-an-event-in-chicago-in-${m.slug}`, `planning-a-${m.slug}-event-chicago`].find((s) => posts.has(s));
+  const guidesFor = (m: MonthIdeas) => [monthGuide(m), ...m.moments.map((x) => x.guide), ...m.guides].filter((s): s is string => !!s && posts.has(s)).map((s) => posts.get(s)!);
   const uniq = (list: Post[]) => [...new Map(list.map((p) => [p.slug, p])).values()];
 
   // Book-now list: the event month that this month's booking window lines up with, per occasion.
@@ -84,6 +85,7 @@ export default async function IdeasPage() {
           <>
             <Link href="/my-events" className="btn-primary">Save my event date</Link>
             <a href="#year" className="btn-ghost">See every month</a>
+            <Link href="/party-ideas" className="btn-ghost">Party ideas by occasion</Link>
           </>
         }
         meta={`Mid-${current.name}: normal high ${Math.round(normalHighF[mi])}°F at O'Hare, sunset about ${sun.sunset}.`}
@@ -206,7 +208,8 @@ export default async function IdeasPage() {
                     ),
                   )}
                 </ul>
-                <p className="mt-4 text-sm">
+                <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+                  {monthGuide(m) && <Link href={`/blog/${monthGuide(m)}`} className="link">What to watch out for in {m.name}</Link>}
                   <Link href={`/chicago-event-seasons/${m.slug}`} className="link">Weather and rentals in {m.name}</Link>
                 </p>
               </div>

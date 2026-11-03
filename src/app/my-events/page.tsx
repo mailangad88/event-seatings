@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MyEvents } from "@/components/myevents/MyEvents";
 import { FaqList, Figure, JsonLd, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
+import { routeExists } from "@/lib/routes";
 import { site } from "@/lib/site";
 
 const title = "My Events: Free Event Countdown, Checklist and Reminders";
@@ -48,6 +49,18 @@ const steps = [
   { icon: "users" as const, title: "Share it", text: "Send the plan to a partner or planner." },
 ];
 
+const moreTools = [
+  { href: "/tools/floor-plan", name: "Floor plan builder", text: "Drag tables and chairs into your room and see what fits." },
+  { href: "/tools/event-date", name: "Event date checker", text: "Forecast and weather history for your exact date." },
+  { href: "/tools/event-weather", name: "Sunset and dark-by times", text: "When the light goes, and what to plan for lights and heat." },
+  { href: "/tools/guest-count", name: "Guest count estimator", text: "How many invited guests will actually come." },
+  { href: "/tools/budget-splitter", name: "Budget splitter", text: "Split one budget across categories and between hosts." },
+  { href: "/tools/rain-plan", name: "Rain plan checklist", text: "Every backup decision for an outdoor event." },
+  { href: "/vendor-guide", name: "Vendor guide", text: "Who to hire, in booking order, with questions to ask." },
+  { href: "/countdown", name: "Countdown reminders", text: "Sign up for reminders as your date gets close." },
+  { href: "/tools", name: "All free tools", text: "Calculators, plans and checklists." },
+];
+
 export default function MyEventsPage() {
   return (
     <>
@@ -79,6 +92,19 @@ export default function MyEventsPage() {
 
       <Section>
         <MyEvents site={{ name: site.name, url: site.url }} />
+      </Section>
+
+      <Section eyebrow="Go deeper" title="More tools for your event">
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {moreTools.filter((t) => routeExists(t.href)).map((t) => (
+            <li key={t.href}>
+              <Link href={t.href} className="card card-hover block h-full p-5">
+                <span className="block font-medium">{t.name}</span>
+                <span className="mt-1 block text-sm text-muted">{t.text}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section tone="sand" eyebrow="How it works" title="Four steps, then just come back">

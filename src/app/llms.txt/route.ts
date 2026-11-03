@@ -7,6 +7,7 @@ import { families } from "@/lib/guide-content";
 import { areaRentalsPath, costCategories, costPath, localAreas } from "@/data/local-rentals";
 import { getCategory } from "@/data/catalog-products";
 import { site } from "@/lib/site";
+import { getPartyType, ideaPath, ideas, partyTypes, typePath } from "@/data/party-ideas";
 
 // llms.txt: a plain-text map of the site for AI answer engines (ChatGPT, Perplexity, Gemini, Claude).
 export const revalidate = 3600;
@@ -44,6 +45,11 @@ export async function GET() {
     `- [Style quiz](${site.url}/quiz)`,
     `- [3D rental gallery](${site.url}/gallery): true-to-size 3D renders of every chair, table, linen, tent and event rental, plus complete event setups`,
     `- [About](${site.url}/about)`,
+    `- [Party ideas](${site.url}/party-ideas): themes, setups, activities, games, props and the rentals for each, by occasion`,
+    "",
+    "## Party ideas by occasion",
+    ...partyTypes.map((t) => `- [${t.name}](${site.url}${typePath(t.slug)}): ${t.setups.length} setup ideas, ${t.activities.length} activities`),
+    ...ideas.map((i) => `- [${i.name}](${site.url}${ideaPath(i)}) (${getPartyType(i.type)?.name}): ${i.tagline}`),
     "",
     "## Chairs for rent (estimated per-chair price, USD)",
     ...chairs.map(

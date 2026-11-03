@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
-import { LookScene } from "@/components/LookScene";
+import { LookScene, lookMedia } from "@/components/LookScene";
+import { SaveIdea } from "@/components/myevents/SaveIdea";
 import { Reveal } from "@/components/Reveal";
 import { getChair } from "@/data/chairs";
 import { looks } from "@/data/looks";
@@ -101,6 +102,9 @@ export default function LooksPage() {
               <Reveal key={l.slug} delay={(i % 3) * 120}>
                 <article className="group relative">
                   <LookScene look={l} className="aspect-[4/5]" />
+                  {lookMedia(l).still && (
+                    <SaveIdea idea={{ src: lookMedia(l).still!, alt: l.mediaAlt ?? `${l.name} decor look`, caption: l.name, href: `/looks/${l.slug}` }} className="absolute top-3 right-3 z-20" />
+                  )}
                   <p className="mt-5 font-serif text-lg text-gold italic">No. {String(i + 1).padStart(2, "0")}</p>
                   <h2 className="headline mt-1 text-4xl leading-tight">
                     <Link href={`/looks/${l.slug}`} className="after:absolute after:inset-0">
