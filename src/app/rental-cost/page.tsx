@@ -90,7 +90,8 @@ export default function RentalCostHub() {
         <div className="mx-auto max-w-3xl">
           <FaqList faqs={faqs} />
           <p className="mt-8 text-sm text-muted">
-            For chairs by style and quantity, see the <Link href="/chair-rental-cost" className="link-line">chair rental cost guides</Link>. For local prices,
+            To see how much prices differ between companies for the same item, read the{" "}
+            <Link href="/data/chicago-rental-prices" className="link-line">Chicago event rental price index</Link>. For chairs by style and quantity, see the <Link href="/chair-rental-cost" className="link-line">chair rental cost guides</Link>. For local prices,
             pick your town in <Link href="/party-rentals" className="link-line">party rentals by area</Link>.
           </p>
         </div>

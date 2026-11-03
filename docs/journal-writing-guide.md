@@ -4,6 +4,8 @@ How every post in `content/blog/` is written. The bar: each post fully answers o
 
 Model post: [`content/blog/tablecloth-size-chart.md`](../content/blog/tablecloth-size-chart.md). Copy its structure.
 
+Voice: plain words, no jargon and nothing that sounds AI-written. Follow [`docs/plain-writing-rules.md`](plain-writing-rules.md) and run `node scripts/check-copy.mjs`.
+
 Check your work: `node scripts/check-posts.mjs content/blog/<slug>.md` (no arguments checks every post). A post must pass before it ships.
 
 ## How posts render

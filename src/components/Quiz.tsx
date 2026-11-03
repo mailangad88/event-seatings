@@ -37,11 +37,11 @@ const questions: { q: string; options: Option[] }[] = [
     q: "Which word should guests use to describe your wedding?",
     options: [
       { label: "Cozy", scores: { Rustic: 2 } },
-      { label: "Effortless", scores: { Boho: 2, Garden: 1 } },
+      { label: "Relaxed", scores: { Boho: 2, Garden: 1 } },
       { label: "Timeless", scores: { Classic: 2 } },
       { label: "Luxe", scores: { Glam: 2 } },
       { label: "Clean", scores: { Minimalist: 2, Modern: 1 } },
-      { label: "Vibrant", scores: { Cultural: 2, Boho: 1 } },
+      { label: "Colorful", scores: { Cultural: 2, Boho: 1 } },
     ],
   },
   {

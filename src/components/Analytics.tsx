@@ -1,14 +1,24 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useReportWebVitals } from "next/web-vitals";
 import { GA_ID, track } from "@/lib/analytics";
+import { consentEvent, trackingAllowed } from "@/lib/consent";
 
 // Booking-tool hosts. Any link to these counts as a "book a call" click.
 const BOOKING_HOSTS = /(calendly\.com|cal\.com|tidycal\.com|savvycal\.com|hubspot\.com\/meetings|zcal\.co)/i;
 
 export function Analytics() {
+  // Google Analytics loads only while the visitor hasn't said no in the privacy notice (components/ConsentNotice.tsx).
+  const [allowed, setAllowed] = useState(false);
+  useEffect(() => {
+    const update = () => setAllowed(trackingAllowed());
+    update();
+    window.addEventListener(consentEvent, update);
+    return () => window.removeEventListener(consentEvent, update);
+  }, []);
+
   useEffect(() => {
     if (!GA_ID) return;
 
@@ -46,7 +56,7 @@ export function Analytics() {
     });
   });
 
-  if (!GA_ID) return null;
+  if (!GA_ID || !allowed) return null;
   return (
     <>
       <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />

@@ -98,7 +98,7 @@ export const westSuburbs: Location[] = [
     intro:
       "We rent event chairs in Geneva and deliver from our base just up the river in St. Charles, a short drive down Route 31. Choose from cross-back, rattan garden, cane-back, ghost and nine more styles for weddings, showers and garden parties. Request a quote or book a quick planning call to hold a 2027 date.",
     story: [
-      "Geneva has a particular kind of charm: Victorian houses, the shops along Third Street, and a riverfront that pulls people outdoors from May through October. Celebrations here often feel curated, with a garden-party sensibility that rewards chairs with texture and character over plain banquet seating.",
+      "Geneva has a particular kind of charm: Victorian houses, the shops along Third Street, and a riverfront that pulls people outdoors from May through October. Parties here often lean toward a garden-party look, which suits chairs with texture and character over plain banquet seating.",
       "Many Geneva events happen on private property: deep lots on the east side, older homes with mature trees, and estates near the river. Others land in barns and farm venues to the west, or near public gardens and parks where people take photos even if the party itself is elsewhere. Fabyan Forest Preserve and its Japanese garden are a favorite backdrop for portraits.",
       "Since we're just up the road, Geneva is close enough that we can plan unhurried setups and come back for an evening teardown without a long haul. We'll talk through your space on a planning call, and your quote lays out chairs, delivery and setup line by line.",
     ],
@@ -754,7 +754,7 @@ export const westSuburbs: Location[] = [
     intro:
       "We rent event chairs in Hinsdale for estate weddings, country club parties and garden showers, delivered from our base in St. Charles. Choose from 13 styles, including velvet dining chairs, Louis medallion chairs and ghost chairs for elegant gatherings. When you're ready, request a quote or set up a short call to talk through your space.",
     story: [
-      "Hinsdale is a village of stately homes, tree-lined streets and a charming downtown clustered around the Metra station on the BNSF line. Many residents host at home, and the large lots and formal gardens here make beautiful settings for weddings, graduations and holiday parties.",
+      "Hinsdale is a village of stately homes, tree-lined streets and a small downtown clustered around the Metra station on the BNSF line. Many residents host at home, and the large lots and formal gardens here make beautiful settings for weddings, graduations and holiday parties.",
       "Country clubs and private estates nearby host formal celebrations, while downtown restaurants and event rooms are popular for showers and rehearsal dinners. Events here often focus on design, with chairs chosen to match florals, linens and the architecture of the home.",
       "We'll talk through your space and your style on a planning call, and send a quote that itemizes chairs, delivery and setup. For estate events, we'll plan how to move chairs across lawns and patios without disturbing landscaping.",
     ],

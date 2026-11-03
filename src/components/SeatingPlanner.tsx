@@ -326,7 +326,7 @@ export function SeatingPlanner() {
           {!unlocked ? (
             <form onSubmit={submit} className="mt-8 border border-line bg-surface-2 p-6 sm:p-8 print:hidden">
               <p className="headline text-2xl">
-                Unlock all {checklist.length} steps <em className="text-gold">free</em>
+                See all {checklist.length} steps <em className="text-gold">free</em>
               </p>
               <p className="mt-2 text-sm leading-6 text-muted">
                 Get the full printable checklist for your event, plus occasional Chicago seating tips. No spam,
@@ -347,15 +347,15 @@ export function SeatingPlanner() {
                   <input id="sp-city" name="city" className="field" placeholder="Naperville, Chicago, St. Charles…" />
                 </div>
               </div>
-              {status === "error" && <p className="mt-4 text-sm text-red-400">{error}</p>}
+              {status === "error" && <p className="mt-4 text-sm text-rose">{error}</p>}
               <button className="btn-primary mt-8 w-full sm:w-auto" disabled={status === "sending"}>
-                {status === "sending" ? "Unlocking…" : "Unlock my checklist"}
+                {status === "sending" ? "Sending…" : "Show my full checklist"}
               </button>
             </form>
           ) : (
             <div className="mt-8 border border-gold/60 bg-gold-soft/40 p-6 sm:p-8 print:hidden">
               <p className="headline text-2xl">
-                Your checklist is <em className="text-gold">unlocked</em>.
+                Here is your <em className="text-gold">full checklist</em>.
               </p>
               <p className="mt-2 leading-7 text-muted">
                 Want a second pair of eyes on your plan? Book a free 15-minute seating call and we&apos;ll suggest

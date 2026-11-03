@@ -63,7 +63,7 @@ export const roles: Role[] = [
     does: "Chairs, tables, linens, dinnerware, glassware, lounge, decor, dance floors and lighting.",
     book: "3-6 months out for weddings and big parties; 4-8 weeks for smaller events, earlier for specialty chairs on peak dates.",
     ask: ["What's the delivery window, and is setup and breakdown included?", "Is there a damage waiver, and what does it cover?", "When is the final count due?", "How should linens and dishes be packed for return?"],
-    overlap: `This is what we do: one itemized quote from vetted Chicago-area rental companies.`,
+    overlap: `This is what we do: one itemized quote from established Chicago-area rental companies.`,
     link: { href: "/quote?from=vendor-guide", label: "Build a free rental quote" },
   },
   {

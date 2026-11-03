@@ -17,7 +17,7 @@ export const northSuburbs: Location[] = [
       "You can rent event chairs in Elgin from us, delivered from our home base just down the Fox River in St. Charles. We bring wedding, party and ceremony seating to Elgin homes, halls and riverfront settings, and setup is itemized in your quote. Book a short planning call or request a quote to reserve a spot in our 2026-27 season.",
     story: [
       "Elgin wears its history openly. The old watch factory city still has Victorian and Queen Anne houses in neighborhoods like Gifford Park, a downtown of brick storefronts stepping down toward the river, and long stretches of the Fox River Trail that make an easy backdrop for photos. A lot of celebrations here start in a church or a parish hall and finish in a backyard or a rented banquet room on the west side.",
-      "It is also one of the most multigenerational and bilingual cities in the Fox Valley, which shows up in the calendar: quinceaneras with a court of damas and chambelanes, graduation parties that fill a whole cul-de-sac, and weddings where the guest list easily clears 200. Those events need a lot of chairs that look good, plus one or two pieces that look unforgettable.",
+      "It is also one of the most multigenerational and bilingual cities in the Fox Valley, which shows up in the calendar: quinceaneras with a court of damas and chambelanes, graduation parties that fill a whole cul-de-sac, and weddings where the guest list easily clears 200. Those events need a lot of chairs that look good, plus one or two pieces people will remember.",
       "Because we are based a short drive south along Route 31, Elgin is squarely in our backyard. We would rather spend ten minutes on the phone learning about your driveway, your hall's loading door and your timeline than guess. Tell us what you are planning and we will build a seating plan around it.",
     ],
     settings: [
@@ -519,7 +519,7 @@ export const northSuburbs: Location[] = [
       },
       {
         name: "Pasture and meadow ceremonies",
-        note: "Open fields are stunning but uneven. Mowing the ceremony area short a day or two before helps chairs sit level.",
+        note: "Open fields look great but are uneven. Mowing the ceremony area short a day or two before helps chairs sit level.",
       },
       {
         name: "Estates and large backyards",

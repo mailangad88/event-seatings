@@ -260,7 +260,7 @@ def describe(key, img, caption, photo=False):
               "Plain text only.") if not photo else (
               f"Write alt text for this product photo in one sentence of 15 to 30 words. Name the rental item "
               f"({caption}) and describe its shape, colour, material and details. Do not start with 'image of' or "
-              "'photo of'. Plain text only.")
+              "'photo of'. Use plain words (no vibrant, stunning, seamless, elegant). Plain text only.")
     body = {"contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": "image/jpeg",
                                                                        "data": base64.b64encode(buf.getvalue()).decode()}}]}]}
     for model in ALT_MODELS:

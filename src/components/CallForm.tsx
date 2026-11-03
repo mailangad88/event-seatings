@@ -121,7 +121,7 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
         />
       </div>
       <div className="sm:col-span-2">
-        {status === "error" && <p className="mb-4 text-sm text-red-400">{error}</p>}
+        {status === "error" && <p className="mb-4 text-sm text-rose">{error}</p>}
         <button className="btn-primary w-full sm:w-auto" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Request my call"}
         </button>

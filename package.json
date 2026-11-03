@@ -14,7 +14,8 @@
     "remotion:reels": "for t in gilded-ivory midnight-gold blush-garden; do remotion render DecorReel-$t out/reels/$t-reel.mp4; done",
     "seo-audit": "node scripts/seo-audit.mjs",
     "indexnow": "node scripts/indexnow.mjs",
-    "audit:ux": "node scripts/ux-audit.mjs"
+    "audit:ux": "node scripts/ux-audit.mjs",
+    "check:copy": "node scripts/check-copy.mjs"
   },
   "dependencies": {
     "@growthbook/growthbook": "^2.0.0",

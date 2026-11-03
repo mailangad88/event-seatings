@@ -6,7 +6,9 @@ import { getCatalogItem, vendors } from "@/data/catalog";
 import { getVendor, type Vendor } from "@/data/vendors";
 import { VendorContact } from "@/components/admin/VendorContact";
 import { usd, type QuoteLine } from "@/lib/catalog-types";
-import { getLead, leadStatuses, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
+import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJourney";
+import { buildLeadAlert } from "@/lib/lead-alert";
+import { getLead, leadStatuses, listLeadsByEmail, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
 import { amountDue, chargeLabel, stripeEnabled } from "@/lib/payments";
 import { site } from "@/lib/site";
 import { createProposal, saveLead, setFeeStatus } from "../actions";
@@ -67,6 +69,8 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
   const [lead, partnerRows] = await Promise.all([getLead(id), listPartners()]);
   if (!lead) notFound();
   const partners = new Map(partnerRows.map((p) => [p.vendor_id, p]));
+  const earlier = await listLeadsByEmail(lead.email).catch(() => [] as Lead[]);
+  const alert = buildLeadAlert(lead, { earlier, partners, siteUrl: site.url });
 
   const lines = lead.items ?? [];
   const subtotal = lead.quote_subtotal ?? 0;
@@ -123,13 +127,15 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                 <Row label="Venue">{lead.venue}</Row>
               </div>
             </dl>
-            {lead.pages_viewed && <p className="mt-4 text-xs leading-5 text-muted">Pages viewed: {lead.pages_viewed}</p>}
             {lead.message && <p className="mt-4 border-l border-gold pl-4 text-sm leading-6 whitespace-pre-line">{lead.message}</p>}
             {!lines.length && lead.chairs?.length ? (
               <p className="mt-4 text-sm">Chairs: {lead.chairs.map((s) => getChair(s)?.name ?? s).join(", ")}</p>
             ) : null}
             {lead.quiz_styles?.length ? <p className="mt-2 text-sm">Style quiz: {lead.quiz_styles.join(", ")}</p> : null}
           </section>
+
+          <LeadOutreach alert={alert} />
+          <LeadJourney alert={alert} />
 
           {(lines.length > 0 || assigned) && (
             <section className={card} aria-labelledby="who-to-contact">
@@ -223,6 +229,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
 
           <section className={card}>
             <h2 className="font-serif text-2xl">Timeline</h2>
+            <p className="mt-1 text-sm text-muted">Status changes, emails sent, calls and notes, newest first.</p>
             <ol className="mt-4 space-y-3 text-sm">
               {[...(lead.activity ?? [])].reverse().map((a, i) => (
                 <li key={i} className="grid grid-cols-[8.5rem_1fr] gap-3">
@@ -242,7 +249,10 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
 
         <aside className="space-y-6">
           <section className={card} aria-labelledby="proposal">
-            <h2 id="proposal" className="font-serif text-2xl">Customer proposal</h2>
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h2 id="proposal" className="font-serif text-2xl">Customer proposal</h2>
+              <Link href={`/admin/leads/${lead.id}/quote`} className="text-sm text-accent">Edit quote</Link>
+            </div>
             <p className="mt-1 text-sm text-muted">
               The customer link hides the rental partner until the {chargeLabel().toLowerCase()} is paid.
               {stripeEnabled() ? " Stripe Checkout is on." : " Stripe is off (no STRIPE_SECRET_KEY), so send a payment link yourself and mark it paid here."}
@@ -321,12 +331,17 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
 
           <section className={card}>
             <h2 className="font-serif text-2xl">Where they came from</h2>
-            <dl className="mt-3 text-sm">
-              <Row label="Form">{lead.source}</Row>
-              {trackingFields.map((f) => (
-                <Row key={f} label={f.replace(/_/g, " ")}>{lead[f]}</Row>
-              ))}
-            </dl>
+            <div className="mt-3"><LeadSource alert={alert} /></div>
+            <details className="mt-3 text-sm">
+              <summary className="cursor-pointer text-muted">All tracking fields</summary>
+              <dl className="mt-2">
+                <Row label="Form">{lead.source}</Row>
+                <Row label="Email set">{lead.sequence}</Row>
+                {trackingFields.map((f) => (
+                  <Row key={f} label={f.replace(/_/g, " ")}>{lead[f]}</Row>
+                ))}
+              </dl>
+            </details>
           </section>
         </aside>
       </div>

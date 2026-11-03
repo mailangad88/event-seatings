@@ -114,6 +114,14 @@ alter table leads
   add column if not exists followup_step int not null default 0,
   add column if not exists followup_last_at timestamptz;
 create index if not exists leads_email_idx on leads (lower(email));
+
+-- Visitor path and interests (added with the rich lead alerts, Nov 3 2026). Safe to run again.
+-- journey = first visit, visits, pages with titles and times, clicks, device and approximate location (lib/journey.ts).
+alter table leads
+  add column if not exists journey jsonb,
+  add column if not exists ip_location text,
+  add column if not exists interests text,
+  add column if not exists sequence text;
 create index if not exists leads_created_idx on leads (created_at);
 
 -- Customer proposals and the booking fee (added with the Stripe Checkout flow). Safe to run again.
@@ -126,6 +134,11 @@ alter table leads
   add column if not exists fee_paid_at timestamptz,
   add column if not exists stripe_session_id text;
 create unique index if not exists leads_proposal_token_idx on leads (proposal_token) where proposal_token is not null;
+
+-- Event to-dos ticked off in /admin (vendor confirmation, reminder calls, event emails). Safe to run again.
+alter table leads add column if not exists tasks_done jsonb;
+-- Monthly commission statements per rental partner (/admin/invoices). Safe to run again.
+alter table vendor_partners add column if not exists commission_log jsonb;
 
 alter table votes enable row level security;
 alter table leads enable row level security;
@@ -171,3 +184,50 @@ create table if not exists referrers (
 alter table referrers enable row level security;
 alter table leads add column if not exists referral_code text;
 create index if not exists leads_referral_idx on leads (referral_code) where referral_code is not null;
+
+-- Vendor sign-ups from /partners/onboard, reviewed in /admin/applications. Safe to run again.
+-- status_token is the random key to the vendor's own status page (/partners/status/<token>).
+create table if not exists vendor_applications (
+  id uuid primary key,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz,
+  status text not null default 'submitted' check (status in ('submitted', 'reviewing', 'needs_info', 'approved', 'declined')),
+  status_token text not null unique,
+  company text not null,
+  website text,
+  contact_name text not null,
+  contact_role text,
+  email text not null,
+  phone text not null,
+  years_in_business text,
+  categories text[] not null default '{}',
+  areas text[] not null default '{}',
+  area_notes text,
+  order_minimum text,
+  lead_time text,
+  setup text,
+  weekends text,
+  open_days text[],
+  max_events_per_day int,
+  blackout_dates text,
+  price_list_url text,
+  price_items jsonb,
+  deposit_policy text,
+  payment_methods text[],
+  damage_waiver text,
+  billing_name text,
+  billing_email text,
+  commission_pay text,
+  insurance text,
+  photo_permission text,
+  photo_link text,
+  agreed_terms_at timestamptz,
+  notes text,
+  source text,
+  page_path text,
+  linked_vendor_id text,
+  admin_notes text,
+  activity jsonb not null default '[]'::jsonb
+);
+create index if not exists vendor_applications_status_idx on vendor_applications (status, created_at desc);
+alter table vendor_applications enable row level security;

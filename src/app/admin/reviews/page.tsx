@@ -65,11 +65,7 @@ export default async function AdminReviewsPage(props: PageProps<"/admin/reviews"
 
   return (
     <div className="container-x py-12">
-      <div className="flex flex-wrap justify-between gap-3 text-sm">
-        <Link href="/admin" className="text-accent">← Dashboard</Link>
-        <Link href="/admin/emails" className="text-accent">Email previews →</Link>
-      </div>
-      <p className="eyebrow mt-3">Admin</p>
+      <p className="eyebrow">Grow</p>
       <h1 className="mt-1 font-serif text-5xl">Reviews</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted">
         Reviews from /reviews/write wait here until you publish them. Publish everything real, including critical reviews; hide only spam,
@@ -78,7 +74,7 @@ export default async function AdminReviewsPage(props: PageProps<"/admin/reviews"
 
       <nav className="mt-8 flex gap-2">
         {tabs.map((t) => (
-          <Link key={t.id} href={`/admin/reviews?tab=${t.id}`} className={t.id === tab ? "chip chip-active" : "chip"}>
+          <Link key={t.id} href={`/admin/reviews?tab=${t.id}`} className={t.id === tab ? "chip-active" : "chip"}>
             {t.label} ({reviews.filter((r) => r.status === t.id).length})
           </Link>
         ))}

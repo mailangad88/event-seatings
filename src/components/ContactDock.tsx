@@ -344,7 +344,7 @@ function QuickMessage({
       >
         {status === "sending" ? "Sending…" : "Send message"}
       </button>
-      {status === "error" && <p className="text-sm text-red-400">{error}</p>}
+      {status === "error" && <p className="text-sm text-rose">{error}</p>}
     </form>
   );
 }

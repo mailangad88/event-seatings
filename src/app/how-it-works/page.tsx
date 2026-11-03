@@ -9,7 +9,7 @@ import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "How Event Rentals Work: One Quote for Everything",
-  description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more, pay nothing until a vendor confirms, and we coordinate vetted Chicago-area rental companies from delivery to pickup.`,
+  description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more, pay nothing until a vendor confirms, and we coordinate established Chicago-area rental companies from delivery to pickup.`,
   alternates: { canonical: "/how-it-works" },
 });
 
@@ -29,7 +29,7 @@ const detail = [
   {
     icon: "users",
     title: "3. We confirm with vendors",
-    text: "After a quick call, we check your date with vetted Chicago-area rental companies and send one itemized proposal, usually within one business day.",
+    text: "After a quick call, we check your date with established Chicago-area rental companies and send one itemized proposal, usually within one business day.",
     points: ["Every fee and policy shown up front", "Substitutes if something is booked", "One contact for every vendor"],
   },
   {
@@ -64,8 +64,8 @@ export default function HowItWorksPage() {
       <PageHero
         breadcrumbs={[{ name: "How it works", href: "/how-it-works" }]}
         eyebrow="How it works"
-        title="One list. One quote. Every rental handled."
-        intro={`Booking with ${site.name} takes four steps: pick your rentals and see live prices, send one free quote request, approve a proposal we confirm with a vetted Chicago-area rental company, then get delivery, setup and pickup on your date. Here is exactly what happens at each step.`}
+        title="How booking your rentals works"
+        intro={`Booking with ${site.name} takes four steps: pick your rentals and see live prices, send one free quote request, approve a proposal we confirm with an established Chicago-area rental company, then get delivery, setup and pickup on your date. Here is what happens at each step.`}
         actions={
           <>
             <Link href="/quote?from=how-it-works" className="btn-primary">Start my quote</Link>
@@ -136,7 +136,7 @@ export default function HowItWorksPage() {
             <ul className="mt-5 space-y-3 text-sm">
               {[
                 "Price lock on your approved proposal",
-                "Vetted rental companies, asked for proof of insurance",
+                "Established rental companies that show us proof of insurance",
                 "Backup guarantee if a vendor cancels",
                 `One coordinator, ${replyPromise}`,
                 "Free changes until 14 days before",
@@ -148,6 +148,7 @@ export default function HowItWorksPage() {
               ))}
             </ul>
             <Link href="/booking-promise" className="btn-ghost btn-sm mt-6">Payments, damage & insurance →</Link>
+            <Link href="/how-we-work" className="btn-ghost btn-sm mt-3">How we work with rental companies →</Link>
           </article>
         </div>
       </Section>

@@ -107,7 +107,7 @@ export default function MyEventsPage() {
         </ul>
       </Section>
 
-      <Section tone="sand" eyebrow="How it works" title="Four steps, then just come back">
+      <Section tone="sand" eyebrow="How it works" title="Set it up once, then check back">
         <StepFlow steps={steps} />
       </Section>
 

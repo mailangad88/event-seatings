@@ -5,7 +5,7 @@ date: 2026-11-02
 tags: Cultural Celebrations, Weddings, Nigerian Wedding
 keyword: nigerian traditional wedding seating
 image: /blog/art/cultural-celebrations.svg
-imageAlt: Vibrant reception hall with colorful table decor and a decorated head table
+imageAlt: Reception hall with colorful table decor and a decorated head table
 ---
 
 <div class="answer-box">

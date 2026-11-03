@@ -3,7 +3,10 @@ import Link from "next/link";
 import { createElement } from "react";
 import { render } from "@react-email/render";
 import { NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
+import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
+import { buildLeadAlert } from "@/lib/lead-alert";
 import { site } from "@/lib/site";
+import type { Lead } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Email previews", robots: { index: false } };
@@ -23,8 +26,56 @@ const sampleText = [
   `The ${site.name} team`,
 ].join("\n");
 
+// Made-up enquiry for previewing the owner alert layout.
+const t = (minAgo: number) => new Date(Date.now() - minAgo * 60_000).toISOString();
+const sampleLead: Lead = {
+  id: "sample",
+  kind: "quote",
+  created_at: t(0),
+  name: "Sample Person",
+  email: "sample@example.com",
+  phone: "(312) 555-0100",
+  event_date: new Date(Date.now() + 75 * 864e5).toISOString().slice(0, 10),
+  event_type: "Wedding",
+  guest_count: 120,
+  city: "Naperville",
+  venue: "Backyard",
+  source: "planner:wedding-classic",
+  call_consent: true,
+  email_consent: true,
+  visitor_tz: "America/Chicago",
+  utm_source: "chatgpt.com",
+  utm_medium: "referral",
+  page_path: "/quote",
+  ip_location: "Naperville, IL, US",
+  quote_subtotal: 2180,
+  quote_cost: 1982,
+  items: [
+    { id: "white-resin-folding-chair", name: "White resin folding chair", category: "Chairs", unit: "each", qty: 125, unit_price: 4.4, line_total: 550, vendor_id: "arlington-rental", vendor_price: 4 },
+    { id: "frame-tent-30x40", name: "30' x 40' frame tent", category: "Tents", unit: "each", qty: 1, unit_price: 1630, line_total: 1630, vendor_id: "arlington-rental", vendor_price: 1482 },
+  ],
+  journey: {
+    first_seen: t(26),
+    visits: 1,
+    page_views: 4,
+    device: "Phone (iOS)",
+    location: "Naperville, IL, US",
+    pages: [
+      { path: "/events/weddings", title: "Wedding rentals in Chicago", at: t(26), visit: 1 },
+      { path: "/rentals/tents", title: "Tent rentals", at: t(22), visit: 1 },
+      { path: "/tools/tent-size", title: "Tent size calculator", at: t(17), visit: 1 },
+      { path: "/quote", title: "Plan your event", at: t(9), visit: 1 },
+    ],
+    clicks: [
+      { label: "Work out my tent size", href: "/tools/tent-size", path: "/rentals/tents", at: t(18) },
+      { label: "Price my whole list", href: "/quote", path: "/tools/tent-size", at: t(10) },
+    ],
+  },
+};
+
 export default async function EmailPreviewsPage() {
   const emails = [
+    { name: "New enquiry alert (to you)", when: "Every form, within seconds, with RESEND_API_KEY and NOTIFY_EMAIL. Made-up enquiry.", el: createElement(LeadAlertEmail, { alert: buildLeadAlert(sampleLead, { siteUrl: site.url }), siteUrl: site.url }) },
     { name: "Any email (branded wrapper)", when: "Every email sendEmail sends (confirmations, downloads, follow-ups, owner alerts) gets this HTML around its plain text.", el: createElement(TextEmail, { subject: "We got your quote request", text: sampleText, unsubscribe: `${site.url}/unsubscribe` }) },
     { name: "Review request (you send by hand)", when: "Never automatic. Copy from /admin/reviews.", el: createElement(ReviewRequestEmail, { name: "Sample", link: `${site.url}/reviews/write` }) },
     { name: "New review (to you)", when: "When a review is submitted, with RESEND_API_KEY and NOTIFY_EMAIL.", el: createElement(NewReviewEmail, { rating: 5, name: "Sample Customer", body: "Sample review text for layout only.", verified: true }) },

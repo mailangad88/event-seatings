@@ -30,13 +30,13 @@ Choosing a venue is the biggest early decision, and it shapes every other one. A
 
 ## The main venue types, in plain terms
 
-**Banquet halls and hotels** usually offer tables, chairs, linens, a staff and often catering. They are the most turnkey. **Lofts, warehouses and galleries** offer character and flexibility, but often leave catering, furniture and cleanup to you; see our guides to [warehouse and raw space venues](/blog/warehouse-and-raw-space-event-venues), [loft party rentals](/blog/chicago-loft-party-rentals) and [museum and gallery venues](/blog/museum-and-gallery-event-venues-chicago).
+**Banquet halls and hotels** usually offer tables, chairs, linens, a staff and often catering. They are the most ready to go. **Lofts, warehouses and galleries** offer character and flexibility, but often leave catering, furniture and cleanup to you; see our guides to [warehouse and raw space venues](/blog/warehouse-and-raw-space-event-venues), [loft party rentals](/blog/chicago-loft-party-rentals) and [museum and gallery venues](/blog/museum-and-gallery-event-venues-chicago).
 
 **Restaurants** can host private rooms or a full buyout; compare them in [restaurant private room vs full venue](/blog/restaurant-private-room-vs-full-venue). **Park pavilions and forest preserves** are affordable and scenic but come with permits, rules and limited equipment; see [suburban pavilion rentals](/blog/suburban-park-district-pavilion-rentals). **Breweries, wineries and golf clubs** blend food and space; see [brewery and winery venues](/blog/brewery-and-winery-event-venues-chicago) and [golf club venues](/blog/golf-club-wedding-and-event-venues). **Churches and community centers** are budget friendly and familiar; see [church hall and community center planning](/blog/church-hall-and-community-center-event-planning). A **backyard or home** is the most personal; compare costs in [backyard party vs venue cost](/blog/backyard-party-vs-venue-cost).
 
 ## How much work each venue type leaves to you
 
-This diagram shows a rough spectrum from turnkey to blank canvas. The further right, the more you will arrange yourself, and the more rentals you are likely to need.
+This diagram shows a rough spectrum from ready to go to blank canvas. The further right, the more you will arrange yourself, and the more rentals you are likely to need.
 
 <figure>
 <svg role="img" aria-labelledby="typesofeventx38-t typesofeventx38-d" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
