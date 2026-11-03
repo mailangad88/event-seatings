@@ -44,6 +44,7 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 - `src/lib/chicago-climate.ts` gains `lightTimes()` (golden light, civil dusk, daylight; checked Jun 21 dusk 9:03 PM). My Events links its weather card to the new tool. Tools hub, footer, sitemap and llms.txt list both pages.
 - **My Events: vendors and budget.** Each saved event now lists its vendor team (from the vendor guide, essentials flagged) with a booked tick, estimate and paid per vendor, a total budget and "left to plan" / "over budget". Amounts stay on the device and are left out of share links.
 - **Header countdown.** The "My events" nav link shows the days to the visitor's next saved event (e.g. "My events 42d"), so return visits open with the countdown.
+- **"Keep planning" strip** (`src/components/myevents/PlanningLoop.tsx`) on every blog post (after "Ready to rent?") and every rental category page: save your date (My Events opens with the occasion guessed from the page, via `?new=<type>`), ideas for this month, vendor guide and the weather planner. All blog post and category rows: Last touched 2026-11-03.
 - Remaining: per-event vendor pages (`/vendor-guide/<event>`) if search data shows demand; add hourly forecast once the event is within 10 days (needs a weather API key).
 
 ## Changes in this release (2026-11-03): repeat-visit planning hub, batch 1

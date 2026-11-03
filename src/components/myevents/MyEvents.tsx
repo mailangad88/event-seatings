@@ -72,6 +72,10 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
     return p ? fromShareParam(p) : undefined;
   }, [search]);
   const fromPlanner = useMemo(() => fromPlannerStore(plannerRaw), [plannerRaw]);
+  const startType = useMemo(() => {
+    const t = new URLSearchParams(search).get("new");
+    return plannerEvents.some((e) => e.id === t) ? t! : "wedding";
+  }, [search]);
   const [dismissedShare, setDismissedShare] = useState(false);
   const [selected, setSelected] = useState<string | undefined>();
   const [copied, setCopied] = useState(false);
@@ -120,7 +124,7 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
     return (
       <div>
         {shareBanner}
-        <StartForm onStart={(e) => add(e, "new")} fromPlanner={fromPlanner} onImport={() => fromPlanner && add(fromPlanner, "planner")} />
+        <StartForm key={startType} initialType={startType} onStart={(e) => add(e, "new")} fromPlanner={fromPlanner} onImport={() => fromPlanner && add(fromPlanner, "planner")} />
       </div>
     );
   }
@@ -345,8 +349,8 @@ export function MyEvents({ site }: { site: { name: string; url: string } }) {
   );
 }
 
-function StartForm({ onStart, fromPlanner, onImport }: { onStart: (e: SavedEvent) => void; fromPlanner?: SavedEvent; onImport: () => void }) {
-  const [type, setType] = useState("wedding");
+function StartForm({ initialType, onStart, fromPlanner, onImport }: { initialType: string; onStart: (e: SavedEvent) => void; fromPlanner?: SavedEvent; onImport: () => void }) {
+  const [type, setType] = useState(initialType);
   const [date, setDate] = useState("");
   return (
     <div className="card p-6 sm:p-10">

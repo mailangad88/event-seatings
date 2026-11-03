@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
+import { PlanningLoop } from "@/components/myevents/PlanningLoop";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { RentalVisual, rentalImagePath } from "@/components/rentals/RentalVisual";
@@ -280,6 +281,9 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
               ))}
           </ul>
         </section>
+      </div>
+      <div className="container-x mt-16">
+        <PlanningLoop text={c.name} />
       </div>
       <div className="mt-24 -mb-32">
         <CallCta title={<>Planning {c.name.toLowerCase()} for your <em className="text-gold">event</em>?</>} source={`rentals-${c.id}`} />
