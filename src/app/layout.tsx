@@ -31,6 +31,8 @@ const body = localFont({
     { path: "./fonts/jost-latin-300-normal.woff2", weight: "300", style: "normal" },
     { path: "./fonts/jost-latin-400-normal.woff2", weight: "400", style: "normal" },
     { path: "./fonts/jost-latin-500-normal.woff2", weight: "500", style: "normal" },
+    // 600 is used by font-semibold (prices, badges, card titles); without it browsers fake the bold.
+    { path: "./fonts/jost-latin-600-normal.woff2", weight: "600", style: "normal" },
   ],
 });
 

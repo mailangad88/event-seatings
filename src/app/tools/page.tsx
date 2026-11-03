@@ -261,7 +261,7 @@ export default function ToolsPage() {
                   <Link href={t.href} className="group grid grid-cols-[120px_1fr] gap-6 border border-line bg-surface p-5 transition-colors hover:border-gold">
                     <Image src={t.image} alt={t.imageAlt} width={1000} height={1250} sizes="120px" className="aspect-[4/5] w-full object-cover" />
                     <div className="flex flex-col">
-                      {t.startHere && <span className="w-fit bg-gold px-2 py-1 text-[10px] tracking-[0.2em] text-[#0a0806] uppercase">Start here</span>}
+                      {t.startHere && <span className="w-fit bg-gold px-2 py-1 text-[10px] font-medium tracking-[0.2em] text-accent-ink uppercase">Start here</span>}
                       <h3 className="mt-3 font-serif text-2xl group-hover:text-gold">{t.name}</h3>
                       <p className="mt-2 text-sm leading-6 text-muted">{t.text}</p>
                       <ul className="mt-auto flex flex-wrap gap-2 pt-4" aria-label="What you get">

@@ -94,7 +94,7 @@ export default async function Home() {
               Chairs, tables, linens, dinnerware, tents and lighting from {site.market}&apos;s trusted rental houses. Pick
               what you need, see prices instantly, and we coordinate every vendor for you.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="cta-row mt-8">
               <Link href="/quote?from=home-hero" className="btn-primary btn-lg">
                 Build your quote <Icon name="arrow" size={18} />
               </Link>

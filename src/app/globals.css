@@ -18,7 +18,7 @@
   --ink: #1d1a16; /* type */
   --muted: #655d52; /* secondary type (AA on bg and surface-2) */
   --line: #e4dbcd; /* hairlines, borders */
-  --gold: #8a6628; /* aged brass: accents, eyebrows, links (AA on ivory) */
+  --gold: #7a5a22; /* aged brass: accents, eyebrows, links (AA on ivory, sand and gold-soft: 5.3:1+) */
   --gold-bright: #c9a96a; /* brass on dark bands */
   --gold-soft: #f3eadb; /* tinted wells, selected states */
   --espresso: #1b1814; /* dark bands */
@@ -94,6 +94,25 @@ body {
   background-color: var(--bg);
   color: var(--ink);
   font-weight: 400;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: lining-nums;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Headings and short copy wrap evenly; long paragraphs avoid one-word last lines. */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+p, li, dd, figcaption {
+  text-wrap: pretty;
+}
+
+/* Phones: the chat button lifts above any sticky bottom bar (quote total, "Get this look"). */
+@media (max-width: 1023px) {
+  body:has([data-bottom-bar]) [data-fab] {
+    bottom: calc(5.25rem + env(safe-area-inset-bottom));
+  }
 }
 
 ::selection {
@@ -138,20 +157,26 @@ body {
 }
 
 /* ---------- Type ---------- */
+/* Cormorant has hairline strokes: 500 keeps section and card headings legible at smaller sizes,
+   the big page H1 stays at 400 where the contrast reads as elegant rather than faint. */
 @utility headline {
   @apply font-serif font-normal tracking-[-0.015em] text-balance;
 }
 @utility display-1 {
-  @apply headline text-5xl leading-[1.02] sm:text-6xl lg:text-7xl;
+  @apply headline text-[2.75rem] leading-[1.04] sm:text-6xl sm:leading-[1.02] lg:text-7xl;
 }
 @utility display-2 {
-  @apply headline text-4xl leading-[1.08] sm:text-5xl;
+  @apply headline text-[2.15rem] leading-[1.1] font-medium sm:text-5xl sm:leading-[1.08];
 }
 @utility display-3 {
-  @apply headline text-2xl leading-tight sm:text-3xl;
+  @apply headline text-2xl leading-tight font-medium sm:text-3xl;
 }
 @utility lede {
-  @apply text-lg leading-8 text-muted;
+  @apply text-[17px] leading-7 text-muted sm:text-lg sm:leading-8;
+}
+/* Action row: buttons go full width on phones so the main CTA is an easy, even tap target. */
+@utility cta-row {
+  @apply flex flex-wrap items-center gap-3 max-sm:*:w-full;
 }
 @utility eyebrow {
   @apply inline-flex items-center gap-2.5 text-xs font-medium tracking-[0.2em] text-gold uppercase;
@@ -159,7 +184,7 @@ body {
 
 /* ---------- Actions ---------- */
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium tracking-normal whitespace-nowrap normal-case transition-[background-color,color,border-color,box-shadow,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium tracking-normal whitespace-nowrap normal-case transition-[background-color,color,border-color,box-shadow,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
 }
 @utility btn-primary {
   @apply btn bg-ink text-bg shadow-soft hover:bg-gold hover:text-accent-ink;
@@ -174,10 +199,10 @@ body {
   @apply btn bg-surface text-ink shadow-soft hover:bg-surface-2;
 }
 @utility btn-sm {
-  @apply px-4 py-2 text-sm;
+  @apply min-h-10 px-4 py-2 text-sm;
 }
 @utility btn-lg {
-  @apply px-8 py-4 text-base;
+  @apply min-h-13 px-8 py-4 text-base;
 }
 @utility link-line {
   @apply relative inline-flex items-center gap-1.5 pb-0.5 text-[15px] font-medium text-ink after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:bg-gold after:transition-transform after:duration-300 hover:text-gold hover:after:scale-x-50;
@@ -228,10 +253,10 @@ body {
 
 /* ---------- Long-form article typography ---------- */
 .prose-post {
-  @apply text-[17px] leading-8 text-ink;
+  @apply text-[17px] leading-[1.75] text-ink sm:text-lg sm:leading-8;
 }
 .prose-post h2 {
-  @apply mt-14 mb-4 scroll-mt-28 font-serif text-3xl leading-tight sm:text-4xl;
+  @apply mt-12 mb-4 scroll-mt-28 font-serif text-[1.85rem] leading-tight font-medium sm:mt-14 sm:text-4xl;
 }
 .prose-post h3 {
   @apply mt-8 mb-2 text-lg font-semibold;
@@ -280,7 +305,7 @@ body {
 
 /* ---------- Journal guide blocks left in prose (see src/components/PostBody.tsx) ---------- */
 .prose-post .table-wrap {
-  @apply my-8 overflow-x-auto rounded-xl border border-line;
+  @apply my-8 overflow-x-auto rounded-xl border border-line focus-visible:outline-2 focus-visible:outline-gold;
 }
 .prose-post .table-wrap table {
   @apply my-0 min-w-[36rem];
