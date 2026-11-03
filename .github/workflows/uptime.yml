@@ -1,0 +1,41 @@
+# Uptime check: every 15 minutes, fetch key pages and the health endpoint.
+# A failed run is the alert (GitHub notifies the repo owner of failed scheduled runs).
+# Optional: add an ALERT_WEBHOOK_URL repository secret (Slack or Discord webhook) to also get a chat message.
+# Set the SITE_URL repository variable once beyondchiavari.com points at Vercel.
+name: Uptime
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://beyondchiavari.vercel.app' }}
+    steps:
+      - name: Check pages
+        id: check
+        run: |
+          failed=""
+          for path in /api/health / /quote /rentals /tools /book; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 -L "$SITE_URL$path" || echo 000)
+            echo "$path -> $code"
+            if [ "$code" -lt 200 ] || [ "$code" -ge 400 ]; then failed="$failed $path($code)"; fi
+          done
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+          if [ -n "$failed" ]; then echo "::error::Down:$failed"; exit 1; fi
+      - name: Chat alert
+        if: failure()
+        env:
+          HOOK: ${{ secrets.ALERT_WEBHOOK_URL }}
+          FAILED: ${{ steps.check.outputs.failed }}
+        run: |
+          if [ -z "$HOOK" ]; then exit 0; fi
+          msg="🚨 Uptime: $SITE_URL is failing:$FAILED"
+          curl -s -X POST -H "Content-Type: application/json" -d "{\"text\":\"$msg\",\"content\":\"$msg\"}" "$HOOK" > /dev/null

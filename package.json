@@ -15,6 +15,7 @@
     "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
+    "@growthbook/growthbook": "^2.0.0",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",
     "@remotion/bundler": "4.0.532",

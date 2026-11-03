@@ -23,6 +23,15 @@ export const toolGroups: Record<ToolGroup, { title: string; intro: string }> = {
 
 export const tools: ToolEntry[] = [
   {
+    slug: "rental-calculator",
+    name: "Event rental calculator",
+    short: "Guest count and service style in, a full list of chairs, tables, linens and dishes out.",
+    group: "calculators",
+    scene: "buffet-setup",
+    outputs: ["Full rental list", "Quantities", "Quote"],
+    external: true,
+  },
+  {
     slug: "guest-count",
     name: "Guest count estimator",
     short: "How many of your invited guests will actually come, and how many chairs to order.",
