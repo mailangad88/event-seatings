@@ -8,6 +8,7 @@ import { getDownload } from "@/data/downloads";
 import { isDisposableEmail } from "@/lib/disposable-email";
 import { scoreLead } from "@/lib/lead-score";
 import { notifyOwner, sendConfirmation, sendDownloadEmail } from "@/lib/notify";
+import { cleanCode } from "@/lib/referrals";
 import { addLead, trackingFields, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
@@ -86,6 +87,7 @@ export async function POST(request: Request) {
       ? body.quiz_styles.filter((s: unknown) => typeof s === "string").slice(0, 8)
       : undefined,
     source: str(body.source, 100),
+    referral_code: cleanCode(body.referral_code),
     sms_consent: body.sms_consent === "yes" && Boolean(str(body.phone, 40)) ? true : undefined,
     // Consent per channel, each from its own tick box. Asking for a call is consent to be called about it.
     email_consent: body.email_consent === "yes" ? true : undefined,

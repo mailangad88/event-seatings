@@ -37,6 +37,21 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): reviews, layout builder, date checker, planning assistant, referrals, branded emails
+
+All built with free, open-source libraries (React Email, MiniSearch, SunCalc) and public-domain US government weather data. Nothing here sends email, charges money or invents content.
+
+- **Reviews** (`/reviews`, `/reviews/write`, `/admin/reviews`). Real reviews only: every submission waits as "pending" until approved; wording can't be edited, only replied to. Personal review links (made per booked/completed lead in admin, HMAC-signed with `REVIEW_LINK_SECRET` or `ADMIN_PASSWORD`) mark a review "Verified booking". Review + AggregateRating schema appears only once an approved review exists; until then the page says plainly that we're new and have none.
+- **Seating layout builder** (`/tools/floor-plan`). Drag-and-drop SVG floor plan in feet: rounds, banquets, farm, head and sweetheart tables, highboys, dance floor, stage, bar, buffet, DJ, lounge, ceremony rows. Auto-layout by guest count, 6" snap, rotate/duplicate/delete, keyboard nudging, red/amber warnings for out-of-room or under-3-ft walkways, live seat counts, share link (layout in the URL hash), PNG/SVG download, print, "Price this layout" handoff to /quote and "Ask us to check this layout" (saved as a chat lead, source `floor-plan`).
+- **Event date checker** (`/tools/event-date?date=&place=`). NWS forecast within a week, otherwise NOAA daily records for the same date ± 3 days over the last 10 years at the nearest long-record station (O'Hare or Midway), via `/api/weather`. Sunset, golden hour and dusk (SunCalc), holidays within 4 days, add-to-calendar .ics, and rental tips (tent, heat, cooling, wind) driven by the data.
+- **Planning assistant** (`/planning-assistant`, **off until `NEXT_PUBLIC_PLANNING_ASSISTANT=on`**). Event type, guests, setting, budget, date → the fullest package that fits the budget (same rules as the /quote planner, priced from the live catalog), setup ideas, priced add-on ideas you can tick into the quote, matching guides, and follow-up questions answered from our 600+ guides and /answers with source links (MiniSearch, no API). Optional AI wording with `ASSISTANT_AI=gemini` uses `GEMINI_API_KEY`; that costs money, so it stays off until Angad approves. Shortcut in the chat dock only when enabled. Party-ideas content from the party-ideas thread will be added when it merges.
+- **Referrals** (`/refer`, `/admin/referrals`). Anyone can make a share link (`/?ref=<code>`); the code is kept 90 days in the visitor's browser and saved on any lead as `referral_code`. No reward is promised unless `REFERRAL_REWARD` is set to a real, approved offer.
+- **Branded emails** (`src/emails`, previews at `/admin/emails`). Every email `sendEmail` sends now carries a branded HTML version (React Email) alongside the existing plain text, with links clickable; owner alert, confirmations and download emails keep their wording from the lead-gen thread. New: new-review alert to the owner, and a review-request email that is only ever sent by hand from /admin/reviews.
+- **Local SEO**: `/service-area.kml` lists every area page with coordinates (for Google Business Profile service areas and maps). The towns hub itself is `/chair-rentals` (other thread).
+- Sitemap and llms.txt list the new public pages; `/reviews/write` is noindex and disallowed.
+- **Owner setup**: re-run `supabase/schema.sql` (new `reviews` and `referrers` tables, `leads.referral_code`; leads still save before you do). Optional env: `NEXT_PUBLIC_PLANNING_ASSISTANT=on`, `REFERRAL_REWARD`, `REVIEW_LINK_SECRET`.
+- Remaining: link /reviews, /refer and the two tools from the footer and /tools hub (owned by the UX and tools threads); add party ideas to the assistant; ask happy customers for reviews once events happen.
+
 ## Changes in this release (2026-11-03): repeat-visit planning hub, batch 5
 
 - **Idea board.** A heart button (`src/components/myevents/SaveIdea.tsx`) on every setup and product picture in `/gallery` saves it to a "Saved ideas" board in `/my-events` (browser storage, `bc-ideas-v1`), with links back to the rental item. `/gallery` Last touched 2026-11-03.

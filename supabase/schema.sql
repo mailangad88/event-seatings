@@ -139,3 +139,35 @@ create table if not exists blocked_dates (
   created_at timestamptz not null default now()
 );
 alter table blocked_dates enable row level security;
+
+-- Customer reviews (/reviews, moderated in /admin/reviews). Only approved rows are ever shown. Safe to run again.
+create table if not exists reviews (
+  id uuid primary key,
+  created_at timestamptz not null default now(),
+  status text not null default 'pending' check (status in ('pending', 'approved', 'hidden')),
+  rating int not null check (rating between 1 and 5),
+  name text not null,
+  email text not null,
+  city text,
+  event_type text,
+  event_month text,
+  title text,
+  body text not null,
+  lead_id uuid,
+  verified boolean,
+  owner_reply text,
+  approved_at timestamptz
+);
+create index if not exists reviews_status_idx on reviews (status, created_at desc);
+alter table reviews enable row level security;
+
+-- Referral links (/refer, ?ref=<code>) and the code saved on each lead. Safe to run again.
+create table if not exists referrers (
+  code text primary key,
+  created_at timestamptz not null default now(),
+  name text not null,
+  email text not null unique
+);
+alter table referrers enable row level security;
+alter table leads add column if not exists referral_code text;
+create index if not exists leads_referral_idx on leads (referral_code) where referral_code is not null;
