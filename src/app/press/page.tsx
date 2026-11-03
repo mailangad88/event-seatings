@@ -6,14 +6,14 @@ import { scenes } from "@/lib/scenes";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-const title = `Press and Media: ${site.name}`;
+const title = "Press and Media Kit: Chicago Event Rentals";
 const description = `Facts, story ideas, price data and contact details for writers covering weddings, parties and event rentals in Chicago. Quick replies to press questions.`;
 
 export const metadata = seo({
   title,
   description,
   alternates: { canonical: "/press" },
-  openGraph: { title, description, url: "/press" },
+  openGraph: { title, description, url: "/press", images: [{ url: scenes.gildedIvory.src, alt: scenes.gildedIvory.alt }] },
 });
 
 const avgGap = Math.round(priceIndex.reduce((s, r) => s + r.gapPct, 0) / priceIndex.length);

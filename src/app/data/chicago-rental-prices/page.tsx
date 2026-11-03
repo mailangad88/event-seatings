@@ -23,7 +23,7 @@ export const metadata = seo({
   title,
   description,
   alternates: { canonical: PRICE_INDEX_SLUG },
-  openGraph: { title, description, url: PRICE_INDEX_SLUG },
+  openGraph: { title, description, url: PRICE_INDEX_SLUG, images: [{ url: render("hero-layouts").src, alt: render("hero-layouts").alt }] },
 });
 
 const usd = (n: number) => (n < 10 ? `$${n.toFixed(2)}` : formatPrice(n));
