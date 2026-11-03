@@ -18,7 +18,7 @@ export const countiesOuterAreas: Location[] = [
     story: [
 
       "Cook County is not one market, it is several stacked on top of each other. Chicago itself runs from Rogers Park to Hegewisch, with high-rise lobbies, church halls, greystone courtyards and lakefront parks that each have their own loading rules. Past the city limits the county keeps going: Evanston and the North Shore, Oak Park and the near west suburbs, the southwest villages around Orland Park and Palos, and the northwest corridor around Schaumburg and Arlington Heights.",
-      "That spread shapes how rentals work. A delivery to the Loop is about freight elevators, loading docks and tight timing windows. A delivery to a backyard in Park Ridge or Homewood is about driveway access and where the truck can sit. A party in a forest preserve grove, such as the picnic areas run by the Forest Preserves of Cook County at places like Busse Woods, Schiller Woods or Dan Ryan Woods, depends on a permit from the preserve district and a carry from the nearest parking.",
+      "That spread shapes how rentals work. A delivery to the Loop is about freight elevators, loading docks and tight timing windows. A delivery to a backyard in Park Ridge or Homewood is about driveway access and where the truck can sit. A party in a forest preserve grove, such as the picnic areas run by the Forest Preserves of Cook County at places like Busse Woods, Schiller Woods or Dan Ryan Woods, depends on the preserve district's rules and a carry from the nearest parking.",
       "The easiest way to plan is to start with the town, not the county. Each suburb and neighborhood has its own page here with local venues, parking and delivery notes. If you are weighing two sites, say a banquet hall in Rosemont against a backyard in Evergreen Park, send both and we will quote each so you can compare real numbers instead of guessing.",
     ],
     settings: [
@@ -32,7 +32,7 @@ export const countiesOuterAreas: Location[] = [
       },
       {
         name: "Forest preserve picnic groves",
-        note: "The Forest Preserves of Cook County rent groves for parties. Check their permit and vehicle access rules before ordering delivery.",
+        note: "The Forest Preserves of Cook County offer picnic groves for group events. Check their reservation and vehicle access rules before ordering delivery.",
       },
       {
         name: "Backyards and church halls",
@@ -41,7 +41,7 @@ export const countiesOuterAreas: Location[] = [
     ],
     logistics: [
       "Cook County is large, so we match you to a vendor zone by address. Share the exact delivery address early so the quote reflects the real drive.",
-      "Dense Chicago blocks may need a permit for curb loading. Ask your building or the city if you are unsure, and we will plan the delivery window around it.",
+      "Dense Chicago blocks can have tight curb space for loading. Ask your building or the city about loading rules if you are unsure, and we will plan the delivery window around it.",
       "Expressway traffic on the Kennedy, Eisenhower, Stevenson and Dan Ryan can swing a delivery by an hour on a Friday. Build in buffer for Saturday weddings.",
       "For forest preserve and park events, confirm with the district where vehicles may drive and how far chairs must be carried from the lot.",
     ],
@@ -67,7 +67,7 @@ export const countiesOuterAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a party in a Cook County forest preserve?",
-        a: "Usually yes, for larger gatherings. The Forest Preserves of Cook County issue permits for picnic groves and have their own rules on tents, vehicles and amplified sound. Contact the preserve district directly before you book, and tell us what they approve so we can plan deliveries accordingly.",
+        a: "It depends on the site and group size. The Forest Preserves of Cook County manage picnic groves and set their own rules on reservations, tents and vehicles. Contact the preserve district directly before you book, and tell us what they approve so we can plan deliveries accordingly.",
       },
       {
         q: "How far in advance should I book rentals in Cook County?",
@@ -350,7 +350,7 @@ export const countiesOuterAreas: Location[] = [
     story: [
 
       "McHenry County sits in the far northwest corner of the Chicago area, bordering Wisconsin. Woodstock is the county seat, with its historic town square and opera house, and the Metra Union Pacific Northwest line runs through Crystal Lake and Woodstock out to Harvard. Crystal Lake, McHenry, Algonquin, Lake in the Hills and Huntley make up the busy middle, while the rest of the county is farmland, wetlands and small towns like Marengo and Richmond.",
-      "Water and open land define local celebrations. The Fox River runs through McHenry, Algonquin and Fox River Grove, and the Chain O'Lakes spills into the northeast. Moraine Hills State Park, Glacial Park and Hickory Grove, managed in part by the McHenry County Conservation District, give couples scenic prairie and wetland settings. Crystal Lake's lakefront and downtown also host festivals and weddings.",
+      "Water and open land define local celebrations. The Fox River runs through McHenry, Algonquin and Fox River Grove, and the Chain O'Lakes spills into the northeast. Moraine Hills State Park, along with Glacial Park and Hickory Grove, which the McHenry County Conservation District manages, give couples scenic prairie and wetland settings. Crystal Lake's lakefront and downtown also host festivals and weddings.",
       "For vendor zones, think about whether you are in the Fox River corridor or out in the western farm country. A backyard party in Cary is a short run from the eastern suburbs, while a barn near Harvard or Marengo is a longer drive. Send your address and we match you with the closest vendor and itemize delivery in your quote.",
     ],
     settings: [
@@ -432,7 +432,7 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more anywhere in Will County, from Joliet and Plainfield to Bolingbrook, Frankfort and Mokena. Our vetted Chicago-area rental vendors deliver across the southwest suburbs. Request a quote or book a planning call to get started.",
     story: [
 
-      "Will County is one of the fastest-growing counties in Illinois, and it stretches from the Cook County line down toward Kankakee. Joliet is the county seat and the biggest city, with its limestone downtown, the Des Plaines River and the Rialto Square Theatre. Bolingbrook, Romeoville, Plainfield and Naperville's southern edge fill the northwest, while Frankfort, Mokena, New Lenox and Homer Glen make up the southeast suburbs along the Metra Rock Island and SouthWest Service lines.",
+      "Will County is large and growing, and it stretches from the Cook County line down toward Kankakee. Joliet is the county seat and the biggest city, with its limestone downtown, the Des Plaines River and the Rialto Square Theatre. Bolingbrook, Romeoville, Plainfield and Naperville's southern edge fill the northwest, while Frankfort, Mokena, New Lenox and Homer Glen make up the southeast suburbs, where Metra's Rock Island line stops in Mokena and New Lenox.",
       "The Forest Preserve District of Will County shapes outdoor celebration. Plum Creek, Hickory Creek and Messenger Woods offer settings for gatherings, and the Midewin National Tallgrass Prairie near Wilmington is one of the region's most open landscapes. The I&M Canal corridor runs through Lockport and Channahon, and historic downtowns like Frankfort and Lockport are popular for weddings and festivals. Church lawns in the older river towns and big backyards in Homer Glen and Plainfield handle much of the rest, with tents going up every graduation weekend.",
       "Because Will County is large, picking a vendor zone matters. A delivery to Bolingbrook is a short drive from DuPage, while a farm in Peotone or Wilmington is a much longer run. Send your address and we match you with the closest vendor, and your quote itemizes delivery so you can compare options across the county. If you are torn between two towns, send both addresses and we will quote each, so you can compare real delivery costs side by side.",
     ],
@@ -515,8 +515,8 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more anywhere in Kendall County, from Yorkville and Oswego to Montgomery and Plano. Our vetted Chicago-area rental vendors deliver across the Fox Valley's southern edge. Request a quote or book a planning call to get started.",
     story: [
 
-      "Kendall County sits south of Aurora and has been among the fastest-growing counties in the country. Yorkville is the county seat, Oswego and Montgomery run along the Fox River, and Plano and Sandwich anchor the western side. Newer subdivisions have spread across former farmland, but you still reach cornfields within minutes of any town center, which gives local events a distinctly rural-meets-suburban feel.",
-      "The Fox River is the main gathering place. Yorkville's riverfront downtown, Hoover Forest Preserve, managed by the Kendall County Forest Preserve District, and Silver Springs State Park offer scenic settings for weddings and parties. Oswego's Hudson Crossing Park and Montgomery's riverside paths are favorite photo stops. Farther west, barn venues and farm properties dot the countryside around Plano and Millbrook.",
+      "Kendall County sits south of Aurora and has grown quickly in recent decades. Yorkville is the county seat, Oswego and Montgomery run along the Fox River, and Plano anchors the western side. Newer subdivisions have spread across former farmland, but you still reach cornfields within minutes of any town center, which gives local events a distinctly rural-meets-suburban feel.",
+      "The Fox River is the main gathering place. Yorkville's riverfront downtown, Hoover Forest Preserve, managed by the Kendall County Forest Preserve District, and Silver Springs State Fish and Wildlife Area offer scenic settings for weddings and parties. Oswego's Hudson Crossing Park and Montgomery's riverside paths are favorite photo stops. Farther west, barn venues and farm properties dot the countryside around Plano and Millbrook.",
       "For picking a vendor zone, note that Kendall sits between the Aurora area and the I-80 corridor, so many deliveries come from Aurora-side vendors. Send your address and we match you with the closest crew. Your quote itemizes chairs, delivery and setup, so you can see the true cost for a downtown Yorkville event versus a barn out near Plano.",
     ],
     settings: [
@@ -526,7 +526,7 @@ export const countiesOuterAreas: Location[] = [
       },
       {
         name: "Forest preserve and state park sites",
-        note: "Hoover Forest Preserve and Silver Springs State Park host gatherings. Check with the managing agency about permits and vehicles.",
+        note: "Hoover Forest Preserve and Silver Springs State Fish and Wildlife Area are nearby outdoor sites. Check with the managing agency about reservations and vehicles. Check with the managing agency about permits and vehicles.",
       },
       {
         name: "Barns and farm properties",
@@ -541,7 +541,7 @@ export const countiesOuterAreas: Location[] = [
       "Route 47, Route 34 and Route 71 carry most traffic. Weekend delays near the Fox River bridges can affect timing, so we plan buffer.",
       "Rural venues often have gravel drives. Ask the venue about truck access and staging before delivery.",
       "HOA communities may have rules about event setups and street parking. Check with your association and share any requirements.",
-      "For forest preserve and state park events, confirm vehicle access and carry distance with the managing agency.",
+      "For forest preserve and state site events, confirm vehicle access and carry distance with the managing agency.",
     ],
     recommendedChairs: [
       {
@@ -599,7 +599,7 @@ export const countiesOuterAreas: Location[] = [
     story: [
 
       "Grundy County lies southwest of Joliet along the Illinois River and the old Illinois and Michigan Canal. Morris is the county seat and the main hub, with a historic downtown and the river at its edge. Minooka and Channahon sit on the Will County line and feel like Joliet-area suburbs, while Coal City, Mazon and Gardner are small towns surrounded by farmland and former coal country.",
-      "The outdoors define a lot of local celebration. Gebhard Woods State Park in Morris sits on the I&M Canal, and the canal towpath draws walkers and wedding photographers. Goose Lake Prairie State Natural Area is one of the largest remaining tallgrass prairie preserves in northeastern Illinois, and the Illinois River itself offers boating and riverside gatherings. Many events here are held in backyards, parish halls and fairgrounds.",
+      "The outdoors define a lot of local celebration. Gebhard Woods State Park in Morris sits on the I&M Canal, and the canal towpath draws walkers and wedding photographers. Goose Lake Prairie State Natural Area protects a large remnant of tallgrass prairie, and the Illinois River itself offers boating and riverside gatherings. Many events here are held in backyards, parish halls and fairgrounds.",
       "To choose a vendor zone, think about whether you are on the Joliet side, in Minooka or Channahon, or deeper in rural Grundy. Deliveries to the eastern edge are short from Joliet-area vendors, while farm sites near Mazon or Gardner are longer runs. Send your address and we match you with the closest crew, then itemize delivery in your quote.",
     ],
     settings: [
@@ -681,7 +681,7 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more anywhere in DeKalb County, from DeKalb and Sycamore to Sandwich and Genoa. Our vetted Chicago-area rental vendors deliver across this western edge of Chicagoland. Request a quote or book a planning call to get started.",
     story: [
 
-      "DeKalb County lies west of Kane County and is a blend of college town and farm country. DeKalb is home to Northern Illinois University, which shapes local event culture with graduation weekends, homecoming and campus gatherings. Sycamore, the county seat, has a historic courthouse square and hosts the Sycamore Pumpkin Festival each fall. Sandwich is famous for the Sandwich Fair, one of the region's long-running county fairs, and Genoa and Kingston sit along the Kishwaukee River.",
+      "DeKalb County lies west of Kane County and is a blend of college town and farm country. DeKalb is home to Northern Illinois University, which shapes local event culture with graduation weekends, homecoming and campus gatherings. Sycamore, the county seat, has a historic courthouse square and hosts the Sycamore Pumpkin Festival each fall. Sandwich is famous for the Sandwich Fair, one of the region's long-running county fairs, and Genoa and Kingston are smaller towns nearby.",
       "The landscape is mostly cornfield and wind farm, with the Kishwaukee River cutting through. Parks like Kishwaukee Kiwanis and Hopkins Park in DeKalb, along with county forest preserves, provide gathering spots. Barn and farm venues are common, and backyard parties in subdivisions and on country lots are the norm for graduation season. Church basements and VFW halls in the smaller towns host plenty of showers and anniversary dinners, and wind across the open fields is something to plan for.",
       "To choose a vendor zone, note that DeKalb County is the farthest west of the regular Chicagoland delivery area. Deliveries to Sandwich and Sycamore may come from Fox Valley vendors, and longer drives are reflected in the quote. Send your address and we match you with the closest crew and itemize delivery so you can see the true cost. Winter dates add one more factor, since snow can close county roads quickly.",
     ],
@@ -700,7 +700,7 @@ export const countiesOuterAreas: Location[] = [
       },
       {
         name: "Fairgrounds and community halls",
-        note: "Sandwich, Genoa and Kingston host fairs, halls and church events that need lots of seating.",
+        note: "Sandwich hosts its fair, and halls and church events in Genoa and Kingston need lots of seating.",
       },
     ],
     logistics: [
@@ -764,8 +764,8 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more anywhere in Kankakee County, from Kankakee and Bourbonnais to Bradley, Manteno and Momence. Our vetted Chicago-area rental vendors deliver along the southern edge of Chicagoland. Request a quote or book a planning call to get started.",
     story: [
 
-      "Kankakee County sits about an hour south of Chicago along the Kankakee River. Kankakee is the county seat and the largest city, with a historic riverfront district and Frank Lloyd Wright-designed homes. Bourbonnais, home to Olivet Nazarene University, and Bradley form the busy core along Route 50 and I-57. Manteno, Momence and Herscher round out the county, which blends small-city living with some of the flattest farmland in Illinois.",
-      "The Kankakee River defines the landscape. Kankakee River State Park, with its limestone bluffs and trails, is a favorite for photos and picnics, and Perry Farm Park in Bourbonnais offers a restored farmstead with open lawn. The county is also known for fall festivals and the Amtrak stop in Kankakee. Many family events happen in backyards, church halls and community centers.",
+      "Kankakee County sits about an hour south of Chicago along the Kankakee River. Kankakee is the county seat and the largest city, with a historic riverfront district and Frank Lloyd Wright-designed homes. Bourbonnais, home to Olivet Nazarene University, and Bradley form the busy core along Route 50 and I-57. Manteno, Momence and Herscher round out the county, which blends small-city living with open farmland.",
+      "The Kankakee River defines the landscape. Kankakee River State Park, with its limestone bluffs and trails, is a favorite for photos and picnics, and Perry Farm Park in Bourbonnais offers a restored farmstead with open lawn. Amtrak also stops in Kankakee. Many family events happen in backyards, church halls and community centers.",
       "For vendor zones, note that Kankakee County is at the south edge of the standard delivery area, so a longer drive from Will County vendors is common. Send your address and we match you with the closest crew. Your quote itemizes delivery and setup so you see exactly what a Bourbonnais backyard or a Momence farm costs. Gravel drives outside town and tight historic streets in Kankakee call for different planning, so tell us which one you have.",
     ],
     settings: [
@@ -787,7 +787,7 @@ export const countiesOuterAreas: Location[] = [
       },
     ],
     logistics: [
-      "I-57, I-55 and Route 50 carry most traffic. Weekend backups near Bourbonnais and Bradley can add time, so we plan buffer.",
+      "I-57 and Route 50 carry most traffic. Weekend backups near Bourbonnais and Bradley can add time, so we plan buffer.",
       "Rural venues often have long gravel drives. Ask about truck access and staging before delivery.",
       "For state park events, confirm permits and vehicle rules with the Illinois Department of Natural Resources site office.",
       "Check with your village or city about tent rules and street use, and share any requirements so setup matches what is approved.",
@@ -847,8 +847,8 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in DeKalb from vetted Chicago-area rental vendors, whether it is a graduation party near campus or a wedding on a country lot. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
-      "DeKalb is a college town on the western edge of Chicagoland, and Northern Illinois University sets its calendar. Commencement weekends in May and December bring families from across the state, and every restaurant, hall and backyard in town fills up. The town is also known as the birthplace of barbed wire, a nod to its farming roots, and the Egyptian Theatre on North Second Street remains a downtown landmark.",
-      "Celebrations here spread between campus-adjacent neighborhoods, the quiet tree-lined streets around Annie Glidden Road, and the farm country that starts a few minutes out of town. Parks such as Hopkins Park and Kishwaukee Kiwanis Park give families picnic space, and the Kishwaukee River Trail is a favorite for photos. Backyards and church halls host most family milestones. Fall football Saturdays and homecoming also fill the town, so any event near campus needs a plan for traffic.",
+      "DeKalb is a college town on the western edge of Chicagoland, and Northern Illinois University sets its calendar. Commencement weekends in May and December bring families from across the state, and every restaurant, hall and backyard in town fills up. The town is also known as the birthplace of barbed wire, a nod to its farming roots, and the Egyptian Theatre remains a downtown landmark.",
+      "Celebrations here spread between campus-adjacent neighborhoods, the quiet tree-lined streets around Annie Glidden Road, and the farm country that starts a few minutes out of town. Parks such as Hopkins Park and Kishwaukee Kiwanis Park give families picnic space, and the Kishwaukee River nearby is a favorite for photos. Backyards and church halls host most family milestones. Fall football Saturdays and homecoming also fill the town, so any event near campus needs a plan for traffic.",
       "Logistically, DeKalb is a drive from the Chicago core, so delivery runs are longer than in the near suburbs. Route 23, Lincoln Highway and Annie Glidden Road are the main arteries, and trucks need to plan around event weekends at NIU. We match you with the closest vendor and itemize delivery so you know what the distance adds. Planning a graduation party? Ask early about tent permits and neighbors' driveways.",
     ],
     settings: [
@@ -931,7 +931,7 @@ export const countiesOuterAreas: Location[] = [
     story: [
 
       "Sycamore is the DeKalb County seat, and its historic courthouse square is the heart of town. Brick storefronts, mature trees and a classic Victorian streetscape make the center a favorite backdrop for photos. Each fall the Sycamore Pumpkin Festival takes over downtown, and the weeks around it are among the busiest of the year for local gatherings. The grain of old brick, shade trees and the Victorian porches that ring the square give the town a look that photographs well in every season.",
-      "Neighborhoods around the square are filled with large historic homes, some with deep lots that suit backyard weddings and graduation parties. Sycamore Park District properties, including Elwood Park and the community pool and trail system, provide space for pavilion events, while the Kishwaukee River and farm country just beyond town give the area a rural feel. Church halls and small venues handle a lot of showers and receptions.",
+      "Neighborhoods around the square are filled with large historic homes, some with deep lots that suit backyard weddings and graduation parties. Sycamore Park District properties, including Sycamore Park with its community pool, provide space for pavilion events, while the Kishwaukee River and farm country just beyond town give the area a rural feel. Church halls and small venues handle a lot of showers and receptions.",
       "Delivery in Sycamore is mostly about the square. Events nearby may have limited curb space, and festival weekends close streets. Route 23 and Route 64 carry traffic in and out. We match you with the closest vendor and itemize delivery in your quote so you see what the distance from the Fox Valley adds. Tell us where the truck can stop and we will plan around it.",
     ],
     settings: [
@@ -1013,8 +1013,8 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Sandwich from vetted Chicago-area rental vendors, for farm weddings, graduation parties and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
-      "Sandwich sits where DeKalb County meets Kendall and LaSalle, about an hour southwest of the western suburbs. It is best known for the Sandwich Fair, the county fair held each September at the fairgrounds just north of downtown, a tradition that draws huge crowds. The Sandwich Opera House on Main Street, a historic downtown building, anchors a small but lively center.",
-      "Most celebrations here are small-town and rural: church halls, backyards with plenty of room and farms along the roads out of town. Little Rock Creek and the countryside around Route 34 offer scenic photo spots. Because many guests travel from surrounding farm towns, events tend to be family-sized or larger, with long tables and plenty of chairs for generations at the same party.",
+      "Sandwich sits where DeKalb County meets Kendall County, in the western Fox Valley farm country. It is best known for the Sandwich Fair, held each September since 1888, a tradition that draws huge crowds. The Sandwich Opera House on Railroad Street, a historic 1878 building, anchors a small but lively center.",
+      "Most celebrations here are small-town and rural: church halls, backyards with plenty of room and farms along the roads out of town. The countryside around town offers scenic photo spots. Because many guests travel from surrounding farm towns, events tend to be family-sized or larger, with long tables and plenty of chairs for generations at the same party.",
       "Delivery logistics reflect the rural setting. Gravel drives, field parking and limited staging are common, and Route 34 and Route 23 handle the through traffic. Sandwich is at the far edge of our standard delivery area, so we match you with the closest vendor and itemize delivery in your quote so there are no surprises. We confirm the window with you a few days ahead so the crew arrives when someone is there to meet them.",
     ],
     settings: [
@@ -1097,7 +1097,7 @@ export const countiesOuterAreas: Location[] = [
     story: [
 
       "Morris is the seat of Grundy County and sits on the north bank of the Illinois River, with the old Illinois and Michigan Canal running just to the north. The Grundy County Courthouse and a historic downtown give the center a classic Midwestern feel. Gebhard Woods State Park, right on the canal, is a popular picnic and photo spot, and the canal towpath is a local favorite for walks.",
-      "Local gatherings are family-centered. Backyards, parish halls and community centers host most receptions and showers, while larger events spill into parks and fairgrounds. Goose Lake Prairie State Natural Area to the east shows off the region's tallgrass heritage and is a frequent photo location. The town's role as a regional hub means guests often travel in from Coal City, Minooka and surrounding farms.",
+      "Local gatherings are family-centered. Backyards, parish halls and community centers host most receptions and showers, while larger events spill into parks and fairgrounds. Goose Lake Prairie State Natural Area nearby shows off the region's tallgrass heritage and is a frequent photo location. The town's role as a regional hub means guests often travel in from Coal City, Minooka and surrounding farms.",
       "Delivery comes down to access. Route 47, Route 6 and I-80 handle most traffic, and the river and canal limit crossings. Morris is beyond Joliet, so we confirm the vendor and drive time before quoting. We itemize delivery in every quote so you can see exactly how the address affects the total. Tell us where the truck can park and how far chairs need to be carried from the street or lot.",
     ],
     settings: [
@@ -1345,8 +1345,8 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Harvey from vetted Chicago-area rental vendors, for church events, family gatherings and celebrations. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
-      "Harvey is a south suburb of Chicago in Thornton Township, bordered by Dixmoor, Phoenix, Markham, Hazel Crest and South Holland. It grew around heavy industry along the Little Calumet River and the rail lines, and the Metra Electric station and Pace service still connect the community to downtown Chicago. Neighborhoods mix older bungalows and newer blocks, with churches that anchor much of social life.",
-      "Celebrations here center on family and faith. Church fellowship halls host Sunday receptions, anniversary dinners and funeral repasts, while family reunions fill backyards and park shelters in warmer months. Harvey Park District facilities, along with nearby Cook County forest preserves like Thorn Creek Woods and Sauk Trail, offer outdoor spaces. Many events mix generations, so extra seating for older guests matters.",
+      "Harvey is a south suburb of Chicago in Thornton Township. It was founded as an industrial suburb near the Little Calumet River, and the Metra Electric line still connects the community to downtown Chicago. Neighborhoods mix older bungalows and newer blocks, with churches that anchor much of social life.",
+      "Celebrations here center on family and faith. Church fellowship halls host Sunday receptions, anniversary dinners and funeral repasts, while family reunions fill backyards and park shelters in warmer months. Harvey Park District facilities, along with nearby forest preserves, offer outdoor spaces. Many events mix generations, so extra seating for older guests matters.",
       "Delivery is a short run from the south suburban vendor zone. Halsted Street, 159th Street and Interstate 57 are the main arteries, and rail crossings can delay trucks. We match you with the closest vendor and itemize delivery in your quote so you see exactly what you are paying for. Tell us the building's loading door or driveway situation early, since many church lots here are shared and fill up fast on Sunday afternoons.",
     ],
     settings: [
@@ -1428,9 +1428,9 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Steger from vetted Chicago-area rental vendors, for family parties, school events and community gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
-      "Steger is a small village on the Cook and Will County line, south of Chicago Heights. It grew around the Steger Piano Company, founded by John V. Steger in the nineteenth century, and the village still carries that musical heritage in its name and local history. Chicago Road, the old Route 1, runs through the center, and the village has a modest downtown, a park district and a close-knit feel.",
-      "Because the village straddles two counties, residents move easily between the Cook County and Will County sides for shopping and events. Neighborhood backyards, church halls and the Steger Park District grounds host most celebrations, from graduation parties and communions to anniversary dinners. Nearby Thorn Creek Woods and the Will County forest preserves give families scenic spots for outdoor gatherings. Families here often plan around Sunday afternoon after church, so tell us early if your event has a fixed start that setup must beat.",
-      "Delivery is typically a short run from vendors serving the south suburbs. Chicago Road, Route 30 and I-394 handle most traffic, and the Steger Road railroad crossings can slow trucks. We confirm the delivery window with you and itemize delivery in your quote. Steger's compact grid and quiet streets are easy for a truck to navigate, but tell us about driveway slope, gates or steps and we will plan for them. Most backyard and hall setups take a couple of hours.",
+      "Steger is a small village on the Cook and Will County line, south of Chicago Heights. It grew around the Steger Piano Company, founded by John V. Steger, who gave the village its name. Chicago Road runs through the center, and the village has a modest downtown, village parks and a close-knit feel.",
+      "Because the village straddles two counties, residents move easily between the Cook County and Will County sides for shopping and events. Neighborhood backyards, church halls and village parks host most celebrations, from graduation parties and communions to anniversary dinners. Nearby forest preserves give families scenic spots for outdoor gatherings. Families here often plan around Sunday afternoon after church, so tell us early if your event has a fixed start that setup must beat.",
+      "Delivery is typically a short run from vendors serving the south suburbs. Chicago Road, Route 30 and I-394 handle most traffic, and rail crossings can slow trucks. We confirm the delivery window with you and itemize delivery in your quote. Steger's compact grid and quiet streets are easy for a truck to navigate, but tell us about driveway slope, gates or steps and we will plan for them. Most backyard and hall setups take a couple of hours.",
     ],
     settings: [
       {
@@ -1442,8 +1442,8 @@ export const countiesOuterAreas: Location[] = [
         note: "Receptions and anniversary dinners are common, so confirm what seating is already on site.",
       },
       {
-        name: "Park district events",
-        note: "Steger Park District grounds host picnics and community gatherings. Reserve early.",
+        name: "Village park events",
+        note: "Village parks host picnics and community gatherings. Check with village hall about reservations.",
       },
       {
         name: "School and community fundraisers",
@@ -1453,7 +1453,7 @@ export const countiesOuterAreas: Location[] = [
     logistics: [
       "Steger sits in our south suburban delivery zone, so most runs are straightforward. We still confirm the window a few days ahead.",
       "Rail crossings near the village center can slow trucks. Tell us where your event sits relative to the tracks.",
-      "For park district events, check about reservations and where a truck can unload.",
+      "For village park events, check about reservations and where a truck can unload.",
       "Check with the Village of Steger about tent rules and street use, and share any requirements so setup matches what is approved.",
     ],
     recommendedChairs: [
@@ -1478,7 +1478,7 @@ export const countiesOuterAreas: Location[] = [
       },
       {
         q: "Can you deliver to a park in Steger?",
-        a: "Usually, if the park allows vehicle access. Reserve the site through the Steger Park District and ask about unloading rules, then share them with us when you request a quote. A quick planning call can sort out the details before you commit to anything.",
+        a: "Usually, if the park allows vehicle access. Ask village hall about reservations and unloading rules, then share them with us when you request a quote. A quick planning call can sort out the details before you commit to anything.",
       },
       {
         q: "Do I need a permit for a tent party in Steger?",
@@ -1511,9 +1511,9 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Sauk Village from vetted Chicago-area rental vendors, for backyard parties, church events and reunions. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
-      "Sauk Village is a small south suburb near the Indiana border, just east of Chicago Heights and south of Lynwood. Its name echoes the Sauk Trail, the old Native American route that became Lincoln Highway and later Sauk Trail Road. The village is mostly residential, with ranch homes on generous lots and a modest commercial strip along Sauk Trail and Torrence Avenue.",
+      "Sauk Village is a small south suburb near the Indiana border, just east of Chicago Heights and south of Lynwood. Its name echoes the Sauk Trail, the old Native American route that runs through the area. The village is mostly residential, with ranch homes on generous lots and a modest commercial strip along Sauk Trail and Torrence Avenue.",
       "Most celebrations here happen at home or in church halls. Backyards host graduation parties and cookouts, community gatherings fill the village's parks, and nearby Cook County forest preserves such as Sauk Trail Woods offer shelters for larger family events. With many households close to the state line, guests often come from both Illinois and northwest Indiana. Ranch lots are often wide but shallow, so tell us how many tables fit and we will help you lay out a sensible seating plan.",
-      "Delivery is a short run from vendors serving the south suburbs. Sauk Trail Road, Torrence Avenue and the Bishop Ford Freeway to the west carry most traffic. We confirm the delivery window with you and itemize delivery in your quote, so you know what you are paying for before you commit. Please share any gate widths and driveway slope when you request a quote, so the crew can carry chairs and tables in without trouble on the day of the party.",
+      "Delivery is a short run from vendors serving the south suburbs. Sauk Trail Road and Torrence Avenue carry most traffic. We confirm the delivery window with you and itemize delivery in your quote, so you know what you are paying for before you commit. Please share any gate widths and driveway slope when you request a quote, so the crew can carry chairs and tables in without trouble on the day of the party.",
     ],
     settings: [
       {
@@ -1595,7 +1595,7 @@ export const countiesOuterAreas: Location[] = [
     story: [
 
       "Lynwood is a small village in far southeastern Cook County, right against the Indiana state line and next to Lansing, Sauk Village and Glenwood. It is mostly residential, with ranch homes and quiet streets, and commercial activity concentrated along Torrence Avenue and Glenwood-Dyer Road. The village has long been a place where families put down roots and host events at home.",
-      "Celebrations here are family-first. Backyards host graduation parties and cookouts, church halls handle communions and anniversary dinners, and the Thorn Creek and Little Calumet River areas nearby offer green space. Because Lynwood sits on the state line, guests often come from both Illinois and northwest Indiana, which makes clear directions and parking instructions especially helpful. Wide ranch lots and shared church lots make it easy to host a crowd, but plan for parking and street space.",
+      "Celebrations here are family-first. Backyards host graduation parties and cookouts, church halls handle communions and anniversary dinners, and nearby forest preserves offer green space. Because Lynwood sits on the state line, guests often come from both Illinois and northwest Indiana, which makes clear directions and parking instructions especially helpful. Wide ranch lots and shared church lots make it easy to host a crowd, but plan for parking and street space.",
       "Delivery is a short run from vendors serving the south suburbs. Torrence Avenue, Glenwood-Dyer Road and I-394 carry most traffic, and trucks should watch for rail crossings in the area. We confirm the delivery window with you and itemize delivery in your quote so there are no surprises on the day. Let us know about gates, steps and where the truck can pull in, so the crew can unload quickly and stay out of your guests' way before the party begins.",
     ],
     settings: [
@@ -1677,7 +1677,7 @@ export const countiesOuterAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Peotone from vetted Chicago-area rental vendors, for farm weddings, graduation parties and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
-      "Peotone is a small farm-country village in southern Will County, roughly halfway between Joliet and Kankakee. The village center is compact, with a historic Main Street, a park district and the small-town traditions typical of rural Illinois. Surrounding it are cornfields and soybean farms, with the Will County Forest Preserve system protecting nearby tracts such as Forked Creek and Raccoon Grove.",
+      "Peotone is a small farm-country village in southern Will County, roughly halfway between Joliet and Kankakee. The village center is compact, with a historic Main Street, a park district and the small-town traditions typical of rural Illinois. Surrounding it are cornfields and soybean farms, with Forest Preserve District of Will County preserves in the surrounding countryside.",
       "Celebrations here lean rural. Barns, farm lots and large backyards host weddings and graduation parties, while church halls and the village's school facilities handle fundraisers and community dinners. Because many guests live on surrounding farms, events tend to be family-sized or larger, and parking is usually on grass or gravel rather than paved lots. Tent rentals are usually arranged separately, so ask your tent company how the floor and chair layout will be set up.",
       "Delivery logistics reflect the setting. Route 50, Route 45 and the county roads between farms handle most traffic, and gravel drives are common. Peotone is south of the main suburban delivery zone, so we confirm the vendor and drive time before quoting and itemize delivery in your quote. Let us know about weather plans, since rain can turn a field lane to mud quickly. A backup spot for chairs under cover is always smart, and we can help plan one with you when you call.",
     ],
@@ -1761,7 +1761,7 @@ export const countiesOuterAreas: Location[] = [
     story: [
 
       "Braidwood is a small city in far southwestern Will County, once a coal mining town and now a Route 66 stop on the way between Joliet and Pontiac. The Polk-A-Dot Drive In on the old highway is a local landmark, and the downtown strip along Main Street reflects the town's mining and railroad past. Surrounding it are farm fields, lakes and woodland.",
-      "Outdoor space defines local celebrations. The Mazonia-Braidwood State Fish and Wildlife Area, with its many lakes, is a favorite for fishing and picnics, and the area's backyards and farm lots host graduation parties, reunions and cookouts. Church halls and the community center handle showers and receptions. The Braidwood Station cooling lake is another regional landmark. Weekend crowds from Route 66 travelers can also make parking tight downtown, so plan ahead when you pick a date.",
+      "Outdoor space defines local celebrations. The Mazonia-Braidwood State Fish and Wildlife Area, with its many lakes, is a favorite for fishing and picnics, and the area's backyards and farm lots host graduation parties, reunions and cookouts. Church halls and the community center handle showers and receptions. Weekend crowds from Route 66 travelers can also make parking tight downtown, so plan ahead when you pick a date.",
       "Delivery logistics reflect the setting. Route 113, Route 53 and the old Route 66 carry most traffic, and gravel drives are common on rural lots. Braidwood is well south of the main suburban zone, so we confirm the vendor and drive time before quoting and itemize delivery in your quote. Tell us about gates, hills and the closest place to park a truck, and we will plan the load-in around the quirks of your lot so setup stays smooth and quiet.",
     ],
     settings: [

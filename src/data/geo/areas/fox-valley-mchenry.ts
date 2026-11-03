@@ -16,8 +16,8 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Crystal Lake from vetted Chicago-area rental vendors, so you deal with one team instead of calling around. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to start your 2026-27 event.",
     story: [
-      "Crystal Lake is the biggest city in McHenry County, and the lake that gave it its name still shapes how people celebrate here. Lakeshore backyards, Lakeside Legacy Arts Park and the beach at Crystal Lake Park District's main waterfront draw weddings, graduation parties and milestone birthdays when the weather turns warm. Those lakeside lots are often narrow, so rental planning starts with where a truck can actually park.",
-      "Downtown Crystal Lake sits along the Union Pacific Northwest Metra line and the Main Street Prairie Trail, and the compact blocks around the station host fundraisers, school events and community gatherings. Further out, the open space around Three Oaks Recreation Area and the newer subdivisions toward Route 14 and Randall Road give families room for large backyard tents. Tents and sprawling lots mean you want chairs that sit steady on lawn and gravel.",
+      "Crystal Lake is the biggest city in McHenry County, and the lake that gave it its name still shapes how people celebrate here. Lakeshore backyards, Lakeside Legacy Arts Park and the Crystal Lake Park District's Main Beach draw weddings, graduation parties and milestone birthdays when the weather turns warm. Those lakeside lots are often narrow, so rental planning starts with where a truck can actually park.",
+      "Downtown Crystal Lake sits along the Union Pacific Northwest Metra line with the Prairie Trail nearby, and the compact blocks around the station host fundraisers, school events and community gatherings. Further out, the open space around Three Oaks Recreation Area and the newer subdivisions on the edges of town give families room for large backyard tents. Tents and sprawling lots mean you want chairs that sit steady on lawn and gravel.",
       "Event seasons here are short and full. Late May through September books fast because everyone wants to be outside, and the shoulder months in October bring harvest-style parties and fall fundraisers. Because rental vendors serve a wide stretch of McHenry County and the northwest suburbs, getting your date on a calendar early matters more than almost anything else on the checklist. Share the street, the lot type and any lake or tent details in your first message, and we can quote delivery and setup accurately the first time.",
     ],
     settings: [
@@ -35,7 +35,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         name: "Large lot tent parties",
-        note: "Bigger lots toward Route 31 and Three Oaks suit full tent setups with a ceremony and dinner on one property.",
+        note: "Bigger lots on the edges of town suit full tent setups with a ceremony and dinner on one property.",
       },
     ],
     logistics: [
@@ -98,14 +98,14 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in McHenry from vetted Chicago-area rental vendors. Share your date, guest count and venue, and we handle matching and an itemized quote with delivery and setup. Request a quote or book a planning call to start planning your event. Photos of your site help the vendor plan accurately.",
     story: [
-      "McHenry grew up on the Fox River, and the river still sets the tone for events. Riverwalk Shores and the downtown riverfront bring in outdoor weddings, community festivals and fundraisers, while Petersen Park gives families a place for graduation parties. Anything near the water means thinking about soft ground and where a truck can stop, because bank-side lots are rarely wide.",
-      "Just north and west of town, the Chain O'Lakes region and Moraine Hills State Park pull people out to the water, and many celebrations spill into lake homes, cottages and big backyards with decks. Rentals for those homes usually need to be carried by hand from a street or short driveway, so the amount you can fit into one load matters as much as the style you choose.",
+      "McHenry grew up on the Fox River, and the river still sets the tone for events. the McHenry Riverwalk and the downtown riverfront bring in outdoor weddings, community festivals and fundraisers, while Petersen Park gives families a place for graduation parties. Anything near the water means thinking about soft ground and where a truck can stop, because bank-side lots are rarely wide.",
+      "Nearby, the Chain O'Lakes region and Moraine Hills State Park pull people out to the water, and many celebrations spill into lake homes, cottages and big backyards with decks. Rentals for those homes usually need to be carried by hand from a street or short driveway, so the amount you can fit into one load matters as much as the style you choose.",
       "McHenry's main streets, including Green Street and Illinois Route 120, carry steady summer traffic, and older downtown buildings often have limited loading. Church halls, fire-hall style rooms and banquet rooms host many milestone parties here. If you plan a tent in a backyard or on a riverfront lot, build in time for stakes, leveling and a rain plan, and ask your tent provider early about ground conditions along the river.",
     ],
     settings: [
       {
         name: "Riverfront gatherings",
-        note: "Riverwalk Shores and downtown riverside lawns suit ceremonies and festivals; ground can stay soft near the Fox, so confirm site rules with the city or park district.",
+        note: "The McHenry Riverwalk and downtown riverside lawns suit ceremonies and festivals; ground can stay soft near the Fox, so confirm site rules with the city or park district.",
       },
       {
         name: "Lake homes and cottages",
@@ -148,7 +148,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a tent or riverfront party in McHenry?",
-        a: "Permit needs depend on tent size, location and whether it is on public land. Check with the City of McHenry and, for park spaces, the McHenry Township or park district office that manages the site. Your tent provider can tell you what they usually file.",
+        a: "Permit needs depend on tent size, location and whether it is on public land. Check with the City of McHenry and, for park spaces, the park owner that manages the site. Your tent provider can tell you what they usually file.",
       },
       {
         q: "Can you deliver to a lake home near the Chain O'Lakes?",
@@ -181,8 +181,8 @@ export const foxValleyMchenryAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Woodstock from vetted Chicago-area rental vendors. Share your date, headcount and location, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Woodstock is the McHenry County seat, and its historic Square with the Opera House, shops and the central park is the heart of local celebrations. Square events range from community festivals and fundraisers to small ceremonies, and the surrounding streets are tight, with limited loading. For anything on or near the Square, confirm delivery access with the city and your venue well ahead of time.",
-      "Beyond downtown, Woodstock is farm country. Barns, orchards and rural lots stretch out in every direction, and many weddings and graduation parties happen on private land with big lawns, gravel drives and sometimes uneven fields. Emricson Park and nearby McHenry County Conservation District sites such as Silver Creek Conservation Area offer additional public spaces, each with its own reservation rules.",
-      "The town's film and arts reputation, including the Opera House and Groundhog Day associations, brings visitors in February and early spring, but the biggest rental months are May through October. Because Woodstock is a bit farther from the Chicago core, vendors schedule routes in advance, and the sooner you book, the easier it is to pick a delivery window that fits.",
+      "Beyond downtown, Woodstock is farm country. Barns, orchards and rural lots stretch out in every direction, and many weddings and graduation parties happen on private land with big lawns, gravel drives and sometimes uneven fields. Emricson Park and nearby McHenry County Conservation District sites offer additional public spaces, each with its own reservation rules.",
+      "The town's film and arts reputation, including the Opera House and Groundhog Day associations, brings visitors around Groundhog Day in February, but the biggest rental months are May through October. Because Woodstock is a bit farther from the Chicago core, vendors schedule routes in advance, and the sooner you book, the easier it is to pick a delivery window that fits.",
     ],
     settings: [
       {
@@ -428,12 +428,12 @@ export const foxValleyMchenryAreas: Location[] = [
     story: [
       "Huntley has grown fast along the Route 47 and Interstate 90 corridor, and the mix of old downtown and new subdivisions shows up in how people celebrate. Downtown Huntley's small-town streets host community events, while the Huntley Park District's parks, including Deicke Park, give families places for graduation parties and picnics. Wherever you plan to gather, loading access and parking are the first things to sort out.",
       "A big part of the village is Sun City Huntley, the Del Webb active-adult community with its own clubhouse and event spaces. Residents there host anniversaries, holiday gatherings and family visits, and those events often call for extra seating that the clubhouse does not stock. Smaller guest counts, easy-to-carry chairs and clear rules from the community association all shape the rental plan.",
-      "Outside the subdivisions, farm roads and open fields stretch toward Union and Marengo, and rural properties host tented weddings and large family parties. Soil, driveways and long carries matter more there than in town. Huntley also sits near several county lines, so check whether your address falls under McHenry, Kane or DeKalb County and ask the village which office handles your approvals.",
+      "Outside the subdivisions, farm roads and open fields stretch toward Union and Marengo, and rural properties host tented weddings and large family parties. Soil, driveways and long carries matter more there than in town. Huntley also sits near county lines, so check which county your address falls under and ask the village which office handles your approvals.",
     ],
     settings: [
       {
         name: "Downtown Huntley",
-        note: "Historic blocks near the old rail line suit small gatherings and community events, with limited loading space.",
+        note: "Historic blocks downtown suit small gatherings and community events, with limited loading space.",
       },
       {
         name: "Sun City clubhouse events",
@@ -449,7 +449,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
     ],
     logistics: [
-      "Route 47 backs up at commuter and outlet-shopping hours, so aim for mid-morning delivery windows when you can.",
+      "Route 47 backs up at commuter hours, so aim for mid-morning delivery windows when you can.",
       "For Sun City or other HOA communities, check the association's rules on vendor access and delivery times before you book.",
       "On rural lots, share the driveway surface and distance to the setup area so the vendor can bring the right equipment.",
       "Confirm with the Village of Huntley or the park district about tents, reservations and any needed approvals.",
@@ -476,7 +476,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a tent in Huntley?",
-        a: "Tent rules depend on size and placement, and the Village of Huntley sets local requirements. Check with the village before booking a large tent, and ask your tent provider what they file. Since Huntley touches several counties, confirm which jurisdiction covers your address.",
+        a: "Tent rules depend on size and placement, and the Village of Huntley sets local requirements. Check with the village before booking a large tent, and ask your tent provider what they file. Since Huntley sits near county lines, confirm which jurisdiction covers your address.",
       },
       {
         q: "Can I rent chairs for a party at a Sun City clubhouse?",
@@ -509,7 +509,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Cary from vetted Chicago-area rental vendors, with one quote for delivery and setup. Tell us your date, guest count and address, and we do the matching. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Cary is a Fox River village anchored by a small downtown and a Union Pacific Northwest Metra station, and the commuter-town feel shapes local events. Downtown gatherings, school fundraisers and community festivals happen close to the tracks, where street parking and loading are tight. Nearby neighborhoods of mid-sized lots host most of the graduation parties, birthday gatherings and showers. Photos of your site help the vendor plan accurately.",
-      "The Fox River forms Cary's eastern edge, and riverside yards and park spaces host summer celebrations with a different feel from the village's inland blocks. River soil can stay damp after storms, so ground firmness matters for ceremony rows and tent legs. The Cary Park District's parks provide additional options for family events, each with reservation steps to confirm with the district.",
+      "The Fox River runs along the edge of Cary, and riverside yards and park spaces host summer celebrations with a different feel from the village's inland blocks. River soil can stay damp after storms, so ground firmness matters for ceremony rows and tent legs. The Cary Park District's parks provide additional options for family events, each with reservation steps to confirm with the district.",
       "Cary is also close to Crystal Lake, Algonquin and Fox River Grove, and families often split events across those towns, such as a ceremony in one place and a backyard dinner in another. That makes timing and a clear delivery plan important. If you are tenting, check which village office handles approvals, and plan ahead for summer, when weekends fill fast.",
     ],
     settings: [
@@ -590,7 +590,7 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Fox River Grove from vetted Chicago-area rental vendors. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to begin. Photos of your site help the vendor plan accurately.",
     story: [
-      "Fox River Grove is a small village on the east bank of the Fox River, tucked between Barrington Hills estates to the east and Cary to the north. The Algonquin Road bridge crosses the river here, and the Union Pacific Northwest Metra line stops in town. The village is compact, and many events are home-based, so planning around narrow lots and shared streets comes first.",
+      "Fox River Grove is a small village on the Fox River, near Barrington Hills and Cary. The Union Pacific Northwest Metra line stops in town, and Algonquin Road meets Route 14 and the tracks near the station. The village is compact, and many events are home-based, so planning around narrow lots and shared streets comes first.",
       "River views and wooded lots define the village. Many homes sit on slopes or near the water, which creates beautiful ceremony settings but real challenges for delivery. Steps, retaining walls and winding driveways change how chairs and tables get to the lawn. Sharing photos and measurements up front lets the vendor decide between a truck pull-up and a hand-carry, and quote labor accordingly.",
       "With the Barrington area just east, some families blend celebrations across towns, hosting a ceremony in one place and dinner at home. Smaller guest counts are common, so a short, well-sized order of chairs and tables works well. Confirm with the village about tents, street parking and any event rules, and plan for summer, when weekends in the Fox Valley fill fast.",
     ],
@@ -613,7 +613,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
     ],
     logistics: [
-      "The Algonquin Road bridge and Route 22 area can back up on summer weekends. Build in a buffer for the delivery window.",
+      "The Algonquin Road and Route 14 crossing near the Metra tracks can back up, especially when trains pass. Build in a buffer for the delivery window.",
       "Hilly and wooded lots may need a hand-carry. Send photos of steps, gates and driveway width with your quote request.",
       "Check with the Village of Fox River Grove about tents, street parking and any event approvals before you finalize plans.",
       "Rain softens ground near the river quickly. Have a plan B for seating, such as a tent or a shifted layout.",
@@ -672,7 +672,7 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Harvard from vetted Chicago-area rental vendors. Share your date, headcount and location, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "Harvard is the farthest northwest stop of the Union Pacific Northwest Metra line, and the farm country around it sets the pace. The town is best known for Harvard Milk Days each June and for the Big Mooo cow sign, and the downtown blocks host parades, festivals and community fundraisers. For events at those gatherings, tables and chairs for volunteers and vendors are a common need.",
+      "Harvard is the farthest northwest stop of the Union Pacific Northwest Metra line, and the farm country around it sets the pace. The town is best known for Harvard Milk Days each June and for Harmilda, the cow statue in town, and the downtown blocks host parades, festivals and community fundraisers. For events at those gatherings, tables and chairs for volunteers and vendors are a common need.",
       "Weddings and family parties here often happen on private land. Open fields, barns and farmhouses give plenty of room for a ceremony and dinner, but long gravel drives and uneven ground are part of the plan. Share the route and how close a truck can get to the setup area. Chairs with sturdy frames and a wide stance are a better match than thin folding styles.",
       "Harvard is a longer drive from the Chicago core than most Fox Valley towns, so vendors plan routes carefully and confirm delivery windows ahead. Rain turns rural roads and fields soft quickly, which affects both truck access and seating. Check with the City of Harvard about any approvals for downtown events, and book early for June and the fall wedding season.",
     ],
@@ -836,7 +836,7 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Johnsburg from vetted Chicago-area rental vendors. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "Johnsburg sits just north of McHenry on the Fox River, with the river and nearby Chain O'Lakes shaping local life. The village has a long German-Luxembourgish heritage, and parish life remains central, so church festivals, first communions and anniversary dinners are a steady part of the event calendar. Those gatherings often need extra tables and chairs beyond what a parish hall stocks.",
+      "Johnsburg sits just north of McHenry on the Fox River, with the river and nearby Chain O'Lakes shaping local life. The village has a long German heritage, and parish life remains central, so church festivals, first communions and anniversary dinners are a steady part of the event calendar. Those gatherings often need extra tables and chairs beyond what a parish hall stocks.",
       "Many homes sit on or near the water, and lots range from tight riverside parcels to wider rural acreage. That mix means delivery plans vary a lot. Riverside lots often have narrow access and soft ground, while larger parcels can take a full tent. Photos of the driveway and yard help the vendor decide on truck-side drop-off versus hand-carry, and quote labor accordingly.",
       "Johnsburg shares a ZIP code and many services with McHenry, and families often use both towns for celebrations. Summer boat traffic and festival weekends affect road timing on routes like Johnsburg Road and Route 31. Check with the Village of Johnsburg about tents and event approvals, and book early for summer weekends when the river and lakes pull everyone outdoors.",
     ],
@@ -919,7 +919,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Richmond from vetted Chicago-area rental vendors. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Richmond is a small village at the northern edge of McHenry County, a short drive from the Wisconsin line. Its main street is lined with antique shops and small businesses, and the quiet pace attracts couples looking for a rural wedding setting. Nippersink Creek runs nearby, and the surrounding countryside is a patchwork of farms, wetlands and preserved prairie. Photos of your site help the vendor plan accurately.",
-      "Glacial Park Conservation Area, one of the McHenry County Conservation District's best-known sites, lies just south of the village, with prairie, wetlands and ancient glacial landforms. Public land like this has its own rules for events, so check with the district before planning anything there. Most celebrations end up on private farms, barns and large residential lots where there is space for a tent and dinner.",
+      "Glacial Park Conservation Area, one of the McHenry County Conservation District's best-known sites, lies near the village, with prairie, wetlands and ancient glacial landforms. Public land like this has its own rules for events, so check with the district before planning anything there. Most celebrations end up on private farms, barns and large residential lots where there is space for a tent and dinner.",
       "Richmond is farther from Chicago than most suburbs, so vendors schedule longer routes and confirm delivery windows ahead. Rural roads and gravel drives are common, and cold snaps arrive early in fall. If you are planning an October wedding, think about heaters and wind as well as chairs. Check with the Village of Richmond about downtown events, and request a quote early.",
     ],
     settings: [
@@ -1084,7 +1084,7 @@ export const foxValleyMchenryAreas: Location[] = [
     story: [
       "East Dundee sits on the east bank of the Fox River, facing West Dundee across the bridge, and the two towns share a walkable, river-town feel. East Dundee's Main Street and the blocks near Route 25 and Route 72 hold small shops, restaurants and event spaces, while the Fox River Trail and riverfront give weddings and showers a scenic outdoor backdrop. Parking and loading in the tight downtown grid shape every delivery plan.",
       "The village is smaller and more residential than its neighbors, with modest lots and a mix of older homes and newer townhomes. Backyard events are common, from graduation open houses to anniversary dinners, and the lots call for efficient layouts. A tent might take up most of a yard, so measure first and decide how many tables and chairs fit without crowding the walkways or the grill.",
-      "Because the Dundees sit at the meeting point of Route 25, Route 31 and Route 72, bridge and intersection traffic can slow delivery on summer weekends. Fox River floods and storm runoff also affect low-lying lots near the water. Check with the Village of East Dundee about tents, street use and any event approvals, and book early for May through September.",
+      "Because the Dundees sit near the Route 25 and Route 72 crossings, bridge and intersection traffic can slow delivery on summer weekends. Heavy rain and storm runoff can also affect low-lying lots near the water. Check with the Village of East Dundee about tents, street use and any event approvals, and book early for May through September.",
     ],
     settings: [
       {
@@ -1101,11 +1101,11 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         name: "Nearby banquet rooms",
-        note: "Event rooms across the Dundees and along Route 31 host larger weddings, often needing coordination on chairs.",
+        note: "Event rooms across the Dundees host larger weddings, often needing coordination on chairs.",
       },
     ],
     logistics: [
-      "The Route 25, Route 31 and Route 72 intersections back up on summer weekends. Plan a buffer for your delivery window.",
+      "The Route 25 and Route 72 intersections back up on summer weekends. Plan a buffer for your delivery window.",
       "On modest lots, measure the yard before you order. Tent footprints and walkways take more room than most people expect.",
       "Check with the Village of East Dundee about tents, street closures and event approvals before you finalize plans.",
       "Near the river, low ground can stay wet. Tell us about recent rain so rows go on firmer ground.",
@@ -1166,7 +1166,7 @@ export const foxValleyMchenryAreas: Location[] = [
     story: [
       "West Dundee is the west-bank half of the Dundees, a Fox River town with a historic downtown along Main Street and the river crossing at Route 72. Brick storefronts, restaurants and small event spaces line the downtown, and the Fox River Trail runs alongside. Weddings, bridal showers and anniversary dinners often happen in or near the downtown blocks, where street parking and loading windows are limited.",
       "Beyond the river, West Dundee stretches west along Route 72 and Randall Road, where larger retail areas, including Spring Hill Mall, and newer residential subdivisions sit. Backyard parties, graduation open houses and holiday gatherings are common in those neighborhoods, with lots large enough for a tent and a full dinner. The mix of tight downtown and spacious subdivisions means the delivery plan can be very different from one West Dundee address to the next.",
-      "The Dundee area's winter holiday events and summer river outings make for a long season. Heavy traffic at the Randall Road and Route 31 intersections can slow trucks, especially on weekends. Check with the Village of West Dundee about tents, downtown events and any street approvals, and share photos of your site when you request a quote so the vendor can plan correctly.",
+      "Holiday gatherings and summer river outings make for a long season. Heavy traffic along Randall Road and Route 72 can slow trucks, especially on weekends. Check with the Village of West Dundee about tents, downtown events and any street approvals, and share photos of your site when you request a quote so the vendor can plan correctly.",
     ],
     settings: [
       {
@@ -1187,7 +1187,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
     ],
     logistics: [
-      "Randall Road and Route 31 are busy on weekends. Mid-morning delivery windows tend to be easier than afternoons.",
+      "Randall Road and Route 72 are busy on weekends. Mid-morning delivery windows tend to be easier than afternoons.",
       "Downtown loading can be tight. Ask your venue about unloading spots and time limits before you book.",
       "Check with the Village of West Dundee about tents, street use and event approvals.",
       "Send photos of your driveway, gate or loading door so the vendor can choose truck drop-off or hand-carry.",
@@ -1328,8 +1328,8 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Hampshire from vetted Chicago-area rental vendors. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "Hampshire is a small village in western Kane County, a farm town along Route 20 and the Union Pacific line, with cornfields and horse farms close at hand. The village's compact center has small shops and community buildings, while the open land beyond it hosts most weddings, graduation parties and family reunions. Most events here are home-based or on private farmland, so access and ground conditions drive the rental plan.",
-      "Public green space adds options. The Kane County Forest Preserve District has sites nearby, including Hampshire Forest Preserve, and the Prairie Trail corridor gives walkers and cyclists a route through the area. For public land, confirm reservation and event rules with the forest preserve district, which is separate from the village. Private estates and barns are more common for ceremonies and dinners.",
+      "Hampshire is a small village in western Kane County, a farm town along Route 20, with cornfields and horse farms close at hand. The village's compact center has small shops and community buildings, while the open land beyond it hosts most weddings, graduation parties and family reunions. Most events here are home-based or on private farmland, so access and ground conditions drive the rental plan.",
+      "Public green space adds options. The Forest Preserve District of Kane County manages nearby sites, including Hampshire Forest Preserve. For public land, confirm reservation and event rules with the forest preserve district, which is separate from the village. Private estates and barns are more common for ceremonies and dinners.",
       "Hampshire is farther west than most Fox Valley towns, so vendors schedule longer routes and confirm windows ahead. Gravel roads, soft shoulders and long driveways are normal, and spring can bring mud that stops a truck cold. Check with the Village of Hampshire about tents and approvals, and book early for May through October, when farm venues and backyards fill quickly.",
     ],
     settings: [
@@ -1410,7 +1410,7 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Pingree Grove from vetted Chicago-area rental vendors. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "Pingree Grove is one of the youngest and fastest-growing villages in Kane County, centered on the Cambridge Lakes master-planned community with its golf course, ponds and walking paths. Most celebrations here are neighborhood-based, with graduation parties, birthdays and showers in backyards and clubhouse-style spaces. The planned layout means wide streets but strict HOA rules, so check access and vendor guidelines before booking.",
+      "Pingree Grove is one of the youngest and fastest-growing villages in Kane County, centered on the Cambridge Lakes master-planned community with its golf course, ponds and walking paths. Most celebrations here are neighborhood-based, with graduation parties, birthdays and showers in backyards and clubhouse-style spaces. The planned layout means HOA rules may apply, so check access and vendor guidelines before booking.",
       "Around the community, the land is still farm country, with open fields, county roads and larger acreage lots where tented weddings and reunions take place. That contrast matters for logistics: in the subdivision, a truck can usually pull right up to the door, while on rural land it may be a long gravel drive. Share photos so the vendor can match equipment to the site.",
       "Pingree Grove sits between Huntley, Hampshire and Elgin, so families look across several towns for venues and services. Traffic on Route 72 and Route 47 can slow trucks at peak hours. Check with the Village of Pingree Grove about tents and approvals, and request a quote early for late spring and fall, when weekends fill up quickly across the western Fox Valley.",
     ],
@@ -1492,9 +1492,9 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in South Elgin from vetted Chicago-area rental vendors. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "South Elgin sits on the Fox River between Elgin and St. Charles, with the Fox River Trail running along its riverfront and a downtown that has been revitalized around river views. Weddings, showers and festivals take advantage of the water, and outdoor ceremonies on lawns by the river are popular in summer. Riverside ground can be soft, so chair choice and row placement matter.",
+      "South Elgin sits on the Fox River between Elgin and St. Charles, with the Fox River Trail running along its riverfront and a riverfront downtown. Weddings, showers and festivals take advantage of the water, and outdoor ceremonies on lawns by the river are popular in summer. Riverside ground can be soft, so chair choice and row placement matter.",
       "Away from the water, South Elgin is a mix of established neighborhoods and newer subdivisions, with Randall Road and Route 31 as the main commercial corridors. Backyard graduations, birthday parties and showers are common, and lots vary from compact to generous. The village also hosts community events and park programs, so check with South Elgin and the park district for reservation and tent rules.",
-      "Because South Elgin sits near several larger events towns, families often compare it with St. Charles, Geneva and Elgin for venues. Delivery planning has to account for Route 31 traffic, bridge approaches and the occasional river flood warning. Share photos of your site, ask about parking and unloading, and book early for the summer months, when the river draws crowds.",
+      "Because South Elgin sits near several larger events towns, families often compare it with St. Charles, Geneva and Elgin for venues. Delivery planning has to account for Route 31 traffic, bridge approaches. Share photos of your site, ask about parking and unloading, and book early for the summer months, when the river draws crowds.",
     ],
     settings: [
       {
@@ -1503,7 +1503,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         name: "Downtown South Elgin",
-        note: "Revitalized blocks near the river host community events and small receptions, with limited loading.",
+        note: "Blocks near the river host community events and small receptions, with limited loading.",
       },
       {
         name: "Backyard parties",
@@ -1657,7 +1657,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Hanover Park from vetted Chicago-area rental vendors. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Hanover Park is a diverse village on the Cook and DuPage county line, with a Metra station on the Milwaukee District West line and a close-knit mix of Latino, South Asian, Eastern European and long-time suburban families. That variety shows in local celebrations: quinceañeras, weddings with long guest lists, religious festivals and large family reunions all fit into the calendar, often in banquet halls and park spaces.",
-      "The Hanover Park Park District runs parks and a lakeside area that host picnics, birthday parties and community festivals, and the nearby Poplar Creek Forest Preserve gives the area green space. Backyards in older neighborhoods can be compact, so large parties often move to halls or parks. Guest counts of 100 or more are common, so planning chair counts, tables and aisle room early saves headaches.",
+      "The Hanover Park Park District runs parks that host picnics, birthday parties and community festivals, and nearby forest preserves such as Mallard Lake give the area green space. Backyards in older neighborhoods can be compact, so large parties often move to halls or parks. Guest counts of 100 or more are common, so planning chair counts, tables and aisle room early saves headaches.",
       "Hanover Park borders Bartlett, Streamwood, Schaumburg and Carol Stream, and many families book venues across several towns. Traffic on Barrington Road and Irving Park Road can slow delivery at peak hours. Check with the Village of Hanover Park about tents and event approvals, and the park district for park rentals, and request a quote early for spring and summer, when events pile up.",
     ],
     settings: [
@@ -1733,14 +1733,14 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60175", "60124"],
     metaTitle: "Event Rentals in Campton Hills, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in the Campton Hills area of Kane County, IL from vetted Chicago-area vendors. Estate weddings and tent parties.",
+      "Rent event chairs, tables and linens in Campton Hills, IL from vetted Chicago-area vendors. Estate weddings and tent parties.",
     headline: "Event rentals around *Campton Hills* estates",
     intro:
-      "We help you rent event chairs, tables, linens and more in the Campton Hills area from vetted Chicago-area rental vendors. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Campton Hills from vetted Chicago-area rental vendors. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "Campton Hills is the rolling, semi-rural area of Campton Township west of St. Charles and north of Elburn, known for large wooded lots, horse properties and winding roads off Route 64 and Burlington Road. Mailing addresses often read St. Charles or Elburn, which can make jurisdiction confusing. Before you plan a tent, ask whether your address falls under the township, the county or a neighboring municipality for approvals.",
+      "Campton Hills is a village in Kane County, incorporated in 2007 and including the former unincorporated community of Wasco. It lies west of St. Charles along Route 64 and is known for large lots and a semi-rural feel. Mailing addresses may read St. Charles, which can make jurisdiction confusing. Before you plan a tent, ask the village whether your address falls inside its limits or under the county or a neighboring municipality.",
       "The big lots make Campton Hills a natural fit for estate-style celebrations. Weddings, graduation parties and anniversary dinners are often held on private property with space for a tent, a ceremony lawn and parking. Long driveways, gates and slopes are common, so deliveries depend on knowing exactly how close a truck can get. Photos and measurements of the entry and setup area help the vendor plan equipment and crew.",
-      "Kane County Forest Preserve land and the Great Western Trail corridor pass nearby, and the open country invites outdoor events from May to October. Summer wind, afternoon storms and cold fall evenings are real planning factors out here. Because properties are spread out, vendors schedule routes ahead, so request a quote early and confirm your delivery window a few days before the date.",
+      "Forest preserve land and trails are within reach, and the open country invites outdoor events from May to October. Summer wind, afternoon storms and cold fall evenings are real planning factors out here. Because properties are spread out, vendors schedule routes ahead, so request a quote early and confirm your delivery window a few days before the date.",
     ],
     settings: [
       {
@@ -1748,8 +1748,8 @@ export const foxValleyMchenryAreas: Location[] = [
         note: "Large lots host ceremonies and dinners on one property, with long driveways and gates to plan around.",
       },
       {
-        name: "Horse properties and barns",
-        note: "Barns and paddock-edge lawns suit rustic weddings, with uneven ground to consider.",
+        name: "Barns and rural properties",
+        note: "Barns and open lawns suit rustic weddings, with uneven ground to consider.",
       },
       {
         name: "Wooded backyard parties",
@@ -1761,9 +1761,9 @@ export const foxValleyMchenryAreas: Location[] = [
       },
     ],
     logistics: [
-      "Many Campton Hills lots have long, sloped or gated driveways. Send photos and measurements with your quote request.",
+      "Larger lots often have long, sloped or gated driveways. Send photos and measurements with your quote request.",
       "Confirm which jurisdiction covers your address for tent and event approvals, since mailing towns can differ.",
-      "Route 64 and Randall Road are the main approaches. Weekend traffic can slow trucks, so we plan a buffer.",
+      "Route 64 is a main approach. Weekend traffic can slow trucks, so we plan a buffer.",
       "After rain, lawns and gravel drives can soften. Keep a firm staging spot in mind as a backup.",
     ],
     recommendedChairs: [
@@ -1784,11 +1784,11 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Campton Hills, IL?",
-        a: "We connect you with vetted Chicago-area rental vendors who deliver to the Campton Hills area. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note is enough to start.",
+        a: "We connect you with vetted Chicago-area rental vendors who deliver to Campton Hills. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note is enough to start.",
       },
       {
         q: "Who handles tent permits in Campton Hills?",
-        a: "It depends on exactly where your property sits, since the area includes township, county and neighboring-municipality addresses. Check with Kane County and Campton Township, and ask the nearby village if you are close to a boundary. Your tent provider can tell you what they usually file.",
+        a: "It depends on exactly where your property sits, since some properties near Campton Hills sit outside the village limits. Check with the Village of Campton Hills first, and with Kane County if your address is outside village limits. Your tent provider can tell you what they usually file.",
       },
       {
         q: "Can you deliver to a long gated driveway?",
@@ -1820,8 +1820,8 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Elburn from vetted Chicago-area rental vendors. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "Elburn is a small western Kane County village at the end of the Union Pacific West Metra line, where the commuter station anchors a walkable downtown and open farmland starts just beyond. The village hosts Elburn Days each summer, a community festival that fills the downtown with food, music and a parade. Community events like that need tables and chairs for volunteers, vendors and seating areas.",
-      "Most celebrations here happen on private land. Farmhouses, barns and large residential lots give room for weddings, graduation parties and reunions, and the Great Western Trail corridor and Elburn Forest Preserve offer nearby green space. For public land, confirm reservation and event rules with the Kane County Forest Preserve District. Rural drives, soft shoulders and long carries are part of the plan.",
+      "Elburn is a small western Kane County village at the end of the Union Pacific West Metra line, where the commuter station anchors a walkable downtown and open farmland starts just beyond. The village hosts Elburn Days each summer, a community festival at Lions Park with a carnival, live music and a parade. Community events like that need tables and chairs for volunteers, vendors and seating areas.",
+      "Most celebrations here happen on private land. Farmhouses, barns and large residential lots give room for weddings, graduation parties and reunions, and nearby Kane County Forest Preserve District sites offer green space. For public land, confirm reservation and event rules with the Kane County Forest Preserve District. Rural drives, soft shoulders and long carries are part of the plan.",
       "Elburn is far enough west that vendors treat it as a longer route, so confirm delivery windows several days ahead. Winds sweep across the open fields, which matters for tents, lightweight decor and ceremony setups. Check with the Village of Elburn about downtown events and tent approvals, and book early for the busy June through October season. Photos of your site help the vendor plan accurately.",
     ],
     settings: [
@@ -1902,7 +1902,7 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Sugar Grove from vetted Chicago-area rental vendors. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "Sugar Grove is a village in southwestern Kane County, set in a landscape of cornfields, creeks and subdivisions along Route 47 and Route 30. Waubonsee Community College's main campus anchors the village, hosting graduations, community events and fundraisers. The village's annual Corn Boil is its signature festival, and it fills the village center with food, music and seating needs. Photos of your site help the vendor plan accurately.",
+      "Sugar Grove is a village in southwestern Kane County, set in a landscape of cornfields, creeks and subdivisions along Route 47 and Route 30. Waubonsee Community College's main campus anchors the village, hosting graduations, community events and fundraisers. The village's annual Corn Boil is its signature festival, and it brings food, music and seating needs. Photos of your site help the vendor plan accurately.",
       "Residential Sugar Grove mixes established neighborhoods with newer developments, and lots are often generous. Backyard tent parties are common, from graduation open houses to anniversary dinners, and the open land beyond the village limits hosts farm weddings and reunions. The Aurora Municipal Airport sits nearby, and Blackberry Creek winds through the area, so some lots near the creek have damp ground to plan around.",
       "Sugar Grove is close to Aurora, Montgomery and Elburn, so families often compare venues across those towns. Traffic on Route 47 and Route 30 can slow delivery at peak hours. Check with the Village of Sugar Grove about tents and community events, and book early for May through October, when graduations, weddings and festival weekends pile up. Photos of your site help the vendor plan accurately.",
     ],
@@ -1985,7 +1985,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in North Aurora from vetted Chicago-area rental vendors. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "North Aurora sits on the Fox River just north of Aurora, with Riverfront Park and the Fox River Trail giving the village a green edge along the water. Summer weddings, picnics and community events use the riverfront, and ground there can be soft after rain. Planning the truck's unloading spot and the carry to your ceremony location is the first step for any riverside event.",
-      "Away from the river, North Aurora is a mix of established neighborhoods and newer subdivisions, with Orchard Road and Randall Road forming busy shopping corridors. Backyard parties, graduation open houses and showers are common, and lots in newer areas are large enough for tents. The village also borders Batavia and Geneva, so families often compare venues and services across the Fox River towns.",
+      "Away from the river, North Aurora is a mix of established neighborhoods and newer subdivisions, with Orchard Road and Randall Road forming busy shopping corridors. Backyard parties, graduation open houses and showers are common, and lots in newer areas are large enough for tents. The village also sits near Batavia and Geneva, so families often compare venues and services across the Fox River towns.",
       "Because the Fox River cuts through the area, bridge crossings and river-adjacent roads can slow trucks, especially on summer weekends. Check with the Village of North Aurora about tents, park reservations and event approvals, and send photos of your site when you request a quote. Book early for May through September, when riverfront weekends fill quickly across the Fox Valley.",
     ],
     settings: [
@@ -2231,7 +2231,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Yorkville from vetted Chicago-area rental vendors. Tell us your date, headcount and venue, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Yorkville is the Kendall County seat, a Fox River city whose riverfront Riverfront Park and Cannonball Trail give it an outdoor-friendly core. The downtown along Hydraulic Avenue and the river hosts festivals, weddings and community events, and the old county courthouse area adds historic character. Riverside ground can be soft, so ceremony rows and tent legs need firm footing and a plan for rain.",
-      "Beyond downtown, Yorkville has grown quickly with large subdivisions and shopping along Route 47 and Route 34. Backyard tent parties, graduation open houses and showers are common, and newer lots often have the room for a full dinner. Raging Waves, the big outdoor waterpark on the city's south side, also draws families for birthday and group outings in summer. Photos of your site help the vendor plan accurately.",
+      "Beyond downtown, Yorkville has grown quickly with large subdivisions and shopping along Route 47 and Route 34. Backyard tent parties, graduation open houses and showers are common, and newer lots often have the room for a full dinner. Raging Waves, the big outdoor waterpark in town, also draws families for birthday and group outings in summer. Photos of your site help the vendor plan accurately.",
       "Yorkville sits near Oswego, Plano and Sugar Grove, and rural farmland reaches right up to the edge of the city, so barn and farm weddings are within easy reach. Traffic on Route 47 and the Fox River bridge can slow trucks on weekends. Check with the United City of Yorkville about tents and event approvals, and request a quote early for May through October.",
     ],
     settings: [
@@ -2312,7 +2312,7 @@ export const foxValleyMchenryAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Plano from vetted Chicago-area rental vendors. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
-      "Plano is a small Kendall County city on the Fox River, with a compact downtown, a freight rail line through town and farm fields that begin at the edge of the street grid. The Farnsworth House, Mies van der Rohe's glass house on the river, is a famous public landmark nearby. The river and flat prairie give Plano a quiet, open feel that suits outdoor celebrations.",
+      "Plano is a small Kendall County city on the Fox River, with a compact downtown, a freight rail line through town and farm fields that begin at the edge of the street grid. The Farnsworth House, Mies van der Rohe's glass house on the river, is a well-known landmark nearby. The river and flat prairie give Plano a quiet, open feel that suits outdoor celebrations.",
       "Most events here are at home, in church halls or on farmland. Backyards on larger lots host graduation parties and anniversaries, while barns and fields around town give room for weddings and reunions. Gravel roads, soft shoulders and long carries are common, so share photos and measurements of the access. Wind across the open fields matters for tents, so ask your tent provider about weights.",
       "Plano is farther west than Yorkville and Oswego, so vendors treat it as a longer route and confirm windows ahead. Route 34 is the main approach, and farm equipment can slow traffic in planting and harvest seasons. Check with the United City of Plano about tents and event approvals, and book early for May through October, when weddings and graduations fill the calendar.",
     ],

@@ -31,7 +31,7 @@ export const northCookAreas: Location[] = [
       },
       {
         "name": "Botanic garden area weddings",
-        "note": "The Chicago Botanic Garden is a short drive away and draws many Glencoe-area couples. Venue rules vary, so confirm what rentals are allowed on site."
+        "note": "The Chicago Botanic Garden is in Glencoe. Venue rules vary, so confirm what rentals are allowed on site."
       },
       {
         "name": "Downtown and community spaces",
@@ -164,7 +164,7 @@ export const northCookAreas: Location[] = [
       },
       {
         "q": "Do I need a permit for a backyard tent in Winnetka?",
-        "a": "Often, yes, depending on size and setup. Check with the Village of Winnetka well ahead of your date. For events at a park or the lakefront, the Winnetka Park District has its own process, so ask them as well. Ask the village about street parking too, since many blocks restrict overnight and event parking."
+        "a": "Often, yes, depending on size and setup. Check with the Village of Winnetka well ahead of your date. For events at a park or the lakefront, the Winnetka Park District has its own process, so ask them as well. Ask the village about street parking too."
       },
       {
         "q": "Can you deliver chairs to a Winnetka home with a narrow drive?",
@@ -217,7 +217,7 @@ export const northCookAreas: Location[] = [
       },
       {
         "name": "Lakeside gatherings",
-        "note": "The village’s lakefront access is restricted to residents, so confirm what is permitted before planning a beach event."
+        "note": "The village manages its beach, so confirm what is permitted before planning a lakefront event."
       },
       {
         "name": "Small indoor gatherings",
@@ -296,7 +296,7 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for bar mitzvahs, weddings and *backyard* parties in Northbrook",
     "intro": "We help you rent event chairs, tables, linens and more in Northbrook from vetted Chicago-area rental vendors. From a tented bar mitzvah reception to a summer graduation party in a big back yard, we plan your seating and itemize the details in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Northbrook is a family-focused North Shore community along the Skokie River and the Des Plaines River Trail, with a walkable downtown near the Metra Milwaukee District North line, Village Green events and large, leafy residential blocks. It has a long tradition of bar and bat mitzvahs, graduations and big family milestones, and its Jewish, Indian and Eastern European communities each bring their own celebration styles.",
+      "Northbrook is a family-focused North Shore community along the Skokie River and the Des Plaines River Trail, with a walkable downtown near the Metra Milwaukee District North line, Village Green events and large, leafy residential blocks. It has a long tradition of bar and bat mitzvahs, graduations and big family milestones, and families from many backgrounds each bring their own celebration styles.",
       "Many Northbrook homes sit on generous lots, which makes tented backyard parties common. Others are in subdivisions where the cul-de-sac is the party. Cook County forest preserves and the park district’s Meadowhill and Techny Prairie parks offer open space, and hotel and banquet rooms along Lake Cook Road and Waukegan Road are common for larger events. The Techny Prairie Park area and the Skokie River corridor give Northbrook plenty of green views behind backyard fences.",
       "Planning here usually means big guest lists and busy calendars. We can help you match chairs to your theme, get tables and linens lined up and schedule delivery around caterers and DJs. Tell us how many guests you expect and we will build a plan that fits your site. For that reason, early planning pays off here: Saturdays in May, June and September fill first across the north suburbs."
     ],
@@ -355,7 +355,7 @@ export const northCookAreas: Location[] = [
       },
       {
         "q": "Can you deliver chairs for a bar or bat mitzvah in Northbrook?",
-        "a": "Yes, these are a common type of event for us to plan. Tell us your timing, guest count and venue and we will build a seating plan and schedule delivery and pickup around your event. We can also coordinate chair counts for the ceremony, cocktail hour and dinner so you are not guessing on the day."
+        "a": "Yes. Tell us your timing, guest count and venue and we will build a seating plan and schedule delivery and pickup around your event. We can also coordinate chair counts for the ceremony, cocktail hour and dinner so you are not guessing on the day."
       },
       {
         "q": "How many chairs do I need for a Northbrook backyard graduation party?",
@@ -391,7 +391,7 @@ export const northCookAreas: Location[] = [
     "intro": "We help you rent event chairs, tables, linens and more in Glenview from vetted Chicago-area rental vendors. From The Glen to the old village center, we plan seating for backyard receptions, park gatherings and banquet rooms and itemize everything in your quote. Request a quote or book a planning call today.",
     "story": [
       "Glenview mixes a classic Chicago suburb with a newer chapter. Downtown Glenview sits along the Metra Milwaukee District North line and Glenview Road, while The Glen, built on the former naval air station, brings modern streets, walking paths and new homes. Parks like Flick Park and Wagner Farm, and the historic Grove with its nature center, give families plenty of room to celebrate.",
-      "That variety shapes the calendar. Backyard graduation parties are the backbone of May and June, Korean, Indian, Jewish, Polish and Latino families each celebrate milestones their own way, and many weddings are tented in yards or held at banquet rooms along Milwaukee Avenue and Waukegan Road. In the fall, school and fundraising events keep the calendar full. Neighborhoods like Glenview’s old village near the Metra station tend to have older, smaller lots, while the newer parts of town offer deeper yards and wider drives.",
+      "That variety shapes the calendar. Backyard graduation parties are the backbone of May and June, families from many backgrounds each celebrate milestones their own way, and many weddings are tented in yards or held at banquet rooms along Milwaukee Avenue and Waukegan Road. In the fall, school and fundraising events keep the calendar full. Neighborhoods like Glenview’s old village near the Metra station tend to have older, smaller lots, while the newer parts of town offer deeper yards and wider drives.",
       "Our approach is to match the plan to the property. A Glen townhome needs different thinking than a big lot near Harms Woods, and a park pavilion has different rules than a driveway. Tell us where you are hosting and we will build a seating plan that works. The Grove’s nature trails and Harms Woods’ forest preserve paths offer pretty photo spots just minutes from most homes."
     ],
     "settings": [
@@ -565,7 +565,7 @@ export const northCookAreas: Location[] = [
     "slug": "deerfield",
     "name": "Deerfield",
     "kind": "suburb",
-    "region": "Cook County",
+    "region": "Lake County",
     "lat": 42.1711,
     "lng": -87.8445,
     "zips": [
@@ -669,8 +669,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for family milestones and *backyard* simchas in Lincolnwood",
     "intro": "We help you rent event chairs, tables, linens and more in Lincolnwood from vetted Chicago-area rental vendors. We plan seating for home celebrations, park gatherings and banquet rooms and itemize setup in your quote. Request a quote or book a planning call to hold your date in our 2026-27 season.",
     "story": [
-      "Lincolnwood is a compact village on Chicago’s northern edge, bordered by Touhy Avenue, Lincoln Avenue and the North Shore Channel trail. Proesel Park is the heart of the community, with its fields, pavilion and festival grounds, and the Lincolnwood Town Center and Lincoln Avenue shops give the village a busy commercial spine. Touhy Avenue and Lincoln Avenue give the village its shopping and dining spine, so caterers and bakeries are never far away.",
-      "Many celebrations are tied to family and faith. Lincolnwood has a large Jewish community, including a strong Orthodox presence, plus Indian, Assyrian and Eastern European families, so weddings, brit and bar mitzvah celebrations, Shabbat dinners and large holiday meals are all common. Many take place at home or in synagogue and hall spaces, and chair counts can run high. The village’s location right next to Chicago’s West Ridge and Devon Avenue shops gives hosts quick access to caterers and bakeries.",
+      "Lincolnwood is a compact village on Chicago’s northern edge, bordered by Touhy Avenue, Lincoln Avenue and the North Shore Channel trail. Proesel Park is the heart of the community, with its fields, aquatic center and festival grounds, and the Lincolnwood Town Center and Lincoln Avenue shops give the village a busy commercial spine. Touhy Avenue and Lincoln Avenue give the village its shopping and dining spine, so caterers and bakeries are never far away.",
+      "Many celebrations are tied to family and faith. Many Lincolnwood families celebrate faith and family milestones, so weddings, brit and bar mitzvah celebrations, Shabbat dinners and large holiday meals are all common. Many take place at home or in synagogue and hall spaces, and chair counts can run high. The village’s location right next to Chicago’s West Ridge and Devon Avenue shops gives hosts quick access to caterers and bakeries.",
       "That calls for careful scheduling. Friday evening and Saturday observances affect delivery and pickup, tents go up in modest yards, and streets can be tight. We will work with your calendar, your site and your guest list to make sure the plan is clear and the quote is itemized. Planning calendars around the Jewish holidays and school schedules is essential, and we are glad to build around them."
     ],
     "settings": [
@@ -683,8 +683,8 @@ export const northCookAreas: Location[] = [
         "note": "Ask your congregation what seating is on site and when load-in is allowed."
       },
       {
-        "name": "Proesel Park and park district spaces",
-        "note": "The Lincolnwood Park District manages Proesel Park and its pavilion. Reservations and equipment rules are set by them."
+        "name": "Proesel Park and village parks",
+        "note": "The Village of Lincolnwood Parks and Recreation Department manages Proesel Park. Reservations and equipment rules are set by the village."
       },
       {
         "name": "Banquet rooms near Touhy and Lincoln",
@@ -728,7 +728,7 @@ export const northCookAreas: Location[] = [
       },
       {
         "q": "Do I need a permit for a tent in Lincolnwood?",
-        "a": "It can depend on size and setup. Check with the Village of Lincolnwood before you book. For Proesel Park or another park district space, ask the Lincolnwood Park District about its own rules. Include the family’s kitchen and buffet layout in your planning, and we will help with table counts and aisle space."
+        "a": "It can depend on size and setup. Check with the Village of Lincolnwood before you book. For Proesel Park or another village park, ask the Village of Lincolnwood Parks and Recreation Department about its own rules. Include the family’s kitchen and buffet layout in your planning, and we will help with table counts and aisle space."
       },
       {
         "q": "How many chairs should I plan for a family simcha?",
@@ -763,7 +763,7 @@ export const northCookAreas: Location[] = [
     "intro": "We help you rent event chairs, tables, linens and more in Morton Grove from vetted Chicago-area rental vendors. We plan seating for backyard parties, park pavilions and banquet rooms and itemize every detail in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Morton Grove is a tight-knit village between Niles, Skokie and Glenview, with the Metra Milwaukee District North line passing through town and Dempster Street and Waukegan Road serving as its main arteries. Harrer Park, the Prairie View Community Center and the wooded edges of Linne Woods give families a variety of places to gather. Morton Grove’s parks and the Linne Woods forest preserve offer shady picnic spots and leafy backdrops for photos.",
-      "The village reflects the Northwest Side’s blend of cultures. Filipino, Korean, Assyrian, Polish, Indian and Jewish families all call Morton Grove home, and the celebration calendar shows it: debuts and weddings with big guest lists, baptism and communion parties, graduation open houses and holiday dinners that spill from the dining room into the garage. The Dempster Street corridor and the Waukegan Road area also have many restaurants and banquet spaces for the larger parties.",
+      "The village reflects the Northwest Side’s blend of cultures. Families from many backgrounds call Morton Grove home, and the celebration calendar shows it: debuts and weddings with big guest lists, baptism and communion parties, graduation open houses and holiday dinners that spill from the dining room into the garage. The Dempster Street corridor and the Waukegan Road area also have many restaurants and banquet spaces for the larger parties.",
       "Because many homes are on modest lots, layout matters. A good plan balances seating, a buffet line and room for kids and elders. We will ask about your yard, your hall and your timeline and put together a clear, itemized quote. Whether it is a weekend open house or a formal sit-down meal, tell us your guest count and we will recommend the right mix of chairs and tables."
     ],
     "settings": [
@@ -855,8 +855,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for banquets and *family* celebrations in Niles",
     "intro": "We help you rent event chairs, tables, linens and more in Niles from vetted Chicago-area rental vendors. Niles is known for its banquet halls and big family parties, so we plan seating for halls, yards and park spaces and itemize it in your quote. Request a quote or book a planning call today.",
     "story": [
-      "Niles is a busy village along Milwaukee Avenue, home to the Leaning Tower replica at the Leaning Tower YMCA, Golf Mill Shopping Center and a long strip of restaurants and banquet halls. It borders Chicago’s Edison Park and Norwood Park and runs along the North Branch of the Chicago River and its forest preserves. Niles’ park district sites and the North Branch forest preserve trails nearby offer green space just off the busy Milwaukee Avenue corridor.",
-      "Celebrations here are a big part of local life. Polish, Filipino, Italian, Korean and Greek families fill banquet halls on Milwaukee Avenue and Touhy for weddings, christening parties and anniversaries, while smaller homes host graduation parties, birthday parties and holiday gatherings. Chairs often matter at both scales, from a 200-person hall to a patio for twenty. The Leaning Tower YMCA grounds are a local landmark that many families photograph, though event use is up to them.",
+      "Niles is a busy village along Milwaukee Avenue, home to the Leaning Tower of Niles, a half-size replica of the Leaning Tower of Pisa, Golf Mill Shopping Center and a long strip of restaurants and banquet halls. It borders Chicago’s Northwest Side and runs along the North Branch of the Chicago River and its forest preserves. Niles’ park district sites and the North Branch forest preserve trails nearby offer green space just off the busy Milwaukee Avenue corridor.",
+      "Celebrations here are a big part of local life. Families from many backgrounds fill banquet halls on Milwaukee Avenue and Touhy for weddings, christening parties and anniversaries, while smaller homes host graduation parties, birthday parties and holiday gatherings. Chairs often matter at both scales, from a 200-person hall to a patio for twenty. The Leaning Tower of Niles is a local landmark that many families photograph.",
       "We help Niles hosts work with the room they have. A hall may supply some seating but not enough for a second room, and a backyard may need chairs and tables plus a plan for rain. Share your needs and we will build a clean, itemized quote. Whether you are filling a banquet hall or a driveway tent, tell us your guest count and we will match chairs, tables and linens to your plan."
     ],
     "settings": [
@@ -948,7 +948,7 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for weddings and *neighborhood* parties in Park Ridge",
     "intro": "We help you rent event chairs, tables, linens and more in Park Ridge from vetted Chicago-area rental vendors. We plan seating for backyard receptions, park gatherings and community events and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Park Ridge has a small-town feel in the shadow of O’Hare. Uptown Park Ridge is anchored by the Metra Union Pacific Northwest line station, the Pickwick Theatre and Northwest Highway, while neighborhoods of brick bungalows and Tudors spread out around Centennial Park. Jets overhead are part of the soundtrack. Park Ridge’s tree-lined blocks near Uptown and the Metra station give wedding guests an easy walk between ceremony and reception.",
+      "Park Ridge has a small-town feel in the shadow of O’Hare. Uptown Park Ridge is anchored by the Metra Union Pacific Northwest line station, the historic Pickwick Theatre building and Northwest Highway, while neighborhoods of brick bungalows and Tudors spread out around Centennial Park. Jets overhead are part of the soundtrack. Park Ridge’s tree-lined blocks near Uptown and the Metra station give wedding guests an easy walk between ceremony and reception.",
       "That sets the tone for events. Park Ridge families host communion parties, graduation open houses, anniversary dinners and big backyard birthdays, and weddings often pair a church ceremony with a banquet hall or a tented yard. Many streets are tree-lined and busy with parked cars, so setup takes thought. Park Ridge is also a town of long-time families, so graduation open houses and anniversary parties draw large extended crowds.",
       "We keep it straightforward: tell us your guest count and where you are hosting, and we will suggest chairs and tables that fit. Quotes are itemized and delivery windows are planned around your caterer, rain plan and the block’s parking. Send us a short list of what you need and a photo of your yard, and we will take it from there."
     ],
@@ -1042,8 +1042,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for riverside gatherings and *family* parties in Des Plaines",
     "intro": "We help you rent event chairs, tables, linens and more in Des Plaines from vetted Chicago-area rental vendors. We plan seating for backyard parties, park pavilions and banquet rooms and itemize everything in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Des Plaines takes its name from the river that curves through town, with riverside parks, the Des Plaines River Trail and Cook County forest preserves on its edge. Downtown near the Metra Union Pacific Northwest line has the Des Plaines Theatre and Lee Street, where a replica of the first McDonald’s sits as a local curiosity. O’Hare is just to the south.",
-      "The city’s Polish, Filipino, Latino, Indian and Eastern European families share a busy social calendar. Quinceanera and wedding receptions in banquet halls, backyard graduation parties, baptisms, and large holiday meals are all common, and parks such as Rand Park and Lake Opeka are popular for family picnics and reunions. Des Plaines’ riverside trails, Lake Opeka and the Des Plaines History Center give the city a strong sense of place that locals celebrate.",
+      "Des Plaines takes its name from the river that curves through town, with riverside parks, the Des Plaines River Trail and Cook County forest preserves on its edge. Downtown near the Metra Union Pacific Northwest line has the Des Plaines Theatre and Lee Street. O’Hare is just to the south.",
+      "The city’s diverse families share a busy social calendar. Quinceanera and wedding receptions in banquet halls, backyard graduation parties, baptisms, and large holiday meals are all common, and parks such as Rand Park and Lake Opeka are popular for family picnics and reunions. Des Plaines’ riverside trails, Lake Opeka and the Des Plaines History Center give the city a strong sense of place that locals celebrate.",
       "Our job is to fit the plan to your space, whether that is a banquet hall, a pavilion, or a garage and a tent. Tell us your guest count, timing and site, and we will propose chairs, tables and linens in a single, itemized quote. Whether your plan is a hall, a pavilion or a yard, tell us about it and we will build the details."
     ],
     "settings": [
@@ -1135,8 +1135,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for weddings and *neighborhood* parties in Mount Prospect",
     "intro": "We help you rent event chairs, tables, linens and more in Mount Prospect from vetted Chicago-area rental vendors. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Mount Prospect grew around the Metra Union Pacific Northwest line, and its downtown, with Northwest Highway, Main Street and the Village Hall area, is a lively core. Lions Park, Meadows Park and the Randhurst Village shopping area round out the picture, and Busse Woods is close by for weekend picnics. Lions Park and the Mount Prospect Park District’s other green spaces make easy backdrops for family photos.",
-      "The village is diverse. Polish, Indian, Korean, Latino and Eastern European families all celebrate here, so weddings, quinceaneras, graduation parties and religious holidays all fill the calendar. Yards range from compact bungalow lots to deeper lots with mature trees, so tent and table planning needs to be specific. Downtown Mount Prospect’s train station and Main Street give out-of-town guests an easy way to arrive.",
+      "Mount Prospect grew around the Metra Union Pacific Northwest line, and its downtown, with Northwest Highway, Main Street and the Village Hall area, is a lively core. Lions Park and the Randhurst Village shopping area round out the picture, and Busse Woods is close by for weekend picnics. Lions Park and the Mount Prospect Park District’s other green spaces make easy backdrops for family photos.",
+      "The village is diverse, with families from many backgrounds celebrating here, so weddings, quinceaneras, graduation parties and religious holidays all fill the calendar. Yards range from compact bungalow lots to deeper lots with mature trees, so tent and table planning needs to be specific. Downtown Mount Prospect’s train station and Main Street give out-of-town guests an easy way to arrive.",
       "We ask the right questions up front: How many guests, how are they seated, where does the caterer set up, what is the rain plan. Then we propose chairs, tables and linens and give you an itemized quote. Tell us about your event, and we will tailor the plan to your space, your caterer and your guests. Share your guest count and layout."
     ],
     "settings": [
@@ -1228,8 +1228,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for banquet receptions and *backyard* parties in Prospect Heights",
     "intro": "We help you rent event chairs, tables, linens and more in Prospect Heights from vetted Chicago-area rental vendors. We plan seating for halls, yards and park spaces and itemize everything in your quote. Request a quote or book a planning call to hold your date in our 2026-27 season.",
     "story": [
-      "Prospect Heights sits between Arlington Heights, Wheeling, Mount Prospect and the Des Plaines River, with Elmhurst Road, Palatine Road and Camp McDonald Road carrying much of the traffic. The Des Plaines River Trail and the Cook County forest preserves along the river give the area a green edge, while the Chicago Executive Airport sits just to the north. It is also a convenient meeting point for guests from Arlington Heights and Wheeling.",
-      "It is a community of mixed housing, from ranches and split-levels to townhome clusters, and a busy calendar of family celebrations. Polish, Eastern European, Latino and Indian families host weddings, baptisms, communions and graduation parties, often combining a ceremony at a nearby church with a reception in a banquet hall or a tented yard. Weekends fill with parish and family events through spring and summer, so calendars get busy early.",
+      "Prospect Heights sits between Arlington Heights, Wheeling, Mount Prospect and the Des Plaines River, with Elmhurst Road, Palatine Road and Camp McDonald Road carrying much of the traffic. The Des Plaines River Trail and the Cook County forest preserves along the river give the area a green edge, while Chicago Executive Airport is nearby. It is also a convenient meeting point for guests from Arlington Heights and Wheeling.",
+      "It is a community of mixed housing, from ranches and split-levels to townhome clusters, and a busy calendar of family celebrations. Families from many backgrounds host weddings, baptisms, communions and graduation parties, often combining a ceremony at a nearby church with a reception in a banquet hall or a tented yard. Weekends fill with parish and family events through spring and summer, so calendars get busy early.",
       "That mix of hall and home means a lot of conversations about what is already on site. We start there: what your hall includes, what your yard can fit, where the caterer sets up. Then we build an itemized quote with chairs, tables and linens that fit your plan and your budget. Share the hall name, yard size and guest count, and we will take it from there with a clear quote."
     ],
     "settings": [
@@ -1321,8 +1321,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for banquets, weddings and *family* parties in Wheeling",
     "intro": "We help you rent event chairs, tables, linens and more in Wheeling from vetted Chicago-area rental vendors. We plan seating for banquet halls, backyard parties and park spaces and itemize it in your quote. Request a quote or book a planning call to reserve your date in our 2026-27 season.",
     "story": [
-      "Wheeling runs along the Des Plaines River, with a historic downtown on Milwaukee Avenue and a stretch of restaurants known locally as Restaurant Row. Dundee Road and Palatine Road cross the village, the Metra North Central Service stops downtown, and Chicago Executive Airport sits on its western side. Downtown Wheeling’s Milwaukee Avenue corridor offers a walkable dining scene and a river trail nearby.",
-      "Wheeling is one of the more diverse suburbs in the northwest, with large Latino, Eastern European, Indian and Korean communities. That shows up in an eventful calendar: quinceaneras and weddings in banquet halls, baptism and communion parties, graduation open houses and community festivals. Park district spaces and the river trail see plenty of family picnics. Many families attend church services in the morning and move to a hall or yard by afternoon.",
+      "Wheeling runs along the Des Plaines River, with a historic downtown on Milwaukee Avenue and a stretch of restaurants known locally as Restaurant Row. Dundee Road and Palatine Road cross the village, the Metra North Central Service stops in the village, and Chicago Executive Airport lies within its borders. Downtown Wheeling’s Milwaukee Avenue corridor offers a walkable dining scene and a river trail nearby.",
+      "Wheeling is a diverse northwest suburb with families from many backgrounds. That shows up in an eventful calendar: quinceaneras and weddings in banquet halls, baptism and communion parties, graduation open houses and community festivals. Park district spaces and the river trail see plenty of family picnics. Many families attend church services in the morning and move to a hall or yard by afternoon.",
       "Our approach is practical: ask what your hall or yard can handle, how many guests you expect, what time load-in begins. Then we propose chairs, tables and linens that fit your layout and give you an itemized quote. Wheeling hosts are often juggling a ceremony time, a caterer time and a pickup time, and we plan around all three. Tell us each time so nothing collides."
     ],
     "settings": [
@@ -1414,8 +1414,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for mitzvahs, weddings and *backyard* parties in Buffalo Grove",
     "intro": "We help you rent event chairs, tables, linens and more in Buffalo Grove from vetted Chicago-area rental vendors. From tented backyard receptions to park pavilions, we plan your seating and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Buffalo Grove straddles the Cook and Lake County line, with Lake Cook Road, Arlington Heights Road and Dundee Road marking its main routes. The village is known for tidy subdivisions, Mike Rylko Community Park, Willow Stream Park and Buffalo Grove Golf Club, along with the annual Buffalo Grove Days festival each summer. Buffalo Grove Days and the village’s parks give the community a lively summer rhythm.",
-      "It is a family-centered place with large Jewish, Indian, Russian and East Asian communities, so bar and bat mitzvahs, South Asian weddings, graduation parties and religious festivals all fill the calendar. Many homes have good-sized yards, and cul-de-sacs often host large block parties. Dundee Road, Lake Cook Road and the nearby Metra stations make it easy for out-of-town guests to find their way, but plan generous drive times on Saturdays and during school events.",
+      "Buffalo Grove straddles the Cook and Lake County line, with Lake Cook Road, Arlington Heights Road and Dundee Road marking its main routes. The village is known for tidy subdivisions, Mike Rylko Community Park, Willow Stream Park and Buffalo Grove Golf Club, along with the annual Buffalo Grove Days festival around Labor Day. Buffalo Grove Days and the village’s parks give the community a lively late-summer rhythm.",
+      "It is a family-centered place with families from many backgrounds, so bar and bat mitzvahs, South Asian weddings, graduation parties and religious festivals all fill the calendar. Many homes have good-sized yards, and cul-de-sacs often host large block parties. Dundee Road, Lake Cook Road and the nearby Metra stations make it easy for out-of-town guests to find their way, but plan generous drive times on Saturdays and during school events.",
       "Because Buffalo Grove spans two counties, forest preserve or county rules can differ depending on the property. We keep that in mind while we plan. Tell us your address, guest count and timing, and we will give you an itemized quote. In spring and fall, tents on lawns need extra attention to wind and ground firmness, and we recommend leaving time on delivery day to level and stake properly."
     ],
     "settings": [
@@ -1509,7 +1509,7 @@ export const northCookAreas: Location[] = [
     "intro": "We help you rent event chairs, tables, linens and more in Palatine from vetted Chicago-area rental vendors. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Palatine is a northwest suburb with a classic downtown around the Metra Union Pacific Northwest station, the Palatine Public Library and Smith Street. Harper College, Deer Grove Forest Preserve and the Palatine Hills Golf Course add open space and community life, and Northwest Highway and Rand Road tie the village together. Palatine’s Harper College, Deer Grove and downtown shops offer plenty of nearby spots for photos and gatherings.",
-      "Families celebrate in all sorts of places. Graduation parties fill the yards of neighborhoods like Sunset or Palatine Hills, communion and baptism parties spill into church halls, and weddings combine a ceremony with banquet halls or tented receptions. Palatine also has strong Latino, Indian, Polish and Korean communities, each with its own celebration calendar. Several local churches and halls host receptions all year.",
+      "Families celebrate in all sorts of places. Graduation parties fill neighborhood yards, communion and baptism parties spill into church halls, and weddings combine a ceremony with banquet halls or tented receptions. Palatine families come from many backgrounds, each with their own celebration traditions. Several local churches and halls host receptions all year.",
       "We keep the plan simple. Tell us your guest count, site and timing, and we will propose chairs, tables and linens that match your layout, with every line item in your quote. Palatine is also home to older neighborhoods with mature trees and newer subdivisions with wider streets, so site details vary from block to block. We ask about driveway width, tree cover and neighbors before we plan, and we suggest delivery windows that keep the street clear for the caterer and guests."
     ],
     "settings": [
@@ -1601,9 +1601,9 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for corporate events and *family* parties in Rolling Meadows",
     "intro": "We help you rent event chairs, tables, linens and more in Rolling Meadows from vetted Chicago-area rental vendors. We plan seating for office events, yards and park pavilions and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Rolling Meadows is a mid-century planned community along Salt Creek, with a mix of office parks along Algonquin Road and Golf Road, neighborhoods of ranches and split-levels, and the Cook County courthouse. Kirchoff Road and Plum Grove Road tie it together, and the Salt Creek Trail winds past local parks. Salt Creek Trail and neighborhood parks add green space between the office parks.",
+      "Rolling Meadows is a mid-century planned community along Salt Creek, with a mix of office parks along Algonquin Road and Golf Road, neighborhoods of ranches and split-levels, and the Cook County courthouse. Kirchoff Road and Plum Grove Road tie it together, and Salt Creek flows through town. Salt Creek and neighborhood parks add green space between the office parks.",
       "That mix creates two event worlds. At home, Rolling Meadows families host graduation parties, birthdays and weddings, with tents in medium yards. At work, nearby offices host client dinners, training days, retirement celebrations and holiday parties, often with tight load-in windows and floor plans. Plan carefully for rush hour on Algonquin Road, since delivery trucks and commuters share the same lanes.",
-      "We tailor our plans to each. For homes we ask about yard size, access and rain plans. For offices we ask about floor plan, building rules and timing. In both cases you get an itemized quote that is easy to review and share. The courthouse area and nearby hotels also host events, so we are comfortable with load-in rules and building managers who want to know exactly what is coming."
+      "We tailor our plans to each. For homes we ask about yard size, access and rain plans. For offices we ask about floor plan, building rules and timing. In both cases you get an itemized quote that is easy to review and share. Office and courthouse areas often have strict building rules, so we are comfortable with load-in rules and building managers who want to know exactly what is coming."
     ],
     "settings": [
       {
@@ -1619,7 +1619,7 @@ export const northCookAreas: Location[] = [
         "note": "The Rolling Meadows Park District sets reservation and equipment rules."
       },
       {
-        "name": "Salt Creek trail and park picnics",
+        "name": "Salt Creek and park picnics",
         "note": "Public parks may limit vehicles and equipment. Ask before planning a rental setup."
       }
     ],
@@ -1696,8 +1696,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for weddings and *family* celebrations in Hoffman Estates",
     "intro": "We help you rent event chairs, tables, linens and more in Hoffman Estates from vetted Chicago-area rental vendors. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Hoffman Estates is a large northwest suburb bounded by Higgins Road, Barrington Road and the Poplar Creek and Paul Douglas forest preserves. The former Sears headquarters campus in Prairie Stone, the Poplar Creek Trail and neighborhoods of ranches, two-stories and townhomes define its look. Poplar Creek and Paul Douglas preserves give families trails, ponds and picnic spots right in town, though group use needs a permit from the county.",
-      "The village has one of the largest Indian and Korean populations in the northwest suburbs, alongside Latino, Polish and Filipino families. South Asian weddings, receptions and religious gatherings are a big part of the calendar, as are graduation parties and birthdays with large guest lists. Halls, backyards and park spaces all see heavy use. Mehndi, sangeet, ceremony and reception events often require different seating setups on different days.",
+      "Hoffman Estates is a large northwest suburb bounded by Higgins Road, Barrington Road and the Poplar Creek and Paul Douglas forest preserves. The former Sears headquarters campus in Prairie Stone, Poplar Creek and neighborhoods of ranches, two-stories and townhomes define its look. Poplar Creek and Paul Douglas preserves give families trails, ponds and picnic spots right in town, though group use needs a permit from the county.",
+      "The village is home to families from many backgrounds. South Asian weddings, receptions and religious gatherings are a big part of the calendar, as are graduation parties and birthdays with large guest lists. Halls, backyards and park spaces all see heavy use. Mehndi, sangeet, ceremony and reception events often require different seating setups on different days.",
       "We help hosts balance guest count, layout and timing. Tell us about your ceremony, your reception and who is handling catering and decor, and we will propose seating and tables that fit your plan with each item shown in your quote. Because many Hoffman Estates homes have decks and walkout lots, ground levels can vary, and we ask for photos so we can plan chairs and tables safely on uneven yards. Delivery windows are planned around decorators, caterers and photographers."
     ],
     "settings": [
@@ -1789,8 +1789,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for quinceaneras and *backyard* parties in Streamwood",
     "intro": "We help you rent event chairs, tables, linens and more in Streamwood from vetted Chicago-area rental vendors. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Streamwood is a suburb of neighborhood parks and Poplar Creek, with Bartlett Road, Irving Park Road and Schaumburg Road as its main routes. Streamwood Oaks Nature Center and the nearby Poplar Creek Forest Preserve give it a green side, and the village has a strong, family-friendly feel. Streamwood Oaks is a pleasant spot for photos and birthday picnics. Summer festivals and neighborhood block parties keep the calendar full.",
-      "Latino, Indian, Polish, Filipino and Eastern European families make Streamwood a busy place for celebrations. Quinceaneras, weddings, graduation parties, baptisms and birthday parties often fill backyards, garages and park pavilions, and halls in nearby Hanover Park and Schaumburg are common choices for big receptions. Weekend afternoons are busy on Bartlett Road, so plan deliveries earlier in the day. Barrington Road and Irving Park Road feed many guests in from nearby suburbs, so it helps to share a clear address and parking plan.",
+      "Streamwood is a suburb of neighborhood parks and Poplar Creek, with Bartlett Road, Irving Park Road and Schaumburg Road as its main routes. Neighborhood parks and the nearby Poplar Creek Forest Preserve give it a green side, and the village has a strong, family-friendly feel. Neighborhood parks are pleasant spots for photos and birthday picnics. Summer festivals and neighborhood block parties keep the calendar full.",
+      "Families from many backgrounds make Streamwood a busy place for celebrations. Quinceaneras, weddings, graduation parties, baptisms and birthday parties often fill backyards, garages and park pavilions, and halls in nearby Hanover Park and Schaumburg are common choices for big receptions. Weekend afternoons are busy on Bartlett Road, so plan deliveries earlier in the day. Barrington Road and Irving Park Road feed many guests in from nearby suburbs, so it helps to share a clear address and parking plan.",
       "Many Streamwood homes are on modest lots, so layout matters. We ask about your yard, your drive and your timing, then recommend chairs and tables that keep the space comfortable and the quote clear. Many Streamwood hosts celebrate with extended families that include children, grandparents and out-of-town relatives, so we plan for a mix of seat heights, aisle space and shade. We can also help you size the tent or canopy and the number of tables to match the guest list, and the quote shows everything in one place."
     ],
     "settings": [
@@ -1803,7 +1803,7 @@ export const northCookAreas: Location[] = [
         "note": "The Streamwood Park District sets reservation and equipment rules."
       },
       {
-        "name": "Nature center and forest preserve picnics",
+        "name": "Forest preserve picnics",
         "note": "Poplar Creek and other preserves have their own permit systems."
       },
       {
@@ -1882,7 +1882,7 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for company events and *family* parties in Elk Grove Village",
     "intro": "We help you rent event chairs, tables, linens and more in Elk Grove Village from vetted Chicago-area rental vendors. We plan seating for office and industrial park events, backyard parties and park spaces and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Elk Grove Village is best known for its enormous business park, one of the largest industrial parks in the country, next to O’Hare. Residential neighborhoods fill in the rest of the village, with Busse Woods and Ned Brown Preserve on its western edge, Salt Creek running through, and Higgins Road, Arlington Heights Road and Landmeier Road as main routes. Salt Creek winds through the village, and Busse Lake is a local favorite.",
+      "Elk Grove Village is best known for its enormous business park, one of the largest industrial parks in the country, next to O’Hare. Residential neighborhoods fill in the rest of the village, with Busse Woods, also known as the Ned Brown Preserve, along its western side, Salt Creek running through, and Higgins Road, Arlington Heights Road and Landmeier Road as main routes. Salt Creek winds through the village, and Busse Lake is a local favorite.",
       "That mix of business and neighborhoods gives the village two event cultures. Companies host open houses, safety awards, retirement parties and holiday gatherings in conference rooms and warehouse spaces, while residents plan graduation parties, birthdays and weddings in yards and at nearby halls. The Elk Grove Park District also hosts community festivals, and Busse Lake draws picnics all summer. Elk Grove Village’s mix of industrial and residential land keeps traffic patterns busy during weekday rush hours.",
       "We adapt to each. For business events we ask about load-in doors, floor plans and timing. For home events we ask about yard size, access and weather plans. Either way, your quote lists every item and delivery window clearly. The Elk Grove Park District’s festivals, and community events like the village’s summer concerts, mean local calendars fill quickly. Business hosts often reserve dates early, and residents plan graduation parties around the school calendar. Send us your details and we will plan around them."
     ],
@@ -2069,8 +2069,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for weddings and *estate* gatherings in South Barrington",
     "intro": "We help you rent event chairs, tables, linens and more in South Barrington from vetted Chicago-area rental vendors. We plan seating for estate lawns, tented receptions and larger community events and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "South Barrington is a low-density village of large homes and wooded lots, set along Barrington Road, Algonquin Road and Higgins Road. The Arboretum of South Barrington shopping area and the Spring Creek Reservoir Forest Preserve to the west make it a hub for the northwest suburbs, and the large church campus near Barrington Road draws thousands each week. Barrington Road traffic can be heavy on weekends.",
-      "Celebrations tend to be spacious. Weddings in tents on big lawns, graduation parties with large guest lists, and Indian and Korean family events are common. Many neighborhoods have homeowner association rules and long shared drives, so planning matters. The Arboretum of South Barrington draws weekend shoppers, so traffic on Barrington Road near Algonquin Road can slow things down. We build extra time into delivery windows and prefer early arrival so tents and tables are set before guests arrive.",
+      "South Barrington is a low-density village of large homes and wooded lots, set along Barrington Road, Algonquin Road and Higgins Road. The Arboretum of South Barrington shopping area make it a hub for the northwest suburbs, and the Spring Creek Reservoir Forest Preserve is nearby. Barrington Road traffic can be heavy on weekends.",
+      "Celebrations tend to be spacious. Weddings in tents on big lawns, graduation parties with large guest lists and multi-day family celebrations are common. Many neighborhoods have homeowner association rules and long shared drives, so planning matters. The Arboretum of South Barrington draws weekend shoppers, so traffic on Barrington Road near Algonquin Road can slow things down. We build extra time into delivery windows and prefer early arrival so tents and tables are set before guests arrive.",
       "We help you work through those details. Tell us your address, lawn size, tent plan and guest count, and we will recommend chairs and tables that fit with an itemized quote. We can also suggest layouts for ceremony seating and reception tables. The village’s large lots and winding roads mean most events are tent parties at home, while larger gatherings may use nearby halls, so we ask about both. Tell us your guest count, ceremony location and reception plan, and we will map out chairs and tables for each stage."
     ],
     "settings": [
@@ -2083,7 +2083,7 @@ export const northCookAreas: Location[] = [
         "note": "Big lots suit large guest lists. Plan access for caterers and rentals."
       },
       {
-        "name": "South Asian and Korean family events",
+        "name": "Multi-day family events",
         "note": "Large multi-day celebrations need careful planning of seating, stages and timing."
       },
       {
@@ -2162,8 +2162,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for banquets and *family* parties in Harwood Heights",
     "intro": "We help you rent event chairs, tables, linens and more in Harwood Heights from vetted Chicago-area rental vendors. We plan seating for banquet halls, backyards and church gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Harwood Heights is a small village surrounded by Chicago’s Northwest Side and its neighbor Norridge, with Lawrence Avenue, Harlem Avenue and Wilson Avenue as its main streets. The CTA Blue Line stops nearby at Harlem, and the village is a few minutes from Edison Park, Norwood Park and Park Ridge. Many guests come from the surrounding Northwest Side, so parking and drop-off are worth planning.",
-      "Polish, Italian, Greek and Filipino families shape the celebration calendar. Weddings, christenings, communions, name-day parties and anniversaries often start in a church and end in a banquet hall or a backyard. Lots are compact, and homes sit close together, so tent and table layouts need care. Edison Park’s restaurants and Norwood Park’s shops are nearby, so many hosts pair a Harwood Heights home with a neighborhood reception.",
+      "Harwood Heights is a small village surrounded by Chicago’s Northwest Side and its neighbor Norridge, with Lawrence Avenue and Harlem Avenue as its main streets. The CTA Blue Line stops nearby at Harlem, and the village is a few minutes from Edison Park, Norwood Park and Park Ridge. Many guests come from the surrounding Northwest Side, so parking and drop-off are worth planning.",
+      "Family and church traditions shape the celebration calendar. Weddings, christenings, communions, name-day parties and anniversaries often start in a church and end in a banquet hall or a backyard. Lots are compact, and homes sit close together, so tent and table layouts need care. Restaurants and shops in nearby Chicago neighborhoods mean many hosts pair a Harwood Heights home with a neighborhood reception.",
       "We help Harwood Heights hosts make the most of the space they have. Tell us your guest count, the hall or yard, and who is handling catering, and we will propose chairs, tables and linens with each item shown in your quote. Because lots are small and streets are close, quiet and tidy delivery is important. We ask about alley access, garage space and your neighbors, and we plan early arrival so tables and chairs are set well before guests arrive."
     ],
     "settings": [
@@ -2255,8 +2255,8 @@ export const northCookAreas: Location[] = [
     "headline": "Chairs for weddings and *family* banquets in Norridge",
     "intro": "We help you rent event chairs, tables, linens and more in Norridge from vetted Chicago-area rental vendors. We plan seating for banquet halls, backyards and church gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
-      "Norridge is a village completely surrounded by Chicago’s Northwest Side and by Harwood Heights, with Harlem Avenue, Irving Park Road and Cumberland Avenue as its main arteries. Harlem Irving Plaza anchors shopping at the corner, and the CTA Blue Line stops at Harlem and Cumberland nearby. Harlem Irving Plaza is a handy meeting point for out-of-town guests. Norridge streets are lined with brick bungalows and Georgian-style homes that suit family parties well.",
-      "The community has deep Italian and Polish roots and a growing mix of Filipino, Greek, Ukrainian and Latino families. Weddings, communions, anniversaries and graduation parties are mostly celebrated in church halls, banquet rooms and backyards, and many families host both a ceremony and a reception within a mile of home. The Blue Line stops nearby, so some guests arrive by train.",
+      "Norridge is a village completely surrounded by Chicago’s Northwest Side and by Harwood Heights, with Harlem Avenue, Irving Park Road and Cumberland Avenue as its main arteries. Harlem Irving Plaza anchors shopping at the corner, and the CTA Blue Line stops at Harlem and Cumberland nearby. Harlem Irving Plaza is a handy meeting point for out-of-town guests. Norridge streets are lined with compact homes that suit family parties well.",
+      "Families here celebrate in many traditions. Weddings, communions, anniversaries and graduation parties are mostly celebrated in church halls, banquet rooms and backyards, and many families host both a ceremony and a reception within a mile of home. The Blue Line stops nearby, so some guests arrive by train.",
       "That makes logistics local and time-sensitive. Streets are narrow, lots are small and neighbors are close, so we plan delivery and pickup carefully. Tell us your site and guest count, and we will propose chairs, tables and linens with each item in your quote. Norridge hosts often mix a church ceremony with a banquet hall or a yard party, so we plan multiple stages. Tell us how many guests, how long the event runs and who handles food and decor, and we will help sort chairs, tables and linens in a single quote."
     ],
     "settings": [

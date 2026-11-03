@@ -99,7 +99,7 @@ export const lakeCountyAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in North Chicago from vetted Chicago-area rental vendors. From homecoming parties to weddings and church celebrations, we match your headcount to the right seating. Request a quote or book a planning call to get your date on the calendar for 2026-27.",
     story: [
       "North Chicago sits between Waukegan and Lake Bluff, with Naval Station Great Lakes covering a large stretch of its east side and Lake Michigan just beyond. That gives the city a rhythm unlike its neighbors. Families fly or drive in from across the country for recruit graduations at the base, and many of them want a meal, a cake and a table big enough for everyone afterward.",
-      "Off base, the city is a mix of established neighborhoods, a busy Sheridan Road corridor, the Rosalind Franklin University campus and Foss Park with its pavilions and pool. Celebrations here tend to be multigenerational and warm: church anniversaries, birthday parties, graduation cookouts, weddings in community halls, and baby showers in living rooms that need every folding chair in the building.",
+      "Off base, the city is a mix of established neighborhoods, a busy Sheridan Road corridor, the Rosalind Franklin University campus and Foss Park. Celebrations here tend to be multigenerational and warm: church anniversaries, birthday parties, graduation cookouts, weddings in community halls, and baby showers in living rooms that need every folding chair in the building.",
       "Because so many guests are traveling, timing matters. Pickups need to match a graduation ceremony, a flight or a church schedule, and drop-off windows need to be exact. Tell us your date, headcount and where the party will land, and we will work with the vendor on a delivery time that fits. We keep quotes itemized so there are no surprises.",
     ],
     settings: [
@@ -108,8 +108,8 @@ export const lakeCountyAreas: Location[] = [
         note: "Families visiting for a recruit graduation often host a meal nearby. Plan seating by headcount and confirm your venue's setup time.",
       },
       {
-        name: "Foss Park pavilions",
-        note: "Foss Park is a favorite for birthdays and reunions. Check with the Foss Park District on reservations, tents and vehicle access.",
+        name: "Foss Park gatherings",
+        note: "Foss Park is run by the Foss Park District. Check with the district on reservations, tents and vehicle access.",
       },
       {
         name: "Church and community halls",
@@ -121,7 +121,7 @@ export const lakeCountyAreas: Location[] = [
       },
     ],
     logistics: [
-      "Check with the North Chicago city offices or the Foss Park District about permits and park rules before booking a pavilion or tent.",
+      "Check with the North Chicago city offices or the Foss Park District about permits and park rules before booking a park space or tent.",
       "Base-area traffic can slow deliveries on graduation days, so set a flexible window and share a cell number for the driver.",
       "Smaller lots and narrow side yards need a clear path. A quick photo of your driveway and gate helps us plan.",
       "Sheridan Road and Green Bay Road get busy at rush hour. Mid-morning or early afternoon delivery is usually easier.",
@@ -151,8 +151,8 @@ export const lakeCountyAreas: Location[] = [
         a: "Yes, as long as your party is at a home, hall or park, not on the base. Base access is controlled, so plan the event at a nearby venue. Give us the address and timing and we will plan around the ceremony.",
       },
       {
-        q: "Do I need a permit to use a Foss Park pavilion?",
-        a: "Park district pavilions usually require a reservation, and tents or extra vehicles may have separate rules. Contact the Foss Park District directly to confirm availability, hours and what is allowed before you finalize anything. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        q: "Do I need a permit to host a party at Foss Park?",
+        a: "Park district facilities usually require a reservation, and tents or extra vehicles may have separate rules. Contact the Foss Park District directly to confirm availability, hours and what is allowed before you finalize anything. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
       },
       {
         q: "How soon should I book chairs for a North Chicago event?",
@@ -205,7 +205,7 @@ export const lakeCountyAreas: Location[] = [
     logistics: [
       "Route 21 and Grand Avenue get heavy with shoppers and theme park traffic on summer weekends. Choose early-morning deliveries when possible.",
       "Check with the Village of Gurnee about tent permits and any rules for larger backyard events.",
-      "After heavy rain, Lake County clay-rich soils stay soft. Ask about boards or ground protection for chair legs on lawns.",
+      "After heavy rain, lawns can stay soft. Ask about boards or ground protection for chair legs on lawns.",
       "For hotels and banquet halls, confirm loading dock hours and elevator access before delivery day.",
     ],
     recommendedChairs: [
@@ -234,7 +234,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Can you deliver to a hotel ballroom near I-94?",
-        a: "Yes. Hotel deliveries are routine for our vendors. Ask the hotel about loading docks, access times and whether staff handle setup, then share those details with us so we can schedule the drop-off. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often yes, if the hotel allows outside rentals. Ask the hotel about loading docks, access times and whether staff handle setup, then share those details with us so we can schedule the drop-off. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
       },
       {
         q: "How far ahead should I book for a Gurnee graduation party?",
@@ -262,7 +262,7 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Libertyville from vetted Chicago-area rental vendors, delivered to homes, parks and event spaces. Share your date and guest count and we will build a quote. Request a quote or book a planning call to secure your 2026-27 date.",
     story: [
-      "Libertyville feels like a classic Lake County town with a real downtown. Milwaukee Avenue and Church Street are lined with brick storefronts, the Metra station anchors the center, and tree-lined streets lead out to bigger lots toward the Des Plaines River. Families come here for the schools, the farmers market culture and the parks, and many have lived in the same neighborhoods for generations.",
+      "Libertyville feels like a classic Lake County town with a real downtown. Milwaukee Avenue and Church Street are lined with brick storefronts, the Metra station anchors the center, and tree-lined streets lead out to bigger lots toward the Des Plaines River. Families come here for the schools, the farmers market and the parks, and many have lived in the same neighborhoods for generations.",
       "Nature is a big part of the event picture. Independence Grove Forest Preserve, with its reservoir and trails, and the Des Plaines River Trail give photographers and couples plenty of backdrop, while Adler Park and Butler Lake are the places locals gather for summer afternoons. Churches, schools and community halls stay busy with first communions, graduations, anniversaries and memorials. Events in Libertyville range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Backyards in the older neighborhoods and larger estates on the edges of town carry a lot of the celebrations, so tents, lawn setups and clear delivery paths come up often. Guests often park along tree-lined streets, which means we want to hear about driveways, gates and narrow side yards before delivery day. Tell us your plans and we will fit the seating to the space.",
     ],
@@ -286,7 +286,7 @@ export const lakeCountyAreas: Location[] = [
     ],
     logistics: [
       "Parking near Milwaukee Avenue and the Metra station is limited on event days, so give your delivery team a clear drop-off spot.",
-      "For forest preserve or park pavilion events, check with Lake County Forest Preserves or the Libertyville Park District for permits and rules.",
+      "For forest preserve or park pavilion events, check with Lake County Forest Preserves or the Village of Libertyville for permits and rules.",
       "Older Libertyville homes often have narrow gates and steep steps. A photo of the route helps us plan.",
       "Before putting up a tent on your property, check with the Village of Libertyville about any permit or inspection.",
     ],
@@ -320,7 +320,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "When should I book chairs for a Libertyville wedding?",
-        a: "Plan on three to six months ahead for Saturdays between May and October. Popular chair styles go first, and early planning also gives you time to confirm tent and permit requirements with the village or park district. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Plan on three to six months ahead for Saturdays between May and October. Popular chair styles go first, and early planning also gives you time to confirm tent and permit requirements with the village. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
       },
       {
         q: "Can I use chairs on a sloped or shaded lawn?",
@@ -344,8 +344,8 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Mundelein from vetted Chicago-area rental vendors, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve your 2026-27 date.",
     story: [
-      "Mundelein spreads out around its downtown, the Metra tracks and the shores of Diamond Lake. The University of Saint Mary of the Lake, with its Georgian buildings and lake, adds a striking campus to the south side, and the village has long been a hub for Catholic life in Lake County. That faith community shows up in the calendar as first communions, confirmations, weddings and anniversary Masses throughout the year.",
-      "Mundelein is also one of the most vibrant Latino communities in the county, and celebrations here tend to be large. Quinceaneras, baptism parties and graduation parties routinely reach 150 guests, with a head table, a court and long banquet tables for extended family. Backyards and halls fill up from May through September, and chairs are often the first thing to run short.",
+      "Mundelein spreads out around its downtown, the Metra tracks and the shores of Diamond Lake. The University of Saint Mary of the Lake, with its Georgian buildings and lake, adds a striking campus to the village, and the village has long been a hub for Catholic life in Lake County. That faith community shows up in the calendar as first communions, confirmations, weddings and anniversary Masses throughout the year.",
+      "Mundelein also has a large Latino community, and celebrations here tend to be large. Quinceaneras, baptism parties and graduation parties routinely reach 150 guests, with a head table, a court and long banquet tables for extended family. Backyards and halls fill up from May through September, and chairs are often the first thing to run short.",
       "Parks and lakeside spots add outdoor options, including the Mundelein Park and Recreation District's community parks and the Diamond Lake area, while neighborhoods off Route 60 and Route 45 have yards big enough for a tent. Wind across open lots and soft ground after storms are the common surprises, so tell us your site and we will plan seating that holds up.",
     ],
     settings: [
@@ -427,7 +427,7 @@ export const lakeCountyAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Vernon Hills from vetted Chicago-area rental vendors, delivered to homes, offices, parks and banquet spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Vernon Hills grew up around Route 60, Milwaukee Avenue and the Hawthorn Mall area, and it still feels like a village designed for convenience. Corporate offices line the roads near Lakeside and Hawthorn Parkway, subdivisions fill the quiet blocks between, and the Metra station links the village to downtown. Business events and family celebrations share the same calendar here. Getting a feel for how Vernon Hills is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
-      "That mix means a wide range of requests. Offices book seating for team celebrations and client dinners, while families host graduation parties for Vernon Hills High School students, South Asian and Indian family weddings, and large backyard birthday parties. The community is diverse, and celebrations often bring together several generations and cultures at one set of tables. Events in Vernon Hills range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
+      "That mix means a wide range of requests. Offices book seating for team celebrations and client dinners, while families host graduation parties for Vernon Hills High School students, South Asian family weddings, and large backyard birthday parties. The community is diverse, and celebrations often bring together several generations and cultures at one set of tables. Events in Vernon Hills range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Outdoors, the village's parks and the nearby Lake County Forest Preserves, including trails along the Des Plaines River, offer pretty settings, though most need reservations or permits. Subdivision lots are often evenly graded, so tented yard parties are common. Send us your address and guest count and we will tailor the seating plan to your space. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Vernon Hills space by phone.",
     ],
     settings: [
@@ -508,7 +508,7 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Lincolnshire from vetted Chicago-area rental vendors, delivered to homes, offices and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Lincolnshire sits at the junction of Route 22 (Half Day Road) and Milwaukee Avenue, with the Des Plaines River just to the east and large corporate campuses scattered around the village. Wooded subdivisions, tennis courts and quiet cul-de-sacs fill the residential side, and the Half Day Forest Preserve and Old School Forest Preserve are close by for trail walks and open space.",
+      "Lincolnshire sits at the junction of Route 22 (Half Day Road) and Milwaukee Avenue, with the Des Plaines River just to the east and large corporate campuses scattered around the village. Wooded subdivisions, tennis courts and quiet cul-de-sacs fill the residential side, and the Half Day Forest Preserve is close by for trail walks and open space.",
       "Adlai E. Stevenson High School is a major presence here, so graduation season shapes the calendar. Families across Lincolnshire and neighboring towns host open houses and receptions that can run 100 guests or more, often in backyards with tents and a buffet. Bar and bat mitzvahs are also common, drawing relatives from across the north suburbs and often requiring seating for dinner and dancing.",
       "Corporate life adds another layer. Offices along the Tri-State and Milwaukee Avenue book holiday parties, client dinners and team events, and a few large estates and country-club style properties host weddings. Because roads are busy and lots can be wooded and sloped, we like to know your site early. Send us photos and we will plan the delivery path and layout together.",
     ],
@@ -672,8 +672,8 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Lake Zurich from vetted Chicago-area rental vendors, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Lake Zurich is built around the lake that gives it its name, a glacial lake with homes, docks and small beaches along its shoreline. Rand Road and Route 22 carry traffic through the village, Main Street holds a mix of shops and restaurants, and the Paulus Park beach and playground is the community's gathering place on summer afternoons. It feels like a lake town, even close to the Chicago suburbs.",
-      "That setting shapes celebrations. Couples take photos along the shore, families hold graduation parties and birthday gatherings in backyards on the lake, and neighborhood events such as fireworks and summer concerts bring people together outdoors. Lake Zurich High School graduations make late spring busy, and quinceaneras and baptism parties fill the halls and backyards throughout the year. Events in Lake Zurich range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
+      "Lake Zurich is built around the lake that gives it its name, with homes, docks and small beaches along its shoreline. Rand Road and Route 22 carry traffic through the village, Main Street holds a mix of shops and restaurants, and the Paulus Park beach and playground is the community's gathering place on summer afternoons. It feels like a lake town, even close to the Chicago suburbs.",
+      "That setting shapes celebrations. Couples take photos along the shore, families hold graduation parties and birthday gatherings in backyards on the lake, and summer weekends bring people together outdoors. Lake Zurich High School graduations make late spring busy, and quinceaneras and baptism parties fill the halls and backyards throughout the year. Events in Lake Zurich range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Lake-adjacent lots can be tight and sloped, with steps down to the water and narrow side yards, so we ask about access early. Breezes off the lake can also tug at tents and linens. Share photos of your space and your guest count, and we will help plan chairs and tables that fit the site and the conditions. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Lake Zurich space by phone.",
     ],
     settings: [
@@ -682,8 +682,8 @@ export const lakeCountyAreas: Location[] = [
         note: "Sloped lots and stairs down to the water make carry distance a key planning point. Choose lighter chairs where trucks cannot reach.",
       },
       {
-        name: "Paulus Park and park district events",
-        note: "Paulus Park is a community favorite. Check with the Lake Zurich Park District about reservations, tents and vehicle access.",
+        name: "Paulus Park and village events",
+        note: "Paulus Park is a community favorite. Check with the Village of Lake Zurich Parks and Recreation Department about reservations, tents and vehicle access.",
       },
       {
         name: "Backyard graduation parties",
@@ -722,7 +722,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a tent on a lakefront lot?",
-        a: "Large tents may require a permit or inspection depending on size and anchoring. Check with the Village of Lake Zurich before you commit. If you plan to use a park district site, the Lake Zurich Park District handles reservations and rules.",
+        a: "Large tents may require a permit or inspection depending on size and anchoring. Check with the Village of Lake Zurich before you commit. If you plan to use a village park such as Paulus Park, the Village of Lake Zurich Parks and Recreation Department handles reservations and rules.",
       },
       {
         q: "Can you deliver to a lot with steps down to the water?",
@@ -836,7 +836,7 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Grayslake from vetted Chicago-area rental vendors, delivered to farms, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Grayslake has a small-town downtown, with the Metra station, old storefronts and the Grayslake Heritage Center and Museum nearby, and rural land spreading out in every direction. Prairie Crossing, a conservation-minded community built around farm fields, prairie and wetlands, sets a distinct tone, and the Lake County Fairgrounds make Grayslake the county's gathering point each summer. Getting a feel for how Grayslake is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
+      "Grayslake has a small-town downtown, with the Metra station, old storefronts and the Grayslake Heritage Center and Museum nearby, and rural land spreading out in every direction. Prairie Crossing, a conservation-minded community built around farm fields, prairie and wetlands, sets a distinct tone, and the Lake County Fairgrounds are also in Grayslake. Getting a feel for how Grayslake is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Celebrations here lean toward outdoor and rustic. Couples look for barns, farm settings and prairie backdrops, families host graduation parties for Grayslake Central and North high school students, and College of Lake County events draw crowds throughout the year. Backyards in the newer subdivisions handle quinceaneras and birthday parties with plenty of room for tents. Events in Grayslake range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Open fields mean wind, uneven ground and long walks from the nearest road. Spring rains can leave low spots muddy for days. Share your location, whether it is a farm, a park or a backyard, and we will plan chairs, tables and a delivery path that works for the terrain and the weather. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Grayslake space by phone.",
     ],
@@ -855,7 +855,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         name: "Park district pavilions",
-        note: "Grayslake parks host family parties. The Grayslake Park District sets reservation and tent rules.",
+        note: "Grayslake parks host family parties. The local park district sets reservation and tent rules.",
       },
     ],
     logistics: [
@@ -890,7 +890,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a tent in a Grayslake yard?",
-        a: "It depends on tent size and anchoring. Check with the Village of Grayslake before you commit. For park pavilions, the Grayslake Park District handles reservations and rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Grayslake before you commit. For park pavilions, the local park district handles reservations and rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
       },
       {
         q: "How early should I book for a Grayslake graduation party?",
@@ -918,9 +918,9 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Round Lake from vetted Chicago-area rental vendors, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Round Lake is part of a cluster of villages in northwest Lake County, with Round Lake Beach, Round Lake Park and Hainesville close by. The Metra stop, Route 134 and Route 83 tie the area together, and the neighborhoods are a mix of long-established blocks and newer subdivisions. It is a warm, family-oriented community where celebrations are large and often multilingual.",
+      "Round Lake is part of a cluster of villages in northwest Lake County, with Round Lake Beach, Round Lake Park and Hainesville close by. The Metra stop and the area's main roads tie it together, and the neighborhoods are a mix of long-established blocks and newer subdivisions. It is a warm, family-oriented community where celebrations are large and often multilingual.",
       "Quinceaneras, baptisms, first communions, birthday parties and graduation parties dominate the calendar, often with 100 to 200 guests and tables for aunts, uncles and cousins from across the region. Round Lake High School grads and their families fill backyards, parks and halls from May through September, and chair counts climb quickly when the whole family arrives. Events in Round Lake range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
-      "Local parks, the Round Lake Area Park District's pavilions and community spaces, and nearby Lake County Forest Preserves such as Grant Woods and Rollins Savanna offer room to spread out. Fields and lots in this part of the county can be flat and open, which means wind, sun and soft ground. Tell us your site and guest count, and we will plan seating that holds up.",
+      "Local parks, the Round Lake Area Park District's pavilions and community spaces, and nearby Lake County Forest Preserves offer room to spread out. Fields and lots in this part of the county can be flat and open, which means wind, sun and soft ground. Tell us your site and guest count, and we will plan seating that holds up.",
     ],
     settings: [
       {
@@ -941,7 +941,7 @@ export const lakeCountyAreas: Location[] = [
       },
     ],
     logistics: [
-      "Routes 134 and 83 can back up at peak hours. Choose a midday delivery window.",
+      "Main roads through the area can back up at peak hours. Choose a midday delivery window.",
       "Open lots can be windy and soft after rain. Ask about weights and boards for chair legs.",
       "Check with the Village of Round Lake or the neighboring village where you live about tent permits.",
       "Let us know about alleys, cul-de-sacs or shared driveways so the delivery team can find the best access.",
@@ -1001,7 +1001,7 @@ export const lakeCountyAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Antioch from vetted Chicago-area rental vendors, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Antioch sits at the northern edge of Lake County, near the Wisconsin line, and is the gateway to the Chain O'Lakes. Lake Marie, Channel Lake and the interconnected waterways keep boats and docks at the heart of summer life. Downtown Antioch has a small-town main street with a Metra station, and rural roads lead out to farms, wetlands and lake homes.",
-      "Celebrations here often draw on the water. Couples take photos along the lakes, families host graduation parties and summer reunions at lake houses, and holiday boat parades and fireworks mark the season. Antioch Community High School graduations and church gatherings fill the spring calendar, and weddings in barns and backyards bring guests up from Chicago for a weekend. Events in Antioch range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
+      "Celebrations here often draw on the water. Couples take photos along the lakes, families host graduation parties and summer reunions at lake houses, and boating season fills the summer. Antioch Community High School graduations and church gatherings fill the spring calendar, and weddings in barns and backyards bring guests up from Chicago for a weekend. Events in Antioch range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Lakefront lots can be narrow, and many are reached by winding roads. Docks, steep lawns and shoreline restrictions affect where chairs can go. The wind off open water can be sharp, and the season is short, so planning ahead matters. Share your address and layout, and we will help choose chairs and a delivery plan that works. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Antioch space by phone.",
     ],
     settings: [
@@ -1164,7 +1164,7 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Fox Lake from vetted Chicago-area rental vendors, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Fox Lake is the heart of the Chain O'Lakes, a connected string of lakes and channels along the Fox River that fills with boats from May to September. The village wraps around Fox Lake itself, with Pistakee Bay and Nippersink Canal close by, and the Metra line ends here, a short ride from Chicago. Waterfront restaurants, marinas and docks give the town a lively summer personality.",
+      "Fox Lake is the heart of the Chain O'Lakes, a connected string of lakes and channels along the Fox River that fills with boats from May to September. The village wraps around Fox Lake itself, with Pistakee Lake and Nippersink Lake close by, and the Metra line ends here, a short ride from Chicago. Waterfront restaurants, marinas and docks give the town a lively summer personality.",
       "Celebrations follow the water. Families host reunions and birthday parties at lake houses, couples marry on lawns with the lake as backdrop, and many guests arrive by boat as well as car. Memorial Day weekend, the Fourth of July and Labor Day are big gathering times, and graduation parties for local students fill backyards in late spring. Events in Fox Lake range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Lots near the lake are often narrow with steep steps and tight driveways. Streets fill with cars and trailers in summer, and water levels, wind and humidity affect outdoor events. Tell us your address, guest count and how people will get to the party, and we will help plan chairs, tables and a delivery window that works. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Fox Lake space by phone.",
     ],
@@ -1187,7 +1187,7 @@ export const lakeCountyAreas: Location[] = [
       },
     ],
     logistics: [
-      "Summer weekends bring heavy traffic on Route 12 and Route 59. Early morning delivery is usually easiest.",
+      "Summer weekends bring heavy traffic on Route 12. Early morning delivery is usually easiest.",
       "Narrow lake streets and trailer parking can block trucks. Share exact directions and a contact number.",
       "Check with the Village of Fox Lake about permits for tents and public space use.",
       "Wind off the water can lift linens and light chairs, so ask about weights and sheltered layouts.",
@@ -1247,7 +1247,7 @@ export const lakeCountyAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Zion from vetted Chicago-area rental vendors, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Zion is one of the more unusual cities in Illinois. It was founded in 1901 by John Alexander Dowie as a religious community, and its street names, from Elisha to Ezekiel, still follow a biblical plan. Lake Michigan lies to the east, Illinois Beach State Park stretches along the shoreline, and Shiloh Park, with its historic house and lakefront, is a community gathering place.",
-      "That faith heritage still shapes the calendar. Church services, anniversaries, baptisms, weddings and memorials are central, and many families host big meals after services. Zion is also home to a growing Latino community, with quinceaneras, birthday parties and graduation celebrations filling church halls, backyards and park shelters from spring through fall. Events in Zion range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
+      "That faith heritage still shapes the calendar. Church services, anniversaries, baptisms, weddings and memorials are central, and many families host big meals after services. Quinceaneras, birthday parties and graduation celebrations also fill church halls, backyards and park shelters from spring through fall. Events in Zion range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Outdoors, the beach and dunes of Illinois Beach State Park, the Dead River nearby and the open lots around the old lakeshore bring wind and sand to the picture. The Zion Park District runs parks and shelters, and sandy soil can be easy to drive on but hard to set chairs on. Tell us your site and plan, and we will help match seating to the setting.",
     ],
     settings: [
@@ -1493,7 +1493,7 @@ export const lakeCountyAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Hawthorn Woods from vetted Chicago-area rental vendors, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Hawthorn Woods is a quiet, wooded village west of Long Grove and north of Kildeer, set along Quentin Road and Midlothian Road. Large lots, mature trees and private roads give it a country feel, and the nearby Lake County Forest Preserves add trails and open space. Most celebrations here happen at home, in big yards with room for tents and a dance floor.",
-      "Graduation parties, backyard weddings, milestone birthdays and rehearsal dinners are the usual events. Families from Lake Zurich and Mundelein area schools gather here in late spring, and summer weekends bring pool parties and garden gatherings. Guest counts often run 60 to 150, which calls for organized seating and a clear path for guests and delivery trucks. Events in Hawthorn Woods range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
+      "Graduation parties, backyard weddings, milestone birthdays and rehearsal dinners are the usual events. Families from area schools gather here in late spring, and summer weekends bring pool parties and garden gatherings. Guest counts often run 60 to 150, which calls for organized seating and a clear path for guests and delivery trucks. Events in Hawthorn Woods range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Private roads, long driveways and heavy tree cover can complicate access, and low spots in the lawn can stay soft after rain. Deer, bugs and shade also shape how people use outdoor space. Share your site and plans, and we will help match chairs and tables to the layout and keep delivery easy. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Hawthorn Woods space by phone.",
     ],
     settings: [
@@ -1656,7 +1656,7 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Wauconda from vetted Chicago-area rental vendors, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Wauconda sits between Bangs Lake and Wauconda Lake, at the crossing of Route 12 and Route 176, with a small downtown on Main Street. Lake houses, older cottages and newer subdivisions mix on the village's winding streets. Lakewood Forest Preserve, with its trails and the Lake County Discovery Museum, sits just to the east and gives the area open green space.",
+      "Wauconda sits on Bangs Lake, at the crossing of Route 12 and Route 176, with a small downtown on Main Street. Lake houses, older cottages and newer subdivisions mix on the village's winding streets. Lakewood Forest Preserve, with its trails and the Lake County Discovery Museum, is nearby and gives the area open green space.",
       "The calendar follows the seasons. Summer brings reunions, lake parties and boat-day gatherings, while spring is busy with graduation open houses for Wauconda High School students and first communion parties. Weddings in backyards, barns and halls bring guests from the northwest suburbs and Chicago, and holiday gatherings keep church halls and banquet rooms active in the fall. Events in Wauconda range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Lake lots are often narrow and sloped, and some streets are tight for large trucks. Wind off the water, soft spring ground and limited parking add to the planning. Share your address, guest count and a few photos, and we will help you choose chairs, tables and a delivery window that suits the site. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Wauconda space by phone.",
     ],
@@ -1738,9 +1738,9 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Island Lake from vetted Chicago-area rental vendors, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Island Lake straddles the Lake and McHenry County line, set between Wauconda and Algonquin near the Fox River. Route 176 runs through the village, residential streets fan out around the small lake that gives the town its name, and newer subdivisions sit beside older cottages. It is a quiet, family-focused community with easy access to the northwest suburbs. Getting a feel for how Island Lake is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
+      "Island Lake straddles the Lake and McHenry County line, set near Wauconda in the northwest suburbs. Route 176 runs through the village, residential streets fan out around the small lake that gives the town its name, and newer subdivisions sit beside older cottages. It is a quiet, family-focused community with easy access to the northwest suburbs. Getting a feel for how Island Lake is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Celebrations tend to be centered on home. Graduation parties, birthday parties, baptism and communion gatherings and backyard weddings fill the calendar from May through September, often with 50 to 150 guests. Because Island Lake is split between two counties, guests and vendors may travel in from either direction, so clear directions help. Events in Island Lake range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
-      "Lots vary from tight older parcels to roomy newer yards, and Fox River Valley wind can pick up across open land. Spring storms can leave low spots soft. Share your address, guest count and yard details, and we will help you choose seating and a layout that works for the space. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Island Lake space by phone.",
+      "Lots vary from tight older parcels to roomy newer yards, and wind can pick up across open land. Spring storms can leave low spots soft. Share your address, guest count and yard details, and we will help you choose seating and a layout that works for the space. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Island Lake space by phone.",
     ],
     settings: [
       {
@@ -1820,8 +1820,8 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Riverwoods from vetted Chicago-area rental vendors, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Riverwoods is a leafy village along the Des Plaines River, tucked between Deerfield, Lincolnshire and Bannockburn, with Milwaukee Avenue, Deerfield Road and Riverwoods Road as its main arteries. Large lots, ravines and mature oaks define the landscape, and Ryerson Woods, a Lake County Forest Preserve with a welcome center and river trails, gives the village a wild edge. Getting a feel for how Riverwoods is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
-      "Celebrations here are mostly private and personal. Graduation open houses for Deerfield and Stevenson students, bar and bat mitzvahs, rehearsal dinners, milestone birthdays and backyard weddings are typical, often with tents, dance floors and 80 to 200 guests. A number of corporate campuses nearby also bring holiday and team events to the area. Events in Riverwoods range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
+      "Riverwoods is a leafy village along the Des Plaines River, tucked between Deerfield, Lincolnshire and Bannockburn, with Deerfield Road and Riverwoods Road as its main arteries. Large lots, ravines and mature oaks define the landscape, and Ryerson Woods, a Lake County Forest Preserve with a welcome center and river trails, gives the village a wild edge. Getting a feel for how Riverwoods is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
+      "Celebrations here are mostly private and personal. Graduation open houses for area high school students, bar and bat mitzvahs, rehearsal dinners, milestone birthdays and backyard weddings are typical, often with tents, dance floors and 80 to 200 guests. A number of corporate campuses nearby also bring holiday and team events to the area. Events in Riverwoods range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Heavy tree cover, ravines and floodplain land near the river affect tent placement, and steep or winding driveways can complicate truck access. After heavy rain, low areas near the river can stay saturated. Tell us about your site and share photos, and we will help you plan the layout, chairs and delivery path. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Riverwoods space by phone.",
     ],
     settings: [
@@ -1843,7 +1843,7 @@ export const lakeCountyAreas: Location[] = [
       },
     ],
     logistics: [
-      "Milwaukee Avenue, Deerfield Road and Lake Cook Road are busy at rush hour. Midday delivery works best.",
+      "Deerfield Road and Riverwoods Road are busy at rush hour. Midday delivery works best.",
       "Check with the Village of Riverwoods about tent permits and rules for larger private events.",
       "Steep or winding driveways can limit truck access. Share driveway details and gate information in advance.",
       "Floodplain and ravine areas can be soft or unsafe for setup. Pick flat, well-drained ground for seating and tents.",
@@ -1902,7 +1902,7 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Lake Barrington from vetted Chicago-area rental vendors, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Lake Barrington lies along the Fox River on the western edge of Lake County, next to Barrington Hills, Barrington and Port Barrington. Route 59, Route 22 and Lake Zurich Road cross the area, and the village includes the Lake Barrington Shores community, wooded subdivisions and open stretches of land. Cuba Marsh Forest Preserve and the Fox River itself add trails and water views.",
+      "Lake Barrington lies along the Fox River on the western edge of Lake County, next to Barrington Hills, Barrington and Port Barrington. Route 59, Route 22 and Lake Zurich Road cross the area, and the village includes the Lake Barrington Shores community, wooded subdivisions and open stretches of land. Nearby forest preserves and the Fox River itself add trails and water views.",
       "Celebrations are mostly at home or in nearby venues. Graduation parties for Barrington area students, weddings with river or wooded backdrops, rehearsal dinners and milestone birthdays are typical, often with 60 to 150 guests. Neighbors in Barrington Hills and Lake Barrington share a love of open space, so tents on wide lawns are common. Events in Lake Barrington range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "River-adjacent land can stay damp, and ravines and sloped lots shape where chairs and tents can go. Fox River breezes can pick up in the afternoon, and summer evenings bring bugs near the water. Tell us your site and guest count, and we will help plan chairs, tables and a delivery route that fits. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Lake Barrington space by phone.",
     ],
@@ -1921,7 +1921,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         name: "Forest preserve backdrops",
-        note: "Cuba Marsh and other preserves require permits through Lake County Forest Preserves.",
+        note: "Nearby preserves require permits through Lake County Forest Preserves.",
       },
     ],
     logistics: [
@@ -1984,7 +1984,7 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Deer Park from vetted Chicago-area rental vendors, delivered to homes and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Deer Park is a small village on the Lake and Cook County border, along Rand Road (U.S. 12) between Lake Zurich, Kildeer and Barrington. Quiet residential streets and open land sit alongside the Deer Park Town Center shopping area, and Deer Grove Forest Preserve in Cook County is just across the line for trails and picnic areas. Getting a feel for how Deer Park is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
+      "Deer Park is a small village in Lake County, along Rand Road (U.S. 12) between Lake Zurich, Kildeer and Barrington. Quiet residential streets and open land sit alongside the Deer Park Town Center shopping area, and nearby forest preserves offer trails and picnic areas. Getting a feel for how Deer Park is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Because the village is small, celebrations tend to be private and local. Graduation parties, communion and confirmation gatherings, backyard birthdays, anniversary dinners and showers are common, with guest counts of 40 to 120. Families from Deer Park, Kildeer and Barrington share schools and churches, so guest lists often cross village lines. Events in Deer Park range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Backyards range from flat lawns to sloped yards with mature trees, and open land along Rand Road can be breezy. After heavy rain, low spots can stay soft. Tell us your address, your yard's features and your guest count, and we will help you pick chairs and a layout that suits the space. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Deer Park space by phone.",
     ],
@@ -2003,14 +2003,14 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         name: "Forest preserve picnic areas",
-        note: "Deer Grove and other preserves are managed by different districts. Contact the managing district about permits.",
+        note: "Nearby forest preserves are managed by different districts. Contact the managing district about permits.",
       },
     ],
     logistics: [
       "Rand Road can be busy at rush hour. Choose a midday delivery window.",
       "Check with the Village of Deer Park about tent permits for larger backyard events.",
       "Sloped or soft ground may need boards under chair legs. A photo of your yard helps us plan.",
-      "Share exact directions if you live near the Lake and Cook County line, since GPS can be unreliable.",
+      "Share exact directions if your home is on a rural or private road, since GPS can be unreliable.",
     ],
     recommendedChairs: [
       {
@@ -2066,14 +2066,14 @@ export const lakeCountyAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Winthrop Harbor from vetted Chicago-area rental vendors, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
-      "Winthrop Harbor is Illinois's northernmost lakefront community, right at the Wisconsin line. North Point Marina, one of the largest freshwater marinas on Lake Michigan, anchors the shoreline, and Illinois Beach State Park runs along the coast to the south. Sheridan Road and the Metra line pass through town, and quiet residential streets and older cottages sit close to the water.",
+      "Winthrop Harbor is Illinois's northernmost lakefront community, right at the Wisconsin line. North Point Marina, one of the largest marinas on the Great Lakes, anchors the shoreline, and Illinois Beach State Park runs along the coast to the south. Sheridan Road and the Metra line pass through town, and quiet residential streets and older cottages sit close to the water.",
       "Celebrations here follow the boating season. Families host summer cookouts, reunions and graduation parties, couples marry with the lake as a backdrop, and anniversary and retirement gatherings often follow a day on the water. Winthrop Harbor's small size keeps events personal, usually 40 to 120 guests, with relatives driving up from Chicago or down from Kenosha. Events in Winthrop Harbor range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
       "Wind off Lake Michigan is the main challenge, along with cool evenings even in summer. Sandy soil near the beach, tight cottage lots and limited parking add to the planning. Share your site, guest count and how people will arrive, and we will help you choose chairs, tables and a delivery plan that works for the shoreline. A few photos and an exact address are all we need to start, and we are happy to talk through the details of your Winthrop Harbor space by phone.",
     ],
     settings: [
       {
         name: "Lakefront and marina events",
-        note: "Open shoreline and marina areas are scenic but windy. Check with the village or Port authority about permits and access.",
+        note: "Open shoreline and marina areas are scenic but windy. Check with the village or the site operator about permits and access.",
       },
       {
         name: "Cottage and backyard parties",

@@ -17,7 +17,7 @@ export const westSouthwestCookAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Forest Park from vetted Chicago-area rental vendors. Tell us your date and headcount and we line up the right gear and delivery. Request a quote or book a planning call to get started.",
     story: [
       "Forest Park sits right at the end of the Blue Line, so guests can ride in from the Loop and walk to a party without a car. Madison Street is the village's main stretch, lined with restaurants, bars and small storefronts, and many gatherings start or end there. That walkability is a gift for guests, though it means rental trucks have to think carefully about curb space.",
-      "Much of the housing is older, with brick two-flats and bungalows on tight lots, so backyard parties tend to be intimate and a little creative with space. The village also wraps around Forest Home Cemetery on the west edge and borders Thatcher Woods and the Des Plaines River forest preserves, which give the area a leafy, quiet feel just outside the city line.",
+      "Much of the housing is older, with brick two-flats and bungalows on tight lots, so backyard parties tend to be intimate and a little creative with space. The village is home to Forest Home Cemetery and sits along the Des Plaines River, with forest preserve land nearby that gives the area a leafy, quiet feel just outside the city line.",
       "Events here run from graduation cookouts and milestone birthdays to memorial gatherings and small weddings that spill from a banquet room into a patio. Chairs need to fit narrow gangways and basement stairs, and tables should suit small yards rather than sprawling lawns. A planning call about access and square footage saves a lot of guesswork. Teardown matters too, since neighbors share walls and gangways, so we plan pickup times that keep noise and clutter low after the last guest leaves.",
     ],
     settings: [
@@ -31,7 +31,7 @@ export const westSouthwestCookAreas: Location[] = [
       },
       {
         name: "Forest preserve picnics",
-        note: "Groves along the Des Plaines River need a permit from the Forest Preserves of Cook County and a short carry from parking.",
+        note: "Forest preserve groves near the Des Plaines River are reserved through the Forest Preserves of Cook County and usually mean a short carry from parking.",
       },
       {
         name: "Memorial and family gatherings",
@@ -197,7 +197,7 @@ export const westSouthwestCookAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Elmwood Park from vetted Chicago-area rental vendors. Share your date and headcount and we take care of the sourcing and delivery details. Request a quote or book a planning call to start.",
     story: [
       "Elmwood Park is a dense, close-knit village of brick bungalows and two-flats, and its Grand Avenue shops and bakeries reflect a strong Italian-American heritage. Family is the center of celebration here, and gatherings tend to be big: grandparents, cousins, neighbors and the parish friends all show up. That means more chairs than a typical living room can hold. Christenings and anniversaries here often turn into all-day open houses, so seating needs to last from the first toast to the final plate of dessert.",
-      "The village sits between Harlem Avenue and Narragansett, with the Metra Milwaukee District West line cutting through and Grand Avenue as the commercial spine. Lots are small, so backyard parties often use garages, driveways and shared alleys. Rental delivery works best when you know exactly where a truck can stop and where tables will go. Trains on the Milwaukee line stop traffic at crossings, and one-way alleys mean it pays to walk the route before the truck rolls.",
+      "The Metra Milwaukee District West line cuts through the village with a station on Grand Avenue, which is also the commercial spine. Lots are small, so backyard parties often use garages, driveways and shared alleys. Rental delivery works best when you know exactly where a truck can stop and where tables will go. Trains on the Milwaukee line stop traffic at crossings, and one-way alleys mean it pays to walk the route before the truck rolls.",
       "Typical events include first communions, showers, anniversaries, graduation cookouts and wedding rehearsal dinners. People often combine a backyard with a nearby hall or parish space. We help you size seating realistically for tight lots and long tables, and we flag stairs, gates and alley access in the quote. If a parish hall or banquet room hosts the main event, we only quote what you actually lack, such as extra chairs for a bigger family table than expected.",
     ],
     settings: [
@@ -215,7 +215,7 @@ export const westSouthwestCookAreas: Location[] = [
       },
       {
         name: "Park pavilion events",
-        note: "Village and park district spaces require reservations. Check with the village or park district.",
+        note: "Parks and pavilions generally need reservations. Check with the Village of Elmwood Park.",
       },
     ],
     logistics: [
@@ -283,7 +283,7 @@ export const westSouthwestCookAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Maywood from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the details. Request a quote or book a planning call to get started.",
     story: [
-      "Maywood is one of the oldest suburbs west of Chicago, with historic homes along tree-lined streets near Fifth Avenue and a lively tradition of church, family and community gatherings. Many events here are anchored in congregations, and large Sunday-after-service receptions, anniversaries and homecomings are a regular part of the calendar. Those events rely on enough seating for the whole congregation.",
+      "Maywood is an older suburb west of Chicago, with historic homes along tree-lined streets near Fifth Avenue and a lively tradition of church, family and community gatherings. Many events here are anchored in congregations, and large Sunday-after-service receptions, anniversaries and homecomings are a regular part of the calendar. Those events rely on enough seating for the whole congregation.",
       "The village sits along the Eisenhower Expressway and the Union Pacific West line, and the Illinois Prairie Path passes close by, so it is easy to reach from the city and the western suburbs. Loyola University Medical Center is a major local landmark, and the Des Plaines River on the east edge brings forest preserve land that locals use for picnics.",
       "Family reunions, graduation parties, church banquets and backyard weddings are common. Reunions in particular can run a hundred guests or more, and long tables with plenty of chairs are the main need. We help you plan counts, delivery timing and setup so your guests are seated comfortably from the first greeting. Outdoor reunions in July and August also call for shade, so mention canopy tents early and we will keep the seating layout flexible around them.",
     ],
@@ -463,7 +463,7 @@ export const westSouthwestCookAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Berwyn from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to begin.",
     story: [
-      "Berwyn is the heart of Chicago's bungalow belt, with block after block of brick bungalows, deep garages and small, well-kept yards. Cermak Road has long been the commercial spine, with its Czech and Bohemian heritage still visible in bakeries and shops, and the Spindle sculpture at Cermak Plaza has become a well-known local landmark. Walk down almost any side street on a June Saturday and you will find a tent, a grill and a long row of tables in a narrow backyard.",
+      "Berwyn sits in Chicago's bungalow belt, with block after block of brick bungalows, deep garages and small, well-kept yards. Cermak Road has long been the commercial spine, with its Czech and Bohemian heritage still visible in bakeries and shops, and the Spindle sculpture at Cermak Plaza has become a well-known local landmark. Walk down almost any side street on a June Saturday and you will find a tent, a grill and a long row of tables in a narrow backyard.",
       "The Depot District near the BNSF Berwyn station has become a hub for restaurants and community events, and MacNeal Hospital anchors the south side. Harlem Avenue and Roosevelt Road carry heavy traffic, so delivery windows matter, though many blocks are quiet and walkable with alleys behind the houses. The grid of streets and alleys is easy to navigate on foot, but a delivery truck benefits from a clear plan before it turns off Cermak.",
       "Typical celebrations include backyard graduation parties, milestone birthdays, showers, memorials and small weddings. Yard sizes are modest, so tables and chairs have to be chosen with space in mind. We help you work out counts, alley access and setup so your guests are comfortable without cramming the garage and patio. If the yard cannot hold everyone, many hosts split the party between a patio table area and the garage, which means chairs in two zones and a little extra setup time.",
     ],
@@ -568,8 +568,8 @@ export const westSouthwestCookAreas: Location[] = [
         note: "Baptism and communion receptions need seating for family and neighbors.",
       },
       {
-        name: "Park district events",
-        note: "Parks and pavilions need reservations. Check with the town or park district.",
+        name: "Park and pavilion events",
+        note: "Parks and pavilions generally need reservations. Check with the Town of Cicero.",
       },
     ],
     logistics: [
@@ -819,7 +819,7 @@ export const westSouthwestCookAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in La Grange from vetted Chicago-area rental vendors. Share your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to begin.",
     story: [
       "La Grange is a classic railroad suburb with a lively downtown along La Grange Road and Burlington Avenue, where shops, restaurants and the BNSF Metra station sit within a few blocks. Its tree-lined residential streets are filled with historic homes, and neighbors tend to celebrate together, from porch parties to block gatherings and milestone dinners. Hosting at home is a long tradition here, and many families rent chairs for a day rather than buy a set that would only sit in the garage.",
-      "Parks like Gilbert Park and Denning Park host community events, and the walkable downtown makes it easy for guests to arrive by train. Lots in the older parts of the village can be modest, while the western and southern edges include larger yards, so the right rental plan depends on the block. The Metra BNSF line splits the village, and a passing train can briefly hold up cross-town drives near the crossings at peak commuter hours.",
+      "Parks like Gilbert Park and Denning Park host community events, and the walkable downtown makes it easy for guests to arrive by train. Lots in the older parts of the village can be modest, while other blocks have larger yards, so the right rental plan depends on the block. The Metra BNSF line splits the village, and a passing train can briefly hold up cross-town drives near the crossings at peak commuter hours.",
       "Weddings, graduation parties, anniversary dinners and showers are common. Many families host at home and rent chairs and tables for the day, while others combine a restaurant or event space with a backyard tent. We help you plan counts, access and timing so setup fits your site. Whatever your plan, we keep the quote itemized, so you can see chairs, tables, linens, delivery and setup separately and adjust as the guest list changes.",
     ],
     settings: [
@@ -833,11 +833,11 @@ export const westSouthwestCookAreas: Location[] = [
       },
       {
         name: "Park gatherings",
-        note: "Parks need reservations through the La Grange Park District. Check with them before you book.",
+        note: "Parks need reservations through the Park District of La Grange. Check with them before you book.",
       },
       {
         name: "Larger-lot weddings",
-        note: "Bigger yards on the village edges can host ceremony and dinner in one place.",
+        note: "Bigger yards can host ceremony and dinner in one place.",
       },
     ],
     logistics: [
@@ -877,7 +877,7 @@ export const westSouthwestCookAreas: Location[] = [
       },
       {
         q: "Can you deliver chairs to a La Grange park?",
-        a: "Often, if the park allows it. Park use generally requires a reservation through the La Grange Park District and may limit vehicles. Check with them first, then tell us the rules so we can plan the drop point. Tell us about stairs, gates and parking when you write, and we will include them in the plan.",
+        a: "Often, if the park allows it. Park use generally requires a reservation through the Park District of La Grange and may limit vehicles. Check with them first, then tell us the rules so we can plan the drop point. Tell us about stairs, gates and parking when you write, and we will include them in the plan.",
       },
       {
         q: "Can I rent chairs for a downtown La Grange event space?",
@@ -911,7 +911,7 @@ export const westSouthwestCookAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in La Grange Park from vetted Chicago-area rental vendors. Tell us your date and headcount and we take care of the sourcing and delivery. Request a quote or book a planning call to start.",
     story: [
-      "La Grange Park is a quiet residential village of brick ranches, bungalows and Georgians, sitting between Ogden Avenue to the north and the BNSF tracks to the south. It is a family-oriented place where celebrations tend to happen at home, in garages and backyards, and in neighborhood parks, with the Stone Avenue Metra station nearby for guests coming in from the city.",
+      "La Grange Park is a quiet residential village of brick ranches, bungalows and Georgians, with Ogden Avenue and La Grange Road as its major routes. It is a family-oriented place where celebrations tend to happen at home, in garages and backyards, and in neighborhood parks, with the Stone Avenue Metra station nearby for guests coming in from the city.",
       "Brookfield Zoo is a short drive away, and Salt Creek and nearby forest preserves offer open space for picnics. Ogden Avenue and La Grange Road carry heavy traffic, so timing deliveries matters, though the interior streets are calm and often lined with parked cars on party days. In summer, storms roll in fast, so hosts usually keep a covered area or a garage in reserve for the whole party.",
       "Typical events include graduation open houses, first communions, showers, milestone birthdays and small weddings. Lots are medium sized, so tables and chairs should fit patios and driveways without crowding. We help you size the order, confirm access and line up the right delivery window. Tell us your driveway slope, gate width and any steps, and we can recommend chairs that stack and carry well so setup is quick without disturbing your landscaping.",
     ],
@@ -926,7 +926,7 @@ export const westSouthwestCookAreas: Location[] = [
       },
       {
         name: "Park district gatherings",
-        note: "Parks need reservations through the La Grange Park Park District. Check with them before you book.",
+        note: "Parks need reservations through the local park district. Check with them before you book.",
       },
       {
         name: "Forest preserve picnics",
@@ -1111,8 +1111,8 @@ export const westSouthwestCookAreas: Location[] = [
         note: "Popular for graduations and retirements. Mention shade and weather backup.",
       },
       {
-        name: "Park district events",
-        note: "Parks and pavilions need reservations. Check with the Countryside Park District or the city.",
+        name: "Park pavilion events",
+        note: "Parks and pavilions generally need reservations. Check with the City of Countryside Recreation Department.",
       },
       {
         name: "Forest preserve picnics",
@@ -1160,7 +1160,7 @@ export const westSouthwestCookAreas: Location[] = [
       },
       {
         q: "Can you deliver to a party at a park?",
-        a: "Often, if the park allows it. Public parks generally require a reservation and may limit vehicles. Check with the park district or city, then tell us the rules so we can plan the drop point. If you are not sure about numbers yet, a rough range is fine and we can refine it together.",
+        a: "Often, if the park allows it. Public parks generally require a reservation and may limit vehicles. Check with the city's recreation department, then tell us the rules so we can plan the drop point. If you are not sure about numbers yet, a rough range is fine and we can refine it together.",
       },
       {
         q: "How early should I book rentals in Countryside?",
@@ -1284,7 +1284,7 @@ export const westSouthwestCookAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Summit from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to start.",
     story: [
       "Summit, often called Summit-Argo, is a compact village on the Des Plaines River and the Sanitary and Ship Canal, long shaped by the nearby corn processing plant and industrial corridors. Archer Avenue runs through it, and the Metra Heritage Corridor stops here, but most of the village is tightly packed bungalows and two-flats where families have lived for generations. Weekend trucks and trains share the same corridors, and local families know to leave early for anything on Archer Avenue.",
-      "Polish and Mexican communities are strongly represented, along with a mix of other backgrounds, and celebrations are communal: baptisms, communions, quinceañeras, graduations and weddings. Parish halls and banquet rooms nearby handle larger events, while smaller gatherings fill backyards, garages and driveways. The result is a lively calendar, with feast days, name days and quinceañeras often overlapping in a single weekend, so rentals are in demand.",
+      "The community is diverse, with many backgrounds represented, and celebrations are communal: baptisms, communions, quinceañeras, graduations and weddings. Parish halls and banquet rooms nearby handle larger events, while smaller gatherings fill backyards, garages and driveways. The result is a lively calendar, with feast days, name days and quinceañeras often overlapping in a single weekend, so rentals are in demand.",
       "Because lots are small and streets can be busy with trucks, delivery planning is practical. We help you choose stackable chairs and tables that fit, confirm alley or street access and time deliveries to avoid the heaviest traffic. Tell us your venue, and we will adjust the quote to match. Nearby halls fill quickly in spring, so many families plan a backyard party as a backup or for the smaller after-party the next day.",
     ],
     settings: [
@@ -1371,7 +1371,7 @@ export const westSouthwestCookAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Burbank from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to get started.",
     story: [
       "Burbank is a tight-knit southwest suburb of brick bungalows and Georgians, sitting just south of Midway Airport's flight paths along Harlem Avenue and 79th Street. Neighbors know one another, and block parties, backyard graduations and parish fundraisers are a regular part of local life, with large extended families gathering often. Older Burbank blocks look almost identical from the street, with matching bungalows and long driveways, and neighbors often share tables the old-fashioned way.",
-      "The village has a strong Irish, Polish and Lithuanian-American heritage alongside newer Arab and Latino communities, so celebrations vary from communion lunches to quinceañeras and weddings. Midway Airport traffic overhead is part of life, though it rarely interrupts a backyard party. Harlem Avenue and 79th Street are busy commercial strips. Weekend nights at the Harlem Avenue restaurants bring families together, and those same families often host the next milestone party at home.",
+      "The community is a mix of long-established families and newer arrivals, so celebrations vary from communion lunches to quinceañeras and weddings. Midway Airport traffic overhead is part of life, though it rarely interrupts a backyard party. Harlem Avenue and 79th Street are busy commercial strips. Weekend nights at the Harlem Avenue restaurants bring families together, and those same families often host the next milestone party at home.",
       "Lots are typically small, with garages and alleys behind them, so tables and chairs need to fit tight yards. Many events use a tent or garage to extend space. We help you plan counts and layout, flag alley access and steps, and time deliveries to avoid the heaviest traffic. A good plan on a small yard is mostly math: tables, chair counts, buffet line and a clear path for guests to circulate.",
     ],
     settings: [
@@ -1556,8 +1556,8 @@ export const westSouthwestCookAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Evergreen Park from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to start.",
     story: [
-      "Evergreen Park is a compact village on Chicago's southwest border, just west of Western Avenue and bordered by 87th and 95th Streets. Brick bungalows and Cape Cods sit on tidy blocks, and the Irish-American heritage here runs deep, with parish festivals and neighborhood gatherings on the calendar all year. Little Company of Mary Hospital is a longtime local landmark. Wakes, funeral lunches and weddings often fall within the same few weeks, so the calendar can be busy.",
-      "Shopping runs along 95th Street and Kedzie Avenue, where the Evergreen Plaza area has long been a gathering point. The village is only a few miles square, so guests often walk from home, and block parties and backyard celebrations are the norm. Mount Greenwood and Beverly are just east, and many families have ties across all three. Walkable streets mean guests often arrive on foot, which keeps parking pressure lower than you might expect for a large party.",
+      "Evergreen Park is a compact village on Chicago's southwest border, just west of Western Avenue. Brick bungalows and Cape Cods sit on tidy blocks, and the Irish-American heritage here runs deep, with parish festivals and neighborhood gatherings on the calendar all year. Little Company of Mary Hospital is a longtime local landmark. Wakes, funeral lunches and weddings often fall within the same few weeks, so the calendar can be busy.",
+      "Shopping runs along 95th Street and Western Avenue. The village is only a few miles square, so guests often walk from home, and block parties and backyard celebrations are the norm. The Chicago neighborhoods of Mount Greenwood and Beverly are nearby, and many families have ties across all three. Walkable streets mean guests often arrive on foot, which keeps parking pressure lower than you might expect for a large party.",
       "Typical events include graduation open houses, communions, wakes and funeral lunches, anniversaries and small weddings. Lots are modest, so layouts are efficient, and alleys are common. We help you choose chairs that stack and carry easily and confirm alley access and delivery timing before the day. A short alley carry and a quiet morning delivery tend to be the formula for a neat setup in a village this tight.",
     ],
     settings: [
@@ -1643,8 +1643,8 @@ export const westSouthwestCookAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Hickory Hills from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to begin.",
     story: [
-      "Hickory Hills is a residential suburb perched on the gentle rise of the Palos Moraine, with ranch homes and split-levels along curving streets and a small commercial strip along 95th Street and Roberts Road. Forest preserve land lies just to the west and south, so many streets end near wooded lots and open fields, giving the village a quieter feel than its neighbors.",
-      "The terrain matters for events. Lots can slope, which affects tent placement, table leveling and ceremony rows. Backyards are often deeper than in the inner-ring suburbs, so a full tent is realistic, but sloped ground means planning for stable table legs and safe chair placement. Rain runs downhill fast on moraine soil, so storm planning means more than an umbrella: it includes where water will pool and where tables can stay dry.",
+      "Hickory Hills is a residential suburb perched on a gentle rise, with ranch homes and split-levels along curving streets and a small commercial strip along 95th Street and Roberts Road. Forest preserve land lies nearby, so many streets end near wooded lots and open fields, giving the village a quieter feel than its neighbors.",
+      "The terrain matters for events. Lots can slope, which affects tent placement, table leveling and ceremony rows. Backyards are often deeper than in the inner-ring suburbs, so a full tent is realistic, but sloped ground means planning for stable table legs and safe chair placement. Rain runs downhill fast on sloped ground, so storm planning means more than an umbrella: it includes where water will pool and where tables can stay dry.",
       "Typical celebrations include graduation open houses, anniversaries, retirement parties, showers and small weddings, plus many Polish and Irish-American family gatherings tied to local parishes. We help you plan around slopes and access, choose chairs that stay stable, and confirm delivery timing so your setup is ready. Walk the yard with a level in mind, and tell us which spot is flattest so we can place seating where wobbling chairs and tilting tables are least likely.",
     ],
     settings: [
@@ -1736,7 +1736,7 @@ export const westSouthwestCookAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Palos Hills from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to get started.",
     story: [
-      "Palos Hills is a residential suburb known for Moraine Valley Community College, whose campus along 111th Street brings graduation ceremonies and community events to the village. The surrounding Palos forest preserves, with their wooded hills and trails, give the area a green backdrop, and the Cal-Sag Channel and Cal-Sag Trail run just south. Moraine Valley's campus also hosts community events, and nearby families often plan graduation dinners the same weekend as commencement.",
+      "Palos Hills is a residential suburb known for Moraine Valley Community College, whose campus along 111th Street brings graduation ceremonies and community events to the village. The surrounding Palos forest preserves, with their wooded hills and trails, give the area a green backdrop. Moraine Valley's campus also hosts community events, and nearby families often plan graduation dinners the same weekend as commencement.",
       "The community is diverse, with a large Arab-American population alongside Polish, Irish and Latino families, and gatherings reflect that mix: weddings, engagement parties, graduation open houses and big iftar and holiday meals. Roberts Road and 107th Street carry local traffic, and the village is made up of quiet cul-de-sacs and subdivisions. Weekends often bring multi-family gatherings with a big spread of food, so tables need room for serving trays as well as seating.",
       "Lots are medium to large, so backyard tents and long tables are common. Large guest counts are normal, and many hosts combine a banquet hall with a home gathering. We help you plan counts, confirm access and timing, and arrange extra seating where the hall or home falls short. A clear plan for where guests will walk, wash up and eat keeps the party relaxed, and we can sketch seating zones if it helps.",
     ],
@@ -2005,7 +2005,7 @@ export const westSouthwestCookAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Worth from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to begin.",
     story: [
       "Worth is a small southwest suburb at the corner of Harlem Avenue and 111th Street, a tidy village of bungalows, ranches and split-levels with a Metra SouthWest Service stop. Its neighbors are Palos Heights, Chicago Ridge, Alsip and Oak Lawn, and many families have friends and relatives across all of them, so guest lists often cross village lines. On summer weekends, almost every block has at least one graduation banner and a driveway full of cars.",
-      "The Cal-Sag Channel and nearby forest preserve land lie just to the south, and the Worth Park District keeps ball fields and picnic areas that host graduation cookouts and league parties. The village is compact, so streets are quiet and lots modest in size, with alleys behind many homes. Many yards border neighbors closely, so sound and shared fences are part of the planning, and a polite heads-up helps everyone enjoy the day.",
+      "Nearby forest preserve land adds green space, and the Worth Park District keeps ball fields and picnic areas that host graduation cookouts and league parties. The village is compact, so streets are quiet and lots modest in size, with alleys behind many homes. Many yards border neighbors closely, so sound and shared fences are part of the planning, and a polite heads-up helps everyone enjoy the day.",
       "Typical events include graduation open houses, communion and confirmation lunches, milestone birthdays, retirement parties and small weddings. Space is limited, so layouts and chair choice matter. We help you plan counts, flag alley or gate access and arrange delivery at a time that works for your block. For picnics at the park, bring a plan for shade and a way to carry gear from the car, since pavilions are often a short walk away.",
     ],
     settings: [
@@ -2098,7 +2098,7 @@ export const westSouthwestCookAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Chicago Ridge from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to get started.",
     story: [
       "Chicago Ridge is a small, busy village at the intersection of Harlem Avenue and 95th Street, with the Chicago Ridge Mall as its best-known commercial landmark. Behind the shopping strips, quiet blocks of bungalows, ranches and townhomes hold a close-knit community, and many families have lived here for generations. Despite the traffic, residential blocks a few streets off Harlem are surprisingly calm, with front porches, small yards and neighbors who look out for each other.",
-      "The village sits between Oak Lawn, Worth and Bridgeview, so guest lists often draw from several towns. Harlem Avenue carries heavy traffic all day, and the nearby Metra SouthWest Service at Worth offers a transit option for guests. Local parks host ball games and picnics, and the Chicago Ridge Park District is the place to ask about reservations. A quick text before the truck arrives helps neighbors keep the street clear for unloading.",
+      "The village sits between Oak Lawn, Worth and Bridgeview, so guest lists often draw from several towns. Harlem Avenue carries heavy traffic all day, and the Metra SouthWest Service stops in Chicago Ridge, offering a transit option for guests. Local parks host ball games and picnics, and the Chicago Ridge Park District is the place to ask about reservations. A quick text before the truck arrives helps neighbors keep the street clear for unloading.",
       "Typical events include graduation open houses, baby showers, communion parties, milestone birthdays and small weddings. Lots are modest, and many homes rely on garages, driveways and alleys for extra space. We help you choose compact layouts, confirm access and schedule delivery to avoid the busiest traffic. Tell us about your garage, patio or yard so we can suggest which tables and chairs fit best, and we will confirm the delivery window with you.",
     ],
     settings: [
@@ -2184,8 +2184,8 @@ export const westSouthwestCookAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Alsip from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to begin.",
     story: [
-      "Alsip is a southwest suburb of ranch homes and split-levels on roomy lots, with the Cal-Sag Channel and the Cal-Sag Trail running along its southern edge. Pulaski Road and 127th Street are the main arteries, and large industrial and warehouse areas sit alongside quiet residential blocks, so a delivery truck is a familiar sight. Warehouse roofs and rail yards frame the horizon, but residential blocks feel suburban and green, with long driveways and mature trees.",
-      "Neighbors in Blue Island, Crestwood, Midlothian and Palos Heights are close, and graduations, communions, anniversaries and backyard weddings bring family from all of them. The Alsip Park District runs parks and a community center, and open spaces near the Cal-Sag give runners and cyclists easy access to the water. Cyclists and runners on the Cal-Sag Trail often stop at nearby parks, which makes the open space popular for casual picnics.",
+      "Alsip is a southwest suburb of ranch homes and split-levels on roomy lots, with the Cal-Sag Channel and the Cal-Sag Trail nearby. Pulaski Road and 127th Street are the main arteries, and large industrial and warehouse areas sit alongside quiet residential blocks, so a delivery truck is a familiar sight. Warehouse roofs and rail yards frame the horizon, but residential blocks feel suburban and green, with long driveways and mature trees.",
+      "Neighbors in Blue Island, Crestwood, Midlothian and Palos Heights are close, and graduations, communions, anniversaries and backyard weddings bring family from all of them. The Alsip Park District runs local parks, and open spaces near the Cal-Sag give runners and cyclists easy access to the water. Cyclists and runners on the Cal-Sag Trail often stop at nearby parks, which makes the open space popular for casual picnics.",
       "Because lots here are medium to large, a full tent with round tables is realistic, but flat yards can hold water after storms. We help you plan access, a rain backup and ground protection, and we confirm delivery timing so your tables and chairs are in place before guests arrive. If your party spills into the driveway, mention it up front so we can place tables and seating where guests can circulate safely.",
     ],
     settings: [
@@ -2195,7 +2195,7 @@ export const westSouthwestCookAreas: Location[] = [
       },
       {
         name: "Park district gatherings",
-        note: "Parks and the community center need reservations. Check with the Alsip Park District.",
+        note: "Parks need reservations. Check with the Alsip Park District.",
       },
       {
         name: "Cal-Sag Trail picnics",
@@ -2243,7 +2243,7 @@ export const westSouthwestCookAreas: Location[] = [
       },
       {
         q: "Can you deliver to an Alsip Park District event?",
-        a: "Often, if the park allows it. Parks and the community center generally require a reservation through the Alsip Park District and may limit vehicles. Check with them first, then tell us the rules. Tell us about stairs, gates and parking when you write, and we will include them in the plan.",
+        a: "Often, if the park allows it. Parks generally require a reservation through the Alsip Park District and may limit vehicles. Check with them first, then tell us the rules. Tell us about stairs, gates and parking when you write, and we will include them in the plan.",
       },
       {
         q: "What if it rains on the day of my backyard party?",
@@ -2480,7 +2480,7 @@ export const westSouthwestCookAreas: Location[] = [
       },
     ],
     logistics: [
-      "Canal Street and State Street are steep and narrow in places. Share your venue so the driver can plan.",
+      "Downtown streets can be steep and narrow in places. Share your venue so the driver can plan.",
       "Long driveways and gravel lanes are common on rural edges. Tell us surface and distance.",
       "Hillside lots affect leveling. Share photos of the slope when you request a quote.",
       "Train and bridge traffic can create brief delays downtown. Confirm timing a few days out.",
@@ -2644,7 +2644,7 @@ export const westSouthwestCookAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Tinley Park from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to begin.",
     story: [
       "Tinley Park is a large southwest suburb with a historic downtown centered on Oak Park Avenue and the Metra Rock Island station, and sprawling subdivisions stretching west toward Harlem Avenue and 80th Avenue. The village has two Metra stops, a village-owned convention center and a big outdoor amphitheater that draws concert crowds each summer. Newer neighborhoods have wide driveways and big lots, while older areas near Oak Park Avenue have a classic small-town feel.",
-      "The Tinley Park Park District runs a wide network of parks, and Tinley Creek forest preserves and the Cal-Sag area lie nearby. Wedding season keeps banquet halls and backyard tents busy, and summer concert nights can add traffic around 80th Avenue, so delivery timing matters on event weekends. Check concert calendars before choosing a delivery day, because crowds and road closures can add real time to a trip.",
+      "The Tinley Park Park District runs a wide network of parks, and Tinley Creek forest preserves lie nearby. Wedding season keeps banquet halls and backyard tents busy, and summer concert nights can add traffic around 80th Avenue, so delivery timing matters on event weekends. Check concert calendars before choosing a delivery day, because crowds and road closures can add real time to a trip.",
       "Typical events include weddings, graduation open houses, anniversaries, showers and retirement parties. Homes here are often on larger lots, so tents and round tables are common, and many hosts also use nearby banquet spaces. We help you plan counts, check access and time delivery around local traffic. Whether you host at home or in a hall, we help you count chairs, plan timing and avoid surprises on the morning of the event.",
     ],
     settings: [
@@ -2736,7 +2736,7 @@ export const westSouthwestCookAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Oak Forest from vetted Chicago-area rental vendors. Tell us your date and headcount and we handle the sourcing and delivery. Request a quote or book a planning call to get started.",
     story: [
-      "Oak Forest is a suburban village of ranch homes, split-levels and tree-lined subdivisions, centered on the Metra Rock Island station and the 159th Street corridor. The Oak Forest Heritage Preserve and surrounding Cook County forest preserves give the village green space, and the Oak Forest Hospital campus is a longtime local landmark. Trains, buses and quiet cul-de-sacs make it easy for guests to reach the village from the city or neighboring suburbs.",
+      "Oak Forest is a suburban village of ranch homes, split-levels and tree-lined subdivisions, centered on the Metra Rock Island station and the 159th Street corridor. The Oak Forest Heritage Preserve, on the site of the former Oak Forest Hospital of Cook County, gives the village green space. The Metra station and quiet cul-de-sacs make it easy for guests to reach the village from the city or neighboring suburbs.",
       "Neighbors tend to stay for decades, and big family gatherings are common: communions, graduations, anniversaries and retirement parties. Lots are medium to large, and many backyards have mature trees and patios. Cicero Avenue and 159th Street are busy commercial strips, but the interior streets are quiet. Spring and summer storms can pop up quickly, so a covered patio or rented tent is a smart backup for any open house.",
       "Because families host at home, tents and round tables are common. Oak trees and uneven ground can complicate layouts, and spring storms can bring heavy rain. We help you check access, plan ground protection and size your order so tables and chairs fit and guests are comfortable. Tell us the size of your yard and the likely guest count, and we will propose table sizes and chair totals.",
     ],
@@ -2746,8 +2746,8 @@ export const westSouthwestCookAreas: Location[] = [
         note: "Graduation and communion parties often use tents and long tables. Measure first.",
       },
       {
-        name: "Heritage Preserve picnics",
-        note: "Preserve groves need Forest Preserves of Cook County permits. Ask about vehicle access.",
+        name: "Forest preserve picnics",
+        note: "Nearby preserve groves need Forest Preserves of Cook County permits. Ask about vehicle access.",
       },
       {
         name: "Park district events",

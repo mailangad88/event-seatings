@@ -878,6 +878,13 @@ Columns: SEO = title, description, keyword, canonical; AEO = answer box + FAQ sc
 
 Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts` + `src/data/geo/areas/*.ts` (Nov 3 2026: 246 more areas, 281 total incl. 10 county pages). Check with `npx tsx scripts/check-geo.ts`.
 
+**Fact-check, 2026-11-03 (246 new area pages in `src/data/geo/areas/`):**
+- ZIP codes: all 411 ZIPs across all 281 area pages were checked against a public USPS ZIP dataset (the `zipcodes` npm package). Every one is a real Illinois ZIP. Each sits within 8 miles of its place's coordinates (4 for Chicago neighborhoods, 40 for counties). Where a village shares its ZIP with a neighbor (for example Kildeer, Long Grove and Hawthorn Woods on 60047), the post office name differs; that is expected. Census ZCTA files were blocked from the build environment.
+- Landmarks: nine reviewers checked every named park, forest preserve, Metra/CTA line and station, street, landmark, institution, festival and park-district name against official village, park-district, forest-preserve, Metra and county sources via web search. Totals are approximate, counted by hand: about 1,100 claims checked, about 230 corrected and about 130 removed or softened to general statements. Wikipedia was blocked, so a minority of well-known facts rest on general knowledge plus partial search hits.
+  - Examples of fixes: the Des Plaines McDonald's museum was removed (demolished 2018). Hegewisch is on the South Shore Line, not Metra. Lincolnwood, Libertyville, Lake Zurich and Countryside have no park district. Campton Hills is now described as a village incorporated in 2007.
+  - Per-file logs: project files `reviews/geo-factcheck-2026-11-03/`.
+- Still worth an owner spot-check: claims kept as well-known but not source-confirmed. Each per-file log lists them under "Unresolved".
+
 Every page has: unique local copy, stylised area map, 3 chair picks with renders, venue settings, delivery notes, links to popular event pages, 5 local FAQs, Service + FAQPage + BreadcrumbList schema, geo meta tags, a per-page social card, a "schedule a planning call" CTA, and links to nearby areas.
 
 | Page | URL | Last touched | Remaining |

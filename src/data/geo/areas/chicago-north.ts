@@ -98,9 +98,9 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "If you're hosting in Edgewater, we help you rent event chairs, tables, linens and more from vetted Chicago-area rental vendors, with delivery, setup and pickup included in the quote. From a Bryn Mawr courtyard to a Foster Beach picnic, request a quote or book a planning call to start.",
     story: [
-      "Edgewater stretches along Lake Michigan between Foster Avenue and Devon, and it feels like a small lakefront town inside the city. Sheridan Road curves past vintage apartment buildings, Foster Beach is a short walk from the Red Line stops at Bryn Mawr, Berwyn and Thorndale, and the Bryn Mawr Historic District's Tudor-style streets make a handsome backdrop for photos. Events here tend to be intimate, gracious and tied to the water.",
+      "Edgewater stretches along Lake Michigan between Foster Avenue and Devon, and it feels like a small lakefront town inside the city. Sheridan Road curves past vintage apartment buildings, Foster Beach sits at the neighborhood's southern end, Red Line stops at Bryn Mawr, Berwyn and Thorndale serve the area, and the Bryn Mawr Avenue Historic District's older buildings make a handsome backdrop for photos. Events here tend to be intimate, gracious and tied to the water.",
       "Because so many residents live in pre-war courtyard buildings and high-rise condos along Sheridan and Lake Shore Drive, many parties happen in building party rooms, rooftop decks and shared garden spaces. Those usually come with association rules about elevators, quiet hours and move-in reservations. We ask about those early so the delivery lands in your reserved window instead of a hallway standoff with a neighbor.",
-      "For bigger gatherings, locals head to the lakefront. Foster Beach and the nearby lakeshore paths give you open sky and water views, while Senn Park and Broadway's side streets suit smaller get-togethers. Wind off the lake is the one thing every Edgewater host learns to respect, so we lean toward steadier chair styles for open spaces and help you pick a plan that survives an afternoon breeze.",
+      "For bigger gatherings, locals head to the lakefront. Foster Beach and the nearby lakeshore paths give you open sky and water views, while Broadway's side streets and smaller neighborhood parks suit smaller get-togethers. Wind off the lake is the one thing every Edgewater host learns to respect, so we lean toward steadier chair styles for open spaces and help you pick a plan that survives an afternoon breeze.",
     ],
     settings: [
       {
@@ -117,7 +117,7 @@ export const chicagoNorthAreas: Location[] = [
       },
       {
         name: "Church and community halls",
-        note: "Congregations along Broadway and Ridge Avenue host receptions, memorials and milestone parties.",
+        note: "Congregations around the neighborhood host receptions, memorials and milestone parties.",
       },
     ],
     logistics: [
@@ -180,9 +180,9 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Uptown from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. Planning a party near Montrose Harbor or a banquet on Argyle? Request a quote or book a planning call and share your date and headcount.",
     story: [
-      "Uptown has one of the most distinctive streetscapes on the North Side: the Wilson Red Line station, the old theater marquees along Broadway and Lawrence, and the grand terra-cotta facades left from the 1920s when the neighborhood was Chicago's entertainment district. That history still sets the tone for events here, with an appetite for big, lively gatherings in rooms with character. Our job is to make the furniture side of those nights simple.",
-      "The lakefront is the other half of Uptown. Montrose Beach and Montrose Harbor, with its wide lawn and skyline views, are a popular place for picnics and large family parties, and Cricket Hill is a local gathering spot for fireworks nights. Everything out there is managed by the Chicago Park District, so permits and rules come first. Lake wind is a real factor, so we'll steer you toward heavier chairs for anything near the water.",
-      "Uptown is also home to a deeply international community, with Vietnamese, Cambodian, Ethiopian, Latino and other cultures along Argyle Street and Broadway. Banquets, weddings and New Year celebrations often fill restaurants and halls with long rows of round tables. If you're laying out a big room, send us your headcount and the floor plan and we'll build a table and chair count that matches how you want guests to sit.",
+      "Uptown has one of the most distinctive streetscapes on the North Side: the Wilson Red Line station, the old theater marquees along Broadway and Lawrence, and the grand terra-cotta facades left from the neighborhood's early entertainment heyday. That history still sets the tone for events here, with an appetite for big, lively gatherings in rooms with character. Our job is to make the furniture side of those nights simple.",
+      "The lakefront is the other half of Uptown. Montrose Beach and Montrose Harbor, with its wide lawn and skyline views, are a popular place for picnics and large family parties, and the nearby lakefront paths are popular for walking and gathering. Everything out there is managed by the Chicago Park District, so permits and rules come first. Lake wind is a real factor, so we'll steer you toward heavier chairs for anything near the water.",
+      "Uptown is also home to a deeply international community, with Vietnamese, Chinese, Ethiopian, Latino and other cultures along Argyle Street and Broadway. Banquets, weddings and New Year celebrations often fill restaurants and halls with long rows of round tables. If you're laying out a big room, send us your headcount and the floor plan and we'll build a table and chair count that matches how you want guests to sit.",
     ],
     settings: [
       {
@@ -262,7 +262,7 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Lincoln Square from vetted Chicago-area rental vendors, with delivery, setup and pickup in your quote. Hosting a backyard wedding or a Welles Park party? Request a quote or book a planning call to get started.",
     story: [
-      "Lincoln Square still carries the feel of the German village it grew from. Lincoln Avenue between Western and Montrose is lined with bakeries, bierhalls and small shops, the Brown Line stops at Western and Rockwell are a short walk from the main drag, and the plaza at Giddings gives the neighborhood a real town center. Parties here are friendly and low key, and often spill from a house into a backyard or onto a nearby patio.",
+      "Lincoln Square still carries the feel of the German village it grew from. Lincoln Avenue is lined with bakeries, bierhalls and small shops, the Brown Line stops at Western and Rockwell are a short walk from the main drag, and the plaza at Giddings gives the neighborhood a real town center. Parties here are friendly and low key, and often spill from a house into a backyard or onto a nearby patio.",
       "Welles Park anchors the south side of the neighborhood with its fieldhouse, pool and wide lawns, and it's a classic spot for birthday parties and community gatherings. Further north, quiet streets of brick bungalows and two-flats offer deep Chicago-style backyards that are perfect for a backyard wedding or a graduation party. Alley access is common, which helps a lot on delivery day, though gangway carries are still part of life.",
       "Lincoln Square's calendar is full of neighborhood events, from the farmers market to seasonal festivals. If you're hosting around one of those, street closures and crowds change how a truck gets to your block. We ask about your date and address early, and we'll help you time delivery to avoid the busiest stretches of Lincoln Avenue. Just send your date and address and we will take it from there.",
     ],
@@ -421,13 +421,13 @@ export const chicagoNorthAreas: Location[] = [
     zips: ["60618", "60657"],
     metaTitle: "Event Rentals in Roscoe Village, Chicago | Chairs & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Roscoe Village, Chicago, for Roscoe Street parties, Chase Park gatherings and backyard weddings. Request a quote.",
+      "Rent event chairs, tables and linens in Roscoe Village, Chicago, for Roscoe Street parties, Hamlin Park gatherings and backyard weddings. Request a quote.",
     headline: "Event chairs for *Roscoe Village parties*",
     intro:
       "We help you rent event chairs, tables, linens and more in Roscoe Village from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. Hosting a backyard wedding or a park party? Request a quote or book a planning call and share your date and headcount.",
     story: [
       "Roscoe Village feels like a small town tucked between Lakeview and North Center. The heart of it is Roscoe Street between Damen and Western, a stretch of independent shops, cafes and taverns, with quiet blocks of workers' cottages, brick two-flats and tidy greystones beyond. People here know their neighbors, and parties often grow from a birthday into a full block gathering. That sociable scale is exactly why a reliable chair and table order matters.",
-      "Backyards and small park lawns are the neighborhood's event spaces of choice. Chase Park and Hamlin Park offer fieldhouse lawns for casual celebrations, and many homes have deep lots with alley access that suit a graduation party or a small backyard wedding. Yards here can be narrow, so measuring a rough footprint and picking slim chairs makes the day easier.",
+      "Backyards and small park lawns are the neighborhood's event spaces of choice. Hamlin Park and the smaller Fellger Park offer green space for casual celebrations, and many homes have deep lots with alley access that suit a graduation party or a small backyard wedding. Yards here can be narrow, so measuring a rough footprint and picking slim chairs makes the day easier.",
       "Weekends in Roscoe Village are busy, with farmers markets, neighborhood festivals and street closures that shift how traffic moves. Parking is tight, and Belmont, Damen and Western all back up on warm Saturdays. We ask about your block, alley and timing early so the delivery crew can stage without blocking a neighbor's garage. Send us your date and address and we'll take care of the rest.",
     ],
     settings: [
@@ -436,7 +436,7 @@ export const chicagoNorthAreas: Location[] = [
         note: "Typical city lots that suit graduation parties and small weddings, with limited room for large table counts.",
       },
       {
-        name: "Chase Park and Hamlin Park lawns",
+        name: "Hamlin Park and Fellger Park",
         note: "Neighborhood parks for casual parties, under Chicago Park District permit and equipment rules.",
       },
       {
@@ -452,7 +452,7 @@ export const chicagoNorthAreas: Location[] = [
       "Roscoe Village lots can be narrow. Share a rough width and gate size so we can pick slimmer chairs and plan the carry.",
       "Street festivals and farmers markets can close parts of Roscoe Street. Tell us your date and block so delivery avoids the closures.",
       "Alley staging is usually easiest, but garbage pickup days can block it. Mention any alley quirks when you request a quote.",
-      "For Chase Park, Hamlin Park or other park district spaces, check permit and equipment rules with the Chicago Park District before booking.",
+      "For Hamlin Park, Fellger Park or other park district spaces, check permit and equipment rules with the Chicago Park District before booking.",
     ],
     recommendedChairs: [
       {
@@ -479,7 +479,7 @@ export const chicagoNorthAreas: Location[] = [
         a: "Yes. Narrow gangways and compact yards are common, so we plan crew size, carts and chair styles around the route. Tell us the gate width, steps and distance from the truck when you request a quote. A quick photo of your gate and yard helps us pick carts and crew size, and short alley carries keep delivery fast.",
       },
       {
-        q: "Do I need a permit for a party at Chase Park or Hamlin Park?",
+        q: "Do I need a permit for a party at Hamlin Park or Fellger Park?",
         a: "Park district spaces often require a permit for larger gatherings or rented equipment, and rules vary by site. Check with the Chicago Park District before you book rentals, then share your approved spot and times so we can plan delivery.",
       },
       {
@@ -672,9 +672,9 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Irving Park from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From Villa district gardens to bungalow backyards, request a quote or book a planning call.",
     story: [
-      "Irving Park spreads along Irving Park Road between Pulaski and the Chicago River, a mix of brick bungalows, two-flats and the remarkable Villa District, whose Prairie, Tudor and Queen Anne homes sit on wide lots with deep yards. That's a rare thing in a city of narrow lots, and it makes the Villa a favorite for backyard weddings and garden parties. Even outside the Villa, many Irving Park yards run deep enough for a decent-size gathering.",
-      "The Metra Union Pacific Northwest line stops at Irving Park, and the Blue Line runs just west near the Kennedy, so transit is easy for guests. Independence Park and Blackhawk Park offer fieldhouses and lawns for casual celebrations, while the Kennedy and Addison corridors lead to nearby event halls. As always, Chicago Park District rules govern anything in the parks.",
-      "Irving Park is also home to many working families with Polish, Mexican, Korean and Irish roots, and parties often involve lots of cousins. Baptisms, first communions and graduation parties fill spring weekends. We'll help you size a chair and table plan around the real guest count and the real yard, and we'll flag any carry or parking issues before the truck rolls.",
+      "Irving Park is a mix of brick bungalows, two-flats and the remarkable Villa District, a Chicago Landmark district known for its distinctive early 20th-century homes. Its architecture and garden settings make the Villa a favorite for backyard weddings and garden parties. Even outside the Villa, many Irving Park yards run deep enough for a decent-size gathering.",
+      "The Metra Union Pacific Northwest line stops at Irving Park, and the Blue Line runs just west near the Kennedy, so transit is easy for guests. Independence Park, the largest of the neighborhood's parks, offers lawns and a fieldhouse for casual celebrations, while the Kennedy Expressway nearby makes truck access easier. As always, Chicago Park District rules govern anything in the parks.",
+      "Irving Park is also home to many working families from a wide mix of backgrounds, and parties often involve lots of cousins. Baptisms, first communions and graduation parties fill spring weekends. We'll help you size a chair and table plan around the real guest count and the real yard, and we'll flag any carry or parking issues before the truck rolls.",
     ],
     settings: [
       {
@@ -686,7 +686,7 @@ export const chicagoNorthAreas: Location[] = [
         note: "Common across the neighborhood for graduations, baptisms and family cookouts.",
       },
       {
-        name: "Independence and Blackhawk Park",
+        name: "Independence Park and neighborhood parks",
         note: "Neighborhood park lawns and fieldhouses for casual gatherings under Chicago Park District rules.",
       },
       {
@@ -919,7 +919,7 @@ export const chicagoNorthAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Norwood Park from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From big backyards to Higgins Road banquets, request a quote or book a planning call.",
     story: [
       "Norwood Park feels more like a suburb than most of Chicago. Wide lots, mature trees and Prairie and Victorian-era homes line streets near the Norwood Park Metra station on the Union Pacific Northwest line, and the neighborhood was once its own village before Chicago annexed it. That history shows up in a calm, residential rhythm, and in backyards big enough to host weddings and graduation parties.",
-      "Higgins Road, Harlem Avenue and Northwest Highway tie the area to the broader northwest side, and O'Hare's flight paths overhead are a fact of life. Many residents work for the city, so events often include large groups of coworkers, family and neighbors. Park district spaces like Norwood Park and nearby fieldhouses host softball, soccer and summer gatherings, and Cook County forest preserves like Schiller Woods and Cumberland Woods offer groves for picnics.",
+      "Higgins Road, Harlem Avenue and Northwest Highway tie the area to the broader northwest side, and O'Hare's flight paths overhead are a fact of life. Events often bring together large groups of coworkers, family and neighbors. Park district spaces like Norwood Park and nearby fieldhouses host softball, soccer and summer gatherings, and Cook County forest preserves like Schiller Woods offer groves for picnics.",
       "Because lots run bigger, tent-style and lawn events are realistic here. Chairs and tables set on grass need level spots and good drainage, and we'll talk through lawn conditions, gate widths and driveway access. Planes may be loud during ceremonies, so some hosts plan vows around the flight pattern. We help you size your order so it fits your yard and your guest count.",
     ],
     settings: [
@@ -942,7 +942,7 @@ export const chicagoNorthAreas: Location[] = [
     ],
     logistics: [
       "Bigger lots mean longer carries from the driveway. Tell us gate widths and the distance to the setup spot.",
-      "Forest preserve groves require permits through Cook County. Check with the Forest Preserves of Cook County before booking rentals.",
+      "Forest preserve groves typically need a permit. Check with the Forest Preserves of Cook County before booking rentals.",
       "O'Hare aircraft noise can be loud during ceremonies. Plan quiet moments around it if you can.",
       "Lawns need level ground for tables. Share your lawn details so we can plan chairs and table placement.",
     ],
@@ -1001,8 +1001,8 @@ export const chicagoNorthAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Edison Park from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. Planning a backyard wedding or a park party? Request a quote or book a planning call.",
     story: [
       "Edison Park sits at the very northwest corner of Chicago, right against Park Ridge and Niles, and it's the city's closest thing to a small town. Northwest Highway runs through a compact downtown of cafes, taverns and shops beside the Edison Park Metra station, and tree-lined side streets are full of bungalows and Cape Cods. Neighbors tend to know each other, and block-style parties come naturally.",
-      "Olympia Park and Oriole Park give the area green gathering places, with fieldhouse rooms, playing fields and shaded lawns popular for birthdays and team banquets. Both fall under the Chicago Park District, so permits and equipment rules apply. Northwest Highway and Harlem Avenue are the main roads, and street parking in the village center can be tight on weekend afternoons.",
-      "Many families in Edison Park have deep ties to city jobs and local parishes, so church-related celebrations, graduation parties and retirement dinners are regular events. Backyards are generous, alley access is common, and the setting is calm enough that a ceremony on the lawn feels private. We'll help you choose chairs and a table plan that suits the yard, the guest list and the day's weather.",
+      "Olympia Park and other nearby parks give the area green gathering places, with fieldhouse rooms, fields and lawns for birthdays and team gatherings. These fall under the Chicago Park District, so permits and equipment rules apply. Northwest Highway and Harlem Avenue are the main roads, and street parking in the village center can be tight on weekend afternoons.",
+      "Many families in Edison Park have deep ties to local parishes and schools, so church-related celebrations, graduation parties and retirement dinners are regular events. Backyards are generous, alley access is common, and the setting is calm enough that a ceremony on the lawn feels private. We'll help you choose chairs and a table plan that suits the yard, the guest list and the day's weather.",
     ],
     settings: [
       {
@@ -1010,7 +1010,7 @@ export const chicagoNorthAreas: Location[] = [
         note: "Roomy lots with alley access suit graduation parties and small weddings.",
       },
       {
-        name: "Olympia Park and Oriole Park",
+        name: "Olympia Park and nearby parks",
         note: "Neighborhood parks with fieldhouses and fields, under Chicago Park District permit rules.",
       },
       {
@@ -1025,7 +1025,7 @@ export const chicagoNorthAreas: Location[] = [
     logistics: [
       "The village center has limited curb space on weekends. Share a loading window and spot with us.",
       "Many yards are reachable by alley. Tell us about gates, steps and distance to the party space.",
-      "For Olympia or Oriole Park, check permits and equipment rules with the Chicago Park District.",
+      "For Olympia Park or other nearby parks, check permits and equipment rules with the Chicago Park District.",
       "Park Ridge, Niles and Chicago borders are close. Tell us your exact address so we route correctly.",
     ],
     recommendedChairs: [
@@ -1082,7 +1082,7 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Sauganash from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From wide-lot backyards to forest preserve picnics, request a quote or book a planning call.",
     story: [
-      "Sauganash is one of the most suburban-feeling pockets of Chicago. Curving streets, wide lots, brick Tudors and ranch homes, and a canopy of old oaks give it a leafy, quiet character, with Lawrence and Cicero Avenues forming the edges. It was named for Billy Caldwell, also called Sauganash, whose name also graces nearby forest preserve land. Residents tend to host at home, because the yards are big enough.",
+      "Sauganash is one of the most suburban-feeling pockets of Chicago. Curving streets, wide lots, brick Tudors and ranch homes, and a canopy of old oaks give it a leafy, quiet character. It was named for Billy Caldwell, also called Sauganash, whose name also graces nearby forest preserve land. Residents tend to host at home, because the yards are big enough.",
       "That makes backyard weddings, graduation parties and large family gatherings the neighborhood's typical events. The lots often have long driveways, side gates and mature landscaping, so planning where tables go and how to keep a path clear matters. Deliveries are easier here than in most of the city, but heavy trees can limit spaces for tents and drip lines can leave patches on the lawn.",
       "Nearby, Cook County forest preserves like Billy Caldwell Woods and the North Branch Trail offer picnic groves and open space for larger groups, with permits through the county. The Milwaukee District North Metra line stops in the nearby Forest Glen and Edgebrook areas. We'll help you plan a layout around your lot, your guest count and the weather so setup day goes smoothly.",
     ],
@@ -1107,7 +1107,7 @@ export const chicagoNorthAreas: Location[] = [
     logistics: [
       "Long driveways and side gates are common. Tell us the width and the distance to the lawn so we can plan crew and carts.",
       "Mature trees can limit tent and table space. Share photos or a rough sketch of your yard when you request a quote.",
-      "Forest preserve picnic groves require county permits. Check with the Forest Preserves of Cook County before ordering.",
+      "Forest preserve picnic groves typically need a permit. Check with the Forest Preserves of Cook County before ordering.",
       "Spring and fall can bring soft lawns. Ask us about chair styles that sit steadily on damp grass.",
     ],
     recommendedChairs: [
@@ -1164,9 +1164,9 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in West Ridge from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From Devon Avenue weddings to Indian Boundary Park picnics, request a quote or book a planning call.",
     story: [
-      "West Ridge is the home of Devon Avenue, one of the great international corridors in the Midwest. Between Western and California, South Asian restaurants, sari shops, jewelers and sweet houses sit alongside Orthodox Jewish bakeries, kosher groceries and Russian and Middle Eastern markets. It's a neighborhood where big, multi-day celebrations are part of life, from Indian and Pakistani weddings to bar mitzvahs and community festivals.",
+      "West Ridge is the home of Devon Avenue, one of the great international corridors in the Midwest. Along Devon Avenue, South Asian restaurants, sari shops, jewelers and sweet houses sit alongside Orthodox Jewish bakeries, kosher groceries and Russian and Middle Eastern markets. It's a neighborhood where big, multi-day celebrations are part of life, from Indian and Pakistani weddings to bar mitzvahs and community festivals.",
       "Weddings and cultural events here often call for large guest counts, banquet-style layouts and precise table plans. South Asian celebrations can include a mehndi, a sangeet and a reception, each with its own seating needs, and Jewish celebrations can have their own timing requirements around Shabbat and holidays. We ask about those details up front so the delivery and setup are scheduled correctly.",
-      "Indian Boundary Park, with its fieldhouse, pond and playground, is a beloved gathering spot, and Warren Park is a larger green space on the west side of the neighborhood. Both fall under the Chicago Park District. Streets are lined with brick bungalows, two-flats and courtyard buildings, with alley access common. Parking on Devon is tough, so we pre-plan load-in windows to keep your event on schedule.",
+      "Indian Boundary Park, with its fieldhouse, pond and playground, is a beloved gathering spot, and Warren Park is a larger neighborhood park. Both fall under the Chicago Park District. Streets are lined with brick bungalows, two-flats and courtyard buildings, with alley access common. Parking on Devon is tough, so we pre-plan load-in windows to keep your event on schedule.",
     ],
     settings: [
       {
@@ -1329,7 +1329,7 @@ export const chicagoNorthAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Humboldt Park from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From Paseo Boricua parties to lagoon-side picnics, request a quote or book a planning call.",
     story: [
       "Humboldt Park is the cultural heart of Chicago's Puerto Rican community. Paseo Boricua, the stretch of Division Street marked by two huge steel Puerto Rican flags, is lined with restaurants, murals and cultural centers, and the National Museum of Puerto Rican Arts and Culture sits in the park's historic stables building. Family celebrations here, from quinceañeras and baptisms to weddings, are big, music-filled and often held across multiple spaces.",
-      "The park itself is one of the city's most beautiful, with a lagoon, a boathouse designed in the Prairie style, formal gardens and wide lawns. It's managed by the Chicago Park District, so permits and rental rules apply for events. The 606 trail runs along Bloomingdale Avenue at the park's edge and connects to neighborhoods to the east and west.",
+      "The park itself is one of the city's most beautiful, with a lagoon, a boathouse designed in the Prairie style, formal gardens and wide lawns. It's managed by the Chicago Park District, so permits and rental rules apply for events. The 606 trail on Bloomingdale Avenue is a short trip from the park.",
       "Housing is a mix of brick two-flats, greystones and courtyard buildings, with alley garages common. Backyard parties and block celebrations are common in summer, and big hall parties fill banquet spaces on Division and North Avenue. Event days can bring heavy traffic, especially around festivals, so we plan load-in windows early and tailor chair counts and layouts to your guest list.",
     ],
     settings: [
@@ -1410,7 +1410,7 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Ukrainian Village from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From parish-hall receptions to greystone backyards, request a quote or book a planning call.",
     story: [
-      "Ukrainian Village is a compact neighborhood in West Town, with Chicago Avenue to the north, Western Avenue to the west and Division Street to the south. Its identity comes from the Ukrainian community that settled here in the early 20th century, and landmarks still reflect it: St. Volodymyr and Olga Cathedral, the Ukrainian National Museum and the Ukrainian Institute of Modern Art. Holy Trinity Orthodox Cathedral, designed by Louis Sullivan, sits nearby.",
+      "Ukrainian Village is a compact neighborhood in West Town, roughly between Division Street, Chicago Avenue, Western Avenue and Damen Avenue. Its identity comes from the Ukrainian community that has long made its home here, and landmarks still reflect it: St. Volodymyr and Olga Cathedral, the Ukrainian National Museum and the Ukrainian Institute of Modern Art. Holy Trinity Russian Orthodox Cathedral, designed by Louis Sullivan, sits nearby.",
       "Churches, cultural centers and parish halls remain the main settings for baptisms, weddings, Easter gatherings and memorial meals. Pysanky season and Easter celebrations mean spring is especially busy. Many of these spaces are modest in size and have limited chair inventory, so extra seating is a common need. We tailor chair and table orders to the specific hall and ask about any in-house rules.",
       "Housing is dense: greystones, two-flats and courtyard buildings, with small backyards and tight gangways. Street parking is competitive, and Western Avenue sees heavy traffic. Deliveries need careful planning, especially for upper-floor units or rear-yard spaces. A short call to review your layout, access and timing makes setup day run smoothly. A short call to review your layout and timing takes the guesswork out of setup day.",
     ],
@@ -1487,14 +1487,14 @@ export const chicagoNorthAreas: Location[] = [
     zips: ["60622", "60642", "60647"],
     metaTitle: "Event Rentals in West Town, Chicago | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in West Town, Chicago, for loft weddings, Chicago Avenue parties and Goose Island events. Request a free quote.",
+      "Rent event chairs, tables and linens in West Town, Chicago, for loft weddings, Chicago Avenue parties and rooftop events. Request a free quote.",
     headline: "Event chairs for *West Town lofts and gardens*",
     intro:
       "We help you rent event chairs, tables, linens and more in West Town from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From loft weddings to rooftop parties, request a quote or book a planning call.",
     story: [
-      "West Town stretches from the North Branch of the Chicago River west to Western Avenue, and it holds a lot of the city's evolving story. Former factories and printing buildings along Chicago Avenue, Kinzie and the river now host loft weddings, corporate parties and galas, while the residential grid features greystones, two-flats and newer condos. The Polish Triangle at Division, Milwaukee and Ashland is a historic meeting point.",
-      "The 606 trail begins in this area, and the Blue Line stop at Division and the Chicago Avenue corridor make transit easy for guests. Eckhart Park and other small park district spaces serve as neighborhood party spots. Event spaces in converted buildings often have freight elevators and strict load-in schedules, so planning around the building clock is part of the job.",
-      "West Town's variety makes it easy to plan almost any event. A rooftop birthday near Goose Island, a church reception off Ashland and a small backyard shower on a side street can all happen the same weekend. We ask about the building type, parking and access up front so we can plan the right crew and timing for each. Just send your date and address and we'll take it from there.",
+      "West Town sits west of the North Branch of the Chicago River, and it holds a lot of the city's evolving story. Former factories and industrial buildings along Chicago Avenue and the river now host loft weddings, corporate parties and galas, while the residential grid features greystones, two-flats and newer condos. The Polish Triangle at Division, Milwaukee and Ashland is a historic meeting point.",
+      "The 606 trail starts a short distance away, and the Blue Line stop at Division and the Chicago Avenue corridor make transit easy for guests. Eckhart Park and other small park district spaces serve as neighborhood party spots. Event spaces in converted buildings often have freight elevators and strict load-in schedules, so planning around the building clock is part of the job.",
+      "West Town's variety makes it easy to plan almost any event. A rooftop birthday near the river, a church reception off Ashland and a small backyard shower on a side street can all happen the same weekend. We ask about the building type, parking and access up front so we can plan the right crew and timing for each. Just send your date and address and we'll take it from there.",
     ],
     settings: [
       {
@@ -1574,7 +1574,7 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Old Town from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From Triangle courtyards to Wells Street rooftops, request a quote or book a planning call.",
     story: [
-      "Old Town is one of Chicago's most charming historic neighborhoods. The Old Town Triangle Historic District, tucked between North Avenue, Clark Street and Lincoln Park, holds rows of 19th-century cottages, brick rowhouses and hidden courtyards. Wells Street, with its taverns, comedy clubs and restaurants, is the commercial spine, and North Avenue carries the neighborhood's busiest foot traffic. That mix of history and nightlife gives it real charm.",
+      "Old Town is one of Chicago's most charming historic neighborhoods. The Old Town Triangle Historic District, tucked between North Avenue, Clark Street and Lincoln Park, holds rows of 19th-century cottages, brick rowhouses and hidden courtyards. Wells Street, with its taverns, comedy clubs and restaurants, is the commercial spine, and North Avenue is another busy corridor. That mix of history and nightlife gives it real charm.",
       "Events here tend to be intimate and highly styled. Rooftop decks, walled gardens and private courtyards make elegant settings for rehearsal dinners, showers and small weddings, but they usually come with narrow gates, steps and shared walls. Old Town's annual Art Fair brings crowds each June and affects street access. Planning delivery around those dates helps avoid headaches. We plan for exactly those constraints.",
       "Parking is among the toughest in the city. Wells Street is busy, side streets are tight and residents compete for spots. Transit is close, with the Brown and Purple Line at Sedgwick and the Red Line at North and Clybourn. We ask early about your street, building type and access so we can schedule a crew that arrives quietly and sets up efficiently.",
     ],
@@ -1656,7 +1656,7 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Streeterville from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From high-rise party rooms to Navy Pier gatherings, request a quote or book a planning call.",
     story: [
-      "Streeterville is Chicago's lakefront downtown, a dense mix of high-rises, hospitals, universities and hotels on the lake side of Michigan Avenue. Northwestern's Chicago campus and Lurie Children's Hospital anchor the north end, Navy Pier juts into the lake to the east, and Oak Street Beach and the Lake Shore Drive path line the water. Events here mix medical conferences, university receptions and private celebrations.",
+      "Streeterville is Chicago's lakefront downtown, a dense mix of high-rises, hospitals, universities and hotels on the lake side of Michigan Avenue. Northwestern's Chicago campus and Lurie Children's Hospital anchor the neighborhood, Navy Pier juts into the lake to the east, and Ohio Street Beach and the lakefront path line the water. Events here mix medical conferences, university receptions and private celebrations.",
       "Most event space is inside buildings with serious logistics. Condo party rooms, amenity floors and hotel ballrooms usually require freight elevator reservations, dock scheduling and sometimes proof of insurance. We can't issue certificates of insurance ourselves, so check what your building requires early. Michigan Avenue and Illinois Street are also heavily trafficked, so planning delivery windows around the building clock matters.",
       "Public spaces like Navy Pier, Ohio Street Beach and the lakefront paths draw big crowds, and rules on equipment and events vary by site. Lake wind is strong and can be severe on rooftop decks, so heavier chairs are a good call. A short planning call helps us line up chair styles, table counts and a timeline that fits your building's schedule.",
     ],
@@ -1738,7 +1738,7 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Belmont Cragin from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From banquet halls to bungalow backyards, request a quote or book a planning call.",
     story: [
-      "Belmont Cragin is a big, family-centered Northwest Side neighborhood, named for the intersection of Belmont and Cragin, and home to a large Mexican and Puerto Rican community alongside Polish and other longtime residents. Belmont, Fullerton and Central Avenues are lined with bakeries, taquerias and banquet halls, and celebrations such as quinceañeras, baptisms and weddings are central to life here. It's a neighborhood that knows how to throw a party.",
+      "Belmont Cragin is a big, family-centered Northwest Side neighborhood, home to a large Mexican and Puerto Rican community alongside Polish and other longtime residents. Belmont, Fullerton and Central Avenues are lined with bakeries, taquerias and banquet halls, and celebrations such as quinceañeras, baptisms and weddings are central to life here. It's a neighborhood that knows how to throw a party.",
       "Housing is mostly brick bungalows and two-flats on deep lots with alley garages, which makes backyard parties a natural choice. The Chicago Park District's Hanson Park, with its stadium and fieldhouse, is a local landmark, and Metra's Milwaukee District West line runs through the neighborhood. Parish halls are important gathering spaces, often booked months in advance. Weekend church events can crowd side streets too.",
       "Large guest lists are the norm. Quinceañeras may run 150 or more guests, with a head table, dance floor and photo area, while backyard parties spill over with cousins and neighbors. We'll help you size chairs and tables to your venue and plan delivery windows around busy Belmont and Fullerton traffic, so your setup is ready when the first guests arrive.",
     ],
@@ -1820,7 +1820,7 @@ export const chicagoNorthAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Dunning from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From Irving Park Road halls to bungalow backyards, request a quote or book a planning call.",
     story: [
-      "Dunning sits on the far Northwest Side, between Irving Park Road and Belmont Avenue, with Harlem Avenue on its western edge where Chicago meets Norridge and Harwood Heights. Its streets are lined with brick bungalows and Georgian-style homes, and the Harlem-Irving Plaza shopping center is a regional landmark. Polish, Italian, Greek and Hispanic families give the neighborhood a warm, traditional character.",
+      "Dunning sits on the far Northwest Side, between Irving Park Road and Belmont Avenue, with the villages of Norridge and Harwood Heights nearby along Harlem Avenue. Its streets are lined with brick bungalows and other classic Chicago homes, and the Harlem-Irving Plaza mall in neighboring Norridge is a well-known nearby shopping destination. A long-settled mix of families gives the neighborhood a warm, traditional character.",
       "Celebrations tend to be large and family-driven: first communions, graduations, anniversary dinners and weddings. Banquet halls along Irving Park Road and Harlem Avenue are popular, and nearby Norridge and Harwood Heights add more options. Backyards are generous by city standards and usually have alley garages, which makes deliveries straightforward and keeps trucks off busy streets. Weekend church events can crowd side streets too.",
       "Dunning is car-dependent, so parking is easier than in the denser lakefront neighborhoods, but Harlem and Irving Park can jam on Saturdays. Park district fieldhouses and parish halls round out the event spaces. We ask for your address, alley access and guest count up front so we can plan a smooth load-in and put together an accurate quote. That keeps your day smooth.",
     ],
@@ -1878,7 +1878,7 @@ export const chicagoNorthAreas: Location[] = [
       },
       {
         q: "Do you deliver near Harlem Avenue in Norridge and Harwood Heights?",
-        a: "Yes. We serve the Northwest Side and nearby suburbs. Share your exact address when you request a quote so we can route correctly. Distances from our vendor partners vary, so an exact address helps us give you an accurate, itemized quote.",
+        a: "Yes. We serve the Northwest Side and nearby suburbs. Share your exact address when you request a quote so we can route correctly. Distances from vendors vary, so an exact address helps us give you an accurate, itemized quote.",
       },
       {
         q: "How early should I book rentals for a Dunning party?",
@@ -1903,7 +1903,7 @@ export const chicagoNorthAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in North Park from vetted Chicago-area rental vendors, with delivery, setup and pickup in the quote. From campus receptions to bungalow backyards, request a quote or book a planning call.",
     story: [
       "North Park is a quiet residential neighborhood on the North Side, anchored by North Park University and Northeastern Illinois University. Its streets are lined with brick bungalows, mid-century homes and small apartment buildings, and the North Branch of the Chicago River winds along its edge. Bryn Mawr Avenue and Peterson Avenue are the main commercial streets, with Foster and Kedzie running through the south.",
-      "Two features make North Park distinctive. North Park Village Nature Center on Pulaski Road is a Chicago Park District site with trails and prairies, and the North Branch forest preserves provide green space for picnics and gatherings. The neighborhood is also home to Korean, Assyrian, Middle Eastern, Jewish and Latino communities, so celebrations vary widely and often include large guest lists.",
+      "Two features make North Park distinctive. North Park Village Nature Center on Pulaski Road is a Chicago Park District site with trails and prairies, and the North Branch forest preserves provide green space for picnics and gatherings. The neighborhood is also home to Korean, Middle Eastern, Jewish and Latino communities, so celebrations vary widely and often include large guest lists.",
       "Campus events add another layer. Graduation weekends, family days and receptions bring crowds to the area each spring, and parking becomes tight. Most homes have alley access and generous backyards, which are ideal for graduation parties and baptisms. We plan delivery around your block, your alley and your date, and we recommend booking early for May weekends. We'll plan the rest around you.",
     ],
     settings: [
@@ -1927,7 +1927,7 @@ export const chicagoNorthAreas: Location[] = [
     logistics: [
       "Graduation weekends fill nearby streets. Share your date so we can plan delivery windows early.",
       "Alley access is common. Tell us about gates, steps and distance from the truck.",
-      "Forest preserve groves require county permits. Check with the Forest Preserves of Cook County before booking.",
+      "Forest preserve groves typically need a permit. Check with the Forest Preserves of Cook County before booking.",
       "For North Park Village Nature Center or park district spaces, check rules with the Chicago Park District.",
     ],
     recommendedChairs: [
@@ -2008,9 +2008,9 @@ export const chicagoNorthAreas: Location[] = [
     ],
     logistics: [
       "Large lots mean longer carries. Tell us about driveway length, gate widths and distance to the setup spot.",
-      "Forest preserve groves require county permits. Check with the Forest Preserves of Cook County first.",
+      "Forest preserve groves typically need a permit. Check with the Forest Preserves of Cook County first.",
       "Tree roots and uneven ground can affect table stability. Share photos of your yard and we'll recommend chair styles.",
-      "Metra and Caldwell Woods traffic can slow weekends. Share your date so we can plan a delivery window.",
+      "Weekend traffic near the preserves can slow deliveries. Share your date so we can plan a delivery window.",
     ],
     recommendedChairs: [
       {

@@ -17,7 +17,7 @@ export const dupageAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Addison from vetted Chicago-area rental vendors, with one quote and one point of contact. Tell us your date, headcount and venue, and we will line up the right inventory and delivery window. Request a quote or book a planning call to get started.",
     story: [
       "Addison sits on the eastern edge of DuPage County, close enough to O'Hare that planes are part of the background of any outdoor event here. Lake Street (U.S. 20), Army Trail Road and Addison Road carry most of the traffic, and the village is a patchwork of established neighborhoods, small industrial parks and banquet-style event spaces that handle big family celebrations.",
-      "The calendar here leans toward large, multigenerational gatherings: christenings, communion parties, graduation open houses, anniversary dinners and the occasional wedding reception with 150 guests or more. Addison has a long-standing Italian-American and Eastern European heritage, and newer families have added their own traditions, so a single weekend can mean a sit-down dinner in one hall and a backyard tent party two blocks away.",
+      "The calendar here leans toward large, multigenerational gatherings: christenings, communion parties, graduation open houses, anniversary dinners and the occasional wedding reception with 150 guests or more. Addison is a mix of long-time residents and newer families, each with their own traditions, so a single weekend can mean a sit-down dinner in one hall and a backyard tent party two blocks away.",
       "Park-district fields and picnic shelters, along with the nearby DuPage forest preserves, make summer gatherings easy to stage, while the proximity to the airport means early planning pays off on the logistics side. Many Addison events happen in modest yards, so we help you right-size the order and plan a layout that leaves room to walk, serve and dance. A quick call about your yard or hall is usually the fastest way to settle the numbers.",
     ],
     settings: [
@@ -98,8 +98,8 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Bensenville from vetted Chicago-area rental vendors, with one quote for the whole order. Share your date and guest count, and we will recommend a setup that fits your space. Request a quote or book a planning call to begin.",
     story: [
-      "Bensenville is a rail-and-runway town. O'Hare Airport hugs its northern edge, the Canadian Pacific yard cuts through the village, and the Metra Milwaukee District West line stops in the compact downtown along Green Street. That geography shapes events here: ambient noise is a fact of life, and good planning means picking a ceremony time and a seating arrangement that works with it.",
-      "Despite the industrial feel on the edges, much of Bensenville is neighborhoods of single-family homes and small blocks with real community ties. Families host quinceañeras, first communions, graduation parties and big cookouts in backyards and parish halls, and the village's cultural mix, with Latino and Eastern European communities among others, shows up in the food, music and the size of the guest lists.",
+      "Bensenville is a rail-and-runway town. O'Hare Airport hugs its northern edge, a large Canadian Pacific rail yard is part of the village, and the Metra Milwaukee District West line stops in the compact downtown near Main Street. That geography shapes events here: ambient noise is a fact of life, and good planning means picking a ceremony time and a seating arrangement that works with it.",
+      "Despite the industrial feel on the edges, much of Bensenville is neighborhoods of single-family homes and small blocks with real community ties. Families host quinceañeras, first communions, graduation parties and big cookouts in backyards and parish halls, and the village's cultural mix shows up in the food, music and the size of the guest lists.",
       "Salt Creek winds nearby, and DuPage forest preserves and park district shelters offer open space for summer gatherings. Because many events are family-hosted rather than venue-run, the details fall on the host. We help you work out how many tables and chairs you actually need, and we line up delivery around the realities of local traffic and truck access. A short call about your yard, hall or shelter usually settles the numbers and the delivery plan quickly.",
     ],
     settings: [
@@ -181,7 +181,7 @@ export const dupageAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Wood Dale from vetted Chicago-area rental vendors, on one clear quote. Whether it is a family party or a company event, tell us your date and headcount and we will recommend a setup. Request a quote or book a planning call to begin.",
     story: [
       "Wood Dale is a small village with a big business footprint. Irving Park Road, Wood Dale Road and the Metra Milwaukee District West line run through town, and industrial parks and corporate offices sit just below the O'Hare flight paths. That mix means event rentals here split between family celebrations and the quieter world of company picnics, trainings, open houses and holiday parties.",
-      "On the residential side, Wood Dale is quiet, with ranch homes and mid-century neighborhoods where backyard parties are the norm. Graduation open houses, summer birthday cookouts and backyard anniversary dinners are the staples, and the nearby forest preserve land and Maple Meadows area give families open green space within a short drive. Many hosts here are neighbors who know each other, so parties run casual and the guest list stays flexible.",
+      "On the residential side, Wood Dale is quiet, with ranch homes and mid-century neighborhoods where backyard parties are the norm. Graduation open houses, summer birthday cookouts and backyard anniversary dinners are the staples, and nearby forest preserve land gives families open green space within a short drive. Many hosts here are neighbors who know each other, so parties run casual and the guest list stays flexible.",
       "Because the village is small, events tend to feel intimate. Hosts want something that looks good without feeling overbuilt, so we focus on right-sizing: enough chairs for everyone, the right table mix for a buffet, and clean linens that suit the occasion. Aircraft noise and rail activity are part of the setting, so timing matters. A short call about your yard or room usually settles the numbers, the layout and the delivery window.",
     ],
     settings: [
@@ -257,18 +257,18 @@ export const dupageAreas: Location[] = [
     zips: ["60143"],
     metaTitle: "Event Rentals in Itasca, IL | Chairs, Tables & Linens",
     metaDescription:
-      "Rent event chairs, tables and linens in Itasca, IL from vetted Chicago-area vendors. Walnut Street weddings to backyard parties. Request a quote today.",
+      "Rent event chairs, tables and linens in Itasca, IL from vetted Chicago-area vendors. Downtown weddings to backyard parties. Request a quote today.",
     headline: "Itasca event rentals from *downtown to the backyard*",
     intro:
       "We help you rent event chairs, tables, linens and more in Itasca from vetted Chicago-area rental vendors, with one quote and clear delivery windows. Tell us your date, headcount and setting, and we will recommend what to bring. Request a quote or book a planning call to get started.",
     story: [
-      "Itasca is one of DuPage County's most charming small downtowns, with Walnut Street and the Metra Milwaukee District West depot giving the village a real center. Salt Creek curves through town, mature trees shade the older neighborhoods, and the Irving Park Road corridor ties it all to the western suburbs. People here treat community events as part of the calendar.",
-      "That small-town feel shapes how people celebrate. Backyard graduation parties, garden-style bridal showers, rehearsal dinners and milestone birthdays are common, and the village's wooded lots and creekside yards make outdoor ceremonies a natural fit. Nearby nature areas, including the Springbrook Nature Center, remind you how much green space sits within a few minutes of home. Hosts here often want a warm, garden feel, so wood tones and soft textures tend to photograph best.",
+      "Itasca is one of DuPage County's most charming small downtowns, with a walkable downtown and the Metra Milwaukee District West depot giving the village a real center. Salt Creek curves through town, mature trees shade the older neighborhoods, and the Irving Park Road corridor ties it all to the western suburbs. People here treat community events as part of the calendar.",
+      "That small-town feel shapes how people celebrate. Backyard graduation parties, garden-style bridal showers, rehearsal dinners and milestone birthdays are common, and the village's wooded lots and creekside yards make outdoor ceremonies a natural fit. Nearby parks and nature areas remind you how much green space sits within a few minutes of home. Hosts here often want a warm, garden feel, so wood tones and soft textures tend to photograph best.",
       "Itasca is also close to hotel and conference space near Interstate 290 and O'Hare, so corporate dinners and out-of-town wedding weekends are part of the mix. For homeowners with tree-lined lots, planning is about shade, ground firmness and tight driveways. For business gatherings, it is about getting clean, matching seating delivered on time. A walk-through of the space, even by photo, helps us sort out access, shade and where each table goes.",
     ],
     settings: [
       {
-        name: "Walnut Street and downtown events",
+        name: "Downtown events",
         note: "Festivals and block-party style gatherings pull crowds to downtown. Check with the village about street closures and access.",
       },
       {
@@ -344,8 +344,8 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Roselle from vetted Chicago-area rental vendors, with one quote and a clear delivery plan. Tell us your date, guest count and setting, and we will suggest the right pieces. Request a quote or book a planning call to begin.",
     story: [
-      "Roselle has a tidy historic downtown anchored by the Metra Milwaukee District West depot and the stretch of Main Street and Irving Park Road that locals use as the village's front door. Around it are older neighborhoods with deep lots, newer subdivisions with open yards, and park-district spaces where weekend sports and festivals fill the calendar. The historic brick storefronts near the depot give photographers plenty to work with just steps from the tracks.",
-      "Roselle sits right where DuPage and Cook counties meet, so guest lists tend to pull in from several directions. That shows up in the event mix: summer weddings with out-of-town guests, backyard graduation parties, church-hall receptions and milestone birthdays. Park district fields and pavilions host a lot of family gatherings, and there is a healthy appetite for casual outdoor entertaining.",
+      "Roselle has a tidy historic downtown anchored by the Metra Milwaukee District West depot on Irving Park Road, with Main Street and Roselle Road nearby. Around it are older neighborhoods with deep lots, newer subdivisions with open yards, and park-district spaces where weekend sports and festivals fill the calendar.",
+      "Roselle sits near the DuPage and Cook county line, so guest lists tend to pull in from several directions. That shows up in the event mix: summer weddings with out-of-town guests, backyard graduation parties, church-hall receptions and milestone birthdays. Park district fields and pavilions host a lot of family gatherings, and there is a healthy appetite for casual outdoor entertaining.",
       "For hosts, the practical questions are about space and timing. Many Roselle backyards are generous but not flat, and spring rain can leave lawns soft. We help you choose chairs and tables that match the setting, plan a layout, and coordinate delivery around the weekend traffic on Roselle Road and Irving Park Road. A short planning call about your yard or hall helps us settle the numbers, layout and delivery timing.",
     ],
     settings: [
@@ -426,7 +426,7 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Bloomingdale from vetted Chicago-area rental vendors, with one quote and a straightforward delivery plan. Share your date, headcount and venue, and we will recommend a setup. Request a quote or book a planning call to get started.",
     story: [
-      "Bloomingdale is a patchwork of residential subdivisions, retail corridors along Lake Street and Army Trail Road, and open land that includes Meacham Grove Forest Preserve. Gary Avenue and Springfield Drive carry traffic through the village, while the Metra Milwaukee District West line gives Bloomingdale a railroad edge that many residents use to reach downtown. The village is also close to Stratford Square-area shopping and hotels, which helps when out-of-town guests need a place to stay.",
+      "Bloomingdale is a patchwork of residential subdivisions, retail corridors along Lake Street and Army Trail Road, and open land that includes Meacham Grove Forest Preserve. Gary Avenue and Springfield Drive carry traffic through the village, while nearby shopping and hotels help when out-of-town guests need a place to stay.",
       "Because the village is mostly built-out neighborhoods, most celebrations happen at home or in public spaces. Backyard graduation parties, communion and confirmation lunches, summer birthdays, and neighborhood block gatherings are the norm. The village and park district host community events, and the preserve and nearby parks give families room for larger reunions and picnics. Big family gatherings often spill from the yard into the garage and driveway, so we plan seating zones accordingly.",
       "Bloomingdale also pulls in guests from Schaumburg, Roselle and the Carol Stream area, so guest lists often extend past the village line. We help hosts plan realistic layouts for suburban yards, which usually means tents with a few tables and a well-placed buffet. Spring thaws and summer storms are the main variables, so we plan with ground conditions in mind.",
     ],
@@ -508,8 +508,8 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Carol Stream from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and venue, and we will recommend what to bring. Request a quote or book a planning call to get started.",
     story: [
-      "Carol Stream grew up in the postwar era around North Avenue, Gary Avenue and Schmale Road, and today it is a large, family-oriented village with a strong park district presence. Armstrong Park, the park district's recreation facilities and neighborhood playgrounds are the backdrop for graduation parties, team banquets and summer birthday celebrations. The village also has plenty of ball fields and picnic areas that fill up with team parties each summer.",
-      "There is no Metra stop in the village, so Carol Stream feels a little more car-oriented than its neighbors. Events tend to be driven by families who live here, with guest lists that spill over from Wheaton, Glendale Heights, Bloomingdale and West Chicago. The community is diverse, and celebrations range from large backyard cookouts to hall-based receptions with traditional buffets and dancing.",
+      "Carol Stream is a large, family-oriented village with a strong park district presence and North Avenue, Gary Avenue and Schmale Road as main routes. Armstrong Park, the park district's recreation facilities and neighborhood playgrounds are the backdrop for graduation parties, team banquets and summer birthday celebrations. The village also has plenty of ball fields and picnic areas that fill up with team parties each summer.",
+      "Carol Stream feels a little more car-oriented than some of its neighbors. Events tend to be driven by families who live here, with guest lists that spill over from Wheaton, Glendale Heights, Bloomingdale and West Chicago. The community is diverse, and celebrations range from large backyard cookouts to hall-based receptions with traditional buffets and dancing.",
       "Carol Stream's business corridors, including office and industrial parks, also support company picnics and holiday parties. For homeowners, the questions are practical: how many tables fit in the yard, where does the tent go, and how does the truck get in. We help you work out the numbers and schedule delivery around weekend traffic on Gary Avenue and North Avenue.",
     ],
     settings: [
@@ -590,8 +590,8 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Glendale Heights from vetted Chicago-area rental vendors, with one quote and a clear delivery plan. Tell us your date, guest count and setting, and we will recommend a setup. Request a quote or book a planning call to begin.",
     story: [
-      "Glendale Heights sits between Bloomingdale, Carol Stream, Glen Ellyn and Itasca, with Army Trail Road, Bloomingdale Road and Glen Ellyn Road forming the village's grid. Subdivisions, apartment communities and shopping centers fill much of the map, and Glendale Lakes Golf Course gives the village a green anchor where weddings and outings sometimes happen. Shopping centers and restaurants along Army Trail Road make it easy to keep guests fed between events.",
-      "The community here is diverse, with South Asian and Filipino families among the many cultures that shape celebration styles. That means big guest lists, multi-day weddings, birthday parties with long buffets and music, and religious or cultural gatherings that stretch from afternoon to late night. Seating needs to be comfortable and plentiful, with room for elders at the front and children close by.",
+      "Glendale Heights sits near Bloomingdale, Carol Stream and Glen Ellyn, with Army Trail Road, Bloomingdale Road and Glen Ellyn Road forming the village's grid. Subdivisions, apartment communities and shopping centers fill much of the map, and Glendale Lakes Golf Course gives the village a green anchor where weddings and outings sometimes happen. Shopping centers and restaurants along Army Trail Road make it easy to keep guests fed between events.",
+      "The community here is diverse, with many cultures shaping celebration styles. That means big guest lists, multi-day weddings, birthday parties with long buffets and music, and religious or cultural gatherings that stretch from afternoon to late night. Seating needs to be comfortable and plentiful, with room for elders at the front and children close by.",
       "Because many households live in townhomes or smaller yards, hosts often use banquet halls, park district spaces or nearby community rooms. When the party is at home, planning means checking whether a tent fits, whether neighbors need a heads up, and how to get a truck to the right door. We help you work through those details and size the order realistically.",
     ],
     settings: [
@@ -672,9 +672,9 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Lombard from vetted Chicago-area rental vendors, with one quote and a clear delivery plan. Tell us your date, guest count and setting, and we will recommend what to bring. Request a quote or book a planning call to get started.",
     story: [
-      "Lombard is the Lilac Village, and Lilacia Park, with its spring bloom and the village's Lilac Time festival in May, is the emotional center of town. Photographs by the lilacs, a downtown anchored by the Union Pacific West Metra station on St. Charles Road, and tree-lined streets of older homes give Lombard a polished, historic feel that few suburbs match.",
+      "Lombard is the Lilac Village, and Lilacia Park, with its spring bloom and the village's Lilac Time festival in May, is the emotional center of town. Photographs by the lilacs, a downtown anchored by the Union Pacific West Metra station, and tree-lined streets of older homes give Lombard a polished, historic feel that few suburbs match.",
       "The calendar here follows the seasons. Spring brings showers, communions and graduations, summer brings weddings and backyard parties, and fall brings homecoming dinners and milestone birthdays. Yorktown Center and the Butterfield Road corridor bring hotels and retail close by, so out-of-town guests are easy to host, and the Illinois Prairie Path region nearby makes the area feel connected to its neighbors.",
-      "Many Lombard homes are classic bungalows and Tudors on deep, narrow lots, which means yards are often long and thin rather than wide. We help you plan tent and table layouts that work with that shape, schedule delivery around downtown traffic, and pick chairs that look good in photos against flowering trees and brick facades. A short call about your yard, hall or park shelter helps us settle numbers, layout and delivery timing.",
+      "Many Lombard yards are long and narrow rather than wide, so layout matters. We help you plan tent and table layouts that work with that shape, schedule delivery around downtown traffic, and pick chairs that look good in photos against flowering trees. A short call about your yard, hall or park shelter helps us settle numbers, layout and delivery timing.",
     ],
     settings: [
       {
@@ -755,7 +755,7 @@ export const dupageAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Villa Park from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and setting, and we will recommend a setup. Request a quote or book a planning call to get started.",
     story: [
       "Villa Park is a classic inner-ring DuPage suburb: modest brick homes, mature trees, and a downtown centered on the Union Pacific West Metra station and the stretch of Villa Avenue near it. Salt Creek winds through the village, and the Illinois Prairie Path is a short ride away, giving residents quiet green space right in the neighborhood. On warm weekends, backyards fill quickly with relatives, neighbors and kids, so a flexible seating plan helps.",
-      "Celebrations here are mostly homegrown. Graduation open houses, communion and confirmation lunches, backyard cookouts, baby showers and milestone birthdays fill the calendar, often hosted by families who have lived on the same block for years. The park district's pools, fields and pavilions play a big role in summer gatherings and league banquets. Hosts here tend to value simple, tidy setups that look nice without taking over the yard.",
+      "Celebrations here are mostly homegrown. Graduation open houses, communion and confirmation lunches, backyard cookouts, baby showers and milestone birthdays fill the calendar, often hosted by families who have lived on the same block for years. The park district's parks and pavilions play a big role in summer gatherings and league banquets. Hosts here tend to value simple, tidy setups that look nice without taking over the yard.",
       "Villa Park lots are typically smaller than in newer suburbs, so layout matters. Tents are usually modest, and tables are placed with the garage, the patio and the neighbor's fence in mind. We help hosts count chairs, pick table shapes that fit, and schedule delivery along Ardmore Avenue and Roosevelt Road without conflicts. A quick call about your yard or hall helps us settle the numbers and the delivery window.",
     ],
     settings: [
@@ -836,7 +836,7 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Elmhurst from vetted Chicago-area rental vendors, with one quote and a clear delivery plan. Tell us your date, guest count and setting, and we will recommend what to bring. Request a quote or book a planning call to begin.",
     story: [
-      "Elmhurst is a polished DuPage hub with a walkable downtown along York Street, the Union Pacific West Metra line, a lively restaurant scene and Elmhurst University anchoring the north side. Wilder Park, with its conservatory, gardens and historic mansion grounds, is the symbolic heart of the village and a regular setting for photos and public events. The village also has a strong tradition of block parties, school fundraisers and neighborhood gatherings through the year.",
+      "Elmhurst is a polished DuPage hub with a walkable downtown along York Street, the Union Pacific West Metra line, a lively restaurant scene and Elmhurst University beside Wilder Park. Wilder Park, with its conservatory, gardens and historic mansion grounds, is the symbolic heart of the village and a regular setting for photos and public events. The village also has a strong tradition of block parties, school fundraisers and neighborhood gatherings through the year.",
       "Events here reflect a mix of tradition and polish. Spring and summer weddings, bridal showers, rehearsal dinners, graduation parties and milestone anniversaries all fill the calendar. The Elmhurst Art Museum, the York Street shops and Salt Creek parkways give hosts a variety of backdrops, and the quick train to Chicago makes it easy for guests from the city to attend.",
       "Elmhurst's older neighborhoods have beautiful homes on mid-sized lots, with mature trees, tight alleys and limited curb space. Logistics matter: truck access, parking and ground conditions all shape layout. We help you pick chairs that look right with brick and landscaping, size tables to your space, and schedule delivery around downtown and Route 83 traffic. A short call, plus a photo of your yard or room, helps us settle layout, numbers and delivery timing.",
     ],
@@ -918,7 +918,7 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in West Chicago from vetted Chicago-area rental vendors, with one quote and a clear delivery plan. Tell us your date, guest count and venue, and we will recommend a setup. Request a quote or book a planning call to get started.",
     story: [
-      "West Chicago is a railroad town with deep roots. The Union Pacific tracks, the historic downtown along Main Street and the West Chicago City Museum tell the story of a community built around trains, industry and families who stayed. Reed-Keppler Park is the city's busiest gathering place, with pavilions, playgrounds and a large open field for festivals and parties. Community festivals and summer park events also bring crowds, so weekends can get busy.",
+      "West Chicago is a railroad town with deep roots. The Union Pacific tracks, the historic downtown along Main Street and the West Chicago City Museum tell the story of a community built around trains, industry and families who stayed. Reed-Keppler Park is the city's busiest gathering place, with picnic shelters, playgrounds and athletic fields. Community festivals and summer park events also bring crowds, so weekends can get busy.",
       "Celebrations here are big and family-centered. West Chicago has a large Latino community, and quinceañeras, baptisms, first communions, graduation parties and wedding receptions fill weekends. Guest lists of 150 to 300 are common, music and dancing run late, and seating needs to handle grandparents, kids and a full dance floor in the same room. Hosts often rent matching chairs and tables for the full room so the whole space feels coordinated.",
       "The edges of the city open to farmland and forest preserve land. Kline Creek Farm and Pratt's Wayne Woods are close, and DuPage Airport sits on the west side. For hosts, the practical challenges are hall capacity, tent space in backyards, and delivery timing around downtown rail crossings. We help size the order and plan a realistic layout. A quick call about your room, yard or tent helps us settle numbers and delivery timing.",
     ],
@@ -928,7 +928,7 @@ export const dupageAreas: Location[] = [
         note: "Quinceañeras and weddings often use halls that provide basic tables but need extra chairs, linens and head-table pieces.",
       },
       {
-        name: "Reed-Keppler Park pavilions",
+        name: "Reed-Keppler Park picnic shelters",
         note: "Great for birthday parties and community gatherings. Check with the West Chicago Park District about reservations and access.",
       },
       {
@@ -975,8 +975,8 @@ export const dupageAreas: Location[] = [
         a: "Plan one chair per guest plus a few spares, and one 60-inch round table per 8 to 10 guests. Add a head table, cake table and dance floor. We can help you lay out a room or tent so the court and family have space.",
       },
       {
-        q: "Can I reserve a pavilion at Reed-Keppler Park?",
-        a: "Pavilions can generally be reserved through the West Chicago Park District, which sets rules, fees and vendor policies. Ask about availability and vehicle access, then share the details with us so we can plan delivery. If your date is close, ask anyway, because availability changes week to week and we will tell you honestly what is open.",
+        q: "Can I reserve a shelter at Reed-Keppler Park?",
+        a: "Shelters can generally be reserved through the West Chicago Park District, which sets rules, fees and vendor policies. Ask about availability and vehicle access, then share the details with us so we can plan delivery. If your date is close, ask anyway, because availability changes week to week and we will tell you honestly what is open.",
       },
       {
         q: "How far ahead should I book a West Chicago celebration?",
@@ -1000,7 +1000,7 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Winfield from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and setting, and we will recommend a setup. Request a quote or book a planning call to begin.",
     story: [
-      "Winfield is a small village in west-central DuPage County with a hometown feel. The Union Pacific West Metra station sits near the center, Winfield Road and Roosevelt Road tie the village to its neighbors, and Winfield Mounds Forest Preserve, with its glacial mounds, gives the area a peaceful green anchor. Central DuPage Hospital is the largest nearby presence. Neighbors tend to know each other, so many parties come together with help from friends and family.",
+      "Winfield is a small village in west-central DuPage County with a hometown feel. The Union Pacific West Metra station sits near the center, Winfield Road and Roosevelt Road tie the village to its neighbors, and Winfield Mounds Forest Preserve gives the area a peaceful green anchor. Central DuPage Hospital is the largest nearby presence. Neighbors tend to know each other, so many parties come together with help from friends and family.",
       "Because Winfield is small, celebrations tend to be personal. Backyard graduation parties, family reunions, baby showers and milestone birthdays are common, and a number of homes sit on larger or semi-rural lots where tent parties and outdoor ceremonies are easy to host. Some guests come from Wheaton, West Chicago and Warrenville, so guest lists stretch beyond the village line. Many hosts here also like a relaxed, country-leaning look, which makes natural wood tones a popular choice.",
       "Space is Winfield's advantage, but it creates its own planning questions. Longer driveways, uneven ground and the distance from the road to the lawn all affect how a truck can deliver. We help hosts size the order, plan a layout that uses the yard well, and schedule delivery around weekend traffic on Roosevelt Road. A short call, plus a photo of the lot and driveway, helps us settle the layout and delivery plan.",
     ],
@@ -1164,7 +1164,7 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Lisle from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and setting, and we will recommend a setup. Request a quote or book a planning call to get started.",
     story: [
-      "Lisle is home to The Morton Arboretum, one of the region's best-known outdoor spaces, and the village shares a skyline of corporate campuses and hotels with the I-88 corridor. Lisle Station Park, the Metra BNSF station and Benedictine University give the village a compact center, while Ogden Avenue and Route 53 carry most of the traffic. Bike paths and parks add to the feeling that Lisle is a place to gather as well as to work.",
+      "Lisle is home to The Morton Arboretum, one of the region's best-known outdoor spaces, and the village shares a skyline of corporate campuses and hotels with the I-88 corridor. the Metra BNSF station and Benedictine University give the village a compact center, while Ogden Avenue and Route 53 carry most of the traffic. Bike paths and parks add to the feeling that Lisle is a place to gather as well as to work.",
       "Events here split between two worlds. Weddings and showers tend to cluster around the arboretum area and nearby hotels, with guests arriving from across the western suburbs. Corporate gatherings, trainings, retirement parties and holiday events fill the business parks and hotel ballrooms, while backyard graduation and birthday parties happen in the tree-lined neighborhoods. Hotel ballrooms here are used to rentals, so coordinating with the banquet manager early makes everything smoother.",
       "Lisle sits between Naperville, Downers Grove and Warrenville, so guest lists often spill into several towns. The village's mix of older homes and newer developments means lots vary in size, and tent parties are most common on larger properties. We help you size the order, handle hotel or corporate loading rules, and schedule around I-88 and Warrenville Road traffic. A short call, plus details on your room or yard, helps us settle numbers and the delivery window.",
     ],
@@ -1183,7 +1183,7 @@ export const dupageAreas: Location[] = [
       },
       {
         name: "Park district and campus gatherings",
-        note: "Lisle Station Park and university events need tidy, quick-setup seating.",
+        note: "Village parks and university events need tidy, quick-setup seating.",
       },
     ],
     logistics: [
@@ -1246,7 +1246,7 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Woodridge from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and setting, and we will recommend a setup. Request a quote or book a planning call to begin.",
     story: [
-      "Woodridge straddles DuPage, Will and Cook counties near the I-355 and I-55 interchange, with Seven Bridges Golf Club and the DuPage River Trail as local landmarks and Waterfall Glen Forest Preserve just to the north. Hobson Road, 75th Street and Route 53 carry most of the traffic, and the village feels like a connected hub for Naperville, Downers Grove and Bolingbrook.",
+      "Woodridge straddles DuPage, Will and Cook counties near the I-355 and I-55 interchange, with Seven Bridges Golf Club as a local landmark and Waterfall Glen Forest Preserve nearby. Hobson Road, 75th Street and Route 53 carry most of the traffic, and the village feels like a connected hub for Naperville, Downers Grove and Bolingbrook.",
       "Life here is family-oriented. Woodridge Park District facilities and neighborhood parks host graduation parties, team banquets and summer birthdays, while subdivisions give many households yards big enough for a tent. The village is also diverse, and celebrations range from big backyard cookouts to hall-based receptions and cultural gatherings with long buffet lines. Soccer fields, ball diamonds and neighborhood playgrounds fill with team and school celebrations every season.",
       "Seven Bridges and nearby hotels host weddings, golf outings and corporate events, and hosts at home often bring in outside caterers and extra seating. We help you size the order and pick chairs that handle a long dinner, plan delivery around the I-355 corridor, and keep the details of access, parking and timing in one itemized quote. A short call about your yard, hall or clubhouse helps us settle numbers and delivery timing.",
     ],
@@ -1329,7 +1329,7 @@ export const dupageAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Bolingbrook from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and setting, and we will recommend a setup. Request a quote or book a planning call to begin.",
     story: [
       "Bolingbrook is one of the largest suburbs in the southwest metro, stretching along I-55 and Weber Road in Will County with a sliver reaching into DuPage. Bolingbrook Golf Club, Pelican Harbor aquatic park, the Bolingbrook Recreation and Aquatic Complex and the Promenade shopping district give residents plenty of places to gather, and the village's park district is active year-round. Weekend traffic on Weber Road can be heavy, which is one more reason to plan the delivery window early.",
-      "The community is diverse and growing, with large South Asian, Filipino, Black and Latino communities among many others. That diversity shows up in how people celebrate: multi-day weddings, large birthday parties, baby showers, graduation open houses and cultural or religious gatherings with guest lists of 150 or more. Seating that is comfortable, plentiful and photogenic matters. Hosts often rent matching chairs and tables for entire rooms so receptions look consistent in photos and video.",
+      "The community is diverse and growing, with many cultures among its residents. That diversity shows up in how people celebrate: multi-day weddings, large birthday parties, baby showers, graduation open houses and cultural or religious gatherings with guest lists of 150 or more. Seating that is comfortable, plentiful and photogenic matters. Hosts often rent matching chairs and tables for entire rooms so receptions look consistent in photos and video.",
       "Neighborhoods range from newer subdivisions with open backyards to townhome communities with shared spaces. Many events move to banquet halls and hotels along the I-55 corridor, while home hosts work around HOA rules and tight lots. We help you size the order, plan staged deliveries for multi-event weekends, and avoid conflicts with Weber Road and Boughton Road traffic. A short call about your hall, yard or common area helps us settle numbers and delivery timing.",
     ],
     settings: [
@@ -1411,7 +1411,7 @@ export const dupageAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Darien from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and setting, and we will recommend a setup. Request a quote or book a planning call to get started.",
     story: [
       "Darien is a mostly residential suburb in southeast DuPage County, with Cass Avenue, 75th Street and Lemont Road as its main arteries. Waterfall Glen Forest Preserve and Argonne National Laboratory sit on its southern edge, giving the village a green border, and the Darien Sportsplex draws families from across the area for sports, parties and community events. Neighbors tend to know each other here, which makes block-style graduation and birthday parties a local favorite.",
-      "Because Darien has no commuter rail stop of its own, it feels quieter and more car-based than neighbors like Downers Grove or Hinsdale. Events are mostly home-grown: graduation open houses, communion and confirmation lunches, backyard cookouts, and showers. Guests often come from Burr Ridge, Woodridge, Downers Grove and Westmont, so guest lists draw from several directions. The mix of ranch homes and wooded lots gives hosts plenty of options for where to set up.",
+      "Darien feels quieter and more car-based than some neighbors. Events are mostly home-grown: graduation open houses, communion and confirmation lunches, backyard cookouts, and showers. Guests often come from Burr Ridge, Woodridge, Downers Grove and Westmont, so guest lists draw from several directions. The mix of ranch homes and wooded lots gives hosts plenty of options for where to set up.",
       "Lots vary from compact ranches to larger properties near the forest preserve, and tree cover is generous. That means shaded setups but also roots and uneven ground. We help you plan table and chair layouts that work with the lot, schedule delivery around weekend traffic on Cass Avenue and Route 83, and keep the order sized to your actual guest count.",
     ],
     settings: [
@@ -1493,7 +1493,7 @@ export const dupageAreas: Location[] = [
       "We help you rent event chairs, tables, linens and more in Westmont from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and setting, and we will recommend a setup. Request a quote or book a planning call to get started.",
     story: [
       "Westmont is a compact, well-connected village along the Metra BNSF line, with a small downtown near the station, Cass Avenue and Ogden Avenue as main corridors, and an easy ride to Union Station. The village is split by the tracks, and I-55 and Route 83 are minutes away, so Westmont is convenient for guests coming from the city and the surrounding suburbs.",
-      "Westmont is also notably diverse, with a strong South Asian community and other cultures shaping celebrations. Weddings and receptions here can run multiple days, birthday parties and religious gatherings are large, and graduation open houses and baby showers fill the calendar. Banquet halls and hotels along Ogden Avenue and the I-55 corridor host many of them. Hosts often bring in outside caterers, so we plan table spacing with buffet and serving lines in mind.",
+      "Westmont is also diverse, with many cultures shaping celebrations. Weddings and receptions here can run multiple days, birthday parties and religious gatherings are large, and graduation open houses and baby showers fill the calendar. Banquet halls and hotels along Ogden Avenue and the I-55 corridor host many of them. Hosts often bring in outside caterers, so we plan table spacing with buffet and serving lines in mind.",
       "Residential lots are modest, with a mix of older homes and newer townhomes, so backyard events need careful layout. Tents tend to be compact, and many hosts rent chairs and tables for a patio or driveway party. We help you size the order, plan staged deliveries for multi-event weekends, and avoid conflicts with Cass Avenue and downtown train traffic. A short call about your hall, yard or common area helps us settle numbers and delivery timing.",
     ],
     settings: [
@@ -1574,7 +1574,7 @@ export const dupageAreas: Location[] = [
     intro:
       "We help you rent event chairs, tables, linens and more in Clarendon Hills from vetted Chicago-area rental vendors, with one quote and clear delivery timing. Tell us your date, headcount and setting, and we will recommend a setup. Request a quote or book a planning call to begin.",
     story: [
-      "Clarendon Hills is a small, tidy village along the Metra BNSF line, with a walkable downtown near the station, shops along Burlington Avenue and Prospect Avenue, and quiet residential blocks climbing the gentle rise that gives the village its name. It sits between Hinsdale, Westmont and Downers Grove, and many residents commute to the city by train. Commuter trains and downtown foot traffic can make the center of the village feel lively on busy days.",
+      "Clarendon Hills is a small, tidy village along the Metra BNSF line, with a walkable downtown near the station and quiet residential blocks. It sits between Hinsdale, Westmont and Downers Grove, and many residents commute to the city by train. Commuter trains and downtown foot traffic can make the center of the village feel lively on busy days.",
       "Celebrations here are close to home. Backyard graduation parties, bridal and baby showers, rehearsal dinners and milestone birthdays are staples, and school and church events fill the fall and spring calendars. The village's small size means guest lists often draw from neighbors, so gatherings feel personal, and many hosts care about details like linens, flowers and photo-ready seating. Hosts here often want things to look polished without feeling formal, so soft wood tones and clean linens are popular.",
       "Lots are typically mid-sized, with mature trees and tight driveways, and curb space can be tight on block-party weekends. Planning focuses on layout, access and ground conditions. We help you size the order, choose chairs that suit brick, porches and gardens, and schedule delivery around downtown traffic and the commuter rhythm of the station. A short call, plus a photo of your yard or room, helps us settle the layout and delivery plan.",
     ],
@@ -1597,7 +1597,7 @@ export const dupageAreas: Location[] = [
       },
     ],
     logistics: [
-      "Burlington Avenue, Ogden Avenue and the Metra crossings can slow trucks at rush hour. We build in buffer time.",
+      "Ogden Avenue and the Metra crossings can slow trucks at rush hour. We build in buffer time.",
       "Narrow driveways and tight street parking mean the carry can be long. Tell us where we can stop.",
       "Mature trees and older lawns may be uneven or damp. We can adjust the layout to the firmest ground.",
       "Check with neighbors and your HOA, if any, about noise and parking for larger gatherings.",
