@@ -37,6 +37,10 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 6
+
+- Hearts (save to My Events idea board) now also on every rental item page's main picture and on every look card in `/looks`. `/looks` and all `/rentals/<category>/<item>` rows: Last touched 2026-11-03.
+
 ## Changes in this release (2026-11-03): party ideas in the planning assistant
 
 - /planning-assistant plans now include up to 6 theme ideas from /party-ideas for the chosen event. Each one shows its palette, setup for the chosen space, activities and props, plus only the extra rentals beyond the package, priced at vendor +10%. Ticking a theme adds those rentals to the quote handoff.

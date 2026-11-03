@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
+import { SaveIdea } from "@/components/myevents/SaveIdea";
 import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
@@ -197,8 +198,11 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
         <Breadcrumb trail={[{ name: "Rentals", href: "/rentals" }, { name: c.name, href: `/rentals/${c.id}` }, { name: i.name }]} />
 
         <div className="mt-10 grid gap-12 md:grid-cols-[1.1fr_1fr] md:gap-20">
-          <div className="md:sticky md:top-32 md:self-start">
+          <div className="relative md:sticky md:top-32 md:self-start">
             <RentalVisual item={i} priority photoWidth={720} className="aspect-square" sizes="(max-width: 768px) 100vw, 50vw" />
+            {img && (
+              <SaveIdea idea={{ src: img, alt: rentalAlt(i.name, i.specs, i.id), caption: i.name, href: `/rentals/${c.id}/${i.id}` }} className="absolute top-3 right-3 z-10" />
+            )}
           </div>
           <div className="md:py-4">
             <p className="font-serif text-lg text-gold italic">{c.name} rental · {site.market}</p>
