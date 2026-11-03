@@ -1132,3 +1132,19 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 - The plan downloads as a PDF (jsPDF, built in the browser). It has the list and prices, an assessment, space needs and a dated checklist. A "Book a free call" button and the next steps sit on the plan page.
 - /admin/availability: tap a day to block or open it, block a range with a private reason, and see enquiry and booked counts on each day. Blocked dates are stored in the `blocked_dates` table (or .data/availability.json locally) and served by /api/availability. The planner and quote form date pickers refuse blocked dates.
 - Owner: re-run supabase/schema.sql to create `blocked_dates`. Until then every date shows as open.
+
+## 2026-11-03: Party ideas, setups and activities in the quote flow
+
+Angad asked for researched party ideas per party type, including activities, games, props and setup ideas, with matching add-ons selectable during quoting.
+
+- Data: `src/data/party-ideas/` (12 party types in `party-types.ts`, 34 themes in `ideas-*.ts`). Every rental is a featured catalog id; props and crafts are marked DIY (not rentals). Validate with `npx tsx scripts/check-party-ideas.ts`.
+- New routes (last touched 2026-11-03):
+
+| Route | SEO | AEO | GEO | Visuals | FAQ | CTA | Remaining to improve |
+|---|---|---|---|---|---|---|---|
+| `/party-ideas` | ✅ | ✅ CollectionPage + ItemList, FAQPage | ⚠️ Chicago in copy | ✅ scene images, palette bars | ✅ | ✅ planner + QuoteCta | Dedicated styled images per theme (most themes reuse 14 event scenes) |
+| `/party-ideas/[type]` (12) | ✅ | ✅ CollectionPage, FAQPage, breadcrumbs | ⚠️ Chicago-specific tips in FAQs | ✅ hero scene, theme cards | ✅ | ✅ "Plan your …" → `/quote?event=` | Link from matching `/events/[slug]` pages; more themes per type |
+| `/party-ideas/[type]/[idea]` (34) | ✅ | ✅ HowTo (supplies, tools, steps), FAQPage | ⚠️ | ✅ scene, palette SVG, setup sketches, rental renders | ✅ | ✅ "Plan this party" → `/quote?event=&idea=` | Own Gemini scene per theme; real event photos once we have them |
+
+- Planner (`/quote`): the Add-ons step now shows "Party ideas for your <occasion>" tiles with the price each adds for the guest count. Picking one adds its rentals under "From your party ideas" (an item already on the list keeps the larger quantity). The plan page and PDF show each picked idea's setup (indoor or backyard text by setting), activities and props. The CRM message gets "Party ideas: …". `?idea=<slug>` preselects a theme and its occasion.
+- Linked from the header ("Party ideas"), footer, sitemap and llms.txt.

@@ -1,0 +1,346 @@
+import type { PartyType } from "./types";
+
+// One hub page per party type at /party-ideas/<slug>: setup ideas for backyards and indoor rooms, activities and games,
+// FAQs, and the theme ideas in ./ideas-*.ts. `planner` is the occasion the /quote planner starts on.
+
+export const partyTypes: PartyType[] = [
+  {
+    slug: "weddings",
+    name: "Weddings",
+    single: "wedding",
+    planner: "wedding",
+    scene: "wedding-reception",
+    sceneAlt: "Wedding reception with round tables, gold Chiavari chairs and candlelight",
+    metaTitle: "Wedding Reception Ideas: Themes, Setups & Activities (Chicago)",
+    metaDescription: "Wedding theme ideas, reception layouts for tents, backyards and halls, guest activities, and the rentals each look needs, with live prices for Chicago weddings.",
+    intro:
+      "A wedding look comes down to four choices: the chair, the table shape, the linen and the light. Pick a theme below to see the palette, the setup for an indoor hall or a tented lawn, guest activities, and the exact rentals with live prices. Every theme can be added to your plan in one tap.",
+    setups: [
+      { title: "Classic rounds", where: "Indoors", text: "60-inch rounds seating eight, floor-length cloths and a sweetheart table facing the dance floor. The easiest layout for 100 to 250 guests and the one most Chicago banquet halls are built around.", rentals: ["round-60", "round-floor-length", "sweetheart-table", "dance-floor"] },
+      { title: "Long family-style rows", where: "Tent or lawn", text: "Rows of farm or banquet tables under a frame tent read as one long dinner party. Plan about 10 square feet per guest plus a 5-foot aisle between rows so servers can pass.", rentals: ["farm-table", "banquet-8ft", "frame-tent-30x60", "string-lights"] },
+      { title: "Mixed rounds and kings tables", where: "Any space", text: "Rounds for most guests and two or three long kings tables down the middle for the wedding party. It breaks up a sea of rounds and gives the photographer a strong centre line.", rentals: ["round-60", "banquet-8ft", "banquet-floor-length", "candle-holder"] },
+      { title: "Backyard ceremony to reception flip", where: "Backyard", text: "Ceremony chairs in rows facing an arch, then the same chairs carried to tables during cocktail hour. One set of chairs covers both if the reception area is set before the ceremony starts.", rentals: ["white-resin-folding", "ceremony-arch", "cocktail-highboy", "frame-tent-20x40"] },
+    ],
+    activities: [
+      { name: "Photo booth with a backdrop", text: "A booth by the bar keeps guests busy between dinner and the first dance, and you leave with the pictures.", rentals: ["photo-booth-360", "flower-wall"] },
+      { name: "Lawn games during cocktail hour", text: "Giant Jenga and cornhole on the lawn while the couple is away for photos.", rentals: ["yard-games"] },
+      { name: "Late-night snack cart", text: "Popcorn or a nacho station at 10 pm brings everyone back to the dance floor.", rentals: ["popcorn-machine", "nacho-cheese-warmer"] },
+      { name: "Champagne wall toast", text: "Guests pick a glass from a wall as they arrive; it doubles as a backdrop.", rentals: ["champagne-wall", "champagne-flute"] },
+      { name: "Guest book table", text: "A small table with a polaroid camera, a frame or a puzzle guest book." },
+      { name: "Sparkler or bubble send-off", text: "Check your venue's rules first; many Chicago venues allow bubbles but not sparklers indoors." },
+    ],
+    faqs: [
+      { q: "What rentals does a typical wedding reception need?", a: "One chair and one place setting per guest, a 60-inch round per eight guests, linens and napkins, glassware for water, wine and the toast, a dance floor sized to about a quarter of the guests, and lighting. Outdoor weddings add a tent, restrooms and power." },
+      { q: "How big should the dance floor be?", a: "About a quarter of guests dance at once and each needs roughly 9 square feet, so 150 guests needs about 340 square feet, or an 18 by 18 foot floor." },
+      { q: "How far ahead should we book wedding rentals in Chicago?", a: "Six to nine months for May to October Saturdays. Chiavari chairs, specialty linens and tents sell out first in peak season." },
+    ],
+  },
+  {
+    slug: "indian-weddings",
+    name: "Indian weddings & sangeets",
+    single: "Indian wedding",
+    planner: "indian-wedding",
+    scene: "sweetheart-stage",
+    sceneAlt: "Decorated stage with a sweetheart sofa for a sangeet or reception",
+    metaTitle: "Indian Wedding, Sangeet & Mehndi Party Ideas and Rentals (Chicago)",
+    metaDescription: "Mehndi, sangeet and reception ideas: stage and lounge setups, colour palettes, dance-floor sizes, activities and the rentals for each, priced live for Chicagoland.",
+    intro:
+      "South Asian weddings are several events in one, each with its own look. A mehndi wants low lounge seating and bright colour, a sangeet needs a stage and a big dance floor, and the reception is a formal dinner for hundreds. Here are setups and ideas for each, with the rentals they take.",
+    setups: [
+      { title: "Stage-facing reception", where: "Indoors", text: "Rounds fan out from a raised stage with a sofa for the couple. Leave a wide centre aisle for the entrance and put the dance floor between the stage and the first row.", rentals: ["stage-deck", "lounge-sofa", "round-72", "dance-floor"] },
+      { title: "Mehndi lounge clusters", where: "Backyard", text: "Sofas, armchairs and coffee tables in small groups so guests can sit while the henna artists move around. Add string lights overhead and a canopy over the artists.", rentals: ["lounge-sofa", "lounge-armchair", "coffee-table", "string-lights", "canopy-10x10"] },
+      { title: "Sangeet performance floor", where: "Tent or lawn", text: "A large dance floor in the centre with seating on three sides and a stage at the fourth for the DJ and performances.", rentals: ["dance-floor", "stage-deck", "uplight", "pa-system"] },
+    ],
+    activities: [
+      { name: "Henna (mehndi) station", text: "A lounge corner with good light for the henna artists and a seat for each guest waiting.", rentals: ["lounge-armchair", "string-lights"] },
+      { name: "Family dance performances", text: "A stage and two wireless mics for hosts and performers.", rentals: ["stage-deck", "wireless-microphone"] },
+      { name: "Bangle and favour bar", text: "A long table of bangles, bindis or favours for guests to choose from.", rentals: ["banquet-8ft", "table-runner"] },
+      { name: "Chai and snack station", text: "Urns of chai and chafers of pakoras or samosas through the evening.", rentals: ["coffee-urn", "chafing-dish"] },
+      { name: "Garba or dandiya circle", text: "Leave a wide floor for circle dances; dandiya sticks are usually bought, not rented." },
+    ],
+    faqs: [
+      { q: "How big a dance floor does a sangeet need?", a: "Sangeets dance more than most receptions. Plan for a third of guests on the floor at once at about 9 square feet each: 300 guests means roughly 900 square feet, or a 30 by 30 foot floor." },
+      { q: "What size stage works for an Indian wedding reception?", a: "Eight 4 by 8 foot stage sections make a 16 by 16 foot stage, enough for a sofa, a backdrop and the couple's families for photos." },
+      { q: "Can one rental order cover the mehndi, sangeet and reception?", a: "Often yes, if the events are at the same venue on back-to-back days. Tell us each date so the proposal covers the full rental period." },
+    ],
+  },
+  {
+    slug: "birthday-parties",
+    name: "Birthday parties",
+    single: "birthday party",
+    planner: "birthday",
+    scene: "backyard-birthday",
+    sceneAlt: "Backyard birthday party with long tables and string lights",
+    metaTitle: "Adult Birthday Party Ideas: Themes, Setups, Games & Rentals",
+    metaDescription: "Birthday party ideas for 30th, 40th, 50th and beyond: themes, backyard and indoor setups, games, props and the rentals for each with live Chicago prices.",
+    intro:
+      "Most adult birthdays are a cocktail party, a dinner or a backyard bash. Pick the format first, then a theme. Each idea below lists the palette, how to set up a backyard or a rented room, games and props, and the rentals you can add to your quote in one tap.",
+    setups: [
+      { title: "Cocktail party", where: "Indoors", text: "Highboys with fitted covers, a bar and a lounge corner, with no assigned seats. Plan one highboy per 10 to 15 guests and seats for about a third of the room.", rentals: ["cocktail-highboy", "spandex-highboy", "portable-bar", "lounge-sofa"] },
+      { title: "Long-table dinner", where: "Backyard", text: "Two or three banquet or farm tables end to end down the yard, bistro lights overhead and a canopy over the food.", rentals: ["farm-table", "crossback", "string-lights", "canopy-10x10"] },
+      { title: "Open house", where: "Any space", text: "Guests drift in over three hours. A buffet, a few rounds and highboys, and a games area keep traffic flowing.", rentals: ["round-60", "cocktail-highboy", "chafing-dish", "yard-games"] },
+    ],
+    activities: [
+      { name: "Lawn game tournament", text: "Cornhole brackets with a prize for the winner.", rentals: ["yard-games"] },
+      { name: "Photo booth", text: "Props, a backdrop and instant prints.", rentals: ["photo-booth-360", "neon-sign"] },
+      { name: "Light-up age or initials", text: "Marquee numbers make the photo spot.", rentals: ["marquee-letters"] },
+      { name: "Signature cocktail bar", text: "A bar with two named drinks and a self-serve dispenser of something soft.", rentals: ["portable-bar", "beverage-dispenser"] },
+      { name: "Karaoke or toasts", text: "A PA and two mics.", rentals: ["pa-system", "wireless-microphone"] },
+      { name: "Memory wall", text: "Print photos from each decade and pin them to a board by the entrance." },
+    ],
+    faqs: [
+      { q: "How many tables and chairs do I need for a birthday party?", a: "For a seated dinner, one chair per guest and a 60-inch round or 8-foot banquet table per eight. For a cocktail party, seats for a third of guests and one highboy per 10 to 15." },
+      { q: "Do I need a tent for a backyard birthday?", a: "Not always. For under 40 guests, two 10 by 10 canopies over the food and bar are usually enough. Above that, or if rain is likely, a 20 by 20 or 20 by 40 frame tent covers the seating." },
+      { q: "How early should I book birthday party rentals?", a: "Four to eight weeks ahead for most dates, and two to three months for June graduation weekends, when backyard rentals in Chicagoland are busiest." },
+    ],
+  },
+  {
+    slug: "kids-parties",
+    name: "Kids' birthday parties",
+    single: "kids' party",
+    planner: "kids",
+    scene: "kids-party",
+    sceneAlt: "Kids' party with a bounce house, small tables and games",
+    metaTitle: "Kids' Birthday Party Ideas: Themes, Games, Bounce Houses & Rentals",
+    metaDescription: "Kids' party themes, backyard and indoor setups, games and activities, and the rentals for each (bounce houses, kids' tables, treat machines) with live Chicago prices.",
+    intro:
+      "A good kids' party has one big attraction, a treat station and somewhere for parents to sit. The ideas below pair a theme with games and props you can make at home, and the rentals that do the heavy lifting.",
+    setups: [
+      { title: "Backyard play zone", where: "Backyard", text: "Bounce house at the far end, kids' tables in the middle, a canopy with adult seating near the house. Keep the inflatable 5 feet from fences and away from overhead lines.", rentals: ["bounce-house", "kids-table", "kids-chair", "canopy-10x10"] },
+      { title: "Indoor party room", where: "Indoors", text: "Soft play on a mat for under-fives, a craft table and a cake table. Check ceiling height before booking any inflatable indoors.", rentals: ["soft-play", "kids-table", "banquet-6ft", "cake-stand"] },
+      { title: "Park pavilion party", where: "Park", text: "Many Chicago Park District shelters have picnic tables; bring canopies for shade, yard games and a cooler station.", rentals: ["canopy-10x10", "yard-games", "beverage-dispenser"] },
+    ],
+    activities: [
+      { name: "Bounce house", text: "The main event for ages 3 to 10.", rentals: ["bounce-house"] },
+      { name: "Treat station", text: "Cotton candy, snow cones or popcorn made fresh.", rentals: ["cotton-candy-machine", "snow-cone-machine", "popcorn-machine"] },
+      { name: "Giant yard games", text: "Connect four, Jenga and ring toss for older kids.", rentals: ["yard-games"] },
+      { name: "Craft table", text: "Decorate a crown, a cape or a cookie. A 6-foot table covered in kraft paper is plenty.", rentals: ["banquet-6ft", "kids-chair"] },
+      { name: "Treasure hunt", text: "Hide clues around the yard; finish at the cake." },
+      { name: "Freeze dance", text: "A speaker and a playlist; the last one moving wins.", rentals: ["pa-system"] },
+    ],
+    faqs: [
+      { q: "How many kids' chairs and tables do I need?", a: "One kids' chair per child and one kids' table per six. Add adult chairs for about half the parents." },
+      { q: "Is a bounce house safe in a backyard?", a: "On level grass with stakes, away from fences, trees and power lines, with an adult supervising and no more kids inside than the unit's limit. Inflatables come down in winds over about 15 to 20 mph." },
+      { q: "Can I rent a cotton candy or snow cone machine for a kids' party?", a: "Yes. Both are in our catalog and plug into a standard outlet. Supplies (sugar, cones, syrups) are usually sold separately by the rental company." },
+    ],
+  },
+  {
+    slug: "baby-showers",
+    name: "Baby showers",
+    single: "baby shower",
+    planner: "shower",
+    scene: "baby-shower",
+    sceneAlt: "Baby shower brunch table with florals and pastel linens",
+    metaTitle: "Baby Shower Ideas: Themes, Setups, Games & Rentals (Chicago)",
+    metaDescription: "Baby shower themes, brunch and tea setups for homes and rented rooms, shower games and props, and the rentals for each with live prices for Chicagoland.",
+    intro:
+      "Showers are short, daytime and centred on one table: food, gifts and a backdrop for photos. Pick a theme for the palette and centrepieces, then add the setup, games and rentals that fit your room.",
+    setups: [
+      { title: "Brunch at rounds", where: "Indoors", text: "Rounds of eight with a gift table, a dessert table and a backdrop behind the parent-to-be's seat.", rentals: ["round-60", "round-floor-length", "flower-wall", "cake-stand"] },
+      { title: "Garden party", where: "Backyard", text: "Garden chairs at a long table under a canopy, with a lemonade station in the shade.", rentals: ["white-resin-folding", "banquet-8ft", "canopy-10x10", "beverage-dispenser"] },
+      { title: "Lounge shower", where: "Any space", text: "Sofas and armchairs in a circle for gift opening, with a grazing table instead of a sit-down meal.", rentals: ["lounge-sofa", "lounge-armchair", "coffee-table", "serving-tray"] },
+    ],
+    activities: [
+      { name: "Gift opening circle", text: "A comfortable seat for the parent-to-be and a lounge circle around it.", rentals: ["lounge-armchair", "lounge-sofa"] },
+      { name: "Guess the bump", text: "A ball of ribbon; each guest cuts a length they think fits." },
+      { name: "Onesie decorating station", text: "Fabric markers and plain onesies on a covered table.", rentals: ["banquet-6ft"] },
+      { name: "Mocktail or lemonade bar", text: "Two dispensers and a tray of garnishes.", rentals: ["beverage-dispenser", "serving-tray"] },
+      { name: "Baby photo match", text: "Guests bring a baby photo; others guess who is who." },
+    ],
+    faqs: [
+      { q: "What do I need to rent for a baby shower?", a: "Usually chairs and tables for every guest, linens, a dessert or gift table, plates and glassware if you are serving brunch, and a backdrop. Many hosts add a beverage dispenser and cake stand." },
+      { q: "How many guests come to a typical baby shower?", a: "Most showers are 20 to 50 guests, which fits three to six 60-inch rounds or two long banquet tables." },
+      { q: "Can I set up a shower in a small apartment?", a: "Yes: skip seated dining, use a lounge setup with a grazing table and rent folding chairs for the gift circle." },
+    ],
+  },
+  {
+    slug: "bridal-showers",
+    name: "Bridal showers & brunches",
+    single: "bridal shower",
+    planner: "shower",
+    scene: "farm-table-dinner",
+    sceneAlt: "Long farm table set for a brunch with florals and candles",
+    metaTitle: "Bridal Shower & Brunch Ideas: Themes, Setups & Rentals",
+    metaDescription: "Bridal shower and brunch themes, table setups, games and props, with the rentals for each look and live prices for Chicago and the suburbs.",
+    intro:
+      "A bridal shower is really a styled brunch. The table is the star, so the ideas below focus on the tablescape, a photo moment and one or two easy activities, each with the rentals to match.",
+    setups: [
+      { title: "One long tablescape", where: "Any space", text: "Banquet tables end to end with a runner and a mix of candles and bud vases. For 30 guests that is four 8-foot tables.", rentals: ["banquet-8ft", "banquet-floor-length", "table-runner", "crossback"] },
+      { title: "Tea party rounds", where: "Indoors", text: "Rounds of six or eight with saucers, cake stands and a dessert table.", rentals: ["round-48", "round-floor-length", "coffee-cup-saucer", "cake-stand"] },
+      { title: "Patio brunch", where: "Backyard", text: "A canopy over the table, bistro lights, and a mimosa bar by the door.", rentals: ["canopy-10x10", "string-lights", "champagne-flute", "beverage-dispenser"] },
+    ],
+    activities: [
+      { name: "Mimosa bar", text: "Flutes, a few juices and fruit garnishes.", rentals: ["champagne-flute", "beverage-dispenser"] },
+      { name: "Flower crown or bouquet bar", text: "Loose stems and ribbons on a table; guests make their own." },
+      { name: "How well do you know the couple?", text: "A printed quiz read aloud with a prize." },
+      { name: "Photo backdrop", text: "A flower wall or neon sign with the couple's name.", rentals: ["flower-wall", "neon-sign"] },
+    ],
+    faqs: [
+      { q: "What linens look best for a bridal shower?", a: "Floor-length white or blush cloths with a contrasting runner photograph well. Sequin overlays add sparkle for an evening shower." },
+      { q: "How many glasses do I need for a mimosa bar?", a: "Plan two flutes per guest for a two-hour brunch if glasses are not washed during the party." },
+    ],
+  },
+  {
+    slug: "graduation-parties",
+    name: "Graduation parties",
+    single: "graduation party",
+    planner: "graduation",
+    scene: "graduation-party",
+    sceneAlt: "Graduation party in a backyard with canopy, tables and food stations",
+    metaTitle: "Graduation Party Ideas: Setups, Games, Food Stations & Rentals",
+    metaDescription: "Graduation party ideas for high school and college grads: open house setups, school-colour themes, games and the rentals for each with live Chicago prices.",
+    intro:
+      "Most grad parties are open houses: guests come and go over three or four hours, so you need food that holds, shade, and seats for about half the guest list at once. These ideas cover the theme, setup and rentals.",
+    setups: [
+      { title: "Open house under canopies", where: "Backyard", text: "Two to four 10 by 10 canopies for food and seating, banquet tables along the edge, highboys in the open. Seat about half your total guest list.", rentals: ["canopy-10x10", "banquet-8ft", "white-folding", "cocktail-highboy"] },
+      { title: "Tented backyard party", where: "Tent or lawn", text: "A 20 by 40 frame tent over the tables with the buffet at one end; the rest of the lawn for games.", rentals: ["frame-tent-20x40", "banquet-8ft", "chafing-dish", "yard-games"] },
+      { title: "Garage or driveway party", where: "Backyard", text: "Food in the garage, tables on the driveway, bistro lights strung from the house. Ask neighbours first and keep the street clear.", rentals: ["banquet-6ft", "string-lights", "beverage-dispenser"] },
+    ],
+    activities: [
+      { name: "Memory table", text: "Yearbooks, jerseys, awards and photos on a table by the entrance.", rentals: ["banquet-8ft", "table-runner"] },
+      { name: "Advice cards or a grad box", text: "Guests write advice or predictions; the grad opens them later." },
+      { name: "Yard games", text: "Cornhole in school colours.", rentals: ["yard-games"] },
+      { name: "Snack station", text: "Popcorn or nachos guests can serve themselves.", rentals: ["popcorn-machine", "nacho-cheese-warmer"] },
+      { name: "Slideshow", text: "A TV looping photos from kindergarten to cap and gown.", rentals: ["tv-with-stand"] },
+    ],
+    faqs: [
+      { q: "How many chairs do I need for an open-house graduation party?", a: "Seats for about half of the total guest list, because guests come and go. For 120 invited, 60 chairs and eight banquet tables is usually plenty." },
+      { q: "When should I book rentals for a June grad party in Chicago?", a: "Two to three months ahead. The first three weekends of June are the busiest backyard rental weekends of the year." },
+    ],
+  },
+  {
+    slug: "quinceaneras",
+    name: "Quinceañeras",
+    single: "quinceañera",
+    planner: "quinceanera",
+    scene: "dance-party",
+    sceneAlt: "Quinceañera dance floor with uplighting",
+    metaTitle: "Quinceañera Ideas: Themes, Setups, Traditions & Rentals (Chicago)",
+    metaDescription: "Quinceañera theme ideas, hall and tent setups, traditions and activities, and the rentals for each (throne chairs, dance floors, uplights) with live prices.",
+    intro:
+      "A quinceañera is a formal dinner and a dance, with a few traditions that need space: the grand entrance, the waltz, and the throne for the quinceañera. Pick a theme for the colours, then the setup and rentals.",
+    setups: [
+      { title: "Hall with a head table", where: "Indoors", text: "Rounds around a central dance floor, a head table for the court and the throne chair on a small stage.", rentals: ["round-60", "throne-chair", "stage-deck", "dance-floor"] },
+      { title: "Tented backyard quince", where: "Tent or lawn", text: "A frame tent with chandeliers, a dance floor in the middle and the court table at one end.", rentals: ["frame-tent-30x60", "chandelier", "dance-floor", "gold-chiavari"] },
+    ],
+    activities: [
+      { name: "The waltz", text: "Leave the dance floor clear for the court's choreographed dance.", rentals: ["dance-floor", "uplight"] },
+      { name: "Throne and changing of the shoes", text: "A throne chair on a stage, framed by a backdrop.", rentals: ["throne-chair", "flower-wall"] },
+      { name: "Photo booth", text: "Guests love it and it fills the gap during dinner service.", rentals: ["mirror-photo-booth"] },
+      { name: "Light-up name or XV", text: "Marquee letters by the dance floor.", rentals: ["marquee-letters"] },
+    ],
+    faqs: [
+      { q: "What rentals does a quinceañera need?", a: "Chairs and place settings for every guest, rounds with linens, a dance floor, a throne chair, a head or court table, and lighting. Many families add a stage, uplights and a backdrop." },
+      { q: "How big should the dance floor be for a quinceañera?", a: "Big enough for the court's waltz plus guests: for 150 guests, about 400 square feet (20 by 20 feet)." },
+    ],
+  },
+  {
+    slug: "corporate-events",
+    name: "Corporate events & galas",
+    single: "corporate event",
+    planner: "corporate",
+    scene: "corporate-gala",
+    sceneAlt: "Corporate gala room with rounds, uplighting and a stage",
+    metaTitle: "Corporate Event Ideas: Galas, Summer Picnics, Launches & Rentals",
+    metaDescription: "Corporate event and gala ideas: room setups, team activities, branding moments and the rentals for each, with live prices for Chicago offices and venues.",
+    intro:
+      "Company events have a job to do: thank the team, launch something or raise money. The setups below match the format, and each idea lists activities and the rentals that make it run smoothly.",
+    setups: [
+      { title: "Gala rounds facing a stage", where: "Indoors", text: "Rounds of ten, a stage with a podium and screen, uplights on the walls and a bar at the back.", rentals: ["round-72", "stage-deck", "podium", "projection-screen", "uplight"] },
+      { title: "Networking reception", where: "Indoors", text: "Highboys spread through the room, a bar at each end, lounge clusters for longer chats.", rentals: ["cocktail-highboy", "spandex-highboy", "portable-bar", "lounge-sofa"] },
+      { title: "Company picnic", where: "Park", text: "Canopies over the food, banquet tables in rows, games on the lawn and a PA for announcements.", rentals: ["canopy-10x10", "banquet-8ft", "yard-games", "pa-system"] },
+    ],
+    activities: [
+      { name: "Awards or speeches", text: "A stage, podium and two mics.", rentals: ["stage-deck", "podium", "wireless-microphone"] },
+      { name: "Branded photo moment", text: "A neon sign with the company name or a 360 booth.", rentals: ["neon-sign", "photo-booth-360"] },
+      { name: "Lawn game tournament", text: "Department vs department cornhole.", rentals: ["yard-games"] },
+      { name: "Product demo stations", text: "TVs on stands around the room.", rentals: ["tv-with-stand", "cocktail-highboy"] },
+      { name: "Coffee and dessert hour", text: "Urns and cake stands after the programme.", rentals: ["coffee-urn", "cake-stand"] },
+    ],
+    faqs: [
+      { q: "What is the best layout for a corporate gala?", a: "72-inch rounds of ten facing a stage, with the bar and photo moment at the back so the programme isn't interrupted." },
+      { q: "Do you supply AV for company events?", a: "We can add PA systems, wireless mics, projectors, screens, podiums and TVs from our partners' catalogs. For a full production crew, tell us the scope and we'll quote it." },
+    ],
+  },
+  {
+    slug: "backyard-parties",
+    name: "Backyard parties & BBQs",
+    single: "backyard party",
+    planner: "birthday",
+    scene: "tent-reception-dusk",
+    sceneAlt: "Frame tent in a backyard lit with bistro lights at dusk",
+    metaTitle: "Backyard Party Ideas: Setups, Lighting, Games & Rentals (Chicago)",
+    metaDescription: "Backyard party ideas for BBQs, block parties and summer nights: layouts, lighting, games, and the rentals for each with live prices across Chicagoland.",
+    intro:
+      "A backyard party needs four things a venue gives you for free: cover, light, seating and restrooms. The ideas below show how to set up each, plus games and themes, with the rentals priced for your guest count.",
+    setups: [
+      { title: "Tent and bistro lights", where: "Backyard", text: "A 20 by 20 frame tent seats about 40 at rounds; string lights carry the party past sunset.", rentals: ["frame-tent-20x20", "string-lights", "round-60", "white-folding"] },
+      { title: "Food truck lawn", where: "Backyard", text: "Highboys and a few banquet tables near the driveway for food truck service, with lawn seating.", rentals: ["cocktail-highboy", "banquet-8ft", "yard-games"] },
+      { title: "Fire-pit lounge", where: "Backyard", text: "Lounge furniture in a half circle and patio heaters for a cool September night.", rentals: ["lounge-sofa", "lounge-armchair", "patio-heater"] },
+    ],
+    activities: [
+      { name: "Yard games", text: "Cornhole, Jenga and connect four.", rentals: ["yard-games"] },
+      { name: "Outdoor movie", text: "A projector and screen after dark.", rentals: ["projector", "projection-screen", "pa-system"] },
+      { name: "Snow cone or popcorn cart", text: "Easy treats for all ages.", rentals: ["snow-cone-machine", "popcorn-machine"] },
+      { name: "Self-serve drinks", text: "Dispensers of lemonade and iced tea in the shade.", rentals: ["beverage-dispenser"] },
+    ],
+    faqs: [
+      { q: "Do I need a permit for a tent in my backyard?", a: "Many Chicago suburbs require a permit for tents above a certain size (often 400 to 900 square feet). Check with your village, and call 811 before any stakes go in." },
+      { q: "Do I need portable restrooms for a backyard party?", a: "For more than about 75 to 100 guests, or a party longer than four hours, a rented restroom saves your home's plumbing. Plan one unit per 50 guests." },
+    ],
+  },
+  {
+    slug: "holiday-parties",
+    name: "Holiday & seasonal parties",
+    single: "holiday party",
+    planner: "corporate",
+    scene: "winter-tent",
+    sceneAlt: "Heated winter tent with warm lighting for a holiday party",
+    metaTitle: "Holiday Party Ideas: Christmas, Friendsgiving, New Year's & Diwali",
+    metaDescription: "Holiday and seasonal party ideas for offices and homes: themes, heated setups, activities and the rentals for each with live Chicago prices.",
+    intro:
+      "Chicago holiday parties are indoor or heated, run late and centre on food and drink. The ideas below cover company holiday parties, Friendsgiving, New Year's Eve and Diwali, with setups that work in December.",
+    setups: [
+      { title: "Office holiday party", where: "Indoors", text: "Clear the floor for highboys and a bar, keep a few rounds for dinner, uplight the walls in red or gold.", rentals: ["cocktail-highboy", "round-60", "uplight", "portable-bar"] },
+      { title: "Heated tent party", where: "Tent or lawn", text: "A frame tent with sidewalls and a forced-air heater keeps guests warm into the 30s.", rentals: ["frame-tent-20x40", "tent-sidewall", "tent-heater", "chandelier"] },
+      { title: "Dinner party at home", where: "Indoors", text: "Rent a farm table and chairs to seat everyone in one room, with chargers and candlelight.", rentals: ["farm-table", "crossback", "charger-plate", "candle-holder"] },
+    ],
+    activities: [
+      { name: "Hot chocolate or coffee bar", text: "Urns, mugs and toppings.", rentals: ["coffee-urn", "coffee-cup-saucer"] },
+      { name: "Gift swap", text: "A white elephant game after dinner." },
+      { name: "Photo booth with seasonal props", text: "Sweaters, hats and a neon 'Cheers'.", rentals: ["photo-booth-360", "neon-sign"] },
+      { name: "Midnight toast", text: "Champagne flutes for everyone at midnight.", rentals: ["champagne-flute", "champagne-wall"] },
+    ],
+    faqs: [
+      { q: "Can I hold a tented party in a Chicago winter?", a: "Yes, with sidewalls on every side and a forced-air tent heater. Plan for flooring or a gravel path if the ground is wet, and book early: heaters run out in December." },
+      { q: "How early should I book a company holiday party?", a: "Book rentals by October for December dates, especially Fridays and Saturdays." },
+    ],
+  },
+  {
+    slug: "anniversary-parties",
+    name: "Anniversary & retirement parties",
+    single: "anniversary party",
+    planner: "birthday",
+    scene: "cocktail-hour",
+    sceneAlt: "Cocktail hour with highboy tables and soft lighting",
+    metaTitle: "Anniversary & Retirement Party Ideas: Themes, Setups & Rentals",
+    metaDescription: "Ideas for milestone anniversaries and retirement parties: themes, dinner and cocktail setups, toasts and activities, and the rentals for each with live prices.",
+    intro:
+      "Anniversaries and retirements are about the people and their story, so the ideas below make room for toasts, photos and memories alongside a dinner or cocktail party.",
+    setups: [
+      { title: "Seated dinner with toasts", where: "Indoors", text: "Rounds with a microphone at the head table and a slideshow on a screen.", rentals: ["round-60", "round-floor-length", "wireless-microphone", "projection-screen"] },
+      { title: "Garden cocktail party", where: "Backyard", text: "Highboys, a lounge and string lights; a canopy over the bar.", rentals: ["cocktail-highboy", "lounge-sofa", "string-lights", "canopy-10x10"] },
+    ],
+    activities: [
+      { name: "Then-and-now photo display", text: "Photos from the wedding or first day on the job next to today.", rentals: ["banquet-6ft"] },
+      { name: "Toasts and roasts", text: "A PA and two mics.", rentals: ["pa-system", "wireless-microphone"] },
+      { name: "Recreate the first dance", text: "A small dance floor for the couple and family.", rentals: ["dance-floor"] },
+      { name: "Memory jar", text: "Guests write a favourite memory on a card." },
+    ],
+    faqs: [
+      { q: "What are traditional anniversary colours?", a: "Silver for 25 years, ruby red for 40, gold for 50 and diamond white for 60. Linens, flatware and uplighting in those colours carry the theme." },
+    ],
+  },
+];
+
+export const getPartyType = (slug?: string) => partyTypes.find((t) => t.slug === slug);

@@ -11,6 +11,7 @@ import { coverImage, downloads } from "@/data/downloads";
 import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";
+import { ideaPath, ideas, PARTY_IDEAS_UPDATED, partyTypes, typePath } from "@/data/party-ideas";
 
 export const revalidate = 3600;
 
@@ -90,5 +91,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...f.slugs().map((s) => ({ url: `${site.url}${f.base}/${s}`, lastModified: GUIDES_UPDATED, priority: 0.5 })),
   ]);
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
-  return [...pages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  // Party ideas: hub, one page per party type, one per theme (with its scene image).
+  const sceneUrl = (s: string) => `${site.url}${styledImage(s)?.src ?? `/rentals/scenes/${s}.webp`}`;
+  const ideaPages = [
+    { url: `${site.url}/party-ideas`, priority: 0.8, lastModified: PARTY_IDEAS_UPDATED },
+    ...partyTypes.map((t) => ({ url: `${site.url}${typePath(t.slug)}`, priority: 0.75, lastModified: PARTY_IDEAS_UPDATED, images: [sceneUrl(t.scene)] })),
+    ...ideas.map((i) => ({ url: `${site.url}${ideaPath(i)}`, priority: 0.7, lastModified: PARTY_IDEAS_UPDATED, images: [sceneUrl(i.scene)] })),
+  ];
+  return [...pages, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }
