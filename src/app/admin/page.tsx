@@ -160,6 +160,7 @@ export default async function AdminPage(props: PageProps<"/admin">) {
         <div className="flex flex-wrap gap-3">
           <Link href="/admin/leads" className="btn-primary">Lead pipeline</Link>
           <Link href="/admin/vendors" className="btn-ghost">Vendors</Link>
+          <Link href="/admin/availability" className="btn-ghost">Availability</Link>
           <a href="/admin/export" className="btn-ghost">Download CSV</a>
         </div>
       </div>
@@ -199,6 +200,18 @@ export default async function AdminPage(props: PageProps<"/admin">) {
           <div>
             <h3 className="mb-3 font-medium">By form</h3>
             <Bars rows={d.forms} empty="No enquiries in this period." value />
+          </div>
+          <div>
+            <h3 className="mb-3 font-medium">By lead score</h3>
+            <Bars rows={d.byScore} empty="No scored enquiries yet (scores start with this release)." />
+          </div>
+          <div>
+            <h3 className="mb-3 font-medium">Form starts vs sends</h3>
+            <p className="text-sm text-muted">
+              {d.hasViews
+                ? `${d.formStarts} visitors started a form, ${d.leads.length} sent one${d.formStarts ? ` (${Math.round((d.leads.length / d.formStarts) * 100)}%)` : ""}. The gap is people who gave up mid-form.`
+                : "Needs the page_views table (Supabase) to count form starts."}
+            </p>
           </div>
         </div>
       </section>
@@ -247,11 +260,12 @@ export default async function AdminPage(props: PageProps<"/admin">) {
           <p className="mt-1 text-sm text-muted">The page each form was sent from, against the unique visitors who saw it.</p>
           <div className="mt-4">
             <Table
-              head={["Page", "Visitors", "Views", "Enquiries", "Conversion", "Quote value"]}
+              head={["Page", "Visitors", "Views", "Form starts", "Enquiries", "Conversion", "Quote value"]}
               rows={d.pages.map((p) => [
                 <a key={p.path} href={p.path} target="_blank" rel="noopener" className="text-accent [overflow-wrap:anywhere]">{p.path}</a>,
                 d.hasViews ? p.visitors.toLocaleString() : "–",
                 d.hasViews ? p.views.toLocaleString() : "–",
+                d.hasViews ? p.starts : "–",
                 p.enquiries,
                 pct(p.rate),
                 p.value ? money(p.value) : "–",

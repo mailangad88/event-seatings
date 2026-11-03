@@ -100,6 +100,22 @@ create table if not exists vendor_partners (
   updated_at timestamptz
 );
 
+-- Lead quality, consent and follow-up (added with the lead-gen playbook, Nov 2026). Safe to run again.
+-- email_consent / call_consent / sms_consent are recorded separately; opted_out_at stops all automated email.
+alter table leads
+  add column if not exists email_consent boolean,
+  add column if not exists call_consent boolean,
+  add column if not exists consent_at timestamptz,
+  add column if not exists opted_out_at timestamptz,
+  add column if not exists lead_score text,
+  add column if not exists lead_score_reasons text,
+  add column if not exists visitor_tz text,
+  add column if not exists pages_viewed text,
+  add column if not exists followup_step int not null default 0,
+  add column if not exists followup_last_at timestamptz;
+create index if not exists leads_email_idx on leads (lower(email));
+create index if not exists leads_created_idx on leads (created_at);
+
 -- Customer proposals and the booking fee (added with the Stripe Checkout flow). Safe to run again.
 -- The proposal page hides the rental partner's name until fee_status = 'paid'.
 alter table leads
@@ -115,3 +131,11 @@ alter table votes enable row level security;
 alter table leads enable row level security;
 alter table page_views enable row level security;
 alter table vendor_partners enable row level security;
+
+-- Availability calendar (/admin/availability): dates we can't take new events on. Safe to run again.
+create table if not exists blocked_dates (
+  date date primary key,
+  reason text,
+  created_at timestamptz not null default now()
+);
+alter table blocked_dates enable row level security;

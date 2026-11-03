@@ -1365,9 +1365,36 @@ How the files are built: `python3 scripts/build-spreadsheets.py` (xlsx + csv wit
 | `/blog/event-signage-wording-guide` | Event Signage Wording Guide: What to Say and Where | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `event-planning-kit` | Add a real photo or render; check rankings in Search Console after 30 days |
 | `/blog/planning-an-event-for-older-guests` | Planning an Event for Older Guests: Comfort and Access | 2026-11-02 | SVG figure, stat grid, table, steps, 7 FAQs (FAQPage), BlogPosting | `seating-chart-planner` | Add a real photo or render; check rankings in Search Console after 30 days |
 
+## Lead-gen playbook (2 Nov 2026, PR #31)
+
+| Page / area | Last touched | What changed | Remaining |
+|---|---|---|---|
+| Every page (phones) | 2026-11-02 | Sticky "Get a free quote / Call" bar | Watch form starts vs sends in /admin |
+| /api/leads, alerts, emails | 2026-11-02 | Disposable-email block, consent per channel, A/B/C score, richer owner alert, visitor confirmation, follow-ups (off until FOLLOWUPS_ENABLED), booking webhook, unsubscribe | Angad: set env vars in docs/lead-flow-setup.md, re-run supabase/schema.sql |
+| /solutions + 6 pages | 2026-11-02 | Problem pages: short answer, before/after, FAQ, one CTA | Fill search volume + difficulty from Search Console / Keyword Planner |
+| /compare + 3 pages | 2026-11-02 | Honest booking-model comparisons (no vendor names) | Named "vs" pages need Angad's call (vendors are partners) |
+| /tools/rental-calculator | 2026-11-02 | Guest count to priced list, opens quote builder | Add tents and dance floor sizing |
+| /glossary | 2026-11-02 | 31 rental terms with DefinedTermSet schema, linked to money pages | Add terms from real customer questions |
+| /blog/* | 2026-11-02 | "Ready to rent?" links to the matching money pages | |
+| IndexNow | 2026-11-02 | Key file + `npm run indexnow` | Run after the domain points at Vercel |
+
 ## 2026-11-03: Step-by-step event planner on /quote
 - /quote now opens a guided planner. It asks for the occasion, guests, style (simple, classic or lavish), setting (venue, backyard, tent or park), extras, date or month, and rental budget.
 - Each answer builds a picture-first recommended list with tap-to-adjust steppers and a reason for every line. Style cards show the live price for that guest count. A budget meter offers a one-tap "switch style and save".
 - The free personalised plan unlocks with name and email. It includes an assessment (lead time, Chicago weather, peak Saturdays, permits), a dated checklist with tick boxes, a floor plan sketch and a budget breakdown.
 - Unlocking saves the lead with all items: kind "quote" when a date or month is given, otherwise "quiz". The source is `planner:<event>-<style>`.
 - Logic lives in src/lib/event-plan.ts and the UI in src/components/planner/. The full catalog builder is still at /quote?browse=1, and ?items=, ?chairs= and ?look= links still open it. ?event=<id> starts the planner at that occasion.
+
+## 2026-11-03: Planner v2, downloadable plan, availability calendar
+- New planner order on /quote:
+  1. Occasion
+  2. Guests
+  3. Where: backyard, indoors, outdoor venue or tent, or park
+  4. Package: Simple, Signature or Lavish, each priced for the guest count and setting
+  5. Essentials: seating, tables, linens, tableware, glass
+  6. Add-ons: each shows its price for the guest count, and setting-specific needs are recommended
+  7. Date and details
+  8. Your plan
+- The plan downloads as a PDF (jsPDF, built in the browser). It has the list and prices, an assessment, space needs and a dated checklist. A "Book a free call" button and the next steps sit on the plan page.
+- /admin/availability: tap a day to block or open it, block a range with a private reason, and see enquiry and booked counts on each day. Blocked dates are stored in the `blocked_dates` table (or .data/availability.json locally) and served by /api/availability. The planner and quote form date pickers refuse blocked dates.
+- Owner: re-run supabase/schema.sql to create `blocked_dates`. Until then every date shows as open.

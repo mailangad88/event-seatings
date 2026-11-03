@@ -128,7 +128,11 @@ export function buildDashboard(allLeads: Lead[], views: PageView[], rangeDays: n
   const inRange = (iso: string) => !since || new Date(iso) >= since;
   const leads = allLeads.filter((l) => inRange(l.created_at));
   const prevLeads = since && prevSince ? allLeads.filter((l) => new Date(l.created_at) >= prevSince && new Date(l.created_at) < since) : undefined;
-  const rangeViews = views.filter((v) => inRange(v.created_at));
+  // Form starts are stored as page views on "/__form-start/<page>" (see /api/views); keep them out of visit counts.
+  const formStartPrefix = "/__form-start";
+  const rangeStarts = views.filter((v) => v.path.startsWith(formStartPrefix) && inRange(v.created_at));
+  const rangeViews = views.filter((v) => !v.path.startsWith("/__") && inRange(v.created_at));
+  views = views.filter((v) => !v.path.startsWith("/__"));
 
   const quotes = leads.filter((l) => l.kind === "quote");
   const priced = quotes.filter((l) => (l.quote_subtotal ?? 0) > 0);
@@ -192,6 +196,14 @@ export function buildDashboard(allLeads: Lead[], views: PageView[], rangeDays: n
     if (!p) continue;
     pageLeads.set(p, [...(pageLeads.get(p) ?? []), l]);
   }
+  // Unique visitors who started a form on each page (typed into any field).
+  const pageStarts = new Map<string, Set<string>>();
+  for (const v of rangeStarts) {
+    const p = v.path.slice(formStartPrefix.length) || "/";
+    const set = pageStarts.get(p) ?? new Set();
+    set.add(v.visitor_id);
+    pageStarts.set(p, set);
+  }
   const pages = [...new Set([...pageViews.keys(), ...pageLeads.keys()])]
     .map((path) => {
       const ls = pageLeads.get(path) ?? [];
@@ -201,6 +213,7 @@ export function buildDashboard(allLeads: Lead[], views: PageView[], rangeDays: n
         views: pageViews.get(path) ?? 0,
         visitors: vis,
         enquiries: ls.length,
+        starts: pageStarts.get(path)?.size ?? 0,
         value: ls.reduce((s, l) => s + (l.quote_subtotal ?? 0), 0),
         rate: vis ? ls.length / vis : undefined,
       };
@@ -288,6 +301,8 @@ export function buildDashboard(allLeads: Lead[], views: PageView[], rangeDays: n
     series,
     weekly: series !== days,
     byKind: tally(leads, (l) => kindLabels[l.kind] ?? l.kind),
+    byScore: tally(leads, (l) => (l.lead_score ? `${l.lead_score} lead` : undefined)),
+    formStarts: new Set(rangeStarts.map((v) => v.visitor_id)).size,
     forms: tally(leads, formName, (l) => l.quote_subtotal ?? 0),
     formLinks: tally(leads.filter((l) => formDetail(l)), (l) => `${formName(l)} · ${formDetail(l)}`),
     channels,
