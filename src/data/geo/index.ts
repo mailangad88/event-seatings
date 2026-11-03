@@ -28,4 +28,4 @@ export function milesFrom(a: { lat: number; lng: number }, b: { lat: number; lng
 }
 
 // Pages log: bump `updated` when a page's content changes (also mirrored in SITE_LOG.md).
-export const geoContentUpdated = "2026-10-31";
+export const geoContentUpdated = "2026-11-02";

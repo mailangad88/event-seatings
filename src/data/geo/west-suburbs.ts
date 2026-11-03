@@ -592,7 +592,7 @@ export const westSuburbs: Location[] = [
     story: [
       "Downers Grove mixes a walkable downtown and Metra stops on the BNSF line with office parks along I-88 and Butterfield Road. That combination makes it a natural spot for both family events and corporate gatherings, sometimes on the same weekend.",
       "The Morton Arboretum sits just north of town, and its gardens and trees are a favorite setting for photos and nature lovers. In the neighborhoods, deep lots on the north side and well-kept homes near downtown host graduation parties, birthday celebrations and backyard weddings.",
-      "For corporate clients, we'll talk through loading docks, building rules and certificates of insurance. For families, we'll ask about your yard and your timeline. Either way, the quote itemizes chairs, delivery and setup.",
+      "For corporate clients, we'll talk through loading docks and building rules, and we'll be upfront that we can't issue certificates of insurance yet. For families, we'll ask about your yard and your timeline. Either way, the quote itemizes chairs, delivery and setup.",
     ],
     settings: [
       {
@@ -640,7 +640,7 @@ export const westSuburbs: Location[] = [
       },
       {
         q: "Can you deliver chairs to an office building in Downers Grove?",
-        a: "Yes, we can work with building rules like loading dock schedules and certificates of insurance. Send us the building's vendor requirements with your quote request. We'll plan the delivery around them.",
+        a: "We can work with building rules like loading dock schedules. We can't issue certificates of insurance yet, so if your building requires one, check before you book. Send us the building's vendor requirements with your quote request and we'll plan around them.",
       },
       {
         q: "Can I rent chairs for an event at the Morton Arboretum?",
@@ -670,11 +670,11 @@ export const westSuburbs: Location[] = [
       "Rent event chairs in Oak Brook, IL for country club weddings, corporate HQ events and estate galas. Louis, ghost and shell chairs. Request a 2027 quote.",
     headline: "Refined seating for *Oak Brook* estates and HQs",
     intro:
-      "We rent event chairs in Oak Brook for corporate headquarters, country club events and private estates, delivered from our base in St. Charles via I-88. Our 13 styles include Louis medallion chairs and ghost chairs for galas and shell chairs for corporate meetings. A quick planning call is the fastest way to line up COIs and timing; or simply request a quote.",
+      "We rent event chairs in Oak Brook for corporate headquarters, country club events and private estates, delivered from our base in St. Charles via I-88. Our 13 styles include Louis medallion chairs and ghost chairs for galas and shell chairs for corporate meetings. A quick planning call is the fastest way to line up access and timing; or simply request a quote.",
     story: [
       "Oak Brook is known for its corporate headquarters, upscale shopping and polished residential neighborhoods. Office campuses along 22nd Street and I-88 host company events, product launches and holiday parties, while private estates and country clubs nearby host weddings and fundraisers.",
       "Celebrations here tend to be formal and detailed. Country club weddings, charity galas and milestone parties on large estates often call for chairs that match a carefully planned look, sometimes with a separate style for the ceremony, dinner and lounge areas.",
-      "Corporate and estate events usually come with clear rules: certificates of insurance, loading dock times, security desks and private drives. We'll gather those details on a planning call, and your quote will itemize chairs, delivery and setup so your planner or facilities team can approve it quickly.",
+      "Corporate and estate events usually come with clear rules: loading dock times, security desks, private drives and often a vendor certificate of insurance, which we can't issue yet. We'll gather those details on a planning call, and your quote will itemize chairs, delivery and setup so your planner or facilities team can approve it quickly.",
     ],
     settings: [
       {
@@ -695,7 +695,7 @@ export const westSuburbs: Location[] = [
       },
     ],
     logistics: [
-      "Send your venue's vendor requirements, including COI details, with your quote request so we can prepare them early.",
+      "Send your venue's vendor requirements with your quote request. If it requires a certificate of insurance, note that we can't issue one yet.",
       "Corporate events often need setup before business hours. We'll confirm the window with your facilities team.",
       "Estate driveways may be gated. Share the gate code or a contact so the crew can get in on time.",
       "For multi-area events, we can label chairs by zone so ceremony, dinner and lounge seating land in the right place.",
@@ -722,7 +722,7 @@ export const westSuburbs: Location[] = [
       },
       {
         q: "Can you provide a certificate of insurance for a corporate venue?",
-        a: "Many corporate buildings and clubs require one. Send us the venue's requirements with your quote request and we'll work through them before the event. Ask early so there's time for any back-and-forth.",
+        a: "Not yet. Many corporate buildings and clubs require one from every vendor, so check your venue's requirements before you book. We plan to offer certificates as we grow, and we'll always tell you up front what we can and can't provide.",
       },
       {
         q: "Can I bring outside chairs into a country club?",

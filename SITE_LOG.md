@@ -931,7 +931,8 @@ Every page has: chair-trio visual, seating-math tiles, 4 pain points with soluti
 
 ## Local pages: Open items across these pages
 
-- **Confirm before launch:** a few FAQ answers describe services the owner should confirm are offered: providing a certificate of insurance (COI) for high-rise and hotel venues, separate deliveries for multi-day events, wiping chairs down and protecting floors on winter deliveries, and setup by our team. Edit `src/data/geo/*.ts` if any of these aren't offered.
+- **COI (2026-11-02):** owner confirmed we don't issue certificates of insurance yet. Area pages, event pages and /booking-promise now say so plainly and tell hosts to check venue rules first. Revisit once we can offer COIs.
+- **Confirm before launch:** a few FAQ answers describe services the owner should confirm are offered: separate deliveries for multi-day events, wiping chairs down and protecting floors on winter deliveries, and setup by our team. Edit `src/data/geo/*.ts` if any of these aren't offered.
 - **Booking link:** set `NEXT_PUBLIC_BOOKING_URL` (Calendly or Cal.com) so "Schedule a planning call" opens a calendar. Until then it goes to /quote.
 - **Brand name:** pages use `site.name` from `src/lib/site.ts`, so the rename to beyondchivary carries through automatically.
 - **Next pages to add:** more suburbs (Lombard, Elmhurst, Western Springs, Tinley Park, Plainfield, Oswego, Libertyville, Northbrook, Deerfield, Palatine) and more neighborhoods (Bridgeport, Uptown, Rogers Park, Bronzeville, Little Italy, Old Town).
