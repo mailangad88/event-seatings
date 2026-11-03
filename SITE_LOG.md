@@ -52,6 +52,12 @@ All built with free, open-source libraries (React Email, MiniSearch, SunCalc) an
 - **Owner setup**: re-run `supabase/schema.sql` (new `reviews` and `referrers` tables, `leads.referral_code`; leads still save before you do). Optional env: `NEXT_PUBLIC_PLANNING_ASSISTANT=on`, `REFERRAL_REWARD`, `REVIEW_LINK_SECRET`.
 - Remaining: link /reviews, /refer and the two tools from the footer and /tools hub (owned by the UX and tools threads); add party ideas to the assistant; ask happy customers for reviews once events happen.
 
+## Changes in this release (2026-11-03): repeat-visit planning hub, batch 5
+
+- **Idea board.** A heart button (`src/components/myevents/SaveIdea.tsx`) on every setup and product picture in `/gallery` saves it to a "Saved ideas" board in `/my-events` (browser storage, `bc-ideas-v1`), with links back to the rental item. `/gallery` Last touched 2026-11-03.
+- `/ideas` now leads each month's reading list with the new month guide (`/blog/planning-an-event-in-chicago-in-<month>`, November: `/blog/planning-a-november-event-chicago`) and links it from every month card.
+- Remaining: hearts on `/looks` and rental item pages; let a share link carry saved ideas.
+
 ## Changes in this release (2026-11-03): month-by-month and venue-type planning guides
 
 Angad asked for guides for people planning events in each month (what to watch out for) and for booking barns, halls and convention centers around Chicago.
