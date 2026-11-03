@@ -52,7 +52,8 @@ export async function sendDownloadEmail(lead: Lead, title: string, files: { labe
   const key = process.env.RESEND_API_KEY;
   const from = process.env.NOTIFY_FROM;
   if (!key || !from) return;
-  const hi = lead.name ? `Hi ${lead.name},` : "Hi,";
+  // Fixed greeting: the name comes from an unauthenticated form, so never echo it into an email to an arbitrary address.
+  const hi = "Hi,";
   const text = [
     hi,
     "",

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { site } from "@/lib/site";
 
 // Free lead magnet: a seating calculator that shows chair and table counts
 // instantly, then unlocks a personalized, printable planning checklist in

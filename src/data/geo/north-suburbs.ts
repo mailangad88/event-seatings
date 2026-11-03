@@ -203,7 +203,7 @@ export const northSuburbs: Location[] = [
       },
     ],
     logistics: [
-      "Hotels and convention venues commonly require a certificate of insurance and a scheduled dock time. Check with your event coordinator and loop us in early.",
+      "Hotels and convention venues commonly require a certificate of insurance and a scheduled dock time. We can't issue certificates of insurance yet, so check with your event coordinator before you book and loop us in early.",
       "Tollway and Woodfield-area traffic is heavy on Friday afternoons and during the holiday shopping season, so we build in buffer time.",
       "For multi-day celebrations like South Asian weddings, tell us each event's venue and timing. Chairs can sometimes move between events if the schedule allows.",
       "Corporate events often need chairs gone the same night. Share your venue's strike deadline when you request a quote.",
@@ -226,7 +226,7 @@ export const northSuburbs: Location[] = [
     faqs: [
       {
         q: "Can you deliver chairs to a Schaumburg hotel or convention center?",
-        a: "Yes, and we will coordinate with your venue's event staff. Many large venues require a certificate of insurance and a booked loading time, so ask your coordinator for their vendor requirements early.",
+        a: "Yes, and we will coordinate with your venue's event staff. Many large venues require a certificate of insurance and a booked loading time. We can't issue certificates of insurance yet, so ask your coordinator for their vendor requirements before you book.",
       },
       {
         q: "My banquet hall already has chairs. Why would I rent?",

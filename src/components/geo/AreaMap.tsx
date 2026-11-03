@@ -4,17 +4,20 @@ import { homeBase, locationPath, locations, type Location } from "@/data/geo";
 // A stylised Chicagoland map: Lake Michigan, the Fox River, every area we serve,
 // and a line from our St. Charles base to the area on the current page.
 const W = 600;
-const H = 700;
-const LNG0 = -88.45;
+const H = 900;
+// Bounds cover the Wisconsin line (Antioch, Harvard) down to Kankakee and west to DeKalb.
+const LNG0 = -88.8;
 const LNG1 = -87.45;
-const LAT0 = 41.45;
-const LAT1 = 42.3;
+const LAT0 = 41.05;
+const LAT1 = 42.52;
 
 const px = (lng: number) => ((lng - LNG0) / (LNG1 - LNG0)) * W;
 const py = (lat: number) => ((LAT1 - lat) / (LAT1 - LAT0)) * H;
 const pt = (lng: number, lat: number) => `${px(lng).toFixed(1)},${py(lat).toFixed(1)}`;
 
 const shore: [number, number][] = [
+  [-87.8, 42.52],
+  [-87.81, 42.42],
   [-87.83, 42.3],
   [-87.82, 42.24],
   [-87.78, 42.18],
@@ -34,6 +37,8 @@ const shore: [number, number][] = [
 const lake = `M ${pt(...shore[0])} ${shore.map((s) => `L ${pt(...s)}`).join(" ")} L ${W},${py(41.62)} L ${W},0 Z`;
 
 const fox: [number, number][] = [
+  [-88.2, 42.52],
+  [-88.2, 42.4],
   [-88.23, 42.3],
   [-88.27, 42.1],
   [-88.29, 42.04],
@@ -48,7 +53,7 @@ const fox: [number, number][] = [
 const river = `M ${fox.map((s) => pt(...s)).join(" L ")}`;
 
 export function AreaMap({ active, className = "" }: { active?: Location; className?: string }) {
-  const labelled = new Set(["chicago", "naperville", "evanston", "schaumburg", "aurora", "joliet", "lake-forest", "elgin"]);
+  const labelled = new Set(["chicago", "naperville", "evanston", "schaumburg", "aurora", "joliet", "lake-forest", "elgin", "waukegan", "crystal-lake", "dekalb", "kankakee"]);
   return (
     <figure className={className}>
       <svg
@@ -73,11 +78,11 @@ export function AreaMap({ active, className = "" }: { active?: Location; classNa
         <rect width={W} height={H} fill="var(--surface)" />
         <rect width={W} height={H} fill="url(#map-grid)" />
         <path d={lake} fill="url(#map-lake)" stroke="var(--gold)" strokeOpacity="0.5" strokeWidth="1.2" />
-        <text x={px(-87.52)} y={py(42.02)} fill="var(--muted)" fontSize="15" fontStyle="italic" fontFamily="var(--font-display)" letterSpacing="3">
+        <text x={px(-87.52)} y={py(42.3)} transform={`rotate(90 ${px(-87.52)} ${py(42.3)})`} fill="var(--muted)" fontSize="15" fontStyle="italic" fontFamily="var(--font-display)" letterSpacing="3">
           Lake Michigan
         </text>
         <path d={river} fill="none" stroke="#6f8f9b" strokeWidth="2" strokeDasharray="1 5" strokeLinecap="round" opacity="0.9" />
-        <text x={px(-88.44)} y={py(42.18)} fill="var(--muted)" fontSize="12" fontStyle="italic" fontFamily="var(--font-display)">
+        <text x={px(-88.19)} y={py(42.45)} fill="var(--muted)" fontSize="12" fontStyle="italic" fontFamily="var(--font-display)">
           Fox River
         </text>
 
@@ -94,7 +99,7 @@ export function AreaMap({ active, className = "" }: { active?: Location; classNa
           />
         )}
 
-        {locations.map((l) => {
+        {locations.filter((l) => l.kind !== "county").map((l) => {
           const on = active?.slug === l.slug;
           const x = px(l.lng);
           const y = py(l.lat);
@@ -108,7 +113,7 @@ export function AreaMap({ active, className = "" }: { active?: Location; classNa
                     <circle cx={x} cy={y} r="15" fill="none" stroke="var(--gold)" strokeOpacity="0.6" />
                   </>
                 )}
-                <circle cx={x} cy={y} r={on ? 6.5 : l.kind === "neighborhood" ? 2.6 : 4} fill={on ? "var(--gold)" : "var(--ink)"} opacity={on ? 1 : 0.7} />
+                <circle cx={x} cy={y} r={on ? 6.5 : l.kind === "neighborhood" ? 2 : 3} fill={on ? "var(--gold)" : "var(--ink)"} opacity={on ? 1 : 0.7} />
                 {(on || (!active && labelled.has(l.slug))) && (
                   <text
                     x={x + (l.lng > -87.75 ? -12 : 12)}

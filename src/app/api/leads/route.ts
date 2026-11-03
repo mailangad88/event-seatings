@@ -10,6 +10,34 @@ import { addLead, trackingFields, type Lead, type LeadKind, type NewLead } from 
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
 
+// Best-effort abuse limit per server instance: 8 submissions per IP per 10 minutes, and one download
+// email per address per day. A Vercel Firewall rate-limit rule on /api/leads is the durable version.
+const hits = new Map<string, number[]>();
+const emailed = new Map<string, number>();
+function tooMany(ip: string) {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < 10 * 60_000);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) hits.clear();
+  return recent.length > 8;
+}
+function firstDownloadToday(email: string) {
+  const key = email.toLowerCase();
+  const last = emailed.get(key);
+  if (last && Date.now() - last < 24 * 3600_000) return false;
+  if (emailed.size > 5000) emailed.clear();
+  emailed.set(key, Date.now());
+  return true;
+}
+
+// Real calendar date check (the regex alone lets 2026-02-31 through, which the database then rejects).
+const validDate = (d: string) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) return false;
+  const dt = new Date(`${d}T00:00:00Z`);
+  return !Number.isNaN(dt.getTime()) && dt.toISOString().slice(0, 10) === d;
+};
+
 const str = (v: unknown, max = 200) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined;
 
@@ -20,6 +48,10 @@ export async function POST(request: Request) {
   }
   // Honeypot: real visitors never see or fill this field.
   if (body.website) return Response.json({ ok: true });
+  const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
+  if (tooMany(ip)) {
+    return Response.json({ error: "Too many requests. Please try again in a few minutes." }, { status: 429 });
+  }
 
   const kind = body.kind as LeadKind;
   const email = str(body.email, 254);
@@ -35,7 +67,7 @@ export async function POST(request: Request) {
     email,
     name: str(body.name),
     phone: str(body.phone, 40),
-    event_date: eventDate && /^\d{4}-\d{2}-\d{2}$/.test(eventDate) ? eventDate : undefined,
+    event_date: eventDate && validDate(eventDate) ? eventDate : undefined,
     event_type: str(body.event_type, 60),
     guest_count: Number.isFinite(guests) && guests > 0 ? Math.min(Math.round(guests), 5000) : undefined,
     city: str(body.city, 100),
@@ -122,7 +154,7 @@ export async function POST(request: Request) {
     Promise.allSettled([
       syncToCrm(saved),
       notifyOwner(saved),
-      ...(download ? [sendDownloadEmail(saved, download.title, download.files)] : []),
+      ...(download && firstDownloadToday(saved.email) ? [sendDownloadEmail(saved, download.title, download.files)] : []),
     ]),
   );
   return Response.json({ ok: true });
