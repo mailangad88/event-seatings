@@ -1,15 +1,27 @@
 import Link from "next/link";
-import { rentalCategories } from "@/lib/nav";
+import { footerExtras, menus, rentalCategories } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { Logo } from "./Header";
 import { Icon } from "./ui/Icon";
 import { WaitlistForm } from "./WaitlistForm";
 
+type FooterSection = { title: string; links: { href: string; label: string }[]; more?: { href: string; label: string } };
+
+const sections: FooterSection[] = [
+  {
+    title: "Rentals",
+    links: rentalCategories.slice(0, 8).map((c) => ({ href: `/rentals/${c.id}`, label: c.name })),
+    more: { href: "/rentals", label: "All rentals" },
+  },
+  ...menus.filter((m) => m.id !== "rentals").flatMap((m) => m.groups),
+  footerExtras,
+];
+
 export function Footer() {
   return (
     <footer className="tone-dark mt-32 bg-espresso">
-      <div className="container-x grid grid-cols-2 gap-x-6 gap-y-12 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div className="col-span-2 lg:col-span-1">
+      <div className="container-x grid gap-x-10 gap-y-12 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)]">
+        <div>
           <Logo light />
           <p className="mt-5 max-w-sm text-sm leading-7 text-muted">
             One place to price and book everything for your event: chairs, tables, linens, dinnerware, tents and more
@@ -19,70 +31,7 @@ export function Footer() {
             <p className="mb-2 text-sm font-medium">Planning tips and seasonal offers</p>
             <WaitlistForm source="footer" dark />
           </div>
-        </div>
-        <div>
-          <p className="eyebrow">Rentals</p>
-          <ul className="mt-3 space-y-0.5 text-sm text-muted">
-            {rentalCategories.slice(0, 8).map((c) => (
-              <li key={c.id}>
-                <Link href={`/rentals/${c.id}`} className="inline-block py-1.5 transition-colors hover:text-ink">{c.name}</Link>
-              </li>
-            ))}
-            <li>
-              <Link href="/rentals" className="inline-block py-1.5 font-medium text-ink hover:text-gold">All rentals →</Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <p className="eyebrow">Plan</p>
-          <ul className="mt-3 space-y-0.5 text-sm text-muted">
-            {[
-              ["/quote", "Build a quote"],
-              ["/packages", "Ready-made packages"],
-              ["/book", "Book a free call"],
-              ["/how-it-works", "How it works"],
-              ["/booking-promise", "Payments & Booking Promise"],
-              ["/events", "Events we plan"],
-              ["/party-ideas", "Party ideas & themes"],
-              ["/chair-rentals", "Areas we serve"],
-              ["/ideas", "Event ideas by month"],
-              ["/my-events", "My events: countdown & checklist"],
-              ["/vendor-guide", "Vendor guide: who to hire"],
-              ["/tools/event-weather", "Event weather & sunset"],
-              ["/blog", "Planning guides"],
-              ["/tools", "Free planning tools"],
-              ["/countdown", "Event countdown"],
-              ["/tools/rental-calculator", "Rental calculator"],
-              ["/solutions", "Rental problems solved"],
-              ["/compare", "Compare your options"],
-              ["/glossary", "Rental glossary"],
-              ["/downloads", "Free planning kits & spreadsheets"],
-              ["/quiz", "Style quiz"],
-              ["/seating-planner", "Seating planner"],
-              ["/answers", "Quick answers"],
-              ["/looks", "The Look Book"],
-              ["/gallery", "3D gallery"],
-              ["/faq", "FAQ"],
-              ["/about", "About us"],
-              ["/press", "Press"],
-              ["/reviews", "Reviews"],
-              ["/refer", "Refer a friend"],
-              ["/how-we-work", "How we work"],
-              ["/partners", "For rental companies"],
-              ["/partners/onboard", "Rental company sign-up"],
-              ["/partners/faq", "Rental partner FAQ"],
-              ["/vendor-listings", "Vendor listings & opt-out"],
-            ].map(([href, label]) => (
-              <li key={href}>
-                <Link href={href} className="inline-block py-1.5 transition-colors hover:text-ink">{label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="col-span-2 lg:col-span-1">
-          <p className="eyebrow">Service area</p>
-          <p className="mt-4 text-sm leading-7 text-muted">{site.serviceArea.join(" · ")} and surrounding suburbs</p>
-          <ul className="mt-6 space-y-1 text-sm">
+          <ul className="mt-8 space-y-1 text-sm">
             <li>
               <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2 py-1.5 break-all hover:text-gold">
                 <Icon name="chat" size={16} className="text-gold" /> {site.email}
@@ -96,29 +45,39 @@ export function Footer() {
               </li>
             )}
           </ul>
-          <p className="mt-4 flex gap-5 text-sm text-muted">
+          <p className="mt-2 flex gap-5 text-sm text-muted">
             <a href={site.instagram} className="inline-block py-1.5 hover:text-ink">Instagram</a>
             <a href={site.pinterest} className="inline-block py-1.5 hover:text-ink">Pinterest</a>
           </p>
         </div>
-      </div>
-      <div className="border-t border-line">
-        <nav aria-label="Planning guides" className="container-x flex flex-wrap gap-x-6 gap-y-1 py-5 text-xs text-muted">
-          <span className="font-medium text-ink">Planning guides:</span>
-          {[
-            ["/seating-layouts", "Seating layouts"],
-            ["/room-size-guides", "Room sizes"],
-            ["/table-seating-guides", "Table seating"],
-            ["/chair-comparisons", "Chair comparisons"],
-            ["/rental-comparisons", "Rental comparisons"],
-            ["/chair-rental-cost", "Chair rental cost"],
-            ["/data/chicago-rental-prices", "Chicago rental price index"],
-            ["/chair-fit", "Chair fit"],
-            ["/chicago-event-seasons", "Chicago event seasons"],
-          ].map(([href, label]) => (
-            <Link key={href} href={href} className="inline-block py-1.5 hover:text-ink">{label}</Link>
+
+        {/* Same sections as the header menus, so a page lives in one place everywhere. */}
+        <nav aria-label="Footer" className="columns-2 gap-x-8 sm:columns-3 xl:columns-4">
+          {sections.map((sec) => (
+            <div key={sec.title} className="mb-9 break-inside-avoid">
+              <p className="eyebrow">{sec.title}</p>
+              <ul className="mt-3 space-y-0.5 text-sm text-muted">
+                {sec.links.map((l) => (
+                  <li key={l.href + l.label}>
+                    <Link href={l.href} className="inline-block py-1 leading-snug transition-colors hover:text-ink">{l.label}</Link>
+                  </li>
+                ))}
+                {sec.more && (
+                  <li>
+                    <Link href={sec.more.href} className="inline-block py-1 font-medium text-ink hover:text-gold">{sec.more.label} →</Link>
+                  </li>
+                )}
+              </ul>
+            </div>
           ))}
         </nav>
+      </div>
+      <div className="border-t border-line">
+        <div className="container-x flex flex-wrap items-baseline gap-x-2 gap-y-1 py-5 text-xs leading-6 text-muted">
+          <span className="inline-flex items-center gap-1.5 font-medium text-ink"><Icon name="pin" size={14} className="text-gold" /> Service area:</span>
+          <span>{site.serviceArea.join(" · ")} and surrounding suburbs.</span>
+          <Link href="/chair-rentals" className="font-medium text-ink underline decoration-gold underline-offset-4 hover:text-gold">See all areas</Link>
+        </div>
       </div>
       <div className="border-t border-line">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-muted sm:flex-row">

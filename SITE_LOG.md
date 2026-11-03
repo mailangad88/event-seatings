@@ -37,6 +37,14 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): menus and footer in clear sections
+
+- Header: every top menu (Rentals, Plan & book, Ideas, Guides, Free tools, About) now opens a picture dropdown with labelled groups, icons and a one-line note per link. Rentals is split into Seating & tables, Table settings & food, Tents, floors & power, Fun & decor.
+- Phone menu: one folding section per menu, with the same groups.
+- Footer: the long "Plan" column is now short labelled sections (Get started, Your event, Find ideas, See it first, Planning guides, Quick answers, Costs & sizes, Calculators, Plans & checklists, About us, For rental companies, Layouts & sizing). Service area moved to a strip above the copyright line.
+- One source: `menus` in src/lib/nav.ts feeds header, phone menu and footer. Add a page there and it shows up in the right section everywhere.
+- Remaining: /tools and /blog hubs were already grouped (by problem and by topic); revisit if new pages pile up.
+
 ## Changes in this release (2026-11-03): link-worthy assets for backlinks and press
 
 - New `/data/chicago-rental-prices`: Chicago Event Rental Price Index. 26 like-for-like items from 6 Chicago-area rental companies' published prices (no company names), gap chart, full table, method, suggested credit and link code, Dataset + FAQ schema. Data in `src/data/price-index.ts`.
