@@ -120,6 +120,18 @@ p, li, dd, figcaption {
   color: var(--bg);
 }
 
+/* Checkboxes and radios: brand colour and an 18px box, so consent ticks are easy to hit on phones. */
+@layer base {
+  /* In the base layer so utilities (sr-only, accent-*) still win. */
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--gold);
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+  }
+}
+
 :focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 3px;
