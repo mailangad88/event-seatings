@@ -2,6 +2,9 @@
 // First touch is kept for 90 days (the click that discovered us); last touch is the visit that converted.
 // Everything lives in the visitor's own browser until they submit a form.
 
+import { trackingAllowed } from "./consent";
+import { journeyMaxClicks, journeyMaxPages, type Journey } from "./journey";
+
 export const attributionKeys = [
   "utm_source",
   "utm_medium",
@@ -81,8 +84,11 @@ export function attributionFields(): Record<string, string> {
   };
   pick(first, "first_");
   pick(last, "");
-  const trail = readTrail();
-  if (trail.length) out.pages_viewed = trail.join(" > ").slice(0, 1500);
+  const journey = readJourneyForForm();
+  if (journey) {
+    out.pages_viewed = journey.pages.map((p) => p.path).join(" > ").slice(0, 1500);
+    out.journey = JSON.stringify(journey);
+  }
   try {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (tz) out.visitor_tz = tz.slice(0, 60);
@@ -92,29 +98,74 @@ export function attributionFields(): Record<string, string> {
   return out;
 }
 
-// The last pages this visitor looked at (this session and earlier ones), oldest first. Sent with each lead so the
-// owner alert can say what they read before asking, e.g. "/rentals/chairs > /quote".
-const trailKey = "lead-trail";
-const trailMax = 15;
+// The visitor's path through the site (lib/journey.ts): first visit, visit count and the last 30 pages with titles
+// and times. Stays in this browser until a form is sent. Not kept when the visitor said no in the tracking notice.
+const journeyKey = "lead-journey";
+const newVisitAfterMs = 30 * 60_000;
+type StoredJourney = Journey & { last_at?: string };
 
-function readTrail(): string[] {
+function readJourney(): StoredJourney | undefined {
   try {
-    const t = JSON.parse(localStorage.getItem(trailKey) ?? "[]");
-    return Array.isArray(t) ? t.filter((x) => typeof x === "string") : [];
+    const j = JSON.parse(localStorage.getItem(journeyKey) ?? "null") as StoredJourney | null;
+    return j && Array.isArray(j.pages) ? j : undefined;
   } catch {
-    return [];
+    return undefined;
   }
 }
 
+// Strips the " | Beyond Chiavari" suffix so the owner sees what the page is about.
+const pageTitle = () => document.title.replace(/\s*\|\s*Beyond Chiavari\s*$/i, "").trim().slice(0, 140) || undefined;
+
 export function recordPage(path: string) {
-  if (typeof window === "undefined" || path.startsWith("/admin")) return;
-  const trail = readTrail();
-  if (trail[trail.length - 1] === path) return;
+  if (typeof window === "undefined" || path.startsWith("/admin") || !trackingAllowed()) return;
+  const now = new Date();
+  const j: StoredJourney = readJourney() ?? { first_seen: now.toISOString(), visits: 0, page_views: 0, pages: [] };
+  const last = j.pages[j.pages.length - 1];
+  const newVisit = !j.last_at || now.getTime() - new Date(j.last_at).getTime() > newVisitAfterMs;
+  if (newVisit) j.visits += 1;
+  j.last_at = now.toISOString();
+  if (!newVisit && last?.path === path) return save(j);
+  j.page_views += 1;
+  j.pages = [...j.pages, { path: path.slice(0, 200), at: now.toISOString(), visit: j.visits }].slice(-journeyMaxPages);
+  save(j);
+  // The App Router sets the new page's <title> just after navigation, so read it a moment later.
+  setTimeout(() => {
+    const cur = readJourney();
+    const entry = cur?.pages[cur.pages.length - 1];
+    if (!cur || !entry || entry.path !== path.slice(0, 200) || entry.title) return;
+    entry.title = pageTitle();
+    save(cur);
+  }, 700);
+
+  function save(v: StoredJourney) {
+    try {
+      localStorage.setItem(journeyKey, JSON.stringify(v));
+    } catch {}
+  }
+}
+
+// Remembers a click on a link or button (its visible text and where it points, never anything typed into a form).
+export function recordClick(label: string, href: string | undefined, path: string) {
+  if (typeof window === "undefined" || path.startsWith("/admin") || !trackingAllowed()) return;
+  const j = readJourney();
+  if (!j) return;
+  const clean = label.replace(/\s+/g, " ").trim().slice(0, 80);
+  if (!clean) return;
+  const at = new Date().toISOString();
+  const last = j.clicks?.[j.clicks.length - 1];
+  if (last && last.label === clean && last.path === path && Date.now() - new Date(last.at).getTime() < 3000) return;
+  j.clicks = [...(j.clicks ?? []), { label: clean, href: href?.slice(0, 200), path: path.slice(0, 200), at }].slice(-journeyMaxClicks);
   try {
-    localStorage.setItem(trailKey, JSON.stringify([...trail, path.slice(0, 120)].slice(-trailMax)));
+    localStorage.setItem(journeyKey, JSON.stringify(j));
   } catch {}
 }
 
+export function readJourneyForForm(): Journey | undefined {
+  if (!trackingAllowed()) return undefined;
+  const j = readJourney();
+  if (!j?.pages.length) return undefined;
+  return { first_seen: j.first_seen, visits: j.visits, page_views: j.page_views, pages: j.pages, clicks: j.clicks };
+}
 
 // Referral links (/refer) look like beyondchiavari.com/?ref=priya-7k2m. The code is kept for 90 days and sent
 // with every lead as referral_code. The latest friend's link wins if someone clicks two.

@@ -38,6 +38,7 @@ export function Footer() {
           <ul className="mt-3 space-y-0.5 text-sm text-muted">
             {[
               ["/quote", "Build a quote"],
+              ["/packages", "Ready-made packages"],
               ["/book", "Book a free call"],
               ["/how-it-works", "How it works"],
               ["/booking-promise", "Payments & Booking Promise"],
@@ -66,7 +67,10 @@ export function Footer() {
               ["/press", "Press"],
               ["/reviews", "Reviews"],
               ["/refer", "Refer a friend"],
+              ["/how-we-work", "How we work"],
               ["/partners", "For rental companies"],
+              ["/partners/onboard", "Rental company sign-up"],
+              ["/partners/faq", "Rental partner FAQ"],
               ["/vendor-listings", "Vendor listings & opt-out"],
             ].map(([href, label]) => (
               <li key={href}>

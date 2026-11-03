@@ -63,7 +63,7 @@ export default function PrivacyPage() {
           You can ask us to access, correct or delete your information, or unsubscribe from emails at any time by
           writing to <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
-        <h2>Cookies and local storage</h2>
+        <h2 id="cookies">Cookies and local storage</h2>
         <p>
           We store a random visitor identifier in your browser&apos;s local storage so your saved chairs persist, and a
           note of how you arrived (for example &ldquo;google / organic&rdquo; and your first page), which is only sent
@@ -71,6 +71,13 @@ export default function PrivacyPage() {
           sets first-party cookies, and you can opt out with Google&apos;s{" "}
           <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer">browser add-on</a>. We don&apos;t
           use advertising cookies.
+        </p>
+        <p>
+          We also keep a short list of the pages you open on this site, when you opened them, and the links and buttons
+          you click (never what you type). It stays in your browser. If you send us a form, it comes along so we can
+          answer with what you were looking at, along with your rough location from your internet address and the
+          kind of device you used. You can say no in the notice at the bottom of the page, which clears the list and
+          turns off Google Analytics. If your browser sends a Global Privacy Control signal, we treat that as a no.
         </p>
         <h2>Chat</h2>
         <p>

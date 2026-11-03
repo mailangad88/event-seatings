@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChairArt } from "@/components/ChairArt";
 import { Reveal } from "@/components/Reveal";
+import { ReadyPackages } from "@/components/ReadyPackages";
 import { CategoryTile, FaqList, Icon, QuoteCta, Section, StepFlow, TrustBar, type Faq } from "@/components/ui";
 import { getChair } from "@/data/chairs";
 import { formatDate, getPosts } from "@/lib/blog";
@@ -269,6 +270,16 @@ export default async function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* Ready-made packages */}
+      <Section
+        eyebrow="Ready-made packages"
+        title="Pick a package, change what you like"
+        intro="Typical parties, already sized and priced with delivery, setup, waiver and tax. Tap one to open the full list, then change the guest count or any item."
+        action={<Link href="/packages" className="link-line">All packages <Icon name="arrow" size={16} /></Link>}
+      >
+        <ReadyPackages ids={["backyard-birthday-50", "graduation-80", "wedding-150", "corporate-120"]} compact />
+      </Section>
 
       {/* Events */}
       <Section tone="white" eyebrow="For every occasion" title="What are you planning?" center>

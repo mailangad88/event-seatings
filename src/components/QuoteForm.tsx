@@ -468,7 +468,7 @@ export function QuoteForm({
                           {s.lines.length} items · about {formatPrice(Math.round(starterTotal(s)))} for {guests || 100} guests
                         </span>
                       </span>
-                      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${on ? "bg-gold text-accent-ink" : "bg-ink text-bg"}`} aria-hidden>
+                      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${on ? "bg-green text-white" : "bg-accent text-accent-ink"}`} aria-hidden>
                         <Icon name={on ? "check" : "plus"} size={16} />
                       </span>
                     </span>
@@ -492,7 +492,7 @@ export function QuoteForm({
                     onClick={() => applyStarter(s)}
                     aria-pressed={on}
                     className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2.5 text-sm transition-colors ${
-                      on ? "border-ink bg-ink text-bg" : "border-line bg-surface hover:border-ink/30"
+                      on ? "border-accent bg-accent text-accent-ink" : "border-line bg-surface hover:border-ink/30"
                     }`}
                   >
                     <Icon name={(s.icon ?? "spark") as IconName} size={16} className={on ? "" : "text-gold"} />
@@ -571,7 +571,7 @@ export function QuoteForm({
                         <span className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]">
                           <ItemVisual item={item} variant={colours[item.id]} sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 22vw" />
                         </span>
-                        <span className="absolute right-3 bottom-3 flex items-center gap-1 rounded-full bg-ink py-1.5 pr-3 pl-2 text-sm font-medium text-bg shadow-soft">
+                        <span className="absolute right-3 bottom-3 flex items-center gap-1 rounded-full bg-accent py-1.5 pr-3 pl-2 text-sm font-medium text-accent-ink shadow-soft">
                           <Icon name="plus" size={16} /> {suggest > 1 ? suggest.toLocaleString() : "Add"}
                         </span>
                       </button>
@@ -788,7 +788,7 @@ export function QuoteForm({
             payment and no commitment until a vendor confirms and you approve.{" "}
             <Link href="/booking-promise" className="link" target="_blank">How payments work</Link>
           </p>
-          {status === "error" && <p className="mt-2 text-sm text-red-600">{error}</p>}
+          {status === "error" && <p className="mt-2 text-sm text-rose">{error}</p>}
         </div>
         <button className="btn-primary btn-lg" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Send my quote request"}

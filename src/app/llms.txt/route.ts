@@ -24,6 +24,7 @@ export async function GET() {
     "## Start here",
     `- [All event rentals with prices](${site.url}/rentals): every category and item, priced per unit`,
     `- [Instant quote builder](${site.url}/quote): pick items and quantities, see a live total, send it for a confirmed proposal`,
+    `- [Ready-made packages](${site.url}/packages): typical parties already sized and priced all-in, open one and change any item`,
     `- [Book a free ${site.callLength} planning call](${site.url}/book): recommendations, quantities and an estimate for your event`,
     `- [Chair collection](${site.url}/chairs)`,
     `- [How it works](${site.url}/how-it-works): the four steps from quote to pickup`,

@@ -79,7 +79,7 @@ export function NeedsTool({ prices }: { prices: Record<string, ToolPrice> }) {
                       </div>
                       <div className="flex gap-1" role="group" aria-label={`Status for ${prices[l.id]?.name ?? l.id}`}>
                         {(Object.keys(statusLabel) as Status[]).map((k) => (
-                          <button key={k} type="button" aria-pressed={st === k} onClick={() => mark(l.id, k)} className={`rounded-full border px-3 py-1 text-xs ${st === k ? "border-ink bg-ink text-bg" : "border-line hover:border-gold"}`}>
+                          <button key={k} type="button" aria-pressed={st === k} onClick={() => mark(l.id, k)} className={`rounded-full border px-3 py-1 text-xs ${st === k ? "border-accent bg-accent text-accent-ink" : "border-line hover:border-gold"}`}>
                             {statusLabel[k]}
                           </button>
                         ))}
