@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
+import { ReadyPackages } from "@/components/ReadyPackages";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { Faqs, JsonLd, Steps, faqJsonLd } from "@/components/rentals/parts";
@@ -145,6 +146,22 @@ export default function RentalsPage() {
               </Link>
             </li>
           </ul>
+        </section>
+
+        <section className="mt-28" aria-labelledby="packages">
+          <p className="eyebrow">Skip the browsing</p>
+          <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
+            <h2 id="packages" className="headline text-4xl sm:text-5xl">
+              Start from a ready-made package
+            </h2>
+            <Link href="/packages" className="link-line">
+              All packages
+            </Link>
+          </div>
+          <p className="mt-4 max-w-2xl text-muted">
+            Each one is a full list for a typical party, priced with delivery, setup, waiver and tax. Tap one, then change the guest count or swap any item.
+          </p>
+          <ReadyPackages className="mt-8" compact />
         </section>
 
         <section className="mt-28" aria-labelledby="how">

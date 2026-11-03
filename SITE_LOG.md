@@ -37,6 +37,14 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): quicker rental decisions
+
+- **New `/packages`** (Last touched 2026-11-03). Eight ready-made packages (backyard birthday 50, graduation 80, shower 40, kids' party 30, wedding 150, tented wedding 150, sangeet 250, company dinner 120), each priced all-in (rentals plus delivery, setup, waiver, tax) from the live catalog with the same rules as the `/quote` planner. Cards, a side-by-side comparison table, how-it-works steps, FAQs. SEO ✅ AEO ✅ (ItemList of Products with Offers + FAQPage) GEO ✅ Visuals ✅ FAQ ✅ CTA ✅. Code: `src/lib/packages.ts`, `src/components/ReadyPackages.tsx`. In the header, footer, sitemap and llms.txt.
+- **One-tap packages**: shown on the home page, on `/rentals` and on the first planner step. A package opens the planner on the built list (`/quote?event=&guests=&setting=&style=`), skipping four questions. `?event=&guests=&setting=` opens on the package step.
+- **Planner**: "Compare what's in each package" table on the package step (Simple vs Signature vs Lavish, row by row), all-in estimate in the progress bar next to the rental total, whole-dollar prices, and a sticky Back / total / Next bar on phones so nobody scrolls a long list to find Next.
+- **Header**: on 1024-1279px screens "My events" and "How it works" move out of the top bar (still in the phone menu and footer) so the bar no longer wraps onto three lines.
+- **Remaining**: package images reuse the planner's event scenes; a styled photo per package would help. Packages are fixed at their guest counts on the card; the planner changes them after one tap.
+
 ## Changes in this release (2026-11-03): SEO / AEO / GEO audit and local landing pages
 
 **Automated audit.** `npm run seo-audit` (`scripts/seo-audit.mjs`) builds nothing itself: after `npm run build` it starts the production server, reads `/sitemap.xml`, `/robots.txt` and `/llms.txt`, crawls every sitemap URL and scores each page out of 100. GitHub Actions (`.github/workflows/seo-audit.yml`) runs it on every pull request and push to main, and fails on any blocking error or a site score under 90. The report is written to `reports/seo-audit.md` and `.json` (uploaded as a CI artifact, not committed).

@@ -97,9 +97,10 @@ export function Header() {
           </div>
           {rest.map((item) =>
             item.href === "/my-events" ? (
-              <MyEventsNavLink key={item.href} className={linkClass} label={item.label} />
+              <MyEventsNavLink key={item.href} className={`${linkClass} whitespace-nowrap max-xl:hidden`} label={item.label} />
             ) : (
-              <Link key={item.href} href={item.href} className={linkClass}>
+              // Narrow laptops: "How it works" moves to the footer and phone menu so the bar fits on one line.
+              <Link key={item.href} href={item.href} className={`${linkClass} whitespace-nowrap ${item.href === "/how-it-works" ? "max-xl:hidden" : ""}`}>
                 {item.label}
               </Link>
             ),
