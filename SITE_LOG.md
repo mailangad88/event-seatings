@@ -267,7 +267,11 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 | `/terms` | Terms of use: broker model, 10% booking fee, who you pay, Booking Promise, damage, liability cap | 2026-11-02 | ✅ | n/a | n/a | ✅ | ❌ | n/a |
 | `/how-it-works` | Four steps from quote to pickup, who you pay, Booking Promise summary, FAQ | 2026-11-02 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
 | `/booking-promise` | Payments, deposits, damage waiver, insurance/COI, six-point Booking Promise, payment StepFlow + schedule table, 8 FAQs | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/partners` | Vendor sign-up: why join, Founding Partner terms (0% for 90 days, then 5%), flow, application form (kind `partner`), 6 FAQs | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners` | Vendor sign-up: why join, Founding Partner terms (0% for 90 days, then 5%), flow, application form (kind `partner`), 6 FAQs | 2026-11-03 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners/onboard` | 6-step vendor sign-up: company, rentals and area, schedule (days, events per day, full dates), CSV price list upload with preview, payments and billing (no bank details), photos and terms. Saves to `vendor_applications`, draft kept in the browser | 2026-11-03 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners/faq` | 23 rental-company questions in 4 groups (signing up, orders, money, listing), FAQPage schema, step flow | 2026-11-03 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/how-we-work` | Hosts and rental companies: who does what diagram, both step flows, who pays whom, timing, what each side can count on, HowTo + FAQPage schema | 2026-11-03 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/partners/status/<token>` | Vendor's own application status page (noindex) | 2026-11-03 | n/a | n/a | n/a | ⚠️ | n/a | ✅ |
 | 404 (`not-found.tsx`) | Not-found page | 2026-11-01 | n/a | n/a | n/a | ✅ | ❌ | ⚠️ |
 
 ## Rental catalog (`/rentals`, added 2026-11-02)
@@ -1592,3 +1596,11 @@ Angad asked for researched party ideas per party type, including activities, gam
 
 - Planner (`/quote`): the Add-ons step now shows "Party ideas for your <occasion>" tiles with the price each adds for the guest count. Picking one adds its rentals under "From your party ideas" (an item already on the list keeps the larger quantity). The plan page and PDF show each picked idea's setup (indoor or backyard text by setting), activities and props. The CRM message gets "Party ideas: …". `?idea=<slug>` preselects a theme and its occasion.
 - Linked from the footer, the /ideas monthly page, sitemap and llms.txt (the header now has "Ideas" → /ideas from another PR).
+
+## Changes in this release (2026-11-03, vendor sign-up)
+
+- /partners/onboard rebuilt as a 6-step sign-up that saves structured applications (new `vendor_applications` table, re-run `supabase/schema.sql`; until then they fall back to partner leads). CSV price lists are read in the browser and stored as rows.
+- Vendors get an email and a private status page (/partners/status/<token>).
+- Admin: /admin/applications (list, filters, search) and /admin/applications/<id> (review, status with optional email to the vendor, link to a catalog vendor, notes, history, price list CSV download). Approving a linked catalog vendor moves it to "In talks" in /admin/vendors.
+- New /partners/faq and /how-we-work, linked from the footer, /partners, /partners/onboard and /how-it-works, and added to the sitemap.
+- Remaining: vendor self-service edits after approval (vendor login), automatic catalog import from approved price lists, Stripe Connect payouts once 3+ vendors sign.

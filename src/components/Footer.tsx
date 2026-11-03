@@ -65,7 +65,10 @@ export function Footer() {
               ["/about", "About us"],
               ["/reviews", "Reviews"],
               ["/refer", "Refer a friend"],
+              ["/how-we-work", "How we work"],
               ["/partners", "For rental companies"],
+              ["/partners/onboard", "Rental company sign-up"],
+              ["/partners/faq", "Rental partner FAQ"],
               ["/vendor-listings", "Vendor listings & opt-out"],
             ].map(([href, label]) => (
               <li key={href}>
