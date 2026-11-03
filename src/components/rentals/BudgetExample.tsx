@@ -64,7 +64,7 @@ export function BudgetExample({ budget }: { budget: SampleBudget }) {
               Rental subtotal
             </th>
             <td className="hidden sm:table-cell" />
-            <td className="pt-3 text-right font-serif text-2xl tabular-nums">{formatPrice(total)}</td>
+            <td className="pt-3 text-right font-serif text-2xl text-wine tabular-nums">{formatPrice(total)}</td>
           </tr>
         </tfoot>
       </table>

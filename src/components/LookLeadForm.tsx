@@ -108,7 +108,7 @@ export function LookLeadForm({
       <button className="btn-primary w-full" disabled={status === "sending"}>
         {status === "sending" ? "Sending…" : "Send me this look"}
       </button>
-      {status === "error" && <p className="text-sm text-red-400">{error}</p>}
+      {status === "error" && <p className="text-sm text-rose">{error}</p>}
       <p className="text-center text-xs leading-5 text-muted">
         Free, no obligation. We&apos;ll only email you about your event.
       </p>

@@ -35,7 +35,11 @@ export function TimelineTool({ available }: { available: string[] }) {
       </div>
 
       <div aria-live="polite">
-        {!r ? (
+        {r?.past ? (
+          <div className="well grid min-h-64 place-items-center p-10 text-center">
+            <p className="max-w-sm text-muted">This date has passed. Pick the new date if your event moved, and the timeline rebuilds from the days left.</p>
+          </div>
+        ) : !r ? (
           <div className="well grid min-h-64 place-items-center p-10 text-center">
             <p className="max-w-sm text-muted">Pick your event and date. Your timeline appears here with a real deadline for every task.</p>
           </div>
@@ -44,15 +48,15 @@ export function TimelineTool({ available }: { available: string[] }) {
             <div className="grid gap-4 sm:grid-cols-3">
               <Stat big value={daysLeft} label="Days to go" />
               <Stat big value={r.tasks.length} label="Tasks" />
-              <Stat big value={r.tasks.filter((t) => t.overdue).length} label="Do now" note={r.compressed ? "Short runway: tasks are squeezed into the time you have" : undefined} />
+              <Stat big value={r.tasks.filter((t) => t.overdue).length} label="Late, do soon" note={r.compressed ? (r.until <= 21 ? "Short on time: anything already late moves to today or tomorrow, most important first" : "Short runway: tasks are squeezed into the time you have") : undefined} />
             </div>
             <ol className="relative mt-8 border-l border-gold/30 pl-6">
               {r.tasks.map((t) => (
                 <li key={t.id} className="relative pb-7">
                   <span className={`absolute top-1.5 -left-[31px] h-3 w-3 rounded-full border-2 ${t.overdue ? "border-rose bg-rose" : t.days === 0 ? "border-gold bg-gold" : "border-gold bg-surface"}`} aria-hidden />
                   <p className="text-xs font-semibold tracking-wide text-gold uppercase">
-                    {fmt(t.date)}
-                    {t.overdue && <span className="ml-2 text-rose">Do now</span>}
+                    {t.date === today ? "Today" : fmt(t.date)}
+                    {t.overdue && <span className="ml-2 text-rose">{t.date === today ? "Do now" : "Catch up"}</span>}
                   </p>
                   <p className="mt-1 font-medium">{t.title}</p>
                   <p className="mt-0.5 text-sm leading-6 text-muted">{t.why}</p>

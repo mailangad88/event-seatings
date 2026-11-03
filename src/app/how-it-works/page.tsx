@@ -148,6 +148,7 @@ export default function HowItWorksPage() {
               ))}
             </ul>
             <Link href="/booking-promise" className="btn-ghost btn-sm mt-6">Payments, damage & insurance →</Link>
+            <Link href="/how-we-work" className="btn-ghost btn-sm mt-3">How we work with rental companies →</Link>
           </article>
         </div>
       </Section>

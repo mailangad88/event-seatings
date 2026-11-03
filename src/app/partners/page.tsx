@@ -170,6 +170,10 @@ export default function PartnersPage() {
 
       <Section eyebrow="Questions" title="Partner FAQ">
         <FaqList faqs={faqs} className="max-w-3xl" />
+        <p className="mt-8 text-sm text-muted">
+          More answers on the <Link href="/partners/faq" className="link">full partner FAQ</Link>, and{" "}
+          <Link href="/how-we-work" className="link">how we work</Link> with hosts and rental companies, including who pays whom.
+        </p>
       </Section>
     </>
   );

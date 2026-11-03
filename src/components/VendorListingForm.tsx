@@ -96,7 +96,7 @@ export function VendorListingForm() {
           {status === "sending" ? "Sending…" : "Send request"}
         </button>
       </div>
-      {status === "error" && <p className="text-sm text-red-600 sm:col-span-2">{error}</p>}
+      {status === "error" && <p className="text-sm text-rose sm:col-span-2">{error}</p>}
     </form>
   );
 }
