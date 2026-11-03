@@ -15,7 +15,7 @@ import { site } from "@/lib/site";
 import { BookingCta } from "./BookingCta";
 import { ChairArt } from "./ChairArt";
 import { RentalIcon } from "./rentals/RentalIcon";
-import { Icon, PriceTag, formatPrice, type IconName } from "./ui";
+import { Icon, PriceDisclaimer, PriceTag, formatPrice, type IconName } from "./ui";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
 export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey };
@@ -386,6 +386,7 @@ export function QuoteForm({
           : ""}
         Fees are typical Chicago-area rates; your proposal confirms each one for your date and venue.
       </p>
+      <PriceDisclaimer />
     </>
   );
 
@@ -761,7 +762,7 @@ export function QuoteForm({
             </div>
           )}
           <p className="hint">
-            We confirm availability with insured {site.market}-area rental companies and send one itemized proposal. No
+            We confirm availability with vetted {site.market}-area rental companies and send one itemized proposal. No
             payment and no commitment until a vendor confirms and you approve.{" "}
             <Link href="/booking-promise" className="link" target="_blank">How payments work</Link>
           </p>

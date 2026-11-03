@@ -36,6 +36,15 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-03): launch-risk fixes from the AI Council review
+
+- **Fee before vendor name.** New customer proposal page `/proposal/<token>` (noindex, disallowed in robots). It shows the items, the rental company's price and our fee as separate lines, and hides the rental company's name, phone and website until the booking fee (or a refundable hold, `BOOKING_CHARGE=hold`) is paid. Created from the new "Customer proposal" card on `/admin/leads/<id>`, with Mark paid / Mark refunded for payments outside Stripe.
+- **Stripe Checkout, off by default.** `src/lib/payments.ts` + `/api/stripe/webhook` (signature-checked). Nothing changes until `STRIPE_SECRET_KEY` is set; until then the proposal says "we'll send a secure payment link". Needs `supabase/schema.sql` re-run (new lead columns).
+- **Promises made true.** "Insured vendors" became "vetted vendors, asked for proof of insurance" on /booking-promise, /how-it-works, /terms, the trust bar and the quote form (no COI claims; includes PR #32's geo-page fixes). The one-business-hour reply promise now appears only when `NEXT_PUBLIC_BUSINESS_HOURS` is set; otherwise it says one business day. Terms and FAQs now say the vendor is named after the fee, with a 72-hour full refund if the customer rejects the vendor's agreement.
+- **Price disclaimer.** `PriceDisclaimer` ("based on local rental companies' published rates plus our booking fee; final quote confirmed by the rental company") on /rentals, every category and item page, and the quote builder.
+- **Vendor opt-out.** New `/vendor-listings` page (how listings work, no vendor names shown, listing ≠ partnership, correct/remove form saved as a `partner` lead with source `vendor-listings`), linked from the footer, /partners and every price disclaimer on rental pages.
+- Owner setup steps: `/mnt/project-files/growth/go-live-checklist.md`.
+
 ## Changes in this release (2026-11-02): business model and payments
 
 - Business model chosen (plan: `/mnt/project-files/plans/business-model.md`): the customer pays a 10% booking fee (already inside every price) to Beyond Chiavari when they approve a vendor-confirmed proposal; rentals are paid to the vendor under its own agreement; vendors pay 0% for 90 days, then 5%.
@@ -931,7 +940,8 @@ Every page has: chair-trio visual, seating-math tiles, 4 pain points with soluti
 
 ## Local pages: Open items across these pages
 
-- **Confirm before launch:** a few FAQ answers describe services the owner should confirm are offered: providing a certificate of insurance (COI) for high-rise and hotel venues, separate deliveries for multi-day events, wiping chairs down and protecting floors on winter deliveries, and setup by our team. Edit `src/data/geo/*.ts` if any of these aren't offered.
+- **COI (2026-11-02):** owner confirmed we don't issue certificates of insurance yet. Area pages, event pages and /booking-promise now say so plainly and tell hosts to check venue rules first. Revisit once we can offer COIs.
+- **Confirm before launch:** a few FAQ answers describe services the owner should confirm are offered: separate deliveries for multi-day events, wiping chairs down and protecting floors on winter deliveries, and setup by our team. Edit `src/data/geo/*.ts` if any of these aren't offered.
 - **Booking link:** set `NEXT_PUBLIC_BOOKING_URL` (Calendly or Cal.com) so "Schedule a planning call" opens a calendar. Until then it goes to /quote.
 - **Brand name:** pages use `site.name` from `src/lib/site.ts`, so the rename to beyondchivary carries through automatically.
 - **Next pages to add:** more suburbs (Lombard, Elmhurst, Western Springs, Tinley Park, Plainfield, Oswego, Libertyville, Northbrook, Deerfield, Palatine) and more neighborhoods (Bridgeport, Uptown, Rogers Park, Bronzeville, Little Italy, Old Town).

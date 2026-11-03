@@ -4,6 +4,8 @@ import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { vendors } from "@/data/catalog";
 import { checkAdmin } from "@/lib/admin-auth";
+import { amountDue, newProposalToken } from "@/lib/payments";
+import { markFeePaid } from "@/lib/proposals";
 import { getLead, isLeadStatus, statusLabel, updateLead, type LeadActivity, type LeadPatch } from "@/lib/store";
 
 async function requireAdmin() {
@@ -67,4 +69,32 @@ export async function markContacted(formData: FormData) {
     await updateLead(id, { status: "contacted" }, [{ type: "status", text: "Stage: New lead → Contacted" }]);
   }
   revalidatePath("/admin/leads");
+}
+
+// Creates the customer proposal link (/proposal/<token>) for a lead. The link hides the rental partner until the fee is paid.
+export async function createProposal(formData: FormData) {
+  await requireAdmin();
+  const id = text(formData.get("id"), 64);
+  const lead = await getLead(id);
+  if (!lead || lead.proposal_token) return;
+  await updateLead(
+    id,
+    { proposal_token: newProposalToken(), proposal_created_at: new Date().toISOString(), fee_status: "unpaid", fee_amount: amountDue(lead) },
+    [{ type: "note", text: "Proposal link created." }],
+  );
+  revalidatePath(`/admin/leads/${id}`);
+}
+
+// Manual override for fees paid outside Stripe (bank transfer, Zelle) or refunds.
+export async function setFeeStatus(formData: FormData) {
+  await requireAdmin();
+  const id = text(formData.get("id"), 64);
+  const status = text(formData.get("fee_status"), 16);
+  const lead = await getLead(id);
+  if (!lead) return;
+  if (status === "paid") await markFeePaid(lead, "manual (marked in admin)");
+  else if (status === "unpaid" || status === "refunded") {
+    await updateLead(id, { fee_status: status, fee_paid_at: "" }, [{ type: "note", text: `Booking fee marked ${status}.` }]);
+  }
+  revalidatePath(`/admin/leads/${id}`);
 }

@@ -9,6 +9,7 @@ import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { allInEstimate } from "@/lib/fees";
+import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -246,6 +247,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
                     Delivery is one charge per order, so it shrinks per item as your list grows. Your proposal confirms
                     every fee for your venue. Nothing is charged until you approve it.
                   </p>
+                  <PriceDisclaimer className="mt-2" vendorLink />
                 </div>
               );
             })()}

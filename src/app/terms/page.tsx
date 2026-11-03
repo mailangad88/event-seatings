@@ -22,7 +22,7 @@ export default function TermsPage() {
         <p>
           {site.name} is an event rental booking and coordination service. We do not own or deliver the rentals
           ourselves. Items are supplied, delivered, set up and collected by independent Chicago-area rental companies
-          (&ldquo;rental partners&rdquo;). We name your rental partner in your proposal before you approve it.
+          (&ldquo;rental partners&rdquo;). Your proposal confirms that a rental partner has your items for your date. We share the partner&apos;s name, contact details and rental agreement once you pay our booking fee (or a refundable hold). If you don&apos;t accept that agreement, tell us within 72 hours and we refund the fee in full.
         </p>
         <h2>Quote requests are not bookings</h2>
         <p>
@@ -53,8 +53,9 @@ export default function TermsPage() {
         <h2>Our Booking Promise</h2>
         <p>
           For bookings made through us: (1) the total in your approved proposal is what you pay for those items unless
-          you change your order; (2) we only book rental partners that carry general liability insurance and have
-          provided a certificate of insurance; (3) if your rental partner cancels a confirmed order, we will find a
+          you change your order; (2) we ask every rental partner for proof of general liability insurance before we
+          book them, and we tell you before you pay if a partner has not provided it. We do not issue certificates of
+          insurance ourselves; (3) if your rental partner cancels a confirmed order, we will find a
           comparable replacement and cover any price difference up to the amount of the booking fee you paid, or
           refund the booking fee in full if we cannot; (4) quantity changes are free of our charge until 14 days
           before the event, subject to availability and the rental partner&apos;s terms. Details are on our{" "}
