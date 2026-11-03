@@ -213,7 +213,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                       <tr key={i.id} className="border-t border-line">
                         <td className="w-14 py-2.5 pr-3 align-top">
                           {own ? (
-                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-[#efe9df]">
+                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
                               <Image src={own} alt={rentalAlt(i.name, i.specs, i.id)} fill sizes="44px" loading="lazy" className="object-cover" />
                             </span>
                           ) : thumb.matched ? (
