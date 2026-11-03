@@ -8,7 +8,8 @@ Gemini to compose the scene, sending our Blender render as the reference so the 
 Every image in src/data/rental-images.json gets a styled version with the SAME slug, so it replaces the render
 everywhere on the site (item pages, cards, quote picker, category heroes, guides, blog). The tablescapes in
 public/images/scenes/ are restyled too (keyed by file stem), and --new-heroes makes category heroes that
-have no render yet. Pages label all of them "AI-generated example" and mark them in the image schema.
+have no render yet. They are marked as AI-made only in the image schema (IPTC digitalSourceType); Angad asked on
+Nov 3 for no visible "AI-generated" wording.
 
     python3 scripts/styled-scenes.py gold-chiavari crossback       # some slugs
     python3 scripts/styled-scenes.py --all --skip-existing          # everything still missing
@@ -130,6 +131,23 @@ SCENE_PROMPT = (
     "{event}. Keep the same rentals (chairs, tables, linens, tableware, tent, lighting) with the same styles, "
     "colours and arrangement, and fill the scene with life. {look}"
 )
+# Single-piece shots: one item on its own, same warm look, so shoppers see the exact piece up close.
+SOLO_PROMPT = (
+    "Create a photograph of a single {caption} on its own as the clear hero of the frame, exactly as shown in "
+    "the reference image: same model, shape, colour, material, finish and proportions. Only one of it, fully "
+    "visible and sharp, set in a lush styled event space ({setting}) with florals, candlelight and chandelier "
+    "bokeh softly blurred behind. No people in focus. {look}"
+)
+SOLO_SETTINGS = {
+    "chairs": "placed beside a dressed reception table with a place setting",
+    "tables": "dressed with a simple centrepiece, the table itself clearly visible",
+    "linens": "shown on a single table at a reception",
+    "tableware": "close-up on a dressed table, part of one place setting",
+    "catering": "on a dressed buffet table",
+    "tents": "the whole tent seen from outside on a lawn at dusk, lit from within",
+    "floors": "empty and lit before guests arrive, uplighting around it",
+}
+
 HERO_PROMPT = (
     "Create a photograph: {scene}. Any rental items shown in the reference images must keep their exact design "
     "and colour. {look}"
@@ -255,6 +273,14 @@ def jobs(args, rentals):
             scene = scene.format(event=event)
             prompt = PRODUCT_PROMPT.format(scene=scene, caption=r["caption"], look=LOOK)
         out.append((slug, r["kind"], r["category"], r["caption"], [ref], (r["width"], r["height"]), prompt))
+    if args.solo:
+        for slug, r in rentals.items():
+            ref = os.path.join(ROOT, "public", r["src"].lstrip("/"))
+            if r["kind"] != "product" or not os.path.exists(ref):
+                continue
+            setting = SOLO_SETTINGS.get(r["category"], "on its own in a styled corner of the reception")
+            prompt = SOLO_PROMPT.format(caption=r["caption"], setting=setting, look=LOOK)
+            out.append((f"{slug}--solo", "solo", r["category"], r["caption"], [ref], (r["width"], r["height"]), prompt))
     for f in sorted(os.listdir(TABLESCAPES)) if os.path.isdir(TABLESCAPES) else []:
         if not f.endswith(".webp"):
             continue
@@ -269,14 +295,16 @@ def jobs(args, rentals):
             paths = [os.path.join(ROOT, "public", rentals[s]["src"].lstrip("/")) for s in refs if s in rentals]
             scene = desc.format(event=pick(slug, CELEBRATIONS))
             out.append((slug, "hero", cat, caption, paths, (1920, 1080), HERO_PROMPT.format(scene=scene, look=LOOK)))
-    order = {"scene": 0, "tablescape": 0, "hero": 0, "product": 1, "variant": 2, "angle": 3}
+    order = {"scene": 0, "tablescape": 0, "hero": 0, "product": 1, "solo": 1, "variant": 2, "angle": 3}
     out.sort(key=lambda j: (order.get(j[1], 4), j[0]))
     if args.slugs:
         out = [j for j in out if j[0] in args.slugs]
     elif args.kind:
         out = [j for j in out if j[1] in args.kind]
+    elif args.solo and not args.all:
+        out = [j for j in out if j[1] == "solo"]
     elif not (args.all or args.new_heroes):
-        raise SystemExit("Name slugs, or pass --all, --kind or --new-heroes.")
+        raise SystemExit("Name slugs, or pass --all, --kind, --solo or --new-heroes.")
     if args.new_heroes and not args.all and not args.slugs:
         out = [j for j in out if j[1] == "hero" or (args.kind and j[1] in args.kind)]
     return out
@@ -305,8 +333,9 @@ def run_one(key, job, styled):
         "src": f"/rentals/styled/{slug}.webp",
         "category": category,
         "kind": kind,
-        "alt": f"{alt} (AI-generated example image of {what})",
-        "caption": f"{caption}, styled at an event (AI-generated example)",
+        "alt": alt if alt.lower().startswith(what.split()[0].lower()) or what.lower() in alt.lower() else f"{alt} ({what})",
+        "caption": f"{caption}{' on its own' if kind == 'solo' else ', styled at an event'}",
+        **({"parent": slug[: -len("--solo")]} if kind == "solo" else {}),
         "width": img.width,
         "height": img.height,
         "model": model,
@@ -322,8 +351,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("slugs", nargs="*")
     ap.add_argument("--all", action="store_true")
-    ap.add_argument("--kind", action="append", choices=["scene", "tablescape", "product", "variant", "angle", "hero"])
+    ap.add_argument("--kind", action="append", choices=["scene", "tablescape", "product", "variant", "angle", "hero", "solo"])
     ap.add_argument("--new-heroes", action="store_true")
+    ap.add_argument("--solo", action="store_true", help="single-piece shots of every product (<slug>--solo)")
     ap.add_argument("--skip-existing", action="store_true")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--dry-run", action="store_true")
