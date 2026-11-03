@@ -84,6 +84,10 @@ Rural delivery takes longer and needs clear directions. Ask the venue whether a 
 <div><strong>Written</strong><span>Get answers in writing</span></div>
 </div>
 
+## Before you sign
+
+Touring barns? Use our [barn venue booking checklist](/blog/booking-a-barn-venue-near-chicago) to compare heat, restrooms, power, included furniture and outside-rental rules side by side.
+
 ## Frequently asked questions
 
 ### What should I ask a farm wedding venue?
