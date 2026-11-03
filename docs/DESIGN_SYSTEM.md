@@ -18,7 +18,7 @@ invent new card/button styles. If you need something new, add it to the kit.
 | `ink` | `#1d1a16` | text, primary buttons |
 | `muted` | `#655d52` | secondary text (AA) |
 | `line` | `#e4dbcd` | borders, dividers |
-| `gold` | `#8a6628` | eyebrows, accents, links (AA on ivory) |
+| `gold` | `#7a5a22` | eyebrows, accents, links (AA on ivory, sand and gold-soft) |
 | `gold-soft` | `#f3eadb` | icon wells, badges, selected states |
 | `espresso` | `#1b1814` | dark bands |
 | `sage` / `rose` | `#55704f` / `#a4473b` | success / alert |
@@ -30,7 +30,9 @@ Use them as Tailwind colours: `bg-surface`, `text-muted`, `border-line`, `text-g
 - `tone-dark` (or any `bg-espresso…` class): dark band, ivory text, brighter brass.
 - `tone-sand` (alias `.paper`): sand band.
 
-Fonts: Cormorant Garamond (`font-serif`, display) and Jost (`font-sans`, UI and body), self-hosted.
+Fonts: Cormorant Garamond (`font-serif`, display; 400 for the page H1, 500 for `display-2`/`display-3` so smaller
+headings don't look faint) and Jost (`font-sans`, UI and body; 300/400/500/600 loaded, so `font-semibold` is real, not
+faked), self-hosted in `src/app/fonts`.
 
 ## 2. Utility classes
 
@@ -42,6 +44,7 @@ Fonts: Cormorant Garamond (`font-serif`, display) and Jost (`font-sans`, UI and 
 | `headline` | serif heading base (custom sizes) |
 | `lede` | large muted intro paragraph |
 | `eyebrow` | small brass uppercase label above headings |
+| `cta-row` | wrapper for hero/section buttons: full-width stacked buttons on phones, inline from `sm` |
 | `btn-primary` | ink pill, main action ("Build your quote") |
 | `btn-accent` | brass pill, main action on dark bands |
 | `btn-ghost` | outline pill, secondary action |
@@ -105,7 +108,19 @@ rows, a sticky `card` summary with `PriceTag` totals and a `btn-primary btn-lg` 
 - The interactive 3D chair studio (`src/components/three`) uses the same light gallery look; re-render chair stills
   with `ALLOW_RENDER=1 npm run start` then `npm run render:chairs`.
 
-## 6. Voice and honesty
+## 6. UX checks (run before merging visual changes)
+
+```bash
+npm run build && npm run start          # in one shell
+npm run audit:ux -- --out out/ux-audit  # screenshots at 390px + 1440px, axe-core, design lint
+npx lighthouse http://localhost:3000/ --chrome-flags="--headless --no-sandbox"  # optional, CHROME_PATH=/opt/pw-browsers/...
+```
+
+Rules the audit enforces: zero serious axe violations (contrast, labels, focusable scroll regions), one H1, no
+horizontal scroll at 390px, tap targets at least 24px (buttons are 44px via `btn`), body copy 16px+ on phones.
+Sticky bottom bars on phones get `data-bottom-bar` so the chat button lifts above them.
+
+## 7. Voice and honesty
 
 Short, warm, specific. Lead with the answer. Prices are customer prices (vendor price + markup) and are labelled as
 estimates until confirmed. No fake reviews, ratings or counts.

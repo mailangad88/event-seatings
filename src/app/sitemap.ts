@@ -13,12 +13,13 @@ import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";
 import { ideaPath, ideas, PARTY_IDEAS_UPDATED, partyTypes, typePath } from "@/data/party-ideas";
+import { toolSitemapEntries } from "@/lib/tools/sitemap";
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/downloads", "/blog", "/about", "/privacy", "/terms", "/photo-credits"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/tools/rental-calculator", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/downloads", "/blog", "/about", "/privacy", "/terms", "/photo-credits"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -100,5 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...partyTypes.map((t) => ({ url: `${site.url}${typePath(t.slug)}`, priority: 0.75, lastModified: PARTY_IDEAS_UPDATED, images: [sceneUrl(t.scene)] })),
     ...ideas.map((i) => ({ url: `${site.url}${ideaPath(i)}`, priority: 0.7, lastModified: PARTY_IDEAS_UPDATED, images: [sceneUrl(i.scene)] })),
   ];
-  return [...pages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  // Free tools, countdown, comparison and vendor onboarding pages (src/lib/tools/sitemap.ts).
+  const toolPages = toolSitemapEntries(["/countdown"]);
+  return [...pages, ...toolPages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
 }
