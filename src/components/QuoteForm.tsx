@@ -61,7 +61,7 @@ const fromPreset = (lines: PresetLine[]) =>
   >;
 
 // The visual for an item: its 3D render, the chair illustration, or the category drawing.
-function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: string; variant?: string }) {
+export function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: string; variant?: string }) {
   const sw = variant ? item.variants?.find((v) => v.key === variant) : undefined;
   if (sw) return <Image src={sw.src} alt={sw.alt} fill sizes={sizes} className="object-cover" />;
   if (item.image)
@@ -94,7 +94,7 @@ function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: string; 
   );
 }
 
-function Stepper({
+export function Stepper({
   name,
   qty,
   onChange,
