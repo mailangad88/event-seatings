@@ -53,6 +53,14 @@ function problems(): Problem[] {
           imageAlt: "Garden folding chair, the image for the chair and table count tool",
           startHere: true,
         },
+        {
+          name: "Rental calculator",
+          href: "/tools/rental-calculator",
+          text: "Guest count in: chairs, tables, linens, plates, flatware and glasses out, priced from current Chicago rental lists.",
+          outputs: ["Quantities", "Price estimate", "Send as quote"],
+          image: "/chairs/render/infinity.jpg",
+          imageAlt: "Infinity chair render, the image for the event rental calculator",
+        },
       ],
     },
     {

@@ -64,6 +64,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
         <div className="flex flex-wrap gap-3">
           <Link href="/admin" className="btn-ghost">Dashboard</Link>
           <Link href="/admin/vendors" className="btn-ghost">Vendors</Link>
+          <Link href="/admin/availability" className="btn-ghost">Availability</Link>
           <a href="/admin/export" className="btn-ghost">Download CSV</a>
         </div>
       </div>
@@ -151,7 +152,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
                 <td className="py-2.5">
                   <Link href={`/admin/leads/${l.id}`} className="font-medium text-accent">{l.name ?? l.email}</Link>
                   <div className="text-muted">{l.phone ?? l.email}</div>
-                  <span className="chip mt-1">{l.kind}</span>
+                  <span className="chip mt-1">{l.lead_score ? `${l.lead_score} · ` : ""}{l.kind}</span>
                 </td>
                 <td className="py-2.5">
                   {l.event_type && <div>{l.event_type}</div>}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChairArt } from "@/components/ChairArt";
 import { DownloadGate } from "@/components/DownloadGate";
+import { buyerLinksFor } from "@/data/buyer-pages";
 import { PostBody } from "@/components/PostBody";
 import { ArticleLayout, JsonLd, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
 import { coverImage, getDownload } from "@/data/downloads";
@@ -146,6 +147,16 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
             ))}
           </ul>
         )}
+        <section aria-labelledby="rental-help" className="mt-12 max-w-2xl rounded-2xl border border-line bg-surface p-5">
+          <p id="rental-help" className="eyebrow">Ready to rent?</p>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+            {buyerLinksFor(`${post.title} ${post.tags.join(" ")}`).map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="link text-sm">{l.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
         {related.length > 0 && (
           <section aria-labelledby="related" className="mt-14 max-w-2xl">
             <p id="related" className="eyebrow">Related guides</p>

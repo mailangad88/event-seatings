@@ -35,28 +35,33 @@ export const plannerEvents: PlannerEvent[] = [
 
 export const getPlannerEvent = (id?: string) => plannerEvents.find((e) => e.id === id);
 
-export const styles: { id: StyleId; name: string; blurb: string; chair: string }[] = [
-  { id: "simple", name: "Simple & practical", blurb: "Clean folding chairs, sturdy tables, the essentials done well.", chair: "white-folding" },
-  { id: "classic", name: "Classic & elegant", blurb: "Garden chairs, floor-length linens, cloth napkins and candlelight.", chair: "white-resin-folding" },
-  { id: "lavish", name: "Lavish & unforgettable", blurb: "Gold Chiavari chairs, chargers, gold flatware, uplighting and a lounge.", chair: "gold-chiavari" },
+// Packages, from budget-friendly to all-out. Internal ids stay simple/classic/lavish; the names are what visitors see.
+export const styles: { id: StyleId; name: string; tagline: string; blurb: string; chair: string }[] = [
+  { id: "simple", name: "Simple", tagline: "Budget-friendly", blurb: "Clean folding chairs, sturdy tables and the must-haves done well.", chair: "white-folding" },
+  { id: "classic", name: "Signature", tagline: "Most popular", blurb: "Garden chairs, floor-length linens, cloth napkins and candlelight.", chair: "white-resin-folding" },
+  { id: "lavish", name: "Lavish", tagline: "No detail spared", blurb: "Gold Chiavari chairs, chargers, gold flatware, uplighting and a lounge.", chair: "gold-chiavari" },
 ];
+export const styleName = (id?: string) => styles.find((s) => s.id === id)?.name ?? "";
+
+// The core of every list (shown on the Essentials step); everything else is an add-on.
+export const essentialGroups = ["Seating", "Tables", "Linens", "Tableware", "Glassware"];
 
 export const settings: { id: SettingId; name: string; blurb: string; image: string; alt: string }[] = [
-  { id: "venue", name: "Indoor venue", blurb: "Banquet hall, restaurant, church hall, office or loft.", image: scene("cocktail-hour"), alt: "Indoor cocktail hour with highboy tables" },
-  { id: "backyard", name: "Backyard or home", blurb: "Your own lawn or patio, with a house nearby.", image: scene("backyard-birthday"), alt: "Backyard party with string lights" },
-  { id: "tent", name: "Tent on open ground", blurb: "A lawn, farm or field with no building to lean on.", image: scene("tent-reception-dusk"), alt: "Frame tent reception lit at dusk" },
+  { id: "backyard", name: "Backyard or home", blurb: "Your own lawn, patio or driveway, with the house nearby.", image: scene("backyard-birthday"), alt: "Backyard party with string lights" },
+  { id: "venue", name: "Indoors", blurb: "Banquet hall, restaurant, church hall, office, loft or your home.", image: scene("cocktail-hour"), alt: "Indoor cocktail hour with highboy tables" },
+  { id: "tent", name: "Outdoor venue or tent", blurb: "A lawn, farm, field or garden venue that needs a tent.", image: scene("tent-reception-dusk"), alt: "Frame tent reception lit at dusk" },
   { id: "park", name: "Park or public space", blurb: "Chicago Park District or forest preserve shelters and lawns.", image: scene("graduation-party"), alt: "Outdoor party under canopies" },
 ];
 
-export const extras: { id: ExtraId; name: string; icon: string }[] = [
-  { id: "ceremony", name: "Ceremony on site", icon: "heart" },
-  { id: "dancing", name: "Dancing", icon: "spark" },
-  { id: "bar", name: "Bar or cocktail hour", icon: "glass" },
-  { id: "buffet", name: "Buffet or food stations", icon: "chafer" },
-  { id: "speeches", name: "Speeches or presentations", icon: "chat" },
-  { id: "photos", name: "Photo booth", icon: "star" },
-  { id: "kids", name: "Kids' area and games", icon: "users" },
-  { id: "lounge", name: "Lounge seating", icon: "sofa" },
+export const extras: { id: ExtraId; name: string; icon: string; text: string }[] = [
+  { id: "ceremony", name: "Ceremony on site", icon: "heart", text: "An arch to frame the vows" },
+  { id: "dancing", name: "Dance floor", icon: "spark", text: "Sized for your crowd" },
+  { id: "bar", name: "Bar & cocktail hour", icon: "glass", text: "Bars, highboys and glassware" },
+  { id: "buffet", name: "Buffet or food stations", icon: "chafer", text: "Chafers, platters, dispensers" },
+  { id: "speeches", name: "Speeches & sound", icon: "chat", text: "PA, mics and a podium" },
+  { id: "photos", name: "Photo booth", icon: "star", text: "Guests love it" },
+  { id: "kids", name: "Kids' corner", icon: "users", text: "Bounce house, games, small seats" },
+  { id: "lounge", name: "Lounge seating", icon: "sofa", text: "Sofas and armchairs" },
 ];
 
 export const budgets: { id: BudgetId; name: string; max?: number }[] = [
@@ -356,7 +361,7 @@ export function assessment(input: PlanInput, total: number, budget?: BudgetId, t
   const space = spaceNeeded(input);
   const g = input.guests;
   const perGuest = g ? total / g : 0;
-  notes.push({ tone: "good", text: `About ${perGuest.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })} per guest in rentals for a ${styles.find((s) => s.id === input.style)?.name.toLowerCase()} ${ev.name.toLowerCase()}.` });
+  notes.push({ tone: "good", text: `About ${perGuest.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })} per guest in rentals for a ${styleName(input.style)} package ${ev.name.toLowerCase()}.` });
   notes.push({ tone: "good", text: `Plan for roughly ${space.total.toLocaleString()} sq ft of usable floor (seating${space.dance ? ", dance floor" : ""}${space.bar ? ", bar" : ""}${space.buffet ? ", buffet" : ""}). Ask your venue for its seated capacity with round tables.` });
   if (input.date) {
     const d = new Date(`${input.date}T12:00:00`);

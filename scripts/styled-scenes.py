@@ -42,6 +42,8 @@ OUT_DIR = os.path.join(ROOT, "public", "rentals", "styled")
 TABLESCAPES = os.path.join(ROOT, "public", "images", "scenes")
 MODELS = [m for m in [os.environ.get("GEMINI_IMAGE_MODEL"), "gemini-3.1-flash-image", "gemini-2.5-flash-image"] if m]
 API = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+# Image models return no text, so a vision text model writes each alt text from the finished image.
+ALT_MODELS = [m for m in [os.environ.get("GEMINI_TEXT_MODEL"), "gemini-3.8-flash", "gemini-3-flash"] if m]
 LOCK = threading.Lock()
 
 # The look, taken from Angad's reference image.
@@ -89,32 +91,48 @@ SCENES = {
     "photo-booths": "this exact photo booth with guests in elegant attire posing at {event}",
 }
 
-# Category heroes that have no render yet: (category for references, reference slugs, description).
+# Per-image fixes found in review: where the default scene got the item or the occasion wrong. For scenes and
+# tablescapes this replaces the celebration; for items it replaces the whole scene sentence.
+OVERRIDES = {
+    "graduation-party": "a graduation party under a white frame tent in a Chicago-area backyard, graduates in caps and gowns with family, white folding chairs",
+    "kids-party": "a children's birthday party in a backyard garden, toddlers playing in the soft-play pen while parents watch, balloons and florals",
+    "corporate-gala": "a corporate awards gala dinner in a Chicago hotel ballroom, business attire, no signs or banners",
+    "gilded-ivory-chair-detail": "a close-up detail shot at a wedding reception: one gold bamboo Chiavari chair with an ivory cushion beside a dressed table, florals and candles softly blurred behind",
+    "bar-stool": "these exact bar stools lined up at a cocktail bar at {event}, guests perched on them with drinks",
+    "bounce-house": "this exact bounce house with children jumping inside at a lush backyard birthday party near Chicago, golden hour, parents watching, string lights",
+    "cloth-napkins": "this exact cloth napkin folded on a dinner plate with a gold napkin ring, in an ivory-and-blush place setting on a dressed table at {event}, close-up",
+    "frame-tent-20x20": "this exact white frame tent (gable roof on a metal frame, no centre poles) seen from outside on a Chicago-area lawn at dusk, lit up inside for {event}, the whole tent in frame",
+    "frame-tent-30x60": "this exact large white frame tent (gable roof on a metal frame, no centre poles) seen from outside on a Chicago-area lawn at dusk, lit up inside for {event}, the whole tent in frame",
+    "led-dance-floor": "a flat LED dance floor of perfectly smooth, flat glass square panels glowing warm white with tiny starlight dots, flush with the ground (the bumps in the reference render are only reflections), lit up under guests dancing at {event}",
+    "led-dance-floor--angle": "this exact flat LED dance floor (smooth square glowing panels, flush with the ground) lit up under guests dancing at {event}",
+    "kids-table": "this exact small kids' table with young children seated around it colouring and eating cake at {event}, adults blurred behind",
+    "kids-table--angle": "this exact small kids' table with young children seated around it colouring and eating cake at {event}, adults blurred behind",
+    "ceremony-arch--angle": "this exact hexagonal wooden ceremony arch, intact and standing upright, framing a couple at the altar during {event}, guests seated",
+}
+
+# Category heroes that have no render yet: (caption, category, reference slugs, description).
 NEW_HEROES = {
-    "hero-concessions": ("concessions", ["popcorn-machine", "cotton-candy-machine", "snow-cone-machine"],
+    "hero-concessions": ("Popcorn, cotton candy and snow cone machines serving guests", "concessions", ["popcorn-machine", "cotton-candy-machine", "snow-cone-machine"],
                          "a festive dessert and concessions corner at {event}: popcorn, cotton candy and snow cone machines serving guests"),
-    "hero-photo-booths": ("photo-booths", [], "guests in elegant attire laughing at a flower-wall photo booth at {event}"),
-    "hero-av": ("av", ["pa-system"], "a toast at {event}: a speaker on a tripod and a microphone stand beside the head table, guests listening"),
-    "hero-restrooms-power": ("restrooms-power", [], "an elegant luxury restroom trailer with a lit entrance and potted florals at the edge of an outdoor wedding at dusk"),
-    "hero-fencing": ("fencing", [], "stanchions with velvet ropes guiding guests along a candlelit entrance into {event}"),
+    "hero-photo-booths": ("Guests posing at a flower-wall photo booth", "photo-booths", [], "guests in elegant attire laughing at a flower-wall photo booth at {event}"),
+    "hero-av": ("A speaker and microphone set up for wedding toasts", "av", ["pa-system"], "a toast at {event}: a speaker on a tripod and a microphone stand beside the head table, guests listening"),
+    "hero-restrooms-power": ("A luxury restroom trailer at an outdoor wedding", "restrooms-power", [], "an elegant luxury restroom trailer with a lit entrance and potted florals at the edge of an outdoor wedding at dusk"),
+    "hero-fencing": ("Stanchions and velvet ropes guiding guests into a reception", "fencing", [], "stanchions with velvet ropes guiding guests along a candlelit entrance into {event}"),
 }
 
 PRODUCT_PROMPT = (
     "Create a photograph: {scene}. The item in the reference image ({caption}) must appear exactly as shown: "
     "same model, shape, colour, material, finish and proportions, clearly visible and in focus; do not redesign "
-    "it or swap it for a different style. {look}\n\n"
-    "After the image, write one sentence of at most 30 words describing the photo for alt text."
+    "it or swap it for a different style. {look}"
 )
 SCENE_PROMPT = (
     "Turn the reference image into a real photograph of the same event setup ({caption}), as if shot at "
     "{event}. Keep the same rentals (chairs, tables, linens, tableware, tent, lighting) with the same styles, "
-    "colours and arrangement, and fill the scene with life. {look}\n\n"
-    "After the image, write one sentence of at most 30 words describing the photo for alt text."
+    "colours and arrangement, and fill the scene with life. {look}"
 )
 HERO_PROMPT = (
     "Create a photograph: {scene}. Any rental items shown in the reference images must keep their exact design "
-    "and colour. {look}\n\n"
-    "After the image, write one sentence of at most 30 words describing the photo for alt text."
+    "and colour. {look}"
 )
 
 
@@ -186,6 +204,34 @@ def call_gemini(key, prompt, refs, aspect):
     raise RuntimeError("no image model available for this key")
 
 
+def describe(key, img, caption):
+    """One-sentence alt text for a finished image, naming the rental. Empty string if it fails."""
+    buf = io.BytesIO()
+    small = img.copy()
+    small.thumbnail((768, 768))
+    small.save(buf, "JPEG", quality=85)
+    prompt = (f"Write alt text for this event photo in one sentence of 20 to 35 words. Name the rental item "
+              f"({caption}), how it is being used, and the setting. Do not start with 'image of' or 'photo of'. "
+              "Plain text only.")
+    body = {"contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": "image/jpeg",
+                                                                       "data": base64.b64encode(buf.getvalue()).decode()}}]}]}
+    for model in ALT_MODELS:
+        req = urllib.request.Request(API.format(model=model), data=json.dumps(body).encode(),
+                                     headers={"Content-Type": "application/json", "x-goog-api-key": key})
+        for attempt in range(3):
+            try:
+                res = json.load(urllib.request.urlopen(req, timeout=120))
+                text = "".join(p.get("text", "") for c in res.get("candidates", []) for p in c.get("content", {}).get("parts", []))
+                return clean_alt(text)
+            except urllib.error.HTTPError as e:
+                if e.code == 404:
+                    break
+                time.sleep(2 ** (attempt + 2))
+            except (urllib.error.URLError, TimeoutError):
+                time.sleep(2 ** (attempt + 2))
+    return ""
+
+
 def clean_alt(text):
     text = re.sub(r"\s+", " ", text.replace("*", "")).strip().strip('"')
     text = re.sub(r"^(alt text|alt|description)\s*:\s*", "", text, flags=re.I)
@@ -203,9 +249,10 @@ def jobs(args, rentals):
             continue
         event = pick(slug, CELEBRATIONS)
         if r["kind"] == "scene":
-            prompt = SCENE_PROMPT.format(caption=r["caption"], event=event, look=LOOK)
+            prompt = SCENE_PROMPT.format(caption=r["caption"], event=OVERRIDES.get(slug, event), look=LOOK)
         else:
-            scene = SCENES.get(r["category"], "this exact item styled at {event}, guests nearby").format(event=event)
+            scene = OVERRIDES.get(slug) or SCENES.get(r["category"], "this exact item styled at {event}, guests nearby")
+            scene = scene.format(event=event)
             prompt = PRODUCT_PROMPT.format(scene=scene, caption=r["caption"], look=LOOK)
         out.append((slug, r["kind"], r["category"], r["caption"], [ref], (r["width"], r["height"]), prompt))
     for f in sorted(os.listdir(TABLESCAPES)) if os.path.isdir(TABLESCAPES) else []:
@@ -215,13 +262,12 @@ def jobs(args, rentals):
         ref = os.path.join(TABLESCAPES, f)
         w, h = Image.open(ref).size
         caption = slug.replace("-", " ").capitalize() + " tablescape"
-        prompt = SCENE_PROMPT.format(caption=caption, event=pick(slug, CELEBRATIONS), look=LOOK)
+        prompt = SCENE_PROMPT.format(caption=caption, event=OVERRIDES.get(slug, pick(slug, CELEBRATIONS)), look=LOOK)
         out.append((slug, "tablescape", "chairs", caption, [ref], (w, h), prompt))
     if args.new_heroes:
-        for slug, (cat, refs, desc) in NEW_HEROES.items():
+        for slug, (caption, cat, refs, desc) in NEW_HEROES.items():
             paths = [os.path.join(ROOT, "public", rentals[s]["src"].lstrip("/")) for s in refs if s in rentals]
             scene = desc.format(event=pick(slug, CELEBRATIONS))
-            caption = scene[0].upper() + scene[1:].split(":")[0]
             out.append((slug, "hero", cat, caption, paths, (1920, 1080), HERO_PROMPT.format(scene=scene, look=LOOK)))
     order = {"scene": 0, "tablescape": 0, "hero": 0, "product": 1, "variant": 2, "angle": 3}
     out.sort(key=lambda j: (order.get(j[1], 4), j[0]))
@@ -244,8 +290,9 @@ def save(styled):
 
 def run_one(key, job, styled):
     slug, kind, category, caption, refs, (w, h), prompt = job
-    img, alt, model = call_gemini(key, prompt, refs, ratio(w, h))
+    img, _, model = call_gemini(key, prompt, refs, ratio(w, h))
     img = img.convert("RGB")
+    alt = describe(key, img, caption)
     # Same aspect as the image it replaces, no bigger than the original.
     scale = min(1.0, max(w, h) / max(img.size))
     if scale < 1:
