@@ -94,6 +94,14 @@ All prices on these pages are computed from the catalog at build time. Content l
 
 - Hearts (save to My Events idea board) now also on every rental item page's main picture and on every look card in `/looks`. `/looks` and all `/rentals/<category>/<item>` rows: Last touched 2026-11-03.
 
+## Changes in this release (2026-11-03): planning assistant AI switched on, with a spend cap
+
+- Angad approved the Gemini cost on Nov 3. Gemini calls are now capped per server instance at ASSISTANT_AI_DAILY_CAP a day (default 300) and ASSISTANT_AI_PER_VISITOR per visitor (default 12), resetting at midnight Chicago time. Past a cap, or when Gemini errors, the assistant quietly uses the free wording, and the "written by AI" note only shows when Gemini actually wrote the summary.
+- Burst limit in AI mode is now 15 requests per 10 minutes per IP.
+- The default model moved to gemini-flash-lite-latest because gemini-2.5-flash is closed to new users. Flash-Lite doesn't spend tokens on thinking, so it is the cheapest option.
+- The summary prompt now bans greetings, urgency, availability and deadline claims, and asks for the package, total and per-guest cost.
+- Remaining (Angad, in Vercel): set NEXT_PUBLIC_PLANNING_ASSISTANT=on, ASSISTANT_AI=gemini and GEMINI_API_KEY, then redeploy. Also add a Google Cloud budget alert. On Nov 3 the key was hitting Google's spend-based rate limit (429), likely because image generation shares it.
+
 ## Changes in this release (2026-11-03): party ideas in the planning assistant
 
 - /planning-assistant plans now include up to 6 theme ideas from /party-ideas for the chosen event. Each one shows its palette, setup for the chosen space, activities and props, plus only the extra rentals beyond the package, priced at vendor +10%. Ticking a theme adds those rentals to the quote handoff.
