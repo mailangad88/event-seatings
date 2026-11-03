@@ -304,6 +304,9 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/blog/sweetheart-table-chair-ideas` | Sweetheart table chairs | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
 | `/blog/wedding-chair-rental-cost` | Budget guide | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
 | `/blog/south-asian-wedding-seating` | South Asian weddings, large lists | 2026-10-04 | ✅ | ⚠️ | ❌ | ✅ | ❌ | ✅ |
+| `/blog/quinceanera-chair-rental-chicago` | Quinceañera throne, court and guest seating (daily post) | 2026-11-03 | ✅ | ✅ quick answer, FAQPage (4) | ✅ Chicago halls | ✅ seating-plan SVG, chair pair, table | ✅ | ✅ `/book` call |
+| `/blog/restaurant-buyout-chair-rental-chicago` | When to rent chairs for a restaurant buyout (daily post) | 2026-11-03 | ✅ | ✅ quick answer, FAQPage (4) | ✅ Chicago loading/COI | ✅ swap-timeline SVG, chair pair, table | ✅ | ✅ `/book` call |
+| `/blog/graduation-ceremony-chair-rental-chicago` | Commencement on a field: chair counts, layout, turf, rain plan (daily post) | 2026-11-03 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ✅ Chicago-area schools | ✅ field-layout SVG, chair pair, count table | ✅ | ✅ `/book` call + calculator download |
 
 ## Journal guides (added 2026-11-02, PR #16)
 

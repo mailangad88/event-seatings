@@ -90,4 +90,4 @@ Wood and woven chairs like bentwood bistro, wishbone and cane-back suit most res
 
 ## Talk it through with us
 
-Planning a restaurant buyout for 2027? [Book a free 15-minute seating call](/quote). We'll help you decide whether you need rentals at all, count the seats and plan the swap around the restaurant's schedule.
+Planning a restaurant buyout for 2027? [Book a free 15-minute seating call](/book). We'll help you decide whether you need rentals at all, count the seats and plan the swap around the restaurant's schedule.

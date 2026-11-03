@@ -95,4 +95,4 @@ Book as soon as you have a date and venue, especially for spring and summer Satu
 
 ## Talk it through with us
 
-Planning a quinceañera for spring or summer 2027? [Book a free 15-minute seating call](/quote) and we'll help you pick the throne, count every seat and work around your hall's rules. We'll send a written plan you can share with your family and your venue.
+Planning a quinceañera for spring or summer 2027? [Book a free 15-minute seating call](/book) and we'll help you pick the throne, count every seat and work around your hall's rules. We'll send a written plan you can share with your family and your venue.
