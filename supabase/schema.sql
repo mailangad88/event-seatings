@@ -135,6 +135,11 @@ alter table leads
   add column if not exists stripe_session_id text;
 create unique index if not exists leads_proposal_token_idx on leads (proposal_token) where proposal_token is not null;
 
+-- Event to-dos ticked off in /admin (vendor confirmation, reminder calls, event emails). Safe to run again.
+alter table leads add column if not exists tasks_done jsonb;
+-- Monthly commission statements per rental partner (/admin/invoices). Safe to run again.
+alter table vendor_partners add column if not exists commission_log jsonb;
+
 alter table votes enable row level security;
 alter table leads enable row level security;
 alter table page_views enable row level security;

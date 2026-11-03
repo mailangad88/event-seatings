@@ -74,6 +74,8 @@ export type Lead = {
   fee_amount?: number; // USD charged at checkout (booking fee or hold)
   fee_paid_at?: string;
   stripe_session_id?: string;
+  // Event to-dos ticked off in /admin (lib/event-tasks.ts): task key -> when it was done.
+  tasks_done?: Record<string, string>;
   // Referral link code (/refer, ?ref=<code>) that brought this visitor in, kept 90 days in their browser.
   referral_code?: string;
 } & Partial<Record<TrackingField, string>>;
@@ -141,6 +143,8 @@ export type VendorPartner = {
   referral_terms?: string; // e.g. "10% referral fee on rental subtotal"
   notes?: string;
   last_contacted_at?: string; // YYYY-MM-DD
+  // Commission statements (/admin/invoices): month YYYY-MM -> when the statement was sent and when they paid.
+  commission_log?: Record<string, { sent_at?: string; paid_at?: string; amount?: number }>;
   activity?: LeadActivity[];
   updated_at?: string;
 };
@@ -290,6 +294,10 @@ export type LeadPatch = Partial<
     | "followup_step"
     | "followup_last_at"
     | "opted_out_at"
+    | "tasks_done"
+    | "items"
+    | "quote_subtotal"
+    | "quote_cost"
   >
 >;
 

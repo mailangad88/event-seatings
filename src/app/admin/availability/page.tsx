@@ -38,8 +38,7 @@ export default async function AvailabilityPage(props: PageProps<"/admin/availabi
 
   return (
     <div className="container-x py-12">
-      <Link href="/admin" className="text-sm text-accent">← Dashboard</Link>
-      <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Admin</p>
           <h1 className="mt-1 font-serif text-5xl">Availability</h1>

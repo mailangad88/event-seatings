@@ -46,8 +46,7 @@ export default async function VendorsPage(props: PageProps<"/admin/vendors">) {
 
   return (
     <div className="container-x py-12">
-      <Link href="/admin" className="text-sm text-accent">← Dashboard</Link>
-      <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Admin</p>
           <h1 className="mt-1 font-serif text-5xl">Rental partners</h1>
@@ -56,15 +55,14 @@ export default async function VendorsPage(props: PageProps<"/admin/vendors">) {
             the quote value our leads have sent their way.
           </p>
         </div>
-        <Link href="/admin/leads" className="btn-ghost">Lead pipeline</Link>
       </div>
 
       <nav aria-label="Filter by status" className="mt-6 flex flex-wrap gap-2">
-        <Link href="/admin/vendors" className={!filter ? "chip chip-active" : "chip"}>All {vendors.length}</Link>
+        <Link href="/admin/vendors" className={!filter ? "chip-active" : "chip"}>All {vendors.length}</Link>
         {partnerStatuses.map((s) => {
           const n = vendors.filter((v) => statusOf(v.id) === s.id).length;
           return (
-            <Link key={s.id} href={`/admin/vendors?status=${s.id}`} className={filter === s.id ? "chip chip-active" : "chip"}>
+            <Link key={s.id} href={`/admin/vendors?status=${s.id}`} className={filter === s.id ? "chip-active" : "chip"}>
               {s.label} {n}
             </Link>
           );

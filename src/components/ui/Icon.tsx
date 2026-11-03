@@ -35,6 +35,15 @@ const paths = {
   menu: "M3 7h18M3 12h18M3 17h18",
   close: "M6 6l12 12M18 6L6 18",
   ruler: "M3 17 17 3l4 4L7 21zM7 13l2 2M10 10l2 2M13 7l2 2",
+  home: "M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-6h4v6",
+  chart: "M4 20h16M7 16v-5M12 16V7M17 16v-8",
+  wallet: "M3 7h18v12H3zM3 7l3-3h12l3 3M16 13h2",
+  mail: "M3 6h18v12H3zM3 6l9 7 9-7",
+  sliders: "M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1M15 4v4M9 10v4M17 16v4",
+  inbox: "M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z",
+  block: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM5.6 5.6l12.8 12.8",
+  download: "M12 4v11M7 10l5 5 5-5M5 20h14",
+  clock: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2",
   info: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 11v6M12 7.5v.5",
 } as const;
 
