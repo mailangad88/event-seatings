@@ -231,3 +231,23 @@ create table if not exists vendor_applications (
 );
 create index if not exists vendor_applications_status_idx on vendor_applications (status, created_at desc);
 alter table vendor_applications enable row level security;
+
+-- One part per rental partner on an order: confirmation link, answer, delivery / pickup / paid marks.
+alter table leads add column if not exists vendor_orders jsonb;
+
+-- Payments ledger (/admin/payments): cash, Zelle and check payments recorded by hand, commission payments from
+-- /admin/invoices, and booking-fee refunds. Card booking fees are read from the leads table. Never store card or
+-- bank numbers here. Safe to run again.
+create table if not exists payments_ledger (
+  id uuid primary key,
+  created_at timestamptz not null default now(),
+  kind text not null check (kind in ('fee', 'commission', 'refund', 'other')),
+  lead_id uuid,
+  vendor_id text,
+  month text,
+  amount numeric(12, 2) not null check (amount >= 0),
+  method text not null check (method in ('stripe', 'zelle', 'check', 'cash', 'other')),
+  note text
+);
+create index if not exists payments_ledger_created_idx on payments_ledger (created_at desc);
+alter table payments_ledger enable row level security;

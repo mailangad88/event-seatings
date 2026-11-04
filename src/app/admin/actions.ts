@@ -16,9 +16,10 @@ const text = (v: FormDataEntryValue | null, max = 120) => (typeof v === "string"
 export async function completeTask(formData: FormData) {
   await requireAdmin();
   const id = text(formData.get("id"), 64);
-  const key = text(formData.get("key"), 40);
+  const key = text(formData.get("key"), 80);
   const title = text(formData.get("title"), 160);
-  if (!/^[a-z0-9+-]+$/.test(key)) return;
+  // Rental partner tasks are per part of an order: "vendor-confirm:<vendor id>".
+  if (!/^[a-z0-9+:-]+$/.test(key)) return;
   const lead = await getLead(id);
   if (!lead) return;
   await updateLead(id, { tasks_done: { ...(lead.tasks_done ?? {}), [key]: new Date().toISOString() } }, [

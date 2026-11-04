@@ -5,6 +5,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { attributionKeys } from "./attribution";
 import type { QuoteLine } from "./catalog-types";
 import type { Journey } from "./journey";
+import type { VendorOrders } from "./orders";
 
 // Storage for votes and leads.
 // - With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, data goes to Supabase (use this in production).
@@ -78,6 +79,9 @@ export type Lead = {
   tasks_done?: Record<string, string>;
   // Referral link code (/refer, ?ref=<code>) that brought this visitor in, kept 90 days in their browser.
   referral_code?: string;
+  // One part per rental partner on the order (vendor_id of the item lines): its confirmation link
+  // /vendor/confirm/<token>, the partner's answer, and delivery / pickup / payment marks (lib/orders.ts).
+  vendor_orders?: VendorOrders;
 } & Partial<Record<TrackingField, string>>;
 
 export type FeeStatus = "unpaid" | "paid" | "refunded";
@@ -222,6 +226,7 @@ const newerLeadColumns = [
   "email_consent", "call_consent", "consent_at", "opted_out_at", "lead_score", "lead_score_reasons",
   "visitor_tz", "pages_viewed", "followup_step", "followup_last_at", "referral_code",
   "journey", "ip_location", "interests", "sequence",
+  "vendor_orders",
 ] as const;
 
 export async function addLead(lead: NewLead): Promise<Lead> {
@@ -298,6 +303,7 @@ export type LeadPatch = Partial<
     | "items"
     | "quote_subtotal"
     | "quote_cost"
+    | "vendor_orders"
   >
 >;
 
