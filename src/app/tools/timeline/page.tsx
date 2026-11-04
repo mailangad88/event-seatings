@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { TimelineTool } from "@/components/tools/TimelineTool";
 import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { routeExists } from "@/lib/routes";

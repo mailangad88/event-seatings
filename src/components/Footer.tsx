@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { footerExtras, menus, rentalCategories } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { Logo } from "./Header";

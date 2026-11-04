@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { Icon } from "@/components/ui/Icon";
 import Image from "next/image";

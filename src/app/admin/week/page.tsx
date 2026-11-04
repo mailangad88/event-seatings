@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AdminHeader, Empty, StagePill } from "@/components/admin/AdminUi";
 import { TaskList } from "@/components/admin/TaskList";
 import { addDays, chicagoDay, eventLine, isClosed, prettyDay, stage } from "@/lib/admin-view";

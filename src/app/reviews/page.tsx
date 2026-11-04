@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ReviewCard } from "@/components/reviews/ReviewCard";
 import { Stars } from "@/components/reviews/Stars";
 import { Callout, FaqList, Figure, JsonLd, PageHero, Section, type Faq } from "@/components/ui";

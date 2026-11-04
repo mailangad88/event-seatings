@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { attributionFields } from "@/lib/attribution";
 import { track, trackLead } from "@/lib/analytics";
 import { buildTimeline, downloadFile, timelineEvents, toICS, toISO } from "@/lib/tools/timeline";

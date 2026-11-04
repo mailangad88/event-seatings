@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AdminHeader, Empty, Panel } from "@/components/admin/AdminUi";
 import { listLeads } from "@/lib/store";
 import { replyToCustomer } from "./actions";

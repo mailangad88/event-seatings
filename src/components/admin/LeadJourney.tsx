@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { LeadAlert, Row } from "@/lib/lead-alert";
 
 // The full picture of one enquiry on /admin/leads/[id]: what to do first, what they care about, every page they

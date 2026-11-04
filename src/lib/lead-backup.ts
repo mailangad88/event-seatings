@@ -18,8 +18,15 @@ export const backupConfigured = () => Boolean(process.env.BLOB_READ_WRITE_TOKEN)
 
 const retry = <T>(fn: () => Promise<T>) => withRetry(fn, { attempts: 3, baseMs: 300, shouldRetry: isTransient });
 
+// Parsed lead files kept per server instance, keyed by path and the file's upload time. Listing the store is one
+// cheap call per 1,000 leads; only files that are new or changed since the last list get downloaded again, so
+// /admin stays quick as leads pile up instead of re-reading every file on every page.
+const fileCache = new Map<string, { uploadedAt: number; lead: Lead }>();
+const FILE_CACHE_MAX = 20_000;
+
 export async function backupPutLead(lead: Lead) {
   if (!safeId(lead.id)) throw new Error(`bad lead id ${lead.id}`);
+  fileCache.delete(path(lead.id));
   await retry(() =>
     put(path(lead.id), JSON.stringify(lead), {
       access: "private",
@@ -40,25 +47,45 @@ export async function backupGetLead(id: string): Promise<Lead | undefined> {
 
 export async function backupDeleteLead(id: string) {
   if (!safeId(id)) return;
+  fileCache.delete(path(id));
   await retry(() => del(path(id)));
 }
 
-// Every lead in the backup store, newest first. Reads up to 8 files at a time.
+// Every lead in the backup store, newest first. Unchanged files come from the per-instance cache; the rest are
+// read 24 at a time.
 export async function backupListLeads(): Promise<Lead[]> {
-  const ids: string[] = [];
+  const files: { pathname: string; id: string; uploadedAt: number }[] = [];
   let cursor: string | undefined;
   do {
     const page = await retry(() => list({ prefix: PREFIX, cursor, limit: 1000 }));
-    for (const b of page.blobs) ids.push(b.pathname.slice(PREFIX.length).replace(/\.json$/, ""));
+    for (const b of page.blobs)
+      files.push({ pathname: b.pathname, id: b.pathname.slice(PREFIX.length).replace(/\.json$/, ""), uploadedAt: new Date(b.uploadedAt).getTime() });
     cursor = page.hasMore ? page.cursor : undefined;
   } while (cursor);
 
   const out: Lead[] = [];
-  for (let i = 0; i < ids.length; i += 8) {
-    const batch = await Promise.all(ids.slice(i, i + 8).map((id) => backupGetLead(id).catch(() => undefined)));
-    for (const l of batch) if (l) out.push(l);
+  const toFetch: typeof files = [];
+  for (const f of files) {
+    const hit = fileCache.get(f.pathname);
+    if (hit && hit.uploadedAt === f.uploadedAt) out.push(hit.lead);
+    else toFetch.push(f);
   }
-  return out.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  for (let i = 0; i < toFetch.length; i += 24) {
+    const batch = toFetch.slice(i, i + 24);
+    const leads = await Promise.all(batch.map((f) => backupGetLead(f.id).catch(() => undefined)));
+    leads.forEach((l, j) => {
+      if (!l) return;
+      out.push(l);
+      fileCache.set(batch[j].pathname, { uploadedAt: batch[j].uploadedAt, lead: l });
+    });
+  }
+  // Forget files that were deleted elsewhere, and keep the cache bounded.
+  if (fileCache.size > files.length || fileCache.size > FILE_CACHE_MAX) {
+    const live = new Set(files.map((f) => f.pathname));
+    for (const k of fileCache.keys()) if (!live.has(k) || fileCache.size > FILE_CACHE_MAX) fileCache.delete(k);
+  }
+  // Copies, so a caller changing a lead object can't change the cached one.
+  return out.map((l) => structuredClone(l)).sort((a, b) => b.created_at.localeCompare(a.created_at));
 }
 
 // Any other small JSON file in the same private store (visitor activity, reminder settings), by path.

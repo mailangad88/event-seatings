@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { MyEvents } from "@/components/myevents/MyEvents";
 import { FaqList, Figure, JsonLd, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
 import { routeExists } from "@/lib/routes";

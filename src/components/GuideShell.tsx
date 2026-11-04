@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";

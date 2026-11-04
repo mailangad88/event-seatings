@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { FaqList } from "@/components/FaqList";
 import { LookScene, lookMedia } from "@/components/LookScene";
 import { SaveIdea } from "@/components/myevents/SaveIdea";

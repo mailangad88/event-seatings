@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { venueCapacity } from "@/lib/tools/calc";
 import { NumberField, ShareBar, Stat, ToolFrame, useUrlState } from "./controls";
 

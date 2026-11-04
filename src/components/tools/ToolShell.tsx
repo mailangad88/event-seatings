@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { FaqList, Icon, JsonLd, PageHero, QuoteCta, Section, StepFlow, type Faq, type Step } from "@/components/ui";
 import { rentalImage } from "@/data/rental-images";
 import { getTool, tools, type ToolEntry } from "@/data/tools";

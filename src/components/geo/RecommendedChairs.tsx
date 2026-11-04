@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ChairArt } from "@/components/ChairArt";
 import { Reveal } from "@/components/Reveal";
 import { getChair } from "@/data/chairs";

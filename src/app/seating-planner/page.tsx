@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { SeatingPlanner } from "@/components/SeatingPlanner";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";

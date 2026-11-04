@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { RentalCard } from "@/components/rentals/parts";
 import { Icon, PriceDisclaimer } from "@/components/ui";
 import { customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { customerPrice, formatPrice, type CatalogItem } from "@/data/catalog";
 import { RentalVisual } from "./RentalVisual";
 

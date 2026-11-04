@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { Chair } from "@/data/chairs";
 import { ChairArt } from "./ChairArt";
 import { VoteButton } from "./VoteProvider";

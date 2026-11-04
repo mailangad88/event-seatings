@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { menus, primaryNav, toneTile, type Menu } from "@/lib/nav";
 import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";

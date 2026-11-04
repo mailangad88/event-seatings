@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Breadcrumbs, FaqList, Figure, JsonLd, QuoteCta, Section } from "@/components/ui";
 import { catalogItems, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";

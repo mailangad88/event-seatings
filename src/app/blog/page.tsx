@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { HubFaqs, PageHero, QuoteCta } from "@/components/ui";
 import { PostCard } from "@/components/PostCard";
 import { formatDate, getPosts, hubFaqs, topicArt, topicSlug, topics } from "@/lib/blog";
@@ -60,8 +60,8 @@ export default async function BlogPage() {
             {topics.filter((t) => count(t.name) > 0).map((t) => (
               <li key={t.name}>
                 <Link href={`/blog/topic/${topicSlug(t.name)}`} className="group card card-hover flex items-center gap-4 p-3">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
-                  <img src={topicArt(topicSlug(t.name)).src} alt={`Illustration for ${t.name.toLowerCase()} rental guides`} width={96} height={64} loading="lazy" className="h-14 w-20 shrink-0 rounded-lg bg-espresso object-cover" />
+                  {/* A 80px thumbnail, so the optimizer sends a few KB instead of the full-size scene. */}
+                  <Image src={topicArt(topicSlug(t.name)).src} alt={`Illustration for ${t.name.toLowerCase()} rental guides`} width={96} height={64} sizes="80px" unoptimized={topicArt(topicSlug(t.name)).src.endsWith(".svg")} className="h-14 w-20 shrink-0 rounded-lg bg-espresso object-cover" />
                   <span>
                     <span className="block font-heading font-semibold text-lg leading-tight transition-colors group-hover:text-gold">{t.name}</span>
                     <span className="mt-0.5 block text-xs text-muted">{count(t.name)} guides</span>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 
 // One honest line under every price we show: prices come from rental companies' own published
 // rates, and only the rental company's confirmation makes a price final.

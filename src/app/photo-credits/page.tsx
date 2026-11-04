@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { JsonLd } from "@/components/rentals/parts";
 import { UNSPLASH_LICENSE, UNSPLASH_URL, stockImageJsonLd, stockPhotos } from "@/data/stock-photos";

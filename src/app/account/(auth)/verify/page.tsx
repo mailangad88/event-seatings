@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { readLoginToken } from "@/lib/account-auth";
 import { confirmLogin } from "../../actions";
 

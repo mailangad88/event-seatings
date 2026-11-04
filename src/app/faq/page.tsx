@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { ProcessFlow } from "@/components/ProcessFlow";
 import { Figure, FaqList, Icon, JsonLd, PageHero, Section, type Faq } from "@/components/ui";

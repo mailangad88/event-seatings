@@ -95,6 +95,18 @@ describe("client bundle boundary", () => {
     expect(problems).toEqual([]);
   });
 
+  // Big data files (the image list, the full inventory, the public file list) make every page that reaches them
+  // download hundreds of KB of JavaScript. Browser code should get what it needs as props or from a small map.
+  it("no 'use client' file reaches a data file over 100 KB", () => {
+    const problems: string[] = [];
+    for (const f of clientFiles) {
+      for (const [dep, chain] of reachable(f)) {
+        if (/\.json$/.test(dep) && statSync(dep).size > 100_000) problems.push(chain.join(" -> "));
+      }
+    }
+    expect(problems).toEqual([]);
+  });
+
   it("no component imports the vendor list as a value", () => {
     const offenders = files
       .filter((f) => rel(f).startsWith("src/components/"))

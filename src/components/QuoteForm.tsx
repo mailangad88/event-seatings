@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useEffect, useMemo, useState } from "react";
 import { getChair } from "@/data/chairs";
 import type { CategoryId } from "@/data/catalog-products";
@@ -16,7 +16,10 @@ import { site } from "@/lib/site";
 import { BookingCta } from "./BookingCta";
 import { ChairArt } from "./ChairArt";
 import { RentalIcon } from "./rentals/RentalIcon";
-import { Icon, PriceDisclaimer, PriceTag, formatPrice, type IconName } from "./ui";
+// Direct imports, not the "./ui" barrel: the barrel also holds server cards that load the full image list.
+import { Icon, type IconName } from "./ui/Icon";
+import { PriceDisclaimer } from "./ui/PriceDisclaimer";
+import { PriceTag, formatPrice } from "./ui/PriceTag";
 import { postLead } from "@/lib/lead-client";
 import { trackActivity } from "@/lib/activity-client";
 

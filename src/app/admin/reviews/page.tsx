@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { render } from "@react-email/render";
 import { createElement } from "react";
 import { ReviewRequestEmail } from "@/emails/templates";

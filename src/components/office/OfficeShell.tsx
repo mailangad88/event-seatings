@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { BrandMark } from "@/components/brand/BrandLogo";
 import { Icon } from "@/components/ui/Icon";
 import { OfficeMobileNav, OfficeSidebarNav, type NavCounts, type OfficeNavGroup } from "./OfficeNav";

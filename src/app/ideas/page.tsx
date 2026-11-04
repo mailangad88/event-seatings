@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { FaqList, Icon, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
 import { monthIdeas, type MonthIdeas } from "@/data/ideas";

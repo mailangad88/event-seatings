@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { DecoFrame } from "@/components/DecoFrame";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { Breadcrumbs } from "@/components/geo/Breadcrumbs";

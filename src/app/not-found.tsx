@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Figure, Icon } from "@/components/ui";
 import { rentalCategories } from "@/lib/nav";
 import { scenes } from "@/lib/scenes";

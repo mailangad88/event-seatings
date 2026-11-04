@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { PriceBars, RentalCard, itemHref } from "@/components/rentals/parts";

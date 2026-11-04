@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useEffect, useState } from "react";
 import { answerOptions, bandFor, bands, readinessAreas, statementCount, type ReadinessArea } from "@/data/readiness";
 import { postLead } from "@/lib/lead-client";

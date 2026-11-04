@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useSyncExternalStore } from "react";
 import { EVENTS_KEY, daysUntil } from "@/lib/my-events-key";
 

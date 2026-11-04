@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ReadyPackages } from "@/components/ReadyPackages";
 import { FaqList, Figure, Icon, JsonLd, PageHero, PriceDisclaimer, Section, StepFlow, formatPrice, type Faq } from "@/components/ui";
 import { readyPackages } from "@/lib/packages";

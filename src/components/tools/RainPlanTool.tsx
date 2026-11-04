@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { parseISO, toISO } from "@/lib/tools/timeline";
 import { NumberField, ShareBar, ToolFrame, useUrlState } from "./controls";
 

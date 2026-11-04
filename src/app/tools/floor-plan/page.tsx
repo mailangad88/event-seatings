@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { FloorPlanBuilder } from "@/components/floorplan/FloorPlanBuilder";
 import { FaqList, Figure, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
 import { catalogItems } from "@/data/catalog";

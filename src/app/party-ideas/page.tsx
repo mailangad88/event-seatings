@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { IdeaCard, ideaScene } from "@/components/party-ideas/parts";
 import { FaqList, Figure, Icon, JsonLd, PageHero, QuoteCta, Section, type Faq } from "@/components/ui";
 import { ideaPath, ideas, ideasFor, partyTypes, typePath } from "@/data/party-ideas";

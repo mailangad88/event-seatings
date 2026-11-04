@@ -288,3 +288,13 @@ create table if not exists site_settings (
   updated_at timestamptz not null default now()
 );
 alter table site_settings enable row level security;
+
+-- Speed as data grows (Nov 2026). Safe to run again.
+-- Email lookups use ilike (case-insensitive), which a plain index can't help with; a trigram index can.
+create extension if not exists pg_trgm;
+create index if not exists leads_email_trgm_idx on leads using gin (email gin_trgm_ops);
+-- Rental-partner confirmation links only look at leads that have order parts.
+create index if not exists leads_vendor_orders_idx on leads (created_at desc) where vendor_orders is not null;
+-- Lists read newest first with id as the tie-breaker.
+create index if not exists leads_created_id_idx on leads (created_at desc, id);
+create index if not exists page_views_created_id_idx on page_views (created_at, id);

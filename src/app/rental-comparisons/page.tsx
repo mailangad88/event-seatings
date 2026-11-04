@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { sideImage } from "@/components/tools/CompareParts";
 import { FaqList, JsonLd, PageHero, QuoteCta, Section } from "@/components/ui";
 import { comparisonPath, comparisons } from "@/data/comparisons";

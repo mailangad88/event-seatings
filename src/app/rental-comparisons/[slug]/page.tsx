@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { SideCard, sideImage } from "@/components/tools/CompareParts";
 import { FaqList, Icon, JsonLd, PageHero, PriceDisclaimer, QuoteCta, Section } from "@/components/ui";

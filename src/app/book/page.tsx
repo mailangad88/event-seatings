@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { CallForm } from "@/components/CallForm";
 import { Figure } from "@/components/ui";
 import { scenes } from "@/lib/scenes";

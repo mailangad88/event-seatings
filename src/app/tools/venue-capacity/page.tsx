@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { VenueCapacityTool } from "@/components/tools/VenueCapacityTool";
 import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { firstRoute } from "@/lib/routes";

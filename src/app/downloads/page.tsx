@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { FaqList, JsonLd, PageHero, Section } from "@/components/ui";
 import { coverImage, downloadGroups, downloads } from "@/data/downloads";
 import { site } from "@/lib/site";

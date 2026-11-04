@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Figure, HubFaqs, Icon, JsonLd, PageHero, QuoteCta, Section, type IconName } from "@/components/ui";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";

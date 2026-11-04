@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { Icon } from "./ui/Icon";

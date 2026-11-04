@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 
 // Link tabs for long back-office pages: each tab is a ?tab= link, so the page stays a server page,
 // tabs can be bookmarked, and only one section shows at a time (no long scrolling).

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { applicationStatuses, applicationStatusLabel, listVendorApplications } from "@/lib/vendor-applications";
 
 export const dynamic = "force-dynamic";

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AdminHeader, Empty, Panel, Tile } from "@/components/admin/AdminUi";
 import { Icon } from "@/components/ui/Icon";
 import { addDays, chicagoDay, prettyDay } from "@/lib/admin-view";

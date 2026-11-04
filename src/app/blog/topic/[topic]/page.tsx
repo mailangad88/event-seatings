@@ -1,5 +1,6 @@
+import Image from "next/image";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { PostCard } from "@/components/PostCard";
 import { HubFaqs, JsonLd, PageHero, QuoteCta } from "@/components/ui";
@@ -63,8 +64,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
         intro={`${topic.blurb} ${posts.length} free guides on this topic, each with a quick answer, real Chicago-area price ranges and planning FAQs, so you can work out what to rent before you build a quote.`}
         media={
           <div className="media aspect-[16/10] overflow-hidden bg-espresso shadow-lift">
-            {/* eslint-disable-next-line @next/next/no-img-element -- SVG topic art renders crisp without the image optimizer */}
-            <img src={art.src} alt={art.alt} width={1200} height={750} className="h-full w-full object-cover" />
+            <Image src={art.src} alt={art.alt} width={1200} height={750} priority unoptimized={art.src.endsWith(".svg")} sizes="(max-width: 1024px) 100vw, 50vw" className="h-full w-full object-cover" />
           </div>
         }
       />

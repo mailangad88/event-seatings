@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
 import { getProduct } from "@/data/catalog-products";

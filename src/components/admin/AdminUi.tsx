@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { statusLabel } from "@/lib/store";
 
 // Building blocks for /admin pages, so every section looks the same.

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { ActivityEvent } from "@/lib/activity";
 
 // What a lead did on the site after sending their form (lib/activity.ts): pages, clicks, quote-list changes and
