@@ -1,35 +1,30 @@
 import { createHmac } from "crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { COORDINATION_FEE } from "@/lib/catalog-types";
 import { amountDue, chargeLabel, chargeMode, checkoutPaid, newProposalToken, verifyStripeSignature } from "@/lib/payments";
 
 describe("amountDue", () => {
   afterEach(() => vi.unstubAllEnvs());
 
-  it("charges the markup inside the subtotal when the vendor cost is known", () => {
-    expect(amountDue({ quote_subtotal: 1100, quote_cost: 1000 })).toBe(100);
-  });
-
-  it("backs the markup out of the subtotal when the cost is missing", () => {
-    expect(amountDue({ quote_subtotal: 1100 })).toBe(100);
-    expect(amountDue({ quote_subtotal: 55 })).toBe(5);
-    expect(amountDue({})).toBe(0);
+  it("charges one flat coordination fee per event, set by guest count", () => {
+    expect(amountDue({})).toBe(COORDINATION_FEE.standard);
+    expect(amountDue({ guest_count: 150 })).toBe(COORDINATION_FEE.standard);
+    expect(amountDue({ guest_count: COORDINATION_FEE.largeFrom - 1 })).toBe(COORDINATION_FEE.standard);
+    expect(amountDue({ guest_count: COORDINATION_FEE.largeFrom })).toBe(COORDINATION_FEE.large);
   });
 
   it("applies a minimum fee when set", () => {
-    vi.stubEnv("BOOKING_FEE_MIN_USD", "25");
-    expect(amountDue({ quote_subtotal: 110, quote_cost: 100 })).toBe(25);
-    expect(amountDue({ quote_subtotal: 1100, quote_cost: 1000 })).toBe(100);
-  });
-
-  it("never returns a negative fee", () => {
-    expect(amountDue({ quote_subtotal: 100, quote_cost: 200 })).toBe(0);
+    vi.stubEnv("BOOKING_FEE_MIN_USD", "999");
+    expect(amountDue({ guest_count: 80 })).toBe(999);
+    vi.stubEnv("BOOKING_FEE_MIN_USD", "1");
+    expect(amountDue({ guest_count: 80 })).toBe(COORDINATION_FEE.standard);
   });
 
   it("charges a fixed hold in hold mode", () => {
     vi.stubEnv("BOOKING_CHARGE", "hold");
     expect(chargeMode()).toBe("hold");
     expect(chargeLabel()).toMatch(/hold/i);
-    expect(amountDue({ quote_subtotal: 5000, quote_cost: 4000 })).toBe(100);
+    expect(amountDue({ guest_count: 400 })).toBe(100);
     vi.stubEnv("BOOKING_HOLD_USD", "250.555");
     expect(amountDue({})).toBe(250.56);
     vi.stubEnv("BOOKING_HOLD_USD", "-4");

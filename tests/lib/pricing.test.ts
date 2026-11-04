@@ -25,13 +25,17 @@ const item = (over: Partial<CatalogItem> = {}): CatalogItem => ({
   ...over,
 });
 
+const up = (n: number) => Math.round(n * (1 + MARKUP) * 100) / 100;
+
 describe("customer pricing", () => {
-  it("adds the 10% markup and rounds to cents", () => {
-    expect(MARKUP).toBe(0.1);
-    expect(BOOKING_FEE_LABEL).toBe("10%");
-    expect(customerPrice({ vendorPrice: 10 })).toBe(11);
-    expect(customerPrice({ vendorPrice: 4.5 })).toBe(4.95);
-    expect(customerPrice({ vendorPrice: 3.33 })).toBe(3.66);
+  // Since Nov 4 2026 items carry no markup (MARKUP = 0) and we charge one flat coordination fee per event.
+  // These follow MARKUP, so switching back to a percentage only needs the constant changed.
+  it("adds MARKUP to the rental company's price and rounds to cents", () => {
+    expect(MARKUP).toBeGreaterThanOrEqual(0);
+    expect(BOOKING_FEE_LABEL).toMatch(/^flat \$\d+$/);
+    expect(customerPrice({ vendorPrice: 10 })).toBe(up(10));
+    expect(customerPrice({ vendorPrice: 4.5 })).toBe(up(4.5));
+    expect(customerPrice({ vendorPrice: 3.33 })).toBe(up(3.33));
     expect(customerPrice({ vendorPrice: 0 })).toBe(0);
   });
 });
@@ -46,7 +50,7 @@ describe("toPublicItem", () => {
     expect(json).not.toContain("secret-vendor");
     expect(json).not.toContain("other-vendor");
     expect(json).not.toContain("vendor.example");
-    expect(pub.price).toBe(11);
+    expect(pub.price).toBe(up(10));
     expect(pub.estimated).toBe(false);
   });
 
@@ -75,10 +79,10 @@ describe("priceQuote", () => {
   it("prices from the catalog and ignores anything the browser says about prices", () => {
     const q = priceQuote([{ id: "chiavari-gold", qty: 100, price: 0.01 } as { id: string; qty: number }], items);
     expect(q.lines).toHaveLength(1);
-    expect(q.lines[0].unit_price).toBe(11);
-    expect(q.subtotal).toBe(1100);
+    expect(q.lines[0].unit_price).toBe(up(10));
+    expect(q.subtotal).toBe(up(10) * 100);
     expect(q.cost).toBe(1000);
-    expect(q.margin).toBe(100);
+    expect(q.margin).toBeCloseTo(up(10) * 100 - 1000, 2);
   });
 
   it("drops unknown ids and bad quantities, floors fractions and merges duplicates", () => {
@@ -94,7 +98,7 @@ describe("priceQuote", () => {
       items,
     );
     expect(q.lines.map((l) => [l.id, l.qty])).toEqual([["table-60", 5]]);
-    expect(q.subtotal).toBe(68.75);
+    expect(q.subtotal).toBe(up(12.5) * 5);
     expect(q.cost).toBe(62.5);
   });
 
