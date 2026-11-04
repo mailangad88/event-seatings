@@ -3,6 +3,8 @@ import { promises as fs } from "fs";
 import path from "path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { attributionKeys } from "./attribution";
+import { backupConfigured, backupDeleteLead, backupGetLead, backupListLeads, backupPutLead } from "./lead-backup";
+import { isTransient, withRetry } from "./retry";
 import type { QuoteLine } from "./catalog-types";
 import type { Journey } from "./journey";
 import type { VendorOrder } from "./orders";
@@ -183,6 +185,9 @@ function sb() {
   return supabase;
 }
 
+// True when leads go to Supabase (production). False means the Blob backup or the local file.
+export const databaseConfigured = () => Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+
 const dbFile = path.join(process.cwd(), ".data", "db.json");
 
 async function readLocal(): Promise<LocalDb> {
@@ -193,9 +198,12 @@ async function readLocal(): Promise<LocalDb> {
   }
 }
 
+// Write to a temp file and rename, so two saves at once can never leave a half-written (broken) file.
 async function writeLocal(db: LocalDb) {
   await fs.mkdir(path.dirname(dbFile), { recursive: true });
-  await fs.writeFile(dbFile, JSON.stringify(db, null, 2));
+  const tmp = `${dbFile}.${process.pid}.${crypto.randomUUID()}.tmp`;
+  await fs.writeFile(tmp, JSON.stringify(db, null, 2));
+  await fs.rename(tmp, dbFile);
 }
 
 export async function setVote(chairSlug: string, visitorId: string, on: boolean) {
@@ -246,29 +254,134 @@ const newerLeadColumns = [
   "journey", "ip_location", "interests", "sequence",
 ] as const;
 
-export async function addLead(lead: NewLead): Promise<Lead> {
-  const full: Lead = { ...lead, id: crypto.randomUUID(), created_at: new Date().toISOString() };
-  const client = sb();
-  if (client) {
-    const { error } = await client.from("leads").insert(full);
-    if (!error) return full;
-    // Database not migrated yet (supabase/schema.sql not re-run): save without the newer columns rather than lose
-    // the lead. The full lead still reaches the owner alert and the CRM sync.
-    if (error.code === "PGRST204" || /column/i.test(error.message)) {
-      const legacy: Record<string, unknown> = { ...full };
-      for (const k of newerLeadColumns) delete legacy[k];
-      const retry = await client.from("leads").insert(legacy);
-      if (!retry.error) {
-        console.warn("LEAD_SAVED_WITHOUT_NEW_COLUMNS: re-run supabase/schema.sql", error.message);
-        return full;
-      }
-    }
-    throw error;
+// Where leads live when Supabase isn't set up: the private Blob backup on Vercel (lib/lead-backup.ts), or
+// .data/db.json on a developer's computer. With Supabase set up, the backup only holds leads the database
+// refused, and those are shown alongside database leads until the recovery job moves them in.
+async function fallbackLeads(): Promise<Lead[]> {
+  if (backupConfigured()) return backupListLeads();
+  return (await readLocal()).leads;
+}
+
+async function fallbackGet(id: string): Promise<Lead | undefined> {
+  if (backupConfigured()) return backupGetLead(id);
+  return (await readLocal()).leads.find((l) => l.id === id);
+}
+
+async function fallbackSave(lead: Lead): Promise<"backup" | "local"> {
+  if (backupConfigured()) {
+    await backupPutLead(lead);
+    return "backup";
   }
   const db = await readLocal();
-  db.leads.push(full);
+  const i = db.leads.findIndex((l) => l.id === lead.id);
+  if (i >= 0) db.leads[i] = lead;
+  else db.leads.push(lead);
   await writeLocal(db);
-  return full;
+  return "local";
+}
+
+// Backup leads waiting to move into the database. Never throws: a backup hiccup must not break /admin.
+async function orphanLeads(): Promise<Lead[]> {
+  if (!backupConfigured()) return [];
+  return backupListLeads().catch((e) => {
+    console.error("lead backup list failed", e);
+    return [];
+  });
+}
+
+const mergeById = (a: Lead[], b: Lead[]) => {
+  const seen = new Set(a.map((l) => l.id));
+  return [...a, ...b.filter((l) => !seen.has(l.id))];
+};
+
+const isUuid = (s: unknown): s is string =>
+  typeof s === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(s);
+
+type DbError = { code?: string; message: string };
+
+// Writes one lead row with a short retry for network blips. Falls back to the original columns when
+// supabase/schema.sql hasn't been re-run yet. `upsert` leaves an existing row with the same id untouched.
+async function insertLeadRow(client: SupabaseClient, full: Lead, mode: "insert" | "upsert"): Promise<DbError | null> {
+  const write = async (row: Record<string, unknown>) => {
+    const res = await withRetry(
+      async () => {
+        const r =
+          mode === "insert"
+            ? await client.from("leads").insert(row)
+            : await client.from("leads").upsert(row, { onConflict: "id", ignoreDuplicates: true });
+        // Throw temporary errors so withRetry tries again; hand back everything else.
+        if (r.error && isTransient(r.error)) throw r.error;
+        return r;
+      },
+      { attempts: 3, baseMs: 250, shouldRetry: isTransient },
+    );
+    return res.error as DbError | null;
+  };
+  const error = await write(full as unknown as Record<string, unknown>);
+  if (!error) return null;
+  if (error.code === "PGRST204" || (/column/i.test(error.message) && error.code !== "23505")) {
+    const legacy: Record<string, unknown> = { ...full };
+    for (const k of newerLeadColumns) delete legacy[k];
+    const retryError = await write(legacy);
+    if (!retryError) {
+      console.warn("LEAD_SAVED_WITHOUT_NEW_COLUMNS: re-run supabase/schema.sql", error.message);
+      return null;
+    }
+    return retryError;
+  }
+  return error;
+}
+
+export type SaveResult = {
+  lead: Lead;
+  // True when this submission was already saved (double click, browser retry): send nothing again.
+  duplicate: boolean;
+  storedIn: "database" | "backup" | "local";
+};
+
+/**
+ * Saves a new lead. `id` is the browser's submission id (lib/lead-client.ts): sending the same form twice
+ * gives the same id, so the second save is spotted and reported as a duplicate instead of a second lead.
+ * Order: Supabase (with retries), then the Blob backup, then the local file. Throws only when every
+ * store failed; the route then logs the lead in full (LEAD_SAVE_FAILED) and still emails it.
+ */
+export async function saveNewLead(lead: NewLead, opts: { id?: string } = {}): Promise<SaveResult> {
+  const full: Lead = { ...lead, id: isUuid(opts.id) ? opts.id.toLowerCase() : crypto.randomUUID(), created_at: new Date().toISOString() };
+  const client = sb();
+  if (client) {
+    let error: DbError | null;
+    try {
+      error = await insertLeadRow(client, full, "insert");
+    } catch (e) {
+      error = e && typeof e === "object" && "message" in e ? (e as DbError) : { message: String(e) };
+    }
+    if (!error) return { lead: full, duplicate: false, storedIn: "database" };
+    if (error.code === "23505") {
+      const existing = await getLead(full.id).catch(() => undefined);
+      return { lead: existing ?? full, duplicate: true, storedIn: "database" };
+    }
+    if (!backupConfigured()) throw error;
+    console.error("LEAD_DB_SAVE_FAILED, saving to backup", error);
+  }
+  const existing = await fallbackGet(full.id).catch(() => undefined);
+  if (existing) return { lead: existing, duplicate: true, storedIn: backupConfigured() ? "backup" : "local" };
+  return { lead: full, duplicate: false, storedIn: await fallbackSave(full) };
+}
+
+export async function addLead(lead: NewLead): Promise<Lead> {
+  return (await saveNewLead(lead)).lead;
+}
+
+/**
+ * Copies a lead into the database, keeping any row that already has its id. Used by the recovery job to
+ * move backup leads (and leads recovered from logs) in. Returns false when there is no database.
+ */
+export async function importLead(lead: Lead): Promise<boolean> {
+  const client = sb();
+  if (!client) return false;
+  const error = await insertLeadRow(client, lead, "upsert");
+  if (error) throw error;
+  return true;
 }
 
 export async function listLeads(): Promise<Lead[]> {
@@ -283,20 +396,22 @@ export async function listLeads(): Promise<Lead[]> {
         .range(from, from + 999);
       if (error) throw error;
       rows.push(...(data ?? []));
-      if (!data || data.length < 1000) return rows;
+      if (!data || data.length < 1000) break;
     }
+    return mergeById(rows, await orphanLeads()).sort((a, b) => b.created_at.localeCompare(a.created_at));
   }
-  return (await readLocal()).leads.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  return (await fallbackLeads()).sort((a, b) => b.created_at.localeCompare(a.created_at));
 }
 
 export async function getLead(id: string): Promise<Lead | undefined> {
   const client = sb();
   if (client) {
     const { data, error } = await client.from("leads").select("*").eq("id", id).maybeSingle();
-    if (error) throw error;
-    return data ?? undefined;
+    if (error && !/uuid/i.test(error.message)) throw error;
+    if (data) return data;
+    return backupConfigured() ? backupGetLead(id).catch(() => undefined) : undefined;
   }
-  return (await readLocal()).leads.find((l) => l.id === id);
+  return fallbackGet(id);
 }
 
 export type LeadPatch = Partial<
@@ -334,7 +449,7 @@ export async function getLeadByProposalToken(token: string): Promise<Lead | unde
     if (error) throw error;
     return data ?? undefined;
   }
-  return (await readLocal()).leads.find((l) => l.proposal_token === token);
+  return (await fallbackLeads()).find((l) => l.proposal_token === token);
 }
 
 // Applies CRM edits and appends `log` to the lead's activity timeline in one write.
@@ -346,19 +461,29 @@ export async function updateLead(id: string, patch: LeadPatch, log: Omit<LeadAct
   // Supabase needs explicit nulls to clear a column; undefined would be skipped.
   const changes: Record<string, unknown> = { updated_at: now, activity };
   for (const [k, v] of Object.entries(patch)) changes[k] = v === undefined || v === "" ? null : v;
+  const merged = () => {
+    const next = { ...lead, ...changes } as Record<string, unknown>;
+    for (const k of Object.keys(next)) if (next[k] === null) delete next[k];
+    return next as Lead;
+  };
 
   const client = sb();
   if (client) {
-    const { error } = await client.from("leads").update(changes).eq("id", id);
+    const { data, error } = await client.from("leads").update(changes).eq("id", id).select("id");
     if (error) throw error;
+    if (data?.length) return;
+    // Only in the backup so far: move it into the database with the change, or update the backup copy.
+    if (backupConfigured()) {
+      const next = merged();
+      if (await importLead(next).then(() => true, () => false)) {
+        await backupDeleteLead(id).catch((e) => console.error("backup delete failed", id, e));
+      } else {
+        await backupPutLead(next);
+      }
+    }
     return;
   }
-  const db = await readLocal();
-  const i = db.leads.findIndex((l) => l.id === id);
-  const next = { ...db.leads[i], ...changes } as Record<string, unknown>;
-  for (const k of Object.keys(next)) if (next[k] === null) delete next[k];
-  db.leads[i] = next as Lead;
-  await writeLocal(db);
+  await fallbackSave(merged());
 }
 
 // Marks every lead with this email as opted out (unsubscribe link). Returns how many rows changed.
@@ -366,6 +491,7 @@ export async function optOutEmail(email: string) {
   const now = new Date().toISOString();
   const target = email.trim().toLowerCase();
   const client = sb();
+  let n = 0;
   if (client) {
     const { data, error } = await client
       .from("leads")
@@ -374,17 +500,16 @@ export async function optOutEmail(email: string) {
       .is("opted_out_at", null)
       .select("id");
     if (error) throw error;
-    return data?.length ?? 0;
+    n = data?.length ?? 0;
   }
-  const db = await readLocal();
-  let n = 0;
-  for (const l of db.leads) {
+  // Leads in the backup (or the local file) are opted out too, so a recovered lead never gets emailed.
+  const rest = client ? await orphanLeads() : await fallbackLeads();
+  for (const l of rest) {
     if (l.email.toLowerCase() === target && !l.opted_out_at) {
-      l.opted_out_at = now;
+      await fallbackSave({ ...l, opted_out_at: now, updated_at: now });
       n++;
     }
   }
-  await writeLocal(db);
   return n;
 }
 
@@ -397,18 +522,19 @@ export async function listLeadsByEmail(email: string): Promise<Lead[]> {
     if (error) throw error;
     return data ?? [];
   }
-  return (await readLocal()).leads.filter((l) => l.email.toLowerCase() === target).sort((a, b) => b.created_at.localeCompare(a.created_at));
+  return (await fallbackLeads()).filter((l) => l.email.toLowerCase() === target).sort((a, b) => b.created_at.localeCompare(a.created_at));
 }
 
-// Leads created since `since`, for the follow-up sequence and weekly report.
+// Leads created since `since`, for the follow-up sequence, the weekly report and the recovery job.
 export async function listLeadsSince(since: string): Promise<Lead[]> {
   const client = sb();
   if (client) {
     const { data, error } = await client.from("leads").select("*").gte("created_at", since).order("created_at");
     if (error) throw error;
-    return data ?? [];
+    const orphans = (await orphanLeads()).filter((l) => l.created_at >= since);
+    return mergeById(data ?? [], orphans).sort((a, b) => a.created_at.localeCompare(b.created_at));
   }
-  return (await readLocal()).leads.filter((l) => l.created_at >= since).sort((a, b) => a.created_at.localeCompare(b.created_at));
+  return (await fallbackLeads()).filter((l) => l.created_at >= since).sort((a, b) => a.created_at.localeCompare(b.created_at));
 }
 
 export async function addPageView(view: Omit<PageView, "created_at">) {

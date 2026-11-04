@@ -31,6 +31,7 @@ import { ideaQty, type PlannerIdea } from "@/data/party-ideas/types";
 import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
 import { Icon, formatPrice, type IconName } from "../ui";
 import { FloorPlan } from "./FloorPlan";
+import { postLead } from "@/lib/lead-client";
 
 // Step-by-step event planner on /quote: occasion → guests → where → package → essentials → add-ons → date & details,
 // then a free personalised plan the visitor can download as a PDF. Each answer builds a recommended rental list
@@ -381,7 +382,7 @@ export function EventPlanner({
       items: rows.map((l) => ({ id: l.id, qty: l.qty })),
     };
     try {
-      const res = await fetch("/api/leads", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+      const res = await postLead(body);
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json.error ?? "Something went wrong. Please try again.");
       trackLead(date ? "quote" : "quiz", "planner", { guest_count: a.guests, item_count: rows.length });

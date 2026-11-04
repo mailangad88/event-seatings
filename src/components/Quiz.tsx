@@ -7,6 +7,7 @@ import { attributionFields } from "@/lib/attribution";
 import { track, trackLead } from "@/lib/analytics";
 import { BookingCta } from "./BookingCta";
 import { ChairCard } from "./ChairCard";
+import { postLead } from "@/lib/lead-client";
 
 type Option = { label: string; scores: Partial<Record<Style, number>> };
 
@@ -118,17 +119,13 @@ export function Quiz() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setEmailStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        kind: "quiz",
-        quiz_styles: topStyles,
-        chairs: picks.map((c) => c.slug),
-        source: "style-quiz",
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      kind: "quiz",
+      quiz_styles: topStyles,
+      chairs: picks.map((c) => c.slug),
+      source: "style-quiz",
     }).catch(() => null);
     if (res?.ok) trackLead("quiz", "style-quiz", { quiz_style: topStyles[0] });
     setEmailStatus("done");

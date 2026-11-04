@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { attributionFields } from "@/lib/attribution";
 import { trackLead } from "@/lib/analytics";
+import { postLead } from "@/lib/lead-client";
 
 // Email capture. Works on light and dark bands (it uses theme tokens); `dark` is kept for older call sites.
 export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
@@ -13,11 +14,7 @@ export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...attributionFields(), ...data, kind: "waitlist", source }),
-    }).catch(() => null);
+    const res = await postLead({ ...attributionFields(), ...data, kind: "waitlist", source }).catch(() => null);
     if (res?.ok) {
       trackLead("waitlist", source);
       return setStatus("done");

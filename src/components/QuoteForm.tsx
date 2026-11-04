@@ -17,6 +17,7 @@ import { BookingCta } from "./BookingCta";
 import { ChairArt } from "./ChairArt";
 import { RentalIcon } from "./rentals/RentalIcon";
 import { Icon, PriceDisclaimer, PriceTag, formatPrice, type IconName } from "./ui";
+import { postLead } from "@/lib/lead-client";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
 export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey; similar?: boolean };
@@ -280,17 +281,13 @@ export function QuoteForm({
     }
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        guest_count: guests || data.guest_count,
-        items: lines.map((l) => ({ id: l.item.id, qty: l.qty, variant: colours[l.item.id] })),
-        kind: "quote",
-        source: from ? `quote-builder:${from}` : activePreset ? `quote-builder:${activePreset.kind}-${activePreset.id}` : "quote-builder",
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      guest_count: guests || data.guest_count,
+      items: lines.map((l) => ({ id: l.item.id, qty: l.qty, variant: colours[l.item.id] })),
+      kind: "quote",
+      source: from ? `quote-builder:${from}` : activePreset ? `quote-builder:${activePreset.kind}-${activePreset.id}` : "quote-builder",
     }).catch(() => null);
     if (res?.ok) {
       trackLead("quote", "quote-builder", { guest_count: Number(guests || data.guest_count) || undefined, item_count: lines.length });
