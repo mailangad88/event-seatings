@@ -93,7 +93,10 @@ export default function VenuesAndPlannersPage() {
         <IconCards columns={2} items={forYou} />
         <p className="mt-8 text-sm text-muted">
           How we price it for the family: <Link href="/pricing" className="link">pricing</Link>. Big events:{" "}
-          <Link href="/big-celebrations" className="link">big celebrations</Link>.
+          <Link href="/big-celebrations" className="link">big celebrations</Link>. Browse{" "}
+          <Link href="/rentals" className="link">every rental</Link>, see{" "}
+          <Link href="/how-it-works" className="link">how booking works</Link> or read{" "}
+          <Link href="/terms" className="link">our terms</Link>.
         </p>
       </Section>
 
