@@ -298,3 +298,7 @@ create index if not exists leads_vendor_orders_idx on leads (created_at desc) wh
 -- Lists read newest first with id as the tie-breaker.
 create index if not exists leads_created_id_idx on leads (created_at desc, id);
 create index if not exists page_views_created_id_idx on page_views (created_at, id);
+
+-- Call script answers (/admin/leads/<id>/script and /admin/calls/new, lib/intake.ts). Safe to run again.
+-- Name, date, guests, town and venue stay in their own columns; everything else asked on the call lives here.
+alter table leads add column if not exists intake jsonb;

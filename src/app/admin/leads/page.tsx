@@ -61,7 +61,10 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
           <p className="eyebrow">CRM</p>
           <h1 className="display-2 mt-1">Lead pipeline</h1>
         </div>
-        <a href="/admin/export" className="btn-ghost btn-sm">Download CSV</a>
+        <div className="flex flex-wrap gap-2">
+          <Link href="/admin/calls/new" className="btn-primary btn-sm">New phone call</Link>
+          <a href="/admin/export" className="btn-ghost btn-sm">Download CSV</a>
+        </div>
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">

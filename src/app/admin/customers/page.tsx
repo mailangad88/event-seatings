@@ -25,7 +25,8 @@ type Customer = {
 function group(leads: Lead[], today: string): Customer[] {
   const map = new Map<string, Lead[]>();
   for (const l of leads) {
-    const k = l.email.trim().toLowerCase();
+    // Phone-only callers have no email yet: group them by phone number instead.
+    const k = l.email.trim().toLowerCase() || (l.phone ? `phone:${l.phone.replace(/\D/g, "")}` : `lead:${l.id}`);
     map.set(k, [...(map.get(k) ?? []), l]);
   }
   return [...map].map(([email, ls]) => {
@@ -109,11 +110,11 @@ export default async function CustomersPage(props: PageProps<"/admin/customers">
             {shown.slice(0, 300).map((c) => (
               <tr key={c.email}>
                 <td>
-                  <Link href={`/admin/leads/${c.latest.id}`} className="font-medium text-accent">{c.name || c.email}</Link>
+                  <Link href={`/admin/leads/${c.latest.id}`} className="font-medium text-accent">{c.name || (c.email.includes("@") ? c.email : c.phone)}</Link>
                   <div className="text-xs text-muted">{[c.city, c.optedOut && "unsubscribed"].filter(Boolean).join(" · ")}</div>
                 </td>
                 <td className="[overflow-wrap:anywhere]">
-                  <a href={`mailto:${c.email}`} className="text-accent">{c.email}</a>
+                  {c.email.includes("@") ? <a href={`mailto:${c.email}`} className="text-accent">{c.email}</a> : <span className="text-muted">No email yet</span>}
                   {c.phone && <div><a href={`tel:${c.phone}`}>{c.phone}</a></div>}
                 </td>
                 <td className="text-right tabular-nums">

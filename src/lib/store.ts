@@ -10,6 +10,7 @@ import { isTransient, withRetry } from "./retry";
 import type { QuoteLine } from "./catalog-types";
 import type { Journey } from "./journey";
 import type { VendorOrders } from "./orders";
+import type { Intake } from "./intake";
 
 // Storage for votes and leads.
 // - With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, data goes to Supabase (use this in production).
@@ -91,6 +92,8 @@ export type Lead = {
   // Random id from the visitor's browser (es_visitor). Links the lead to what they do after sending the form
   // (visitor_activity), which the reminder emails use. Unset on old leads.
   visitor_id?: string;
+  // Answers from the call script (/admin/leads/<id>/script, lib/intake.ts) that have no column of their own.
+  intake?: Intake;
 } & Partial<Record<TrackingField, string>>;
 
 export type LeadMessage = { at: string; from: "customer" | "team"; text: string; read_at?: string };
@@ -281,7 +284,7 @@ const newerLeadColumns = [
   "email_consent", "call_consent", "consent_at", "opted_out_at", "lead_score", "lead_score_reasons",
   "visitor_tz", "pages_viewed", "followup_step", "followup_last_at", "referral_code",
   "journey", "ip_location", "interests", "sequence", "visitor_id",
-  "vendor_orders",
+  "vendor_orders", "intake",
 ] as const;
 
 // Where leads live when Supabase isn't set up: the private Blob backup on Vercel (lib/lead-backup.ts), or
@@ -518,6 +521,16 @@ export type LeadPatch = Partial<
     | "quote_cost"
     | "vendor_orders"
     | "messages"
+    | "intake"
+    // Edited from the call script when the customer corrects or adds them on the phone.
+    | "name"
+    | "phone"
+    | "email"
+    | "event_type"
+    | "event_date"
+    | "guest_count"
+    | "city"
+    | "venue"
   >
 >;
 

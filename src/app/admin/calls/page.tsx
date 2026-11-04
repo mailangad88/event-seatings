@@ -55,6 +55,11 @@ function CallItem({ row, today }: { row: CallRow; today: string }) {
           </div>
         </div>
         <div className="flex shrink-0 flex-col items-stretch gap-2 sm:items-end">
+          {row.kind !== "vendor" && (
+            <Link href={`/admin/leads/${l.id}/script`} className="btn-ghost btn-sm">
+              <Icon name="list" size={16} /> Call script
+            </Link>
+          )}
           {canCall ? (
             <a href={`tel:${row.phone}`} className="btn-primary btn-sm">
               <Icon name="phone" size={16} /> {row.phone}
@@ -96,7 +101,14 @@ export default async function CallsPage() {
         group="Customers"
         title="Calls for today"
         intro={`Who to phone on ${prettyDay(today, { weekday: "long", month: "long", day: "numeric" })}, most important first. Log how each call went and the list updates. No answer or a voicemail puts them back on the list in 2 days.`}
-        actions={<Link href="/admin/pipeline" className="btn-ghost btn-sm">Pipeline</Link>}
+        actions={
+          <>
+            <Link href="/admin/calls/new" className="btn-primary btn-sm">
+              <Icon name="plus" size={16} /> New phone call
+            </Link>
+            <Link href="/admin/pipeline" className="btn-ghost btn-sm">Pipeline</Link>
+          </>
+        }
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
