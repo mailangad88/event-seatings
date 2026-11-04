@@ -60,3 +60,16 @@ export async function backupListLeads(): Promise<Lead[]> {
   }
   return out.sort((a, b) => b.created_at.localeCompare(a.created_at));
 }
+
+// Any other small JSON file in the same private store (visitor activity, reminder settings), by path.
+export async function backupGetJson<T>(pathname: string): Promise<T | undefined> {
+  const res = await retry(() => get(pathname, { access: "private", useCache: false }));
+  if (!res || res.statusCode !== 200) return undefined;
+  return JSON.parse(await new Response(res.stream).text()) as T;
+}
+
+export async function backupPutJson(pathname: string, value: unknown) {
+  await retry(() =>
+    put(pathname, JSON.stringify(value), { access: "private", addRandomSuffix: false, allowOverwrite: true, contentType: "application/json", cacheControlMaxAge: 60 }),
+  );
+}

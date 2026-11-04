@@ -252,3 +252,22 @@ create table if not exists customer_accounts (
   saved_ideas jsonb
 );
 alter table customer_accounts enable row level security;
+
+-- Reminder emails (Nov 2026). Safe to run again.
+-- visitor_id links a lead to what the visitor did after sending it; visitor_activity holds those pages and
+-- clicks (known visitors only, and only if they didn't say no to tracking); site_settings holds small
+-- settings edited in /admin, such as the reminder emails and their offer.
+alter table leads add column if not exists visitor_id text;
+create index if not exists leads_visitor_idx on leads (visitor_id);
+create table if not exists visitor_activity (
+  visitor_id text primary key,
+  events jsonb not null default '[]'::jsonb,
+  updated_at timestamptz not null default now()
+);
+alter table visitor_activity enable row level security;
+create table if not exists site_settings (
+  key text primary key,
+  value jsonb not null,
+  updated_at timestamptz not null default now()
+);
+alter table site_settings enable row level security;

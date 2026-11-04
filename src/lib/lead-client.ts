@@ -7,6 +7,9 @@
 // - If it still fails, the details wait on this device (localStorage "lead-outbox", up to 7 days) and are sent
 //   on the visitor's next page view. The visitor still sees the form's error, so they can also try again.
 // - form_ms (time since the page opened) lets the server spot forms filled by scripts.
+// - visitor_id links the lead to what they do afterwards (lib/activity-client.ts), for reminder emails.
+
+import { markKnownVisitor, visitorIdForLead } from "./activity-client";
 
 const OUTBOX = "lead-outbox";
 const KEYS = "lead-submission-keys";
@@ -113,6 +116,7 @@ export async function postLead(payload: Payload): Promise<Response> {
     ...payload,
     submission_id: submissionIdFor(payload),
     form_ms: typeof performance !== "undefined" ? Math.round(performance.now()) : undefined,
+    visitor_id: visitorIdForLead(),
   };
   let last: Response | undefined;
   for (let attempt = 1; attempt <= 3; attempt++) {
@@ -120,6 +124,7 @@ export async function postLead(payload: Payload): Promise<Response> {
       last = await send(body);
       if (!retryable(last.status)) {
         dequeue(String(body.submission_id));
+        if (last.ok && typeof payload.email === "string") markKnownVisitor();
         return last;
       }
     } catch {

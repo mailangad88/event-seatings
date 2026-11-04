@@ -32,6 +32,7 @@ export const adminNav: { group: string; items: Item[] }[] = [
     group: "Grow",
     items: [
       { href: "/admin/followups", label: "Follow-up emails", icon: "mail" },
+      { href: "/admin/reminders", label: "Reminder emails", icon: "clock" },
       { href: "/admin/emails", label: "Email previews", icon: "quote" },
       { href: "/admin/reviews", label: "Reviews", icon: "star" },
       { href: "/admin/referrals", label: "Referrals", icon: "heart" },

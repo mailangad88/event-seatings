@@ -7,8 +7,9 @@ import { getVendor, type Vendor } from "@/data/vendors";
 import { VendorContact } from "@/components/admin/VendorContact";
 import { usd, type QuoteLine } from "@/lib/catalog-types";
 import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJourney";
+import { AfterEnquiry } from "@/components/admin/AfterEnquiry";
 import { buildLeadAlert } from "@/lib/lead-alert";
-import { getLead, leadStatuses, listLeadsByEmail, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
+import { getLead, getVisitorActivity, leadStatuses, listLeadsByEmail, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
 import { amountDue, chargeLabel, stripeEnabled } from "@/lib/payments";
 import { site } from "@/lib/site";
 import { createProposal, saveLead, setFeeStatus } from "../actions";
@@ -69,7 +70,10 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
   const [lead, partnerRows] = await Promise.all([getLead(id), listPartners()]);
   if (!lead) notFound();
   const partners = new Map(partnerRows.map((p) => [p.vendor_id, p]));
-  const earlier = await listLeadsByEmail(lead.email).catch(() => [] as Lead[]);
+  const [earlier, afterEvents] = await Promise.all([
+    listLeadsByEmail(lead.email).catch(() => [] as Lead[]),
+    lead.visitor_id ? getVisitorActivity(lead.visitor_id).catch(() => []) : Promise.resolve([]),
+  ]);
   const alert = buildLeadAlert(lead, { earlier, partners, siteUrl: site.url });
 
   const lines = lead.items ?? [];
@@ -136,6 +140,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
 
           <LeadOutreach alert={alert} />
           <LeadJourney alert={alert} />
+          {lead.visitor_id ? <AfterEnquiry events={afterEvents} since={lead.created_at} /> : null}
 
           {(lines.length > 0 || assigned) && (
             <section className={card} aria-labelledby="who-to-contact">

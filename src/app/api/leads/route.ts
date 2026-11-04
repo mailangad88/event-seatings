@@ -12,8 +12,9 @@ import { cleanCode } from "@/lib/referrals";
 import { sequenceLabel } from "@/lib/followups";
 import { interestsFor, interestSummary } from "@/lib/interests";
 import { deviceFromUserAgent, locationFromHeaders, parseJourney } from "@/lib/journey";
+import { isVisitorId } from "@/lib/activity";
 import { spamReason } from "@/lib/lead-spam";
-import { saveNewLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
+import { linkVisitor, saveNewLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
 
@@ -128,6 +129,8 @@ export async function POST(request: Request) {
     visitor_tz: str(body.visitor_tz, 60),
     pages_viewed: str(body.pages_viewed, 1500),
     ip_location: locationFromHeaders(request.headers),
+    // The browser's random visitor id: links this lead to what they look at afterwards (reminder emails).
+    visitor_id: isVisitorId(body.visitor_id) ? body.visitor_id : undefined,
   };
   // Pages, clicks and visits from the visitor's browser (empty if they turned it off), plus device and rough
   // location worked out here from the request.
@@ -226,6 +229,7 @@ export async function POST(request: Request) {
     console.error("LEAD_SAVE_FAILED", error, JSON.stringify(saved));
   }
   remember(submissionId);
+  if (saved.visitor_id) await linkVisitor(saved.visitor_id).catch((e) => console.error("visitor link not saved", e));
   // CRM sync and the owner email run after the visitor gets their answer, so a slow or failing CRM
   // never loses a lead: it's already saved above, and both helpers log their own errors.
   const download = lead.source?.startsWith("download:") ? getDownload(lead.source.slice(9).split("@")[0]) : undefined;

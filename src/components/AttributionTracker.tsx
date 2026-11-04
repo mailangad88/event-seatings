@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { track } from "@/lib/analytics";
 import { currentSource, recordClick, recordPage, recordVisit } from "@/lib/attribution";
 import { flushLeadOutbox } from "@/lib/lead-client";
+import { trackActivity } from "@/lib/activity-client";
 
 function visitorId() {
   try {
@@ -40,15 +41,18 @@ export function AttributionTracker() {
   useEffect(() => {
     if (!pathname || pathname.startsWith("/admin")) return;
     recordPage(pathname);
-    if (navigator.webdriver) return;
-    const visitor = visitorId();
-    if (!visitor) return;
-    const body = JSON.stringify({ path: pathname, visitor, source: currentSource() });
-    try {
-      if (!navigator.sendBeacon?.("/api/views", new Blob([body], { type: "application/json" }))) {
-        fetch("/api/views", { method: "POST", body, headers: { "content-type": "application/json" }, keepalive: true }).catch(() => {});
-      }
-    } catch {}
+    // Known visitors only (they've sent a form): what they look at next, for reminders. Title set after render.
+    const t = window.setTimeout(() => trackActivity({ t: "page", path: pathname, title: document.title.slice(0, 140) }), 500);
+    const visitor = navigator.webdriver ? null : visitorId();
+    if (visitor) {
+      const body = JSON.stringify({ path: pathname, visitor, source: currentSource() });
+      try {
+        if (!navigator.sendBeacon?.("/api/views", new Blob([body], { type: "application/json" }))) {
+          fetch("/api/views", { method: "POST", body, headers: { "content-type": "application/json" }, keepalive: true }).catch(() => {});
+        }
+      } catch {}
+    }
+    return () => window.clearTimeout(t);
   }, [pathname]);
 
   // Clicks on links and buttons, so the owner can see what caught their eye (labels and targets only).
@@ -67,6 +71,7 @@ export function AttributionTracker() {
         } catch {}
       }
       recordClick(label, href, path);
+      trackActivity({ t: "click", path, label: label.replace(/\s+/g, " ").trim().slice(0, 80), href });
     };
     document.addEventListener("click", onClick, { capture: true });
     return () => document.removeEventListener("click", onClick, { capture: true });
