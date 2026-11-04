@@ -195,4 +195,82 @@ for i,(t,h,sub) in enumerate(steps):
         b.append(text(x,404+j*24,l,16,MUTED,SANS,"middle"))
 b.append(text(600,520,"Typical sequence. Every restaurant sets its own access times, so confirm yours in writing.",15,MUTED,SANS,"middle"))
 write("restaurant-buyout-chair-swap.svg",svg(1200,570,"Restaurant buyout chair swap timeline: confirm the plan weeks before, clear the room after service, swap in rental chairs, host the event, then strike and return the house chairs","\n".join(b)))
+# 9. Graduation ceremony field layout (schematic)
+b=[eyebrow(600,70,"Graduation ceremony on a field","middle"),
+   text(600,122,"Graduates in the middle, guests around them",38,INK,SERIF,"middle",300)]
+# field
+b.append(f'<rect x="60" y="160" width="760" height="500" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".5"/>')
+for k in range(1,6):
+    x=60+k*760/6
+    b.append(f'<line x1="{x:.0f}" y1="160" x2="{x:.0f}" y2="660" stroke="{LINE}"/>')
+# stage
+b.append(f'<rect x="300" y="178" width="280" height="56" fill="{GOLD}"/>')
+b.append(text(440,212,"STAGE + PLATFORM PARTY",13,"#0a0806",SANS,"middle",500,2))
+# faculty row
+for k in range(14):
+    b.append(f'<rect x="{262+k*26}" y="262" width="16" height="14" fill="none" stroke="{GOLD}"/>')
+b.append(text(440,298,"FACULTY",12,MUTED,SANS,"middle",500,2))
+# graduate block with center aisle
+for r in range(8):
+    for c in range(16):
+        x=230+c*26+(30 if c>=8 else 0); y=320+r*24
+        b.append(f'<rect x="{x}" y="{y}" width="16" height="14" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(440,530,"GRADUATES (CENTER AISLE)",12,GOLD,SANS,"middle",500,2))
+# guest blocks on sides
+for side in (80,700):
+    for r in range(10):
+        for c in range(4):
+            b.append(f'<rect x="{side+c*24}" y="{320+r*24}" width="14" height="14" fill="none" stroke="{INK}" stroke-opacity=".6"/>')
+b.append(text(128,310,"GUESTS",12,MUTED,SANS,"middle",500,2))
+b.append(text(748,310,"GUESTS",12,MUTED,SANS,"middle",500,2))
+# ADA zone
+b.append(f'<rect x="230" y="580" width="420" height="48" fill="none" stroke="{GOLD}" stroke-dasharray="5 5"/>')
+b.append(text(440,610,"ACCESSIBLE SEATING + COMPANION CHAIRS",12,GOLD,SANS,"middle",500,1.5))
+rows=[("1","Stage","Speakers, diplomas, platform party"),
+      ("2","Faculty","Row facing the graduates"),
+      ("3","Graduates","Rows in walk order, center aisle"),
+      ("4","Guests","Field chairs or bleachers"),
+      ("5","Accessible","Level spot, companion seats")]
+for i,(n,h,sub) in enumerate(rows):
+    y=200+i*92
+    b.append(f'<circle cx="870" cy="{y}" r="17" fill="{GOLD}"/>')
+    b.append(text(870,y+6,n,17,"#0a0806",SANS,"middle",500))
+    b.append(text(900,y-2,h,25,INK,SERIF))
+    b.append(text(900,y+24,sub,15,MUTED))
+b.append(text(600,700,"Schematic, not to scale. Your school sets the ticket limit and the rain plan.",14,MUTED,SANS,"middle",400,1,True))
+write("graduation-ceremony-field-layout.svg",svg(1200,730,"Schematic graduation ceremony layout on a football field: stage and platform party at one end, a faculty row, graduates in rows with a center aisle, guest chairs on both sides and an accessible seating area","\n".join(b)))
+# 10. Gym floor protection layers
+b=[eyebrow(600,70,"Events on a gym floor","middle"),
+   text(600,122,"Protect the hardwood before the chairs come in",38,INK,SERIF,"middle",300)]
+# cross-section on left
+x0,x1=90,640
+b.append(f'<rect x="{x0}" y="470" width="{x1-x0}" height="60" fill="#8a6a43"/>')
+for k in range(12):
+    b.append(f'<line x1="{x0+k*46}" y1="470" x2="{x0+k*46}" y2="530" stroke="#5b4630"/>')
+b.append(text((x0+x1)/2,508,"HARDWOOD GYM FLOOR",14,"#f5ecd9",SANS,"middle",500,2.5))
+b.append(f'<rect x="{x0}" y="450" width="{x1-x0}" height="20" fill="{GOLD}" fill-opacity=".55"/>')
+b.append(text(x1+12,465,"Floor cover",15,MUTED))
+# chair silhouette
+cx=250
+b.append(f'<g fill="none" stroke="{INK}" stroke-width="5" stroke-linecap="round"><path d="M{cx} 300 V448 M{cx+90} 300 V448 M{cx} 380 H{cx+120} M{cx+120} 380 V448 M{cx} 300 H{cx+90}"/></g>')
+for fx in (cx,cx+90,cx+120):
+    b.append(f'<rect x="{fx-9}" y="440" width="18" height="10" rx="3" fill="{GOLD}"/>')
+b.append(text(cx+60,280,"CHAIR",13,MUTED,SANS,"middle",500,2))
+# cart wheel
+b.append(f'<rect x="460" y="360" width="140" height="60" fill="none" stroke="{INK}" stroke-width="3"/>')
+for wx in (480,580):
+    b.append(f'<circle cx="{wx}" cy="436" r="13" fill="{SOFT}" stroke="{GOLD}" stroke-width="3"/>')
+b.append(text(530,345,"CART",13,MUTED,SANS,"middle",500,2))
+rows=[("1","Cover the floor","Tarp, vinyl or carpet over the event area"),
+      ("2","Protect the feet","Glides or caps on every chair and table leg"),
+      ("3","Roll, don't drag","Soft-wheeled carts on the cover, never bare wheels"),
+      ("4","Ask the custodian","The school or church sets the rules")]
+for i,(n,h,sub) in enumerate(rows):
+    y=200+i*100
+    b.append(f'<circle cx="760" cy="{y}" r="18" fill="{GOLD}"/>')
+    b.append(text(760,y+6,n,18,"#0a0806",SANS,"middle",500))
+    b.append(text(792,y-2,h,26,INK,SERIF))
+    b.append(text(792,y+26,sub,15,MUTED))
+b.append(text(600,600,"Schematic. Every facility has its own floor policy, so confirm it in writing.",14,MUTED,SANS,"middle",400,1,True))
+write("gym-floor-protection.svg",svg(1200,640,"How to protect a hardwood gym floor at an event: a floor cover over the event area, glides on chair and table feet, and soft-wheeled carts rolled on the cover","\n".join(b)))
 print("ok")
