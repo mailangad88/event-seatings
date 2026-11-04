@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { checkAdmin } from "@/lib/admin-auth";
 import { clientIp, rateLimit, tooManyResponse } from "@/lib/rate-limit";
+import { holdingPageResponse, hostShowsFullSite, pathStaysOpen, sitePaused } from "@/lib/holding-page";
 
 // Password-protects /admin with HTTP Basic Auth (any username, password = ADMIN_PASSWORD).
 // With no ADMIN_PASSWORD set, admin is only reachable in local development.
@@ -8,6 +9,19 @@ import { clientIp, rateLimit, tooManyResponse } from "@/lib/rate-limit";
 const failedLogins = { limit: 10, windowMs: 15 * 60_000 };
 
 export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  if (!pathname.startsWith("/admin")) {
+    // "We'll be back soon": with SITE_PAUSED on, public pages on beyondchiavari.com show the holding page
+    // (src/lib/holding-page.ts). *.vercel.app keeps the full site, and admin, APIs and files keep working.
+    if (sitePaused() && !hostShowsFullSite(request.headers.get("host")) && !pathStaysOpen(pathname)) {
+      return holdingPageResponse();
+    }
+    return NextResponse.next();
+  }
+  return adminGate(request);
+}
+
+async function adminGate(request: NextRequest) {
   const authorization = request.headers.get("authorization");
   const check = checkAdmin(authorization);
   if (check === "unconfigured") {
@@ -31,5 +45,6 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*"],
+  // Admin (password) plus every page, for the holding page. Next.js internals and the APIs never run through here.
+  matcher: ["/((?!_next/|api/).*)"],
 };
