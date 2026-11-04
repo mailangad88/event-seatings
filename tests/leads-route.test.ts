@@ -23,6 +23,7 @@ let POST: (r: Request) => Promise<Response>;
 beforeAll(async () => {
   delete process.env.SUPABASE_URL;
   delete process.env.BLOB_READ_WRITE_TOKEN;
+  delete process.env.BLOB_STORE_ID;
   process.chdir(dir);
   ({ POST } = await import("@/app/api/leads/route"));
 });

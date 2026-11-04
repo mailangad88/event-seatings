@@ -24,7 +24,7 @@ const groups = [
       ["SUPABASE_SERVICE_ROLE_KEY", "Database key (Supabase > Project settings > API > service_role)."],
       ["ADMIN_PASSWORD", "Password for /admin."],
     ],
-    ok: () => has("BLOB_READ_WRITE_TOKEN") || (has("SUPABASE_URL") && has("SUPABASE_SERVICE_ROLE_KEY")),
+    ok: () => has("BLOB_READ_WRITE_TOKEN") || has("BLOB_STORE_ID") || (has("SUPABASE_URL") && has("SUPABASE_SERVICE_ROLE_KEY")),
     okText: "Leads are being kept.",
     badText: "Leads are NOT being kept. They only reach the function log until one of these stores is set up.",
   },

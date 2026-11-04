@@ -16,6 +16,7 @@ let store: typeof import("@/lib/store");
 beforeAll(async () => {
   delete process.env.SUPABASE_URL;
   delete process.env.BLOB_READ_WRITE_TOKEN;
+  delete process.env.BLOB_STORE_ID;
   process.chdir(mkdtempSync(path.join(os.tmpdir(), "activity-route-")));
   [leads, activity, store] = await Promise.all([import("@/app/api/leads/route"), import("@/app/api/activity/route"), import("@/lib/store")]);
 });
