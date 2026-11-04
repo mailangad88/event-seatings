@@ -47,10 +47,10 @@ export const styleName = (id?: string) => styles.find((s) => s.id === id)?.name 
 export const essentialGroups = ["Seating", "Tables", "Linens", "Tableware", "Glassware"];
 
 export const settings: { id: SettingId; name: string; blurb: string; image: string; alt: string }[] = [
-  { id: "backyard", name: "Backyard or home", blurb: "Your own lawn, patio or driveway, with the house nearby.", image: scene("backyard-birthday"), alt: "Backyard party with string lights" },
-  { id: "venue", name: "Indoors", blurb: "Banquet hall, restaurant, church hall, office, loft or your home.", image: scene("cocktail-hour"), alt: "Indoor cocktail hour with highboy tables" },
-  { id: "tent", name: "Outdoor venue or tent", blurb: "A lawn, farm, field or garden venue that needs a tent.", image: scene("tent-reception-dusk"), alt: "Frame tent reception lit at dusk" },
-  { id: "park", name: "Park or public space", blurb: "Chicago Park District or forest preserve shelters and lawns.", image: scene("graduation-party"), alt: "Outdoor party under canopies" },
+  { id: "backyard", name: "Backyard or home", blurb: "Your own lawn, patio or driveway, with the house nearby.", image: scene("set-backyard"), alt: "Brick house backyard with folding tables, white chairs and a pop-up canopy on the lawn" },
+  { id: "venue", name: "Indoors", blurb: "Banquet hall, restaurant, church hall, office, loft or your home.", image: scene("set-venue"), alt: "Empty banquet hall with round tables in white cloths and white folding chairs" },
+  { id: "tent", name: "Outdoor venue or tent", blurb: "A lawn, farm, field or garden venue that needs a tent.", image: scene("set-tent"), alt: "White pole tent with tables set inside on a farm field next to a red barn" },
+  { id: "park", name: "Park or public space", blurb: "Chicago Park District or forest preserve shelters and lawns.", image: scene("set-park"), alt: "Park picnic shelter with tables, balloons and families on the lawn" },
 ];
 
 export const extras: { id: ExtraId; name: string; icon: string; text: string }[] = [
