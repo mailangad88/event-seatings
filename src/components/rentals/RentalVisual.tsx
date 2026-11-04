@@ -1,10 +1,10 @@
-import fs from "node:fs";
-import path from "node:path";
+import { hasPublicFile } from "@/lib/public-files";
 import Image from "next/image";
 import { ChairArt } from "@/components/ChairArt";
 import { getCategory, type CategoryId } from "@/data/catalog-products";
 import { getChair } from "@/data/chairs";
 import { isPhotoFirst, photosForItem, stockAlt } from "@/data/stock-photos";
+import { similarPhoto } from "@/data/similar-photo";
 import { readImageManifest } from "@/lib/image-manifest";
 import { site } from "@/lib/site";
 import { RentalIcon } from "./RentalIcon";
@@ -20,7 +20,7 @@ import { ExampleChip, StockImg } from "./StockPhoto";
 // Render manifest with the Gemini styled event scenes laid over it (see src/lib/image-manifest.ts).
 const readManifest = readImageManifest;
 
-const exists = (rel: string) => fs.existsSync(path.join(process.cwd(), "public", rel));
+const exists = (rel: string) => hasPublicFile(rel);
 
 export function rentalImagePath(id: string, category: CategoryId) {
   const fromManifest = readManifest()[id]?.src;
@@ -29,6 +29,9 @@ export function rentalImagePath(id: string, category: CategoryId) {
   const rel = `/rentals/${folder}/${id}.webp`;
   return exists(rel) ? rel : undefined;
 }
+
+/** Alt text for a similar item's photo standing in for a catalog row. */
+export const similarAlt = (img: { alt: string }, itemName: string) => `Similar item to ${itemName}: ${img.alt.charAt(0).toLowerCase()}${img.alt.slice(1)}`;
 
 export const rentalAlt = (name: string, specs: string, id?: string) =>
   (id && readManifest()[id]?.alt) || `${name} for rent in ${site.market} and the suburbs (${specs})`;
@@ -55,6 +58,16 @@ export function RentalVisual({
     return (
       <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
         <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" />
+      </div>
+    );
+  }
+  // No photo of its own: the studio photo of the same kind of piece from the featured range, labelled.
+  const similar = similarPhoto(item);
+  if (similar) {
+    return (
+      <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
+        <Image src={similar.src} alt={similarAlt(similar, item.name)} fill priority={priority} sizes={sizes} className="object-cover" />
+        <ExampleChip label="Similar item" />
       </div>
     );
   }

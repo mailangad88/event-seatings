@@ -27,6 +27,7 @@ import {
   vendorOccasionFor,
   type SavedEvent,
 } from "@/lib/my-events";
+import { postLead } from "@/lib/lead-client";
 
 // ---- Device storage as an external store (no setState-in-effect, no hydration mismatch) ----------
 const listeners = new Set<() => void>();
@@ -420,18 +421,14 @@ function CheckIn({ event, siteName }: { event: SavedEvent; siteName: string }) {
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
     const ev = plannerEvents.find((p) => p.id === event.type);
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        kind: "waitlist",
-        source: "my-events",
-        event_type: ev?.eventType,
-        event_date: event.date,
-        guest_count: event.guests,
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      kind: "waitlist",
+      source: "my-events",
+      event_type: ev?.eventType,
+      event_date: event.date,
+      guest_count: event.guests,
     }).catch(() => null);
     if (res?.ok) {
       trackLead("waitlist", "my-events");

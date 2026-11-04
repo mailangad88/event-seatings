@@ -1,6 +1,6 @@
 import { getVendor } from "@/data/vendors";
 import { styleName } from "./event-plan";
-import { usd, type QuoteLine } from "./catalog-types";
+import { coordinationFee, usd, type QuoteLine } from "./catalog-types";
 import { interestsFor, interestSummary, type Interest } from "./interests";
 import { sourceLabel, type JourneyClick } from "./journey";
 import { scoreLead, suggestedReply } from "./lead-score";
@@ -222,7 +222,7 @@ export function buildLeadAlert(
       { label: "Lead score", value: `${score.grade} (${score.reasons.join(", ") || "not enough to go on"})` },
       ...opt("Package picked", tier),
       ...opt("Quote total", subtotal ? `${usd(subtotal, 0)}${perGuest ? ` (${usd(perGuest, 0)} per guest)` : ""}` : undefined),
-      ...opt("Our margin", subtotal ? `${usd(subtotal - (lead.quote_cost ?? 0), 0)}` : undefined),
+      ...opt("Our fee", subtotal ? `${usd(lead.fee_amount ?? coordinationFee(lead.guest_count), 0)} flat` : undefined),
       ...opt("How soon", days !== undefined ? (days < 0 ? "Date has passed" : days <= 30 ? "This month" : days <= 120 ? "Within 4 months" : days <= 365 ? "This year" : "More than a year out") : "No date yet"),
       ...opt("Interested in", interestSummary(interests)),
     ],

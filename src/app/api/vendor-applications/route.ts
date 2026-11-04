@@ -2,6 +2,7 @@ import { after } from "next/server";
 import { isDisposableEmail } from "@/lib/disposable-email";
 import { sendEmail } from "@/lib/notify";
 import { site } from "@/lib/site";
+import { bodyTooLarge, limitRequest, readJson } from "@/lib/rate-limit";
 import { addLead } from "@/lib/store";
 import {
   addVendorApplication,
@@ -24,15 +25,8 @@ import {
 // Vendor sign-up from /partners/onboard. Saves the application for review in /admin/applications,
 // emails the owner, and emails the vendor a link to their status page.
 
-const hits = new Map<string, number[]>();
-function tooMany(ip: string) {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < 10 * 60_000);
-  recent.push(now);
-  hits.set(ip, recent);
-  if (hits.size > 5000) hits.clear();
-  return recent.length > 5;
-}
+// 5 applications per IP per 10 minutes. The body can carry a price list of up to 1,000 rows, so it gets 1 MB.
+const maxBody = 1024 * 1024;
 
 const str = (v: unknown, max = 200) => (typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined);
 const pick = <T extends string>(v: unknown, allowed: readonly T[]) => (allowed.includes(v as T) ? (v as T) : undefined);
@@ -75,12 +69,14 @@ const cleanUrl = (v: unknown) => {
 };
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
+  const blocked =
+    bodyTooLarge(request, maxBody) ??
+    (await limitRequest(request, "vendor-applications", { limit: 5, windowMs: 10 * 60_000, message: "Too many tries. Please wait a few minutes." }));
+  if (blocked) return blocked;
+  const body = await readJson<Record<string, unknown>>(request, maxBody);
   if (!body || typeof body !== "object") return Response.json({ error: "Invalid request" }, { status: 400 });
   // Honeypot: people never see or fill this field.
   if (body.hp) return Response.json({ ok: true });
-  const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
-  if (tooMany(ip)) return Response.json({ error: "Too many tries. Please wait a few minutes." }, { status: 429 });
 
   const email = str(body.email, 254);
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

@@ -530,3 +530,45 @@ p, li, dd, figcaption {
 .prose-post .chair-pair img {
   @apply aspect-[4/5] w-full object-cover;
 }
+
+/* ---------- Back office (admin today, vendor portal later) ---------- */
+/* OfficeShell (src/components/office) wraps every back-office page. It hides the public site header
+   and footer, and uses a calmer scope: light grey-cream canvas, white cards, a deep wine-black sidebar
+   and a wine briefing band. Same tokens as the site, so badges, stat cards and buttons keep working. */
+body:has([data-office]) > header,
+body:has([data-office]) > footer {
+  display: none;
+}
+.tone-office {
+  --bg: #f7f4f0;
+  --surface: #ffffff;
+  --surface-2: #f0ebe4;
+  --line: #e6ded3;
+  --muted: #5f5850;
+  --shadow: 0 1px 2px rgb(42 21 25 / 0.04), 0 4px 16px -8px rgb(42 21 25 / 0.12);
+  --shadow-lg: 0 2px 4px rgb(42 21 25 / 0.05), 0 16px 32px -16px rgb(42 21 25 / 0.22);
+  background-color: var(--bg);
+  color: var(--ink);
+}
+@utility office-card {
+  @apply rounded-2xl border border-line bg-surface shadow-soft;
+}
+@utility office-nav-link {
+  @apply flex min-h-9 items-center gap-3 rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-ink;
+}
+@utility office-nav-on {
+  @apply bg-surface-2 font-medium text-ink;
+}
+/* The morning briefing: a wine band with a soft gold glow on the right. */
+.briefing-band {
+  background-image:
+    radial-gradient(120% 140% at 100% 0%, rgb(217 178 106 / 0.35), transparent 55%),
+    linear-gradient(120deg, #2a1519 0%, #5c1521 55%, #7a1f2e 100%);
+}
+/* Link tabs (OfficeTabs). */
+@utility office-tab {
+  @apply inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-2 hover:text-ink;
+}
+@utility office-tab-on {
+  @apply bg-ink text-surface hover:bg-ink hover:text-surface;
+}

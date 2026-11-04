@@ -1,3 +1,5 @@
+import { safeEqual } from "@/lib/admin-auth";
+import { bodyTooLarge, readJson } from "@/lib/rate-limit";
 import { scoreLead } from "@/lib/lead-score";
 import { notifyOwner } from "@/lib/notify";
 import { addLead, listLeads, updateLead, type Lead } from "@/lib/store";
@@ -8,23 +10,25 @@ import { addLead, listLeads, updateLead, type Lead } from "@/lib/store";
 // Set the webhook URL to /api/booking-webhook?key=$BOOKING_WEBHOOK_SECRET.
 export async function POST(request: Request) {
   const secret = process.env.BOOKING_WEBHOOK_SECRET;
-  if (!secret || new URL(request.url).searchParams.get("key") !== secret) {
+  if (!secret || !safeEqual(new URL(request.url).searchParams.get("key") ?? "", secret)) {
     return Response.json({ error: "unauthorized" }, { status: 401 });
   }
-  const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
-  if (!body) return Response.json({ error: "bad request" }, { status: 400 });
+  const big = bodyTooLarge(request, 256 * 1024);
+  if (big) return big;
+  const body = await readJson<Record<string, unknown>>(request, 256 * 1024);
+  if (!body || typeof body !== "object") return Response.json({ error: "bad request" }, { status: 400 });
 
   // Calendly: payload.email/name/scheduled_event.start_time. Cal.com: payload.attendees[0], payload.startTime.
   // Zapier or anything else: email, name, start_time at the top level.
   const p = (body.payload ?? body) as Record<string, unknown>;
   const attendee = (Array.isArray(p.attendees) ? p.attendees[0] : undefined) as Record<string, unknown> | undefined;
   const pick = (...v: unknown[]) => v.find((x): x is string => typeof x === "string" && x.trim() !== "")?.trim();
-  const email = pick(p.email, attendee?.email, body.email)?.toLowerCase();
-  const name = pick(p.name, attendee?.name, body.name);
+  const email = pick(p.email, attendee?.email, body.email)?.toLowerCase().slice(0, 254);
+  const name = pick(p.name, attendee?.name, body.name)?.slice(0, 200);
   const scheduled = (p.scheduled_event ?? {}) as Record<string, unknown>;
   const start = pick(scheduled.start_time, p.startTime, p.start_time, body.start_time);
   const event = String(body.event ?? body.triggerEvent ?? "").toLowerCase();
-  if (!email) return Response.json({ error: "no email in payload" }, { status: 400 });
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return Response.json({ error: "no email in payload" }, { status: 400 });
   if (/cancel/.test(event)) return Response.json({ ok: true, ignored: "cancellation" });
 
   const when = start ? new Date(start).toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "medium", timeStyle: "short" }) : "time not sent";

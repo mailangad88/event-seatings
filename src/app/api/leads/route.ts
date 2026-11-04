@@ -12,22 +12,31 @@ import { cleanCode } from "@/lib/referrals";
 import { sequenceLabel } from "@/lib/followups";
 import { interestsFor, interestSummary } from "@/lib/interests";
 import { deviceFromUserAgent, locationFromHeaders, parseJourney } from "@/lib/journey";
-import { addLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
+import { isVisitorId } from "@/lib/activity";
+import { spamReason } from "@/lib/lead-spam";
+import { bodyTooLarge, limitRequest } from "@/lib/rate-limit";
+import { linkVisitor, saveNewLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
 
-// Best-effort abuse limit per server instance: 8 submissions per IP per 10 minutes, and one
-// automated visitor email per address per day. A Vercel Firewall rate-limit rule on /api/leads is the durable version.
-const hits = new Map<string, number[]>();
+// Abuse limits: 8 submissions per IP per 10 minutes (src/lib/rate-limit.ts, shared through Upstash when set),
+// and one automated visitor email per address per day (per server instance). A Vercel Firewall rate-limit rule
+// on /api/leads is the durable version.
 const emailed = new Map<string, number>();
-function tooMany(ip: string) {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < 10 * 60_000);
-  recent.push(now);
-  hits.set(ip, recent);
-  if (hits.size > 5000) hits.clear();
-  return recent.length > 8;
+// Submission ids seen recently on this server instance. The database and backup catch repeats across
+// instances; this also catches them when every store is down, so a double click never sends two alerts.
+// Only ids that were saved (or handled) go in, so a form turned down for a typo can be fixed and sent again.
+const recentIds = new Map<string, number>();
+const seenRecently = (id: string) => (recentIds.get(id) ?? 0) > Date.now() - 24 * 3600_000;
+function remember(id?: string) {
+  if (!id) return;
+  if (recentIds.size > 5000) recentIds.clear();
+  recentIds.set(id, Date.now());
 }
+const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+// Largest body a real form sends (the planner with its page history is about 30 KB).
+const MAX_BODY = 256 * 1024;
+
 function firstEmailToday(email: string) {
   const key = email.toLowerCase();
   const last = emailed.get(key);
@@ -47,17 +56,36 @@ const validDate = (d: string) => {
 const str = (v: unknown, max = 200) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined;
 
+// Page paths from the browser are shown as links in /admin, so only keep same-site paths ("/x", never "//host").
+const pathFields = new Set<string>(["page_path", "landing_page", "first_landing_page"]);
+const sitePath = (v: string) => /^\/(?![/\\])[\w\-./%~+]{0,200}$/.test(v.split(/[?#]/)[0]);
+
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
-  if (!body || typeof body !== "object") {
+  const tooBig = bodyTooLarge(request, MAX_BODY);
+  if (tooBig) return tooBig;
+  const raw = await request.text().catch(() => "");
+  if (raw.length > MAX_BODY) return Response.json({ error: "That form was too large to send." }, { status: 413 });
+  // Same loose shape request.json() gave before; every field is checked one by one below.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let body: any = null;
+  try {
+    body = JSON.parse(raw);
+  } catch {
+    body = null;
+  }
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
     return Response.json({ error: "Invalid request" }, { status: 400 });
   }
   // Honeypot: real visitors never see or fill this field.
   if (body.website) return Response.json({ ok: true });
-  const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
-  if (tooMany(ip)) {
-    return Response.json({ error: "Too many requests. Please try again in a few minutes." }, { status: 429 });
-  }
+  const limited = await limitRequest(request, "leads", { limit: 8, windowMs: 10 * 60_000, message: "Too many requests. Please try again in a few minutes." });
+  if (limited) return limited;
+
+  // The browser's id for this submission (lib/lead-client.ts). The same form sent twice carries the same id.
+  const submissionId = [body.submission_id, request.headers.get("idempotency-key")].find(
+    (v): v is string => typeof v === "string" && uuid.test(v),
+  )?.toLowerCase();
+  if (submissionId && seenRecently(submissionId)) return Response.json({ ok: true, duplicate: true });
 
   const kind = body.kind as LeadKind;
   const email = str(body.email, 254);
@@ -98,6 +126,8 @@ export async function POST(request: Request) {
     visitor_tz: str(body.visitor_tz, 60),
     pages_viewed: str(body.pages_viewed, 1500),
     ip_location: locationFromHeaders(request.headers),
+    // The browser's random visitor id: links this lead to what they look at afterwards (reminder emails).
+    visitor_id: isVisitorId(body.visitor_id) ? body.visitor_id : undefined,
   };
   // Pages, clicks and visits from the visitor's browser (empty if they turned it off), plus device and rough
   // location worked out here from the request.
@@ -106,7 +136,7 @@ export async function POST(request: Request) {
   if (lead.email_consent || lead.call_consent || lead.sms_consent) lead.consent_at = new Date().toISOString();
   for (const f of trackingFields) {
     const v = str(body[f], 300);
-    if (v) lead[f] = v;
+    if (v && (!pathFields.has(f) || sitePath(v))) lead[f] = v;
   }
 
   if (kind === "chat" && !lead.message) {
@@ -120,6 +150,9 @@ export async function POST(request: Request) {
 
   if (kind === "call" && !lead.phone) {
     return Response.json({ error: "Please add a phone number so we can call you." }, { status: 400 });
+  }
+  if (lead.phone && (lead.phone.replace(/\D/g, "").length < 7 || lead.phone.replace(/\D/g, "").length > 15)) {
+    return Response.json({ error: "Please check your phone number. It should have 10 digits, like 312-555-0123." }, { status: 400 });
   }
 
   // Quote builder picks: re-priced here from the catalog, never from numbers the browser sent.
@@ -166,16 +199,34 @@ export async function POST(request: Request) {
     return Response.json({ error: "Please pick an event date and at least one item." }, { status: 400 });
   }
 
+  // Spam is saved (so a real person caught by mistake can be found in /admin) but gets no alert, CRM or email.
+  const formMs = Number(body.form_ms);
+  const spam = spamReason({ ...lead, form_ms: body.form_ms === undefined ? undefined : formMs });
+  if (spam) {
+    lead.status = "lost";
+    lead.lost_reason = `Spam check: ${spam}`;
+    lead.activity = [...(lead.activity ?? []), { at: new Date().toISOString(), type: "status", text: `Held as spam (${spam}). No emails sent.` }];
+    await saveNewLead(lead, { id: submissionId }).catch((e) => console.error("spam lead not saved", e));
+    remember(submissionId);
+    console.warn("LEAD_HELD_AS_SPAM", spam, lead.email);
+    return Response.json({ ok: true });
+  }
+
   let saved: Lead;
   try {
-    saved = await addLead(lead);
+    const result = await saveNewLead(lead, { id: submissionId });
+    // Already saved from an earlier send of the same form: thank them again but send nothing twice.
+    if (result.duplicate) return Response.json({ ok: true, duplicate: true });
+    saved = result.lead;
   } catch (error) {
     // Storage is down or not configured (for example Supabase env vars missing on Vercel, where the
     // local JSON fallback can't write). Never lose the lead: log it in full so it can be recovered from
     // the function logs, still email the owner and sync the CRM, and thank the visitor as normal.
-    saved = { ...lead, id: crypto.randomUUID(), created_at: new Date().toISOString() };
+    saved = { ...lead, id: submissionId ?? crypto.randomUUID(), created_at: new Date().toISOString() };
     console.error("LEAD_SAVE_FAILED", error, JSON.stringify(saved));
   }
+  remember(submissionId);
+  if (saved.visitor_id) await linkVisitor(saved.visitor_id).catch((e) => console.error("visitor link not saved", e));
   // CRM sync and the owner email run after the visitor gets their answer, so a slow or failing CRM
   // never loses a lead: it's already saved above, and both helpers log their own errors.
   const download = lead.source?.startsWith("download:") ? getDownload(lead.source.slice(9).split("@")[0]) : undefined;

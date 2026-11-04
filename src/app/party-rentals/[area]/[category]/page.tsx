@@ -23,17 +23,28 @@ import { render } from "@/lib/scenes";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const dynamicParams = false;
+// 281 areas x 10 categories is 2,810 pages, the biggest share of `next build`. Only the busiest areas are built
+// ahead; every other area page renders in full on its first visit and is then cached like a built page (ISR), so
+// search engines still get a 200 with the whole page. Unknown areas or categories still 404 (see `load`).
+const PREBUILT_AREAS = new Set([
+  "chicago", "the-loop", "river-north", "west-loop", "gold-coast", "lincoln-park", "lakeview", "wicker-park-bucktown",
+  "logan-square", "south-loop", "hyde-park", "naperville", "evanston", "schaumburg", "aurora", "joliet", "oak-park",
+  "oak-brook", "st-charles", "geneva", "hinsdale", "lake-forest", "elgin", "wheaton", "downers-grove",
+  "arlington-heights", "skokie", "highland-park", "barrington",
+]);
 
 export function generateStaticParams() {
-  return localAreas.flatMap((l) => localCategories.map((c) => ({ area: l.slug, category: c.slug })));
+  return localAreas
+    .filter((l) => PREBUILT_AREAS.has(l.slug))
+    .flatMap((l) => localCategories.map((c) => ({ area: l.slug, category: c.slug })));
 }
 
 type Props = { params: Promise<{ area: string; category: string }> };
 
 async function load(props: Props) {
   const { area, category } = await props.params;
-  const loc = getLocation(area);
+  // Only areas with local copy have these pages (the list generateStaticParams used to enforce on its own).
+  const loc = localAreas.some((l) => l.slug === area) ? getLocation(area) : undefined;
   const lc = getLocalCategory(category);
   const cat = lc && getCategory(lc.id);
   if (!loc || !lc || !cat) return null;

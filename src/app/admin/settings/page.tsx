@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AdminHeader, Panel } from "@/components/admin/AdminUi";
-import { MARKUP } from "@/lib/catalog-types";
+import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -14,11 +14,14 @@ const groups: { title: string; rows: { name: string; what: string; ok: boolean; 
   {
     title: "Saving and alerts",
     rows: [
+      { name: "Lead backup", what: "Private Vercel Blob store. Keeps every lead even with no database, and catches any the database misses.", ok: on("BLOB_READ_WRITE_TOKEN"), keys: "BLOB_READ_WRITE_TOKEN (Vercel > Storage > Blob, Private)" },
       { name: "Database", what: "Keeps leads, vendors and blocked dates between deploys.", ok: on("SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"), keys: "SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY" },
+      { name: "Daily lead check", what: "Sends any lead alert that didn't go out and moves backup leads into the database.", ok: on("CRON_SECRET"), keys: "CRON_SECRET" },
       { name: "Email sending", what: "Confirmations to customers and new-lead alerts to you.", ok: on("RESEND_API_KEY", "NOTIFY_FROM"), keys: "RESEND_API_KEY, NOTIFY_FROM" },
       { name: "Your alert inbox", what: "Where new requests and paid fees are sent.", ok: on("NOTIFY_EMAIL"), keys: "NOTIFY_EMAIL" },
       { name: "Automatic follow-ups", what: "Daily follow-up emails after someone sends a form.", ok: process.env.FOLLOWUPS_ENABLED === "true" && on("CRON_SECRET"), keys: "FOLLOWUPS_ENABLED=true, CRON_SECRET" },
       { name: "Automatic event emails", what: "Two-weeks-out, day-before and thank-you emails to customers, and order details to rental partners.", ok: process.env.EVENT_EMAILS_ENABLED === "true" && on("CRON_SECRET"), keys: "EVENT_EMAILS_ENABLED=true, CRON_SECRET" },
+      { name: "Reminder emails", what: "Daily reminders from what people click after sending a form: unfinished quote list, an item they keep viewing, an event date coming up.", ok: process.env.REMINDERS_ENABLED === "true" && on("CRON_SECRET"), keys: "REMINDERS_ENABLED=true, CRON_SECRET" },
       { name: "Admin password", what: "Locks this back office.", ok: on("ADMIN_PASSWORD"), keys: "ADMIN_PASSWORD" },
     ],
   },
@@ -88,7 +91,7 @@ export default function SettingsPage() {
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between gap-3"><dt className="text-muted">Name</dt><dd>{site.name}</dd></div>
             <div className="flex justify-between gap-3"><dt className="text-muted">Website</dt><dd className="[overflow-wrap:anywhere]">{site.url}</dd></div>
-            <div className="flex justify-between gap-3"><dt className="text-muted">Our fee on catalog prices</dt><dd>{Math.round(MARKUP * 100)}%</dd></div>
+            <div className="flex justify-between gap-3"><dt className="text-muted">Our fee</dt><dd className="text-right">{BOOKING_FEE_FULL} per event, no markup on items</dd></div>
           </dl>
           <p className="mt-3 text-xs text-muted">Name, address and service area live in src/lib/site.ts. Ask Claude to change them.</p>
         </Panel>

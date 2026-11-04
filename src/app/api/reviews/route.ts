@@ -1,13 +1,17 @@
 import { after } from "next/server";
+import { bodyTooLarge, limitRequest, readJson } from "@/lib/rate-limit";
 import { getLead } from "@/lib/store";
 import { addReview, leadFromToken } from "@/lib/reviews";
 import { notifyOwnerOfReview } from "@/lib/notify";
+import { log } from "@/lib/log";
 
 const str = (v: unknown, max = 200) => (typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined);
 
 // Saves a customer review as "pending". Nothing is published until the owner approves it in /admin/reviews.
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
+  const blocked = bodyTooLarge(request, 64 * 1024) ?? (await limitRequest(request, "reviews", { limit: 5, windowMs: 10 * 60_000 }));
+  if (blocked) return blocked;
+  const body = await readJson<Record<string, unknown>>(request, 64 * 1024);
   if (!body || typeof body !== "object") return Response.json({ error: "Invalid request" }, { status: 400 });
   if (body.website) return Response.json({ ok: true }); // honeypot
 
@@ -31,7 +35,7 @@ export async function POST(request: Request) {
   // A personal review link proves the reviewer is a real lead; it only counts as a verified booking
   // once that lead reached "booked" or "completed" in the CRM.
   const leadId = leadFromToken(str(body.token, 80));
-  const lead = leadId ? await getLead(leadId).catch(() => undefined) : undefined;
+  const lead = leadId ? await getLead(leadId).catch((err) => (log.warn("review_lead_lookup_failed", { leadId, err }), undefined)) : undefined;
   const month = str(body.event_month, 7);
 
   try {

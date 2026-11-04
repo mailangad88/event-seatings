@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { VendorListingForm } from "@/components/VendorListingForm";
 import { Callout, FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
-import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
+import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -27,7 +27,7 @@ const facts: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "quote",
     title: "Our fee is shown separately",
-    text: `Our prices add a ${BOOKING_FEE_LABEL} booking and coordination fee, which the customer pays us. Your price to the customer stays your price.`,
+    text: `We show your price with no markup. The customer pays us a separate booking and coordination fee, ${BOOKING_FEE_FULL} per event. Your price to the customer stays your price.`,
   },
   {
     icon: "chat",

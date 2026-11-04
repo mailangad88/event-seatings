@@ -1,4 +1,5 @@
-import { existsSync, readFileSync } from "node:fs";
+import { hasPublicFile } from "@/lib/public-files";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 
 // Server-side view of every site image: the Blender render manifest (src/data/rental-images.json) with the
@@ -38,7 +39,7 @@ export function readImageManifest(): Record<string, ManifestEntry> {
   const base = readJson(RENDERS);
   const styled = readJson(STYLED);
   const out: Record<string, ManifestEntry> = { ...base };
-  const ok = (s: ManifestEntry) => !!s.src && existsSync(path.join(process.cwd(), "public", s.src));
+  const ok = (s: ManifestEntry) => hasPublicFile(s.src);
   for (const [slug, s] of Object.entries(styled)) {
     if (!ok(s) || s.kind === "photo") continue;
     // Item shots keep the render (or a product photo below) so each item is recognisable; only scenes are swapped.

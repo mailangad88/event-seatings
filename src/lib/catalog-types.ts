@@ -57,10 +57,28 @@ export function toPublicItem(i: CatalogItem): PublicItem {
   };
 }
 
-// Our margin on top of every vendor price (10%).
-export const MARKUP = 0.1;
-// How the fee is written in customer copy (booking promise, terms, how it works). Follows MARKUP.
-export const BOOKING_FEE_LABEL = `${Math.round(MARKUP * 100)}%`;
+// Item prices are the rental company's own price. Since Nov 4 2026 there is no markup on items;
+// we charge one flat coordination fee per event instead (COORDINATION_FEE below).
+// To go back to a percentage model, set MARKUP (e.g. 0.1) and update the fee copy.
+export const MARKUP = 0;
+
+// Flat booking & coordination fee, paid only after every rental company confirms in writing.
+export const COORDINATION_FEE = {
+  standard: 295, // up to 200 guests
+  large: 495, // largeFrom guests and up
+  largeFrom: 201,
+  focusFrom: 120, // the big multi-company celebrations this is built for
+  backupCap: 500, // most we cover if a rental company cancels and the replacement costs more
+} as const;
+
+export function coordinationFee(guests?: number | null) {
+  return guests && guests >= COORDINATION_FEE.largeFrom ? COORDINATION_FEE.large : COORDINATION_FEE.standard;
+}
+
+// How the fee is written in customer copy. Follows COORDINATION_FEE.
+export const BOOKING_FEE_LABEL = `flat $${COORDINATION_FEE.standard}`;
+export const BOOKING_FEE_FULL = `a flat $${COORDINATION_FEE.standard} ($${COORDINATION_FEE.large} over ${COORDINATION_FEE.largeFrom - 1} guests)`;
+export const BACKUP_CAP_LABEL = `$${COORDINATION_FEE.backupCap}`;
 
 const cents = (n: number) => Math.round(n * 100) / 100;
 
@@ -113,7 +131,7 @@ export type QuoteLine = {
   category: string;
   unit: string;
   qty: number;
-  unit_price: number; // what the customer pays per unit (vendor + markup)
+  unit_price: number; // what the customer pays per unit (vendor price; MARKUP is 0)
   line_total: number;
   vendor_id: string;
   vendor_price: number; // our cost per unit, back office only

@@ -8,7 +8,7 @@
 // - Arlington Rental: "complete quotes add delivery, tax and fees"; its packages add a 10% damage waiver
 //   and 10% tax.
 // - Chicago combined sales tax is 10.25% (suburbs run lower, about 7-10%).
-// Our 10% markup is already inside the item prices; nothing here changes it.
+// Item prices carry no markup; our flat coordination fee (COORDINATION_FEE in catalog-types) is separate.
 
 export const DAMAGE_WAIVER = 0.1;
 export const SALES_TAX = 0.1025;

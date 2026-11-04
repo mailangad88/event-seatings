@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList, Figure, JsonLd, PageHero, QuoteCta, Section, StepFlow, type Faq } from "@/components/ui";
-import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
+import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -42,7 +42,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
     title: "Prices, fees and payments",
     faqs: [
       { q: "What does it cost?", a: "Nothing to join and no monthly fee. Founding Partners pay 0% on orders from enquiries we send in their first 90 days. After that, 5% of the rental subtotal (not delivery, damage waiver or tax), only on orders we send that book." },
-      { q: "Do you change my prices?", a: `No. Customers see your price plus our ${BOOKING_FEE_LABEL} booking fee, and their proposal shows both lines. You're paid your full price.` },
+      { q: "Do you change my prices?", a: `No. Customers see your price with no markup. They pay us a separate booking fee, ${BOOKING_FEE_FULL} per event. You're paid your full price.` },
       { q: "Who pays whom?", a: "The host pays our booking fee to us. The host pays your deposit and balance to you, under your own rental agreement and your own payment methods. We never hold your money." },
       { q: "How do I pay your commission?", a: "We send one statement a month listing the completed events we sent you. It's due 15 days after the end of that month, by bank transfer, check or card on file." },
       { q: "Do you need my bank details?", a: "No. We don't pay you, so the form never asks for bank account numbers. If that ever changes, we'd set it up by phone through a secure payment provider." },

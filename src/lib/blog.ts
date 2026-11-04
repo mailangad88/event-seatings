@@ -1,8 +1,10 @@
 import "server-only";
-import { existsSync, promises as fs } from "fs";
+import { hasPublicFile } from "@/lib/public-files";
+import { promises as fs } from "fs";
 import { readImageManifest } from "./image-manifest";
 import path from "path";
 import { marked } from "marked";
+import { cache } from "react";
 import { chairs, getChair } from "@/data/chairs";
 import { downloadForPost } from "@/data/downloads";
 import { assignHeroes, type GuideHero } from "@/lib/guide-heroes";
@@ -98,7 +100,7 @@ const topicRenders: Record<string, string> = {
 export function topicArt(slug: string, fallbackAlt?: string): { src: string; alt: string; render: boolean } {
   const render = topicRenders[slug];
   const entry = render ? readImageManifest()[render] : undefined;
-  if (entry && existsSync(path.join(process.cwd(), "public", entry.src))) {
+  if (entry && hasPublicFile(entry.src)) {
     return { src: entry.src, alt: entry.alt ?? fallbackAlt ?? "", render: true };
   }
   return { src: `/blog/art/${slug}.svg`, alt: fallbackAlt ?? "", render: false };
@@ -191,9 +193,33 @@ function withHero(post: Post, map: Map<string, GuideHero>) {
   return post;
 }
 
+type Parsed = { post: Post; body: string; raw: string };
+
+// Every page that lists guides needs all ~700 posts. Reading and parsing them once per server process (instead of
+// once per page) is most of what keeps `next build` fast. In dev the files are re-read so edits show up.
+let parsedCache: Promise<Map<string, Parsed>> | null = null;
+function loadAll(): Promise<Map<string, Parsed>> {
+  const load = async () => {
+    const files = (await fs.readdir(dir).catch(() => [])).filter((f) => f.endsWith(".md"));
+    const entries = await Promise.all(
+      files.map(async (f) => {
+        const raw = await fs.readFile(path.join(dir, f), "utf8");
+        return [f.replace(/\.md$/, ""), { ...parse(f, raw), raw }] as const;
+      }),
+    );
+    return new Map<string, Parsed>(entries);
+  };
+  if (process.env.NODE_ENV !== "production") return load();
+  parsedCache ??= load().catch((e) => {
+    parsedCache = null;
+    throw e;
+  });
+  return parsedCache;
+}
+
+/** Fresh copies, so callers can't change the cached posts. */
 async function readAll(): Promise<Post[]> {
-  const files = (await fs.readdir(dir).catch(() => [])).filter((f) => f.endsWith(".md"));
-  return Promise.all(files.map(async (f) => parse(f, await fs.readFile(path.join(dir, f), "utf8")).post));
+  return [...(await loadAll()).values()].map((e) => ({ ...e.post }));
 }
 
 export async function getPosts(): Promise<Post[]> {
@@ -205,11 +231,14 @@ export async function getPosts(): Promise<Post[]> {
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export async function getPost(slug: string) {
+// Wrapped in React `cache` so generateMetadata and the page share one Markdown parse per request.
+export const getPost = cache(async function getPost(slug: string) {
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
-  const raw = await fs.readFile(path.join(dir, `${slug}.md`), "utf8").catch(() => null);
-  if (!raw) return null;
-  const { post, body } = parse(`${slug}.md`, raw);
+  const all = await loadAll();
+  const entry = all.get(slug);
+  if (!entry) return null;
+  const post = { ...entry.post };
+  const body = entry.body;
   if (post.date > today()) return null;
   withHero(post, await heroes(await readAll()));
   // Scrollable tables must be keyboard-focusable (axe: scrollable-region-focusable).
@@ -218,7 +247,7 @@ export async function getPost(slug: string) {
     '<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table">',
   );
   return { post, html, faqs: extractFaqs(body) };
-}
+});
 
 /** Up to `n` other posts from the same topic, then from shared tags. */
 export async function getRelated(post: Post, n = 4) {
@@ -252,7 +281,7 @@ export async function hubFaqs(posts: Post[], n = 5): Promise<(Faq & { slug: stri
   const seen = new Set<string>();
   for (const p of posts) {
     if (out.length >= n) break;
-    const raw = await fs.readFile(path.join(dir, `${p.slug}.md`), "utf8").catch(() => "");
+    const raw = (await loadAll()).get(p.slug)?.raw ?? "";
     const f = extractFaqs(raw).find((x) => x.a && !seen.has(x.q.toLowerCase()));
     if (!f) continue;
     seen.add(f.q.toLowerCase());

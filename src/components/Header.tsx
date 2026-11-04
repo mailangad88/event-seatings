@@ -103,6 +103,9 @@ export function Header() {
               <Icon name="phone" size={16} /> {site.phone}
             </a>
           )}
+          <Link href="/account" className={`${linkClass} whitespace-nowrap`} aria-label="Your account">
+            <Icon name="users" size={16} /> <span className="max-2xl:hidden">Account</span>
+          </Link>
           <Link href="/quote" className="btn-primary btn-sm whitespace-nowrap">Get a quote</Link>
         </div>
 

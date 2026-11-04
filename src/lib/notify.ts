@@ -6,15 +6,21 @@ import { usd } from "./catalog-types";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
 import { buildLeadAlert, leadAlertText } from "./lead-alert";
 import { site } from "./site";
+import { accountsEnabled } from "./account-auth";
 import type { Review } from "./reviews";
 import { listLeadsByEmail, listPartners, type Lead } from "./store";
 import { unsubscribeUrl } from "./unsubscribe";
+import { log } from "@/lib/log";
 
 // All email goes through Resend and only when RESEND_API_KEY is set. Owner alerts also need NOTIFY_EMAIL;
 // anything sent to a visitor also needs NOTIFY_FROM on a verified sending domain (never the resend.dev test sender).
 // Failures are logged, never shown to the visitor.
 
-type Mail = { to: string; subject: string; text: string; from?: string; unsubscribe?: string; html?: string };
+// idempotencyKey: Resend sends at most one email per key within 24 hours, so a retry (ours, or the daily
+// recovery job's) can never send the same email twice. Use a stable key such as "lead-alert/<lead id>".
+type Mail = { to: string; subject: string; text: string; from?: string; unsubscribe?: string; html?: string; idempotencyKey?: string };
+
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 // Branded HTML (React Email, src/emails) built from the plain text, so every email looks like the site while
 // the text part stays exactly as written. A caller can pass its own `html` instead.
@@ -27,7 +33,7 @@ async function brandedHtml(subject: string, text: string, unsubscribe?: string) 
   }
 }
 
-export async function sendEmail({ to, subject, text, from, unsubscribe, html }: Mail) {
+export async function sendEmail({ to, subject, text, from, unsubscribe, html, idempotencyKey }: Mail) {
   const key = process.env.RESEND_API_KEY;
   if (!key) return false;
   html ??= await brandedHtml(subject, text, unsubscribe);
@@ -36,27 +42,41 @@ export async function sendEmail({ to, subject, text, from, unsubscribe, html }: 
     headers["List-Unsubscribe"] = `<${unsubscribe}>`;
     headers["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click";
   }
-  try {
-    const res = await fetch(`${process.env.RESEND_API_URL ?? "https://api.resend.com"}/emails`, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: from ?? process.env.NOTIFY_FROM ?? `${site.name} <onboarding@resend.dev>`,
-        to,
-        subject,
-        text,
-        ...(html ? { html } : {}),
-        // Replies from visitors land in the owner's inbox, not a no-reply box.
-        ...(process.env.NOTIFY_EMAIL && to !== process.env.NOTIFY_EMAIL ? { reply_to: process.env.NOTIFY_EMAIL } : {}),
-        ...(Object.keys(headers).length ? { headers } : {}),
-      }),
-    });
-    if (!res.ok) console.error("sendEmail failed", res.status, (await res.text()).slice(0, 300));
-    return res.ok;
-  } catch (err) {
-    console.error("sendEmail failed", err);
-    return false;
+  const payload = JSON.stringify({
+    from: from ?? process.env.NOTIFY_FROM ?? `${site.name} <onboarding@resend.dev>`,
+    to,
+    subject,
+    text,
+    ...(html ? { html } : {}),
+    // Replies from visitors land in the owner's inbox, not a no-reply box.
+    ...(process.env.NOTIFY_EMAIL && to !== process.env.NOTIFY_EMAIL ? { reply_to: process.env.NOTIFY_EMAIL } : {}),
+    ...(Object.keys(headers).length ? { headers } : {}),
+  });
+  // Up to 3 tries for rate limits, Resend outages and network errors (waits 0.5s, then 1.5s).
+  // Wrong key, bad address or unverified domain (4xx) won't fix itself, so those stop at once.
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = await fetch(`${process.env.RESEND_API_URL ?? "https://api.resend.com"}/emails`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${key}`,
+          "Content-Type": "application/json",
+          ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey.slice(0, 256) } : {}),
+        },
+        body: payload,
+      });
+      if (res.ok) return true;
+      const detail = (await res.text()).slice(0, 300);
+      const temporary = res.status === 429 || res.status >= 500;
+      console.error("sendEmail failed", res.status, attempt, detail);
+      if (!temporary || attempt === 3) return false;
+    } catch (err) {
+      console.error("sendEmail failed", attempt, err);
+      if (attempt === 3) return false;
+    }
+    await wait(500 * 3 ** (attempt - 1));
   }
+  return false;
 }
 
 const kindLabel: Record<Lead["kind"], string> = {
@@ -78,8 +98,8 @@ export async function notifyOwner(lead: Lead): Promise<boolean> {
   if (!process.env.RESEND_API_KEY || !to) return false;
 
   const [earlier, partners] = await Promise.all([
-    listLeadsByEmail(lead.email).catch(() => [] as Lead[]),
-    listPartners().catch(() => []),
+    listLeadsByEmail(lead.email).catch((err) => (log.warn("lead_alert_history_failed", { leadId: lead.id, err }), [] as Lead[])),
+    listPartners().catch((err) => (log.warn("lead_alert_partners_failed", { leadId: lead.id, err }), [])),
   ]);
   const alert = buildLeadAlert(lead, { earlier, partners: new Map(partners.map((p) => [p.vendor_id, p])), siteUrl: site.url });
   const text = leadAlertText(alert);
@@ -90,6 +110,7 @@ export async function notifyOwner(lead: Lead): Promise<boolean> {
 
   return sendEmail({
     to,
+    idempotencyKey: `lead-alert/${lead.id}`,
     subject: `[${alert.grade}] New ${kindLabel[lead.kind].toLowerCase()}: ${lead.name ?? lead.email}${lead.event_date ? ` · ${prettyDate(lead.event_date)}` : ""}${lead.quote_subtotal ? ` · ${usd(lead.quote_subtotal, 0)}` : ""}${earlier.length > 1 ? " · came back" : ""}`,
     text,
     html,
@@ -131,6 +152,9 @@ export async function sendConfirmation(lead: Lead): Promise<string | undefined> 
       "- Venue name and address, and whether it's indoors, outdoors or a tent",
       "- Delivery and pickup windows the venue allows",
       "- Any items you didn't see on the site",
+      ...(accountsEnabled()
+        ? ["", `Follow your quote, delivery times and messages any time: ${site.url}/account (sign in with this email address, no password).`]
+        : []),
     ],
     call: [
       "Thanks for asking for a call. We'll reach out within one business day to set a time.",
@@ -152,6 +176,7 @@ export async function sendConfirmation(lead: Lead): Promise<string | undefined> 
     subject,
     text: [hi, "", ...body[lead.kind], "", bookingLine(lead), ...signOff(lead.email)].join("\n"),
     unsubscribe: unsubscribeUrl(lead.email),
+    idempotencyKey: `confirm/${lead.id}`,
   });
   return ok ? subject : undefined;
 }
@@ -179,7 +204,7 @@ export async function sendDownloadEmail(lead: Lead, title: string, files: { labe
     ...signOff(lead.email),
   ].join("\n");
   const subject = `Your free ${title}`;
-  return (await sendEmail({ to: lead.email, subject, text, unsubscribe: unsubscribeUrl(lead.email) })) ? subject : undefined;
+  return (await sendEmail({ to: lead.email, subject, text, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `download/${lead.id}` })) ? subject : undefined;
 }
 
 /** Tells the owner a review is waiting in /admin/reviews. */
@@ -194,6 +219,6 @@ export async function notifyOwnerOfReview(review: Review) {
     "",
     `Publish or hide: ${site.url}/admin/reviews`,
   ].join("\n");
-  const html = await render(createElement(NewReviewEmail, { rating: review.rating, name: review.name, body: review.body, verified: review.verified })).catch(() => undefined);
+  const html = await render(createElement(NewReviewEmail, { rating: review.rating, name: review.name, body: review.body, verified: review.verified })).catch((err) => (log.warn("review_email_render_failed", { err }), undefined));
   await sendEmail({ to, subject, text, html });
 }

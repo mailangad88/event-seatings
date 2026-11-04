@@ -79,6 +79,13 @@ export default function PrivacyPage() {
           kind of device you used. You can say no in the notice at the bottom of the page, which clears the list and
           turns off Google Analytics. If your browser sends a Global Privacy Control signal, we treat that as a no.
         </p>
+        <p>
+          After you send us a form with your email, we keep noting the pages you open, the buttons you click and the
+          items on your quote list when you come back on the same device, and store them with your enquiry. We use this
+          to answer you better and, at most once for each kind, to email a short reminder: a quote list you didn&apos;t
+          send, an item you kept looking at, or an event date that is getting close. Saying no in the notice stops
+          this, and the unsubscribe link in any email stops every reminder.
+        </p>
         <h2>Chat</h2>
         <p>
           If you message us through the chat button, what you type and the contact details you share are stored in our

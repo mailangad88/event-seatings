@@ -60,7 +60,7 @@ export function withPartyFaqs(faqs: { q: string; a: string }[], single: string):
     },
     {
       q: "Do the rental prices include delivery?",
-      a: "No. Prices are per item for one event day: the partner rate plus our 10% fee. Delivery and pickup, setup, a damage waiver and sales tax are added on the same itemized quote.",
+      a: "No. Prices are per item for one event day: the partner's own rate, with no markup. Our flat booking fee is separate. Delivery and pickup, setup, a damage waiver and sales tax are added on the same itemized quote.",
     },
   ];
   const have = new Set(faqs.map((f) => f.q));

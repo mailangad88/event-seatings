@@ -28,6 +28,7 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 | Analytics | ❌ | None yet. Add Vercel Analytics or GA4 plus conversion events (quote submit, call booked, waitlist join). |
 | Search Console | ❌ todo | Verify beyondchiavari.com, submit sitemap, monitor Chicago queries. |
 | Google Business Profile | ❌ todo | Create a service-area business (St. Charles base, Chicago + suburbs). Use the same name/phone/area as the schema. |
+| Renter account | ✅ 2026-11-04 | `/account` (sign in by emailed link, no password). Overview, orders split by rental company but shown as one order, payments, messages with the team (`/admin/messages` to reply), synced My events plans and saved ideas, profile. Sample account works with no setup. Real sign-in needs `ACCOUNT_SECRET` + `RESEND_API_KEY` + `NOTIFY_FROM` and the `supabase/schema.sql` re-run (customer_accounts, leads.vendor_orders, leads.messages). Remaining: order-update emails when a company confirms, receipts as PDF. |
 | Email sequences | ❌ todo | Waitlist welcome, quote follow-up, post-call recap. Leads currently arrive via `/api/leads`. |
 | Competitor analysis | ❌ todo | Handled in another workstream. |
 | Typography & UX audit | ✅ 2026-11-03 | `npm run audit:ux` (Playwright + axe-core + design lint, 390px and 1440px). 10 key pages: 0 axe violations (was 9 pages with contrast fails), Lighthouse a11y/BP/SEO 100, perf 86-90. Brass darkened to #7a5a22, real Jost 600, 44px buttons, full-width phone CTAs, mobile footer/breadcrumb tap targets, photo tiles on /rentals. Remaining: photo-credit links are 18px tall, Lighthouse perf (hero image weight), long comparison tables could use a scroll hint. |
@@ -1727,3 +1728,11 @@ Angad asked for researched party ideas per party type, including activities, gam
 - Admin: /admin/applications (list, filters, search) and /admin/applications/<id> (review, status with optional email to the vendor, link to a catalog vendor, notes, history, price list CSV download). Approving a linked catalog vendor moves it to "In talks" in /admin/vendors.
 - New /partners/faq and /how-we-work, linked from the footer, /partners, /partners/onboard and /how-it-works, and added to the sitemap.
 - Remaining: vendor self-service edits after approval (vendor login), automatic catalog import from approved price lists, Stripe Connect payouts once 3+ vendors sign.
+
+## 2026-11-04: flat-fee pricing (success plan)
+- PRICING MODEL CHANGE: item prices are now the rental company's own price (MARKUP = 0). Fee is a flat $295 (up to 200 guests) / $495 (over 200), paid only after every company confirms. Constants in src/lib/catalog-types.ts (COORDINATION_FEE).
+- Backup guarantee raised from "up to the fee" to "up to $500" of a price difference (terms, booking promise, pricing).
+- Proposal now names the rental company before payment; contact + agreement after.
+- New /pricing page (tiers, what's included, call-direct comparison, before-you-pay checklist, FAQ + Service/Offer schema). Big-event callout on /events weddings, South Asian weddings, quinceañeras, galas.
+- Copy updated on ~30 pages that said 10%. Remaining: real reviews once events happen; test $295 vs $395 for 120-200 guests.
+- Plan: /mnt/project-files/plans/success-plan-2026-11-04.md

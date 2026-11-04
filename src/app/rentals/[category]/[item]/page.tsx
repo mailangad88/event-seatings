@@ -15,10 +15,15 @@ import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
+// About 2,560 item pages. The featured items and the categories people browse most are built ahead; every other
+// item renders in full on its first visit and is then cached like a built page (ISR), so it still returns a 200
+// with the whole page for visitors and search engines. Ids that aren't in the catalog still 404 (see `load`).
+const PREBUILT_CATEGORIES = new Set(["chairs", "tables", "linens", "tents"]);
 export function generateStaticParams() {
-  return catalogItems.map((i) => ({ category: i.categoryId, item: i.id }));
+  return catalogItems
+    .filter((i) => i.featured || PREBUILT_CATEGORIES.has(i.categoryId))
+    .map((i) => ({ category: i.categoryId, item: i.id }));
 }
-export const dynamicParams = false;
 
 async function load(props: PageProps<"/rentals/[category]/[item]">) {
   const { category, item } = await props.params;
