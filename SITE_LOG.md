@@ -49,7 +49,7 @@ Angad said the site felt overwhelming. Touched 2026-11-04:
 - Item pages: one photo row (max 3, all 4:3, never mixes our pictures with example photos), cost breakdown folded, planning tips column removed (kept on the category page).
 - /tools: 3 "start here" picture cards, then every tool as a short text list (was two image grids of the same tools).
 - /blog: topics first, latest 6 guides instead of 24, shorter intro.
-- /gallery: first 6 setups and first 8 pictures per category shown, the rest behind "Show all"; setups all 4:3.
+- /gallery: first 6 setups and first 4 pictures per category shown, the rest behind "Show all"; setups all 4:3.
 - Guide posts: sidebar download card and featured chair removed (download stays inline), tag chips and "Keep planning" block removed.
 - Area and event pages: main button is now "Get a free quote" (call is the second option), like the rest of the site.
 - /ideas: "next three months" picture row removed; the 12 months are now folded rows (this month open), no picture per month.

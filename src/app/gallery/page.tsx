@@ -112,15 +112,15 @@ export default function GalleryPage() {
               <Link href="/quote" className="link-line text-sm">Get a quote</Link>
             </div>
             <ul className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-              {g.items.slice(0, 8).map((it) => (
+              {g.items.slice(0, 4).map((it) => (
                 <ItemFigure key={it.slug} it={it} />
               ))}
             </ul>
-            {g.items.length > 8 && (
+            {g.items.length > 4 && (
               <details className="mt-8">
                 <summary className="link-line cursor-pointer text-sm">Show all {g.items.length} {g.label.toLowerCase()}</summary>
                 <ul className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-                  {g.items.slice(8).map((it) => (
+                  {g.items.slice(4).map((it) => (
                     <ItemFigure key={it.slug} it={it} />
                   ))}
                 </ul>
