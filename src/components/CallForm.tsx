@@ -1,6 +1,7 @@
 "use client";
 
 import { trackLead } from "@/lib/analytics";
+import { OwnerCard } from "./OwnerCard";
 import { attributionFields } from "@/lib/attribution";
 import { useState } from "react";
 import { site } from "@/lib/site";
@@ -52,6 +53,7 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
           We&apos;ll reach out within one business day to set a time that suits you. Questions before then?{" "}
           <a href={`mailto:${site.email}`} className="underline decoration-gold underline-offset-4">{site.email}</a>
         </p>
+        <OwnerCard source="call-thanks" compact className="mx-auto mt-8 max-w-md" />
       </div>
     );
   }

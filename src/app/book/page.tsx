@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OwnerCard } from "@/components/OwnerCard";
 import Link from "@/components/Link";
 import { CallForm } from "@/components/CallForm";
 import { Figure } from "@/components/ui";
@@ -59,6 +60,8 @@ export default async function BookPage(props: PageProps<"/book">) {
           </li>
         ))}
       </ol>
+
+      <OwnerCard source="book-owner" compact className="mt-10" />
 
       <section className="mt-24 grid gap-14 md:grid-cols-[1.6fr_1fr]">
         <div className="card p-6 sm:p-10">

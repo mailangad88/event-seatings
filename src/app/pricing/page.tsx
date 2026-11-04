@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OwnerCard } from "@/components/OwnerCard";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
@@ -257,6 +258,10 @@ export default function PricingPage() {
 
       <Section tone="sand" eyebrow="Questions" title="Pricing questions, answered">
         <FaqList faqs={faqs} className="max-w-3xl" />
+      </Section>
+
+      <Section>
+        <OwnerCard source="pricing-owner" />
       </Section>
 
       <div className="-mb-32">

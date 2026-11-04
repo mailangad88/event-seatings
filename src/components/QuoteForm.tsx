@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { OwnerCard } from "./OwnerCard";
 import Link from "@/components/Link";
 import { useEffect, useMemo, useState } from "react";
 import { getChair } from "@/data/chairs";
@@ -351,6 +352,7 @@ export function QuoteForm({
             </li>
           ))}
         </ul>
+        <OwnerCard source="quote-thanks" compact className="mx-auto mt-8 max-w-xl" />
         <BookingCta
           {...contact}
           content="quote-thank-you"
@@ -728,10 +730,12 @@ export function QuoteForm({
               </button>
             </div>
             <GuestCount value={guests || 100} onChange={setGuests} max={5000} size="sm" className="mb-4" />
-            <div className="min-h-0 flex-1 overflow-y-auto">{cartList("h-14 w-14")}</div>
+            <div className="min-h-0 flex-1 overflow-y-auto">
+              {cartList("h-14 w-14")}
+              <SaveListByEmail lines={lines.map((l) => ({ id: l.item.id, qty: l.qty }))} guests={guests} />
+            </div>
             <div className="mt-4">{totals}</div>
             <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full justify-center">Continue to your details</button>
-            <SaveListByEmail lines={lines.map((l) => ({ id: l.item.id, qty: l.qty }))} guests={guests} />
           </div>
         </div>
       )}
