@@ -2,6 +2,7 @@ import { vendors } from "@/data/catalog";
 import { site } from "./site";
 import type { Lead, VendorPartner } from "./store";
 import { addDays, isConfirmed, prettyDay, stage } from "./admin-view";
+import { isPartConfirmed, vendorParts, type VendorPart } from "./orders";
 
 // The to-do list behind /admin (Today and This week): every call, email and vendor check an event needs,
 // worked out from each lead's stage and dates. Nothing here sends anything. Emails come as ready-to-send
@@ -21,6 +22,8 @@ export type EventTask = {
   // A draft the owner can open in their mail app.
   email?: { to?: string; subject: string; body: string };
   phone?: string;
+  // Rental partner tasks are per part of the order (lib/orders.ts): which partner this one is for.
+  vendor_id?: string;
 };
 
 export const kindLabel: Record<TaskKind, string> = { call: "Call", email: "Email", vendor: "Rental partner", check: "Check" };
@@ -48,9 +51,22 @@ export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: s
   };
   const vendor = vendors.find((v) => v.id === l.assigned_vendor);
   const partner = l.assigned_vendor ? partners.get(l.assigned_vendor) : undefined;
-  const vendorName = vendor?.name ?? "the rental partner";
-  const vendorEmail = partner?.contact_email;
   const vendorPhone = partner?.contact_phone ?? vendor?.phone;
+  // One rental partner task per part of the order. Keys are "<task>:<vendor id>"; an order with one part also
+  // counts the older plain key ("vendor-confirm") as done.
+  const allParts = vendorParts(l);
+  const parts = allParts.filter((p) => p.vendorId);
+  const partInfo = (p?: VendorPart) => {
+    const v = p ? vendors.find((x) => x.id === p.vendorId) : undefined;
+    const pp = p ? partners.get(p.vendorId) : undefined;
+    return { name: v?.name ?? "the rental partner", email: pp?.contact_email, phone: pp?.contact_phone ?? v?.phone, lines: p?.lines.map(({ line }) => `${line.qty} x ${line.name}${line.variant ? ` (${line.variant})` : ""}`).join("\n") ?? "" };
+  };
+  const vendorName = parts.length ? parts.map((p) => p.vendorName).join(" and ") : (vendor?.name ?? "the rental partner");
+  const addPart = (base: string, p: VendorPart | undefined, t: Omit<EventTask, "lead" | "key" | "vendor_id">) => {
+    const key = p ? `${base}:${p.vendorId}` : base;
+    if (p && parts.length === 1 && done[base]) return;
+    add({ ...t, key, vendor_id: p?.vendorId });
+  };
   const ev = l.event_date;
   const date = prettyDay(ev, { weekday: "long", month: "long", day: "numeric" });
 
@@ -84,19 +100,39 @@ export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: s
 
   // Booked: confirm with the vendor first, then the run-up to the event and the wrap-up after.
   const paidDay = l.fee_paid_at?.slice(0, 10) ?? today;
-  if (!l.assigned_vendor) {
-    add({ key: "assign-vendor", due: paidDay, kind: "vendor", who: "you", title: "Pick a rental partner", detail: "The fee is paid but no rental partner is assigned. Assign one on the lead so the customer sees who is delivering." });
+  if (!parts.length || allParts.length > parts.length) {
+    add({ key: "assign-vendor", due: paidDay, kind: "vendor", who: "you", title: "Pick a rental partner", detail: parts.length ? "Some items on this order have no rental partner. Pick one for each on the order page." : "The fee is paid but no rental partner is assigned. Assign one on the lead so the customer sees who is delivering." });
   }
-  if (!["vendor_confirmed", "booked", "completed"].includes(stage(l))) {
-    add({
-      key: "vendor-confirm",
+  const confirmedStage = ["vendor_confirmed", "booked", "completed"].includes(stage(l));
+  for (const p of parts) {
+    const info = partInfo(p);
+    if (p.state === "declined") {
+      addPart("vendor-declined", p, {
+        due: p.order?.answered_at?.slice(0, 10) ?? today,
+        kind: "vendor",
+        who: "you",
+        title: `${info.name} can't do their part`,
+        detail: `${p.order?.decline_reason ? `They said: ${p.order.decline_reason}. ` : ""}Move their items to another rental partner on the order page, then send the new partner a link.`,
+        phone: info.phone,
+      });
+      continue;
+    }
+    if (confirmedStage || isPartConfirmed(p.state)) continue;
+    const token = p.order?.token;
+    addPart("vendor-confirm", p, {
       due: paidDay,
       kind: "vendor",
       who: "vendor",
-      title: `Get ${vendorName} to confirm the order`,
-      detail: "Send the order, get a written yes with delivery and pickup times, then move the lead to Vendor confirmed.",
-      phone: vendorPhone,
-      email: { to: vendorEmail, subject: `Order for ${ev ? prettyDay(ev) : "an upcoming event"}: ${l.name ?? l.email}`, body: `Hi,\n\nCan you confirm this order?\n\nEvent: ${l.event_type ?? "Event"} on ${date || "TBD"}\nLocation: ${where(l)}\nGuests: ${l.guest_count ?? "TBD"}\n\n${(l.items ?? []).map((i) => `${i.qty} x ${i.name}`).join("\n")}\n\nPlease reply with delivery and pickup times and your final total.\n\n${sign}` },
+      title: `Get ${info.name} to confirm ${parts.length > 1 ? "their part of " : ""}the order`,
+      detail: token
+        ? "Send them the confirmation link. When they answer yes, their part is confirmed by itself."
+        : "Send the order, get a written yes with delivery and pickup times. A confirmation link on the order page does this for you.",
+      phone: info.phone,
+      email: {
+        to: info.email,
+        subject: `Order for ${ev ? prettyDay(ev) : "an upcoming event"}: ${l.name ?? l.email}`,
+        body: `Hi,\n\nCan you confirm this order?\n\nEvent: ${l.event_type ?? "Event"} on ${date || "TBD"}\nLocation: ${where(l)}\nGuests: ${l.guest_count ?? "TBD"}\n\n${info.lines}\n\n${token ? `See the list and answer yes or no here (it takes a minute):\n${site.url}/vendor/confirm/${token}` : "Please reply with delivery and pickup times and your final total."}\n\n${sign}`,
+      },
     });
   }
   if (!ev) return out;
@@ -121,16 +157,18 @@ export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: s
     detail: "Confirm the headcount, the delivery window and the setup spot. Note any changes for the rental partner.",
     phone: l.phone,
   });
-  add({
-    key: "t-3-vendor",
-    due: addDays(ev, -3),
-    kind: "vendor",
-    who: "vendor",
-    title: `Send final details to ${vendorName}`,
-    detail: "Final count, address, delivery window and an on-site contact. Ask them to reply to confirm.",
-    phone: vendorPhone,
-    email: { to: vendorEmail, subject: `Final details: ${l.name ?? l.email}, ${prettyDay(ev)}`, body: `Hi,\n\nFinal details for ${date}:\n\nLocation: ${where(l)}\nGuests: ${l.guest_count ?? "TBD"}\nOn-site contact: ${l.name ?? ""} ${l.phone ?? ""}\n\nPlease reply to confirm the delivery window.\n\n${sign}` },
-  });
+  for (const p of parts.length ? parts : [undefined]) {
+    const info = partInfo(p);
+    addPart("t-3-vendor", p, {
+      due: addDays(ev, -3),
+      kind: "vendor",
+      who: "vendor",
+      title: `Send final details to ${info.name}`,
+      detail: "Final count, address, delivery window and an on-site contact. Ask them to reply to confirm.",
+      phone: info.phone,
+      email: { to: info.email, subject: `Final details: ${l.name ?? l.email}, ${prettyDay(ev)}`, body: `Hi,\n\nFinal details for ${date}:\n\nLocation: ${where(l)}\nGuests: ${l.guest_count ?? "TBD"}\nOn-site contact: ${l.name ?? ""} ${l.phone ?? ""}\n${info.lines ? `\n${info.lines}\n` : ""}\nPlease reply to confirm the delivery window.\n\n${sign}` },
+    });
+  }
   add({
     key: "t-1-email",
     due: addDays(ev, -1),
@@ -158,15 +196,18 @@ export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: s
     detail: "Thank them and ask for a short review. Then move the lead to Completed.",
     email: { to: l.email, subject: `Thanks for booking with ${site.name}`, body: `${hi(l)}\n\nThanks for letting us help with your ${what(l)}. If you have a minute, a short review helps other Chicago hosts find us: ${site.url}/reviews/write\n\nIf anything went wrong with the rentals, reply here and we'll sort it out with the rental company.\n\n${sign}` },
   });
-  add({
-    key: "t+2-vendor",
-    due: addDays(ev, 2),
-    kind: "vendor",
-    who: "vendor",
-    title: `Check pickup with ${vendorName}`,
-    detail: "Make sure everything came back and ask about any damage or missing pieces before they bill the customer.",
-    phone: vendorPhone,
-  });
+  for (const p of parts.length ? parts : [undefined]) {
+    if (p?.state === "picked_up") continue;
+    const info = partInfo(p);
+    addPart("t+2-vendor", p, {
+      due: addDays(ev, 2),
+      kind: "vendor",
+      who: "vendor",
+      title: `Check pickup with ${info.name}`,
+      detail: "Make sure everything came back and ask about any damage or missing pieces before they bill the customer.",
+      phone: info.phone,
+    });
+  }
   return out;
 }
 

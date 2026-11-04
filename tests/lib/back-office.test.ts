@@ -62,7 +62,9 @@ describe("event tasks", () => {
     const lead = makeLead({ fee_status: "paid", fee_paid_at: "2026-11-01T00:00:00Z", event_date: "2026-12-12", name: "Priya Shah", event_type: "Wedding" });
     const t = tasksFor(lead, none, today);
     const keys = t.map((x) => x.key);
-    expect(keys).toEqual(expect.arrayContaining(["assign-vendor", "vendor-confirm", "t-14-email", "t-7-call", "t-3-vendor", "t-1-email", "t0-check", "t+1-thanks", "t+2-vendor"]));
+    expect(keys).toEqual(expect.arrayContaining(["assign-vendor", "t-14-email", "t-7-call", "t-3-vendor", "t-1-email", "t0-check", "t+1-thanks", "t+2-vendor"]));
+    // Rental partner confirmation tasks only appear once a partner is assigned to (part of) the order.
+    expect(keys.some((k) => k.startsWith("vendor-confirm"))).toBe(false);
     expect(t.find((x) => x.key === "t-7-call")?.due).toBe("2026-12-05");
     expect(t.find((x) => x.key === "t+1-thanks")?.due).toBe("2026-12-13");
     expect(t.find((x) => x.key === "t-14-email")?.email?.body.startsWith("Hi Priya,")).toBe(true);
