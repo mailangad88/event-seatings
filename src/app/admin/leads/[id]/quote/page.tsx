@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { vendors } from "@/data/vendors";
 import { AdminHeader } from "@/components/admin/AdminUi";
 import { eventLine, money2, prettyDay } from "@/lib/admin-view";
-import { MARKUP } from "@/lib/catalog-types";
+import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { amountDue, chargeLabel } from "@/lib/payments";
 import { getLead } from "@/lib/store";
 import { saveQuote } from "./actions";
@@ -30,7 +30,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
           intro={
             <>
               {[eventLine(lead), lead.event_date && prettyDay(lead.event_date)].filter(Boolean).join(" · ")}. Change quantities or put in the
-              rental company&apos;s real price after you talk to them. The customer price is always their price plus our {Math.round(MARKUP * 100)}%.
+              rental company&apos;s real price after you talk to them. Customers pay the rental company&apos;s price with no markup; our fee is {BOOKING_FEE_FULL} per event.
               {lead.proposal_token && !locked && ` The proposal link and the ${chargeLabel().toLowerCase()} update as soon as you save.`}
             </>
           }

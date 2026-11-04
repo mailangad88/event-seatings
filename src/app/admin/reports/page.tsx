@@ -174,7 +174,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         <Stat label="Visitor → enquiry" value={pct(k.conversion)} note="Enquiries ÷ unique visitors" />
         <Stat label="Not contacted yet" value={k.uncontacted.toLocaleString()} note={<Link href="/admin/leads?status=new" className="text-accent">Open new leads</Link>} />
         <Stat label="Quote value requested" value={money(k.quoteValue)} note={`${k.quotes} quotes · avg ${k.avgQuote ? money(k.avgQuote) : "–"}`} />
-        <Stat label="Est. margin on quotes" value={money(k.margin)} note="Our 10% on every quote" />
+        <Stat label="Est. fees on quotes" value={money(k.margin)} note="Flat fee per quoted event ($295, or $495 over 200 guests)" />
         <Stat label="Booked" value={money(k.wonValue)} note={`${k.wonCount} booked · ${money(k.wonMargin)} margin · win rate ${pct(k.winRate)}`} />
         <Stat label="Median first response" value={hours(k.medianResponse)} note="Lead in → first call, email, text or stage change" />
       </div>

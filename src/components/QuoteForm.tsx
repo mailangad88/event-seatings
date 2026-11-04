@@ -131,7 +131,7 @@ export function Stepper({
 }
 
 // Quote builder: pick items and quantities, see a live estimate, then send the enquiry.
-// Prices shown are the customer price (vendor price + our markup), computed on the server.
+// Prices shown are the customer price (the vendor price; we add no markup), computed on the server.
 // The server re-prices everything on submit, so the totals here are only for display.
 export function QuoteForm({
   items,

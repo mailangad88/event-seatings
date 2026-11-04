@@ -19,7 +19,7 @@ export async function GET() {
     "",
     `> ${site.description}`,
     "",
-    `${site.name} (${site.domain}) is an event rental marketplace for ${site.serviceArea.join(", ")} and the wider Chicago area. Planners build one itemized quote for chairs, tables, linens, dinnerware, glassware, tents, lighting, dance floors and more; we book it with established Chicago-area rental companies and coordinate delivery, setup and pickup. Prices shown are partner rates plus our 10% service fee, and quotes are free.`,
+    `${site.name} (${site.domain}) is an event rental marketplace for ${site.serviceArea.join(", ")} and the wider Chicago area. Planners build one itemized quote for chairs, tables, linens, dinnerware, glassware, tents, lighting, dance floors and more; we book it with established Chicago-area rental companies and coordinate delivery, setup and pickup. Prices shown are the rental companies' own rates with no markup. Our fee is a flat $295 per event ($495 over 200 guests), paid only after every rental company confirms, and quotes are free. Pricing details: ${site.url}/pricing.`,
     "",
     "## Start here",
     `- [All event rentals with prices](${site.url}/rentals): every category and item, priced per unit`,

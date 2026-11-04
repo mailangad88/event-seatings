@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
-import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
+import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -16,7 +16,7 @@ const hostSteps = [
   { title: "Pick your rentals", text: "Browse items with prices and build one list for your whole event.", icon: "search" as const },
   { title: "Send one quote request", text: "Date, venue and guest count. Free, no card needed.", icon: "quote" as const },
   { title: "We check with rental companies", text: "We confirm your date and send one proposal.", icon: "phone" as const },
-  { title: "Approve and pay our fee", text: `Our ${BOOKING_FEE_LABEL} fee secures it. Then we introduce your rental company.`, icon: "check" as const },
+  { title: "Approve and pay our fee", text: `Our flat booking fee secures it, paid only after every company confirms. Then we introduce your rental company.`, icon: "check" as const },
   { title: "Delivery, setup, pickup", text: "Your rental company delivers. We stay your one contact.", icon: "truck" as const },
 ];
 
@@ -29,7 +29,7 @@ const vendorSteps = [
 ];
 
 const money: { from: string; to: string; what: string; when: string; icon: IconName }[] = [
-  { from: "Host", to: site.name, what: `${BOOKING_FEE_LABEL} booking and coordination fee`, when: "When the host approves a proposal a rental company has confirmed", icon: "shield" },
+  { from: "Host", to: site.name, what: `Flat booking and coordination fee: $295, or $495 over 200 guests`, when: "When the host approves a proposal a rental company has confirmed", icon: "shield" },
   { from: "Host", to: "Rental company", what: "Deposit, then the balance, damage waiver and tax", when: "Under the rental company's own agreement, usually balance 7-14 days before", icon: "truck" },
   { from: "Rental company", to: site.name, what: "5% of the rental subtotal (0% in the first 90 days)", when: "Monthly statement, due 15 days after the month of the event", icon: "calendar" },
 ];
@@ -39,7 +39,7 @@ const timeline: [string, string][] = [
   ["Same day", "We call the host to go over the list, then send the order to rental companies that cover that area and date."],
   ["Within 4 business hours", "Rental companies reply yes, no or with a swap."],
   ["Usually within one business day", "The host gets one proposal with every item, fee and policy listed."],
-  ["Host approves", `The host pays our ${BOOKING_FEE_LABEL} fee and we introduce the rental company, which sends its agreement and deposit invoice.`],
+  ["Host approves", `The host pays our flat booking fee and we introduce the rental company, which sends its agreement and deposit invoice.`],
   ["Up to 14 days before", "Free changes to quantities, subject to stock. We pass changes to the rental company."],
   ["Event day", "The rental company delivers and sets up. We're on the phone if anything goes wrong."],
   ["After the event", "Pickup the same night or next morning. We ask the host for a review and log the booking on the partner's monthly statement."],
@@ -49,7 +49,7 @@ const promises: { side: string; items: string[] }[] = [
   {
     side: "What hosts can count on",
     items: [
-      "Every price on the site includes our fee, and your proposal shows it as its own line",
+      "Every price on the site is the rental company's own price, and our flat fee is its own line on the proposal",
       "Nothing to pay until a rental company confirms your date",
       "One coordinator for every rental company on your order",
       "Free changes until 14 days before the event",
@@ -73,9 +73,9 @@ const promises: { side: string; items: string[] }[] = [
 const faqs: Faq[] = [
   { q: `What is ${site.name}?`, a: `A booking service for event rentals in ${site.marketLong}. Hosts build one quote for chairs, tables, linens, tents and more. We check the date with local rental companies, send one proposal, and coordinate delivery, setup and pickup.` },
   { q: `Does ${site.name} own the rentals?`, a: "No. Established local rental companies own, deliver, set up and collect everything. We find the right companies for your order and look after the booking from start to finish." },
-  { q: "Who do I pay?", a: `Hosts pay our ${BOOKING_FEE_LABEL} booking fee to us, and the rental company's deposit and balance to the rental company. Rental companies pay us a monthly commission only on orders we sent that booked.` },
+  { q: "Who do I pay?", a: `Hosts pay our flat booking fee ($295, or $495 over 200 guests) to us, and the rental company's deposit and balance to the rental company. Rental companies may pay us a small referral fee only on orders we sent that booked, and it never changes the host's price.` },
   { q: "Why don't you show rental company names?", a: "So hosts can compare items and prices without twenty phone calls, and so we're paid for the work of putting the order together. Once the host pays our fee, we share the rental company's name, contact and agreement." },
-  { q: "What if a rental company cancels?", a: "We find a comparable replacement and cover any price difference up to the full amount of our booking fee. If we can't replace the order, we refund our booking fee. That's part of our Booking Promise." },
+  { q: "What if a rental company cancels?", a: "We find a comparable replacement and cover any price difference up to $500. If we can't replace the order, we refund our booking fee. That's part of our Booking Promise." },
   { q: "How do rental companies join?", a: "They sign up online at /partners/onboard. We call within one business day, they check their listing, and orders start once they've signed the one-page partner agreement." },
 ];
 
@@ -97,7 +97,7 @@ export default function HowWeWorkPage() {
         title="How we work with hosts and rental companies"
         intro={
           <p data-answer>
-            {site.name} sits between event hosts and local rental companies. Hosts build one quote and pay us a {BOOKING_FEE_LABEL} booking fee when they approve it. Rental companies own the items, deliver them and are paid directly by the host under their own agreement. We check dates, put the order together and stay the one contact until pickup.
+            {site.name} sits between event hosts and local rental companies. Hosts build one quote at the rental companies&apos; own prices and pay us {BOOKING_FEE_FULL} booking fee when they approve it. Rental companies own the items, deliver them and are paid directly by the host under their own agreement. We check dates, put the order together and stay the one contact until pickup.
           </p>
         }
         actions={

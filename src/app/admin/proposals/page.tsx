@@ -39,7 +39,7 @@ export default async function ProposalsPage(props: PageProps<"/admin/proposals">
         title="Proposals"
         intro={
           <>
-            A proposal is the customer&apos;s quote page. It hides the rental partner&apos;s name until the {chargeLabel().toLowerCase()} is
+            A proposal is the customer&apos;s quote page. It names the rental partner up front and shares its contact and agreement once the {chargeLabel().toLowerCase()} is
             paid. {stripeEnabled() ? "Customers pay by card through Stripe." : "Card payments are off until Stripe is set up, so mark fees paid here when they pay another way."}
           </>
         }

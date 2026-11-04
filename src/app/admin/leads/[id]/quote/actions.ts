@@ -21,7 +21,7 @@ const num = (v: FormDataEntryValue | null) => {
 const cents = (n: number) => Math.round(n * 100) / 100;
 
 // Saves edits to a lead's quote after talking to the rental partner: quantities, the vendor's real price,
-// removed lines and extra lines (delivery, setup, a custom piece). Customer prices are always vendor price + our fee.
+// removed lines and extra lines (delivery, setup, a custom piece). Customer prices are the vendor price; our fee is a flat amount per event.
 // Locked once the booking fee is paid, so the customer's paid proposal never changes under them.
 export async function saveQuote(formData: FormData) {
   await requireAdmin();
@@ -73,7 +73,7 @@ export async function saveQuote(formData: FormData) {
   const quote_subtotal = cents(lines.reduce((s, l) => s + l.line_total, 0));
   const quote_cost = cents(lines.reduce((s, l) => s + l.vendor_price * l.qty, 0));
   const patch: LeadPatch = { items: lines, quote_subtotal, quote_cost };
-  if (lead.proposal_token) patch.fee_amount = amountDue({ quote_subtotal, quote_cost });
+  if (lead.proposal_token) patch.fee_amount = amountDue(lead);
   await updateLead(id, patch, [{ type: "note", text: `Quote edited: ${changes.join("; ")}. New total ${usd(quote_subtotal)}.` }]);
   revalidatePath(`/admin/leads/${id}`);
   revalidatePath(`/admin/leads/${id}/quote`);

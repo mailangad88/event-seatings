@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
-import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
+import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -35,7 +35,7 @@ const detail = [
   {
     icon: "truck",
     title: "4. Approve, then relax",
-    text: `Approve your proposal and pay our ${BOOKING_FEE_LABEL} booking fee to secure it. We then introduce your rental company, which sends its agreement and deposit invoice, and we coordinate delivery, setup and pickup.`,
+    text: `Approve your proposal and pay our booking fee, ${BOOKING_FEE_FULL}, to secure it. You only pay once every rental company has confirmed in writing. We then introduce your rental company, which sends its agreement and deposit invoice, and we coordinate delivery, setup and pickup.`,
     points: ["Price locked once you approve", "Backup guarantee if a vendor cancels", "Pickup the same night or next morning"],
   },
 ] as const;
@@ -50,11 +50,11 @@ const faqs: Faq[] = [
   },
   {
     q: "When do I pay, and who do I pay?",
-    a: `Nothing until a rental company confirms your date and you approve your proposal. Then you pay our ${BOOKING_FEE_LABEL} booking fee to us, and the rental company's deposit and balance to them under their agreement.`,
+    a: `Nothing until a rental company confirms your date and you approve your proposal. Then you pay our booking fee, ${BOOKING_FEE_FULL}, to us, and the rental company's deposit and balance to them under their agreement.`,
   },
   {
     q: "Are your prices higher than booking direct?",
-    a: `Our prices include a ${BOOKING_FEE_LABEL} booking and coordination fee on top of the rental company's price, and your proposal shows both. In return you get one quote for every category, one coordinator, and our Booking Promise.`,
+    a: `Item prices are the rental company's own price, with no markup. Our booking and coordination fee is ${BOOKING_FEE_FULL} per event, shown as its own line on your proposal. In return you get one quote across every company, one coordinator, a delivery check on the morning of your event, and our Booking Promise.`,
   },
 ];
 
@@ -118,7 +118,7 @@ export default function HowItWorksPage() {
             <ol className="mt-5 space-y-4">
               {[
                 ["Free", "Quote, planning call and proposal. No card needed."],
-                [`${BOOKING_FEE_LABEL} booking fee`, `Paid to ${site.name} when you approve, only after your vendor confirms.`],
+                [`Flat booking fee: $295, or $495 over 200 guests`, `Paid to ${site.name} when you approve, only after every rental company confirms.`],
                 ["Deposit", "Paid to the rental company at booking, under its agreement."],
                 ["Balance", "Paid to the rental company, usually 7-14 days before the event."],
               ].map(([k, v]) => (

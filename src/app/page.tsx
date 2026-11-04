@@ -64,7 +64,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How does pricing work?",
-    a: "Every item shows its rental price per piece or per set, and your quote totals as you pick. Prices include our coordination, so there is no separate planning fee. Delivery, setup and any venue fees are itemized before you confirm.",
+    a: "Every item shows its rental price per piece or per set, and your quote totals as you pick. Item prices are the rental company's own price, with no markup. Our coordination is one flat fee per event ($295, or $495 over 200 guests), paid only after every company confirms. Delivery, setup and any venue fees are itemized before you confirm.",
   },
   {
     q: "Who delivers the rentals?",
@@ -101,8 +101,8 @@ export default async function Home() {
             </h1>
             <p className="lede mt-6 max-w-xl" data-answer>
               Chairs, tables, linens, dinnerware, tents and lighting from {site.market}&apos;s trusted rental houses,
-              delivered across the city and suburbs. Pick what you need, see prices instantly with our 10% fee
-              included, and we coordinate delivery, setup and pickup with every vendor for you.
+              delivered across the city and suburbs. Pick what you need at each rental company&apos;s own price, and we coordinate delivery, setup and pickup with every
+              company for one flat fee, paid only after they all confirm.
             </p>
             <div className="cta-row mt-8">
               <Link href="/quote?from=home-hero" className="btn-primary btn-lg">

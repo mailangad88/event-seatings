@@ -49,7 +49,7 @@ export type Product = {
   /** Suggested quantity per guest for the quote builder (0 = not guest-driven). */
   perGuest: number;
   minQty?: number;
-  /** Estimated Chicago-market vendor price (USD per unit, before our 10% markup). */
+  /** Estimated Chicago-market vendor price (USD per unit, the customer sees the same price; no markup). */
   estimate: number;
   /** Link to the richer chair page in src/data/chairs.ts, when one exists. */
   chairSlug?: string;

@@ -72,7 +72,7 @@ export default async function PaymentsPage() {
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between gap-3"><dt className="text-muted">Stripe</dt><dd>{stripeEnabled() ? "On" : "Off"}</dd></div>
               <div className="flex justify-between gap-3"><dt className="text-muted">Payment alerts from Stripe</dt><dd>{webhook ? "On" : "Off"}</dd></div>
-              <div className="flex justify-between gap-3"><dt className="text-muted">What we charge</dt><dd className="text-right">{chargeMode() === "hold" ? "Fixed refundable hold" : "10% booking fee"}</dd></div>
+              <div className="flex justify-between gap-3"><dt className="text-muted">What we charge</dt><dd className="text-right">{chargeMode() === "hold" ? "Fixed refundable hold" : "Flat booking fee ($295, $495 over 200 guests)"}</dd></div>
             </dl>
             {!stripeEnabled() && (
               <p className="mt-3 text-xs text-muted">Without Stripe, customers see &quot;we&apos;ll send you a payment link&quot;. Mark the fee paid on the lead once they pay.</p>

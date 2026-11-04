@@ -62,7 +62,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
     ...c.faqs,
     {
       q: `Do ${name} rental prices include delivery?`,
-      a: `No. The prices shown are per item for one event day: the partner rate plus our 10% fee. Delivery and pickup, setup, a damage waiver and sales tax are added for your venue on the same itemized quote, so you see the all-in total before you book.`,
+      a: `No. The prices shown are per item for one event day: the partner's own rate, with no markup. Our flat booking fee is separate. Delivery and pickup, setup, a damage waiver and sales tax are added for your venue on the same itemized quote, so you see the all-in total before you book.`,
     },
     {
       q: `How far ahead should I book ${name} in ${site.market}?`,

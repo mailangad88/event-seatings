@@ -1707,3 +1707,11 @@ Angad asked for researched party ideas per party type, including activities, gam
 - Admin: /admin/applications (list, filters, search) and /admin/applications/<id> (review, status with optional email to the vendor, link to a catalog vendor, notes, history, price list CSV download). Approving a linked catalog vendor moves it to "In talks" in /admin/vendors.
 - New /partners/faq and /how-we-work, linked from the footer, /partners, /partners/onboard and /how-it-works, and added to the sitemap.
 - Remaining: vendor self-service edits after approval (vendor login), automatic catalog import from approved price lists, Stripe Connect payouts once 3+ vendors sign.
+
+## 2026-11-04: flat-fee pricing (success plan)
+- PRICING MODEL CHANGE: item prices are now the rental company's own price (MARKUP = 0). Fee is a flat $295 (up to 200 guests) / $495 (over 200), paid only after every company confirms. Constants in src/lib/catalog-types.ts (COORDINATION_FEE).
+- Backup guarantee raised from "up to the fee" to "up to $500" of a price difference (terms, booking promise, pricing).
+- Proposal now names the rental company before payment; contact + agreement after.
+- New /pricing page (tiers, what's included, call-direct comparison, before-you-pay checklist, FAQ + Service/Offer schema). Big-event callout on /events weddings, South Asian weddings, quinceañeras, galas.
+- Copy updated on ~30 pages that said 10%. Remaining: real reviews once events happen; test $295 vs $395 for 120-200 guests.
+- Plan: /mnt/project-files/plans/success-plan-2026-11-04.md
