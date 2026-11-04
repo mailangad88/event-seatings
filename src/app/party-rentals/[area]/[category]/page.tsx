@@ -97,7 +97,7 @@ export default async function AreaCategoryPage(props: Props) {
   const lower = lc.label.toLowerCase();
 
   // Direct answer for answer engines: 40-60 words, every number computed from the catalog.
-  const answer = `${lc.label} in ${place} start at ${formatPrice(prices[0])}, and the typical item costs about ${formatPrice(median)}, across ${items.length} options from Chicago-area rental partners. Delivery to ${loc.name} is priced per order, usually $150 to $400 depending on distance, stairs and timing, and one free itemized quote covers delivery, setup and pickup.`;
+  const answer = `${lc.label} in ${place} start at ${formatPrice(prices[0])}, and the typical item costs about ${formatPrice(median)}, across ${items.length} options. Delivery to ${loc.name} is priced per order, usually $150 to $400 depending on distance, stairs and timing, and one free itemized quote covers delivery, setup and pickup.`;
 
   // Settings in this area with what changes for this category there.
   const settings = loc.settings.map((s) => ({ ...s, tip: lc.tips[settingKind(s.name)] }));
@@ -116,7 +116,7 @@ export default async function AreaCategoryPage(props: Props) {
     },
     {
       q: `Do you deliver ${lower} to ${loc.name}?`,
-      a: `Yes. We book ${lower} with Chicago-area rental partners who deliver to ${place}${loc.zips.length ? ` (ZIP ${loc.zips.slice(0, 4).join(", ")})` : ""}. Delivery is priced per order by the partner and shown on your quote before you book.`,
+      a: `Yes. We deliver ${lower} to ${place}${loc.zips.length ? ` (ZIP ${loc.zips.slice(0, 4).join(", ")})` : ""}. Delivery is priced per order by the partner and shown on your quote before you book.`,
     },
     { q: sub(lc.localFaq.q), a: sub(lc.localFaq.a) },
     { q: `How far ahead should I book ${lower} in ${loc.name}?`, a: lc.booking },

@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
-import { BACKUP_CAP_LABEL, BOOKING_FEE_FULL } from "@/lib/catalog-types";
+import { DEPOSIT, DEPOSIT_LABEL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Payments, Deposits & Our Booking Promise",
-  description: `Who you pay, when, and what's protected when you book event rentals through ${site.name} in ${site.market}: free quotes, rental companies' own prices, one flat booking fee only after every company confirms, locked prices and a backup if one cancels.`,
+  description: `Who you pay, when, and what's protected when you book event rentals with ${site.name} in ${site.market}: free quotes, every price in writing, a deposit refundable for ${DEPOSIT.refundHours} hours, locked prices and a replacement if an item falls through.`,
   alternates: { canonical: "/booking-promise" },
 });
 
@@ -17,83 +17,81 @@ const promises: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "shield",
     title: "Price lock",
-    text: "The total in the proposal you approve is what you pay for those items. Prices only change if you change your order.",
+    text: "The item prices on the quote you book are what you pay for those items. Prices only change if you change your order.",
   },
   {
-    icon: "check",
-    title: "Insured rental companies",
-    text: "We ask every Chicago-area rental company we book for proof of general liability insurance, and we tell you before you pay if one hasn't provided it yet. We don't issue certificates of insurance ourselves.",
+    icon: "quote",
+    title: "Every line in writing",
+    text: "Your quote lists every item, then delivery, setup, damage waiver and tax as their own lines. No separate booking fee.",
   },
   {
     icon: "users",
-    title: "Backup guarantee",
-    text: `If your rental company cancels, we find a comparable replacement. If it costs more, we cover the difference up to ${BACKUP_CAP_LABEL}. If we can't replace it, your booking fee is refunded.`,
+    title: "Replacement if an item falls through",
+    text: "If something you booked can't be delivered, we replace it with the same or better at the price you agreed, or refund what you paid for it.",
   },
   {
     icon: "chat",
     title: "One person, start to finish",
-    text: `One coordinator handles every vendor, change and question, and ${replyPromise}. On the morning of your event we check every delivery is on its way.`,
+    text: `One coordinator handles every change and question, and ${replyPromise}. On the morning of your event we check your delivery is on its way.`,
   },
   {
     icon: "calendar",
     title: "Free changes until 14 days out",
-    text: "Adjust quantities or swap items free of our charge until 14 days before your event, subject to availability and the rental company's own terms.",
+    text: "Add or drop quantities and swap items at no charge until 14 days before your event, subject to stock.",
   },
   {
     icon: "heart",
-    title: "72-hour change of heart",
-    text: "Your booking fee is fully refundable for 72 hours after you pay. After that, if you postpone, it moves to your new date within 12 months.",
+    title: `${DEPOSIT.refundHours}-hour change of heart`,
+    text: `Your deposit is fully refundable for ${DEPOSIT.refundHours} hours after you pay. After that, our terms explain cancelling or moving your date.`,
   },
 ];
 
 const payments = [
-  { what: "Quote, planning call and proposal", amount: "Free", to: "No one", when: "Any time, no card needed" },
-  { what: `Booking & coordination fee`, amount: "Flat $295, or $495 over 200 guests. No markup on any item", to: site.name, when: "When you approve your proposal, after every rental company confirms your date in writing" },
-  { what: "Rental deposit", amount: "Usually 25-50%, set by the rental company", to: "The rental company", when: "At booking, under their rental agreement" },
-  { what: "Balance", amount: "Remaining rental, delivery, damage waiver and tax", to: "The rental company", when: "Usually 7-14 days before the event" },
-  { what: "Security deposit (some items)", amount: "Varies, refundable", to: "The rental company", when: "Before delivery, returned after pickup" },
+  { what: "Quote, planning call and proposal", amount: "Free", when: "Any time, no card needed" },
+  { what: "Deposit", amount: `${Math.round(DEPOSIT.share * 100)}% of the rentals, at least $${DEPOSIT.min}`, when: `When you book. Fully refundable for ${DEPOSIT.refundHours} hours` },
+  { what: "Balance", amount: "The rest of the rentals, plus delivery, setup, damage waiver and tax", when: `${DEPOSIT.balanceDaysBefore} days before your event, after your final count` },
 ];
 
 const flow = [
   { icon: "quote" as const, title: "Free quote", text: "Build your list online. No card, no commitment." },
-  { icon: "users" as const, title: "Vendor confirms", text: "We check your date with local rental companies we know." },
-  { icon: "check" as const, title: "You approve", text: "Pay the flat booking fee securely. Your rental companies are locked in." },
-  { icon: "calendar" as const, title: "Deposit & contract", text: "The rental company sends its agreement and deposit invoice. We're copied in." },
-  { icon: "truck" as const, title: "Delivered & collected", text: "Balance due before the event. We track delivery and pickup." },
+  { icon: "phone" as const, title: "Free call", text: "We go through your venue, times and anything tricky." },
+  { icon: "check" as const, title: "Deposit", text: `A ${DEPOSIT_LABEL} reserves your items for your date.` },
+  { icon: "calendar" as const, title: "Balance", text: `Due ${DEPOSIT.balanceDaysBefore} days before, once your count is final.` },
+  { icon: "truck" as const, title: "Delivered & collected", text: "We check delivery on the morning and arrange pickup after." },
 ];
 
 const faqs: Faq[] = [
   {
     q: "Do I pay anything to get a quote?",
-    a: `No. Quotes, the planning call and your proposal are free. You only pay ${site.name}'s booking fee once a rental company has confirmed your date and you approve the proposal.`,
+    a: "No. Quotes, the planning call and your proposal are free. You pay only when you decide to book.",
   },
   {
-    q: `How does ${site.name} make money?`,
-    a: `Item prices on our site are the rental company's own price, with no markup. We charge one booking and coordination fee per event, ${BOOKING_FEE_FULL}, shown as its own line on your proposal. Some rental companies may pay us a referral fee in future. It never changes your price, and if one on your proposal does, your proposal says so.`,
+    q: `How does ${site.name} charge?`,
+    a: "By the item, at the prices on our site. Your quote adds delivery and pickup, setup if you want it, a damage waiver and sales tax. There is no separate booking or planning fee.",
   },
   {
-    q: "Who do I pay for the rentals themselves?",
-    a: "You pay the rental company that delivers your items, under its own rental agreement: usually a deposit at booking and the balance 7-14 days before the event. We send you their terms before you approve anything.",
+    q: "Who do I pay?",
+    a: `${site.name}, for everything on your quote: a ${DEPOSIT_LABEL} to book and the balance ${DEPOSIT.balanceDaysBefore} days before your event.`,
   },
   {
     q: "What if something gets damaged?",
-    a: "Most Chicago rental companies offer a damage waiver, often around 8-12% of the rental, that covers normal accidental damage like stains or a scuffed leg. It doesn't cover loss, theft or careless damage. We recommend it for every event. If there's a damage charge, we review it with the rental company against their published damage schedule.",
+    a: "The damage waiver on your quote covers everyday accidents like wine on a linen or a scuffed chair leg. It doesn't cover loss, theft or careless damage. If a damage charge comes up, we show you what was damaged and the charge before anything is billed.",
   },
   {
     q: "Does my venue need a certificate of insurance?",
-    a: "Many Chicago venues require one from every vendor. We can't issue or send certificates of insurance to venues yet, so check your venue's rules before you book and tell us what they require. Some venues also ask hosts for one-day event liability insurance, and we'll tell you on your call if yours does.",
+    a: "Many Chicago venues ask for one from everyone delivering. We can't issue certificates of insurance yet, so check your venue's rules and tell us what they require before you book. Some venues also ask hosts for one-day event liability insurance, and we'll tell you on your call if yours does.",
   },
   {
-    q: "What if the rental company cancels?",
-    a: `Our backup guarantee applies: we find a comparable replacement, cover any price difference up to ${BACKUP_CAP_LABEL}, and refund the booking fee if we can't replace your order.`,
+    q: "What if an item isn't available after I book?",
+    a: "We replace it with the same or better at the price you agreed. If we can't, we refund what you paid for that item.",
   },
   {
     q: "What if I need to cancel or postpone?",
-    a: "Your booking fee is fully refundable for 72 hours after you pay. After that it can move to a new date within 12 months. Deposits paid to the rental company follow its cancellation policy. If you don't accept the rental company's agreement once we share it, your booking fee is refunded in full.",
+    a: `Your deposit is fully refundable for ${DEPOSIT.refundHours} hours after you pay. After that, our terms set out what's refunded or moved to a new date.`,
   },
   {
     q: "How do I pay?",
-    a: "Our booking fee is paid by card or bank transfer through a secure Stripe payment link. Rental companies take card, check or bank transfer under their own invoices.",
+    a: "By card or bank transfer through a secure Stripe payment link sent with your proposal.",
   },
 ];
 
@@ -107,7 +105,7 @@ export default function BookingPromisePage() {
         ]}
         eyebrow="Payments & protection"
         title="Know exactly who you pay, when, and what's protected."
-        intro={`Booking rentals through ${site.name} costs nothing until a rental company confirms your date. Then your prices are locked, the rental company has shown us proof of insurance, and one person looks after your event from quote to pickup.`}
+        intro={`A quote from ${site.name} costs nothing. When you book, your prices are locked, your deposit is refundable for ${DEPOSIT.refundHours} hours, and one person looks after your event from quote to pickup.`}
         actions={
           <>
             <Link href="/quote?from=booking-promise" className="btn-primary">Start my free quote</Link>
@@ -134,16 +132,15 @@ export default function BookingPromisePage() {
       <Section id="payments" tone="sand" eyebrow="Payments" title="Who you pay, and when">
         <StepFlow
           steps={flow}
-          caption={`How paying for event rentals works with ${site.name}: free quote, the rental company confirms, you approve and pay the booking fee, the rental company takes its deposit, then delivery and pickup.`}
+          caption={`How paying for event rentals works with ${site.name}: a free quote, a free call, a deposit to book, the balance before the event, then delivery and pickup.`}
         />
         <div className="mt-12 overflow-x-auto rounded-2xl border border-line bg-surface">
-          <table className="w-full min-w-[40rem] text-left text-sm">
+          <table className="w-full min-w-[32rem] text-left text-sm">
             <caption className="sr-only">Payment schedule for event rentals booked through {site.name}</caption>
             <thead className="bg-surface-2 text-xs tracking-wide text-muted uppercase">
               <tr>
                 <th scope="col" className="px-5 py-4 font-semibold">Payment</th>
                 <th scope="col" className="px-5 py-4 font-semibold">Amount</th>
-                <th scope="col" className="px-5 py-4 font-semibold">Paid to</th>
                 <th scope="col" className="px-5 py-4 font-semibold">When</th>
               </tr>
             </thead>
@@ -152,7 +149,6 @@ export default function BookingPromisePage() {
                 <tr key={p.what} className="border-t border-line align-top">
                   <th scope="row" className="px-5 py-4 font-medium">{p.what}</th>
                   <td className="px-5 py-4 text-muted">{p.amount}</td>
-                  <td className="px-5 py-4 text-muted">{p.to}</td>
                   <td className="px-5 py-4 text-muted">{p.when}</td>
                 </tr>
               ))}
@@ -160,9 +156,8 @@ export default function BookingPromisePage() {
           </table>
         </div>
         <Callout kind="note" title="Your total never surprises you" className="mt-8">
-          The prices you see on our site are the rental companies&apos; own prices. Your proposal lists them, then
-          delivery, damage waiver and tax for your venue, then our fee ({BOOKING_FEE_FULL}) as its own line. Nothing
-          is charged until every company confirms and you approve it.
+          The prices you see on our site are the prices on your proposal. It lists every item, then delivery, setup,
+          damage waiver and tax for your venue. There&apos;s no booking fee on top, and nothing is charged until you book.
         </Callout>
       </Section>
 
@@ -172,18 +167,16 @@ export default function BookingPromisePage() {
             <Icon name="shield" size={26} className="text-gold" />
             <h3 className="display-3 mt-4">Damage waiver</h3>
             <p className="mt-3 leading-7 text-muted">
-              Offered by most rental companies, often around 8-12% of the rental. It covers everyday accidents like
-              wine on a linen or a scuffed chair. It does not cover loss, theft or careless damage. We recommend it for
-              every event.
+              Added to every quote at 10% of the rentals. It covers everyday accidents like wine on a linen or a scuffed chair.
+              It does not cover loss, theft or careless damage.
             </p>
           </article>
           <article className="card p-7">
             <Icon name="check" size={26} className="text-gold" />
-            <h3 className="display-3 mt-4">Vendor insurance</h3>
+            <h3 className="display-3 mt-4">Venue paperwork</h3>
             <p className="mt-3 leading-7 text-muted">
-              We ask every rental company we book for proof of general liability insurance. We don&apos;t issue
-              certificates of insurance ourselves, so if your venue asks for one before load-in, tell us before you book and
-              we&apos;ll ask the rental company whether it can provide one.
+              We don&apos;t issue certificates of insurance yet. If your venue asks for one before load-in, tell us before you
+              book so we can tell you honestly whether we can meet its rules.
             </p>
           </article>
           <article className="card p-7">
@@ -196,9 +189,9 @@ export default function BookingPromisePage() {
           </article>
         </div>
         <p className="mt-8 max-w-3xl text-sm leading-6 text-muted">
-          Items are your responsibility between delivery and pickup, under the rental company&apos;s agreement. If a
-          damage charge comes up, we review it with the rental company against their published damage schedule. Full
-          details are in our <Link href="/terms" className="link">terms</Link>.
+          Items are your responsibility between delivery and pickup. If a damage charge comes up, we show you what was
+          damaged and the charge before anything is billed. Full details are in our <Link href="/terms" className="link">terms</Link>,
+          and prices are on our <Link href="/pricing" className="link">pricing page</Link>.
         </p>
       </Section>
 

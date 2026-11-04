@@ -10,7 +10,7 @@ export default async function AccountMessages() {
   const { events } = (await currentAccount())!;
   return (
     <div className="space-y-6">
-      <PageTitle title="Messages" intro="Each event has its own conversation with your coordinator. We pass anything a rental company needs on to them." />
+      <PageTitle title="Messages" intro="Each event has its own conversation with your coordinator." />
       <Card>
         {events.length ? (
           <ul className="divide-y divide-line">

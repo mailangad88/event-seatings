@@ -1,30 +1,25 @@
 import { createHmac } from "crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { COORDINATION_FEE } from "@/lib/catalog-types";
+import { DEPOSIT, depositFor } from "@/lib/catalog-types";
 import { amountDue, chargeLabel, chargeMode, checkoutPaid, newProposalToken, verifyStripeSignature } from "@/lib/payments";
 
 describe("amountDue", () => {
   afterEach(() => vi.unstubAllEnvs());
 
-  it("charges one flat coordination fee per event, set by guest count", () => {
-    expect(amountDue({})).toBe(COORDINATION_FEE.standard);
-    expect(amountDue({ guest_count: 150 })).toBe(COORDINATION_FEE.standard);
-    expect(amountDue({ guest_count: COORDINATION_FEE.largeFrom - 1 })).toBe(COORDINATION_FEE.standard);
-    expect(amountDue({ guest_count: COORDINATION_FEE.largeFrom })).toBe(COORDINATION_FEE.large);
-  });
-
-  it("applies a minimum fee when set", () => {
-    vi.stubEnv("BOOKING_FEE_MIN_USD", "999");
-    expect(amountDue({ guest_count: 80 })).toBe(999);
-    vi.stubEnv("BOOKING_FEE_MIN_USD", "1");
-    expect(amountDue({ guest_count: 80 })).toBe(COORDINATION_FEE.standard);
+  it("charges a deposit on the rental subtotal, with a floor and never more than the order", () => {
+    expect(amountDue({ quote_subtotal: 4000 })).toBe(4000 * DEPOSIT.share);
+    expect(amountDue({ quote_subtotal: 150 })).toBe(DEPOSIT.min);
+    expect(amountDue({ quote_subtotal: 60 })).toBe(60);
+    expect(amountDue({ quote_subtotal: 0 })).toBe(0);
+    expect(amountDue({ items: [{ id: "a", name: "A", qty: 10, unit_price: 50, line_total: 500 }] as never })).toBe(depositFor(500));
+    expect(chargeLabel()).toBe("Deposit");
   });
 
   it("charges a fixed hold in hold mode", () => {
     vi.stubEnv("BOOKING_CHARGE", "hold");
     expect(chargeMode()).toBe("hold");
     expect(chargeLabel()).toMatch(/hold/i);
-    expect(amountDue({ guest_count: 400 })).toBe(100);
+    expect(amountDue({ quote_subtotal: 4000 })).toBe(100);
     vi.stubEnv("BOOKING_HOLD_USD", "250.555");
     expect(amountDue({})).toBe(250.56);
     vi.stubEnv("BOOKING_HOLD_USD", "-4");

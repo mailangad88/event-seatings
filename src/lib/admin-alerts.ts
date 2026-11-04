@@ -111,7 +111,7 @@ export function buildAlerts({ leads, partners, applications = [], reviews = [], 
 
     // Proposals that sit unpaid.
     if (l.proposal_token && (l.fee_status ?? "unpaid") === "unpaid" && l.proposal_created_at && hoursSince(l.proposal_created_at, now) > 24 * 5) {
-      out.push({ id: `unpaid-${l.id}`, level: "decision", area: "money", title: `${who(l)} hasn't paid the booking fee`, detail: `Proposal sent ${prettyDay(l.proposal_created_at.slice(0, 10))}${l.fee_amount ? `, ${money0(l.fee_amount)}` : ""}. Follow up or mark it lost.`, href: "/admin/proposals", at: l.proposal_created_at, action: "Review" });
+      out.push({ id: `unpaid-${l.id}`, level: "decision", area: "money", title: `${who(l)} hasn't paid the deposit`, detail: `Proposal sent ${prettyDay(l.proposal_created_at.slice(0, 10))}${l.fee_amount ? `, ${money0(l.fee_amount)}` : ""}. Follow up or mark it lost.`, href: "/admin/proposals", at: l.proposal_created_at, action: "Review" });
     }
 
     // Heads-ups and things that went through on their own.
@@ -119,7 +119,7 @@ export function buildAlerts({ leads, partners, applications = [], reviews = [], 
       out.push({ id: `tmrw-${l.id}`, level: "info", area: "events", title: `${who(l)}'s ${(l.event_type ?? "event").toLowerCase()} is tomorrow`, detail: [l.venue, l.city, l.assigned_vendor && vendorName(l.assigned_vendor)].filter(Boolean).join(" · ") || eventLine(l), href: leadHref(l), at: `${today}T12:00:00Z` });
     }
     if (l.fee_status === "paid" && l.fee_paid_at && hoursSince(l.fee_paid_at, now) < 48) {
-      out.push({ id: `paid-${l.id}`, level: "done", area: "money", title: `${who(l)} paid the ${money0(l.fee_amount)} booking fee`, detail: ev ? `Event ${prettyDay(ev)}.` : "Booked.", href: leadHref(l), at: l.fee_paid_at });
+      out.push({ id: `paid-${l.id}`, level: "done", area: "money", title: `${who(l)} paid the ${money0(l.fee_amount)} deposit`, detail: ev ? `Event ${prettyDay(ev)}.` : "Booked.", href: leadHref(l), at: l.fee_paid_at });
     }
     for (const p of parts) {
       if (p.answer === "yes" && p.answered_at && hoursSince(p.answered_at, now) < 48) {

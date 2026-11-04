@@ -17,7 +17,7 @@ export default function Page() {
       faqs={[
         { q: "What slows down event rental quotes?", a: "Missing details: date, venue rules, guest count and a full item list. Send the same complete list to every company and quotes come back faster and comparable." },
         { q: "Can I still get rentals for an event this weekend?", a: "Often, yes, for standard items like folding chairs, banquet tables and basic linens, especially for weekday or Sunday events. Tents, dance floors and specialty chairs are harder at short notice. Send your list and date and we check partner availability the same business day." },
-        { q: "Can I rent everything for an event from one place?", a: "Few single companies carry every category. Our quote builder puts chairs, tables, linens, tableware, tents and more from several Chicago rental houses on one list." },
+        { q: "Can I rent everything for an event from one place?", a: "Yes. Our quote builder puts chairs, tables, linens, tableware, tents and more on one list, with one quote and one delivery plan." },
       ]}
     />
   );

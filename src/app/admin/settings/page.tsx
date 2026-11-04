@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { AdminHeader, Panel } from "@/components/admin/AdminUi";
-import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
+import { DEPOSIT, MARKUP } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -28,7 +28,7 @@ const groups: { title: string; rows: { name: string; what: string; ok: boolean; 
   {
     title: "Money",
     rows: [
-      { name: "Card payments (Stripe)", what: "Customers pay the booking fee on their proposal.", ok: on("STRIPE_SECRET_KEY"), keys: "STRIPE_SECRET_KEY" },
+      { name: "Card payments (Stripe)", what: "Customers pay the deposit on their proposal.", ok: on("STRIPE_SECRET_KEY"), keys: "STRIPE_SECRET_KEY" },
       { name: "Stripe payment alerts", what: "Marks a fee paid even if the customer closes the tab.", ok: on("STRIPE_WEBHOOK_SECRET"), keys: "STRIPE_WEBHOOK_SECRET" },
     ],
   },
@@ -91,7 +91,7 @@ export default function SettingsPage() {
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between gap-3"><dt className="text-muted">Name</dt><dd>{site.name}</dd></div>
             <div className="flex justify-between gap-3"><dt className="text-muted">Website</dt><dd className="[overflow-wrap:anywhere]">{site.url}</dd></div>
-            <div className="flex justify-between gap-3"><dt className="text-muted">Our fee</dt><dd className="text-right">{BOOKING_FEE_FULL} per event, no markup on items</dd></div>
+            <div className="flex justify-between gap-3"><dt className="text-muted">Our margin</dt><dd className="text-right">{Math.round(MARKUP * 100)}% on every item, no separate fee. Deposit {Math.round(DEPOSIT.share * 100)}% to book</dd></div>
           </dl>
           <p className="mt-3 text-xs text-muted">Name, address and service area live in src/lib/site.ts. Ask Claude to change them.</p>
         </Panel>

@@ -34,7 +34,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Who delivers and sets up the rentals?",
-    a: `We coordinate everything with trusted rental partners across ${site.market} and the suburbs, so you deal with one team for chairs, tables, linens and the rest of your list.`,
+    a: `We handle everything for events across ${site.market} and the suburbs, so you deal with one team for chairs, tables, linens and the rest of your list.`,
   },
   {
     q: "How fast will I hear back?",
@@ -53,7 +53,7 @@ const faqs: Faq[] = [
 const steps = [
   { title: "Pick your rentals", text: "Choose items and quantities and watch the total update.", icon: "chair" as const },
   { title: "Send your list", text: "Add your date and venue. No payment, no commitment.", icon: "calendar" as const },
-  { title: "Get a confirmed proposal", text: "We check availability with our partners, usually within a day.", icon: "quote" as const },
+  { title: "Get a confirmed proposal", text: "We check availability for your date, usually within a day.", icon: "quote" as const },
   { title: "Delivered and set up", text: "Everything arrives, gets set up and is picked up after.", icon: "truck" as const },
 ];
 

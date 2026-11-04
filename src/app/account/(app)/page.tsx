@@ -79,8 +79,8 @@ export default async function AccountOverview() {
 
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
         <div className="stat-card stat-blue"><p className="stat-label">Upcoming events</p><p className="stat-value">{upcoming.length}</p><p className="mt-2 text-xs text-muted">{next?.date ? `Next on ${fmtDay(next.date)}` : "None booked yet"}</p></div>
-        <div className="stat-card stat-green"><p className="stat-label">Companies confirmed</p><p className="stat-value">{confirmed}<span className="text-xl text-muted">/{companies}</span></p><p className="mt-2 text-xs text-muted">Across your upcoming orders</p></div>
-        <div className={`stat-card ${owed ? "stat-amber" : "stat-green"}`}><p className="stat-label">Booking fee due</p><p className="stat-value">{usd(owed, 0)}</p><p className="mt-2 text-xs text-muted">{owed ? "Pay to hold your date" : "All paid up"}</p></div>
+        <div className="stat-card stat-green"><p className="stat-label">Deliveries confirmed</p><p className="stat-value">{confirmed}<span className="text-xl text-muted">/{companies}</span></p><p className="mt-2 text-xs text-muted">Across your upcoming orders</p></div>
+        <div className={`stat-card ${owed ? "stat-amber" : "stat-green"}`}><p className="stat-label">Deposit due</p><p className="stat-value">{usd(owed, 0)}</p><p className="mt-2 text-xs text-muted">{owed ? "Pay to hold your date" : "All paid up"}</p></div>
         <div className="stat-card stat-wine"><p className="stat-label">Unread messages</p><p className="stat-value">{unread}</p><p className="mt-2 text-xs text-muted">{unread ? "From your coordinator" : "You're all caught up"}</p></div>
       </div>
 
@@ -105,7 +105,7 @@ export default async function AccountOverview() {
               ))}
             </ol>
           ) : (
-            <p className="text-sm text-muted">Delivery and pickup times show here once each rental company books its truck.</p>
+            <p className="text-sm text-muted">Delivery and pickup times show here once they&apos;re booked.</p>
           )}
         </Card>
       </div>

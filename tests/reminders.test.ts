@@ -108,17 +108,17 @@ describe("limits", () => {
 });
 
 describe("offer", () => {
-  it("adds the booking-fee offer only to the chosen reminders and logs it", () => {
-    const settings = cleanReminderSettings({ offer: { enabled: true, percent: 20, days: 7, kinds: ["unfinished_quote"] } });
+  it("adds the rentals offer only to the chosen reminders and logs it", () => {
+    const settings = cleanReminderSettings({ offer: { enabled: true, percent: 5, days: 7, kinds: ["unfinished_quote"] } });
     const r = plan([lead()], [list(30, ["round-60"])], settings).send[0];
-    expect(r.offer).toBe("20% off our booking fee until Nov 17");
-    expect(r.body.at(-1)).toMatch(/20% off our booking fee/);
-    expect(reminderLogText(r)).toContain("Offer: 20% off our booking fee until Nov 17");
+    expect(r.offer).toBe("5% off your rentals until Nov 17");
+    expect(r.body.at(-1)).toMatch(/5% off your rentals/);
+    expect(reminderLogText(r)).toContain("Offer: 5% off your rentals until Nov 17");
     const item = plan([lead()], [view(50), view(30)], settings).send[0];
     expect(item.offer).toBeUndefined();
   });
 
   it("keeps stored numbers in range", () => {
-    expect(cleanReminderSettings({ offer: { percent: 500, days: -3 } }).offer).toMatchObject({ percent: 100, days: 1 });
+    expect(cleanReminderSettings({ offer: { percent: 500, days: -3 } }).offer).toMatchObject({ percent: 10, days: 1 });
   });
 });

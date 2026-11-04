@@ -8,7 +8,7 @@ export const site = {
   market: "Chicago",
   marketLong: "Chicago & suburbs",
   description:
-    "Beyond Chiavari is Chicago's event rental marketplace: chairs, tables, linens, dinnerware, glassware, tents, dance floors, lighting and more from trusted local rental houses. See prices upfront, build one quote, and we coordinate delivery and setup across Chicago and the suburbs.",
+    "Beyond Chiavari rents chairs, tables, linens, dinnerware, glassware, tents, dance floors, lighting and more for events in Chicago. See prices upfront, build one quote, and we coordinate delivery and setup across Chicago and the suburbs.",
   // Where the business is based (used for the LocalBusiness address).
   city: "St. Charles, IL",
   locality: "St. Charles",
@@ -44,7 +44,7 @@ export const site = {
   // hours are covered: with it set the site promises a reply within one business hour in those hours; without it,
   // the promise is "within one business day".
   hours: process.env.NEXT_PUBLIC_BUSINESS_HOURS?.trim() ?? "",
-  // Booking is open now: partner rental companies deliver year-round (business-model plan, Nov 2 2026).
+  // Booking is open now: we deliver year-round (business-model plan, Nov 2 2026).
   // Quote requests for dates before firstEventDate get a "we're not delivering yet" note, so keep it in the past
   // unless booking ever has to pause.
   launch: {

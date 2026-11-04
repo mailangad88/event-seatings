@@ -111,8 +111,7 @@ export default function AreasPage() {
               <em className="text-gold">Chicagoland</em>
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
-              We help you book event chairs, tables, linens and more from established
-              Chicago-area rental companies, with delivery and setup across
+              We rent event chairs, tables, linens and more, with delivery and setup across
               Chicago, every collar county and the towns beyond. We&apos;re
               based in {homeBase.name}. Find your neighborhood or town for local
               venue tips, rental picks and FAQs.
@@ -185,7 +184,7 @@ export default function AreasPage() {
       <HubFaqs
         faqs={[
           { q: "Which Chicago areas do you deliver chairs to?", a: `We arrange delivery to Chicago and its neighborhoods plus ${locations.length - 1} suburbs listed on this page, from the North Shore to DuPage County and the Fox Valley. If your town is not listed, ask: most of the metro area is covered.` },
-          { q: "Does delivery cost more in the suburbs?", a: "Delivery is priced per order by the rental partner and depends mostly on distance, stairs and timing. Expect roughly $150 to $400 per order; the exact amount appears on your itemized quote before you book." },
+          { q: "Does delivery cost more in the suburbs?", a: "Delivery is priced per order and depends mostly on distance, stairs and timing. Expect roughly $150 to $400 per order; the exact amount appears on your itemized quote before you book." },
           { q: "How far ahead should I book chairs?", a: "For Saturdays from May to October, book 3 to 6 months ahead, especially for popular styles like Chiavari and cross-back. Weekday and winter events can often be booked 2 to 4 weeks out." },
           { q: "Can you deliver to downtown venues with loading docks or elevators?", a: "Yes. Tell us the load-in window, dock or elevator rules and any certificate requirements your venue has, and we plan delivery around them. We do not issue certificates of insurance ourselves." },
         ]}

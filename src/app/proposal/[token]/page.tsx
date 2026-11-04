@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { notFound } from "next/navigation";
-import { getVendor } from "@/data/vendors";
 import { Icon, PriceDisclaimer } from "@/components/ui";
-import { coordinationFee, usd } from "@/lib/catalog-types";
+import { DEPOSIT, usd } from "@/lib/catalog-types";
+import { allInEstimate } from "@/lib/fees";
 import { amountDue, chargeLabel, chargeMode, checkoutPaid, stripeEnabled } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
 import { site } from "@/lib/site";
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 const day = (d?: string) =>
   d ? new Date(`${d.slice(0, 10)}T12:00:00`).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }) : undefined;
 
-// A customer's proposal. The rental company is named up front so the customer can check it. Its
-// contact details and agreement are shared after the flat booking fee (or a refundable hold) is paid.
+// A customer's proposal: every item at our price, delivery, setup, waiver and tax, the total, and the
+// deposit that books it (or a refundable hold). The supplier is never shown to the customer.
 export default async function ProposalPage(props: PageProps<"/proposal/[token]">) {
   const { token } = await props.params;
   const sp = await props.searchParams;
@@ -46,7 +46,8 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
   const lines = lead.items ?? [];
   const subtotal = lead.quote_subtotal ?? lines.reduce((s, l) => s + l.line_total, 0);
   const due = lead.fee_amount ?? amountDue(lead);
-  const vendor = lead.assigned_vendor ? getVendor(lead.assigned_vendor) : undefined;
+  const allIn = allInEstimate(subtotal);
+  const balance = Math.max(0, Math.round((allIn.total - (chargeMode() === "fee" ? due : 0)) * 100) / 100);
   const event = [lead.event_type, day(lead.event_date), lead.guest_count ? `${lead.guest_count} guests` : undefined, lead.venue ?? lead.city]
     .filter(Boolean)
     .join(" · ");
@@ -83,13 +84,14 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
                 </tbody>
               </table>
               <dl className="mt-5 space-y-1.5 text-sm">
-                <div className="flex justify-between font-medium"><dt>Rentals at the rental company&apos;s own price</dt><dd className="tabular-nums">{usd(subtotal)}</dd></div>
-                <div className="flex justify-between"><dt className="text-muted">Paid to</dt><dd>The rental company</dd></div>
-                <div className="flex justify-between border-t border-line pt-2"><dt className="text-muted">Our flat booking &amp; coordination fee</dt><dd className="tabular-nums">{usd(chargeMode() === "fee" ? due : coordinationFee(lead.guest_count))}</dd></div>
-                <div className="flex justify-between"><dt className="text-muted">Paid to</dt><dd>{site.name}, only after every company confirms</dd></div>
+                <div className="flex justify-between font-medium"><dt>Rentals</dt><dd className="tabular-nums">{usd(subtotal)}</dd></div>
+                {allIn.lines.map((f) => (
+                  <div key={f.label} className="flex justify-between"><dt className="text-muted">{f.label}{f.note ? ` (${f.note})` : ""}</dt><dd className="tabular-nums">{usd(f.amount)}</dd></div>
+                ))}
+                <div className="flex justify-between border-t border-line pt-2 font-medium"><dt>Estimated total</dt><dd className="tabular-nums">{usd(allIn.total)}</dd></div>
               </dl>
               <p className="mt-3 text-xs leading-5 text-muted">
-                Delivery, setup, damage waiver and sales tax are set by the rental company and listed on its agreement before you pay it anything.
+                No separate booking fee. Delivery and setup are confirmed once we have your venue details; anything that changes is shown here before you pay the balance.
               </p>
             </div>
           ) : (
@@ -99,43 +101,26 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
         </section>
 
         <aside className="space-y-6">
-          <section className="card p-6" aria-labelledby="partner">
-            <h2 id="partner" className="font-heading font-semibold text-2xl">Your rental company</h2>
+          <section className="card p-6" aria-labelledby="book">
+            <h2 id="book" className="font-heading font-semibold text-2xl">Book your date</h2>
             {paid ? (
               <div className="mt-3 space-y-2 text-sm leading-6">
                 <p className="flex items-center gap-2 font-medium text-ink"><Icon name="check" size={18} className="text-gold" /> Booking secured. Thank you!</p>
-                {vendor ? (
-                  <>
-                    <p className="text-lg font-heading font-semibold">{vendor.name}</p>
-                    {vendor.phone && <p>Phone: <a href={`tel:${vendor.phone}`} className="text-accent">{vendor.phone}</a></p>}
-                    {vendor.website && <p><a href={vendor.website} className="text-accent" rel="noopener" target="_blank">Website</a></p>}
-                    <p className="text-muted">
-                      They&apos;ll send their rental agreement and deposit invoice. We stay your contact for every change until pickup.
-                    </p>
-                  </>
-                ) : (
-                  <p className="text-muted">We&apos;re confirming your order with the rental company now and will introduce you by email.</p>
-                )}
+                <p className="text-muted">
+                  Your items are reserved for your date. We&apos;ll confirm delivery and pickup times by email, and the balance is due{" "}
+                  {DEPOSIT.balanceDaysBefore} days before your event. Reply any time to change quantities.
+                </p>
               </div>
             ) : (
               <div className="mt-3 space-y-4 text-sm leading-6">
-                {vendor ? (
-                  <p>
-                    <span className="font-medium text-ink">{vendor.name}</span> has your items for this date. Look them up before you pay
-                    anything. We share their contact, rental agreement and deposit invoice as soon as your booking is secured.
-                  </p>
-                ) : (
-                  <p>
-                    We&apos;re confirming your date with the rental company now. You&apos;ll see its name here before you pay anything.
-                  </p>
-                )}
+                <p>Your items are held while you decide. Paying the deposit reserves them for your date.</p>
                 <div className="rounded-xl bg-gold-soft/50 p-4">
                   <p className="text-muted">{chargeLabel()}</p>
                   <p className="mt-1 font-heading font-semibold text-3xl tabular-nums">{usd(due)}</p>
                   <p className="mt-1 text-xs text-muted">
                     {chargeMode() === "hold"
-                      ? "Fully refundable for 72 hours. Counts toward your booking fee."
-                      : "Fully refundable for 72 hours. After that it can move to a new date within 12 months."}
+                      ? `Fully refundable for ${DEPOSIT.refundHours} hours. Counts toward your order.`
+                      : `Fully refundable for ${DEPOSIT.refundHours} hours. Counts toward your order. About ${usd(balance)} balance due ${DEPOSIT.balanceDaysBefore} days before your event.`}
                   </p>
                 </div>
                 {stripeEnabled() ? (
@@ -172,7 +157,7 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
             )}
           </section>
           <p className="px-1 text-xs leading-5 text-muted">
-            Rentals are paid to the rental company under its own agreement. Read our{" "}
+            Read our{" "}
             <Link href="/booking-promise" className="underline underline-offset-2">Booking Promise</Link> and{" "}
             <Link href="/terms" className="underline underline-offset-2">terms</Link>.
           </p>

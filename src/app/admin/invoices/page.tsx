@@ -58,7 +58,7 @@ export default async function InvoicesPage(props: PageProps<"/admin/invoices">) 
       <AdminHeader
         group="Money"
         title="Invoices"
-        intro={`Commission statements for rental partners (first ${FREE_ORDERS} booked orders free, then ${Math.round(COMMISSION_RATE * 1000) / 10}% of the rental total on booked orders, billed after the event month) and receipts for customers who paid the booking fee.`}
+        intro={`Commission statements for rental partners (first ${FREE_ORDERS} booked orders free, then ${Math.round(COMMISSION_RATE * 1000) / 10}% of the rental total on booked orders, billed after the event month) and receipts for customers who paid the deposit.`}
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -162,9 +162,9 @@ export default async function InvoicesPage(props: PageProps<"/admin/invoices">) 
           )}
         </Panel>
       ) : (
-        <Panel title="Booking fee receipts" className="mt-4">
+        <Panel title="Deposit receipts" className="mt-4">
           {receipts.length === 0 ? (
-            <Empty>No paid booking fees yet.</Empty>
+            <Empty>No paid deposits yet.</Empty>
           ) : (
             <Table head={["Paid", "Customer", "Event", "Fee", ""]} right={[3]} min={640}>
               {receipts.map((l) => (

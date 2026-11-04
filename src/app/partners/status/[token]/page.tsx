@@ -68,7 +68,7 @@ export default async function ApplicationStatusPage(props: PageProps<"/partners/
       </section>
 
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/how-we-work" className="btn-ghost btn-sm">How we work <Icon name="arrow" size={16} /></Link>
+        <Link href="/partners/terms" className="btn-ghost btn-sm">Partner terms <Icon name="arrow" size={16} /></Link>
         <Link href="/partners/faq" className="btn-ghost btn-sm">Partner questions</Link>
       </div>
     </div>

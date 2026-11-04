@@ -4,7 +4,7 @@ import { Icon, type IconName } from "./Icon";
 const items: { icon: IconName; title: string; text: string }[] = [
   { icon: "quote", title: "One quote for everything", text: "Chairs, tables, linens and dishes on one list with prices" },
   { icon: "truck", title: "Delivery and setup", text: `Across ${site.market} and the suburbs` },
-  { icon: "shield", title: "Pay after they confirm", text: "Rental companies' own prices. Our flat fee is paid only once every company confirms" },
+  { icon: "shield", title: "Prices up front", text: "Every item priced on the site. No separate booking fee" },
   { icon: "chat", title: "Talk to us", text: `Free ${site.callLength} call to plan your rentals` },
 ];
 

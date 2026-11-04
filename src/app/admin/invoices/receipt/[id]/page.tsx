@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: "Receipt", robots: { index: false } }
 
 const long = { month: "long", day: "numeric", year: "numeric" } as const;
 
-// A printable receipt for the booking fee. The rentals themselves are billed by the rental company.
+// A printable receipt for the deposit. The balance is due 7 days before the event.
 export default async function ReceiptPage(props: PageProps<"/admin/invoices/receipt/[id]">) {
   const { id } = await props.params;
   const lead = await getLead(id);
@@ -61,8 +61,8 @@ export default async function ReceiptPage(props: PageProps<"/admin/invoices/rece
           <tfoot><tr><td className="pt-3 font-medium">Total paid</td><td className="pt-3 text-right font-medium tabular-nums">{money2(lead.fee_amount)}</td></tr></tfoot>
         </table>
         <p className="mt-8 text-xs leading-5 text-muted">
-          Paid {lead.stripe_session_id ? "by card" : "directly to us"}. This covers our booking and coordination for your event. The rental company
-          bills the rentals, delivery, damage waiver and tax under its own agreement. See {site.url}/booking-promise for refunds and changes.
+          Paid {lead.stripe_session_id ? "by card" : "directly to us"}. This is the deposit on your rentals and counts toward your order. The balance,
+          with delivery, setup, damage waiver and tax, is due 7 days before your event. See {site.url}/booking-promise for refunds and changes.
         </p>
       </article>
     </div>

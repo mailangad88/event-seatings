@@ -203,7 +203,7 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         <Stat label="Visitor → enquiry" value={pct(k.conversion)} note="Enquiries ÷ unique visitors" />
         <Stat label="Not contacted yet" value={k.uncontacted.toLocaleString()} note={<Link href="/admin/leads?status=new" className="text-accent">Open new leads</Link>} />
         <Stat label="Quote value requested" value={money(k.quoteValue)} note={`${k.quotes} quotes · avg ${k.avgQuote ? money(k.avgQuote) : "–"}`} />
-        <Stat label="Est. fees on quotes" value={money(k.margin)} note="Flat fee per quoted event ($295, or $495 over 200 guests)" />
+        <Stat label="Est. margin on quotes" value={money(k.margin)} note="15% markup on item prices (about 13% of the customer price)" />
         <Stat label="Booked" value={money(k.wonValue)} note={`${k.wonCount} booked · ${money(k.wonMargin)} margin · win rate ${pct(k.winRate)}`} />
         <Stat label="Median first response" value={hours(k.medianResponse)} note="Lead in → first call, email, text or stage change" />
       </div>
@@ -482,7 +482,7 @@ const funnelSteps = [
   { id: "all", label: "Enquiries" },
   { id: "contacted", label: "Had a reply" },
   { id: "quote_sent", label: "Got a quote" },
-  { id: "paid", label: "Paid the booking fee" },
+  { id: "paid", label: "Paid the deposit" },
   { id: "completed", label: "Event done" },
 ] as const;
 const order = leadStatuses.map((x) => x.id as string);
@@ -524,7 +524,7 @@ function Funnel({ leads }: { leads: Lead[] }) {
   );
 }
 
-// Money in: booking fees by month, booked rental value and our margin.
+// Money in: deposits by month, booked rental value and our margin.
 function MoneyReport({ leads, all }: { leads: Lead[]; all: Lead[] }) {
   const paid = leads.filter((l) => l.fee_status === "paid");
   const fees = paid.reduce((s, l) => s + (l.fee_amount ?? 0), 0);
@@ -546,15 +546,15 @@ function MoneyReport({ leads, all }: { leads: Lead[]; all: Lead[] }) {
   return (
     <div className="mt-6 space-y-6">
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        <Stat label="Booking fees paid" value={money(fees)} note={`${paid.length} booking${paid.length === 1 ? "" : "s"}`} />
+        <Stat label="Deposits paid" value={money(fees)} note={`${paid.length} booking${paid.length === 1 ? "" : "s"}`} />
         <Stat label="Average fee" value={paid.length ? money(fees / paid.length) : "–"} note="Per paid booking" />
         <Stat label="Rentals we booked" value={money(rentals)} note={`${money(margin)} margin on those orders`} />
         <Stat label="Waiting on payment" value={money(waiting.reduce((s, l) => s + (l.fee_amount ?? 0), 0))} note={`${waiting.length} proposal${waiting.length === 1 ? "" : "s"} · ${refunded.length} refunded`} />
       </div>
       <div className="grid gap-6 lg:grid-cols-3">
         <section className={`${card} lg:col-span-2`}>
-          <h3 className="display-3">Booking fees, last 12 months</h3>
-          <div className="mt-5"><ColumnBars data={byMonth} tone="green" height={160} label="Booking fees per month, last 12 months" /></div>
+          <h3 className="display-3">Deposits, last 12 months</h3>
+          <div className="mt-5"><ColumnBars data={byMonth} tone="green" height={160} label="Deposits per month, last 12 months" /></div>
         </section>
         <section className={card}>
           <h3 className="display-3">Proposals in this period</h3>

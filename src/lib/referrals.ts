@@ -22,7 +22,7 @@ export function cleanCode(v: unknown): string | undefined {
   return referralCodePattern.test(code) ? code : undefined;
 }
 
-// The real reward, when Angad has approved one (e.g. "$25 off your booking fee for both of you").
+// The real reward, when Angad has approved one (e.g. "$25 off your rentals for both of you").
 export const referralReward = () => process.env.REFERRAL_REWARD?.trim() || "";
 
 async function all(): Promise<Referrer[]> {

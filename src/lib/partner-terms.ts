@@ -1,5 +1,5 @@
 // Rental partner (vendor) terms in one place. The partner pages, the one-page terms at /partners/terms,
-// the how-we-work table and the admin commission statements all read these, so changing a number here
+// and the admin commission statements all read these, so changing a number here
 // changes every one of them. Pricing options and the reasoning: /mnt/project-files/plans/pricing-research-2026-11-04.md.
 export const PARTNER_TERMS = {
   /** Referral fee on the rental subtotal of orders we send that book. */

@@ -117,7 +117,7 @@ const requestSteps: Step[] = [
     body: (l) => [
       hi(l),
       "",
-      "Rental companies confirm stock date by date, so checking sooner gives you more choice of styles and colors.",
+      "Stock is booked date by date, so checking sooner gives you more choice of styles and colors.",
       "If your plans changed, no problem. If you'd still like prices confirmed for your date, reply \"yes\" and we'll take it from there.",
       "",
       booking(),

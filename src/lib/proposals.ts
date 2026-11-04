@@ -3,7 +3,7 @@ import { usd } from "./catalog-types";
 import { site } from "./site";
 import { getLead, updateLead, type Lead } from "./store";
 
-// Marks a proposal's booking fee (or hold) as paid, which reveals the rental partner on /proposal/<token>.
+// Marks a proposal's deposit (or hold) as paid.
 // Safe to call twice (the Stripe webhook and the success redirect can both arrive).
 export async function markFeePaid(lead: Lead, via: string, extra: { amount?: number; sessionId?: string } = {}) {
   const fresh = (await getLead(lead.id)) ?? lead;
@@ -17,7 +17,7 @@ export async function markFeePaid(lead: Lead, via: string, extra: { amount?: num
       ...(amount ? { fee_amount: amount } : {}),
       ...(extra.sessionId ? { stripe_session_id: extra.sessionId } : {}),
     },
-    [{ type: "note", text: `Booking fee paid${amount ? ` (${usd(amount)})` : ""} via ${via}. Rental partner now shown on the proposal.` }],
+    [{ type: "note", text: `Deposit paid${amount ? ` (${usd(amount)})` : ""} via ${via}.` }],
   );
   await alertOwner(fresh, amount, via);
 }
@@ -33,12 +33,12 @@ async function alertOwner(lead: Lead, amount: number | undefined, via: string) {
       body: JSON.stringify({
         from: process.env.NOTIFY_FROM ?? `${site.name} <onboarding@resend.dev>`,
         to,
-        subject: `Booking fee paid: ${lead.name ?? lead.email}${amount ? ` · ${usd(amount)}` : ""}`,
+        subject: `Deposit paid: ${lead.name ?? lead.email}${amount ? ` · ${usd(amount)}` : ""}`,
         text: [
-          `${lead.name ?? lead.email} paid the booking fee via ${via}.`,
+          `${lead.name ?? lead.email} paid the deposit via ${via}.`,
           `Event: ${[lead.event_type, lead.event_date, lead.city].filter(Boolean).join(", ") || "not given"}`,
           "",
-          "Next: confirm the order with the rental partner and introduce them to the customer.",
+          "Next: place the order with the rental partner and pay their deposit. Balance from the customer is due 7 days before the event.",
           `Open in CRM: ${site.url}/admin/leads/${lead.id}`,
         ].join("\n"),
       }),

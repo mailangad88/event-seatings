@@ -22,11 +22,11 @@ export const metadata: Metadata = seo({
 const faqs = [
   {
     q: `How does renting through ${site.name} work?`,
-    a: `Pick the items you need and send one enquiry. We match each item with an established local rental company, confirm availability for your date and venue, and send you a single itemized proposal. You deal with one team instead of calling five rental companies.`,
+    a: `Pick the items you need and send one enquiry. We confirm availability for your date and venue and send you a single itemized quote. You deal with one team instead of calling around.`,
   },
   {
     q: "Are the prices on this page final?",
-    a: "They are current per-item rental rates for one event day. A delivered event adds delivery and pickup (usually $150-$400 per order), setup and teardown, a damage waiver of about 10% and sales tax, so plan on 35-60% more than the rental total. The quote builder shows that all-in estimate as you go. Items marked \"Est.\" use Chicago-area market rates. Prices are based on local rental companies' published rates plus our booking fee, and your final quote is confirmed by the rental company.",
+    a: "They are current per-item rental rates for one event day. A delivered event adds delivery and pickup (usually $150-$400 per order), setup and teardown, a damage waiver of about 10% and sales tax, so plan on 35-60% more than the rental total. The quote builder shows that all-in estimate as you go. Items marked \"Est.\" use Chicago-area market rates. There's no separate booking fee, and your written quote confirms the final price for your date.",
   },
   {
     q: "Do you deliver to the suburbs?",
@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     q: "What if I damage or lose something?",
-    a: "Rental partners charge replacement cost for lost or broken items. Most offer an optional damage waiver (often 8-12% of the rental) that covers accidental damage; we list it on your proposal so you can choose.",
+    a: "Lost or broken items are charged at replacement cost. The damage waiver on your quote (10% of the rentals) covers everyday accidental damage. It doesn't cover loss, theft or negligence.",
   },
 ];
 
@@ -135,7 +135,7 @@ export default function RentalsPage() {
                 <h3 className="display-3">Need something not listed?</h3>
                 <p className="mt-2 max-w-md text-sm text-muted">
                   Generators, restrooms, staging, specialty linens, AV and more. Add it to your enquiry notes and we
-                  source it from our partner network.
+                  find it for you.
                 </p>
               </div>
               <Link href="/quote?from=rentals-other" className="link-line self-start">

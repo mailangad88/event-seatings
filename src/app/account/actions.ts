@@ -55,7 +55,7 @@ export async function requestLink(_prev: LinkState, form: FormData): Promise<Lin
       "",
       link,
       "",
-      "Your account shows your events, quotes, each rental company's delivery times, payments and messages with us.",
+      "Your account shows your events, quotes, delivery times, payments and messages with us.",
       "",
       "If you didn't ask for this, you can ignore this email.",
     ].join("\n"),

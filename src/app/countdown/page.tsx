@@ -87,7 +87,7 @@ export default function CountdownPage() {
             ["/tools/budget-splitter", "Budget splitter", "Split the budget by category and between hosts."],
             ["/tools/tables-and-chairs", "Tables and chairs", "Turn your guest count into a rental list."],
             ["/tools/rain-plan", "Rain plan checklist", "The backup plan for anything outdoors."],
-            ["/quote", "Build a rental quote", "Live prices from Chicago rental companies."],
+            ["/quote", "Build a rental quote", "Live prices on every item."],
           ].map(([href, name, text]) => (
             <li key={href}>
               <Link href={href} className="card card-hover block h-full p-5">

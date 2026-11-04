@@ -60,12 +60,12 @@ export default async function AreaRentalsPage(props: Props) {
   const nearby = loc.nearby.flatMap((s) => localAreas.find((l) => l.slug === s) ?? []);
   const kinds = [...new Set(loc.settings.map((s) => settingKind(s.name)))];
 
-  const answer = `${site.name} rents party and event equipment in ${place}: tents, tables, chairs, linens, dinnerware, dance floors, lighting, heaters, bounce houses and more, ${total.toLocaleString()} items in all from Chicago-area rental partners. Prices are shown up front, and one free itemized quote covers delivery, setup and pickup in ${loc.name}.`;
+  const answer = `${site.name} rents party and event equipment in ${place}: tents, tables, chairs, linens, dinnerware, dance floors, lighting, heaters, bounce houses and more, ${total.toLocaleString()} items in all. Prices are shown up front, and one free itemized quote covers delivery, setup and pickup in ${loc.name}.`;
 
   const faqs = [
     {
       q: `Where can I rent party equipment in ${loc.name}?`,
-      a: `Build a quote on ${site.name} with everything you need, from tents and tables to linens and bounce houses. We confirm availability with Chicago-area rental partners that deliver to ${place}, then send one itemized proposal with delivery and setup included.`,
+      a: `Build a quote on ${site.name} with everything you need, from tents and tables to linens and bounce houses. We confirm availability for your date in ${place}, then send one itemized proposal with delivery and setup included.`,
     },
     {
       q: `How much do party rentals cost in ${loc.name}?`,

@@ -80,7 +80,7 @@ Hotels with large ballrooms and conference centers also host convention-style ev
 
 </div>
 
-Insurance note: many venues require a certificate of insurance from each vendor. Beyond Chiavari does not issue certificates of insurance ourselves yet, so tell us your venue's requirements at quote time and we will let you know before you pay whether the rental partner can meet them.
+Insurance note: many venues require a certificate of insurance from each vendor. Beyond Chiavari does not issue certificates of insurance ourselves yet, so tell us your venue's requirements at quote time and we will let you know before you pay whether we can meet them.
 
 ## Seating formats and what they need
 

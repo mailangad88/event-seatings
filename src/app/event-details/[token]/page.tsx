@@ -34,7 +34,7 @@ export default async function EventDetailsPage(props: PageProps<"/event-details/
         title={done ? <>Thanks{first ? `, ${first}` : ""}. Got it.</> : <>{first ? `${first}, a` : "A"} few quick questions</>}
         intro={
           done
-            ? `We'll check prices and dates with the rental companies for ${eventPhrase(lead)} and get back to you soon.`
+            ? `We'll check availability and delivery times for ${eventPhrase(lead)} and get back to you soon.`
             : `So we can check prices and dates for ${eventPhrase(lead)}. It takes about 2 minutes, and you can skip anything you don't know yet.`
         }
       />

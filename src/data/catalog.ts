@@ -1,5 +1,5 @@
 // The rental catalog: every product with the vendor that fulfils it and that vendor's raw price.
-// Customer-facing prices are the vendor price (MARKUP is 0 in @/lib/catalog-types; we charge a flat fee per event).
+// Customer-facing prices are the vendor price + MARKUP (15%, @/lib/catalog-types), shown as our own price.
 //
 // - `offers` below are PUBLISHED vendor prices, checked 2026-11-02 (source URL on each).
 // - Products with no published offer fall back to a Chicago-market estimate from

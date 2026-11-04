@@ -4,11 +4,15 @@ import moved from "./src/data/moved-items.json";
 const nextConfig: NextConfig = {
   // Items that moved category keep their old URLs working (e.g. inflatables once listed under tables).
   async redirects() {
-    return moved.moved.map((m) => ({
-      source: `/rentals/${m.from}/${m.id}`,
-      destination: `/rentals/${m.to}/${m.id}`,
-      permanent: true,
-    }));
+    return [
+      ...moved.moved.map((m) => ({
+        source: `/rentals/${m.from}/${m.id}`,
+        destination: `/rentals/${m.to}/${m.id}`,
+        permanent: true,
+      })),
+      // Retired Nov 4 2026 when customer prices became our own prices.
+      { source: "/how-we-work", destination: "/how-it-works", permanent: true },
+    ];
   },
   // Security headers. The CSP is deliberately minimal (no script-src) so analytics, experiments and Stripe keep
   // working; it only blocks plugins, <base> hijacking and framing by other sites.

@@ -15,7 +15,7 @@ const description = `Tell the ${site.name} planning assistant your event type, g
 export const metadata: Metadata = { title, description, alternates: { canonical: "/planning-assistant" }, openGraph: { title, description, url: "/planning-assistant" } };
 
 const faqs: Faq[] = [
-  { q: "Where do the prices come from?", a: "From the same catalog as our quote builder: local Chicago-area rental companies' published rates plus our booking fee. Delivery and tax are added on the quote, and the rental company confirms the final price." },
+  { q: "Where do the prices come from?", a: "From the same catalog as our quote builder, at our own prices. Delivery, setup, damage waiver and tax are added on the quote, and your written quote confirms the final price." },
   { q: "Is this AI?", a: "The plan is worked out by the same rules our planners use, and answers come straight from our own published guides with a link to each source. When AI wording is switched on, it only rewrites those facts; it can't add prices or promises." },
   { q: "Do I have to book anything?", a: "No. The assistant is free. When you're ready, Build this quote fills in the quote builder for you, and nothing is reserved until you approve a proposal." },
 ];

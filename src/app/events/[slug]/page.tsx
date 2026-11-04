@@ -13,7 +13,7 @@ import Image from "next/image";
 import { Callout, ReadMore } from "@/components/ui";
 import { sceneFor } from "@/lib/scenes";
 import { getChair } from "@/data/chairs";
-import { COORDINATION_FEE } from "@/lib/catalog-types";
+import { DEPOSIT } from "@/lib/catalog-types";
 import { eventPath, eventTypes, getEventType, locationPath, locations } from "@/data/geo";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -37,7 +37,7 @@ export async function generateMetadata(props: PageProps<"/events/[slug]">): Prom
   });
 }
 
-// Event types where several rental companies are usually involved, so the flat-fee offer fits.
+// Big event types that get the one-quote callout.
 const BIG_EVENTS = new Set(["weddings", "south-asian-weddings", "quinceaneras", "galas-fundraisers"]);
 
 export default async function EventPage(props: PageProps<"/events/[slug]">) {
@@ -118,10 +118,10 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
         </section>
 
         {BIG_EVENTS.has(ev.slug) && (
-          <Callout kind="tip" title="Big guest list and several rental companies?" className="mt-16 max-w-3xl">
-            For {COORDINATION_FEE.focusFrom}+ guests, the chairs, tables, tent and linens often come from different companies. We put
-            them on one written quote at each company&apos;s own price and handle them all for a flat ${COORDINATION_FEE.standard}
-            (${COORDINATION_FEE.large} over {COORDINATION_FEE.largeFrom - 1} guests), paid only after every company confirms.{" "}
+          <Callout kind="tip" title="Big guest list?" className="mt-16 max-w-3xl">
+            For 120+ guests you&apos;ll likely need chairs, tables, linens and often a tent and floor. We put it all on one written
+            quote at the prices on our site, with delivery and setup lined up in the right order. No separate booking fee, and
+            you book with a {DEPOSIT.share * 100}% deposit.{" "}
             <Link href="/pricing" className="link">See how pricing works</Link>.
           </Callout>
         )}

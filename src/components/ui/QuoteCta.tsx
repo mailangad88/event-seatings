@@ -24,7 +24,7 @@ export function QuoteCta({
           <h2 className="display-2 mt-4 max-w-xl">{title}</h2>
           <p className="lede mt-5 max-w-lg">{text}</p>
           <ul className="mt-6 grid gap-2 text-sm text-ink/85 sm:grid-cols-2">
-            {["Live pricing as you pick", "Delivery & setup included in quote", "One contact for every vendor", "Reply within one business day"].map((t) => (
+            {["Live pricing as you pick", "Delivery & setup included in quote", "One person to call", "Reply within one business day"].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <Icon name="check" size={16} className="text-gold" /> {t}
               </li>
