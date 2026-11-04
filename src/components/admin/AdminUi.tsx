@@ -7,8 +7,8 @@ export function AdminHeader({ group, title, intro, actions }: { group: string; t
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">
       <div>
-        <p className="eyebrow">{group}</p>
-        <h1 className="display-2 mt-1">{title}</h1>
+        <p className="text-xs font-semibold tracking-widest text-muted uppercase">{group}</p>
+        <h1 className="mt-1 text-3xl font-semibold tracking-tight">{title}</h1>
         {intro && <p className="mt-2 max-w-2xl text-sm text-muted">{intro}</p>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
@@ -46,9 +46,9 @@ export function Tile({ label, value, note, href, alert, tone = "wine" }: { label
 
 export function Panel({ title, more, children, className = "" }: { title: string; more?: { href: string; label: string }; children: React.ReactNode; className?: string }) {
   return (
-    <section className={`card min-w-0 p-6 ${className}`}>
+    <section className={`office-card min-w-0 p-6 ${className}`}>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="display-3">{title}</h2>
+        <h2 className="text-lg font-semibold">{title}</h2>
         {more && <Link href={more.href} className="text-sm text-accent">{more.label} →</Link>}
       </div>
       <div className="mt-4">{children}</div>

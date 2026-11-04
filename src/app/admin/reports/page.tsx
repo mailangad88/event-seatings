@@ -3,10 +3,33 @@ import Link from "next/link";
 import { chairs } from "@/data/chairs";
 import { usd } from "@/lib/catalog-types";
 import { buildDashboard, dayKey, formDetail, formName, getRange, kindLabels, rangeStart, leadChannel, ranges, type DayPoint, type Row } from "@/lib/dashboard";
-import { getVoteCounts, leadStatuses, listLeads, listPageViews, statusLabel } from "@/lib/store";
+import { getVoteCounts, leadStatuses, listLeads, listPageViews, statusLabel, type Lead } from "@/lib/store";
+import { Bars as ColumnBars, Ring } from "@/components/office/Charts";
+import { OfficeTabs, pickTab } from "@/components/office/OfficeTabs";
+import { chicagoDay } from "@/lib/admin-view";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: "Sales report", robots: { index: false } };
+export const metadata: Metadata = { title: "Business reports", robots: { index: false } };
+
+// One tab per question, so nothing is a long scroll: how are we doing, where do people come from,
+// how far do they get, what do they want, which rental partners get the work, and the money.
+const reportTabs = ["overview", "money", "sources", "pipeline", "demand", "vendors", "latest"] as const;
+const reportTabLabel: Record<(typeof reportTabs)[number], string> = {
+  overview: "Overview",
+  money: "Money",
+  sources: "Lead sources",
+  pipeline: "Conversion",
+  demand: "What people want",
+  vendors: "Rental partners",
+  latest: "Latest enquiries",
+};
+const rangeHref = (id: string, tab: string) => {
+  const q = new URLSearchParams();
+  if (id !== "30") q.set("range", id);
+  if (tab !== "overview") q.set("tab", tab);
+  const s = q.toString();
+  return s ? `/admin/reports?${s}` : "/admin/reports";
+};
 
 const card = "card min-w-0 p-6";
 const pct = (n?: number) => (n === undefined ? "–" : `${(n * 100).toFixed(n > 0 && n < 0.1 ? 1 : 0)}%`);
@@ -124,6 +147,7 @@ function Table({ head, rows, min = 560 }: { head: string[]; rows: React.ReactNod
 
 export default async function AdminPage(props: PageProps<"/admin/reports">) {
   const sp = await props.searchParams;
+  const tab = pickTab(sp.tab, reportTabs);
   const range = getRange(typeof sp.range === "string" ? sp.range : undefined);
   const since = rangeStart(range.days);
   const [votes, allLeads, views] = await Promise.all([getVoteCounts(), listLeads(), listPageViews(since)]);
@@ -150,11 +174,11 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
     .slice(0, 10);
 
   return (
-    <div className="container-x py-12">
+    <div className="container-x py-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="eyebrow">Money</p>
-          <h1 className="display-2 mt-1">Sales report</h1>
+          <p className="text-xs font-semibold tracking-widest text-muted uppercase">Grow</p>
+          <h1 className="mt-1 text-3xl font-semibold tracking-tight">Business reports</h1>
           <p className="mt-2 text-sm text-muted">Times in Chicago time. Today is {shortDay(dayKey(new Date()))}.</p>
         </div>
         <a href="/admin/export" className="btn-ghost btn-sm">Download all leads (CSV)</a>
@@ -162,12 +186,17 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
 
       <nav aria-label="Date range" className="mt-6 flex flex-wrap gap-2">
         {ranges.map((r) => (
-          <Link key={r.id} href={r.id === "30" ? "/admin/reports" : `/admin/reports?range=${r.id}`} className={r.id === range.id ? "chip-active" : "chip"} aria-current={r.id === range.id ? "page" : undefined}>
+          <Link key={r.id} href={rangeHref(r.id, tab)} className={r.id === range.id ? "chip-active" : "chip"} aria-current={r.id === range.id ? "page" : undefined}>
             {r.label}
           </Link>
         ))}
       </nav>
 
+      <div className="mt-4">
+        <OfficeTabs base="/admin/reports" current={tab} keep={{ range: range.id === "30" ? undefined : range.id }} label="Report" tabs={reportTabs.map((id) => ({ id, label: reportTabLabel[id] }))} />
+      </div>
+
+      {tab === "overview" && (<>
       <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
         <Stat label="Enquiries" value={k.enquiries.toLocaleString()} note={change} />
         <Stat label="Website visitors" value={d.hasViews ? k.visitors.toLocaleString() : "–"} note={d.hasViews ? `${k.views.toLocaleString()} page views` : "Counting starts after deploy"} />
@@ -211,8 +240,13 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         </div>
       </section>
 
-      <section className="mt-12">
-        <h2 className="display-2">Where they came from</h2>
+      </>)}
+
+      {tab === "money" && <MoneyReport leads={d.leads} all={allLeads} />}
+
+      {tab === "sources" && (
+      <section className="mt-8">
+        <h2 className="sr-only">Where they came from</h2>
         <p className="mt-1 max-w-3xl text-sm text-muted">
           Each lead carries the search, ad, post or link that brought the visitor in (the converting visit), plus the
           page and form they used. Spend more where channels convert; write more pages like the ones that produce enquiries.
@@ -272,8 +306,12 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         </section>
       </section>
 
-      <section className="mt-12">
-        <h2 className="display-2">Pipeline</h2>
+      )}
+
+      {tab === "pipeline" && (
+      <section className="mt-8">
+        <h2 className="sr-only">Pipeline</h2>
+        <Funnel leads={d.leads} />
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
           <section className={`${card} lg:col-span-2`}>
             <h3 className="display-3 mb-4">Enquiries by stage</h3>
@@ -303,8 +341,11 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         </div>
       </section>
 
-      <section className="mt-12">
-        <h2 className="display-2">What people want</h2>
+      )}
+
+      {tab === "demand" && (<>
+      <section className="mt-8">
+        <h2 className="sr-only">What people want</h2>
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <section className={card}>
             <h3 className="display-3">Top items</h3>
@@ -342,9 +383,21 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         </div>
       </section>
 
-      <section className="mt-12">
+      {demand.length > 0 && (
+        <section className={`${card} mt-6`}>
+          <h2 className="display-3">Chair demand (votes + quotes)</h2>
+          <p className="mt-1 text-sm text-muted">Score = all-time votes + 5 × quotes in this period that include the chair.</p>
+          <div className="mt-4">
+            <Table head={["Chair", "Votes", "Quotes", "Score"]} rows={demand.map((x) => [x.chair.name, x.votes, x.quotes, x.score])} min={420} />
+          </div>
+        </section>
+      )}
+      </>)}
+
+      {tab === "vendors" && (
+      <section className="mt-8">
         <div className="flex flex-wrap items-end justify-between gap-3">
-          <h2 className="display-2">Vendor routing</h2>
+          <h2 className="text-xl font-semibold">Vendor routing</h2>
           <Link href="/admin/vendors" className="text-sm text-accent">All vendors and contacts →</Link>
         </div>
         {d.unassignedOpen > 0 && (
@@ -373,17 +426,10 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
         </div>
       </section>
 
-      {demand.length > 0 && (
-        <section className={`${card} mt-12`}>
-          <h2 className="display-3">Chair demand (votes + quotes)</h2>
-          <p className="mt-1 text-sm text-muted">Score = all-time votes + 5 × quotes in this period that include the chair.</p>
-          <div className="mt-4">
-            <Table head={["Chair", "Votes", "Quotes", "Score"]} rows={demand.map((x) => [x.chair.name, x.votes, x.quotes, x.score])} min={420} />
-          </div>
-        </section>
       )}
 
-      <section className={`${card} mt-12`}>
+      {tab === "latest" && (
+      <section className={`${card} mt-8`}>
         <h2 className="display-3">Latest enquiries</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[900px] text-sm">
@@ -426,6 +472,107 @@ export default async function AdminPage(props: PageProps<"/admin/reports">) {
           {d.leads.length === 0 && <p className="mt-3 text-sm text-muted">No enquiries in this period.</p>}
         </div>
       </section>
+      )}
+    </div>
+  );
+}
+
+// How far people get: each step counts everyone who reached it (now or before they were lost).
+const funnelSteps = [
+  { id: "all", label: "Enquiries" },
+  { id: "contacted", label: "Had a reply" },
+  { id: "quote_sent", label: "Got a quote" },
+  { id: "paid", label: "Paid the booking fee" },
+  { id: "completed", label: "Event done" },
+] as const;
+const order = leadStatuses.map((x) => x.id as string);
+function reached(l: Lead, step: string) {
+  if (step === "all") return true;
+  if (step === "paid") return l.fee_status === "paid" || l.fee_status === "refunded" || ["booked", "completed"].includes(l.status ?? "");
+  const idx = order.indexOf(step);
+  const cur = order.indexOf(l.status ?? "new");
+  if (cur >= idx && cur <= order.indexOf("completed")) return true;
+  // Lost or parked leads: look back through their stage changes.
+  return (l.activity ?? []).some((a) => a.type === "status" && order.slice(idx, order.indexOf("completed") + 1).some((s) => a.text.includes(`→ ${statusLabel(s)}`)));
+}
+
+function Funnel({ leads }: { leads: Lead[] }) {
+  const people = leads.filter((l) => l.kind !== "partner");
+  const steps = funnelSteps.map((s) => ({ ...s, n: people.filter((l) => reached(l, s.id)).length }));
+  const top = Math.max(1, steps[0].n);
+  return (
+    <section className={card}>
+      <h3 className="display-3">How far people get</h3>
+      <p className="mt-1 text-sm text-muted">Everyone who sent an enquiry in this period, and how many reached each step.</p>
+      <ol className="mt-5 space-y-3">
+        {steps.map((s, i) => (
+          <li key={s.id}>
+            <div className="flex justify-between gap-3 text-sm">
+              <span>{s.label}</span>
+              <span className="tabular-nums">
+                {s.n}
+                <span className="ml-2 text-xs text-muted">{pct(s.n / top)}{i > 0 && steps[i - 1].n ? ` · ${pct(s.n / steps[i - 1].n)} of the step before` : ""}</span>
+              </span>
+            </div>
+            <div className="mt-1 h-3 rounded-full bg-surface-2">
+              <div className="h-3 rounded-full bg-accent" style={{ width: `${(s.n / top) * 100}%` }} />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+// Money in: booking fees by month, booked rental value and our margin.
+function MoneyReport({ leads, all }: { leads: Lead[]; all: Lead[] }) {
+  const paid = leads.filter((l) => l.fee_status === "paid");
+  const fees = paid.reduce((s, l) => s + (l.fee_amount ?? 0), 0);
+  const rentals = paid.reduce((s, l) => s + (l.quote_subtotal ?? 0), 0);
+  const margin = paid.reduce((s, l) => s + Math.max(0, (l.quote_subtotal ?? 0) - (l.quote_cost ?? 0)), 0);
+  const refunded = leads.filter((l) => l.fee_status === "refunded");
+  const waiting = leads.filter((l) => l.proposal_token && (l.fee_status ?? "unpaid") === "unpaid");
+  const thisMonth = chicagoDay().slice(0, 7);
+  const months = Array.from({ length: 12 }, (_, i) => {
+    const d = new Date(`${thisMonth}-15T12:00:00Z`);
+    d.setUTCMonth(d.getUTCMonth() - (11 - i));
+    return d.toISOString().slice(0, 7);
+  });
+  const byMonth = months.map((m) => ({
+    label: new Date(`${m}-15T12:00:00`).toLocaleDateString("en-US", { month: "short" }),
+    value: Math.round(all.filter((l) => l.fee_status === "paid" && l.fee_paid_at && chicagoDay(l.fee_paid_at).startsWith(m)).reduce((s, l) => s + (l.fee_amount ?? 0), 0)),
+  }));
+  const proposals = leads.filter((l) => l.proposal_token);
+  return (
+    <div className="mt-6 space-y-6">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <Stat label="Booking fees paid" value={money(fees)} note={`${paid.length} booking${paid.length === 1 ? "" : "s"}`} />
+        <Stat label="Average fee" value={paid.length ? money(fees / paid.length) : "–"} note="Per paid booking" />
+        <Stat label="Rentals we booked" value={money(rentals)} note={`${money(margin)} margin on those orders`} />
+        <Stat label="Waiting on payment" value={money(waiting.reduce((s, l) => s + (l.fee_amount ?? 0), 0))} note={`${waiting.length} proposal${waiting.length === 1 ? "" : "s"} · ${refunded.length} refunded`} />
+      </div>
+      <div className="grid gap-6 lg:grid-cols-3">
+        <section className={`${card} lg:col-span-2`}>
+          <h3 className="display-3">Booking fees, last 12 months</h3>
+          <div className="mt-5"><ColumnBars data={byMonth} tone="green" height={160} label="Booking fees per month, last 12 months" /></div>
+        </section>
+        <section className={card}>
+          <h3 className="display-3">Proposals in this period</h3>
+          <div className="mt-5">
+            <Ring
+              label="Proposals by payment status"
+              center={proposals.length ? pct(paid.length / proposals.length) : "–"}
+              sub="paid"
+              parts={[
+                { label: "Paid", value: paid.length, tone: "green" },
+                { label: "Waiting", value: waiting.length, tone: "amber" },
+                { label: "Refunded", value: refunded.length, tone: "rose" },
+              ]}
+            />
+          </div>
+          <p className="mt-4 text-sm"><Link href="/admin/payments" className="text-accent">Payments →</Link> · <Link href="/admin/invoices" className="text-accent">Commission owed →</Link></p>
+        </section>
+      </div>
     </div>
   );
 }

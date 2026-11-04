@@ -7,7 +7,7 @@ import { backupConfigured, backupDeleteLead, backupGetLead, backupListLeads, bac
 import { isTransient, withRetry } from "./retry";
 import type { QuoteLine } from "./catalog-types";
 import type { Journey } from "./journey";
-import type { VendorOrder } from "./orders";
+import type { VendorOrders } from "./orders";
 
 // Storage for votes and leads.
 // - With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, data goes to Supabase (use this in production).
@@ -81,8 +81,9 @@ export type Lead = {
   tasks_done?: Record<string, string>;
   // Referral link code (/refer, ?ref=<code>) that brought this visitor in, kept 90 days in their browser.
   referral_code?: string;
-  // One part per rental company (lib/orders.ts), keyed by vendor_id: status, delivery and pickup times.
-  vendor_orders?: Record<string, VendorOrder>;
+  // One part per rental partner on the order (vendor_id of the item lines): its confirmation link
+  // /vendor/confirm/<token>, the partner's answer, and delivery / pickup / payment marks (lib/orders.ts).
+  vendor_orders?: VendorOrders;
   // Messages between the renter (in /account) and our team (in /admin/messages), oldest first.
   messages?: LeadMessage[];
 } & Partial<Record<TrackingField, string>>;
@@ -252,6 +253,7 @@ const newerLeadColumns = [
   "email_consent", "call_consent", "consent_at", "opted_out_at", "lead_score", "lead_score_reasons",
   "visitor_tz", "pages_viewed", "followup_step", "followup_last_at", "referral_code",
   "journey", "ip_location", "interests", "sequence",
+  "vendor_orders",
 ] as const;
 
 // Where leads live when Supabase isn't set up: the private Blob backup on Vercel (lib/lead-backup.ts), or
