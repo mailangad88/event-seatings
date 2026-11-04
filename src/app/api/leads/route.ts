@@ -16,6 +16,7 @@ import { isVisitorId } from "@/lib/activity";
 import { spamReason } from "@/lib/lead-spam";
 import { bodyTooLarge, limitRequest } from "@/lib/rate-limit";
 import { linkVisitor, saveNewLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
+import { TERMS_VERSION } from "@/lib/terms";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
 
@@ -134,6 +135,11 @@ export async function POST(request: Request) {
   const journey = parseJourney(body.journey);
   if (journey) lead.journey = { ...journey, device: deviceFromUserAgent(request.headers.get("user-agent")), location: lead.ip_location };
   if (lead.email_consent || lead.call_consent || lead.sms_consent) lead.consent_at = new Date().toISOString();
+  // "I agree to the Terms and Conditions" on the quote form: keep when and which version.
+  if (body.terms_agree === "yes") {
+    lead.terms_accepted_at = new Date().toISOString();
+    lead.terms_version = TERMS_VERSION;
+  }
   for (const f of trackingFields) {
     const v = str(body[f], 300);
     if (v && (!pathFields.has(f) || sitePath(v))) lead[f] = v;

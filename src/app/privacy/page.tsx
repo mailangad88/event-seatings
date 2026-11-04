@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "@/components/Link";
 import { site } from "@/lib/site";
 import { ChairStrip } from "@/components/ChairStrip";
 import { seo } from "@/lib/seo";
@@ -14,7 +15,7 @@ export default function PrivacyPage() {
     <div className="container-x max-w-3xl py-20">
       <p className="eyebrow">Legal</p>
       <h1 className="display-1 mt-6">Privacy policy</h1>
-      <p className="mt-4 text-sm text-muted">Last updated October 2026</p>
+      <p className="mt-4 text-sm text-muted">Last updated November 4, 2026</p>
       <ChairStrip className="mt-10" slugs={["ghost", "bentwood", "cane-back"]} caption="We collect only what we need to plan your event." />
       <div className="prose-post mt-10">
         <p>
@@ -44,6 +45,11 @@ export default function PrivacyPage() {
             link that brought you here and the first page you visited, so we know which of our content is helpful.
           </li>
           <li>
+            <strong>Bookings and payments:</strong> your delivery address, venue details, the items you book, and a record of
+            when you agreed to our <Link href="/terms">Terms and Conditions</Link> and which version. Card and bank payments
+            are handled by Stripe. We see the amount and the last four digits, never your full card number.
+          </li>
+          <li>
             <strong>Text messages:</strong> we only text you if you tick &ldquo;Text me about my quote.&rdquo; Reply STOP
             to any message to opt out.
           </li>
@@ -55,8 +61,30 @@ export default function PrivacyPage() {
         </p>
         <h2>Who sees it</h2>
         <p>
-          Our team, plus the service providers that host the site, store data, manage customer relationships (our
-          CRM), schedule calls or send email and texts on our behalf. They may only use it to provide those services.
+          Our team, plus the service providers that host the site, store data, take payments, manage customer
+          relationships (our CRM), schedule calls or send email and texts on our behalf. When you book, we share what is
+          needed to fill your order (your name, phone, delivery address, venue, date, times and items) with the delivery,
+          setup and supply partners who work on it. Everyone we share with may only use it to provide those services.
+        </p>
+        <p>
+          We may also share information when the law requires it, to protect our rights or someone&apos;s safety, or if the
+          business is sold or merged, in which case this policy still applies to it.
+        </p>
+        <h2>How long we keep it</h2>
+        <p>
+          We keep quote requests and messages for up to three years so we can help with your next event, and booking and
+          payment records for as long as tax and accounting rules require (usually seven years). Ask us and we&apos;ll
+          delete anything we don&apos;t have to keep.
+        </p>
+        <h2>Keeping it safe</h2>
+        <p>
+          We use secure connections, password-protected systems and well-known service providers. No system is perfectly
+          safe, so please don&apos;t send card numbers or passwords by email or chat. If there is ever a breach that
+          affects you, we&apos;ll tell you as the law requires.
+        </p>
+        <h2>Children</h2>
+        <p>
+          This site is for adults planning events. We don&apos;t knowingly collect information from children under 13.
         </p>
         <h2>Your choices</h2>
         <p>
@@ -93,6 +121,11 @@ export default function PrivacyPage() {
           open the chat and may set its own cookies to keep your conversation going.
         </p>
         <ChatDataFlow />
+        <h2>Changes and questions</h2>
+        <p>
+          If we change this policy, we&apos;ll update the date at the top. Questions? Email{" "}
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
       </div>
     </div>
   );

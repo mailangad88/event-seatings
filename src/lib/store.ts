@@ -43,6 +43,10 @@ export type Lead = {
   email_consent?: boolean;
   call_consent?: boolean;
   consent_at?: string;
+  // When the customer ticked "I agree to the Terms and Conditions" (quote form or proposal) and which version of
+  // /terms that was (TERMS_VERSION in lib/terms.ts).
+  terms_accepted_at?: string;
+  terms_version?: string;
   // Set by the unsubscribe link: no more automated email of any kind to this address.
   opted_out_at?: string;
   // A/B/C from lib/lead-score.ts, with the reasons, set when the lead arrives.
@@ -284,7 +288,7 @@ const newerLeadColumns = [
   "email_consent", "call_consent", "consent_at", "opted_out_at", "lead_score", "lead_score_reasons",
   "visitor_tz", "pages_viewed", "followup_step", "followup_last_at", "referral_code",
   "journey", "ip_location", "interests", "sequence", "visitor_id",
-  "vendor_orders", "intake",
+  "vendor_orders", "intake", "terms_accepted_at", "terms_version",
 ] as const;
 
 // Where leads live when Supabase isn't set up: the private Blob backup on Vercel (lib/lead-backup.ts), or
@@ -522,6 +526,8 @@ export type LeadPatch = Partial<
     | "vendor_orders"
     | "messages"
     | "intake"
+    | "terms_accepted_at"
+    | "terms_version"
     // Edited from the call script when the customer corrects or adds them on the phone.
     | "name"
     | "phone"
