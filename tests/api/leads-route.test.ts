@@ -9,7 +9,7 @@ vi.mock("next/server", () => ({
 }));
 vi.mock("@/lib/store", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/store")>()),
-  addLead: vi.fn(),
+  saveNewLead: vi.fn(),
   updateLead: vi.fn(),
 }));
 vi.mock("@/lib/crm", () => ({ syncToCrm: vi.fn() }));
@@ -22,7 +22,7 @@ const crm = await import("@/lib/crm");
 const { catalogItems } = await import("@/data/catalog");
 const { priceQuote } = await import("@/lib/catalog-types");
 
-const addLead = vi.mocked(store.addLead);
+const addLead = vi.mocked(store.saveNewLead);
 let ipSeq = 0;
 
 const post = (body: unknown, headers: Record<string, string> = {}) =>
@@ -39,7 +39,11 @@ const savedLead = () => addLead.mock.calls[0][0];
 beforeEach(() => {
   pending.length = 0;
   addLead.mockReset();
-  addLead.mockImplementation(async (l) => ({ ...l, id: "lead-test", created_at: new Date().toISOString() }));
+  addLead.mockImplementation(async (l) => ({
+    lead: { ...l, id: "lead-test", created_at: new Date().toISOString() },
+    duplicate: false,
+    storedIn: "database" as const,
+  }));
   vi.mocked(store.updateLead).mockReset();
   vi.mocked(store.updateLead).mockResolvedValue(undefined as never);
   vi.mocked(notify.notifyOwner).mockReset();
@@ -122,19 +126,16 @@ describe("POST /api/leads", () => {
     expect(lead.call_consent).toBeUndefined();
   });
 
-  it("still thanks the visitor when storage fails, and logs the lead", async () => {
-    addLead.mockRejectedValueOnce(new Error("supabase down"));
-    const errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-    const res = await post({ kind: "waitlist", email: "a@example.com" });
-    expect(res.status).toBe(200);
-    await Promise.all(pending);
-    expect(notify.notifyOwner).toHaveBeenCalledTimes(1);
-    expect(errSpy).toHaveBeenCalled();
+  it("refuses bodies that declare more than 256 KB before reading them", async () => {
+    const res = await post({ kind: "waitlist", email: "a@example.com" }, { "content-length": String(257 * 1024) });
+    expect(res.status).toBe(413);
   });
 
-  it("refuses bodies that declare more than 64 KB", async () => {
-    const res = await post({ kind: "waitlist", email: "a@example.com" }, { "content-length": String(65 * 1024) });
-    expect(res.status).toBe(413);
+  it("keeps same-site page paths and drops links to other sites", async () => {
+    await post({ kind: "waitlist", email: "a@example.com", page_path: "//evil.example/x", landing_page: "/rentals/chairs?utm_source=x" });
+    const lead = savedLead();
+    expect(lead.page_path).toBeUndefined();
+    expect(lead.landing_page).toBe("/rentals/chairs?utm_source=x");
   });
 
   it("rate limits one address after 8 submissions in 10 minutes", async () => {

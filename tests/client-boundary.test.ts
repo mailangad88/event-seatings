@@ -21,6 +21,8 @@ const read = (f: string) => cache.get(f) ?? (cache.set(f, readFileSync(f, "utf8"
 const stripComments = (s: string) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:"'`])\/\/.*$/gm, "$1");
 
 const isClient = (f: string) => /^\s*(?:\/\/.*\n|\/\*[\s\S]*?\*\/\s*)*\s*["']use client["']/.test(read(f));
+// A "use server" module is a boundary: the browser only gets a reference to its actions, never its imports.
+const isServerActions = (f: string) => /^\s*(?:\/\/.*\n|\/\*[\s\S]*?\*\/\s*)*\s*["']use server["']/.test(read(f));
 const isServerOnly = (f: string) => /^\s*import\s+["']server-only["']/m.test(read(f));
 
 /** Value imports of a file (type-only imports are erased at build time, so they are skipped). */
@@ -64,6 +66,7 @@ function reachable(entry: string) {
     if (seen.has(f)) continue;
     seen.set(f, chain);
     if (!/\.(tsx?|mjs|js)$/.test(f)) continue;
+    if (f !== entry && isServerActions(f)) continue;
     for (const spec of valueImports(f)) {
       if (spec === "server-only") continue;
       const r = resolve(f, spec);

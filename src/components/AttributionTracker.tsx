@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { track } from "@/lib/analytics";
 import { currentSource, recordClick, recordPage, recordVisit } from "@/lib/attribution";
+import { flushLeadOutbox } from "@/lib/lead-client";
 
 function visitorId() {
   try {
@@ -26,6 +27,14 @@ export function AttributionTracker() {
 
   useEffect(() => {
     recordVisit();
+    // Forms that couldn't be sent earlier (no connection, server down) go now, and again when the connection returns.
+    const flush = () => void flushLeadOutbox().catch(() => {});
+    const t = window.setTimeout(flush, 2000);
+    window.addEventListener("online", flush);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("online", flush);
+    };
   }, []);
 
   useEffect(() => {

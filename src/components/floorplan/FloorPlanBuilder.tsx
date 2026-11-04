@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { attributionFields } from "@/lib/attribution";
 import { track, trackLead } from "@/lib/analytics";
+import { postLead } from "@/lib/lead-client";
 
 // Drag-and-drop seating layout builder (/tools/floor-plan). Everything is measured in feet.
 // Pure SVG + pointer events, no third-party canvas library. The plan autosaves in the browser and can be
@@ -608,17 +609,13 @@ function SendPlan({ plan, seats }: { plan: Plan; seats: number }) {
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const link = `${window.location.origin}/tools/floor-plan#p=${encode(plan)}`;
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        kind: "chat",
-        source: "floor-plan",
-        guest_count: seats || undefined,
-        message: `Floor plan (${plan.w}x${plan.l} ft, ${plan.items.length} items, ${seats} seats): ${link}\n\n${data.note ?? ""}`.slice(0, 2000),
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      kind: "chat",
+      source: "floor-plan",
+      guest_count: seats || undefined,
+      message: `Floor plan (${plan.w}x${plan.l} ft, ${plan.items.length} items, ${seats} seats): ${link}\n\n${data.note ?? ""}`.slice(0, 2000),
     }).catch(() => null);
     if (res?.ok) {
       trackLead("waitlist", "floor-plan");

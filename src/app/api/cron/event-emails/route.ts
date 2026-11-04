@@ -39,6 +39,7 @@ export async function GET(request: Request) {
         to: e.to!,
         subject: e.subject,
         text: unsub ? `${e.body}\n\nStop these emails: ${unsub}` : e.body,
+        idempotencyKey: `event-email/${t.lead.id}/${t.key}`,
         unsubscribe: unsub,
       });
       if (!ok) continue;

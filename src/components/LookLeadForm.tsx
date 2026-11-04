@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { trackLead } from "@/lib/analytics";
 import { attributionFields } from "@/lib/attribution";
+import { postLead } from "@/lib/lead-client";
 
 // "Get this look": collects an email (plus optional date and guest count) and
 // hands the visitor straight to the styling call.
@@ -24,18 +25,14 @@ export function LookLeadForm({
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        // Saved as a waitlist lead; the source marks which look it came from.
-        kind: "waitlist",
-        chairs,
-        message: `Get this look: ${lookName}`,
-        source: `look:${lookSlug}`,
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      // Saved as a waitlist lead; the source marks which look it came from.
+      kind: "waitlist",
+      chairs,
+      message: `Get this look: ${lookName}`,
+      source: `look:${lookSlug}`,
     }).catch(() => null);
     if (res?.ok) {
       trackLead("waitlist", `look:${lookSlug}`);

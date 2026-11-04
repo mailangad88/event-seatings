@@ -3,7 +3,8 @@ import { QuoteForm, type QuoteItem, type StarterPreset } from "@/components/Quot
 import { EventPlanner } from "@/components/planner/EventPlanner";
 import { ideaScene } from "@/components/party-ideas/parts";
 import { getIdea, plannerIdeas } from "@/data/party-ideas";
-import { rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
+import { rentalAlt, rentalImagePath, similarAlt } from "@/components/rentals/RentalVisual";
+import { similarPhoto } from "@/data/similar-photo";
 import { Figure, FaqList, JsonLd, PageHero, StepFlow, type Faq } from "@/components/ui";
 import { catalogItems } from "@/data/catalog";
 import { events, getEventPreset, getLook, looks } from "@/data/quote-presets";
@@ -83,7 +84,10 @@ export default async function QuotePage(props: PageProps<"/quote">) {
   const items: QuoteItem[] = catalogItems.map((i) => {
     // Items with an accurate real photo show it instead of their 3D render (and drop render colour swatches).
     const photoFirst = isPhotoFirst(i.id) && !rentalImage(i.id)?.ai;
-    const image = photoFirst ? undefined : (i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId));
+    const own = photoFirst ? undefined : (i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId));
+    // No photo of its own: the studio photo of the same kind of piece, labelled "Similar item" on the card.
+    const similar = own || i.chairSlug ? undefined : similarPhoto(i);
+    const image = own ?? similar?.src;
     const variants = (photoFirst ? [] : imagesFor(i.id))
       .filter((img) => img.kind === "variant" && img.variant)
       .map((img) => ({ key: img.variant!, label: img.variant!.replace(/-/g, " "), src: img.src, alt: img.alt }));
@@ -93,7 +97,8 @@ export default async function QuotePage(props: PageProps<"/quote">) {
       categoryId: i.categoryId,
       featured: i.featured,
       image,
-      imageAlt: image ? (i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs)) : undefined,
+      imageAlt: similar ? similarAlt(similar, i.name) : image ? (i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs)) : undefined,
+      ...(similar && { similar: true }),
       // No render: a real photo of the same item type (sent as a short key; the client builds the URL).
       ...(!image && !i.chairSlug && photosForItem(i).matched && { photo: photosForItem(i).photos[0].key }),
       // Rendered colour/finish options, shown as swatches on the item card.

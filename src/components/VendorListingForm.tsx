@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { track } from "@/lib/analytics";
+import { postLead } from "@/lib/lead-client";
 
 const requests = [
   { id: "remove", label: "Remove my company's items" },
@@ -21,20 +22,16 @@ export function VendorListingForm() {
     const form = new FormData(e.currentTarget);
     const label = requests.find((r) => r.id === choice)?.label ?? choice;
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        kind: "partner",
-        source: "vendor-listings",
-        event_type: `Listing request: ${label}`,
-        name: form.get("name"),
-        email: form.get("email"),
-        phone: form.get("phone"),
-        venue: form.get("company"),
-        message: [`Request: ${label}`, form.get("details") ? `Details: ${form.get("details")}` : ""].filter(Boolean).join("\n"),
-        website: form.get("website"),
-      }),
+    const res = await postLead({
+      kind: "partner",
+      source: "vendor-listings",
+      event_type: `Listing request: ${label}`,
+      name: form.get("name"),
+      email: form.get("email"),
+      phone: form.get("phone"),
+      venue: form.get("company"),
+      message: [`Request: ${label}`, form.get("details") ? `Details: ${form.get("details")}` : ""].filter(Boolean).join("\n"),
+      website: form.get("website"),
     }).catch(() => null);
     if (res?.ok) {
       track("vendor_listing_request", { request: choice });

@@ -6,7 +6,8 @@ import { CallCta } from "@/components/CallCta";
 import { PlanningLoop } from "@/components/myevents/PlanningLoop";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
-import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
+import { RentalVisual, rentalAlt, rentalImagePath, similarAlt } from "@/components/rentals/RentalVisual";
+import { similarPhoto } from "@/data/similar-photo";
 import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
@@ -209,12 +210,17 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                     {rows.map((i) => {
                       const thumb = photosForItem(i);
                       const own = rentalImagePath(i.id, i.categoryId);
+                      const similar = own ? undefined : similarPhoto(i);
                       return (
                       <tr key={i.id} className="border-t border-line">
                         <td className="w-14 py-2.5 pr-3 align-top">
                           {own ? (
                             <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
                               <Image src={own} alt={rentalAlt(i.name, i.specs, i.id)} fill sizes="44px" loading="lazy" className="object-cover" />
+                            </span>
+                          ) : similar ? (
+                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
+                              <Image src={similar.src} alt={similarAlt(similar, i.name)} fill sizes="44px" loading="lazy" className="object-cover" />
                             </span>
                           ) : thumb.matched ? (
                             <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
