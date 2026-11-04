@@ -71,7 +71,7 @@ export function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: s
       <>
         <Image src={item.image} alt={item.imageAlt ?? `${item.name} rental`} fill sizes={sizes} className="object-cover" />
         {item.similar && (
-          <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-[9px] tracking-[0.1em] text-white uppercase">
+          <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-xs tracking-[0.1em] text-white uppercase">
             Similar item
           </span>
         )}
