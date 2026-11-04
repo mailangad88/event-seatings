@@ -23,6 +23,8 @@ import { PriceDisclaimer } from "./ui/PriceDisclaimer";
 import { PriceTag, formatPrice } from "./ui/PriceTag";
 import { postLead } from "@/lib/lead-client";
 import { trackActivity } from "@/lib/activity-client";
+import { clearList, readList, writeList } from "@/lib/quote-list";
+import { SaveListByEmail } from "./SaveListByEmail";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
 export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey; similar?: boolean };
@@ -184,6 +186,24 @@ export function QuoteForm({
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
   const [contact, setContact] = useState<{ name?: string; email?: string }>({});
+  // The list saved on this device (item pages add to it). Merged in after the first render so the server
+  // HTML matches; what the visitor already set on the list wins over the link's defaults.
+  const [restored, setRestored] = useState(false);
+  useEffect(() => {
+    const saved = readList();
+    const ids = Object.keys(saved.items).filter((id) => items.some((i) => i.id === id));
+    if (ids.length) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time read of browser storage after hydration
+      setPicks((p) => ({ ...p, ...Object.fromEntries(ids.map((id) => [id, saved.items[id]])) }));
+      if (saved.colours) setColours((c) => ({ ...saved.colours, ...c }));
+    }
+    if (!initialGuests && saved.guests) setGuests(saved.guests);
+    setRestored(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    if (restored && status !== "done") writeList({ items: picks, guests: guests || undefined, colours });
+  }, [restored, picks, guests, colours, status]);
 
   const byId = useMemo(() => new Map(items.map((i) => [i.id, i])), [items]);
   const categories = useMemo(() => sortCategories(items.map((i) => i.category)), [items]);
@@ -303,6 +323,7 @@ export function QuoteForm({
     if (res?.ok) {
       trackLead("quote", "quote-builder", { guest_count: Number(guests || data.guest_count) || undefined, item_count: lines.length });
       setContact({ name: String(data.name ?? ""), email: String(data.email ?? "") });
+      clearList();
       setStatus("done");
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -667,6 +688,7 @@ export function QuoteForm({
               <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full justify-center" disabled={!lines.length}>
                 Continue to your details
               </button>
+              {lines.length > 0 && <SaveListByEmail lines={lines.map((l) => ({ id: l.item.id, qty: l.qty }))} guests={guests} />}
             </div>
           </aside>
         </div>
@@ -709,6 +731,7 @@ export function QuoteForm({
             <div className="min-h-0 flex-1 overflow-y-auto">{cartList("h-14 w-14")}</div>
             <div className="mt-4">{totals}</div>
             <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full justify-center">Continue to your details</button>
+            <SaveListByEmail lines={lines.map((l) => ({ id: l.item.id, qty: l.qty }))} guests={guests} />
           </div>
         </div>
       )}

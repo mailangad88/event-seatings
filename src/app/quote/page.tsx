@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { QuoteForm, type QuoteItem, type StarterPreset } from "@/components/QuoteForm";
 import { EventPlanner } from "@/components/planner/EventPlanner";
+import { SavedListNotice } from "@/components/SavedListNotice";
 import { ideaScene } from "@/components/party-ideas/parts";
 import { getIdea, plannerIdeas } from "@/data/party-ideas";
 import { rentalAlt, rentalImagePath, similarAlt } from "@/components/rentals/RentalVisual";
@@ -172,6 +173,8 @@ export default async function QuotePage(props: PageProps<"/quote">) {
 
       <div className="container-x section-y">
         {planner ? (
+          <>
+          <SavedListNotice />
           <EventPlanner
             items={items.filter((i) => i.featured)}
             initialEvent={plannerEvent}
@@ -197,6 +200,7 @@ export default async function QuotePage(props: PageProps<"/quote">) {
               settingName: p.settingName,
             }))}
           />
+          </>
         ) : (
         <div>
           {!str(sp.look) && initial.length === 0 && (

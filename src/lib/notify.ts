@@ -182,6 +182,35 @@ export async function sendConfirmation(lead: Lead): Promise<string | undefined> 
 }
 
 /**
+ * "Email me this list" from the quote builder (source "saved-list"): the items, the estimate and a link
+ * that opens the same list on any device. Needs RESEND_API_KEY and NOTIFY_FROM like every visitor email.
+ */
+export async function sendSavedList(lead: Lead): Promise<string | undefined> {
+  if (!process.env.NOTIFY_FROM || lead.opted_out_at || !lead.items?.length) return;
+  const qs = new URLSearchParams({ items: lead.items.map((l) => l.id).slice(0, 80).join(","), browse: "1", from: "saved-list-email" });
+  if (lead.guest_count) qs.set("guests", String(lead.guest_count));
+  const text = [
+    "Hi,",
+    "",
+    "Here is the rental list you saved, so you can pick it up later:",
+    "",
+    ...lead.items.slice(0, 40).map((l) => `- ${l.qty.toLocaleString()} x ${l.name} (${usd(l.line_total, 0)})`),
+    ...(lead.items.length > 40 ? [`- and ${lead.items.length - 40} more`] : []),
+    "",
+    lead.quote_subtotal ? `Rentals: about ${usd(lead.quote_subtotal, 0)}, before delivery, setup, damage waiver and tax.` : "",
+    "",
+    `Open your list: ${site.url}/quote?${qs.toString()}`,
+    "",
+    "When you have a date, send it from that page and we'll check it with the rental companies. Nothing is charged until you approve a final quote.",
+    "",
+    bookingLine(lead),
+    ...signOff(lead.email),
+  ].join("\n");
+  const subject = "Your saved rental list";
+  return (await sendEmail({ to: lead.email, subject, text, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `saved-list/${lead.id}` })) ? subject : undefined;
+}
+
+/**
  * Emails a visitor the links to the free download they just unlocked (source "download:<slug>").
  * Needs RESEND_API_KEY and NOTIFY_FROM on a verified sending domain; without them the visitor still gets
  * the links on screen. This is also the first touch of the planning nurture sequence.
