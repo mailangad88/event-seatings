@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
 import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
-import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
+import { Breadcrumb, Faqs, JsonLd, RentalCard, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { canonicalItem, catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
@@ -172,6 +172,10 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const scene = sceneImg && sceneImg.src !== lead?.src ? sceneImg : undefined;
   const solo = soloImage(i.id);
   const plain = !scene && sceneImg ? originalImage(i.id) : undefined;
+  // One photo row under the hero, three at most, all the same shape. Our own pictures when we have them;
+  // example photos only when we don't, so one row never mixes two different photo styles.
+  const own = [scene, solo, plain].filter((m): m is NonNullable<typeof m> => !!m).slice(0, 3);
+  const shownStock = own.length ? [] : gallery.slice(0, 3);
 
   const jsonLd = [
     {
@@ -188,10 +192,8 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             ? imagesFor(i.id).map((m) => rentalImageJsonLd(m))
             : [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }]
           : []),
-        ...(scene ? [rentalImageJsonLd(scene)] : []),
-        ...(solo ? [rentalImageJsonLd(solo)] : []),
-        ...(plain ? [rentalImageJsonLd(plain)] : []),
-        ...gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))),
+        ...own.map((m) => rentalImageJsonLd(m)),
+        ...shownStock.map((p) => stockImageJsonLd(p, galleryAlt(p))),
       ],
       offers: {
         "@type": "Offer",
@@ -268,24 +270,25 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
               <Link href={`/quote?items=${i.id}&from=item-${i.id}`} className="btn-primary">
                 Add to my quote
               </Link>
-              <Link href={`/book?from=item-${i.id}`} className="btn-ghost">
-                Book a free call
-              </Link>
             </div>
             {(() => {
               // Show what a delivered order really costs, not just the rental rate.
               const qty = i.perGuest ? Math.max(i.minQty ?? 1, Math.ceil(100 * i.perGuest)) : Math.max(1, i.minQty ?? 1);
               const est = allInEstimate(price * qty, { categoryIds: [i.categoryId] });
               return (
-                <div className="mt-6 border border-line bg-surface p-5 text-sm">
-                  <p className="font-medium">
-                    Delivered and set up: about {formatPrice(Math.round(est.total))}
-                    <span className="font-normal text-muted">
-                      {" "}
-                      for {qty.toLocaleString()} {qty === 1 ? "unit" : "units"}
-                      {i.perGuest ? " (100 guests)" : ""}
+                <details className="group/cost mt-6 rounded-xl border border-line bg-surface p-5 text-sm">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-3 [&::-webkit-details-marker]:hidden">
+                    <span className="font-medium">
+                      Delivered and set up: about {formatPrice(Math.round(est.total))}
+                      <span className="font-normal text-muted">
+                        {" "}
+                        for {qty.toLocaleString()} {qty === 1 ? "unit" : "units"}
+                        {i.perGuest ? " (100 guests)" : ""}
+                      </span>
                     </span>
-                  </p>
+                    <span className="shrink-0 text-xs font-medium text-accent group-open/cost:hidden">See breakdown</span>
+                    <span className="hidden shrink-0 text-xs font-medium text-accent group-open/cost:inline">Hide</span>
+                  </summary>
                   <dl className="mt-3 space-y-1 text-muted">
                     <div className="flex justify-between gap-4">
                       <dt>Rental ({qty.toLocaleString()} × {formatPrice(price)})</dt>
@@ -306,7 +309,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
                     every fee for your venue. Nothing is charged until you approve it.
                   </p>
                   <PriceDisclaimer className="mt-2" vendorLink />
-                </div>
+                </details>
               );
             })()}
 
@@ -328,39 +331,27 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </div>
         </div>
 
-        {(scene || solo || plain) && (
+        {own.length + shownStock.length > 0 && (
           <section className="mt-24" aria-labelledby="at-an-event">
-            <p className="eyebrow">At an event</p>
-            <h2 id="at-an-event" className="headline mt-6 text-4xl">
-              {i.name} styled for a celebration
+            <h2 id="at-an-event" className="display-2">
+              {i.name} at an event
             </h2>
-            <p className="mt-4 max-w-2xl text-muted">How this rental can look at a styled event, and a closer look at a single piece.</p>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              {[scene, solo, plain].filter((m): m is NonNullable<typeof m> => !!m).map((m) => (
+            {shownStock.length > 0 && (
+              <p className="mt-3 max-w-2xl text-sm text-muted">
+                Example photos help you picture it. The exact piece and finish can differ by rental company, so ask
+                for a photo of the actual item with your quote.
+              </p>
+            )}
+            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+              {own.map((m) => (
                 <figure key={m.src}>
-                  <div className="media relative overflow-hidden" style={{ aspectRatio: `${m.width} / ${m.height}` }}>
+                  <div className="media relative aspect-[4/3] overflow-hidden">
                     <Image src={m.src} alt={m.alt} fill unoptimized={m.src.endsWith(".svg") || /^https?:/.test(m.src)} sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
                   </div>
                   <figcaption className="mt-2 text-xs text-muted">{m.caption}</figcaption>
                 </figure>
               ))}
-            </div>
-          </section>
-        )}
-
-        {gallery.length > 0 && (
-          <section className="mt-24" aria-labelledby="real-photos">
-            <p className="eyebrow">Real event photos</p>
-            <h2 id="real-photos" className="headline mt-6 text-4xl">
-              {real.matched ? `${i.name} style at real events` : `${c.name} at real events`}
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm text-muted">
-              {real.matched
-                ? "Example photos of this type of rental at real events, so you can picture it. Our rental partner's exact item, colour and finish may differ; ask for a photo of the actual piece in your quote."
-                : `Example photos of ${c.name.toLowerCase()} at real events. Ask us for a photo of this exact item when you request a quote.`}
-            </p>
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
-              {gallery.map((p) => (
+              {shownStock.map((p) => (
                 <figure key={p.key}>
                   <div className="media relative aspect-[4/3] overflow-hidden">
                     <StockImg photo={p} alt={galleryAlt(p)} width={480} height={360} />
@@ -375,7 +366,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </section>
         )}
 
-        <section className="mt-28 grid gap-16 lg:grid-cols-2" aria-labelledby="howmany">
+        <section className="mt-28 max-w-3xl" aria-labelledby="howmany">
           <figure>
             <p className="eyebrow">Quantity &amp; cost</p>
             <h2 id="howmany" className="headline mt-6 text-4xl">
@@ -412,11 +403,6 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
               </tbody>
             </table>
           </figure>
-          <div>
-            <p className="eyebrow">Planning tips</p>
-            <h2 className="display-2 mt-6 mb-8">Getting {c.name.toLowerCase()} right</h2>
-            <Steps steps={c.planning.slice(0, 4)} compact />
-          </div>
         </section>
 
         <section className="mt-28 max-w-4xl" aria-labelledby="faq">

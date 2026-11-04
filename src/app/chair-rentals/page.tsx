@@ -132,7 +132,10 @@ export default function AreasPage() {
               ))}
             </nav>
             <div className="mt-10">
-              <CallButton />
+              <Link href="/quote?from=local-page" className="btn-primary">
+                Get a free quote
+              </Link>
+              <CallButton label="Or book a free call" className="link-line" />
             </div>
             <DecoFrame label="Areas we serve" className="mt-14">
               <AreaMap />

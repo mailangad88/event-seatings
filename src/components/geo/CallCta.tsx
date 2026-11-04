@@ -24,15 +24,14 @@ export function CallCta({ heading, place }: { heading: React.ReactNode; place?: 
         <p className="eyebrow mt-8 justify-center before:hidden">{site.launch.seasonLabel}</p>
         <h2 className="display-2 mx-auto mt-8 max-w-4xl">{heading}</h2>
         <p className="mx-auto mt-6 max-w-xl leading-8 text-muted">
-          A 15-minute call is the fastest way to a plan: guest count, chair styles, delivery window
-          {place ? ` and access at your ${place} venue` : " and venue access"}. Prefer email? Send a quote request and
-          we&apos;ll reply with pricing.
+          Pick your rentals and see prices as you go, or tell us your guest count, chair styles and delivery window
+          {place ? ` for your ${place} venue` : ""} on a quick call.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-          <CallButton />
-          <Link href="/quote" className="btn-ghost">
-            Request a quote
+          <Link href="/quote?from=local-page" className="btn-accent">
+            Get a free quote
           </Link>
+          <CallButton label="Book a free 15-minute call" className="btn-ghost" />
         </div>
         <ol className="mx-auto mt-16 grid max-w-3xl gap-8 text-left sm:grid-cols-3">
           {[

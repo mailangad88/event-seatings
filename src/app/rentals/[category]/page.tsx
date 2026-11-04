@@ -15,7 +15,7 @@ import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } f
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { categoryScene } from "@/lib/scenes";
-import { PriceDisclaimer } from "@/components/ui";
+import { Icon, PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -96,7 +96,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
       ],
     },
     faqJsonLd(faqs),
-    ...photos.slice(0, 4).map((p) => ({ "@context": "https://schema.org", ...stockImageJsonLd(p, photoAlt(p)) })),
+    ...(categoryScene(c.id) || hero ? [] : photos.slice(0, 1)).map((p) => ({ "@context": "https://schema.org", ...stockImageJsonLd(p, photoAlt(p)) })),
   ];
 
   return (
@@ -123,14 +123,11 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
               <Link href={`/quote?from=rentals-${c.id}`} className="btn-primary">
                 Get a {c.name.toLowerCase()} quote
               </Link>
-              <Link href={`/book?from=rentals-${c.id}`} className="btn-ghost">
-                Free planning call
-              </Link>
             </div>
           </div>
           {categoryScene(c.id) ? (
             <figure>
-              <div className="media relative aspect-video shadow-lift">
+              <div className="media relative aspect-[4/3] shadow-lift">
                 <Image
                   src={categoryScene(c.id)!.src}
                   alt={categoryScene(c.id)!.alt}
@@ -146,8 +143,8 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             <RentalVisual item={hero} priority className="hidden aspect-square md:block" sizes="40vw" />
           ) : (
             <figure>
-              <div className="media relative aspect-video overflow-hidden shadow-lift">
-                <StockImg photo={photos[0]} alt={photoAlt(photos[0])} width={720} height={405} priority />
+              <div className="media relative aspect-[4/3] overflow-hidden shadow-lift">
+                <StockImg photo={photos[0]} alt={photoAlt(photos[0])} width={720} height={540} priority />
                 <ExampleChip />
               </div>
               <figcaption className="mt-3 text-sm text-muted">
@@ -168,35 +165,18 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
           </div>
         </section>
 
-        <section className="mt-24" aria-labelledby="real-photos">
-          <p className="eyebrow">Real event photos</p>
-          <h2 id="real-photos" className="headline mt-6 text-4xl">
-            {c.name} at real events
-          </h2>
-          <p className="mt-3 max-w-2xl text-sm text-muted">
-            Example photos of {c.name.toLowerCase()} in use, to help you picture your event. Exact items and finishes vary by
-            rental partner; ask for photos of the actual pieces with your quote.
-          </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {photos.slice(0, 4).map((p) => (
-              <figure key={p.key}>
-                <div className="media relative aspect-[4/3] overflow-hidden">
-                  <StockImg photo={p} alt={photoAlt(p)} width={400} height={300} />
-                </div>
-                <figcaption className="mt-2 text-xs text-muted">
-                  {p.alt}. <PhotoCredit photo={p} />
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-
         {sections.length > 0 && (
-          <section className="mt-28" aria-labelledby="full-list">
-            <p className="eyebrow">Full price list</p>
-            <h2 id="full-list" className="headline mt-6 text-4xl">
-              Every {c.name.toLowerCase()} option, priced
-            </h2>
+          <section className="mt-20" aria-labelledby="full-list">
+            <details className="group/fl rounded-2xl border border-line bg-surface p-6 sm:p-8">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="eyebrow">Full price list</span>
+                <span id="full-list" className="display-2 mt-3 block">
+                  See all {inventoryCount} more {c.name.toLowerCase()} options
+                </span>
+              </span>
+              <Icon name="plus" size={22} className="shrink-0 text-accent transition-transform group-open/fl:rotate-45" />
+            </summary>
             <p className="mt-3 max-w-2xl text-muted">
               {inventoryCount} more styles, sizes and finishes from {site.market}-area rental companies. Prices are per
               unit for one event day, before delivery, setup, damage waiver and tax (typically 35-60% more all-in).
@@ -249,35 +229,37 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                 </table>
               ))}
             </div>
+            </details>
           </section>
         )}
 
-        <section className="mt-28" aria-labelledby="plan">
-          <p className="eyebrow">Plan it</p>
-          <h2 id="plan" className="headline mt-6 text-4xl sm:text-5xl">
-            How to work out what you <em className="text-gold">need</em>
-          </h2>
-          <div className="mt-10">
-            <Steps steps={c.planning} />
-          </div>
-        </section>
-
-        <section className="mt-28 grid gap-16 lg:grid-cols-2" aria-labelledby="prices">
-          <div>
-            <p className="eyebrow">Price guide</p>
-            <h2 id="prices" className="headline mt-6 mb-8 text-4xl">
-              {c.name} rental prices in {site.market}
-            </h2>
-            <PriceBars items={featured} caption={`Per-unit rental price for one event day, ${site.marketLong}.`} />
-          </div>
-          {budget && (
-            <div>
-              <p className="eyebrow">Worked example</p>
-              <div className="mt-6">
-                <BudgetExample budget={budget} />
-              </div>
+        <section className="mt-6" aria-labelledby="plan">
+          <details className="group/pl rounded-2xl border border-line bg-surface p-6 sm:p-8">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="eyebrow">Plan it</span>
+                <span id="plan" className="display-2 mt-3 block">How many you need and what it costs</span>
+              </span>
+              <Icon name="plus" size={22} className="shrink-0 text-accent transition-transform group-open/pl:rotate-45" />
+            </summary>
+            <div className="mt-8">
+              <Steps steps={c.planning} />
             </div>
-          )}
+            <div className="mt-12 grid gap-16 lg:grid-cols-2">
+              <div>
+                <h3 id="prices" className="display-3 mb-6">
+                  {c.name} rental prices in {site.market}
+                </h3>
+                <PriceBars items={featured} caption={`Per-unit rental price for one event day, ${site.marketLong}.`} />
+              </div>
+              {budget && (
+                <div>
+                  <h3 className="display-3 mb-6">Worked example</h3>
+                  <BudgetExample budget={budget} />
+                </div>
+              )}
+            </div>
+          </details>
         </section>
 
         <section className="mt-28 max-w-4xl" aria-labelledby="faq">

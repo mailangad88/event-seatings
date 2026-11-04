@@ -5,10 +5,10 @@ import { CallCta } from "@/components/CallCta";
 import { ReadyPackages } from "@/components/ReadyPackages";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
-import { Faqs, JsonLd, Steps, faqJsonLd } from "@/components/rentals/parts";
+import { Faqs, JsonLd, faqJsonLd } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { sampleBudgets } from "@/data/sample-budgets";
-import { PriceDisclaimer } from "@/components/ui";
+import { Icon, PriceDisclaimer } from "@/components/ui";
 import { categoryScene, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -83,10 +83,7 @@ export default function RentalsPage() {
             </p>
             <div className="cta-row mt-8">
               <Link href="/quote?from=rentals-hero" className="btn-primary btn-lg">
-                Build your rental list
-              </Link>
-              <Link href="/book?from=rentals" className="btn-ghost btn-lg">
-                Book a free planning call
+                Get a free quote
               </Link>
             </div>
           </div>
@@ -164,38 +161,25 @@ export default function RentalsPage() {
           <ReadyPackages className="mt-8" compact />
         </section>
 
-        <section className="mt-28" aria-labelledby="how">
-          <p className="eyebrow">How it works</p>
-          <h2 id="how" className="headline mt-6 text-4xl sm:text-5xl">
-            One list, one quote, one <em className="text-gold">team</em>
-          </h2>
-          <div className="mt-10">
-            <Steps
-              steps={[
-                { title: "Pick items", body: "Browse by category and add what you need. Prices are shown per item." },
-                { title: "Send one enquiry", body: "Tell us your date, venue and guest count. It takes two minutes." },
-                { title: "Get a proposal", body: "We confirm availability with local partners and send one itemized quote." },
-                { title: "Delivered & set", body: "Your rentals arrive, get set up, and are picked up after the event." },
-              ]}
-            />
-          </div>
-        </section>
-
         <section className="mt-28" aria-labelledby="budgets">
-          <p className="eyebrow">Real numbers</p>
-          <h2 id="budgets" className="headline mt-6 text-4xl sm:text-5xl">
-            What a rental list <em className="text-gold">actually</em> costs
-          </h2>
-          <p className="mt-4 max-w-2xl text-muted">
-            Three common {site.market} events, priced line by line with today&apos;s rates. Start from one and change
-            anything.
-          </p>
-          <PriceDisclaimer className="mt-3 max-w-2xl" vendorLink />
-          <div className="mt-10 grid gap-8 lg:grid-cols-3">
-            {sampleBudgets.map((b) => (
-              <BudgetExample key={b.id} budget={b} />
-            ))}
-          </div>
+          <details className="group/b rounded-2xl border border-line bg-surface p-6 sm:p-8">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="eyebrow">Real numbers</span>
+                <span id="budgets" className="display-2 mt-3 block">What three {site.market} events cost</span>
+              </span>
+              <Icon name="plus" size={22} className="shrink-0 text-accent transition-transform group-open/b:rotate-45" />
+            </summary>
+            <p className="mt-6 max-w-2xl text-muted">
+              Priced line by line with today&apos;s rates. Start from one and change anything.
+            </p>
+            <PriceDisclaimer className="mt-3 max-w-2xl" vendorLink />
+            <div className="mt-10 grid gap-8 lg:grid-cols-3">
+              {sampleBudgets.map((b) => (
+                <BudgetExample key={b.id} budget={b} />
+              ))}
+            </div>
+          </details>
         </section>
 
         <section className="mt-28 max-w-4xl" aria-labelledby="faq">
