@@ -291,7 +291,7 @@ function QuickMessage({
   }
 
   const field =
-    "w-full border-0 border-b border-line bg-transparent px-0 py-2.5 text-sm text-ink placeholder:text-muted/70 focus:border-gold focus:ring-0 focus:outline-none";
+    "field-line py-2.5 text-sm";
 
   return (
     <form onSubmit={submit} className="space-y-3 px-6 py-5">

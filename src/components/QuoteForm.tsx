@@ -123,7 +123,7 @@ export function Stepper({
 }) {
   const btn = size === "sm" ? "h-7 w-7" : "h-9 w-9";
   return (
-    <div className="flex items-center gap-1 rounded-full border border-line bg-surface p-0.5 shadow-soft">
+    <div className="field-pill flex items-center gap-1 p-0.5 shadow-soft">
       <button type="button" aria-label={`Fewer ${name}`} onClick={() => onChange(qty - 1)} className={`grid ${btn} shrink-0 place-items-center rounded-full hover:bg-surface-2`}>
         <Icon name="minus" size={14} />
       </button>

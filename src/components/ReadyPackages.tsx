@@ -33,13 +33,16 @@ export function PackageCard({ p, compact = false }: { p: ReadyPackage; compact?:
             </li>
           ))}
         </ul>
-        <Link
-          href={p.href}
-          className="btn-primary btn-sm mt-5 self-start after:absolute after:inset-0 after:content-['']"
-          aria-label={`Start with the ${p.name.toLowerCase()} package for ${p.guests} guests`}
-        >
-          Start with this <Icon name="arrow" size={14} />
-        </Link>
+        {/* mt-auto pins the button to the card bottom so buttons line up across a row. */}
+        <div className="mt-auto pt-5">
+          <Link
+            href={p.href}
+            className="btn-primary btn-sm after:absolute after:inset-0 after:content-['']"
+            aria-label={`Start with the ${p.name.toLowerCase()} package for ${p.guests} guests`}
+          >
+            Start with this <Icon name="arrow" size={14} />
+          </Link>
+        </div>
       </div>
     </article>
   );

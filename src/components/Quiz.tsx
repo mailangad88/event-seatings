@@ -170,7 +170,7 @@ export function Quiz() {
             <p className="mt-3 text-muted">
               With styling notes for {(topStyles[0] ?? "your").toLowerCase()} celebrations.
             </p>
-            <form onSubmit={saveEmail} className="mt-8 flex gap-2 rounded-full border border-line bg-surface p-1.5 text-left focus-within:border-gold">
+            <form onSubmit={saveEmail} className="field-pill mt-8 flex gap-2 p-1.5 text-left">
               <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
               <label className="sr-only" htmlFor="quiz-email">Email address</label>
               <input
@@ -179,7 +179,7 @@ export function Quiz() {
                 type="email"
                 required
                 placeholder="Your email address"
-                className="min-w-0 flex-1 border-0 bg-transparent px-3 focus:ring-0 focus:outline-none"
+                className="min-w-0 flex-1 border-0 bg-transparent px-3 outline-none"
               />
               <button className="btn-primary btn-sm shrink-0" disabled={emailStatus === "sending"}>
                 Send
