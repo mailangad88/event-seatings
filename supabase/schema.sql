@@ -231,3 +231,24 @@ create table if not exists vendor_applications (
 );
 create index if not exists vendor_applications_status_idx on vendor_applications (status, created_at desc);
 alter table vendor_applications enable row level security;
+
+-- Orders split by rental company and renter messages (added with the renter account, Nov 4 2026). Safe to run again.
+-- vendor_orders = { "<vendor_id>": { status, delivery_date, delivery_window, pickup_date, pickup_window, note, ... } }
+-- (src/lib/orders.ts). messages = [{ at, from: 'customer' | 'team', text, read_at }].
+alter table leads
+  add column if not exists vendor_orders jsonb,
+  add column if not exists messages jsonb;
+
+-- Renter accounts (/account). Sign-in is an emailed link; their events are the leads with the same email.
+-- saved_events / saved_ideas copy the browser's My events plans and idea board so they follow the renter. Safe to run again.
+create table if not exists customer_accounts (
+  email text primary key,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz,
+  last_login_at timestamptz,
+  name text,
+  phone text,
+  saved_events jsonb,
+  saved_ideas jsonb
+);
+alter table customer_accounts enable row level security;

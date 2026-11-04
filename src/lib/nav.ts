@@ -111,6 +111,7 @@ export const menus: Menu[] = [
         title: "Your event",
         links: [
           { href: "/my-events", label: "My events", blurb: "Countdown and dated checklist", icon: "calendar" },
+          { href: "/account", label: "Your account", blurb: "Orders, deliveries, payments, messages", icon: "users" },
           { href: "/countdown", label: "Event countdown", blurb: "Days left and what to do now", icon: "clock" },
           { href: "/events", label: "Events we plan", blurb: "Weddings, parties, work events", icon: "users" },
           { href: "/booking-promise", label: "Payments & Booking Promise", blurb: "How paying and refunds work", icon: "shield" },

@@ -159,6 +159,10 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
             <Link href="/booking-promise" className="underline underline-offset-2">Booking Promise</Link> and{" "}
             <Link href="/terms" className="underline underline-offset-2">terms</Link>.
           </p>
+          <p className="px-1 text-xs leading-5 text-muted">
+            Follow delivery times, payments and messages in{" "}
+            <Link href="/account" className="underline underline-offset-2">your account</Link>. Sign in with the email this proposal was sent to.
+          </p>
         </aside>
       </div>
     </div>
