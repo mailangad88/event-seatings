@@ -13,6 +13,7 @@ import { families } from "@/lib/guide-content";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { LOCAL_RENTALS_UPDATED, areaRentalsPath, localAreas, costCategories, costPath, localCategories, localCategoryPath } from "@/data/local-rentals";
 import { site } from "@/lib/site";
+import { isVendorPage } from "@/lib/vendor-pages";
 import { ideaPath, ideas, PARTY_IDEAS_UPDATED, partyTypes, typePath } from "@/data/party-ideas";
 import { toolSitemapEntries } from "@/lib/tools/sitemap";
 
@@ -20,7 +21,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/packages", "/faq", "/how-it-works", "/pricing", "/big-celebrations", "/venues-and-planners", "/booking-promise", "/partners", "/partners/faq", "/partners/terms", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/press", "/data/chicago-rental-prices", "/privacy", "/terms"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/packages", "/faq", "/how-it-works", "/pricing", "/big-celebrations", "/venues-and-planners", "/booking-promise", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/press", "/data/chicago-rental-prices", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -120,5 +121,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   // Free tools, countdown, comparison and vendor onboarding pages (src/lib/tools/sitemap.ts).
   const toolPages = toolSitemapEntries(["/countdown"]);
-  return [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  const entries = [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  // Pages for rental companies are noindex, so they never belong in the sitemap.
+  return entries.filter((e) => !isVendorPage(e.url.slice(site.url.length)));
 }

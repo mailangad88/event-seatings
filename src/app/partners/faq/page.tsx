@@ -1,3 +1,4 @@
+import { vendorPageRobots } from "@/lib/vendor-pages";
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { FaqList, Figure, JsonLd, PageHero, QuoteCta, Section, StepFlow, type Faq } from "@/components/ui";
@@ -10,6 +11,8 @@ export const metadata: Metadata = seo({
   title: "Rental Partner FAQ: Joining, Orders, Fees and Payments",
   description: `Answers for Chicago-area rental companies thinking about listing with ${site.name}: how sign-up works, how orders reach you, what it costs, who pays whom, and how to change prices or leave.`,
   alternates: { canonical: "/partners/faq" },
+  // For rental companies only: kept out of search and AI answers so customers don't land here (see src/lib/vendor-pages.ts).
+  robots: vendorPageRobots,
 });
 
 const groups: { id: string; title: string; faqs: Faq[] }[] = [

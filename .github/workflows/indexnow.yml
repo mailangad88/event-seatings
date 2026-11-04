@@ -1,0 +1,28 @@
+# Tells Bing (and Copilot, DuckDuckGo, Yahoo, Yandex) about every page in the sitemap so they crawl it sooner.
+# Run it by hand: GitHub > Actions > IndexNow > Run workflow. Do it once after the site reopens,
+# then again after big batches of new pages. It stops on its own if the "we'll be back" page is still on.
+name: IndexNow
+
+on:
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: "Only these pages, space separated (e.g. /quote /pricing). Leave empty for the whole sitemap."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - env:
+          PATHS: ${{ inputs.paths }}
+        run: node scripts/indexnow.mjs $PATHS
