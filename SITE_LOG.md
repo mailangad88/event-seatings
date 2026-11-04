@@ -39,6 +39,11 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-04): venues and planners page, lead wait timer
+
+- **New page `/venues-and-planners`**: for halls without furniture, planners, decorators, caterers and DJs to send families to us. Share link (ReferForm), call form (source `venue-partner`), FAQs. No referral fee is promised unless `REFERRAL_REWARD` is set. In the About menu and the sitemap.
+- **Admin Today**: new people show "waiting 25 min" in amber after 15 minutes and red after an hour, and the briefing shows how long the oldest new person has waited (`waitMinutes`/`waitClass` in `lib/admin-view.ts`).
+
 ## Changes in this release (2026-11-04): pre-launch audit, quote list, big celebrations
 
 Ranked audit: `/mnt/project-files/plans/pre-launch-audit-2026-11-04.md` (copy in `docs/pre-launch-audit-2026-11-04.md`).

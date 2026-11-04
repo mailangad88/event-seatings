@@ -8,7 +8,7 @@ import { OfficeTabs, pickTab } from "@/components/office/OfficeTabs";
 import { Icon } from "@/components/ui/Icon";
 import { levelBadge, levelLabel, type AdminAlert, type AlertLevel } from "@/lib/admin-alerts";
 import { adminSnapshot } from "@/lib/admin-snapshot";
-import { addDays, ago, chicagoDay, eventLine, isClosed, isConfirmed, isoDaysAgo, money0, prettyDay, stage, TZ } from "@/lib/admin-view";
+import { addDays, ago, chicagoDay, eventLine, isClosed, isConfirmed, isoDaysAgo, money0, prettyDay, stage, TZ, waitClass, waitMinutes } from "@/lib/admin-view";
 import { allTasks } from "@/lib/event-tasks";
 import { buildStops } from "@/lib/deliveries";
 import { emailsToday } from "@/lib/email-schedule";
@@ -92,6 +92,7 @@ export default async function TodayPage(props: PageProps<"/admin">) {
   const people = leads.filter((l) => l.kind !== "partner");
 
   const fresh = people.filter((l) => stage(l) === "new").sort((a, b) => scoreRank(a) - scoreRank(b) || a.created_at.localeCompare(b.created_at));
+  const oldestNew = fresh.reduce<(typeof fresh)[number] | undefined>((o, l) => (!o || l.created_at < o.created_at ? l : o), undefined);
   const due = people.filter((l) => !isClosed(l) && l.follow_up_at && l.follow_up_at <= today).sort((a, b) => a.follow_up_at!.localeCompare(b.follow_up_at!));
   const thisWeek = people.filter((l) => l.event_date && l.event_date >= today && l.event_date <= weekEnd && stage(l) !== "lost").sort((a, b) => a.event_date!.localeCompare(b.event_date!));
   const unpaid = people.filter((l) => l.proposal_token && (l.fee_status ?? "unpaid") === "unpaid");
@@ -151,6 +152,11 @@ export default async function TodayPage(props: PageProps<"/admin">) {
           <Link href="/admin/deliveries" className="hover:text-ink">{stopsToday.filter((x) => x.kind === "delivery").length} drop-offs and {stopsToday.filter((x) => x.kind === "pickup").length} pickups today</Link>
           <Link href="/admin/scheduled" className="hover:text-ink">{mail.auto} email{mail.auto === 1 ? "" : "s"} go out on their own today{mail.drafts ? `, ${mail.drafts} to send yourself` : ""}</Link>
           <Link href="/admin/calls" className="hover:text-ink">{callsDue} call{callsDue === 1 ? "" : "s"} to make</Link>
+          {oldestNew && (
+            <Link href="/admin?tab=new" className={`hover:text-ink ${waitClass(waitMinutes(oldestNew.created_at))}`}>
+              {fresh.length} new {fresh.length === 1 ? "person" : "people"} waiting for a reply, longest {ago(oldestNew.created_at).replace(" ago", "")}
+            </Link>
+          )}
         </p>
         {handled.length > 0 && (
           <ul className="mt-5 flex flex-wrap gap-3">
@@ -260,7 +266,12 @@ export default async function TodayPage(props: PageProps<"/admin">) {
                   <LeadRow
                     key={l.id}
                     l={l}
-                    right={<span className="text-xs text-muted">{ago(l.created_at)}{l.quote_subtotal ? ` · ${money0(l.quote_subtotal)}` : ""}</span>}
+                    right={
+                      <span className="text-xs">
+                        <span className={waitClass(waitMinutes(l.created_at))}>waiting {ago(l.created_at).replace(" ago", "")}</span>
+                        <span className="text-muted">{l.quote_subtotal ? ` · ${money0(l.quote_subtotal)}` : ""}</span>
+                      </span>
+                    }
                     action={
                       <form action={markContacted}>
                         <input type="hidden" name="id" value={l.id} />
