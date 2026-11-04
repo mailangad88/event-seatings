@@ -37,7 +37,7 @@ export function MobileNav({ menus }: { menus: MobileMenu[] }) {
           id="mobile-menu"
           aria-label="Mobile"
           onClick={(e) => (e.target as HTMLElement).closest("a") && setOpen(false)}
-          className="absolute inset-x-0 top-full h-[calc(100dvh-72px-36px)] overflow-y-auto border-t border-line bg-bg px-4 pt-2 pb-10"
+          className="absolute inset-x-0 top-full h-[calc(100dvh-72px)] overflow-y-auto border-t border-line bg-bg px-4 pt-2 pb-10"
         >
           {menus.map((m) => (
             <details key={m.id} className="group/sec border-b border-line">

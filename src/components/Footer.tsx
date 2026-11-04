@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerExtras, menus, rentalCategories } from "@/lib/nav";
+import { footerMore, menus, rentalCategories } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { Logo } from "./Header";
 import { Icon } from "./ui/Icon";
@@ -13,8 +13,10 @@ const sections: FooterSection[] = [
     links: rentalCategories.slice(0, 8).map((c) => ({ href: `/rentals/${c.id}`, label: c.name })),
     more: { href: "/rentals", label: "All rentals" },
   },
-  ...menus.filter((m) => m.id !== "rentals").flatMap((m) => m.groups),
-  footerExtras,
+  // One column per header menu, in the same order, so a page lives in the same place everywhere.
+  ...menus
+    .filter((m) => m.id !== "rentals")
+    .map((m) => ({ title: m.label, links: m.groups.flatMap((g) => g.links) })),
 ];
 
 export function Footer() {
@@ -52,9 +54,9 @@ export function Footer() {
         </div>
 
         {/* Same sections as the header menus, so a page lives in one place everywhere. */}
-        <nav aria-label="Footer" className="columns-2 gap-x-8 sm:columns-3 xl:columns-4">
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-8 sm:grid-cols-4">
           {sections.map((sec) => (
-            <div key={sec.title} className="mb-9 break-inside-avoid">
+            <div key={sec.title} className="mb-9">
               <p className="eyebrow">{sec.title}</p>
               <ul className="mt-3 space-y-0.5 text-sm text-muted">
                 {sec.links.map((l) => (
@@ -71,6 +73,18 @@ export function Footer() {
             </div>
           ))}
         </nav>
+      </div>
+      <div className="border-t border-line">
+        <details className="group/more container-x py-4 text-xs leading-6 text-muted">
+          <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 py-1 font-medium text-ink [&::-webkit-details-marker]:hidden">
+            More planning pages <Icon name="plus" size={14} className="text-gold transition-transform group-open/more:rotate-45" />
+          </summary>
+          <nav aria-label="More pages" className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+            {footerMore.map((l) => (
+              <Link key={l.href} href={l.href} className="inline-block py-1 hover:text-ink">{l.label}</Link>
+            ))}
+          </nav>
+        </details>
       </div>
       <div className="border-t border-line">
         <div className="container-x flex flex-wrap items-baseline gap-x-2 gap-y-1 py-5 text-xs leading-6 text-muted">
