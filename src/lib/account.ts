@@ -89,7 +89,7 @@ function partFor(lead: Lead, paid: boolean, index: number, p: ReturnType<typeof 
     delivery: o?.delivery_date || o?.delivery_window ? { date: o.delivery_date, window: o.delivery_window } : undefined,
     pickup: o?.pickup_date || o?.pickup_window ? { date: o.pickup_date, window: o.pickup_window } : undefined,
     note: o?.note,
-    lines: p.lines.map((l) => ({ name: l.name, qty: l.qty, unit: l.unit, each: l.unit_price, total: l.line_total, variant: l.variant })),
+    lines: p.lines.map(({ line: l }) => ({ name: l.name, qty: l.qty, unit: l.unit, each: l.unit_price, total: l.line_total, variant: l.variant })),
     total: p.total,
     rentalPrice: o?.vendor_total ?? p.cost,
   };

@@ -253,6 +253,23 @@ create table if not exists customer_accounts (
 );
 alter table customer_accounts enable row level security;
 
+-- Payments ledger (/admin/payments): cash, Zelle and check payments recorded by hand, commission payments from
+-- /admin/invoices, and booking-fee refunds. Card booking fees are read from the leads table. Never store card or
+-- bank numbers here. Safe to run again.
+create table if not exists payments_ledger (
+  id uuid primary key,
+  created_at timestamptz not null default now(),
+  kind text not null check (kind in ('fee', 'commission', 'refund', 'other')),
+  lead_id uuid,
+  vendor_id text,
+  month text,
+  amount numeric(12, 2) not null check (amount >= 0),
+  method text not null check (method in ('stripe', 'zelle', 'check', 'cash', 'other')),
+  note text
+);
+create index if not exists payments_ledger_created_idx on payments_ledger (created_at desc);
+alter table payments_ledger enable row level security;
+
 -- Reminder emails (Nov 2026). Safe to run again.
 -- visitor_id links a lead to what the visitor did after sending it; visitor_activity holds those pages and
 -- clicks (known visitors only, and only if they didn't say no to tracking); site_settings holds small

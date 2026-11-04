@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getVendor } from "@/data/vendors";
 import { PrintButton, printCss } from "@/components/admin/PrintButton";
 import { addDays, chicagoDay, money2, prettyDay } from "@/lib/admin-view";
-import { COMMISSION_RATE, FREE_DAYS, statements } from "@/lib/commissions";
+import { COMMISSION_RATE, FREE_DAYS, invoiceNumber, statements } from "@/lib/commissions";
 import { site } from "@/lib/site";
 import { listLeads, listPartners } from "@/lib/store";
 
@@ -24,7 +24,7 @@ export default async function StatementPage(props: PageProps<"/admin/invoices/co
   const partner = partners.find((p) => p.vendor_id === vendorId);
   const log = partner?.commission_log?.[month];
   const issued = chicagoDay(log?.sent_at ?? new Date());
-  const number = `BC-C-${month.replace("-", "")}-${vendorId.slice(0, 6).toUpperCase()}`;
+  const number = invoiceNumber(vendorId, month);
   const monthName = new Date(`${month}-15T12:00:00`).toLocaleDateString("en-US", { month: "long", year: "numeric" });
   const body = `Hi${partner?.contact_name ? ` ${partner.contact_name.split(" ")[0]}` : ""},\n\nHere is our commission statement for ${monthName}: ${s.orders.length} booked order${s.orders.length === 1 ? "" : "s"}, ${money2(s.commission)} due within 15 days.\n\nThanks,\n${site.name}`;
 

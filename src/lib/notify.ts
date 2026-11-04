@@ -6,6 +6,7 @@ import { usd } from "./catalog-types";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
 import { buildLeadAlert, leadAlertText } from "./lead-alert";
 import { site } from "./site";
+import { accountsEnabled } from "./account-auth";
 import type { Review } from "./reviews";
 import { listLeadsByEmail, listPartners, type Lead } from "./store";
 import { unsubscribeUrl } from "./unsubscribe";
@@ -150,6 +151,9 @@ export async function sendConfirmation(lead: Lead): Promise<string | undefined> 
       "- Venue name and address, and whether it's indoors, outdoors or a tent",
       "- Delivery and pickup windows the venue allows",
       "- Any items you didn't see on the site",
+      ...(accountsEnabled()
+        ? ["", `Follow your quote, delivery times and messages any time: ${site.url}/account (sign in with this email address, no password).`]
+        : []),
     ],
     call: [
       "Thanks for asking for a call. We'll reach out within one business day to set a time.",
