@@ -16,7 +16,9 @@
     "indexnow": "node scripts/indexnow.mjs",
     "audit:ux": "node scripts/ux-audit.mjs",
     "check:copy": "node scripts/check-copy.mjs",
-    "check:design": "node scripts/check-design.mjs"
+    "check:design": "node scripts/check-design.mjs",
+    "test": "vitest run",
+    "check:env": "node scripts/check-env.mjs"
   },
   "dependencies": {
     "@growthbook/growthbook": "^2.0.0",
@@ -29,6 +31,7 @@
     "@remotion/player": "4.0.532",
     "@remotion/renderer": "4.0.532",
     "@supabase/supabase-js": "^2.117.2",
+    "@vercel/blob": "2.8.2",
     "jspdf": "^4.2.1",
     "marked": "^18.0.14",
     "minisearch": "^7.2.0",
@@ -57,6 +60,7 @@
     "node-html-parser": "^7.1.0",
     "playwright-core": "^1.63.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.7"
   }
 }

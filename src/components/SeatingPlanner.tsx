@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { postLead } from "@/lib/lead-client";
 
 // Free lead magnet: a seating calculator that shows chair and table counts
 // instantly, then unlocks a personalized, printable planning checklist in
@@ -120,18 +121,14 @@ export function SeatingPlanner() {
       `Reception seats ${plan.guestSeats} (head table ${plan.head}), ceremony ${ceremony} (${plan.ceremonySeats}), cocktail ${plan.cocktailSeats}.`,
       `${plan.tables} tables (${table}). Estimated chairs to rent: ${plan.rentals}.`,
     ].join(" ");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...data,
-        kind: "waitlist",
-        source: "seating-planner",
-        event_type: eventType,
-        guest_count: guests,
-        event_date: date || undefined,
-        message: summary,
-      }),
+    const res = await postLead({
+      ...data,
+      kind: "waitlist",
+      source: "seating-planner",
+      event_type: eventType,
+      guest_count: guests,
+      event_date: date || undefined,
+      message: summary,
     }).catch(() => null);
     if (res?.ok) return setStatus("done");
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");

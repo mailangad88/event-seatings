@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { trackLead } from "@/lib/analytics";
 import { attributionFields } from "@/lib/attribution";
+import { postLead } from "@/lib/lead-client";
 
 type File = { label: string; file: string; format: string; note: string };
 
@@ -63,16 +64,12 @@ export function DownloadGate({
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const source = `download:${slug}${placement === "page" ? "" : `@${placement}`}`;
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        kind: "waitlist",
-        source,
-        message: `Downloaded: ${title}`,
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      kind: "waitlist",
+      source,
+      message: `Downloaded: ${title}`,
     }).catch(() => null);
     if (res?.ok) {
       try {

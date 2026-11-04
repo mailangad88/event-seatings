@@ -1,8 +1,9 @@
 import { chicagoDay, addDays } from "@/lib/admin-view";
-import { allTasks } from "@/lib/event-tasks";
+import { allTasks, tasksFor } from "@/lib/event-tasks";
 import { sendEmail } from "@/lib/notify";
 import { listLeads, listPartners, updateLead } from "@/lib/store";
 import { unsubscribeUrl } from "@/lib/unsubscribe";
+import { ensurePartLink } from "@/lib/vendor-confirm";
 
 // Daily run (vercel.json cron) that sends the event emails from lib/event-tasks.ts: the two-weeks-out and
 // day-before emails and the thank-you to customers, and order / final-details emails to rental partners
@@ -31,13 +32,21 @@ export async function GET(request: Request) {
   const planned = due.map((t) => ({ lead: t.lead.id, key: t.key, to: t.email!.to, subject: t.email!.subject }));
   let sent = 0;
   if (enabled && !dry) {
+    const partnerMap = new Map(partners.map((p) => [p.vendor_id, p]));
     for (const t of due) {
-      const e = t.email!;
+      let e = t.email!;
+      // Order emails to a rental partner carry their confirmation link, so make it first if the part has none.
+      if (t.key.startsWith("vendor-confirm:") && t.vendor_id && !t.lead.vendor_orders?.[t.vendor_id]?.token) {
+        const target = leads.find((l) => l.id === t.lead.id)!;
+        const link = await ensurePartLink(target, t.vendor_id).catch((err) => console.error("confirm link failed", t.lead.id, err));
+        if (link) e = tasksFor(target, partnerMap, today).find((x) => x.key === t.key)?.email ?? e;
+      }
       const unsub = t.who === "customer" ? unsubscribeUrl(e.to!) : undefined;
       const ok = await sendEmail({
         to: e.to!,
         subject: e.subject,
         text: unsub ? `${e.body}\n\nStop these emails: ${unsub}` : e.body,
+        idempotencyKey: `event-email/${t.lead.id}/${t.key}`,
         unsubscribe: unsub,
       });
       if (!ok) continue;

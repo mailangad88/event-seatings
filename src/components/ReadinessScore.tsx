@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { answerOptions, bandFor, bands, readinessAreas, statementCount, type ReadinessArea } from "@/data/readiness";
+import { postLead } from "@/lib/lead-client";
 
 type Guide = { href: string; label: string };
 type Answers = (number | null)[];
@@ -268,15 +269,11 @@ function EmailResult({ resultText, focus, siteName }: { resultText: string; focu
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...data,
-        kind: "waitlist",
-        source: `seating-readiness:${focus}`,
-        message: `${resultText}\n${window.location.href}`,
-      }),
+    const res = await postLead({
+      ...data,
+      kind: "waitlist",
+      source: `seating-readiness:${focus}`,
+      message: `${resultText}\n${window.location.href}`,
     }).catch(() => null);
     if (res?.ok) return setStatus("done");
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");

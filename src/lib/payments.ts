@@ -40,12 +40,14 @@ export const chargeLabel = () => (chargeMode() === "hold" ? "Refundable booking 
 
 export const newProposalToken = () => randomBytes(16).toString("hex");
 
-const stripe = async (path: string, init: { method?: string; body?: URLSearchParams } = {}) => {
+const stripe = async (path: string, init: { method?: string; body?: URLSearchParams; idempotencyKey?: string } = {}) => {
   const res = await fetch(`https://api.stripe.com/v1/${path}`, {
     method: init.method ?? "GET",
     headers: {
       Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`,
       ...(init.body ? { "Content-Type": "application/x-www-form-urlencoded" } : {}),
+      // Stripe returns the first result for a repeated key, so a double-click can't refund twice.
+      ...(init.idempotencyKey ? { "Idempotency-Key": init.idempotencyKey } : {}),
     },
     body: init.body,
     cache: "no-store",
@@ -106,4 +108,21 @@ export function verifyStripeSignature(payload: string, header: string | null, se
       const exp = Buffer.from(expected, "hex");
       return sig.length === exp.length && timingSafeEqual(sig, exp);
     });
+}
+
+// Refunds the card payment behind a proposal's checkout session, in full. Only ever called from the two-step
+// Refund button in /admin/payments. Returns Stripe's refund id and the amount refunded in USD.
+export async function refundCheckout(sessionId: string, leadId: string): Promise<{ id: string; amount: number; status: string }> {
+  if (!stripeEnabled()) throw new Error("Stripe is not set up");
+  if (!/^cs_[A-Za-z0-9_]+$/.test(sessionId)) throw new Error("Not a Stripe checkout payment");
+  const s = await stripe(`checkout/sessions/${sessionId}`);
+  if (s?.metadata?.lead_id !== leadId) throw new Error("This payment belongs to a different proposal");
+  const intent = typeof s?.payment_intent === "string" ? s.payment_intent : s?.payment_intent?.id;
+  if (!intent || s?.payment_status !== "paid") throw new Error("Stripe has no completed payment for this proposal");
+  const refund = await stripe("refunds", {
+    method: "POST",
+    body: new URLSearchParams({ payment_intent: intent, reason: "requested_by_customer", "metadata[lead_id]": leadId }),
+    idempotencyKey: `refund-${sessionId}`,
+  });
+  return { id: refund.id, amount: (refund.amount ?? 0) / 100, status: refund.status };
 }

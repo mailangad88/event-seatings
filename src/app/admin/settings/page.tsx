@@ -14,7 +14,9 @@ const groups: { title: string; rows: { name: string; what: string; ok: boolean; 
   {
     title: "Saving and alerts",
     rows: [
+      { name: "Lead backup", what: "Private Vercel Blob store. Keeps every lead even with no database, and catches any the database misses.", ok: on("BLOB_READ_WRITE_TOKEN"), keys: "BLOB_READ_WRITE_TOKEN (Vercel > Storage > Blob, Private)" },
       { name: "Database", what: "Keeps leads, vendors and blocked dates between deploys.", ok: on("SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"), keys: "SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY" },
+      { name: "Daily lead check", what: "Sends any lead alert that didn't go out and moves backup leads into the database.", ok: on("CRON_SECRET"), keys: "CRON_SECRET" },
       { name: "Email sending", what: "Confirmations to customers and new-lead alerts to you.", ok: on("RESEND_API_KEY", "NOTIFY_FROM"), keys: "RESEND_API_KEY, NOTIFY_FROM" },
       { name: "Your alert inbox", what: "Where new requests and paid fees are sent.", ok: on("NOTIFY_EMAIL"), keys: "NOTIFY_EMAIL" },
       { name: "Automatic follow-ups", what: "Daily follow-up emails after someone sends a form.", ok: process.env.FOLLOWUPS_ENABLED === "true" && on("CRON_SECRET"), keys: "FOLLOWUPS_ENABLED=true, CRON_SECRET" },
