@@ -15,6 +15,11 @@ export const ago = (iso?: string) => {
   return h < 1 ? `${Math.max(1, Math.round(h * 60))} min ago` : h < 48 ? `${Math.round(h)} h ago` : `${Math.round(h / 24)} days ago`;
 };
 
+// How long a new person has waited for a first reply. People who hear back within minutes book far more
+// often, so the Today page colours the wait: amber after 15 minutes, red after an hour.
+export const waitMinutes = (iso?: string, now = Date.now()) => (iso ? Math.max(0, (now - new Date(iso).getTime()) / 6e4) : 0);
+export const waitClass = (min: number) => (min >= 60 ? "font-semibold text-rose" : min >= 15 ? "font-semibold text-amber" : "text-muted");
+
 export const money0 = (n = 0) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 export const money2 = (n = 0) => n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 

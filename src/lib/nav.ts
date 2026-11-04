@@ -168,6 +168,7 @@ export const menus: Menu[] = [
         title: "For rental companies",
         links: [
           { href: "/partners", label: "Work with us", blurb: "List your rentals with us", icon: "truck" },
+          { href: "/venues-and-planners", label: "Venues and planners", blurb: "Send us families who need rentals", icon: "users" },
           { href: "/vendor-listings", label: "Change a listing", blurb: "Update or remove a listing", icon: "block" },
         ],
       },
