@@ -8,7 +8,7 @@ import { Icon, type IconName } from "./ui/Icon";
 // /book, /pricing, /about and the thank-you screens. No server-only imports: it also renders inside client forms.
 
 const points: [IconName, string][] = [
-  ["quote", "Reads every quote request himself"],
+  ["quote", "Reads every quote request"],
   ["phone", "Calls each rental company to check your date"],
   ["users", "Stays your one contact from the first call to pickup"],
 ];
@@ -39,7 +39,7 @@ export function OwnerCard({ source, compact = false, className = "" }: { source:
       <div className={`flex items-center gap-4 rounded-2xl border border-line bg-surface p-4 text-left ${className}`}>
         <Portrait size={56} />
         <p className="text-sm leading-6">
-          <strong className="font-medium">{owner.name}</strong>, {owner.role.toLowerCase()}, reads every request himself and will be your one
+          <strong className="font-medium">{owner.name}</strong>, {owner.role.toLowerCase()}, reads every request and will be your one
           contact. Questions before then? Email{" "}
           <a href={`mailto:${site.email}`} className="link">{site.email}</a>
           {site.phone && (

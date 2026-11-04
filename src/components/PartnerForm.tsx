@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { site } from "@/lib/site";
 import { attributionFields } from "@/lib/attribution";
 import { track } from "@/lib/analytics";
 import { postLead } from "@/lib/lead-client";
@@ -68,7 +69,7 @@ export function PartnerForm() {
       <div className="card p-8" role="status">
         <p className="display-3">Thanks, we&apos;ve got your details.</p>
         <p className="mt-3 leading-7 text-muted">
-          Angad will call you within one business day to confirm your service area and price sheet, and send the
+          {site.owner.first} will call you within one business day to confirm your service area and price sheet, and send the
           one-page Founding Partner agreement. If a customer enquiry fits your inventory before then, we&apos;ll send it
           straight over.
         </p>

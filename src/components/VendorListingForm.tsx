@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { site } from "@/lib/site";
 import { track } from "@/lib/analytics";
 import { postLead } from "@/lib/lead-client";
 
@@ -47,7 +48,7 @@ export function VendorListingForm() {
         <p className="display-3">Thanks, we&apos;ve got your request.</p>
         <p className="mt-3 leading-7 text-muted">
           Removals are made within 2 business days and we&apos;ll email you when it&apos;s done. For corrections or partnering,
-          Angad will be in touch within one business day.
+          {site.owner.first} will be in touch within one business day.
         </p>
       </div>
     );
