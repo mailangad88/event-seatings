@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { OwnerCard } from "@/components/OwnerCard";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
@@ -56,7 +55,7 @@ const tiers: { title: string; price: string; who: string; points: string[]; feat
 const included: { icon: IconName; title: string; text: string }[] = [
   { icon: "quote", title: "A written all-in quote", text: "Every item at each rental company's own price, with delivery, setup, damage waiver and tax shown for your venue." },
   { icon: "users", title: "Companies named before you pay", text: "Your quote names every rental company, so you can look them up, read their reviews and call them yourself." },
-  { icon: "phone", title: `A call with ${site.owner.first}`, text: `A free ${site.callLength} call before anything is sent. Ask anything about the companies, the plan or the fee.` },
+  { icon: "phone", title: "A call with us", text: `A free ${site.callLength} call before anything is sent. Ask anything about the companies, the plan or the fee.` },
   { icon: "check", title: "Pay after they confirm", text: "You pay our fee only once every rental company has confirmed your date in writing. Not before." },
   { icon: "truck", title: "Morning-of check", text: "On the morning of your event we check every delivery is on its way and call you if anything changes." },
   { icon: "shield", title: "Backup if one cancels", text: `If a company cancels, we find a replacement and cover up to ${BACKUP_CAP_LABEL} of any price difference, or refund our fee.` },
@@ -82,7 +81,7 @@ const direct = [
 const checklist = [
   "You get the full quote in writing, with every company named",
   "You can check each company on Google before you pay",
-  `You talk to ${site.owner.first} on a call before anything is booked`,
+  "You talk to us on a call before anything is booked",
   "Every company confirms your date in writing first",
   "You can cancel for a full refund for 72 hours after paying",
 ];
@@ -260,9 +259,6 @@ export default function PricingPage() {
         <FaqList faqs={faqs} className="max-w-3xl" />
       </Section>
 
-      <Section>
-        <OwnerCard source="pricing-owner" />
-      </Section>
 
       <div className="-mb-32">
         <CallCta source="pricing" />

@@ -29,9 +29,8 @@ export const site = {
     "Elgin",
   ],
   email: "hello@beyondchiavari.com",
-  // The person every customer deals with. Shown in the "Who you'll talk to" block. To add a photo, put a
-  // square picture at public/brand/owner.jpg and set photo to "/brand/owner.jpg"; until then it shows initials.
-  owner: { name: "Isha Kaur", first: "Isha", role: "Founder", photo: "" },
+  // Founder, shown on /press and in the Organization schema.
+  owner: { name: "Isha Kaur" },
   phone: process.env.NEXT_PUBLIC_PHONE ?? "",
   instagram: "https://instagram.com/beyondchiavari",
   pinterest: "https://pinterest.com/beyondchiavari",

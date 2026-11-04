@@ -39,6 +39,10 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-04): owner box removed
+
+- Angad asked to remove the "Who you'll talk to" owner box completely: `OwnerCard` is deleted from every page. The founder on /press and in the schema is now Isha Kaur (`site.owner.name`). "Angad will call you" lines now say "we".
+
 ## Changes in this release (2026-11-04): venues and planners page, lead wait timer
 
 - **New page `/venues-and-planners`**: for halls without furniture, planners, decorators, caterers and DJs to send families to us. Share link (ReferForm), call form (source `venue-partner`), FAQs. No referral fee is promised unless `REFERRAL_REWARD` is set. In the About menu and the sitemap.

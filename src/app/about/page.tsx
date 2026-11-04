@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { OwnerCard } from "@/components/OwnerCard";
 import Image from "next/image";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
@@ -98,9 +97,6 @@ export default function AboutPage() {
         </ul>
       </Section>
 
-      <Section>
-        <OwnerCard source="about-owner" />
-      </Section>
 
       <Section eyebrow="How it works" title="From quote to pickup">
         <ProcessFlow />

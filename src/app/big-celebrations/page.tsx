@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallForm } from "@/components/CallForm";
-import { OwnerCard } from "@/components/OwnerCard";
 import { CategoryTile, Figure, HubFaqs, Icon, IconCards, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
 import { BACKUP_CAP_LABEL, COORDINATION_FEE } from "@/lib/catalog-types";
 import { categoryTile, scenes } from "@/lib/scenes";
@@ -152,9 +151,6 @@ export default function BigCelebrationsPage() {
         />
       </Section>
 
-      <Section>
-        <OwnerCard source="big-celebrations-owner" />
-      </Section>
 
       <section id="tell-us" className="container-x section-y scroll-mt-24">
         <div className="grid gap-12 md:grid-cols-[1fr_1.3fr] md:items-start">
@@ -162,7 +158,7 @@ export default function BigCelebrationsPage() {
             <p className="eyebrow">Free {site.callLength} call</p>
             <h2 className="display-2 mt-3">Tell us about your celebration</h2>
             <p className="lede mt-4">
-              Leave your number and a good time to call. {site.owner.first} will call you back within one business day, talk through
+              Leave your number and a good time to call. We&apos;ll call you back within one business day, talk through
               your venue and guest count, and tell you honestly whether you need us or just one rental company.
             </p>
             <ul className="mt-6 space-y-2 text-sm">

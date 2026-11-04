@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallForm } from "@/components/CallForm";
-import { OwnerCard } from "@/components/OwnerCard";
 import { ReferForm } from "@/components/ReferForm";
 import { Figure, HubFaqs, Icon, IconCards, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
 import { plannerEvents } from "@/lib/event-plan";
@@ -71,7 +70,7 @@ export default function VenuesAndPlannersPage() {
             <a href="#link" className="btn-primary">
               Get a link to share <Icon name="arrow" size={16} />
             </a>
-            <a href="#call" className="link-line">Or talk to {site.owner.first}</a>
+            <a href="#call" className="link-line">Or talk to us first</a>
           </>
         }
         media={
@@ -122,7 +121,7 @@ export default function VenuesAndPlannersPage() {
             <p className="eyebrow">Talk first</p>
             <h2 className="display-2 mt-3">Tell us about your venue or business</h2>
             <p className="lede mt-4">
-              Leave your number and a good time. {site.owner.first} will call within one business day to hear how your events run and
+              Leave your number and a good time. We&apos;ll call within one business day to hear how your events run and
               what your clients usually need.
             </p>
           </div>
@@ -132,9 +131,6 @@ export default function VenuesAndPlannersPage() {
         </div>
       </section>
 
-      <Section>
-        <OwnerCard source="venues-owner" />
-      </Section>
 
       <HubFaqs faqs={faqs} title="Questions from venues and planners" />
     </>

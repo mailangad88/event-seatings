@@ -137,7 +137,7 @@ export default function PartnerTermsPage() {
       <Section eyebrow="Questions" title="About these terms">
         <FaqList faqs={faqs} className="max-w-3xl" />
         <Callout kind="note" title="Questions before you sign?" className="mt-8 max-w-3xl">
-          Email <a href={`mailto:${site.email}`} className="link">{site.email}</a> and {site.owner.first} will call you back. Or{" "}
+          Email <a href={`mailto:${site.email}`} className="link">{site.email}</a> and we&apos;ll call you back. Or{" "}
           <Link href="/partners#apply" className="link">apply in two minutes</Link> and we&apos;ll go through the terms on the call.
         </Callout>
       </Section>

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { OwnerCard } from "@/components/OwnerCard";
 import Link from "@/components/Link";
 import { Reveal } from "@/components/Reveal";
 import { ReadyPackages } from "@/components/ReadyPackages";
@@ -160,10 +159,6 @@ export default function Home() {
         />
       </Section>
 
-      {/* The person behind it: the honest trust signal a new business has. */}
-      <Section>
-        <OwnerCard source="home-owner" />
-      </Section>
 
       {/* FAQ */}
       <Section tone="sand">

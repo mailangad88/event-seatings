@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { OwnerCard } from "./OwnerCard";
 import Link from "@/components/Link";
 import { useEffect, useMemo, useState } from "react";
 import { getChair } from "@/data/chairs";
@@ -352,7 +351,6 @@ export function QuoteForm({
             </li>
           ))}
         </ul>
-        <OwnerCard source="quote-thanks" compact className="mx-auto mt-8 max-w-xl" />
         <BookingCta
           {...contact}
           content="quote-thank-you"
