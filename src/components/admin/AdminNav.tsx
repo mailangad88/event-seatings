@@ -9,6 +9,7 @@ export const adminNav: OfficeNavGroup[] = [
       { href: "/admin", label: "Today", icon: "home" },
       { href: "/admin/alerts", label: "Notifications", icon: "bell" },
       { href: "/admin/calls", label: "Call list", icon: "phone" },
+      { href: "/admin/deliveries", label: "Deliveries", icon: "truck" },
       { href: "/admin/week", label: "This week", icon: "clock" },
       { href: "/admin/calendar", label: "Calendar", icon: "calendar" },
     ],
