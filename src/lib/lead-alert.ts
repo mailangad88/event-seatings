@@ -217,6 +217,11 @@ export function buildLeadAlert(
         tone: lead.opted_out_at ? "bad" : lead.email_consent ? "good" : "note",
       },
       ...opt("Consent recorded", lead.consent_at && centralTime(lead.consent_at)),
+      ...(lead.terms_accepted_at
+        ? [{ label: "Terms", value: `Agreed ${centralTime(lead.terms_accepted_at)} (version ${lead.terms_version ?? "unknown"}).`, tone: "good" } as Row]
+        : lead.kind === "quote"
+          ? [{ label: "Terms", value: "Not agreed yet. They tick the box on the proposal before paying.", tone: "note" } as Row]
+          : []),
     ],
     qualifying: [
       { label: "Lead score", value: `${score.grade} (${score.reasons.join(", ") || "not enough to go on"})` },

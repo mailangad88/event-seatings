@@ -302,3 +302,8 @@ create index if not exists page_views_created_id_idx on page_views (created_at, 
 -- Call script answers (/admin/leads/<id>/script and /admin/calls/new, lib/intake.ts). Safe to run again.
 -- Name, date, guests, town and venue stay in their own columns; everything else asked on the call lives here.
 alter table leads add column if not exists intake jsonb;
+
+-- Customer terms agreement (quote form tick box and proposal page, lib/terms.ts). Safe to run again.
+alter table leads
+  add column if not exists terms_accepted_at timestamptz,
+  add column if not exists terms_version text;

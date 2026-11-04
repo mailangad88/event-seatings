@@ -836,6 +836,14 @@ export function QuoteForm({
             payment and no commitment until a vendor confirms and you approve.{" "}
             <Link href="/booking-promise" className="link" target="_blank">How payments work</Link>
           </p>
+          <label className="mt-4 flex cursor-pointer items-start gap-3 text-sm leading-6">
+            <input type="checkbox" name="terms_agree" value="yes" required className="mt-1 accent-[var(--gold)]" />
+            <span>
+              I agree to the{" "}
+              <Link href="/terms" className="link" target="_blank">Terms and Conditions</Link> and the{" "}
+              <Link href="/privacy" className="link" target="_blank">Privacy Policy</Link>.
+            </span>
+          </label>
           {status === "error" && <p className="mt-2 text-sm text-rose">{error}</p>}
         </div>
         <button className="btn-primary btn-lg" disabled={status === "sending"}>

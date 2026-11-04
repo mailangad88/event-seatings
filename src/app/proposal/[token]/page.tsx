@@ -9,7 +9,8 @@ import { markFeePaid } from "@/lib/proposals";
 import { site } from "@/lib/site";
 import { contact } from "@/lib/contact";
 import { getLeadByProposalToken } from "@/lib/store";
-import { startCheckout } from "./actions";
+import { acceptProposal, startCheckout } from "./actions";
+import { TermsCheckbox } from "./TermsCheckbox";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -146,16 +147,26 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
                   )}
                   <form action={startCheckout}>
                     <input type="hidden" name="token" value={token} />
+                    <TermsCheckbox missing={sp.terms === "missing"} />
                     <button className="btn-primary w-full">Secure my booking</button>
                     <p className="mt-2 text-center text-xs text-muted">Secure card or bank payment by Stripe.</p>
                   </form>
                   </>
-                ) : (
+                ) : sp.accepted === "1" || lead.terms_accepted_at ? (
                   <p className="rounded-xl border border-line p-4 text-muted">
-                    Ready to book? Reply to your coordinator&apos;s email
-                    {site.phone ? <> or call <a href={`tel:${contact.phone}`} className="text-accent">{site.phone}</a></> : null} and we&apos;ll send
-                    a secure payment link.
+                    Thanks, you&apos;ve accepted this quote. We&apos;ll send a secure payment link
+                    {site.phone ? <> shortly, or call <a href={`tel:${contact.phone}`} className="text-accent">{site.phone}</a></> : null}.
                   </p>
+                ) : (
+                  <form action={acceptProposal} className="rounded-xl border border-line p-4">
+                    <input type="hidden" name="token" value={token} />
+                    <p className="text-muted">
+                      Ready to book? Accept your quote and we&apos;ll send a secure payment link
+                      {site.phone ? <>, or call <a href={`tel:${contact.phone}`} className="text-accent">{site.phone}</a></> : null}.
+                    </p>
+                    <TermsCheckbox missing={sp.terms === "missing"} />
+                    <button className="btn-primary w-full">Accept this quote</button>
+                  </form>
                 )}
               </div>
             )}
