@@ -12,7 +12,8 @@ export async function GET(request: Request) {
     getVoteCounts(),
     visitorOk(visitor) ? getVisitorVotes(visitor) : Promise.resolve([]),
   ]);
-  return Response.json({ counts, mine });
+  // The answer holds this visitor's own hearts, so it must not sit in a shared cache.
+  return Response.json({ counts, mine }, { headers: { "Cache-Control": "private, no-store" } });
 }
 
 export async function POST(request: Request) {

@@ -1,5 +1,6 @@
 import "server-only";
-import { existsSync, promises as fs } from "fs";
+import { hasPublicFile } from "@/lib/public-files";
+import { promises as fs } from "fs";
 import { readImageManifest } from "./image-manifest";
 import path from "path";
 import { marked } from "marked";
@@ -99,7 +100,7 @@ const topicRenders: Record<string, string> = {
 export function topicArt(slug: string, fallbackAlt?: string): { src: string; alt: string; render: boolean } {
   const render = topicRenders[slug];
   const entry = render ? readImageManifest()[render] : undefined;
-  if (entry && existsSync(path.join(process.cwd(), "public", entry.src))) {
+  if (entry && hasPublicFile(entry.src)) {
     return { src: entry.src, alt: entry.alt ?? fallbackAlt ?? "", render: true };
   }
   return { src: `/blog/art/${slug}.svg`, alt: fallbackAlt ?? "", render: false };

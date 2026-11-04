@@ -16,27 +16,20 @@ import {
 } from "@/lib/account-auth";
 import { isDisposableEmail } from "@/lib/disposable-email";
 import { sendEmail } from "@/lib/notify";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { originFrom } from "@/lib/request-origin";
 import { site } from "@/lib/site";
 import { addLeadMessage, getAccount, getLead, upsertAccount } from "@/lib/store";
 
 export type LinkState = { status: "idle" | "sent" | "error"; message?: string; devLink?: string };
 
-// Best-effort limit per server instance: 5 sign-in emails per address and 10 per IP each 15 minutes.
-const hits = new Map<string, number[]>();
-function tooMany(key: string, max: number) {
-  const now = Date.now();
-  const recent = (hits.get(key) ?? []).filter((t) => now - t < 15 * 60_000);
-  recent.push(now);
-  hits.set(key, recent);
-  if (hits.size > 5000) hits.clear();
-  return recent.length > max;
+// 5 sign-in emails per address and 10 per IP each 15 minutes (src/lib/rate-limit.ts; shared through Upstash when set).
+async function tooMany(key: string, max: number) {
+  return !(await rateLimit("account-link", key, { limit: max, windowMs: 15 * 60_000 })).allowed;
 }
 
 async function origin() {
-  const h = await headers();
-  const host = h.get("x-forwarded-host") ?? h.get("host");
-  const proto = h.get("x-forwarded-proto") ?? "https";
-  return host ? `${proto}://${host}` : site.url;
+  return originFrom(await headers());
 }
 
 // "Email me a sign-in link". Always answers the same way, whether or not we know the address.
@@ -46,8 +39,8 @@ export async function requestLink(_prev: LinkState, form: FormData): Promise<Lin
   const email = normalEmail(String(form.get("email") ?? ""));
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 200) return { status: "error", message: "Please enter a valid email address." };
   if (isDisposableEmail(email)) return { status: "error", message: "Please use an email address you check, so the link reaches you." };
-  const ip = (await headers()).get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
-  if (tooMany(`e:${email}`, 5) || tooMany(`i:${ip}`, 10)) return { status: "error", message: "Too many tries. Please wait a few minutes and try again." };
+  const ip = clientIp(await headers());
+  if ((await tooMany(`e:${email}`, 5)) || (await tooMany(`i:${ip}`, 10))) return { status: "error", message: "Too many tries. Please wait a few minutes and try again." };
 
   const link = `${await origin()}/account/verify?t=${encodeURIComponent(loginToken(email))}`;
   if (!canEmailLinks()) return { status: "sent", devLink: link }; // local development only (signInOpen checks)

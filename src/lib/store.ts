@@ -208,6 +208,7 @@ async function writeLocal(db: LocalDb) {
 }
 
 export async function setVote(chairSlug: string, visitorId: string, on: boolean) {
+  voteCountsCache = undefined;
   const client = sb();
   if (client) {
     const { error } = on
@@ -238,13 +239,27 @@ async function allVotes(): Promise<Vote[]> {
   return (await readLocal()).votes;
 }
 
+// Vote totals change slowly and every vote button asks for them, so keep them for a minute per server
+// instance instead of reading the whole votes table on each request. A vote on this instance clears it.
+let voteCountsCache: { at: number; counts: Record<string, number> } | undefined;
+const VOTE_COUNTS_TTL = 60_000;
+
 export async function getVoteCounts(): Promise<Record<string, number>> {
+  if (voteCountsCache && Date.now() - voteCountsCache.at < VOTE_COUNTS_TTL) return { ...voteCountsCache.counts };
   const counts: Record<string, number> = {};
   for (const v of await allVotes()) counts[v.chair_slug] = (counts[v.chair_slug] ?? 0) + 1;
-  return counts;
+  voteCountsCache = { at: Date.now(), counts };
+  return { ...counts };
 }
 
 export async function getVisitorVotes(visitorId: string): Promise<string[]> {
+  const client = sb();
+  if (client) {
+    // Just this visitor's rows, so it stays right past the 1,000-row page limit.
+    const { data, error } = await client.from("votes").select("chair_slug").eq("visitor_id", visitorId).limit(1000);
+    if (error) throw error;
+    return (data ?? []).map((v: { chair_slug: string }) => v.chair_slug);
+  }
   return (await allVotes()).filter((v) => v.visitor_id === visitorId).map((v) => v.chair_slug);
 }
 

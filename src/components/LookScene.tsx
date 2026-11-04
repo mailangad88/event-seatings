@@ -1,5 +1,4 @@
-import { existsSync } from "fs";
-import path from "path";
+import { hasPublicFile } from "@/lib/public-files";
 import Image from "next/image";
 import { chairAlt, getChair } from "@/data/chairs";
 import type { Look } from "@/data/looks";
@@ -7,7 +6,7 @@ import renders from "@/data/renders.json";
 
 // True when a /public file is present at build time, so media from other branches can be
 // referenced before it lands without showing a broken image.
-const has = (src?: string): src is string => !!src && existsSync(path.join(process.cwd(), "public", src));
+const has = (src?: string): src is string => hasPublicFile(src);
 
 // Media for a look: its own still and video when they exist (see src/data/looks.ts).
 export function lookMedia(look: Look) {

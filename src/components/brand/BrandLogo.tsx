@@ -6,7 +6,6 @@ import {
   FINIALS,
   FINIAL_R,
   NAME_CAP,
-  NAME_PATH,
   NAME_WIDTH,
   SEAT,
   THIN_RATIO,
@@ -44,11 +43,24 @@ export function BrandMark({ className = "", title }: { className?: string; title
   );
 }
 
-/** The name "BEYOND CHIAVARI" as outlines (caps only, so the box is exactly cap height). Size it with an h-* class. */
+/**
+ * The name "BEYOND CHIAVARI" (caps only, so the box is exactly cap height). Size it with an h-* class.
+ * The outlines live in public/brand/name-mask.svg (same shapes as NAME_PATH) and are used as a CSS mask
+ * filled with --brand-name, so the 13 KB path isn't repeated in every page's HTML and data, and the colour
+ * still flips inside dark bands. Rebuild that file with scripts/brand/name-mask.mjs if NAME_PATH changes.
+ */
 export function BrandName({ className = "" }: { className?: string }) {
+  const mask = "url(/brand/name-mask.svg) center / contain no-repeat";
   return (
-    <svg viewBox={`0 ${-NAME_CAP - 0.5} ${NAME_WIDTH.toFixed(1)} ${(NAME_CAP + 1).toFixed(1)}`} className={className} aria-hidden>
-      <path d={NAME_PATH} fill="var(--brand-name)" />
-    </svg>
+    <span
+      aria-hidden
+      className={`inline-block ${className}`}
+      style={{
+        aspectRatio: `${NAME_WIDTH.toFixed(1)} / ${(NAME_CAP + 1).toFixed(1)}`,
+        backgroundColor: "var(--brand-name)",
+        WebkitMask: mask,
+        mask,
+      }}
+    />
   );
 }
