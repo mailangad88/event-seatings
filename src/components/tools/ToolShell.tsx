@@ -137,7 +137,7 @@ export function ToolShell({
               const ri = toolImage(r);
               return (
                 <li key={r.slug}>
-                  <Link href={`/tools/${r.slug}`} className="card card-hover block overflow-hidden">
+                  <Link href={`/tools/${r.slug}`} className="card card-hover block h-full overflow-hidden">
                     <div className="media aspect-[4/3] rounded-none">
                       <Image src={ri.src} alt={ri.alt} fill sizes="(min-width: 1024px) 22vw, 50vw" className="object-cover" />
                     </div>

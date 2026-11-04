@@ -7,9 +7,12 @@ import { RentalVisual } from "./RentalVisual";
 
 export const itemHref = (i: Pick<CatalogItem, "categoryId" | "id">) => `/rentals/${i.categoryId}/${i.id}`;
 
+// In a grid, cards share 4 rows (subgrid): picture, name, details, price. A name that wraps to two
+// lines moves the details and price down on every card in that row, so the row stays lined up.
+// Outside a grid the subgrid falls back to plain rows.
 export function RentalCard({ item }: { item: CatalogItem }) {
   return (
-    <article className="group relative flex h-full flex-col">
+    <article className="group relative row-span-4 grid h-full grid-rows-subgrid gap-y-0">
       <RentalVisual
         item={item}
         className="aspect-square transition-transform duration-700 ease-out group-hover:scale-[1.02]"
@@ -20,8 +23,7 @@ export function RentalCard({ item }: { item: CatalogItem }) {
         </Link>
       </h3>
       <p className="mt-1 line-clamp-2 text-xs leading-5 text-muted sm:text-sm sm:leading-6">{item.specs}</p>
-      <span className="min-h-3 flex-1" aria-hidden />
-      <p className="mt-auto flex flex-wrap items-baseline gap-x-2 border-t border-line pt-3">
+      <p className="mt-3 flex flex-wrap items-baseline gap-x-2 self-end border-t border-line pt-3">
         <span className="font-heading font-semibold text-xl text-wine sm:text-2xl">{formatPrice(customerPrice(item))}</span>
         <span className="text-xs text-muted">{item.unit === "each" ? "each" : item.unit}</span>
         {item.priceSource === "estimated" && <span className="chip ml-auto">Est.</span>}

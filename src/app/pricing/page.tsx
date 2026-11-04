@@ -158,7 +158,8 @@ export default function PricingPage() {
       <Section eyebrow="The fee" title="What you pay us">
         <ul className="grid gap-5 lg:grid-cols-3">
           {tiers.map((t) => (
-            <li key={t.title} className={`card p-7 ${t.featured ? "ring-2 ring-gold" : ""}`}>
+            // Subgrid: the three cards share rows, so prices, notes and lists start at the same height.
+            <li key={t.title} className={`card row-span-4 grid grid-rows-subgrid gap-y-0 p-7 ${t.featured ? "ring-2 ring-gold" : ""}`}>
               <h3 className="display-3">{t.title}</h3>
               <p className="mt-3 font-heading text-4xl font-semibold tabular-nums">{t.price}</p>
               <p className="mt-2 text-sm text-muted">{t.who}</p>

@@ -69,8 +69,9 @@ export default function DownloadsPage() {
             {downloads
               .filter((d) => d.group === g)
               .map((d) => (
-                <li key={d.slug}>
-                  <Link href={`/downloads/${d.slug}`} className="group block h-full overflow-hidden rounded-2xl border border-line bg-surface hover:border-gold">
+                // Subgrid: cards in a row share rows, so a title on two lines doesn't push only its own text down.
+                <li key={d.slug} className="row-span-4 grid grid-rows-subgrid gap-y-0">
+                  <Link href={`/downloads/${d.slug}`} className="group row-span-4 grid grid-rows-subgrid gap-y-0 overflow-hidden rounded-2xl border border-line bg-surface hover:border-gold">
                     <div className="relative aspect-[4/3] overflow-hidden bg-bg">
                       <Image
                         src={coverImage(d.slug)}
@@ -80,11 +81,9 @@ export default function DownloadsPage() {
                         className="object-cover object-top transition-transform group-hover:scale-[1.02]"
                       />
                     </div>
-                    <div className="p-5">
-                      <p className="text-xs uppercase tracking-widest text-gold">{[...new Set(d.files.map((f) => f.format))].join(" + ")}</p>
-                      <h2 className="display-3 mt-2">{d.title}</h2>
-                      <p className="mt-2 text-sm text-muted">{d.blurb}</p>
-                    </div>
+                    <p className="px-5 pt-5 text-xs uppercase tracking-widest text-gold">{[...new Set(d.files.map((f) => f.format))].join(" + ")}</p>
+                    <h2 className="display-3 mt-2 px-5">{d.title}</h2>
+                    <p className="mt-2 px-5 pb-5 text-sm text-muted">{d.blurb}</p>
                   </Link>
                 </li>
               ))}
