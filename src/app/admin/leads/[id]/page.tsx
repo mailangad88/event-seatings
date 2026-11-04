@@ -9,6 +9,7 @@ import { usd, type QuoteLine } from "@/lib/catalog-types";
 import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJourney";
 import { AfterEnquiry } from "@/components/admin/AfterEnquiry";
 import { buildLeadAlert } from "@/lib/lead-alert";
+import { intakeFields, intakeProgress, intakeText, showValue } from "@/lib/intake";
 import { getLead, getVisitorActivity, leadStatuses, listLeadsByEmail, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
 import { amountDue, chargeLabel, stripeEnabled } from "@/lib/payments";
 import { site } from "@/lib/site";
@@ -71,7 +72,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
   if (!lead) notFound();
   const partners = new Map(partnerRows.map((p) => [p.vendor_id, p]));
   const [earlier, afterEvents] = await Promise.all([
-    listLeadsByEmail(lead.email).catch(() => [] as Lead[]),
+    lead.email ? listLeadsByEmail(lead.email).catch(() => [] as Lead[]) : Promise.resolve([] as Lead[]),
     lead.visitor_id ? getVisitorActivity(lead.visitor_id).catch(() => []) : Promise.resolve([]),
   ]);
   const alert = buildLeadAlert(lead, { earlier, partners, siteUrl: site.url });
@@ -86,6 +87,8 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
     groups.push({ vendor: assigned, lines: [], cost: 0, value: 0, backups: [] });
   }
   const first = lead.name?.split(" ")[0] ?? "there";
+  const script = intakeProgress(lead);
+  const callAnswers = intakeFields.filter((f) => !f.core && lead.intake?.answers[f.id] !== undefined && showValue(f, lead.intake.answers[f.id]));
   const mail = `mailto:${lead.email}?subject=${encodeURIComponent(`Your ${lead.event_type ?? "event"} rental quote`)}&body=${encodeURIComponent(`Hi ${first},\n\nThanks for sending your list. `)}`;
 
   return (
@@ -103,7 +106,10 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a href={mail} className="btn-primary">Email</a>
+          <Link href={`/admin/leads/${lead.id}/script`} className="btn-primary">
+            Call script{script.missing.length ? ` (${script.missing.length} to ask)` : ""}
+          </Link>
+          {lead.email && <a href={mail} className="btn-ghost">Email</a>}
           {lead.phone && <a href={`tel:${lead.phone}`} className="btn-ghost">Call</a>}
           {lead.phone && lead.sms_consent && <a href={`sms:${lead.phone}`} className="btn-ghost">Text</a>}
         </div>
@@ -115,7 +121,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
             <h2 className="display-3">Contact and event</h2>
             <dl className="mt-3 grid gap-x-10 text-sm md:grid-cols-2">
               <div>
-                <Row label="Email"><a href={`mailto:${lead.email}`} className="text-accent">{lead.email}</a></Row>
+                <Row label="Email">{lead.email ? <a href={`mailto:${lead.email}`} className="text-accent">{lead.email}</a> : "Not given yet"}</Row>
                 <Row label="Phone">{lead.phone}</Row>
                 <Row label="Texting OK">{lead.phone ? (lead.sms_consent ? "Yes" : "No consent") : undefined}</Row>
                 <Row label="Calling OK">{lead.phone ? (lead.call_consent ? "Yes" : "Not asked") : undefined}</Row>
@@ -136,6 +142,32 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
               <p className="mt-4 text-sm">Chairs: {lead.chairs.map((s) => getChair(s)?.name ?? s).join(", ")}</p>
             ) : null}
             {lead.quiz_styles?.length ? <p className="mt-2 text-sm">Style quiz: {lead.quiz_styles.join(", ")}</p> : null}
+          </section>
+
+          <section className={card} aria-labelledby="from-the-call">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h2 id="from-the-call" className="display-3">From the call</h2>
+              <Link href={`/admin/leads/${lead.id}/script`} className="text-sm text-accent">
+                {lead.intake ? "Open call script" : "Start call script"} →
+              </Link>
+            </div>
+            <p className="mt-1 text-sm text-muted">
+              {script.answered} of {script.total} must-have answers.
+              {script.missing.length > 0 && ` Still to ask: ${script.missing.map((f) => f.label.toLowerCase()).join(", ")}.`}
+            </p>
+            {callAnswers.length > 0 && (
+              <dl className="mt-3 grid gap-x-10 text-sm md:grid-cols-2">
+                {callAnswers.map((f) => (
+                  <Row key={f.id} label={f.label}>{showValue(f, lead.intake!.answers[f.id])}</Row>
+                ))}
+              </dl>
+            )}
+            {callAnswers.length > 0 && (
+              <details className="mt-2 text-sm">
+                <summary className="cursor-pointer text-muted">Copy as text</summary>
+                <pre className="mt-2 rounded-lg bg-surface-2 p-3 text-xs whitespace-pre-wrap">{intakeText(lead.intake!.answers)}</pre>
+              </details>
+            )}
           </section>
 
           <LeadOutreach alert={alert} />
