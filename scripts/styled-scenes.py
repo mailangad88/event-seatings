@@ -169,8 +169,8 @@ INVENTORY_PROMPT = (
     "if the name gives a size or quantity, show one unit (or the set it names). {count} on a seamless warm "
     "off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, "
     "three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look "
-    "like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team or licensed "
-    "character theme, show a generic unbranded version in similar colours with no characters. No people, no "
+    "like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed "
+    "character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no "
     "props, no text, no logos, no brand names, no watermark."
 )
 NOT_PHYSICAL = re.compile(r"\b(attendant|setup service|set-up service|delivery|fee|deposit|waiver|labor|labour)\b", re.I)
