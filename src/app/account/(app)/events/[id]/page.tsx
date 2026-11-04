@@ -41,7 +41,14 @@ export default async function AccountEvent(props: PageProps<"/account/events/[id
         title={e.title}
         actions={e.proposalUrl && e.fee.status === "unpaid" ? <Link href={e.proposalUrl} className="btn-primary">Review quote and book</Link> : undefined}
       />
-      <EventFacts e={e} />
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <EventFacts e={e} />
+        {(e.date || e.parts.some((p) => p.delivery?.date || p.pickup?.date)) && (
+          <a href={`/account/events/${e.id}/calendar`} className="btn-ghost btn-sm" download>
+            <Icon name="calendar" size={16} /> Add dates to my calendar
+          </a>
+        )}
+      </div>
 
       <Card>
         <p className="mb-4 text-sm"><span className="font-semibold">Where things stand:</span> <span className="text-muted">{e.stageNote}</span></p>

@@ -4,6 +4,7 @@ import { MyEvents } from "@/components/myevents/MyEvents";
 import { FaqList, Figure, JsonLd, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
 import { routeExists } from "@/lib/routes";
 import { site } from "@/lib/site";
+import { signInOpen } from "@/lib/account-auth";
 
 const title = "My Events: Free Event Countdown, Checklist and Reminders";
 const description = `Save your wedding, party or corporate event in ${site.name}'s free planner: a countdown, a checklist dated back from your event, Chicago weather and sunset for your date, calendar reminders and a share link. No account needed.`;
@@ -18,7 +19,9 @@ export const metadata: Metadata = {
 const faqs: Faq[] = [
   {
     q: "Do I need an account to save my event?",
-    a: "No. Your event is saved in this browser on this device. To open it somewhere else, use \"Share with partner or planner\" and open the link on your other device, then tap Save.",
+    a: `No. Your event is saved in this browser on this device. To open it somewhere else, use "Share with partner or planner" and open the link on your other device, then tap Save.${
+      signInOpen() ? " If you'd like it on every device, sign in to your account (no password, we email a link) and open Plans and ideas: your plans and saved photos are copied there." : ""
+    }`,
   },
   {
     q: "Where does the checklist come from?",
