@@ -93,34 +93,40 @@ describe("event tasks", () => {
 });
 
 describe("commission statements", () => {
-  it("charges nothing in the free window and 5% after it, grouped by event month", () => {
-    const partner: VendorPartner = {
-      vendor_id: "v1",
-      status: "signed",
-      activity: [{ at: "2026-01-01T00:00:00.000Z", type: "status", text: "Referral deal signed" }],
-    };
+  const signed: VendorPartner = {
+    vendor_id: "v1",
+    status: "signed",
+    activity: [{ at: "2026-01-01T00:00:00.000Z", type: "status", text: "Referral deal signed" }],
+  };
+
+  it("charges nothing on the first booked orders after signing, then the rate, grouped by event month", () => {
     const leads = [
-      makeLead({ id: "free", assigned_vendor: "v1", status: "booked", created_at: "2026-02-01T00:00:00.000Z", event_date: "2026-06-10", quote_cost: 1000 }),
+      makeLead({ id: "before", assigned_vendor: "v1", status: "booked", created_at: "2025-12-01T00:00:00.000Z", event_date: "2026-06-05", quote_cost: 500 }),
+      makeLead({ id: "free1", assigned_vendor: "v1", status: "booked", created_at: "2026-02-01T00:00:00.000Z", event_date: "2026-06-10", quote_cost: 1000 }),
+      makeLead({ id: "free2", assigned_vendor: "v1", status: "booked", created_at: "2026-03-01T00:00:00.000Z", event_date: "2026-07-01", quote_cost: 700 }),
       makeLead({ id: "paid", assigned_vendor: "v1", status: "booked", created_at: "2026-05-01T00:00:00.000Z", event_date: "2026-06-20", quote_cost: 2000 }),
-      makeLead({ id: "other-month", assigned_vendor: "v1", status: "booked", created_at: "2026-05-01T00:00:00.000Z", event_date: "2026-07-01", quote_cost: 333.33 }),
+      makeLead({ id: "paid2", assigned_vendor: "v1", status: "booked", created_at: "2026-05-02T00:00:00.000Z", event_date: "2026-07-02", quote_cost: 333.33 }),
       makeLead({ id: "unbooked", assigned_vendor: "v1", status: "new", event_date: "2026-06-01", quote_cost: 9999 }),
     ];
-    const s = statements(leads, [partner]);
+    const s = statements(leads, [signed]);
     expect(s.map((x) => x.month)).toEqual(["2026-07", "2026-06"]);
     const june = s.find((x) => x.month === "2026-06")!;
-    expect(june.orders.map((o) => [o.lead.id, o.free])).toEqual([["free", true], ["paid", false]]);
-    expect(june.rentals).toBe(3000);
+    expect(june.orders.map((o) => [o.lead.id, o.free])).toEqual([["before", true], ["free1", true], ["paid", false]]);
+    expect(june.rentals).toBe(3500);
     expect(june.commission).toBe(2000 * COMMISSION_RATE);
-    expect(s.find((x) => x.month === "2026-07")!.commission).toBe(16.67);
+    const july = s.find((x) => x.month === "2026-07")!;
+    expect(july.orders.map((o) => o.free)).toEqual([true, false]);
+    expect(july.commission).toBe(Math.round(333.33 * COMMISSION_RATE * 100) / 100);
   });
 
-  it("starts the free window at the first order when no deal date is logged", () => {
+  it("counts the free orders from the first booking when no deal date is logged", () => {
     const leads = [
       makeLead({ id: "a", assigned_vendor: "v2", status: "booked", created_at: "2026-01-01T00:00:00.000Z", event_date: "2026-03-01", quote_cost: 100 }),
-      makeLead({ id: "b", assigned_vendor: "v2", status: "booked", created_at: "2026-06-01T00:00:00.000Z", event_date: "2026-03-02", quote_cost: 100 }),
+      makeLead({ id: "b", assigned_vendor: "v2", status: "booked", created_at: "2026-02-01T00:00:00.000Z", event_date: "2026-03-02", quote_cost: 100 }),
+      makeLead({ id: "c", assigned_vendor: "v2", status: "booked", created_at: "2026-06-01T00:00:00.000Z", event_date: "2026-03-03", quote_cost: 100 }),
     ];
     const [st] = statements(leads, []);
-    expect(st.orders.map((o) => o.free)).toEqual([true, false]);
-    expect(st.commission).toBe(5);
+    expect(st.orders.map((o) => o.free)).toEqual([true, true, false]);
+    expect(st.commission).toBe(100 * COMMISSION_RATE);
   });
 });

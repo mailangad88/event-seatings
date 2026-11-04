@@ -8,7 +8,7 @@ import { PartnerBadge, VendorContact } from "@/components/admin/VendorContact";
 import { OfficeTabs, pickTab } from "@/components/office/OfficeTabs";
 import { chicagoDay, money0, prettyDay } from "@/lib/admin-view";
 import { usd } from "@/lib/catalog-types";
-import { COMMISSION_RATE, FREE_DAYS } from "@/lib/commissions";
+import { COMMISSION_RATE, FREE_ORDERS } from "@/lib/commissions";
 import { isPartConfirmed, partStateBadge, partStateLabel, vendorParts } from "@/lib/orders";
 import { listLeads, listPartners, partnerStatuses } from "@/lib/store";
 import { saveVendorPartner } from "../actions";
@@ -89,7 +89,7 @@ export default async function VendorPage(props: PageProps<"/admin/vendors/[id]">
             <Panel title="Deal">
               <dl className="space-y-2 text-sm">
                 <div className="flex justify-between gap-3"><dt className="text-muted">Status</dt><dd><PartnerBadge status={p?.status} /></dd></div>
-                <div className="flex justify-between gap-3"><dt className="text-muted">Terms</dt><dd className="text-right">{p?.referral_terms || `Free for ${FREE_DAYS} days, then ${Math.round(COMMISSION_RATE * 100)}% of booked rentals`}</dd></div>
+                <div className="flex justify-between gap-3"><dt className="text-muted">Terms</dt><dd className="text-right">{p?.referral_terms || `First ${FREE_ORDERS} booked orders free, then ${Math.round(COMMISSION_RATE * 1000) / 10}% of booked rentals`}</dd></div>
                 <div className="flex justify-between gap-3"><dt className="text-muted">Last contacted</dt><dd>{p?.last_contacted_at ? prettyDay(p.last_contacted_at) : "Never"}</dd></div>
                 <div className="flex justify-between gap-3"><dt className="text-muted">Carries</dt><dd className="text-right">{v.categories.map((c) => c.replace(/-/g, " ")).join(", ") || "–"}</dd></div>
               </dl>

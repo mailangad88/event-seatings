@@ -3,12 +3,14 @@ import Link from "@/components/Link";
 import { PartnerForm } from "@/components/PartnerForm";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
 import { scenes } from "@/lib/scenes";
+import { getPackage } from "@/lib/packages";
+import { PARTNER_TERMS, partnerFeeLine, partnerFeeOn, partnerFreeCount, partnerFreeOrders, partnerRatePct } from "@/lib/partner-terms";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Become a Rental Partner: Chicago Event Rental Leads",
-  description: `Chicago-area rental companies: get event bookings with items and quantities already listed from ${site.name}. Free for 90 days, then 5% only on orders we send that book. No monthly fee, no exclusivity.`,
+  description: `Chicago-area rental companies: get event bookings with items and quantities already listed from ${site.name}. First ${partnerFreeCount} booked orders free, then ${partnerRatePct} only on orders we send that book. No monthly fee, no exclusivity.`,
   alternates: { canonical: "/partners" },
 });
 
@@ -52,14 +54,34 @@ const steps = [
   { icon: "check" as const, title: "Book and deliver", text: "We introduce the customer. Your contract, your deposit, your crew." },
 ];
 
+const T = PARTNER_TERMS;
+
 const terms = [
   ["Joining", "Free. No setup fee, no monthly fee."],
-  ["Founding Partner period", "0% commission on bookings from enquiries we send in your first 90 days."],
-  ["After 90 days", "5% of the rental subtotal (excluding delivery, damage waiver and tax), only on orders we send that book."],
-  ["Paid", "Monthly statement, 15 days after the end of the month the event happens in."],
-  ["Your pricing", "You set it. We quote customers from your price sheet, valid 14 days."],
-  ["Exclusivity", "None. Leave any time with 30 days' notice."],
-  ["What we ask", "General liability insurance with a certificate on file, availability replies within 4 business hours, and weekly status on open enquiries."],
+  ["Founding Partner orders", `Nothing on ${partnerFreeOrders} after you sign.`],
+  ["After that", `${partnerRatePct} of the rental subtotal (not delivery, setup labor, damage waiver or tax), only on orders we send that book and only after the event happens.`],
+  ["Rate lock", `Your rate stays at ${partnerRatePct} for ${T.rateLockMonths} months from signing.`],
+  ["Paid", `Monthly statement by event month, due ${T.netDays} days after we send it. ACH, Zelle or check.`],
+  ["Your pricing", `You set it and we never mark it up. We quote customers from your price sheet, valid ${T.quoteValidDays} days.`],
+  ["Customers we introduce", `Count as ours for ${T.attributionMonths} months, including their next events.`],
+  ["Exclusivity", `None. Leave any time with ${T.noticeDays} days' notice.`],
+  ["What we ask", `Availability replies within ${T.replyHours} business hours, weekly status on open orders, and an insurance certificate for our file.`],
+];
+
+// What rental companies already pay to find customers. Ranges reported by companies that pay them (Nov 2026).
+const compare: [string, string, string][] = [
+  ["Wedding directory listing", "About $200 to $450 a month in mid-size cities, more in Chicago, often on a 12-month contract", "Every month, booked or not"],
+  ["Pay-per-lead apps", "About $20 to $100 for each customer contact", "For every contact, booked or not"],
+  ["Search ads", "About $2 to $6 a click for rental searches", "For every click, booked or not"],
+  [site.name, `Nothing on your first ${partnerFreeCount} bookings, then ${partnerRatePct} of the rentals`, "Only when an order books and the event happens"],
+];
+
+const asks: { icon: IconName; title: string; text: string }[] = [
+  { icon: "quote", title: "Your price sheet", text: "Or confirm the prices on your website are current. Plus minimums, delivery zones, deposit and damage waiver." },
+  { icon: "phone", title: "Who takes orders", text: "A name, cell and email for availability checks, and a backup person." },
+  { icon: "calendar", title: "Quick replies", text: `Yes, no or a suggested swap within ${T.replyHours} business hours. Same day for events less than 14 days out.` },
+  { icon: "shield", title: "An insurance certificate", text: "General liability, kept on file before your first booking." },
+  { icon: "spark", title: "Photos, if you say yes", text: "Your own photos of your items, credited to you. Only with your written OK, and you can take them back any time." },
 ];
 
 const faqs: Faq[] = [
@@ -90,13 +112,15 @@ const faqs: Faq[] = [
 ];
 
 export default function PartnersPage() {
+  const sample = getPackage("wedding-150");
+  const sampleRentals = sample?.rentals ?? 3800;
   return (
     <>
       <PageHero
         breadcrumbs={[{ name: "Rental partners", href: "/partners" }]}
         eyebrow="For rental companies"
         title="Get booked Chicago events sent to you."
-        intro={`${site.name} sends Chicago-area rental companies event bookings with the items and quantities already listed, from planners who have already chosen items and quantities. It's free for 90 days, then 5% only on orders that book. No monthly fees, no exclusivity, and you keep your own prices, contract and deposit.`}
+        intro={`${site.name} sends Chicago-area rental companies event bookings with the items and quantities already listed, It's ${partnerFeeLine}. No monthly fees, no exclusivity, and you keep your own prices, contract and deposit.`}
         actions={
           <>
             <a href="#apply" className="btn-primary">Apply as a partner</a>
@@ -120,8 +144,8 @@ export default function PartnersPage() {
         </ul>
         <Callout kind="tip" title="Compare it with what you pay now" className="mt-8">
           A featured directory listing costs every month whether it books or not, and search ads charge for every
-          click. With us, a booked $5,000 wedding order costs you $250 after your first 90 days, and nothing before
-          then.
+          click. With us, a booked $5,000 wedding order costs you ${partnerFeeOn(5000).toLocaleString()} after your first {partnerFreeCount} bookings, and nothing on
+          those.
         </Callout>
       </Section>
 
@@ -139,6 +163,52 @@ export default function PartnersPage() {
         </p>
       </Section>
 
+      <Section eyebrow="An example" title="What one order looks like">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="card p-7">
+            <p className="text-sm text-muted">A sample order (not a real customer). The email you get, subject line:</p>
+            <p className="mt-1 font-medium">Availability: Saturday, June 12, Naperville, 150 guests</p>
+            <ul className="mt-5 space-y-2 leading-7 text-muted">
+              <li>Wedding reception at a banquet hall, ground floor, loading dock</li>
+              <li>{sample?.highlights.slice(0, 3).join(", ") ?? "Chairs, tables and linens"}</li>
+              <li>Delivery Friday after 2 pm, pickup Sunday morning</li>
+              <li>Quoted to the customer at your price sheet total: ${sampleRentals.toLocaleString()} in rentals</li>
+            </ul>
+            <p className="mt-5 leading-7">You reply <strong>yes</strong>, <strong>no</strong> or <strong>yes with changes</strong>. A no costs nothing.</p>
+          </div>
+          <div className="card p-7">
+            <h3 className="display-3">Who pays what on that order</h3>
+            <dl className="mt-5 divide-y divide-line">
+              <div className="flex justify-between gap-4 py-3"><dt className="text-muted">Customer pays you, under your contract</dt><dd className="font-medium">${sampleRentals.toLocaleString()} + your delivery, waiver and tax</dd></div>
+              <div className="flex justify-between gap-4 py-3"><dt className="text-muted">You pay us if it&apos;s one of your first {partnerFreeCount}</dt><dd className="font-medium">$0</dd></div>
+              <div className="flex justify-between gap-4 py-3"><dt className="text-muted">You pay us after that ({partnerRatePct})</dt><dd className="font-medium">${partnerFeeOn(sampleRentals).toLocaleString()}</dd></div>
+              <div className="flex justify-between gap-4 py-3"><dt className="text-muted">If the event is cancelled and refunded</dt><dd className="font-medium">$0</dd></div>
+            </dl>
+            <p className="mt-4 text-sm text-muted">The customer pays our coordination fee to us, on its own line. Your price is never changed.</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="sand" eyebrow="Compare" title="What you pay now to find customers">
+        <div className="overflow-x-auto rounded-2xl border border-line bg-surface">
+          <table className="w-full min-w-[36rem] text-left">
+            <thead className="border-b border-line text-sm text-muted">
+              <tr><th className="px-5 py-3 font-medium">Where customers come from</th><th className="px-5 py-3 font-medium">Typical cost</th><th className="px-5 py-3 font-medium">When you pay</th></tr>
+            </thead>
+            <tbody className="divide-y divide-line">
+              {compare.map(([k, cost, when], i) => (
+                <tr key={k} className={i === compare.length - 1 ? "bg-gold-soft" : ""}>
+                  <th scope="row" className="px-5 py-4 font-medium">{k}</th>
+                  <td className="px-5 py-4 leading-7 text-muted">{cost}</td>
+                  <td className="px-5 py-4 leading-7 text-muted">{when}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-sm text-muted">Directory, app and ad costs are ranges other rental and event companies report paying. Your own costs may differ.</p>
+      </Section>
+
       <Section id="terms" eyebrow="Founding Partner terms" title="Simple, and free until it works">
         <dl className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface">
           {terms.map(([k, v]) => (
@@ -148,6 +218,24 @@ export default function PartnersPage() {
             </div>
           ))}
         </dl>
+        <p className="mt-6 leading-7 text-muted">
+          Every term fits on one page you can print or forward:{" "}
+          <Link href="/partners/terms" className="link-line">read the one-page partner terms</Link>.
+        </p>
+      </Section>
+
+      <Section eyebrow="What we need from you" title="Five things to get started">
+        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {asks.map((r) => (
+            <li key={r.title} className="card p-6">
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-gold-soft text-gold">
+                <Icon name={r.icon} size={22} />
+              </span>
+              <h3 className="mt-4 font-medium">{r.title}</h3>
+              <p className="mt-2 leading-7 text-muted">{r.text}</p>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section id="apply" tone="sand" eyebrow="Apply" title="Become a Founding Partner" intro="Takes two minutes. We'll call you within one business day.">
@@ -164,7 +252,7 @@ export default function PartnersPage() {
         <Callout title="We use published rates, and you can opt out any time">
           Our price estimates use rates rental companies publish on their own websites. We never show your company name, and most
           companies listed haven&apos;t signed anything with us. To correct or remove your items, use the{" "}
-          <a href="/vendor-listings" className="text-accent">listing request form</a>. Removals take up to 2 business days.
+          <a href="/vendor-listings" className="text-accent">listing request form</a>. Removals take up to {T.removalDays} business days.
         </Callout>
       </Section>
 

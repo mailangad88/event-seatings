@@ -5,6 +5,7 @@ import { VendorOnboarding } from "@/components/tools/VendorOnboarding";
 import { Callout, FaqList, Icon, PageHero, QuoteCta, Section, StepFlow } from "@/components/ui";
 import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { partnerFreeOrders, partnerRatePct } from "@/lib/partner-terms";
 
 const title = "Vendor Onboarding: List Your Rental Company";
 const description = `Chicago-area rental companies: sign up with ${site.name} in about five minutes. Tell us what you rent, where you deliver and when, upload your price list, and start getting event orders with items and quantities listed.`;
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
-  { q: "What does it cost to join?", a: "Nothing to join and no monthly fee. The Founding Partner terms on our partners page explain the commission: 0% in your first 90 days, then 5% of the rental subtotal only on orders we send that book." },
+  { q: "What does it cost to join?", a: `Nothing to join and no monthly fee. The commission is in our one-page partner terms: nothing on ${partnerFreeOrders}, then ${partnerRatePct} of the rental subtotal only on orders we send that book.` },
   { q: "What do I need to get started?", a: "Your company details, the categories you rent, where you deliver, your usual lead time and a price list. A link to your website price page is fine, or fill in our CSV template." },
   { q: "When does my listing go live?", a: "After we call to confirm your details and you've checked how your items and prices look. Nothing is published without your OK." },
   { q: "Can I check on my application?", a: "Yes. When you send the form you get a link to your own status page, and the same link is in your confirmation email." },
