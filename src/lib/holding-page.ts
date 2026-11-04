@@ -28,6 +28,16 @@ export function pathStaysOpen(pathname: string) {
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 
+// Google Search Console and Bing Webmaster Tools check the home page for these tags, so the holding page carries them too.
+function verificationTags() {
+  const tags: string[] = [];
+  const google = process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
+  const bing = process.env.NEXT_PUBLIC_BING_VERIFICATION?.trim();
+  if (google) tags.push(`<meta name="google-site-verification" content="${esc(google)}">`);
+  if (bing) tags.push(`<meta name="msvalidate.01" content="${esc(bing)}">`);
+  return tags.join("\n");
+}
+
 export function holdingPageHtml() {
   const phone = esc(site.phone);
   const tel = site.phone.replace(/[^\d+]/g, "");
@@ -40,6 +50,7 @@ export function holdingPageHtml() {
 <title>We'll be back soon | ${esc(site.name)}</title>
 <meta name="description" content="${esc(site.name)} is updating its prices and will be back soon. Call or text ${phone} for help with your event rentals.">
 <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+${verificationTags()}
 <style>
 :root{--bg:#f6efe4;--surface:#fff;--ink:#1f1916;--muted:#5c5247;--line:#dccfbb;--wine:#7a1f2e;--wine-deep:#5c1521;--gold:#835a12;--green:#2d6a3e;--rose:#a3302b;color-scheme:light}
 *{box-sizing:border-box}

@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { logoDataUri, logoWidth } from "@/components/brand/logo-svg";
+import { site } from "@/lib/site";
 
 export const ogSize = { width: 1200, height: 630 };
 
@@ -31,8 +32,8 @@ export function ogCard({ eyebrow, title, footer }: { eyebrow: string; title: str
           {after ? <span>{after}</span> : null}
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 28, color: "#a89d87" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-          <img src={logoDataUri("dark")} width={logoWidth(56)} height={56} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoDataUri("dark")} alt={`${site.name} logo`} width={logoWidth(56)} height={56} />
           <span>{footer}</span>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { logoDataUri, logoWidth } from "@/components/brand/logo-svg";
+import { site } from "@/lib/site";
 
 export const alt = "Beyond Chiavari logo: event rentals in Chicago and the suburbs";
 export const size = { width: 1200, height: 630 };
@@ -22,8 +23,7 @@ export default function OpengraphImage() {
           fontFamily: "serif",
         }}
       >
-        {/* eslint-disable-next-line jsx-a11y/alt-text */}
-        <img src={logoDataUri("light")} width={logoWidth(120)} height={120} />
+        <img src={logoDataUri("light")} alt={`${site.name} logo`} width={logoWidth(120)} height={120} />
         <div style={{ fontSize: 64, lineHeight: 1.1, display: "flex", flexDirection: "column" }}>
           <span>Chairs, tables, linens and tents</span>
           <span style={{ color: "#7a1f2e" }}>for every Chicago event.</span>

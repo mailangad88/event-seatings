@@ -1,3 +1,4 @@
+import { vendorPageRobots } from "@/lib/vendor-pages";
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { Callout, FaqList, Figure, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
@@ -10,6 +11,8 @@ export const metadata: Metadata = seo({
   title: "Rental Partner Terms on One Page",
   description: `The full terms for Chicago-area rental companies that take orders from ${site.name}: ${partnerRatePct} of the rental subtotal after ${partnerFreeOrders}, only on orders that book, paid monthly. We pay your full price-sheet rates, your contract, no exclusivity.`,
   alternates: { canonical: "/partners/terms" },
+  // For rental companies only: kept out of search and AI answers so customers don't land here (see src/lib/vendor-pages.ts).
+  robots: vendorPageRobots,
 });
 
 const T = PARTNER_TERMS;

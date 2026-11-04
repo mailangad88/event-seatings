@@ -2,8 +2,20 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 
 // Search engines and AI answer engines are all welcome; only private routes are blocked.
-const aiBots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Google-Extended", "Applebot-Extended"];
-const disallow = ["/admin", "/api", "/render", "/proposal", "/event-details", "/reviews/write", "/dl/*.pdf$", "/dl/*.xlsx$", "/dl/*.csv$"];
+// Bing, DuckDuckGo, Yahoo and Copilot all use Bingbot, which follows the "*" rule.
+const aiBots = [
+  // OpenAI (ChatGPT search, training, and links people click inside ChatGPT)
+  "GPTBot", "OAI-SearchBot", "ChatGPT-User",
+  // Anthropic (Claude)
+  "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai",
+  // Perplexity
+  "PerplexityBot", "Perplexity-User",
+  // Google Gemini and AI Overviews, Apple Intelligence, Microsoft Copilot
+  "Google-Extended", "GoogleOther", "Applebot", "Applebot-Extended", "bingbot",
+  // Other answer engines and the open web archive many AI models learn from
+  "Amazonbot", "Meta-ExternalAgent", "Meta-ExternalFetcher", "DuckAssistBot", "MistralAI-User", "cohere-ai", "YouBot", "CCBot",
+];
+const disallow = ["/admin", "/api", "/account", "/render", "/proposal", "/event-details", "/partners/status", "/reviews/write", "/dl/*.pdf$", "/dl/*.xlsx$", "/dl/*.csv$"];
 
 export default function robots(): MetadataRoute.Robots {
   return {

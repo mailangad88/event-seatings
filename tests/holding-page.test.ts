@@ -22,7 +22,7 @@ describe("holding page switch", () => {
   });
 
   it("keeps admin, accounts, proposals, search files and static files open", () => {
-    for (const p of ["/admin", "/admin/leads", "/account", "/proposal/abc", "/robots.txt", "/sitemap.xml", "/brand/logo.svg", "/favicon.ico"]) {
+    for (const p of ["/admin", "/admin/leads", "/account", "/proposal/abc", "/robots.txt", "/sitemap.xml", "/llms.txt", "/BingSiteAuth.xml", "/828031dd25f8c09a964b03bc54b05dcc.txt", "/brand/logo.svg", "/favicon.ico"]) {
       expect(pathStaysOpen(p), p).toBe(true);
     }
     for (const p of ["/", "/rentals/chairs", "/pricing", "/quote", "/accounting-tips"]) {

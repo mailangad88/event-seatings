@@ -1,3 +1,4 @@
+import { vendorPageRobots } from "@/lib/vendor-pages";
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { VendorListingForm } from "@/components/VendorListingForm";
@@ -10,6 +11,8 @@ export const metadata: Metadata = seo({
   title: "For Rental Companies: How We List Prices, and How to Opt Out",
   description: `How ${site.name} uses Chicago-area rental companies' published rates, why your company name is never shown, and how to correct or remove your items in one step.`,
   alternates: { canonical: "/vendor-listings" },
+  // For rental companies only: kept out of search and AI answers so customers don't land here (see src/lib/vendor-pages.ts).
+  robots: vendorPageRobots,
 });
 
 const facts: { icon: IconName; title: string; text: string }[] = [

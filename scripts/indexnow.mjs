@@ -13,6 +13,12 @@ if (!urls.length) {
   const xml = await (await fetch(`${base}/sitemap.xml`)).text();
   urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 }
+// While the "we'll be back" page is on, pages answer 503; sending them now would just waste the crawl.
+const home = await fetch(`${base}/`, { redirect: "follow" }).catch(() => null);
+if (!home || home.status !== 200) {
+  console.error(`${base}/ answered ${home?.status ?? "nothing"}. Turn the site back on (remove SITE_PAUSED) before pinging IndexNow.`);
+  process.exit(1);
+}
 const keyCheck = await fetch(`${base}/${KEY}.txt`).then((r) => r.text()).catch(() => "");
 if (keyCheck.trim() !== KEY) {
   console.error(`Key file not live at ${base}/${KEY}.txt yet. Deploy first (and point the domain).`);

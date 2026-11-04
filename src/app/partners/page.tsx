@@ -1,3 +1,4 @@
+import { vendorPageRobots } from "@/lib/vendor-pages";
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { PartnerForm } from "@/components/PartnerForm";
@@ -12,6 +13,8 @@ export const metadata: Metadata = seo({
   title: "Become a Rental Partner: Chicago Event Rental Leads",
   description: `Chicago-area rental companies: get event bookings with items and quantities already listed from ${site.name}. First ${partnerFreeCount} booked orders free, then ${partnerRatePct} only on orders we send that book. No monthly fee, no exclusivity.`,
   alternates: { canonical: "/partners" },
+  // For rental companies only: kept out of search and AI answers so customers don't land here (see src/lib/vendor-pages.ts).
+  robots: vendorPageRobots,
 });
 
 const reasons: { icon: IconName; title: string; text: string }[] = [

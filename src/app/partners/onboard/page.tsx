@@ -1,3 +1,4 @@
+import { vendorPageRobots } from "@/lib/vendor-pages";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "@/components/Link";
@@ -16,6 +17,8 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/partners/onboard" },
+  // For rental companies only: kept out of search and AI answers so customers don't land here (see src/lib/vendor-pages.ts).
+  robots: vendorPageRobots,
   openGraph: { title, description, url: "/partners/onboard", images: [{ url: hero.src, alt: hero.alt }] },
 };
 
