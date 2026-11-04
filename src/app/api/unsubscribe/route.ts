@@ -1,3 +1,4 @@
+import { limitRequest } from "@/lib/rate-limit";
 import { optOutEmail } from "@/lib/store";
 import { verifyUnsubscribe } from "@/lib/unsubscribe";
 import { site } from "@/lib/site";
@@ -25,7 +26,11 @@ const page = (title: string, body: string) =>
     { headers: { "content-type": "text/html; charset=utf-8" } },
   );
 
+const limit = { limit: 20, windowMs: 10 * 60_000 };
+
 export async function GET(request: Request) {
+  const blocked = await limitRequest(request, "unsubscribe", limit);
+  if (blocked) return blocked;
   const { ok } = await handle(request);
   return ok
     ? page("You're unsubscribed", "You won't get any more automated emails from us. If you sent a quote request, we may still reply to it personally once.")
@@ -33,6 +38,8 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  const blocked = await limitRequest(request, "unsubscribe", limit);
+  if (blocked) return blocked;
   const { ok } = await handle(request);
   return Response.json({ ok }, { status: ok ? 200 : 400 });
 }

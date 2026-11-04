@@ -10,6 +10,7 @@ import { accountsEnabled } from "./account-auth";
 import type { Review } from "./reviews";
 import { listLeadsByEmail, listPartners, type Lead } from "./store";
 import { unsubscribeUrl } from "./unsubscribe";
+import { log } from "@/lib/log";
 
 // All email goes through Resend and only when RESEND_API_KEY is set. Owner alerts also need NOTIFY_EMAIL;
 // anything sent to a visitor also needs NOTIFY_FROM on a verified sending domain (never the resend.dev test sender).
@@ -97,8 +98,8 @@ export async function notifyOwner(lead: Lead): Promise<boolean> {
   if (!process.env.RESEND_API_KEY || !to) return false;
 
   const [earlier, partners] = await Promise.all([
-    listLeadsByEmail(lead.email).catch(() => [] as Lead[]),
-    listPartners().catch(() => []),
+    listLeadsByEmail(lead.email).catch((err) => (log.warn("lead_alert_history_failed", { leadId: lead.id, err }), [] as Lead[])),
+    listPartners().catch((err) => (log.warn("lead_alert_partners_failed", { leadId: lead.id, err }), [])),
   ]);
   const alert = buildLeadAlert(lead, { earlier, partners: new Map(partners.map((p) => [p.vendor_id, p])), siteUrl: site.url });
   const text = leadAlertText(alert);
@@ -218,6 +219,6 @@ export async function notifyOwnerOfReview(review: Review) {
     "",
     `Publish or hide: ${site.url}/admin/reviews`,
   ].join("\n");
-  const html = await render(createElement(NewReviewEmail, { rating: review.rating, name: review.name, body: review.body, verified: review.verified })).catch(() => undefined);
+  const html = await render(createElement(NewReviewEmail, { rating: review.rating, name: review.name, body: review.body, verified: review.verified })).catch((err) => (log.warn("review_email_render_failed", { err }), undefined));
   await sendEmail({ to, subject, text, html });
 }

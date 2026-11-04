@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import { EVENTS_KEY, daysUntil } from "@/lib/my-events";
+import { EVENTS_KEY, daysUntil } from "@/lib/my-events-key";
 
 // Header link to /my-events that shows the countdown to the visitor's next saved event, so a return
 // visit opens with "My events · 42 days". Reads the same browser storage as the dashboard.

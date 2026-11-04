@@ -3,7 +3,8 @@
 // Pure helpers only (no React), shared by the dashboard and its tests.
 import { planStages, plannerEvents, timeline, type PlanInput, type PlanStepKind, type SettingId, type StyleId } from "./event-plan";
 
-export const EVENTS_KEY = "bc-events-v1";
+import { EVENTS_KEY, daysUntil } from "./my-events-key";
+export { EVENTS_KEY, daysUntil };
 export const PLANNER_KEYS = ["bc-planner-v2", "bc-planner-v1"]; // written by the /quote planner (EventPlanner.tsx), newest first
 
 export type SavedEvent = {
@@ -72,13 +73,6 @@ export function shiftDays(iso: string, days: number) {
 }
 
 const localIso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-
-export function daysUntil(iso?: string, today = new Date()) {
-  if (!iso) return undefined;
-  const t = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
-  const d = new Date(`${iso}T00:00:00`).getTime();
-  return Math.round((d - t) / 864e5);
-}
 
 export function progress(e: SavedEvent, steps = checklist(e)) {
   const all = steps.flatMap((s) => s.tasks);

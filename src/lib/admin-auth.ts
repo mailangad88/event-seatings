@@ -3,7 +3,7 @@
 // POSTed to any URL and would otherwise skip the proxy's /admin matcher.
 
 // Constant-time compare so response timing doesn't leak how much of the password matched.
-function safeEqual(a: string, b: string) {
+export function safeEqual(a: string, b: string) {
   const enc = new TextEncoder();
   const x = enc.encode(a);
   const y = enc.encode(b);
@@ -18,7 +18,8 @@ export function checkAdmin(authorization: string | null): AdminCheck {
   const password = process.env.ADMIN_PASSWORD;
   if (!password) return process.env.NODE_ENV === "development" ? "ok" : "unconfigured";
   const [scheme, encoded] = (authorization ?? "").split(" ");
-  if (scheme !== "Basic" || !encoded) return "denied";
+  // The scheme name is case-insensitive (RFC 7617).
+  if (scheme?.toLowerCase() !== "basic" || !encoded) return "denied";
   try {
     const decoded = atob(encoded);
     return safeEqual(decoded.slice(decoded.indexOf(":") + 1), password) ? "ok" : "denied";
