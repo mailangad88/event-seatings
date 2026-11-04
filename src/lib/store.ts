@@ -82,7 +82,11 @@ export type Lead = {
   // One part per rental partner on the order (vendor_id of the item lines): its confirmation link
   // /vendor/confirm/<token>, the partner's answer, and delivery / pickup / payment marks (lib/orders.ts).
   vendor_orders?: VendorOrders;
+  // Messages between the renter (in /account) and our team (in /admin/messages), oldest first.
+  messages?: LeadMessage[];
 } & Partial<Record<TrackingField, string>>;
+
+export type LeadMessage = { at: string; from: "customer" | "team"; text: string; read_at?: string };
 
 export type FeeStatus = "unpaid" | "paid" | "refunded";
 
@@ -153,7 +157,22 @@ export type VendorPartner = {
   updated_at?: string;
 };
 
-type LocalDb = { votes: Vote[]; leads: Lead[]; views?: PageView[]; partners?: VendorPartner[] };
+// A renter's sign-in record (/account). Keyed by lower-case email; their events are the leads with that email.
+// saved_events / saved_ideas mirror the browser's My events plans and idea board so they follow the renter
+// to any device. last_login_at makes each emailed sign-in link work once.
+export type CustomerAccount = {
+  email: string;
+  created_at: string;
+  name?: string;
+  phone?: string;
+  last_login_at?: string;
+  saved_events?: unknown[];
+  saved_ideas?: unknown[];
+  updated_at?: string;
+};
+export type AccountPatch = Partial<Omit<CustomerAccount, "email" | "created_at">>;
+
+type LocalDb = { votes: Vote[]; leads: Lead[]; views?: PageView[]; partners?: VendorPartner[]; accounts?: CustomerAccount[] };
 
 let supabase: SupabaseClient | null | undefined;
 function sb() {
@@ -304,6 +323,7 @@ export type LeadPatch = Partial<
     | "quote_subtotal"
     | "quote_cost"
     | "vendor_orders"
+    | "messages"
   >
 >;
 
@@ -469,4 +489,45 @@ export async function savePartner(vendorId: string, patch: PartnerPatch, log: Om
   const db = await readLocal();
   db.partners = [...(db.partners ?? []).filter((p) => p.vendor_id !== vendorId), row as VendorPartner];
   await writeLocal(db);
+}
+
+export async function getAccount(email: string): Promise<CustomerAccount | undefined> {
+  const key = email.trim().toLowerCase();
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("customer_accounts").select("*").eq("email", key).maybeSingle();
+    if (error) throw error;
+    return data ?? undefined;
+  }
+  return (await readLocal()).accounts?.find((a) => a.email === key);
+}
+
+// Creates the account on first use, otherwise merges the patch in.
+export async function upsertAccount(email: string, patch: AccountPatch): Promise<CustomerAccount> {
+  const key = email.trim().toLowerCase();
+  const now = new Date().toISOString();
+  const existing = await getAccount(key);
+  const row: CustomerAccount = { ...(existing ?? { email: key, created_at: now }), ...patch, updated_at: now };
+  const client = sb();
+  if (client) {
+    const { error } = await client.from("customer_accounts").upsert(row, { onConflict: "email" });
+    if (error) throw error;
+    return row;
+  }
+  const db = await readLocal();
+  db.accounts = [...(db.accounts ?? []).filter((a) => a.email !== key), row];
+  await writeLocal(db);
+  return row;
+}
+
+// Adds one message to a lead's thread (renter or team) and returns the new list.
+export async function addLeadMessage(id: string, from: LeadMessage["from"], text: string) {
+  const lead = await getLead(id);
+  if (!lead) throw new Error(`Lead ${id} not found`);
+  const now = new Date().toISOString();
+  // Replying marks the other side's messages as read.
+  const messages = (lead.messages ?? []).map((m) => (m.from !== from && !m.read_at ? { ...m, read_at: now } : m));
+  messages.push({ at: now, from, text: text.slice(0, 4000) });
+  await updateLead(id, { messages }, [{ type: "note", text: from === "customer" ? "Customer sent a message from their account." : "Team replied in the customer's account." }]);
+  return messages;
 }
