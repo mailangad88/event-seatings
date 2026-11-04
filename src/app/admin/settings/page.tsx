@@ -36,7 +36,7 @@ const groups: { title: string; rows: { name: string; what: string; ok: boolean; 
     title: "Calls and contact",
     rows: [
       { name: "Booking link", what: "The 15-minute call scheduler on /book and in emails.", ok: on("NEXT_PUBLIC_BOOKING_URL"), keys: "NEXT_PUBLIC_BOOKING_URL" },
-      { name: "Phone number", what: "Shown in the header, footer and emails.", ok: on("NEXT_PUBLIC_PHONE"), keys: "NEXT_PUBLIC_PHONE" },
+      { name: "Phone number", what: `Shown in the header, footer and emails. Now ${site.phone}${process.env.NEXT_PUBLIC_PHONE ? "" : " (default in lib/site.ts)"}.`, ok: true, keys: "NEXT_PUBLIC_PHONE (optional, overrides the default)" },
       { name: "Business hours", what: "Lets the site promise a reply within an hour during those hours.", ok: on("NEXT_PUBLIC_BUSINESS_HOURS"), keys: "NEXT_PUBLIC_BUSINESS_HOURS" },
       { name: "HubSpot", what: "Copies each lead into HubSpot.", ok: on("HUBSPOT_ACCESS_TOKEN"), keys: "HUBSPOT_ACCESS_TOKEN" },
     ],

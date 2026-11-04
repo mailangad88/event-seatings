@@ -5,14 +5,19 @@ import { site } from "./site";
 // These are NEXT_PUBLIC_ values, so they are safe to read in the browser.
 
 const digits = (v: string | undefined) => (v ?? "").replace(/[^\d+]/g, "");
+// US numbers in +1XXXXXXXXXX form, whatever way they were typed.
+const e164 = (v: string | undefined) => {
+  const d = digits(v);
+  return /^\d{10}$/.test(d) ? `+1${d}` : /^1\d{10}$/.test(d) ? `+${d}` : d;
+};
 
 export const contact = {
   // HubSpot account ID (the number in your HubSpot URL). Turns on HubSpot live chat + chatbot.
   hubspotPortalId: (process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID ?? "").replace(/\D/g, ""),
   // Business phone in +1XXXXXXXXXX form. Powers "Call us".
-  phone: digits(process.env.NEXT_PUBLIC_PHONE),
+  phone: e164(site.phone),
   // Number that receives texts, if different from the call line (e.g. an OpenPhone/Quo number).
-  smsPhone: digits(process.env.NEXT_PUBLIC_SMS_PHONE ?? process.env.NEXT_PUBLIC_PHONE),
+  smsPhone: e164(process.env.NEXT_PUBLIC_SMS_PHONE || site.phone),
   // WhatsApp number, digits with country code (e.g. 16305550123).
   whatsapp: digits(process.env.NEXT_PUBLIC_WHATSAPP).replace("+", ""),
   // Calendly / Cal.com / HubSpot Meetings link for the free seating call.

@@ -7,6 +7,7 @@ import { Icon } from "@/components/ui/Icon";
 import { getSession, signInOpen } from "@/lib/account-auth";
 import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { contact } from "@/lib/contact";
 import { viewSample } from "../../actions";
 
 export const dynamic = "force-dynamic";
@@ -44,7 +45,7 @@ export default async function SignIn(props: PageProps<"/account/sign-in">) {
             ) : (
               <p className="rounded-xl border border-line p-4 text-sm text-muted">
                 Online accounts open soon. Until then your coordinator sends updates by email
-                {site.phone ? <> or call <a href={`tel:${site.phone}`} className="link">{site.phone}</a></> : null}. You can still{" "}
+                {site.phone ? <> or call <a href={`tel:${contact.phone}`} className="link">{site.phone}</a></> : null}. You can still{" "}
                 <Link href="/my-events" className="link">plan your event</Link> on this device.
               </p>
             )}
