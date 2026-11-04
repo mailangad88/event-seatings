@@ -564,7 +564,7 @@ export function EventPlanner({
                 aria-label="Number of guests"
                 value={a.guests || ""}
                 onChange={(e) => setA((p) => ({ ...p, guests: Math.min(5000, Math.max(0, Math.floor(Number(e.target.value)))) }))}
-                className="w-40 border-b-2 border-gold bg-transparent font-heading font-semibold text-6xl tabular-nums outline-none"
+                className="w-40 border-b-2 border-gold bg-transparent font-heading font-semibold text-6xl tabular-nums outline-none transition-shadow focus:shadow-[0_2px_0_0_var(--gold)]"
               />
               <span className="pb-3 text-lg text-muted">guests</span>
             </div>

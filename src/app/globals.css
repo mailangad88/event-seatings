@@ -221,9 +221,13 @@ p, li, dd, figcaption {
   }
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
+/* Default keyboard focus ring. In the base layer so a component can swap it for its own
+   (for example a pill-shaped email box that rings the whole pill instead of the bare input). */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -334,6 +338,15 @@ p, li, dd, figcaption {
 /* ---------- Forms ---------- */
 @utility field {
   @apply w-full rounded-xl border border-line bg-surface px-4 py-3 text-base text-ink shadow-[inset_0_1px_2px_rgb(0_0_0/0.03)] transition-colors placeholder:text-muted/60 hover:border-ink/40 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none;
+}
+/* Rounded box that holds a bare input plus buttons (email + Join, search, quantity stepper).
+   The whole pill gets the focus ring when its text box is focused, so no square box shows inside it. */
+@utility field-pill {
+  @apply rounded-full border border-line bg-surface transition-[border-color,box-shadow] has-[input:focus]:border-accent has-[input:focus]:ring-2 has-[input:focus]:ring-accent/25;
+}
+/* Underline-only text box. On focus the line turns gold and thickens (no box drawn around it). */
+@utility field-line {
+  @apply w-full border-0 border-b border-line bg-transparent px-0 text-ink outline-none transition-[border-color,box-shadow] placeholder:text-muted/70 focus:border-gold focus:shadow-[0_1px_0_0_var(--gold)];
 }
 @utility label {
   @apply mb-1.5 block text-sm font-medium text-ink;

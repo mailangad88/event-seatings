@@ -65,7 +65,7 @@ export function OfficeShell({
               <OfficeMobileNav nav={nav} counts={counts} root={root} />
             </div>
             {search && (
-              <form action={search.action} role="search" className="ml-auto flex w-full max-w-sm items-center gap-2 rounded-full border border-line bg-surface px-4 lg:ml-0">
+              <form action={search.action} role="search" className="field-pill ml-auto flex w-full max-w-sm items-center gap-2 px-4 lg:ml-0">
                 <Icon name="search" size={16} className="shrink-0 text-muted" />
                 <label htmlFor="office-search" className="sr-only">{search.placeholder}</label>
                 <input id="office-search" name="q" type="search" placeholder={search.placeholder} className="min-h-10 w-full bg-transparent text-sm outline-none placeholder:text-muted" />
