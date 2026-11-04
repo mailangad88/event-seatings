@@ -1,11 +1,17 @@
+import { headers } from "next/headers";
 import { adminNav } from "@/components/admin/AdminNav";
 import { OfficeShell } from "@/components/office/OfficeShell";
 import type { NavCounts } from "@/components/office/OfficeNav";
+import { checkAdmin } from "@/lib/admin-auth";
 import { adminSnapshot } from "@/lib/admin-snapshot";
 
 // Back office shell: dark sidebar, top bar with lead search and the notifications bell, light canvas.
-// The password check lives in src/proxy.ts (pages) and in each Server Action.
+// The password check lives in src/proxy.ts (pages) and in each Server Action. This layout checks it again
+// (before loading any lead data) so a change to the proxy matcher can't quietly open the back office.
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  if (checkAdmin((await headers()).get("authorization")) !== "ok") {
+    return <p className="mx-auto max-w-xl px-4 py-24 text-center text-muted">Please sign in with the admin password.</p>;
+  }
   const snap = await adminSnapshot().catch(() => undefined);
   const counts: NavCounts = {};
   if (snap) {
