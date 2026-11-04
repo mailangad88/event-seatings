@@ -105,6 +105,8 @@ export function LeadAlertEmail({ alert: a, siteUrl = site.url }: { alert: LeadAl
               <Text style={{ fontSize: 14, margin: "12px 0 0" }}>
                 <Link href={a.adminUrl} style={{ color: brand.ink, textDecoration: "underline" }}>Open the full record</Link>
                 <span style={{ color: brand.muted }}> · </span>
+                <Link href={`${a.adminUrl}/script`} style={{ color: brand.ink, textDecoration: "underline" }}>Open the call script</Link>
+                <span style={{ color: brand.muted }}> · </span>
                 <Link href={reply} style={{ color: brand.ink, textDecoration: "underline" }}>Reply with the opener</Link>
               </Text>
             </Card>

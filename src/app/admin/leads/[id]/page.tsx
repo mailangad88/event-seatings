@@ -9,7 +9,8 @@ import { usd, type QuoteLine } from "@/lib/catalog-types";
 import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJourney";
 import { AfterEnquiry } from "@/components/admin/AfterEnquiry";
 import { buildLeadAlert } from "@/lib/lead-alert";
-import { intakeFields, intakeProgress, intakeText, showValue } from "@/lib/intake";
+import { intakeFields, intakeProgress, intakeText, proposalEmail, showValue, vendorDetails } from "@/lib/intake";
+import { LeadFlow } from "@/components/admin/LeadFlow";
 import { getLead, getVisitorActivity, leadStatuses, listLeadsByEmail, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
 import { amountDue, chargeLabel, stripeEnabled } from "@/lib/payments";
 import { site } from "@/lib/site";
@@ -59,10 +60,11 @@ function vendorOrder(lead: Lead, lines: QuoteLine[]) {
     `Event: ${lead.event_type ?? "Event"} on ${day(lead.event_date)}`,
     `Location: ${[lead.venue, lead.city].filter(Boolean).join(", ") || "TBD"}`,
     `Guests: ${lead.guest_count ?? "TBD"}`,
+    ...vendorDetails(lead),
     "",
     ...lines.map((l) => `${l.qty} × ${l.name} (${l.unit})`),
     "",
-    "Please confirm availability, delivery and setup fees.",
+    "Please confirm availability, delivery and setup fees. We'll send the street address and the on-site contact once it's booked.",
   ].join("\n");
 }
 
@@ -115,7 +117,9 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
         </div>
       </div>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_24rem]">
+      <LeadFlow lead={lead} current="lead" />
+
+      <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_24rem]">
         <div className="space-y-6">
           <section className={card}>
             <h2 className="display-3">Contact and event</h2>
@@ -147,9 +151,12 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
           <section className={card} aria-labelledby="from-the-call">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 id="from-the-call" className="display-3">From the call</h2>
-              <Link href={`/admin/leads/${lead.id}/script`} className="text-sm text-accent">
-                {lead.intake ? "Open call script" : "Start call script"} →
-              </Link>
+              <span className="flex flex-wrap gap-4 text-sm">
+                {script.missing.length > 0 && <Link href={`/admin/leads/${lead.id}/script#ask`} className="text-accent">Ask what&apos;s missing by email or text →</Link>}
+                <Link href={`/admin/leads/${lead.id}/script`} className="text-accent">
+                  {lead.intake ? "Open call script" : "Start call script"} →
+                </Link>
+              </span>
             </div>
             <p className="mt-1 text-sm text-muted">
               {script.answered} of {script.total} must-have answers.
@@ -297,6 +304,14 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
             {lead.proposal_token ? (
               <div className="mt-4 space-y-3 text-sm">
                 <p className="break-all rounded-lg bg-gold-soft/40 p-3 font-mono text-xs">{`${site.url}/proposal/${lead.proposal_token}`}</p>
+                {lead.email && lead.fee_status !== "paid" && (() => {
+                  const m = proposalEmail(lead, `${site.url}/proposal/${lead.proposal_token}`, process.env.OWNER_NAME || "Angad");
+                  return (
+                    <a href={`mailto:${lead.email}?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body)}`} className="btn-primary btn-sm">
+                      Email the quote to {first === "there" ? "them" : first}
+                    </a>
+                  );
+                })()}
                 <p>
                   Fee: <strong>{lead.fee_status === "paid" ? "Paid" : lead.fee_status === "refunded" ? "Refunded" : "Not paid"}</strong>
                   {" · "}{usd(lead.fee_amount ?? amountDue(lead))}

@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 // Search engines and AI answer engines are all welcome; only private routes are blocked.
 const aiBots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Google-Extended", "Applebot-Extended"];
-const disallow = ["/admin", "/api", "/render", "/proposal", "/reviews/write", "/dl/*.pdf$", "/dl/*.xlsx$", "/dl/*.csv$"];
+const disallow = ["/admin", "/api", "/render", "/proposal", "/event-details", "/reviews/write", "/dl/*.pdf$", "/dl/*.xlsx$", "/dl/*.csv$"];
 
 export default function robots(): MetadataRoute.Robots {
   return {

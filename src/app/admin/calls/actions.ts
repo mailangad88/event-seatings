@@ -1,5 +1,6 @@
 "use server";
 
+import { createHash } from "crypto";
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -9,6 +10,7 @@ import { callLogText, callTitles, isCallOutcome, type CallKind } from "@/lib/cal
 import { changedAnswers, intakeText, parseIntakeForm, prefillIntake, splitAnswers, type Intake } from "@/lib/intake";
 import { scoreLead } from "@/lib/lead-score";
 import { log as logLine } from "@/lib/log";
+import { sendEmail } from "@/lib/notify";
 import { getLead, saveNewLead, statusLabel, updateLead, type Lead, type LeadActivity, type LeadPatch, type NewLead } from "@/lib/store";
 
 // Server Actions can be POSTed to from any URL, so each one checks the admin password itself.
@@ -163,4 +165,29 @@ export async function createCallLead(formData: FormData) {
   const { lead: saved } = await saveNewLead(lead, { id: text(formData.get("submission_id"), 64) });
   revalidateLead(saved.id);
   redirect(`/admin/leads/${saved.id}/script?saved=new`);
+}
+
+// Sends the "a few quick questions" email from the call script and logs it on the timeline.
+export async function sendDetailsEmail(formData: FormData) {
+  await requireAdmin();
+  const id = text(formData.get("id"), 64);
+  const subject = text(formData.get("subject"), 200);
+  const body = typeof formData.get("body") === "string" ? String(formData.get("body")).trim().slice(0, 6000) : "";
+  const lead = await getLead(id);
+  if (!lead || !lead.email || !subject || !body) redirect(`/admin/leads/${id}/script?sent=no#ask`);
+  const ok = await sendEmail({ to: lead.email, subject, text: body, idempotencyKey: `details-ask/${id}/${createHash("sha256").update(subject + body).digest("hex").slice(0, 16)}` });
+  if (!ok) redirect(`/admin/leads/${id}/script?sent=no#ask`);
+  const patch: LeadPatch = {};
+  const log: Omit<LeadActivity, "at">[] = [{ type: "email", text: `Sent "${subject}":\n${body}` }];
+  if ((lead.status ?? "new") === "new") {
+    patch.status = "contacted";
+    log.push({ type: "status", text: `Stage: ${statusLabel(lead.status)} → ${statusLabel("contacted")}` });
+  }
+  if (!lead.follow_up_at) {
+    patch.follow_up_at = addDays(chicagoDay(), 2);
+    log.push({ type: "follow_up", text: `Follow-up set for ${patch.follow_up_at}` });
+  }
+  await updateLead(id, patch, log);
+  revalidateLead(id);
+  redirect(`/admin/leads/${id}/script?sent=1`);
 }

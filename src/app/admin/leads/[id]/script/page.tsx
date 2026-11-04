@@ -3,12 +3,16 @@ import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AdminHeader } from "@/components/admin/AdminUi";
 import { CallScript } from "@/components/admin/CallScript";
+import { LeadFlow } from "@/components/admin/LeadFlow";
+import { OutreachPanel } from "@/components/admin/OutreachPanel";
+import { detailsLink } from "@/lib/details-link";
+import { site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
 import { ago, eventLine, prettyDay } from "@/lib/admin-view";
 import { usd } from "@/lib/catalog-types";
-import { prefillIntake } from "@/lib/intake";
+import { buildOutreach, prefillIntake } from "@/lib/intake";
 import { getLead, statusLabel } from "@/lib/store";
-import { saveCallScript } from "../../../calls/actions";
+import { saveCallScript, sendDetailsEmail } from "../../../calls/actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Call script", robots: { index: false } };
@@ -20,7 +24,10 @@ export default async function CallScriptPage(props: PageProps<"/admin/leads/[id]
   if (!lead || lead.kind === "partner") notFound();
   const lines = lead.items ?? [];
   const who = lead.name || lead.email || lead.phone || "this customer";
-  const saved = sp.saved === "1" ? "Saved. The answers are on the lead and in its timeline." : sp.saved === "new" ? "Call saved as a new lead. Finish anything you missed below." : "";
+  const link = detailsLink(lead.id);
+  const outreach = buildOutreach(lead, { link, from: process.env.OWNER_NAME || "Angad", phone: site.phone || undefined });
+  const canSend = Boolean(process.env.RESEND_API_KEY && process.env.NOTIFY_FROM);
+  const saved = sp.sent === "1" ? "Email sent and logged on the timeline. Follow-up set for 2 days from now if there wasn't one." : sp.sent === "no" ? "" : sp.saved === "1" ? "Saved. The answers are on the lead and in its timeline." : sp.saved === "new" ? "Call saved as a new lead. Finish anything you missed below." : "";
 
   return (
     <div className="container-x py-10">
@@ -49,6 +56,13 @@ export default async function CallScriptPage(props: PageProps<"/admin/leads/[id]
         />
       </div>
 
+      <LeadFlow lead={lead} current="script" />
+
+      {sp.sent === "no" && (
+        <p role="alert" className="mt-6 rounded-xl bg-rose-soft px-4 py-3 text-sm text-rose">
+          The email didn&apos;t send. Check RESEND_API_KEY and NOTIFY_FROM in Vercel, or use Open in my email app.
+        </p>
+      )}
       {saved && (
         <p role="status" className="mt-6 rounded-xl bg-green-soft px-4 py-3 text-sm text-green">
           {saved}
@@ -81,6 +95,21 @@ export default async function CallScriptPage(props: PageProps<"/admin/leads/[id]
           <Link href={`/admin/leads/${lead.id}/quote`} className="mt-3 inline-block text-sm text-accent">Edit quote →</Link>
         </section>
       </div>
+
+      <OutreachPanel
+        leadId={lead.id}
+        opener={outreach.opener}
+        subject={outreach.subject}
+        email={outreach.email}
+        text={outreach.text}
+        to={lead.email || undefined}
+        phone={lead.phone}
+        smsOk={!!lead.sms_consent}
+        link={link}
+        canSend={canSend}
+        asks={outreach.asks.map((f) => f.label.toLowerCase())}
+        action={sendDetailsEmail}
+      />
 
       <CallScript action={saveCallScript} prefilled={prefillIntake(lead)} leadId={lead.id} />
     </div>

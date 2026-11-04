@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { changedAnswers, intakeProgress, keyFields, parseIntakeForm, prefillIntake, splitAnswers } from "@/lib/intake";
+import { buildOutreach, changedAnswers, intakeProgress, keyFields, parseIntakeForm, prefillIntake, splitAnswers, vendorDetails } from "@/lib/intake";
+import { detailsToken, leadFromDetailsToken } from "@/lib/details-link";
 
 const form = (entries: [string, string][]) => {
   const fd = new FormData();
@@ -73,5 +74,45 @@ describe("changedAnswers", () => {
     const before = prefillIntake({ name: "Sam", message: "Planner: Party, 40 guests, Park or public space, Simple package." });
     const after = parseIntakeForm(form([["f_name", "Sam"], ["f_venue_type", "Park or public space"], ["f_colors", "Red"]]));
     expect([...changedAnswers(before, after)].sort()).toEqual(["colors", "venue_type"]);
+  });
+});
+
+describe("buildOutreach", () => {
+  const lead = {
+    name: "Maria Lopez",
+    event_type: "Graduation party",
+    event_date: "2027-06-12",
+    guest_count: 120,
+    city: "Naperville",
+    message: "Planner: Graduation party, 120 guests, Backyard or home, Simple package.",
+    items: [{ id: "a", name: "Chair", category: "Chairs", unit: "each", qty: 120, unit_price: 3, line_total: 360, vendor_id: "v", vendor_price: 3 }],
+  };
+
+  it("greets them by name, names their event and asks only what's missing", () => {
+    const o = buildOutreach(lead, { link: "https://example.com/event-details/x", from: "Angad" });
+    expect(o.opener).toContain("Hi Maria");
+    expect(o.opener).toContain("graduation party on Saturday, June 12");
+    expect(o.email).toContain("https://example.com/event-details/x");
+    const ids = o.asks.map((f) => f.id);
+    expect(ids).toContain("email");
+    expect(ids).not.toContain("event_date");
+    expect(ids).not.toContain("venue_type");
+    expect(ids).not.toContain("next_step");
+  });
+
+  it("vendor details leave out the street address and on-site contact", () => {
+    const lines = vendorDetails({ ...lead, intake: { answers: { address: "1 Main St", onsite_contact: "Bob 555", dropoff_window: "Friday 3pm" }, saved_at: "" } });
+    expect(lines.join("\n")).toContain("Earliest drop-off: Friday 3pm");
+    expect(lines.join("\n")).not.toContain("1 Main St");
+    expect(lines.join("\n")).not.toContain("Bob");
+  });
+});
+
+describe("details link", () => {
+  it("accepts its own token and refuses a changed one", () => {
+    const t = detailsToken("abc")!;
+    expect(leadFromDetailsToken(t)).toBe("abc");
+    expect(leadFromDetailsToken(t.replace("abc", "abd"))).toBeUndefined();
+    expect(leadFromDetailsToken("abc.nope")).toBeUndefined();
   });
 });
