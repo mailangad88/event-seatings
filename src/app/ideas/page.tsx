@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "@/components/Link";
 import { WaitlistForm } from "@/components/WaitlistForm";
-import { FaqList, Icon, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
+import { FaqList, Icon, JsonLd, LinkCards, PageHero, Section, type Faq } from "@/components/ui";
+import { sceneFor } from "@/lib/scenes";
 import { monthIdeas, type MonthIdeas } from "@/data/ideas";
 import { getPosts, type Post } from "@/lib/blog";
 import { normalHighF, sunTimes } from "@/lib/chicago-climate";
@@ -154,16 +155,13 @@ export default async function IdeasPage() {
       </Section>
 
       <Section eyebrow="Read this month" title={`${current.name} planning guides`}>
-        <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
-          {uniq(guidesFor(current)).map((p) => (
-            <li key={p.slug} className="border-b border-line pb-4">
-              <Link href={`/blog/${p.slug}`} className="group block">
-                <span className="font-heading font-semibold text-xl group-hover:text-gold">{p.title}</span>
-                <span className="mt-1 block text-sm text-muted line-clamp-2">{p.description}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <LinkCards
+          columns={2}
+          items={uniq(guidesFor(current)).map((p) => {
+            const img = p.image && !p.image.endsWith(".svg") ? { src: p.image, alt: p.imageAlt ?? `Cover image for the guide: ${p.title}` } : sceneFor(p.slug);
+            return { href: `/blog/${p.slug}`, label: p.title, text: p.description, image: { src: img.src, alt: img.alt } };
+          })}
+        />
       </Section>
 
       <Section id="year" eyebrow="The whole year" title="Chicago event ideas, month by month">

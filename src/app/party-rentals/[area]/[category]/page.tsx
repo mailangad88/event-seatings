@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { PriceBars, RentalCard, itemHref } from "@/components/rentals/parts";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
-import { Breadcrumbs, FaqList, Figure, JsonLd, PriceDisclaimer, QuoteCta, Section, StatRow } from "@/components/ui";
+import { Breadcrumbs, CheckList, FaqList, Figure, IconCards, JsonLd, LinkCards, PriceDisclaimer, QuoteCta, ReadMore, Section, StatRow } from "@/components/ui";
 import { catalogItems, customerPrice, formatPrice, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { getLocation, locationPath } from "@/data/geo";
@@ -234,30 +234,30 @@ export default async function AreaCategoryPage(props: Props) {
       </Section>
 
       <Section eyebrow={`Celebrating in ${loc.name}`} title={`Where ${loc.name} hosts use ${cat.name.toLowerCase()}`}>
-        {story && <p className="mb-4 max-w-3xl leading-7 text-muted">{story}</p>}
-        {story2 && <p className="mb-10 max-w-3xl leading-7 text-muted">{story2}</p>}
+        {story && (
+          <ReadMore className="mb-10 max-w-3xl" label={`More about ${loc.name}`} lead={<p className="leading-7 text-muted">{story}</p>}>
+            {story2 && <p className="leading-7 text-muted">{story2}</p>}
+          </ReadMore>
+        )}
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <ul className="divide-y divide-line border-y border-line">
-            {settings.map((s) => (
-              <li key={s.name} className="py-6">
-                <h3 className="display-3">{s.name}</h3>
-                <p className="mt-2 leading-7 text-muted">{s.note}</p>
-                <p className="mt-2 leading-7">
+          <IconCards
+            columns={2}
+            items={settings.map((s) => ({
+              title: s.name,
+              text: s.note,
+              extra: (
+                <>
                   <strong className="font-medium">{cat.name} here:</strong> {s.tip}
-                </p>
-              </li>
-            ))}
-          </ul>
+                </>
+              ),
+            }))}
+          />
           <div>
             <Figure caption={`${loc.name} (${loc.region}) on our Chicagoland delivery map.`}>
               <AreaMap active={loc} />
             </Figure>
             <h3 className="display-3 mt-10">Delivery notes for {loc.name}</h3>
-            <ul className="mt-4 space-y-3 leading-7 text-muted">
-              {logistics.map((t) => (
-                <li key={t.slice(0, 24)}>{t}</li>
-              ))}
-            </ul>
+            <CheckList className="mt-4" items={logistics} />
           </div>
         </div>
       </Section>
@@ -281,40 +281,43 @@ export default async function AreaCategoryPage(props: Props) {
       </Section>
 
       <Section tone="sand" title={`More for your ${loc.name} event`}>
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 lg:grid-cols-3">
           <nav aria-label={`Other rentals in ${loc.name}`}>
-            <h3 className="font-medium">Other rentals in {loc.name}</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              {others.map((c) => (
-                <li key={c.slug}>
-                  <Link href={localCategoryPath(loc.slug, c)} className="link-line">{c.label} in {loc.name}</Link>
-                </li>
-              ))}
-              <li>
-                <Link href={locationPath(loc)} className="link-line">Chair rentals in {loc.name}</Link>
-              </li>
-            </ul>
+            <h3 className="eyebrow">Other rentals in {loc.name}</h3>
+            <LinkCards
+              compact
+              columns={1}
+              className="mt-4"
+              items={[
+                ...others.map((c) => ({ href: localCategoryPath(loc.slug, c), label: `${c.label} in ${loc.name}` })),
+                { href: locationPath(loc), label: `Chair rentals in ${loc.name}` },
+              ]}
+            />
           </nav>
           <nav aria-label={`${lc.label} nearby`}>
-            <h3 className="font-medium">{lc.label} nearby</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              {nearby.map((n) => (
-                <li key={n.slug}>
-                  <Link href={localCategoryPath(n.slug, lc)} className="link-line">{lc.label} in {n.name}</Link>
-                </li>
-              ))}
-            </ul>
+            <h3 className="eyebrow">{lc.label} nearby</h3>
+            <LinkCards
+              compact
+              columns={1}
+              className="mt-4"
+              items={nearby.map((n) => ({ href: localCategoryPath(n.slug, lc), label: `${lc.label} in ${n.name}`, icon: "pin" as const }))}
+            />
           </nav>
-          <div>
-            <h3 className="font-medium">Start planning</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li><Link href={areaRentalsPath(loc.slug)} className="link-line">Everything we rent in {loc.name}</Link></li>
-              <li><Link href={`/rentals/${cat.id}`} className="link-line">Full {cat.name.toLowerCase()} price list</Link></li>
-              <li><Link href={costPath(cat.id)} className="link-line">{cat.name} rental cost guide</Link></li>
-              <li><Link href="/how-it-works" className="link-line">How booking works</Link></li>
-              {shown[0] && <li><Link href={itemHref(shown[0])} className="link-line">{shown[0].name}</Link></li>}
-            </ul>
-          </div>
+          <nav aria-label="Start planning">
+            <h3 className="eyebrow">Start planning</h3>
+            <LinkCards
+              compact
+              columns={1}
+              className="mt-4"
+              items={[
+                { href: areaRentalsPath(loc.slug), label: `Everything we rent in ${loc.name}`, icon: "pin" as const },
+                { href: `/rentals/${cat.id}`, label: `Full ${cat.name.toLowerCase()} price list`, icon: "list" as const },
+                { href: costPath(cat.id), label: `${cat.name} rental cost guide`, icon: "wallet" as const },
+                { href: "/how-it-works", label: "How booking works", icon: "route" as const },
+                ...(shown[0] ? [{ href: itemHref(shown[0]), label: shown[0].name }] : []),
+              ]}
+            />
+          </nav>
         </div>
       </Section>
 

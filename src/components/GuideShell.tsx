@@ -1,5 +1,6 @@
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
+import { FaqList, LinkCards } from "@/components/ui";
 import { GUIDES_UPDATED } from "@/lib/planning";
 import { site } from "@/lib/site";
 
@@ -24,6 +25,9 @@ export type GuideProps = {
   related: { href: string; label: string }[];
   source: string;
 };
+
+const sectionId = (h: string, i: number) =>
+  h.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || `section-${i + 1}`;
 
 export function GuideShell(p: GuideProps) {
   const url = `${site.url}${p.path}`;
@@ -91,11 +95,32 @@ export function GuideShell(p: GuideProps) {
           </aside>
         </div>
 
-        <div className="mt-16 max-w-3xl space-y-12">
-          {p.sections.map((s) => (
-            <section key={s.h}>
-              <h2 className="display-2">{s.h}</h2>
-              <div className="mt-5 space-y-4 leading-8">{s.body}</div>
+        {p.sections.length >= 3 && (
+          <nav aria-label="On this page" className="mt-12 max-w-3xl">
+            <p className="eyebrow">On this page</p>
+            <LinkCards
+              compact
+              scrollOnPhone
+              columns={2}
+              className="mt-4"
+              items={[
+                ...p.sections.map((s, i) => ({ href: `#${sectionId(s.h, i)}`, label: s.h })),
+                { href: "#faq", label: "Frequently asked questions", icon: "help" as const },
+              ]}
+            />
+          </nav>
+        )}
+
+        <div className="mt-14 max-w-3xl space-y-10">
+          {p.sections.map((s, i) => (
+            <section key={s.h} id={sectionId(s.h, i)} className="scroll-mt-28">
+              <h2 className="display-2 flex items-start gap-3">
+                <span aria-hidden className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-wine text-sm font-semibold text-white tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>{s.h}</span>
+              </h2>
+              <div className="prose-post mt-5 [&>*:first-child]:mt-0 [&>p]:my-4">{s.body}</div>
             </section>
           ))}
         </div>
@@ -107,28 +132,15 @@ export function GuideShell(p: GuideProps) {
           </figure>
         )}
 
-        <section className="mt-16 max-w-3xl">
+        <section id="faq" className="mt-16 max-w-3xl scroll-mt-28">
           <h2 className="display-2">Frequently asked questions</h2>
-          <div className="mt-6 divide-y divide-line border-y border-line">
-            {p.faqs.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="cursor-pointer font-heading font-semibold text-xl">{f.q}</summary>
-                <p className="mt-3 leading-8 text-muted">{f.a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList className="mt-6" faqs={p.faqs} schema={false} />
         </section>
 
         {p.related.length > 0 && (
           <section className="mt-16 max-w-3xl">
             <h2 className="display-2">Keep planning</h2>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {p.related.map((r) => (
-                <li key={r.href}>
-                  <Link href={r.href} className="block rounded-lg border border-line px-4 py-3 hover:border-gold">{r.label}</Link>
-                </li>
-              ))}
-            </ul>
+            <LinkCards columns={2} className="mt-6" items={p.related.map((r) => ({ href: r.href, label: r.label }))} />
           </section>
         )}
 
@@ -145,15 +157,6 @@ export function GuideShell(p: GuideProps) {
 /** Simple hub page list. */
 export function HubLinks({ items }: { items: { href: string; label: string; note?: string }[] }) {
   return (
-    <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((r) => (
-        <li key={r.href}>
-          <Link href={r.href} className="block rounded-lg border border-line px-4 py-3 hover:border-gold">
-            <span className="block">{r.label}</span>
-            {r.note && <span className="mt-1 block text-sm text-muted">{r.note}</span>}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <LinkCards className="mt-8" items={items.map((r) => ({ href: r.href, label: r.label, text: r.note }))} />
   );
 }

@@ -9,7 +9,9 @@ import { Emphasis } from "@/components/geo/Emphasis";
 import { FaqList } from "@/components/geo/FaqList";
 import { JsonLd } from "@/components/geo/JsonLd";
 import { RecommendedChairs } from "@/components/geo/RecommendedChairs";
-import { Callout } from "@/components/ui";
+import Image from "next/image";
+import { Callout, ReadMore } from "@/components/ui";
+import { sceneFor } from "@/lib/scenes";
 import { getChair } from "@/data/chairs";
 import { COORDINATION_FEE } from "@/lib/catalog-types";
 import { eventPath, eventTypes, getEventType, locationPath, locations } from "@/data/geo";
@@ -172,11 +174,9 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
         <section className="mt-32 grid gap-14 md:grid-cols-[1.4fr_1fr] md:gap-20">
           <div>
             <p className="eyebrow">Planning notes</p>
-            <div className="prose-post mt-8">
-              {ev.story.map((p) => (
-                <p key={p.slice(0, 24)}>{p}</p>
-              ))}
-            </div>
+            <ReadMore className="prose-post mt-8" label={`More on ${ev.shortName.toLowerCase()}`} lead={ev.story.slice(0, 1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}>
+              {ev.story.length > 1 && ev.story.slice(1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+            </ReadMore>
           </div>
           <div className="md:pt-14">
             <h2 className="display-2">Your seating checklist</h2>
@@ -226,14 +226,22 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
           <section className="mt-32">
             <p className="eyebrow">From the journal</p>
             <ul className="mt-8 grid gap-6 md:grid-cols-3">
-              {posts.map((p) => (
-                <li key={p.slug}>
-                  <Link href={`/blog/${p.slug}`} className="block h-full border border-line p-6 transition-colors hover:border-gold">
-                    <h3 className="display-3">{p.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-muted">{p.description}</p>
-                  </Link>
-                </li>
-              ))}
+              {posts.map((p) => {
+                const img = p.image && !p.image.endsWith(".svg") ? { src: p.image, alt: p.imageAlt ?? `Cover image for the guide: ${p.title}` } : sceneFor(p.slug);
+                return (
+                  <li key={p.slug}>
+                    <Link href={`/blog/${p.slug}`} className="group card card-hover block h-full overflow-hidden">
+                      <span className="relative block aspect-[4/3] bg-surface-2">
+                        <Image src={img.src} alt={img.alt} fill sizes="(min-width: 768px) 30vw, 100vw" className="object-cover" />
+                      </span>
+                      <span className="block p-5">
+                        <span className="display-3 block transition-colors group-hover:text-accent">{p.title}</span>
+                        <span className="mt-2 line-clamp-2 block text-sm leading-6 text-muted">{p.description}</span>
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         )}

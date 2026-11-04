@@ -439,8 +439,32 @@ p, li, dd, figcaption {
 .prose-post ol {
   @apply my-5 pl-6;
 }
+/* Bullet lists read as a checklist card: easier to scan than plain dots. */
 .prose-post ul {
-  @apply list-disc marker:text-gold;
+  @apply list-none rounded-2xl border border-line bg-surface py-3 pr-4 pl-4 sm:pr-5 sm:pl-5;
+}
+.prose-post ul > li {
+  @apply relative pl-8;
+}
+.prose-post ul > li::before {
+  content: "";
+  @apply absolute top-1.5 left-0 h-5 w-5 rounded-full bg-green-soft sm:top-2;
+}
+.prose-post ul > li::after {
+  content: "";
+  @apply absolute top-1.5 left-0 h-5 w-5 bg-green sm:top-2;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 12.5l3.5 3.5L17 9'/%3E%3C/svg%3E") center / 100% no-repeat;
+}
+.prose-post ul ul {
+  @apply my-2 border-0 bg-transparent p-0;
+}
+/* Numbered section badges on guide headings (data-n is set in src/app/blog/[slug]/page.tsx). */
+.prose-post h2[data-n] {
+  @apply flex items-start gap-3;
+}
+.prose-post h2[data-n]::before {
+  content: attr(data-n);
+  @apply mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-wine text-sm font-semibold text-white tabular-nums sm:mt-1;
 }
 .prose-post ol {
   @apply list-decimal marker:text-gold;
