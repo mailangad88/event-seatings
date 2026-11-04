@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { Callout, FaqList, Figure, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
-import { PARTNER_TERMS, partnerFeeOn, partnerRatePct } from "@/lib/partner-terms";
+import { PARTNER_TERMS, partnerFeeOn, partnerFreeCount, partnerFreeOrders, partnerRatePct } from "@/lib/partner-terms";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Rental Partner Terms on One Page",
-  description: `The full terms for Chicago-area rental companies that take orders from ${site.name}: ${partnerRatePct} of the rental subtotal after ${PARTNER_TERMS.freeDays} free days, only on orders that book, paid monthly. Your prices, your contract, no exclusivity.`,
+  description: `The full terms for Chicago-area rental companies that take orders from ${site.name}: ${partnerRatePct} of the rental subtotal after ${partnerFreeOrders}, only on orders that book, paid monthly. Your prices, your contract, no exclusivity.`,
   alternates: { canonical: "/partners/terms" },
 });
 
@@ -19,9 +19,10 @@ const groups: { title: string; rows: [string, string][] }[] = [
     title: "Money",
     rows: [
       ["Joining", "Free. No setup fee and no monthly fee."],
-      ["Free period", `Nothing on orders from enquiries we send in your first ${T.freeDays} days after you sign.`],
+      ["Free orders", `Nothing on ${partnerFreeOrders} after you sign. Orders booked before you sign are never charged.`],
       ["Referral fee", `${partnerRatePct} of the rental subtotal on orders we send that book. The subtotal is rental items only, after any discount. Not delivery, setup labor, damage waiver, tax or deposits.`],
       ["When it's owed", "Only after the event happens and the customer has paid you. Nothing on cancelled or refunded orders. Part-refunds lower the fee to match."],
+      ["Rate lock", `${partnerRatePct} is locked for ${T.rateLockMonths} months from signing.`],
       ["Statements", `One statement a month, by the month of the event. Due ${T.netDays} days after we send it, by ACH, Zelle or check.`],
       ["If you won't do a percentage", `A flat $${T.perOrderFallback} for each order you accept instead. Nothing for orders you turn down.`],
     ],
@@ -71,7 +72,7 @@ const steps = [
 const faqs: Faq[] = [
   {
     q: `How much is the fee on a $5,000 order?`,
-    a: `$${partnerFeeOn(5000).toLocaleString()} after your first ${T.freeDays} days, and nothing before then. It's worked out on the rentals only, not your delivery, damage waiver or tax.`,
+    a: `$${partnerFeeOn(5000).toLocaleString()} once your first ${partnerFreeCount} booked orders are done, and nothing on those. It's worked out on the rentals only, not your delivery, damage waiver or tax.`,
   },
   {
     q: "Do I sign something?",
@@ -97,7 +98,7 @@ export default function PartnerTermsPage() {
         ]}
         eyebrow="For rental companies"
         title="Rental partner terms"
-        intro={`Everything a Chicago-area rental company agrees to when it takes orders from ${site.name}, on one page. You keep your prices, your contract and your deposit. You pay nothing for ${T.freeDays} days, then ${partnerRatePct} of the rentals on orders we send that book.`}
+        intro={`Everything a Chicago-area rental company agrees to when it takes orders from ${site.name}, on one page. You keep your prices, your contract and your deposit. You pay nothing on ${partnerFreeOrders}, then ${partnerRatePct} of the rentals on orders we send that book.`}
         actions={
           <>
             <Link href="/partners#apply" className="btn-primary">Apply as a partner</Link>

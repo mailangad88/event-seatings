@@ -4,13 +4,13 @@ import { PartnerForm } from "@/components/PartnerForm";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
 import { scenes } from "@/lib/scenes";
 import { getPackage } from "@/lib/packages";
-import { PARTNER_TERMS, partnerFeeLine, partnerFeeOn, partnerRatePct } from "@/lib/partner-terms";
+import { PARTNER_TERMS, partnerFeeLine, partnerFeeOn, partnerFreeCount, partnerFreeOrders, partnerRatePct } from "@/lib/partner-terms";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Become a Rental Partner: Chicago Event Rental Leads",
-  description: `Chicago-area rental companies: get event bookings with items and quantities already listed from ${site.name}. Free for ${PARTNER_TERMS.freeDays} days, then ${partnerRatePct} only on orders we send that book. No monthly fee, no exclusivity.`,
+  description: `Chicago-area rental companies: get event bookings with items and quantities already listed from ${site.name}. First ${partnerFreeCount} booked orders free, then ${partnerRatePct} only on orders we send that book. No monthly fee, no exclusivity.`,
   alternates: { canonical: "/partners" },
 });
 
@@ -58,8 +58,9 @@ const T = PARTNER_TERMS;
 
 const terms = [
   ["Joining", "Free. No setup fee, no monthly fee."],
-  ["Founding Partner period", `Nothing on bookings from enquiries we send in your first ${T.freeDays} days.`],
-  [`After ${T.freeDays} days`, `${partnerRatePct} of the rental subtotal (not delivery, setup labor, damage waiver or tax), only on orders we send that book and only after the event happens.`],
+  ["Founding Partner orders", `Nothing on ${partnerFreeOrders} after you sign.`],
+  ["After that", `${partnerRatePct} of the rental subtotal (not delivery, setup labor, damage waiver or tax), only on orders we send that book and only after the event happens.`],
+  ["Rate lock", `Your rate stays at ${partnerRatePct} for ${T.rateLockMonths} months from signing.`],
   ["Paid", `Monthly statement by event month, due ${T.netDays} days after we send it. ACH, Zelle or check.`],
   ["Your pricing", `You set it and we never mark it up. We quote customers from your price sheet, valid ${T.quoteValidDays} days.`],
   ["Customers we introduce", `Count as ours for ${T.attributionMonths} months, including their next events.`],
@@ -72,7 +73,7 @@ const compare: [string, string, string][] = [
   ["Wedding directory listing", "About $200 to $450 a month in mid-size cities, more in Chicago, often on a 12-month contract", "Every month, booked or not"],
   ["Pay-per-lead apps", "About $20 to $100 for each customer contact", "For every contact, booked or not"],
   ["Search ads", "About $2 to $6 a click for rental searches", "For every click, booked or not"],
-  [site.name, `Nothing for ${T.freeDays} days, then ${partnerRatePct} of the rentals`, "Only when an order books and the event happens"],
+  [site.name, `Nothing on your first ${partnerFreeCount} bookings, then ${partnerRatePct} of the rentals`, "Only when an order books and the event happens"],
 ];
 
 const asks: { icon: IconName; title: string; text: string }[] = [
@@ -143,8 +144,8 @@ export default function PartnersPage() {
         </ul>
         <Callout kind="tip" title="Compare it with what you pay now" className="mt-8">
           A featured directory listing costs every month whether it books or not, and search ads charge for every
-          click. With us, a booked $5,000 wedding order costs you ${partnerFeeOn(5000).toLocaleString()} after your first {T.freeDays} days, and nothing before
-          then.
+          click. With us, a booked $5,000 wedding order costs you ${partnerFeeOn(5000).toLocaleString()} after your first {partnerFreeCount} bookings, and nothing on
+          those.
         </Callout>
       </Section>
 
@@ -179,7 +180,7 @@ export default function PartnersPage() {
             <h3 className="display-3">Who pays what on that order</h3>
             <dl className="mt-5 divide-y divide-line">
               <div className="flex justify-between gap-4 py-3"><dt className="text-muted">Customer pays you, under your contract</dt><dd className="font-medium">${sampleRentals.toLocaleString()} + your delivery, waiver and tax</dd></div>
-              <div className="flex justify-between gap-4 py-3"><dt className="text-muted">You pay us in your first {T.freeDays} days</dt><dd className="font-medium">$0</dd></div>
+              <div className="flex justify-between gap-4 py-3"><dt className="text-muted">You pay us if it&apos;s one of your first {partnerFreeCount}</dt><dd className="font-medium">$0</dd></div>
               <div className="flex justify-between gap-4 py-3"><dt className="text-muted">You pay us after that ({partnerRatePct})</dt><dd className="font-medium">${partnerFeeOn(sampleRentals).toLocaleString()}</dd></div>
               <div className="flex justify-between gap-4 py-3"><dt className="text-muted">If the event is cancelled and refunded</dt><dd className="font-medium">$0</dd></div>
             </dl>

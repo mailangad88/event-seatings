@@ -3,7 +3,7 @@ import Link from "@/components/Link";
 import { vendors } from "@/data/vendors";
 import { AdminHeader, Empty, Panel, Table, Tile } from "@/components/admin/AdminUi";
 import { chicagoDay, money0, money2, prettyDay } from "@/lib/admin-view";
-import { agingBuckets, COMMISSION_RATE, FREE_DAYS, invoiceNumber, NET_DAYS, owedStatements, statements, type OwedStatement } from "@/lib/commissions";
+import { agingBuckets, COMMISSION_RATE, FREE_ORDERS, invoiceNumber, NET_DAYS, owedStatements, statements, type OwedStatement } from "@/lib/commissions";
 import { ledgerMethods } from "@/lib/ledger";
 import { site } from "@/lib/site";
 import { listLeads, listPartners, type VendorPartner } from "@/lib/store";
@@ -58,7 +58,7 @@ export default async function InvoicesPage(props: PageProps<"/admin/invoices">) 
       <AdminHeader
         group="Money"
         title="Invoices"
-        intro={`Commission statements for rental partners (free for their first ${FREE_DAYS} days, then ${Math.round(COMMISSION_RATE * 100)}% of the rental total on booked orders, billed after the event month) and receipts for customers who paid the booking fee.`}
+        intro={`Commission statements for rental partners (first ${FREE_ORDERS} booked orders free, then ${Math.round(COMMISSION_RATE * 1000) / 10}% of the rental total on booked orders, billed after the event month) and receipts for customers who paid the booking fee.`}
       />
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">

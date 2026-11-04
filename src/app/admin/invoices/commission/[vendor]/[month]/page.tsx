@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getVendor } from "@/data/vendors";
 import { PrintButton, printCss } from "@/components/admin/PrintButton";
 import { addDays, chicagoDay, money2, prettyDay } from "@/lib/admin-view";
-import { COMMISSION_RATE, FREE_DAYS, invoiceNumber, statements } from "@/lib/commissions";
+import { COMMISSION_RATE, FREE_ORDERS, invoiceNumber, statements } from "@/lib/commissions";
 import { site } from "@/lib/site";
 import { listLeads, listPartners } from "@/lib/store";
 
@@ -80,8 +80,8 @@ export default async function StatementPage(props: PageProps<"/admin/invoices/co
           </tfoot>
         </table>
         <p className="mt-8 text-xs leading-5 text-muted">
-          {Math.round(COMMISSION_RATE * 100)}% of the rental total on booked orders. Orders from customers who first contacted us in your first {FREE_DAYS} days as a
-          partner are free. Rental totals are your prices before delivery, damage waiver and tax. Questions: {site.email}.
+          {Math.round(COMMISSION_RATE * 1000) / 10}% of the rental total on booked orders. Your first {FREE_ORDERS} booked orders after signing, and any booked before you signed, are
+          free. Rental totals are your prices before delivery, damage waiver and tax. Questions: {site.email}.
         </p>
       </article>
     </div>

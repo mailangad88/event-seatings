@@ -5,7 +5,7 @@ import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
-import { PARTNER_TERMS, partnerRatePct } from "@/lib/partner-terms";
+import { PARTNER_TERMS, partnerFreeOrders, partnerRatePct } from "@/lib/partner-terms";
 
 export const metadata: Metadata = seo({
   title: "How We Work: Hosts, Rental Companies and Who Pays Whom",
@@ -32,7 +32,7 @@ const vendorSteps = [
 const money: { from: string; to: string; what: string; when: string; icon: IconName }[] = [
   { from: "Host", to: site.name, what: `Flat booking and coordination fee: $295, or $495 over 200 guests`, when: "When the host approves a proposal a rental company has confirmed", icon: "shield" },
   { from: "Host", to: "Rental company", what: "Deposit, then the balance, damage waiver and tax", when: "Under the rental company's own agreement, usually balance 7-14 days before", icon: "truck" },
-  { from: "Rental company", to: site.name, what: `${partnerRatePct} of the rental subtotal (nothing in the first ${PARTNER_TERMS.freeDays} days)`, when: `Monthly statement, due ${PARTNER_TERMS.netDays} days after the month of the event`, icon: "calendar" },
+  { from: "Rental company", to: site.name, what: `${partnerRatePct} of the rental subtotal (nothing on ${partnerFreeOrders})`, when: `Monthly statement, due ${PARTNER_TERMS.netDays} days after the month of the event`, icon: "calendar" },
 ];
 
 const timeline: [string, string][] = [

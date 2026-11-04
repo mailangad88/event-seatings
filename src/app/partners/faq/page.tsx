@@ -5,7 +5,7 @@ import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
-import { PARTNER_TERMS, partnerRatePct } from "@/lib/partner-terms";
+import { partnerFreeCount, partnerFreeOrders, partnerRatePct } from "@/lib/partner-terms";
 
 export const metadata: Metadata = seo({
   title: "Rental Partner FAQ: Joining, Orders, Fees and Payments",
@@ -42,7 +42,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
     id: "money",
     title: "Prices, fees and payments",
     faqs: [
-      { q: "What does it cost?", a: `Nothing to join and no monthly fee. Founding Partners pay nothing on orders from enquiries we send in their first ${PARTNER_TERMS.freeDays} days. After that, ${partnerRatePct} of the rental subtotal (not delivery, damage waiver or tax), only on orders we send that book. The full terms fit on one page.` },
+      { q: "What does it cost?", a: `Nothing to join and no monthly fee. Founding Partners pay nothing on their first ${partnerFreeCount} booked orders. After that, ${partnerRatePct} of the rental subtotal (not delivery, damage waiver or tax), only on orders we send that book. The full terms fit on one page.` },
       { q: "Do you change my prices?", a: `No. Customers see your price with no markup. They pay us a separate booking fee, ${BOOKING_FEE_FULL} per event. You're paid your full price.` },
       { q: "Who pays whom?", a: "The host pays our booking fee to us. The host pays your deposit and balance to you, under your own rental agreement and your own payment methods. We never hold your money." },
       { q: "How do I pay your commission?", a: "We send one statement a month listing the completed events we sent you. It's due 15 days after the end of that month, by bank transfer, check or card on file." },
@@ -81,7 +81,7 @@ export default function PartnerFaqPage() {
         title="Questions from rental companies"
         intro={
           <p data-answer>
-            Joining {site.name} is free. Sign up online in about five minutes, we call you within one business day, and your listing goes live after you&apos;ve checked it. You pay nothing for your first {PARTNER_TERMS.freeDays} days, then {partnerRatePct} only on orders we send that book. Customers pay you directly. Here are the answers to the questions rental companies ask us most.
+            Joining {site.name} is free. Sign up online in about five minutes, we call you within one business day, and your listing goes live after you&apos;ve checked it. You pay nothing on {partnerFreeOrders}, then {partnerRatePct} only on orders we send that book. Customers pay you directly. Here are the answers to the questions rental companies ask us most.
           </p>
         }
         actions={

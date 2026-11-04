@@ -3,9 +3,11 @@
 // changes every one of them. Pricing options and the reasoning: /mnt/project-files/plans/pricing-research-2026-11-04.md.
 export const PARTNER_TERMS = {
   /** Referral fee on the rental subtotal of orders we send that book. */
-  rate: 0.05,
-  /** Orders from enquiries sent in a partner's first N days are free. */
-  freeDays: 90,
+  rate: 0.08,
+  /** A partner's first N booked orders after signing are free. */
+  freeOrders: 2,
+  /** The rate is locked for this many months from signing. */
+  rateLockMonths: 12,
   /** Statements are due this many days after we send them. */
   netDays: 15,
   /** A customer we introduce counts as ours for this long, including repeat events. */
@@ -24,8 +26,14 @@ export const PARTNER_TERMS = {
 
 export const partnerRatePct = `${Math.round(PARTNER_TERMS.rate * 1000) / 10}%`;
 
-/** "free for your first 90 days, then 5% of the rental subtotal, only on orders we send that book" */
-export const partnerFeeLine = `free for your first ${PARTNER_TERMS.freeDays} days, then ${partnerRatePct} of the rental subtotal, only on orders we send that book`;
+const numberWords = ["no", "one", "two", "three", "four", "five"];
+/** "two" */
+export const partnerFreeCount = numberWords[PARTNER_TERMS.freeOrders] ?? String(PARTNER_TERMS.freeOrders);
+/** "your first two booked orders" */
+export const partnerFreeOrders = `your first ${partnerFreeCount} booked orders`;
+
+/** "free on your first two booked orders, then 8% of the rental subtotal, only on orders we send that book" */
+export const partnerFeeLine = `free on ${partnerFreeOrders}, then ${partnerRatePct} of the rental subtotal, only on orders we send that book`;
 
 /** What a partner pays on a booked order of this rental subtotal, after the free period. */
 export const partnerFeeOn = (rentals: number) => Math.round(rentals * PARTNER_TERMS.rate);

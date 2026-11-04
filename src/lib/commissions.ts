@@ -2,17 +2,32 @@ import type { Lead, VendorPartner } from "./store";
 import { addDays, chicagoDay, isConfirmed } from "./admin-view";
 import { PARTNER_TERMS } from "./partner-terms";
 
-// Rental partner commission: free on enquiries sent in a partner's first FREE_DAYS days, then COMMISSION_RATE
-// of the rental subtotal on booked orders, billed monthly by the month of the event. Numbers live in partner-terms.ts.
+// Rental partner commission: a partner's first FREE_ORDERS booked orders after signing are free, then
+// COMMISSION_RATE of the rental subtotal on booked orders, billed monthly by the month of the event.
+// Orders booked before the deal was signed are never charged. Numbers live in partner-terms.ts.
 export const COMMISSION_RATE = PARTNER_TERMS.rate;
-export const FREE_DAYS = PARTNER_TERMS.freeDays;
+export const FREE_ORDERS = PARTNER_TERMS.freeOrders;
 
 const cents = (n: number) => Math.round(n * 100) / 100;
 
-// When the free window started: the day the deal was marked signed, else the partner's first booked order.
-export function windowStart(partner: VendorPartner | undefined, orders: Lead[]): string | undefined {
-  const signed = partner?.activity?.find((a) => a.type === "status" && /Referral deal signed$/.test(a.text))?.at;
-  return signed ?? orders.map((o) => o.created_at).sort()[0];
+// When the referral deal was signed (logged on the partner's activity), if it was.
+export function signedAt(partner: VendorPartner | undefined): string | undefined {
+  return partner?.activity?.find((a) => a.type === "status" && /Referral deal signed$/.test(a.text))?.at;
+}
+
+/** Ids of a partner's orders that are not charged: anything before signing, then the first FREE_ORDERS after it. */
+export function freeOrderIds(partner: VendorPartner | undefined, orders: Lead[]): Set<string> {
+  const signed = signedAt(partner);
+  const free = new Set<string>();
+  let counted = 0;
+  for (const o of [...orders].sort((a, b) => a.created_at.localeCompare(b.created_at) || a.id.localeCompare(b.id))) {
+    if (signed && o.created_at < signed) free.add(o.id);
+    else if (counted < FREE_ORDERS) {
+      free.add(o.id);
+      counted++;
+    }
+  }
+  return free;
 }
 
 export type Order = { lead: Lead; rentals: number; free: boolean; commission: number };
@@ -26,13 +41,12 @@ export function statements(leads: Lead[], partners: VendorPartner[]): Statement[
   }
   const out: Statement[] = [];
   for (const [vendorId, orders] of byVendor) {
-    const start = windowStart(partners.find((p) => p.vendor_id === vendorId), orders);
-    const freeUntil = start ? new Date(Date.parse(start) + FREE_DAYS * 864e5).toISOString() : undefined;
+    const free = freeOrderIds(partners.find((p) => p.vendor_id === vendorId), orders);
     const months = new Map<string, Order[]>();
     for (const lead of orders) {
       const rentals = lead.quote_cost ?? 0;
-      const free = !!freeUntil && lead.created_at < freeUntil;
-      const o = { lead, rentals, free, commission: free ? 0 : cents(rentals * COMMISSION_RATE) };
+      const isFree = free.has(lead.id);
+      const o = { lead, rentals, free: isFree, commission: isFree ? 0 : cents(rentals * COMMISSION_RATE) };
       const m = lead.event_date!.slice(0, 7);
       months.set(m, [...(months.get(m) ?? []), o]);
     }
