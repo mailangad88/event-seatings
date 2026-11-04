@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { postLead } from "@/lib/lead-client";
 
 // Free lead magnet: a seating calculator that shows chair and table counts
 // instantly, then unlocks a personalized, printable planning checklist in
@@ -120,18 +121,14 @@ export function SeatingPlanner() {
       `Reception seats ${plan.guestSeats} (head table ${plan.head}), ceremony ${ceremony} (${plan.ceremonySeats}), cocktail ${plan.cocktailSeats}.`,
       `${plan.tables} tables (${table}). Estimated chairs to rent: ${plan.rentals}.`,
     ].join(" ");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...data,
-        kind: "waitlist",
-        source: "seating-planner",
-        event_type: eventType,
-        guest_count: guests,
-        event_date: date || undefined,
-        message: summary,
-      }),
+    const res = await postLead({
+      ...data,
+      kind: "waitlist",
+      source: "seating-planner",
+      event_type: eventType,
+      guest_count: guests,
+      event_date: date || undefined,
+      message: summary,
     }).catch(() => null);
     if (res?.ok) return setStatus("done");
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");
@@ -142,7 +139,7 @@ export function SeatingPlanner() {
   const radio = <T extends string>(name: string, value: T, current: T, set: (v: T) => void, label: string) => (
     <label
       className={`flex cursor-pointer items-center justify-center border px-3 py-3 text-center text-sm transition-colors ${
-        current === value ? "border-gold bg-gold text-[#0a0806]" : "border-line bg-surface hover:bg-surface-2"
+        current === value ? "border-gold bg-gold text-accent-ink" : "border-line bg-surface hover:bg-surface-2"
       }`}
     >
       <input type="radio" name={name} value={value} checked={current === value} onChange={() => set(value)} className="sr-only" />
@@ -171,7 +168,7 @@ export function SeatingPlanner() {
               max={5000}
               value={guests}
               onChange={(e) => setGuests(Math.min(5000, Number(e.target.value)))}
-              className="field font-serif text-3xl"
+              className="field font-heading font-semibold text-3xl"
             />
           </div>
           <div>
@@ -271,15 +268,15 @@ export function SeatingPlanner() {
       {/* Results */}
       <div>
         <div className="border border-gold/60 bg-surface p-8 sm:p-10" aria-live="polite">
-          <p className="text-[11px] tracking-[0.25em] text-gold uppercase">Your seating plan</p>
-          <p className="headline mt-4 text-7xl leading-none sm:text-8xl">{plan.rentals}</p>
+          <p className="text-xs tracking-[0.25em] text-gold uppercase">Your seating plan</p>
+          <p className="headline mt-4 text-6xl leading-none sm:text-6xl">{plan.rentals}</p>
           <p className="mt-2 text-muted">estimated chairs to rent for {guests || 0} guests</p>
 
           <dl className="mt-8 grid grid-cols-2 gap-px bg-line">
             {stats.map(([k, v, hint]) => (
               <div key={k} className="bg-surface p-4">
-                <dt className="text-[10px] tracking-[0.2em] text-muted uppercase">{k}</dt>
-                <dd className="mt-1 font-serif text-4xl">{v}</dd>
+                <dt className="text-xs tracking-[0.2em] text-muted uppercase">{k}</dt>
+                <dd className="mt-1 font-heading font-semibold text-4xl">{v}</dd>
                 <dd className="text-xs text-muted">{hint}</dd>
               </div>
             ))}
@@ -300,7 +297,7 @@ export function SeatingPlanner() {
 
         <div className="mt-10">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="headline text-3xl">Your planning checklist</h2>
+            <h2 className="display-2">Your planning checklist</h2>
             {unlocked && (
               <button type="button" onClick={() => window.print()} className="link-line text-gold print:hidden">
                 Print or save as PDF
@@ -316,7 +313,7 @@ export function SeatingPlanner() {
                   className={`flex gap-4 border-b border-line pb-4 leading-7 ${hidden ? "select-none blur-[5px] print:hidden" : ""}`}
                   aria-hidden={hidden || undefined}
                 >
-                  <span className="font-serif text-xl text-gold italic">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-heading font-semibold text-xl text-gold">{String(i + 1).padStart(2, "0")}</span>
                   <span>{item}</span>
                 </li>
               );
@@ -326,7 +323,7 @@ export function SeatingPlanner() {
           {!unlocked ? (
             <form onSubmit={submit} className="mt-8 border border-line bg-surface-2 p-6 sm:p-8 print:hidden">
               <p className="headline text-2xl">
-                Unlock all {checklist.length} steps <em className="text-gold">free</em>
+                See all {checklist.length} steps <em className="text-gold">free</em>
               </p>
               <p className="mt-2 text-sm leading-6 text-muted">
                 Get the full printable checklist for your event, plus occasional Chicago seating tips. No spam,
@@ -347,15 +344,15 @@ export function SeatingPlanner() {
                   <input id="sp-city" name="city" className="field" placeholder="Naperville, Chicago, St. Charles…" />
                 </div>
               </div>
-              {status === "error" && <p className="mt-4 text-sm text-red-400">{error}</p>}
+              {status === "error" && <p className="mt-4 text-sm text-rose">{error}</p>}
               <button className="btn-primary mt-8 w-full sm:w-auto" disabled={status === "sending"}>
-                {status === "sending" ? "Unlocking…" : "Unlock my checklist"}
+                {status === "sending" ? "Sending…" : "Show my full checklist"}
               </button>
             </form>
           ) : (
             <div className="mt-8 border border-gold/60 bg-gold-soft/40 p-6 sm:p-8 print:hidden">
               <p className="headline text-2xl">
-                Your checklist is <em className="text-gold">unlocked</em>.
+                Here is your <em className="text-gold">full checklist</em>.
               </p>
               <p className="mt-2 leading-7 text-muted">
                 Want a second pair of eyes on your plan? Book a free 15-minute seating call and we&apos;ll suggest

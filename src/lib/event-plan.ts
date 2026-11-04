@@ -20,7 +20,7 @@ export type PlannerEvent = {
   leadMonths: number; // how far ahead most hosts book rentals for this occasion
 };
 
-const scene = (n: string) => `/rentals/scenes/${n}.webp`;
+const scene = (n: string) => `/rentals/styled/${n}.webp`;
 
 export const plannerEvents: PlannerEvent[] = [
   { id: "wedding", name: "Wedding", eventType: "Wedding (ceremony + reception)", image: scene("wedding-reception"), alt: "Wedding reception with round tables, gold Chiavari chairs and candlelight", meal: true, formal: true, defaultGuests: 150, extras: ["ceremony", "dancing", "bar"], leadMonths: 9 },
@@ -280,78 +280,232 @@ export function recommend(input: PlanInput): RecLine[] {
   return [...merged.values()];
 }
 
-// Month-by-month to-dos counted back from the date.
-export type PlanStep = { when: string; date?: string; tasks: string[] };
+// The checklist, built from the days left before the event (not from the calendar alone).
+// - Far out: the normal month-by-month stages, plus a short "Start now" step.
+// - Short on time: every stage whose date has passed is folded into "Today" / "Next few days"
+//   (or "Catch up now"), with tasks rewritten for the time that is left. Past dates are never shown.
+// - Event day: one "Today" list. After the event: an "After your event" list.
+// Each task has a stable id, so a tick survives when a task moves from a stage into the rush list.
+export type PlanTask = { id: string; text: string };
+export type PlanStepKind = "now" | "rush" | "stage" | "event" | "after";
+export type PlanStep = { when: string; date?: string; iso?: string; kind: PlanStepKind; tasks: string[]; items: PlanTask[] };
 
 const fmtDate = (d: Date) => d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const DAY_MS = 864e5;
+const localDay = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12);
+const isoOf = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const addDays = (d: Date, n: number) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n, 12);
+const parseDay = (iso: string) => {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(y, m - 1, d, 12);
+};
+/** Whole days from today to the event date (0 = today, negative = past). */
+export function daysLeft(date: string | undefined, today = new Date()) {
+  if (!date || !/^\d{4}-\d{2}-\d{2}/.test(date)) return undefined;
+  return Math.round((parseDay(date.slice(0, 10)).getTime() - localDay(today).getTime()) / DAY_MS);
+}
 
-export function timeline(input: PlanInput, today = new Date()): PlanStep[] {
+type Stage = { offsetDays: number; when: string; items: PlanTask[] };
+
+// The standard stages, counted back from the date. Shown as they are when there is enough time.
+export function planStages(input: PlanInput): Stage[] {
   const ev = getPlannerEvent(input.event) ?? plannerEvents[0];
   const x = new Set(input.extras);
   const outdoor = input.setting !== "venue";
-  const day = input.date ? new Date(`${input.date}T12:00:00`) : undefined;
-  const steps: { offsetDays: number; when: string; tasks: string[] }[] = [
+  const t = (id: string, text: string): PlanTask => ({ id, text });
+  const lead = Math.max(ev.leadMonths, 3);
+  return [
     {
-      offsetDays: -30 * Math.max(ev.leadMonths, 3),
-      when: `${Math.max(ev.leadMonths, 3)} months before`,
-      tasks: [
-        input.setting === "venue" ? "Confirm what your venue includes (many halls supply basic tables and chairs)" : "Walk the site: measure the flat area, find power and note where trucks can park",
-        "Set your guest list and an overall budget",
-        "Approve your rental proposal to reserve your items for the date",
-        ...(input.setting === "park" ? ["Apply for the park permit (Chicago Park District special event permits can take 30+ days)"] : []),
-        ...(input.setting === "tent" || (input.setting === "backyard" && input.guests >= 100) ? ["Call 811 before any tent stakes go in, and check if your town needs a tent permit"] : []),
+      offsetDays: -30 * lead,
+      when: `${lead} months before`,
+      items: [
+        input.setting === "venue" ? t("venue", "Confirm what your venue includes (many halls supply basic tables and chairs)") : t("site", "Walk the site: measure the flat area, find power and note where trucks can park"),
+        t("budget", "Set your guest list and an overall budget"),
+        t("reserve", "Approve your rental proposal to reserve your items for the date"),
+        ...(input.setting === "park" ? [t("permit", "Apply for the park permit (Chicago Park District special event permits can take 30+ days)")] : []),
+        ...(input.setting === "tent" || (input.setting === "backyard" && input.guests >= 100) ? [t("811", "Call 811 before any tent stakes go in, and check if your town needs a tent permit")] : []),
       ],
     },
     {
       offsetDays: -60,
       when: "2 months before",
-      tasks: [
-        "Choose linen colours and table layout",
-        ...(ev.meal ? ["Book your caterer and confirm what they bring (plates, chafers, staff)"] : []),
-        ...(x.has("dancing") ? ["Book the DJ or band and share the dance floor size"] : []),
-        ...(x.has("bar") ? ["Plan the bar: hired bartenders, licensed caterer or self-serve"] : []),
+      items: [
+        t("linens", "Choose linen colours and table layout"),
+        ...(ev.meal ? [t("caterer", "Book your caterer and confirm what they bring (plates, chafers, staff)")] : []),
+        ...(x.has("dancing") ? [t("dj", "Book the DJ or band and share the dance floor size")] : []),
+        ...(x.has("bar") ? [t("bar", "Plan the bar: hired bartenders, licensed caterer or self-serve")] : []),
       ],
     },
     {
       offsetDays: -30,
       when: "1 month before",
-      tasks: [
-        "Send invitations or confirm RSVPs",
-        "Finalise the floor plan and share it with your rental team and caterer",
-        ...(outdoor ? ["Pick a rain plan: sidewalls, extra canopies or a backup room"] : []),
+      items: [
+        t("invites", "Send invitations or confirm RSVPs"),
+        t("floorplan", "Finalise the floor plan and share it with your rental team and caterer"),
+        ...(outdoor ? [t("rainplan", "Pick a rain plan: sidewalls, extra canopies or a backup room")] : []),
       ],
     },
     {
       offsetDays: -14,
       when: "2 weeks before",
-      tasks: ["Send your final guest count (most rental companies need it about a week out)", "Confirm delivery window, access and who signs for the delivery"],
+      items: [t("finalcount", "Send your final guest count (most rental companies need it about a week out)"), t("delivery", "Confirm delivery window, access and who signs for the delivery")],
     },
     {
       offsetDays: -7,
       when: "1 week before",
-      tasks: [
-        "Check the 10-day forecast" + (outdoor ? " and decide on sidewalls or heaters" : ""),
-        "Print a seating chart and table numbers",
-        "Make a day-of contact sheet (caterer, rentals, DJ, venue)",
+      items: [
+        t("forecast", "Check the 10-day forecast" + (outdoor ? " and decide on sidewalls or heaters" : "")),
+        t("seating", "Print a seating chart and table numbers"),
+        t("contacts", "Make a day-of contact sheet (caterer, rentals, DJ, venue)"),
       ],
     },
     {
       offsetDays: -1,
       when: "Day before",
-      tasks: [outdoor ? "Tent and large items go up (most installs happen the day before)" : "Confirm the venue's load-in time with us", "Set out place cards, signage and favours"],
+      items: [outdoor ? t("install", "Tent and large items go up (most installs happen the day before)") : t("loadin", "Confirm the venue's load-in time with us"), t("placecards", "Set out place cards, signage and favours")],
     },
     {
       offsetDays: 0,
       when: "Event day",
-      tasks: ["Count chairs and tables against the delivery sheet", "Ask about the pickup window and how dishes and linens should be packed for return"],
+      items: [t("count", "Count chairs and tables against the delivery sheet"), t("pickup", "Ask about the pickup window and how dishes and linens should be packed for return")],
     },
   ];
-  return steps
-    .map((s) => {
-      const d = day ? new Date(day.getTime() + s.offsetDays * 864e5) : undefined;
-      const late = d && d < today && s.offsetDays < 0;
-      return { when: late ? `${s.when} (do now)` : s.when, date: d ? fmtDate(d) : undefined, tasks: s.tasks };
-    });
+}
+
+// Order for a short-notice list: what decides whether the event can happen comes first.
+const rushOrder = ["reserve", "call", "venue", "site", "budget", "permit", "811", "finalcount", "delivery", "caterer", "rainplan", "invites", "linens", "floorplan", "dj", "bar"];
+const rank = (id: string) => (rushOrder.includes(id) ? rushOrder.indexOf(id) : rushOrder.length);
+// With two weeks or less, these go on "Today"; the rest go on "Next few days".
+const todayIds = new Set(["reserve", "call", "venue", "site", "budget", "permit", "811"]);
+
+// A late task rewritten for the days that are left (undefined = drop it, it no longer helps).
+function rushText(task: PlanTask, d: number, input: PlanInput, eventDate: Date): string | undefined {
+  const weeks = Math.round(d / 7);
+  const replyBy = fmtDate(addDays(eventDate, -Math.min(7, Math.max(1, Math.floor(d / 2)))));
+  switch (task.id) {
+    case "reserve":
+      return d <= 14
+        ? `Send us your rental list today. With ${d === 1 ? "one day" : `${d} days`} to go, we check what is still free for your date`
+        : d <= 60
+          ? `Send your rental list now. With about ${weeks} weeks to go, popular styles may already be booked for your date`
+          : task.text;
+    case "venue":
+      return d <= 14 ? "Call your venue today and ask what tables, chairs and linens they have, so you only rent what's missing" : task.text;
+    case "site":
+      return d <= 14 ? "Walk the site today: measure the flat area, find power and note where trucks can park" : task.text;
+    case "budget":
+      return "Set your guest count (a best guess is fine) and an overall budget";
+    case "permit":
+      return d < 30 ? "Call the park district today. Permits can take 30+ days, so ask what you can do without one, or move to a backyard or indoor space" : task.text;
+    case "811":
+      if (d > 14) return task.text;
+      return d <= 2
+        ? "Ask for weighted canopies or a tent that doesn't need stakes: 811 needs two business days' notice before digging"
+        : "Call 811 today (Illinois asks for two business days' notice before stakes go in) and check if your town needs a tent permit";
+    case "linens":
+      return d <= 7 ? "Go with white or ivory linens, the easiest colours to find at short notice" : "Pick linen colours from what is in stock for your date";
+    case "caterer":
+      if (d > 14) return task.text;
+      return d <= 3 ? "Confirm food today: your caterer, a drop-off order or a restaurant that does trays" : "Book your caterer this week. If your first choice is full, ask about drop-off trays, and confirm who brings plates and chafers";
+    case "dj":
+      if (d <= 3) return "No DJ yet? Make a playlist and rent or borrow a speaker";
+      return d <= 14 ? "Book a DJ this week, or make a playlist and rent a speaker if DJs are booked" : task.text;
+    case "bar":
+      if (d <= 3) return "Keep the bar simple: ask your caterer or venue, or set up self-serve drinks";
+      return d <= 14 ? "Decide the bar this week: a licensed caterer, a hired bartender or a simple self-serve bar" : task.text;
+    case "invites":
+      if (d <= 3) return "Text anyone who hasn't replied so your count is right";
+      return d <= 30 ? `If invitations haven't gone out, send a text or e-invite now and ask for a reply by ${replyBy}` : task.text;
+    case "floorplan":
+      return d <= 14 ? "Sketch the floor plan and share it with us and your caterer" : task.text;
+    case "rainplan":
+      return d <= 14 ? "Pick a rain plan now: sidewalls, extra canopies or a backup room" : task.text;
+    case "finalcount":
+      return "Send your final guest count to your rental company and caterer";
+    case "forecast":
+      return d <= 3 ? "Check the forecast" + (input.setting !== "venue" ? " and decide on sidewalls or heaters" : "") : task.text;
+    default:
+      return task.text;
+  }
+}
+
+const step = (when: string, kind: PlanStepKind, items: PlanTask[], day?: Date): PlanStep => ({
+  when,
+  kind,
+  date: day ? fmtDate(day) : undefined,
+  iso: day ? isoOf(day) : undefined,
+  items,
+  tasks: items.map((i) => i.text),
+});
+
+export function timeline(input: PlanInput, today = new Date()): PlanStep[] {
+  const stages = planStages(input);
+  const d = daysLeft(input.date, today);
+  const kindOf = (s: Stage): PlanStepKind => (s.offsetDays === 0 ? "event" : "stage");
+  if (d === undefined) return stages.map((s) => step(s.when, kindOf(s), s.items));
+
+  const now = localDay(today);
+  const eventDate = parseDay(input.date!.slice(0, 10));
+
+  if (d < 0) {
+    return [
+      step("After your event", "after", [
+        { id: "after-pickup", text: "Count everything against the delivery sheet before pickup, and keep it with your receipts" },
+        { id: "after-invoice", text: "Check your final bill and any damage notes within a few days" },
+        { id: "after-thanks", text: "Send thank-you notes and settle up with anyone you still owe" },
+        { id: "after-review", text: "Leave a review for the vendors who did a good job" },
+        { id: "after-next", text: "Planning another one? Change the date above or start a new plan" },
+      ]),
+    ];
+  }
+
+  if (d === 0) {
+    const day = stages[stages.length - 1].items;
+    return [
+      step("Today", "event", [
+        ...day,
+        { id: "point", text: "Put one person in charge of vendors and deliveries so you can enjoy the day" },
+        { id: "call", text: "Something missing or short? Call us right away and we'll see what can still be brought" },
+      ], now),
+    ];
+  }
+
+  // Stages still ahead keep their dates. Stages dated today or earlier fold into the rush list.
+  const ahead = stages.filter((s) => -s.offsetDays < d);
+  const late = stages.filter((s) => -s.offsetDays >= d);
+  const out: PlanStep[] = [];
+
+  if (late.length) {
+    const tasks = late
+      .flatMap((s) => s.items)
+      .map((t) => ({ id: t.id, text: rushText(t, d, input, eventDate) }))
+      .filter((t): t is PlanTask => !!t.text);
+    if (d <= 3) tasks.unshift({ id: "call", text: "Short on time? Call us so we can check what can still be delivered for your date" });
+    tasks.sort((a, b) => rank(a.id) - rank(b.id));
+    if (d > 60) {
+      // Behind the usual schedule, but with time to spare: no alarm, just start here.
+      out.push(step("Start now", "now", tasks, now));
+    } else if (d > 14) {
+      out.push(step("Catch up now", "rush", tasks, now));
+    } else {
+      const nextAhead = ahead[0] ? addDays(eventDate, ahead[0].offsetDays) : eventDate;
+      const by = addDays(now, Math.min(3, Math.round((nextAhead.getTime() - now.getTime()) / DAY_MS) - 1));
+      const soonOk = d > 3 && by.getTime() > now.getTime();
+      const first = soonOk ? tasks.filter((t) => todayIds.has(t.id)) : tasks;
+      const rest = soonOk ? tasks.filter((t) => !todayIds.has(t.id)) : [];
+      out.push(step("Today", "rush", first, now));
+      if (rest.length) out.push(step(by.getTime() - now.getTime() <= DAY_MS ? "Tomorrow" : "Next few days", "rush", rest, by));
+    }
+  } else if (ahead.length && d + ahead[0].offsetDays > 30) {
+    // Lots of time: a few easy things to do now, then nothing until the first stage.
+    const first = ahead[0];
+    const moved = first.items.filter((t) => t.id === "budget" || t.id === "venue" || t.id === "site");
+    first.items = first.items.filter((t) => !moved.includes(t));
+    out.push(step("Start now", "now", [...moved, { id: "reminders", text: "Add these steps to your calendar so each one reminds you when it's due" }], now));
+  }
+
+  for (const s of ahead) if (s.items.length) out.push(step(s.when, kindOf(s), s.items, addDays(eventDate, s.offsetDays)));
+  return out;
 }
 
 // Short, honest observations about this plan: what's working, what to watch.
@@ -366,10 +520,15 @@ export function assessment(input: PlanInput, total: number, budget?: BudgetId, t
   if (input.date) {
     const d = new Date(`${input.date}T12:00:00`);
     const monthsOut = (d.getTime() - today.getTime()) / (30 * 864e5);
+    const left = daysLeft(input.date, today) ?? 0;
     const m = d.getMonth() + 1;
     const peak = m >= 5 && m <= 10;
     const sat = d.getDay() === 6;
-    if (monthsOut < ev.leadMonths) {
+    if (left < 0) {
+      notes.push({ tone: "watch", text: "This date has passed. Change the date if your event moved." });
+    } else if (left <= 14) {
+      notes.push({ tone: "watch", text: `Your date is ${left === 0 ? "today" : left === 1 ? "tomorrow" : `${left} days away`}. Send your list today and book a call so we can check what is still free by phone.` });
+    } else if (monthsOut < ev.leadMonths) {
       notes.push({ tone: "watch", text: `Your date is ${monthsOut < 1 ? "under a month" : `about ${Math.round(monthsOut)} months`} away; most hosts book ${ev.name.toLowerCase()} rentals ${ev.leadMonths}+ months ahead${peak ? ", and May–October is Chicago's busiest season" : ""}. Send your list soon so we can lock in stock.` });
     } else {
       notes.push({ tone: "good", text: `You're booking with plenty of lead time, which gives you first pick of styles and colours.` });

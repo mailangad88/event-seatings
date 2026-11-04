@@ -86,7 +86,7 @@ export default async function RentalCostPage(props: Props) {
     },
     {
       q: "Do rental prices include delivery and setup?",
-      a: "No. The prices shown are the rental for one event day: the partner's rate plus our 10% fee. Delivery and pickup, setup, a damage waiver and sales tax are itemized on your free quote before you pay anything.",
+      a: "No. The prices shown are the rental for one event day: the partner's own rate, with no markup. Our flat booking fee is separate. Delivery and pickup, setup, a damage waiver and sales tax are itemized on your free quote before you pay anything.",
     },
     {
       q: `How can I save on ${cat.name.toLowerCase()} rentals?`,
@@ -164,7 +164,7 @@ export default async function RentalCostPage(props: Props) {
         <div className="grid gap-6 md:grid-cols-3">
           {samples.map(({ i, q, rental, est }) => (
             <article key={i.id} className="card p-6">
-              <h3 className="font-serif text-xl">
+              <h3 className="font-heading font-semibold text-xl">
                 <Link href={itemHref(i)} className="link-line">{i.name}</Link>
               </h3>
               <p className="mt-1 text-sm text-muted">
@@ -188,7 +188,7 @@ export default async function RentalCostPage(props: Props) {
         <ol className="grid gap-6 md:grid-cols-3">
           {cc.drivers.map((x, n) => (
             <li key={x.title} className="card p-6">
-              <span className="font-serif text-3xl text-gold">{String(n + 1).padStart(2, "0")}</span>
+              <span className="font-heading font-semibold text-3xl text-gold">{String(n + 1).padStart(2, "0")}</span>
               <h3 className="mt-3 text-lg font-medium">{x.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{x.body}</p>
             </li>

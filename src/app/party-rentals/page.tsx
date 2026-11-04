@@ -72,7 +72,7 @@ export default function PartyRentalsHub() {
         <div className="grid gap-12 lg:grid-cols-3">
           {groups.map((g) => (
             <section key={g.title}>
-              <h2 className="font-serif text-2xl">{g.title}</h2>
+              <h2 className="display-3">{g.title}</h2>
               <ul className="mt-4 divide-y divide-line border-y border-line">
                 {locations.filter(g.filter).map((l) => (
                   <li key={l.slug} className="py-3">

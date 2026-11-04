@@ -6,7 +6,8 @@ import { CallCta } from "@/components/CallCta";
 import { PlanningLoop } from "@/components/myevents/PlanningLoop";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
-import { RentalVisual, rentalImagePath } from "@/components/rentals/RentalVisual";
+import { RentalVisual, rentalAlt, rentalImagePath, similarAlt } from "@/components/rentals/RentalVisual";
+import { similarPhoto } from "@/data/similar-photo";
 import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
@@ -62,7 +63,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
     ...c.faqs,
     {
       q: `Do ${name} rental prices include delivery?`,
-      a: `No. The prices shown are per item for one event day: the partner rate plus our 10% fee. Delivery and pickup, setup, a damage waiver and sales tax are added for your venue on the same itemized quote, so you see the all-in total before you book.`,
+      a: `No. The prices shown are per item for one event day: the partner's own rate, with no markup. Our flat booking fee is separate. Delivery and pickup, setup, a damage waiver and sales tax are added for your venue on the same itemized quote, so you see the all-in total before you book.`,
     },
     {
       q: `How far ahead should I book ${name} in ${site.market}?`,
@@ -107,7 +108,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
         <header className="mt-10 grid items-center gap-10 md:grid-cols-[1.5fr_1fr]">
           <div>
             <p className="eyebrow">{c.name} rental · {site.marketLong}</p>
-            <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+            <h1 className="display-1 mt-6">
               {c.name} <em className="text-gold">rental</em> in {site.market}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{c.intro}</p>
@@ -204,14 +205,24 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-2">
               {sections.map(([section, rows]) => (
                 <table key={section} className="w-full self-start text-sm">
-                  <caption className="pb-3 text-left text-[11px] font-medium tracking-[0.18em] text-muted uppercase">{section}</caption>
+                  <caption className="pb-3 text-left text-xs font-medium tracking-[0.18em] text-muted uppercase">{section}</caption>
                   <tbody>
                     {rows.map((i) => {
                       const thumb = photosForItem(i);
+                      const own = rentalImagePath(i.id, i.categoryId);
+                      const similar = own ? undefined : similarPhoto(i);
                       return (
                       <tr key={i.id} className="border-t border-line">
                         <td className="w-14 py-2.5 pr-3 align-top">
-                          {thumb.matched ? (
+                          {own ? (
+                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
+                              <Image src={own} alt={rentalAlt(i.name, i.specs, i.id)} fill sizes="44px" loading="lazy" className="object-cover" />
+                            </span>
+                          ) : similar ? (
+                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
+                              <Image src={similar.src} alt={similarAlt(similar, i.name)} fill sizes="44px" loading="lazy" className="object-cover" />
+                            </span>
+                          ) : thumb.matched ? (
                             <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
                               <StockImg photo={thumb.photos[0]} alt={stockAlt(thumb.photos[0], i.name, true, site.market)} width={44} />
                             </span>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
+import { BACKUP_CAP_LABEL, BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 import { ChairStrip } from "@/components/ChairStrip";
 import { seo } from "@/lib/seo";
@@ -15,7 +15,7 @@ export default function TermsPage() {
   return (
     <div className="container-x max-w-3xl py-20">
       <p className="eyebrow">Legal</p>
-      <h1 className="headline mt-6 text-5xl sm:text-6xl">Terms of use</h1>
+      <h1 className="display-1 mt-6">Terms of use</h1>
       <p className="mt-4 text-sm text-muted">Last updated November 2, 2026</p>
       <ChairStrip className="mt-10" slugs={["windsor", "shell", "garden-folding"]} caption="Plain-language terms for using this site." />
       <div className="prose-post mt-10">
@@ -23,7 +23,7 @@ export default function TermsPage() {
         <p>
           {site.name} is an event rental booking and coordination service. We do not own or deliver the rentals
           ourselves. Items are supplied, delivered, set up and collected by independent Chicago-area rental companies
-          (&ldquo;rental partners&rdquo;). Your proposal confirms that a rental partner has your items for your date. We share the partner&apos;s name, contact details and rental agreement once you pay our booking fee (or a refundable hold). If you don&apos;t accept that agreement, tell us within 72 hours and we refund the fee in full.
+          (&ldquo;rental partners&rdquo;). Your proposal confirms that a rental partner has your items for your date. Your proposal names the rental partner so you can check it before you pay. We share the partner&apos;s contact details and rental agreement once you pay our booking fee (or a refundable hold). If you don&apos;t accept that agreement, tell us within 72 hours and we refund the fee in full.
         </p>
         <h2>Quote requests are not bookings</h2>
         <p>
@@ -32,11 +32,12 @@ export default function TermsPage() {
         </p>
         <h2>Prices and our booking fee</h2>
         <p>
-          Prices shown on this site include our booking and coordination fee of {BOOKING_FEE_LABEL} on top of the rental
-          partner&apos;s price. Your proposal shows the rental partner&apos;s price and our fee as separate lines, plus
-          delivery, setup, damage waiver and tax for your venue. Prices marked as estimates are confirmed in your
-          proposal. Some rental partners also pay us a referral commission on bookings we introduce; this never
-          increases your price.
+          Prices shown on this site are the rental partner&apos;s own prices. We add no markup to any item. Our booking
+          and coordination fee is {BOOKING_FEE_FULL} per event, and it is the same whatever your order costs.
+          Your proposal shows the rental partner&apos;s prices, delivery, setup, damage waiver and tax for your venue, and
+          our fee as its own line. Prices marked as estimates are confirmed in your proposal. Some rental partners may
+          pay us a referral fee on bookings we introduce. It never changes your price, and if a partner on your
+          proposal pays us one, your proposal says so.
         </p>
         <h2>Who you pay</h2>
         <ul>
@@ -57,7 +58,7 @@ export default function TermsPage() {
           you change your order; (2) we ask every rental partner for proof of general liability insurance before we
           book them, and we tell you before you pay if a partner has not provided it. We do not issue certificates of
           insurance ourselves; (3) if your rental partner cancels a confirmed order, we will find a
-          comparable replacement and cover any price difference up to the amount of the booking fee you paid, or
+          comparable replacement and cover any price difference up to {BACKUP_CAP_LABEL}, or
           refund the booking fee in full if we cannot; (4) quantity changes are free of our charge until 14 days
           before the event, subject to availability and the rental partner&apos;s terms. Details are on our{" "}
           <Link href="/booking-promise">Booking Promise</Link> page.
@@ -73,7 +74,7 @@ export default function TermsPage() {
         <p>
           The rental partner is solely responsible for the rentals it supplies and its services. To the extent allowed
           by law, {site.name}&apos;s total liability for any booking is limited to the booking fee you paid us for that
-          booking.
+          booking, plus any price difference we have agreed to cover under the backup guarantee above (up to {BACKUP_CAP_LABEL}).
         </p>
         <h2>Product images</h2>
         <p>

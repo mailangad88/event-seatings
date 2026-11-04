@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 
 // Anonymous "I want this chair" votes. Each browser gets a random visitor id
 // so one person counts once per chair, without asking them to sign up.
@@ -9,6 +9,8 @@ type VoteState = {
   counts: Record<string, number>;
   mine: Set<string>;
   toggle: (slug: string) => void;
+  /** Loads counts once; called by the first vote button or picker that mounts. */
+  load: () => void;
 };
 
 const VoteContext = createContext<VoteState | null>(null);
@@ -29,8 +31,12 @@ function visitorId() {
 export function VoteProvider({ children }: { children: React.ReactNode }) {
   const [counts, setCounts] = useState<Record<string, number>>({});
   const [mine, setMine] = useState<Set<string>>(new Set());
+  const loaded = useRef(false);
 
-  useEffect(() => {
+  // Only pages that show a vote button fetch counts, so most pages make no /api/votes request at all.
+  const load = useCallback(() => {
+    if (loaded.current) return;
+    loaded.current = true;
     const id = visitorId();
     fetch(`/api/votes${id ? `?visitor=${id}` : ""}`)
       .then((r) => r.json())
@@ -38,7 +44,9 @@ export function VoteProvider({ children }: { children: React.ReactNode }) {
         setCounts(d.counts ?? {});
         setMine(new Set(d.mine ?? []));
       })
-      .catch(() => {});
+      .catch(() => {
+        loaded.current = false;
+      });
   }, []);
 
   const toggle = useCallback(
@@ -62,12 +70,14 @@ export function VoteProvider({ children }: { children: React.ReactNode }) {
     [mine],
   );
 
-  return <VoteContext.Provider value={{ counts, mine, toggle }}>{children}</VoteContext.Provider>;
+  return <VoteContext.Provider value={{ counts, mine, toggle, load }}>{children}</VoteContext.Provider>;
 }
 
 export function useVotes() {
   const ctx = useContext(VoteContext);
   if (!ctx) throw new Error("useVotes must be used inside VoteProvider");
+  const { load } = ctx;
+  useEffect(() => load(), [load]);
   return ctx;
 }
 
@@ -86,10 +96,10 @@ export function VoteButton({ slug, size = "sm" }: { slug: string; size?: "sm" | 
       aria-pressed={on}
       className={`inline-flex items-center gap-2 transition-colors duration-300 ${
         size === "lg"
-          ? `rounded-full border px-6 py-3 text-[15px] font-medium ${
+          ? `rounded-full border px-6 py-3 text-sm font-medium ${
               on ? "border-gold bg-gold text-accent-ink" : "border-gold/70 text-ink hover:bg-gold hover:text-accent-ink"
             }`
-          : `rounded-full bg-espresso/70 px-3 py-2 text-[10px] tracking-[0.18em] uppercase backdrop-blur ${
+          : `rounded-full bg-espresso/70 px-3 py-2 text-xs tracking-[0.18em] uppercase backdrop-blur ${
               on ? "text-gold" : "text-ink hover:text-gold"
             }`
       }`}

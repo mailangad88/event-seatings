@@ -121,7 +121,7 @@ export function Choice<K extends string>({
             aria-pressed={value === o.id}
             title={o.note}
             onClick={() => onChange(o.id)}
-            className={`rounded-full border px-4 py-2 text-sm transition-colors ${value === o.id ? "border-ink bg-ink text-bg" : "border-line bg-surface hover:border-gold"}`}
+            className={`rounded-full border px-4 py-2 text-sm transition-colors ${value === o.id ? "border-accent bg-accent text-accent-ink" : "border-line bg-surface hover:border-gold"}`}
           >
             {o.label}
           </button>
@@ -170,7 +170,7 @@ export function Toggles({
 export function Stat({ value, label, note, big = false }: { value: React.ReactNode; label: string; note?: React.ReactNode; big?: boolean }) {
   return (
     <div className="rounded-2xl border border-line bg-surface p-5">
-      <p className={`font-serif tabular-nums ${big ? "text-5xl" : "text-3xl"}`}>{value}</p>
+      <p className={`font-heading font-semibold tabular-nums ${big ? "text-5xl" : "text-3xl"}`}>{value}</p>
       <p className="mt-1 text-sm font-medium">{label}</p>
       {note && <p className="mt-1 text-xs leading-5 text-muted">{note}</p>}
     </div>

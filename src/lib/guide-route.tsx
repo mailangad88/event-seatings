@@ -10,6 +10,7 @@ import { chairs } from "@/data/chairs";
 import { type GuideFamily } from "@/lib/guide-content";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { logoDataUri, logoWidth } from "@/components/brand/logo-svg";
 
 type P = { params: Promise<{ slug: string }> };
 
@@ -44,9 +45,9 @@ export function ogCard(title: string, eyebrow: string) {
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#f7f3ec", color: "#1b1815", padding: 70, fontFamily: "serif" }}>
         <div style={{ fontSize: 26, letterSpacing: 6, color: "#a88a5a", textTransform: "uppercase", display: "flex" }}>{eyebrow}</div>
         <div style={{ fontSize: title.length > 70 ? 54 : 66, lineHeight: 1.1, display: "flex" }}>{title}</div>
-        <div style={{ fontSize: 30, display: "flex", justifyContent: "space-between" }}>
-          <span>{site.name}</span>
-          <span style={{ color: "#a88a5a" }}>Chicago event chair rentals</span>
+        <div style={{ fontSize: 30, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+          <img src={logoDataUri("light")} width={logoWidth(64)} height={64} />
         </div>
       </div>
     ),
@@ -82,7 +83,7 @@ export function guideHub(family: GuideFamily, intro: string) {
           <div className="container-x py-14">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
             <p className="eyebrow">Planning guides</p>
-            <h1 className="headline mt-5 max-w-3xl text-4xl leading-[1.05] sm:text-6xl">{family.hubTitle}</h1>
+            <h1 className="display-1 mt-5 max-w-3xl">{family.hubTitle}</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-muted" data-answer>{intro}</p>
             <div className="mt-10 grid max-w-3xl grid-cols-3 gap-4">
               {sample.map((c) => (

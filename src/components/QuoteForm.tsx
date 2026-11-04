@@ -17,9 +17,11 @@ import { BookingCta } from "./BookingCta";
 import { ChairArt } from "./ChairArt";
 import { RentalIcon } from "./rentals/RentalIcon";
 import { Icon, PriceDisclaimer, PriceTag, formatPrice, type IconName } from "./ui";
+import { postLead } from "@/lib/lead-client";
+import { trackActivity } from "@/lib/activity-client";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
-export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey };
+export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey; similar?: boolean };
 export type StarterPreset = {
   id: string;
   kind: "look" | "event";
@@ -67,7 +69,16 @@ export function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: s
   const sw = variant ? item.variants?.find((v) => v.key === variant) : undefined;
   if (sw) return <Image src={sw.src} alt={sw.alt} fill sizes={sizes} className="object-cover" />;
   if (item.image)
-    return <Image src={item.image} alt={item.imageAlt ?? `${item.name} rental`} fill sizes={sizes} className="object-cover" />;
+    return (
+      <>
+        <Image src={item.image} alt={item.imageAlt ?? `${item.name} rental`} fill sizes={sizes} className="object-cover" />
+        {item.similar && (
+          <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-xs tracking-[0.1em] text-white uppercase">
+            Similar item
+          </span>
+        )}
+      </>
+    );
   const chair = item.chairSlug ? getChair(item.chairSlug) : undefined;
   if (chair) return <ChairArt chair={chair} className="absolute inset-0" />;
   const photo = item.photo ? stockPhotos[item.photo] : undefined;
@@ -84,7 +95,7 @@ export function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: s
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-[9px] tracking-[0.1em] text-white uppercase">
+        <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-xs tracking-[0.1em] text-white uppercase">
           Example
         </span>
       </>
@@ -131,7 +142,7 @@ export function Stepper({
 }
 
 // Quote builder: pick items and quantities, see a live estimate, then send the enquiry.
-// Prices shown are the customer price (vendor price + our markup), computed on the server.
+// Prices shown are the customer price (the vendor price; we add no markup), computed on the server.
 // The server re-prices everything on submit, so the totals here are only for display.
 export function QuoteForm({
   items,
@@ -202,6 +213,12 @@ export function QuoteForm({
   const lines = Object.keys(picks)
     .map((id) => ({ item: byId.get(id)!, qty: qtyOf(id) }))
     .filter((l) => l.item && l.qty > 0);
+  // Known visitors: remember the list they're building, so an unfinished quote can get a "your list is saved" email.
+  const listKey = lines.map((l) => l.item.id).sort().join(",");
+  useEffect(() => {
+    const t = setTimeout(() => trackActivity({ t: "quote_list", items: listKey ? listKey.split(",") : [] }), 3000);
+    return () => clearTimeout(t);
+  }, [listKey]);
   const subtotal = lines.reduce((s, l) => s + l.item.price * l.qty, 0);
   const pieces = lines.reduce((s, l) => s + l.qty, 0);
   const anyEstimated = lines.some((l) => l.item.estimated);
@@ -271,17 +288,13 @@ export function QuoteForm({
     }
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        guest_count: guests || data.guest_count,
-        items: lines.map((l) => ({ id: l.item.id, qty: l.qty, variant: colours[l.item.id] })),
-        kind: "quote",
-        source: from ? `quote-builder:${from}` : activePreset ? `quote-builder:${activePreset.kind}-${activePreset.id}` : "quote-builder",
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      guest_count: guests || data.guest_count,
+      items: lines.map((l) => ({ id: l.item.id, qty: l.qty, variant: colours[l.item.id] })),
+      kind: "quote",
+      source: from ? `quote-builder:${from}` : activePreset ? `quote-builder:${activePreset.kind}-${activePreset.id}` : "quote-builder",
     }).catch(() => null);
     if (res?.ok) {
       trackLead("quote", "quote-builder", { guest_count: Number(guests || data.guest_count) || undefined, item_count: lines.length });
@@ -468,7 +481,7 @@ export function QuoteForm({
                           {s.lines.length} items · about {formatPrice(Math.round(starterTotal(s)))} for {guests || 100} guests
                         </span>
                       </span>
-                      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${on ? "bg-gold text-accent-ink" : "bg-ink text-bg"}`} aria-hidden>
+                      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${on ? "bg-green text-white" : "bg-accent text-accent-ink"}`} aria-hidden>
                         <Icon name={on ? "check" : "plus"} size={16} />
                       </span>
                     </span>
@@ -492,7 +505,7 @@ export function QuoteForm({
                     onClick={() => applyStarter(s)}
                     aria-pressed={on}
                     className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2.5 text-sm transition-colors ${
-                      on ? "border-ink bg-ink text-bg" : "border-line bg-surface hover:border-ink/30"
+                      on ? "border-accent bg-accent text-accent-ink" : "border-line bg-surface hover:border-ink/30"
                     }`}
                   >
                     <Icon name={(s.icon ?? "spark") as IconName} size={16} className={on ? "" : "text-gold"} />
@@ -549,7 +562,7 @@ export function QuoteForm({
                 </span>
                 <span className={`mt-1.5 block text-xs leading-tight ${on ? "font-semibold" : ""}`}>{c === "All" ? "Everything" : c}</span>
                 {n > 0 && (
-                  <span className="absolute -top-1.5 -right-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[11px] font-semibold text-accent-ink">
+                  <span className="absolute -top-1.5 -right-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-xs font-semibold text-accent-ink">
                     {n}
                   </span>
                 )}
@@ -571,7 +584,7 @@ export function QuoteForm({
                         <span className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]">
                           <ItemVisual item={item} variant={colours[item.id]} sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 22vw" />
                         </span>
-                        <span className="absolute right-3 bottom-3 flex items-center gap-1 rounded-full bg-ink py-1.5 pr-3 pl-2 text-sm font-medium text-bg shadow-soft">
+                        <span className="absolute right-3 bottom-3 flex items-center gap-1 rounded-full bg-accent py-1.5 pr-3 pl-2 text-sm font-medium text-accent-ink shadow-soft">
                           <Icon name="plus" size={16} /> {suggest > 1 ? suggest.toLocaleString() : "Add"}
                         </span>
                       </button>
@@ -784,11 +797,11 @@ export function QuoteForm({
             </div>
           )}
           <p className="hint">
-            We confirm availability with vetted {site.market}-area rental companies and send one itemized proposal. No
+            We confirm availability with established {site.market}-area rental companies and send one itemized proposal. No
             payment and no commitment until a vendor confirms and you approve.{" "}
             <Link href="/booking-promise" className="link" target="_blank">How payments work</Link>
           </p>
-          {status === "error" && <p className="mt-2 text-sm text-red-600">{error}</p>}
+          {status === "error" && <p className="mt-2 text-sm text-rose">{error}</p>}
         </div>
         <button className="btn-primary btn-lg" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Send my quote request"}

@@ -1,4 +1,5 @@
-import { existsSync, readFileSync } from "node:fs";
+import { hasPublicFile } from "@/lib/public-files";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 
 // Server-side view of every site image: the Blender render manifest (src/data/rental-images.json) with the
@@ -38,10 +39,20 @@ export function readImageManifest(): Record<string, ManifestEntry> {
   const base = readJson(RENDERS);
   const styled = readJson(STYLED);
   const out: Record<string, ManifestEntry> = { ...base };
+  const ok = (s: ManifestEntry) => hasPublicFile(s.src);
   for (const [slug, s] of Object.entries(styled)) {
-    if (!s.src || !existsSync(path.join(process.cwd(), "public", s.src))) continue;
+    if (!ok(s) || s.kind === "photo") continue;
+    // Item shots keep the render (or a product photo below) so each item is recognisable; only scenes are swapped.
+    if (base[slug] && ["product", "variant", "angle"].includes(base[slug].kind ?? "")) continue;
     const b = base[slug] ?? { kind: s.kind === "solo" ? "solo" : "scene", category: s.category, parent: s.parent };
     out[slug] = { ...b, src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true };
+  }
+  // Realistic product photos (`<id>--photo`) lead: they replace the render or scene under the item's own id, and
+  // give an image to catalog items that never had a render.
+  for (const s of Object.values(styled)) {
+    if (!ok(s) || s.kind !== "photo" || !s.parent) continue;
+    const b = base[s.parent] ?? { kind: "photo", category: s.category };
+    out[s.parent] = { ...b, src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true };
   }
   cache = out;
   return out;

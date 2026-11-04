@@ -13,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <div className="container-x max-w-3xl py-20">
       <p className="eyebrow">Legal</p>
-      <h1 className="headline mt-6 text-5xl sm:text-6xl">Privacy policy</h1>
+      <h1 className="display-1 mt-6">Privacy policy</h1>
       <p className="mt-4 text-sm text-muted">Last updated October 2026</p>
       <ChairStrip className="mt-10" slugs={["ghost", "bentwood", "cane-back"]} caption="We collect only what we need to plan your event." />
       <div className="prose-post mt-10">
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
           You can ask us to access, correct or delete your information, or unsubscribe from emails at any time by
           writing to <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
-        <h2>Cookies and local storage</h2>
+        <h2 id="cookies">Cookies and local storage</h2>
         <p>
           We store a random visitor identifier in your browser&apos;s local storage so your saved chairs persist, and a
           note of how you arrived (for example &ldquo;google / organic&rdquo; and your first page), which is only sent
@@ -71,6 +71,20 @@ export default function PrivacyPage() {
           sets first-party cookies, and you can opt out with Google&apos;s{" "}
           <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer">browser add-on</a>. We don&apos;t
           use advertising cookies.
+        </p>
+        <p>
+          We also keep a short list of the pages you open on this site, when you opened them, and the links and buttons
+          you click (never what you type). It stays in your browser. If you send us a form, it comes along so we can
+          answer with what you were looking at, along with your rough location from your internet address and the
+          kind of device you used. You can say no in the notice at the bottom of the page, which clears the list and
+          turns off Google Analytics. If your browser sends a Global Privacy Control signal, we treat that as a no.
+        </p>
+        <p>
+          After you send us a form with your email, we keep noting the pages you open, the buttons you click and the
+          items on your quote list when you come back on the same device, and store them with your enquiry. We use this
+          to answer you better and, at most once for each kind, to email a short reminder: a quote list you didn&apos;t
+          send, an item you kept looking at, or an event date that is getting close. Saying no in the notice stops
+          this, and the unsubscribe link in any email stops every reminder.
         </p>
         <h2>Chat</h2>
         <p>
@@ -99,8 +113,8 @@ function ChatDataFlow() {
         {flow.map((f, i) => (
           <li key={f.title} className="m-0 flex flex-col items-center gap-2 sm:flex-1 sm:flex-row">
             <div className="w-full rounded-md border border-gold/60 bg-surface px-3 py-3 text-center">
-              <span className="block font-serif text-lg leading-tight text-ink">{f.title}</span>
-              <span className="mt-1 block text-[11px] tracking-wide text-muted">{f.note}</span>
+              <span className="block font-heading font-semibold text-lg leading-tight text-ink">{f.title}</span>
+              <span className="mt-1 block text-xs tracking-wide text-muted">{f.note}</span>
             </div>
             {i < flow.length - 1 && (
               <svg width="14" height="14" viewBox="0 0 14 14" className="shrink-0 rotate-90 text-gold sm:rotate-0" aria-hidden>

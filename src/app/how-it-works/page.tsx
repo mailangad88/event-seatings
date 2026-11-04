@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
-import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
+import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "How Event Rentals Work: One Quote for Everything",
-  description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more, pay nothing until a vendor confirms, and we coordinate vetted Chicago-area rental companies from delivery to pickup.`,
+  description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more, pay nothing until a vendor confirms, and we coordinate established Chicago-area rental companies from delivery to pickup.`,
   alternates: { canonical: "/how-it-works" },
 });
 
@@ -29,13 +29,13 @@ const detail = [
   {
     icon: "users",
     title: "3. We confirm with vendors",
-    text: "After a quick call, we check your date with vetted Chicago-area rental companies and send one itemized proposal, usually within one business day.",
+    text: "After a quick call, we check your date with established Chicago-area rental companies and send one itemized proposal, usually within one business day.",
     points: ["Every fee and policy shown up front", "Substitutes if something is booked", "One contact for every vendor"],
   },
   {
     icon: "truck",
     title: "4. Approve, then relax",
-    text: `Approve your proposal and pay our ${BOOKING_FEE_LABEL} booking fee to secure it. We then introduce your rental company, which sends its agreement and deposit invoice, and we coordinate delivery, setup and pickup.`,
+    text: `Approve your proposal and pay our booking fee, ${BOOKING_FEE_FULL}, to secure it. You only pay once every rental company has confirmed in writing. We then introduce your rental company, which sends its agreement and deposit invoice, and we coordinate delivery, setup and pickup.`,
     points: ["Price locked once you approve", "Backup guarantee if a vendor cancels", "Pickup the same night or next morning"],
   },
 ] as const;
@@ -50,11 +50,11 @@ const faqs: Faq[] = [
   },
   {
     q: "When do I pay, and who do I pay?",
-    a: `Nothing until a rental company confirms your date and you approve your proposal. Then you pay our ${BOOKING_FEE_LABEL} booking fee to us, and the rental company's deposit and balance to them under their agreement.`,
+    a: `Nothing until a rental company confirms your date and you approve your proposal. Then you pay our booking fee, ${BOOKING_FEE_FULL}, to us, and the rental company's deposit and balance to them under their agreement.`,
   },
   {
     q: "Are your prices higher than booking direct?",
-    a: `Our prices include a ${BOOKING_FEE_LABEL} booking and coordination fee on top of the rental company's price, and your proposal shows both. In return you get one quote for every category, one coordinator, and our Booking Promise.`,
+    a: `Item prices are the rental company's own price, with no markup. Our booking and coordination fee is ${BOOKING_FEE_FULL} per event, shown as its own line on your proposal. In return you get one quote across every company, one coordinator, a delivery check on the morning of your event, and our Booking Promise.`,
   },
 ];
 
@@ -64,8 +64,8 @@ export default function HowItWorksPage() {
       <PageHero
         breadcrumbs={[{ name: "How it works", href: "/how-it-works" }]}
         eyebrow="How it works"
-        title="One list. One quote. Every rental handled."
-        intro={`Booking with ${site.name} takes four steps: pick your rentals and see live prices, send one free quote request, approve a proposal we confirm with a vetted Chicago-area rental company, then get delivery, setup and pickup on your date. Here is exactly what happens at each step.`}
+        title="How booking your rentals works"
+        intro={`Booking with ${site.name} takes four steps: pick your rentals and see live prices, send one free quote request, approve a proposal we confirm with an established Chicago-area rental company, then get delivery, setup and pickup on your date. Here is what happens at each step.`}
         actions={
           <>
             <Link href="/quote?from=how-it-works" className="btn-primary">Start my quote</Link>
@@ -118,7 +118,7 @@ export default function HowItWorksPage() {
             <ol className="mt-5 space-y-4">
               {[
                 ["Free", "Quote, planning call and proposal. No card needed."],
-                [`${BOOKING_FEE_LABEL} booking fee`, `Paid to ${site.name} when you approve, only after your vendor confirms.`],
+                [`Flat booking fee: $295, or $495 over 200 guests`, `Paid to ${site.name} when you approve, only after every rental company confirms.`],
                 ["Deposit", "Paid to the rental company at booking, under its agreement."],
                 ["Balance", "Paid to the rental company, usually 7-14 days before the event."],
               ].map(([k, v]) => (
@@ -136,7 +136,7 @@ export default function HowItWorksPage() {
             <ul className="mt-5 space-y-3 text-sm">
               {[
                 "Price lock on your approved proposal",
-                "Vetted rental companies, asked for proof of insurance",
+                "Established rental companies that show us proof of insurance",
                 "Backup guarantee if a vendor cancels",
                 `One coordinator, ${replyPromise}`,
                 "Free changes until 14 days before",
@@ -148,6 +148,7 @@ export default function HowItWorksPage() {
               ))}
             </ul>
             <Link href="/booking-promise" className="btn-ghost btn-sm mt-6">Payments, damage & insurance →</Link>
+            <Link href="/how-we-work" className="btn-ghost btn-sm mt-3">How we work with rental companies →</Link>
           </article>
         </div>
       </Section>

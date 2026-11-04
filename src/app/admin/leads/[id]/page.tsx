@@ -6,7 +6,10 @@ import { getCatalogItem, vendors } from "@/data/catalog";
 import { getVendor, type Vendor } from "@/data/vendors";
 import { VendorContact } from "@/components/admin/VendorContact";
 import { usd, type QuoteLine } from "@/lib/catalog-types";
-import { getLead, leadStatuses, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
+import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJourney";
+import { AfterEnquiry } from "@/components/admin/AfterEnquiry";
+import { buildLeadAlert } from "@/lib/lead-alert";
+import { getLead, getVisitorActivity, leadStatuses, listLeadsByEmail, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
 import { amountDue, chargeLabel, stripeEnabled } from "@/lib/payments";
 import { site } from "@/lib/site";
 import { createProposal, saveLead, setFeeStatus } from "../actions";
@@ -67,6 +70,11 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
   const [lead, partnerRows] = await Promise.all([getLead(id), listPartners()]);
   if (!lead) notFound();
   const partners = new Map(partnerRows.map((p) => [p.vendor_id, p]));
+  const [earlier, afterEvents] = await Promise.all([
+    listLeadsByEmail(lead.email).catch(() => [] as Lead[]),
+    lead.visitor_id ? getVisitorActivity(lead.visitor_id).catch(() => []) : Promise.resolve([]),
+  ]);
+  const alert = buildLeadAlert(lead, { earlier, partners, siteUrl: site.url });
 
   const lines = lead.items ?? [];
   const subtotal = lead.quote_subtotal ?? 0;
@@ -89,7 +97,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
             {lead.lead_score && <span title={lead.lead_score_reasons}>{lead.lead_score} lead · </span>}
             {statusLabel(lead.status)} · {lead.kind}
           </p>
-          <h1 className="mt-1 font-serif text-5xl">{lead.name ?? lead.email}</h1>
+          <h1 className="display-2 mt-1">{lead.name ?? lead.email}</h1>
           <p className="mt-2 text-muted">
             Received {new Date(lead.created_at).toLocaleString("en-US", { timeZone: "America/Chicago" })} Chicago time
           </p>
@@ -104,7 +112,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_24rem]">
         <div className="space-y-6">
           <section className={card}>
-            <h2 className="font-serif text-2xl">Contact and event</h2>
+            <h2 className="display-3">Contact and event</h2>
             <dl className="mt-3 grid gap-x-10 text-sm md:grid-cols-2">
               <div>
                 <Row label="Email"><a href={`mailto:${lead.email}`} className="text-accent">{lead.email}</a></Row>
@@ -123,7 +131,6 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                 <Row label="Venue">{lead.venue}</Row>
               </div>
             </dl>
-            {lead.pages_viewed && <p className="mt-4 text-xs leading-5 text-muted">Pages viewed: {lead.pages_viewed}</p>}
             {lead.message && <p className="mt-4 border-l border-gold pl-4 text-sm leading-6 whitespace-pre-line">{lead.message}</p>}
             {!lines.length && lead.chairs?.length ? (
               <p className="mt-4 text-sm">Chairs: {lead.chairs.map((s) => getChair(s)?.name ?? s).join(", ")}</p>
@@ -131,9 +138,13 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
             {lead.quiz_styles?.length ? <p className="mt-2 text-sm">Style quiz: {lead.quiz_styles.join(", ")}</p> : null}
           </section>
 
+          <LeadOutreach alert={alert} />
+          <LeadJourney alert={alert} />
+          {lead.visitor_id ? <AfterEnquiry events={afterEvents} since={lead.created_at} /> : null}
+
           {(lines.length > 0 || assigned) && (
             <section className={card} aria-labelledby="who-to-contact">
-              <h2 id="who-to-contact" className="font-serif text-2xl">Who to contact</h2>
+              <h2 id="who-to-contact" className="font-heading font-semibold text-2xl">Who to contact</h2>
               <p className="mt-1 text-sm text-muted">
                 {lines.length > 0
                   ? "Each rental company that supplies items on this list, with its order. Call, email the order, or copy it into their website form."
@@ -143,7 +154,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                 {groups.map((g) => (
                   <div key={g.vendor.id} className="rounded-xl border border-line p-4">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="font-serif text-xl">
+                      <h3 className="font-heading font-semibold text-xl">
                         {g.vendor.name}
                         {lead.assigned_vendor === g.vendor.id && <span className="ml-2 align-middle text-xs font-sans text-accent">Assigned</span>}
                       </h3>
@@ -190,7 +201,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
           {lines.length > 0 && (
             <section className={`${card} overflow-x-auto`}>
               <div className="flex flex-wrap items-baseline justify-between gap-3">
-                <h2 className="font-serif text-2xl">Quote</h2>
+                <h2 className="display-3">Quote</h2>
                 <p className="text-sm text-muted">
                   Customer saw <strong className="text-ink">{usd(subtotal)}</strong> · vendor cost {usd(cost)} · margin{" "}
                   <strong className="text-ink">{usd(subtotal - cost)}</strong>
@@ -222,7 +233,8 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
           )}
 
           <section className={card}>
-            <h2 className="font-serif text-2xl">Timeline</h2>
+            <h2 className="display-3">Timeline</h2>
+            <p className="mt-1 text-sm text-muted">Status changes, emails sent, calls and notes, newest first.</p>
             <ol className="mt-4 space-y-3 text-sm">
               {[...(lead.activity ?? [])].reverse().map((a, i) => (
                 <li key={i} className="grid grid-cols-[8.5rem_1fr] gap-3">
@@ -242,9 +254,12 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
 
         <aside className="space-y-6">
           <section className={card} aria-labelledby="proposal">
-            <h2 id="proposal" className="font-serif text-2xl">Customer proposal</h2>
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h2 id="proposal" className="font-heading font-semibold text-2xl">Customer proposal</h2>
+              <Link href={`/admin/leads/${lead.id}/quote`} className="text-sm text-accent">Edit quote</Link>
+            </div>
             <p className="mt-1 text-sm text-muted">
-              The customer link hides the rental partner until the {chargeLabel().toLowerCase()} is paid.
+              The customer link names the rental partner and shares its contact once the {chargeLabel().toLowerCase()} is paid.
               {stripeEnabled() ? " Stripe Checkout is on." : " Stripe is off (no STRIPE_SECRET_KEY), so send a payment link yourself and mark it paid here."}
             </p>
             {lead.proposal_token ? (
@@ -282,7 +297,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
           </section>
 
           <form action={saveLead} className={`${card} space-y-4`}>
-            <h2 className="font-serif text-2xl">Update lead</h2>
+            <h2 className="display-3">Update lead</h2>
             <input type="hidden" name="id" value={lead.id} />
             <div>
               <label className="label" htmlFor="status">Stage</label>
@@ -320,13 +335,18 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
           </form>
 
           <section className={card}>
-            <h2 className="font-serif text-2xl">Where they came from</h2>
-            <dl className="mt-3 text-sm">
-              <Row label="Form">{lead.source}</Row>
-              {trackingFields.map((f) => (
-                <Row key={f} label={f.replace(/_/g, " ")}>{lead[f]}</Row>
-              ))}
-            </dl>
+            <h2 className="display-3">Where they came from</h2>
+            <div className="mt-3"><LeadSource alert={alert} /></div>
+            <details className="mt-3 text-sm">
+              <summary className="cursor-pointer text-muted">All tracking fields</summary>
+              <dl className="mt-2">
+                <Row label="Form">{lead.source}</Row>
+                <Row label="Email set">{lead.sequence}</Row>
+                {trackingFields.map((f) => (
+                  <Row key={f} label={f.replace(/_/g, " ")}>{lead[f]}</Row>
+                ))}
+              </dl>
+            </details>
           </section>
         </aside>
       </div>

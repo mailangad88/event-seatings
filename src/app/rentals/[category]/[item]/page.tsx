@@ -15,10 +15,15 @@ import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
+// About 2,560 item pages. The featured items and the categories people browse most are built ahead; every other
+// item renders in full on its first visit and is then cached like a built page (ISR), so it still returns a 200
+// with the whole page for visitors and search engines. Ids that aren't in the catalog still 404 (see `load`).
+const PREBUILT_CATEGORIES = new Set(["chairs", "tables", "linens", "tents"]);
 export function generateStaticParams() {
-  return catalogItems.map((i) => ({ category: i.categoryId, item: i.id }));
+  return catalogItems
+    .filter((i) => i.featured || PREBUILT_CATEGORIES.has(i.categoryId))
+    .map((i) => ({ category: i.categoryId, item: i.id }));
 }
-export const dynamicParams = false;
 
 async function load(props: PageProps<"/rentals/[category]/[item]">) {
   const { category, item } = await props.params;
@@ -59,7 +64,7 @@ function answerExtras(i: CatalogItem, price: number): string {
     qty ? `A 100-guest event needs about ${qty.toLocaleString()}, or ${formatPrice(Math.round(qty * price * 100) / 100)} before delivery.` : "",
     i.minQty ? `The minimum order is ${i.minQty}.` : "",
     "Delivery, setup and pickup are added to the same itemized quote, and the quote is free.",
-    `We book it with a vetted ${site.market}-area rental company.`,
+    `We book it with an established ${site.market}-area rental company.`,
   ].filter(Boolean);
   let out = "";
   const lead = 12; // words in "Rent a … in Chicago and the suburbs for $x each."
@@ -73,7 +78,7 @@ function answerExtras(i: CatalogItem, price: number): string {
 export async function generateMetadata(props: PageProps<"/rentals/[category]/[item]">): Promise<Metadata> {
   const i = await load(props);
   if (!i) return {};
-  const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) && !rentalImage(i.id)?.ai ? undefined : rentalImagePath(i.id, i.categoryId);
   const real = photosForItem(i);
   const og = img
     ? { url: img, alt: rentalAlt(i.name, i.specs, i.id) }
@@ -155,15 +160,17 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const cheaper = range.slice(Math.max(0, rank - 2), rank).filter((x) => x.name !== i.name);
   const pricier = range.slice(rank + 1, rank + 3).filter((x) => x.name !== i.name);
   const rangeName = (i.section ?? c.name).toLowerCase();
-  const img = isPhotoFirst(i.id) && !styledImage(i.id) ? undefined : rentalImagePath(i.id, i.categoryId);
+  const img = isPhotoFirst(i.id) && !rentalImage(i.id)?.ai ? undefined : rentalImagePath(i.id, i.categoryId);
   // Real event photos: the same item type when we have it, otherwise general photos of the category.
   const real = photosForItem(i);
   const gallery = (real.matched ? real.photos : categoryPhotos(i.categoryId)).slice(0, 3);
   const galleryAlt = (p: (typeof gallery)[number]) => stockAlt(p, i.name, real.matched, site.market);
-  // When the hero is a styled event scene, also show the plain render so the exact piece is clear.
-  const scene = styledImage(i.id);
-  const plain = scene ? originalImage(i.id) : undefined;
+  // The hero is the realistic product photo; the event scene and the single-piece shot come second.
+  const lead = rentalImage(i.id);
+  const sceneImg = styledImage(i.id);
+  const scene = sceneImg && sceneImg.src !== lead?.src ? sceneImg : undefined;
   const solo = soloImage(i.id);
+  const plain = !scene && sceneImg ? originalImage(i.id) : undefined;
 
   const jsonLd = [
     {
@@ -180,6 +187,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             ? imagesFor(i.id).map((m) => rentalImageJsonLd(m))
             : [{ "@type": "ImageObject", url: `${site.url}${img}`, caption: rentalAlt(i.name, i.specs, i.id) }]
           : []),
+        ...(scene ? [rentalImageJsonLd(scene)] : []),
         ...(solo ? [rentalImageJsonLd(solo)] : []),
         ...(plain ? [rentalImageJsonLd(plain)] : []),
         ...gallery.map((p) => stockImageJsonLd(p, galleryAlt(p))),
@@ -239,8 +247,8 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             )}
           </div>
           <div className="md:py-4">
-            <p className="font-serif text-lg text-gold italic">{c.name} rental · {site.market}</p>
-            <h1 className="headline mt-4 text-5xl leading-[1] sm:text-6xl">{i.name}</h1>
+            <p className="font-heading font-semibold text-lg text-gold">{c.name} rental · {site.market}</p>
+            <h1 className="display-1 mt-4">{i.name}</h1>
             <p className="mt-6 text-lg leading-8" data-answer>
               Rent {withArticle(lower(i.name))} in {site.market} and the suburbs for{" "}
               <strong className="font-medium">
@@ -304,7 +312,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             <dl className="mt-10 border-t border-line text-sm">
               {facts.map(([k, v]) => (
                 <div key={k} className="grid grid-cols-[130px_1fr] gap-4 border-b border-line py-4">
-                  <dt className="text-[11px] tracking-[0.2em] text-muted uppercase">{k}</dt>
+                  <dt className="text-xs tracking-[0.2em] text-muted uppercase">{k}</dt>
                   <dd>{v}</dd>
                 </div>
               ))}
@@ -319,18 +327,15 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </div>
         </div>
 
-        {(solo || (scene && plain)) && (
-          <section className="mt-24" aria-labelledby="piece-itself">
-            <p className="eyebrow">The piece itself</p>
-            <h2 id="piece-itself" className="headline mt-6 text-4xl">
-              {i.name} on its own
+        {(scene || solo || plain) && (
+          <section className="mt-24" aria-labelledby="at-an-event">
+            <p className="eyebrow">At an event</p>
+            <h2 id="at-an-event" className="headline mt-6 text-4xl">
+              {i.name} styled for a celebration
             </h2>
-            <p className="mt-4 max-w-2xl text-muted">
-              A closer look at a single piece, so you can see its shape, finish and colour.
-              {plain && " The plain render is built from the rental\u2019s real dimensions."}
-            </p>
+            <p className="mt-4 max-w-2xl text-muted">How this rental can look at a styled event, and a closer look at a single piece.</p>
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              {[solo, plain].filter((m): m is NonNullable<typeof m> => !!m).map((m) => (
+              {[scene, solo, plain].filter((m): m is NonNullable<typeof m> => !!m).map((m) => (
                 <figure key={m.src}>
                   <div className="media relative overflow-hidden" style={{ aspectRatio: `${m.width} / ${m.height}` }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -383,7 +388,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             </figcaption>
             <table className="mt-6 w-full text-sm">
               <thead>
-                <tr className="text-left text-[10px] tracking-[0.18em] text-muted uppercase">
+                <tr className="text-left text-xs tracking-[0.18em] text-muted uppercase">
                   <th className="pb-2 font-medium">{i.perGuest ? "Event size" : "Quantity"}</th>
                   <th className="pb-2 text-right font-medium">Qty</th>
                   <th className="w-2/5 pb-2" aria-hidden />
@@ -409,7 +414,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           </figure>
           <div>
             <p className="eyebrow">Planning tips</p>
-            <h2 className="headline mt-6 mb-8 text-4xl">Getting {c.name.toLowerCase()} right</h2>
+            <h2 className="display-2 mt-6 mb-8">Getting {c.name.toLowerCase()} right</h2>
             <Steps steps={c.planning.slice(0, 4)} compact />
           </div>
         </section>

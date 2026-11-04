@@ -42,7 +42,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
     faqs: [
       {
         q: "How much do event rentals cost?",
-        a: "Every item lists its per-piece or per-set price, and your quote totals live as you add items. Prices include our coordination, so there is no separate planning fee. Delivery, setup and any venue surcharges are itemized before you confirm.",
+        a: "Every item lists its per-piece or per-set price, and your quote totals live as you add items. Item prices are the rental company's own price, with no markup. Our coordination is one flat fee per event ($295, or $495 over 200 guests), paid only after every company confirms. Delivery, setup and any venue surcharges are itemized before you confirm.",
       },
       {
         q: "Is the quote free?",

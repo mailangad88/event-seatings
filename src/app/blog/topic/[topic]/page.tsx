@@ -73,7 +73,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((p) => <PostCard key={p.slug} post={p} />)}
         </div>
-        {!posts.length && <p className="font-serif text-2xl text-muted italic">Guides for this topic arrive soon.</p>}
+        {!posts.length && <p className="font-heading font-semibold text-2xl text-muted">Guides for this topic arrive soon.</p>}
 
         <nav aria-label="Guide topics" className="mt-20 border-t border-line pt-10">
           <p className="eyebrow">More topics</p>

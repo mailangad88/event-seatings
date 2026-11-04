@@ -30,8 +30,8 @@ export default function RentalCostHub() {
       a: "Delivery and pickup (usually $150 to $400 per order), setup and teardown, a damage waiver of about 10% and sales tax. Every quote itemizes them before you book.",
     },
     {
-      q: "Why are prices on this site 10% above the rental company's rate?",
-      a: `${site.name} adds a 10% booking and coordination fee to the partner's own price, shown up front. It covers sourcing, one itemized proposal and a single point of contact through pickup.`,
+      q: "Are prices on this site the same as the rental company's rate?",
+      a: `Yes. Item prices are the rental company's own rate, with no markup. ${site.name} charges one flat booking and coordination fee per event, $295 or $495 over 200 guests, after every company confirms. It covers sourcing, one itemized proposal and a single point of contact through pickup.`,
     },
   ];
   return (
@@ -64,7 +64,7 @@ export default function RentalCostHub() {
 
       <Section title="Price ranges by category">
         <table className="w-full text-left text-sm">
-          <caption className="mb-4 text-left text-muted">Per item for one event day, including our 10% fee. Delivery, setup, damage waiver and tax are extra.</caption>
+          <caption className="mb-4 text-left text-muted">Per item for one event day, at the rental company&apos;s own price. Delivery, setup, damage waiver and tax are extra.</caption>
           <thead>
             <tr className="border-b border-line">
               <th scope="col" className="py-3 pr-4 font-medium">Category</th>
@@ -90,7 +90,8 @@ export default function RentalCostHub() {
         <div className="mx-auto max-w-3xl">
           <FaqList faqs={faqs} />
           <p className="mt-8 text-sm text-muted">
-            For chairs by style and quantity, see the <Link href="/chair-rental-cost" className="link-line">chair rental cost guides</Link>. For local prices,
+            To see how much prices differ between companies for the same item, read the{" "}
+            <Link href="/data/chicago-rental-prices" className="link-line">Chicago event rental price index</Link>. For chairs by style and quantity, see the <Link href="/chair-rental-cost" className="link-line">chair rental cost guides</Link>. For local prices,
             pick your town in <Link href="/party-rentals" className="link-line">party rentals by area</Link>.
           </p>
         </div>

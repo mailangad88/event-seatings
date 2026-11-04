@@ -91,7 +91,7 @@ export default async function IdeaPage(props: PageProps<"/party-ideas/[type]/[id
             </Link>
           </>
         }
-        media={<Figure src={sc.src} alt={`${i.name}: ${i.sceneAlt}`} caption={sc.ai ? `${sc.caption} (AI-generated example)` : sc.caption} width={sc.width} height={sc.height} ratio="4/3" priority />}
+        media={<Figure src={sc.src} alt={`${i.name}: ${i.sceneAlt}`} caption={sc.caption} width={sc.width} height={sc.height} ratio="4/3" priority />}
       />
 
       <Section eyebrow="The look" title="Palette and decor">

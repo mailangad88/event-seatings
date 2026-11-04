@@ -70,11 +70,11 @@ export default function LooksPage() {
       <section className="container-x pt-10 pb-16 md:pt-16">
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow justify-center">The look book · Chicagoland</p>
-          <h1 className="headline mt-6 text-[3.2rem] leading-[0.95] sm:text-7xl lg:text-8xl">
+          <h1 className="display-1 mt-6">
             Steal the look. <em className="text-gold">Rent the chairs.</em>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-muted">
-            The most elegant event looks we know, each built around one chair. Tap a look for the full recipe, and
+            Event looks we like for Chicago weddings and parties, each built around one chair. Tap a look to see the chairs, linens and decor in it, and
             we&apos;ll send it to you with pricing for your date.
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function LooksPage() {
               aria-label={l.name}
             >
               <LookScene look={l} priority={i < 4} showPalette={false} className="aspect-[9/16] transition-transform duration-700 group-hover:-translate-y-1" />
-              <p className="mt-2 truncate text-center text-[10px] tracking-[0.2em] text-muted uppercase">{l.name.replace(/^The /, "")}</p>
+              <p className="mt-2 truncate text-center text-xs tracking-[0.2em] text-muted uppercase">{l.name.replace(/^The /, "")}</p>
             </Link>
           ))}
         </div>
@@ -105,18 +105,18 @@ export default function LooksPage() {
                   {lookMedia(l).still && (
                     <SaveIdea idea={{ src: lookMedia(l).still!, alt: l.mediaAlt ?? `${l.name} decor look`, caption: l.name, href: `/looks/${l.slug}` }} className="absolute top-3 right-3 z-20" />
                   )}
-                  <p className="mt-5 font-serif text-lg text-gold italic">No. {String(i + 1).padStart(2, "0")}</p>
-                  <h2 className="headline mt-1 text-4xl leading-tight">
+                  <p className="mt-5 font-heading font-semibold text-lg text-gold">No. {String(i + 1).padStart(2, "0")}</p>
+                  <h2 className="display-2 mt-1">
                     <Link href={`/looks/${l.slug}`} className="after:absolute after:inset-0">
                       {l.name}
                     </Link>
                   </h2>
                   <p className="mt-2 text-muted">{l.kicker}</p>
                   <div className="mt-5 flex items-center justify-between border-t border-line pt-4">
-                    <span className="text-[11px] tracking-[0.18em] text-muted uppercase">
+                    <span className="text-xs tracking-[0.18em] text-muted uppercase">
                       The chair: <span className="text-ink">{chair?.name}</span>
                     </span>
-                    <span className="text-[11px] tracking-[0.22em] text-gold uppercase transition-transform group-hover:translate-x-1">
+                    <span className="text-xs tracking-[0.22em] text-gold uppercase transition-transform group-hover:translate-x-1">
                       Get it →
                     </span>
                   </div>
@@ -131,7 +131,7 @@ export default function LooksPage() {
       <section className="paper mt-20">
         <div className="container-x py-24">
           <p className="eyebrow">How it works</p>
-          <h2 className="headline mt-6 text-5xl sm:text-6xl">
+          <h2 className="display-2 mt-6">
             From saved post to <em>set table</em>
           </h2>
           <ol className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
@@ -141,8 +141,8 @@ export default function LooksPage() {
               ["15 minutes, then relax", "A quick call to fit it to your venue. On the day we deliver, place every chair and collect afterward."],
             ].map(([t, d], i) => (
               <li key={t}>
-                <span className="headline text-7xl text-gold/70">0{i + 1}</span>
-                <h3 className="mt-4 text-[11px] font-medium tracking-[0.25em] uppercase">{t}</h3>
+                <span className="headline text-6xl text-gold/70">0{i + 1}</span>
+                <h3 className="mt-4 text-xs font-medium tracking-[0.25em] uppercase">{t}</h3>
                 <p className="mt-3 leading-7 text-muted">{d}</p>
               </li>
             ))}
@@ -159,7 +159,7 @@ export default function LooksPage() {
         <div className="grid gap-14 md:grid-cols-[1fr_1.6fr] md:gap-20">
           <div>
             <p className="eyebrow">Questions</p>
-            <h2 className="headline mt-6 text-5xl leading-[0.95] sm:text-6xl">
+            <h2 className="display-2 mt-6">
               About the <em className="text-gold">looks</em>
             </h2>
           </div>

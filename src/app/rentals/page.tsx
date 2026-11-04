@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
+import { ReadyPackages } from "@/components/ReadyPackages";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { Faqs, JsonLd, Steps, faqJsonLd } from "@/components/rentals/parts";
@@ -21,7 +22,7 @@ export const metadata: Metadata = seo({
 const faqs = [
   {
     q: `How does renting through ${site.name} work?`,
-    a: `Pick the items you need and send one enquiry. We match each item with a vetted local rental partner, confirm availability for your date and venue, and send you a single itemized proposal. You deal with one team instead of calling five rental companies.`,
+    a: `Pick the items you need and send one enquiry. We match each item with an established local rental company, confirm availability for your date and venue, and send you a single itemized proposal. You deal with one team instead of calling five rental companies.`,
   },
   {
     q: "Are the prices on this page final?",
@@ -121,20 +122,20 @@ export default function RentalsPage() {
                 ) : (
                   <div className="grid aspect-[4/3] place-items-center rounded-xl bg-gold-soft"><RentalIcon category={c.id} className="h-14 w-14 text-gold" /></div>
                 )}
-                <h3 className="mt-3 font-serif text-xl leading-tight font-medium sm:mt-4 sm:text-2xl">
+                <h3 className="display-3 mt-3 sm:mt-4">
                   <Link href={`/rentals/${c.id}`} className="after:absolute after:inset-0">
                     {c.name}
                   </Link>
                 </h3>
                 <p className="mt-1 line-clamp-2 text-sm leading-6 text-muted max-sm:hidden">{c.blurb}</p>
-                <p className="mt-2 text-[13px] font-medium text-gold sm:mt-3">
+                <p className="mt-2 text-sm font-medium text-gold sm:mt-3">
                   {items.length} items · from {formatPrice(from)}
                 </p>
               </li>
             ))}
             <li className="col-span-2 flex flex-col justify-between gap-6 bg-surface p-6">
               <div>
-                <h3 className="font-serif text-2xl font-medium">Need something not listed?</h3>
+                <h3 className="display-3">Need something not listed?</h3>
                 <p className="mt-2 max-w-md text-sm text-muted">
                   Generators, restrooms, staging, specialty linens, AV and more. Add it to your enquiry notes and we
                   source it from our partner network.
@@ -145,6 +146,22 @@ export default function RentalsPage() {
               </Link>
             </li>
           </ul>
+        </section>
+
+        <section className="mt-28" aria-labelledby="packages">
+          <p className="eyebrow">Skip the browsing</p>
+          <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
+            <h2 id="packages" className="headline text-4xl sm:text-5xl">
+              Start from a ready-made package
+            </h2>
+            <Link href="/packages" className="link-line">
+              All packages
+            </Link>
+          </div>
+          <p className="mt-4 max-w-2xl text-muted">
+            Each one is a full list for a typical party, priced with delivery, setup, waiver and tax. Tap one, then change the guest count or swap any item.
+          </p>
+          <ReadyPackages className="mt-8" compact />
         </section>
 
         <section className="mt-28" aria-labelledby="how">

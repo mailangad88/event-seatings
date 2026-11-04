@@ -18,7 +18,7 @@ export function PostCard({ post }: { post: Post }) {
       </div>
       <div className="flex flex-1 flex-col p-6">
         <p className="text-xs font-medium tracking-wide text-gold uppercase">{post.topic}</p>
-        <h2 className="mt-2 font-serif text-2xl leading-tight transition-colors group-hover:text-gold">{post.title}</h2>
+        <h2 className="display-3 mt-2 transition-colors group-hover:text-gold">{post.title}</h2>
         <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{post.description}</p>
         <p className="mt-auto pt-5 text-xs text-muted">{post.readingMinutes} min read</p>
       </div>

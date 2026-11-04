@@ -64,7 +64,7 @@ A food and dining tent is the backbone of a festival. Plan about 10 to 12 square
 
 ## Banquets and receptions
 
-After funerals, confirmations or weddings, many congregations host a reception in the hall. Rounds of 8 or 10 with linen tablecloths work for formal meals. Long tables work for family-style or potluck. [Cross-back chairs](/chairs/cross-back) or [garden folding chairs](/chairs/garden-folding) are practical options for large counts, and linens elevate even simple folding tables. Our [tablecloth size chart](/blog/tablecloth-size-chart) helps you order.
+After funerals, confirmations or weddings, many congregations host a reception in the hall. Rounds of 8 or 10 with linen tablecloths work for formal meals. Long tables work for family-style or potluck. [Cross-back chairs](/chairs/cross-back) or [garden folding chairs](/chairs/garden-folding) are practical options for large counts, and linens make even simple folding tables look dressed. Our [tablecloth size chart](/blog/tablecloth-size-chart) helps you order.
 
 <div class="stat-grid">
 <div><strong>10 to 12</strong><span>Sq ft per seated guest at rounds</span></div>

@@ -3,47 +3,83 @@
 /*
   Beyond Chiavari design system
   ------------------------------------------------------------------
-  Light, gallery-like marketplace: warm ivory paper, ink type, aged brass
-  accents, white product cards. Every colour is a token, so a section can
-  re-theme itself by changing tokens in a scope (.tone-dark, .tone-sand,
-  any bg-espresso band). Utility names (btn-primary, eyebrow, headline,
-  field, label, chip, card…) are the public API: pages should use them
-  instead of one-off styles. See docs/DESIGN_SYSTEM.md.
+  Warm and premium, with clear colour: cream paper, ink type, deep wine for
+  the main actions and headings' labels, gold for accents, and a small set of
+  status colours (green = money in / done, amber = waiting, rose = problem,
+  blue = info / dates). Every colour is a token, so a section can re-theme
+  itself by changing tokens in a scope (.tone-dark, .tone-sand, any
+  bg-espresso band). Utility names (btn-primary, eyebrow, stat-card, badge-*,
+  field, chip, card…) are the public API: pages should use them instead of
+  one-off styles. See docs/DESIGN_SYSTEM.md. All text pairs below pass WCAG AA
+  (4.5:1) on bg, surface, surface-2 and their own -soft tint.
 */
 
 :root {
-  --bg: #faf7f2; /* ivory paper */
+  --bg: #f6efe4; /* cream paper */
   --surface: #ffffff; /* cards, inputs */
-  --surface-2: #f2ece3; /* sand bands, image wells */
-  --ink: #1d1a16; /* type */
-  --muted: #655d52; /* secondary type (AA on bg and surface-2) */
-  --line: #e4dbcd; /* hairlines, borders */
-  --gold: #7a5a22; /* aged brass: accents, eyebrows, links (AA on ivory, sand and gold-soft: 5.3:1+) */
-  --gold-bright: #c9a96a; /* brass on dark bands */
-  --gold-soft: #f3eadb; /* tinted wells, selected states */
-  --espresso: #1b1814; /* dark bands */
-  --sage: #55704f;
-  --rose: #a4473b; /* sale / alert */
-  --accent: var(--gold);
+  --surface-2: #ede3d2; /* sand bands, image wells */
+  --ink: #1f1916; /* type */
+  --muted: #5c5247; /* secondary type (6:1 on surface-2) */
+  --line: #dccfbb; /* hairlines, borders */
+
+  /* Brand */
+  --wine: #7a1f2e; /* primary: main buttons, eyebrows, links, active states (8.9:1 on cream) */
+  --wine-deep: #5c1521; /* hover / pressed */
+  --wine-soft: #f7e4e4; /* tinted wells, selected rows */
+  --gold: #835a12; /* gold accents, ornaments, icons (5.3:1 on cream, 4.8:1 on sand) */
+  --gold-bright: #d9b26a; /* gold on dark bands */
+  --gold-soft: #f6e8cc; /* icon wells, badges */
+  --espresso: #2a1519; /* dark bands: deep wine-black */
+
+  /* Status (text colour on bg / surface / its own -soft tint, all AA) */
+  --green: #2d6a3e; /* money in, paid, booked, done */
+  --green-soft: #e2efe0;
+  --amber: #9a4f0a; /* waiting, balance due, needs a reply */
+  --amber-soft: #fbeacd;
+  --rose: #a3302b; /* problem, overdue, sale */
+  --rose-soft: #f9e1dd;
+  --blue: #2b5878; /* info, dates, events */
+  --blue-soft: #e1ebf3;
+  --sage: var(--green); /* old name, kept so existing pages keep working */
+
+  /* Logo (src/components/brand/BrandLogo.tsx) */
+  --brand-arch: #7a1f2e;
+  --brand-chair: #d9b26a;
+  --brand-name: #2a1519;
+
+  --accent: var(--wine);
+  --accent-deep: var(--wine-deep);
   --accent-ink: #ffffff;
-  --accent-soft: var(--gold-soft);
-  --shadow: 0 1px 2px rgb(29 26 22 / 0.04), 0 8px 24px -12px rgb(29 26 22 / 0.18);
-  --shadow-lg: 0 2px 4px rgb(29 26 22 / 0.04), 0 24px 48px -20px rgb(29 26 22 / 0.28);
+  --accent-soft: var(--wine-soft);
+  --shadow: 0 1px 2px rgb(42 21 25 / 0.05), 0 8px 24px -12px rgb(42 21 25 / 0.2);
+  --shadow-lg: 0 2px 4px rgb(42 21 25 / 0.05), 0 24px 48px -20px rgb(42 21 25 / 0.32);
   color-scheme: light;
 }
 
 /* Dark band scope. Any element with a bg-espresso class, or .tone-dark, flips its tokens. */
 .tone-dark,
 [class*="bg-espresso"] {
-  --bg: #1b1814;
-  --surface: #24201b;
-  --surface-2: #2c2620;
-  --ink: #f4ecdd;
-  --muted: #b9ad99;
-  --line: #3d342a;
-  --gold: #c9a96a;
-  --gold-soft: #2f271c;
-  --accent-ink: #1b1814;
+  --bg: #2a1519;
+  --surface: #351c21;
+  --surface-2: #3f232a;
+  --ink: #f6ece2;
+  --muted: #c9b2aa;
+  --line: #57343b;
+  --gold: #d9b26a;
+  --gold-soft: #43291f;
+  --wine: #f0a8b0;
+  --wine-soft: #4a2028;
+  --green: #9fd3a8;
+  --amber: #f2c27a;
+  --rose: #f4a59d;
+  --blue: #a9c9e3;
+  --brand-arch: #d9b26a;
+  --brand-chair: #2a1519;
+  --brand-name: #f6ece2;
+  --accent: #d9b26a; /* gold buttons on dark bands */
+  --accent-deep: #e8c98e;
+  --accent-ink: #2a1519;
+  --accent-soft: #43291f;
   color-scheme: dark;
   color: var(--ink);
 }
@@ -51,9 +87,9 @@
 /* Sand band scope (was "paper" marble in the old theme; kept as an alias). */
 .tone-sand,
 .paper {
-  --bg: #f2ece3;
-  --surface: #fbf8f3;
-  --surface-2: #e9e1d4;
+  --bg: #efe6d7;
+  --surface: #fdf9f3;
+  --surface-2: #e5d9c5;
   background-color: var(--bg);
   color: var(--ink);
 }
@@ -68,14 +104,59 @@
   --color-gold: var(--gold);
   --color-gold-bright: var(--gold-bright);
   --color-gold-soft: var(--gold-soft);
+  --color-wine: var(--wine);
+  --color-wine-deep: var(--wine-deep);
+  --color-wine-soft: var(--wine-soft);
   --color-espresso: var(--espresso);
-  --color-sage: var(--sage);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
   --color-rose: var(--rose);
+  --color-rose-soft: var(--rose-soft);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-sage: var(--sage);
   --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+  /* Fonts: Inter for everything people read (headings, body, prices, numbers). The serif is
+     only for the logo wordmark. font-serif is kept as an alias so nothing falls back to Times. */ /* design-ok */
   --font-sans: var(--font-body);
-  --font-serif: var(--font-display);
+  --font-heading: var(--font-body);
+  --font-serif: var(--font-body);
+  --font-brand: var(--font-logo);
+
+  /* Type scale: the only font sizes on the site (scripts/check-design.mjs fails CI on any other).
+     xs 12 labels, badges · sm 14 secondary text, buttons · base 16 body · lg 18 lead text
+     xl 20 small headings · 2xl 24 card headings · 3xl 30 section headings (phone)
+     4xl 36 section headings / page titles (phone) · 5xl 48 page titles · 6xl 56 home hero only.
+     7xl and 8xl are capped at the 6xl size so old pages can't grow past the scale. */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.125rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.375rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.625rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.375rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.75rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 3.5rem;
+  --text-6xl: 3.5rem;
+  --text-6xl--line-height: 4rem;
+  --text-6xl: 3.5rem;
+  --text-6xl--line-height: 4rem;
+  --text-6xl: 3.5rem;
+  --text-6xl--line-height: 4rem;
   --shadow-soft: var(--shadow);
   --shadow-lift: var(--shadow-lg);
   --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -104,6 +185,14 @@ body {
 h1, h2, h3, h4 {
   text-wrap: balance;
 }
+/* Emphasis inside headings is shown with colour (text-gold / text-accent), never slanted type. */
+:where(h1, h2, h3, h4, .headline) :where(em, i) {
+  font-style: normal;
+}
+/* Numbers that sit in columns or change (prices, totals, counts, tables) line up digit for digit. */
+:where(table, .tabular, [data-price]) {
+  font-variant-numeric: lining-nums tabular-nums;
+}
 p, li, dd, figcaption {
   text-wrap: pretty;
 }
@@ -116,8 +205,8 @@ p, li, dd, figcaption {
 }
 
 ::selection {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--wine);
+  color: #ffffff;
 }
 
 /* Checkboxes and radios: brand colour and an 18px box, so consent ticks are easy to hit on phones. */
@@ -125,7 +214,7 @@ p, li, dd, figcaption {
   /* In the base layer so utilities (sr-only, accent-*) still win. */
   input[type="checkbox"],
   input[type="radio"] {
-    accent-color: var(--gold);
+    accent-color: var(--accent);
     width: 1.125rem;
     height: 1.125rem;
     flex-shrink: 0;
@@ -133,7 +222,7 @@ p, li, dd, figcaption {
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -169,43 +258,44 @@ p, li, dd, figcaption {
 }
 
 /* ---------- Type ---------- */
-/* Cormorant has hairline strokes: 500 keeps section and card headings legible at smaller sizes,
-   the big page H1 stays at 400 where the contrast reads as elegant rather than faint. */
+/* Headings: Inter semibold with slightly tight letter spacing. Sizes come from the type scale only.
+   display-1 = page title (H1), display-2 = section heading (H2), display-3 = card / block heading (H3). */
 @utility headline {
-  @apply font-serif font-normal tracking-[-0.015em] text-balance;
+  @apply font-heading font-semibold tracking-tight text-balance;
 }
 @utility display-1 {
-  @apply headline text-[2.75rem] leading-[1.04] sm:text-6xl sm:leading-[1.02] lg:text-7xl;
+  @apply headline text-4xl sm:text-5xl lg:text-6xl;
 }
 @utility display-2 {
-  @apply headline text-[2.15rem] leading-[1.1] font-medium sm:text-5xl sm:leading-[1.08];
+  @apply headline text-3xl sm:text-4xl;
 }
 @utility display-3 {
-  @apply headline text-2xl leading-tight font-medium sm:text-3xl;
+  @apply headline text-xl sm:text-2xl;
 }
 @utility lede {
-  @apply text-[17px] leading-7 text-muted sm:text-lg sm:leading-8;
+  @apply text-base text-muted sm:text-lg;
 }
 /* Action row: buttons go full width on phones so the main CTA is an easy, even tap target. */
 @utility cta-row {
   @apply flex flex-wrap items-center gap-3 max-sm:*:w-full;
 }
 @utility eyebrow {
-  @apply inline-flex items-center gap-2.5 text-xs font-medium tracking-[0.2em] text-gold uppercase;
+  @apply inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.2em] text-accent uppercase;
 }
 
 /* ---------- Actions ---------- */
 @utility btn {
-  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium tracking-normal whitespace-nowrap normal-case transition-[background-color,color,border-color,box-shadow,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-normal whitespace-nowrap normal-case transition-[background-color,color,border-color,box-shadow,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-accent active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
 }
+/* Main action: deep wine on light pages, gold on dark bands (the tokens flip inside tone-dark). */
 @utility btn-primary {
-  @apply btn bg-ink text-bg shadow-soft hover:bg-gold hover:text-accent-ink;
+  @apply btn bg-accent text-accent-ink shadow-soft hover:bg-accent-deep hover:shadow-lift;
 }
 @utility btn-accent {
-  @apply btn bg-gold text-accent-ink shadow-soft hover:bg-ink hover:text-bg;
+  @apply btn bg-gold text-accent-ink shadow-soft hover:bg-accent-deep hover:text-accent-ink;
 }
 @utility btn-ghost {
-  @apply btn border border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-bg;
+  @apply btn border border-ink/25 bg-surface/60 text-ink hover:border-accent hover:bg-accent-soft hover:text-accent;
 }
 @utility btn-light {
   @apply btn bg-surface text-ink shadow-soft hover:bg-surface-2;
@@ -217,10 +307,10 @@ p, li, dd, figcaption {
   @apply min-h-13 px-8 py-4 text-base;
 }
 @utility link-line {
-  @apply relative inline-flex items-center gap-1.5 pb-0.5 text-[15px] font-medium text-ink after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:bg-gold after:transition-transform after:duration-300 hover:text-gold hover:after:scale-x-50;
+  @apply relative inline-flex items-center gap-1.5 pb-0.5 text-sm font-semibold text-ink after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:bg-accent after:transition-transform after:duration-300 hover:text-accent hover:after:scale-x-50;
 }
 @utility link {
-  @apply underline decoration-gold/60 decoration-1 underline-offset-4 transition-colors hover:text-gold hover:decoration-gold;
+  @apply text-accent underline decoration-accent/40 decoration-1 underline-offset-4 transition-colors hover:decoration-accent;
 }
 
 /* ---------- Surfaces ---------- */
@@ -228,7 +318,7 @@ p, li, dd, figcaption {
   @apply rounded-2xl border border-line bg-surface shadow-soft;
 }
 @utility card-hover {
-  @apply transition-[box-shadow,transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-lift;
+  @apply transition-[box-shadow,transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lift;
 }
 @utility well {
   @apply rounded-2xl bg-surface-2;
@@ -243,7 +333,7 @@ p, li, dd, figcaption {
 
 /* ---------- Forms ---------- */
 @utility field {
-  @apply w-full rounded-xl border border-line bg-surface px-4 py-3 text-base text-ink shadow-[inset_0_1px_2px_rgb(0_0_0/0.03)] transition-colors placeholder:text-muted/60 hover:border-ink/30 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none;
+  @apply w-full rounded-xl border border-line bg-surface px-4 py-3 text-base text-ink shadow-[inset_0_1px_2px_rgb(0_0_0/0.03)] transition-colors placeholder:text-muted/60 hover:border-ink/40 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none;
 }
 @utility label {
   @apply mb-1.5 block text-sm font-medium text-ink;
@@ -257,21 +347,77 @@ p, li, dd, figcaption {
   @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-muted;
 }
 @utility chip-active {
-  @apply chip border-ink bg-ink text-bg;
+  @apply chip border-accent bg-accent text-accent-ink;
 }
 @utility badge {
-  @apply inline-flex items-center gap-1 rounded-full bg-gold-soft px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-gold uppercase;
+  @apply inline-flex items-center gap-1 rounded-full bg-gold-soft px-2.5 py-0.5 text-xs font-semibold tracking-wide text-gold uppercase;
+}
+/* Status badges: one colour per meaning, used the same way everywhere (site and admin). */
+@utility badge-wine {
+  @apply badge bg-wine-soft text-wine;
+}
+@utility badge-green {
+  @apply badge bg-green-soft text-green;
+}
+@utility badge-amber {
+  @apply badge bg-amber-soft text-amber;
+}
+@utility badge-rose {
+  @apply badge bg-rose-soft text-rose;
+}
+@utility badge-blue {
+  @apply badge bg-blue-soft text-blue;
+}
+
+/* ---------- Stat cards ---------- */
+/* White card with a coloured top border and a big coloured number. Pick the colour with
+   stat-wine (sales, main), stat-green (money in, done), stat-gold, stat-amber (waiting, owed),
+   stat-blue (dates, events) or stat-rose (problems). */
+@utility stat-card {
+  @apply card relative min-w-0 overflow-hidden border-t-4 p-5;
+  border-top-color: var(--stat, var(--wine));
+}
+@utility stat-label {
+  @apply text-xs font-semibold tracking-wider text-muted uppercase;
+}
+@utility stat-value {
+  @apply mt-2 font-heading text-4xl font-semibold tracking-tight tabular-nums;
+  color: var(--stat, var(--wine));
+}
+@utility stat-wine {
+  --stat: var(--wine);
+  --stat-soft: var(--wine-soft);
+}
+@utility stat-green {
+  --stat: var(--green);
+  --stat-soft: var(--green-soft);
+}
+@utility stat-gold {
+  --stat: var(--gold);
+  --stat-soft: var(--gold-soft);
+}
+@utility stat-amber {
+  --stat: var(--amber);
+  --stat-soft: var(--amber-soft);
+}
+@utility stat-blue {
+  --stat: var(--blue);
+  --stat-soft: var(--blue-soft);
+}
+@utility stat-rose {
+  --stat: var(--rose);
+  --stat-soft: var(--rose-soft);
 }
 
 /* ---------- Long-form article typography ---------- */
 .prose-post {
-  @apply text-[17px] leading-[1.75] text-ink sm:text-lg sm:leading-8;
+  @apply text-base text-ink sm:text-lg sm:leading-8;
 }
 .prose-post h2 {
-  @apply mt-12 mb-4 scroll-mt-28 font-serif text-[1.85rem] leading-tight font-medium sm:mt-14 sm:text-4xl;
+  @apply mt-12 mb-4 scroll-mt-28 font-heading text-2xl font-semibold tracking-tight sm:mt-14 sm:text-3xl;
 }
 .prose-post h3 {
-  @apply mt-8 mb-2 text-lg font-semibold;
+  @apply mt-8 mb-2 text-xl font-semibold;
 }
 .prose-post p {
   @apply my-5;
@@ -290,7 +436,7 @@ p, li, dd, figcaption {
   @apply my-2;
 }
 .prose-post a {
-  @apply underline decoration-gold decoration-1 underline-offset-4 hover:text-gold;
+  @apply text-wine underline decoration-wine/40 decoration-1 underline-offset-4 hover:decoration-wine;
 }
 .prose-post strong {
   @apply font-semibold;
@@ -299,16 +445,16 @@ p, li, dd, figcaption {
   @apply my-8 rounded-xl;
 }
 .prose-post blockquote {
-  @apply my-8 rounded-r-xl border-l-2 border-gold bg-gold-soft/60 py-4 pr-4 pl-6 font-serif text-2xl italic;
+  @apply my-8 rounded-r-xl border-l-4 border-wine bg-wine-soft/60 py-4 pr-4 pl-6 text-xl font-medium;
 }
 .prose-post table {
   @apply my-8 w-full border-collapse overflow-hidden rounded-xl text-sm;
 }
 .prose-post thead {
-  @apply bg-surface-2;
+  @apply bg-wine-soft;
 }
 .prose-post th {
-  @apply text-xs font-semibold tracking-wide text-muted uppercase;
+  @apply text-xs font-semibold tracking-wide text-wine uppercase;
 }
 .prose-post th,
 .prose-post td {
@@ -354,7 +500,7 @@ p, li, dd, figcaption {
   @apply my-8 grid grid-cols-2 gap-4 md:grid-cols-3;
 }
 .prose-post .stat-grid strong {
-  @apply block font-serif text-3xl text-gold;
+  @apply block font-heading text-3xl font-semibold text-wine tabular-nums;
 }
 .prose-post .stat-grid span {
   @apply text-sm text-muted;
@@ -367,20 +513,62 @@ p, li, dd, figcaption {
   @apply mx-auto block h-auto w-full;
 }
 .prose-post figcaption {
-  @apply mt-3 text-center text-sm text-muted italic;
+  @apply mt-3 text-center text-sm text-muted;
 }
 .prose-post .answer-box {
-  @apply my-8 border border-gold/50 bg-gold-soft/40 px-6 py-5;
+  @apply my-8 rounded-2xl border border-l-4 border-gold/50 border-l-gold bg-gold-soft/60 px-6 py-5;
 }
 .prose-post .answer-box p {
   @apply my-0;
 }
 .prose-post .answer-box strong:first-child {
-  @apply mb-1 block text-[11px] font-medium tracking-[0.22em] text-gold uppercase;
+  @apply mb-1 block text-xs font-semibold tracking-[0.2em] text-gold uppercase;
 }
 .prose-post .chair-pair {
   @apply my-10 grid grid-cols-2 gap-4;
 }
 .prose-post .chair-pair img {
   @apply aspect-[4/5] w-full object-cover;
+}
+
+/* ---------- Back office (admin today, vendor portal later) ---------- */
+/* OfficeShell (src/components/office) wraps every back-office page. It hides the public site header
+   and footer, and uses a calmer scope: light grey-cream canvas, white cards, a deep wine-black sidebar
+   and a wine briefing band. Same tokens as the site, so badges, stat cards and buttons keep working. */
+body:has([data-office]) > header,
+body:has([data-office]) > footer {
+  display: none;
+}
+.tone-office {
+  --bg: #f7f4f0;
+  --surface: #ffffff;
+  --surface-2: #f0ebe4;
+  --line: #e6ded3;
+  --muted: #5f5850;
+  --shadow: 0 1px 2px rgb(42 21 25 / 0.04), 0 4px 16px -8px rgb(42 21 25 / 0.12);
+  --shadow-lg: 0 2px 4px rgb(42 21 25 / 0.05), 0 16px 32px -16px rgb(42 21 25 / 0.22);
+  background-color: var(--bg);
+  color: var(--ink);
+}
+@utility office-card {
+  @apply rounded-2xl border border-line bg-surface shadow-soft;
+}
+@utility office-nav-link {
+  @apply flex min-h-9 items-center gap-3 rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-ink;
+}
+@utility office-nav-on {
+  @apply bg-surface-2 font-medium text-ink;
+}
+/* The morning briefing: a wine band with a soft gold glow on the right. */
+.briefing-band {
+  background-image:
+    radial-gradient(120% 140% at 100% 0%, rgb(217 178 106 / 0.35), transparent 55%),
+    linear-gradient(120deg, #2a1519 0%, #5c1521 55%, #7a1f2e 100%);
+}
+/* Link tabs (OfficeTabs). */
+@utility office-tab {
+  @apply inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-2 hover:text-ink;
+}
+@utility office-tab-on {
+  @apply bg-ink text-surface hover:bg-ink hover:text-surface;
 }

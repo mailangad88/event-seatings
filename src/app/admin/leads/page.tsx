@@ -59,16 +59,9 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">CRM</p>
-          <h1 className="mt-1 font-serif text-5xl">Lead pipeline</h1>
+          <h1 className="display-2 mt-1">Lead pipeline</h1>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <Link href="/admin" className="btn-ghost">Dashboard</Link>
-          <Link href="/admin/vendors" className="btn-ghost">Vendors</Link>
-          <Link href="/admin/availability" className="btn-ghost">Availability</Link>
-          <Link href="/admin/reviews" className="btn-ghost">Reviews</Link>
-          <Link href="/admin/referrals" className="btn-ghost">Referrals</Link>
-          <a href="/admin/export" className="btn-ghost">Download CSV</a>
-        </div>
+        <a href="/admin/export" className="btn-ghost btn-sm">Download CSV</a>
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -82,7 +75,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
         ).map(([label, v]) => (
           <div key={label} className={card}>
             <p className="text-xs uppercase tracking-wider text-muted">{label}</p>
-            <p className="mt-2 font-serif text-4xl tabular-nums">{v}</p>
+            <p className="mt-2 font-heading font-semibold text-4xl tabular-nums">{v}</p>
           </div>
         ))}
       </div>
@@ -101,14 +94,14 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
 
       {due.length > 0 && (
         <section className={`${card} mt-6 border-gold`}>
-          <h2 className="font-serif text-2xl">Follow-ups due ({due.length})</h2>
+          <h2 className="display-3">Follow-ups due ({due.length})</h2>
           <ul className="mt-3 divide-y divide-line text-sm">
             {due.map((l) => (
               <li key={l.id} className="flex flex-wrap items-center justify-between gap-3 py-2">
                 <Link href={`/admin/leads/${l.id}`} className="text-accent">{l.name ?? l.email}</Link>
                 <span className="text-muted">
                   {statusLabel(l.status)} · due {day(l.follow_up_at)}
-                  {l.follow_up_at! < today() && <strong className="ml-2 text-red-400">overdue</strong>}
+                  {l.follow_up_at! < today() && <strong className="ml-2 text-rose">overdue</strong>}
                 </span>
               </li>
             ))}
@@ -168,7 +161,7 @@ export default async function LeadsPage(props: PageProps<"/admin/leads">) {
                 </td>
                 <td className="py-2.5 whitespace-nowrap">{statusLabel(l.status)}</td>
                 <td className="py-2.5">{vendorName(l.assigned_vendor)}</td>
-                <td className={`py-2.5 whitespace-nowrap ${l.follow_up_at && l.follow_up_at < today() ? "text-red-400" : ""}`}>
+                <td className={`py-2.5 whitespace-nowrap ${l.follow_up_at && l.follow_up_at < today() ? "text-rose" : ""}`}>
                   {day(l.follow_up_at)}
                 </td>
                 <td className="py-2.5 text-muted">{source(l)}</td>

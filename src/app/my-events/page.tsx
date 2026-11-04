@@ -4,6 +4,7 @@ import { MyEvents } from "@/components/myevents/MyEvents";
 import { FaqList, Figure, JsonLd, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
 import { routeExists } from "@/lib/routes";
 import { site } from "@/lib/site";
+import { signInOpen } from "@/lib/account-auth";
 
 const title = "My Events: Free Event Countdown, Checklist and Reminders";
 const description = `Save your wedding, party or corporate event in ${site.name}'s free planner: a countdown, a checklist dated back from your event, Chicago weather and sunset for your date, calendar reminders and a share link. No account needed.`;
@@ -12,13 +13,15 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/my-events" },
-  openGraph: { title, description, url: "/my-events", images: [{ url: "/rentals/scenes/garden-ceremony.webp", alt: "Garden ceremony set with white chairs and an arch" }] },
+  openGraph: { title, description, url: "/my-events", images: [{ url: "/rentals/styled/garden-ceremony.webp", alt: "Garden ceremony set with white chairs and an arch" }] },
 };
 
 const faqs: Faq[] = [
   {
     q: "Do I need an account to save my event?",
-    a: "No. Your event is saved in this browser on this device. To open it somewhere else, use \"Share with partner or planner\" and open the link on your other device, then tap Save.",
+    a: `No. Your event is saved in this browser on this device. To open it somewhere else, use "Share with partner or planner" and open the link on your other device, then tap Save.${
+      signInOpen() ? " If you'd like it on every device, sign in to your account (no password, we email a link) and open Plans and ideas: your plans and saved photos are copied there." : ""
+    }`,
   },
   {
     q: "Where does the checklist come from?",
@@ -87,7 +90,7 @@ export default function MyEventsPage() {
         eyebrow="Free event planner"
         title="Your event, counted down and checked off."
         intro="Save your date once and come back any time: a countdown, a checklist dated back from your event, Chicago weather and sunset for your date, and reminders in your own calendar. No sign-up."
-        media={<Figure src="/rentals/scenes/garden-ceremony.webp" alt="Garden ceremony set with white chairs facing a floral arch" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="Plan the ceremony, reception and everything around it in one place." />}
+        media={<Figure src="/rentals/styled/garden-ceremony.webp" alt="Garden ceremony set with white chairs facing a floral arch" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="Plan the ceremony, reception and everything around it in one place." />}
       />
 
       <Section>
@@ -107,7 +110,7 @@ export default function MyEventsPage() {
         </ul>
       </Section>
 
-      <Section tone="sand" eyebrow="How it works" title="Four steps, then just come back">
+      <Section tone="sand" eyebrow="How it works" title="Set it up once, then check back">
         <StepFlow steps={steps} />
       </Section>
 

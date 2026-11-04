@@ -131,11 +131,11 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
           <ChairViewer chair={chair} />
         </div>
         <div className="md:py-6">
-          <p className="font-serif text-lg text-gold italic">
+          <p className="font-heading font-semibold text-lg text-gold">
             No. {String(chairs.indexOf(chair) + 1).padStart(2, "0")} · {chair.styles.join(" · ")}
           </p>
-          <h1 className="headline mt-4 text-5xl leading-[1] sm:text-7xl">{chair.name}</h1>
-          <p className="mt-5 font-serif text-2xl leading-snug font-light text-muted italic">{chair.tagline}</p>
+          <h1 className="display-1 mt-4">{chair.name}</h1>
+          <p className="mt-5 font-heading text-2xl leading-snug font-medium text-muted">{chair.tagline}</p>
 
           <p className="mt-8 leading-8" data-answer>
             {chair.description} In {site.market} the {chair.name} rents for about {chair.estPrice} per chair,
@@ -144,7 +144,7 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
           </p>
 
           <div className="well mt-10 flex items-baseline gap-3 px-5 py-4">
-            <span className="text-[11px] tracking-[0.2em] text-muted uppercase">Estimated</span>
+            <span className="text-xs tracking-[0.2em] text-muted uppercase">Estimated</span>
             <span className="headline text-3xl">{chair.estPrice}</span>
             {!chair.estPrice.includes("/") && <span className="text-sm text-muted">per chair</span>}
           </div>

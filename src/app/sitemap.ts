@@ -4,7 +4,7 @@ import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { canonicalItem, catalogItems, categories, PRICES_CHECKED_AT } from "@/data/catalog";
 import { chairImage, chairs, getChair } from "@/data/chairs";
 import { eventPath, eventTypes, geoContentUpdated, locationPath, locations } from "@/data/geo";
-import { imagesFor, originalImage, rentalImages, soloImage, styledImage } from "@/data/rental-images";
+import { imagesFor, rentalImages, soloImage, styledImage } from "@/data/rental-images";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockPhotos, stockSrc } from "@/data/stock-photos";
 import { getPosts, topicSlug, topics } from "@/lib/blog";
 import { looks } from "@/data/looks";
@@ -20,7 +20,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/faq", "/how-it-works", "/booking-promise", "/partners", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/privacy", "/terms"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/packages", "/faq", "/how-it-works", "/pricing", "/booking-promise", "/partners", "/partners/faq", "/how-we-work", "/vendor-listings", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/press", "/data/chicago-rental-prices", "/privacy", "/terms"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -60,7 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       images: [
         ...categoryPhotos(c.id).slice(0, 4).map((p) => stockSrc(p, 1200, 800)),
         ...catalogItems
-          .filter((i) => i.categoryId === c.id && (!isPhotoFirst(i.id) || !!styledImage(i.id)))
+          .filter((i) => i.categoryId === c.id && (!isPhotoFirst(i.id) || !!rentalImagePath(i.id, i.categoryId)?.includes("/styled/")))
           .map((i) => rentalImagePath(i.id, i.categoryId))
           .filter((src): src is string => !!src)
           .map((src) => `${site.url}${src}`),
@@ -69,7 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...catalogItems.filter((i) => canonicalItem(i) === i).map((i) => {
       // Every image on the item page: its own render (main, colour variants, second angle) unless a real
       // photo leads, the chair art, then the real event photos in its gallery.
-      const own = isPhotoFirst(i.id) && !styledImage(i.id)
+      const own = isPhotoFirst(i.id) && !rentalImagePath(i.id, i.categoryId)?.includes("/styled/")
         ? []
         : imagesFor(i.id).length
           ? imagesFor(i.id).map((m) => `${site.url}${m.src}`)
@@ -84,7 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ...own,
           ...(own.length || !i.chairSlug ? [] : img(i.chairSlug)),
           ...(soloImage(i.id) ? [`${site.url}${soloImage(i.id)!.src}`] : []),
-          ...(styledImage(i.id) && originalImage(i.id) ? [`${site.url}${originalImage(i.id)!.src}`] : []),
+          ...(styledImage(i.id) && styledImage(i.id)!.src !== rentalImagePath(i.id, i.categoryId) ? [`${site.url}${styledImage(i.id)!.src}`] : []),
           ...gallery.map((p) => stockSrc(p, 1200, 1200)),
         ],
       };

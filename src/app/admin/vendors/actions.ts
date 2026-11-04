@@ -43,4 +43,5 @@ export async function saveVendorPartner(formData: FormData) {
 
   if (Object.keys(patch).length || log.length) await savePartner(vendorId, patch, log);
   revalidatePath("/admin/vendors");
+  revalidatePath(`/admin/vendors/${vendorId}`);
 }

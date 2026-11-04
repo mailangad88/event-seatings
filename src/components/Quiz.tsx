@@ -7,6 +7,7 @@ import { attributionFields } from "@/lib/attribution";
 import { track, trackLead } from "@/lib/analytics";
 import { BookingCta } from "./BookingCta";
 import { ChairCard } from "./ChairCard";
+import { postLead } from "@/lib/lead-client";
 
 type Option = { label: string; scores: Partial<Record<Style, number>> };
 
@@ -37,11 +38,11 @@ const questions: { q: string; options: Option[] }[] = [
     q: "Which word should guests use to describe your wedding?",
     options: [
       { label: "Cozy", scores: { Rustic: 2 } },
-      { label: "Effortless", scores: { Boho: 2, Garden: 1 } },
+      { label: "Relaxed", scores: { Boho: 2, Garden: 1 } },
       { label: "Timeless", scores: { Classic: 2 } },
       { label: "Luxe", scores: { Glam: 2 } },
       { label: "Clean", scores: { Minimalist: 2, Modern: 1 } },
-      { label: "Vibrant", scores: { Cultural: 2, Boho: 1 } },
+      { label: "Colorful", scores: { Cultural: 2, Boho: 1 } },
     ],
   },
   {
@@ -73,7 +74,7 @@ export function Quiz() {
             <span className="absolute inset-y-0 left-0 bg-gold transition-all duration-500" style={{ width: `${(step / questions.length) * 100}%` }} />
           </span>
         </div>
-        <h2 className="headline text-center text-4xl leading-tight sm:text-6xl">{q}</h2>
+        <h2 className="display-2 text-center">{q}</h2>
         <div className="mt-12 grid gap-2 sm:grid-cols-2">
           {options.map((o) => (
             <button
@@ -118,17 +119,13 @@ export function Quiz() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setEmailStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        kind: "quiz",
-        quiz_styles: topStyles,
-        chairs: picks.map((c) => c.slug),
-        source: "style-quiz",
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      kind: "quiz",
+      quiz_styles: topStyles,
+      chairs: picks.map((c) => c.slug),
+      source: "style-quiz",
     }).catch(() => null);
     if (res?.ok) trackLead("quiz", "style-quiz", { quiz_style: topStyles[0] });
     setEmailStatus("done");
@@ -138,7 +135,7 @@ export function Quiz() {
     <div>
       <div className="mx-auto max-w-2xl text-center">
         <p className="eyebrow justify-center">Your aesthetic</p>
-        <h2 className="headline mt-6 text-6xl leading-[1] sm:text-7xl">
+        <h2 className="display-2 mt-6">
           {topStyles.length ? (
             <>
               {topStyles[0]}
@@ -162,7 +159,7 @@ export function Quiz() {
       <div className="card mx-auto mt-16 max-w-xl p-8 text-center">
         {emailStatus === "done" ? (
           <div>
-            <p className="font-serif text-2xl italic">
+            <p className="font-heading font-semibold text-2xl">
               Thank you. We&apos;ll send your selections, styling notes and launch updates.
             </p>
             <BookingCta content="quiz-thank-you" note="Prefer to talk it through? We'll match these chairs to your venue and guest count." />

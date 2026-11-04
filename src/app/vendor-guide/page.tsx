@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/vendor-guide" },
-  openGraph: { title, description, url: "/vendor-guide", images: [{ url: "/rentals/scenes/wedding-reception.webp", alt: "Wedding reception with round tables, gold chairs and candlelight" }] },
+  openGraph: { title, description, url: "/vendor-guide", images: [{ url: "/rentals/styled/wedding-reception.webp", alt: "Wedding reception with round tables, gold chairs and candlelight" }] },
 };
 
 const faqs: Faq[] = [
@@ -19,7 +19,7 @@ const faqs: Faq[] = [
   { q: "Does my caterer provide plates and glasses?", a: "Some do and some don't, and many charge separately. Ask for the caterer's equipment list in writing, then rent only what's missing. Common gaps are chargers, specialty glassware, linens and a prep tent for outdoor events." },
   { q: "Do I need a permit for a tent or a park event in Chicago?", a: "Often, yes. Chicago Park District special event permits and many suburban tent permits need to be filed 30 or more days ahead, and you or your tent company must call JULIE (811 in Illinois) before stakes go in. Check with your town or park district early." },
   { q: "How far ahead should I book event rentals?", a: "About 3-6 months for weddings and large parties, 4-8 weeks for smaller events, and earlier for tents and specialty chairs on May-October Saturdays and December Fridays." },
-  { q: `Does ${site.name} recommend specific vendors?`, a: `This guide is generic on purpose. For rentals, ${site.name} books vetted Chicago-area rental companies for you through one quote. For other vendors, use the questions on this page to compare the ones you're considering.` },
+  { q: `Does ${site.name} recommend specific vendors?`, a: `This guide is generic on purpose. For rentals, ${site.name} books established Chicago-area rental companies for you through one quote. For other vendors, use the questions on this page to compare the ones you're considering.` },
 ];
 
 export default function VendorGuidePage() {
@@ -42,7 +42,7 @@ export default function VendorGuidePage() {
         title="Who to hire for your event, and when."
         intro="Every vendor your event might need, in the order to book them, with the questions to ask and where each one overlaps with rentals so nothing gets missed or booked twice."
         actions={<><a href="#by-event" className="btn-primary">Find my vendor list</a><Link href="/my-events" className="btn-ghost">Track it in My Events</Link></>}
-        media={<Figure src="/rentals/scenes/wedding-reception.webp" alt="Wedding reception with round tables, gold Chiavari chairs and candlelight" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="A big event can mean a dozen vendors arriving on one day." />}
+        media={<Figure src="/rentals/styled/wedding-reception.webp" alt="Wedding reception with round tables, gold Chiavari chairs and candlelight" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="A big event can mean a dozen vendors arriving on one day." />}
       />
 
       <Section eyebrow="The booking timeline" title="Book in this order" intro="Typical months before the event to reserve each vendor for a peak-season date. Smaller and off-peak events can move faster.">
@@ -89,7 +89,7 @@ export default function VendorGuidePage() {
             <tbody className="divide-y divide-line">
               {occasions.map((o) => (
                 <tr key={o.id} className="align-top">
-                  <th className="p-3 font-serif text-lg font-normal">{o.name}</th>
+                  <th className="p-3 font-heading text-lg font-medium">{o.name}</th>
                   <td className="p-3">
                     <ul className="flex flex-wrap gap-1.5">
                       {o.essential.map((id) => <li key={id}><a href={`#${id}`} className="chip chip-active">{roles.find((r) => r.id === id)!.name}</a></li>)}
@@ -113,7 +113,7 @@ export default function VendorGuidePage() {
             <li key={r.id} id={r.id} className="card scroll-mt-24 p-6">
               <div className="flex items-center gap-3">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line text-gold"><Icon name={r.icon} size={22} /></span>
-                <h2 className="font-serif text-2xl">{r.name}</h2>
+                <h2 className="display-3">{r.name}</h2>
               </div>
               <p className="mt-3 leading-7 text-muted">{r.does}</p>
               <p className="mt-3 text-sm"><strong className="font-medium">When to book:</strong> {r.book}</p>

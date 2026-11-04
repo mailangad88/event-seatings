@@ -11,10 +11,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60601", "60614", "60201", "60173"],
     metaTitle: "Event Rentals in Cook County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens anywhere in Cook County, IL, from Chicago to the south and northwest suburbs, delivered by vetted local rental vendors.",
+      "Rent event chairs, tables and linens anywhere in Cook County, IL, from Chicago to the south and northwest suburbs, delivered by local rental companies.",
     headline: "Event rentals across all of *Cook County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in Cook County, from Chicago's lakefront to the far south and northwest suburbs, through vetted Chicago-area rental vendors. Tell us your date, headcount and address and we match you with the right delivery zone. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in Cook County, from Chicago's lakefront to the far south and northwest suburbs, through established Chicago-area rental companies. Tell us your date, headcount and address and we match you with the right delivery zone. Request a quote or book a planning call to get started.",
     story: [
 
       "Cook County is not one market, it is several stacked on top of each other. Chicago itself runs from Rogers Park to Hegewisch, with high-rise lobbies, church halls, greystone courtyards and lakefront parks that each have their own loading rules. Past the city limits the county keeps going: Evanston and the North Shore, Oak Park and the near west suburbs, the southwest villages around Orland Park and Palos, and the northwest corridor around Schaumburg and Arlington Heights.",
@@ -63,7 +63,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Cook County, IL?",
-        a: "You can request them here. We connect you with vetted Chicago-area rental vendors who deliver across Cook County, from the city to the far south and northwest suburbs. Send your date, address and guest count, and we will return a quote that breaks out chairs, tables, delivery and setup.",
+        a: "You can request them here. We connect you with established Chicago-area rental companies who deliver across Cook County, from the city to the far south and northwest suburbs. Send your date, address and guest count, and we will return a quote that breaks out chairs, tables, delivery and setup.",
       },
       {
         q: "Do I need a permit for a party in a Cook County forest preserve?",
@@ -94,10 +94,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60187", "60540", "60523", "60515"],
     metaTitle: "Event Rentals in DuPage County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in DuPage County, IL, from Naperville and Wheaton to Elmhurst and Oak Brook, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in DuPage County, IL, from Naperville and Wheaton to Elmhurst and Oak Brook, with delivery from local rental companies.",
     headline: "Event chairs and tables across *DuPage County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in DuPage County, from vetted Chicago-area rental vendors. Whether your party is in Naperville, Wheaton, Elmhurst or Oak Brook, we match you with the right delivery zone. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in DuPage County, from established Chicago-area rental companies. Whether your party is in Naperville, Wheaton, Elmhurst or Oak Brook, we match you with the right delivery zone. Request a quote or book a planning call to get started.",
     story: [
 
       "DuPage County sits directly west of Chicago, and it is almost entirely suburban, which makes it one of the most event-dense counties in Illinois. The county seat is Wheaton, and the biggest names are Naperville, Downers Grove, Lombard, Elmhurst and Oak Brook. Metra's BNSF line runs through Naperville, Downers Grove and Hinsdale, the Union Pacific West line serves Elmhurst, Glen Ellyn and Wheaton, and the I-88 and I-355 corridors tie the whole county together.",
@@ -146,7 +146,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in DuPage County, IL?",
-        a: "You can request them through us. We work with vetted Chicago-area rental vendors who deliver across DuPage, including Naperville, Wheaton, Elmhurst and Oak Brook. Send your date, address and guest count and we will return an itemized quote for chairs, tables, delivery and setup.",
+        a: "You can request them through us. We work with established Chicago-area rental companies who deliver across DuPage, including Naperville, Wheaton, Elmhurst and Oak Brook. Send your date, address and guest count and we will return an itemized quote for chairs, tables, delivery and setup.",
       },
       {
         q: "Do I need a permit for a party at a DuPage forest preserve?",
@@ -177,10 +177,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60085", "60048", "60045", "60031"],
     metaTitle: "Event Rentals in Lake County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Lake County, IL, from Highland Park and Lake Forest to Waukegan and Gurnee, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in Lake County, IL, from Highland Park and Lake Forest to Waukegan and Gurnee, with delivery from local rental companies.",
     headline: "Event rentals up and down *Lake County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in Lake County, Illinois, through vetted Chicago-area rental vendors. From North Shore lakefront towns to the Chain O'Lakes, we match you with the right delivery zone. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in Lake County, Illinois, through established Chicago-area rental companies. From North Shore lakefront towns to the Chain O'Lakes, we match you with the right delivery zone. Request a quote or book a planning call to get started.",
     story: [
 
       "Lake County runs from the Cook County line up to the Wisconsin border, with Lake Michigan on its eastern edge. The county seat is Waukegan, and the lakefront towns of Highland Park, Lake Forest and Lake Bluff along the Metra Union Pacific North line are known for estates, ravines and historic downtowns. Further inland you find Libertyville, Mundelein, Vernon Hills, Gurnee and Grayslake, then the lakes and wetlands of the Chain O'Lakes in the northwest corner.",
@@ -229,7 +229,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Lake County, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver in Lake County, from Highland Park and Lake Forest to Gurnee, Libertyville and the Chain O'Lakes. Send your date and address and we will return an itemized quote.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver in Lake County, from Highland Park and Lake Forest to Gurnee, Libertyville and the Chain O'Lakes. Send your date and address and we will return an itemized quote.",
       },
       {
         q: "Do I need a permit for a Lake County Forest Preserves event?",
@@ -260,10 +260,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60174", "60510", "60123", "60506"],
     metaTitle: "Event Rentals in Kane County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Kane County, IL, from Aurora and Elgin to St. Charles, Geneva and Batavia, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in Kane County, IL, from Aurora and Elgin to St. Charles, Geneva and Batavia, with delivery from local rental companies.",
     headline: "Event chairs and tables across *Kane County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in Kane County, from Elgin and Aurora to the Tri-Cities of St. Charles, Geneva and Batavia. Our vetted Chicago-area rental vendors deliver across the Fox Valley. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in Kane County, from Elgin and Aurora to the Tri-Cities of St. Charles, Geneva and Batavia. Our established Chicago-area rental companies deliver across the Fox Valley. Request a quote or book a planning call to get started.",
     story: [
 
       "Kane County is built along the Fox River. Elgin anchors the north, Aurora anchors the south, and in the middle sit the Tri-Cities of St. Charles, Geneva and Batavia, where restored barns, riverfront parks and historic downtowns host a large share of the region's weddings. Geneva is the county seat, and the Metra UP West line and the BNSF line connect parts of the county to the city.",
@@ -312,7 +312,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Kane County, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver across Kane County, from Elgin and Aurora to St. Charles, Geneva and Batavia. Send your date, address and guest count and we will return an itemized quote.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver across Kane County, from Elgin and Aurora to St. Charles, Geneva and Batavia. Send your date, address and guest count and we will return an itemized quote.",
       },
       {
         q: "Can you deliver to a barn venue in western Kane County?",
@@ -343,10 +343,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60014", "60050", "60098", "60102"],
     metaTitle: "Event Rentals in McHenry County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in McHenry County, IL, from Crystal Lake and Woodstock to Algonquin and Huntley, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in McHenry County, IL, from Crystal Lake and Woodstock to Algonquin and Huntley, with delivery from local rental companies.",
     headline: "Event rentals across *McHenry County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in McHenry County, from Crystal Lake and Woodstock to Algonquin, Huntley and McHenry. Our vetted Chicago-area rental vendors deliver across the northwest suburbs. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in McHenry County, from Crystal Lake and Woodstock to Algonquin, Huntley and McHenry. Our established Chicago-area rental companies deliver across the northwest suburbs. Request a quote or book a planning call to get started.",
     story: [
 
       "McHenry County sits in the far northwest corner of the Chicago area, bordering Wisconsin. Woodstock is the county seat, with its historic town square and opera house, and the Metra Union Pacific Northwest line runs through Crystal Lake and Woodstock out to Harvard. Crystal Lake, McHenry, Algonquin, Lake in the Hills and Huntley make up the busy middle, while the rest of the county is farmland, wetlands and small towns like Marengo and Richmond.",
@@ -395,7 +395,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in McHenry County, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver across McHenry County, including Crystal Lake, Woodstock, Algonquin and Huntley. Send your date, address and guest count and we will return an itemized quote. Send your date, address and rough headcount and we will itemize chairs, tables, delivery and setup in your quote.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver across McHenry County, including Crystal Lake, Woodstock, Algonquin and Huntley. Send your date, address and guest count and we will return an itemized quote. Send your date, address and rough headcount and we will itemize chairs, tables, delivery and setup in your quote.",
       },
       {
         q: "Do I need a permit for an event at a McHenry County Conservation District site?",
@@ -426,10 +426,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60432", "60435", "60544", "60440"],
     metaTitle: "Event Rentals in Will County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Will County, IL, from Joliet and Plainfield to Bolingbrook and Mokena, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in Will County, IL, from Joliet and Plainfield to Bolingbrook and Mokena, with delivery from local rental companies.",
     headline: "Event chairs and tables across *Will County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in Will County, from Joliet and Plainfield to Bolingbrook, Frankfort and Mokena. Our vetted Chicago-area rental vendors deliver across the southwest suburbs. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in Will County, from Joliet and Plainfield to Bolingbrook, Frankfort and Mokena. Our established Chicago-area rental companies deliver across the southwest suburbs. Request a quote or book a planning call to get started.",
     story: [
 
       "Will County is large and growing, and it stretches from the Cook County line down toward Kankakee. Joliet is the county seat and the biggest city, with its limestone downtown, the Des Plaines River and the Rialto Square Theatre. Bolingbrook, Romeoville, Plainfield and Naperville's southern edge fill the northwest, while Frankfort, Mokena, New Lenox and Homer Glen make up the southeast suburbs, where Metra's Rock Island line stops in Mokena and New Lenox.",
@@ -478,7 +478,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Will County, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver across Will County, from Joliet and Plainfield to Bolingbrook, Frankfort and Mokena. Send your date, address and guest count and we will return an itemized quote.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver across Will County, from Joliet and Plainfield to Bolingbrook, Frankfort and Mokena. Send your date, address and guest count and we will return an itemized quote.",
       },
       {
         q: "Do I need a permit for a party at a Will County forest preserve?",
@@ -509,10 +509,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60560", "60543", "60538", "60545"],
     metaTitle: "Event Rentals in Kendall County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Kendall County, IL, from Yorkville and Oswego to Montgomery and Plano, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in Kendall County, IL, from Yorkville and Oswego to Montgomery and Plano, with delivery from local rental companies.",
     headline: "Event rentals across *Kendall County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in Kendall County, from Yorkville and Oswego to Montgomery and Plano. Our vetted Chicago-area rental vendors deliver across the Fox Valley's southern edge. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in Kendall County, from Yorkville and Oswego to Montgomery and Plano. Our established Chicago-area rental companies deliver across the Fox Valley's southern edge. Request a quote or book a planning call to get started.",
     story: [
 
       "Kendall County sits south of Aurora and has grown quickly in recent decades. Yorkville is the county seat, Oswego and Montgomery run along the Fox River, and Plano anchors the western side. Newer subdivisions have spread across former farmland, but you still reach cornfields within minutes of any town center, which gives local events a distinctly rural-meets-suburban feel.",
@@ -561,7 +561,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Kendall County, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver across Kendall County, including Yorkville, Oswego, Montgomery and Plano. Send your date, address and guest count and we will return an itemized quote. Send your date, address and rough headcount and we will itemize chairs, tables, delivery and setup in your quote.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver across Kendall County, including Yorkville, Oswego, Montgomery and Plano. Send your date, address and guest count and we will return an itemized quote. Send your date, address and rough headcount and we will itemize chairs, tables, delivery and setup in your quote.",
       },
       {
         q: "Can you deliver to a barn or farm venue near Plano?",
@@ -592,10 +592,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60450", "60416", "60410", "60408"],
     metaTitle: "Event Rentals in Grundy County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Grundy County, IL, from Morris and Coal City to Minooka and Channahon, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in Grundy County, IL, from Morris and Coal City to Minooka and Channahon, with delivery from local rental companies.",
     headline: "Event chairs and tables across *Grundy County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in Grundy County, from Morris and Coal City to Minooka and Channahon. Our vetted Chicago-area rental vendors deliver across the Illinois River valley. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in Grundy County, from Morris and Coal City to Minooka and Channahon. Our established Chicago-area rental companies deliver across the Illinois River valley. Request a quote or book a planning call to get started.",
     story: [
 
       "Grundy County lies southwest of Joliet along the Illinois River and the old Illinois and Michigan Canal. Morris is the county seat and the main hub, with a historic downtown and the river at its edge. Minooka and Channahon sit on the Will County line and feel like Joliet-area suburbs, while Coal City, Mazon and Gardner are small towns surrounded by farmland and former coal country.",
@@ -644,7 +644,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Grundy County, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver across Grundy County, including Morris, Coal City, Minooka and Channahon. Send your date, address and guest count and we will return an itemized quote. A quick planning call can sort out the details before you commit to anything.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver across Grundy County, including Morris, Coal City, Minooka and Channahon. Send your date, address and guest count and we will return an itemized quote. A quick planning call can sort out the details before you commit to anything.",
       },
       {
         q: "Can you deliver to a farm venue in rural Grundy County?",
@@ -675,10 +675,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60115", "60178", "60520", "60548"],
     metaTitle: "Event Rentals in DeKalb County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in DeKalb County, IL, from DeKalb and Sycamore to Sandwich and Genoa, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in DeKalb County, IL, from DeKalb and Sycamore to Sandwich and Genoa, with delivery from local rental companies.",
     headline: "Event rentals across *DeKalb County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in DeKalb County, from DeKalb and Sycamore to Sandwich and Genoa. Our vetted Chicago-area rental vendors deliver across this western edge of Chicagoland. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in DeKalb County, from DeKalb and Sycamore to Sandwich and Genoa. Our established Chicago-area rental companies deliver across this western edge of Chicagoland. Request a quote or book a planning call to get started.",
     story: [
 
       "DeKalb County lies west of Kane County and is a blend of college town and farm country. DeKalb is home to Northern Illinois University, which shapes local event culture with graduation weekends, homecoming and campus gatherings. Sycamore, the county seat, has a historic courthouse square and hosts the Sycamore Pumpkin Festival each fall. Sandwich is famous for the Sandwich Fair, one of the region's long-running county fairs, and Genoa and Kingston are smaller towns nearby.",
@@ -727,7 +727,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in DeKalb County, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver across DeKalb County, including DeKalb, Sycamore, Sandwich and Genoa. Send your date, address and guest count and we will return an itemized quote. A quick planning call can sort out the details before you commit to anything.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver across DeKalb County, including DeKalb, Sycamore, Sandwich and Genoa. Send your date, address and guest count and we will return an itemized quote. A quick planning call can sort out the details before you commit to anything.",
       },
       {
         q: "How early should I book for an NIU graduation party?",
@@ -758,10 +758,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60901", "60914", "60950", "60954"],
     metaTitle: "Event Rentals in Kankakee County, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Kankakee County, IL, from Kankakee and Bourbonnais to Bradley and Manteno, with delivery from vetted local vendors.",
+      "Rent event chairs, tables and linens in Kankakee County, IL, from Kankakee and Bourbonnais to Bradley and Manteno, with delivery from local rental companies.",
     headline: "Event chairs and tables across *Kankakee County*",
     intro:
-      "We help you rent event chairs, tables, linens and more anywhere in Kankakee County, from Kankakee and Bourbonnais to Bradley, Manteno and Momence. Our vetted Chicago-area rental vendors deliver along the southern edge of Chicagoland. Request a quote or book a planning call to get started.",
+      "We help you rent event chairs, tables, linens and more anywhere in Kankakee County, from Kankakee and Bourbonnais to Bradley, Manteno and Momence. Our established Chicago-area rental companies deliver along the southern edge of Chicagoland. Request a quote or book a planning call to get started.",
     story: [
 
       "Kankakee County sits about an hour south of Chicago along the Kankakee River. Kankakee is the county seat and the largest city, with a historic riverfront district and Frank Lloyd Wright-designed homes. Bourbonnais, home to Olivet Nazarene University, and Bradley form the busy core along Route 50 and I-57. Manteno, Momence and Herscher round out the county, which blends small-city living with open farmland.",
@@ -810,7 +810,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Kankakee County, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver across Kankakee County, including Kankakee, Bourbonnais, Bradley and Manteno. Send your date, address and guest count and we will return an itemized quote. We are booking the 2026-27 season now, so an early request keeps your date and options open.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver across Kankakee County, including Kankakee, Bourbonnais, Bradley and Manteno. Send your date, address and guest count and we will return an itemized quote. We are booking the 2026-27 season now, so an early request keeps your date and options open.",
       },
       {
         q: "Do I need a permit for an event at Kankakee River State Park?",
@@ -841,10 +841,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60115"],
     metaTitle: "Event Rentals in DeKalb, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in DeKalb, IL, for NIU graduations, weddings and backyard parties, delivered by vetted Chicago-area rental vendors.",
+      "Rent event chairs, tables and linens in DeKalb, IL, for NIU graduations, weddings and backyard parties, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *DeKalb*",
     intro:
-      "We help you rent event chairs, tables, linens and more in DeKalb from vetted Chicago-area rental vendors, whether it is a graduation party near campus or a wedding on a country lot. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in DeKalb from established Chicago-area rental companies, whether it is a graduation party near campus or a wedding on a country lot. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "DeKalb is a college town on the western edge of Chicagoland, and Northern Illinois University sets its calendar. Commencement weekends in May and December bring families from across the state, and every restaurant, hall and backyard in town fills up. The town is also known as the birthplace of barbed wire, a nod to its farming roots, and the Egyptian Theatre remains a downtown landmark.",
@@ -893,7 +893,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in DeKalb, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to DeKalb and the surrounding county. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to DeKalb and the surrounding county. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "How early should I book for an NIU graduation weekend?",
@@ -924,10 +924,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60178"],
     metaTitle: "Event Rentals in Sycamore, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Sycamore, IL, for courthouse-square weddings, Pumpkin Fest weekends and backyard parties, with vetted local delivery.",
+      "Rent event chairs, tables and linens in Sycamore, IL, for courthouse-square weddings, Pumpkin Fest weekends and backyard parties, with local delivery and setup.",
     headline: "Event chairs and tables in *Sycamore*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Sycamore from vetted Chicago-area rental vendors, for weddings, showers and backyard parties. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Sycamore from established Chicago-area rental companies, for weddings, showers and backyard parties. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Sycamore is the DeKalb County seat, and its historic courthouse square is the heart of town. Brick storefronts, mature trees and a classic Victorian streetscape make the center a favorite backdrop for photos. Each fall the Sycamore Pumpkin Festival takes over downtown, and the weeks around it are among the busiest of the year for local gatherings. The grain of old brick, shade trees and the Victorian porches that ring the square give the town a look that photographs well in every season.",
@@ -976,7 +976,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Sycamore, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Sycamore and DeKalb County. Send your date, address and guest count and we will return an itemized quote for chairs, tables, delivery and setup. A quick planning call can sort out the details before you commit to anything.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Sycamore and DeKalb County. Send your date, address and guest count and we will return an itemized quote for chairs, tables, delivery and setup. A quick planning call can sort out the details before you commit to anything.",
       },
       {
         q: "Can you deliver near the Sycamore courthouse square?",
@@ -1007,10 +1007,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60548"],
     metaTitle: "Event Rentals in Sandwich, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Sandwich, IL, for fair-season parties, farm weddings and backyard gatherings, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Sandwich, IL, for fair-season parties, farm weddings and backyard gatherings, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Sandwich*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Sandwich from vetted Chicago-area rental vendors, for farm weddings, graduation parties and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Sandwich from established Chicago-area rental companies, for farm weddings, graduation parties and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Sandwich sits where DeKalb County meets Kendall County, in the western Fox Valley farm country. It is best known for the Sandwich Fair, held each September since 1888, a tradition that draws huge crowds. The Sandwich Opera House on Railroad Street, a historic 1878 building, anchors a small but lively center.",
@@ -1059,7 +1059,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Sandwich, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Sandwich and the surrounding area. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Sandwich and the surrounding area. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "Can you deliver to a farm in the Sandwich area?",
@@ -1090,10 +1090,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60450"],
     metaTitle: "Event Rentals in Morris, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Morris, IL, for canal-side weddings, parish receptions and backyard parties, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Morris, IL, for canal-side weddings, parish receptions and backyard parties, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Morris*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Morris from vetted Chicago-area rental vendors, for weddings, graduation parties and church events. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Morris from established Chicago-area rental companies, for weddings, graduation parties and church events. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Morris is the seat of Grundy County and sits on the north bank of the Illinois River, with the old Illinois and Michigan Canal running just to the north. The Grundy County Courthouse and a historic downtown give the center a classic Midwestern feel. Gebhard Woods State Park, right on the canal, is a popular picnic and photo spot, and the canal towpath is a local favorite for walks.",
@@ -1142,7 +1142,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Morris, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Morris and Grundy County. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup. A quick planning call can sort out the details before you commit to anything.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Morris and Grundy County. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup. A quick planning call can sort out the details before you commit to anything.",
       },
       {
         q: "Can you deliver to Gebhard Woods State Park?",
@@ -1173,10 +1173,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60901"],
     metaTitle: "Event Rentals in Kankakee, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Kankakee, IL, for riverside weddings, church receptions and backyard parties, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Kankakee, IL, for riverside weddings, church receptions and backyard parties, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Kankakee*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Kankakee from vetted Chicago-area rental vendors, for weddings, church receptions and family parties. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Kankakee from established Chicago-area rental companies, for weddings, church receptions and family parties. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Kankakee is the seat of Kankakee County and a river city built around the Kankakee River. The Riverview Historic District, with its Victorian mansions, includes two Frank Lloyd Wright houses, the Warren Hickox and B. Harley Bradley houses, and downtown is anchored by the courthouse and the old Illinois Central rail corridor, which still carries Amtrak service. Riverfront parks follow the water and draw festivals through the summer.",
@@ -1225,7 +1225,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Kankakee, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Kankakee and the surrounding county. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Kankakee and the surrounding county. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "Can you deliver to a riverfront park in Kankakee?",
@@ -1256,10 +1256,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60914"],
     metaTitle: "Event Rentals in Bourbonnais, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Bourbonnais, IL, for Olivet graduations, park weddings and backyard parties, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Bourbonnais, IL, for Olivet graduations, park weddings and backyard parties, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Bourbonnais*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Bourbonnais from vetted Chicago-area rental vendors, for graduation parties, weddings and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Bourbonnais from established Chicago-area rental companies, for graduation parties, weddings and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Bourbonnais is a village just north of Kankakee, along the Kankakee River and the Route 45 and 102 corridors. Olivet Nazarene University is the biggest name in town, and its commencement weekends bring families, caterers and rental trucks from across the region. Perry Farm Park, a historic farmstead turned public park, anchors the village's outdoor events, and Kankakee River State Park lies a short drive to the northwest.",
@@ -1308,7 +1308,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Bourbonnais, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Bourbonnais and Kankakee County. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup. A quick planning call can sort out the details before you commit to anything.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Bourbonnais and Kankakee County. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup. A quick planning call can sort out the details before you commit to anything.",
       },
       {
         q: "How early should I book for Olivet graduation weekend?",
@@ -1339,10 +1339,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60426"],
     metaTitle: "Event Rentals in Harvey, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Harvey, IL, for church receptions, family reunions and backyard parties, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Harvey, IL, for church receptions, family reunions and backyard parties, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Harvey*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Harvey from vetted Chicago-area rental vendors, for church events, family gatherings and celebrations. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Harvey from established Chicago-area rental companies, for church events, family gatherings and celebrations. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Harvey is a south suburb of Chicago in Thornton Township. It was founded as an industrial suburb near the Little Calumet River, and the Metra Electric line still connects the community to downtown Chicago. Neighborhoods mix older bungalows and newer blocks, with churches that anchor much of social life.",
@@ -1391,7 +1391,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Harvey, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Harvey and the south suburbs. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Harvey and the south suburbs. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "Can you deliver chairs to a church hall in Harvey?",
@@ -1422,10 +1422,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60475"],
     metaTitle: "Event Rentals in Steger, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Steger, IL, for family parties, school events and village festivals, with vetted Chicago-area rental delivery.",
+      "Rent event chairs, tables and linens in Steger, IL, for family parties, school events and village festivals, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Steger*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Steger from vetted Chicago-area rental vendors, for family parties, school events and community gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Steger from established Chicago-area rental companies, for family parties, school events and community gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Steger is a small village on the Cook and Will County line, south of Chicago Heights. It grew around the Steger Piano Company, founded by John V. Steger, who gave the village its name. Chicago Road runs through the center, and the village has a modest downtown, village parks and a close-knit feel.",
@@ -1474,7 +1474,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Steger, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Steger and the south suburbs. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Steger and the south suburbs. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "Can you deliver to a park in Steger?",
@@ -1505,10 +1505,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60411"],
     metaTitle: "Event Rentals in Sauk Village, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Sauk Village, IL, for backyard parties, church events and family reunions, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Sauk Village, IL, for backyard parties, church events and family reunions, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Sauk Village*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Sauk Village from vetted Chicago-area rental vendors, for backyard parties, church events and reunions. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Sauk Village from established Chicago-area rental companies, for backyard parties, church events and reunions. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Sauk Village is a small south suburb near the Indiana border, just east of Chicago Heights and south of Lynwood. Its name echoes the Sauk Trail, the old Native American route that runs through the area. The village is mostly residential, with ranch homes on generous lots and a modest commercial strip along Sauk Trail and Torrence Avenue.",
@@ -1557,7 +1557,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Sauk Village, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Sauk Village and the south suburbs. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Sauk Village and the south suburbs. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "Can I rent chairs for a family reunion at a forest preserve nearby?",
@@ -1588,10 +1588,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60411"],
     metaTitle: "Event Rentals in Lynwood, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Lynwood, IL, for backyard parties, church events and family gatherings, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Lynwood, IL, for backyard parties, church events and family gatherings, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Lynwood*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Lynwood from vetted Chicago-area rental vendors, for backyard parties, church events and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Lynwood from established Chicago-area rental companies, for backyard parties, church events and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Lynwood is a small village in far southeastern Cook County, right against the Indiana state line and next to Lansing, Sauk Village and Glenwood. It is mostly residential, with ranch homes and quiet streets, and commercial activity concentrated along Torrence Avenue and Glenwood-Dyer Road. The village has long been a place where families put down roots and host events at home.",
@@ -1640,7 +1640,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Lynwood, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Lynwood and the south suburbs. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Lynwood and the south suburbs. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "Can you deliver to a church hall in Lynwood?",
@@ -1671,10 +1671,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60468"],
     metaTitle: "Event Rentals in Peotone, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Peotone, IL, for farm weddings, graduation parties and village events, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Peotone, IL, for farm weddings, graduation parties and village events, delivered by Chicago-area rental companies.",
     headline: "Event chairs and tables in *Peotone*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Peotone from vetted Chicago-area rental vendors, for farm weddings, graduation parties and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Peotone from established Chicago-area rental companies, for farm weddings, graduation parties and family gatherings. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Peotone is a small farm-country village in southern Will County, roughly halfway between Joliet and Kankakee. The village center is compact, with a historic Main Street, a park district and the small-town traditions typical of rural Illinois. Surrounding it are cornfields and soybean farms, with Forest Preserve District of Will County preserves in the surrounding countryside.",
@@ -1723,7 +1723,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Peotone, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Peotone and southern Will County. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Peotone and southern Will County. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "Can you deliver to a farm near Peotone?",
@@ -1754,10 +1754,10 @@ export const countiesOuterAreas: Location[] = [
     zips: ["60408"],
     metaTitle: "Event Rentals in Braidwood, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Braidwood, IL, for Route 66 town gatherings, lakeside parties and backyard events, with vetted Chicago-area delivery.",
+      "Rent event chairs, tables and linens in Braidwood, IL, for Route 66 town gatherings, lakeside parties and backyard events, from Chicago-area rental companies.",
     headline: "Event chairs and tables in *Braidwood*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Braidwood from vetted Chicago-area rental vendors, for backyard parties, family reunions and community events. Request a quote or book a planning call and we will match you with the right delivery zone.",
+      "We help you rent event chairs, tables, linens and more in Braidwood from established Chicago-area rental companies, for backyard parties, family reunions and community events. Request a quote or book a planning call and we will match you with the right delivery zone.",
     story: [
 
       "Braidwood is a small city in far southwestern Will County, once a coal mining town and now a Route 66 stop on the way between Joliet and Pontiac. The Polk-A-Dot Drive In on the old highway is a local landmark, and the downtown strip along Main Street reflects the town's mining and railroad past. Surrounding it are farm fields, lakes and woodland.",
@@ -1806,7 +1806,7 @@ export const countiesOuterAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Braidwood, IL?",
-        a: "You can request them through us. We connect you with vetted Chicago-area rental vendors who deliver to Braidwood and southern Will County. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
+        a: "You can request them through us. We connect you with established Chicago-area rental companies who deliver to Braidwood and southern Will County. Send your date, address and guest count and we will return an itemized quote covering chairs, tables, delivery and setup.",
       },
       {
         q: "Can you deliver to a lakeside or rural property near Braidwood?",

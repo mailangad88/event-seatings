@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/ideas" },
-  openGraph: { title, description, url: "/ideas", images: [{ url: "/rentals/scenes/tent-reception-dusk.webp", alt: "Frame tent reception lit at dusk" }] },
+  openGraph: { title, description, url: "/ideas", images: [{ url: "/rentals/styled/tent-reception-dusk.webp", alt: "Frame tent reception lit at dusk" }] },
 };
 
 const faqs: Faq[] = [
@@ -102,7 +102,7 @@ export default async function IdeasPage() {
             const g = m.guide ? posts.get(m.guide) : undefined;
             return (
               <li key={m.name} className="card flex flex-col p-6">
-                <h3 className="font-serif text-2xl">{m.name}</h3>
+                <h3 className="display-3">{m.name}</h3>
                 <p className="mt-3 flex-1 leading-7 text-muted">{m.idea}</p>
                 {g && (
                   <Link href={`/blog/${g.slug}`} className="link mt-4 inline-flex items-center gap-1 text-sm">
@@ -113,7 +113,7 @@ export default async function IdeasPage() {
             );
           })}
         </ul>
-        <h3 className="mt-12 font-serif text-2xl">Rentals people book this month</h3>
+        <h3 className="display-3 mt-12">Rentals people book this month</h3>
         <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {current.rent.map((id) => {
             const c = rentalCategories.find((x) => x.id === id);
@@ -159,7 +159,7 @@ export default async function IdeasPage() {
           {uniq(guidesFor(current)).map((p) => (
             <li key={p.slug} className="border-b border-line pb-4">
               <Link href={`/blog/${p.slug}`} className="group block">
-                <span className="font-serif text-xl group-hover:text-gold">{p.title}</span>
+                <span className="font-heading font-semibold text-xl group-hover:text-gold">{p.title}</span>
                 <span className="mt-1 block text-sm text-muted line-clamp-2">{p.description}</span>
               </Link>
             </li>
@@ -177,7 +177,7 @@ export default async function IdeasPage() {
                 </span>
                 <span className="block p-5">
                   <span className="eyebrow">{m.name}</span>
-                  <span className="mt-2 block font-serif text-2xl leading-tight">{m.headline}</span>
+                  <span className="mt-2 block font-heading font-semibold text-2xl leading-tight">{m.headline}</span>
                   <span className="mt-2 block text-sm text-muted">{m.moments.map((x) => x.name).join(" · ")}</span>
                 </span>
               </a>
@@ -197,7 +197,7 @@ export default async function IdeasPage() {
                 <p className="eyebrow">
                   {m.name} · normal high {Math.round(normalHighF[i])}°F{i === mi ? " · this month" : ""}
                 </p>
-                <h2 className="mt-2 font-serif text-2xl">{m.headline}</h2>
+                <h2 className="display-3 mt-2">{m.headline}</h2>
                 <p className="mt-2 leading-7 text-muted">{m.mood}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {m.moments.map((x) =>

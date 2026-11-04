@@ -111,7 +111,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
             <p className="eyebrow">
               {loc.region} · Chair rentals
             </p>
-            <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+            <h1 className="display-1 mt-6">
               <Emphasis text={loc.headline} />
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-8 text-muted">{loc.intro}</p>
@@ -131,7 +131,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
                   <dt className="sr-only">{k}</dt>
                   <dd>
                     <span className="headline block text-3xl text-gold">{v}</span>
-                    <span className="mt-1 block text-[10px] tracking-[0.2em] text-muted uppercase">{k}</span>
+                    <span className="mt-1 block text-xs tracking-[0.2em] text-muted uppercase">{k}</span>
                   </dd>
                 </div>
               ))}
@@ -142,7 +142,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
               <AreaMap active={loc} />
             </DecoFrame>
             {loc.zips.length > 0 && (
-              <p className="mt-4 text-center text-[11px] tracking-[0.2em] text-muted uppercase">
+              <p className="mt-4 text-center text-xs tracking-[0.2em] text-muted uppercase">
                 Serving ZIP {loc.zips.join(" · ")}
               </p>
             )}
@@ -170,13 +170,13 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
             </div>
           </div>
           <div className="md:pt-14">
-            <h2 className="headline text-3xl">Where people celebrate</h2>
+            <h2 className="display-2">Where people celebrate</h2>
             <ul className="mt-6 border-t border-gold/40">
               {loc.settings.map((s, i) => (
                 <li key={s.name} className="grid grid-cols-[2.5rem_1fr] border-b border-line py-5">
-                  <span className="font-serif text-lg text-gold italic">{numerals[i]}.</span>
+                  <span className="font-heading font-semibold text-lg text-gold">{numerals[i]}.</span>
                   <div>
-                    <h3 className="font-serif text-xl">{s.name}</h3>
+                    <h3 className="font-heading font-semibold text-xl">{s.name}</h3>
                     <p className="mt-1 text-sm leading-6 text-muted">{s.note}</p>
                   </div>
                 </li>
@@ -191,7 +191,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
         <div className="container-x grid gap-14 py-24 md:grid-cols-[1fr_1.4fr] md:gap-20">
           <div>
             <p className="eyebrow">Delivery notes</p>
-            <h2 className="headline mt-6 text-5xl leading-[1.02]">
+            <h2 className="display-2 mt-6">
               Know before we <em className="text-gold">arrive</em>
             </h2>
             <p className="mt-6 leading-7 text-muted">
@@ -203,7 +203,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
             {loc.logistics.map((t, i) => (
               <Reveal key={t.slice(0, 24)} delay={i * 90}>
                 <li className="h-full border border-line bg-surface p-6">
-                  <span className="font-serif text-3xl text-gold">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-heading font-semibold text-3xl text-gold">{String(i + 1).padStart(2, "0")}</span>
                   <p className="mt-3 leading-7">{t}</p>
                 </li>
               </Reveal>
@@ -216,7 +216,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
         {events.length > 0 && (
           <section className="mt-32">
             <p className="eyebrow">Popular in {loc.name}</p>
-            <h2 className="headline mt-6 text-5xl">
+            <h2 className="display-2 mt-6">
               Seating for every <em className="text-gold">occasion</em>
             </h2>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -228,8 +228,8 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
                       <ChairArt chair={chair} className="aspect-[4/3] transition-transform duration-[1.2s] group-hover:scale-[1.05]" />
                     )}
                     <div className="p-5">
-                      <h3 className="font-serif text-2xl">{e.shortName}</h3>
-                      <p className="mt-1 text-[11px] tracking-[0.2em] text-gold uppercase">
+                      <h3 className="display-3">{e.shortName}</h3>
+                      <p className="mt-1 text-xs tracking-[0.2em] text-gold uppercase">
                         {e.shortName} in {loc.name} →
                       </p>
                     </div>
@@ -262,7 +262,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
       {inCounty.length > 0 && (
         <section className="container-x mt-24">
           <p className="eyebrow">Towns we cover in {loc.name}</p>
-          <h2 className="headline mt-4 text-3xl">
+          <h2 className="display-2 mt-4">
             {inCounty.length} local guides in <em className="text-gold">{loc.name}</em>
           </h2>
           <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3 lg:grid-cols-4">

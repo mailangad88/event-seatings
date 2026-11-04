@@ -8,6 +8,9 @@ import { amountDue, newProposalToken } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
 import { getLead, isLeadStatus, statusLabel, updateLead, type LeadActivity, type LeadPatch } from "@/lib/store";
 
+// A real calendar day (2026-02-31 passes a pattern check but the database date column refuses it).
+const realDate = (d: string) => /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(`${d}T00:00:00Z`)) && new Date(`${d}T00:00:00Z`).toISOString().startsWith(d);
+
 async function requireAdmin() {
   if (checkAdmin((await headers()).get("authorization")) !== "ok") throw new Error("Unauthorized");
 }
@@ -40,7 +43,7 @@ export async function saveLead(formData: FormData) {
   }
 
   const followUp = text(formData.get("follow_up_at"), 10);
-  if (followUp !== (lead.follow_up_at ?? "") && (followUp === "" || /^\d{4}-\d{2}-\d{2}$/.test(followUp))) {
+  if (followUp !== (lead.follow_up_at ?? "") && (followUp === "" || realDate(followUp))) {
     patch.follow_up_at = followUp;
     log.push({ type: "follow_up", text: followUp ? `Follow-up set for ${followUp}` : "Follow-up cleared" });
   }
@@ -69,9 +72,10 @@ export async function markContacted(formData: FormData) {
     await updateLead(id, { status: "contacted" }, [{ type: "status", text: "Stage: New lead → Contacted" }]);
   }
   revalidatePath("/admin/leads");
+  revalidatePath("/admin");
 }
 
-// Creates the customer proposal link (/proposal/<token>) for a lead. The link hides the rental partner until the fee is paid.
+// Creates the customer proposal link (/proposal/<token>) for a lead. The link names the rental partner; contact details follow the fee.
 export async function createProposal(formData: FormData) {
   await requireAdmin();
   const id = text(formData.get("id"), 64);
@@ -89,6 +93,7 @@ export async function createProposal(formData: FormData) {
     [{ type: "note", text: "Proposal link created." }],
   );
   revalidatePath(`/admin/leads/${id}`);
+  revalidatePath("/admin/proposals");
 }
 
 // Manual override for fees paid outside Stripe (bank transfer, Zelle) or refunds.
@@ -103,4 +108,7 @@ export async function setFeeStatus(formData: FormData) {
     await updateLead(id, { fee_status: status, fee_paid_at: "" }, [{ type: "note", text: `Booking fee marked ${status}.` }]);
   }
   revalidatePath(`/admin/leads/${id}`);
+  revalidatePath("/admin/proposals");
+  revalidatePath("/admin/payments");
+  revalidatePath("/admin");
 }

@@ -113,7 +113,7 @@ export function PostBody({ html, faqs }: { html: string; faqs: Faq[] }) {
             const id = b.heading.match(/id="([^"]+)"/)?.[1] ?? "frequently-asked-questions";
             return (
               <section key={i} className="my-14">
-                <h2 id={id} className="mb-6 scroll-mt-28 font-serif text-3xl leading-tight sm:text-4xl">
+                <h2 id={id} className="mb-6 scroll-mt-28 font-heading font-semibold text-3xl leading-tight sm:text-4xl">
                   Frequently asked questions
                 </h2>
                 <FaqList faqs={faqs} />

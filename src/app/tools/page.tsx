@@ -35,7 +35,7 @@ function problems(): Problem[] {
           href: "/my-events",
           text: "A countdown, a checklist dated back from your event, Chicago weather and sunset for your date, and calendar reminders. No account.",
           outputs: ["Countdown", "Dated checklist", "Calendar file", "Share link"],
-          image: "/rentals/scenes/garden-ceremony.webp",
+          image: "/rentals/styled/garden-ceremony.webp",
           imageAlt: "Garden ceremony with white chairs facing a floral arch, the image for the My Events planner",
           startHere: true,
         },
@@ -44,7 +44,7 @@ function problems(): Problem[] {
           href: "/ideas",
           text: "What Chicago hosts are planning this month, what to book now for later dates, and the guides to read.",
           outputs: ["This month", "Book-now list", "Guides"],
-          image: "/rentals/scenes/tent-reception-dusk.webp",
+          image: "/rentals/styled/tent-reception-dusk.webp",
           imageAlt: "Frame tent reception lit at dusk, the image for the monthly event ideas hub",
         },
         {
@@ -52,7 +52,7 @@ function problems(): Problem[] {
           href: "/vendor-guide",
           text: "Who to hire for your kind of event, in the order to book them, with the questions to ask each one.",
           outputs: ["Booking order", "Questions to ask"],
-          image: "/rentals/scenes/wedding-reception.webp",
+          image: "/rentals/styled/wedding-reception.webp",
           imageAlt: "Wedding reception with round tables, the image for the event vendor guide",
         },
         {
@@ -60,7 +60,7 @@ function problems(): Problem[] {
           href: "/downloads",
           text: "Printable checklists and spreadsheets for weddings, parties and corporate events.",
           outputs: ["PDF kits", "Spreadsheets"],
-          image: "/rentals/scenes/farm-table-dinner.webp",
+          image: "/rentals/styled/farm-table-dinner.webp",
           imageAlt: "Long farm table dinner, the image for the free planning kits",
         },
       ],
@@ -188,7 +188,7 @@ function problems(): Problem[] {
           href: "/tools/event-weather",
           text: "Your date's normal high, sunset, golden light and when it gets dark, with what to plan for lights, heat and rain.",
           outputs: ["Sunset", "Dark by", "What to rent"],
-          image: "/rentals/scenes/tent-reception-dusk.webp",
+          image: "/rentals/styled/tent-reception-dusk.webp",
           imageAlt: "Tent reception at dusk, the image for the event weather and sunset planner",
         },
         {
@@ -274,7 +274,7 @@ export default function ToolsPage() {
 
       <div className="max-w-3xl">
         <p className="eyebrow">Free tools</p>
-        <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+        <h1 className="display-1 mt-6">
           Start with your <em className="text-gold">problem</em>
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted" data-answer>
@@ -287,7 +287,7 @@ export default function ToolsPage() {
       <nav aria-label="Problems" className="mt-14 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((p) => (
           <a key={p.id} href={`#${p.id}`} className="group flex items-center justify-between gap-4 border border-line bg-surface px-6 py-5 transition-colors hover:border-gold">
-            <span className="font-serif text-xl leading-snug">{p.problem}</span>
+            <span className="font-heading font-semibold text-xl leading-snug">{p.problem}</span>
             <span className="text-gold transition-transform group-hover:translate-x-1" aria-hidden>→</span>
           </a>
         ))}
@@ -314,7 +314,7 @@ export default function ToolsPage() {
                           <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw" className="object-cover" />
                         </div>
                         <div className="p-5">
-                          <p className="font-serif text-xl">{t.name}</p>
+                          <p className="font-heading font-semibold text-xl">{t.name}</p>
                           <p className="mt-1 text-sm leading-6 text-muted">{t.short}</p>
                           <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="What you get">
                             {t.outputs.map((o) => <li key={o} className="chip">{o}</li>)}
@@ -336,8 +336,8 @@ export default function ToolsPage() {
           {route.map(([name, href], i) => (
             <li key={name} className="relative">
               <Link href={href} className="group block">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold font-serif text-xl text-gold">{i + 1}</span>
-                <span className="mt-4 block font-serif text-2xl group-hover:text-gold">{name}</span>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold font-heading font-semibold text-xl text-gold">{i + 1}</span>
+                <span className="mt-4 block font-heading font-semibold text-2xl group-hover:text-gold">{name}</span>
               </Link>
             </li>
           ))}
@@ -351,7 +351,7 @@ export default function ToolsPage() {
       <div className="mt-24 space-y-24">
         {list.map((p) => (
           <section key={p.id} id={p.id} className="scroll-mt-28">
-            <h2 className="headline text-4xl sm:text-5xl">{p.problem}</h2>
+            <h2 className="display-2">{p.problem}</h2>
             <p className="mt-3 text-muted">{p.intent}</p>
             <ul className="mt-10 grid gap-8 md:grid-cols-2">
               {p.tools.map((t) => (
@@ -359,12 +359,12 @@ export default function ToolsPage() {
                   <Link href={t.href} className="group grid grid-cols-[120px_1fr] gap-6 border border-line bg-surface p-5 transition-colors hover:border-gold">
                     <Image src={t.image} alt={t.imageAlt} width={1000} height={1250} sizes="120px" className="aspect-[4/5] w-full object-cover" />
                     <div className="flex flex-col">
-                      {t.startHere && <span className="w-fit bg-gold px-2 py-1 text-[10px] font-medium tracking-[0.2em] text-accent-ink uppercase">Start here</span>}
-                      <h3 className="mt-3 font-serif text-2xl group-hover:text-gold">{t.name}</h3>
+                      {t.startHere && <span className="w-fit bg-gold px-2 py-1 text-xs font-medium tracking-[0.2em] text-accent-ink uppercase">Start here</span>}
+                      <h3 className="display-3 mt-3 group-hover:text-gold">{t.name}</h3>
                       <p className="mt-2 text-sm leading-6 text-muted">{t.text}</p>
                       <ul className="mt-auto flex flex-wrap gap-2 pt-4" aria-label="What you get">
                         {t.outputs.map((o) => (
-                          <li key={o} className="border border-line px-2 py-1 text-[10px] tracking-[0.18em] text-ink/80 uppercase">{o}</li>
+                          <li key={o} className="border border-line px-2 py-1 text-xs tracking-[0.18em] text-ink/80 uppercase">{o}</li>
                         ))}
                       </ul>
                     </div>
@@ -383,7 +383,7 @@ export default function ToolsPage() {
           ["Shows its working", "Each tool explains how it counts, so you can check the numbers yourself."],
         ].map(([h, t]) => (
           <div key={h} className="border-t border-line pt-6">
-            <h3 className="font-serif text-2xl">{h}</h3>
+            <h3 className="display-3">{h}</h3>
             <p className="mt-3 leading-7 text-muted">{t}</p>
           </div>
         ))}
@@ -392,12 +392,12 @@ export default function ToolsPage() {
       <section className="mt-28 grid gap-14 border-t border-gold/40 pt-16 md:grid-cols-[1fr_1.6fr]">
         <div>
           <p className="eyebrow">Questions</p>
-          <h2 className="headline mt-6 text-4xl sm:text-5xl">About the tools</h2>
+          <h2 className="display-2 mt-6">About the tools</h2>
         </div>
         <dl className="divide-y divide-line border-y border-line">
           {faqs.map(([q, a]) => (
             <div key={q} className="py-6">
-              <dt className="font-serif text-2xl">{q}</dt>
+              <dt className="font-heading font-semibold text-2xl">{q}</dt>
               <dd className="mt-3 leading-7 text-muted">{a}</dd>
             </div>
           ))}
@@ -406,7 +406,7 @@ export default function ToolsPage() {
 
       <section className="mt-28 grid items-center gap-10 border border-line bg-surface p-10 md:grid-cols-[1fr_auto]">
         <div>
-          <h2 className="headline text-4xl">Rather talk it through?</h2>
+          <h2 className="display-2">Rather talk it through?</h2>
           <p className="mt-3 max-w-xl leading-7 text-muted">
             A free 15-minute seating call. Bring your guest count and venue, and leave with a chair count, a style
             shortlist and a timeline.

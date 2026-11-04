@@ -23,17 +23,28 @@ import { render } from "@/lib/scenes";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const dynamicParams = false;
+// 281 areas x 10 categories is 2,810 pages, the biggest share of `next build`. Only the busiest areas are built
+// ahead; every other area page renders in full on its first visit and is then cached like a built page (ISR), so
+// search engines still get a 200 with the whole page. Unknown areas or categories still 404 (see `load`).
+const PREBUILT_AREAS = new Set([
+  "chicago", "the-loop", "river-north", "west-loop", "gold-coast", "lincoln-park", "lakeview", "wicker-park-bucktown",
+  "logan-square", "south-loop", "hyde-park", "naperville", "evanston", "schaumburg", "aurora", "joliet", "oak-park",
+  "oak-brook", "st-charles", "geneva", "hinsdale", "lake-forest", "elgin", "wheaton", "downers-grove",
+  "arlington-heights", "skokie", "highland-park", "barrington",
+]);
 
 export function generateStaticParams() {
-  return localAreas.flatMap((l) => localCategories.map((c) => ({ area: l.slug, category: c.slug })));
+  return localAreas
+    .filter((l) => PREBUILT_AREAS.has(l.slug))
+    .flatMap((l) => localCategories.map((c) => ({ area: l.slug, category: c.slug })));
 }
 
 type Props = { params: Promise<{ area: string; category: string }> };
 
 async function load(props: Props) {
   const { area, category } = await props.params;
-  const loc = getLocation(area);
+  // Only areas with local copy have these pages (the list generateStaticParams used to enforce on its own).
+  const loc = localAreas.some((l) => l.slug === area) ? getLocation(area) : undefined;
   const lc = getLocalCategory(category);
   const cat = lc && getCategory(lc.id);
   if (!loc || !lc || !cat) return null;
@@ -48,7 +59,8 @@ async function load(props: Props) {
 function pick(items: CatalogItem[], n: number, seed: string): CatalogItem[] {
   const featured = items.filter((i) => i.featured);
   const rest = items.filter((i) => !i.featured && rentalImagePath(i.id, i.categoryId));
-  const pool = rest.length ? rest : items.filter((i) => !i.featured);
+  // A small pictured pool would give every area the same picks (near-duplicate pages), so fall back to all of them.
+  const pool = rest.length >= 3 * n ? rest : items.filter((i) => !i.featured);
   const h = [...seed].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
   const rotated = pool.map((_, k) => pool[(k + h) % pool.length]);
   return [...featured, ...rotated].slice(0, n);
@@ -92,8 +104,9 @@ export default async function AreaCategoryPage(props: Props) {
   // Two delivery notes for the area, rotated by category so sibling pages differ.
   const k = localCategories.indexOf(lc);
   const logistics = [loc.logistics[k % loc.logistics.length], loc.logistics[(k + 1) % loc.logistics.length]];
-  // One paragraph of local copy, also rotated by category.
+  // Two paragraphs of local copy, also rotated by category, so area pages for the same category don't read alike.
   const story = loc.story[k % loc.story.length];
+  const story2 = loc.story.length > 1 ? loc.story[(k + 1) % loc.story.length] : undefined;
 
   const sub = (s: string) => s.replaceAll("{area}", loc.name);
   const faqs = [
@@ -221,12 +234,13 @@ export default async function AreaCategoryPage(props: Props) {
       </Section>
 
       <Section eyebrow={`Celebrating in ${loc.name}`} title={`Where ${loc.name} hosts use ${cat.name.toLowerCase()}`}>
-        {story && <p className="mb-10 max-w-3xl leading-7 text-muted">{story}</p>}
+        {story && <p className="mb-4 max-w-3xl leading-7 text-muted">{story}</p>}
+        {story2 && <p className="mb-10 max-w-3xl leading-7 text-muted">{story2}</p>}
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
           <ul className="divide-y divide-line border-y border-line">
             {settings.map((s) => (
               <li key={s.name} className="py-6">
-                <h3 className="font-serif text-2xl">{s.name}</h3>
+                <h3 className="display-3">{s.name}</h3>
                 <p className="mt-2 leading-7 text-muted">{s.note}</p>
                 <p className="mt-2 leading-7">
                   <strong className="font-medium">{cat.name} here:</strong> {s.tip}
@@ -238,7 +252,7 @@ export default async function AreaCategoryPage(props: Props) {
             <Figure caption={`${loc.name} (${loc.region}) on our Chicagoland delivery map.`}>
               <AreaMap active={loc} />
             </Figure>
-            <h3 className="mt-10 font-serif text-2xl">Delivery notes for {loc.name}</h3>
+            <h3 className="display-3 mt-10">Delivery notes for {loc.name}</h3>
             <ul className="mt-4 space-y-3 leading-7 text-muted">
               {logistics.map((t) => (
                 <li key={t.slice(0, 24)}>{t}</li>
@@ -252,7 +266,7 @@ export default async function AreaCategoryPage(props: Props) {
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {cat.planning.map((p, i) => (
             <li key={p.title} className="card p-6">
-              <span className="font-serif text-3xl text-gold">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-heading font-semibold text-3xl text-gold">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-3 text-lg font-medium">{p.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{p.body}</p>
             </li>

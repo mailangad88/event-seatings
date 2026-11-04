@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { trackLead } from "@/lib/analytics";
 import { attributionFields } from "@/lib/attribution";
+import { postLead } from "@/lib/lead-client";
 
 type File = { label: string; file: string; format: string; note: string };
 
@@ -63,16 +64,12 @@ export function DownloadGate({
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const source = `download:${slug}${placement === "page" ? "" : `@${placement}`}`;
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        kind: "waitlist",
-        source,
-        message: `Downloaded: ${title}`,
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      kind: "waitlist",
+      source,
+      message: `Downloaded: ${title}`,
     }).catch(() => null);
     if (res?.ok) {
       try {
@@ -91,7 +88,7 @@ export function DownloadGate({
     return (
       <div className="rounded-2xl border border-gold/40 bg-surface p-6" role="status">
         <p className="eyebrow">Your download is ready</p>
-        <p className="mt-2 font-serif text-2xl">{title}</p>
+        <p className="mt-2 font-heading font-semibold text-2xl">{title}</p>
         <ul className="mt-5 space-y-3">
           {files.map((f) => (
             <li key={f.file}>
@@ -117,7 +114,7 @@ export function DownloadGate({
     <form onSubmit={submit} className="rounded-2xl border border-line bg-surface p-6">
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
       <p className="eyebrow">Free download</p>
-      <p className="mt-2 font-serif text-2xl">Get the {title}</p>
+      <p className="mt-2 font-heading font-semibold text-2xl">Get the {title}</p>
       <p className="mt-1 text-sm text-muted">
         {files.map((f) => f.format).filter((v, i, a) => a.indexOf(v) === i).join(" + ")} · Instant access, no account needed.
       </p>
@@ -157,7 +154,7 @@ export function DownloadGate({
         )}
       </div>
       <button className="btn-accent mt-5 w-full sm:w-auto" disabled={status === "sending"}>
-        {status === "sending" ? "Unlocking…" : "Send me the free download"}
+        {status === "sending" ? "Sending…" : "Send me the free download"}
       </button>
       {status === "error" && <p className="mt-2 text-sm text-rose">{error}</p>}
       <label className="mt-3 flex cursor-pointer items-start gap-2 text-xs leading-5 text-muted">

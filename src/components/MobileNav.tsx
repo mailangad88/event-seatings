@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Icon, type IconName } from "./ui/Icon";
+import type { Menu } from "@/lib/nav";
+import { toneTile } from "@/lib/menu-style";
+import { Icon } from "./ui/Icon";
 
-export function MobileNav({
-  items,
-  categories = [],
-}: {
-  items: { href: string; label: string }[];
-  categories?: { id: string; name: string; icon: IconName }[];
-}) {
+type MobileMenu = Pick<Menu, "id" | "label" | "href" | "all" | "tone" | "groups">;
+
+// Phone menu: one folding section per header menu, each split into the same labelled groups as the
+// desktop dropdowns, so people find things in the same place on every screen.
+export function MobileNav({ menus }: { menus: MobileMenu[] }) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -37,33 +37,38 @@ export function MobileNav({
           id="mobile-menu"
           aria-label="Mobile"
           onClick={(e) => (e.target as HTMLElement).closest("a") && setOpen(false)}
-          className="absolute inset-x-0 top-full h-[calc(100dvh-72px-36px)] overflow-y-auto border-t border-line bg-bg px-4 pt-4 pb-10"
+          className="absolute inset-x-0 top-full h-[calc(100dvh-72px-36px)] overflow-y-auto border-t border-line bg-bg px-4 pt-2 pb-10"
         >
-          {categories.length > 0 && (
-            <>
-              <p className="eyebrow">Rentals</p>
-              <ul className="mt-3 grid grid-cols-2 gap-2">
-                {categories.map((c) => (
-                  <li key={c.id}>
-                    <Link href={`/rentals/${c.id}`} className="flex items-center gap-2.5 rounded-xl border border-line bg-surface p-3 text-sm font-medium">
-                      <Icon name={c.icon} size={18} className="text-gold" />
-                      {c.name}
-                    </Link>
-                  </li>
+          {menus.map((m) => (
+            <details key={m.id} className="group/sec border-b border-line">
+              <summary className="flex cursor-pointer list-none items-center justify-between py-4 font-heading font-semibold text-2xl [&::-webkit-details-marker]:hidden">
+                {m.label}
+                <Icon name="plus" size={18} className="text-accent transition-transform group-open/sec:rotate-45" />
+              </summary>
+              <div className="space-y-5 pb-5">
+                {m.groups.map((g) => (
+                  <div key={g.title}>
+                    <p className="eyebrow">{g.title}</p>
+                    <ul className="mt-2 grid grid-cols-2 gap-2">
+                      {g.links.map((l) => (
+                        <li key={l.href}>
+                          <Link href={l.href} className="flex h-full items-center gap-2.5 rounded-xl border border-line bg-surface p-2.5 text-sm leading-snug font-medium">
+                            <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg ${toneTile[m.tone]}`}>
+                              <Icon name={l.icon} size={16} />
+                            </span>
+                            {l.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
-            </>
-          )}
-          <ul className="mt-6 border-t border-line">
-            {items.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="flex items-center justify-between border-b border-line py-4 font-serif text-2xl">
-                  {item.label}
-                  <Icon name="arrow" size={18} className="text-gold" />
+                <Link href={m.href} className="link-line text-sm">
+                  {m.all} <Icon name="arrow" size={16} />
                 </Link>
-              </li>
-            ))}
-          </ul>
+              </div>
+            </details>
+          ))}
           <Link href="/quote" className="btn-primary btn-lg mt-6 w-full">Build your quote</Link>
           <Link href="/book" className="btn-ghost btn-lg mt-3 w-full">Book a free call</Link>
         </nav>

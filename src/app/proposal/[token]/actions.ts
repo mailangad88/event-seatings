@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { originFrom } from "@/lib/request-origin";
 import { redirect } from "next/navigation";
 import { amountDue, createCheckout, stripeEnabled } from "@/lib/payments";
 import { getLeadByProposalToken, updateLead } from "@/lib/store";
@@ -12,11 +13,8 @@ export async function startCheckout(formData: FormData) {
   if (!lead) redirect("/");
   if (lead.fee_status === "paid" || !stripeEnabled()) redirect(`/proposal/${token}`);
 
-  // Send the customer back to the host they're on (preview, vercel.app or the real domain).
-  const h = await headers();
-  const host = h.get("x-forwarded-host") ?? h.get("host");
-  const proto = h.get("x-forwarded-proto") ?? "https";
-  const origin = host ? `${proto}://${host}` : (process.env.NEXT_PUBLIC_SITE_URL ?? "https://beyondchiavari.com");
+  // Send the customer back to the host they're on (preview, vercel.app or the real domain), never a forged one.
+  const origin = originFrom(await headers());
 
   if (amountDue(lead) < 0.5) redirect(`/proposal/${token}`);
   let session: Awaited<ReturnType<typeof createCheckout>>;

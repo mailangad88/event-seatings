@@ -41,7 +41,7 @@ export function VideoFeature({ video, className = "" }: { video: Video; classNam
         {video.description}
       </video>
       <figcaption className="mt-3 text-sm text-muted">
-        <span className="font-serif text-base text-ink">{video.title}.</span> {video.description}
+        <span className="font-heading font-semibold text-base text-ink">{video.title}.</span> {video.description}
       </figcaption>
     </figure>
   );

@@ -1,4 +1,5 @@
 import { getChair } from "@/data/chairs";
+import { bodyTooLarge, limitRequest, readJson } from "@/lib/rate-limit";
 import { getVisitorVotes, getVoteCounts, setVote } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
@@ -11,12 +12,15 @@ export async function GET(request: Request) {
     getVoteCounts(),
     visitorOk(visitor) ? getVisitorVotes(visitor) : Promise.resolve([]),
   ]);
-  return Response.json({ counts, mine });
+  // The answer holds this visitor's own hearts, so it must not sit in a shared cache.
+  return Response.json({ counts, mine }, { headers: { "Cache-Control": "private, no-store" } });
 }
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
-  if (!body || !getChair(body.chair) || !visitorOk(body.visitor) || typeof body.on !== "boolean") {
+  const blocked = bodyTooLarge(request, 4 * 1024) ?? (await limitRequest(request, "votes", { limit: 60, windowMs: 60_000 }));
+  if (blocked) return blocked;
+  const body = await readJson<Record<string, unknown>>(request, 4 * 1024);
+  if (!body || typeof body.chair !== "string" || !getChair(body.chair) || !visitorOk(body.visitor) || typeof body.on !== "boolean") {
     return Response.json({ error: "Invalid vote" }, { status: 400 });
   }
   await setVote(body.chair, body.visitor, body.on);

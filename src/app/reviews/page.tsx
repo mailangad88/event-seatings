@@ -78,7 +78,7 @@ export default async function ReviewsPage() {
         media={
           count ? (
             <div className="card mx-auto max-w-sm p-8 text-center">
-              <p className="font-serif text-6xl">{average.toFixed(1)}</p>
+              <p className="font-heading font-semibold text-6xl">{average.toFixed(1)}</p>
               <Stars rating={average} size={26} className="mt-3" />
               <p className="mt-2 text-sm text-muted">from {count} review{count === 1 ? "" : "s"}</p>
               <ul className="mt-6 grid gap-2 text-left text-sm">

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/tools/event-weather" },
-  openGraph: { title, description, url: "/tools/event-weather", images: [{ url: "/rentals/scenes/tent-reception-dusk.webp", alt: "Frame tent reception lit at dusk" }] },
+  openGraph: { title, description, url: "/tools/event-weather", images: [{ url: "/rentals/styled/tent-reception-dusk.webp", alt: "Frame tent reception lit at dusk" }] },
 };
 
 export default function EventWeatherPage() {
@@ -65,7 +65,7 @@ export default function EventWeatherPage() {
         eyebrow="Free planning tool"
         title="When does the light go, and what will you need?"
         intro="Enter your date and event times. See the normal high, sunset, golden light and when it gets dark in Chicago, and what to plan for lights, heat, shade and rain."
-        media={<Figure src="/rentals/scenes/tent-reception-dusk.webp" alt="Frame tent reception glowing with string lights at dusk" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="At dusk the lighting plan takes over from the sun." />}
+        media={<Figure src="/rentals/styled/tent-reception-dusk.webp" alt="Frame tent reception glowing with string lights at dusk" ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" caption="At dusk the lighting plan takes over from the sun." />}
       />
 
       <Section>

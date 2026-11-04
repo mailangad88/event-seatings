@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { AttributionTracker } from "@/components/AttributionTracker";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ConsentNotice } from "@/components/ConsentNotice";
 import { ContactDock } from "@/components/ContactDock";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { VoteProvider } from "@/components/VoteProvider";
@@ -12,32 +13,24 @@ import { site } from "@/lib/site";
 import "./globals.css";
 
 // Self-hosted fonts (next/font/local): no build-time fetch from Google, so builds work anywhere.
-// Only the weights the site uses are loaded (fewer preloads = faster first paint; the logo text is the LCP element).
-// font-light (300) falls back to 400, which also reads better on screens.
-const display = localFont({
-  variable: "--font-display",
-  display: "swap",
-  // Serif fallback with metrics adjusted to Cormorant, so the swap doesn't shift the layout.
-  fallback: ["Georgia", "Times New Roman", "serif"],
-  adjustFontFallback: "Times New Roman",
-  src: [
-    { path: "./fonts/cormorant-garamond-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/cormorant-garamond-latin-400-italic.woff2", weight: "400", style: "italic" },
-    { path: "./fonts/cormorant-garamond-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/cormorant-garamond-latin-500-italic.woff2", weight: "500", style: "italic" },
-  ],
-});
-
-const body = localFont({
+// Readability first (Nov 3): Inter for everything people read, headings, prices and numbers included.
+// It has clear, even digits ("$21,175" can't be misread) and tabular figures for price columns.
+// One variable file covers every weight, so it is a single preload.
+const sans = localFont({
   variable: "--font-body",
   display: "swap",
-  fallback: ["system-ui", "Arial", "sans-serif"],
-  src: [
-    { path: "./fonts/jost-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/jost-latin-500-normal.woff2", weight: "500", style: "normal" },
-    // 600 is used by font-semibold (prices, badges, card titles); without it browsers fake the bold.
-    { path: "./fonts/jost-latin-600-normal.woff2", weight: "600", style: "normal" },
-  ],
+  fallback: ["system-ui", "Segoe UI", "Arial", "sans-serif"],
+  adjustFontFallback: "Arial",
+  src: [{ path: "./fonts/inter-latin-wght-normal.woff2", weight: "100 900", style: "normal" }],
+});
+
+// The serif is kept only for the logo wordmark, as a small brand touch. Never use it for body copy or numbers.
+const brand = localFont({
+  variable: "--font-logo",
+  display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  adjustFontFallback: "Times New Roman",
+  src: [{ path: "./fonts/cormorant-garamond-latin-500-normal.woff2", weight: "500", style: "normal" }],
 });
 
 export const metadata: Metadata = {
@@ -88,7 +81,7 @@ const localBusiness = {
       url: site.url,
       email: site.email,
       ...(site.phone && { telephone: site.phone }),
-      logo: `${site.url}/icon`,
+      logo: `${site.url}/brand/logo-512.png`,
       image: `${site.url}/opengraph-image`,
       priceRange: "$$",
       address: { "@type": "PostalAddress", addressLocality: site.locality, addressRegion: site.region, addressCountry: "US" },
@@ -124,7 +117,7 @@ const localBusiness = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${display.variable} ${body.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${brand.variable} h-full antialiased`}>
       <Script id="js-flag" strategy="beforeInteractive">
         {"document.documentElement.classList.add('js')"}
       </Script>
@@ -140,6 +133,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer />
           <MobileCtaBar />
           <ContactDock />
+          <ConsentNotice />
         </VoteProvider>
         <Analytics />
       </body>

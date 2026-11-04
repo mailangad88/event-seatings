@@ -4,6 +4,7 @@ import { trackLead } from "@/lib/analytics";
 import { attributionFields } from "@/lib/attribution";
 import { useState } from "react";
 import { site } from "@/lib/site";
+import { postLead } from "@/lib/lead-client";
 
 const times = ["Weekday morning", "Weekday afternoon", "Weekday evening", "Weekend", "Any time"];
 // Guest count as a dropdown (a qualifying question); the value is the band's midpoint, used for lead scoring.
@@ -25,16 +26,12 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const { best_time, ...rest } = data;
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...rest,
-        message: [best_time && `Best time to call: ${best_time}`, rest.message].filter(Boolean).join("\n"),
-        kind: "call",
-        source,
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...rest,
+      message: [best_time && `Best time to call: ${best_time}`, rest.message].filter(Boolean).join("\n"),
+      kind: "call",
+      source,
     }).catch(() => null);
     if (res?.ok) {
       trackLead("call", source);
@@ -48,7 +45,7 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
     return (
       <div className="border border-line bg-surface px-6 py-14 text-center sm:px-12">
         <p className="eyebrow justify-center">Call requested</p>
-        <h2 className="headline mt-6 text-5xl">
+        <h2 className="display-2 mt-6">
           Talk <em className="text-gold">soon</em>.
         </h2>
         <p className="mx-auto mt-5 max-w-md leading-8 text-muted">
@@ -121,7 +118,7 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
         />
       </div>
       <div className="sm:col-span-2">
-        {status === "error" && <p className="mb-4 text-sm text-red-400">{error}</p>}
+        {status === "error" && <p className="mb-4 text-sm text-rose">{error}</p>}
         <button className="btn-primary w-full sm:w-auto" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Request my call"}
         </button>

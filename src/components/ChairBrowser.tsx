@@ -46,7 +46,7 @@ export function ChairBrowser({ initialStyle = null }: { initialStyle?: Style | n
         ))}
       </div>
       {shown.length === 0 && (
-        <p className="mt-10 text-center font-serif text-2xl text-muted italic">
+        <p className="mt-10 text-center font-heading font-semibold text-2xl text-muted">
           No pieces match both selections. Try clearing one.
         </p>
       )}

@@ -12,7 +12,7 @@ imageAlt: A farm field wedding reception with long tables and string lights
 
 **Quick answer**
 
-Farm venues near Chicago look effortless and need the most logistics. Ask about parking surface, restrooms, power, water, kitchen access, rain space and noise curfew, then rent what the farm does not supply: chairs, tables, linens, dinnerware, glassware, tent and lighting. Choose chairs with wide feet for grass and gravel, and plan a firm path for heels and wheelchairs.
+Farm venues near Chicago look easy but take the most planning. Ask about parking surface, restrooms, power, water, kitchen access, rain space and noise curfew, then rent what the farm does not supply: chairs, tables, linens, dinnerware, glassware, tent and lighting. Choose chairs with wide feet for grass and gravel, and plan a firm path for heels and wheelchairs.
 
 </div>
 

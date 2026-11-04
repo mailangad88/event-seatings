@@ -108,9 +108,9 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
           </div>
 
           <div className="md:py-4">
-            <p className="font-serif text-lg text-gold italic">{look.season}</p>
-            <h1 className="headline mt-3 text-5xl leading-[1] sm:text-7xl">{look.name}</h1>
-            <p className="mt-4 font-serif text-2xl leading-snug font-light text-muted italic">{look.kicker}</p>
+            <p className="font-heading font-semibold text-lg text-gold">{look.season}</p>
+            <h1 className="display-1 mt-3">{look.name}</h1>
+            <p className="mt-4 font-heading text-2xl leading-snug font-medium text-muted">{look.kicker}</p>
             <p className="mt-6 leading-8" data-answer>
               {look.story} Price the whole look in one free quote, then swap any chair, linen or piece of decor
               for your Chicago-area venue.
@@ -127,7 +127,7 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
               </DecoFrame>
             </div>
 
-            <h2 className="mt-14 text-[11px] font-medium tracking-[0.25em] text-gold uppercase">The palette</h2>
+            <h2 className="mt-14 text-xs font-medium tracking-[0.25em] text-gold uppercase">The palette</h2>
             <ul className="mt-4 grid grid-cols-4 gap-3">
               {look.palette.map((s) => (
                 <li key={s.name}>
@@ -137,10 +137,10 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
               ))}
             </ul>
 
-            <h2 className="mt-12 text-[11px] font-medium tracking-[0.25em] text-gold uppercase">The recipe</h2>
+            <h2 className="mt-12 text-xs font-medium tracking-[0.25em] text-gold uppercase">The recipe</h2>
             <dl className="mt-4 border-t border-line text-sm">
               <div className="grid grid-cols-[110px_1fr] gap-4 border-b border-line py-4">
-                <dt className="text-[11px] tracking-[0.2em] text-muted uppercase">Chair</dt>
+                <dt className="text-xs tracking-[0.2em] text-muted uppercase">Chair</dt>
                 <dd>
                   <Link href={`/chairs/${hero.slug}`} className="underline decoration-gold underline-offset-4 hover:text-gold">
                     {hero.name}
@@ -149,12 +149,12 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
               </div>
               {look.details.map((d) => (
                 <div key={d.label} className="grid grid-cols-[110px_1fr] gap-4 border-b border-line py-4">
-                  <dt className="text-[11px] tracking-[0.2em] text-muted uppercase">{d.label}</dt>
+                  <dt className="text-xs tracking-[0.2em] text-muted uppercase">{d.label}</dt>
                   <dd>{d.text}</dd>
                 </div>
               ))}
               <div className="grid grid-cols-[110px_1fr] gap-4 border-b border-line py-4">
-                <dt className="text-[11px] tracking-[0.2em] text-muted uppercase">Best for</dt>
+                <dt className="text-xs tracking-[0.2em] text-muted uppercase">Best for</dt>
                 <dd>{look.bestFor.join(" · ")}</dd>
               </div>
             </dl>
@@ -165,7 +165,7 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
       {/* The chairs */}
       <section className="container-x mt-24">
         <p className="eyebrow">The chairs</p>
-        <h2 className="headline mt-6 text-5xl sm:text-6xl">
+        <h2 className="display-2 mt-6">
           What makes it <em>work</em>
         </h2>
         <div className="mt-12 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
@@ -180,7 +180,7 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
         <div className="grid gap-14 md:grid-cols-[1fr_1.6fr] md:gap-20">
           <div>
             <p className="eyebrow">Questions</p>
-            <h2 className="headline mt-6 text-5xl leading-[0.95]">
+            <h2 className="display-2 mt-6">
               About <em className="text-gold">this look</em>
             </h2>
             <p className="mt-6 leading-7 text-muted">
@@ -198,14 +198,14 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
       {/* More looks */}
       <section className="container-x mt-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 className="headline text-5xl">More looks</h2>
+          <h2 className="display-2">More looks</h2>
           <Link href="/looks" className="link-line">All {looks.length} looks</Link>
         </div>
         <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-8">
           {others.map((l) => (
             <Link key={l.slug} href={`/looks/${l.slug}`} className="group">
               <LookScene look={l} showPalette={false} className="aspect-[4/5]" />
-              <p className="mt-3 font-serif text-lg leading-tight transition-colors group-hover:text-gold sm:text-2xl">{l.name}</p>
+              <p className="mt-3 font-heading font-semibold text-lg leading-tight transition-colors group-hover:text-gold sm:text-2xl">{l.name}</p>
             </Link>
           ))}
         </div>

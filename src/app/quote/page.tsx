@@ -3,7 +3,8 @@ import { QuoteForm, type QuoteItem, type StarterPreset } from "@/components/Quot
 import { EventPlanner } from "@/components/planner/EventPlanner";
 import { ideaScene } from "@/components/party-ideas/parts";
 import { getIdea, plannerIdeas } from "@/data/party-ideas";
-import { rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
+import { rentalAlt, rentalImagePath, similarAlt } from "@/components/rentals/RentalVisual";
+import { similarPhoto } from "@/data/similar-photo";
 import { Figure, FaqList, JsonLd, PageHero, StepFlow, type Faq } from "@/components/ui";
 import { catalogItems } from "@/data/catalog";
 import { events, getEventPreset, getLook, looks } from "@/data/quote-presets";
@@ -12,6 +13,7 @@ import { isPhotoFirst, photosForItem } from "@/data/stock-photos";
 import { toPublicItem } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
+import { readyPackages } from "@/lib/packages";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
@@ -82,7 +84,10 @@ export default async function QuotePage(props: PageProps<"/quote">) {
   const items: QuoteItem[] = catalogItems.map((i) => {
     // Items with an accurate real photo show it instead of their 3D render (and drop render colour swatches).
     const photoFirst = isPhotoFirst(i.id) && !rentalImage(i.id)?.ai;
-    const image = photoFirst ? undefined : (i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId));
+    const own = photoFirst ? undefined : (i.image ?? rentalImage(i.id)?.src ?? rentalImagePath(i.id, i.categoryId));
+    // No photo of its own: the studio photo of the same kind of piece, labelled "Similar item" on the card.
+    const similar = own || i.chairSlug ? undefined : similarPhoto(i);
+    const image = own ?? similar?.src;
     const variants = (photoFirst ? [] : imagesFor(i.id))
       .filter((img) => img.kind === "variant" && img.variant)
       .map((img) => ({ key: img.variant!, label: img.variant!.replace(/-/g, " "), src: img.src, alt: img.alt }));
@@ -92,7 +97,8 @@ export default async function QuotePage(props: PageProps<"/quote">) {
       categoryId: i.categoryId,
       featured: i.featured,
       image,
-      imageAlt: image ? (i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs)) : undefined,
+      imageAlt: similar ? similarAlt(similar, i.name) : image ? (i.imageAlt ?? rentalImage(i.id)?.alt ?? rentalAlt(i.name, i.specs)) : undefined,
+      ...(similar && { similar: true }),
       // No render: a real photo of the same item type (sent as a short key; the client builds the URL).
       ...(!image && !i.chairSlug && photosForItem(i).matched && { photo: photosForItem(i).photos[0].key }),
       // Rendered colour/finish options, shown as swatches on the item card.
@@ -148,8 +154,9 @@ export default async function QuotePage(props: PageProps<"/quote">) {
         intro={
           planner ? (
             <>
-              Tell us the occasion, guest count and style. We&apos;ll build your rental list with pictures and live prices,
-              then give you a free personalised plan: checklist, floor plan and budget. No payment, no commitment.
+              Tell us the occasion, guest count and style, or pick a ready-made package. We&apos;ll build your rental list
+              with pictures and prices<span className="hidden sm:inline">, then give you a free plan: checklist, floor plan and budget</span>.
+              No payment, no commitment.
             </>
           ) : (
           <>
@@ -171,6 +178,24 @@ export default async function QuotePage(props: PageProps<"/quote">) {
             from={str(sp.from)?.replace(/[^\w-]/g, "").slice(0, 40)}
             ideas={ideaOptions}
             initialIdea={ideaParam}
+            initialGuests={guestsParam || undefined}
+            initialSetting={str(sp.setting)}
+            initialStyle={str(sp.style)}
+            packages={readyPackages.map((p) => ({
+              id: p.id,
+              name: p.name,
+              event: p.event,
+              setting: p.setting,
+              style: p.style,
+              guests: p.guests,
+              allIn: p.allIn,
+              perGuest: p.perGuest,
+              image: p.image,
+              alt: p.alt,
+              href: p.href,
+              styleName: p.styleName,
+              settingName: p.settingName,
+            }))}
           />
         ) : (
         <div>

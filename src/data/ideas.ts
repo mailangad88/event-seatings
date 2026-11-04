@@ -16,7 +16,7 @@ export type MonthIdeas = {
   guides: string[];
 };
 
-const scene = (n: string) => `/rentals/scenes/${n}.webp`;
+const scene = (n: string) => `/rentals/styled/${n}.webp`;
 
 export const monthIdeas: MonthIdeas[] = [
   {

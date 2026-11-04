@@ -17,13 +17,13 @@ export function FaqList({ faqs, title }: { faqs: Faq[]; title: React.ReactNode }
       />
       <div>
         <p className="eyebrow">Questions</p>
-        <h2 className="headline mt-6 text-5xl leading-[1] sm:text-6xl">{title}</h2>
+        <h2 className="display-2 mt-6">{title}</h2>
       </div>
       <div className="border-t border-gold/40">
         {faqs.map((f, i) => (
           <details key={f.q} className="group border-b border-line" open={i === 0}>
             <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
-              <h3 className="font-serif text-2xl leading-snug">{f.q}</h3>
+              <h3 className="display-3">{f.q}</h3>
               <span
                 className="text-xl font-light text-gold transition-transform duration-300 group-open:rotate-45"
                 aria-hidden

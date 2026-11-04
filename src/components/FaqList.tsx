@@ -11,7 +11,7 @@ export function FaqList({ faqs }: { faqs: [string, string][] }) {
       {faqs.map(([q, a]) => (
         <details key={q} className="group border-b border-line">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
-            <span className="font-serif text-2xl leading-snug">{q}</span>
+            <span className="font-heading font-semibold text-2xl leading-snug">{q}</span>
             <span className="text-xl font-light text-gold transition-transform duration-300 group-open:rotate-45" aria-hidden>
               +
             </span>

@@ -6,6 +6,7 @@ import { attributionFields } from "@/lib/attribution";
 import { track, trackLead } from "@/lib/analytics";
 import { buildTimeline, downloadFile, timelineEvents, toICS, toISO } from "@/lib/tools/timeline";
 import { useUrlState } from "./controls";
+import { postLead } from "@/lib/lead-client";
 
 const subscribe = () => () => {};
 
@@ -27,18 +28,14 @@ function Reminders({ date, event, name }: { date: string; event: string; name: s
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        kind: "waitlist",
-        source: `countdown:${event}`,
-        event_date: date,
-        event_type: event,
-        message: name ? `Countdown: ${name}` : undefined,
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      kind: "waitlist",
+      source: `countdown:${event}`,
+      event_date: date,
+      event_type: event,
+      message: name ? `Countdown: ${name}` : undefined,
     }).catch(() => null);
     if (res?.ok) {
       trackLead("waitlist", `countdown:${event}`);
@@ -47,7 +44,7 @@ function Reminders({ date, event, name }: { date: string; event: string; name: s
     setError((await res?.json().catch(() => null))?.error ?? "Something went wrong. Please try again.");
     setStatus("error");
   }
-  if (status === "done") return <p className="font-serif text-xl">You&apos;re signed up. We&apos;ll email your milestones once reminders start.</p>;
+  if (status === "done") return <p className="font-heading font-semibold text-xl">You&apos;re signed up. We&apos;ll email your milestones once reminders start.</p>;
   return (
     <form onSubmit={submit} className="space-y-3">
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
@@ -82,7 +79,8 @@ export function CountdownTool({ available }: { available: string[] }) {
     ["Seconds", Math.floor(left / 1000) % 60],
   ] as const;
   const tl = useMemo(() => (today && s.d ? buildTimeline({ event: s.t, date: s.d, today, outdoor: ev.outdoorDefault, available: avail }) : null), [s.d, s.t, today, ev.outdoorDefault, avail]);
-  const upcoming = tl?.tasks.filter((t) => !t.overdue && t.date >= today).slice(0, 4) ?? [];
+  // Late tasks are already moved to today, so the next deadlines always start with what to do now.
+  const upcoming = tl?.tasks.filter((t) => t.date >= today).slice(0, 4) ?? [];
   const fmt = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
   const [copied, setCopied] = useState(false);
 
@@ -122,12 +120,12 @@ export function CountdownTool({ available }: { available: string[] }) {
             <div className="mx-auto mt-10 grid max-w-2xl grid-cols-4 gap-3 sm:gap-6" role="timer" aria-live="off">
               {parts.map(([label, n]) => (
                 <div key={label} className="rounded-2xl border border-ink/15 p-3 sm:p-5">
-                  <p className="font-serif text-4xl tabular-nums sm:text-6xl">{now === null ? "–" : n}</p>
+                  <p className="font-heading font-semibold text-4xl tabular-nums sm:text-6xl">{now === null ? "–" : n}</p>
                   <p className="mt-1 text-xs tracking-[0.2em] text-ink/70 uppercase">{label}</p>
                 </div>
               ))}
             </div>
-            {now !== null && left === 0 && <p className="mt-8 font-serif text-2xl">It&apos;s here. Have a wonderful day.</p>}
+            {now !== null && left === 0 && <p className="mt-8 font-heading font-semibold text-2xl">{tl?.past ? "This date has passed. Pick a new date to start a new countdown." : "It's here. Have a wonderful day."}</p>}
             <div className="mt-10 flex flex-wrap justify-center gap-3 print:hidden">
               <button
                 type="button"
@@ -143,9 +141,9 @@ export function CountdownTool({ available }: { available: string[] }) {
               </button>
               <button
                 type="button"
-                className="btn border border-ink/25 text-ink hover:bg-ink hover:text-bg"
+                className="btn border border-ink/25 text-ink hover:border-accent hover:bg-accent-soft hover:text-accent"
                 onClick={() => {
-                  const items = [...(tl?.tasks ?? []).filter((t) => !t.overdue)];
+                  const items = [...(tl?.tasks ?? [])];
                   downloadFile(`${name.replace(/[^\w]+/g, "-").toLowerCase()}.ics`, toICS(name, items, window.location.href), "text/calendar");
                   track("tool_calendar_download", { tool: "countdown" });
                 }}
@@ -162,7 +160,7 @@ export function CountdownTool({ available }: { available: string[] }) {
                 <ol className="mt-5 space-y-4">
                   {upcoming.map((t) => (
                     <li key={t.id} className="flex gap-4">
-                      <span className="w-24 shrink-0 text-sm font-medium text-gold">{fmt(t.date)}</span>
+                      <span className="w-24 shrink-0 text-sm font-medium text-gold">{t.date === today ? "Today" : fmt(t.date)}</span>
                       <span>
                         <span className="font-medium">{t.title}</span>
                         {t.href && (
@@ -176,7 +174,7 @@ export function CountdownTool({ available }: { available: string[] }) {
                   ))}
                 </ol>
               ) : (
-                <p className="mt-4 text-muted">No deadlines left before the day.</p>
+                <p className="mt-4 text-muted">{tl?.past ? "This date has passed." : "No deadlines left before the day."}</p>
               )}
               <Link href={`/tools/timeline?event=${s.t}&date=${s.d}${s.n ? `&name=${encodeURIComponent(s.n)}` : ""}`} className="mt-6 inline-block link">See the full timeline</Link>
             </section>

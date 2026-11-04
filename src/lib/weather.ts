@@ -1,5 +1,6 @@
 import "server-only";
 import { addDays, daysBetween, todayChicago } from "./event-dates";
+import { log } from "@/lib/log";
 
 // Weather for /tools/event-date from US government sources: free, keyless and public domain, so they're fine
 // for a commercial site (Open-Meteo's free tier is non-commercial only).
@@ -100,8 +101,8 @@ async function history(lat: number, lng: number, date: string): Promise<History 
 export async function weatherFor(lat: number, lng: number, date: string): Promise<Weather | null> {
   const days = daysBetween(todayChicago(), date);
   if (days >= 0 && days <= 6) {
-    const f = await forecast(lat, lng, date).catch(() => null);
+    const f = await forecast(lat, lng, date).catch((err) => (log.warn("weather_forecast_failed", { date, err }), null));
     if (f) return f;
   }
-  return history(lat, lng, date).catch(() => null);
+  return history(lat, lng, date).catch((err) => (log.warn("weather_history_failed", { date, err }), null));
 }

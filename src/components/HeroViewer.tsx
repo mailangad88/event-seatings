@@ -28,7 +28,7 @@ export function HeroViewer() {
       </DecoFrame>
       <div className="mt-5 flex items-center justify-between gap-4">
         <div>
-          <p className="font-serif text-2xl leading-tight font-light">{chair.name}</p>
+          <p className="font-heading text-2xl leading-tight font-medium">{chair.name}</p>
           <Link href={`/chairs/${chair.slug}`} className="link-line mt-2 text-gold">
             View piece
           </Link>

@@ -27,8 +27,14 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
+      - name: Plain copy check (no jargon or AI-sounding phrases)
+        run: node scripts/check-copy.mjs
+      - name: Design check (type scale, colour tokens, spacing scale)
+        run: node scripts/check-design.mjs
       - name: Type check
         run: npx next typegen && npx tsc --noEmit
+      - name: Lead pipeline tests
+        run: npm test
       - name: Build
         run: npm run build
         env:

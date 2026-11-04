@@ -9,7 +9,9 @@ import { Emphasis } from "@/components/geo/Emphasis";
 import { FaqList } from "@/components/geo/FaqList";
 import { JsonLd } from "@/components/geo/JsonLd";
 import { RecommendedChairs } from "@/components/geo/RecommendedChairs";
+import { Callout } from "@/components/ui";
 import { getChair } from "@/data/chairs";
+import { COORDINATION_FEE } from "@/lib/catalog-types";
 import { eventPath, eventTypes, getEventType, locationPath, locations } from "@/data/geo";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -32,6 +34,9 @@ export async function generateMetadata(props: PageProps<"/events/[slug]">): Prom
     openGraph: { title: `${ev.metaTitle} | ${site.name}`, description: ev.metaDescription, url: path },
   });
 }
+
+// Event types where several rental companies are usually involved, so the flat-fee offer fits.
+const BIG_EVENTS = new Set(["weddings", "south-asian-weddings", "quinceaneras", "galas-fundraisers"]);
 
 export default async function EventPage(props: PageProps<"/events/[slug]">) {
   const ev = getEventType((await props.params).slug);
@@ -85,7 +90,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
         <section className="mt-10 grid items-center gap-14 md:grid-cols-[1.1fr_1fr] md:gap-16">
           <div className="animate-rise">
             <p className="eyebrow">Chicago &amp; suburbs · {ev.shortName}</p>
-            <h1 className="headline mt-6 text-5xl leading-[0.98] sm:text-7xl">
+            <h1 className="display-1 mt-6">
               <Emphasis text={ev.headline} />
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-8 text-muted">{ev.intro}</p>
@@ -104,11 +109,20 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
             {heroChairs.slice(1, 3).map((c) => (
               <ChairArt key={c.slug} chair={c} className="aspect-square" />
             ))}
-            <span className="absolute -bottom-4 left-6 bg-bg px-3 font-serif text-sm text-gold italic">
+            <span className="absolute -bottom-4 left-6 bg-bg px-3 font-heading font-semibold text-sm text-gold">
               {heroChairs.map((c) => c.name.split(" ")[0]).join(" · ")}
             </span>
           </div>
         </section>
+
+        {BIG_EVENTS.has(ev.slug) && (
+          <Callout kind="tip" title="Big guest list and several rental companies?" className="mt-16 max-w-3xl">
+            For {COORDINATION_FEE.focusFrom}+ guests, the chairs, tables, tent and linens often come from different companies. We put
+            them on one written quote at each company&apos;s own price and handle them all for a flat ${COORDINATION_FEE.standard}
+            (${COORDINATION_FEE.large} over {COORDINATION_FEE.largeFrom - 1} guests), paid only after every company confirms.{" "}
+            <Link href="/pricing" className="link">See how pricing works</Link>.
+          </Callout>
+        )}
 
         {/* Seating math */}
         <section className="mt-28">
@@ -116,7 +130,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
           <dl className="mt-8 grid border-t border-gold/40 sm:grid-cols-2 lg:grid-cols-4">
             {ev.seatingMath.map((m, i) => (
               <Reveal key={m.label} delay={i * 90} className="border-b border-line py-8 sm:px-6 sm:first:pl-0 lg:not-last:border-r">
-                <dt className="text-[11px] tracking-[0.2em] text-muted uppercase">{m.label}</dt>
+                <dt className="text-xs tracking-[0.2em] text-muted uppercase">{m.label}</dt>
                 <dd className="headline mt-3 text-2xl leading-snug text-ink">{m.value}</dd>
               </Reveal>
             ))}
@@ -126,16 +140,16 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
         {/* Pain points */}
         <section className="mt-32">
           <p className="eyebrow">What usually goes wrong</p>
-          <h2 className="headline mt-6 max-w-3xl text-5xl leading-[1.02] sm:text-6xl">
-            The seating <em className="text-gold">headaches</em>, solved
+          <h2 className="display-2 mt-6 max-w-3xl">
+            Common seating <em className="text-gold">problems</em> and fixes
           </h2>
           <div className="mt-14 grid gap-6 md:grid-cols-2">
             {ev.painPoints.map((p, i) => (
               <Reveal key={p.problem} delay={(i % 2) * 120}>
                 <article className="h-full border border-line bg-surface p-8">
-                  <p className="text-[11px] tracking-[0.2em] text-muted uppercase">The problem</p>
-                  <h3 className="mt-3 font-serif text-2xl leading-snug">{p.problem}</h3>
-                  <p className="mt-6 border-t border-gold/40 pt-5 text-[11px] tracking-[0.2em] text-gold uppercase">
+                  <p className="text-xs tracking-[0.2em] text-muted uppercase">The problem</p>
+                  <h3 className="display-3 mt-3">{p.problem}</h3>
+                  <p className="mt-6 border-t border-gold/40 pt-5 text-xs tracking-[0.2em] text-gold uppercase">
                     How we help
                   </p>
                   <p className="mt-2 leading-7 text-muted">{p.solution}</p>
@@ -165,11 +179,11 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
             </div>
           </div>
           <div className="md:pt-14">
-            <h2 className="headline text-3xl">Your seating checklist</h2>
+            <h2 className="display-2">Your seating checklist</h2>
             <ol className="relative mt-6 border-l border-gold/40 pl-8">
               {ev.checklist.map((s, i) => (
                 <li key={s} className="relative pb-6 last:pb-0">
-                  <span className="absolute top-0.5 -left-[2.65rem] grid h-5 w-5 place-items-center rounded-full border border-gold bg-bg text-[10px] text-gold">
+                  <span className="absolute top-0.5 -left-[2.65rem] grid h-5 w-5 place-items-center rounded-full border border-gold bg-bg text-xs text-gold">
                     {i + 1}
                   </span>
                   <p className="leading-7">{s}</p>
@@ -184,7 +198,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
       <section className="paper mt-32">
         <div className="container-x py-24">
           <p className="eyebrow">Where we deliver</p>
-          <h2 className="headline mt-6 text-5xl leading-[1.02]">
+          <h2 className="display-2 mt-6">
             {ev.shortName} across <em className="text-gold">Chicagoland</em>
           </h2>
           <ul className="mt-10 flex flex-wrap gap-3">
@@ -215,7 +229,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
               {posts.map((p) => (
                 <li key={p.slug}>
                   <Link href={`/blog/${p.slug}`} className="block h-full border border-line p-6 transition-colors hover:border-gold">
-                    <h3 className="font-serif text-2xl leading-snug">{p.title}</h3>
+                    <h3 className="display-3">{p.title}</h3>
                     <p className="mt-3 text-sm leading-6 text-muted">{p.description}</p>
                   </Link>
                 </li>

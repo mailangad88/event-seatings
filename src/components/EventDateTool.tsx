@@ -119,14 +119,14 @@ export function EventDateTool({ places, initialDate, initialPlace }: { places: P
           <div className="grid gap-4 md:grid-cols-3">
             <div className="card p-6">
               <p className="label">The date</p>
-              <p className="mt-2 font-serif text-2xl">{longDate(date)}</p>
+              <p className="mt-2 font-heading font-semibold text-2xl">{longDate(date)}</p>
               <p className="mt-2 text-sm text-muted">
                 {days === 0 ? "Today" : days! > 0 ? `${days} days away (${Math.floor(days! / 7)} weeks)` : `${-days!} days ago`} · {season(date)} in Chicago
               </p>
             </div>
             <div className="card p-6">
               <p className="label">Sun in {place.name}</p>
-              <p className="mt-2 font-serif text-2xl">Sunset {time(sun?.sunset)}</p>
+              <p className="mt-2 font-heading font-semibold text-2xl">Sunset {time(sun?.sunset)}</p>
               <p className="mt-2 text-sm text-muted">
                 Golden hour from {time(sun?.golden)} · dark by {time(sun?.dusk)} · sunrise {time(sun?.sunrise)}
               </p>
@@ -205,7 +205,7 @@ function Stat({ label, value, note }: { label: string; value: string; note?: str
   return (
     <div>
       <p className="text-sm text-muted">{label}</p>
-      <p className="mt-1 font-serif text-3xl">{value}</p>
+      <p className="mt-1 font-heading font-semibold text-3xl">{value}</p>
       {note && <p className="text-xs text-muted">{note}</p>}
     </div>
   );
