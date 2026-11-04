@@ -1,6 +1,7 @@
 import Link from "@/components/Link";
 import { footerMore, menus, rentalCategories } from "@/lib/nav";
 import { site } from "@/lib/site";
+import { contact } from "@/lib/contact";
 import { Logo } from "./Header";
 import { Icon } from "./ui/Icon";
 import { WaitlistForm } from "./WaitlistForm";
@@ -41,7 +42,7 @@ export function Footer() {
             </li>
             {site.phone && (
               <li>
-                <a href={`tel:${site.phone}`} className="inline-flex items-center gap-2 py-1.5 break-all hover:text-gold">
+                <a href={`tel:${contact.phone}`} className="inline-flex items-center gap-2 py-1.5 break-all hover:text-gold">
                   <Icon name="phone" size={16} className="text-gold" /> {site.phone}
                 </a>
               </li>

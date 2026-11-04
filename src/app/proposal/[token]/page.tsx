@@ -7,6 +7,7 @@ import { coordinationFee, usd } from "@/lib/catalog-types";
 import { amountDue, chargeLabel, chargeMode, checkoutPaid, stripeEnabled } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
 import { site } from "@/lib/site";
+import { contact } from "@/lib/contact";
 import { getLeadByProposalToken } from "@/lib/store";
 import { startCheckout } from "./actions";
 
@@ -152,7 +153,7 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
                 ) : (
                   <p className="rounded-xl border border-line p-4 text-muted">
                     Ready to book? Reply to your coordinator&apos;s email
-                    {site.phone ? <> or call <a href={`tel:${site.phone}`} className="text-accent">{site.phone}</a></> : null} and we&apos;ll send
+                    {site.phone ? <> or call <a href={`tel:${contact.phone}`} className="text-accent">{site.phone}</a></> : null} and we&apos;ll send
                     a secure payment link.
                   </p>
                 )}

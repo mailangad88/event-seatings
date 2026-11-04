@@ -31,7 +31,9 @@ export const site = {
   email: "hello@beyondchiavari.com",
   // Founder, shown on /press and in the Organization schema.
   owner: { name: "Isha Kaur" },
-  phone: process.env.NEXT_PUBLIC_PHONE ?? "",
+  // Number to call or text. Angad's number for now (Nov 4 2026); to switch to a business line later, change it here
+  // or set NEXT_PUBLIC_PHONE in Vercel.
+  phone: process.env.NEXT_PUBLIC_PHONE?.trim() || "(630) 360-1795",
   instagram: "https://instagram.com/beyondchiavari",
   pinterest: "https://pinterest.com/beyondchiavari",
   // Calendly / Cal.com / Google booking page for the free seating call.

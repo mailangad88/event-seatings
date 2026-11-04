@@ -1,6 +1,7 @@
 import Link from "@/components/Link";
 import { menus, primaryNav, toneTile, type Menu } from "@/lib/nav";
 import { site } from "@/lib/site";
+import { contact } from "@/lib/contact";
 import { MobileNav } from "./MobileNav";
 import { QuoteListLink } from "./QuoteListLink";
 import { MyEventsNavLink } from "./myevents/MyEventsNavLink";
@@ -100,7 +101,7 @@ export function Header() {
 
         <div className="hidden items-center gap-2 lg:flex">
           {site.phone && (
-            <a href={`tel:${site.phone}`} className={`${linkClass} max-xl:hidden`}>
+            <a href={`tel:${contact.phone}`} className={`${linkClass} max-xl:hidden`}>
               <Icon name="phone" size={16} /> {site.phone}
             </a>
           )}
