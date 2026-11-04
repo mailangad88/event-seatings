@@ -113,6 +113,12 @@ export default function PartnerTermsPage() {
           steps={steps}
           caption={`How an order moves between ${site.name} and a rental partner: an order email with a quote ID, an introduction to the customer, the rental company's own contract and delivery, then a monthly statement.`}
         />
+        <p className="mt-8 max-w-3xl leading-7 text-muted">
+          See what customers see: the <Link href="/rentals" className="link-line">rental catalog with prices</Link>, the{" "}
+          <Link href="/quote" className="link-line">quote builder</Link>, <Link href="/pricing" className="link-line">what customers pay us</Link>, and{" "}
+          <Link href="/how-we-work" className="link-line">who pays whom</Link>. Already listed without asking?{" "}
+          <Link href="/vendor-listings" className="link-line">Change or remove your listing</Link>.
+        </p>
       </Section>
 
       {groups.map((g, i) => (
