@@ -19,7 +19,7 @@ import { RentalIcon } from "./rentals/RentalIcon";
 import { Icon, PriceDisclaimer, PriceTag, formatPrice, type IconName } from "./ui";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
-export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey };
+export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey; similar?: boolean };
 export type StarterPreset = {
   id: string;
   kind: "look" | "event";
@@ -67,7 +67,16 @@ export function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: s
   const sw = variant ? item.variants?.find((v) => v.key === variant) : undefined;
   if (sw) return <Image src={sw.src} alt={sw.alt} fill sizes={sizes} className="object-cover" />;
   if (item.image)
-    return <Image src={item.image} alt={item.imageAlt ?? `${item.name} rental`} fill sizes={sizes} className="object-cover" />;
+    return (
+      <>
+        <Image src={item.image} alt={item.imageAlt ?? `${item.name} rental`} fill sizes={sizes} className="object-cover" />
+        {item.similar && (
+          <span className="pointer-events-none absolute bottom-1.5 left-1.5 rounded-full bg-black/55 px-2 py-0.5 text-[9px] tracking-[0.1em] text-white uppercase">
+            Similar item
+          </span>
+        )}
+      </>
+    );
   const chair = item.chairSlug ? getChair(item.chairSlug) : undefined;
   if (chair) return <ChairArt chair={chair} className="absolute inset-0" />;
   const photo = item.photo ? stockPhotos[item.photo] : undefined;
