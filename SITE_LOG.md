@@ -49,9 +49,10 @@ Angad said the site felt overwhelming. Touched 2026-11-04:
 - Item pages: one photo row (max 3, all 4:3, never mixes our pictures with example photos), cost breakdown folded, planning tips column removed (kept on the category page).
 - /tools: 3 "start here" picture cards, then every tool as a short text list (was two image grids of the same tools).
 - /blog: topics first, latest 6 guides instead of 24, shorter intro.
+- /ideas: "next three months" picture row removed; the 12 months are now folded rows (this month open), no picture per month.
 - Before/after screenshots: /mnt/project-files/redesign/simplify-2026-11-04/.
 
-Remaining: /quote page length on phones, /packages and /ideas hubs, guide post sidebars.
+Remaining: guide post sidebars, /packages filters. /quote was checked and is already a short step flow.
 
 ## Changes in this release (2026-11-03): new logo
 

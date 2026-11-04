@@ -46,7 +46,6 @@ export default async function IdeasPage() {
   const now = new Date();
   const mi = now.getMonth();
   const current = monthIdeas[mi];
-  const upcoming = [1, 2, 3].map((k) => monthIdeas[(mi + k) % 12]);
   const posts = new Map((await getPosts()).map((p) => [p.slug, p]));
   const monthGuide = (m: MonthIdeas) => [`planning-an-event-in-chicago-in-${m.slug}`, `planning-a-${m.slug}-event-chicago`].find((s) => posts.has(s));
   const guidesFor = (m: MonthIdeas) => [monthGuide(m), ...m.moments.map((x) => x.guide), ...m.guides].filter((s): s is string => !!s && posts.has(s)).map((s) => posts.get(s)!);
@@ -167,38 +166,21 @@ export default async function IdeasPage() {
         </ul>
       </Section>
 
-      <Section tone="sand" eyebrow="Coming up" title="The next three months">
-        <ul className="grid gap-5 md:grid-cols-3">
-          {upcoming.map((m) => (
-            <li key={m.slug} className="card overflow-hidden">
-              <a href={`#${m.slug}`} className="group block">
-                <span className="relative block aspect-[16/10]">
-                  <Image src={m.image} alt={m.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                </span>
-                <span className="block p-5">
-                  <span className="eyebrow">{m.name}</span>
-                  <span className="mt-2 block font-heading font-semibold text-2xl leading-tight">{m.headline}</span>
-                  <span className="mt-2 block text-sm text-muted">{m.moments.map((x) => x.name).join(" · ")}</span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
       <Section id="year" eyebrow="The whole year" title="Chicago event ideas, month by month">
-        <div className="space-y-6">
+        <div className="space-y-3">
           {monthIdeas.map((m, i) => (
-            <article key={m.slug} id={m.slug} className={`card grid scroll-mt-24 overflow-hidden md:grid-cols-[240px_1fr] ${i === mi ? "border-gold" : ""}`}>
-              <div className="relative aspect-[16/9] md:aspect-auto">
-                <Image src={m.image} alt={m.alt} fill sizes="(max-width: 768px) 100vw, 240px" className="object-cover" />
-              </div>
-              <div className="p-6">
-                <p className="eyebrow">
-                  {m.name} · normal high {Math.round(normalHighF[i])}°F{i === mi ? " · this month" : ""}
-                </p>
-                <h2 className="display-3 mt-2">{m.headline}</h2>
-                <p className="mt-2 leading-7 text-muted">{m.mood}</p>
+            <details key={m.slug} id={m.slug} open={i === mi} className={`group/m card scroll-mt-24 ${i === mi ? "border-gold" : ""}`}>
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 sm:p-6 [&::-webkit-details-marker]:hidden">
+                <div>
+                  <p className="eyebrow">
+                    {m.name} · normal high {Math.round(normalHighF[i])}°F{i === mi ? " · this month" : ""}
+                  </p>
+                  <h3 className="display-3 mt-2">{m.headline}</h3>
+                </div>
+                <Icon name="plus" size={20} className="shrink-0 text-accent transition-transform group-open/m:rotate-45" />
+              </summary>
+              <div className="px-5 pb-6 sm:px-6">
+                <p className="leading-7 text-muted">{m.mood}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {m.moments.map((x) =>
                     x.guide && posts.has(x.guide) ? (
@@ -213,7 +195,7 @@ export default async function IdeasPage() {
                   <Link href={`/chicago-event-seasons/${m.slug}`} className="link">Weather and rentals in {m.name}</Link>
                 </p>
               </div>
-            </article>
+            </details>
           ))}
         </div>
       </Section>
