@@ -18,6 +18,7 @@ import { ChairArt } from "./ChairArt";
 import { RentalIcon } from "./rentals/RentalIcon";
 import { Icon, PriceDisclaimer, PriceTag, formatPrice, type IconName } from "./ui";
 import { postLead } from "@/lib/lead-client";
+import { trackActivity } from "@/lib/activity-client";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
 export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey; similar?: boolean };
@@ -212,6 +213,12 @@ export function QuoteForm({
   const lines = Object.keys(picks)
     .map((id) => ({ item: byId.get(id)!, qty: qtyOf(id) }))
     .filter((l) => l.item && l.qty > 0);
+  // Known visitors: remember the list they're building, so an unfinished quote can get a "your list is saved" email.
+  const listKey = lines.map((l) => l.item.id).sort().join(",");
+  useEffect(() => {
+    const t = setTimeout(() => trackActivity({ t: "quote_list", items: listKey ? listKey.split(",") : [] }), 3000);
+    return () => clearTimeout(t);
+  }, [listKey]);
   const subtotal = lines.reduce((s, l) => s + l.item.price * l.qty, 0);
   const pieces = lines.reduce((s, l) => s + l.qty, 0);
   const anyEstimated = lines.some((l) => l.item.estimated);

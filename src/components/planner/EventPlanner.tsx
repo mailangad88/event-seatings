@@ -32,6 +32,7 @@ import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
 import { Icon, formatPrice, type IconName } from "../ui";
 import { FloorPlan } from "./FloorPlan";
 import { postLead } from "@/lib/lead-client";
+import { trackActivity } from "@/lib/activity-client";
 
 // Step-by-step event planner on /quote: occasion → guests → where → package → essentials → add-ons → date & details,
 // then a free personalised plan the visitor can download as a PDF. Each answer builds a recommended rental list
@@ -252,6 +253,7 @@ export function EventPlanner({
 
   const go = (n: number) => {
     setStep(n);
+    trackActivity({ t: "planner", step: n, occasion: a.event });
     requestAnimationFrame(() => top.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
   };
   const restore = () => {

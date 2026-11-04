@@ -2,6 +2,7 @@
   "crons": [
     {"path": "/api/cron/followups", "schedule": "0 15 * * *"},
     {"path": "/api/cron/event-emails", "schedule": "0 14 * * *"},
-    {"path": "/api/cron/lead-recovery", "schedule": "0 13 * * *"}
+    {"path": "/api/cron/lead-recovery", "schedule": "0 13 * * *"},
+    {"path": "/api/cron/reminders", "schedule": "0 16 * * *"}
   ]
 }

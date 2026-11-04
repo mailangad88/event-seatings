@@ -28,8 +28,9 @@ export function ConsentNotice() {
       className="fixed inset-x-3 bottom-20 z-40 rounded-2xl border border-line bg-surface p-3.5 text-sm sm:p-4 text-ink shadow-[0_12px_40px_rgb(0_0_0/0.18)] sm:right-auto sm:bottom-6 sm:left-6 sm:max-w-sm"
     >
       <p className="leading-5 sm:leading-6">
-        We remember the pages you look at here, in your browser, and send them with any form you fill in so we know
-        what you&apos;re planning. We also count visits with Google Analytics. No ads, and we never sell it.{" "}
+        We remember the pages you look at here and send them with any form you fill in, so we know what you&apos;re
+        planning. After you send a form, we may email you a reminder about what you looked at. We also count visits
+        with Google Analytics. No ads, and we never sell it.{" "}
         <Link href="/privacy#cookies" className="text-accent underline">Privacy</Link>
       </p>
       <div className="mt-3 flex gap-2">

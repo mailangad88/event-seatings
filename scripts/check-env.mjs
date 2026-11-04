@@ -51,6 +51,7 @@ const groups = [
       ["CRON_SECRET", "Any long random text. Vercel sends it to the daily jobs in vercel.json."],
       ["FOLLOWUPS_ENABLED", "Set to true to send the follow-up emails. Leave unset until you've read a dry run."],
       ["EVENT_EMAILS_ENABLED", "Set to true to send the two-weeks-out, day-before and thank-you emails."],
+      ["REMINDERS_ENABLED", "Set to true to send reminder emails (unfinished quote list, viewed item, event coming up)."],
       ["UNSUBSCRIBE_SECRET", "Signs unsubscribe links (falls back to ADMIN_PASSWORD)."],
     ],
     ok: () => has("CRON_SECRET"),

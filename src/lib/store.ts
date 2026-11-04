@@ -3,7 +3,8 @@ import { promises as fs } from "fs";
 import path from "path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { attributionKeys } from "./attribution";
-import { backupConfigured, backupDeleteLead, backupGetLead, backupListLeads, backupPutLead } from "./lead-backup";
+import { mergeActivity, type ActivityEvent } from "./activity";
+import { backupConfigured, backupDeleteLead, backupGetJson, backupGetLead, backupListLeads, backupPutJson, backupPutLead } from "./lead-backup";
 import { isTransient, withRetry } from "./retry";
 import type { QuoteLine } from "./catalog-types";
 import type { Journey } from "./journey";
@@ -86,6 +87,9 @@ export type Lead = {
   vendor_orders?: VendorOrders;
   // Messages between the renter (in /account) and our team (in /admin/messages), oldest first.
   messages?: LeadMessage[];
+  // Random id from the visitor's browser (es_visitor). Links the lead to what they do after sending the form
+  // (visitor_activity), which the reminder emails use. Unset on old leads.
+  visitor_id?: string;
 } & Partial<Record<TrackingField, string>>;
 
 export type LeadMessage = { at: string; from: "customer" | "team"; text: string; read_at?: string };
@@ -174,7 +178,15 @@ export type CustomerAccount = {
 };
 export type AccountPatch = Partial<Omit<CustomerAccount, "email" | "created_at">>;
 
-type LocalDb = { votes: Vote[]; leads: Lead[]; views?: PageView[]; partners?: VendorPartner[]; accounts?: CustomerAccount[] };
+type LocalDb = {
+  votes: Vote[];
+  leads: Lead[];
+  views?: PageView[];
+  partners?: VendorPartner[];
+  accounts?: CustomerAccount[];
+  activity?: Record<string, ActivityEvent[]>;
+  settings?: Record<string, unknown>;
+};
 
 let supabase: SupabaseClient | null | undefined;
 function sb() {
@@ -252,7 +264,7 @@ export async function getVisitorVotes(visitorId: string): Promise<string[]> {
 const newerLeadColumns = [
   "email_consent", "call_consent", "consent_at", "opted_out_at", "lead_score", "lead_score_reasons",
   "visitor_tz", "pages_viewed", "followup_step", "followup_last_at", "referral_code",
-  "journey", "ip_location", "interests", "sequence",
+  "journey", "ip_location", "interests", "sequence", "visitor_id",
   "vendor_orders",
 ] as const;
 
@@ -656,4 +668,92 @@ export async function addLeadMessage(id: string, from: LeadMessage["from"], text
   messages.push({ at: now, from, text: text.slice(0, 4000) });
   await updateLead(id, { messages }, [{ type: "note", text: from === "customer" ? "Customer sent a message from their account." : "Team replied in the customer's account." }]);
   return messages;
+}
+
+// What a known visitor did after sending a form (lib/activity.ts), keyed by their browser's visitor id.
+// Supabase table visitor_activity; otherwise the private Blob store (activity/<id>.json) or the local file.
+const missingTable = (e: { code?: string; message: string }, table: string) => e.code === "42P01" || e.code === "PGRST205" || e.message.includes(table);
+
+// Activity is only kept for visitors who have sent us a form, so random ids can't fill the store.
+const knownVisitors = new Set<string>();
+export async function visitorHasLead(visitorId: string): Promise<boolean> {
+  if (knownVisitors.has(visitorId)) return true;
+  let known = false;
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("leads").select("id").eq("visitor_id", visitorId).limit(1);
+    known = !error && !!data?.length;
+  } else if (backupConfigured()) {
+    known = !!(await backupGetJson(`visitors/${visitorId}.json`));
+  } else {
+    known = (await readLocal()).leads.some((l) => l.visitor_id === visitorId);
+  }
+  if (known) knownVisitors.add(visitorId);
+  return known;
+}
+
+// Called when a lead with a visitor id is saved. Only the Blob store needs a marker file; the database and the
+// local file can look the id up on the lead itself.
+export async function linkVisitor(visitorId: string) {
+  knownVisitors.add(visitorId);
+  if (!sb() && backupConfigured()) await backupPutJson(`visitors/${visitorId}.json`, { at: new Date().toISOString() });
+}
+
+export async function getVisitorActivity(visitorId: string): Promise<ActivityEvent[]> {
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("visitor_activity").select("events").eq("visitor_id", visitorId).maybeSingle();
+    if (error) {
+      if (missingTable(error, "visitor_activity")) return [];
+      throw error;
+    }
+    return (data?.events as ActivityEvent[] | undefined) ?? [];
+  }
+  if (backupConfigured()) return (await backupGetJson<ActivityEvent[]>(`activity/${visitorId}.json`)) ?? [];
+  return (await readLocal()).activity?.[visitorId] ?? [];
+}
+
+export async function appendVisitorActivity(visitorId: string, events: ActivityEvent[]) {
+  if (!events.length) return;
+  const merged = mergeActivity(await getVisitorActivity(visitorId), events);
+  const client = sb();
+  if (client) {
+    const { error } = await client
+      .from("visitor_activity")
+      .upsert({ visitor_id: visitorId, events: merged, updated_at: new Date().toISOString() }, { onConflict: "visitor_id" });
+    if (error && !missingTable(error, "visitor_activity")) throw error;
+    return;
+  }
+  if (backupConfigured()) return backupPutJson(`activity/${visitorId}.json`, merged);
+  const db = await readLocal();
+  db.activity = { ...db.activity, [visitorId]: merged };
+  await writeLocal(db);
+}
+
+// Small settings edited in /admin (for example the reminder emails and their offer), by key.
+export async function getSetting<T>(key: string): Promise<T | undefined> {
+  const client = sb();
+  if (client) {
+    const { data, error } = await client.from("site_settings").select("value").eq("key", key).maybeSingle();
+    if (error) {
+      if (missingTable(error, "site_settings")) return undefined;
+      throw error;
+    }
+    return (data?.value as T | undefined) ?? undefined;
+  }
+  if (backupConfigured()) return backupGetJson<T>(`settings/${key}.json`);
+  return (await readLocal()).settings?.[key] as T | undefined;
+}
+
+export async function saveSetting(key: string, value: unknown) {
+  const client = sb();
+  if (client) {
+    const { error } = await client.from("site_settings").upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: "key" });
+    if (error) throw error;
+    return;
+  }
+  if (backupConfigured()) return backupPutJson(`settings/${key}.json`, value);
+  const db = await readLocal();
+  db.settings = { ...db.settings, [key]: value };
+  await writeLocal(db);
 }

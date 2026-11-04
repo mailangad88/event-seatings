@@ -46,6 +46,7 @@ export const adminNav: OfficeNavGroup[] = [
       { href: "/admin/reports", label: "Reports", icon: "chart" },
       { href: "/admin/scheduled", label: "Email schedule", icon: "mail" },
       { href: "/admin/followups", label: "Follow-up emails", icon: "mail" },
+      { href: "/admin/reminders", label: "Reminder emails", icon: "clock" },
       { href: "/admin/emails", label: "Email previews", icon: "quote" },
       { href: "/admin/reviews", label: "Reviews", icon: "star" },
       { href: "/admin/referrals", label: "Referrals", icon: "heart" },
