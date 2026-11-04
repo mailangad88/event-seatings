@@ -4,6 +4,7 @@ import { trackLead } from "@/lib/analytics";
 import { attributionFields } from "@/lib/attribution";
 import { useState } from "react";
 import { site } from "@/lib/site";
+import { postLead } from "@/lib/lead-client";
 
 const times = ["Weekday morning", "Weekday afternoon", "Weekday evening", "Weekend", "Any time"];
 // Guest count as a dropdown (a qualifying question); the value is the band's midpoint, used for lead scoring.
@@ -25,16 +26,12 @@ export function CallForm({ source = "book-page" }: { source?: string }) {
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const { best_time, ...rest } = data;
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...rest,
-        message: [best_time && `Best time to call: ${best_time}`, rest.message].filter(Boolean).join("\n"),
-        kind: "call",
-        source,
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...rest,
+      message: [best_time && `Best time to call: ${best_time}`, rest.message].filter(Boolean).join("\n"),
+      kind: "call",
+      source,
     }).catch(() => null);
     if (res?.ok) {
       trackLead("call", source);

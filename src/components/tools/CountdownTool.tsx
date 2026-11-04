@@ -6,6 +6,7 @@ import { attributionFields } from "@/lib/attribution";
 import { track, trackLead } from "@/lib/analytics";
 import { buildTimeline, downloadFile, timelineEvents, toICS, toISO } from "@/lib/tools/timeline";
 import { useUrlState } from "./controls";
+import { postLead } from "@/lib/lead-client";
 
 const subscribe = () => () => {};
 
@@ -27,18 +28,14 @@ function Reminders({ date, event, name }: { date: string; event: string; name: s
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        ...data,
-        kind: "waitlist",
-        source: `countdown:${event}`,
-        event_date: date,
-        event_type: event,
-        message: name ? `Countdown: ${name}` : undefined,
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      ...data,
+      kind: "waitlist",
+      source: `countdown:${event}`,
+      event_date: date,
+      event_type: event,
+      message: name ? `Countdown: ${name}` : undefined,
     }).catch(() => null);
     if (res?.ok) {
       trackLead("waitlist", `countdown:${event}`);

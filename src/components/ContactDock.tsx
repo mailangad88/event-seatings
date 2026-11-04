@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { attributionFields } from "@/lib/attribution";
 import { site } from "@/lib/site";
 import { contact, OPEN_CHAT_EVENT, openerFor, quickQuestions } from "@/lib/contact";
+import { postLead } from "@/lib/lead-client";
 
 // Floating "Questions?" button on every page. Opens a panel with every fast way to reach us:
 // live chat (HubSpot, when NEXT_PUBLIC_HUBSPOT_PORTAL_ID is set) or a quick message form
@@ -269,11 +270,7 @@ function QuickMessage({
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...attributionFields(), ...data, kind: "chat", source: `chat:${page}`.slice(0, 100) }),
-    }).catch(() => null);
+    const res = await postLead({ ...attributionFields(), ...data, kind: "chat", source: `chat:${page}`.slice(0, 100) }).catch(() => null);
     if (res?.ok) {
       track("generate_lead", { method: "chat", page });
       return setStatus("done");

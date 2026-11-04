@@ -12,7 +12,8 @@ import { cleanCode } from "@/lib/referrals";
 import { sequenceLabel } from "@/lib/followups";
 import { interestsFor, interestSummary } from "@/lib/interests";
 import { deviceFromUserAgent, locationFromHeaders, parseJourney } from "@/lib/journey";
-import { addLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
+import { spamReason } from "@/lib/lead-spam";
+import { saveNewLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
 
@@ -28,6 +29,20 @@ function tooMany(ip: string) {
   if (hits.size > 5000) hits.clear();
   return recent.length > 8;
 }
+// Submission ids seen recently on this server instance. The database and backup catch repeats across
+// instances; this also catches them when every store is down, so a double click never sends two alerts.
+// Only ids that were saved (or handled) go in, so a form turned down for a typo can be fixed and sent again.
+const recentIds = new Map<string, number>();
+const seenRecently = (id: string) => (recentIds.get(id) ?? 0) > Date.now() - 24 * 3600_000;
+function remember(id?: string) {
+  if (!id) return;
+  if (recentIds.size > 5000) recentIds.clear();
+  recentIds.set(id, Date.now());
+}
+const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+// Largest body a real form sends (the planner with its page history is about 30 KB).
+const MAX_BODY = 256 * 1024;
+
 function firstEmailToday(email: string) {
   const key = email.toLowerCase();
   const last = emailed.get(key);
@@ -48,8 +63,17 @@ const str = (v: unknown, max = 200) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined;
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
-  if (!body || typeof body !== "object") {
+  const raw = await request.text().catch(() => "");
+  if (raw.length > MAX_BODY) return Response.json({ error: "That form was too large to send." }, { status: 413 });
+  // Same loose shape request.json() gave before; every field is checked one by one below.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let body: any = null;
+  try {
+    body = JSON.parse(raw);
+  } catch {
+    body = null;
+  }
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
     return Response.json({ error: "Invalid request" }, { status: 400 });
   }
   // Honeypot: real visitors never see or fill this field.
@@ -58,6 +82,12 @@ export async function POST(request: Request) {
   if (tooMany(ip)) {
     return Response.json({ error: "Too many requests. Please try again in a few minutes." }, { status: 429 });
   }
+
+  // The browser's id for this submission (lib/lead-client.ts). The same form sent twice carries the same id.
+  const submissionId = [body.submission_id, request.headers.get("idempotency-key")].find(
+    (v): v is string => typeof v === "string" && uuid.test(v),
+  )?.toLowerCase();
+  if (submissionId && seenRecently(submissionId)) return Response.json({ ok: true, duplicate: true });
 
   const kind = body.kind as LeadKind;
   const email = str(body.email, 254);
@@ -121,6 +151,9 @@ export async function POST(request: Request) {
   if (kind === "call" && !lead.phone) {
     return Response.json({ error: "Please add a phone number so we can call you." }, { status: 400 });
   }
+  if (lead.phone && (lead.phone.replace(/\D/g, "").length < 7 || lead.phone.replace(/\D/g, "").length > 15)) {
+    return Response.json({ error: "Please check your phone number. It should have 10 digits, like 312-555-0123." }, { status: 400 });
+  }
 
   // Quote builder picks: re-priced here from the catalog, never from numbers the browser sent.
   if (Array.isArray(body.items)) {
@@ -166,16 +199,33 @@ export async function POST(request: Request) {
     return Response.json({ error: "Please pick an event date and at least one item." }, { status: 400 });
   }
 
+  // Spam is saved (so a real person caught by mistake can be found in /admin) but gets no alert, CRM or email.
+  const formMs = Number(body.form_ms);
+  const spam = spamReason({ ...lead, form_ms: body.form_ms === undefined ? undefined : formMs });
+  if (spam) {
+    lead.status = "lost";
+    lead.lost_reason = `Spam check: ${spam}`;
+    lead.activity = [...(lead.activity ?? []), { at: new Date().toISOString(), type: "status", text: `Held as spam (${spam}). No emails sent.` }];
+    await saveNewLead(lead, { id: submissionId }).catch((e) => console.error("spam lead not saved", e));
+    remember(submissionId);
+    console.warn("LEAD_HELD_AS_SPAM", spam, lead.email);
+    return Response.json({ ok: true });
+  }
+
   let saved: Lead;
   try {
-    saved = await addLead(lead);
+    const result = await saveNewLead(lead, { id: submissionId });
+    // Already saved from an earlier send of the same form: thank them again but send nothing twice.
+    if (result.duplicate) return Response.json({ ok: true, duplicate: true });
+    saved = result.lead;
   } catch (error) {
     // Storage is down or not configured (for example Supabase env vars missing on Vercel, where the
     // local JSON fallback can't write). Never lose the lead: log it in full so it can be recovered from
     // the function logs, still email the owner and sync the CRM, and thank the visitor as normal.
-    saved = { ...lead, id: crypto.randomUUID(), created_at: new Date().toISOString() };
+    saved = { ...lead, id: submissionId ?? crypto.randomUUID(), created_at: new Date().toISOString() };
     console.error("LEAD_SAVE_FAILED", error, JSON.stringify(saved));
   }
+  remember(submissionId);
   // CRM sync and the owner email run after the visitor gets their answer, so a slow or failing CRM
   // never loses a lead: it's already saved above, and both helpers log their own errors.
   const download = lead.source?.startsWith("download:") ? getDownload(lead.source.slice(9).split("@")[0]) : undefined;

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { attributionFields } from "@/lib/attribution";
 import { track } from "@/lib/analytics";
+import { postLead } from "@/lib/lead-client";
 
 export const partnerCategories = [
   "Chairs",
@@ -41,22 +42,18 @@ export function PartnerForm() {
       .filter(Boolean)
       .join("\n");
     setStatus("sending");
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...attributionFields(),
-        kind: "partner",
-        source: "partners",
-        event_type: "Vendor application",
-        name: form.get("name"),
-        email: form.get("email"),
-        phone: form.get("phone"),
-        venue: form.get("company"),
-        city: form.get("area"),
-        message,
-        website: form.get("website"),
-      }),
+    const res = await postLead({
+      ...attributionFields(),
+      kind: "partner",
+      source: "partners",
+      event_type: "Vendor application",
+      name: form.get("name"),
+      email: form.get("email"),
+      phone: form.get("phone"),
+      venue: form.get("company"),
+      city: form.get("area"),
+      message,
+      website: form.get("website"),
     }).catch(() => null);
     if (res?.ok) {
       track("partner_application", { categories: picked.join(",") });
