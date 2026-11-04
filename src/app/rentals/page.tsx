@@ -9,7 +9,7 @@ import { Faqs, JsonLd, faqJsonLd } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { Icon, PriceDisclaimer } from "@/components/ui";
-import { categoryScene, scenes } from "@/lib/scenes";
+import { categoryTile, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -106,11 +106,11 @@ export default function RentalsPage() {
           <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
             {byCategory.map(({ c, items, from }) => (
               <li key={c.id} className="group relative bg-bg p-4 transition-colors hover:bg-surface sm:p-6">
-                {categoryScene(c.id) ? (
+                {categoryTile(c.id) ? (
                   <div className="media aspect-[4/3]">
                     <Image
-                      src={categoryScene(c.id)!.src}
-                      alt={categoryScene(c.id)!.alt}
+                      src={categoryTile(c.id)!.src}
+                      alt={categoryTile(c.id)!.alt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"

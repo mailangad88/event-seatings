@@ -23,14 +23,14 @@ export type PlannerEvent = {
 const scene = (n: string) => `/rentals/styled/${n}.webp`;
 
 export const plannerEvents: PlannerEvent[] = [
-  { id: "wedding", name: "Wedding", eventType: "Wedding (ceremony + reception)", image: scene("wedding-reception"), alt: "Wedding reception with round tables, gold Chiavari chairs and candlelight", meal: true, formal: true, defaultGuests: 150, extras: ["ceremony", "dancing", "bar"], leadMonths: 9 },
-  { id: "indian-wedding", name: "Indian wedding or sangeet", eventType: "Indian wedding or sangeet", image: scene("sweetheart-stage"), alt: "Decorated stage with a sweetheart sofa for a sangeet or reception", meal: true, formal: true, defaultGuests: 250, extras: ["dancing", "buffet", "lounge"], leadMonths: 9 },
-  { id: "corporate", name: "Corporate event or gala", eventType: "Corporate event or gala", image: scene("corporate-gala"), alt: "Corporate gala room with rounds, uplighting and a stage", meal: true, formal: true, defaultGuests: 120, extras: ["speeches", "bar"], leadMonths: 4 },
-  { id: "birthday", name: "Birthday or anniversary", eventType: "Birthday or anniversary party", image: scene("backyard-birthday"), alt: "Backyard birthday party with long tables and string lights", meal: false, formal: false, defaultGuests: 50, extras: ["bar"], leadMonths: 2 },
-  { id: "quinceanera", name: "Quinceañera", eventType: "Quinceañera", image: scene("dance-party"), alt: "Quinceañera dance floor with uplighting", meal: true, formal: true, defaultGuests: 150, extras: ["dancing", "photos"], leadMonths: 6 },
-  { id: "shower", name: "Bridal or baby shower", eventType: "Bridal or baby shower", image: scene("baby-shower"), alt: "Baby shower brunch table with florals and pastel linens", meal: true, formal: false, defaultGuests: 40, extras: ["buffet"], leadMonths: 2 },
-  { id: "graduation", name: "Graduation party", eventType: "Graduation party", image: scene("graduation-party"), alt: "Graduation party in a backyard with canopy, tables and food stations", meal: false, formal: false, defaultGuests: 80, extras: ["buffet"], leadMonths: 2 },
-  { id: "kids", name: "Kids' party", eventType: "Birthday or anniversary party", image: scene("kids-party"), alt: "Kids' party with a bounce house, small tables and games", meal: false, formal: false, defaultGuests: 30, extras: ["kids"], leadMonths: 1 },
+  { id: "wedding", name: "Wedding", eventType: "Wedding (ceremony + reception)", image: scene("event-wedding"), alt: "Bride and groom walking back up a white petal aisle past white folding chairs after an outdoor ceremony", meal: true, formal: true, defaultGuests: 150, extras: ["ceremony", "dancing", "bar"], leadMonths: 9 },
+  { id: "indian-wedding", name: "Indian wedding or sangeet", eventType: "Indian wedding or sangeet", image: scene("event-indian-wedding"), alt: "Bride and groom seated under a marigold mandap with family in bright saris and a dhol player", meal: true, formal: true, defaultGuests: 250, extras: ["dancing", "buffet", "lounge"], leadMonths: 9 },
+  { id: "corporate", name: "Corporate event or gala", eventType: "Corporate event or gala", image: scene("event-corporate"), alt: "Speaker at a clear podium on stage in front of a blue screen, guests at navy round tables", meal: true, formal: true, defaultGuests: 120, extras: ["speeches", "bar"], leadMonths: 4 },
+  { id: "birthday", name: "Birthday or anniversary", eventType: "Birthday or anniversary party", image: scene("event-birthday"), alt: "Woman blowing out candles on a birthday cake beside gold number 40 balloons as friends clap", meal: false, formal: false, defaultGuests: 50, extras: ["bar"], leadMonths: 2 },
+  { id: "quinceanera", name: "Quinceañera", eventType: "Quinceañera", image: scene("event-quinceanera"), alt: "Quinceañera in a pink ball gown and tiara dancing with her father while her court watches", meal: true, formal: true, defaultGuests: 150, extras: ["dancing", "photos"], leadMonths: 6 },
+  { id: "shower", name: "Bridal or baby shower", eventType: "Bridal or baby shower", image: scene("event-shower"), alt: "Mom-to-be opening gifts in a bright sunroom with pastel balloons and a pile of presents", meal: true, formal: false, defaultGuests: 40, extras: ["buffet"], leadMonths: 2 },
+  { id: "graduation", name: "Graduation party", eventType: "Graduation party", image: scene("event-graduation"), alt: "Graduate in a maroon cap and gown hugging her grandfather at a backyard open house with a canopy buffet", meal: false, formal: false, defaultGuests: 80, extras: ["buffet"], leadMonths: 2 },
+  { id: "kids", name: "Kids' party", eventType: "Birthday or anniversary party", image: scene("event-kids"), alt: "Kids jumping and running out of a red, blue and yellow bounce house, with cupcakes and party hats on a kids' table", meal: false, formal: false, defaultGuests: 30, extras: ["kids"], leadMonths: 1 },
 ];
 
 export const getPlannerEvent = (id?: string) => plannerEvents.find((e) => e.id === id);
@@ -47,10 +47,10 @@ export const styleName = (id?: string) => styles.find((s) => s.id === id)?.name 
 export const essentialGroups = ["Seating", "Tables", "Linens", "Tableware", "Glassware"];
 
 export const settings: { id: SettingId; name: string; blurb: string; image: string; alt: string }[] = [
-  { id: "backyard", name: "Backyard or home", blurb: "Your own lawn, patio or driveway, with the house nearby.", image: scene("backyard-birthday"), alt: "Backyard party with string lights" },
-  { id: "venue", name: "Indoors", blurb: "Banquet hall, restaurant, church hall, office, loft or your home.", image: scene("cocktail-hour"), alt: "Indoor cocktail hour with highboy tables" },
-  { id: "tent", name: "Outdoor venue or tent", blurb: "A lawn, farm, field or garden venue that needs a tent.", image: scene("tent-reception-dusk"), alt: "Frame tent reception lit at dusk" },
-  { id: "park", name: "Park or public space", blurb: "Chicago Park District or forest preserve shelters and lawns.", image: scene("graduation-party"), alt: "Outdoor party under canopies" },
+  { id: "backyard", name: "Backyard or home", blurb: "Your own lawn, patio or driveway, with the house nearby.", image: scene("set-backyard"), alt: "Brick house backyard with folding tables, white chairs and a pop-up canopy on the lawn" },
+  { id: "venue", name: "Indoors", blurb: "Banquet hall, restaurant, church hall, office, loft or your home.", image: scene("set-venue"), alt: "Empty banquet hall with round tables in white cloths and white folding chairs" },
+  { id: "tent", name: "Outdoor venue or tent", blurb: "A lawn, farm, field or garden venue that needs a tent.", image: scene("set-tent"), alt: "White pole tent with tables set inside on a farm field next to a red barn" },
+  { id: "park", name: "Park or public space", blurb: "Chicago Park District or forest preserve shelters and lawns.", image: scene("set-park"), alt: "Park picnic shelter with tables, balloons and families on the lawn" },
 ];
 
 export const extras: { id: ExtraId; name: string; icon: string; text: string }[] = [

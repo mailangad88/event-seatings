@@ -5,7 +5,7 @@ import { ReadyPackages } from "@/components/ReadyPackages";
 import { CategoryTile, FaqList, Icon, QuoteCta, Section, StepFlow, TrustBar, type Faq } from "@/components/ui";
 import { rentalCategories } from "@/lib/nav";
 import { catalogItems } from "@/data/catalog";
-import { categoryScene, scenes } from "@/lib/scenes";
+import { categoryTile, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import type { Metadata } from "next";
 import { seo } from "@/lib/seo";
@@ -95,7 +95,7 @@ export default function Home() {
                   name={c.name}
                   blurb={c.blurb}
                   icon={c.icon}
-                  image={categoryScene(c.id)}
+                  image={categoryTile(c.id)}
                   count={catalogItems.filter((x) => x.categoryId === c.id).length || undefined}
                 />
               </Reveal>,

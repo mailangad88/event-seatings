@@ -142,3 +142,32 @@ export function categoryScene(id: string): Scene | undefined {
   if (s) return { src: s.src, alt: s.alt, caption: s.caption, width: s.width, height: s.height, ai: true };
   return rentalImage(slug) ? render(slug) : undefined;
 }
+
+// Square tiles for the category grids (home page and /rentals): the rentals themselves, clear at a glance.
+const categoryTiles: Record<string, string> = {
+  chairs: "Row of gold Chiavari chairs with ivory cushions at a dressed table",
+  tables: "Round, long banquet and tall cocktail tables side by side in an empty hall",
+  linens: "Stack of folded tablecloths and napkins in many colours beside a table in a long ivory cloth",
+  dinnerware: "Place setting from above: gold-rimmed charger, white plates and a folded napkin",
+  flatware: "Gold forks, knives and spoons fanned out on an ivory napkin",
+  glassware: "Wine glasses, a flute, a goblet and tumblers lined up on a white table",
+  "catering-equipment": "Buffet line of stainless steel chafing dishes with food and serving tongs",
+  tents: "White pole tent on a green lawn with tables and chairs set inside",
+  "dance-floors-staging": "Black and white checkered dance floor in front of a low stage",
+  lighting: "Bistro string lights over a patio at dusk with warm uplights on the wall",
+  "heating-cooling": "Patio heater with a lit flame next to a large standing fan",
+  lounge: "White leather sofa, armchairs and a glass coffee table on a rug",
+  decor: "Pink flower wall with a round gold arch and two gold candle stands",
+  "games-kids": "Giant stacking tower, cornhole boards and giant four in a row on a lawn",
+  concessions: "Popcorn, cotton candy and snow cone machines side by side on a cart",
+  "photo-booths": "Ring light photo booth on a stand in front of a white sequin backdrop",
+  "av-sound": "Two PA speakers on stands, a microphone and a mixer on a table in a hall",
+  "restrooms-power": "White restroom trailer on a lawn next to a portable generator",
+  "fencing-crowd-control": "Chrome stanchions with red velvet ropes along a white picket fence",
+};
+
+export function categoryTile(id: string): Scene | undefined {
+  const alt = categoryTiles[id];
+  if (!alt) return categoryScene(id);
+  return { src: `/rentals/styled/cat-${id}.webp`, alt, caption: alt, width: 1024, height: 1024 };
+}
