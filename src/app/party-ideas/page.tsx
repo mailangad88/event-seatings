@@ -61,7 +61,7 @@ export default function PartyIdeasHub() {
             const sc = ideaScene(t.scene, t.sceneAlt);
             return (
               <li key={t.slug}>
-                <Link href={typePath(t.slug)} className="group card card-hover block overflow-hidden">
+                <Link href={typePath(t.slug)} className="group card card-hover block h-full overflow-hidden">
                   <div className="relative aspect-[4/3] bg-surface-2">
                     <Image src={sc.src} alt={`${t.name} ideas: ${t.sceneAlt}`} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover transition duration-700 group-hover:scale-[1.03]" />
                   </div>

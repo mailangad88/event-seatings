@@ -62,7 +62,7 @@ export default function EmbedPage() {
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((t) => (
             <li key={t.slug}>
-              <Link href={`/tools/${t.slug}`} className="card card-hover block p-4 text-sm font-medium">{t.name}</Link>
+              <Link href={`/tools/${t.slug}`} className="card card-hover block h-full p-4 text-sm font-medium">{t.name}</Link>
             </li>
           ))}
         </ul>

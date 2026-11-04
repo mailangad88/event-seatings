@@ -27,7 +27,7 @@ export function BudgetExample({ budget }: { budget: SampleBudget }) {
   const quoteHref = `/quote?items=${budget.lines.map(([id]) => id).join(",")}&guests=${budget.guests}&from=budget-${budget.id}`;
 
   return (
-    <figure className="border border-line bg-surface p-6 sm:p-8">
+    <figure className="flex h-full flex-col rounded-2xl border border-line bg-surface p-6 shadow-soft sm:p-8">
       <figcaption>
         <h3 className="display-2">{budget.title}</h3>
         <p className="mt-2 text-sm leading-6 text-muted">{budget.summary}</p>
@@ -71,9 +71,12 @@ export function BudgetExample({ budget }: { budget: SampleBudget }) {
       <p className="mt-3 text-xs text-muted">
         About {formatPrice(Math.round(total / budget.guests))} per guest before delivery, setup, damage waiver and tax.
       </p>
-      <Link href={quoteHref} className="btn-ghost mt-6">
-        Customize this list
-      </Link>
+      {/* mt-auto keeps the button at the bottom, so it lines up with the cards beside it. */}
+      <div className="mt-auto pt-6">
+        <Link href={quoteHref} className="btn-ghost">
+          Customize this list
+        </Link>
+      </div>
     </figure>
   );
 }

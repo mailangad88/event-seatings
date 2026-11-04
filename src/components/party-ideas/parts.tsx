@@ -76,7 +76,7 @@ export function ActivityGrid({ activities }: { activities: Activity[] }) {
       {activities.map((a) => {
         const items = (a.rentals ?? []).map(getCatalogItem).filter((i): i is CatalogItem => !!i);
         return (
-          <li key={a.name} className="card p-5">
+          <li key={a.name} className="card flex flex-col p-5">
             <div className="flex items-center gap-3">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gold-soft text-gold">
                 <Icon name={items.length ? "spark" : "heart"} size={18} />
@@ -85,7 +85,7 @@ export function ActivityGrid({ activities }: { activities: Activity[] }) {
             </div>
             <p className="mt-3 text-sm leading-6 text-muted">{a.text}</p>
             {items.length > 0 ? (
-              <p className="mt-3 text-xs leading-5">
+              <p className="mt-auto pt-3 text-xs leading-5">
                 <span className="text-muted">Rent: </span>
                 {items.map((i, n) => (
                   <span key={i.id}>
@@ -118,7 +118,8 @@ export function IdeaRentals({ lines, guests = 100 }: { lines: IdeaLine[]; guests
     <div>
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
         {rows.map(({ l, item, qty }) => (
-          <div key={l.id}>
+          // 5 shared rows: the card's 4 plus the quantity note, so every card in a row lines up.
+          <div key={l.id} className="row-span-5 grid grid-rows-subgrid gap-y-0">
             <RentalCard item={item} />
             <p className="mt-2 text-xs leading-5 text-muted">
               <strong className="text-ink tabular-nums">× {qty.toLocaleString()}</strong> for {guests} guests. {l.why}.
