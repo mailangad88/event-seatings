@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
-import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
+import { DEPOSIT, DEPOSIT_LABEL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "How Event Rentals Work: One Quote for Everything",
-  description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more, pay nothing until a vendor confirms, and we coordinate established Chicago-area rental companies from delivery to pickup.`,
+  description: `How ${site.name} works: build one itemized quote for chairs, tables, linens, tents and more at the prices on our site, book with a deposit, and we handle delivery, setup and pickup.`,
   alternates: { canonical: "/how-it-works" },
 });
 
@@ -28,33 +28,29 @@ const detail = [
   },
   {
     icon: "users",
-    title: "3. We confirm with vendors",
-    text: "After a quick call, we check your date with established Chicago-area rental companies and send one itemized proposal, usually within one business day.",
-    points: ["Every fee and policy shown up front", "Substitutes if something is booked", "One contact for every vendor"],
+    title: "3. We confirm your date",
+    text: "After a quick call, we check every item for your date and send one itemized proposal, usually within one business day.",
+    points: ["Every price and policy shown up front", "Substitutes if something is booked", "One contact for everything"],
   },
   {
     icon: "truck",
     title: "4. Approve, then relax",
-    text: `Approve your proposal and pay our booking fee, ${BOOKING_FEE_FULL}, to secure it. You only pay once every rental company has confirmed in writing. We then introduce your rental company, which sends its agreement and deposit invoice, and we coordinate delivery, setup and pickup.`,
-    points: ["Price locked once you approve", "Backup guarantee if a vendor cancels", "Pickup the same night or next morning"],
+    text: `Approve your proposal and pay a ${DEPOSIT_LABEL} to reserve your items. The balance is due ${DEPOSIT.balanceDaysBefore} days before your event. We handle delivery, setup and pickup.`,
+    points: ["Prices locked once you book", "Replacement if an item falls through", "Pickup the same night or next morning"],
   },
 ] as const;
 
 const faqs: Faq[] = [
-  { q: "How long does a quote take?", a: "Most confirmed quotes go out within one business day. Peak-season Saturdays can take a little longer when we are checking several vendors." },
+  { q: "How long does a quote take?", a: "Most confirmed quotes go out within one business day. Peak-season Saturdays can take a little longer when we are checking a long list." },
   { q: "Can I change my order after booking?", a: "Yes. Quantities can usually be adjusted until about two weeks before the event, subject to availability." },
   { q: "What if an item is unavailable?", a: "We suggest the closest match in style and price, and you choose whether to swap it." },
   {
-    q: `Who actually delivers my rentals?`,
-    a: `Independent Chicago-area rental companies that we vet. We ask each one for proof of general liability insurance before we book it. ${site.name} is the booking and coordination service: we share your rental company's name and agreement as soon as you secure your booking, and its rental agreement covers delivery, setup and pickup.`,
-  },
-  {
     q: "When do I pay, and who do I pay?",
-    a: `Nothing until a rental company confirms your date and you approve your proposal. Then you pay our booking fee, ${BOOKING_FEE_FULL}, to us, and the rental company's deposit and balance to them under their agreement.`,
+    a: `Nothing until you approve your proposal. Then you pay ${site.name} a ${DEPOSIT_LABEL} to book, fully refundable for ${DEPOSIT.refundHours} hours, and the balance ${DEPOSIT.balanceDaysBefore} days before your event.`,
   },
   {
-    q: "Are your prices higher than booking direct?",
-    a: `Item prices are the rental company's own price, with no markup. Our booking and coordination fee is ${BOOKING_FEE_FULL} per event, shown as its own line on your proposal. In return you get one quote across every company, one coordinator, a delivery check on the morning of your event, and our Booking Promise.`,
+    q: "Is there a booking fee?",
+    a: "No. You pay the item prices on our site, plus delivery, setup, damage waiver and tax as their own lines on your quote. That includes one coordinator, a delivery check on the morning of your event, and our Booking Promise.",
   },
 ];
 
@@ -65,7 +61,7 @@ export default function HowItWorksPage() {
         breadcrumbs={[{ name: "How it works", href: "/how-it-works" }]}
         eyebrow="How it works"
         title="How booking your rentals works"
-        intro={`Booking with ${site.name} takes four steps: pick your rentals and see live prices, send one free quote request, approve a proposal we confirm with an established Chicago-area rental company, then get delivery, setup and pickup on your date. Here is what happens at each step.`}
+        intro={`Booking with ${site.name} takes four steps: pick your rentals and see live prices, send one free quote request, approve the proposal we confirm for your date, then get delivery, setup and pickup. Here is what happens at each step.`}
         actions={
           <>
             <Link href="/quote?from=how-it-works" className="btn-primary">Start my quote</Link>
@@ -77,7 +73,7 @@ export default function HowItWorksPage() {
 
       <Section eyebrow="The process" title="Four steps, about two minutes of your time">
         <StepFlow
-          caption={`The ${site.name} booking process: build your list, send your quote request, we confirm with vendors, and rentals are delivered, set and collected.`}
+          caption={`The ${site.name} booking process: build your list, send your quote request, we confirm your date, and rentals are delivered, set and collected.`}
           steps={detail.map((d) => ({ icon: d.icon, title: d.title.slice(3), text: d.text }))}
         />
       </Section>
@@ -105,10 +101,6 @@ export default function HowItWorksPage() {
           Book tents, dance floors and popular chairs first. They sell out earliest for summer Saturdays, while linens and
           dinnerware are usually easier to source closer to the date.
         </Callout>
-        <p className="mt-6 text-sm text-muted">
-          Run a rental company? <Link href="/partners" className="link">Become a partner</Link> and get itemized
-          bookings from our customers.
-        </p>
       </Section>
 
       <Section eyebrow="Payments & protection" title="Who you pay, and what we guarantee">
@@ -118,9 +110,9 @@ export default function HowItWorksPage() {
             <ol className="mt-5 space-y-4">
               {[
                 ["Free", "Quote, planning call and proposal. No card needed."],
-                [`Flat booking fee: $295, or $495 over 200 guests`, `Paid to ${site.name} when you approve, only after every rental company confirms.`],
-                ["Deposit", "Paid to the rental company at booking, under its agreement."],
-                ["Balance", "Paid to the rental company, usually 7-14 days before the event."],
+                [DEPOSIT_LABEL[0].toUpperCase() + DEPOSIT_LABEL.slice(1), `Paid to ${site.name} when you book. Fully refundable for ${DEPOSIT.refundHours} hours.`],
+                ["Balance", `The rest, with delivery, setup, damage waiver and tax, ${DEPOSIT.balanceDaysBefore} days before the event.`],
+                ["No booking fee", "The prices on our site are what you pay for the items."],
               ].map(([k, v]) => (
                 <li key={k} className="flex gap-4">
                   <Icon name="check" size={18} className="mt-1 shrink-0 text-gold" />
@@ -135,12 +127,12 @@ export default function HowItWorksPage() {
             <h3 className="display-3">The Booking Promise</h3>
             <ul className="mt-5 space-y-3 text-sm">
               {[
-                "Price lock on your approved proposal",
-                "Established rental companies that show us proof of insurance",
-                "Backup guarantee if a vendor cancels",
+                "Price lock on your booked proposal",
+                "Every line in writing",
+                "Replacement if an item falls through",
                 `One coordinator, ${replyPromise}`,
                 "Free changes until 14 days before",
-                "72-hour full refund on our booking fee",
+                `${DEPOSIT.refundHours}-hour full refund on your deposit`,
               ].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <Icon name="shield" size={16} className="text-gold" /> {t}
@@ -148,7 +140,6 @@ export default function HowItWorksPage() {
               ))}
             </ul>
             <Link href="/booking-promise" className="btn-ghost btn-sm mt-6">Payments, damage & insurance →</Link>
-            <Link href="/how-we-work" className="btn-ghost btn-sm mt-3">How we work with rental companies →</Link>
           </article>
         </div>
       </Section>

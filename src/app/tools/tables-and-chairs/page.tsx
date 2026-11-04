@@ -15,7 +15,7 @@ const faqs = [
   { q: "How many cocktail tables do I need?", a: "It depends on how relaxed you want it to feel. This calculator starts at one highboy for every eight guests, and you can change it. Fewer guests per table gives people more places to set a drink." },
   { q: "Do I need separate chairs for the ceremony?", a: "Only if the ceremony and reception happen at the same time in different spaces, or there's no time to move chairs between them. If the crew can flip the room, the same chairs can do both." },
   { q: "Why add spare chairs?", a: "Spares cover a late RSVP, an extra vendor or a damaged chair. A few percent is usually enough." },
-  { q: "Are the prices final?", a: "No. They are rough item prices from our catalog, which uses local rental companies' published rates plus our booking fee. Delivery, setup and fees are extra, and the rental company confirms the final price for your date." },
+  { q: "Are the prices final?", a: "No. They are rough item prices from our catalog, at our current prices. Delivery, setup, damage waiver and tax are extra, and your written quote confirms the final price for your date." },
 ];
 
 export default function Page() {

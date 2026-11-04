@@ -50,7 +50,7 @@ export default function ReferPage() {
           steps={[
             { title: "Get your link", text: "Enter your name and email. Your link is ready instantly.", icon: "spark" },
             { title: "Share it", text: "Text, WhatsApp or email it to a friend who's planning.", icon: "chat" },
-            { title: "We take care of them", text: "Your friend builds a quote; we confirm with a local rental company.", icon: "check" },
+            { title: "We take care of them", text: "Your friend builds a quote; we confirm their date and handle the rest.", icon: "check" },
           ]}
           caption="How referrals work: get a personal link, share it, and your friend's quote is credited to you."
         />

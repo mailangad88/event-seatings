@@ -1,6 +1,6 @@
 // Content for the "[item] rental [area]" landing pages (/party-rentals/[area]/[category]) and the
 // "[item] rental cost" pages (/rental-cost/[category]). Prices are never written here: every number on
-// those pages is computed from the catalog (vendor price + our fee) at build time.
+// those pages is computed from the catalog (our prices) at build time.
 //
 // Search intent these pages answer (see docs/seo-data/search-intent-map.md):
 //   "tent rental naperville", "table and chair rentals evanston", "bounce house rental aurora",
@@ -103,7 +103,7 @@ export const localCategories: LocalCategory[] = [
     booking: "Tents are the first rental to sell out for June to September Saturdays. Book 3 to 6 months ahead, and confirm any permit before the install date.",
     localFaq: {
       q: "Do I need a permit for a tent in {area}?",
-      a: "Many Chicago-area towns require a permit for tents above a certain size, and rules differ by town. Check with {area}'s building or permit office before you book; the rental partner can usually supply the tent specs the permit asks for.",
+      a: "Many Chicago-area towns require a permit for tents above a certain size, and rules differ by town. Check with {area}'s building or permit office before you book; we can usually supply the tent specs the permit asks for.",
     },
   },
   {

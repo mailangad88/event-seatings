@@ -20,12 +20,12 @@ const avgGap = Math.round(priceIndex.reduce((s, r) => s + r.gapPct, 0) / priceIn
 const pressMail = `mailto:${site.email}?subject=Press%20question`;
 
 const facts: [string, string][] = [
-  ["What we are", `A Chicago-area event rental marketplace. Hosts build one quote for chairs, tables, linens, dinnerware, tents and more, and we book each item with a local rental company.`],
+  ["What we are", `A Chicago-area event rental company. Hosts build one quote for chairs, tables, linens, dinnerware, tents and more, and we handle delivery, setup and pickup.`],
   ["Based in", `${site.city}, serving Chicago and the suburbs`],
   ["Started", "2026"],
   ["Founder", site.owner.name],
   ["Items listed with prices", catalogItems.length.toLocaleString()],
-  ["How we charge", "The rental company's own price on every item, with no markup, plus one flat fee per event ($295, or $495 over 200 guests). Quotes and planning calls are free."],
+  ["How we charge", "By the item, at the prices on our site, plus delivery, setup, damage waiver and tax on the quote. No separate booking fee. A 50% deposit books the date. Quotes and planning calls are free."],
   ["Website", site.domain],
   ["Email", site.email],
 ];
@@ -66,7 +66,6 @@ const faqs = [
   { q: "How fast do you reply to press questions?", a: `Email ${site.email} with "Press" in the subject. We reply within one business day. Tell us your deadline and we will do our best to meet it.` },
   { q: "Can I use your price data?", a: `Yes. The price index and its CSV are free to use with credit to ${site.name} and a link to the page.` },
   { q: "Can I use your photos?", a: "Most images on the site are our own renders and generated event scenes, and some are licensed stock photos. Ask us and we will send ones you can use with credit." },
-  { q: "Do you own the rental items?", a: "No. The items belong to established Chicago-area rental companies we work with. We put them in one quote and coordinate delivery, setup and pickup." },
 ];
 
 export default function PressPage() {
@@ -91,7 +90,7 @@ export default function PressPage() {
         title={<>For writers covering <em className="text-gold">Chicago events</em></>}
         intro={
           <p data-answer>
-            {site.name} is a Chicago-area event rental marketplace based in {site.city}. If you are writing about wedding or party costs, event rentals or
+            {site.name} is a Chicago-area event rental company based in {site.city}. If you are writing about wedding or party costs, event rentals or
             planning an event in Chicago, we can give you price data, a short quote or background on how event rentals work. Email {site.email}.
           </p>
         }

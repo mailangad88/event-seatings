@@ -1,7 +1,7 @@
 import { currentAccount } from "@/lib/account";
 import { site } from "@/lib/site";
 
-// Calendar file (.ics) for one event: the event day plus each rental company's delivery and pickup.
+// Calendar file (.ics) for one event: the event day plus each delivery and pickup.
 // All-day entries, with the delivery or pickup window in the title, since windows are free text ("8 to 10am").
 export async function GET(_req: Request, ctx: RouteContext<"/account/events/[id]/calendar">) {
   const { id } = await ctx.params;

@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import {
-  BOOKING_FEE_LABEL,
   MARKUP,
   customerPrice,
   priceQuote,
@@ -28,11 +27,9 @@ const item = (over: Partial<CatalogItem> = {}): CatalogItem => ({
 const up = (n: number) => Math.round(n * (1 + MARKUP) * 100) / 100;
 
 describe("customer pricing", () => {
-  // Since Nov 4 2026 items carry no markup (MARKUP = 0) and we charge one flat coordination fee per event.
-  // These follow MARKUP, so switching back to a percentage only needs the constant changed.
-  it("adds MARKUP to the rental company's price and rounds to cents", () => {
-    expect(MARKUP).toBeGreaterThanOrEqual(0);
-    expect(BOOKING_FEE_LABEL).toMatch(/^flat \$\d+$/);
+  // Since the night of Nov 4 2026 customer prices are our own: supplier rate + 15%, no separate fee.
+  it("adds MARKUP to the supplier's price and rounds to cents", () => {
+    expect(MARKUP).toBe(0.15);
     expect(customerPrice({ vendorPrice: 10 })).toBe(up(10));
     expect(customerPrice({ vendorPrice: 4.5 })).toBe(up(4.5));
     expect(customerPrice({ vendorPrice: 3.33 })).toBe(up(3.33));

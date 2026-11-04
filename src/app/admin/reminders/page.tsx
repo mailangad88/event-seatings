@@ -40,7 +40,7 @@ export default async function RemindersPage() {
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
         <Tile tone="green" label="Automatic sending" value={sending ? "On" : "Off"} note={sending ? "Runs once a day" : "Needs REMINDERS_ENABLED=true and email set up"} href="/admin/settings" alert={!sending} />
         <Tile tone="blue" label="Due today" value={plan.send.length} note={sending ? "Goes out in the next daily run" : "Would go out if sending were on"} />
-        <Tile tone="gold" label="Offer" value={settings.offer.enabled ? `${settings.offer.percent}% off fee` : "None"} note={settings.offer.enabled ? `Good for ${settings.offer.days} days` : "Add one below"} />
+        <Tile tone="gold" label="Offer" value={settings.offer.enabled ? `${settings.offer.percent}% off rentals` : "None"} note={settings.offer.enabled ? `Good for ${settings.offer.days} days` : "Add one below"} />
       </div>
 
       <Panel title="Due today" className="mt-8">
@@ -90,7 +90,7 @@ export default async function RemindersPage() {
           <fieldset className="grid gap-3 rounded-xl border border-line p-4">
             <legend className="label px-1">Offer (optional)</legend>
             <p className="text-sm text-muted">
-              Comes off our booking fee only, never the rental company&apos;s prices. It&apos;s written on the lead when it goes out, so you
+              Comes off the customer&apos;s rentals, so it comes out of our 15% margin. Capped at 10%. It&apos;s written on the lead when it goes out, so you
               know to take it off their proposal.
             </p>
             <label className="flex items-center gap-3 text-sm">
@@ -98,8 +98,8 @@ export default async function RemindersPage() {
             </label>
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <label className="label" htmlFor="offer_percent">Percent off our booking fee</label>
-                <input id="offer_percent" name="offer_percent" type="number" min={5} max={100} step={5} defaultValue={settings.offer.percent} className="field" />
+                <label className="label" htmlFor="offer_percent">Percent off the rentals</label>
+                <input id="offer_percent" name="offer_percent" type="number" min={1} max={10} step={1} defaultValue={settings.offer.percent} className="field" />
               </div>
               <div>
                 <label className="label" htmlFor="offer_days">Good for (days)</label>

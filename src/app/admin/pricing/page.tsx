@@ -19,7 +19,7 @@ const filters = [
 ] as const;
 const views = [
   { id: "", label: "Prices" },
-  { id: "margin", label: "Item markup (none since Nov 4, flat fee instead)" },
+  { id: "margin", label: "Item markup (15% since Nov 4)" },
 ] as const;
 const sorts = [
   { id: "", label: "Biggest cut per item" },
@@ -74,7 +74,7 @@ export default async function PricingPage(props: PageProps<"/admin/pricing">) {
         title="Pricing"
         intro={
           <>
-            Every catalog item with the rental company&apos;s price and what customers see (the same price: we charge a flat fee per event, not a markup). To change
+            Every catalog item with the rental company&apos;s price and what customers see (the rental company&apos;s price plus 15%, shown as our own price). To change
             the price on one order, use Edit quote on the lead. Catalog prices across the site change with the next site update, so send Claude the
             new prices.
           </>

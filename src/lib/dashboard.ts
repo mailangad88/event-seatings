@@ -1,6 +1,9 @@
 import "server-only";
 import { getVendor } from "@/data/vendors";
-import { coordinationFee } from "./catalog-types";
+import { MARKUP } from "./catalog-types";
+
+// Our margin on an order: the markup inside our item prices.
+const marginOn = (l: { quote_subtotal?: number | null }) => ((l.quote_subtotal ?? 0) * MARKUP) / (1 + MARKUP);
 import type { Lead, PageView } from "./store";
 
 // Numbers for the /admin dashboard: how many enquiries, from where, through which page and form,
@@ -140,8 +143,8 @@ export function buildDashboard(allLeads: Lead[], views: PageView[], rangeDays: n
   const quoteValue = priced.reduce((s, l) => s + (l.quote_subtotal ?? 0), 0);
   const won = leads.filter(isWon);
   const wonValue = won.reduce((s, l) => s + (l.quote_subtotal ?? 0), 0);
-  // Our earnings are the flat coordination fee per event (no markup on items since Nov 4 2026).
-  const wonMargin = won.reduce((s, l) => s + (l.fee_amount ?? coordinationFee(l.guest_count)), 0);
+  // Our earnings are the markup inside our item prices (MARKUP since Nov 4 2026, no separate fee).
+  const wonMargin = won.reduce((s, l) => s + marginOn(l), 0);
   const decided = leads.filter((l) => isWon(l) || l.status === "lost").length;
   const visitors = new Set(rangeViews.map((v) => v.visitor_id)).size;
   const responses = leads.map(firstResponseHours).filter((h): h is number => h !== undefined);
@@ -293,7 +296,7 @@ export function buildDashboard(allLeads: Lead[], views: PageView[], rangeDays: n
       conversion: visitors ? leads.length / visitors : undefined,
       quoteValue,
       avgQuote: priced.length ? quoteValue / priced.length : undefined,
-      margin: priced.reduce((s, l) => s + (l.fee_amount ?? coordinationFee(l.guest_count)), 0),
+      margin: priced.reduce((s, l) => s + marginOn(l), 0),
       wonCount: won.length,
       wonValue,
       wonMargin,

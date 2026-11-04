@@ -256,7 +256,7 @@ export type ItemPhotos = {
 
 /** Real photos for one catalog item, matched by item type from its name and price-list section. */
 export function photosForItem(item: { id: string; name: string; section?: string; categoryId: CategoryId }): ItemPhotos {
-  // The item name decides first; the vendor's section heading only when the name says nothing
+  // The item name decides first; our section heading only when the name says nothing
   // (sections like "Tents, Tables & Chairs" would otherwise send a folding chair to the tent photos).
   const first = photoFirst[item.id];
   if (first) return { photos: first.map((k) => ({ key: k, ...stockPhotos[k] })), matched: true };

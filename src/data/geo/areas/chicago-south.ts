@@ -11,10 +11,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60616", "60653"],
     metaTitle: "Event Rentals in Bronzeville, Chicago | Chairs & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Bronzeville from Chicago-area rental companies. Greystone parties, galas and church receptions. Request a free quote.",
+      "Rent event chairs, tables and linens in Bronzeville. Greystone parties, galas and church receptions. Request a free quote.",
     headline: "Event chairs worthy of *Bronzeville celebrations*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Bronzeville from established Chicago-area rental companies, with delivery, setup and pickup in one itemized quote. Whether you're hosting in a greystone, a church hall or a cultural venue near King Drive, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Bronzeville, with delivery, setup and pickup in one itemized quote. Whether you're hosting in a greystone, a church hall or a cultural venue near King Drive, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Bronzeville carries more Chicago history per block than almost anywhere in the city. This was the heart of the Great Migration, the Black Metropolis of jazz clubs, newspapers and banks, and Martin Luther King Jr. Drive still runs through it as a wide boulevard lined with landmarks, including Victory Monument at 35th Street. Events here often have a sense of occasion that people want their furniture to match.",
       "The buildings shape the party. Many celebrations happen in restored greystones and their courtyards, in church fellowship halls, or in community arts spaces where floor space is generous but loading is not. Side streets can be tight, and the blocks near the Illinois Institute of Technology campus can fill up on busy event days. We plan delivery windows around those rhythms and ask for the closest legal loading spot up front.",
@@ -62,7 +62,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Bronzeville, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Bronzeville homes, halls and venues. Send us your date, headcount and address through a quote request, and we'll put together one itemized quote including delivery, setup and pickup.",
+        a: "We deliver chairs, tables and linens to Bronzeville homes, halls and venues. Send us your date, headcount and address through a quote request, and we'll put together one itemized quote including delivery, setup and pickup.",
       },
       {
         q: "Do I need a permit for a party in a Bronzeville park?",
@@ -93,10 +93,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60616"],
     metaTitle: "Event Rentals in Chinatown, Chicago | Chairs & Tables",
     metaDescription:
-      "Rent banquet chairs, round tables and linens for Chinatown weddings, Lunar New Year parties and family dinners. Local rental companies. Request a free quote.",
+      "Rent banquet chairs, round tables and linens for Chinatown weddings, Lunar New Year parties and family dinners. Request a free quote.",
     headline: "Banquet seating for *Chinatown celebrations*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Chicago's Chinatown from established Chicago-area rental companies. Round-table banquets, tea ceremonies and Lunar New Year gatherings are our kind of planning. Request a quote or book a planning call, and we'll build a plan around your headcount and venue.",
+      "We help you rent event chairs, tables, linens and more in Chicago's Chinatown. Round-table banquets, tea ceremonies and Lunar New Year gatherings are our kind of planning. Request a quote or book a planning call, and we'll build a plan around your headcount and venue.",
     story: [
       "Chinatown's heart is Wentworth Avenue, under the Chinatown Gate and along Archer and Cermak, with Chinatown Square's courtyard and the Pui Tak Center anchoring community life. Celebrations here follow a banquet logic: round tables of ten, a lazy Susan in the middle, many courses, and long evenings of toasts. Seating plans start from tables, not rows, so getting the table count right is the first step.",
       "Weddings often combine a tea ceremony, a daytime family lunch and a larger evening banquet, and family birthdays and one-month baby parties are major occasions too. Lunar New Year brings community events, the Autumn Moon Festival brings performances and crowds to Chinatown Square, and Ping Tom Memorial Park, with its pagoda-style pavilion and river views, is a popular photo backdrop. Check with the Chicago Park District if you plan a gathering there.",
@@ -144,7 +144,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Chinatown, Chicago?",
-        a: "We connect you with established Chicago-area rental companies for chairs, round tables and linens in Chinatown. Share your date, guest count and venue in a quote request and we'll itemize delivery, setup and pickup in one quote. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "We bring you chairs, round tables and linens in Chinatown. Share your date, guest count and venue in a quote request and we'll itemize delivery, setup and pickup in one quote. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you provide round tables for a banquet-style dinner?",
@@ -175,10 +175,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60608", "60609"],
     metaTitle: "Event Rentals in Bridgeport, Chicago | Chairs & Tables",
     metaDescription:
-      "Rent chairs, tables and linens for Bridgeport parties, parish events and backyard cookouts. Local rental companies, one quote. Request a free quote today.",
+      "Rent chairs, tables and linens for Bridgeport parties, parish events and backyard cookouts. One quote. Request a free quote today.",
     headline: "Party seating for *Bridgeport block by block*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Bridgeport from established Chicago-area rental companies. From a parish hall fish fry to a backyard graduation party near Halsted Street, request a quote or book a planning call and we'll handle the delivery details. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Bridgeport. From a parish hall fish fry to a backyard graduation party near Halsted Street, request a quote or book a planning call and we'll handle the delivery details. We're booking the 2026-27 season now.",
     story: [
       "Bridgeport is a neighborhood of brick bungalows, workers' cottages and corner taverns, where families have lived for generations and parish halls still anchor the social calendar. Irish, Italian, Lithuanian, Polish and Chinese families have all shaped it, and celebrations tend to be big, loud and close to home. Graduation open houses and first communion parties spill into garages and gangways each spring.",
       "Halsted Street is the main drag, with shops, restaurants and the Orange Line stop, and Palmisano Park, built on a former quarry at 27th and Halsted, gives the neighborhood a landscaped spot with skyline views. Bubbly Creek and the South Branch of the Chicago River run along the neighborhood's edge, and Armour Square Park and the White Sox ballpark sit just north. Game days change traffic, so we watch the schedule.",
@@ -226,7 +226,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Bridgeport, Chicago?",
-        a: "We connect you with established Chicago-area rental companies that deliver to Bridgeport homes, halls and parks. Send your date, headcount and address with a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Bridgeport homes, halls and parks. Send your date, headcount and address with a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you deliver chairs to a backyard with only a gangway?",
@@ -257,10 +257,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60607", "60612"],
     metaTitle: "Event Rentals in Little Italy, Chicago | Chairs & More",
     metaDescription:
-      "Rent chairs, tables and linens around Taylor Street and University Village. Rehearsal dinners, grad parties and more from local rental companies. Get a quote.",
+      "Rent chairs, tables and linens around Taylor Street and University Village. Rehearsal dinners, grad parties and more. Get a quote.",
     headline: "Chair rentals for *Taylor Street* gatherings",
     intro:
-      "We help you rent event chairs, tables, linens and more in Little Italy and University Village from established Chicago-area rental companies. For a rehearsal dinner off Taylor Street or a graduation party near the UIC campus, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Little Italy and University Village. For a rehearsal dinner off Taylor Street or a graduation party near the UIC campus, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Taylor Street is the spine of Little Italy, a stretch of Italian restaurants, bakeries and old-school storefronts that grew out of the Italian American families who settled near the old Hull-House. Today it blends with the University of Illinois Chicago campus and the Illinois Medical District, so a single weekend can bring wedding rehearsal dinners, med school graduations and family reunions to the same few blocks.",
       "Arrigo Park and the small Piazza DiMaggio plaza give the neighborhood public space where community events happen, and the area's courtyards and brick two-flats hold plenty of private parties. Space is the limiting factor: lots are narrow, and many gatherings are small and elegant, so the right chair and the right table count matter more than sheer volume. A restaurant private room or a townhome roof deck may hold only twenty or thirty guests, so the right number of chairs and a tidy layout count more than volume.",
@@ -308,7 +308,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs near Taylor Street, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Little Italy and University Village. Send us your date, headcount and venue and we'll itemize delivery, setup and pickup in one quote. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "We deliver chairs, tables and linens to Little Italy and University Village. Send us your date, headcount and venue and we'll itemize delivery, setup and pickup in one quote. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can I rent chairs for a small rehearsal dinner?",
@@ -339,10 +339,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60609"],
     metaTitle: "Event Rentals in McKinley Park, Chicago | Chairs & More",
     metaDescription:
-      "Rent chairs, tables and linens for McKinley Park backyard parties, park gatherings and family events. Local rental companies, one quote. Request one now.",
+      "Rent chairs, tables and linens for McKinley Park backyard parties, park gatherings and family events. One quote. Request one now.",
     headline: "Backyard seating for *McKinley Park* families",
     intro:
-      "We help you rent event chairs, tables, linens and more in McKinley Park from established Chicago-area rental companies. Whether it's a quinceañera at home, a birthday near the park lagoon or a graduation cookout, request a quote or book a planning call. We're booking the 2026-27 season.",
+      "We help you rent event chairs, tables, linens and more in McKinley Park. Whether it's a quinceañera at home, a birthday near the park lagoon or a graduation cookout, request a quote or book a planning call. We're booking the 2026-27 season.",
     story: [
       "McKinley Park is a neighborhood of brick bungalows and two-flats built around its namesake park, which has a lagoon, a fieldhouse and wide lawns that fill every summer weekend with picnics, soccer games and birthday tables. The surrounding blocks are mostly Mexican American, Polish, Chinese and Eastern European families, and celebrations spill from kitchens to yards to the garage. On a warm Saturday the lagoon and lawns fill with party tents, so neighbors often plan early for the best shaded corners.",
       "Archer Avenue and Western Avenue carry most of the shopping, while the Orange Line's 35th/Archer station gives easy transit access to the Loop. The South Branch of the Chicago River and the old industrial corridors sit nearby, so truck traffic is a fact of life. Alleys are common behind lots, which usually helps delivery teams but requires a clear path on the day.",
@@ -390,7 +390,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in McKinley Park, Chicago?",
-        a: "We connect you with established Chicago-area rental companies that deliver to McKinley Park homes, halls and the park. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to McKinley Park homes, halls and the park. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can I host a party in McKinley Park itself?",
@@ -421,10 +421,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60632"],
     metaTitle: "Event Rentals in Brighton Park, Chicago | Chairs & More",
     metaDescription:
-      "Rent chairs, tables and linens for Brighton Park quinceañeras, communions and family parties. Local rental companies, one itemized quote. Ask for yours.",
+      "Rent chairs, tables and linens for Brighton Park quinceañeras, communions and family parties. One itemized quote. Ask for yours.",
     headline: "Family celebrations, *Brighton Park style*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Brighton Park from established Chicago-area rental companies. For quinceañeras, communions and backyard birthdays, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Brighton Park. For quinceañeras, communions and backyard birthdays, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Brighton Park, around Archer Avenue and Kedzie Avenue, is a working neighborhood of bungalows, two-flats and parish churches where Mexican, Polish and Lithuanian families have built community. The neighborhood is young and family-heavy, and celebrations tend to be large: quinceañeras, baptisms, first communions and graduation parties fill the spring calendar. Many families here plan these milestones a year ahead, with matching colors, long guest lists and music that runs well into the night.",
       "Brighton Park itself, the neighborhood's namesake park, offers a fieldhouse and open lawns, while the Orange Line's Kedzie station connects to Midway and the Loop. The Stevenson Expressway edges the north, and industrial corridors sit along the rail lines, which means trucks are routine and delivery windows need planning. Midway Airport sits just to the south and west, and the Stevenson Expressway makes truck routes simple once vehicles leave the residential grid.",
@@ -472,7 +472,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Brighton Park, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Brighton Park. Send your date, headcount and venue with a quote request and we'll itemize everything. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "We deliver chairs, tables and linens to Brighton Park. Send your date, headcount and venue with a quote request and we'll itemize everything. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you provide seating for a quinceañera?",
@@ -503,10 +503,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60623"],
     metaTitle: "Event Rentals in Little Village, Chicago | Chairs & More",
     metaDescription:
-      "Rent chairs, tables and linens for Little Village quinceañeras, bautizos and 26th Street celebrations. Local rental companies. Request a free quote today.",
+      "Rent chairs, tables and linens for Little Village quinceañeras, bautizos and 26th Street celebrations. Request a free quote today.",
     headline: "Celebration seating for *La Villita*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Little Village from established Chicago-area rental companies. For quinceañeras, bautizos and backyard parties off 26th Street, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Little Village. For quinceañeras, bautizos and backyard parties off 26th Street, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "La Villita is one of Chicago's busiest celebration neighborhoods. The 26th Street corridor, under the welcome arch, is lined with bakeries, bridal shops, quinceañera boutiques and banquet halls, and on a weekend you can watch a whole day of parties unfold. Families here plan events carefully, with matching colors, big guest lists and traditions that run from the church service to the last dance.",
       "Piotrowski Park and the lagoon and fieldhouse at Douglas Park are the neighborhood's big public green spaces, and the Mexican Independence Day parade on 26th Street each September draws crowds from across the region. Parish churches, including St. Agnes of Bohemia, anchor many baptisms and first communions, with receptions at nearby halls and backyards. Neighborhood block parties in summer also put pressure on parking, so early planning pays off for everyone.",
@@ -554,7 +554,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Little Village, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Little Village halls, homes and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Little Village halls, homes and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you provide a throne chair for a quinceañera?",
@@ -585,10 +585,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60624", "60612"],
     metaTitle: "Event Rentals in East Garfield Park, Chicago | Chairs",
     metaDescription:
-      "Rent chairs, tables and linens near Garfield Park Conservatory for weddings, church events and family parties. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens near Garfield Park Conservatory for weddings, church events and family parties. Request a free quote.",
     headline: "Seating for *Garfield Park* celebrations",
     intro:
-      "We help you rent event chairs, tables, linens and more in East Garfield Park from established Chicago-area rental companies. For a conservatory-day photo party, a church anniversary or a backyard cookout, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in East Garfield Park. For a conservatory-day photo party, a church anniversary or a backyard cookout, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "East Garfield Park is anchored by Garfield Park itself, one of the city's great West Side parks, with a lagoon, a gold-domed fieldhouse and the Garfield Park Conservatory. Families visit the conservatory and park for photos, and gather on the lawns for reunions and summer cookouts. Many families schedule their reunions around the conservatory's seasonal flower shows, which draw steady visitors through the spring.",
       "Madison Street, Lake Street and the Green Line stops at Conservatory-Central Park Drive, Kedzie and Pulaski define the neighborhood's skeleton. Churches are the heart of community life here, and fellowship halls host anniversaries, repasts, graduation brunches and revival dinners. Older brick two-flats and courtyard buildings fill the side streets, and some blocks have long, open vacant lots used for block parties.",
@@ -636,7 +636,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in East Garfield Park, Chicago?",
-        a: "We connect you with established Chicago-area rental companies that deliver to East Garfield Park halls, homes and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to East Garfield Park halls, homes and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a party in Garfield Park?",
@@ -667,10 +667,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60644", "60651"],
     metaTitle: "Event Rentals in Austin, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Austin for church events, Columbus Park picnics, weddings and graduations. Local rental companies. Get a free quote.",
+      "Rent chairs, tables and linens in Austin for church events, Columbus Park picnics, weddings and graduations. Get a free quote.",
     headline: "Chair rentals for *Austin's big gatherings*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Austin from established Chicago-area rental companies. From a Columbus Park family reunion to a church anniversary dinner, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Austin. From a Columbus Park family reunion to a church anniversary dinner, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Austin is one of Chicago's largest community areas, a West Side neighborhood that borders Oak Park along Austin Boulevard. Its wide residential streets are lined with big brick homes, Victorian frame houses and bungalows, and block clubs and churches keep a strong tradition of neighborly gatherings. Family reunions, graduation parties and church anniversaries are central to the calendar.",
       "Columbus Park, designed by landscape architect Jens Jensen, is the neighborhood's showpiece, with a lagoon, stone council ring, golf course and refectory building. Smaller neighborhood parks hold summer picnics and cookouts. The Green Line runs through the neighborhood, so guests from across the region can reach you easily.",
@@ -718,7 +718,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Austin, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Austin homes, halls and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "We deliver chairs, tables and linens to Austin homes, halls and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit to host a party at Columbus Park?",
@@ -749,10 +749,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60623", "60624"],
     metaTitle: "Event Rentals in North Lawndale, Chicago | Chairs & More",
     metaDescription:
-      "Rent chairs, tables and linens in North Lawndale for Douglas Park gatherings, church events and family parties. Local rental companies. Request a quote.",
+      "Rent chairs, tables and linens in North Lawndale for Douglas Park gatherings, church events and family parties. Request a quote.",
     headline: "Seating for *North Lawndale* gatherings",
     intro:
-      "We help you rent event chairs, tables, linens and more in North Lawndale from established Chicago-area rental companies. Church anniversaries, Douglas Park reunions and backyard parties are all fair game. Request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in North Lawndale. Church anniversaries, Douglas Park reunions and backyard parties are all fair game. Request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "North Lawndale is a West Side neighborhood with a rich story, from its time as a center of Chicago's Jewish community to its role in Dr. Martin Luther King Jr.'s 1966 Chicago campaign and its decades as a hub of Black Chicago. Greystones and coach houses along Douglas Boulevard and Independence Boulevard mark a once-grand stretch of the city, and many of these buildings still host family gatherings.",
       "Douglas Park is the neighborhood's green anchor, with a lagoon, a fieldhouse and wide lawns that fill with reunions and summer cookouts. Pink Line stations at California, Kedzie and Pulaski connect the area to downtown, and Ogden Avenue and Roosevelt Road cut across it. Churches host a lot of the area's major gatherings, from anniversary banquets to graduation breakfasts. The neighborhood's boulevards and park drives are wide and tree-lined, which makes them lovely for photos but narrow for parked delivery vehicles on busy weekends.",
@@ -800,7 +800,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in North Lawndale, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to North Lawndale halls, homes and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to North Lawndale halls, homes and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a gathering in Douglas Park?",
@@ -831,10 +831,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60609", "60632"],
     metaTitle: "Event Rentals in Back of the Yards, Chicago | Chairs",
     metaDescription:
-      "Rent chairs, tables and linens in Back of the Yards for quinceañeras, backyard parties and church events. Local rental companies, one quote. Ask for yours.",
+      "Rent chairs, tables and linens in Back of the Yards for quinceañeras, backyard parties and church events. One quote. Ask for yours.",
     headline: "Party seating, *Back of the Yards* style",
     intro:
-      "We help you rent event chairs, tables, linens and more in Back of the Yards from established Chicago-area rental companies. For quinceañeras, communions and backyard parties near 47th Street, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Back of the Yards. For quinceañeras, communions and backyard parties near 47th Street, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Back of the Yards grew up around the Union Stock Yards, and the limestone Stockyards Gate at Exchange and Peoria still stands as a reminder. Generations of Polish, Lithuanian and Mexican families settled in the workers' cottages and frame two-flats here, and the Back of the Yards Neighborhood Council, founded in 1939, remains part of local identity. Celebrations are big and family-centered.",
       "Sherman Park, a historic park with a lagoon and fieldhouse, and Davis Square Park give the neighborhood public green space for graduations and summer birthdays. Ashland, Halsted and 47th Street are the commercial spines, with bakeries, taquerias and banquet halls. Parishes anchor baptisms and communions, with receptions in halls and yards nearby.",
@@ -882,7 +882,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Back of the Yards, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Back of the Yards homes, halls and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Back of the Yards homes, halls and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit to host a party at Sherman Park?",
@@ -913,10 +913,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60643"],
     metaTitle: "Event Rentals in Beverly, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Beverly for Longwood Drive weddings, St. Patrick's parties and backyard graduations. Local rental companies. Get a quote.",
+      "Rent chairs, tables and linens in Beverly for Longwood Drive weddings, St. Patrick's parties and backyard graduations. Get a quote.",
     headline: "Chairs for *Beverly's big lawns* and bigger parties",
     intro:
-      "We help you rent event chairs, tables, linens and more in Beverly from established Chicago-area rental companies. From a backyard graduation on a Longwood Drive lawn to a parish hall reception, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Beverly. From a backyard graduation on a Longwood Drive lawn to a parish hall reception, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Beverly sits on the Blue Island Ridge, a gentle rise that gives the neighborhood a suburban feel inside the city limits. Longwood Drive is lined with large Victorian, Prairie-style and Tudor homes on deep lots, and the streets run under mature oaks. South Side Irish roots run deep, and the South Side Irish Parade on Western Avenue each St. Patrick's weekend is the neighborhood's signature event.",
       "Ridge Park and the Dan Ryan Woods forest preserve offer lawns and trails for picnics and photos, and the Metra Rock Island Beverly Branch makes it easy for guests to arrive. Local parishes anchor big milestones, and parish halls host first communions, weddings and wakes. Spring brings graduation parties to the big lawns, and June weddings often spill into tents behind Victorian houses along the ridge.",
@@ -964,7 +964,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Beverly, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Beverly homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Beverly homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a picnic grove in Dan Ryan Woods?",
@@ -995,10 +995,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60655"],
     metaTitle: "Event Rentals in Mount Greenwood, Chicago | Chairs & More",
     metaDescription:
-      "Rent chairs, tables and linens in Mount Greenwood for backyard graduations, parish events and 111th Street parties. Local rental companies. Request a quote.",
+      "Rent chairs, tables and linens in Mount Greenwood for backyard graduations, parish events and 111th Street parties. Request a quote.",
     headline: "Backyard seating for *Mount Greenwood* parties",
     intro:
-      "We help you rent event chairs, tables, linens and more in Mount Greenwood from established Chicago-area rental companies. For a backyard graduation, a first communion or a St. Patrick's gathering, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Mount Greenwood. For a backyard graduation, a first communion or a St. Patrick's gathering, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Mount Greenwood is Chicago's southwest corner, a quiet neighborhood of brick Georgians, bungalows and ranch houses on roomy lots, with a close-knit Irish American community. Many residents have city jobs, and block parties, retirement dinners and family milestones are big here. The neighborhood feels like the suburbs next door, and its yards show it. It's a neighborhood where families tend to stay for generations, so graduation open houses and wedding showers often draw relatives from the whole block.",
       "Mount Greenwood Park offers a gymnasium and green space for family events, and the 111th Street corridor has shops and parish churches. The nearby cemeteries create a spacious, green edge to the area. Forest preserves in the Palos area sit a short drive to the southwest, giving photo and picnic options beyond the city limits. The nearby Palos-area forest preserves also give people picnic options a short drive from home.",
@@ -1046,7 +1046,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Mount Greenwood, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Mount Greenwood homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Mount Greenwood homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a party at Mount Greenwood Park?",
@@ -1077,10 +1077,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60643"],
     metaTitle: "Event Rentals in Morgan Park, Chicago | Chairs & Tables",
     metaDescription:
-      "Rent chairs, tables and linens in Morgan Park for ridge-top weddings, church events and graduation parties. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in Morgan Park for ridge-top weddings, church events and graduation parties. Request a free quote.",
     headline: "Event chairs for *Morgan Park's ridge-top* homes",
     intro:
-      "We help you rent event chairs, tables, linens and more in Morgan Park from established Chicago-area rental companies. For a church banquet, a Dan Ryan Woods picnic or a backyard wedding, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Morgan Park. For a church banquet, a Dan Ryan Woods picnic or a backyard wedding, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Morgan Park is perched on the Blue Island Ridge, with historic homes, tree-lined streets and a village-like business strip along Western Avenue and 111th Street. The neighborhood has a long history as an early suburb annexed to Chicago in 1914, and its Victorian homes, schools and churches give it a distinctive small-town character. It's a mixed community with a strong sense of history.",
       "Churches are central here, hosting weddings, anniversaries, graduations and community dinners. The Metra Rock Island Beverly Branch stops at 111th Street-Morgan Park and 115th Street-Morgan Park, and the Dan Ryan Woods forest preserve and nearby parks offer natural settings for gatherings. Residents are proud of the ridge's views and tree canopy, which make yards especially pretty for spring and fall events. Morgan Park's community life is also strong at its schools and civic groups, and spring concerts and neighborhood fundraisers often use parish or school halls.",
@@ -1128,7 +1128,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Morgan Park, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Morgan Park homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Morgan Park homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a picnic at Dan Ryan Woods?",
@@ -1159,10 +1159,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60615"],
     metaTitle: "Event Rentals in Kenwood, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Kenwood for historic-mansion weddings, house parties and synagogue events. Local rental companies. Get a free quote.",
+      "Rent chairs, tables and linens in Kenwood for historic-mansion weddings, house parties and synagogue events. Get a free quote.",
     headline: "Elegant seating for *Kenwood's historic homes*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Kenwood from established Chicago-area rental companies. For a wedding in a historic mansion, a congregation dinner or a lawn party, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Kenwood. For a wedding in a historic mansion, a congregation dinner or a lawn party, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Kenwood is known for grand mansions on tree-lined streets, many built in the late 1800s for prominent Chicago families. The Kenwood Historic District lies just north of Hyde Park, and houses like these make elegant settings for weddings, fundraisers and private dinners. The lakefront is just minutes east. Many of these houses have wide porches and big side lawns that suit tented dinners, and owners often bring in their own caterers and florists.",
       "Synagogues and churches, including the landmark KAM Isaiah Israel on Hyde Park Boulevard nearby, shape the neighborhood's event calendar with weddings, bar and bat mitzvahs, and holiday dinners. The Metra Electric 47th Street (Kenwood) stop and Lake Park Avenue make arrival easy, and the University of Chicago's graduation season brings a surge of home parties each June. The nearby Hyde Park and Kenwood congregations also keep a busy holiday calendar, from Rosh Hashanah and Passover meals to Christmas and Easter dinners.",
@@ -1210,7 +1210,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Kenwood, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Kenwood homes, halls and lakefront spaces. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "We deliver chairs, tables and linens to Kenwood homes, halls and lakefront spaces. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you deliver to a historic home with delicate floors?",
@@ -1241,10 +1241,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60637"],
     metaTitle: "Event Rentals in Woodlawn, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Woodlawn for Jackson Park gatherings, church dinners and graduation parties. Local rental companies. Request a quote.",
+      "Rent chairs, tables and linens in Woodlawn for Jackson Park gatherings, church dinners and graduation parties. Request a quote.",
     headline: "Chairs for *Woodlawn gatherings*, big and small",
     intro:
-      "We help you rent event chairs, tables, linens and more in Woodlawn from established Chicago-area rental companies. From a Midway Plaisance picnic to a church anniversary dinner on 63rd Street, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Woodlawn. From a Midway Plaisance picnic to a church anniversary dinner on 63rd Street, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Woodlawn runs along Cottage Grove and 63rd Street, between the Midway Plaisance on the north and Jackson Park on the east side. The neighborhood has a rich cultural history, a strong tradition of civic organizing and a mix of greystones, courtyard buildings and new construction. Its proximity to the University of Chicago brings graduation parties and reunions each spring. The area also has a long tradition of faith-based organizing, and church events here often double as community meetings.",
       "Jackson Park, with its lagoons, Wooded Island and lakefront, is a major public draw, and the Midway Plaisance's long, green stretch is popular for picnics and cultural events. The Green Line's 63rd and Cottage Grove stop and the Metra Electric make transit access easy. Churches, from large congregations to storefront ministries, anchor many of the area's gatherings. Nearby Hyde Park and the university campus add a steady pulse of reunions and graduation events through May and June.",
@@ -1292,7 +1292,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Woodlawn, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Woodlawn homes, halls and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Woodlawn homes, halls and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a gathering in Jackson Park?",
@@ -1323,10 +1323,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60649"],
     metaTitle: "Event Rentals in South Shore, Chicago | Chairs & Tables",
     metaDescription:
-      "Rent chairs, tables and linens in South Shore for lakefront weddings, church events and graduation parties. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in South Shore for lakefront weddings, church events and graduation parties. Request a free quote.",
     headline: "Lakefront chairs for *South Shore celebrations*",
     intro:
-      "We help you rent event chairs, tables, linens and more in South Shore from established Chicago-area rental companies. For a lakeside reception, a church banquet or a backyard cookout, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in South Shore. For a lakeside reception, a church banquet or a backyard cookout, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "South Shore faces Lake Michigan from 67th Street to 79th, with a long beachfront, a wide park system and a strong community identity. The South Shore Cultural Center, a former country club turned public park building, is a landmark on the lakefront, and the area's historic apartment buildings, bungalows and tree-lined streets host a steady stream of family gatherings. On summer evenings, you can watch the lakefront fill with picnics and wedding photos, each with its own take on how to celebrate.",
       "Lake breezes shape outdoor events here more than almost anywhere on the South Side. South Shore Beach, the nature sanctuary and Rainbow Beach Park offer open lakefront for photos and picnics, but the wind can be strong, and Chicago Park District permits apply to organized events. Jeffery Avenue and Stony Island Avenue carry the neighborhood's shops, and nearby Metra Electric stations make arrival easy.",
@@ -1374,7 +1374,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in South Shore, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to South Shore homes, halls and lakefront spaces. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to South Shore homes, halls and lakefront spaces. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a party at South Shore Beach?",
@@ -1405,10 +1405,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60619", "60620"],
     metaTitle: "Event Rentals in Chatham, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Chatham for bungalow-belt backyard parties, church events and weddings. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in Chatham for bungalow-belt backyard parties, church events and weddings. Request a free quote.",
     headline: "Chair rentals for *Chatham's bungalow belt*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Chatham from established Chicago-area rental companies. For a church anniversary, a backyard graduation or a wedding reception, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Chatham. For a church anniversary, a backyard graduation or a wedding reception, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Chatham is a South Side neighborhood of tidy brick bungalows and two-flats, known as a stable, close-knit home for many families. Its blocks look much the same from Cottage Grove to the Dan Ryan, with front-yard gardens and deep backyards, and its social calendar is full of block-club cookouts, church events and family reunions.",
       "The 79th Street corridor and Cottage Grove Avenue carry the main business strips, and the Red Line's 79th Street stop gets guests in from across the city. Churches here are large and active, hosting weddings, anniversaries and community dinners, and many families hold graduation open houses at home. Nearby parks and the lakefront are a short drive away for outdoor photos.",
@@ -1456,7 +1456,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Chatham, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Chatham homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Chatham homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you handle a 150-guest backyard reception?",
@@ -1487,10 +1487,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60628"],
     metaTitle: "Event Rentals in Pullman, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in historic Pullman for rowhouse parties, Arcade Park gatherings and church events. Local rental companies. Request a quote.",
+      "Rent chairs, tables and linens in historic Pullman for rowhouse parties, Arcade Park gatherings and church events. Request a quote.",
     headline: "Seating for *historic Pullman* gatherings",
     intro:
-      "We help you rent event chairs, tables, linens and more in Pullman from established Chicago-area rental companies. For a courtyard party, a church dinner or a historic-district celebration, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Pullman. For a courtyard party, a church dinner or a historic-district celebration, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Pullman was built in the 1880s as a company town by George Pullman for his railcar workers, and its brick rowhouses, Hotel Florence and Clock Tower Administration Building make it one of the city's most distinctive districts. The Pullman National Historical Park, run by the National Park Service, now draws visitors from across the country, and the historic district is a living neighborhood where families host their own celebrations.",
       "Arcade Park, the green in front of the old Hotel Florence, is a public space for picnics, while the annual Pullman house tour each October brings crowds to the narrow streets. The Metra Electric stops at 111th Street, and Lake Calumet and the Calumet River sit to the east. Rowhouse gardens are small, so many parties spill onto front stoops or into church halls.",
@@ -1538,7 +1538,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Pullman, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Pullman homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Pullman homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for an event in Pullman's parks?",
@@ -1569,10 +1569,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60633"],
     metaTitle: "Event Rentals in Hegewisch, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Hegewisch for Wolf Lake picnics, church events and backyard parties. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in Hegewisch for Wolf Lake picnics, church events and backyard parties. Request a free quote.",
     headline: "Party seating for *Hegewisch families*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Hegewisch from established Chicago-area rental companies. For a backyard graduation, a Wolf Lake gathering or a parish dinner, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Hegewisch. For a backyard graduation, a Wolf Lake gathering or a parish dinner, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Hegewisch is Chicago's far southeast corner, tucked against the Indiana state line and ringed by industry, wetlands and water. Polish, Mexican and Eastern European families have long lived on its small-town grid of bungalows, and Torrence Avenue and Commercial Avenue form its main business streets. It feels more like a small town than a big-city neighborhood. Summer cookouts and family gatherings keep the calendar full in warm months.",
       "Wolf Lake and the nearby Eggers Grove Forest Preserve offer picnic areas and open space. The South Shore Line's Hegewisch station connects to downtown, and nearby industry and the Calumet region's waterways shape the horizon. Summer is picnic season, with parish festivals and block parties, while long, cold winters make indoor halls busy.",
@@ -1620,7 +1620,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Hegewisch, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Hegewisch homes, halls and picnic areas. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Hegewisch homes, halls and picnic areas. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a picnic grove near Wolf Lake?",
@@ -1651,10 +1651,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60617"],
     metaTitle: "Event Rentals in South Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in South Chicago for lakefront picnics, church events and quinceañeras. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in South Chicago for lakefront picnics, church events and quinceañeras. Request a free quote.",
     headline: "Seating for *South Chicago* lakefront parties",
     intro:
-      "We help you rent event chairs, tables, linens and more in South Chicago from established Chicago-area rental companies. For a quinceañera, a lakefront picnic or a parish dinner, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in South Chicago. For a quinceañera, a lakefront picnic or a parish dinner, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "South Chicago is a lakefront and river neighborhood shaped by steel. The mills of South Works once lined the shore, and the former site is now Steelworkers Park, a public lakefront with wide views. Commercial Avenue and 91st Street carry the neighborhood's shops, and Mexican, Polish and Black families share a long tradition of church-centered community life. That mix of industrial heritage and lakefront views gives the neighborhood a strong sense of pride in its parties.",
       "Nearby Calumet Park, with its beach, fieldhouse and lakeside lawns, is a summer gathering place, and the Calumet River and Lake Michigan put wind and water in the neighborhood's character. Our Lady of Guadalupe Church on 91st Street is a cherished landmark for many Mexican American families, and baptisms, quinceañeras and weddings follow from there to halls and backyards. Winter is long here, so many families move celebrations indoors to church basements and union halls from November through March.",
@@ -1702,7 +1702,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in South Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to South Chicago homes, halls and lakefront parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to South Chicago homes, halls and lakefront parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for a party at a lakefront park?",
@@ -1733,10 +1733,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60637", "60621"],
     metaTitle: "Event Rentals in Washington Park, Chicago | Chairs",
     metaDescription:
-      "Rent chairs, tables and linens in Washington Park for park picnics, church events and family reunions. Local rental companies. Request a free quote today.",
+      "Rent chairs, tables and linens in Washington Park for park picnics, church events and family reunions. Request a free quote today.",
     headline: "Chair rentals around *Washington Park*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Washington Park from established Chicago-area rental companies. For a park reunion, a church dinner or a block party, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Washington Park. For a park reunion, a church dinner or a block party, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Washington Park takes its name from the big park that anchors it, designed by Frederick Law Olmsted and Calvert Vaux with a lagoon, meadows and a fieldhouse. The DuSable Museum of African American History sits inside, and Lorado Taft's Fountain of Time marks the west end of the Midway Plaisance. The park is a favorite for reunions, cookouts and cultural festivals.",
       "Surrounding blocks include greystones, coach houses, two-flats and a growing number of rehabbed buildings. King Drive and Garfield Boulevard are the main corridors, and the Green Line's Garfield stop connects to downtown. Churches host many of the area's events, from anniversaries and repasts to graduation dinners. Some surrounding greystones and coach houses may have room for tented parties, and block clubs organize summer events with cookouts and music.",
@@ -1784,7 +1784,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Washington Park, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Washington Park homes, halls and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Washington Park homes, halls and parks. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit to host a picnic in Washington Park?",
@@ -1815,10 +1815,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60621", "60636"],
     metaTitle: "Event Rentals in Englewood, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Englewood for church events, backyard parties and community gatherings. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in Englewood for church events, backyard parties and community gatherings. Request a free quote.",
     headline: "Seating for *Englewood community* celebrations",
     intro:
-      "We help you rent event chairs, tables, linens and more in Englewood from established Chicago-area rental companies. For a church banquet, a block party or a backyard graduation, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Englewood. For a church banquet, a block party or a backyard graduation, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Englewood is a South Side neighborhood with a proud history of community organizing, strong churches and block clubs. The 63rd Street corridor, Halsted Street and Ashland Avenue are its main commercial streets, Kennedy-King College anchors the area's education scene, and the Green Line's Ashland/63rd terminal makes it easy to reach from downtown. Block clubs and community groups have been the backbone here for decades, and their events draw people from across the South Side.",
       "Englewood is also known for its urban gardens and farms, and for the Englewood Nature Trail, a former rail line turned into a green walking path. Block clubs organize cookouts, back-to-school events and holiday gatherings, and churches host everything from weddings and anniversaries to community feeding programs and funerals. On weekends, you'll find fish fries, youth sports banquets and neighborhood anniversary events happening in church halls and community centers.",
@@ -1866,7 +1866,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Englewood, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Englewood homes, halls and lots. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Englewood homes, halls and lots. Send your date, headcount and venue in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you set up on a vacant lot?",
@@ -1897,10 +1897,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60652", "60620"],
     metaTitle: "Event Rentals in Ashburn, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Ashburn for bungalow-belt backyard parties, church events and graduations. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in Ashburn for bungalow-belt backyard parties, church events and graduations. Request a free quote.",
     headline: "Backyard chairs for *Ashburn* bungalow blocks",
     intro:
-      "We help you rent event chairs, tables, linens and more in Ashburn from established Chicago-area rental companies. For a backyard graduation, a church dinner or a block party, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Ashburn. For a backyard graduation, a church dinner or a block party, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Ashburn is a Southwest Side neighborhood of brick bungalows and Georgian-style homes on generous lots, laid out on a quiet grid south of Midway Airport's flight path. Pulaski Road, 79th Street and Kedzie Avenue are the main commercial streets, and the area's mix of long-time families and newer arrivals makes for lively block clubs and church communities. Blocks here have a strong sense of community, and graduation season turns whole streets into a string of open houses.",
       "Backyard entertaining is the heart of Ashburn. Lots are deep, alleys are common and many families host graduation parties, communions and birthdays at home. Nearby parks, parish halls and banquet rooms along 79th and 87th Streets handle larger gatherings, and the area's proximity to Beverly, Evergreen Park and Oak Lawn means guests can arrive from across the south suburbs. On summer weekends, you'll see tents and banners from one end of a block to the other, so truck access can shrink fast.",
@@ -1948,7 +1948,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Ashburn, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Ashburn homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Ashburn homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you deliver to a backyard through an alley?",
@@ -1979,10 +1979,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60638"],
     metaTitle: "Event Rentals in Garfield Ridge, Chicago | Chairs & More",
     metaDescription:
-      "Rent chairs, tables and linens in Garfield Ridge for backyard graduations, parish events and Midway-area parties. Local rental companies. Request a quote.",
+      "Rent chairs, tables and linens in Garfield Ridge for backyard graduations, parish events and Midway-area parties. Request a quote.",
     headline: "Backyard chairs for *Garfield Ridge* families",
     intro:
-      "We help you rent event chairs, tables, linens and more in Garfield Ridge from established Chicago-area rental companies. For a backyard graduation, a parish dinner or a retirement party near Midway, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Garfield Ridge. For a backyard graduation, a parish dinner or a retirement party near Midway, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Garfield Ridge is a Southwest Side neighborhood of brick bungalows, Georgian homes and ranch houses on tidy lots, home to Midway International Airport. Polish, Mexican and other families live here side by side, and many households hold multiple generations under one roof, which makes family parties big and frequent. Multigenerational households mean gatherings tend to be large, and a family birthday can easily run past fifty guests.",
       "Archer Avenue and Harlem Avenue carry much of the shopping, and the Orange Line's Midway terminal makes commuting easy. Parish halls host communions, confirmations, weddings and wakes, and Cook County forest preserves within driving distance offer picnic groves for summer reunions. The sound of planes overhead is part of daily life.",
@@ -2030,7 +2030,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Garfield Ridge, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Garfield Ridge homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Garfield Ridge homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you deliver to a yard through a narrow gate?",
@@ -2061,10 +2061,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60632"],
     metaTitle: "Event Rentals in Archer Heights, Chicago | Chairs & More",
     metaDescription:
-      "Rent chairs, tables and linens in Archer Heights for Polish weddings, communions and backyard parties. Local rental companies. Request a free quote today.",
+      "Rent chairs, tables and linens in Archer Heights for Polish weddings, communions and backyard parties. Request a free quote today.",
     headline: "Party seating for *Archer Heights* families",
     intro:
-      "We help you rent event chairs, tables, linens and more in Archer Heights from established Chicago-area rental companies. For a Polish wedding, a first communion or a backyard birthday, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Archer Heights. For a Polish wedding, a first communion or a backyard birthday, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Archer Heights is a compact Southwest Side neighborhood, centered on Archer Avenue and Kedzie, with a long Polish American history that still shows in its delis, bakeries and parish life. More recently, Mexican American families have made it home too, and bakeries and taquerias now share the avenue. Celebrations here are communal, with long tables, shared dishes and music that runs late.",
       "The Orange Line's Pulaski station makes it easy to reach the Loop, and Midway Airport lies just to the southwest. Brick bungalows and two-flats fill the side streets, and parish halls host communions, weddings and name-day parties. Banquet halls along Archer take bigger receptions. Weddings and anniversaries here often mean a full spread of Polish dishes, and extra tables for food and desserts need space in the room.",
@@ -2112,7 +2112,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Archer Heights, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Archer Heights homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Archer Heights homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you fit a 40-person party in a small yard?",
@@ -2143,10 +2143,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60629"],
     metaTitle: "Event Rentals in West Lawn, Chicago | Chairs, Tables",
     metaDescription:
-      "Rent chairs, tables and linens in West Lawn for quinceañeras, communions and backyard parties near Midway. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in West Lawn for quinceañeras, communions and backyard parties near Midway. Request a free quote.",
     headline: "Chairs for *West Lawn* backyard celebrations",
     intro:
-      "We help you rent event chairs, tables, linens and more in West Lawn from established Chicago-area rental companies. For a quinceañera, a communion party or a backyard cookout near Midway, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in West Lawn. For a quinceañera, a communion party or a backyard cookout near Midway, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "West Lawn is a Southwest Side neighborhood of brick bungalows and Georgians in the shadow of Midway Airport. Pulaski Road runs through it with bakeries, restaurants and banquet halls, and the neighborhood has grown into one of the city's largest Mexican American communities alongside long-time Polish, Lithuanian and Irish families. The Southwest Side's quinceañera season runs from spring through fall, and weekends can be fully booked in advance.",
       "Celebrations follow the church calendar, with baptisms, communions and quinceañeras filling parish halls and backyards from spring through fall. Marquette Park, just to the east in Chicago Lawn, offers a big lagoon and open lawns for larger picnics, and the Orange Line at Midway gives easy access to downtown. Planes pass low overhead on some blocks.",
@@ -2194,7 +2194,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in West Lawn, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to West Lawn homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to West Lawn homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you provide seating for a quinceañera?",
@@ -2225,10 +2225,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60620", "60621"],
     metaTitle: "Event Rentals in Auburn Gresham, Chicago | Chairs",
     metaDescription:
-      "Rent chairs, tables and linens in Auburn Gresham for church banquets, 79th Street receptions and backyard parties. Local rental companies. Request a quote.",
+      "Rent chairs, tables and linens in Auburn Gresham for church banquets, 79th Street receptions and backyard parties. Request a quote.",
     headline: "Seating for *Auburn Gresham* church and family events",
     intro:
-      "We help you rent event chairs, tables, linens and more in Auburn Gresham from established Chicago-area rental companies. For a church banquet, a backyard graduation or a 79th Street reception, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Auburn Gresham. For a church banquet, a backyard graduation or a 79th Street reception, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Auburn Gresham is a South Side neighborhood of brick bungalows, two-flats and tree-lined streets, with 79th Street as its business spine. The area is known for large, active churches and block clubs that keep community traditions alive. Anniversary banquets, graduation open houses and family reunions fill its calendar, and many events are organized weeks in advance. Block clubs organize cookouts and holiday gatherings, and anniversary celebrations for congregations can run for the whole weekend.",
       "Transit helps: Metra's Rock Island line and the Red Line's 79th Street stop are both nearby. Halsted Street and Ashland Avenue offer additional commercial strips, while nearby parks give space for neighborhood picnics. Beverly, Chatham and Englewood are close, so guests often travel in from all three. The Rock Island and Red Line connections make it easy for out-of-town relatives to arrive without driving.",
@@ -2276,7 +2276,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Auburn Gresham, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Auburn Gresham homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Auburn Gresham homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you handle a church event with 200 guests?",
@@ -2307,10 +2307,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60617"],
     metaTitle: "Event Rentals in Calumet Heights, Chicago | Chairs",
     metaDescription:
-      "Rent chairs, tables and linens in Calumet Heights for backyard parties, church events and weddings near Stony Island. Local rental companies. Get a quote.",
+      "Rent chairs, tables and linens in Calumet Heights for backyard parties, church events and weddings near Stony Island. Get a quote.",
     headline: "Backyard chairs for *Calumet Heights* parties",
     intro:
-      "We help you rent event chairs, tables, linens and more in Calumet Heights from established Chicago-area rental companies. For a backyard graduation, a church dinner or a Stony Island reception, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Calumet Heights. For a backyard graduation, a church dinner or a Stony Island reception, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Calumet Heights is a quiet South Side neighborhood of brick bungalows and other single-family homes, centered on Stony Island Avenue and 87th Street. It's a stable, homeowner-heavy community with active block clubs and churches, and its generous lots and mature trees make it a popular backyard-party neighborhood. Many homes here sit on wide lots with mature trees, which gives the area a more suburban feel than much of the city.",
       "Stony Island Avenue carries shops, and the Metra Electric's 87th Street stop makes arrival easy for guests. The lakefront and the large parks of South Shore sit to the north and east, while the Calumet region's lakes and forest preserves lie to the southeast. Church halls and banquet rooms along 87th Street handle bigger events. Seasonal events at nearby churches and community groups also bring steady need for banquet seating through the year.",
@@ -2358,7 +2358,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Calumet Heights, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Calumet Heights homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Calumet Heights homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you deliver to a yard with a long driveway?",
@@ -2389,10 +2389,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60628"],
     metaTitle: "Event Rentals in Roseland, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Roseland for Michigan Avenue events, church banquets and backyard parties. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in Roseland for Michigan Avenue events, church banquets and backyard parties. Request a free quote.",
     headline: "Chair rentals for *Roseland* celebrations",
     intro:
-      "We help you rent event chairs, tables, linens and more in Roseland from established Chicago-area rental companies. For a church banquet, a Palmer Park picnic or a backyard graduation, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Roseland. For a church banquet, a Palmer Park picnic or a backyard graduation, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Roseland began as a Dutch farming settlement in the 1840s and grew into a busy shopping district along Michigan Avenue. Today it's a residential neighborhood of bungalows, Victorian houses and tree-lined streets, with a strong tradition of churches and block clubs. Historic Pullman lies just to the east. Today it's a residential neighborhood where block clubs keep up long traditions of summer cookouts and holiday celebrations.",
       "Palmer Park, a major neighborhood park, hosts picnics and reunions, and nearby Metra Electric stations connect riders to downtown. Forest preserves a short drive away add more open space. Church anniversaries, graduation open houses and family reunions fill the calendar. The area has a strong church community, and anniversaries and homecoming Sundays often draw guests from all over the South Side.",
@@ -2440,7 +2440,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Roseland, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Roseland homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Roseland homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for Palmer Park?",
@@ -2471,10 +2471,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60617"],
     metaTitle: "Event Rentals in East Side, Chicago | Chairs, Tables",
     metaDescription:
-      "Rent chairs, tables and linens in Chicago's East Side for Calumet Park picnics, parish events and backyard parties. Local rental companies. Request a quote.",
+      "Rent chairs, tables and linens in Chicago's East Side for Calumet Park picnics, parish events and backyard parties. Request a quote.",
     headline: "Party seating for the *East Side*",
     intro:
-      "We help you rent event chairs, tables, linens and more on Chicago's East Side from established Chicago-area rental companies. For a backyard graduation, a parish dinner or a Calumet Park picnic, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more on Chicago's East Side. For a backyard graduation, a parish dinner or a Calumet Park picnic, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "The East Side is Chicago's far southeast neighborhood, bounded by the Calumet River, the Indiana border and Lake Michigan. It has the feel of a small town, with Mexican, Polish and Eastern European families in neat bungalows around the neighborhood's business strip. Residents are fiercely local, and block parties and parish festivals are a point of pride. Its quiet streets, small-town feel and shared history give celebrations here a close-knit character.",
       "Calumet Park, with its beach, fieldhouse and wide lawns, is the neighborhood's big public space, and Wolf Lake and Eggers Grove Forest Preserve sit just south. Lake winds and flat terrain shape every outdoor event, and the Calumet River bridges and rail crossings can slow truck routes. Parish halls host baptisms, weddings and funerals, and yards fill with graduation parties each spring.",
@@ -2522,7 +2522,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs on the East Side of Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to East Side homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to East Side homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Do I need a permit for Calumet Park?",
@@ -2553,10 +2553,10 @@ export const chicagoSouthAreas: Location[] = [
     zips: ["60638"],
     metaTitle: "Event Rentals in Clearing, Chicago | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in Clearing for backyard parties, parish events and graduations near Midway. Local rental companies. Request a free quote.",
+      "Rent chairs, tables and linens in Clearing for backyard parties, parish events and graduations near Midway. Request a free quote.",
     headline: "Backyard chairs for *Clearing* bungalow blocks",
     intro:
-      "We help you rent event chairs, tables, linens and more in Clearing from established Chicago-area rental companies. For a backyard graduation, a parish dinner or a retirement party near Midway, request a quote or book a planning call. We're booking the 2026-27 season now.",
+      "We help you rent event chairs, tables, linens and more in Clearing. For a backyard graduation, a parish dinner or a retirement party near Midway, request a quote or book a planning call. We're booking the 2026-27 season now.",
     story: [
       "Clearing is a Southwest Side neighborhood of postwar bungalows and Georgian-style homes, tucked beside Midway Airport and the rail yards. It takes its name from the nearby Clearing rail yards and industrial district, and the neighborhood has a blue-collar, close-knit feel with many long-time residents and multigenerational families. It's a neighborhood where families have stayed for generations, so graduations and communions often involve large extended families.",
       "Local shopping and parish life cluster along the neighborhood's main avenues, and the Orange Line's Midway terminal is close. Parish halls host communions, confirmations and weddings, while yards are the main stage for graduation parties and summer birthdays. Because the neighborhood sits near the flight path, planes are a regular backdrop to outdoor events. The area also sees steady parish activity, with fish fries, festivals and school events through the year.",
@@ -2604,7 +2604,7 @@ export const chicagoSouthAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Clearing, Chicago?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Clearing homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
+        a: "we deliver to Clearing homes, halls and parks. Send your date, headcount and address in a quote request and we'll itemize delivery, setup and pickup. We're a new company booking our 2026-27 season, so a short planning call is a good way to confirm styles, counts and timing before you commit.",
       },
       {
         q: "Can you deliver to a yard with a narrow gate?",

@@ -1254,7 +1254,7 @@ function PlanView({
         <h3 id="plan-next" className="display-3">What happens next</h3>
         <ol className="mt-5 grid gap-3 md:grid-cols-3">
           {[
-            ["We check your date", "Our partners confirm stock for your date, and we send a proposal with delivery and setup for your venue."],
+            ["We check your date", "We confirm stock for your date and send a proposal with delivery and setup for your venue."],
             ["You approve", "Change anything you like. Approving the proposal reserves your rentals."],
             ["Delivered and set up", "Send your final count about a week out. We deliver, set up and pick everything up after."],
           ].map(([t, d], i) => (

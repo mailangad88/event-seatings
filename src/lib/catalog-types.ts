@@ -57,28 +57,26 @@ export function toPublicItem(i: CatalogItem): PublicItem {
   };
 }
 
-// Item prices are the rental company's own price. Since Nov 4 2026 there is no markup on items;
-// we charge one flat coordination fee per event instead (COORDINATION_FEE below).
-// To go back to a percentage model, set MARKUP (e.g. 0.1) and update the fee copy.
-export const MARKUP = 0;
+// Customer prices are our own prices: the supplier's rate plus MARKUP, set by Angad on Nov 4 2026.
+// There is no separate booking or coordination fee. Customers see one price per item and never the
+// supplier's name or rate. (Vendor-facing pages and admin still use vendorPrice.)
+export const MARKUP = 0.15;
 
-// Flat booking & coordination fee, paid only after every rental company confirms in writing.
-export const COORDINATION_FEE = {
-  standard: 295, // up to 200 guests
-  large: 495, // largeFrom guests and up
-  largeFrom: 201,
-  focusFrom: 120, // the big multi-company celebrations this is built for
-  backupCap: 500, // most we cover if a rental company cancels and the replacement costs more
+// What the customer pays us to book: a deposit on the rentals, the balance before the event.
+export const DEPOSIT = {
+  share: 0.5, // of the rental subtotal
+  min: 100, // smallest deposit we take
+  balanceDaysBefore: 7, // balance is due this many days before the event
+  refundHours: 72, // full refund of the deposit within this window
 } as const;
 
-export function coordinationFee(guests?: number | null) {
-  return guests && guests >= COORDINATION_FEE.largeFrom ? COORDINATION_FEE.large : COORDINATION_FEE.standard;
+/** Deposit due to book an order with this rental subtotal (our prices). Never more than the subtotal. */
+export function depositFor(subtotal: number) {
+  if (subtotal <= 0) return 0;
+  return Math.round(Math.min(subtotal, Math.max(DEPOSIT.min, subtotal * DEPOSIT.share)) * 100) / 100;
 }
 
-// How the fee is written in customer copy. Follows COORDINATION_FEE.
-export const BOOKING_FEE_LABEL = `flat $${COORDINATION_FEE.standard}`;
-export const BOOKING_FEE_FULL = `a flat $${COORDINATION_FEE.standard} ($${COORDINATION_FEE.large} over ${COORDINATION_FEE.largeFrom - 1} guests)`;
-export const BACKUP_CAP_LABEL = `$${COORDINATION_FEE.backupCap}`;
+export const DEPOSIT_LABEL = `${Math.round(DEPOSIT.share * 100)}% deposit`;
 
 const cents = (n: number) => Math.round(n * 100) / 100;
 

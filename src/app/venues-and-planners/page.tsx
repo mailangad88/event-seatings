@@ -11,7 +11,7 @@ import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "For Venues, Planners and Decorators: Send Us Your Rental Lists",
-  description: `Banquet halls, planners, decorators and caterers in ${site.market}: send families who need chairs, tables, tents and dishes to us. We book every rental company and line up delivery around your load-in.`,
+  description: `Banquet halls, planners, decorators and caterers in ${site.market}: send families who need chairs, tables, tents and dishes to us. We handle the whole order and line up delivery around your load-in.`,
   alternates: { canonical: "/venues-and-planners" },
 });
 
@@ -25,7 +25,7 @@ const who = [
 ];
 
 const forYou = [
-  { icon: "calendar" as const, title: "Your load-in times", text: "Tell us your delivery and pickup rules once. Every rental company gets them." },
+  { icon: "calendar" as const, title: "Your load-in times", text: "Tell us your delivery and pickup rules once. We plan every delivery around them." },
   { icon: "ruler" as const, title: "One plan for everyone", text: "You get the same item list, floor plan and delivery times we send the family." },
   { icon: "phone" as const, title: "One person on the day", text: "If a delivery is late, you call us, not three companies." },
   { icon: "check" as const, title: "Your client stays yours", text: "We only book rentals. We don't sell planning, decor or catering." },
@@ -39,7 +39,7 @@ export default function VenuesAndPlannersPage() {
       q: "Do you pay a referral fee?",
       a: reward
         ? `Yes: ${reward}. We confirm it by email once the booking is confirmed.`
-        : "Not at the moment. If we add one, this page will say so. What you get today is one contact for every rental company your client needs.",
+        : "Not at the moment. If we add one, this page will say so. What you get today is one contact for everything your client rents.",
     },
     {
       q: "Will you try to sell my client other services?",
@@ -47,7 +47,7 @@ export default function VenuesAndPlannersPage() {
     },
     {
       q: "What does it cost the family?",
-      a: "Each rental company's own price, with no markup, plus one flat fee per event, paid only after every company confirms. If one company can cover everything, we say so and there is no fee.",
+      a: "By the item, at the prices on our site, plus delivery, setup, damage waiver and tax on one written quote. There is no separate booking fee.",
     },
     {
       q: "Can you work to our floor plan and rules?",
@@ -64,7 +64,7 @@ export default function VenuesAndPlannersPage() {
         breadcrumbs={[{ name: "Venues and planners", href: "/venues-and-planners" }]}
         eyebrow="For venues, planners and decorators"
         title={<>Send us the families who need <em className="text-gold">rentals</em></>}
-        intro={`If your hall doesn't come with tables and chairs, or you plan or decorate events and don't want to chase rental companies, send the family to us. We book every rental company they need and line up delivery around your load-in times.`}
+        intro={`If your hall doesn't come with tables and chairs, or you plan or decorate events and don't want to chase rentals, send the family to us. We handle the whole order and line up delivery around your load-in times.`}
         actions={
           <>
             <a href="#link" className="btn-primary">
@@ -99,11 +99,11 @@ export default function VenuesAndPlannersPage() {
 
       <Section eyebrow="How it works" title="From your client to delivery day">
         <StepFlow
-          caption="How a referral works: share your link, we call the family, every rental company is booked, and delivery fits your load-in."
+          caption="How a referral works: share your link, we call the family, the order is booked, and delivery fits your load-in."
           steps={[
             { icon: "chat", title: "Share your link", text: "Text or WhatsApp it to the family." },
             { icon: "phone", title: "We call them", text: "Guest count, date and what your space needs." },
-            { icon: "quote", title: "One quote", text: "Every rental company named, at its own price." },
+            { icon: "quote", title: "One quote", text: "Every item and its price, in writing." },
             { icon: "truck", title: "Delivered on your terms", text: "Inside your load-in window, picked up after." },
           ]}
         />

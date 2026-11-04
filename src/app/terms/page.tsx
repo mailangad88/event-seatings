@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
-import { BACKUP_CAP_LABEL, BOOKING_FEE_FULL } from "@/lib/catalog-types";
+import { DEPOSIT } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 import { ChairStrip } from "@/components/ChairStrip";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Terms of Use",
-  description: `Terms for using the ${site.name} website and booking event rentals through us: our booking fee, who you pay, the Booking Promise, damage and liability.`,
+  description: `Terms for using the ${site.name} website and booking event rentals with us: prices, deposit and balance, the Booking Promise, damage and liability.`,
   alternates: { canonical: "/terms" },
 });
 
@@ -16,65 +16,56 @@ export default function TermsPage() {
     <div className="container-x max-w-3xl py-20">
       <p className="eyebrow">Legal</p>
       <h1 className="display-1 mt-6">Terms of use</h1>
-      <p className="mt-4 text-sm text-muted">Last updated November 2, 2026</p>
+      <p className="mt-4 text-sm text-muted">Last updated November 4, 2026</p>
       <ChairStrip className="mt-10" slugs={["windsor", "shell", "garden-folding"]} caption="Plain-language terms for using this site." />
       <div className="prose-post mt-10">
         <h2>What {site.name} is</h2>
         <p>
-          {site.name} is an event rental booking and coordination service. We do not own or deliver the rentals
-          ourselves. Items are supplied, delivered, set up and collected by independent Chicago-area rental companies
-          (&ldquo;rental partners&rdquo;). Your proposal confirms that a rental partner has your items for your date. Your proposal names the rental partner so you can check it before you pay. We share the partner&apos;s contact details and rental agreement once you pay our booking fee (or a refundable hold). If you don&apos;t accept that agreement, tell us within 72 hours and we refund the fee in full.
+          {site.name} rents event furniture and equipment in the Chicago area and arranges delivery, setup and pickup.
+          Orders may be fulfilled and delivered by independent delivery and fulfillment partners working for us. You book
+          with, and pay, {site.name}.
         </p>
         <h2>Quote requests are not bookings</h2>
         <p>
           Submitting a quote request does not reserve rentals, hold a date or create a contract. A booking exists only
-          once a rental partner confirms availability, you approve our written proposal and you pay the booking fee.
+          once you approve our written proposal and pay the deposit.
         </p>
-        <h2>Prices and our booking fee</h2>
+        <h2>Prices</h2>
         <p>
-          Prices shown on this site are the rental partner&apos;s own prices. We add no markup to any item. Our booking
-          and coordination fee is {BOOKING_FEE_FULL} per event, and it is the same whatever your order costs.
-          Your proposal shows the rental partner&apos;s prices, delivery, setup, damage waiver and tax for your venue, and
-          our fee as its own line. Prices marked as estimates are confirmed in your proposal. Some rental partners may
-          pay us a referral fee on bookings we introduce. It never changes your price, and if a partner on your
-          proposal pays us one, your proposal says so.
+          Prices on this site are our prices for a one-day rental. There is no separate booking fee. Your proposal lists
+          every item, then delivery and pickup, setup, a damage waiver and sales tax for your venue. Prices marked as
+          estimates are confirmed in your proposal. Once you pay the deposit, the item prices in your proposal are locked
+          unless you change your order.
         </p>
-        <h2>Who you pay</h2>
+        <h2>Payment</h2>
         <ul>
           <li>
-            <strong>Our booking fee</strong> is paid to {site.name} when you approve your proposal. It is fully
-            refundable for 72 hours after payment. After that it is non-refundable, but if you postpone, it transfers
-            to a new date within 12 months.
+            <strong>Deposit:</strong> {Math.round(DEPOSIT.share * 100)}% of the rentals (at least ${DEPOSIT.min}), paid when
+            you book. It is fully refundable for {DEPOSIT.refundHours} hours after payment.
           </li>
           <li>
-            <strong>The rental charges</strong> (deposit, balance, delivery, damage waiver, security deposit and taxes)
-            are paid to the rental partner under its own rental agreement, which governs delivery, setup, pickup,
-            damage, loss, late returns and cancellation. Its key terms are summarized in your proposal.
+            <strong>Balance:</strong> the rest of your order, including delivery, setup, damage waiver and tax, due{" "}
+            {DEPOSIT.balanceDaysBefore} days before your event.
           </li>
         </ul>
         <h2>Our Booking Promise</h2>
         <p>
-          For bookings made through us: (1) the total in your approved proposal is what you pay for those items unless
-          you change your order; (2) we ask every rental partner for proof of general liability insurance before we
-          book them, and we tell you before you pay if a partner has not provided it. We do not issue certificates of
-          insurance ourselves; (3) if your rental partner cancels a confirmed order, we will find a
-          comparable replacement and cover any price difference up to {BACKUP_CAP_LABEL}, or
-          refund the booking fee in full if we cannot; (4) quantity changes are free of our charge until 14 days
-          before the event, subject to availability and the rental partner&apos;s terms. Details are on our{" "}
+          (1) The item prices in the proposal you book are what you pay for those items unless you change your order;
+          (2) if an item you booked can&apos;t be delivered, we replace it with the same or better at the agreed price, or
+          refund what you paid for that item; (3) quantity changes are free until 14 days before the event, subject to
+          stock. We do not issue certificates of insurance. Details are on our{" "}
           <Link href="/booking-promise">Booking Promise</Link> page.
         </p>
         <h2>Damage, loss and insurance</h2>
         <p>
-          You are responsible for rented items between delivery and pickup, as set out in the rental partner&apos;s
-          agreement. Damage waivers, where offered, are provided by the rental partner and usually exclude loss, theft
-          and negligence. {site.name} does not provide insurance and is not responsible for damage to or loss of rented
-          items. If a damage charge arises, we will review it with the rental partner against their published terms.
+          You are responsible for rented items between delivery and pickup. The damage waiver on your proposal covers
+          everyday accidental damage and does not cover loss, theft or negligence. {site.name} does not provide insurance.
+          If a damage charge arises, we show you what was damaged and the charge before billing it.
         </p>
         <h2>Limitation of liability</h2>
         <p>
-          The rental partner is solely responsible for the rentals it supplies and its services. To the extent allowed
-          by law, {site.name}&apos;s total liability for any booking is limited to the booking fee you paid us for that
-          booking, plus any price difference we have agreed to cover under the backup guarantee above (up to {BACKUP_CAP_LABEL}).
+          To the extent allowed by law, {site.name}&apos;s total liability for any booking is limited to the amount you
+          paid us for that booking.
         </p>
         <h2>Product images</h2>
         <p>

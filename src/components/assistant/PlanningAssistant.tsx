@@ -145,7 +145,7 @@ export function PlanningAssistant({ aiWording }: { aiWording: boolean }) {
           <div className="card p-6 sm:p-8">
             <p className="eyebrow">Your plan · {plan.style.name} package</p>
             <p className="mt-3 text-lg leading-8">{plan.summary}</p>
-            {plan.mode === "gemini" && <p className="mt-2 text-xs text-muted">Summary written by AI from the numbers below. Prices are estimates from local rental companies&apos; published rates plus our booking fee.</p>}
+            {plan.mode === "gemini" && <p className="mt-2 text-xs text-muted">Summary written by AI from the numbers below. Prices are from our catalog.</p>}
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href={quoteHref} className="btn-primary" onClick={() => track("assistant_handoff", { addons: addOnIds.length })}>
                 Build this quote{addOnTotal ? ` (+${usd(addOnTotal)} add-ons)` : ""}
@@ -178,7 +178,7 @@ export function PlanningAssistant({ aiWording }: { aiWording: boolean }) {
                 <span>Estimated rentals</span>
                 <span>{usd(plan.total)}</span>
               </p>
-              <p className="mt-2 text-xs text-muted">Based on local rental companies&apos; published rates plus our booking fee; delivery and tax are added on the quote. Final prices are confirmed by the rental company.</p>
+              <p className="mt-2 text-xs text-muted">Based on our catalog prices; delivery, setup, damage waiver and tax are added on the quote. Your written quote confirms the final price.</p>
             </section>
 
             <div className="grid content-start gap-6">

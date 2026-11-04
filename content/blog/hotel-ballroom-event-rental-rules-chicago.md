@@ -41,7 +41,7 @@ Most hotel ballroom packages include the hotel's banquet chairs, round tables, w
 
 </div>
 
-Insurance note: Beyond Chiavari does not issue certificates of insurance ourselves yet. Tell us your hotel's requirements at quote time and we will let you know before you pay whether the rental partner can meet them.
+Insurance note: Beyond Chiavari does not issue certificates of insurance ourselves yet. Tell us your hotel's requirements at quote time and we will let you know before you pay whether we can meet them.
 
 <figure>
 <svg role="img" aria-labelledby="hotel-path-t hotel-path-d" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">

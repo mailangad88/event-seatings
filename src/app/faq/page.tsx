@@ -20,7 +20,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
     faqs: [
       {
         q: `What is ${site.name}?`,
-        a: `${site.name} is a Chicago-area event rental marketplace. You choose chairs, tables, linens, dinnerware, glassware, tents, lighting and decor in one place, get one itemized quote, and we coordinate the local rental houses that deliver them.`,
+        a: `${site.name} is a Chicago-area event rental company. You choose chairs, tables, linens, dinnerware, glassware, tents, lighting and decor in one place, get one itemized quote, and we handle delivery, setup and pickup.`,
       },
       {
         q: "Do I deal with several rental companies?",
@@ -42,7 +42,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
     faqs: [
       {
         q: "How much do event rentals cost?",
-        a: "Every item lists its per-piece or per-set price, and your quote totals live as you add items. Item prices are the rental company's own price, with no markup. Our coordination is one flat fee per event ($295, or $495 over 200 guests), paid only after every company confirms. Delivery, setup and any venue surcharges are itemized before you confirm.",
+        a: "Every item lists its per-piece or per-set price, and your quote totals live as you add items. Item prices are our own prices for a one-day rental, and there's no separate booking fee. Delivery, setup, damage waiver and any venue surcharges are itemized before you book.",
       },
       {
         q: "Is the quote free?",
@@ -98,7 +98,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
       },
       {
         q: "What if something is damaged?",
-        a: "Normal wear is expected. Breakage or loss is billed at the vendor's replacement cost, and some vendors offer an optional damage waiver, which we will show on your quote.",
+        a: "Normal wear is expected. Breakage or loss is billed at replacement cost, and the damage waiver on your quote covers everyday accidental damage, which we will show on your quote.",
       },
     ],
   },

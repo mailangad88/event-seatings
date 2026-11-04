@@ -24,13 +24,13 @@ export const reminderLabels: Record<ReminderKind, string> = {
 
 export type ReminderSettings = {
   enabled: Record<ReminderKind, boolean>;
-  // Optional offer: a share off our booking fee only (never the rental company's prices), good for `days` days.
+  // Optional offer: a share off the rentals subtotal, good for `days` days.
   offer: { enabled: boolean; percent: number; days: number; kinds: ReminderKind[] };
 };
 
 export const defaultReminderSettings: ReminderSettings = {
   enabled: { unfinished_quote: true, viewed_item: true, event_soon: true },
-  offer: { enabled: false, percent: 25, days: 7, kinds: ["unfinished_quote"] },
+  offer: { enabled: false, percent: 5, days: 7, kinds: ["unfinished_quote"] },
 };
 
 export const REMINDER_SETTINGS_KEY = "reminders";
@@ -46,7 +46,7 @@ export function cleanReminderSettings(raw: unknown): ReminderSettings {
     enabled,
     offer: {
       enabled: o.enabled === true,
-      percent: num(o.percent, 5, 100, defaultReminderSettings.offer.percent),
+      percent: num(o.percent, 1, 10, defaultReminderSettings.offer.percent), // capped: our margin is MARKUP (15%)
       days: num(o.days, 1, 30, defaultReminderSettings.offer.days),
       kinds: Array.isArray(o.kinds) ? reminderKinds.filter((k) => o.kinds!.includes(k)) : defaultReminderSettings.offer.kinds,
     },
@@ -66,7 +66,7 @@ export type PlannedReminder = {
   kind: ReminderKind;
   subject: string;
   body: string[];
-  offer?: string; // e.g. "25% off our booking fee until Nov 20", logged on the lead so it's honoured
+  offer?: string; // e.g. "5% off your rentals until Nov 20", logged on the lead so it's honoured
 };
 
 export type ReminderPlan = { send: PlannedReminder[]; skipped: Record<string, number> };
@@ -88,8 +88,8 @@ function offerFor(kind: ReminderKind, ctx: ReminderContext) {
   if (!o.enabled || !o.kinds.includes(kind)) return undefined;
   const until = prettyDate(new Date(ctx.now.getTime() + o.days * DAY));
   return {
-    label: `${o.percent}% off our booking fee until ${until}`,
-    line: `Book through us by ${until} and we'll take ${o.percent}% off our booking fee. Rental prices stay the same; the discount comes off our part.`,
+    label: `${o.percent}% off your rentals until ${until}`,
+    line: `Book by ${until} and we'll take ${o.percent}% off your rentals.`,
   };
 }
 
@@ -159,7 +159,7 @@ export function planReminders(leads: Lead[], activity: Map<string, ActivityEvent
               `You started a rental list on our site${names.length ? `: ${names.join(", ")}${last.items.length > names.length ? " and more" : ""}` : ""}. It's saved here, ready to finish:`,
               link,
               "",
-              "Add your date and guest count and send it. We'll check your date with our Chicago-area rental partners and send one itemized quote, usually within one business day. Nothing is charged until you approve it.",
+              "Add your date and guest count and send it. We'll check your date and send one itemized quote, usually within one business day. Nothing is charged until you approve it.",
             ],
           };
         }
@@ -188,7 +188,7 @@ export function planReminders(leads: Lead[], activity: Map<string, ActivityEvent
               "",
               `Want a price for your date? This puts it on a quote list for you: ${ctx.siteUrl}/quote?items=${id}&from=reminder`,
               "",
-              "Or just reply with your date, guest count and venue, and we'll check it with our rental partners.",
+              "Or just reply with your date, guest count and venue, and we'll check it for you.",
             ],
           };
         }

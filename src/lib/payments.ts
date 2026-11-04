@@ -1,21 +1,21 @@
 import "server-only";
 import { createHmac, randomBytes, timingSafeEqual } from "crypto";
-import { coordinationFee } from "./catalog-types";
+import { depositFor } from "./catalog-types";
 import type { Lead } from "./store";
 
-// Booking-fee checkout for customer proposals (/proposal/<token>).
+// Deposit checkout for customer proposals (/proposal/<token>).
 //
-// The proposal names the rental company before the customer pays (so they can check it), and shares
-// its contact details and agreement after. Payment runs on Stripe Checkout, called with plain
-// fetch (no SDK). Everything is OFF until STRIPE_SECRET_KEY is set; without it the proposal page
-// says "we'll send you a secure payment link" and Angad can mark the fee paid by hand in /admin.
+// Customers pay us: a deposit to book (DEPOSIT in catalog-types), the balance before the event.
+// Payment runs on Stripe Checkout, called with plain fetch (no SDK). Everything is OFF until
+// STRIPE_SECRET_KEY is set; without it the proposal page says "we'll send you a secure payment link"
+// and Angad can mark the deposit paid by hand in /admin. The lead fields keep their old names:
+// fee_status / fee_amount / fee_paid_at now describe the deposit.
 //
 // Env:
 //   STRIPE_SECRET_KEY       sk_live_… or sk_test_…  (turns checkout on)
 //   STRIPE_WEBHOOK_SECRET   whsec_…  (optional but recommended; marks the fee paid even if the customer closes the tab)
-//   BOOKING_CHARGE          "fee" (default: our flat booking fee, $295 up to 200 guests, $495 above) or "hold" (a fixed refundable hold)
+//   BOOKING_CHARGE          "fee" (default: the deposit on the rentals) or "hold" (a fixed refundable hold)
 //   BOOKING_HOLD_USD        hold amount when BOOKING_CHARGE=hold (default 100)
-//   BOOKING_FEE_MIN_USD     optional floor for tiny orders (default none; if you set one, say so in the Booking Promise)
 
 export const stripeEnabled = () => Boolean(process.env.STRIPE_SECRET_KEY);
 
@@ -30,13 +30,13 @@ const num = (v: string | undefined, fallback: number) => {
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
 // What the customer pays us at checkout, in USD.
-export function amountDue(lead: Pick<Lead, "guest_count">): number {
+export function amountDue(lead: Pick<Lead, "quote_subtotal" | "items">): number {
   if (chargeMode() === "hold") return round2(num(process.env.BOOKING_HOLD_USD, 100));
-  // One flat fee per event, set by guest count (see COORDINATION_FEE). Item prices carry no markup.
-  return round2(Math.max(Number(process.env.BOOKING_FEE_MIN_USD) || 0, coordinationFee(lead.guest_count)));
+  const subtotal = lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
+  return depositFor(subtotal);
 }
 
-export const chargeLabel = () => (chargeMode() === "hold" ? "Refundable booking hold" : "Booking & coordination fee");
+export const chargeLabel = () => (chargeMode() === "hold" ? "Refundable booking hold" : "Deposit");
 
 export const newProposalToken = () => randomBytes(16).toString("hex");
 
@@ -75,7 +75,7 @@ export async function createCheckout(lead: Lead, siteUrl: string): Promise<{ id:
     "line_items[0][price_data][unit_amount]": String(Math.round(amount * 100)),
     "line_items[0][price_data][product_data][name]": chargeLabel(),
     "line_items[0][price_data][product_data][description]":
-      `Secures your event rentals${event ? ` (${event})` : ""}. Refundable for 72 hours. Rental charges are paid to the rental company.`.slice(0, 500),
+      `Deposit for your event rentals${event ? ` (${event})` : ""}. Fully refundable for 72 hours. The balance is due before your event.`.slice(0, 500),
   });
   const session = await stripe("checkout/sessions", { method: "POST", body });
   return { id: session.id, url: session.url, amount };

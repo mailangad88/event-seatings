@@ -259,7 +259,7 @@ export const partyTypes: PartyType[] = [
     ],
     faqs: [
       { q: "What is the best layout for a corporate gala?", a: "72-inch rounds of ten facing a stage, with the bar and photo moment at the back so the programme isn't interrupted." },
-      { q: "Do you supply AV for company events?", a: "We can add PA systems, wireless mics, projectors, screens, podiums and TVs from our partners' catalogs. For a full production crew, tell us the scope and we'll quote it." },
+      { q: "Do you supply AV for company events?", a: "We can add PA systems, wireless mics, projectors, screens, podiums and TVs on the same quote. For a full production crew, tell us the scope and we'll quote it." },
     ],
   },
   {

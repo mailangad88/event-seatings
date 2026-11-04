@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   { q: "How do these comparisons work?", a: "Each page puts two rental options side by side: what they are, where they work, how they look and when to choose each. Where we rent both, you'll see a link to the real catalog price." },
-  { q: "Are the prices current?", a: "Prices come from local rental companies' published rates plus our booking fee, checked on the date shown in our catalog. The rental company confirms the final quote for your date." },
+  { q: "Are the prices current?", a: "They are our current prices, checked on the date shown in our catalog. Your written quote confirms the final price for your date." },
   { q: "Where are the chair comparisons?", a: "Chairs have their own set of comparisons, from Chiavari vs folding chairs to ghost vs crossback. They're linked at the bottom of this page." },
   { q: "What if I still can't decide?", a: "Book a free call. We'll look at your venue, guest count and style and recommend what fits." },
 ];

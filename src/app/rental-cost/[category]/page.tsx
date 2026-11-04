@@ -86,7 +86,7 @@ export default async function RentalCostPage(props: Props) {
     },
     {
       q: "Do rental prices include delivery and setup?",
-      a: "No. The prices shown are the rental for one event day: the partner's own rate, with no markup. Our flat booking fee is separate. Delivery and pickup, setup, a damage waiver and sales tax are itemized on your free quote before you pay anything.",
+      a: "No. The prices shown are the rental for one event day: our own price, with no separate booking fee. Delivery and pickup, setup, a damage waiver and sales tax are itemized on your free quote before you pay anything.",
     },
     {
       q: `How can I save on ${cat.name.toLowerCase()} rentals?`,

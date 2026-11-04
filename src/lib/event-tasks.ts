@@ -37,7 +37,7 @@ const sign = `Thanks,\n${site.name}\n${site.phone ?? ""}`.trim();
 export const mailto = (e: NonNullable<EventTask["email"]>) =>
   `mailto:${e.to ?? ""}?subject=${encodeURIComponent(e.subject)}&body=${encodeURIComponent(e.body)}`;
 
-// Booked = the customer paid the booking fee, or a rental partner has the order.
+// Booked = the customer paid the deposit, or a rental partner has the order.
 const isBooked = (l: Lead) => l.fee_status === "paid" || isConfirmed(l);
 
 export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: string): EventTask[] {
@@ -61,7 +61,6 @@ export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: s
     const pp = p ? partners.get(p.vendorId) : undefined;
     return { name: v?.name ?? "the rental partner", email: pp?.contact_email, phone: pp?.contact_phone ?? v?.phone, lines: p?.lines.map(({ line }) => `${line.qty} x ${line.name}${line.variant ? ` (${line.variant})` : ""}`).join("\n") ?? "" };
   };
-  const vendorName = parts.length ? parts.map((p) => p.vendorName).join(" and ") : (vendor?.name ?? "the rental partner");
   const addPart = (base: string, p: VendorPart | undefined, t: Omit<EventTask, "lead" | "key" | "vendor_id">) => {
     const key = p ? `${base}:${p.vendorId}` : base;
     if (p && parts.length === 1 && done[base]) return;
@@ -176,7 +175,7 @@ export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: s
     who: "customer",
     title: "Day before: what to expect",
     detail: "Delivery window, who to call if the truck is late, and what to do with everything after.",
-    email: { to: l.email, subject: `Tomorrow: your ${what(l)} delivery`, body: `${hi(l)}\n\nEverything is set for ${date}. ${vendorName} will deliver to ${where(l)}. If the truck is running late or anything is missing, call us at ${site.phone || "the number on your proposal"}.\n\nAfter the event, stack chairs and tables where they were dropped off and the crew will pick them up.\n\n${sign}` },
+    email: { to: l.email, subject: `Tomorrow: your ${what(l)} delivery`, body: `${hi(l)}\n\nEverything is set for ${date}. Your rentals will be delivered to ${where(l)}. If the truck is running late or anything is missing, call us at ${site.phone || "the number on your proposal"}.\n\nAfter the event, stack chairs and tables where they were dropped off and the crew will pick them up.\n\n${sign}` },
   });
   add({
     key: "t0-check",
@@ -194,7 +193,7 @@ export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: s
     who: "customer",
     title: "Thank you and review request",
     detail: "Thank them and ask for a short review. Then move the lead to Completed.",
-    email: { to: l.email, subject: `Thanks for booking with ${site.name}`, body: `${hi(l)}\n\nThanks for letting us help with your ${what(l)}. If you have a minute, a short review helps other Chicago hosts find us: ${site.url}/reviews/write\n\nIf anything went wrong with the rentals, reply here and we'll sort it out with the rental company.\n\n${sign}` },
+    email: { to: l.email, subject: `Thanks for booking with ${site.name}`, body: `${hi(l)}\n\nThanks for letting us help with your ${what(l)}. If you have a minute, a short review helps other Chicago hosts find us: ${site.url}/reviews/write\n\nIf anything went wrong with the rentals, reply here and we'll sort it out.\n\n${sign}` },
   });
   for (const p of parts.length ? parts : [undefined]) {
     if (p?.state === "picked_up") continue;

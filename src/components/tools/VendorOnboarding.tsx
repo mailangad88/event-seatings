@@ -290,7 +290,7 @@ export function VendorOnboarding({ templateHref }: { templateHref: string }) {
             <div className={full}>{radios("commission_pay", "How would you like to pay our monthly statement?", commissionPayOptions)}</div>
             <div className={full}>{radios("insurance", "Do you carry general liability insurance?", insuranceOptions)}</div>
             <p className={`${full} hint`}>
-              Customers pay you directly under your own agreement. We never ask for bank account numbers on this form. If we ever need them, we set that up with you by phone through a secure payment provider.
+              We pay you for every order. We never ask for bank account numbers on this form; we set that up with you by phone, through a secure payment provider, once you sign.
             </p>
           </>
         )}
@@ -307,7 +307,7 @@ export function VendorOnboarding({ templateHref }: { templateHref: string }) {
             <label className={`${full} flex gap-3 text-sm leading-6`}>
               <input type="checkbox" className="mt-1 h-4 w-4 accent-[var(--gold)]" checked={v("agree") === "yes"} onChange={(e) => set("agree", e.target.checked ? "yes" : "")} />
               <span>
-                I&apos;ve read the <Link href="/partners#terms" className="link">Founding Partner terms</Link> and <Link href="/how-we-work" className="link">how you work</Link>, and I&apos;m happy to receive orders. Nothing is binding until we both sign the one-page agreement.
+                I&apos;ve read the <Link href="/partners#terms" className="link">Founding Partner terms</Link> and <Link href="/partners/faq" className="link">how you work</Link>, and I&apos;m happy to receive orders. Nothing is binding until we both sign the one-page agreement.
               </span>
             </label>
           </>

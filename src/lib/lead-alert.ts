@@ -1,6 +1,6 @@
 import { getVendor } from "@/data/vendors";
 import { styleName } from "./event-plan";
-import { coordinationFee, usd, type QuoteLine } from "./catalog-types";
+import { MARKUP, usd, type QuoteLine } from "./catalog-types";
 import { interestsFor, interestSummary, type Interest } from "./interests";
 import { sourceLabel, type JourneyClick } from "./journey";
 import { scoreLead, suggestedReply } from "./lead-score";
@@ -98,7 +98,7 @@ function nextStep(lead: Lead, now: Date, topVendor?: string): { text: string; wa
     return { text: `${reach} within the hour. The event is ${days === 0 ? "today" : `in ${days} day${days === 1 ? "" : "s"}`}, so check stock${vendor} first, then confirm.`, warning: "Short notice: stock may already be booked for this date." };
   if (lead.kind === "call") return { text: "They asked for a call. Call them at the time below and have their list open." };
   if (lead.kind === "quote")
-    return { text: `${reach} today. Check the date${vendor}, then send the proposal from the lead page so the booking fee is collected first.` };
+    return { text: `${reach} today. Check the date${vendor}, then send the proposal from the lead page so the deposit is collected first.` };
   if (lead.source?.startsWith("planner:")) return { text: "They built a plan with no date yet. Send the list back with prices and ask for the date and venue." };
   if (lead.source?.startsWith("download:")) return { text: "Early planning. Let the follow-up emails run, and reply personally only if they write back." };
   return { text: "Early planning. Send a short personal note with one useful link that matches what they looked at." };
@@ -222,7 +222,7 @@ export function buildLeadAlert(
       { label: "Lead score", value: `${score.grade} (${score.reasons.join(", ") || "not enough to go on"})` },
       ...opt("Package picked", tier),
       ...opt("Quote total", subtotal ? `${usd(subtotal, 0)}${perGuest ? ` (${usd(perGuest, 0)} per guest)` : ""}` : undefined),
-      ...opt("Our fee", subtotal ? `${usd(lead.fee_amount ?? coordinationFee(lead.guest_count), 0)} flat` : undefined),
+      ...opt("Our margin", subtotal ? `about ${usd((subtotal * MARKUP) / (1 + MARKUP), 0)} (${Math.round(MARKUP * 100)}% on items)` : undefined),
       ...opt("How soon", days !== undefined ? (days < 0 ? "Date has passed" : days <= 30 ? "This month" : days <= 120 ? "Within 4 months" : days <= 365 ? "This year" : "More than a year out") : "No date yet"),
       ...opt("Interested in", interestSummary(interests)),
     ],

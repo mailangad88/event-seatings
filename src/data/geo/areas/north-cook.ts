@@ -12,9 +12,9 @@ export const northCookAreas: Location[] = [
       "60022"
     ],
     "metaTitle": "Event Rentals in Glencoe, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Glencoe, IL from Chicago-area rental companies. Lakeside weddings, garden parties and more. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Glencoe, IL. Lakeside weddings, garden parties and more. Request a 2027 quote today.",
     "headline": "Chairs for garden parties and *lakeside* celebrations in Glencoe",
-    "intro": "We help you rent event chairs, tables, linens and more in Glencoe from established Chicago-area rental companies. Whether it is a ceremony near Lake Michigan or a tented reception in a ravine-side yard, setup details are itemized in your quote. Request a quote or book a planning call to reserve a spot in our 2026-27 season.",
+    "intro": "We help you rent event chairs, tables, linens and more in Glencoe. Whether it is a ceremony near Lake Michigan or a tented reception in a ravine-side yard, setup details are itemized in your quote. Request a quote or book a planning call to reserve a spot in our 2026-27 season.",
     "story": [
       "Glencoe is a small village with a big sense of place. Lake Michigan forms its eastern edge, the Chicago Botanic Garden sits on its western side along the Skokie Lagoons, and in between are wooded ravines, winding streets and the Frank Lloyd Wright houses of the Ravine Bluffs neighborhood. Celebrations here tend to be intimate, design-minded and tied closely to the outdoors.",
       "Many events happen at home. Mature lots with sloping lawns, stone terraces and old oaks are ideal for tented receptions, rehearsal dinners and milestone birthdays, but they come with their own puzzles: uneven ground, narrow drives and neighbors close by. Lakefront and park district spaces draw ceremonies and community gatherings, and the downtown near the Metra station is walkable for guests arriving from the city.",
@@ -67,7 +67,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Glencoe, IL?",
-        "a": "You can rent them through us. We book event rentals from established Chicago-area rental companies and deliver to Glencoe homes, parks and event spaces. Share your guest count, location and date in a quote request and we will lay out the options and itemized costs."
+        "a": "You can rent them through us. We rent out chairs, tables, linens and more and deliver to Glencoe homes, parks and event spaces. Share your guest count, location and date in a quote request and we will lay out the options and itemized costs."
       },
       {
         "q": "Do I need a permit for a tent party in Glencoe?",
@@ -105,9 +105,9 @@ export const northCookAreas: Location[] = [
       "60093"
     ],
     "metaTitle": "Event Rentals in Winnetka, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Winnetka, IL from Chicago-area rental companies. Lakeshore weddings, tented parties and more. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Winnetka, IL. Lakeshore weddings, tented parties and more. Request a 2027 quote.",
     "headline": "Chairs for tented parties and *lakeshore* weddings in Winnetka",
-    "intro": "We help you rent event chairs, tables, linens and more in Winnetka from established Chicago-area rental companies. We plan seating for home receptions, village-green gatherings and lakefront events, with every line item shown in your quote. Request a quote or book a planning call to hold your date in our 2026-27 season.",
+    "intro": "We help you rent event chairs, tables, linens and more in Winnetka. We plan seating for home receptions, village-green gatherings and lakefront events, with every line item shown in your quote. Request a quote or book a planning call to hold your date in our 2026-27 season.",
     "story": [
       "Winnetka sits on a bluff above Lake Michigan, with a village center around the Village Green, the Metra Union Pacific North line running through town and shopping districts in Hubbard Woods and Indian Hill. Elder Lane Park and Centennial Park give residents the lakefront, and the Winnetka Community House anchors a lot of milestone gatherings. Winnetka also has quiet pockets around the Skokie Playfield and the historic Crow Island School area, where front-yard and backyard gatherings are the norm.",
       "Because so many homes sit on deep, tree-shaded lots, backyard celebrations carry a lot of weight here: graduation parties, anniversary dinners and weddings under a tent with the lake breeze in the background. The challenge is rarely style. It is access, ground conditions and timing, especially when a street is lined with parked cars and mature trees. Hubbard Woods and Indian Hill give local celebrations a walkable feel, and guests often arrive by the Metra line or on foot.",
@@ -160,7 +160,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Winnetka, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Winnetka homes, parks and event spaces. Tell us your guest count, date and site and we will itemize chairs, tables and linens for you."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Winnetka homes, parks and event spaces. Tell us your guest count, date and site and we will itemize chairs, tables and linens for you."
       },
       {
         "q": "Do I need a permit for a backyard tent in Winnetka?",
@@ -198,9 +198,9 @@ export const northCookAreas: Location[] = [
       "60043"
     ],
     "metaTitle": "Event Rentals in Kenilworth, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Kenilworth, IL from Chicago-area rental companies. Private garden weddings and parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Kenilworth, IL. Private garden weddings and parties. Request a 2027 quote today.",
     "headline": "Chairs for private *garden* celebrations in Kenilworth",
-    "intro": "We help you rent event chairs, tables, linens and more in Kenilworth from established Chicago-area rental companies. Kenilworth events are mostly private and at home, so we plan around your yard, your street and your timing. Request a quote or book a planning call to reserve your date in our 2026-27 season.",
+    "intro": "We help you rent event chairs, tables, linens and more in Kenilworth. Kenilworth events are mostly private and at home, so we plan around your yard, your street and your timing. Request a quote or book a planning call to reserve your date in our 2026-27 season.",
     "story": [
       "Kenilworth is one of the smallest villages on the North Shore, laid out by founder Joseph Sears as a quiet, tree-lined residential community. There is almost no commercial district and little through traffic, which means most celebrations happen in backyards, gardens and private homes rather than at public venues. Kenilworth’s Metra station is a small, charming landmark at the village center, and its walking paths make it easy to imagine guests arriving by train.",
       "That makes planning personal. A graduation party might wrap around a back lawn with a Metra whistle in the distance, a wedding could be a small ceremony on a home terrace, and a holiday gathering might fill the living room and sunroom. Streets are narrow and lined with mature trees, so deliveries need to be gentle and unobtrusive. Because the village has few public gathering spaces, many hosts also borrow nearby Winnetka and Wilmette sites for ceremonies and receptions.",
@@ -253,7 +253,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Kenilworth, IL?",
-        "a": "You can rent them through us. We book event rentals from established Chicago-area rental companies and deliver to Kenilworth homes. Send your guest count, date and yard details in a quote request and we will itemize everything. You can also compare chair styles, linen colors and table sizes in the same quote, which helps when your space is small and every inch counts."
+        "a": "You can rent them through us. We rent out chairs, tables, linens and more and deliver to Kenilworth homes. Send your guest count, date and yard details in a quote request and we will itemize everything. You can also compare chair styles, linen colors and table sizes in the same quote, which helps when your space is small and every inch counts."
       },
       {
         "q": "Do I need a permit for a party in Kenilworth?",
@@ -292,9 +292,9 @@ export const northCookAreas: Location[] = [
       "60065"
     ],
     "metaTitle": "Event Rentals in Northbrook, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Northbrook, IL from Chicago-area rental companies. Bar mitzvahs, weddings and backyard parties. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Northbrook, IL. Bar mitzvahs, weddings and backyard parties. Request a 2027 quote.",
     "headline": "Chairs for bar mitzvahs, weddings and *backyard* parties in Northbrook",
-    "intro": "We help you rent event chairs, tables, linens and more in Northbrook from established Chicago-area rental companies. From a tented bar mitzvah reception to a summer graduation party in a big back yard, we plan your seating and itemize the details in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Northbrook. From a tented bar mitzvah reception to a summer graduation party in a big back yard, we plan your seating and itemize the details in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Northbrook is a family-focused North Shore community along the Skokie River and the Des Plaines River Trail, with a walkable downtown near the Metra Milwaukee District North line, Village Green events and large, leafy residential blocks. It has a long tradition of bar and bat mitzvahs, graduations and big family milestones, and families from many backgrounds each bring their own celebration styles.",
       "Many Northbrook homes sit on generous lots, which makes tented backyard parties common. Others are in subdivisions where the cul-de-sac is the party. Cook County forest preserves and the park district’s Meadowhill and Techny Prairie parks offer open space, and hotel and banquet rooms along Lake Cook Road and Waukegan Road are common for larger events. The Techny Prairie Park area and the Skokie River corridor give Northbrook plenty of green views behind backyard fences.",
@@ -347,7 +347,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Northbrook, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Northbrook homes, banquet rooms and parks. Tell us your guest count and date and we will itemize what you need. Delivery times can be set around caterers and bands, with pickup the next day if your schedule requires it."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Northbrook homes, banquet rooms and parks. Tell us your guest count and date and we will itemize what you need. Delivery times can be set around caterers and bands, with pickup the next day if your schedule requires it."
       },
       {
         "q": "Do I need a permit for a tent party in Northbrook?",
@@ -386,9 +386,9 @@ export const northCookAreas: Location[] = [
       "60026"
     ],
     "metaTitle": "Event Rentals in Glenview, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Glenview, IL from Chicago-area rental companies. Weddings, graduation parties and more. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Glenview, IL. Weddings, graduation parties and more. Request a 2027 quote today.",
     "headline": "Chairs for weddings and *neighborhood* parties in Glenview",
-    "intro": "We help you rent event chairs, tables, linens and more in Glenview from established Chicago-area rental companies. From The Glen to the old village center, we plan seating for backyard receptions, park gatherings and banquet rooms and itemize everything in your quote. Request a quote or book a planning call today.",
+    "intro": "We help you rent event chairs, tables, linens and more in Glenview. From The Glen to the old village center, we plan seating for backyard receptions, park gatherings and banquet rooms and itemize everything in your quote. Request a quote or book a planning call today.",
     "story": [
       "Glenview mixes a classic Chicago suburb with a newer chapter. Downtown Glenview sits along the Metra Milwaukee District North line and Glenview Road, while The Glen, built on the former naval air station, brings modern streets, walking paths and new homes. Parks like Flick Park and Wagner Farm, and the historic Grove with its nature center, give families plenty of room to celebrate.",
       "That variety shapes the calendar. Backyard graduation parties are the backbone of May and June, families from many backgrounds each celebrate milestones their own way, and many weddings are tented in yards or held at banquet rooms along Milwaukee Avenue and Waukegan Road. In the fall, school and fundraising events keep the calendar full. Neighborhoods like Glenview’s old village near the Metra station tend to have older, smaller lots, while the newer parts of town offer deeper yards and wider drives.",
@@ -441,7 +441,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Glenview, IL?",
-        "a": "You can request them through us. We book event rentals from established Chicago-area rental companies and deliver to Glenview homes, parks and banquet spaces. Share your date and guest count and we will itemize your options. Delivery timing can be set around your caterer and entertainment, with pickup after the party."
+        "a": "You can request them through us. We rent out chairs, tables, linens and more and deliver to Glenview homes, parks and banquet spaces. Share your date and guest count and we will itemize your options. Delivery timing can be set around your caterer and entertainment, with pickup after the party."
       },
       {
         "q": "Do I need a permit for a tent in Glenview?",
@@ -479,9 +479,9 @@ export const northCookAreas: Location[] = [
       "60093"
     ],
     "metaTitle": "Event Rentals in Northfield, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Northfield, IL from Chicago-area rental companies. Corporate events, weddings and parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Northfield, IL. Corporate events, weddings and parties. Request a 2027 quote today.",
     "headline": "Chairs for corporate events and *family* parties in Northfield",
-    "intro": "We help you rent event chairs, tables, linens and more in Northfield from established Chicago-area rental companies. Northfield mixes quiet residential streets with a busy office corridor, so we plan seating for both home celebrations and company events. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Northfield. Northfield mixes quiet residential streets with a busy office corridor, so we plan seating for both home celebrations and company events. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Northfield is a small village tucked between Winnetka, Glenview and Northbrook, with Willow Road and Waukegan Road running through it and office parks clustered along the corridors. Residential streets have mature trees and quiet lots, and the village keeps a low profile compared with its neighbors. Its centrally located streets make Northfield a handy meeting point for hosts who draw guests from Winnetka, Glenview and Northbrook.",
       "That combination gives Northfield two kinds of events. At home, you get graduation parties, birthdays and family dinners that overflow the dining room. On the business side, offices and conference spaces host client dinners, training days, retirement parties and holiday gatherings that need seating on short notice. Northfield’s offices and conference rooms host a steady rhythm of corporate dinners, team events and holiday parties throughout the year.",
@@ -534,7 +534,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Northfield, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Northfield homes and offices. Share your date, guest count and site and we will itemize your options. We can also coordinate a single combined quote for several rooms, which helps facilities teams approve everything at once."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Northfield homes and offices. Share your date, guest count and site and we will itemize your options. We can also coordinate a single combined quote for several rooms, which helps facilities teams approve everything at once."
       },
       {
         "q": "Can you provide chairs for a corporate event in Northfield?",
@@ -572,9 +572,9 @@ export const northCookAreas: Location[] = [
       "60015"
     ],
     "metaTitle": "Event Rentals in Deerfield, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Deerfield, IL from Chicago-area rental companies. Bar mitzvahs, weddings and backyard parties. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Deerfield, IL. Bar mitzvahs, weddings and backyard parties. Request a 2027 quote.",
     "headline": "Chairs for family milestones and *backyard* parties in Deerfield",
-    "intro": "We help you rent event chairs, tables, linens and more in Deerfield from established Chicago-area rental companies. From bar and bat mitzvah receptions to graduation parties and village events, we plan your seating and itemize it in your quote. Request a quote or book a planning call to reserve your date in our 2026-27 season.",
+    "intro": "We help you rent event chairs, tables, linens and more in Deerfield. From bar and bat mitzvah receptions to graduation parties and village events, we plan your seating and itemize it in your quote. Request a quote or book a planning call to reserve your date in our 2026-27 season.",
     "story": [
       "Deerfield sits on the Lake County line, a community of tree-lined streets, a walkable downtown around Deerfield Road and Waukegan Road, and lots of parks. Jewett Park and the Deerfield Park District’s fields and pavilions are the backdrop for neighborhood gatherings, while the Lake Cook Road corridor brings offices and hotels to the village’s south edge. Deerfield’s Jewett Park and downtown paths give hosts a pleasant place for wedding photos before the reception.",
       "Family milestones are the heartbeat of the calendar. Bar and bat mitzvahs, graduation parties, anniversaries and weddings with long guest lists are all common, and many families turn a big yard into a full reception with a tent and a dance floor. Fall brings school and community fundraisers, and December is a busy season for holiday parties. Spring is the busy season, when bar mitzvahs and graduation parties overlap, so it pays to plan early with caterers and entertainment.",
@@ -627,7 +627,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Deerfield, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Deerfield homes, parks and banquet rooms. Send your date and guest count and we will itemize options. We can also build the quote around your caterer’s timeline so setup is done before they arrive."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Deerfield homes, parks and banquet rooms. Send your date and guest count and we will itemize options. We can also build the quote around your caterer’s timeline so setup is done before they arrive."
       },
       {
         "q": "Do I need a permit for a tent in Deerfield?",
@@ -665,9 +665,9 @@ export const northCookAreas: Location[] = [
       "60712"
     ],
     "metaTitle": "Event Rentals in Lincolnwood, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Lincolnwood, IL from Chicago-area rental companies. Family milestones, weddings and parties. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Lincolnwood, IL. Family milestones, weddings and parties. Request a 2027 quote.",
     "headline": "Chairs for family milestones and *backyard* simchas in Lincolnwood",
-    "intro": "We help you rent event chairs, tables, linens and more in Lincolnwood from established Chicago-area rental companies. We plan seating for home celebrations, park gatherings and banquet rooms and itemize setup in your quote. Request a quote or book a planning call to hold your date in our 2026-27 season.",
+    "intro": "We help you rent event chairs, tables, linens and more in Lincolnwood. We plan seating for home celebrations, park gatherings and banquet rooms and itemize setup in your quote. Request a quote or book a planning call to hold your date in our 2026-27 season.",
     "story": [
       "Lincolnwood is a compact village on Chicago’s northern edge, bordered by Touhy Avenue, Lincoln Avenue and the North Shore Channel trail. Proesel Park is the heart of the community, with its fields, aquatic center and festival grounds, and the Lincolnwood Town Center and Lincoln Avenue shops give the village a busy commercial spine. Touhy Avenue and Lincoln Avenue give the village its shopping and dining spine, so caterers and bakeries are never far away.",
       "Many celebrations are tied to family and faith. Many Lincolnwood families celebrate faith and family milestones, so weddings, brit and bar mitzvah celebrations, Shabbat dinners and large holiday meals are all common. Many take place at home or in synagogue and hall spaces, and chair counts can run high. The village’s location right next to Chicago’s West Ridge and Devon Avenue shops gives hosts quick access to caterers and bakeries.",
@@ -720,7 +720,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Lincolnwood, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Lincolnwood homes, halls and parks. Share your date and guest count and we will itemize your options. Share your guest count and timing and we will propose a layout that fits your yard, hall or home."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Lincolnwood homes, halls and parks. Share your date and guest count and we will itemize your options. Share your guest count and timing and we will propose a layout that fits your yard, hall or home."
       },
       {
         "q": "Can you work around Shabbat for delivery and pickup?",
@@ -758,9 +758,9 @@ export const northCookAreas: Location[] = [
       "60053"
     ],
     "metaTitle": "Event Rentals in Morton Grove, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Morton Grove, IL from Chicago-area rental companies. Weddings, family parties and more. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Morton Grove, IL. Weddings, family parties and more. Request a 2027 quote today.",
     "headline": "Chairs for weddings and *family* gatherings in Morton Grove",
-    "intro": "We help you rent event chairs, tables, linens and more in Morton Grove from established Chicago-area rental companies. We plan seating for backyard parties, park pavilions and banquet rooms and itemize every detail in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Morton Grove. We plan seating for backyard parties, park pavilions and banquet rooms and itemize every detail in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Morton Grove is a close-knit village between Niles, Skokie and Glenview, with the Metra Milwaukee District North line passing through town and Dempster Street and Waukegan Road serving as its main arteries. Harrer Park, the Prairie View Community Center and the wooded edges of Linne Woods give families a variety of places to gather. Morton Grove’s parks and the Linne Woods forest preserve offer shady picnic spots and leafy backdrops for photos.",
       "The village reflects the Northwest Side’s blend of cultures. Families from many backgrounds call Morton Grove home, and the celebration calendar shows it: debuts and weddings with big guest lists, baptism and communion parties, graduation open houses and holiday dinners that spill from the dining room into the garage. The Dempster Street corridor and the Waukegan Road area also have many restaurants and banquet spaces for the larger parties.",
@@ -813,7 +813,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Morton Grove, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Morton Grove homes, halls and parks. Share your date and guest count and we will itemize options. We can also build the quote around your caterer’s timeline so setup is done before they arrive."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Morton Grove homes, halls and parks. Share your date and guest count and we will itemize options. We can also build the quote around your caterer’s timeline so setup is done before they arrive."
       },
       {
         "q": "Do I need a permit for a tent in Morton Grove?",
@@ -851,9 +851,9 @@ export const northCookAreas: Location[] = [
       "60714"
     ],
     "metaTitle": "Event Rentals in Niles, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Niles, IL from Chicago-area rental companies. Weddings, banquets and family parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Niles, IL. Weddings, banquets and family parties. Request a 2027 quote today.",
     "headline": "Chairs for banquets and *family* celebrations in Niles",
-    "intro": "We help you rent event chairs, tables, linens and more in Niles from established Chicago-area rental companies. Niles is known for its banquet halls and big family parties, so we plan seating for halls, yards and park spaces and itemize it in your quote. Request a quote or book a planning call today.",
+    "intro": "We help you rent event chairs, tables, linens and more in Niles. Niles is known for its banquet halls and big family parties, so we plan seating for halls, yards and park spaces and itemize it in your quote. Request a quote or book a planning call today.",
     "story": [
       "Niles is a busy village along Milwaukee Avenue, home to the Leaning Tower of Niles, a half-size replica of the Leaning Tower of Pisa, Golf Mill Shopping Center and a long strip of restaurants and banquet halls. It borders Chicago’s Northwest Side and runs along the North Branch of the Chicago River and its forest preserves. Niles’ park district sites and the North Branch forest preserve trails nearby offer green space just off the busy Milwaukee Avenue corridor.",
       "Celebrations here are a big part of local life. Families from many backgrounds fill banquet halls on Milwaukee Avenue and Touhy for weddings, christening parties and anniversaries, while smaller homes host graduation parties, birthday parties and holiday gatherings. Chairs often matter at both scales, from a 200-person hall to a patio for twenty. The Leaning Tower of Niles is a local landmark that many families photograph.",
@@ -906,7 +906,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Niles, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Niles halls, homes and parks. Tell us your date and guest count and we will itemize your options. Your quote will list each item and its delivery window, which makes it easy to compare with the hall’s own rental pricing."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Niles halls, homes and parks. Tell us your date and guest count and we will itemize your options. Your quote will list each item and its delivery window, which makes it easy to compare with the hall’s own rental pricing."
       },
       {
         "q": "Can I bring my own chairs to a Niles banquet hall?",
@@ -944,9 +944,9 @@ export const northCookAreas: Location[] = [
       "60068"
     ],
     "metaTitle": "Event Rentals in Park Ridge, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Park Ridge, IL from Chicago-area rental companies. Weddings, graduation parties and more. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Park Ridge, IL. Weddings, graduation parties and more. Request a 2027 quote today.",
     "headline": "Chairs for weddings and *neighborhood* parties in Park Ridge",
-    "intro": "We help you rent event chairs, tables, linens and more in Park Ridge from established Chicago-area rental companies. We plan seating for backyard receptions, park gatherings and community events and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Park Ridge. We plan seating for backyard receptions, park gatherings and community events and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Park Ridge has a small-town feel in the shadow of O’Hare. Uptown Park Ridge is anchored by the Metra Union Pacific Northwest line station, the historic Pickwick Theatre building and Northwest Highway, while neighborhoods of brick bungalows and Tudors spread out around Centennial Park. Jets overhead are part of the soundtrack. Park Ridge’s tree-lined blocks near Uptown and the Metra station give wedding guests an easy walk between ceremony and reception.",
       "That sets the tone for events. Park Ridge families host communion parties, graduation open houses, anniversary dinners and big backyard birthdays, and weddings often pair a church ceremony with a banquet hall or a tented yard. Many streets are tree-lined and busy with parked cars, so setup takes thought. Park Ridge is also a town of long-time families, so graduation open houses and anniversary parties draw large extended crowds.",
@@ -999,7 +999,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Park Ridge, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Park Ridge homes, halls and parks. Share your date and guest count and we will itemize options. The park district handles pavilions, and the city handles tents and street use, so check with both if your plans involve them."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Park Ridge homes, halls and parks. Share your date and guest count and we will itemize options. The park district handles pavilions, and the city handles tents and street use, so check with both if your plans involve them."
       },
       {
         "q": "Do I need a permit for a tent in Park Ridge?",
@@ -1038,9 +1038,9 @@ export const northCookAreas: Location[] = [
       "60018"
     ],
     "metaTitle": "Event Rentals in Des Plaines, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Des Plaines, IL from Chicago-area rental companies. Weddings, family parties and more. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Des Plaines, IL. Weddings, family parties and more. Request a 2027 quote today.",
     "headline": "Chairs for riverside gatherings and *family* parties in Des Plaines",
-    "intro": "We help you rent event chairs, tables, linens and more in Des Plaines from established Chicago-area rental companies. We plan seating for backyard parties, park pavilions and banquet rooms and itemize everything in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Des Plaines. We plan seating for backyard parties, park pavilions and banquet rooms and itemize everything in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Des Plaines takes its name from the river that curves through town, with riverside parks, the Des Plaines River Trail and Cook County forest preserves on its edge. Downtown near the Metra Union Pacific Northwest line has the Des Plaines Theatre and Lee Street. O’Hare is just to the south.",
       "The city’s diverse families share a busy social calendar. Quinceanera and wedding receptions in banquet halls, backyard graduation parties, baptisms, and large holiday meals are all common, and parks such as Rand Park and Lake Opeka are popular for family picnics and reunions. Des Plaines’ riverside trails, Lake Opeka and the Des Plaines History Center give the city a strong sense of place that locals celebrate.",
@@ -1093,7 +1093,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Des Plaines, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Des Plaines homes, halls and parks. Tell us your date and guest count and we will itemize options. Your quote will show each item and delivery window, so you can compare with the hall’s own rental costs."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Des Plaines homes, halls and parks. Tell us your date and guest count and we will itemize options. Your quote will show each item and delivery window, so you can compare with the hall’s own rental costs."
       },
       {
         "q": "Do I need a permit for a party in a Des Plaines park or forest preserve?",
@@ -1131,9 +1131,9 @@ export const northCookAreas: Location[] = [
       "60056"
     ],
     "metaTitle": "Event Rentals in Mount Prospect, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Mount Prospect, IL from Chicago-area rental companies. Weddings, parties and more. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Mount Prospect, IL. Weddings, parties and more. Request a 2027 quote today.",
     "headline": "Chairs for weddings and *neighborhood* parties in Mount Prospect",
-    "intro": "We help you rent event chairs, tables, linens and more in Mount Prospect from established Chicago-area rental companies. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Mount Prospect. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Mount Prospect grew around the Metra Union Pacific Northwest line, and its downtown, with Northwest Highway, Main Street and the Village Hall area, is a lively core. Lions Park and the Randhurst Village shopping area round out the picture, and Busse Woods is close by for weekend picnics. Lions Park and the Mount Prospect Park District’s other green spaces make easy backdrops for family photos.",
       "The village is diverse, with families from many backgrounds celebrating here, so weddings, quinceaneras, graduation parties and religious holidays all fill the calendar. Yards range from compact bungalow lots to deeper lots with mature trees, so tent and table planning needs to be specific. Downtown Mount Prospect’s train station and Main Street give out-of-town guests an easy way to arrive.",
@@ -1186,7 +1186,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Mount Prospect, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Mount Prospect homes, halls and parks. Share your date and guest count and we will itemize options. Your quote will list each item, delivery timing and pickup so you can compare it easily."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Mount Prospect homes, halls and parks. Share your date and guest count and we will itemize options. Your quote will list each item, delivery timing and pickup so you can compare it easily."
       },
       {
         "q": "Do I need a permit for a tent in Mount Prospect?",
@@ -1224,9 +1224,9 @@ export const northCookAreas: Location[] = [
       "60070"
     ],
     "metaTitle": "Event Rentals in Prospect Heights, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Prospect Heights, IL from Chicago-area rental companies. Weddings, banquets and family parties. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Prospect Heights, IL. Weddings, banquets and family parties. Request a 2027 quote.",
     "headline": "Chairs for banquet receptions and *backyard* parties in Prospect Heights",
-    "intro": "We help you rent event chairs, tables, linens and more in Prospect Heights from established Chicago-area rental companies. We plan seating for halls, yards and park spaces and itemize everything in your quote. Request a quote or book a planning call to hold your date in our 2026-27 season.",
+    "intro": "We help you rent event chairs, tables, linens and more in Prospect Heights. We plan seating for halls, yards and park spaces and itemize everything in your quote. Request a quote or book a planning call to hold your date in our 2026-27 season.",
     "story": [
       "Prospect Heights sits between Arlington Heights, Wheeling, Mount Prospect and the Des Plaines River, with Elmhurst Road, Palatine Road and Camp McDonald Road carrying much of the traffic. The Des Plaines River Trail and the Cook County forest preserves along the river give the area a green edge, while Chicago Executive Airport is nearby. It is also a convenient meeting point for guests from Arlington Heights and Wheeling.",
       "It is a community of mixed housing, from ranches and split-levels to townhome clusters, and a busy calendar of family celebrations. Families from many backgrounds host weddings, baptisms, communions and graduation parties, often combining a ceremony at a nearby church with a reception in a banquet hall or a tented yard. Weekends fill with parish and family events through spring and summer, so calendars get busy early.",
@@ -1279,7 +1279,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Prospect Heights, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Prospect Heights homes, halls and parks. Share your date, guest count and site and we will itemize your options clearly. Tell us the details."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Prospect Heights homes, halls and parks. Share your date, guest count and site and we will itemize your options clearly. Tell us the details."
       },
       {
         "q": "Do I need a permit for a tent in Prospect Heights?",
@@ -1317,9 +1317,9 @@ export const northCookAreas: Location[] = [
       "60090"
     ],
     "metaTitle": "Event Rentals in Wheeling, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Wheeling, IL from Chicago-area rental companies. Weddings, banquets and family parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Wheeling, IL. Weddings, banquets and family parties. Request a 2027 quote today.",
     "headline": "Chairs for banquets, weddings and *family* parties in Wheeling",
-    "intro": "We help you rent event chairs, tables, linens and more in Wheeling from established Chicago-area rental companies. We plan seating for banquet halls, backyard parties and park spaces and itemize it in your quote. Request a quote or book a planning call to reserve your date in our 2026-27 season.",
+    "intro": "We help you rent event chairs, tables, linens and more in Wheeling. We plan seating for banquet halls, backyard parties and park spaces and itemize it in your quote. Request a quote or book a planning call to reserve your date in our 2026-27 season.",
     "story": [
       "Wheeling runs along the Des Plaines River, with a historic downtown on Milwaukee Avenue and a stretch of restaurants known locally as Restaurant Row. Dundee Road and Palatine Road cross the village, the Metra North Central Service stops in the village, and Chicago Executive Airport lies within its borders. Downtown Wheeling’s Milwaukee Avenue corridor offers a walkable dining scene and a river trail nearby.",
       "Wheeling is a diverse northwest suburb with families from many backgrounds. That shows up in an eventful calendar: quinceaneras and weddings in banquet halls, baptism and communion parties, graduation open houses and community festivals. Park district spaces and the river trail see plenty of family picnics. Many families attend church services in the morning and move to a hall or yard by afternoon.",
@@ -1372,7 +1372,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Wheeling, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Wheeling halls, homes and parks. Share your date, guest count and site and we will itemize options for you. We can also add linens."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Wheeling halls, homes and parks. Share your date, guest count and site and we will itemize options for you. We can also add linens."
       },
       {
         "q": "Do I need a permit for a tent in Wheeling?",
@@ -1410,9 +1410,9 @@ export const northCookAreas: Location[] = [
       "60089"
     ],
     "metaTitle": "Event Rentals in Buffalo Grove, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Buffalo Grove, IL from Chicago-area rental companies. Weddings, mitzvahs and parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Buffalo Grove, IL. Weddings, mitzvahs and parties. Request a 2027 quote today.",
     "headline": "Chairs for mitzvahs, weddings and *backyard* parties in Buffalo Grove",
-    "intro": "We help you rent event chairs, tables, linens and more in Buffalo Grove from established Chicago-area rental companies. From tented backyard receptions to park pavilions, we plan your seating and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Buffalo Grove. From tented backyard receptions to park pavilions, we plan your seating and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Buffalo Grove straddles the Cook and Lake County line, with Lake Cook Road, Arlington Heights Road and Dundee Road marking its main routes. The village is known for tidy subdivisions, Mike Rylko Community Park, Willow Stream Park and Buffalo Grove Golf Club, along with the annual Buffalo Grove Days festival around Labor Day. Buffalo Grove Days and the village’s parks give the community a lively late-summer rhythm.",
       "It is a family-centered place with families from many backgrounds, so bar and bat mitzvahs, South Asian weddings, graduation parties and religious festivals all fill the calendar. Many homes have good-sized yards, and cul-de-sacs often host large block parties. Dundee Road, Lake Cook Road and the nearby Metra stations make it easy for out-of-town guests to find their way, but plan generous drive times on Saturdays and during school events.",
@@ -1465,7 +1465,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Buffalo Grove, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Buffalo Grove homes, parks and banquet rooms. Share your date and guest count and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Buffalo Grove homes, parks and banquet rooms. Share your date and guest count and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Do I need a permit for a tent in Buffalo Grove?",
@@ -1504,9 +1504,9 @@ export const northCookAreas: Location[] = [
       "60074"
     ],
     "metaTitle": "Event Rentals in Palatine, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Palatine, IL from Chicago-area rental companies. Weddings, graduations and family parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Palatine, IL. Weddings, graduations and family parties. Request a 2027 quote today.",
     "headline": "Chairs for weddings and *neighborhood* parties in Palatine",
-    "intro": "We help you rent event chairs, tables, linens and more in Palatine from established Chicago-area rental companies. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Palatine. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Palatine is a northwest suburb with a classic downtown around the Metra Union Pacific Northwest station, the Palatine Public Library and Smith Street. Harper College, Deer Grove Forest Preserve and the Palatine Hills Golf Course add open space and community life, and Northwest Highway and Rand Road tie the village together. Palatine’s Harper College, Deer Grove and downtown shops offer plenty of nearby spots for photos and gatherings.",
       "Families celebrate in all sorts of places. Graduation parties fill neighborhood yards, communion and baptism parties spill into church halls, and weddings combine a ceremony with banquet halls or tented receptions. Palatine families come from many backgrounds, each with their own celebration traditions. Several local churches and halls host receptions all year.",
@@ -1559,7 +1559,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Palatine, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Palatine homes, halls and parks. Share your date, guest count and site and we will itemize options for you. We can also add linens."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Palatine homes, halls and parks. Share your date, guest count and site and we will itemize options for you. We can also add linens."
       },
       {
         "q": "Do I need a permit for a tent in Palatine?",
@@ -1597,9 +1597,9 @@ export const northCookAreas: Location[] = [
       "60008"
     ],
     "metaTitle": "Event Rentals in Rolling Meadows, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Rolling Meadows, IL from Chicago-area rental companies. Corporate events, parties and weddings. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Rolling Meadows, IL. Corporate events, parties and weddings. Request a 2027 quote.",
     "headline": "Chairs for corporate events and *family* parties in Rolling Meadows",
-    "intro": "We help you rent event chairs, tables, linens and more in Rolling Meadows from established Chicago-area rental companies. We plan seating for office events, yards and park pavilions and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Rolling Meadows. We plan seating for office events, yards and park pavilions and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Rolling Meadows is a mid-century planned community along Salt Creek, with a mix of office parks along Algonquin Road and Golf Road, neighborhoods of ranches and split-levels, and the Cook County courthouse. Kirchoff Road and Plum Grove Road tie it together, and Salt Creek flows through town. Salt Creek and neighborhood parks add green space between the office parks.",
       "That mix creates two event worlds. At home, Rolling Meadows families host graduation parties, birthdays and weddings, with tents in medium yards. At work, nearby offices host client dinners, training days, retirement celebrations and holiday parties, often with tight load-in windows and floor plans. Plan carefully for rush hour on Algonquin Road, since delivery trucks and commuters share the same lanes.",
@@ -1652,7 +1652,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Rolling Meadows, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Rolling Meadows homes, offices and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Rolling Meadows homes, offices and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Can you provide chairs for a corporate event in Rolling Meadows?",
@@ -1692,9 +1692,9 @@ export const northCookAreas: Location[] = [
       "60194"
     ],
     "metaTitle": "Event Rentals in Hoffman Estates, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Hoffman Estates, IL from Chicago-area rental companies. Weddings, South Asian events and parties. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Hoffman Estates, IL. Weddings, South Asian events and parties. Request a 2027 quote.",
     "headline": "Chairs for weddings and *family* celebrations in Hoffman Estates",
-    "intro": "We help you rent event chairs, tables, linens and more in Hoffman Estates from established Chicago-area rental companies. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Hoffman Estates. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Hoffman Estates is a large northwest suburb bounded by Higgins Road, Barrington Road and the Poplar Creek and Paul Douglas forest preserves. The former Sears headquarters campus in Prairie Stone, Poplar Creek and neighborhoods of ranches, two-stories and townhomes define its look. Poplar Creek and Paul Douglas preserves give families trails, ponds and picnic spots right in town, though group use needs a permit from the county.",
       "The village is home to families from many backgrounds. South Asian weddings, receptions and religious gatherings are a big part of the calendar, as are graduation parties and birthdays with large guest lists. Halls, backyards and park spaces all see heavy use. Mehndi, sangeet, ceremony and reception events often require different seating setups on different days.",
@@ -1747,7 +1747,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Hoffman Estates, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Hoffman Estates homes, halls and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Hoffman Estates homes, halls and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Can you provide seating for a South Asian wedding in Hoffman Estates?",
@@ -1785,9 +1785,9 @@ export const northCookAreas: Location[] = [
       "60107"
     ],
     "metaTitle": "Event Rentals in Streamwood, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Streamwood, IL from Chicago-area rental companies. Quinceaneras, weddings and parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Streamwood, IL. Quinceaneras, weddings and parties. Request a 2027 quote today.",
     "headline": "Chairs for quinceaneras and *backyard* parties in Streamwood",
-    "intro": "We help you rent event chairs, tables, linens and more in Streamwood from established Chicago-area rental companies. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Streamwood. We plan seating for yards, park pavilions and banquet rooms and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Streamwood is a suburb of neighborhood parks and Poplar Creek, with Bartlett Road, Irving Park Road and Schaumburg Road as its main routes. Neighborhood parks and the nearby Poplar Creek Forest Preserve give it a green side, and the village has a strong, family-friendly feel. Neighborhood parks are pleasant spots for photos and birthday picnics. Summer festivals and neighborhood block parties keep the calendar full.",
       "Families from many backgrounds make Streamwood a busy place for celebrations. Quinceaneras, weddings, graduation parties, baptisms and birthday parties often fill backyards, garages and park pavilions, and halls in nearby Hanover Park and Schaumburg are common choices for big receptions. Weekend afternoons are busy on Bartlett Road, so plan deliveries earlier in the day. Barrington Road and Irving Park Road feed many guests in from nearby suburbs, so it helps to share a clear address and parking plan.",
@@ -1840,7 +1840,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Streamwood, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Streamwood homes, halls and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Streamwood homes, halls and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Do I need a permit for a tent in Streamwood?",
@@ -1878,9 +1878,9 @@ export const northCookAreas: Location[] = [
       "60007"
     ],
     "metaTitle": "Event Rentals in Elk Grove Village, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Elk Grove Village, IL from Chicago-area rental companies. Corporate events, weddings and parties. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Elk Grove Village, IL. Corporate events, weddings and parties. Request a 2027 quote.",
     "headline": "Chairs for company events and *family* parties in Elk Grove Village",
-    "intro": "We help you rent event chairs, tables, linens and more in Elk Grove Village from established Chicago-area rental companies. We plan seating for office and industrial park events, backyard parties and park spaces and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Elk Grove Village. We plan seating for office and industrial park events, backyard parties and park spaces and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Elk Grove Village is best known for its enormous business park, one of the largest industrial parks in the country, next to O’Hare. Residential neighborhoods fill in the rest of the village, with Busse Woods, also known as the Ned Brown Preserve, along its western side, Salt Creek running through, and Higgins Road, Arlington Heights Road and Landmeier Road as main routes. Salt Creek winds through the village, and Busse Lake is a local favorite.",
       "That mix of business and neighborhoods gives the village two event cultures. Companies host open houses, safety awards, retirement parties and holiday gatherings in conference rooms and warehouse spaces, while residents plan graduation parties, birthdays and weddings in yards and at nearby halls. The Elk Grove Park District also hosts community festivals, and Busse Lake draws picnics all summer. Elk Grove Village’s mix of industrial and residential land keeps traffic patterns busy during weekday rush hours.",
@@ -1933,7 +1933,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Elk Grove Village, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Elk Grove Village homes, offices and parks. Share your date, guest count and site and we will itemize options. We can also add linens."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Elk Grove Village homes, offices and parks. Share your date, guest count and site and we will itemize options. We can also add linens."
       },
       {
         "q": "Can you provide chairs for a company event in an industrial park?",
@@ -1972,9 +1972,9 @@ export const northCookAreas: Location[] = [
       "60010"
     ],
     "metaTitle": "Event Rentals in Inverness, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Inverness, IL from Chicago-area rental companies. Estate weddings and garden parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Inverness, IL. Estate weddings and garden parties. Request a 2027 quote today.",
     "headline": "Chairs for estate weddings and *garden* parties in Inverness",
-    "intro": "We help you rent event chairs, tables, linens and more in Inverness from established Chicago-area rental companies. We plan seating for estate lawns, tented receptions and private gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Inverness. We plan seating for estate lawns, tented receptions and private gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Inverness is a quiet northwest village of large lots, winding roads and mature trees, set between Palatine, Barrington and the Deer Grove Forest Preserve. Palatine Road and Barrington Road are the main routes, and many homes sit well back from the street behind long drives and wooded yards. Inverness’s wooded roads and large lots mean many gatherings feel like private retreats.",
       "Events here tend to be private and spread-out. Weddings under a tent on an estate lawn, graduation parties with a hundred guests, and charity luncheons in a garden are all common. Because lots are large, guests, caterers and rental trucks often need a clear path, and the ground can be uneven or slow to drain. A quiet village needs quiet delivery, so we plan early arrival windows and tidy crews.",
@@ -2027,7 +2027,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Inverness, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Inverness homes and estates. Share your date, guest count and site and we will itemize options. We can also add linens and tables. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Inverness homes and estates. Share your date, guest count and site and we will itemize options. We can also add linens and tables. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Do I need a permit for a tent in Inverness?",
@@ -2065,9 +2065,9 @@ export const northCookAreas: Location[] = [
       "60010"
     ],
     "metaTitle": "Event Rentals in South Barrington, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in South Barrington, IL from Chicago-area rental companies. Weddings, estate parties and more. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in South Barrington, IL. Weddings, estate parties and more. Request a 2027 quote today.",
     "headline": "Chairs for weddings and *estate* gatherings in South Barrington",
-    "intro": "We help you rent event chairs, tables, linens and more in South Barrington from established Chicago-area rental companies. We plan seating for estate lawns, tented receptions and larger community events and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in South Barrington. We plan seating for estate lawns, tented receptions and larger community events and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "South Barrington is a low-density village of large homes and wooded lots, set along Barrington Road, Algonquin Road and Higgins Road. The Arboretum of South Barrington shopping area make it a hub for the northwest suburbs, and the Spring Creek Reservoir Forest Preserve is nearby. Barrington Road traffic can be heavy on weekends.",
       "Celebrations tend to be spacious. Weddings in tents on big lawns, graduation parties with large guest lists and multi-day family celebrations are common. Many neighborhoods have homeowner association rules and long shared drives, so planning matters. The Arboretum of South Barrington draws weekend shoppers, so traffic on Barrington Road near Algonquin Road can slow things down. We build extra time into delivery windows and prefer early arrival so tents and tables are set before guests arrive.",
@@ -2120,7 +2120,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in South Barrington, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to South Barrington homes and estates. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to South Barrington homes and estates. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Do I need a permit for a tent in South Barrington?",
@@ -2158,9 +2158,9 @@ export const northCookAreas: Location[] = [
       "60706"
     ],
     "metaTitle": "Event Rentals in Harwood Heights, IL | Chairs & Tables",
-    "metaDescription": "Rent event chairs, tables and linens in Harwood Heights, IL from Chicago-area rental companies. Weddings, family parties and banquets. Request a 2027 quote.",
+    "metaDescription": "Rent event chairs, tables and linens in Harwood Heights, IL. Weddings, family parties and banquets. Request a 2027 quote.",
     "headline": "Chairs for banquets and *family* parties in Harwood Heights",
-    "intro": "We help you rent event chairs, tables, linens and more in Harwood Heights from established Chicago-area rental companies. We plan seating for banquet halls, backyards and church gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Harwood Heights. We plan seating for banquet halls, backyards and church gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Harwood Heights is a small village surrounded by Chicago’s Northwest Side and its neighbor Norridge, with Lawrence Avenue and Harlem Avenue as its main streets. The CTA Blue Line stops nearby at Harlem, and the village is a few minutes from Edison Park, Norwood Park and Park Ridge. Many guests come from the surrounding Northwest Side, so parking and drop-off are worth planning.",
       "Family and church traditions shape the celebration calendar. Weddings, christenings, communions, name-day parties and anniversaries often start in a church and end in a banquet hall or a backyard. Lots are compact, and homes sit close together, so tent and table layouts need care. Restaurants and shops in nearby Chicago neighborhoods mean many hosts pair a Harwood Heights home with a neighborhood reception.",
@@ -2213,7 +2213,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Harwood Heights, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Harwood Heights homes, halls and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Harwood Heights homes, halls and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Do I need a permit for a tent in Harwood Heights?",
@@ -2251,9 +2251,9 @@ export const northCookAreas: Location[] = [
       "60706"
     ],
     "metaTitle": "Event Rentals in Norridge, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Norridge, IL from Chicago-area rental companies. Weddings, banquets and family parties. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Norridge, IL. Weddings, banquets and family parties. Request a 2027 quote today.",
     "headline": "Chairs for weddings and *family* banquets in Norridge",
-    "intro": "We help you rent event chairs, tables, linens and more in Norridge from established Chicago-area rental companies. We plan seating for banquet halls, backyards and church gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Norridge. We plan seating for banquet halls, backyards and church gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Norridge is a village completely surrounded by Chicago’s Northwest Side and by Harwood Heights, with Harlem Avenue, Irving Park Road and Cumberland Avenue as its main arteries. Harlem Irving Plaza anchors shopping at the corner, and the CTA Blue Line stops at Harlem and Cumberland nearby. Harlem Irving Plaza is a handy meeting point for out-of-town guests. Norridge streets are lined with compact homes that suit family parties well.",
       "Families here celebrate in many traditions. Weddings, communions, anniversaries and graduation parties are mostly celebrated in church halls, banquet rooms and backyards, and many families host both a ceremony and a reception within a mile of home. The Blue Line stops nearby, so some guests arrive by train.",
@@ -2306,7 +2306,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Norridge, IL?",
-        "a": "Request a quote with us. We book event rentals from established Chicago-area rental companies and deliver to Norridge homes, halls and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote with us. We rent out chairs, tables, linens and more and deliver to Norridge homes, halls and parks. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Do I need a permit for a tent in Norridge?",
@@ -2344,9 +2344,9 @@ export const northCookAreas: Location[] = [
       "60018"
     ],
     "metaTitle": "Event Rentals in Rosemont, IL | Chairs, Tables & More",
-    "metaDescription": "Rent event chairs, tables and linens in Rosemont, IL from Chicago-area rental companies. Conventions, galas and corporate events. Request a 2027 quote today.",
+    "metaDescription": "Rent event chairs, tables and linens in Rosemont, IL. Conventions, galas and corporate events. Request a 2027 quote today.",
     "headline": "Chairs for conventions, galas and *company* events in Rosemont",
-    "intro": "We help you rent event chairs, tables, linens and more in Rosemont from established Chicago-area rental companies. We plan seating for hotel ballrooms, convention events and corporate gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
+    "intro": "We help you rent event chairs, tables, linens and more in Rosemont. We plan seating for hotel ballrooms, convention events and corporate gatherings and itemize it in your quote. Request a quote or book a planning call to reserve your date.",
     "story": [
       "Rosemont is a small village with a very big events footprint. It sits beside O’Hare, between the Kennedy Expressway and the Tri-State Tollway, and it is home to the Donald E. Stephens Convention Center, the Rosemont Theatre, Allstate Arena and the Parkway Bank Park entertainment district. The CTA Blue Line stops right in town. Out-of-town guests often arrive by air.",
       "Because of that, most events here are business events: trade shows, association meetings, galas, awards dinners, holiday parties and hotel ballroom banquets. Out-of-town guests arrive by air or rail, so schedules are tight and load-in windows are firm. Smaller community events also happen at local parks and homes. The CTA Blue Line serves the village, which helps attendees reach events.",
@@ -2399,7 +2399,7 @@ export const northCookAreas: Location[] = [
     "faqs": [
       {
         "q": "Where can I rent tables and chairs in Rosemont, IL?",
-        "a": "Request a quote through us. We book event rentals from established Chicago-area rental companies and deliver to Rosemont hotels, offices and event spaces. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
+        "a": "Request a quote through us. We rent out chairs, tables, linens and more and deliver to Rosemont hotels, offices and event spaces. Share your date, guest count and site and we will itemize options. We can also add linens. Include your preferred linen colors and we will itemize them as well."
       },
       {
         "q": "Can you provide chairs for a convention or trade show event?",

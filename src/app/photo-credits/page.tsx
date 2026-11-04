@@ -42,12 +42,12 @@ export default function PhotoCreditsPage() {
           . Thank you to every photographer below.
         </p>
         <p className="mt-4 text-muted">
-          They are marked &ldquo;Example photo&rdquo; because they show the type of item, not our rental partners&rsquo;
-          exact stock. Want to see the actual piece? Ask in your{" "}
+          They are marked &ldquo;Example photo&rdquo; because they show the type of item, not the
+          exact piece you&rsquo;ll get. Want to see the actual piece? Ask in your{" "}
           <Link href="/quote?from=photo-credits" className="link-line">
             quote request
           </Link>{" "}
-          and we&rsquo;ll send photos from the rental partner.
+          and we&rsquo;ll send photos of the actual items.
         </p>
       </div>
       <ul className="mt-14 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">

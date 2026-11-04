@@ -13,7 +13,7 @@ import { seo } from "@/lib/seo";
 export const metadata: Metadata = seo({
   title: { absolute: "Beyond Chiavari | Chicago Event Rentals: Chairs, Tables, Tents" },
   description:
-    "Chicago event rentals in one quote: chairs, tables, linens, dinnerware, tents and more from trusted local rental houses, with prices up front and delivery and setup.",
+    "Chicago event rentals in one quote: chairs, tables, linens, dinnerware, tents and more, with prices up front and delivery and setup.",
   alternates: { canonical: "/" },
 });
 
@@ -29,7 +29,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How does pricing work?",
-    a: "Every item shows its rental price per piece or per set, and your quote totals as you pick. Item prices are the rental company's own price, with no markup. Our coordination is one flat fee per event ($295, or $495 over 200 guests), paid only after every company confirms. Delivery, setup and any venue fees are itemized before you confirm.",
+    a: "Every item shows its rental price per piece or per set, and your quote totals as you pick. Item prices are our own prices for a one-day rental, and there's no separate booking fee. Delivery, setup, damage waiver and tax are itemized before you book, and a 50% deposit reserves your date.",
   },
   {
     q: "Do I pay anything to get a quote?",
@@ -55,9 +55,9 @@ export default function Home() {
             </p>
             <h1 className="display-1 mt-5">Rent everything for your event in one quote</h1>
             <p className="lede mt-6 max-w-xl" data-answer>
-              Chairs, tables, linens, dishes, tents and lighting from established {site.market}-area rental companies,
-              at each company&apos;s own price. Pick what you need and see the total as you go. We book it all and
-              handle delivery, setup and pickup for one flat fee, paid only after every company confirms.
+              Chairs, tables, linens, dishes, tents and lighting for events across {site.market} and the suburbs, with
+              every price on the site. Pick what you need and see the total as you go. We handle delivery, setup and
+              pickup, and there&apos;s no separate booking fee.
             </p>
             <div className="cta-row mt-8 items-center">
               <Link href="/quote?from=home-hero" className="btn-primary btn-lg">
@@ -131,8 +131,8 @@ export default function Home() {
             <span className="eyebrow">150 to 400 guests</span>
             <span className="display-2 mt-3 block">Planning a big wedding, sangeet or quinceañera?</span>
             <span className="lede mt-4 block">
-              Big celebrations usually need three or four rental companies. We book all of them, line up delivery times and
-              check every delivery on the day, for one flat fee paid after they all confirm.
+              Big celebrations need chairs, tables, linens, a tent and more. We put it all on one order, line up delivery
+              times and check every delivery on the day.
             </span>
             <span className="link-line mt-6 inline-flex">
               How we handle big celebrations <Icon name="arrow" size={16} />
@@ -145,15 +145,15 @@ export default function Home() {
       <Section
         eyebrow="How it works"
         title="How booking works"
-        intro="Instead of calling five rental companies, make one list and send it to us."
+        intro="Instead of calling around, make one list and send it to us."
         action={<Link href="/how-it-works" className="link-line">More detail <Icon name="arrow" size={16} /></Link>}
       >
         <StepFlow
-          caption={`How booking event rentals with ${site.name} works: pick your rentals, see prices, we book the rental companies, then everything is delivered, set up and collected.`}
+          caption={`How booking event rentals with ${site.name} works: pick your rentals, see prices, we confirm your date, then everything is delivered, set up and collected.`}
           steps={[
             { icon: "search", title: "Pick your rentals", text: "Browse by category or start from a package." },
             { icon: "quote", title: "See prices as you go", text: "Your quote adds up as you pick." },
-            { icon: "users", title: "We book it", text: "We check dates with local rental companies." },
+            { icon: "users", title: "We confirm it", text: "We check your date and send a written quote." },
             { icon: "truck", title: "Delivered & set up", text: "Dropped off, set up and picked up after." },
           ]}
         />

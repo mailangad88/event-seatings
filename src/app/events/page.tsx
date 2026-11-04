@@ -62,7 +62,7 @@ export default function EventsPage() {
         faqs={[
           { q: "What rentals do I need for an event in Chicago?", a: "Most events need seating, tables and linens; sit-down meals add dinnerware, flatware and glassware; outdoor events often add a tent, lighting, heaters and a dance floor. Each event page lists the usual quantities for that occasion." },
           { q: "How many chairs do I need per guest?", a: "One chair per seated guest plus 3 to 5% spares. If the ceremony and reception run in different spaces at the same time, you need two sets, or a flip fee to move one set during cocktail hour." },
-          { q: "Can I get everything on one quote?", a: "Yes. Pick chairs, tables, linens, tableware, tents and extras in the quote builder and send one request. We confirm each item with partner rental companies and send one itemized proposal." },
+          { q: "Can I get everything on one quote?", a: "Yes. Pick chairs, tables, linens, tableware, tents and extras in the quote builder and send one request. We confirm every item for your date and send one itemized quote." },
           { q: "How much do event rentals cost for 100 guests?", a: "It depends on the style. A basic setup of folding chairs, banquet tables and linens can start around a few hundred dollars plus delivery, while Chiavari chairs, specialty linens and full tableware for 100 guests usually run into the low thousands. The quote builder shows a live total." },
         ]}
         title="Planning rentals for your event"

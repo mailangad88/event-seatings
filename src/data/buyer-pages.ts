@@ -6,9 +6,9 @@ import type { Faq } from "@/components/ui/FaqList";
 // answers real buyer questions and ends in one call to action.
 //
 // Facts rule: everything here is either general practice a planner can check, our own published terms
-// (rental companies' own prices, flat $295/$495 fee per event, nothing charged until every company confirms), or comes from our Nov 2026 vendor research
+// (our own item prices, 50% deposit to book, no separate booking fee), or comes from our Nov 2026 market research
 // (docs/vendor-research.md, /mnt/project-files/research/vendors). Vendors are described, never named,
-// because they are our partners. Search volumes are NOT measured yet: `phrase` is the target, and the
+// because they are our suppliers. Search volumes are NOT measured yet: `phrase` is the target, and the
 // volume/difficulty columns get filled from Search Console or Keyword Planner once those accounts exist.
 
 export type BuyerPage = {
@@ -79,9 +79,9 @@ export const buyerPages: BuyerPage[] = [
     ],
     faqs: [
       { q: "How long does an event rental quote take in Chicago?", a: "Companies that quote by phone or form often reply in one to three business days. Our builder shows prices as you pick, and the confirmed proposal for your date usually arrives within one business day." },
-      { q: "Do I have to pay to get a quote?", a: "No. A quote is free and holds nothing. With us, nothing is charged until a rental company confirms your date and you approve the proposal." },
+      { q: "Do I have to pay to get a quote?", a: "No. A quote is free and holds nothing. With us, nothing is charged until we confirm your date and you approve your written quote." },
       { q: "Can I get one quote for chairs, tables, linens and tents?", a: "Yes. Our catalog covers 19 categories from Chicago-area rental houses, so one list can include chairs, tables, linens, tableware, tents, lighting and more." },
-      { q: "What if an item I want is not on the site?", a: "Add it to the notes on your quote. We ask our rental partners and include it in the proposal if one of them carries it." },
+      { q: "What if an item I want is not on the site?", a: "Add it to the notes on your quote. We look for it and include it in your quote if we can get it." },
     ],
     cta: { title: "Price your whole list now", text: "Pick items, see prices as you go, and send it once. No payment until you approve." },
     related: [
@@ -147,7 +147,7 @@ export const buyerPages: BuyerPage[] = [
       { q: "What is a damage waiver on a rental quote?", a: "A fee, usually a percentage of the rental, that covers accidental damage beyond normal wear. It rarely covers loss or theft. Ask what it excludes before you compare totals." },
       { q: "Is the cheapest rental quote usually the best?", a: "Only if it includes the same delivery, setup, waiver and rental period. The lowest item price often comes with separate delivery and setup fees." },
       { q: "Should I ask for setup to be included?", a: "If your venue has no staff to place chairs and tables, yes. Ask whether setup means placed in your layout or dropped stacked near the door." },
-      { q: "How does a Beyond Chiavari proposal show these lines?", a: "Every item, delivery, setup and policy is listed separately, with our flat booking fee as its own line, so you can compare it with any other quote." },
+      { q: "How does a Beyond Chiavari proposal show these lines?", a: "Every item, delivery, setup and policy is listed separately, with no separate booking fee, so you can compare it with any other quote." },
     ],
     cta: { title: "Get a quote that is already itemized", text: "Every line on one list: items, delivery, setup and fees. Compare it with anything." },
     related: [
@@ -307,41 +307,41 @@ export const buyerPages: BuyerPage[] = [
   {
     kind: "compare",
     slug: "marketplace-vs-calling-rental-companies",
-    phrase: "event rental marketplace vs rental company",
-    title: "Booking Through Us vs Calling Rental Companies Yourself",
+    phrase: "one event rental order vs calling several rental stores",
+    title: "One Order With Us vs Calling Several Rental Stores",
     description:
-      "An honest comparison: booking Chicago event rentals through Beyond Chiavari vs calling rental companies directly. Cost, time, choice and who to call when things go wrong.",
+      "An honest comparison: renting everything for a Chicago event in one order from Beyond Chiavari vs calling several rental stores. Cost, time, choice and who to call when things go wrong.",
     answer:
-      "Calling rental companies yourself avoids our flat booking fee, and it works well for a simple order from one company. Item prices are the same either way, because we add no markup. Booking through Beyond Chiavari costs a flat $295 ($495 over 200 guests) and saves you comparing several companies, gives one itemized proposal across every category, and adds our Booking Promise if a vendor cancels. Pick direct for simple, us for multi-category.",
+      "Calling a rental store you already know works well for a simple order, like 100 folding chairs. For an event that needs chairs, tables, linens, dishes and maybe a tent, one order with Beyond Chiavari saves you comparing and chasing several companies. Every item is priced on our site, delivery, setup, damage waiver and tax are on one written quote, and you book with a 50% deposit, refundable for 72 hours.",
     icon: "users",
-    before: { title: "Calling direct", points: ["No booking fee", "You compare and chase each company", "Several contracts and contacts", "You handle a vendor cancellation"] },
-    after: { title: "Booking through us", points: ["Flat $295 fee ($495 over 200 guests), no markup on items", "One list, priced as you build it", "One coordinator for every vendor", "Booking Promise if a vendor cancels"] },
+    before: { title: "Calling several stores", points: ["Prices often only by phone", "Several quotes to compare", "Several contracts and contacts", "You handle it if one cancels"] },
+    after: { title: "One order with us", points: ["Every item priced on the site", "One quote, priced as you build it", "One person to call", "Booking Promise if an item falls through"] },
     sections: [
       {
-        h: "When calling direct is the better choice",
-        p: ["If you need one category from one company you already trust (say, 100 folding chairs from the store down the road), call them. You will pay their price with no booking fee, and one contact is easy to manage."],
+        h: "When calling a store yourself makes sense",
+        p: ["If you need one thing from a store you already trust (say, 100 folding chairs from the place down the road), call them. One item from one place is easy to manage, and their price may be lower than ours."],
       },
       {
-        h: "When booking through us is worth the fee",
-        p: ["When the order spans several categories or companies (chairs from one, tents from another, linens from a third), the fee buys the comparison, the single proposal and one person who coordinates delivery and fixes problems."],
+        h: "When one order with us is worth it",
+        p: ["When the event needs several kinds of rentals (chairs, tables, linens, dishes, a tent), one order means one price list, one quote, one delivery plan and one person who fixes problems. You see the full price before you pay anything."],
       },
     ],
     table: {
       caption: "How the two routes compare. Our terms are from /booking-promise and /how-it-works.",
-      head: ["", "Calling rental companies yourself", "Booking through Beyond Chiavari"],
+      head: ["", "Calling several stores", "One order with Beyond Chiavari"],
       rows: [
-        ["Price", "Vendor price", "Vendor price, plus our flat fee paid after every company confirms"],
-        ["Prices before you ask", "Most Chicago houses we checked do not publish them", "Live prices on 2,500+ items"],
-        ["Categories per quote", "What that company carries", "19 categories on one list"],
-        ["Contacts", "One per company", "One coordinator"],
-        ["If a vendor cancels", "You find a replacement", "We find a replacement (Booking Promise)"],
-        ["When you pay", "Per company's deposit terms", "Nothing until a vendor confirms and you approve"],
+        ["Price", "Each store's price", "Our price for each item, shown on the site"],
+        ["Prices before you ask", "Most Chicago stores we checked do not publish them", "Live prices on 2,500+ items"],
+        ["Categories per quote", "What that store carries", "19 categories on one list"],
+        ["Contacts", "One per store", "One person"],
+        ["If an item falls through", "You find a replacement", "Same or better at the agreed price, or a refund (Booking Promise)"],
+        ["When you pay", "Each store's deposit terms", "50% deposit to book, refundable for 72 hours; balance 7 days before"],
       ],
     },
     faqs: [
-      { q: "Is it cheaper to book event rentals directly?", a: "Yes, by our flat booking fee, if you book the same items from the same company. Item prices are the same, since we add no markup. You also do the comparing, contracts and coordination yourself." },
-      { q: "Who delivers if I book through Beyond Chiavari?", a: "An established Chicago-area rental company (we ask for proof of insurance), named once you approve your proposal. Its rental agreement covers delivery, setup and pickup, and we coordinate between you." },
-      { q: "Can I see the vendor's price and your fee separately?", a: "Yes. Your proposal shows the rental company's price and our booking fee, so you can check the difference." },
+      { q: "Is it cheaper to call a rental store directly?", a: "Sometimes, for a single item from one store. For a full event, compare our written all-in quote with theirs line by line. You also save the time spent calling around and coordinating several deliveries." },
+      { q: "Who do I deal with if I book with Beyond Chiavari?", a: "Us. You book and pay with Beyond Chiavari, and the same person handles your quote, changes, delivery times and any problem on the day." },
+      { q: "Can I see every charge before I pay?", a: "Yes. Your quote lists every item at the price on our site, then delivery, setup, damage waiver and tax as their own lines. There is no separate booking fee." },
     ],
     cta: { title: "See the full price before you decide", text: "Build your list, see every line, and decide whether booking through us is worth it." },
     related: [
@@ -448,7 +448,7 @@ const linkRules: { words: RegExp; href: string; label: string }[] = [
   { words: /tent|outdoor|backyard|rain/i, href: "/solutions/event-rental-delivery-pickup-times", label: "Delivery and pickup times" },
   { words: /small|intimate|birthday|backyard|kids/i, href: "/solutions/rental-minimum-order-too-high", label: "Minimum order too high?" },
   { words: /buy|diy/i, href: "/compare/rent-vs-buy-event-chairs", label: "Rent or buy chairs?" },
-  { words: /planner|vendor|book/i, href: "/compare/marketplace-vs-calling-rental-companies", label: "Book through us or direct?" },
+  { words: /planner|vendor|book/i, href: "/compare/marketplace-vs-calling-rental-companies", label: "One order or several stores?" },
 ];
 const fallbackLinks = [
   { href: "/tools/rental-calculator", label: "Rental quantity calculator" },

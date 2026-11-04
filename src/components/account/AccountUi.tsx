@@ -96,7 +96,7 @@ export function NeedsList({ items }: { items: (NeedsYou & { event?: string })[] 
 
 const when = (w?: { date?: string; window?: string }) => (w ? [fmtDay(w.date), w.window].filter(Boolean).join(", ") : undefined);
 
-// One rental company's part of the order: its items, status, delivery and pickup.
+// One delivery within the order: its items, status, delivery and pickup.
 export function PartCard({ part, open = false }: { part: AccountPart; open?: boolean }) {
   const delivery = when(part.delivery);
   const pickup = when(part.pickup);
@@ -121,7 +121,7 @@ export function PartCard({ part, open = false }: { part: AccountPart; open?: boo
           <div>
             <dt className="text-xs text-muted">Contact</dt>
             <dd className="mt-0.5 font-medium">
-              {part.revealed ? (part.phone ? <a href={`tel:${part.phone}`} className="text-accent">{part.phone}</a> : "Through us") : "Shared once your booking is secured"}
+              Your coordinator
             </dd>
           </div>
         </dl>

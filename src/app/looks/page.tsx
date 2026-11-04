@@ -40,7 +40,7 @@ const faqs: [string, string][] = [
   ],
   [
     "When can I book?",
-    `Now. Our partner rental companies deliver year-round, from holiday parties to summer weddings. Popular Saturdays fill first, so the earlier you ask, the more likely your date is open.`,
+    `Now. We deliver year-round, from holiday parties to summer weddings. Popular Saturdays fill first, so the earlier you ask, the more likely your date is open.`,
   ],
 ];
 

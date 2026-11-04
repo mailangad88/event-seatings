@@ -62,7 +62,7 @@ export default async function OrdersPage(props: { searchParams: Promise<Record<s
             {orders.length === 0 ? (
               <Empty>No booked or paid orders right now.</Empty>
             ) : (
-              <Table head={["Event", "Customer", "Stage", "Booking fee", "Rental partners", "Order total"]} right={[5]} min={860}>
+              <Table head={["Event", "Customer", "Stage", "Deposit", "Rental partners", "Order total"]} right={[5]} min={860}>
                 {orders.map(({ lead, parts }) => (
                   <tr key={lead.id}>
                     <td className="whitespace-nowrap">

@@ -18,4 +18,4 @@ export function useBlockedDates() {
   return blocked;
 }
 
-export const blockedMessage = "That date is fully booked. Please pick another date, or tell us in the notes and we'll check partner availability.";
+export const blockedMessage = "That date is fully booked. Please pick another date, or tell us in the notes and we'll check what we can do.";

@@ -8,7 +8,7 @@
 //
 // Plain module: no server imports, so the client form can use the same field list.
 
-import { BOOKING_FEE_FULL } from "./catalog-types";
+import { DEPOSIT, DEPOSIT_LABEL } from "./catalog-types";
 import type { Lead } from "./store";
 
 export type IntakeValue = string | string[];
@@ -105,7 +105,7 @@ export const intakeSections: IntakeSection[] = [
       { id: "date_flexible", label: "Is the date set?", ask: "Is that date set, or could it move?", type: "select", options: ["Date is set", "Could move a day or two", "Still picking a date"] },
       { id: "start_time", label: "Starts at", ask: "What time do guests arrive?", type: "time" },
       { id: "end_time", label: "Ends at", ask: "And what time does it wrap up?", type: "time" },
-      { id: "guest_count", label: "Guests", ask: "About how many guests?", type: "number", key: true, core: "guest_count", tip: "A rough number is fine. Over 200 guests the fee is $495 instead of $295." },
+      { id: "guest_count", label: "Guests", ask: "About how many guests?", type: "number", key: true, core: "guest_count", tip: "A rough number is fine. It sets chair, table and linen counts." },
       {
         id: "seating",
         label: "How people will sit",
@@ -118,7 +118,7 @@ export const intakeSections: IntakeSection[] = [
   {
     id: "place",
     title: "The place",
-    say: "Now the place, so the rental company knows what they're driving to.",
+    say: "Now the place, so we know what we're driving to.",
     fields: [
       {
         id: "venue_type",
@@ -212,7 +212,7 @@ export const intakeSections: IntakeSection[] = [
   {
     id: "wrap",
     title: "Wrap up",
-    say: `Here's how we work. We price your list with local rental companies and you see their own prices. Our fee is ${BOOKING_FEE_FULL}, and you only pay it after every rental company confirms your date.`,
+    say: `Here's how we work. You get one written quote with our price for every item, plus delivery, setup, damage waiver and tax. To book, you pay a ${DEPOSIT_LABEL}, fully refundable for ${DEPOSIT.refundHours} hours, and the balance ${DEPOSIT.balanceDaysBefore} days before your event. There's no separate booking fee.`,
     fields: [
       {
         id: "next_step",
@@ -449,8 +449,8 @@ export function buildOutreach(lead: Partial<Lead> & { intake?: Intake | null }, 
   const sent = list ? `your list for ${event}${items ? ` (${items})` : ""}` : `${event}${items ? ` and the ${items} you need` : ""}`;
 
   const opener = asks.length
-    ? `${hi}, this is ${me}. I'm calling about ${sent}. I have ${asks.length === 1 ? "one quick question" : "a few quick questions"} so I can check prices and availability with the rental companies. Is now a good time?`
-    : `${hi}, this is ${me}. I'm calling about ${sent}. I have everything I need to check prices with the rental companies, so I just want to confirm a couple of things with you. Is now a good time?`;
+    ? `${hi}, this is ${me}. I'm calling about ${sent}. I have ${asks.length === 1 ? "one quick question" : "a few quick questions"} so I can check availability and prices for your date. Is now a good time?`
+    : `${hi}, this is ${me}. I'm calling about ${sent}. I have everything I need to check availability for your date, so I just want to confirm a couple of things with you. Is now a good time?`;
 
   const subject = lead.event_type ? `Your ${lead.event_type.replace(/\s*\(.*\)$/, "").toLowerCase()} rentals: a few quick questions` : "Your event rentals: a few quick questions";
   const numbered = asks.map((f, i) => `${i + 1}. ${writtenAsk(f)}`);
@@ -460,8 +460,8 @@ export function buildOutreach(lead: Partial<Lead> & { intake?: Intake | null }, 
     list ? `Thanks for sending ${sent}.` : `Thanks for getting in touch about ${sent}.`,
     "",
     asks.length
-      ? `To check prices and availability with the rental companies, I just need ${asks.length === 1 ? "one more detail" : "a few more details"}:`
-      : "I have what I need to check prices and availability with the rental companies. I'll be back to you shortly.",
+      ? `To check availability and prices for your date, I just need ${asks.length === 1 ? "one more detail" : "a few more details"}:`
+      : "I have what I need to check availability and prices for your date. I'll be back to you shortly.",
     ...(asks.length ? ["", ...numbered] : []),
     "",
     ...(asks.length && opts.link ? [`You can reply to this email, or fill them in here (it takes about 2 minutes): ${opts.link}`, ""] : asks.length ? ["Just reply to this email with what you know. A rough answer is fine.", ""] : []),
@@ -473,7 +473,7 @@ export function buildOutreach(lead: Partial<Lead> & { intake?: Intake | null }, 
 
   const text = asks.length
     ? `${hi}, it's ${me}. Thanks for ${list ? "your list" : "reaching out"} for ${event}. To check prices I need ${asks.length === 1 ? "one more detail" : `${asks.length} more details`}${opts.link ? `, quick form here: ${opts.link}` : `. Is now a good time for a 5 minute call?`}`
-    : `${hi}, it's ${me}. Thanks for ${list ? "your list" : "reaching out"} for ${event}. I'm checking prices with the rental companies now and will be back to you shortly.`;
+    : `${hi}, it's ${me}. Thanks for ${list ? "your list" : "reaching out"} for ${event}. I'm checking availability for your date now and will be back to you shortly.`;
 
   return { opener, subject, email, text, asks };
 }
@@ -502,7 +502,7 @@ export function proposalEmail(lead: Partial<Lead>, url: string, from?: string) {
     "",
     `Here is your quote for ${eventPhrase(lead)}: ${url}`,
     "",
-    "It shows each item, the rental company's own price and our flat fee as separate lines. You only pay our fee once every rental company confirms your date.",
+    `It shows every item at our price, with delivery, setup, damage waiver and tax on their own lines. You book with a ${DEPOSIT_LABEL}, fully refundable for ${DEPOSIT.refundHours} hours.`,
     "",
     "If you want to change anything, just reply and I'll update it.",
     "",

@@ -11,10 +11,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60012", "60014"],
     metaTitle: "Event Rentals in Crystal Lake, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Crystal Lake, IL from Chicago-area rental companies. Lakeside weddings, backyard parties and more. Request a quote.",
+      "Rent event chairs, tables and linens in Crystal Lake, IL. Lakeside weddings, backyard parties and more. Request a quote.",
     headline: "Event rentals around *Crystal Lake* and downtown",
     intro:
-      "We help you rent event chairs, tables, linens and more in Crystal Lake from established Chicago-area rental companies, so you deal with one team instead of calling around. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to start your 2026-27 event.",
+      "We help you rent event chairs, tables, linens and more in Crystal Lake, so you deal with one team instead of calling around. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to start your 2026-27 event.",
     story: [
       "Crystal Lake is the biggest city in McHenry County, and the lake that gave it its name still shapes how people celebrate here. Lakeshore backyards, Lakeside Legacy Arts Park and the Crystal Lake Park District's Main Beach draw weddings, graduation parties and milestone birthdays when the weather turns warm. Those lakeside lots are often narrow, so rental planning starts with where a truck can actually park.",
       "Downtown Crystal Lake sits along the Union Pacific Northwest Metra line with the Prairie Trail nearby, and the compact blocks around the station host fundraisers, school events and community gatherings. Further out, the open space around Three Oaks Recreation Area and the newer subdivisions on the edges of town give families room for large backyard tents. Tents and sprawling lots mean you want chairs that sit steady on lawn and gravel.",
@@ -62,7 +62,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Crystal Lake, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Crystal Lake. Send us your date, guest count and location, and we put together a quote with chairs, tables, linens and delivery itemized. We're booking the 2026-27 season now, so early requests get the most choice.",
+        a: "we deliver to Crystal Lake. Send us your date, guest count and location, and we put together a quote with chairs, tables, linens and delivery itemized. We're booking the 2026-27 season now, so early requests get the most choice.",
       },
       {
         q: "Do I need a permit for a tent party in Crystal Lake?",
@@ -70,7 +70,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can chairs be delivered to a lakeside backyard?",
-        a: "Yes, as long as a truck or cart can reach the spot. Tell us about driveway width, steps and lawn slope so the vendor can plan carry time. Drop-off only or full setup and teardown are both options, and your quote shows each one separately.",
+        a: "Yes, as long as a truck or cart can reach the spot. Tell us about driveway width, steps and lawn slope so we can plan carry time. Drop-off only or full setup and teardown are both options, and your quote shows each one separately.",
       },
       {
         q: "How far ahead should I book for a Crystal Lake wedding?",
@@ -93,10 +93,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60050", "60051"],
     metaTitle: "Event Rentals in McHenry, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent chairs, tables and linens in McHenry, IL from Chicago-area rental companies. Riverfront weddings, backyard parties and fundraisers. Request a quote today.",
+      "Rent chairs, tables and linens in McHenry, IL. Riverfront weddings, backyard parties and fundraisers. Request a quote today.",
     headline: "Chairs and tables for *McHenry* riverfront events",
     intro:
-      "We help you rent event chairs, tables, linens and more in McHenry from established Chicago-area rental companies. Share your date, guest count and venue, and we handle matching and an itemized quote with delivery and setup. Request a quote or book a planning call to start planning your event. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in McHenry. Share your date, guest count and venue, and we handle matching and an itemized quote with delivery and setup. Request a quote or book a planning call to start planning your event. Photos of your site help the vendor plan accurately.",
     story: [
       "McHenry grew up on the Fox River, and the river still sets the tone for events. the McHenry Riverwalk and the downtown riverfront bring in outdoor weddings, community festivals and fundraisers, while Petersen Park gives families a place for graduation parties. Anything near the water means thinking about soft ground and where a truck can stop, because bank-side lots are rarely wide.",
       "Nearby, the Chain O'Lakes region and Moraine Hills State Park pull people out to the water, and many celebrations spill into lake homes, cottages and big backyards with decks. Rentals for those homes usually need to be carried by hand from a street or short driveway, so the amount you can fit into one load matters as much as the style you choose.",
@@ -122,7 +122,7 @@ export const foxValleyMchenryAreas: Location[] = [
     ],
     logistics: [
       "Summer boating traffic on Route 31 and Route 120 slows deliveries on weekends. We plan the window around peak hours.",
-      "For lake or river homes, send photos of the driveway and path to the yard so the vendor can plan how chairs reach the setup spot.",
+      "For lake or river homes, send photos of the driveway and path to the yard so we can plan how chairs reach the setup spot.",
       "Check with the City of McHenry or the park district about vehicle access and unloading before a park or riverfront event.",
       "Rain happens quickly near the river, so we suggest a plan B for ground-level seating, such as tented rows or a hall backup.",
     ],
@@ -144,7 +144,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in McHenry, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to McHenry. Send your date, guest count and address, and we return an itemized quote for chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to begin the conversation.",
+        a: "we deliver to McHenry. Send your date, guest count and address, and we return an itemized quote for chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to begin the conversation.",
       },
       {
         q: "Do I need a permit for a tent or riverfront party in McHenry?",
@@ -152,7 +152,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can you deliver to a lake home near the Chain O'Lakes?",
-        a: "Yes, if the vendor can reach the property. Narrow lanes and steep steps change the plan, so share driveway details and carry distance. We can quote drop-off only or full setup, and the crew will note any extra labor up front.",
+        a: "Yes, if we can reach the property. Narrow lanes and steep steps change the plan, so share driveway details and carry distance. We can quote drop-off only or full setup, and the crew will note any extra labor up front.",
       },
       {
         q: "How early should I reserve for a summer party in McHenry?",
@@ -175,10 +175,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60098"],
     metaTitle: "Event Rentals in Woodstock, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Woodstock, IL from Chicago-area rental companies. Square weddings, barn parties and fundraisers. Request a quote.",
+      "Rent event chairs, tables and linens in Woodstock, IL. Square weddings, barn parties and fundraisers. Request a quote.",
     headline: "Event rentals near the *Woodstock Square*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Woodstock from established Chicago-area rental companies. Share your date, headcount and location, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Woodstock. Share your date, headcount and location, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Woodstock is the McHenry County seat, and its historic Square with the Opera House, shops and the central park is the heart of local celebrations. Square events range from community festivals and fundraisers to small ceremonies, and the surrounding streets are tight, with limited loading. For anything on or near the Square, confirm delivery access with the city and your venue well ahead of time.",
       "Beyond downtown, Woodstock is farm country. Barns, orchards and rural lots stretch out in every direction, and many weddings and graduation parties happen on private land with big lawns, gravel drives and sometimes uneven fields. Emricson Park and nearby McHenry County Conservation District sites offer additional public spaces, each with its own reservation rules.",
@@ -226,7 +226,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Woodstock, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Woodstock. Send your date, guest count and venue, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a quick note with your date and rough headcount is all it takes to start.",
+        a: "we deliver to Woodstock. Send your date, guest count and venue, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a quick note with your date and rough headcount is all it takes to start.",
       },
       {
         q: "Do I need a permit to hold an event on the Woodstock Square?",
@@ -234,7 +234,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can chairs be delivered to a barn or farm near Woodstock?",
-        a: "Yes, if the vendor can reach the site. Send directions, drive surface and distance from the road to the setup area. Rural addresses sometimes carry extra travel time, and your quote will list delivery separately so you can compare options. A quick call about the route in helps the vendor prepare the right truck.",
+        a: "Yes, if we can reach the site. Send directions, drive surface and distance from the road to the setup area. Rural addresses sometimes carry extra travel time, and your quote will list delivery separately so you can compare options. A quick call about the route in helps the vendor prepare the right truck.",
       },
       {
         q: "How far in advance should I book for a fall wedding?",
@@ -257,10 +257,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60102"],
     metaTitle: "Event Rentals in Algonquin, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Algonquin, IL from Chicago-area rental companies. Riverfront weddings, backyard parties and more. Request a quote.",
+      "Rent event chairs, tables and linens in Algonquin, IL. Riverfront weddings, backyard parties and more. Request a quote.",
     headline: "Event rentals in *Algonquin* along the Fox",
     intro:
-      "We help you rent event chairs, tables, linens and more in Algonquin from established Chicago-area rental companies, with one itemized quote for delivery and setup. Tell us your date and guest count, and we do the matching. Request a quote or book a planning call to begin. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Algonquin, with one itemized quote for delivery and setup. Tell us your date and guest count, and we do the matching. Request a quote or book a planning call to begin. Photos of your site help the vendor plan accurately.",
     story: [
       "Algonquin sits on the Fox River, straddling McHenry and Kane counties, and the riverfront shapes many of its celebrations. Cornish Park hosts community events and gatherings, and the Fox River Trail runs through town. Outdoor weddings, picnics and graduation parties on or near the river call for chairs that handle soft ground and a plan for where deliveries can unload.",
       "The town's historic Main Street area gives way to Randall Road's busy shopping corridor, and the contrast shows in event style. Some families want a rustic backyard dinner with string lights, while others lean toward modern banquet rooms near Algonquin Road. Newer subdivisions on the west and north sides bring large backyards where tent parties are common, especially for graduations and milestone birthdays.",
@@ -288,7 +288,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "Randall Road is one of the busiest corridors in the Fox Valley, so avoid peak weekend hours for delivery when you can.",
       "River-adjacent lots can stay soft after rain. Tell us how recently it rained so rows can be placed on firmer ground.",
       "Confirm with the Village of Algonquin whether your address needs any approvals for tents or street use.",
-      "Share a photo of your gate or driveway so the vendor can plan whether a truck or a hand-carry load makes more sense.",
+      "Share a photo of your gate or driveway so we can plan whether a truck or a hand-carry load makes more sense.",
     ],
     recommendedChairs: [
       {
@@ -308,7 +308,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Algonquin, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Algonquin. Send us your date, headcount and address, and we put together an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is a fine place to start.",
+        a: "we deliver to Algonquin. Send us your date, headcount and address, and we put together an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is a fine place to start.",
       },
       {
         q: "Do I need a permit for a tent party in Algonquin?",
@@ -316,7 +316,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can you deliver chairs to a park near the Fox River?",
-        a: "Usually, if the park owner allows vehicle access or a reasonable carry. Check reservation and outside-rental rules with the village or park contact, then tell us where a truck can unload so the vendor can plan. Riverside paths can be narrow, so a carry distance matters more than you might expect.",
+        a: "Usually, if the park owner allows vehicle access or a reasonable carry. Check reservation and outside-rental rules with the village or park contact, then tell us where a truck can unload so we can plan. Riverside paths can be narrow, so a carry distance matters more than you might expect.",
       },
       {
         q: "How far ahead should I request a quote?",
@@ -339,10 +339,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60156"],
     metaTitle: "Event Rentals in Lake in the Hills, IL | Chairs & Tables",
     metaDescription:
-      "Rent chairs, tables and linens in Lake in the Hills, IL from Chicago-area rental companies. Backyard tent parties, graduations and weddings. Request a quote.",
+      "Rent chairs, tables and linens in Lake in the Hills, IL. Backyard tent parties, graduations and weddings. Request a quote.",
     headline: "Event rentals for *Lake in the Hills* families",
     intro:
-      "We help you rent event chairs, tables, linens and more in Lake in the Hills from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Lake in the Hills. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Lake in the Hills is a suburban village built around its namesake lake and a network of parks, with Lakeland Park serving as the main waterfront hub. Summer events cluster around the beach and the pavilions, and many families also host graduation parties and birthdays at home. Spaces like these call for tables and chairs that arrive ready to place quickly, with minimal fuss on the day, and a clear plan for where the truck unloads before guests start arriving.",
       "The village is largely residential, with larger lots toward the edges and many subdivisions with open backyards. That makes tent parties common, from graduation open houses to anniversary dinners, and the same lawn that hosts a ceremony in June often hosts a cookout in August. Because most addresses sit off winding subdivision streets, delivery planning starts with where a truck can pull up and how far the carry is to the setup area.",
@@ -390,7 +390,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Lake in the Hills, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Lake in the Hills. Send your date, guest count and address, and we return an itemized quote for chairs, tables, linens and delivery. We're booking the 2026-27 season now.",
+        a: "we deliver to Lake in the Hills. Send your date, guest count and address, and we return an itemized quote for chairs, tables, linens and delivery. We're booking the 2026-27 season now.",
       },
       {
         q: "Do I need a permit for a backyard tent in Lake in the Hills?",
@@ -421,10 +421,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60142"],
     metaTitle: "Event Rentals in Huntley, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Huntley, IL from Chicago-area rental companies. Graduations, weddings and Sun City gatherings. Request a quote today.",
+      "Rent event chairs, tables and linens in Huntley, IL. Graduations, weddings and Sun City gatherings. Request a quote today.",
     headline: "Event rentals for *Huntley* parties and weddings",
     intro:
-      "We help you rent event chairs, tables, linens and more in Huntley from established Chicago-area rental companies. Share your date, guest count and address, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Huntley. Share your date, guest count and address, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Huntley has grown fast along the Route 47 and Interstate 90 corridor, and the mix of old downtown and new subdivisions shows up in how people celebrate. Downtown Huntley's small-town streets host community events, while the Huntley Park District's parks, including Deicke Park, give families places for graduation parties and picnics. Wherever you plan to gather, loading access and parking are the first things to sort out.",
       "A big part of the village is Sun City Huntley, the Del Webb active-adult community with its own clubhouse and event spaces. Residents there host anniversaries, holiday gatherings and family visits, and those events often call for extra seating that the clubhouse does not stock. Smaller guest counts, easy-to-carry chairs and clear rules from the community association all shape the rental plan.",
@@ -451,7 +451,7 @@ export const foxValleyMchenryAreas: Location[] = [
     logistics: [
       "Route 47 backs up at commuter hours, so aim for mid-morning delivery windows when you can.",
       "For Sun City or other HOA communities, check the association's rules on vendor access and delivery times before you book.",
-      "On rural lots, share the driveway surface and distance to the setup area so the vendor can bring the right equipment.",
+      "On rural lots, share the driveway surface and distance to the setup area so we can bring the right equipment.",
       "Confirm with the Village of Huntley or the park district about tents, reservations and any needed approvals.",
     ],
     recommendedChairs: [
@@ -472,7 +472,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Huntley, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Huntley. Send your date, guest count and address, and we return an itemized quote for chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note is enough to start.",
+        a: "we deliver to Huntley. Send your date, guest count and address, and we return an itemized quote for chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Huntley?",
@@ -503,10 +503,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60013"],
     metaTitle: "Event Rentals in Cary, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Cary, IL from Chicago-area rental companies. Backyard parties, weddings and Metra-town events. Request a quote today.",
+      "Rent event chairs, tables and linens in Cary, IL. Backyard parties, weddings and Metra-town events. Request a quote today.",
     headline: "Event rentals in the village of *Cary*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Cary from established Chicago-area rental companies, with one quote for delivery and setup. Tell us your date, guest count and address, and we do the matching. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Cary, with one quote for delivery and setup. Tell us your date, guest count and address, and we do the matching. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Cary is a Fox River village anchored by a small downtown and a Union Pacific Northwest Metra station, and the commuter-town feel shapes local events. Downtown gatherings, school fundraisers and community festivals happen close to the tracks, where street parking and loading are tight. Nearby neighborhoods of mid-sized lots host most of the graduation parties, birthday gatherings and showers. Photos of your site help the vendor plan accurately.",
       "The Fox River runs along the edge of Cary, and riverside yards and park spaces host summer celebrations with a different feel from the village's inland blocks. River soil can stay damp after storms, so ground firmness matters for ceremony rows and tent legs. The Cary Park District's parks provide additional options for family events, each with reservation steps to confirm with the district.",
@@ -534,7 +534,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "Metra trains cross downtown streets often, which can slow a truck. We plan routes and timing ahead of the day.",
       "Near the river, tell us how recently it rained so rows go on firmer ground and tent legs get stable footing.",
       "Check with the Village of Cary or the Cary Park District about tents, reservations and unloading areas.",
-      "Share photos of your driveway and gate so the vendor can plan whether a hand-carry or truck-side drop-off is best.",
+      "Share photos of your driveway and gate so we can plan whether a hand-carry or truck-side drop-off is best.",
     ],
     recommendedChairs: [
       {
@@ -554,7 +554,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Cary, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Cary. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, so a short note is a good first step.",
+        a: "we deliver to Cary. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, so a short note is a good first step.",
       },
       {
         q: "Do I need a permit for a tent party in Cary?",
@@ -585,10 +585,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60021"],
     metaTitle: "Event Rentals in Fox River Grove, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Fox River Grove, IL from Chicago-area rental companies. Riverside weddings and backyard parties. Request a quote.",
+      "Rent event chairs, tables and linens in Fox River Grove, IL. Riverside weddings and backyard parties. Request a quote.",
     headline: "Chairs and tables in *Fox River Grove*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Fox River Grove from established Chicago-area rental companies. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to begin. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Fox River Grove. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to begin. Photos of your site help the vendor plan accurately.",
     story: [
       "Fox River Grove is a small village on the Fox River, near Barrington Hills and Cary. The Union Pacific Northwest Metra line stops in town, and Algonquin Road meets Route 14 and the tracks near the station. The village is compact, and many events are home-based, so planning around narrow lots and shared streets comes first.",
       "River views and wooded lots define the village. Many homes sit on slopes or near the water, which creates beautiful ceremony settings but real challenges for delivery. Steps, retaining walls and winding driveways change how chairs and tables get to the lawn. Sharing photos and measurements up front lets the vendor decide between a truck pull-up and a hand-carry, and quote labor accordingly.",
@@ -636,7 +636,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Fox River Grove, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Fox River Grove. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
+        a: "we deliver to Fox River Grove. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
       },
       {
         q: "Do I need a permit for a tent in Fox River Grove?",
@@ -667,10 +667,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60033"],
     metaTitle: "Event Rentals in Harvard, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Harvard, IL from Chicago-area rental companies. Farm weddings, Milk Days parties and family gatherings. Get a quote.",
+      "Rent event chairs, tables and linens in Harvard, IL. Farm weddings, Milk Days parties and family gatherings. Get a quote.",
     headline: "Event rentals for *Harvard* and the farm country",
     intro:
-      "We help you rent event chairs, tables, linens and more in Harvard from established Chicago-area rental companies. Share your date, headcount and location, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Harvard. Share your date, headcount and location, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Harvard is the farthest northwest stop of the Union Pacific Northwest Metra line, and the farm country around it sets the pace. The town is best known for Harvard Milk Days each June and for Harmilda, the cow statue in town, and the downtown blocks host parades, festivals and community fundraisers. For events at those gatherings, tables and chairs for volunteers and vendors are a common need.",
       "Weddings and family parties here often happen on private land. Open fields, barns and farmhouses give plenty of room for a ceremony and dinner, but long gravel drives and uneven ground are part of the plan. Share the route and how close a truck can get to the setup area. Chairs with sturdy frames and a wide stance are a better match than thin folding styles.",
@@ -698,7 +698,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "Harvard is farther out, so vendors plan longer routes. Confirm your delivery window several days before the event.",
       "Rural roads can be muddy after storms. Tell us about the drive surface and where a truck can safely stop.",
       "Check with the City of Harvard about approvals for events on city property or downtown streets.",
-      "For festival or fundraiser setups, share your layout and access times early so the vendor can plan.",
+      "For festival or fundraiser setups, share your layout and access times early so we can plan.",
     ],
     recommendedChairs: [
       {
@@ -718,7 +718,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Harvard, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Harvard. Send your date, guest count and location, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, so reach out early.",
+        a: "we deliver to Harvard. Send your date, guest count and location, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, so reach out early.",
       },
       {
         q: "Do I need a permit for a tent or event in Harvard?",
@@ -749,10 +749,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60152"],
     metaTitle: "Event Rentals in Marengo, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Marengo, IL from Chicago-area rental companies. Barn weddings, farm parties and family gatherings. Request a quote.",
+      "Rent event chairs, tables and linens in Marengo, IL. Barn weddings, farm parties and family gatherings. Request a quote.",
     headline: "Event rentals around *Marengo* and Marengo Ridge",
     intro:
-      "We help you rent event chairs, tables, linens and more in Marengo from established Chicago-area rental companies. Tell us your date, headcount and venue, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Marengo. Tell us your date, headcount and venue, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Marengo is a small city in western McHenry County, set among farm fields, creeks and rolling glacial hills. Downtown Marengo is compact, with a mix of historic storefronts and community spaces, and the county's wider farm land surrounds it. Celebrations here tend to be home-based or on private land, with barns, backyards and open lawns shaping what a rental order looks like.",
       "Public spaces add variety. Marengo Ridge Conservation Area, managed by the McHenry County Conservation District, offers walking trails and natural settings, though picnic areas and outside events follow district rules. Nearby Union is home to the Illinois Railway Museum, which draws visitors to the area. For anything on public land, confirm permissions and vehicle access with the owner before you plan.",
@@ -778,7 +778,7 @@ export const foxValleyMchenryAreas: Location[] = [
     ],
     logistics: [
       "Delivery to rural addresses can take longer. We confirm your window a few days ahead and pad for county road conditions.",
-      "Tell us the drive surface and distance from the road to the setup area so the vendor can bring the right equipment.",
+      "Tell us the drive surface and distance from the road to the setup area so we can bring the right equipment.",
       "Check with the City of Marengo about downtown event approvals and with the conservation district for public land.",
       "After heavy rain, fields can be too soft for a truck. Have a backup staging spot, such as a gravel drive, in mind.",
     ],
@@ -800,7 +800,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Marengo, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Marengo. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
+        a: "we deliver to Marengo. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
       },
       {
         q: "Do I need a permit for a tent in Marengo?",
@@ -831,10 +831,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60051"],
     metaTitle: "Event Rentals in Johnsburg, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Johnsburg, IL from Chicago-area rental companies. Riverside parties, church events and weddings. Request a quote.",
+      "Rent event chairs, tables and linens in Johnsburg, IL. Riverside parties, church events and weddings. Request a quote.",
     headline: "Chairs and tables for *Johnsburg* celebrations",
     intro:
-      "We help you rent event chairs, tables, linens and more in Johnsburg from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Johnsburg. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Johnsburg sits just north of McHenry on the Fox River, with the river and nearby Chain O'Lakes shaping local life. The village has a long German heritage, and parish life remains central, so church festivals, first communions and anniversary dinners are a steady part of the event calendar. Those gatherings often need extra tables and chairs beyond what a parish hall stocks.",
       "Many homes sit on or near the water, and lots range from tight riverside parcels to wider rural acreage. That mix means delivery plans vary a lot. Riverside lots often have narrow access and soft ground, while larger parcels can take a full tent. Photos of the driveway and yard help the vendor decide on truck-side drop-off versus hand-carry, and quote labor accordingly.",
@@ -860,9 +860,9 @@ export const foxValleyMchenryAreas: Location[] = [
     ],
     logistics: [
       "Summer boat and festival traffic slows roads around the river. We plan windows to avoid peak hours.",
-      "For parish events, share the hall's loading door and timing so the vendor can plan setup before guests arrive.",
+      "For parish events, share the hall's loading door and timing so we can plan setup before guests arrive.",
       "Check with the Village of Johnsburg about tents and event approvals before you finalize your plans.",
-      "Send photos of the driveway and yard so the vendor can choose truck drop-off or hand-carry for riverside lots.",
+      "Send photos of the driveway and yard so we can choose truck drop-off or hand-carry for riverside lots.",
     ],
     recommendedChairs: [
       {
@@ -882,7 +882,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Johnsburg, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Johnsburg. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
+        a: "we deliver to Johnsburg. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
       },
       {
         q: "Do I need a permit for a tent in Johnsburg?",
@@ -894,7 +894,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can you deliver to a home on the Fox River?",
-        a: "Yes, if the vendor can reach the property. Riverside lots can be narrow with soft ground, so share photos and measurements. We list delivery and any extra carry labor in the quote so you know what to expect. Photos of the access route help us quote the job accurately.",
+        a: "Yes, if we can reach the property. Riverside lots can be narrow with soft ground, so share photos and measurements. We list delivery and any extra carry labor in the quote so you know what to expect. Photos of the access route help us quote the job accurately.",
       },
       {
         q: "How far ahead should I book for a summer party?",
@@ -913,10 +913,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60071"],
     metaTitle: "Event Rentals in Richmond, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Richmond, IL from Chicago-area rental companies. Farm weddings, antique-town gatherings and backyard parties.",
+      "Rent event chairs, tables and linens in Richmond, IL. Farm weddings, antique-town gatherings and backyard parties.",
     headline: "Event rentals in *Richmond* near the state line",
     intro:
-      "We help you rent event chairs, tables, linens and more in Richmond from established Chicago-area rental companies. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Richmond. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Richmond is a small village at the northern edge of McHenry County, a short drive from the Wisconsin line. Its main street is lined with antique shops and small businesses, and the quiet pace attracts couples looking for a rural wedding setting. Nippersink Creek runs nearby, and the surrounding countryside is a patchwork of farms, wetlands and preserved prairie. Photos of your site help the vendor plan accurately.",
       "Glacial Park Conservation Area, one of the McHenry County Conservation District's best-known sites, lies near the village, with prairie, wetlands and ancient glacial landforms. Public land like this has its own rules for events, so check with the district before planning anything there. Most celebrations end up on private farms, barns and large residential lots where there is space for a tent and dinner.",
@@ -942,7 +942,7 @@ export const foxValleyMchenryAreas: Location[] = [
     ],
     logistics: [
       "Richmond is a longer haul for vendors, so we confirm your delivery window several days ahead.",
-      "Tell us the drive surface and distance to the setup spot so the vendor can bring the right equipment.",
+      "Tell us the drive surface and distance to the setup spot so we can bring the right equipment.",
       "Check with the Village of Richmond about downtown events and with the conservation district about public land.",
       "For fall events, plan for cold and wind. Tents and heaters can matter as much as chairs.",
     ],
@@ -964,7 +964,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Richmond, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Richmond. Send your date, guest count and location, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
+        a: "we deliver to Richmond. Send your date, guest count and location, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
       },
       {
         q: "Do I need a permit for a tent in Richmond?",
@@ -995,10 +995,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60110"],
     metaTitle: "Event Rentals in Carpentersville, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Carpentersville, IL from Chicago-area rental companies. Quinceañeras, weddings and backyard parties. Request a quote.",
+      "Rent event chairs, tables and linens in Carpentersville, IL. Quinceañeras, weddings and backyard parties. Request a quote.",
     headline: "Event rentals for *Carpentersville* celebrations",
     intro:
-      "We help you rent event chairs, tables, linens and more in Carpentersville from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Carpentersville. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Carpentersville stretches along the Fox River in northern Kane County, with the river, the Carpentersville dam and the Fox River Trail forming a green spine through town. Riverside parks and trailheads draw families for picnics and casual celebrations. Wherever you gather near the water, the first questions are where a truck can stop and how far chairs must be carried.",
       "The village has a large and active Latino community, and quinceañeras, baptism parties, weddings and family reunions are a big part of local event life. Those celebrations often mean large guest counts, banquet-style seating and a mix of home, hall and park venues. Matching chair counts to tables and planning space for dancing and a head table are details worth settling early.",
@@ -1024,9 +1024,9 @@ export const foxValleyMchenryAreas: Location[] = [
     ],
     logistics: [
       "Route 31 and Randall Road get congested on weekends. Aim for mid-morning delivery when you can.",
-      "For large parties, confirm table-to-chair ratios early so the vendor can plan truck space and setup time.",
+      "For large parties, confirm table-to-chair ratios early so we can plan truck space and setup time.",
       "Check with the Village of Carpentersville about tents, park reservations and street use before booking.",
-      "Share photos of your driveway and yard so the vendor can decide on truck drop-off or hand-carry.",
+      "Share photos of your driveway and yard so we can decide on truck drop-off or hand-carry.",
     ],
     recommendedChairs: [
       {
@@ -1046,7 +1046,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Carpentersville, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Carpentersville. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
+        a: "we deliver to Carpentersville. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now. Early requests also get the widest choice of styles and delivery windows.",
       },
       {
         q: "Do I need a permit for a tent party in Carpentersville?",
@@ -1058,7 +1058,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can you deliver chairs to a Fox River park?",
-        a: "Usually, if the park owner allows vehicle access or a reasonable carry. Check reservation and outside-rental rules first, then tell us where a truck can unload so the vendor can plan the delivery and setup window. Photos of the access route help us quote the job accurately.",
+        a: "Usually, if the park owner allows vehicle access or a reasonable carry. Check reservation and outside-rental rules first, then tell us where a truck can unload so we can plan the delivery and setup window. Photos of the access route help us quote the job accurately.",
       },
       {
         q: "How far ahead should I book a spring or summer party?",
@@ -1077,10 +1077,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60118"],
     metaTitle: "Event Rentals in East Dundee, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in East Dundee, IL from Chicago-area rental companies. Riverside weddings, showers and backyard parties. Request a quote.",
+      "Rent event chairs, tables and linens in East Dundee, IL. Riverside weddings, showers and backyard parties. Request a quote.",
     headline: "Event rentals on the *East Dundee* riverfront",
     intro:
-      "We help you rent event chairs, tables, linens and more in East Dundee from established Chicago-area rental companies. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to start planning. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in East Dundee. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to start planning. Photos of your site help the vendor plan accurately.",
     story: [
       "East Dundee sits on the east bank of the Fox River, facing West Dundee across the bridge, and the two towns share a walkable, river-town feel. East Dundee's Main Street and the blocks near Route 25 and Route 72 hold small shops, restaurants and event spaces, while the Fox River Trail and riverfront give weddings and showers a scenic outdoor backdrop. Parking and loading in the tight downtown grid shape every delivery plan.",
       "The village is smaller and more residential than its neighbors, with modest lots and a mix of older homes and newer townhomes. Backyard events are common, from graduation open houses to anniversary dinners, and the lots call for efficient layouts. A tent might take up most of a yard, so measure first and decide how many tables and chairs fit without crowding the walkways or the grill.",
@@ -1128,7 +1128,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in East Dundee, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to East Dundee. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to begin.",
+        a: "we deliver to East Dundee. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to begin.",
       },
       {
         q: "Do I need a permit for a tent in East Dundee?",
@@ -1136,7 +1136,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can you deliver to a small backyard near the Fox River?",
-        a: "Yes, if the vendor can reach the property. Small lots just need careful planning, so send the yard dimensions and photos of the gate or driveway. We can recommend a smaller order of chairs and tables so the space does not feel crowded.",
+        a: "Yes, if we can reach the property. Small lots just need careful planning, so send the yard dimensions and photos of the gate or driveway. We can recommend a smaller order of chairs and tables so the space does not feel crowded.",
       },
       {
         q: "How far ahead should I book for a summer wedding or shower?",
@@ -1159,14 +1159,14 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60118"],
     metaTitle: "Event Rentals in West Dundee, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in West Dundee, IL from Chicago-area rental companies. Downtown weddings, showers and backyard parties. Request a quote.",
+      "Rent event chairs, tables and linens in West Dundee, IL. Downtown weddings, showers and backyard parties. Request a quote.",
     headline: "Event rentals in historic *West Dundee*",
     intro:
-      "We help you rent event chairs, tables, linens and more in West Dundee from established Chicago-area rental companies. Tell us your date, headcount and venue, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in West Dundee. Tell us your date, headcount and venue, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "West Dundee is the west-bank half of the Dundees, a Fox River town with a historic downtown along Main Street and the river crossing at Route 72. Brick storefronts, restaurants and small event spaces line the downtown, and the Fox River Trail runs alongside. Weddings, bridal showers and anniversary dinners often happen in or near the downtown blocks, where street parking and loading windows are limited.",
       "Beyond the river, West Dundee stretches west along Route 72 and Randall Road, where larger retail areas, including Spring Hill Mall, and newer residential subdivisions sit. Backyard parties, graduation open houses and holiday gatherings are common in those neighborhoods, with lots large enough for a tent and a full dinner. The mix of tight downtown and spacious subdivisions means the delivery plan can be very different from one West Dundee address to the next.",
-      "Holiday gatherings and summer river outings make for a long season. Heavy traffic along Randall Road and Route 72 can slow trucks, especially on weekends. Check with the Village of West Dundee about tents, downtown events and any street approvals, and share photos of your site when you request a quote so the vendor can plan correctly.",
+      "Holiday gatherings and summer river outings make for a long season. Heavy traffic along Randall Road and Route 72 can slow trucks, especially on weekends. Check with the Village of West Dundee about tents, downtown events and any street approvals, and share photos of your site when you request a quote so we can plan correctly.",
     ],
     settings: [
       {
@@ -1190,7 +1190,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "Randall Road and Route 72 are busy on weekends. Mid-morning delivery windows tend to be easier than afternoons.",
       "Downtown loading can be tight. Ask your venue about unloading spots and time limits before you book.",
       "Check with the Village of West Dundee about tents, street use and event approvals.",
-      "Send photos of your driveway, gate or loading door so the vendor can choose truck drop-off or hand-carry.",
+      "Send photos of your driveway, gate or loading door so we can choose truck drop-off or hand-carry.",
     ],
     recommendedChairs: [
       {
@@ -1210,7 +1210,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in West Dundee, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to West Dundee. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to West Dundee. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in West Dundee?",
@@ -1241,10 +1241,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60136"],
     metaTitle: "Event Rentals in Gilberts, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Gilberts, IL from Chicago-area rental companies. Backyard weddings, graduation parties and farm gatherings. Get a quote.",
+      "Rent event chairs, tables and linens in Gilberts, IL. Backyard weddings, graduation parties and farm gatherings. Get a quote.",
     headline: "Chairs and tables for *Gilberts* parties",
     intro:
-      "We help you rent event chairs, tables, linens and more in Gilberts from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to begin. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Gilberts. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to begin. Photos of your site help the vendor plan accurately.",
     story: [
       "Gilberts is a growing village in northwestern Kane County, set between Elgin and Huntley along Route 72 and near the Interstate 90 corridor. It started as a farm town, and the open land still shows, though newer subdivisions have filled in around Gilberts Town Center. Weddings, graduation parties and milestone birthdays happen mostly at home or on nearby farmland, so delivery access matters more than venue loading docks.",
       "The village is small enough that neighbors know each other, and block-style gatherings, school events and church functions are part of the calendar. Many lots in newer subdivisions are generous, making tent parties easy, while older farm properties on the village's edges give room for ceremonies and dinners on one site. Gravel drives and field edges are common, so ask how close a truck can get to the setup area.",
@@ -1292,7 +1292,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Gilberts, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Gilberts. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Gilberts. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Gilberts?",
@@ -1323,10 +1323,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60140"],
     metaTitle: "Event Rentals in Hampshire, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Hampshire, IL from Chicago-area rental companies. Farm weddings, graduation parties and tent dinners. Request a quote.",
+      "Rent event chairs, tables and linens in Hampshire, IL. Farm weddings, graduation parties and tent dinners. Request a quote.",
     headline: "Event rentals for *Hampshire* and the farm edge",
     intro:
-      "We help you rent event chairs, tables, linens and more in Hampshire from established Chicago-area rental companies. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Hampshire. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Hampshire is a small village in western Kane County, a farm town along Route 20, with cornfields and horse farms close at hand. The village's compact center has small shops and community buildings, while the open land beyond it hosts most weddings, graduation parties and family reunions. Most events here are home-based or on private farmland, so access and ground conditions drive the rental plan.",
       "Public green space adds options. The Forest Preserve District of Kane County manages nearby sites, including Hampshire Forest Preserve. For public land, confirm reservation and event rules with the forest preserve district, which is separate from the village. Private estates and barns are more common for ceremonies and dinners.",
@@ -1352,7 +1352,7 @@ export const foxValleyMchenryAreas: Location[] = [
     ],
     logistics: [
       "Hampshire is farther out, so we confirm your delivery window several days ahead and pad for rural roads.",
-      "Tell us the drive surface and distance to the setup spot so the vendor can bring the right equipment.",
+      "Tell us the drive surface and distance to the setup spot so we can bring the right equipment.",
       "Check with the Village of Hampshire about tent approvals, and with the forest preserve district for public land.",
       "Spring mud and fall rain can limit truck access. Keep a gravel staging spot in mind as a backup.",
     ],
@@ -1374,7 +1374,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Hampshire, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Hampshire. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Hampshire. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Hampshire?",
@@ -1405,13 +1405,13 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60140"],
     metaTitle: "Event Rentals in Pingree Grove, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Pingree Grove, IL from Chicago-area rental companies. Backyard parties, graduations and golf-community events.",
+      "Rent event chairs, tables and linens in Pingree Grove, IL. Backyard parties, graduations and golf-community events.",
     headline: "Chairs and tables for *Pingree Grove* events",
     intro:
-      "We help you rent event chairs, tables, linens and more in Pingree Grove from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Pingree Grove. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Pingree Grove is one of the youngest and fastest-growing villages in Kane County, centered on the Cambridge Lakes master-planned community with its golf course, ponds and walking paths. Most celebrations here are neighborhood-based, with graduation parties, birthdays and showers in backyards and clubhouse-style spaces. The planned layout means HOA rules may apply, so check access and vendor guidelines before booking.",
-      "Around the community, the land is still farm country, with open fields, county roads and larger acreage lots where tented weddings and reunions take place. That contrast matters for logistics: in the subdivision, a truck can usually pull right up to the door, while on rural land it may be a long gravel drive. Share photos so the vendor can match equipment to the site.",
+      "Around the community, the land is still farm country, with open fields, county roads and larger acreage lots where tented weddings and reunions take place. That contrast matters for logistics: in the subdivision, a truck can usually pull right up to the door, while on rural land it may be a long gravel drive. Share photos so we can match equipment to the site.",
       "Pingree Grove sits between Huntley, Hampshire and Elgin, so families look across several towns for venues and services. Traffic on Route 72 and Route 47 can slow trucks at peak hours. Check with the Village of Pingree Grove about tents and approvals, and request a quote early for late spring and fall, when weekends fill up quickly across the western Fox Valley.",
     ],
     settings: [
@@ -1456,7 +1456,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Pingree Grove, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Pingree Grove. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Pingree Grove. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Pingree Grove?",
@@ -1487,10 +1487,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60177"],
     metaTitle: "Event Rentals in South Elgin, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in South Elgin, IL from Chicago-area rental companies. Riverfront weddings, showers and backyard parties. Request a quote.",
+      "Rent event chairs, tables and linens in South Elgin, IL. Riverfront weddings, showers and backyard parties. Request a quote.",
     headline: "Event rentals along the Fox in *South Elgin*",
     intro:
-      "We help you rent event chairs, tables, linens and more in South Elgin from established Chicago-area rental companies. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in South Elgin. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "South Elgin sits on the Fox River between Elgin and St. Charles, with the Fox River Trail running along its riverfront and a riverfront downtown. Weddings, showers and festivals take advantage of the water, and outdoor ceremonies on lawns by the river are popular in summer. Riverside ground can be soft, so chair choice and row placement matter.",
       "Away from the water, South Elgin is a mix of established neighborhoods and newer subdivisions, with Randall Road and Route 31 as the main commercial corridors. Backyard graduations, birthday parties and showers are common, and lots vary from compact to generous. The village also hosts community events and park programs, so check with South Elgin and the park district for reservation and tent rules.",
@@ -1518,7 +1518,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "Route 31 and Randall Road get busy on weekends. Mid-morning delivery windows tend to be easier.",
       "Near the river, tell us about recent rain so rows go on firmer ground and tent legs sit stable.",
       "Check with the Village of South Elgin or the park district about tents, reservations and unloading areas.",
-      "Share photos of your driveway or gate so the vendor can choose truck drop-off or hand-carry.",
+      "Share photos of your driveway or gate so we can choose truck drop-off or hand-carry.",
     ],
     recommendedChairs: [
       {
@@ -1538,7 +1538,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in South Elgin, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to South Elgin. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to South Elgin. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in South Elgin?",
@@ -1569,10 +1569,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60103"],
     metaTitle: "Event Rentals in Bartlett, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Bartlett, IL from Chicago-area rental companies. Backyard parties, graduations and weddings. Request a quote today.",
+      "Rent event chairs, tables and linens in Bartlett, IL. Backyard parties, graduations and weddings. Request a quote today.",
     headline: "Event rentals for *Bartlett* families",
     intro:
-      "We help you rent event chairs, tables, linens and more in Bartlett from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Bartlett. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Bartlett sits where Cook, DuPage and Kane counties meet, on the Milwaukee District West Metra line, with a downtown centered on the train station. The Bartlett Park District runs a wide network of parks, and Bartlett Hills Golf Course is a local landmark. Many celebrations happen in backyards across the village's family-oriented subdivisions, where graduations, birthdays and communion parties are a regular part of the calendar.",
       "The village's mix of established neighborhoods and newer developments means lots vary from compact to roomy. Tent parties are common on larger lots, while smaller yards need careful layout. Bartlett also borders Hanover Park, Streamwood, Elgin and South Elgin, so families often draw on venues and services across several towns, including banquet halls along Route 59 and Lake Street. Photos of your site help the vendor plan accurately.",
@@ -1600,7 +1600,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "Route 59 and Devon Avenue get busy at peak hours. Mid-morning delivery windows tend to be easier.",
       "Because Bartlett spans three counties, confirm which office handles your address for tent and event approvals.",
       "Check with the Village of Bartlett or the park district about reservations, tents and unloading areas.",
-      "Share photos of your driveway or gate so the vendor can choose truck drop-off or hand-carry.",
+      "Share photos of your driveway or gate so we can choose truck drop-off or hand-carry.",
     ],
     recommendedChairs: [
       {
@@ -1620,7 +1620,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Bartlett, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Bartlett. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Bartlett. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Bartlett?",
@@ -1628,7 +1628,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can chairs be delivered to a Bartlett park?",
-        a: "Usually, if the park owner allows vehicle access or a reasonable carry. Check reservation and outside-rental rules with the Bartlett Park District, then tell us where a truck can unload so the vendor can plan the delivery and setup window.",
+        a: "Usually, if the park owner allows vehicle access or a reasonable carry. Check reservation and outside-rental rules with the Bartlett Park District, then tell us where a truck can unload so we can plan the delivery and setup window.",
       },
       {
         q: "How many chairs do I need for a graduation party?",
@@ -1651,10 +1651,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60133"],
     metaTitle: "Event Rentals in Hanover Park, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Hanover Park, IL from Chicago-area rental companies. Quinceañeras, South Asian weddings and family parties. Get a quote.",
+      "Rent event chairs, tables and linens in Hanover Park, IL. Quinceañeras, South Asian weddings and family parties. Get a quote.",
     headline: "Event rentals for *Hanover Park* celebrations",
     intro:
-      "We help you rent event chairs, tables, linens and more in Hanover Park from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Hanover Park. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Hanover Park is a diverse village on the Cook and DuPage county line, with a Metra station on the Milwaukee District West line and a close-knit mix of Latino, South Asian, Eastern European and long-time suburban families. That variety shows in local celebrations: quinceañeras, weddings with long guest lists, religious festivals and large family reunions all fit into the calendar, often in banquet halls and park spaces.",
       "The Hanover Park Park District runs parks that host picnics, birthday parties and community festivals, and nearby forest preserves such as Mallard Lake give the area green space. Backyards in older neighborhoods can be compact, so large parties often move to halls or parks. Guest counts of 100 or more are common, so planning chair counts, tables and aisle room early saves headaches.",
@@ -1680,9 +1680,9 @@ export const foxValleyMchenryAreas: Location[] = [
     ],
     logistics: [
       "Barrington Road and Irving Park Road get busy at peak hours. Aim for mid-morning delivery windows.",
-      "For large parties, confirm table-to-chair ratios early so the vendor can plan truck space and setup time.",
+      "For large parties, confirm table-to-chair ratios early so we can plan truck space and setup time.",
       "Check with the Village of Hanover Park or the park district about tents, reservations and unloading areas.",
-      "Share photos of your yard, hall entrance or loading door so the vendor can choose truck drop-off or hand-carry.",
+      "Share photos of your yard, hall entrance or loading door so we can choose truck drop-off or hand-carry.",
     ],
     recommendedChairs: [
       {
@@ -1702,7 +1702,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Hanover Park, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Hanover Park. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Hanover Park. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent or park party in Hanover Park?",
@@ -1733,10 +1733,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60175", "60124"],
     metaTitle: "Event Rentals in Campton Hills, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in Campton Hills, IL from Chicago-area rental companies. Estate weddings and tent parties.",
+      "Rent event chairs, tables and linens in Campton Hills, IL. Estate weddings and tent parties.",
     headline: "Event rentals around *Campton Hills* estates",
     intro:
-      "We help you rent event chairs, tables, linens and more in Campton Hills from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Campton Hills. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Campton Hills is a village in Kane County, incorporated in 2007 and including the former unincorporated community of Wasco. It lies west of St. Charles along Route 64 and is known for large lots and a semi-rural feel. Mailing addresses may read St. Charles, which can make jurisdiction confusing. Before you plan a tent, ask the village whether your address falls inside its limits or under the county or a neighboring municipality.",
       "The big lots make Campton Hills a natural fit for estate-style celebrations. Weddings, graduation parties and anniversary dinners are often held on private property with space for a tent, a ceremony lawn and parking. Long driveways, gates and slopes are common, so deliveries depend on knowing exactly how close a truck can get. Photos and measurements of the entry and setup area help the vendor plan equipment and crew.",
@@ -1784,7 +1784,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Campton Hills, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Campton Hills. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note is enough to start.",
+        a: "we deliver to Campton Hills. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note is enough to start.",
       },
       {
         q: "Who handles tent permits in Campton Hills?",
@@ -1815,10 +1815,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60119"],
     metaTitle: "Event Rentals in Elburn, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Elburn, IL from Chicago-area rental companies. Farm weddings, Elburn Days parties and backyard events. Get a quote.",
+      "Rent event chairs, tables and linens in Elburn, IL. Farm weddings, Elburn Days parties and backyard events. Get a quote.",
     headline: "Event rentals for *Elburn* and the western prairie",
     intro:
-      "We help you rent event chairs, tables, linens and more in Elburn from established Chicago-area rental companies. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Elburn. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Elburn is a small western Kane County village at the end of the Union Pacific West Metra line, where the commuter station anchors a walkable downtown and open farmland starts just beyond. The village hosts Elburn Days each summer, a community festival at Lions Park with a carnival, live music and a parade. Community events like that need tables and chairs for volunteers, vendors and seating areas.",
       "Most celebrations here happen on private land. Farmhouses, barns and large residential lots give room for weddings, graduation parties and reunions, and nearby Kane County Forest Preserve District sites offer green space. For public land, confirm reservation and event rules with the Kane County Forest Preserve District. Rural drives, soft shoulders and long carries are part of the plan.",
@@ -1866,7 +1866,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Elburn, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Elburn. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Elburn. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Elburn?",
@@ -1897,10 +1897,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60554"],
     metaTitle: "Event Rentals in Sugar Grove, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Sugar Grove, IL from Chicago-area rental companies. Corn Boil gatherings, backyard parties and farm weddings.",
+      "Rent event chairs, tables and linens in Sugar Grove, IL. Corn Boil gatherings, backyard parties and farm weddings.",
     headline: "Event rentals around *Sugar Grove* and Waubonsee",
     intro:
-      "We help you rent event chairs, tables, linens and more in Sugar Grove from established Chicago-area rental companies. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Sugar Grove. Tell us your date, headcount and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Sugar Grove is a village in southwestern Kane County, set in a landscape of cornfields, creeks and subdivisions along Route 47 and Route 30. Waubonsee Community College's main campus anchors the village, hosting graduations, community events and fundraisers. The village's annual Corn Boil is its signature festival, and it brings food, music and seating needs. Photos of your site help the vendor plan accurately.",
       "Residential Sugar Grove mixes established neighborhoods with newer developments, and lots are often generous. Backyard tent parties are common, from graduation open houses to anniversary dinners, and the open land beyond the village limits hosts farm weddings and reunions. The Aurora Municipal Airport sits nearby, and Blackberry Creek winds through the area, so some lots near the creek have damp ground to plan around.",
@@ -1948,7 +1948,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Sugar Grove, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Sugar Grove. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Sugar Grove. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Sugar Grove?",
@@ -1979,10 +1979,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60542"],
     metaTitle: "Event Rentals in North Aurora, IL | Chairs & Tables",
     metaDescription:
-      "Rent event chairs, tables and linens in North Aurora, IL from Chicago-area rental companies. Riverfront weddings, graduation parties and backyard events.",
+      "Rent event chairs, tables and linens in North Aurora, IL. Riverfront weddings, graduation parties and backyard events.",
     headline: "Event rentals on the Fox in *North Aurora*",
     intro:
-      "We help you rent event chairs, tables, linens and more in North Aurora from established Chicago-area rental companies. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in North Aurora. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "North Aurora sits on the Fox River just north of Aurora, with Riverfront Park and the Fox River Trail giving the village a green edge along the water. Summer weddings, picnics and community events use the riverfront, and ground there can be soft after rain. Planning the truck's unloading spot and the carry to your ceremony location is the first step for any riverside event.",
       "Away from the river, North Aurora is a mix of established neighborhoods and newer subdivisions, with Orchard Road and Randall Road forming busy shopping corridors. Backyard parties, graduation open houses and showers are common, and lots in newer areas are large enough for tents. The village also sits near Batavia and Geneva, so families often compare venues and services across the Fox River towns.",
@@ -2010,7 +2010,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "Orchard Road, Randall Road and the river bridges get busy on weekends. Aim for mid-morning delivery windows.",
       "Near the river, tell us about recent rain so rows go on firmer ground and tent legs sit stable.",
       "Check with the Village of North Aurora about tents, park reservations and unloading areas.",
-      "Share photos of your driveway or gate so the vendor can choose truck drop-off or hand-carry.",
+      "Share photos of your driveway or gate so we can choose truck drop-off or hand-carry.",
     ],
     recommendedChairs: [
       {
@@ -2030,7 +2030,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in North Aurora, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to North Aurora. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to North Aurora. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in North Aurora?",
@@ -2061,10 +2061,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60538"],
     metaTitle: "Event Rentals in Montgomery, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Montgomery, IL from Chicago-area rental companies. Fox River weddings, backyard parties and Latino family events.",
+      "Rent event chairs, tables and linens in Montgomery, IL. Fox River weddings, backyard parties and Latino family events.",
     headline: "Event rentals for *Montgomery* and the Fox riverfront",
     intro:
-      "We help you rent event chairs, tables, linens and more in Montgomery from established Chicago-area rental companies. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Montgomery. Tell us your date, guest count and address, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Montgomery sits on the Fox River in southern Kane County, bordering Aurora to the north and Oswego to the south, and straddling the Kane and Kendall county line. The Fox River Trail and riverfront parks give the village a scenic edge, and small-town Main Street blocks hold community events, church functions and family parties. Riverside ground can be soft, so chair choice and row placement matter.",
       "The village has a strong Latino community alongside long-established families, and quinceañeras, baptism parties, weddings and graduation celebrations are a big part of the calendar. Those events often mean large guest counts, long tables and a mix of home, hall and park venues. Settling on chair counts, table layouts and room for dancing early saves headaches on the day. Photos of your site help the vendor plan accurately.",
@@ -2091,8 +2091,8 @@ export const foxValleyMchenryAreas: Location[] = [
     logistics: [
       "Orchard Road, Route 25 and Route 30 get busy on weekends. Aim for mid-morning delivery windows.",
       "Montgomery sits on a county line, so confirm which office handles your address for tent and event approvals.",
-      "For large parties, confirm table-to-chair ratios early so the vendor can plan truck space and setup time.",
-      "Share photos of your yard, driveway or hall entrance so the vendor can choose truck drop-off or hand-carry.",
+      "For large parties, confirm table-to-chair ratios early so we can plan truck space and setup time.",
+      "Share photos of your yard, driveway or hall entrance so we can choose truck drop-off or hand-carry.",
     ],
     recommendedChairs: [
       {
@@ -2112,7 +2112,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Montgomery, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Montgomery. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Montgomery. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Montgomery?",
@@ -2124,7 +2124,7 @@ export const foxValleyMchenryAreas: Location[] = [
       },
       {
         q: "Can you deliver chairs to a Fox River park?",
-        a: "Usually, if the park owner allows vehicle access or a reasonable carry. Check reservation and outside-rental rules first, then tell us where a truck can unload so the vendor can plan the delivery and setup window. Photos of the access route help us quote the job accurately.",
+        a: "Usually, if the park owner allows vehicle access or a reasonable carry. Check reservation and outside-rental rules first, then tell us where a truck can unload so we can plan the delivery and setup window. Photos of the access route help us quote the job accurately.",
       },
       {
         q: "How far ahead should I book a spring or summer party?",
@@ -2143,10 +2143,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60543"],
     metaTitle: "Event Rentals in Oswego, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Oswego, IL from Chicago-area rental companies. Riverfront weddings, graduation parties and backyard tent events.",
+      "Rent event chairs, tables and linens in Oswego, IL. Riverfront weddings, graduation parties and backyard tent events.",
     headline: "Event rentals around *Oswego* and the Fox River",
     intro:
-      "We help you rent event chairs, tables, linens and more in Oswego from established Chicago-area rental companies. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Oswego. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Oswego is a fast-growing Kendall County village on the Fox River, with a historic downtown on the riverbank and large subdivisions spreading east toward Aurora and south toward Yorkville. Hudson Crossing Park on the river and the Oswegoland Park District's many parks give families places to gather. Riverfront ground can be soft, and downtown parking is tight, so site access is the first planning question.",
       "Most Oswego celebrations are backyard-based. Newer subdivisions with large lots, patios and open yards host graduation parties, birthdays, showers and holiday gatherings, and tents are common. Older parts of town near the river have smaller lots and mature trees that limit tent size. Photos and rough yard measurements help the vendor choose the right order and delivery approach. Photos of your site help the vendor plan accurately.",
@@ -2174,7 +2174,7 @@ export const foxValleyMchenryAreas: Location[] = [
       "Route 34, Route 71 and the river bridge get busy at peak hours. Mid-morning delivery windows tend to be easier.",
       "Near the river, tell us about recent rain so rows go on firmer ground and tent legs sit stable.",
       "Check with the Village of Oswego or the Oswegoland Park District about tents, reservations and unloading areas.",
-      "In older neighborhoods, share photos of the yard and gate so the vendor can plan hand-carry if needed.",
+      "In older neighborhoods, share photos of the yard and gate so we can plan hand-carry if needed.",
     ],
     recommendedChairs: [
       {
@@ -2194,7 +2194,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Oswego, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Oswego. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Oswego. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Oswego?",
@@ -2225,10 +2225,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60560"],
     metaTitle: "Event Rentals in Yorkville, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Yorkville, IL from Chicago-area rental companies. Riverfront weddings, graduation parties and tent events. Get a quote.",
+      "Rent event chairs, tables and linens in Yorkville, IL. Riverfront weddings, graduation parties and tent events. Get a quote.",
     headline: "Event rentals along the Fox in *Yorkville*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Yorkville from established Chicago-area rental companies. Tell us your date, headcount and venue, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Yorkville. Tell us your date, headcount and venue, and we put together an itemized quote with delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Yorkville is the Kendall County seat, a Fox River city whose riverfront Riverfront Park and Cannonball Trail give it an outdoor-friendly core. The downtown along Hydraulic Avenue and the river hosts festivals, weddings and community events, and the old county courthouse area adds historic character. Riverside ground can be soft, so ceremony rows and tent legs need firm footing and a plan for rain.",
       "Beyond downtown, Yorkville has grown quickly with large subdivisions and shopping along Route 47 and Route 34. Backyard tent parties, graduation open houses and showers are common, and newer lots often have the room for a full dinner. Raging Waves, the big outdoor waterpark in town, also draws families for birthday and group outings in summer. Photos of your site help the vendor plan accurately.",
@@ -2276,7 +2276,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Yorkville, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Yorkville. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Yorkville. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Yorkville?",
@@ -2307,10 +2307,10 @@ export const foxValleyMchenryAreas: Location[] = [
     zips: ["60545"],
     metaTitle: "Event Rentals in Plano, IL | Chairs, Tables & More",
     metaDescription:
-      "Rent event chairs, tables and linens in Plano, IL from Chicago-area rental companies. Farm weddings, river-town parties and family gatherings. Request a quote.",
+      "Rent event chairs, tables and linens in Plano, IL. Farm weddings, river-town parties and family gatherings. Request a quote.",
     headline: "Event rentals for *Plano* and the Fox River prairie",
     intro:
-      "We help you rent event chairs, tables, linens and more in Plano from established Chicago-area rental companies. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
+      "We help you rent event chairs, tables, linens and more in Plano. Tell us your date, headcount and venue, and we match you with the right vendor and itemize delivery and setup. Request a quote or book a planning call to get started. Photos of your site help the vendor plan accurately.",
     story: [
       "Plano is a small Kendall County city on the Fox River, with a compact downtown, a freight rail line through town and farm fields that begin at the edge of the street grid. The Farnsworth House, Mies van der Rohe's glass house on the river, is a well-known landmark nearby. The river and flat prairie give Plano a quiet, open feel that suits outdoor celebrations.",
       "Most events here are at home, in church halls or on farmland. Backyards on larger lots host graduation parties and anniversaries, while barns and fields around town give room for weddings and reunions. Gravel roads, soft shoulders and long carries are common, so share photos and measurements of the access. Wind across the open fields matters for tents, so ask your tent provider about weights.",
@@ -2358,7 +2358,7 @@ export const foxValleyMchenryAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Plano, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Plano. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
+        a: "we deliver to Plano. Send your date, guest count and address, and we return an itemized quote with chairs, tables, linens and delivery. We're booking the 2026-27 season now, and a short note with your date and rough headcount is enough to start.",
       },
       {
         q: "Do I need a permit for a tent in Plano?",

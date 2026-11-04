@@ -251,7 +251,7 @@ export function PriceLines({ lines, prices }: { lines: { id: string; qty: number
         </tfoot>
       </table>
       <p className="mt-3 text-xs leading-5 text-muted">
-        Items only, before delivery, setup and fees. Prices are based on local rental companies&apos; published rates plus our booking fee; the rental company confirms the final quote for your date.
+        Items only, before delivery, setup, damage waiver and tax. Your written quote confirms the final price for your date.
       </p>
     </div>
   );

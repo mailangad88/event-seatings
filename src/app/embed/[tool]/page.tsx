@@ -53,7 +53,7 @@ export default async function EmbedPage(props: PageProps<"/embed/[tool]">) {
         <h1 className="display-3 mb-5">{t.name}</h1>
         {tools[slug]}
         <p className="mt-6 border-t border-line pt-4 text-center text-xs text-muted">
-          Free tool by <a href={`${site.url}/tools/${slug}`} className="link">{site.name}</a>, Chicago&apos;s event rental marketplace.
+          Free tool by <a href={`${site.url}/tools/${slug}`} className="link">{site.name}</a>, event rentals in Chicago.
         </p>
       </div>
     </EmbedFrame>

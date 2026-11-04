@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { amountDue, createCheckout, stripeEnabled } from "@/lib/payments";
 import { getLeadByProposalToken, updateLead } from "@/lib/store";
 
-// "Secure my booking" on a proposal: opens a Stripe Checkout page for the booking fee (or hold).
+// "Secure my booking" on a proposal: opens a Stripe Checkout page for the deposit (or hold).
 export async function startCheckout(formData: FormData) {
   const token = String(formData.get("token") ?? "");
   const lead = await getLeadByProposalToken(token);
