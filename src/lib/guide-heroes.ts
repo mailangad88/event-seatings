@@ -1,7 +1,6 @@
 import "server-only";
-import { existsSync } from "fs";
+import { hasPublicFile } from "@/lib/public-files";
 import { readImageManifest } from "./image-manifest";
-import path from "path";
 
 // Picks a distinct Blender render for each guide's hero, by keyword. Reads the render
 // manifest (src/data/rental-images.json, from the rendering work) and only uses images
@@ -41,7 +40,7 @@ function loadRenders(): Render[] {
   const out: Render[] = [];
   for (const [id, v] of Object.entries(data)) {
     const src = typeof v.src === "string" ? v.src : "";
-    if (!src.startsWith("/") || !existsSync(path.join(process.cwd(), "public", src))) continue;
+    if (!src.startsWith("/") || !hasPublicFile(src)) continue;
     const str = (k: string) => (typeof v[k] === "string" ? (v[k] as string) : "");
     out.push({
       id,

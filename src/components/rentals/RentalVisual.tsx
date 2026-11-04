@@ -1,5 +1,4 @@
-import fs from "node:fs";
-import path from "node:path";
+import { hasPublicFile } from "@/lib/public-files";
 import Image from "next/image";
 import { ChairArt } from "@/components/ChairArt";
 import { getCategory, type CategoryId } from "@/data/catalog-products";
@@ -21,7 +20,7 @@ import { ExampleChip, StockImg } from "./StockPhoto";
 // Render manifest with the Gemini styled event scenes laid over it (see src/lib/image-manifest.ts).
 const readManifest = readImageManifest;
 
-const exists = (rel: string) => fs.existsSync(path.join(process.cwd(), "public", rel));
+const exists = (rel: string) => hasPublicFile(rel);
 
 export function rentalImagePath(id: string, category: CategoryId) {
   const fromManifest = readManifest()[id]?.src;
