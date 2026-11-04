@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   MARKUP,
   customerPrice,
+  roundPrice,
   priceQuote,
   sortCategories,
   suggestedQty,
@@ -24,11 +25,21 @@ const item = (over: Partial<CatalogItem> = {}): CatalogItem => ({
   ...over,
 });
 
-const up = (n: number) => Math.round(n * (1 + MARKUP) * 100) / 100;
+const up = (n: number) => roundPrice(n * (1 + MARKUP));
 
 describe("customer pricing", () => {
   // Since the night of Nov 4 2026 customer prices are our own: supplier rate + 15%, no separate fee.
-  it("adds MARKUP to the supplier's price and rounds to cents", () => {
+  it("rounds our prices up to clean amounts, never under the 15% markup", () => {
+    expect(customerPrice({ vendorPrice: 3.9 })).toBe(4.5); // 4.485
+    expect(customerPrice({ vendorPrice: 65 })).toBe(75); // 74.75
+    expect(customerPrice({ vendorPrice: 20 })).toBe(23); // exactly 23
+    expect(customerPrice({ vendorPrice: 195 })).toBe(225); // 224.25
+    expect(customerPrice({ vendorPrice: 750 })).toBe(865); // 862.50
+    expect(roundPrice(10)).toBe(10);
+    for (const v of [0.5, 1.1, 2.6, 8.7, 9.99, 43.21, 86.95, 140, 999]) expect(customerPrice({ vendorPrice: v })).toBeGreaterThanOrEqual(v * (1 + MARKUP) - 1e-9);
+  });
+
+  it("adds MARKUP to the supplier's price", () => {
     expect(MARKUP).toBe(0.15);
     expect(customerPrice({ vendorPrice: 10 })).toBe(up(10));
     expect(customerPrice({ vendorPrice: 4.5 })).toBe(up(4.5));

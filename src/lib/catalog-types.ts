@@ -80,8 +80,16 @@ export const DEPOSIT_LABEL = `${Math.round(DEPOSIT.share * 100)}% deposit`;
 
 const cents = (n: number) => Math.round(n * 100) / 100;
 
+// Our prices end on clean amounts, like a shop's own price list: the supplier's rate plus MARKUP,
+// rounded UP (so the markup is never under 15%) to $0.25 under $10, $1 under $100, $5 from $100.
+export function roundPrice(n: number) {
+  if (n <= 0) return 0;
+  const step = n < 10 ? 0.25 : n < 100 ? 1 : 5;
+  return cents(Math.ceil(n / step - 1e-7) * step);
+}
+
 export function customerPrice(item: Pick<CatalogItem, "vendorPrice">) {
-  return cents(item.vendorPrice * (1 + MARKUP));
+  return roundPrice(item.vendorPrice * (1 + MARKUP));
 }
 
 export const usd = (n: number, digits: 0 | 2 = 2) =>
