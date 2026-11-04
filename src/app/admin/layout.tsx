@@ -1,10 +1,16 @@
+import { headers } from "next/headers";
 import Link from "next/link";
 import { AdminMobileNav, AdminSidebar } from "@/components/admin/AdminNav";
+import { checkAdmin } from "@/lib/admin-auth";
 import { site } from "@/lib/site";
 
 // Back office shell: a staff bar and a sidebar around every /admin page.
-// The password check lives in src/proxy.ts (pages) and in each Server Action.
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+// The password check lives in src/proxy.ts (pages) and in each Server Action. This layout checks it again
+// so a change to the proxy matcher can't quietly open the back office.
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  if (checkAdmin((await headers()).get("authorization")) !== "ok") {
+    return <p className="mx-auto max-w-xl px-4 py-24 text-center text-muted">Please sign in with the admin password.</p>;
+  }
   return (
     <div className="bg-bg">
       <div className="bg-espresso" data-admin-chrome>

@@ -12,22 +12,15 @@ import { cleanCode } from "@/lib/referrals";
 import { sequenceLabel } from "@/lib/followups";
 import { interestsFor, interestSummary } from "@/lib/interests";
 import { deviceFromUserAgent, locationFromHeaders, parseJourney } from "@/lib/journey";
+import { bodyTooLarge, limitRequest, readJson } from "@/lib/rate-limit";
 import { addLead, trackingFields, updateLead, type Lead, type LeadKind, type NewLead } from "@/lib/store";
 
 const kinds: LeadKind[] = ["quote", "waitlist", "quiz", "call", "chat", "partner"];
 
-// Best-effort abuse limit per server instance: 8 submissions per IP per 10 minutes, and one
-// automated visitor email per address per day. A Vercel Firewall rate-limit rule on /api/leads is the durable version.
-const hits = new Map<string, number[]>();
+// Abuse limits: 8 submissions per IP per 10 minutes (src/lib/rate-limit.ts, shared through Upstash when set),
+// and one automated visitor email per address per day (per server instance). A Vercel Firewall rate-limit rule
+// on /api/leads is the durable version.
 const emailed = new Map<string, number>();
-function tooMany(ip: string) {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < 10 * 60_000);
-  recent.push(now);
-  hits.set(ip, recent);
-  if (hits.size > 5000) hits.clear();
-  return recent.length > 8;
-}
 function firstEmailToday(email: string) {
   const key = email.toLowerCase();
   const last = emailed.get(key);
@@ -47,17 +40,23 @@ const validDate = (d: string) => {
 const str = (v: unknown, max = 200) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined;
 
+// Page paths from the browser are shown as links in /admin, so only keep same-site paths ("/x", never "//host").
+const pathFields = new Set<string>(["page_path", "landing_page", "first_landing_page"]);
+const sitePath = (v: string) => /^\/(?![/\\])[\w\-./%~+]{0,200}$/.test(v.split(/[?#]/)[0]);
+
+const maxBody = 64 * 1024;
+
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
+  const blocked =
+    bodyTooLarge(request, maxBody) ??
+    (await limitRequest(request, "leads", { limit: 8, windowMs: 10 * 60_000, message: "Too many requests. Please try again in a few minutes." }));
+  if (blocked) return blocked;
+  const body = await readJson<Record<string, unknown>>(request, maxBody);
   if (!body || typeof body !== "object") {
     return Response.json({ error: "Invalid request" }, { status: 400 });
   }
   // Honeypot: real visitors never see or fill this field.
   if (body.website) return Response.json({ ok: true });
-  const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
-  if (tooMany(ip)) {
-    return Response.json({ error: "Too many requests. Please try again in a few minutes." }, { status: 429 });
-  }
 
   const kind = body.kind as LeadKind;
   const email = str(body.email, 254);
@@ -106,7 +105,7 @@ export async function POST(request: Request) {
   if (lead.email_consent || lead.call_consent || lead.sms_consent) lead.consent_at = new Date().toISOString();
   for (const f of trackingFields) {
     const v = str(body[f], 300);
-    if (v) lead[f] = v;
+    if (v && (!pathFields.has(f) || sitePath(v))) lead[f] = v;
   }
 
   if (kind === "chat" && !lead.message) {

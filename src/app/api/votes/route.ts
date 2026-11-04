@@ -1,4 +1,5 @@
 import { getChair } from "@/data/chairs";
+import { bodyTooLarge, limitRequest, readJson } from "@/lib/rate-limit";
 import { getVisitorVotes, getVoteCounts, setVote } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
@@ -15,8 +16,10 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
-  if (!body || !getChair(body.chair) || !visitorOk(body.visitor) || typeof body.on !== "boolean") {
+  const blocked = bodyTooLarge(request, 4 * 1024) ?? (await limitRequest(request, "votes", { limit: 60, windowMs: 60_000 }));
+  if (blocked) return blocked;
+  const body = await readJson<Record<string, unknown>>(request, 4 * 1024);
+  if (!body || typeof body.chair !== "string" || !getChair(body.chair) || !visitorOk(body.visitor) || typeof body.on !== "boolean") {
     return Response.json({ error: "Invalid vote" }, { status: 400 });
   }
   await setVote(body.chair, body.visitor, body.on);

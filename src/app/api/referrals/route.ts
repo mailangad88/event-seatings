@@ -1,3 +1,4 @@
+import { bodyTooLarge, limitRequest, readJson } from "@/lib/rate-limit";
 import { getOrCreateReferrer } from "@/lib/referrals";
 import { site } from "@/lib/site";
 
@@ -5,7 +6,9 @@ const str = (v: unknown, max = 200) => (typeof v === "string" && v.trim() ? v.tr
 
 // Makes (or finds) someone's personal referral link for /refer.
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
+  const blocked = bodyTooLarge(request, 8 * 1024) ?? (await limitRequest(request, "referrals", { limit: 10, windowMs: 10 * 60_000 }));
+  if (blocked) return blocked;
+  const body = await readJson<Record<string, unknown>>(request, 8 * 1024);
   if (!body || typeof body !== "object") return Response.json({ error: "Invalid request" }, { status: 400 });
   if (body.website) return Response.json({ ok: true });
   const name = str(body.name, 80);

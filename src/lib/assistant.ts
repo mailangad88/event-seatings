@@ -23,6 +23,7 @@ import {
 } from "./event-plan";
 import { searchGuides, snippet } from "./guide-search";
 import { ideaPath, ideaQty, ideasForPlannerEvent, partyTypes, typePath } from "@/data/party-ideas";
+import { log } from "@/lib/log";
 
 // The planning assistant (/planning-assistant). Free by default: the plan comes from the same rules as the
 // /quote planner (src/lib/event-plan.ts), prices from the live catalog, and answers from our own guides.
@@ -239,7 +240,7 @@ export async function buildPlan(input: AssistantInput, useAi = false): Promise<A
 
   const plan: AssistantPlan = { summary, style: { id: chosen.id, name: styleName(chosen.id) }, lines, total, perGuest, setup, notes, addOns, setupIdeas, activities, themes, ideasHref, guides, answer, quoteHref, mode: useAi ? "gemini" : "free" };
   if (plan.mode === "gemini") {
-    const better = await geminiSummary(plan, input).catch(() => null);
+    const better = await geminiSummary(plan, input).catch((err) => (log.warn("assistant_gemini_failed", { kind: "plan", err }), null));
     if (better) plan.summary = better;
     else plan.mode = "free";
   }
@@ -256,7 +257,7 @@ export async function answerQuestion(question: string, useAi = false): Promise<{
   if (useAi) {
     const text = await gemini(
       `Answer the event planner's question in 2 to 4 sentences, using ONLY the guide excerpts below. If they don't answer it, say so and suggest asking our team. Do not invent prices, statistics, vendors or promises.\n\nQuestion: ${question}\n\n${hits.map((h, i) => `[${i + 1}] ${h.title}${h.heading ? ` — ${h.heading}` : ""}: ${h.text}`).join("\n\n")}`,
-    ).catch(() => null);
+    ).catch((err) => (log.warn("assistant_gemini_failed", { kind: "ask", err }), null));
     if (text) return { text, sources };
   }
   return { text: snippet(hits[0].text, 380), sources };

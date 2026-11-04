@@ -1,3 +1,4 @@
+import { bodyTooLarge } from "@/lib/rate-limit";
 import { verifyStripeSignature } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
 import { getLead } from "@/lib/store";
@@ -10,6 +11,8 @@ export async function POST(request: Request) {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!secret) return new Response("Webhook not configured", { status: 503 });
 
+  const big = bodyTooLarge(request, 512 * 1024);
+  if (big) return big;
   const payload = await request.text();
   if (!verifyStripeSignature(payload, request.headers.get("stripe-signature"), secret)) {
     return new Response("Bad signature", { status: 400 });

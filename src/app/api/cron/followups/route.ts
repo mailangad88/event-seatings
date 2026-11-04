@@ -1,3 +1,4 @@
+import { safeEqual } from "@/lib/admin-auth";
 import { nextStep } from "@/lib/followups";
 import { sendEmail } from "@/lib/notify";
 import { site } from "@/lib/site";
@@ -11,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const secret = process.env.CRON_SECRET;
-  if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
+  if (!secret || !safeEqual(request.headers.get("authorization") ?? "", `Bearer ${secret}`)) {
     return Response.json({ error: "unauthorized" }, { status: 401 });
   }
   const dry = new URL(request.url).searchParams.get("dry") === "1";

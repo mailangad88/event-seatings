@@ -1,10 +1,23 @@
 import { sendAlert } from "@/lib/alerts";
+import { rateLimit, clientIp } from "@/lib/rate-limit";
+import { isClientErrorNoise, parseClientError } from "@/lib/client-errors";
 
 // Receives browser errors from src/instrumentation-client.ts and forwards them as alerts.
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
-  if (!body || typeof body.message !== "string") return new Response(null, { status: 204 });
-  const s = (v: unknown, n: number) => (typeof v === "string" ? v.slice(0, n) : undefined);
-  await sendAlert("Browser error", { message: s(body.message, 500), source: s(body.source, 300), path: s(body.path, 200), ua: s(body.ua, 200) });
+  // A noisy or hostile browser can't flood the alert channel: 20 reports per IP per 10 minutes, then dropped quietly.
+  const rl = await rateLimit("client-errors", clientIp(request), { limit: 20, windowMs: 10 * 60_000 });
+  if (!rl.allowed) return new Response(null, { status: 204 });
+  // Reports are small; anything bigger is not from our script. Always answer 204 so the browser never retries.
+  const raw = await request.text().catch(() => "");
+  if (!raw || raw.length > 4000) return new Response(null, { status: 204 });
+  let body: unknown = null;
+  try {
+    body = JSON.parse(raw);
+  } catch {
+    return new Response(null, { status: 204 });
+  }
+  const report = parseClientError(body);
+  if (!report || isClientErrorNoise(report)) return new Response(null, { status: 204 });
+  await sendAlert("Browser error", report);
   return new Response(null, { status: 204 });
 }
