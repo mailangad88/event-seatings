@@ -3,6 +3,7 @@ import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { vendors } from "@/data/vendors";
 import { AdminHeader } from "@/components/admin/AdminUi";
+import { LeadFlow } from "@/components/admin/LeadFlow";
 import { eventLine, money2, prettyDay } from "@/lib/admin-view";
 import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { amountDue, chargeLabel } from "@/lib/payments";
@@ -36,6 +37,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
           }
         />
       </div>
+      <LeadFlow lead={lead} current="quote" />
 
       {locked && (
         <p className="card mt-6 border-rose/40 p-4 text-sm">

@@ -34,6 +34,10 @@ export type IntakeField = {
   placeholder?: string;
   // Tip for the person on the phone, not read out.
   tip?: string;
+  // Only for us (next step, follow-up date): never asked on the customer's own form or in the email.
+  staffOnly?: boolean;
+  // How to ask it in writing (email, text, customer form) when the spoken line doesn't fit.
+  written?: string;
 };
 
 export type IntakeSection = { id: string; title: string; say?: string; fields: IntakeField[] };
@@ -77,9 +81,9 @@ export const intakeSections: IntakeSection[] = [
     title: "Who you're talking to",
     say: "Thanks for calling Beyond Chiavari. Can I grab your name and number first, in case we get cut off?",
     fields: [
-      { id: "name", label: "Name", ask: "Who am I speaking with?", type: "text", key: true, core: "name", placeholder: "First and last name" },
-      { id: "phone", label: "Phone", ask: "Best number to reach you?", type: "tel", key: true, core: "phone", placeholder: "(312) 555-0123" },
-      { id: "email", label: "Email", ask: "What email should I send your quote to?", type: "email", key: true, core: "email", placeholder: "name@example.com" },
+      { id: "name", label: "Name", ask: "Who am I speaking with?", written: "Your name", type: "text", key: true, core: "name", placeholder: "First and last name" },
+      { id: "phone", label: "Phone", ask: "Best number to reach you?", written: "Best phone number for you", type: "tel", key: true, core: "phone", placeholder: "(312) 555-0123" },
+      { id: "email", label: "Email", ask: "What email should I send your quote to?", written: "Email for your quote", type: "email", key: true, core: "email", placeholder: "name@example.com" },
       { id: "contact_pref", label: "Best way to reach them", ask: "Do you prefer a call, a text or an email?", type: "choices", options: ["Call", "Text", "Email"] },
       { id: "contact_time", label: "Best time", ask: "When is a good time to reach you?", type: "select", options: ["Morning", "Afternoon", "Evening", "Weekends", "Any time"] },
       {
@@ -96,8 +100,8 @@ export const intakeSections: IntakeSection[] = [
     title: "The event",
     say: "Tell me a little about the event.",
     fields: [
-      { id: "event_type", label: "Occasion", ask: "What are you celebrating?", type: "text", key: true, core: "event_type", suggest: occasionSuggestions, placeholder: "Wedding, graduation party..." },
-      { id: "event_date", label: "Event date", ask: "What's the date?", type: "date", key: true, core: "event_date" },
+      { id: "event_type", label: "Occasion", ask: "What are you celebrating?", written: "What's the occasion?", type: "text", key: true, core: "event_type", suggest: occasionSuggestions, placeholder: "Wedding, graduation party..." },
+      { id: "event_date", label: "Event date", ask: "What's the date?", written: "What's the date of the event?", type: "date", key: true, core: "event_date" },
       { id: "date_flexible", label: "Is the date set?", ask: "Is that date set, or could it move?", type: "select", options: ["Date is set", "Could move a day or two", "Still picking a date"] },
       { id: "start_time", label: "Starts at", ask: "What time do guests arrive?", type: "time" },
       { id: "end_time", label: "Ends at", ask: "And what time does it wrap up?", type: "time" },
@@ -151,9 +155,9 @@ export const intakeSections: IntakeSection[] = [
     title: "Delivery and setup",
     say: "A couple of questions about drop-off, so the driver isn't guessing.",
     fields: [
-      { id: "dropoff_window", label: "Earliest drop-off", ask: "What's the earliest we can drop things off? Could it come the day before?", type: "text", key: true, placeholder: "Friday after 3pm, or the morning of" },
+      { id: "dropoff_window", label: "Earliest drop-off", ask: "What's the earliest we can drop things off? Could it come the day before?", written: "What's the earliest the rentals can be dropped off? The day before is often cheaper.", type: "text", key: true, placeholder: "Friday after 3pm, or the morning of" },
       { id: "pickup_window", label: "Pick up by", ask: "When does everything need to be picked up by?", type: "text", placeholder: "Sunday by noon" },
-      { id: "setup_help", label: "Setup", ask: "Do you want the crew to set up and take down, or just drop off?", type: "select", key: true, options: ["Set up and take down", "Drop off only", "Not sure"] },
+      { id: "setup_help", label: "Setup", ask: "Do you want the crew to set up and take down, or just drop off?", written: "Would you like the crew to set up and take down, or just drop off?", type: "select", key: true, options: ["Set up and take down", "Drop off only", "Not sure"] },
       {
         id: "access",
         label: "Getting things in",
@@ -170,7 +174,7 @@ export const intakeSections: IntakeSection[] = [
     title: "What they need",
     say: "Let's go through what you need.",
     fields: [
-      { id: "items_needed", label: "Items", ask: "Which of these do you need?", type: "choices", key: true, options: itemOptions },
+      { id: "items_needed", label: "Items", ask: "Which of these do you need?", written: "Which of these do you need?", type: "choices", key: true, options: itemOptions },
       {
         id: "chair_style",
         label: "Chair style",
@@ -193,7 +197,7 @@ export const intakeSections: IntakeSection[] = [
       {
         id: "budget",
         label: "Rental budget",
-        ask: "Do you have a rough budget for rentals?",
+        ask: "Do you have a rough budget for rentals?", written: "Do you have a rough budget for the rentals? A range is fine.",
         type: "select",
         key: true,
         options: ["Under $1,000", "$1,000 to $2,500", "$2,500 to $5,000", "$5,000 to $10,000", "Over $10,000", "Not sure yet"],
@@ -213,13 +217,13 @@ export const intakeSections: IntakeSection[] = [
       {
         id: "next_step",
         label: "Next step",
-        ask: "What happens next?",
+        ask: "What happens next?", staffOnly: true,
         type: "select",
         key: true,
         options: ["Send a quote by email", "Book a planning call", "Send a few options to pick from", "Check back later", "Not a fit"],
       },
-      { id: "follow_up_at", label: "Follow up on", ask: "When should I check back with you?", type: "date", core: "follow_up_at" },
-      { id: "notes", label: "Anything else", ask: "Is there anything I didn't ask that I should know?", type: "textarea", placeholder: "Anything else from the call" },
+      { id: "follow_up_at", label: "Follow up on", ask: "When should I check back with you?", type: "date", core: "follow_up_at", staffOnly: true },
+      { id: "notes", label: "Anything else", ask: "Is there anything I didn't ask that I should know?", written: "Anything else we should know?", type: "textarea", placeholder: "Anything else from the call" },
     ],
   },
 ];
@@ -397,4 +401,113 @@ export function changedAnswers(before: Prefilled, after: IntakeAnswers) {
       })
       .map((f) => f.id),
   );
+}
+
+// The question as written to the customer (email, text or their own form).
+export const writtenAsk = (f: IntakeField) => f.written ?? f.ask;
+
+// Missing answers we can ask the customer for in writing: must-haves first, then the rest.
+export function missingForCustomer(answers: Record<string, IntakeValue | undefined>) {
+  const open = intakeFields.filter((f) => !f.staffOnly && !isAnswered(answers[f.id]));
+  return { key: open.filter((f) => f.key), more: open.filter((f) => !f.key) };
+}
+
+const prettyDate = (d: string) => new Date(`${d.slice(0, 10)}T12:00:00`).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+
+// "your graduation party on Saturday, June 12 for about 120 guests in Naperville"
+export function eventPhrase(lead: Partial<Lead>) {
+  const what = lead.event_type ? `your ${lead.event_type.replace(/\s*\(.*\)$/, "").toLowerCase()}` : "your event";
+  return [what, lead.event_date && `on ${prettyDate(lead.event_date)}`, lead.guest_count && `for about ${lead.guest_count} guests`, lead.city && `in ${lead.city}`]
+    .filter(Boolean)
+    .join(" ");
+}
+
+// "chairs, tables and linens" from the quote's item categories (or the call answers).
+export function itemsPhrase(answers: Record<string, IntakeValue | undefined>) {
+  const items = Array.isArray(answers.items_needed) ? answers.items_needed.map((i) => i.toLowerCase()) : [];
+  if (!items.length) return "";
+  return items.length === 1 ? items[0] : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
+export type Outreach = { opener: string; subject: string; email: string; text: string; asks: IntakeField[] };
+
+/**
+ * Personal messages for a lead, built from what they already told us and only asking what's missing:
+ * a call opener, an email and a short text. `link` is their own form (/event-details/<token>).
+ */
+export function buildOutreach(lead: Partial<Lead> & { intake?: Intake | null }, opts: { link?: string; from?: string; phone?: string } = {}): Outreach {
+  const pre = prefillIntake(lead);
+  const answers = Object.fromEntries(Object.entries(pre).map(([k, v]) => [k, v.value]));
+  const { key, more } = missingForCustomer(answers);
+  const asks = (key.length ? key : more).slice(0, 6);
+  const first = lead.name?.trim().split(/\s+/)[0];
+  const hi = first ? `Hi ${first}` : "Hi there";
+  const me = opts.from ? `${opts.from} from Beyond Chiavari` : "Beyond Chiavari";
+  const event = eventPhrase(lead);
+  const items = itemsPhrase(answers);
+  const list = (lead.items?.length ?? 0) > 0;
+  const sent = list ? `your list for ${event}${items ? ` (${items})` : ""}` : `${event}${items ? ` and the ${items} you need` : ""}`;
+
+  const opener = asks.length
+    ? `${hi}, this is ${me}. I'm calling about ${sent}. I have ${asks.length === 1 ? "one quick question" : "a few quick questions"} so I can check prices and availability with the rental companies. Is now a good time?`
+    : `${hi}, this is ${me}. I'm calling about ${sent}. I have everything I need to check prices with the rental companies, so I just want to confirm a couple of things with you. Is now a good time?`;
+
+  const subject = lead.event_type ? `Your ${lead.event_type.replace(/\s*\(.*\)$/, "").toLowerCase()} rentals: a few quick questions` : "Your event rentals: a few quick questions";
+  const numbered = asks.map((f, i) => `${i + 1}. ${writtenAsk(f)}`);
+  const email = [
+    `${hi},`,
+    "",
+    list ? `Thanks for sending ${sent}.` : `Thanks for getting in touch about ${sent}.`,
+    "",
+    asks.length
+      ? `To check prices and availability with the rental companies, I just need ${asks.length === 1 ? "one more detail" : "a few more details"}:`
+      : "I have what I need to check prices and availability with the rental companies. I'll be back to you shortly.",
+    ...(asks.length ? ["", ...numbered] : []),
+    "",
+    ...(asks.length && opts.link ? [`You can reply to this email, or fill them in here (it takes about 2 minutes): ${opts.link}`, ""] : asks.length ? ["Just reply to this email with what you know. A rough answer is fine.", ""] : []),
+    opts.phone ? `If it's easier to talk, call or text me at ${opts.phone}.` : "If it's easier to talk, reply with a good time and I'll call you.",
+    "",
+    "Thanks,",
+    opts.from ? `${opts.from}, Beyond Chiavari` : "Beyond Chiavari",
+  ].join("\n");
+
+  const text = asks.length
+    ? `${hi}, it's ${me}. Thanks for ${list ? "your list" : "reaching out"} for ${event}. To check prices I need ${asks.length === 1 ? "one more detail" : `${asks.length} more details`}${opts.link ? `, quick form here: ${opts.link}` : `. Is now a good time for a 5 minute call?`}`
+    : `${hi}, it's ${me}. Thanks for ${list ? "your list" : "reaching out"} for ${event}. I'm checking prices with the rental companies now and will be back to you shortly.`;
+
+  return { opener, subject, email, text, asks };
+}
+
+// Call answers a rental company needs to price delivery and setup. Street address and the on-site contact are
+// left out on purpose: they go to the rental company once the booking is confirmed.
+export const vendorFieldIds = ["venue_type", "indoor_outdoor", "surface", "start_time", "end_time", "dropoff_window", "pickup_window", "setup_help", "access", "access_notes", "power", "venue_rules", "chair_style", "table_plan", "colors"] as const;
+
+export function vendorDetails(lead: Partial<Lead> & { intake?: Intake | null }) {
+  const pre = prefillIntake(lead);
+  return vendorFieldIds
+    .map((id) => {
+      const f = intakeField(id);
+      const v = pre[id]?.value;
+      return f && isAnswered(v) ? `${f.label}: ${showValue(f, v)}` : "";
+    })
+    .filter(Boolean);
+}
+
+// The email that goes with the customer proposal link.
+export function proposalEmail(lead: Partial<Lead>, url: string, from?: string) {
+  const first = lead.name?.trim().split(/\s+/)[0];
+  const subject = lead.event_type ? `Your ${lead.event_type.replace(/\s*\(.*\)$/, "").toLowerCase()} rental quote` : "Your event rental quote";
+  const body = [
+    `${first ? `Hi ${first}` : "Hi there"},`,
+    "",
+    `Here is your quote for ${eventPhrase(lead)}: ${url}`,
+    "",
+    "It shows each item, the rental company's own price and our flat fee as separate lines. You only pay our fee once every rental company confirms your date.",
+    "",
+    "If you want to change anything, just reply and I'll update it.",
+    "",
+    "Thanks,",
+    from ? `${from}, Beyond Chiavari` : "Beyond Chiavari",
+  ].join("\n");
+  return { subject, body };
 }

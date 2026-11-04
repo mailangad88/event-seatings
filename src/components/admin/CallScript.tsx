@@ -17,7 +17,7 @@ function SaveButton({ label }: { label: string }) {
   );
 }
 
-function FieldInput({ f, value, onChange }: { f: IntakeField; value: IntakeValue | undefined; onChange: (v: IntakeValue) => void }) {
+export function FieldInput({ f, value, onChange }: { f: IntakeField; value: IntakeValue | undefined; onChange: (v: IntakeValue) => void }) {
   const name = `f_${f.id}`;
   const id = `q-${f.id}`;
   const str = typeof value === "string" ? value : "";

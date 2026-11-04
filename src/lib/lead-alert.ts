@@ -295,5 +295,6 @@ export function leadAlertText(a: LeadAlert): string {
     ...(a.earlier.length ? ["", "EARLIER ENQUIRIES", ...a.earlier.map((e) => `  ${e.when}: ${e.what}`)] : []),
     "",
     `Open the full record: ${a.adminUrl}`,
+    `Call script and "ask what's missing" email: ${a.adminUrl}/script`,
   ].join("\n");
 }
