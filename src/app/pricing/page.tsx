@@ -205,7 +205,13 @@ export default function PricingPage() {
         <p className="max-w-3xl leading-7 text-muted">
           Sometimes, yes. If one company has everything for your party, call them, and we&apos;re happy to tell you who.
           Most backyard parties under about 100 guests are like this. Our fee makes sense when your event needs two or more
-          companies and you don&apos;t want to manage them all.
+          companies and you don&apos;t want to manage them all. See typical lists for{" "}
+          <Link href="/events/south-asian-weddings" className="link">South Asian weddings</Link>,{" "}
+          <Link href="/events/quinceaneras" className="link">quinceañeras</Link> and{" "}
+          <Link href="/events/weddings" className="link">weddings</Link>, browse{" "}
+          <Link href="/rentals" className="link">rental prices</Link>, or read{" "}
+          <Link href="/how-it-works" className="link">how booking works</Link> and our{" "}
+          <Link href="/compare" className="link">booking options compared</Link>.
         </p>
         <div className="mt-8 overflow-x-auto rounded-2xl border border-line bg-surface">
           <table className="w-full min-w-[36rem] text-left text-sm">
