@@ -341,8 +341,8 @@ No page may be text-only: every page needs a chair image, a flowchart or another
 | `/faq` | FAQ with FAQPage schema | 2026-11-01 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
 | `/blog` | Journal index: topic browser + latest 24 guides | 2026-11-02 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
 | `/blog/topic/[topic]` | 20 topic hubs (CollectionPage + ItemList + BreadcrumbList) | 2026-11-02 | ✅ | ⚠️ | ✅ | ✅ | ❌ | ⚠️ |
-| `/privacy` | Privacy policy | 2026-11-01 | ⚠️ | n/a | n/a | ✅ | ❌ | n/a |
-| `/terms` | Terms of use: broker model, 10% booking fee, who you pay, Booking Promise, damage, liability cap | 2026-11-02 | ✅ | n/a | n/a | ✅ | ❌ | n/a |
+| `/privacy` | Privacy policy: what we collect, bookings and payments (Stripe), sharing with fulfillment partners, retention, security, children, chat flow chart | 2026-11-04 | ✅ | n/a | n/a | ✅ | ❌ | n/a |
+| `/terms` | Customer Terms and Conditions (16 sections, booking StepFlow, cancellation table, contents list, 5 FAQs with schema). Numbers in `src/lib/terms.ts`. Needs attorney review. | 2026-11-04 | ✅ | ✅ | ✅ | ✅ | ✅ | n/a |
 | `/how-it-works` | Four steps from quote to pickup, who you pay, Booking Promise summary, FAQ | 2026-11-02 | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
 | `/booking-promise` | Payments, deposits, damage waiver, insurance/COI, six-point Booking Promise, payment StepFlow + schedule table, 8 FAQs | 2026-11-02 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `/partners` | Vendor sign-up: why join, sample order with who-pays-what, cost comparison table, Founding Partner terms (read from `src/lib/partner-terms.ts`), five things we need, form, 6 FAQs | 2026-11-04 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -1760,3 +1760,10 @@ Angad asked for researched party ideas per party type, including activities, gam
 - New /pricing page (tiers, what's included, call-direct comparison, before-you-pay checklist, FAQ + Service/Offer schema). Big-event callout on /events weddings, South Asian weddings, quinceañeras, galas.
 - Copy updated on ~30 pages that said 10%. Remaining: real reviews once events happen; test $295 vs $395 for 120-200 guests.
 - Plan: /mnt/project-files/plans/success-plan-2026-11-04.md
+
+## 2026-11-04: Customer terms and conditions
+
+- `/terms` rewritten as customer Terms and Conditions for our own-price model: quotes vs confirmed bookings, 50% deposit (min $100) with the balance 7 days before, cancellation table, date and order changes, delivery/setup/pickup, damage, loss and cleaning, weather and tents (811/JULIE), venue permissions and guest safety, swaps, illustrative photos, pricing errors, liability cap (amount paid), force majeure, Illinois law and Kane County courts. Independent fulfillment partners are allowed in neutral wording. No COI promises.
+- `/privacy` updated: bookings and payments, sharing with delivery/setup/supply partners, retention, security, children.
+- Required "I agree to the Terms and Conditions" box on the quote form and on the proposal's pay and accept forms. Saved as `terms_accepted_at` + `terms_version` on the lead (re-run `supabase/schema.sql`; until then a note is added to the lead's activity on the proposal).
+- Remaining: Illinois attorney review of `/terms`; `/booking-promise` and `/how-it-works` still describe the older fee model.
