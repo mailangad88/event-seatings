@@ -86,7 +86,7 @@ export async function recordPayment(formData: FormData) {
   redirect("/admin/payments?done=recorded");
 }
 
-// Refunds a booking fee. The page only shows this button after a separate "Refund" click (?refund=<lead id>), and the
+// Refunds a deposit. The page only shows this button after a separate "Refund" click (?refund=<lead id>), and the
 // form must carry confirm=yes. With Stripe and a card payment it refunds the card; otherwise it only records the refund.
 export async function refundFee(formData: FormData) {
   await requireAdmin();
@@ -114,7 +114,7 @@ export async function refundFee(formData: FormData) {
 
   // fee_paid_at stays, so the ledger keeps the date the fee came in.
   await updateLead(lead.id, { fee_status: "refunded" }, [
-    { type: "note", text: `Booking fee refunded (${usd(amount)}, ${how === "stripe" ? "back to the card through Stripe" : `by ${methodLabel(how)}`}).` },
+    { type: "note", text: `Deposit refunded (${usd(amount)}, ${how === "stripe" ? "back to the card through Stripe" : `by ${methodLabel(how)}`}).` },
   ]);
   try {
     await addLedgerEntry({ kind: "refund", method: how, amount, lead_id: lead.id, note });

@@ -8,7 +8,7 @@ import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Rental Partner Terms on One Page",
-  description: `The full terms for Chicago-area rental companies that take orders from ${site.name}: ${partnerRatePct} of the rental subtotal after ${partnerFreeOrders}, only on orders that book, paid monthly. Your prices, your contract, no exclusivity.`,
+  description: `The full terms for Chicago-area rental companies that take orders from ${site.name}: ${partnerRatePct} of the rental subtotal after ${partnerFreeOrders}, only on orders that book, paid monthly. We pay your full price-sheet rates, your contract, no exclusivity.`,
   alternates: { canonical: "/partners/terms" },
 });
 
@@ -30,12 +30,10 @@ const groups: { title: string; rows: [string, string][] }[] = [
   {
     title: "Prices and customers",
     rows: [
-      ["Your prices", `You set them. We quote customers from your price sheet and never add to it. Quotes are good for ${T.quoteValidDays} days. Give us ${T.noticeDays} days' notice of price changes.`],
-      ["Same price for everyone", "Our customers pay the same price as anyone who calls you direct."],
-      ["Who the customer pays", `The customer pays you for the rentals, under your own rental agreement, deposit and damage waiver. The customer pays ${site.name} only for our coordination fee, on its own line.`],
-      ["We tell customers", "Every proposal says the rental company pays us a referral fee and that it never changes their price."],
-      ["Customers we introduce", `Count as ours for ${T.attributionMonths} months from the first enquiry, including their next events. Please don't steer them to book around us.`],
-      ["Customer details", "Used only for that order. Please don't add them to your marketing unless they ask."],
+      ["Your prices", `You set your price sheet and we pay those rates for every order. Quotes are good for ${T.quoteValidDays} days. Give us ${T.noticeDays} days' notice of price changes.`],
+      ["Who pays you", `${site.name} does. We place each order and pay your usual deposit when it's confirmed and the balance before the event. Customers book and pay with us, at our own prices.`],
+      ["Our customers", `Customers on our orders stay ours for ${T.attributionMonths} months, including their next events. Please don't contact them about anything but their delivery, or offer to book them direct.`],
+      ["Customer details", "Used only for delivering that order. Please don't add them to your marketing."],
     ],
   },
   {
@@ -44,7 +42,7 @@ const groups: { title: string; rows: [string, string][] }[] = [
       ["How an order reaches you", "An email with a quote ID (BC-YYYY-####), the date, venue, guest count and exact items and quantities."],
       ["Reply time", `Yes, no or yes with changes within ${T.replyHours} business hours. Same day for events less than 14 days out.`],
       ["Status", "A short weekly update on open orders: booked, quoted, or lost and why."],
-      ["If you have to cancel", "Tell us right away, refund the customer's deposit under your contract, and help us find a replacement. Our backup guarantee to the customer is ours to pay, not yours."],
+      ["If you have to cancel", "Tell us right away, return what we paid for that order, and help us find a replacement. What we promise our customer is ours to keep, not yours."],
       ["Your work", "Delivery, setup, pickup, damage, cleaning and the taxes on your rentals, including the Chicago lease tax, stay with you."],
     ],
   },
@@ -56,7 +54,7 @@ const groups: { title: string; rows: [string, string][] }[] = [
       ["Photos", "Only with your written OK, credited to you. You can take that back any time."],
       ["Exclusivity", "None either way."],
       ["Quality", "Two confirmed customer complaints in 90 days pauses new orders until we've sorted it out together."],
-      ["Length", `12 months, renewing on its own. Either of us can stop with ${T.noticeDays} days' notice. Fees are still owed on customers we introduced before then.`],
+      ["Length", `12 months, renewing on its own. Either of us can stop with ${T.noticeDays} days' notice. Fees are still owed on orders placed before then.`],
       ["Changes to these terms", "60 days' written notice before any fee changes."],
     ],
   },
@@ -64,8 +62,8 @@ const groups: { title: string; rows: [string, string][] }[] = [
 
 const steps = [
   { icon: "chat" as const, title: "Order email", text: `Items, date, venue, quote ID. Reply within ${T.replyHours} hours.` },
-  { icon: "users" as const, title: "Introduction", text: "We introduce you to the customer by email." },
-  { icon: "truck" as const, title: "Your contract", text: "Your agreement, deposit, delivery and pickup." },
+  { icon: "users" as const, title: "We place the order", text: "Confirmed in writing, and we pay your deposit." },
+  { icon: "truck" as const, title: "You deliver", text: "Delivery, setup and pickup at the times we agree." },
   { icon: "calendar" as const, title: "Monthly statement", text: `${partnerRatePct} of booked rentals after the free period, due in ${T.netDays} days.` },
 ];
 
@@ -98,7 +96,7 @@ export default function PartnerTermsPage() {
         ]}
         eyebrow="For rental companies"
         title="Rental partner terms"
-        intro={`Everything a Chicago-area rental company agrees to when it takes orders from ${site.name}, on one page. You keep your prices, your contract and your deposit. You pay nothing on ${partnerFreeOrders}, then ${partnerRatePct} of the rentals on orders we send that book.`}
+        intro={`Everything a Chicago-area rental company agrees to when it takes orders from ${site.name}, on one page. We pay your full price-sheet rates on your usual terms. You pay nothing on ${partnerFreeOrders}, then ${partnerRatePct} of the rentals on orders we send that book.`}
         actions={
           <>
             <Link href="/partners#apply" className="btn-primary">Apply as a partner</Link>
@@ -111,12 +109,12 @@ export default function PartnerTermsPage() {
       <Section eyebrow="How an order works" title="From order email to statement">
         <StepFlow
           steps={steps}
-          caption={`How an order moves between ${site.name} and a rental partner: an order email with a quote ID, an introduction to the customer, the rental company's own contract and delivery, then a monthly statement.`}
+          caption={`How an order moves between ${site.name} and a rental partner: an order email with a quote ID, we place and pay for the order, the rental company delivers, then a monthly statement.`}
         />
         <p className="mt-8 max-w-3xl leading-7 text-muted">
           See what customers see: the <Link href="/rentals" className="link-line">rental catalog with prices</Link>, the{" "}
           <Link href="/quote" className="link-line">quote builder</Link>, <Link href="/pricing" className="link-line">what customers pay us</Link>, and{" "}
-          <Link href="/how-we-work" className="link-line">who pays whom</Link>. Already listed without asking?{" "}
+          <Link href="/partners/faq" className="link-line">the partner FAQ</Link>. Already listed without asking?{" "}
           <Link href="/vendor-listings" className="link-line">Change or remove your listing</Link>.
         </p>
       </Section>

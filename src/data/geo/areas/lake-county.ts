@@ -14,11 +14,11 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Waukegan, IL for lakefront weddings, quinceaneras and family parties. Request a quote or book a call today.",
     headline: "Chairs and tables for celebrations on the *Waukegan lakefront*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Waukegan from established Chicago-area rental companies, with delivery to homes, halls, parks and the lakefront. Tell us your date and guest count and we will line up the right seating. Request a quote or book a planning call to get on the calendar for the 2026-27 season.",
+      "We help you rent event chairs, tables, linens and more in Waukegan, with delivery to homes, halls, parks and the lakefront. Tell us your date and guest count and we will line up the right seating. Request a quote or book a planning call to get on the calendar for the 2026-27 season.",
     story: [
       "Waukegan is Lake County's biggest city and one of its most layered. The harbor and the Lake Michigan shoreline anchor the east side, the downtown grid climbs the bluff above them, and a long run of neighborhoods stretches west toward Route 41 and Lewis Avenue. Ray Bradbury grew up here, and the city still has a small-town habit of marking big days together, from parades to church dinners to block parties that spill across a whole street.",
       "Celebrations here are big and family-first. Quinceaneras, baptisms, first communions, graduation parties and weddings regularly pull in 150 guests or more, often with grandparents traveling in and tables of cousins that need to sit together. Many families plan a church ceremony followed by a reception at a banquet hall, a park pavilion or a backyard under a tent, and the chair count rises quickly when everyone shows up.",
-      "The lake shapes the logistics. Wind off the water, damp spring weather and a short outdoor season mean we plan for tents, weights and a backup indoor layout from the start. If you are eyeing Bowen Park, Waukegan Beach or a lot in the north-side neighborhoods, share a few photos and we will talk through carry distance, parking and how early the vendor can get in.",
+      "The lake shapes the logistics. Wind off the water, damp spring weather and a short outdoor season mean we plan for tents, weights and a backup indoor layout from the start. If you are eyeing Bowen Park, Waukegan Beach or a lot in the north-side neighborhoods, share a few photos and we will talk through carry distance, parking and how early we can get in.",
     ],
     settings: [
       {
@@ -62,7 +62,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Waukegan, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Waukegan homes, halls and parks. Share your date, address and guest count, and we will put together an itemized quote. You can also book a short planning call.",
+        a: "We deliver chairs, tables and linens to Waukegan homes, halls and parks. Share your date, address and guest count, and we will put together an itemized quote. You can also book a short planning call.",
       },
       {
         q: "Do I need a permit for a tent or party at the lakefront?",
@@ -74,11 +74,11 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "How far ahead should I book for a Waukegan quinceanera or graduation party?",
-        a: "For spring and early summer, reach out two to three months ahead. May and June fill up fast with graduations and quinceaneras. Smaller backyard parties can sometimes be arranged sooner, but popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "For spring and early summer, reach out two to three months ahead. May and June fill up fast with graduations and quinceaneras. Smaller backyard parties can sometimes be arranged sooner, but popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Will wind off Lake Michigan be a problem for an outdoor party?",
-        a: "It can be, especially near the shore. Heavier chairs, weighted tents and sheltered seating areas help. Tell us your location and we will suggest options that hold up better in gusty conditions, plus a backup indoor layout. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "It can be, especially near the shore. Heavier chairs, weighted tents and sheltered seating areas help. Tell us your location and we will suggest options that hold up better in gusty conditions, plus a backup indoor layout. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["north-chicago", "gurnee", "zion", "lake-bluff", "libertyville"],
@@ -96,11 +96,11 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in North Chicago, IL for Navy graduation gatherings, weddings and family parties. Request a quote or book a call today.",
     headline: "Seating for family gatherings near *Great Lakes*",
     intro:
-      "We help you rent event chairs, tables, linens and more in North Chicago from established Chicago-area rental companies. From homecoming parties to weddings and church celebrations, we match your headcount to the right seating. Request a quote or book a planning call to get your date on the calendar for 2026-27.",
+      "We help you rent event chairs, tables, linens and more in North Chicago. From homecoming parties to weddings and church celebrations, we match your headcount to the right seating. Request a quote or book a planning call to get your date on the calendar for 2026-27.",
     story: [
       "North Chicago sits between Waukegan and Lake Bluff, with Naval Station Great Lakes covering a large stretch of its east side and Lake Michigan just beyond. That gives the city a rhythm unlike its neighbors. Families fly or drive in from across the country for recruit graduations at the base, and many of them want a meal, a cake and a table big enough for everyone afterward.",
       "Off base, the city is a mix of established neighborhoods, a busy Sheridan Road corridor, the Rosalind Franklin University campus and Foss Park. Celebrations here tend to be multigenerational and warm: church anniversaries, birthday parties, graduation cookouts, weddings in community halls, and baby showers in living rooms that need every folding chair in the building.",
-      "Because so many guests are traveling, timing matters. Pickups need to match a graduation ceremony, a flight or a church schedule, and drop-off windows need to be exact. Tell us your date, headcount and where the party will land, and we will work with the vendor on a delivery time that fits. We keep quotes itemized so there are no surprises.",
+      "Because so many guests are traveling, timing matters. Pickups need to match a graduation ceremony, a flight or a church schedule, and drop-off windows need to be exact. Tell us your date, headcount and where the party will land, and we will set a delivery time that fits. We keep quotes itemized so there are no surprises.",
     ],
     settings: [
       {
@@ -144,7 +144,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in North Chicago, IL?",
-        a: "We work with established Chicago-area rental companies who deliver chairs, tables and linens to North Chicago homes, halls and parks. Send us your date, address and guest count for an itemized quote, or book a short planning call to talk it through.",
+        a: "We deliver chairs, tables and linens to North Chicago homes, halls and parks. Send us your date, address and guest count for an itemized quote, or book a short planning call to talk it through.",
       },
       {
         q: "Can I have chairs delivered for a Navy graduation party?",
@@ -152,15 +152,15 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Do I need a permit to host a party at Foss Park?",
-        a: "Park district facilities usually require a reservation, and tents or extra vehicles may have separate rules. Contact the Foss Park District directly to confirm availability, hours and what is allowed before you finalize anything. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Park district facilities usually require a reservation, and tents or extra vehicles may have separate rules. Contact the Foss Park District directly to confirm availability, hours and what is allowed before you finalize anything. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How soon should I book chairs for a North Chicago event?",
-        a: "For weekends in May through September, one to two months ahead is wise. Graduation weekends fill early because many families plan around them. Last-minute requests are sometimes possible, but style choices narrow. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "For weekends in May through September, one to two months ahead is wise. Graduation weekends fill early because many families plan around them. Last-minute requests are sometimes possible, but style choices narrow. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can you set up chairs for a small backyard party?",
-        a: "Yes. Small orders are fine, and we will tell you what the vendor can do for delivery and setup. Share a photo of the yard and the path to it so we can suggest the right chairs and layout. Share your guest count and a quick photo of the space and we will suggest a mix of seating and a layout.",
+        a: "Yes. Small orders are fine, and we will tell you what we can do for delivery and setup. Share a photo of the yard and the path to it so we can suggest the right chairs and layout. Share your guest count and a quick photo of the space and we will suggest a mix of seating and a layout.",
       },
     ],
     nearby: ["waukegan", "lake-bluff", "gurnee", "lake-forest", "libertyville"],
@@ -178,7 +178,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Gurnee, IL for weddings, corporate events and backyard parties near Route 21 and I-94. Get a quote or book a call.",
     headline: "Event seating made easy in *Gurnee*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Gurnee from established Chicago-area rental companies, with delivery to homes, hotels, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a spot for the 2026-27 season.",
+      "We help you rent event chairs, tables, linens and more in Gurnee, with delivery to homes, hotels, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a spot for the 2026-27 season.",
     story: [
       "Gurnee is a hub for the north end of Lake County. Milwaukee Avenue and Grand Avenue meet near I-94, Gurnee Mills and Six Flags Great America draw visitors from across the region, and the village's neighborhoods spread out in a patchwork of subdivisions, wooded lots and quiet cul-de-sacs. It is a place built for gatherings, with a lot of hotel space and easy highway access.",
       "That mix shapes the event calendar. Corporate meetings and team outings use nearby hotels and banquet spaces, while families host graduation parties, quinceaneras, christenings and backyard weddings in the subdivisions off Route 21 and Delany Road. Warren Township High School grads and their extended families make late May and June especially busy. Events in Gurnee range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -226,7 +226,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Gurnee, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver to Gurnee homes, hotels, parks and event spaces. Send your date, address and guest count for an itemized quote, or schedule a planning call to talk through seating options. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "we deliver to Gurnee homes, hotels, parks and event spaces. Send your date, address and guest count for an itemized quote, or schedule a planning call to talk through seating options. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a backyard tent in Gurnee?",
@@ -234,11 +234,11 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Can you deliver to a hotel ballroom near I-94?",
-        a: "Often yes, if the hotel allows outside rentals. Ask the hotel about loading docks, access times and whether staff handle setup, then share those details with us so we can schedule the drop-off. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often yes, if the hotel allows outside rentals. Ask the hotel about loading docks, access times and whether staff handle setup, then share those details with us so we can schedule the drop-off. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "How far ahead should I book for a Gurnee graduation party?",
-        a: "Start two to three months ahead for late May and June. Warren Township graduations bring a rush of requests, and popular chair styles go first. Smaller parties can sometimes be added closer to the date. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Start two to three months ahead for late May and June. Warren Township graduations bring a rush of requests, and popular chair styles go first. Smaller parties can sometimes be added closer to the date. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can chairs be used on grass at a forest preserve picnic site?",
@@ -260,7 +260,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Libertyville, IL for downtown weddings, forest preserve parties and graduation events. Request a quote today.",
     headline: "Seating for celebrations around *Libertyville's Milwaukee Avenue*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Libertyville from established Chicago-area rental companies, delivered to homes, parks and event spaces. Share your date and guest count and we will build a quote. Request a quote or book a planning call to secure your 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Libertyville, delivered to homes, parks and event spaces. Share your date and guest count and we will build a quote. Request a quote or book a planning call to secure your 2026-27 date.",
     story: [
       "Libertyville feels like a classic Lake County town with a real downtown. Milwaukee Avenue and Church Street are lined with brick storefronts, the Metra station anchors the center, and tree-lined streets lead out to bigger lots toward the Des Plaines River. Families come here for the schools, the farmers market and the parks, and many have lived in the same neighborhoods for generations.",
       "Nature is a big part of the event picture. Independence Grove Forest Preserve, with its reservoir and trails, and the Des Plaines River Trail give photographers and couples plenty of backdrop, while Adler Park and Butler Lake are the places locals gather for summer afternoons. Churches, schools and community halls stay busy with first communions, graduations, anniversaries and memorials. Events in Libertyville range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -308,19 +308,19 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Libertyville, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Libertyville homes, parks and halls. Share your date, address and headcount for an itemized quote, or book a short call to plan the details. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Libertyville homes, parks and halls. Share your date, address and headcount for an itemized quote, or book a short call to plan the details. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a party at Independence Grove?",
-        a: "Forest preserve sites usually require permits and have rules on vehicles, tents and setup. Contact Lake County Forest Preserves directly to confirm availability and requirements before you finalize your date or order rentals. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Forest preserve sites usually require permits and have rules on vehicles, tents and setup. Contact Lake County Forest Preserves directly to confirm availability and requirements before you finalize your date or order rentals. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "Can you deliver to a downtown Libertyville event space?",
-        a: "Yes, with some planning. Downtown venues may have limited loading and nearby parking. Ask the venue about access times and the best entrance, share that with us, and we will work around it. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Yes, with some planning. Downtown venues may have limited loading and nearby parking. Ask the venue about access times and the best entrance, share that with us, and we will work around it. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "When should I book chairs for a Libertyville wedding?",
-        a: "Plan on three to six months ahead for Saturdays between May and October. Popular chair styles go first, and early planning also gives you time to confirm tent and permit requirements with the village. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Plan on three to six months ahead for Saturdays between May and October. Popular chair styles go first, and early planning also gives you time to confirm tent and permit requirements with the village. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can I use chairs on a sloped or shaded lawn?",
@@ -342,7 +342,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Mundelein, IL for quinceaneras, weddings and graduation parties near Diamond Lake. Request a quote today.",
     headline: "Seating for big family celebrations in *Mundelein*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Mundelein from established Chicago-area rental companies, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve your 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Mundelein, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve your 2026-27 date.",
     story: [
       "Mundelein spreads out around its downtown, the Metra tracks and the shores of Diamond Lake. The University of Saint Mary of the Lake, with its Georgian buildings and lake, adds a striking campus to the village, and the village has long been a hub for Catholic life in Lake County. That faith community shows up in the calendar as first communions, confirmations, weddings and anniversary Masses throughout the year.",
       "Mundelein also has a large Latino community, and celebrations here tend to be large. Quinceaneras, baptism parties and graduation parties routinely reach 150 guests, with a head table, a court and long banquet tables for extended family. Backyards and halls fill up from May through September, and chairs are often the first thing to run short.",
@@ -390,7 +390,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Mundelein, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Mundelein homes, halls and parks. Send your date, address and guest count and we will prepare an itemized quote, or book a planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Mundelein homes, halls and parks. Send your date, address and guest count and we will prepare an itemized quote, or book a planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "What chairs work for a quinceanera in Mundelein?",
@@ -398,11 +398,11 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a tent in a Mundelein backyard?",
-        a: "Large tents may need a permit or inspection depending on size and anchoring. Check with the Village of Mundelein before you commit. For a park pavilion, the Mundelein Park and Recreation District handles reservations and rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Large tents may need a permit or inspection depending on size and anchoring. Check with the Village of Mundelein before you commit. For a park pavilion, the Mundelein Park and Recreation District handles reservations and rules. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for a May or June party?",
-        a: "Two to three months ahead is a good target, since graduation and quinceanera season fills the calendar quickly. Earlier booking also gives you more choice of chairs and delivery times. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead is a good target, since graduation and quinceanera season fills the calendar quickly. Earlier booking also gives you more choice of chairs and delivery times. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can chairs be delivered to a church hall in Mundelein?",
@@ -424,7 +424,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Vernon Hills, IL for weddings, corporate events and backyard parties near Route 60. Request a quote today.",
     headline: "Event seating for gatherings across *Vernon Hills*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Vernon Hills from established Chicago-area rental companies, delivered to homes, offices, parks and banquet spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Vernon Hills, delivered to homes, offices, parks and banquet spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Vernon Hills grew up around Route 60, Milwaukee Avenue and the Hawthorn Mall area, and it still feels like a village designed for convenience. Corporate offices line the roads near Lakeside and Hawthorn Parkway, subdivisions fill the quiet blocks between, and the Metra station links the village to downtown. Business events and family celebrations share the same calendar here. Getting a feel for how Vernon Hills is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "That mix means a wide range of requests. Offices book seating for team celebrations and client dinners, while families host graduation parties for Vernon Hills High School students, South Asian family weddings, and large backyard birthday parties. The community is diverse, and celebrations often bring together several generations and cultures at one set of tables. Events in Vernon Hills range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -472,7 +472,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Vernon Hills, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Vernon Hills homes, offices and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Vernon Hills homes, offices and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Can chairs be delivered to an office building in Vernon Hills?",
@@ -480,7 +480,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a tent or party in a Vernon Hills park?",
-        a: "Park pavilions and forest preserve sites usually require reservations, and tents may have additional rules. Check with the Vernon Hills Park District or Lake County Forest Preserves directly. For backyard tents, check with the Village of Vernon Hills. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Park pavilions and forest preserve sites usually require reservations, and tents may have additional rules. Check with the Vernon Hills Park District or Lake County Forest Preserves directly. For backyard tents, check with the Village of Vernon Hills. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "What chairs work well for a South Asian wedding in Vernon Hills?",
@@ -488,7 +488,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "How far ahead should I reserve for a Vernon Hills event?",
-        a: "Two to four months ahead for weekends in the busy season, and earlier for weddings and graduation parties. Corporate events can often be arranged on shorter notice, but earlier requests give you more chair options. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to four months ahead for weekends in the busy season, and earlier for weddings and graduation parties. Corporate events can often be arranged on shorter notice, but earlier requests give you more chair options. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
     ],
     nearby: ["libertyville", "mundelein", "lincolnshire", "buffalo-grove", "long-grove"],
@@ -506,7 +506,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Lincolnshire, IL for graduation parties, corporate events and weddings near Route 22. Request a quote.",
     headline: "Seating for graduations and gatherings in *Lincolnshire*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Lincolnshire from established Chicago-area rental companies, delivered to homes, offices and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Lincolnshire, delivered to homes, offices and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Lincolnshire sits at the junction of Route 22 (Half Day Road) and Milwaukee Avenue, with the Des Plaines River just to the east and large corporate campuses scattered around the village. Wooded subdivisions, tennis courts and quiet cul-de-sacs fill the residential side, and the Half Day Forest Preserve is close by for trail walks and open space.",
       "Adlai E. Stevenson High School is a major presence here, so graduation season shapes the calendar. Families across Lincolnshire and neighboring towns host open houses and receptions that can run 100 guests or more, often in backyards with tents and a buffet. Bar and bat mitzvahs are also common, drawing relatives from across the north suburbs and often requiring seating for dinner and dancing.",
@@ -554,15 +554,15 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Lincolnshire, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Lincolnshire homes, offices and event spaces. Send your date, address and headcount for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Lincolnshire homes, offices and event spaces. Send your date, address and headcount for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a backyard tent in Lincolnshire?",
-        a: "It depends on the tent size and anchoring. Check with the Village of Lincolnshire before you finalize your plans. If you plan to use a forest preserve or park site, the managing district sets its own rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on the tent size and anchoring. Check with the Village of Lincolnshire before you finalize your plans. If you plan to use a forest preserve or park site, the managing district sets its own rules. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for a Stevenson High School graduation party?",
-        a: "Start two to three months ahead. Late May and June fill up quickly, and popular chair styles go first. If your party is smaller or on a weekday, you may have more flexibility. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Start two to three months ahead. Late May and June fill up quickly, and popular chair styles go first. If your party is smaller or on a weekday, you may have more flexibility. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can chairs be delivered to an office campus in Lincolnshire?",
@@ -588,7 +588,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Long Grove, IL for covered bridge weddings, estate parties and festivals. Request a quote or book a call today.",
     headline: "Chairs for estate weddings and parties in *Long Grove*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Long Grove from established Chicago-area rental companies, delivered to estates, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Long Grove, delivered to estates, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Long Grove is easy to recognize. The covered bridge over Buffalo Creek, the old-fashioned shops along Robert Parker Coffin Road and the long, tree-lined country roads give the village a storybook look. Behind the historic center, large wooded lots and estate-style homes sit along winding roads, with horse fences, ponds and long driveways. It is a natural fit for weddings and garden parties.",
       "The village is known for its festivals, including Strawberry Fest, Chocolate Fest and Apple Fest, which keep the historic downtown busy through summer and fall. Couples love the photo backdrops, and many hold ceremonies on private properties or in garden settings outside downtown. Guests parking in town can be a challenge on festival weekends, so timing and routes matter for both guests and delivery trucks.",
@@ -636,11 +636,11 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Long Grove, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Long Grove estates, backyards and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Long Grove estates, backyards and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent at a Long Grove estate?",
-        a: "Large tents may need a permit or inspection depending on size and anchoring. Check with the Village of Long Grove before you commit to a date or layout. Rules differ between private lots and public areas. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Large tents may need a permit or inspection depending on size and anchoring. Check with the Village of Long Grove before you commit to a date or layout. Rules differ between private lots and public areas. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "Can trucks reach long gravel driveways in Long Grove?",
@@ -648,7 +648,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Should I avoid festival weekends for delivery?",
-        a: "If you can, yes. Strawberry Fest, Chocolate Fest and Apple Fest bring heavy traffic to the downtown. Early morning delivery or a day-before drop-off can help, and we will plan the timing with you. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "If you can, yes. Strawberry Fest, Chocolate Fest and Apple Fest bring heavy traffic to the downtown. Early morning delivery or a day-before drop-off can help, and we will plan the timing with you. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "What chairs fit a rustic wedding in Long Grove?",
@@ -670,7 +670,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Lake Zurich, IL for lakeside weddings, graduation parties and backyard events. Request a quote or book a call today.",
     headline: "Seating for lakeside celebrations in *Lake Zurich*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Lake Zurich from established Chicago-area rental companies, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Lake Zurich, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Lake Zurich is built around the lake that gives it its name, with homes, docks and small beaches along its shoreline. Rand Road and Route 22 carry traffic through the village, Main Street holds a mix of shops and restaurants, and the Paulus Park beach and playground is the community's gathering place on summer afternoons. It feels like a lake town, even close to the Chicago suburbs.",
       "That setting shapes celebrations. Couples take photos along the shore, families hold graduation parties and birthday gatherings in backyards on the lake, and summer weekends bring people together outdoors. Lake Zurich High School graduations make late spring busy, and quinceaneras and baptism parties fill the halls and backyards throughout the year. Events in Lake Zurich range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -718,7 +718,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Lake Zurich, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Lake Zurich homes, parks and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Lake Zurich homes, parks and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent on a lakefront lot?",
@@ -726,15 +726,15 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Can you deliver to a lot with steps down to the water?",
-        a: "Yes, but we plan carry distance carefully. Send photos of the stairs and path, and we will suggest lighter chairs and whether the vendor can carry items down. A flat area near the street may be an option. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Yes, but we plan carry distance carefully. Send photos of the stairs and path, and we will suggest lighter chairs and whether we can carry items down. A flat area near the street may be an option. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "How early should I book for a Lake Zurich graduation party?",
-        a: "Start two to three months ahead for late May and June. Graduation season fills up quickly, and popular chairs go first. Smaller weekday gatherings are easier to arrange on shorter notice. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Start two to three months ahead for late May and June. Graduation season fills up quickly, and popular chairs go first. Smaller weekday gatherings are easier to arrange on shorter notice. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Will lake breezes affect an outdoor wedding?",
-        a: "They can. Light linens and chairs may shift in gusts, so weights and sheltered layouts help. Tell us your site and we will suggest sturdier options and a plan for when the wind picks up. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "They can. Light linens and chairs may shift in gusts, so weights and sheltered layouts help. Tell us your site and we will suggest sturdier options and a plan for when the wind picks up. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["hawthorn-woods", "kildeer", "long-grove", "wauconda", "barrington"],
@@ -752,7 +752,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Lake Bluff, IL for lakefront weddings, village green events and garden parties. Request a quote or book a call today.",
     headline: "Elegant seating for celebrations in *Lake Bluff*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Lake Bluff from established Chicago-area rental companies, delivered to homes, gardens and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Lake Bluff, delivered to homes, gardens and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Lake Bluff is a small village with a big sense of place. The Village Green, the walkable downtown on Scranton Avenue, the Metra station and the bluffs above Lake Michigan give it a quiet, old-fashioned feel. Sunrise Park and its beach offer open water views, and the tree-lined streets lead to homes with deep lots and gardens. Many families have deep roots here and plan celebrations close to home.",
       "Weddings, rehearsal dinners, showers and graduation parties tend to be personal and detailed, with garden receptions, tented backyard dinners and gatherings in historic homes. Churches and the nearby Lake Forest and Highland Park venues host larger events, while Lake Bluff itself keeps things intimate. Guest counts often run 50 to 150, and style matters as much as quantity. Events in Lake Bluff range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -800,7 +800,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Lake Bluff, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Lake Bluff homes, gardens and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Lake Bluff homes, gardens and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent or event on the Village Green?",
@@ -808,7 +808,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Can you deliver to a bluff-top property?",
-        a: "Often yes, but soft ground, setbacks and narrow driveways may affect truck access. Send us photos and the address, and we will check with the vendor and suggest chairs that handle the site well. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often yes, but soft ground, setbacks and narrow driveways may affect truck access. Send us photos and the address, and we will check with the vendor and suggest chairs that handle the site well. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "What chairs suit a garden wedding in Lake Bluff?",
@@ -816,7 +816,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "How early should I book for a Lake Bluff event?",
-        a: "Three to six months ahead for weddings and summer weekends, and two to three months for showers and graduation parties. Early planning gives you the best choice of chairs and delivery times. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Three to six months ahead for weddings and summer weekends, and two to three months for showers and graduation parties. Early planning gives you the best choice of chairs and delivery times. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
     ],
     nearby: ["lake-forest", "north-chicago", "waukegan", "highland-park", "libertyville"],
@@ -834,7 +834,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Grayslake, IL for farm weddings, fairground events and graduation parties. Request a quote or book a call today.",
     headline: "Seating for farm weddings and parties in *Grayslake*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Grayslake from established Chicago-area rental companies, delivered to farms, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Grayslake, delivered to farms, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Grayslake has a small-town downtown, with the Metra station, old storefronts and the Grayslake Heritage Center and Museum nearby, and rural land spreading out in every direction. Prairie Crossing, a conservation-minded community built around farm fields, prairie and wetlands, sets a distinct tone, and the Lake County Fairgrounds are also in Grayslake. Getting a feel for how Grayslake is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Celebrations here lean toward outdoor and rustic. Couples look for barns, farm settings and prairie backdrops, families host graduation parties for Grayslake Central and North high school students, and College of Lake County events draw crowds throughout the year. Backyards in the newer subdivisions handle quinceaneras and birthday parties with plenty of room for tents. Events in Grayslake range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -882,23 +882,23 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Grayslake, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Grayslake farms, homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Grayslake farms, homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Can you deliver to a farm or barn in Grayslake?",
-        a: "Usually yes. Send the address, a description of the driveway or farm road, and any gates or weight limits. Wet ground can be a challenge, so we may suggest boards or an earlier setup day. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Usually yes. Send the address, a description of the driveway or farm road, and any gates or weight limits. Wet ground can be a challenge, so we may suggest boards or an earlier setup day. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "Do I need a permit for a tent in a Grayslake yard?",
-        a: "It depends on tent size and anchoring. Check with the Village of Grayslake before you commit. For park pavilions, the local park district handles reservations and rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Grayslake before you commit. For park pavilions, the local park district handles reservations and rules. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for a Grayslake graduation party?",
-        a: "Two to three months ahead for late May and June. Graduation and wedding season fills the calendar, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June. Graduation and wedding season fills the calendar, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "How do I handle wind and mud at an outdoor party?",
-        a: "Plan for weights on tents and linens and ask about boards under chair legs. A rain plan, such as a tent with sidewalls or a nearby indoor space, is wise. Tell us your site and we will suggest options. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Plan for weights on tents and linens and ask about boards under chair legs. A rain plan, such as a tent with sidewalls or a nearby indoor space, is wise. Tell us your site and we will suggest options. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["libertyville", "gurnee", "round-lake", "lake-villa", "mundelein"],
@@ -916,7 +916,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Round Lake, IL for quinceaneras, baptisms, weddings and graduation parties. Request a quote or book a call today.",
     headline: "Seating for big family celebrations in *Round Lake*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Round Lake from established Chicago-area rental companies, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Round Lake, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Round Lake is part of a cluster of villages in northwest Lake County, with Round Lake Beach, Round Lake Park and Hainesville close by. The Metra stop and the area's main roads tie it together, and the neighborhoods are a mix of long-established blocks and newer subdivisions. It is a warm, family-oriented community where celebrations are large and often multilingual.",
       "Quinceaneras, baptisms, first communions, birthday parties and graduation parties dominate the calendar, often with 100 to 200 guests and tables for aunts, uncles and cousins from across the region. Round Lake High School grads and their families fill backyards, parks and halls from May through September, and chair counts climb quickly when the whole family arrives. Events in Round Lake range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -964,7 +964,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Round Lake, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Round Lake homes, halls and parks. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Round Lake homes, halls and parks. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "What do I need for a large quinceanera in Round Lake?",
@@ -972,11 +972,11 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a tent or park party in Round Lake?",
-        a: "Large tents may require a permit or inspection, so check with your village. For pavilions, the Round Lake Area Park District handles reservations and rules. Confirm before you finalize your date. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Large tents may require a permit or inspection, so check with your village. For pavilions, the Round Lake Area Park District handles reservations and rules. Confirm before you finalize your date. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for a Round Lake graduation party?",
-        a: "Two to three months ahead for late May and June, since graduation and quinceanera season fills quickly. Earlier booking also gives you more chair choices. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June, since graduation and quinceanera season fills quickly. Earlier booking also gives you more chair choices. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can chairs be delivered to a church hall in Round Lake?",
@@ -998,7 +998,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Antioch, IL for Chain O'Lakes weddings, lake parties and family gatherings. Request a quote or book a call today.",
     headline: "Seating for lakeside celebrations in *Antioch*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Antioch from established Chicago-area rental companies, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Antioch, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Antioch sits at the northern edge of Lake County, near the Wisconsin line, and is the gateway to the Chain O'Lakes. Lake Marie, Channel Lake and the interconnected waterways keep boats and docks at the heart of summer life. Downtown Antioch has a small-town main street with a Metra station, and rural roads lead out to farms, wetlands and lake homes.",
       "Celebrations here often draw on the water. Couples take photos along the lakes, families host graduation parties and summer reunions at lake houses, and boating season fills the summer. Antioch Community High School graduations and church gatherings fill the spring calendar, and weddings in barns and backyards bring guests up from Chicago for a weekend. Events in Antioch range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1046,23 +1046,23 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Antioch, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Antioch homes, lake properties and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Antioch homes, lake properties and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Can you deliver to a Chain O'Lakes property?",
-        a: "Often yes. Share the address, driveway description and any steps or slopes. We will check with the vendor on truck access and carry distance, and suggest lighter chairs if setup needs to be done by hand. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often yes. Share the address, driveway description and any steps or slopes. We will check with the vendor on truck access and carry distance, and suggest lighter chairs if setup needs to be done by hand. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "Do I need a permit for a tent in Antioch?",
-        a: "It depends on tent size and anchoring. Check with the Village of Antioch before you commit to a date. For public parks, check with the village or park district for reservation rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Antioch before you commit to a date. For public parks, check with the village or park district for reservation rules. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for an Antioch summer event?",
-        a: "Three to four months ahead for June through August weekends, since lake season is short and popular. Earlier booking gives you more choice of chairs and delivery times. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Three to four months ahead for June through August weekends, since lake season is short and popular. Earlier booking gives you more choice of chairs and delivery times. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Will wind be a problem at a lakeside party?",
-        a: "It can be. Open water breezes can lift linens and shift light items. Weights, sheltered seating and a backup plan help. Tell us your site and we will suggest sturdier options. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "It can be. Open water breezes can lift linens and shift light items. Weights, sheltered seating and a backup plan help. Tell us your site and we will suggest sturdier options. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["lake-villa", "fox-lake", "round-lake", "grayslake", "winthrop-harbor"],
@@ -1080,7 +1080,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Lake Villa, IL for lakeside weddings, graduation parties and family gatherings. Request a quote today.",
     headline: "Chairs for celebrations by the lakes in *Lake Villa*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Lake Villa from established Chicago-area rental companies, delivered to lake homes, backyards and halls. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Lake Villa, delivered to lake homes, backyards and halls. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Lake Villa takes its name from the string of lakes around it, including Deep Lake, Cedar Lake and Fox Lake nearby, and the village keeps a relaxed, lake-country feel. Route 59 and Grand Avenue cross the area, a small downtown holds shops and restaurants, and neighborhoods range from older lake cottages to larger newer homes on open lots. Getting a feel for how Lake Villa is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Weddings, graduation parties, anniversary gatherings and summer cookouts are the typical celebrations. Many families have lake houses that become the center of reunions, and the area draws couples looking for an outdoor setting with water in the background. Lakes Community High School graduations bring crowds of relatives each spring, and church halls stay busy with receptions and memorials. Events in Lake Villa range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1128,19 +1128,19 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Lake Villa, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Lake Villa homes, lake properties and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Lake Villa homes, lake properties and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Can a rental truck get to my lake house?",
-        a: "Often yes, but narrow roads and tight driveways can limit access. Send us the address and a quick description or photo. We will check with the vendor and plan carry distance if needed. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often yes, but narrow roads and tight driveways can limit access. Send us the address and a quick description or photo. We will check with the vendor and plan carry distance if needed. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "Do I need a permit for a tent in Lake Villa?",
-        a: "Large tents may need a permit or inspection. Check with the Village of Lake Villa, or the township if you live in an unincorporated area, before you commit to a date. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Large tents may need a permit or inspection. Check with the Village of Lake Villa, or the township if you live in an unincorporated area, before you commit to a date. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for a Lake Villa graduation party?",
-        a: "Two to three months ahead for late May and June. Graduation season fills quickly, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June. Graduation season fills quickly, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "What chairs work on a sloped lakeside lawn?",
@@ -1162,7 +1162,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Fox Lake, IL for Chain O'Lakes weddings, boat-season parties and family reunions. Request a quote today.",
     headline: "Seating for summer parties on the *Chain O'Lakes*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Fox Lake from established Chicago-area rental companies, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Fox Lake, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Fox Lake is the heart of the Chain O'Lakes, a connected string of lakes and channels along the Fox River that fills with boats from May to September. The village wraps around Fox Lake itself, with Pistakee Lake and Nippersink Lake close by, and the Metra line ends here, a short ride from Chicago. Waterfront restaurants, marinas and docks give the town a lively summer personality.",
       "Celebrations follow the water. Families host reunions and birthday parties at lake houses, couples marry on lawns with the lake as backdrop, and many guests arrive by boat as well as car. Memorial Day weekend, the Fourth of July and Labor Day are big gathering times, and graduation parties for local students fill backyards in late spring. Events in Fox Lake range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1210,7 +1210,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Fox Lake, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Fox Lake homes, lake properties and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Fox Lake homes, lake properties and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Can chairs be delivered to a lake property on the Chain O'Lakes?",
@@ -1218,15 +1218,15 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a tent in Fox Lake?",
-        a: "It depends on tent size and anchoring. Check with the Village of Fox Lake before you commit to a date. For public areas, check with the village for reservation rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Fox Lake before you commit to a date. For public areas, check with the village for reservation rules. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for a summer Fox Lake party?",
-        a: "Three to four months ahead for June through August and holiday weekends. The lake season is short and popular, and earlier booking gives you more chair choices. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Three to four months ahead for June through August and holiday weekends. The lake season is short and popular, and earlier booking gives you more chair choices. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can I get a delivery on a holiday weekend?",
-        a: "Often, but traffic and vendor schedules are busy. Book early and choose an early-morning or day-before delivery. Tell us your timeline and we will work with the vendor on what is possible. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often, but traffic and vendor schedules are busy. Book early and choose an early-morning or day-before delivery. Tell us your timeline and we will work with the vendor on what is possible. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["lake-villa", "antioch", "round-lake", "johnsburg", "wauconda"],
@@ -1244,7 +1244,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Zion, IL for beach-area weddings, church celebrations and family parties near Shiloh Park. Request a quote today.",
     headline: "Seating for celebrations near the shore in *Zion*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Zion from established Chicago-area rental companies, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Zion, delivered to homes, halls and parks. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Zion is one of the more unusual cities in Illinois. It was founded in 1901 by John Alexander Dowie as a religious community, and its street names, from Elisha to Ezekiel, still follow a biblical plan. Lake Michigan lies to the east, Illinois Beach State Park stretches along the shoreline, and Shiloh Park, with its historic house and lakefront, is a community gathering place.",
       "That faith heritage still shapes the calendar. Church services, anniversaries, baptisms, weddings and memorials are central, and many families host big meals after services. Quinceaneras, birthday parties and graduation celebrations also fill church halls, backyards and park shelters from spring through fall. Events in Zion range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1292,23 +1292,23 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Zion, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Zion homes, halls and parks. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Zion homes, halls and parks. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a party at Shiloh Park?",
-        a: "Park shelters and lakefront areas usually require a reservation, and tents may have extra rules. Contact the Zion Park District to confirm availability, hours and what is allowed before you book. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Park shelters and lakefront areas usually require a reservation, and tents may have extra rules. Contact the Zion Park District to confirm availability, hours and what is allowed before you book. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "Can you deliver to Illinois Beach State Park?",
-        a: "State park events require approval and have their own rules for vehicles and setup. Contact the Illinois Department of Natural Resources or the park office first. If you get approval, share the details with us. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "State park events require approval and have their own rules for vehicles and setup. Contact the Illinois Department of Natural Resources or the park office first. If you get approval, share the details with us. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "How early should I book for a Zion celebration?",
-        a: "Two to three months ahead for spring and summer weekends. Graduation and quinceanera season fills the calendar, and earlier booking gives you more chair choices. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for spring and summer weekends. Graduation and quinceanera season fills the calendar, and earlier booking gives you more chair choices. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Will wind be a problem near the lake?",
-        a: "It can be. Lake breezes can lift linens and light items. Weights, sheltered layouts and sturdy chairs help. Tell us your site and we will suggest options and a plan for gusty weather. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "It can be. Lake breezes can lift linens and light items. Weights, sheltered layouts and sturdy chairs help. Tell us your site and we will suggest options and a plan for gusty weather. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["winthrop-harbor", "waukegan", "antioch", "gurnee", "north-chicago"],
@@ -1326,7 +1326,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Highwood, IL for rehearsal dinners, weddings and parties near Ravinia and Fort Sheridan. Request a quote today.",
     headline: "Seating for dinners and celebrations in *Highwood*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Highwood from established Chicago-area rental companies, delivered to homes, restaurants and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Highwood, delivered to homes, restaurants and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Highwood is a small city tucked between Highland Park and Fort Sheridan, just off Green Bay Road, with a compact downtown of Italian restaurants, cafes and shops. The Metra station sits at the edge of the village, Everts Park offers green space, and Ravinia Festival is only minutes away. It is a place people come to for dinner, and celebrations often follow suit.",
       "Rehearsal dinners, bridal showers, engagement parties and anniversary meals are Highwood's specialty, often with 30 to 80 guests. Weddings at nearby lakefront and Fort Sheridan properties bring out-of-town guests to stay and dine in town. Graduation parties for Highland Park High School families also spill into Highwood's restaurants and backyards. Events in Highwood range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1374,7 +1374,7 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Highwood, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Highwood homes, restaurants and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Highwood homes, restaurants and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Can chairs be delivered to a restaurant patio or private room?",
@@ -1382,11 +1382,11 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "Do I need a permit for a party at Everts Park?",
-        a: "Public parks usually require a reservation, and tents or extra equipment may have rules. Contact the City of Highwood to confirm availability and requirements before you finalize your plans. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Public parks usually require a reservation, and tents or extra equipment may have rules. Contact the City of Highwood to confirm availability and requirements before you finalize your plans. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for a Highwood rehearsal dinner?",
-        a: "Two to four months ahead for peak wedding season, May through October. Early booking also helps you coordinate with the venue. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to four months ahead for peak wedding season, May through October. Early booking also helps you coordinate with the venue. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "What seating works for a small backyard party in Highwood?",
@@ -1408,7 +1408,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Bannockburn, IL for estate weddings, corporate events and graduation parties. Request a quote today.",
     headline: "Seating for estate and office events in *Bannockburn*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Bannockburn from established Chicago-area rental companies, delivered to homes, offices and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Bannockburn, delivered to homes, offices and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Bannockburn is a small village between Deerfield, Lincolnshire and Highland Park, bounded by Waukegan Road, Half Day Road and the Tri-State Tollway. Quiet residential streets with wooded, ravine-cut lots sit alongside a cluster of office campuses and the Trinity International University campus, giving the village a mix of homes and business that is unusual for its size. Getting a feel for how Bannockburn is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Celebrations tend to be private and polished. Graduation parties for local high school students, anniversary dinners, bridal showers and weddings with 80 to 150 guests are typical, often held in large backyards or small estate properties with tents. Office campuses also host holiday parties and client events that need seating delivered inside a lobby or atrium. Events in Bannockburn range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1456,11 +1456,11 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Bannockburn, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Bannockburn homes, offices and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Bannockburn homes, offices and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent in Bannockburn?",
-        a: "It depends on tent size and anchoring. Check with the Village of Bannockburn before you commit to a date. Rules can differ for private lots and for larger events. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Bannockburn before you commit to a date. Rules can differ for private lots and for larger events. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "Can chairs be delivered to a wooded lot with a steep driveway?",
@@ -1468,11 +1468,11 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "How early should I book for a Bannockburn graduation party?",
-        a: "Two to three months ahead for late May and June. Graduation season fills the calendar, and popular chairs go first. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June. Graduation season fills the calendar, and popular chairs go first. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can you deliver to an office campus?",
-        a: "Yes. Ask property management about loading docks, elevator access and outside vendor rules, then share them with us. We will schedule delivery to match and confirm the setup location with you. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Yes. Ask property management about loading docks, elevator access and outside vendor rules, then share them with us. We will schedule delivery to match and confirm the setup location with you. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["lincolnshire", "riverwoods", "highwood", "highland-park", "deerfield"],
@@ -1490,7 +1490,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Hawthorn Woods, IL for backyard weddings, graduation parties and estate gatherings. Request a quote today.",
     headline: "Chairs for backyard events in *Hawthorn Woods*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Hawthorn Woods from established Chicago-area rental companies, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Hawthorn Woods, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Hawthorn Woods is a quiet, wooded village west of Long Grove and north of Kildeer, set along Quentin Road and Midlothian Road. Large lots, mature trees and private roads give it a country feel, and the nearby Lake County Forest Preserves add trails and open space. Most celebrations here happen at home, in big yards with room for tents and a dance floor.",
       "Graduation parties, backyard weddings, milestone birthdays and rehearsal dinners are the usual events. Families from area schools gather here in late spring, and summer weekends bring pool parties and garden gatherings. Guest counts often run 60 to 150, which calls for organized seating and a clear path for guests and delivery trucks. Events in Hawthorn Woods range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1538,19 +1538,19 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Hawthorn Woods, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Hawthorn Woods homes and estates. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Hawthorn Woods homes and estates. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent in Hawthorn Woods?",
-        a: "It depends on the tent size and anchoring. Check with the Village of Hawthorn Woods before you commit to a date. Rules can differ for private lots and larger events. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on the tent size and anchoring. Check with the Village of Hawthorn Woods before you commit to a date. Rules can differ for private lots and larger events. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "Can trucks reach my driveway or private road?",
-        a: "Often yes, depending on width, slope and gates. Share the address, a description of the drive and any gate details. We will check with the vendor and plan for carry distance if needed. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often yes, depending on width, slope and gates. Share the address, a description of the drive and any gate details. We will check with the vendor and plan for carry distance if needed. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "How early should I book for a Hawthorn Woods graduation party?",
-        a: "Two to three months ahead for late May and June. Graduation season fills quickly, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June. Graduation season fills quickly, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "What chairs work on a lawn with tree roots and shade?",
@@ -1572,7 +1572,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Kildeer, IL for backyard weddings, graduation parties and family celebrations. Request a quote today.",
     headline: "Seating for family celebrations in *Kildeer*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Kildeer from established Chicago-area rental companies, delivered to homes and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Kildeer, delivered to homes and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Kildeer is a small village near Long Grove, Lake Zurich and Deer Park, along Quentin Road and Rand Road (U.S. 12). Residential streets with generous lots, mature trees and neighborhood ponds define most of the village, and Kildeer Countryside schools anchor family life. It is a quiet place where celebrations mostly happen in backyards and at local halls. Getting a feel for how Kildeer is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Typical events include graduation parties, communion and confirmation gatherings, birthday parties, baby and bridal showers and summer cookouts. Guest counts often run 40 to 120, and families frequently pull in relatives from across the north and northwest suburbs. Because the village is close to major routes, guests arrive easily, but parking on residential streets needs planning. Events in Kildeer range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1620,11 +1620,11 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Kildeer, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Kildeer homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Kildeer homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a backyard tent in Kildeer?",
-        a: "It depends on tent size and anchoring. Check with the Village of Kildeer before you commit to a date. Rules can differ for private lots and larger events. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Kildeer before you commit to a date. Rules can differ for private lots and larger events. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How many chairs do I need for a graduation party?",
@@ -1632,7 +1632,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "How early should I book for a Kildeer event?",
-        a: "Two to three months ahead for late May and June. Popular chairs go first, and earlier planning gives you more delivery options. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June. Popular chairs go first, and earlier planning gives you more delivery options. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can chairs be delivered to a church hall near Kildeer?",
@@ -1654,7 +1654,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Wauconda, IL for lakeside weddings, graduation parties and family gatherings near Bangs Lake. Request a quote today.",
     headline: "Seating for lakeside celebrations in *Wauconda*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Wauconda from established Chicago-area rental companies, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Wauconda, delivered to lake homes, backyards and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Wauconda sits on Bangs Lake, at the crossing of Route 12 and Route 176, with a small downtown on Main Street. Lake houses, older cottages and newer subdivisions mix on the village's winding streets. Lakewood Forest Preserve, with its trails and the Lake County Discovery Museum, is nearby and gives the area open green space.",
       "The calendar follows the seasons. Summer brings reunions, lake parties and boat-day gatherings, while spring is busy with graduation open houses for Wauconda High School students and first communion parties. Weddings in backyards, barns and halls bring guests from the northwest suburbs and Chicago, and holiday gatherings keep church halls and banquet rooms active in the fall. Events in Wauconda range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1702,23 +1702,23 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Wauconda, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Wauconda homes, lake properties and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Wauconda homes, lake properties and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Can a rental truck reach my lakefront house?",
-        a: "Often yes, but narrow roads and tight driveways can limit access. Send us the address and a quick description or photo. We will check with the vendor and plan for carry distance if needed. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often yes, but narrow roads and tight driveways can limit access. Send us the address and a quick description or photo. We will check with the vendor and plan for carry distance if needed. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "Do I need a permit for a tent in Wauconda?",
-        a: "Large tents may need a permit or inspection. Check with the Village of Wauconda before you commit to a date. For park or forest preserve sites, check with the managing district. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Large tents may need a permit or inspection. Check with the Village of Wauconda before you commit to a date. For park or forest preserve sites, check with the managing district. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for a Wauconda graduation party?",
-        a: "Two to three months ahead for late May and June. Graduation season fills quickly, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June. Graduation season fills quickly, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Will wind be a problem at a lakeside party?",
-        a: "It can be. Lake breezes can lift linens and light items. Weights, sheltered seating and a backup plan help. Tell us your site and we will suggest sturdier options. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "It can be. Lake breezes can lift linens and light items. Weights, sheltered seating and a backup plan help. Tell us your site and we will suggest sturdier options. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["lake-zurich", "island-lake", "round-lake", "lake-barrington", "grayslake"],
@@ -1736,7 +1736,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Island Lake, IL for backyard weddings, graduation parties and family gatherings. Request a quote today.",
     headline: "Chairs for backyard celebrations in *Island Lake*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Island Lake from established Chicago-area rental companies, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Island Lake, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Island Lake straddles the Lake and McHenry County line, set near Wauconda in the northwest suburbs. Route 176 runs through the village, residential streets fan out around the small lake that gives the town its name, and newer subdivisions sit beside older cottages. It is a quiet, family-focused community with easy access to the northwest suburbs. Getting a feel for how Island Lake is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Celebrations tend to be centered on home. Graduation parties, birthday parties, baptism and communion gatherings and backyard weddings fill the calendar from May through September, often with 50 to 150 guests. Because Island Lake is split between two counties, guests and vendors may travel in from either direction, so clear directions help. Events in Island Lake range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1784,19 +1784,19 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Island Lake, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Island Lake homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Island Lake homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Does Island Lake's county line affect delivery?",
-        a: "Not usually, but clear directions help. Part of the village is in McHenry County and part in Lake County. Share your exact address and we will confirm it with the vendor so the truck arrives at the right place. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Not usually, but clear directions help. Part of the village is in McHenry County and part in Lake County. Share your exact address and we will confirm it with the vendor so the truck arrives at the right place. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "Do I need a permit for a tent in Island Lake?",
-        a: "It depends on tent size and anchoring. Check with the Village of Island Lake before you commit to a date. For park pavilions, check with the managing park district. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Island Lake before you commit to a date. For park pavilions, check with the managing park district. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How early should I book for an Island Lake graduation party?",
-        a: "Two to three months ahead for late May and June. Graduation season fills quickly, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June. Graduation season fills quickly, and popular chair styles go first. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "What chairs work for a backyard wedding in Island Lake?",
@@ -1818,7 +1818,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Riverwoods, IL for estate weddings, bar mitzvahs and graduation parties near Ryerson Woods. Request a quote today.",
     headline: "Seating for wooded estate events in *Riverwoods*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Riverwoods from established Chicago-area rental companies, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Riverwoods, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Riverwoods is a leafy village along the Des Plaines River, tucked between Deerfield, Lincolnshire and Bannockburn, with Deerfield Road and Riverwoods Road as its main arteries. Large lots, ravines and mature oaks define the landscape, and Ryerson Woods, a Lake County Forest Preserve with a welcome center and river trails, gives the village a wild edge. Getting a feel for how Riverwoods is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Celebrations here are mostly private and personal. Graduation open houses for area high school students, bar and bat mitzvahs, rehearsal dinners, milestone birthdays and backyard weddings are typical, often with tents, dance floors and 80 to 200 guests. A number of corporate campuses nearby also bring holiday and team events to the area. Events in Riverwoods range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1866,23 +1866,23 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Riverwoods, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Riverwoods homes and estates. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Riverwoods homes and estates. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent in Riverwoods?",
-        a: "It depends on tent size and anchoring. Check with the Village of Riverwoods before you commit to a date. Rules can differ for private lots and larger events. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Riverwoods before you commit to a date. Rules can differ for private lots and larger events. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "Can I host an event near the Des Plaines River?",
-        a: "Private yards near the river are common, but low ground can flood or stay soft. Choose higher, well-drained areas and ask about boards. For Ryerson Woods or other forest preserve sites, contact Lake County Forest Preserves first. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Private yards near the river are common, but low ground can flood or stay soft. Choose higher, well-drained areas and ask about boards. For Ryerson Woods or other forest preserve sites, contact Lake County Forest Preserves first. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "How early should I book for a Riverwoods bar or bat mitzvah?",
-        a: "Three to six months ahead for busy seasons, since popular dates and chairs go first. Early booking also lets you coordinate tents, dance floors and delivery windows. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Three to six months ahead for busy seasons, since popular dates and chairs go first. Early booking also lets you coordinate tents, dance floors and delivery windows. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can trucks reach a steep or winding driveway?",
-        a: "Often yes, depending on width, slope and gates. Share the address and a description of the drive. We will check with the vendor and plan for carry distance if the truck cannot reach the yard. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "Often yes, depending on width, slope and gates. Share the address and a description of the drive. We will check with the vendor and plan for carry distance if the truck cannot reach the yard. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
     ],
     nearby: ["lincolnshire", "bannockburn", "deerfield", "northbrook", "highland-park"],
@@ -1900,7 +1900,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Lake Barrington, IL for Fox River weddings, estate parties and graduation events. Request a quote today.",
     headline: "Seating for celebrations along the *Fox River* in Lake Barrington",
     intro:
-      "We help you rent event chairs, tables, linens and more in Lake Barrington from established Chicago-area rental companies, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Lake Barrington, delivered to homes, estates and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Lake Barrington lies along the Fox River on the western edge of Lake County, next to Barrington Hills, Barrington and Port Barrington. Route 59, Route 22 and Lake Zurich Road cross the area, and the village includes the Lake Barrington Shores community, wooded subdivisions and open stretches of land. Nearby forest preserves and the Fox River itself add trails and water views.",
       "Celebrations are mostly at home or in nearby venues. Graduation parties for Barrington area students, weddings with river or wooded backdrops, rehearsal dinners and milestone birthdays are typical, often with 60 to 150 guests. Neighbors in Barrington Hills and Lake Barrington share a love of open space, so tents on wide lawns are common. Events in Lake Barrington range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -1948,11 +1948,11 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Lake Barrington, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Lake Barrington homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Lake Barrington homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent in Lake Barrington?",
-        a: "It depends on tent size and anchoring. Check with the Village of Lake Barrington before you commit to a date. For forest preserve sites, contact Lake County Forest Preserves for their rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Lake Barrington before you commit to a date. For forest preserve sites, contact Lake County Forest Preserves for their rules. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "Can chairs be delivered to a Fox River property?",
@@ -1960,7 +1960,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "How early should I book for a Lake Barrington wedding?",
-        a: "Three to six months ahead for Saturdays between May and October. Popular chair styles go first, and early planning helps you coordinate tent and permit requirements. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Three to six months ahead for Saturdays between May and October. Popular chair styles go first, and early planning helps you coordinate tent and permit requirements. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "What chairs work on a lawn with a river breeze?",
@@ -1982,7 +1982,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Deer Park, IL for backyard weddings, graduation parties and family events near Rand Road. Request a quote today.",
     headline: "Seating for celebrations in *Deer Park*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Deer Park from established Chicago-area rental companies, delivered to homes and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Deer Park, delivered to homes and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Deer Park is a small village in Lake County, along Rand Road (U.S. 12) between Lake Zurich, Kildeer and Barrington. Quiet residential streets and open land sit alongside the Deer Park Town Center shopping area, and nearby forest preserves offer trails and picnic areas. Getting a feel for how Deer Park is laid out, from the main roads to the quiet side streets, is the first step in planning a smooth delivery.",
       "Because the village is small, celebrations tend to be private and local. Graduation parties, communion and confirmation gatherings, backyard birthdays, anniversary dinners and showers are common, with guest counts of 40 to 120. Families from Deer Park, Kildeer and Barrington share schools and churches, so guest lists often cross village lines. Events in Deer Park range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -2030,11 +2030,11 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Deer Park, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Deer Park homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Deer Park homes and event spaces. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent in Deer Park?",
-        a: "It depends on tent size and anchoring. Check with the Village of Deer Park before you commit to a date. For forest preserve sites, contact the managing district for permits and rules. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "It depends on tent size and anchoring. Check with the Village of Deer Park before you commit to a date. For forest preserve sites, contact the managing district for permits and rules. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "How many chairs do I need for a backyard party?",
@@ -2042,7 +2042,7 @@ export const lakeCountyAreas: Location[] = [
       },
       {
         q: "How early should I book for a Deer Park event?",
-        a: "Two to three months ahead for late May and June. Popular chairs go first, and earlier planning gives you more delivery options. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Two to three months ahead for late May and June. Popular chairs go first, and earlier planning gives you more delivery options. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can chairs be delivered to a sloped yard?",
@@ -2064,7 +2064,7 @@ export const lakeCountyAreas: Location[] = [
       "Rent event chairs, tables and linens in Winthrop Harbor, IL for lakeshore weddings, marina parties and family gatherings. Request a quote today.",
     headline: "Seating for lakeshore celebrations in *Winthrop Harbor*",
     intro:
-      "We help you rent event chairs, tables, linens and more in Winthrop Harbor from established Chicago-area rental companies, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
+      "We help you rent event chairs, tables, linens and more in Winthrop Harbor, delivered to homes, parks and event spaces. Tell us your date and guest count and we will build a quote. Request a quote or book a planning call to reserve a 2026-27 date.",
     story: [
       "Winthrop Harbor is Illinois's northernmost lakefront community, right at the Wisconsin line. North Point Marina, one of the largest marinas on the Great Lakes, anchors the shoreline, and Illinois Beach State Park runs along the coast to the south. Sheridan Road and the Metra line pass through town, and quiet residential streets and older cottages sit close to the water.",
       "Celebrations here follow the boating season. Families host summer cookouts, reunions and graduation parties, couples marry with the lake as a backdrop, and anniversary and retirement gatherings often follow a day on the water. Winthrop Harbor's small size keeps events personal, usually 40 to 120 guests, with relatives driving up from Chicago or down from Kenosha. Events in Winthrop Harbor range from small family dinners to crowds of 150 or more, and the right seating plan starts with an honest headcount.",
@@ -2112,19 +2112,19 @@ export const lakeCountyAreas: Location[] = [
     faqs: [
       {
         q: "Where can I rent tables and chairs in Winthrop Harbor, IL?",
-        a: "We connect you with established Chicago-area rental companies who deliver chairs, tables and linens to Winthrop Harbor homes, parks and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled with the vendor, and your quote lists every item so you can see the full cost up front.",
+        a: "We deliver chairs, tables and linens to Winthrop Harbor homes, parks and halls. Send your date, address and guest count for an itemized quote, or book a short planning call. Delivery and pickup are scheduled around your venue, and your quote lists every item so you can see the full cost up front.",
       },
       {
         q: "Do I need a permit for a tent or party near the marina?",
-        a: "Marina, beach and park areas have their own rules. Contact the Village of Winthrop Harbor and the managing authority for the site you want. Confirm availability and requirements before you finalize your date. Rules change, so get the answer in writing if you can and share any conditions with us so the vendor can plan the setup around them.",
+        a: "Marina, beach and park areas have their own rules. Contact the Village of Winthrop Harbor and the managing authority for the site you want. Confirm availability and requirements before you finalize your date. Rules change, so get the answer in writing if you can and share any conditions with us so we can plan the setup around them.",
       },
       {
         q: "Will lake wind affect my outdoor party?",
-        a: "It can, especially near the shore. Sturdier chairs, weights for tents and linens, and a sheltered layout help. Tell us your site and we will suggest options and a backup plan for gusty weather. A few photos and the exact address are the quickest way for us to check access with the vendor before you decide.",
+        a: "It can, especially near the shore. Sturdier chairs, weights for tents and linens, and a sheltered layout help. Tell us your site and we will suggest options and a backup plan for gusty weather. A few photos and the exact address are the quickest way for us to check access before you decide.",
       },
       {
         q: "How early should I book for a summer Winthrop Harbor event?",
-        a: "Three to four months ahead for June through August weekends. The lakeshore season is short and popular, and earlier booking gives you more choice of chairs and delivery times. If your date is closer than that, send a request anyway and we will tell you honestly what the vendors can still do.",
+        a: "Three to four months ahead for June through August weekends. The lakeshore season is short and popular, and earlier booking gives you more choice of chairs and delivery times. If your date is closer than that, send a request anyway and we will tell you honestly what we can still do.",
       },
       {
         q: "Can chairs be delivered to a small cottage lot?",

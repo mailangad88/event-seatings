@@ -2,122 +2,86 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
-import { BACKUP_CAP_LABEL, COORDINATION_FEE } from "@/lib/catalog-types";
+import { DEPOSIT, DEPOSIT_LABEL, usd } from "@/lib/catalog-types";
+import { allInEstimate, DAMAGE_WAIVER } from "@/lib/fees";
+import { readyPackages } from "@/lib/packages";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
-const { standard, large, largeFrom, focusFrom } = COORDINATION_FEE;
-const over = largeFrom - 1;
+const pct = Math.round(DEPOSIT.share * 100);
 
 export const metadata: Metadata = seo({
-  title: "Pricing: One Flat Fee, No Markup on Rentals",
-  description: `You pay each Chicago rental company its own price. We charge one flat fee, $${standard} up to ${over} guests or $${large} above, only after every company confirms.`,
+  title: "Pricing: Every Rental Priced on the Site, No Booking Fee",
+  description: `${site.name} prices every chair, table, linen and tent on the site. Your quote adds delivery, setup, damage waiver and tax. Book with a ${pct}% deposit, refundable for ${DEPOSIT.refundHours} hours. No separate booking fee.`,
   alternates: { canonical: "/pricing" },
 });
 
-const tiers: { title: string; price: string; who: string; points: string[]; featured?: boolean }[] = [
-  {
-    title: "One company covers it",
-    price: "$0",
-    who: "Smaller parties where one rental company has everything",
-    points: [
-      "We tell you which company to call and what to ask for",
-      "You book with them directly",
-      "No fee from us",
-    ],
-  },
-  {
-    title: `Up to ${over} guests`,
-    price: `$${standard}`,
-    who: `Events that need two or more rental companies, usually ${focusFrom}+ guests`,
-    points: [
-      "One written quote across every company, each one named",
-      "Every change handled until 14 days out",
-      "Delivery check on the morning of your event",
-      `Backup if a company cancels, up to ${BACKUP_CAP_LABEL} of any price difference`,
-    ],
-    featured: true,
-  },
-  {
-    title: `Over ${over} guests`,
-    price: `$${large}`,
-    who: "Big weddings, sangeets, quinceañeras and galas",
-    points: [
-      "Everything in the $295 plan",
-      "Tents, flooring, lighting and power checked against your site",
-      "Delivery and pickup times lined up across every company",
-      "One person to call on the day",
-    ],
-  },
-];
-
 const included: { icon: IconName; title: string; text: string }[] = [
-  { icon: "quote", title: "A written all-in quote", text: "Every item at each rental company's own price, with delivery, setup, damage waiver and tax shown for your venue." },
-  { icon: "users", title: "Companies named before you pay", text: "Your quote names every rental company, so you can look them up, read their reviews and call them yourself." },
-  { icon: "phone", title: "A call with us", text: `A free ${site.callLength} call before anything is sent. Ask anything about the companies, the plan or the fee.` },
-  { icon: "check", title: "Pay after they confirm", text: "You pay our fee only once every rental company has confirmed your date in writing. Not before." },
-  { icon: "truck", title: "Morning-of check", text: "On the morning of your event we check every delivery is on its way and call you if anything changes." },
-  { icon: "shield", title: "Backup if one cancels", text: `If a company cancels, we find a replacement and cover up to ${BACKUP_CAP_LABEL} of any price difference, or refund our fee.` },
+  { icon: "quote", title: "A written all-in quote", text: "Every item at the price on our site, with delivery, setup, damage waiver and tax shown for your venue." },
+  { icon: "truck", title: "Delivery and pickup", text: "We arrange drop-off before your event and pickup after it, at times that work for your venue." },
+  { icon: "users", title: "Setup if you want it", text: "Chairs placed, tables set and linens on. Leave it off your quote if you'd rather do it yourself." },
+  { icon: "phone", title: "One person to call", text: `A free ${site.callLength} call before you book, and the same person for every change after.` },
+  { icon: "calendar", title: "Changes until 14 days out", text: "Add or drop quantities at no charge until 14 days before your event, subject to stock." },
+  { icon: "shield", title: "If an item falls through", text: "We replace it with the same or better at the price you agreed, or refund what you paid for it." },
 ];
 
 const flow = [
-  { icon: "quote" as const, title: "Free quote", text: "Tell us the date, guests and venue. Build the list or let us do it." },
-  { icon: "phone" as const, title: "Free call", text: "We go through the plan and name the companies." },
-  { icon: "users" as const, title: "Companies confirm", text: "Each rental company confirms your date and items in writing." },
-  { icon: "check" as const, title: "You pay our fee", text: `$${standard}, or $${large} over ${over} guests. Refundable for 72 hours.` },
-  { icon: "truck" as const, title: "Delivered", text: "You pay each company under its own agreement. We look after the rest." },
+  { icon: "quote" as const, title: "Free quote", text: "Build your list on the site or tell us the date, guests and venue." },
+  { icon: "phone" as const, title: "Free call", text: "We go through the plan, the venue and the delivery times." },
+  { icon: "check" as const, title: `${pct}% deposit`, text: `Reserves your items. Fully refundable for ${DEPOSIT.refundHours} hours.` },
+  { icon: "calendar" as const, title: "Balance", text: `Due ${DEPOSIT.balanceDaysBefore} days before your event, once the final count is in.` },
+  { icon: "truck" as const, title: "Delivered", text: "Dropped off, set up if you asked, and picked up after." },
 ];
 
-const direct = [
-  ["Item prices", "The company's price", "The same price. We add no markup"],
-  ["Who you call", "Each company, one by one", "One person for every company"],
-  ["Comparing quotes", "You line them up yourself", "One written quote, all in"],
-  ["Delivery times", "You line them up across companies", "We line them up and check on the morning"],
-  ["If a company cancels", "You start again", `We replace it and cover up to ${BACKUP_CAP_LABEL} of the difference, or refund our fee`],
-  ["What it costs", "Your time", `$${standard}, or $${large} over ${over} guests`],
-];
+// Real examples from our ready-made packages, priced from the catalog.
+const examples = readyPackages
+  .filter((p) => ["backyard-birthday-50", "wedding-150", "corporate-120", "sangeet-250"].includes(p.id))
+  .map((p) => {
+    const est = allInEstimate(p.rentals);
+    return { name: p.name, guests: p.guests, rentals: p.rentals, extras: est.total - p.rentals, total: est.total, href: p.href };
+  });
 
 const checklist = [
-  "You get the full quote in writing, with every company named",
-  "You can check each company on Google before you pay",
+  "Every item and its price is in writing on your quote",
+  "Delivery, setup, damage waiver and tax are their own lines, not hidden in the price",
   "You talk to us on a call before anything is booked",
-  "Every company confirms your date in writing first",
-  "You can cancel for a full refund for 72 hours after paying",
+  `Your deposit is fully refundable for ${DEPOSIT.refundHours} hours`,
+  "Nothing else is charged until the balance, and it's on your quote from day one",
 ];
 
 const faqs: Faq[] = [
   {
-    q: `How much does ${site.name} charge?`,
-    a: `One flat fee per event: $${standard} up to ${over} guests, or $${large} above that. Item prices are each rental company's own price, with no markup. If one rental company covers your whole order, we tell you who to call and charge nothing.`,
+    q: `How does ${site.name} charge?`,
+    a: `By the item. Every chair, table, linen and tent has its price on our site. Your quote adds delivery and pickup, setup if you want it, a ${Math.round(DAMAGE_WAIVER * 100)}% damage waiver and sales tax. There's no separate booking or planning fee.`,
   },
   {
-    q: "When do I pay the fee?",
-    a: "Only after every rental company on your quote has confirmed your date and items in writing, and you approve the plan. Quotes and the planning call are free and need no card.",
+    q: "When do I pay?",
+    a: `Quotes and the planning call are free. To book, you pay a ${DEPOSIT_LABEL} of the rentals (at least $${DEPOSIT.min}). The balance is due ${DEPOSIT.balanceDaysBefore} days before your event.`,
   },
   {
-    q: "Why not just call the rental company myself?",
-    a: "If one company has everything you need, you should, and we'll tell you which one. Our fee is worth it when your event needs several companies, such as chairs and tables from one, a tent from another and linens from a third. Then you get one quote, one person to call and a backup if one cancels.",
+    q: "Can I get my deposit back?",
+    a: `Yes, in full for ${DEPOSIT.refundHours} hours after you pay. After that, our terms explain what happens if you cancel or move your date.`,
   },
   {
-    q: "Is the fee a percentage of my order?",
-    a: `No. It's the same $${standard} whether your rentals cost $2,000 or $10,000 (or $${large} over ${over} guests). It doesn't grow with your bill, so we have no reason to push you to rent more.`,
+    q: "Why is delivery a separate line?",
+    a: "Because it depends on your venue, not the items. A ground-floor hall with a loading dock costs less to deliver to than a third-floor loft with stairs. Keeping it separate means you see exactly what you're paying for.",
   },
   {
-    q: "Do rental companies pay you too?",
-    a: "Not today. Some may pay us a small referral fee in future. It will never change your price, and if a company on your quote pays us one, your quote will say so.",
+    q: "Are the prices on the site final?",
+    a: "They're our prices for a one-day rental. Your written quote confirms them for your date, with delivery and setup worked out for your venue. Once you pay the deposit, the item prices on your quote are locked.",
   },
   {
-    q: "What if a rental company cancels?",
-    a: `We find a comparable replacement. If it costs more, we cover up to ${BACKUP_CAP_LABEL} of the difference. If we can't replace it, we refund our fee in full.`,
+    q: "What if an item isn't available for my date?",
+    a: "We tell you before you pay and suggest the closest match. If something falls through after you've booked, we replace it with the same or better at the price you agreed, or refund what you paid for it.",
   },
   {
-    q: "Can I get my fee back?",
-    a: "Yes, in full for 72 hours after you pay. After that, if you postpone, the fee moves to your new date within 12 months. If you don't accept a rental company's agreement once you see it, we refund the fee.",
+    q: "Is there a minimum order?",
+    a: "Delivered orders usually start around $150 in rentals. Below that, ask us and we'll tell you the cheapest way to get what you need.",
   },
   {
     q: `You're new. Why should I trust ${site.name}?`,
-    a: `We started in 2026 and don't have reviews yet, so we don't ask you to take our word for it. You see every company's name before you pay, every company confirms in writing first, and you can get a full refund for 72 hours.`,
+    a: `We started in 2026 and don't have many reviews yet, so we don't ask you to take our word for it. You get every price in writing, talk to us before you book, and your deposit is fully refundable for ${DEPOSIT.refundHours} hours.`,
   },
 ];
 
@@ -128,24 +92,20 @@ export default function PricingPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "Service",
-          name: "Event rental coordination",
-          serviceType: "Event rental booking and coordination",
+          name: "Event rentals with delivery and setup",
+          serviceType: "Event rental",
           provider: { "@type": "Organization", name: site.name, url: site.url },
           areaServed: { "@type": "City", name: "Chicago" },
           url: `${site.url}/pricing`,
-          description: `One quote across every Chicago-area rental company your event needs, at each company's own price, for a flat fee of $${standard} (up to ${over} guests) or $${large} (above), paid after every company confirms.`,
-          offers: [
-            { "@type": "Offer", name: "One company covers it", price: 0, priceCurrency: "USD" },
-            { "@type": "Offer", name: `Coordination, up to ${over} guests`, price: standard, priceCurrency: "USD" },
-            { "@type": "Offer", name: `Coordination, over ${over} guests`, price: large, priceCurrency: "USD" },
-          ],
+          description: `Chairs, tables, linens, dinnerware, tents and more for Chicago-area events, priced item by item, with delivery, setup, damage waiver and tax on the quote. Book with a ${pct}% deposit. No separate booking fee.`,
+          offers: examples.map((e) => ({ "@type": "Offer", name: `${e.name}, ${e.guests} guests (example)`, price: Math.round(e.total), priceCurrency: "USD" })),
         }}
       />
       <PageHero
         breadcrumbs={[{ name: "Pricing", href: "/pricing" }]}
         eyebrow="Pricing"
-        title="Pay every rental company its own price, plus one flat fee to us"
-        intro={`We add nothing to item prices. For an event that needs several rental companies, we charge $${standard} (or $${large} over ${over} guests), and only after every company has confirmed your date in writing.`}
+        title="Every rental priced on the site"
+        intro={`You see the price of every chair, table, linen and tent before you ask. Your quote adds delivery, setup, damage waiver and tax for your venue. There's no separate booking fee. Book with a ${pct}% deposit, fully refundable for ${DEPOSIT.refundHours} hours.`}
         actions={
           <>
             <Link href="/quote?from=pricing" className="btn-primary">Get my free all-in quote</Link>
@@ -155,33 +115,40 @@ export default function PricingPage() {
         media={<Figure {...scenes.midnightLongTable} ratio="4/5" priority sizes="(max-width: 1024px) 100vw, 40vw" className="mx-auto max-w-md" />}
       />
 
-      <Section eyebrow="The fee" title="What you pay us">
-        <ul className="grid gap-5 lg:grid-cols-3">
-          {tiers.map((t) => (
-            // Subgrid: the three cards share rows, so prices, notes and lists start at the same height.
-            <li key={t.title} className={`card row-span-4 grid grid-rows-subgrid gap-y-0 p-7 ${t.featured ? "ring-2 ring-gold" : ""}`}>
-              <h3 className="display-3">{t.title}</h3>
-              <p className="mt-3 font-heading text-4xl font-semibold tabular-nums">{t.price}</p>
-              <p className="mt-2 text-sm text-muted">{t.who}</p>
-              <ul className="mt-5 space-y-2 text-sm leading-6">
-                {t.points.map((p) => (
-                  <li key={p} className="flex gap-2">
-                    <Icon name="check" size={16} className="mt-1 shrink-0 text-gold" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-        <Callout kind="note" title="An example" className="mt-8 max-w-3xl">
-          Say your 180-guest party needs chairs and tables from one company, a tent from another and linens from a
-          third, and the rentals come to $4,000 with delivery and tax. You pay the three companies $4,000 under their own
-          agreements, and you pay us ${standard}. The ${standard} is the same if the rentals come to $6,000.
-        </Callout>
+      <Section eyebrow="Examples" title="What typical events cost, all in">
+        <div className="overflow-x-auto rounded-2xl border border-line bg-surface">
+          <table className="w-full min-w-[36rem] text-left text-sm">
+            <caption className="sr-only">Example event rental costs with {site.name}</caption>
+            <thead className="bg-surface-2 text-xs tracking-wide text-muted uppercase">
+              <tr>
+                <th scope="col" className="px-5 py-4 font-semibold">Event</th>
+                <th scope="col" className="px-5 py-4 text-right font-semibold">Rentals</th>
+                <th scope="col" className="px-5 py-4 text-right font-semibold">Delivery, setup, waiver, tax</th>
+                <th scope="col" className="px-5 py-4 text-right font-semibold">All in (est.)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {examples.map((e) => (
+                <tr key={e.name} className="border-t border-line">
+                  <th scope="row" className="px-5 py-4 font-medium">
+                    <Link href={e.href} className="link">{e.name}</Link>, {e.guests} guests
+                  </th>
+                  <td className="px-5 py-4 text-right tabular-nums text-muted">{usd(e.rentals, 0)}</td>
+                  <td className="px-5 py-4 text-right tabular-nums text-muted">{usd(e.extras, 0)}</td>
+                  <td className="px-5 py-4 text-right font-medium tabular-nums">{usd(e.total, 0)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 max-w-3xl text-sm leading-6 text-muted">
+          These use our <Link href="/packages" className="link">ready-made packages</Link> at today&apos;s prices, with setup included and
+          the Chicago tax rate. Change the guest count or swap items in the <Link href="/quote" className="link">quote builder</Link> and
+          the total updates as you go.
+        </p>
       </Section>
 
-      <Section tone="sand" eyebrow="Included" title="What the fee covers">
+      <Section tone="sand" eyebrow="Included" title="What your price covers">
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {included.map((p) => (
             <li key={p.title} className="card p-7">
@@ -198,46 +165,16 @@ export default function PricingPage() {
       <Section eyebrow="How it works" title="When you pay, step by step">
         <StepFlow
           steps={flow}
-          caption={`How paying works with ${site.name}: a free quote, a free call, every rental company confirms in writing, then you pay our flat fee, then each company delivers under its own agreement.`}
+          caption={`How paying works with ${site.name}: a free quote, a free call, a ${pct}% deposit to reserve your items, the balance ${DEPOSIT.balanceDaysBefore} days before, then delivery.`}
         />
+        <Callout kind="note" title="An example" className="mt-8 max-w-3xl">
+          Say your quote comes to $4,000 in rentals plus delivery, setup, waiver and tax. You pay a ${pct}% deposit on the
+          rentals, {usd(4000 * DEPOSIT.share, 0)}, to book. The rest is due {DEPOSIT.balanceDaysBefore} days before your
+          event, after your final guest count is in.
+        </Callout>
       </Section>
 
-      <Section tone="sand" eyebrow="Fair question" title="Should I just call the rental company myself?">
-        <p className="max-w-3xl leading-7 text-muted">
-          Sometimes, yes. If one company has everything for your party, call them, and we&apos;re happy to tell you who.
-          Most backyard parties under about 100 guests are like this. Our fee makes sense when your event needs two or more
-          companies and you don&apos;t want to manage them all. See typical lists for{" "}
-          <Link href="/events/south-asian-weddings" className="link">South Asian weddings</Link>,{" "}
-          <Link href="/events/quinceaneras" className="link">quinceañeras</Link> and{" "}
-          <Link href="/events/weddings" className="link">weddings</Link>, browse{" "}
-          <Link href="/rentals" className="link">rental prices</Link>, or read{" "}
-          <Link href="/how-it-works" className="link">how booking works</Link> and our{" "}
-          <Link href="/compare" className="link">booking options compared</Link>.
-        </p>
-        <div className="mt-8 overflow-x-auto rounded-2xl border border-line bg-surface">
-          <table className="w-full min-w-[36rem] text-left text-sm">
-            <caption className="sr-only">Booking rental companies yourself compared with booking through {site.name}</caption>
-            <thead className="bg-surface-2 text-xs tracking-wide text-muted uppercase">
-              <tr>
-                <th scope="col" className="px-5 py-4 font-semibold"> </th>
-                <th scope="col" className="px-5 py-4 font-semibold">Calling each company yourself</th>
-                <th scope="col" className="px-5 py-4 font-semibold">Through {site.name}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {direct.map(([row, self, us]) => (
-                <tr key={row} className="border-t border-line align-top">
-                  <th scope="row" className="px-5 py-4 font-medium">{row}</th>
-                  <td className="px-5 py-4 text-muted">{self}</td>
-                  <td className="px-5 py-4 text-muted">{us}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Section>
-
-      <Section eyebrow="Before you pay" title="What you can check before you pay us anything">
+      <Section tone="sand" eyebrow="Before you pay" title="What you can check before you pay us anything">
         <div className="grid gap-8 lg:grid-cols-2">
           <ul className="space-y-3">
             {checklist.map((c) => (
@@ -248,17 +185,17 @@ export default function PricingPage() {
             ))}
           </ul>
           <Callout kind="check" title="We're new, and we say so">
-            {site.name} started in 2026 and has no reviews yet. That&apos;s why nothing is paid until you&apos;ve seen the
-            companies&apos; names and they&apos;ve confirmed in writing. Read the full{" "}
-            <Link href="/booking-promise" className="link">Booking Promise</Link>.
+            {site.name} started in 2026. That&apos;s why every price is on the site, every quote is in writing, and your deposit is
+            refundable for {DEPOSIT.refundHours} hours. Read the full <Link href="/booking-promise" className="link">Booking Promise</Link>,
+            see <Link href="/how-it-works" className="link">how booking works</Link>, or browse{" "}
+            <Link href="/rentals" className="link">every rental and its price</Link>.
           </Callout>
         </div>
       </Section>
 
-      <Section tone="sand" eyebrow="Questions" title="Pricing questions, answered">
+      <Section eyebrow="Questions" title="Pricing questions, answered">
         <FaqList faqs={faqs} className="max-w-3xl" />
       </Section>
-
 
       <div className="-mb-32">
         <CallCta source="pricing" />

@@ -62,7 +62,7 @@ export function suggestedReply(lead: Lead): string {
   const event = (lead.event_type ?? "event").toLowerCase();
   switch (lead.kind) {
     case "quote":
-      return `${hi} thanks for your quote request for your ${event}${when ? ` on ${when}` : ""}. I'm checking availability with our rental partners now. Two quick questions so the proposal is right: is the venue indoors or outdoors, and does the venue have a delivery window or loading dock rules? Happy to do a 10-minute call if that's easier.`;
+      return `${hi} thanks for your quote request for your ${event}${when ? ` on ${when}` : ""}. I'm checking availability for your date now. Two quick questions so the proposal is right: is the venue indoors or outdoors, and does the venue have a delivery window or loading dock rules? Happy to do a 10-minute call if that's easier.`;
     case "call":
       return `${hi} thanks for asking for a call about your ${event}${when ? ` on ${when}` : ""}. When is a good 15 minutes for you today or tomorrow? If you already know your guest count and venue, send them over and I'll come with prices.`;
     case "chat":

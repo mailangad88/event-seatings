@@ -19,7 +19,7 @@ const faqs: Faq[] = [
   { q: "Does my caterer provide plates and glasses?", a: "Some do and some don't, and many charge separately. Ask for the caterer's equipment list in writing, then rent only what's missing. Common gaps are chargers, specialty glassware, linens and a prep tent for outdoor events." },
   { q: "Do I need a permit for a tent or a park event in Chicago?", a: "Often, yes. Chicago Park District special event permits and many suburban tent permits need to be filed 30 or more days ahead, and you or your tent company must call JULIE (811 in Illinois) before stakes go in. Check with your town or park district early." },
   { q: "How far ahead should I book event rentals?", a: "About 3-6 months for weddings and large parties, 4-8 weeks for smaller events, and earlier for tents and specialty chairs on May-October Saturdays and December Fridays." },
-  { q: `Does ${site.name} recommend specific vendors?`, a: `This guide is generic on purpose. For rentals, ${site.name} books established Chicago-area rental companies for you through one quote. For other vendors, use the questions on this page to compare the ones you're considering.` },
+  { q: `Does ${site.name} recommend specific vendors?`, a: `This guide is generic on purpose. For rentals, ${site.name} puts everything on one quote. For other vendors, use the questions on this page to compare the ones you're considering.` },
 ];
 
 export default function VendorGuidePage() {

@@ -66,7 +66,7 @@ function answerExtras(i: CatalogItem, price: number): string {
     qty ? `A 100-guest event needs about ${qty.toLocaleString()}, or ${formatPrice(Math.round(qty * price * 100) / 100)} before delivery.` : "",
     i.minQty ? `The minimum order is ${i.minQty}.` : "",
     "Delivery, setup and pickup are added to the same itemized quote, and the quote is free.",
-    `We book it with an established ${site.market}-area rental company.`,
+    `Delivered, set up and picked up across ${site.market} and the suburbs.`,
   ].filter(Boolean);
   let out = "";
   const lead = 12; // words in "Rent a … in Chicago and the suburbs for $x each."
@@ -337,7 +337,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             </h2>
             {shownStock.length > 0 && (
               <p className="mt-3 max-w-2xl text-sm text-muted">
-                Example photos help you picture it. The exact piece and finish can differ by rental company, so ask
+                Example photos help you picture it. The exact piece and finish can differ, so ask
                 for a photo of the actual item with your quote.
               </p>
             )}

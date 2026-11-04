@@ -1,6 +1,5 @@
 import "server-only";
 import { cache } from "react";
-import { getVendor } from "@/data/vendors";
 import { SAMPLE_EMAIL, getSession } from "./account-auth";
 import { amountDue, chargeLabel } from "./payments";
 import { vendorParts, type VendorOrderStatus } from "./orders";
@@ -8,14 +7,14 @@ import { getAccount, listLeadsByEmail, type CustomerAccount, type Lead, type Lea
 import { sampleAccount, sampleLeads } from "./account-sample";
 
 // Everything the renter's account shows, built from their leads (same email). Only customer-safe fields
-// leave this file: no vendor cost, lead score, visitor journey or internal notes. Rental company names
-// stay hidden until the booking fee is paid, the same rule as /proposal/<token>.
+// leave this file: no supplier name, supplier cost, lead score, visitor journey or internal notes.
+// An order may arrive in more than one delivery; the customer sees each delivery, never who fills it.
 
 export type PartStatus = { label: string; tone: "amber" | "green" | "blue" | "rose" | "plain"; step: number };
 
 const partStatus: Record<VendorOrderStatus, PartStatus> = {
   not_sent: { label: "Checking availability", tone: "amber", step: 0 },
-  sent: { label: "Waiting on the rental company", tone: "amber", step: 0 },
+  sent: { label: "Confirming your date", tone: "amber", step: 0 },
   confirmed: { label: "Confirmed", tone: "green", step: 1 },
   scheduled: { label: "Delivery booked", tone: "blue", step: 2 },
   delivered: { label: "Delivered", tone: "green", step: 3 },
@@ -25,7 +24,7 @@ const partStatus: Record<VendorOrderStatus, PartStatus> = {
 
 export type AccountPart = {
   key: string;
-  name: string; // rental company name, or "Rental company 1" before the fee is paid
+  name: string; // "Delivery 1", "Delivery 2"; the supplier is never shown
   revealed: boolean;
   phone?: string;
   website?: string;
@@ -35,7 +34,7 @@ export type AccountPart = {
   note?: string;
   lines: { name: string; qty: number; unit: string; each: number; total: number; variant?: string }[];
   total: number; // what the renter sees for this part (prices include our fee)
-  rentalPrice: number; // paid to the rental company under its agreement
+  rentalPrice: number; // this delivery's items at our prices
 };
 
 export const eventStages = ["Request received", "Quote ready", "Booking secured", "Rentals confirmed", "Delivered", "All done"] as const;
@@ -78,20 +77,19 @@ function partFor(lead: Lead, paid: boolean, index: number, p: ReturnType<typeof 
       ? "picked_up"
       : "not_sent";
   const o = p.order;
-  const vendor = paid && p.vendorId !== "unassigned" ? getVendor(p.vendorId) : undefined;
   return {
     key: `${lead.id}-${index}`,
-    name: vendor?.name ?? `Rental company ${index + 1}`,
-    revealed: Boolean(vendor),
-    phone: vendor?.phone,
-    website: vendor?.website,
+    name: `Delivery ${index + 1}`,
+    revealed: false,
+    phone: undefined,
+    website: undefined,
     status: partStatus[o?.status ?? fallback] ?? partStatus.not_sent,
     delivery: o?.delivery_date || o?.delivery_window ? { date: o.delivery_date, window: o.delivery_window } : undefined,
     pickup: o?.pickup_date || o?.pickup_window ? { date: o.pickup_date, window: o.pickup_window } : undefined,
     note: o?.note,
     lines: p.lines.map(({ line: l }) => ({ name: l.name, qty: l.qty, unit: l.unit, each: l.unit_price, total: l.line_total, variant: l.variant })),
     total: p.total,
-    rentalPrice: o?.vendor_total ?? p.cost,
+    rentalPrice: p.total,
   };
 }
 
@@ -107,10 +105,10 @@ function stageOf(lead: Lead, parts: AccountPart[], paid: boolean) {
 }
 
 const stageNotes = [
-  "We have your request and are checking prices and dates with rental companies.",
+  "We have your request and are checking your date.",
   "Your quote is ready. Secure the booking when you're happy with it.",
-  "Booking secured. We're confirming each rental company now.",
-  "Every rental company has confirmed. Delivery times come next.",
+  "Booking secured. We're confirming every item now.",
+  "Every item is confirmed. Delivery times come next.",
   "Your rentals have arrived. Pickup is after the event.",
   "All done. We hope it was a great day.",
 ];
@@ -128,13 +126,13 @@ export function toAccountEvent(lead: Lead): AccountEvent {
 
   const needs: NeedsYou[] = [];
   if (proposalUrl && !paid && lead.fee_status !== "refunded")
-    needs.push({ id: "pay", text: "Secure your booking", detail: "Your quote is ready. Paying the booking fee holds your date.", href: proposalUrl, action: "Review quote", tone: "wine" });
+    needs.push({ id: "pay", text: "Secure your booking", detail: "Your quote is ready. Paying the deposit holds your date.", href: proposalUrl, action: "Review quote", tone: "wine" });
   if (unread)
     needs.push({ id: "msg", text: unread === 1 ? "New message from us" : `${unread} new messages from us`, detail: "Read and reply in your event.", href: `/account/events/${lead.id}#messages`, action: "Read", tone: "blue" });
   if (!lead.event_date)
     needs.push({ id: "date", text: "Add your event date", detail: "We can't check availability without it.", href: `/account/events/${lead.id}#messages`, action: "Send date", tone: "amber" });
   else if (!lead.venue && (days ?? 99) <= 30 && stage < 5)
-    needs.push({ id: "address", text: "Send the delivery address", detail: "Rental companies need it to plan the truck.", href: `/account/events/${lead.id}#messages`, action: "Send address", tone: "amber" });
+    needs.push({ id: "address", text: "Send the delivery address", detail: "We need it to plan the truck.", href: `/account/events/${lead.id}#messages`, action: "Send address", tone: "amber" });
 
   return {
     id: lead.id,

@@ -52,7 +52,7 @@ export default function PriceIndexPage() {
     },
     {
       q: "Why don't you name the rental companies?",
-      a: "We work with many of these companies, and the point of the index is the spread in the market, not ranking one business against another. Each company's own site shows its prices.",
+      a: "The point of the index is the spread in the market, not ranking one business against another. Each company's own site shows its prices.",
     },
     {
       q: "Why is the gap so big on some items?",
@@ -158,7 +158,7 @@ export default function PriceIndexPage() {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[560px] text-left text-sm">
             <caption className="mb-4 text-left text-muted">
-              Each company&apos;s own listed price for one event, before delivery, setup, damage waiver, tax and our flat booking fee.
+              Each company&apos;s own listed price for one event, before delivery, setup, damage waiver and tax.
             </caption>
             <thead>
               <tr className="border-b border-line">
@@ -204,7 +204,7 @@ export default function PriceIndexPage() {
             Where one company lists an item twice, we used its lower price.
           </p>
           <p>
-            Prices are per item for one event day, as listed. They leave out delivery, setup, damage waivers, tax, minimum order amounts and our flat booking fee.
+            Prices are per item for one event day, as listed. They leave out delivery, setup, damage waivers, tax and minimum order amounts.
             The median is the middle price when two or more companies list the item. Small differences in what is included (a seat pad, a color choice) can
             explain part of a gap, and we note those in the FAQ below.
           </p>

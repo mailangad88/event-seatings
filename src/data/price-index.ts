@@ -5,7 +5,7 @@
 // so the spread is a real price difference and not a size or style difference.
 //
 // Vendor names are never exported from this file: the page shows ranges, not who charges what.
-// Prices are the companies' own rates, before our flat booking fee, delivery, setup, damage waiver and tax.
+// Prices are the companies' own rates, before delivery, setup, damage waiver and tax.
 
 import "server-only";
 import { canonicalItem, getCatalogItem, offers, PRICES_CHECKED_AT } from "./catalog";

@@ -4,7 +4,7 @@ import { Card, EventFacts, FeeStatus, PageTitle, PartCard, StageTrack, daysLabel
 import { PriceDisclaimer } from "@/components/ui";
 import { Icon } from "@/components/ui/Icon";
 import { currentAccount, fmtDay } from "@/lib/account";
-import { BOOKING_FEE_LABEL, usd } from "@/lib/catalog-types";
+import { DEPOSIT, usd } from "@/lib/catalog-types";
 import { updateLead } from "@/lib/store";
 import { sendMessage } from "../../../actions";
 
@@ -14,7 +14,7 @@ export const metadata = { title: "Your event" };
 const time = (iso: string) =>
   new Date(iso).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Chicago" });
 
-// One event: the order split by rental company (shown as one order), the booking fee and the message thread.
+// One event: the order (in one or more deliveries), the deposit and the message thread.
 export default async function AccountEvent(props: PageProps<"/account/events/[id]">) {
   const { id } = await props.params;
   const sp = await props.searchParams;
@@ -28,8 +28,6 @@ export default async function AccountEvent(props: PageProps<"/account/events/[id
     await updateLead(e.id, { messages: e.messages.map((m) => (m.from === "team" && !m.read_at ? { ...m, read_at: now } : m)) }).catch(() => {});
   }
 
-  const rental = e.parts.reduce((s, p) => s + p.rentalPrice, 0);
-  const fee = Math.max(0, e.subtotal - rental);
 
   return (
     <div className="space-y-6">
@@ -62,40 +60,38 @@ export default async function AccountEvent(props: PageProps<"/account/events/[id
               <>
                 <p className="mb-4 text-sm text-muted">
                   {e.parts.length === 1
-                    ? "Everything comes from one rental company."
-                    : `One order, filled by ${e.parts.length} rental companies. Each one delivers its own items, and we keep it all in one place for you.`}
+                    ? "Everything arrives in one delivery."
+                    : `One order, arriving in ${e.parts.length} deliveries. Each has its own time, and we keep it all in one place for you.`}
                 </p>
                 <div className="space-y-3">
                   {e.parts.map((p, i) => <PartCard key={p.key} part={p} open={i === 0} />)}
                 </div>
                 <dl className="mt-5 space-y-1.5 border-t border-line pt-4 text-sm">
-                  <div className="flex justify-between"><dt className="text-muted">Rental companies&apos; prices</dt><dd className="tabular-nums">{usd(rental)}</dd></div>
-                  <div className="flex justify-between"><dt className="text-muted">Our booking and coordination fee ({BOOKING_FEE_LABEL})</dt><dd className="tabular-nums">{usd(fee)}</dd></div>
                   <div className="flex justify-between border-t border-line pt-2 font-semibold"><dt>Rentals total</dt><dd className="tabular-nums">{usd(e.subtotal)}</dd></div>
                 </dl>
                 <PriceDisclaimer className="mt-3" />
               </>
             ) : (
-              <p className="text-sm text-muted">Your coordinator is putting the item list together. It shows up here, split by rental company, as soon as it&apos;s ready.</p>
+              <p className="text-sm text-muted">Your coordinator is putting the item list together. It shows up here as soon as it&apos;s ready.</p>
             )}
           </Card>
         </div>
 
         <div className="space-y-6">
-          <Card title="Booking fee">
+          <Card title="Deposit">
             <div className="flex items-center justify-between gap-3">
               <p className="text-sm text-muted">{e.fee.label}</p>
               <FeeStatus fee={e.fee} />
             </div>
-            <p className="mt-2 text-3xl font-semibold tabular-nums">{usd(e.fee.status === "paid" ? (e.fee.amount ?? fee) : (e.fee.due ?? fee))}</p>
+            <p className="mt-2 text-3xl font-semibold tabular-nums">{usd(e.fee.status === "paid" ? (e.fee.amount ?? 0) : (e.fee.due ?? 0))}</p>
             <p className="mt-1 text-xs text-muted">
               {e.fee.status === "paid"
-                ? `Paid ${fmtDay(e.fee.paidAt?.slice(0, 10)) ?? ""}. Rental company names and contacts are now shown on your order.`
-                : "Fully refundable for 72 hours. Rental company names are shared once it's paid."}
+                ? `Paid ${fmtDay(e.fee.paidAt?.slice(0, 10)) ?? ""}. Your items are reserved for your date.`
+                : `Reserves your items. Fully refundable for ${DEPOSIT.refundHours} hours.`}
             </p>
-            {e.proposalUrl && e.fee.status === "unpaid" && <Link href={e.proposalUrl} className="btn-primary btn-sm mt-4 w-full">Pay booking fee</Link>}
+            {e.proposalUrl && e.fee.status === "unpaid" && <Link href={e.proposalUrl} className="btn-primary btn-sm mt-4 w-full">Pay deposit</Link>}
             <p className="mt-4 border-t border-line pt-3 text-xs leading-5 text-muted">
-              Each rental company bills its own part (plus its delivery, damage waiver and tax) under its own agreement. See{" "}
+              The balance, with delivery, setup, damage waiver and tax, is due {DEPOSIT.balanceDaysBefore} days before your event. See{" "}
               <Link href="/account/payments" className="link">Payments</Link>.
             </p>
           </Card>

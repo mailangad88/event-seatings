@@ -52,7 +52,7 @@ export function withPartyFaqs(faqs: { q: string; a: string }[], single: string):
   const general = [
     {
       q: `Can I rent everything for a ${single} in one order?`,
-      a: "Yes. Pick the rentals from this page or the planner and send one free quote. We book them with Chicago-area rental partners and list delivery, setup, a damage waiver and sales tax line by line before you pay anything.",
+      a: "Yes. Pick the rentals from this page or the planner and send one free quote. We confirm your date and list delivery, setup, a damage waiver and sales tax line by line before you pay anything.",
     },
     {
       q: `How far ahead should I book rentals for a ${single}?`,
@@ -60,7 +60,7 @@ export function withPartyFaqs(faqs: { q: string; a: string }[], single: string):
     },
     {
       q: "Do the rental prices include delivery?",
-      a: "No. Prices are per item for one event day: the partner's own rate, with no markup. Our flat booking fee is separate. Delivery and pickup, setup, a damage waiver and sales tax are added on the same itemized quote.",
+      a: "No. Prices are per item for one event day: our own price, with no separate booking fee. Delivery and pickup, setup, a damage waiver and sales tax are added on the same itemized quote.",
     },
   ];
   const have = new Set(faqs.map((f) => f.q));

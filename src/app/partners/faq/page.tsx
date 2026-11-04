@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { FaqList, Figure, JsonLd, PageHero, QuoteCta, Section, StepFlow, type Faq } from "@/components/ui";
-import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -35,7 +34,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
       { q: "What if I can't take an order?", a: "Reply no or suggest a substitute. There's no charge for orders you turn down, and turning one down doesn't affect how many you get." },
       { q: "Can I block dates I'm already full?", a: "Yes. List them on the form, or email us any time. We don't send orders on dates you've blocked, and we send more on the dates you'd like filled." },
       { q: "Will you send me orders outside my area?", a: "No. We only send orders inside the delivery areas you picked. If you take far-away orders for an extra fee, put that in the area notes." },
-      { q: "Do customers contact me directly?", a: "After the host approves the proposal and pays our booking fee, we introduce you. From then on you deal with them under your own agreement, and we stay on hand for changes and day-of calls." },
+      { q: "Do customers contact me directly?", a: "No. Customers book and pay with us, and we stay their contact. You'll only talk to them on the day about the delivery itself. We handle changes and day-of calls." },
     ],
   },
   {
@@ -43,8 +42,8 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
     title: "Prices, fees and payments",
     faqs: [
       { q: "What does it cost?", a: `Nothing to join and no monthly fee. Founding Partners pay nothing on their first ${partnerFreeCount} booked orders. After that, ${partnerRatePct} of the rental subtotal (not delivery, damage waiver or tax), only on orders we send that book. The full terms fit on one page.` },
-      { q: "Do you change my prices?", a: `No. Customers see your price with no markup. They pay us a separate booking fee, ${BOOKING_FEE_FULL} per event. You're paid your full price.` },
-      { q: "Who pays whom?", a: "The host pays our booking fee to us. The host pays your deposit and balance to you, under your own rental agreement and your own payment methods. We never hold your money." },
+      { q: "Do you change my prices?", a: "No. You're paid your full price-sheet rate for every order. Customers book with us at our own prices, so your rates aren't shown to them." },
+      { q: "Who pays whom?", a: "Customers pay us. We pay you: your usual deposit when we place the order and the balance before the event. After your first two booked orders, you pay us the referral fee on a monthly statement." },
       { q: "How do I pay your commission?", a: "We send one statement a month listing the completed events we sent you. It's due 15 days after the end of that month, by bank transfer, check or card on file." },
       { q: "Do you need my bank details?", a: "No. We don't pay you, so the form never asks for bank account numbers. If that ever changes, we'd set it up by phone through a secure payment provider." },
       { q: "How long are customers we introduce counted as yours?", a: "24 months. If a host we introduced books with you again directly in that time, it's counted as an order we sent. It's in the partner agreement." },
@@ -54,7 +53,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
     id: "listing",
     title: "Your listing",
     faqs: [
-      { q: "Is my company name shown to customers?", a: "Not on the public site. Customers see the items, prices and photos. We share your name with the host once they've paid our booking fee." },
+      { q: "Is my company name shown to customers?", a: "No. Customers book with us and see our name. Your crew may be the one at the door, so please keep it friendly and on time." },
       { q: "Can I change my prices later?", a: "Yes. Email new prices any time and we update your listing, usually within two business days. Prices we've already quoted to a host are held for 14 days." },
       { q: "Can you use our product photos?", a: "Only if you say yes on the form. We credit you on the photo. If you say no, we show our own pictures of each item." },
       { q: "Some of our items are already on your site. Why?", a: "Our price estimates use rates rental companies publish on their own websites. You can correct or remove them on the listing request page, or sign up and manage them with us." },
@@ -81,13 +80,13 @@ export default function PartnerFaqPage() {
         title="Questions from rental companies"
         intro={
           <p data-answer>
-            Joining {site.name} is free. Sign up online in about five minutes, we call you within one business day, and your listing goes live after you&apos;ve checked it. You pay nothing on {partnerFreeOrders}, then {partnerRatePct} only on orders we send that book. Customers pay you directly. Here are the answers to the questions rental companies ask us most.
+            Joining {site.name} is free. Sign up online in about five minutes, we call you within one business day, and your listing goes live after you&apos;ve checked it. You pay nothing on {partnerFreeOrders}, then {partnerRatePct} only on orders we send that book. We pay you for every order. Here are the answers to the questions rental companies ask us most.
           </p>
         }
         actions={
           <>
             <Link href="/partners/onboard" className="btn-primary">Sign up as a partner</Link>
-            <Link href="/how-we-work" className="btn-ghost">How we work</Link>
+            <Link href="/partners/terms" className="btn-ghost">Partner terms</Link>
           </>
         }
         media={<Figure {...scenes.blushLongTable} ratio="4/5" priority sizes="(max-width: 1024px) 100vw, 40vw" className="mx-auto max-w-md" />}

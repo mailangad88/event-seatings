@@ -8,7 +8,7 @@ import { usd } from "@/lib/catalog-types";
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Payments" };
 
-// What's paid and what's still to pay: our booking fee per event, and each rental company's part,
+// What's paid and what's still to pay: the deposit per event, and the rest of each order,
 // which the renter pays to that company under its own agreement.
 export default async function AccountPayments() {
   const { events } = (await currentAccount())!;
@@ -20,11 +20,11 @@ export default async function AccountPayments() {
   return (
     <div className="space-y-6" data-print-doc>
       <style>{printCss}</style>
-      <PageTitle title="Payments" intro="You pay us one booking fee per event. Each rental company bills its own items, delivery and tax directly, under its own agreement." actions={<PrintButton />} />
+      <PageTitle title="Payments" intro="You pay a deposit to book each event, and the balance before the event." actions={<PrintButton />} />
       <div className="grid gap-4 sm:grid-cols-3">
-        <div className="stat-card stat-green"><p className="stat-label">Booking fees paid</p><p className="stat-value">{usd(paid, 0)}</p></div>
-        <div className={`stat-card ${due ? "stat-amber" : "stat-green"}`}><p className="stat-label">Booking fees due</p><p className="stat-value">{usd(due, 0)}</p></div>
-        <div className="stat-card stat-blue"><p className="stat-label">Rental companies&apos; prices</p><p className="stat-value">{usd(toCompanies, 0)}</p><p className="mt-2 text-xs text-muted">Upcoming orders, before their delivery and tax</p></div>
+        <div className="stat-card stat-green"><p className="stat-label">Deposits paid</p><p className="stat-value">{usd(paid, 0)}</p></div>
+        <div className={`stat-card ${due ? "stat-amber" : "stat-green"}`}><p className="stat-label">Deposits due</p><p className="stat-value">{usd(due, 0)}</p></div>
+        <div className="stat-card stat-blue"><p className="stat-label">Upcoming rentals</p><p className="stat-value">{usd(toCompanies, 0)}</p><p className="mt-2 text-xs text-muted">Upcoming orders, before their delivery and tax</p></div>
       </div>
       {events.map((e) => (
         <Card key={e.id} title={`${e.title}${e.date ? ` · ${fmtDay(e.date, { month: "long", day: "numeric", year: "numeric" })}` : ""}`} more={{ href: `/account/events/${e.id}`, label: "Open" }}>
@@ -47,8 +47,8 @@ export default async function AccountPayments() {
                 {e.parts.map((p) => (
                   <tr key={p.key}>
                     <td className="py-2.5 pr-4">Rentals ({p.lines.length} {p.lines.length === 1 ? "item" : "items"})</td>
-                    <td className="py-2.5 pr-4">{p.name}</td>
-                    <td className="py-2.5 pr-4 text-xs text-muted">{e.fee.status === "paid" ? "Billed by the company" : "After booking"}</td>
+                    <td className="py-2.5 pr-4">{site.name}</td>
+                    <td className="py-2.5 pr-4 text-xs text-muted">{e.fee.status === "paid" ? "Balance before the event" : "After booking"}</td>
                     <td className="py-2.5 text-right tabular-nums">{usd(p.rentalPrice)}</td>
                   </tr>
                 ))}
@@ -58,7 +58,7 @@ export default async function AccountPayments() {
         </Card>
       ))}
       <p className="text-xs leading-5 text-muted">
-        Rental companies add their own delivery, setup, damage waiver and sales tax to their agreement. Questions about a charge? Message us from the event and we&apos;ll sort it out.
+        Delivery, setup, damage waiver and sales tax are added to your balance, as shown on your quote. Questions about a charge? Message us from the event and we&apos;ll sort it out.
       </p>
     </div>
   );

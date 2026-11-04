@@ -6,12 +6,12 @@ import { usd } from "@/lib/catalog-types";
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Orders" };
 
-// Every event's order, each split into the rental companies that fill it.
+// Every event's order, split into its deliveries.
 export default async function AccountOrders() {
   const { events } = (await currentAccount())!;
   return (
     <div className="space-y-6">
-      <PageTitle title="Orders" intro="Each event is one order. When the items come from more than one rental company, you see each company's part and its delivery times here." />
+      <PageTitle title="Orders" intro="Each event is one order. When it arrives in more than one delivery, you see each one and its times here." />
       {events.length ? (
         events.map((e) => (
           <Card key={e.id}>

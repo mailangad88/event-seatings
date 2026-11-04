@@ -5,7 +5,7 @@ import { vendors } from "@/data/vendors";
 import { AdminHeader } from "@/components/admin/AdminUi";
 import { LeadFlow } from "@/components/admin/LeadFlow";
 import { eventLine, money2, prettyDay } from "@/lib/admin-view";
-import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
+import { MARKUP } from "@/lib/catalog-types";
 import { amountDue, chargeLabel } from "@/lib/payments";
 import { getLead } from "@/lib/store";
 import { saveQuote } from "./actions";
@@ -31,7 +31,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
           intro={
             <>
               {[eventLine(lead), lead.event_date && prettyDay(lead.event_date)].filter(Boolean).join(" · ")}. Change quantities or put in the
-              rental company&apos;s real price after you talk to them. Customers pay the rental company&apos;s price with no markup; our fee is {BOOKING_FEE_FULL} per event.
+              rental company&apos;s real price after you talk to them. Customer prices are the supplier&apos;s price plus {Math.round(MARKUP * 100)}%, with no separate fee.
               {lead.proposal_token && !locked && ` The proposal link and the ${chargeLabel().toLowerCase()} update as soon as you save.`}
             </>
           }
@@ -41,7 +41,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
 
       {locked && (
         <p className="card mt-6 border-rose/40 p-4 text-sm">
-          The booking fee is paid, so this quote is locked. If the order changes, agree it with the customer and the rental company in writing,
+          The deposit is paid, so this quote is locked. If the order changes, agree it with the customer and the rental company in writing,
           and note it on the lead.
         </p>
       )}

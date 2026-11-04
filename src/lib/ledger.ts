@@ -19,7 +19,7 @@ import { listLeads, listPartners, type Lead, type VendorPartner } from "./store"
 // Never store card or bank numbers here; the note is for "Zelle from Maria" or a check number at most.
 
 export const ledgerKinds = [
-  { id: "fee", label: "Booking fee" },
+  { id: "fee", label: "Deposit" },
   { id: "commission", label: "Commission" },
   { id: "refund", label: "Refund" },
   { id: "other", label: "Other" },

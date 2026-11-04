@@ -63,7 +63,7 @@ export type Lead = {
   followup_last_at?: string;
   // Quote builder: the priced line items (customer price + our vendor cost per line) and totals.
   items?: QuoteLine[];
-  quote_subtotal?: number; // what the customer saw (vendor price; no markup since Nov 2026)
+  quote_subtotal?: number; // what the customer saw, at our prices (supplier rate + MARKUP)
   quote_cost?: number; // what the vendors charge us
   // CRM fields, edited in /admin/leads.
   status?: LeadStatus;
@@ -73,11 +73,11 @@ export type Lead = {
   activity?: LeadActivity[];
   updated_at?: string;
   // Customer proposal (/proposal/<token>). The rental partner's name stays hidden on it until fee_status is "paid",
-  // so the booking fee (or a refundable hold) is collected before the customer can go to the vendor directly.
+  // so the deposit (or a refundable hold) is collected before we place the order.
   proposal_token?: string;
   proposal_created_at?: string;
   fee_status?: FeeStatus;
-  fee_amount?: number; // USD charged at checkout (booking fee or hold)
+  fee_amount?: number; // USD charged at checkout (deposit or hold)
   fee_paid_at?: string;
   stripe_session_id?: string;
   // Event to-dos ticked off in /admin (lib/event-tasks.ts): task key -> when it was done.

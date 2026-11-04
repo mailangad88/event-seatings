@@ -105,7 +105,7 @@ export async function setFeeStatus(formData: FormData) {
   if (!lead) return;
   if (status === "paid") await markFeePaid(lead, "manual (marked in admin)");
   else if (status === "unpaid" || status === "refunded") {
-    await updateLead(id, { fee_status: status, fee_paid_at: "" }, [{ type: "note", text: `Booking fee marked ${status}.` }]);
+    await updateLead(id, { fee_status: status, fee_paid_at: "" }, [{ type: "note", text: `Deposit marked ${status}.` }]);
   }
   revalidatePath(`/admin/leads/${id}`);
   revalidatePath("/admin/proposals");

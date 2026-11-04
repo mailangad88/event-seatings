@@ -63,11 +63,11 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
     ...c.faqs,
     {
       q: `Do ${name} rental prices include delivery?`,
-      a: `No. The prices shown are per item for one event day: the partner's own rate, with no markup. Our flat booking fee is separate. Delivery and pickup, setup, a damage waiver and sales tax are added for your venue on the same itemized quote, so you see the all-in total before you book.`,
+      a: `No. The prices shown are per item for one event day: our own price, with no separate booking fee. Delivery and pickup, setup, a damage waiver and sales tax are added for your venue on the same itemized quote, so you see the all-in total before you book.`,
     },
     {
       q: `How far ahead should I book ${name} in ${site.market}?`,
-      a: `For Saturdays from May to October, book 3 to 6 months ahead, because the most popular items sell out first. Weekday and winter events can often be booked 2 to 4 weeks out. Send a quote and we confirm availability with partner rental companies before you pay anything.`,
+      a: `For Saturdays from May to October, book 3 to 6 months ahead, because the most popular items sell out first. Weekday and winter events can often be booked 2 to 4 weeks out. Send a quote and we confirm availability before you pay anything.`,
     },
   ].slice(0, Math.max(c.faqs.length, 5));
   const photoAlt = (p: (typeof photos)[number]) => `${p.alt}: example of ${c.name.toLowerCase()} rentals at a real event (photo by ${p.by} on Unsplash)`;
@@ -178,7 +178,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
               <Icon name="plus" size={22} className="shrink-0 text-accent transition-transform group-open/fl:rotate-45" />
             </summary>
             <p className="mt-3 max-w-2xl text-muted">
-              {inventoryCount} more styles, sizes and finishes from {site.market}-area rental companies. Prices are per
+              {inventoryCount} more styles, sizes and finishes. Prices are per
               unit for one event day, before delivery, setup, damage waiver and tax (typically 35-60% more all-in).
             </p>
             <PriceDisclaimer className="mt-2 max-w-2xl" vendorLink />

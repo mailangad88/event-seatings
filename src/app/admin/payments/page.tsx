@@ -112,7 +112,7 @@ export default async function PaymentsPage(props: PageProps<"/admin/payments">) 
       </div>
 
       {refundLead && (
-        <Panel title="Refund this booking fee?" className="mt-8">
+        <Panel title="Refund this deposit?" className="mt-8">
           {refundLead.fee_status !== "paid" ? (
             <Empty>This fee isn&apos;t marked paid, so there is nothing to refund. <Link href="/admin/payments" className="text-accent">Back to payments</Link></Empty>
           ) : (
@@ -202,7 +202,7 @@ export default async function PaymentsPage(props: PageProps<"/admin/payments">) 
           </p>
           <div className="mt-2">
             {shown.length === 0 ? (
-              <Empty>No payments match. Booking fees show here once a customer pays, and anything you record by hand shows here too.</Empty>
+              <Empty>No payments match. Deposits show here once a customer pays, and anything you record by hand shows here too.</Empty>
             ) : (
               <Table head={["Date", "What", "From / to", "Paid by", "Note", "Amount", ""]} right={[5]} min={900}>
                 {shown.slice(0, 200).map((r) => {
@@ -258,7 +258,7 @@ export default async function PaymentsPage(props: PageProps<"/admin/payments">) 
                 </div>
               </div>
               <fieldset className="well space-y-3 p-4">
-                <legend className="text-xs font-medium text-muted">For a booking fee</legend>
+                <legend className="text-xs font-medium text-muted">For a deposit</legend>
                 <div>
                   <label htmlFor="rec-lead" className="label">Proposal</label>
                   <select id="rec-lead" name="lead_id" defaultValue="" className="field">
@@ -335,7 +335,7 @@ export default async function PaymentsPage(props: PageProps<"/admin/payments">) 
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between gap-3"><dt className="text-muted">Stripe</dt><dd>{stripeEnabled() ? "On" : "Off"}</dd></div>
               <div className="flex justify-between gap-3"><dt className="text-muted">Payment alerts from Stripe</dt><dd>{process.env.STRIPE_WEBHOOK_SECRET ? "On" : "Off"}</dd></div>
-              <div className="flex justify-between gap-3"><dt className="text-muted">What we charge</dt><dd className="text-right">{chargeMode() === "hold" ? "Fixed refundable hold" : "Flat booking fee ($295, $495 over 200 guests)"}</dd></div>
+              <div className="flex justify-between gap-3"><dt className="text-muted">What we charge</dt><dd className="text-right">{chargeMode() === "hold" ? "Fixed refundable hold" : "50% deposit on rentals (min $100)"}</dd></div>
             </dl>
             <p className="mt-3 text-xs text-muted">
               {stripeEnabled()

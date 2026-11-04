@@ -23,11 +23,11 @@ const groups: { title: string; filter: (l: Location) => boolean }[] = [
 const faqs = [
   {
     q: "Which areas do you deliver party rentals to?",
-    a: `Chicago and its neighborhoods plus ${locations.filter((l) => l.kind === "suburb").length} suburbs listed on this page, from the North Shore to DuPage County and the Fox Valley. If your town is not listed, ask in your quote: most of the metro area is covered by our rental partners.`,
+    a: `Chicago and its neighborhoods plus ${locations.filter((l) => l.kind === "suburb").length} suburbs listed on this page, from the North Shore to DuPage County and the Fox Valley. If your town is not listed, ask in your quote: we deliver across most of the metro area.`,
   },
   {
     q: "Is there a party rental company near me?",
-    a: `${site.name} works with established rental companies across the Chicago area, so the closest partner that carries your items handles delivery. Pick your town for local prices and notes, then send one quote for everything.`,
+    a: `${site.name} delivers across the Chicago area and the suburbs. Pick your town for local prices and notes, then send one quote for everything.`,
   },
   {
     q: "What do party rentals usually include?",
@@ -58,7 +58,7 @@ export default function PartyRentalsHub() {
               <p className="lede mt-6 max-w-2xl" data-answer>
                 {site.name} arranges party and event rentals across {locations.length} Chicago neighborhoods and suburbs:
                 tents, tables, chairs, linens, dance floors, bounce houses, lighting and more, {catalogItems.length.toLocaleString()} items
-                from local rental partners. Pick your town to see local prices, venue notes and delivery tips, then send one free quote.
+                . Pick your town to see local prices, venue notes and delivery tips, then send one free quote.
               </p>
             </div>
             <Figure caption="The Chicago neighborhoods and suburbs we serve.">

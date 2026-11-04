@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const inside = [
-  { icon: "truck" as const, text: "Your order, with each rental company's part and delivery times" },
+  { icon: "truck" as const, text: "Your order, with delivery and pickup times" },
   { icon: "wallet" as const, text: "What's paid and what's still to pay" },
   { icon: "chat" as const, text: "Messages with your coordinator" },
   { icon: "heart" as const, text: "Your event plans and saved ideas on any device" },

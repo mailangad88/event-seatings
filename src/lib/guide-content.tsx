@@ -609,7 +609,7 @@ function buildCost(slug: string): GuideProps | null {
     faqs: [
       { q: `Is ${usd(lo)}–${usd(hi)} the full price for ${n} chairs?`, a: "It is our estimate for the chairs only. Delivery, setup, pickup, cushions and linens are quoted separately in your personal quote." },
       { q: "Is there a discount for larger orders?", a: "We have not published volume pricing yet. Ask on a free call and we will include any available discount in your quote." },
-      { q: "How far ahead should I book?", a: "Our partner rental companies deliver year-round. Book as soon as your date and venue are set: peak Saturdays from May to October and December holiday weekends fill first." },
+      { q: "How far ahead should I book?", a: "We deliver year-round. Book as soon as your date and venue are set: peak Saturdays from May to October and December holiday weekends fill first." },
     ],
     related: [
       ...QTYS.filter((q) => q !== n).slice(0, 3).map((q) => ({ href: `/chair-rental-cost/${costSlug(c, q)}`, label: `${short(c)} × ${q} chairs` })),
@@ -892,7 +892,7 @@ function buildMonth(slug: string): GuideProps | null {
     intro: `${m.wx} That shapes which chairs make sense, how early to book and how to plan delivery for a ${m.name} event in Chicago and the suburbs.`,
     quick: {
       q: `What chairs should I rent for a ${m.name} event in Chicago?`,
-      a: `${m.lvl >= 2 ? `Choose outdoor-friendly, stackable chairs such as the ${outdoorOk.map(short).join(", ")}.` : `Most ${m.name} events are indoors, so you can choose on style: the ${indoor.map(short).join(", ")} are popular starting points.`} ${m.tip} Delivery, setup and pickup are priced on the same free quote, and we confirm availability with Chicago-area rental partners before you pay.`,
+      a: `${m.lvl >= 2 ? `Choose outdoor-friendly, stackable chairs such as the ${outdoorOk.map(short).join(", ")}.` : `Most ${m.name} events are indoors, so you can choose on style: the ${indoor.map(short).join(", ")} are popular starting points.`} ${m.tip} Delivery, setup and pickup are priced on the same free quote, and we confirm availability before you pay.`,
     },
     visual: (
       <MonthStrip

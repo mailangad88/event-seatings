@@ -9,14 +9,14 @@ import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
-  title: "About Us: Chicago's Event Rental Marketplace",
-  description: `${site.name} is a locally owned Chicago-area event rental marketplace. One quote for chairs, tables, linens, dinnerware, tents and more, coordinated with trusted local rental houses.`,
+  title: "About Us: Chicago Event Rentals in One Order",
+  description: `${site.name} is a locally owned Chicago-area event rental company. One quote for chairs, tables, linens, dinnerware, tents and more, with delivery, setup and pickup.`,
   alternates: { canonical: "/about" },
 });
 
 const values = [
   { icon: "quote", title: "Prices you can see", text: "Every item shows its price. Your quote totals as you go, with delivery and setup itemized." },
-  { icon: "users", title: "Established rental companies", text: "We work with established local rental companies and book each item with one that carries it." },
+  { icon: "users", title: "Everything in one order", text: "Chairs, tables, linens, dishes and tents on one quote, with one person to call." },
   { icon: "chat", title: "One point of contact", text: "From the first question to pickup, you deal with one person instead of five companies." },
   { icon: "pin", title: "Locally owned", text: `Based in ${site.city}, serving the whole Chicago area from the Loop to the Fox Valley.` },
 ] as const;
@@ -24,15 +24,11 @@ const values = [
 const aboutFaqs = [
   {
     q: `What is ${site.name}?`,
-    a: `${site.name} is a Chicago-area event rental marketplace. You pick chairs, tables, linens, dinnerware, tents and more in one quote, and we book each item with an established local rental company, then coordinate delivery, setup and pickup as your single point of contact.`,
-  },
-  {
-    q: `Does ${site.name} own the rentals?`,
-    a: "No. The items belong to established Chicago-area rental houses we partner with. We match each item to the partner that carries it, confirm availability, and keep one itemized quote and one contact for you.",
+    a: `${site.name} is a Chicago-area event rental company. You pick chairs, tables, linens, dinnerware, tents and more in one quote, and we handle delivery, setup and pickup as your single point of contact.`,
   },
   {
     q: "How do you make money?",
-    a: "Prices on the site are the rental company's own rate, with no markup. We charge one flat booking and coordination fee per event, $295 or $495 over 200 guests, and only after every rental company confirms. There is no charge for a quote or a planning call.",
+    a: "By the item, at the prices on our site. Your quote adds delivery, setup, damage waiver and tax, and there's no separate booking fee. A 50% deposit books your date. There is no charge for a quote or a planning call.",
   },
   {
     q: "Where are you based and where do you deliver?",
@@ -67,7 +63,7 @@ export default function AboutPage() {
             </p>
             <p>
               So we built one site for all of it. You browse everything an event needs, see prices up front and send one quote
-              request. We confirm availability with trusted local rental houses, coordinate delivery and pickup, and
+              request. We confirm availability, handle delivery, setup and pickup, and
               stay your single point of contact.
             </p>
             <h2>Where we deliver</h2>

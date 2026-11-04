@@ -235,11 +235,11 @@ export default async function TodayPage(props: PageProps<"/admin">) {
         </section>
         <section className="office-card p-5 md:col-span-2 xl:col-span-1">
           <div className="flex items-baseline justify-between">
-            <h2 className="text-sm font-semibold">Booking fees · this month</h2>
+            <h2 className="text-sm font-semibold">Deposits · this month</h2>
             <Link href="/admin/payments" className="text-xs text-accent">Payments →</Link>
           </div>
           <p className="mt-2 text-3xl font-semibold text-green tabular-nums">{money0(feesMonth)}</p>
-          <div className="mt-4"><Trend values={feesByWeek} tone="green" label="Booking fees per week, last 8 weeks" /></div>
+          <div className="mt-4"><Trend values={feesByWeek} tone="green" label="Deposits per week, last 8 weeks" /></div>
           <p className="mt-2 text-xs text-muted">Weekly fees, last 8 weeks</p>
         </section>
       </div>

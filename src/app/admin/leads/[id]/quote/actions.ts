@@ -22,7 +22,7 @@ const cents = (n: number) => Math.round(n * 100) / 100;
 
 // Saves edits to a lead's quote after talking to the rental partner: quantities, the vendor's real price,
 // removed lines and extra lines (delivery, setup, a custom piece). Customer prices are the vendor price; our fee is a flat amount per event.
-// Locked once the booking fee is paid, so the customer's paid proposal never changes under them.
+// Locked once the deposit is paid, so the customer's paid proposal never changes under them.
 export async function saveQuote(formData: FormData) {
   await requireAdmin();
   const id = text(formData.get("id"), 64);

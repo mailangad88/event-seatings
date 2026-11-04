@@ -148,7 +148,7 @@ export function Stepper({
 }
 
 // Quote builder: pick items and quantities, see a live estimate, then send the enquiry.
-// Prices shown are the customer price (the vendor price; we add no markup), computed on the server.
+// Prices shown are the customer price (supplier rate + MARKUP), computed on the server.
 // The server re-prices everything on submit, so the totals here are only for display.
 export function QuoteForm({
   items,
@@ -341,7 +341,7 @@ export function QuoteForm({
         <h2 className="display-2 mt-6">Your quote is in</h2>
         <p className="lede mx-auto mt-6 max-w-xl">
           We saved your estimate of about <strong className="text-ink">{formatPrice(allIn.total)}</strong> all-in ({formatPrice(subtotal)} in rentals) for {lines.length}{" "}
-          {lines.length === 1 ? "item" : "items"}. We&apos;ll check availability for your date with our rental partners
+          {lines.length === 1 ? "item" : "items"}. We&apos;ll check availability for your date
           and email a confirmed proposal, usually within one business day. Nothing is charged or held until you confirm.
         </p>
         <ul className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-2">

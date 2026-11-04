@@ -32,8 +32,8 @@ const reasons: { icon: IconName; title: string; text: string }[] = [
   },
   {
     icon: "shield",
-    title: "Your price, your contract",
-    text: "Customers pay our booking fee to us. You keep your list price, your rental agreement, your deposit and your damage waiver.",
+    title: "Your full price, paid by us",
+    text: "We place the order and pay your price-sheet rates on your usual deposit and balance terms. You never chase a customer for payment.",
   },
   {
     icon: "chat",
@@ -51,7 +51,7 @@ const steps = [
   { icon: "users" as const, title: "Apply", text: "Two-minute form. We call within one business day." },
   { icon: "quote" as const, title: "Share your price sheet", text: "Items, delivery zones, minimums and policies." },
   { icon: "chat" as const, title: "Get enquiries", text: "Availability requests with a quote ID. Reply yes, no or swap within 4 business hours." },
-  { icon: "check" as const, title: "Book and deliver", text: "We introduce the customer. Your contract, your deposit, your crew." },
+  { icon: "check" as const, title: "Deliver", text: "We place the order and pay you. Your crew delivers, sets up and picks up." },
 ];
 
 const T = PARTNER_TERMS;
@@ -62,8 +62,8 @@ const terms = [
   ["After that", `${partnerRatePct} of the rental subtotal (not delivery, setup labor, damage waiver or tax), only on orders we send that book and only after the event happens.`],
   ["Rate lock", `Your rate stays at ${partnerRatePct} for ${T.rateLockMonths} months from signing.`],
   ["Paid", `Monthly statement by event month, due ${T.netDays} days after we send it. ACH, Zelle or check.`],
-  ["Your pricing", `You set it and we never mark it up. We quote customers from your price sheet, valid ${T.quoteValidDays} days.`],
-  ["Customers we introduce", `Count as ours for ${T.attributionMonths} months, including their next events.`],
+  ["Your pricing", `You set your price sheet and we pay those rates. Quotes from it stay valid ${T.quoteValidDays} days.`],
+  ["Our customers", `Customers on our orders stay ours for ${T.attributionMonths} months, including their next events.`],
   ["Exclusivity", `None. Leave any time with ${T.noticeDays} days' notice.`],
   ["What we ask", `Availability replies within ${T.replyHours} business hours, weekly status on open orders, and an insurance certificate for our file.`],
 ];
@@ -86,16 +86,16 @@ const asks: { icon: IconName; title: string; text: string }[] = [
 
 const faqs: Faq[] = [
   {
-    q: "Why would a customer pay Beyond Chiavari instead of calling us directly?",
+    q: "Why would a customer book with Beyond Chiavari?",
     a: "They pay for one itemized quote across every category, a coordinator who handles every vendor, and our Booking Promise. Most of our customers need four or five rental categories and don't want five phone calls.",
   },
   {
-    q: "Do you mark up our prices?",
-    a: "Your price to the customer stays your price. The customer pays our booking and coordination fee to us separately, and their proposal shows both lines.",
+    q: "Do customers see our prices or our name?",
+    a: "No. Customers book with us and see our prices. We pay you your full price-sheet rate for every order, and your name stays between us.",
   },
   {
     q: "How is the commission tracked?",
-    a: "Every enquiry has a quote ID (BC-YYYY-####). You update its status weekly, and we send a monthly statement listing completed events. A customer we introduce stays attributed to us for 24 months.",
+    a: "Every enquiry has a quote ID (BC-YYYY-####). You update its status weekly, and we send a monthly statement listing completed events. A customer on our orders stays ours for 24 months.",
   },
   {
     q: "What if we can't take an enquiry?",
@@ -120,7 +120,7 @@ export default function PartnersPage() {
         breadcrumbs={[{ name: "Rental partners", href: "/partners" }]}
         eyebrow="For rental companies"
         title="Get booked Chicago events sent to you."
-        intro={`${site.name} sends Chicago-area rental companies event bookings with the items and quantities already listed, It's ${partnerFeeLine}. No monthly fees, no exclusivity, and you keep your own prices, contract and deposit.`}
+        intro={`${site.name} sends Chicago-area rental companies event orders with the items and quantities already listed. We pay your full price-sheet rates on your usual terms. It's ${partnerFeeLine}. No monthly fees and no exclusivity.`}
         actions={
           <>
             <a href="#apply" className="btn-primary">Apply as a partner</a>
@@ -152,7 +152,7 @@ export default function PartnersPage() {
       <Section tone="sand" eyebrow="How it works" title="From enquiry to delivery">
         <StepFlow
           steps={steps}
-          caption={`How rental partners work with ${site.name}: apply, share a price sheet, receive itemized enquiries with a quote ID, then book and deliver under your own contract.`}
+          caption={`How rental partners work with ${site.name}: apply, share a price sheet, receive itemized enquiries with a quote ID, then deliver orders we pay for.`}
         />
         <p className="mt-8 max-w-3xl leading-7 text-muted">
           See what customers see: the <Link href="/rentals" className="link-line">rental catalog with prices</Link>, the{" "}
@@ -172,19 +172,19 @@ export default function PartnersPage() {
               <li>Wedding reception at a banquet hall, ground floor, loading dock</li>
               <li>{sample?.highlights.slice(0, 3).join(", ") ?? "Chairs, tables and linens"}</li>
               <li>Delivery Friday after 2 pm, pickup Sunday morning</li>
-              <li>Quoted to the customer at your price sheet total: ${sampleRentals.toLocaleString()} in rentals</li>
+              <li>Your price sheet total: ${sampleRentals.toLocaleString()} in rentals</li>
             </ul>
             <p className="mt-5 leading-7">You reply <strong>yes</strong>, <strong>no</strong> or <strong>yes with changes</strong>. A no costs nothing.</p>
           </div>
           <div className="card p-7">
             <h3 className="display-3">Who pays what on that order</h3>
             <dl className="mt-5 divide-y divide-line">
-              <div className="flex justify-between gap-4 py-3"><dt className="text-muted">Customer pays you, under your contract</dt><dd className="font-medium">${sampleRentals.toLocaleString()} + your delivery, waiver and tax</dd></div>
+              <div className="flex justify-between gap-4 py-3"><dt className="text-muted">We pay you, on your usual terms</dt><dd className="font-medium">${sampleRentals.toLocaleString()} + your delivery and setup charges</dd></div>
               <div className="flex justify-between gap-4 py-3"><dt className="text-muted">You pay us if it&apos;s one of your first {partnerFreeCount}</dt><dd className="font-medium">$0</dd></div>
               <div className="flex justify-between gap-4 py-3"><dt className="text-muted">You pay us after that ({partnerRatePct})</dt><dd className="font-medium">${partnerFeeOn(sampleRentals).toLocaleString()}</dd></div>
               <div className="flex justify-between gap-4 py-3"><dt className="text-muted">If the event is cancelled and refunded</dt><dd className="font-medium">$0</dd></div>
             </dl>
-            <p className="mt-4 text-sm text-muted">The customer pays our coordination fee to us, on its own line. Your price is never changed.</p>
+            <p className="mt-4 text-sm text-muted">We set our own prices to our customers. You&apos;re always paid your full price-sheet rate.</p>
           </div>
         </div>
       </Section>
@@ -260,7 +260,7 @@ export default function PartnersPage() {
         <FaqList faqs={faqs} className="max-w-3xl" />
         <p className="mt-8 text-sm text-muted">
           More answers on the <Link href="/partners/faq" className="link">full partner FAQ</Link>, and{" "}
-          <Link href="/how-we-work" className="link">how we work</Link> with hosts and rental companies, including who pays whom.
+          <Link href="/partners/terms" className="link">one-page partner terms</Link>.
         </p>
       </Section>
     </>

@@ -24,7 +24,7 @@ const faqs = [
   { q: "What do I need to get started?", a: "Your company details, the categories you rent, where you deliver, your usual lead time and a price list. A link to your website price page is fine, or fill in our CSV template." },
   { q: "When does my listing go live?", a: "After we call to confirm your details and you've checked how your items and prices look. Nothing is published without your OK." },
   { q: "Can I check on my application?", a: "Yes. When you send the form you get a link to your own status page, and the same link is in your confirmation email." },
-  { q: "Do you need my bank details?", a: "No. Customers pay you directly under your own agreement, so the form never asks for bank account numbers." },
+  { q: "Do you need my bank details?", a: "Not on this form. Once you sign, we set up how we pay you by phone, through a secure payment provider." },
   { q: "Can I change my prices later?", a: "Yes. Send updated prices any time and we update your listing. You always confirm the final quote for each order." },
   { q: "Is there any exclusivity?", a: "No. You can list with us and keep every other sales channel. Leaving takes 30 days' notice." },
   { q: "Can I use my own product photos?", a: `Yes, if you'd like. Tell us in the form. Otherwise ${site.name} shows its own renders of each item.` },
@@ -38,7 +38,7 @@ export default function PartnerOnboardPage() {
         title={<>Sign up your rental company in <em className="text-gold">five minutes</em></>}
         intro={
           <p data-answer>
-            Tell us what you rent, where and when you deliver, and how customers pay you, then upload your price list. We call to go over it within one business day, you check your listing, and event orders from Chicago-area hosts start coming to you. No monthly fee and no exclusivity.
+            Tell us what you rent, where and when you deliver, and your deposit terms, then upload your price list. We call to go over it within one business day, you check your listing, and event orders from Chicago-area hosts start coming to you. No monthly fee and no exclusivity.
           </p>
         }
         breadcrumbs={[{ name: "Partners", href: "/partners" }, { name: "Onboarding", href: "/partners/onboard" }]}

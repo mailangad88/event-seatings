@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { VendorListingForm } from "@/components/VendorListingForm";
 import { Callout, FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
-import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -27,12 +26,12 @@ const facts: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "quote",
     title: "Our fee is shown separately",
-    text: `We show your price with no markup. The customer pays us a separate booking and coordination fee, ${BOOKING_FEE_FULL} per event. Your price to the customer stays your price.`,
+    text: "Customers see our own prices, not your price list, and never your company name.",
   },
   {
     icon: "chat",
     title: "Listing doesn't mean partnership",
-    text: "Most companies whose rates we use have not signed anything with us. We contact the rental company directly before any booking, at its normal price and terms.",
+    text: "Most companies whose rates we use have not signed anything with us. If we place an order with you, we pay your normal price on your normal terms.",
   },
 ];
 

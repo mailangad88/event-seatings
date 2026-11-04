@@ -104,8 +104,8 @@ export const menus: Menu[] = [
           { href: "/quote", label: "Get a quote", blurb: "Pick items, see prices as you go", icon: "quote" },
           { href: "/packages", label: "Ready-made packages", blurb: "Sets sized for your guest count", icon: "gift" },
           { href: "/how-it-works", label: "How it works", blurb: "From quote to delivery day", icon: "list" },
-          { href: "/pricing", label: "Pricing", blurb: "One flat fee, no markup on rentals", icon: "wallet" },
-          { href: "/big-celebrations", label: "Big celebrations", blurb: "150+ guests, several rental companies", icon: "users" },
+          { href: "/pricing", label: "Pricing", blurb: "Every item priced, no booking fee", icon: "wallet" },
+          { href: "/big-celebrations", label: "Big celebrations", blurb: "150+ guests, everything on one order", icon: "users" },
         ],
       },
       {
@@ -200,7 +200,6 @@ export const footerMore: { href: string; label: string }[] = [
   { href: "/quiz", label: "Style quiz" },
   { href: "/countdown", label: "Event countdown" },
   { href: "/seating-planner", label: "Seating planner" },
-  { href: "/how-we-work", label: "How we work" },
   { href: "/press", label: "Press" },
   { href: "/refer", label: "Refer a friend" },
   { href: "/partners/faq", label: "Partner FAQ" },
