@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { DownloadGate } from "@/components/DownloadGate";
 import { buyerLinksFor } from "@/data/buyer-pages";
 import { PostBody } from "@/components/PostBody";
-import { ArticleLayout, JsonLd, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
+import { ArticleLayout, JsonLd, LinkCards, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
 import { coverImage, getDownload } from "@/data/downloads";
 import { formatDate, getPost, getPosts, getRelated, topicSlug } from "@/lib/blog";
 import { sceneFor } from "@/lib/scenes";
@@ -40,11 +40,15 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
 // Give each <h2> an id so the table of contents can link to it.
 function withHeadingIds(html: string) {
   const toc: TocItem[] = [];
+  let n = 0;
   const out = html.replace(/<h2>(.*?)<\/h2>/g, (_, inner: string) => {
     const label = inner.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"');
     const id = label.toLowerCase().replace(/&[a-z#0-9]+;/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
     toc.push({ id, label });
-    return `<h2 id="${id}">${inner}</h2>`;
+    // Number each section (shown as a badge by CSS) so long guides read as clear steps.
+    if (/^frequently asked questions$/i.test(label)) return `<h2 id="${id}">${inner}</h2>`;
+    n += 1;
+    return `<h2 id="${id}" data-n="${String(n).padStart(2, "0")}">${inner}</h2>`;
   });
   return { html: out, toc };
 }
@@ -107,7 +111,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
           </>
         }
       >
-        <PostBody html={html} faqs={faqs} />
+        <PostBody html={html} faqs={faqs} toc={toc} />
         <aside id="free-download" aria-label="Free download" className="mt-12 grid max-w-2xl scroll-mt-24 gap-6 sm:grid-cols-[160px_1fr]">
           <Link href={`/downloads/${offer.slug}`} className="hidden sm:block">
             <Image src={coverImage(offer.slug)} alt={`Cover of the free ${offer.title}`} width={160} height={207} className="rounded-lg border border-line shadow" />
@@ -117,15 +121,14 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
             <DownloadGate slug={offer.slug} title={offer.title} files={offer.files} compact placement={`blog:${post.slug}`} />
           </div>
         </aside>
-        <section aria-labelledby="rental-help" className="mt-12 max-w-2xl rounded-2xl border border-line bg-surface p-5">
+        <section aria-labelledby="rental-help" className="mt-12 max-w-2xl">
           <p id="rental-help" className="eyebrow">Ready to rent?</p>
-          <ul className="mt-3 grid gap-2 sm:grid-cols-3">
-            {buyerLinksFor(`${post.title} ${post.tags.join(" ")}`).map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="link text-sm">{l.label}</Link>
-              </li>
-            ))}
-          </ul>
+          <LinkCards
+            compact
+            columns={3}
+            className="mt-4"
+            items={buyerLinksFor(`${post.title} ${post.tags.join(" ")}`).map((l) => ({ href: l.href, label: l.label }))}
+          />
         </section>
         {related.length > 0 && (
           <section aria-labelledby="related" className="mt-14 max-w-2xl">

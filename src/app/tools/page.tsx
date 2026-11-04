@@ -6,6 +6,7 @@ import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 import { liveTools, toolImage } from "@/components/tools/ToolShell";
 import { toolGroups, type ToolGroup } from "@/data/tools";
+import { FaqList, LinkCards } from "@/components/ui";
 
 const title = "Free Event Planning Tools and Calculators for Chicago Events";
 const description = `Free event planning tools from ${site.name}: tables and chairs, tent size, venue capacity, tablecloth, string light and dance floor calculators, a timeline builder, budget splitter, rain plan checklist and more. No sign-up.`;
@@ -239,7 +240,8 @@ const faqs: [string, string][] = [
 export default function ToolsPage() {
   const list = problems();
   const live = liveTools();
-  const allTools = [...live.map((t) => ({ name: t.name, href: `/tools/${t.slug}` })), ...list.flatMap((p) => p.tools).filter((t) => !live.some((l) => `/tools/${l.slug}` === t.href))];
+  const extra = list.flatMap((p) => p.tools).filter((t) => !live.some((l) => `/tools/${l.slug}` === t.href));
+  const allTools = [...live.map((t) => ({ name: t.name, href: `/tools/${t.slug}` })), ...extra];
   const book = bookingHref("tools-hub");
 
   const jsonLd = [
@@ -264,7 +266,7 @@ export default function ToolsPage() {
   // Three tools most people need first get a picture card; everything else is a short text list.
   const startSlugs = ["rental-calculator", "tables-and-chairs", "timeline"];
   const start = startSlugs.flatMap((slug) => live.filter((t) => t.slug === slug));
-  const more = allTools.filter((t, n, a) => !t.href.startsWith("/tools/") && a.findIndex((x) => x.href === t.href) === n);
+  const more = extra.filter((t, n, a) => !t.href.startsWith("/tools/") && a.findIndex((x) => x.href === t.href) === n);
 
   return (
     <div className="container-x py-20">
@@ -304,38 +306,32 @@ export default function ToolsPage() {
 
       <section aria-labelledby="all-tools" className="mt-20">
         <h2 id="all-tools" className="display-2">Every free tool</h2>
-        <div className="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 space-y-12">
           {(Object.keys(toolGroups) as ToolGroup[]).map((g) => {
             const group = live.filter((t) => t.group === g);
             if (!group.length) return null;
             return (
               <div key={g}>
-                <h3 className="eyebrow border-b border-line pb-2">{toolGroups[g].title}</h3>
-                <ul className="mt-2">
-                  {group.map((t) => (
-                    <li key={t.slug}>
-                      <Link href={`/tools/${t.slug}`} className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2">
-                        <span className="block font-medium group-hover:text-accent">{t.name}</span>
-                        <span className="block text-sm leading-6 text-muted">{t.short}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="display-3">{toolGroups[g].title}</h3>
+                <p className="mt-1 text-sm text-muted">{toolGroups[g].intro}</p>
+                <LinkCards
+                  className="mt-5"
+                  items={group.map((t) => {
+                    const img = toolImage(t);
+                    return { href: `/tools/${t.slug}`, label: t.name, text: t.short, image: { src: img.src, alt: img.alt } };
+                  })}
+                />
               </div>
             );
           })}
           {more.length > 0 && (
             <div>
-              <h3 className="eyebrow border-b border-line pb-2">More planning help</h3>
-              <ul className="mt-2">
-                {more.map((t) => (
-                  <li key={t.href}>
-                    <Link href={t.href} className="block rounded-xl p-2.5 font-medium transition-colors hover:bg-surface-2 hover:text-accent">
-                      {t.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <h3 className="display-3">More planning help</h3>
+              <p className="mt-1 text-sm text-muted">Guides, quizzes and kits that pair well with the tools.</p>
+              <LinkCards
+                className="mt-5"
+                items={more.map((t) => ({ href: t.href, label: t.name, text: t.text, image: { src: t.image, alt: t.imageAlt } }))}
+              />
             </div>
           )}
         </div>
@@ -349,14 +345,7 @@ export default function ToolsPage() {
           <p className="eyebrow">Questions</p>
           <h2 className="display-2 mt-6">About the tools</h2>
         </div>
-        <dl className="divide-y divide-line border-y border-line">
-          {faqs.map(([q, a]) => (
-            <div key={q} className="py-6">
-              <dt className="font-heading font-semibold text-2xl">{q}</dt>
-              <dd className="mt-3 leading-7 text-muted">{a}</dd>
-            </div>
-          ))}
-        </dl>
+        <FaqList faqs={faqs.map(([q, a]) => ({ q, a }))} schema={false} />
       </section>
 
       <section className="mt-28 grid items-center gap-10 border border-line bg-surface p-10 md:grid-cols-[1fr_auto]">

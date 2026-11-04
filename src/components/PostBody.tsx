@@ -1,4 +1,36 @@
-import { Callout, FaqList, Figure, StatRow, StepFlow, type Faq } from "@/components/ui";
+import { Callout, FaqList, Figure, Icon, StatRow, StepFlow, type Faq, type TocItem } from "@/components/ui";
+import { iconFor } from "@/lib/icon-for";
+
+// "In this guide" cards: every section as a tappable card, so readers on phones
+// (where the side table of contents is hidden) can see the shape of the guide and jump.
+function JumpCards({ toc }: { toc: TocItem[] }) {
+  const isFaq = (label: string) => /^frequently asked questions$/i.test(label);
+  const nums = toc.map((_, i) => toc.slice(0, i + 1).filter((x) => !isFaq(x.label)).length);
+  return (
+    <nav aria-label="In this guide" className="my-10 rounded-2xl border border-line bg-surface-2/60 p-4 sm:p-5">
+      <p className="eyebrow">In this guide</p>
+      <ol className="-mx-4 mt-4 flex snap-x gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0">
+        {toc.map((t, i) => {
+          const faq = isFaq(t.label);
+          const n = nums[i];
+          return (
+            <li key={t.id} className="w-56 shrink-0 snap-start sm:w-auto">
+              <a href={`#${t.id}`} className="group card card-hover flex h-full items-center gap-3 p-3 text-sm leading-snug font-medium">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gold-soft text-gold">
+                  {faq ? <Icon name="help" size={18} /> : <Icon name={iconFor(t.label, "book")} size={18} />}
+                </span>
+                <span className="min-w-0 flex-1 transition-colors group-hover:text-accent">
+                  {!faq && <span className="mr-1.5 text-xs text-muted tabular-nums">{String(n).padStart(2, "0")}</span>}
+                  {t.label}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+}
 
 // Renders a journal post's Markdown HTML with the UI kit: the quick-answer box becomes a
 // Callout, "flow" lists become a StepFlow, "stat-grid" blocks a StatRow, figures with an
@@ -87,17 +119,22 @@ function withFaqSection(html: string): Block[] {
   ];
 }
 
-export function PostBody({ html, faqs }: { html: string; faqs: Faq[] }) {
+export function PostBody({ html, faqs, toc = [] }: { html: string; faqs: Faq[]; toc?: TocItem[] }) {
   const blocks = withFaqSection(html);
+  const jumpAt = toc.length >= 3 ? Math.max(0, blocks.findIndex((b) => b.kind === "answer")) : -1;
   return (
     <div className="max-w-2xl">
+      {jumpAt === 0 && blocks[0]?.kind !== "answer" && <JumpCards toc={toc} />}
       {blocks.map((b, i) => {
         switch (b.kind) {
           case "answer":
             return (
-              <Callout key={i} kind="check" title="Quick answer" className="my-8">
-                <div className="[&_p]:my-0" data-answer dangerouslySetInnerHTML={{ __html: b.html }} />
-              </Callout>
+              <div key={i}>
+                <Callout kind="check" title="Quick answer" className="my-8">
+                  <div className="[&_p]:my-0" data-answer dangerouslySetInnerHTML={{ __html: b.html }} />
+                </Callout>
+                {i === jumpAt && <JumpCards toc={toc} />}
+              </div>
             );
           case "flow":
             return <StepFlow key={i} vertical steps={b.steps} className="my-10" caption={b.steps.map((s) => s.title).join(", then ")} />;

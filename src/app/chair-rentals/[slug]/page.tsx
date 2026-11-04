@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ChairArt } from "@/components/ChairArt";
 import { DecoFrame } from "@/components/DecoFrame";
 import { Reveal } from "@/components/Reveal";
+import { IconCards, LinkCards, ReadMore } from "@/components/ui";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { Breadcrumbs } from "@/components/geo/Breadcrumbs";
 import { CallButton, CallCta } from "@/components/geo/CallCta";
@@ -45,7 +46,6 @@ export async function generateMetadata(props: PageProps<"/chair-rentals/[slug]">
   });
 }
 
-const numerals = ["I", "II", "III", "IV", "V", "VI"];
 
 export default async function LocationPage(props: PageProps<"/chair-rentals/[slug]">) {
   const loc = getLocation((await props.params).slug);
@@ -163,25 +163,16 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
         <section className="mt-32 grid gap-14 md:grid-cols-[1.4fr_1fr] md:gap-20">
           <div>
             <p className="eyebrow">Celebrating in {loc.name}</p>
-            <div className="prose-post mt-8">
-              {loc.story.map((p) => (
-                <p key={p.slice(0, 24)}>{p}</p>
-              ))}
-            </div>
+            <ReadMore
+              className="prose-post mt-8"
+              lead={loc.story.slice(0, 1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+            >
+              {loc.story.length > 1 && loc.story.slice(1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+            </ReadMore>
           </div>
           <div className="md:pt-14">
             <h2 className="display-2">Where people celebrate</h2>
-            <ul className="mt-6 border-t border-gold/40">
-              {loc.settings.map((s, i) => (
-                <li key={s.name} className="grid grid-cols-[2.5rem_1fr] border-b border-line py-5">
-                  <span className="font-heading font-semibold text-lg text-gold">{numerals[i]}.</span>
-                  <div>
-                    <h3 className="font-heading font-semibold text-xl">{s.name}</h3>
-                    <p className="mt-1 text-sm leading-6 text-muted">{s.note}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <IconCards className="mt-6" columns={1} items={loc.settings.map((s) => ({ title: s.name, text: s.note }))} />
           </div>
         </section>
       </div>
@@ -265,15 +256,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
           <h2 className="display-2 mt-4">
             {inCounty.length} local guides in <em className="text-gold">{loc.name}</em>
           </h2>
-          <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3 lg:grid-cols-4">
-            {inCounty.map((n) => (
-              <li key={n.slug}>
-                <Link href={locationPath(n)} className="link-line text-sm">
-                  {n.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <LinkCards compact columns={4} className="mt-6" items={inCounty.map((n) => ({ href: locationPath(n), label: n.name, icon: "pin" as const }))} />
         </section>
       )}
 

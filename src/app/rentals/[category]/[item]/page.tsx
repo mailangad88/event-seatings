@@ -12,7 +12,7 @@ import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd
 import { imagesFor, originalImage, rentalImage, rentalImageJsonLd, soloImage, styledImage } from "@/data/rental-images";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { allInEstimate } from "@/lib/fees";
-import { PriceDisclaimer } from "@/components/ui";
+import { LinkCards, PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -423,27 +423,25 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
               At {formatPrice(price)} {unitLabel(i)}, the {i.name.toLowerCase()} is number {rank + 1} of {range.length} in our{" "}
               {rangeName} range by price, which runs from {formatPrice(customerPrice(range[0]))} to{" "}
               {formatPrice(customerPrice(range[range.length - 1]))}.
-              {cheaper.length > 0 && (
-                <>
-                  {" "}For less, consider {cheaper.map((x, n) => (
-                    <span key={x.id}>
-                      {n > 0 ? " or " : ""}
-                      <Link href={itemHref(x)} className="link-line">{x.name.toLowerCase()}</Link> ({formatPrice(customerPrice(x))})
-                    </span>
-                  ))}.
-                </>
-              )}
-              {pricier.length > 0 && (
-                <>
-                  {" "}One step up: {pricier.map((x, n) => (
-                    <span key={x.id}>
-                      {n > 0 ? " or " : ""}
-                      <Link href={itemHref(x)} className="link-line">{x.name.toLowerCase()}</Link> ({formatPrice(customerPrice(x))})
-                    </span>
-                  ))}.
-                </>
-              )}
             </p>
+            {(cheaper.length > 0 || pricier.length > 0) && (
+              <LinkCards
+                columns={2}
+                className="mt-6"
+                items={[
+                  ...cheaper.map((x) => ({ x, tag: "For less" })),
+                  ...pricier.map((x) => ({ x, tag: "One step up" })),
+                ].map(({ x, tag }) => {
+                  const src = rentalImagePath(x.id, x.categoryId);
+                  return {
+                    href: itemHref(x),
+                    label: x.name,
+                    text: `${tag}: ${formatPrice(customerPrice(x))} ${unitLabel(x)}`,
+                    ...(src ? { image: { src, alt: rentalAlt(x.name, x.specs, x.id) } } : { icon: "arrow" as const }),
+                  };
+                })}
+              />
+            )}
           </section>
         )}
 

@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AreaMap } from "@/components/geo/AreaMap";
-import { Breadcrumbs, FaqList, Figure, JsonLd, PriceDisclaimer, QuoteCta, Section } from "@/components/ui";
+import { Breadcrumbs, FaqList, Figure, IconCards, JsonLd, LinkCards, PriceDisclaimer, QuoteCta, Section } from "@/components/ui";
+import { iconFor } from "@/lib/icon-for";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getEventType, getLocation, locationPath, eventPath } from "@/data/geo";
 import { LOCAL_RENTALS_UPDATED, areaRentalsPath, localAreas, localCategories, localCategoryPath, settingKind, costPath } from "@/data/local-rentals";
@@ -158,16 +159,16 @@ export default async function AreaRentalsPage(props: Props) {
 
       <Section tone="sand" eyebrow={`Celebrating in ${loc.name}`} title={`What ${loc.name} venues usually need`}>
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
-          <div className="prose-post">
-            <p>{loc.story[0]}</p>
-            {kinds.map((k) => {
-              const names = loc.settings.filter((s) => settingKind(s.name) === k).map((s) => s.name.toLowerCase());
-              return (
-                <p key={k}>
-                  For {names.join(" and ")}, plan {kitFor[k]}.
-                </p>
-              );
-            })}
+          <div>
+            <p className="leading-7 text-muted">{loc.story[0]}</p>
+            <IconCards
+              className="mt-6"
+              columns={1}
+              items={kinds.map((k) => {
+                const list = loc.settings.filter((s) => settingKind(s.name) === k);
+                return { title: list.map((s) => s.name).join(" and "), text: <>Plan {kitFor[k]}.</> };
+              })}
+            />
           </div>
           <Figure src={scene.src} alt={`${scene.alt}, the kind of setup we arrange in ${loc.name}`} caption={scene.caption} ratio="4/5" sizes="(max-width: 1024px) 100vw, 35vw" />
         </div>
@@ -189,13 +190,10 @@ export default async function AreaRentalsPage(props: Props) {
       )}
 
       <Section tone="sand" eyebrow="Costs" title="What rentals cost">
-        <ul className="grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-3">
-          {localCategories.map((c) => (
-            <li key={c.slug}>
-              <Link href={costPath(c.id)} className="link-line">How much {c.label.toLowerCase()} cost</Link>
-            </li>
-          ))}
-        </ul>
+        <LinkCards
+          compact
+          items={localCategories.map((c) => ({ href: costPath(c.id), label: `How much ${c.label.toLowerCase()} cost`, icon: iconFor(c.label, "wallet") }))}
+        />
       </Section>
 
       <Section eyebrow="FAQ" title={`Party rentals in ${loc.name}: questions`}>
