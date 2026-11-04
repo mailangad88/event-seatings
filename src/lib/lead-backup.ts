@@ -4,7 +4,8 @@ import { isTransient, withRetry } from "./retry";
 import type { Lead } from "./store";
 
 // Backup lead store on Vercel Blob (one private JSON file per lead, lead-store/<id>.json).
-// Switched on by BLOB_READ_WRITE_TOKEN, which Vercel adds when a Blob store is connected to the project.
+// Switched on when a Blob store is connected to the project. Vercel adds either BLOB_READ_WRITE_TOKEN (older
+// connections) or BLOB_STORE_ID, which @vercel/blob uses with the deployment's OIDC token (newer connections).
 // - With no database (Supabase not set up) it is where leads live, so /admin still shows them.
 // - With a database it only holds leads the database refused (outage, bad key). The daily recovery job
 //   (/api/cron/lead-recovery) copies them into the database and removes them here.
@@ -14,7 +15,7 @@ const PREFIX = "lead-store/";
 const path = (id: string) => `${PREFIX}${id}.json`;
 const safeId = (id: string) => /^[A-Za-z0-9-]{8,64}$/.test(id);
 
-export const backupConfigured = () => Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+export const backupConfigured = () => Boolean(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
 
 const retry = <T>(fn: () => Promise<T>) => withRetry(fn, { attempts: 3, baseMs: 300, shouldRetry: isTransient });
 
