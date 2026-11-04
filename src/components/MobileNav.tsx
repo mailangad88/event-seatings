@@ -22,7 +22,7 @@ export function MobileNav({ menus }: { menus: MobileMenu[] }) {
 
   return (
     <div className="flex items-center gap-2 lg:hidden">
-      <QuoteListLink className="btn-primary btn-sm" label="Quote" filledLabel="Quote" />
+      <QuoteListLink className="btn-primary btn-sm" label="Quote" filledLabel="Quote" bubble />
       <button
         type="button"
         aria-expanded={open}

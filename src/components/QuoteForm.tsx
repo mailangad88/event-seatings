@@ -723,19 +723,20 @@ export function QuoteForm({
         <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Your rental list">
           <button type="button" aria-label="Close list" className="absolute inset-0 bg-black/40" onClick={() => setSheet(false)} />
           <div className="absolute inset-x-0 bottom-0 flex max-h-[85vh] flex-col rounded-t-3xl bg-surface p-5 shadow-2xl">
-            <div className="mb-4 flex items-center justify-between">
+            <div className="mb-4 flex shrink-0 items-center justify-between">
               <p className="text-lg font-medium">Your list</p>
               <button type="button" onClick={() => setSheet(false)} className="grid h-9 w-9 place-items-center rounded-full border border-line" aria-label="Close">
                 <Icon name="close" size={16} />
               </button>
             </div>
-            <GuestCount value={guests || 100} onChange={setGuests} max={5000} size="sm" className="mb-4" />
-            <div className="min-h-0 flex-1 overflow-y-auto">
+            {/* One scroll area for the list and the totals, so the items never get squeezed out on short phones. */}
+            <div className="min-h-0 min-w-0 flex-1 overflow-y-auto">
+              <GuestCount value={guests || 100} onChange={setGuests} max={5000} size="sm" className="mb-4" />
               {cartList("h-14 w-14")}
+              <div className="mt-4">{totals}</div>
               <SaveListByEmail lines={lines.map((l) => ({ id: l.item.id, qty: l.qty }))} guests={guests} />
             </div>
-            <div className="mt-4">{totals}</div>
-            <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full justify-center">Continue to your details</button>
+            <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full shrink-0 justify-center">Continue to your details</button>
           </div>
         </div>
       )}
