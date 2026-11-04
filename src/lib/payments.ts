@@ -1,19 +1,19 @@
 import "server-only";
 import { createHmac, randomBytes, timingSafeEqual } from "crypto";
-import { MARKUP } from "./catalog-types";
+import { coordinationFee } from "./catalog-types";
 import type { Lead } from "./store";
 
 // Booking-fee checkout for customer proposals (/proposal/<token>).
 //
-// The proposal hides the rental partner's name until the customer pays, so nobody can take the
-// quote and book the vendor directly around us. Payment runs on Stripe Checkout, called with plain
+// The proposal names the rental company before the customer pays (so they can check it), and shares
+// its contact details and agreement after. Payment runs on Stripe Checkout, called with plain
 // fetch (no SDK). Everything is OFF until STRIPE_SECRET_KEY is set; without it the proposal page
 // says "we'll send you a secure payment link" and Angad can mark the fee paid by hand in /admin.
 //
 // Env:
 //   STRIPE_SECRET_KEY       sk_live_… or sk_test_…  (turns checkout on)
 //   STRIPE_WEBHOOK_SECRET   whsec_…  (optional but recommended; marks the fee paid even if the customer closes the tab)
-//   BOOKING_CHARGE          "fee" (default: our booking fee, 10% of the rental subtotal) or "hold" (a fixed refundable hold)
+//   BOOKING_CHARGE          "fee" (default: our flat booking fee, $295 up to 200 guests, $495 above) or "hold" (a fixed refundable hold)
 //   BOOKING_HOLD_USD        hold amount when BOOKING_CHARGE=hold (default 100)
 //   BOOKING_FEE_MIN_USD     optional floor for tiny orders (default none; if you set one, say so in the Booking Promise)
 
@@ -30,12 +30,10 @@ const num = (v: string | undefined, fallback: number) => {
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
 // What the customer pays us at checkout, in USD.
-export function amountDue(lead: Pick<Lead, "quote_subtotal" | "quote_cost">): number {
+export function amountDue(lead: Pick<Lead, "guest_count">): number {
   if (chargeMode() === "hold") return round2(num(process.env.BOOKING_HOLD_USD, 100));
-  const subtotal = lead.quote_subtotal ?? 0;
-  // The fee is the markup already inside the prices the customer saw (customer price minus vendor price).
-  const fee = lead.quote_cost ? subtotal - lead.quote_cost : subtotal - subtotal / (1 + MARKUP);
-  return round2(Math.max(Number(process.env.BOOKING_FEE_MIN_USD) || 0, fee));
+  // One flat fee per event, set by guest count (see COORDINATION_FEE). Item prices carry no markup.
+  return round2(Math.max(Number(process.env.BOOKING_FEE_MIN_USD) || 0, coordinationFee(lead.guest_count)));
 }
 
 export const chargeLabel = () => (chargeMode() === "hold" ? "Refundable booking hold" : "Booking & coordination fee");

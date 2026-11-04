@@ -9,7 +9,9 @@ import { Emphasis } from "@/components/geo/Emphasis";
 import { FaqList } from "@/components/geo/FaqList";
 import { JsonLd } from "@/components/geo/JsonLd";
 import { RecommendedChairs } from "@/components/geo/RecommendedChairs";
+import { Callout } from "@/components/ui";
 import { getChair } from "@/data/chairs";
+import { COORDINATION_FEE } from "@/lib/catalog-types";
 import { eventPath, eventTypes, getEventType, locationPath, locations } from "@/data/geo";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -32,6 +34,9 @@ export async function generateMetadata(props: PageProps<"/events/[slug]">): Prom
     openGraph: { title: `${ev.metaTitle} | ${site.name}`, description: ev.metaDescription, url: path },
   });
 }
+
+// Event types where several rental companies are usually involved, so the flat-fee offer fits.
+const BIG_EVENTS = new Set(["weddings", "south-asian-weddings", "quinceaneras", "galas-fundraisers"]);
 
 export default async function EventPage(props: PageProps<"/events/[slug]">) {
   const ev = getEventType((await props.params).slug);
@@ -109,6 +114,15 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
             </span>
           </div>
         </section>
+
+        {BIG_EVENTS.has(ev.slug) && (
+          <Callout kind="tip" title="Big guest list and several rental companies?" className="mt-16 max-w-3xl">
+            For {COORDINATION_FEE.focusFrom}+ guests, the chairs, tables, tent and linens often come from different companies. We put
+            them on one written quote at each company&apos;s own price and handle them all for a flat ${COORDINATION_FEE.standard}
+            (${COORDINATION_FEE.large} over {COORDINATION_FEE.largeFrom - 1} guests), paid only after every company confirms.{" "}
+            <Link href="/pricing" className="link">See how pricing works</Link>.
+          </Callout>
+        )}
 
         {/* Seating math */}
         <section className="mt-28">

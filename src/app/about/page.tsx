@@ -32,7 +32,7 @@ const aboutFaqs = [
   },
   {
     q: "How do you make money?",
-    a: "Prices on the site are the partner rental rate plus our 10% service fee, shown up front. There is no charge for a quote or a planning call.",
+    a: "Prices on the site are the rental company's own rate, with no markup. We charge one flat booking and coordination fee per event, $295 or $495 over 200 guests, and only after every rental company confirms. There is no charge for a quote or a planning call.",
   },
   {
     q: "Where are you based and where do you deliver?",

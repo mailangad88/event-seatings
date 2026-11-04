@@ -4,7 +4,6 @@ import { vendors } from "@/data/vendors";
 import { AdminHeader, Empty, Table, Tile } from "@/components/admin/AdminUi";
 import { Icon } from "@/components/ui/Icon";
 import { money0, money2, prettyDay } from "@/lib/admin-view";
-import { MARKUP } from "@/lib/catalog-types";
 import { listLeads } from "@/lib/store";
 import { itemUse, priceRows, recheckReasons, type ItemUse } from "./rows";
 
@@ -20,7 +19,7 @@ const filters = [
 ] as const;
 const views = [
   { id: "", label: "Prices" },
-  { id: "margin", label: "Our cut" },
+  { id: "margin", label: "Item markup (none since Nov 4, flat fee instead)" },
 ] as const;
 const sorts = [
   { id: "", label: "Biggest cut per item" },
@@ -75,7 +74,7 @@ export default async function PricingPage(props: PageProps<"/admin/pricing">) {
         title="Pricing"
         intro={
           <>
-            Every catalog item with the rental company&apos;s price and what customers see (their price plus our {Math.round(MARKUP * 100)}%). To change
+            Every catalog item with the rental company&apos;s price and what customers see (the same price: we charge a flat fee per event, not a markup). To change
             the price on one order, use Edit quote on the lead. Catalog prices across the site change with the next site update, so send Claude the
             new prices.
           </>

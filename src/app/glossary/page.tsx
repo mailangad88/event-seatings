@@ -24,7 +24,7 @@ const groups: Group[] = [
       { term: "Damage waiver", def: "A fee, usually a percentage of the rental total, that covers accidental damage beyond normal wear. It usually excludes loss and theft. Some houses make it mandatory.", link: { href: "/solutions/compare-event-rental-quotes", label: "Compare quotes line by line" } },
       { term: "Deposit", def: "The part of the rental paid upfront to hold your items for a date. Check how much is refundable and until when." },
       { term: "Order minimum", def: "The smallest order a rental company will deliver, often set by full-service houses to cover a truck and crew.", link: { href: "/solutions/rental-minimum-order-too-high", label: "Options when the minimum is too high" } },
-      { term: "Booking fee", def: `What ${site.name} charges on top of the rental company's price to coordinate your order: 10%, shown on every proposal.`, link: { href: "/booking-promise", label: "How payments work" } },
+      { term: "Booking fee", def: `What ${site.name} charges to coordinate your order: a flat $295 per event ($495 over 200 guests), shown on every proposal. Item prices carry no markup.`, link: { href: "/booking-promise", label: "How payments work" } },
       { term: "Itemized quote", def: "A quote that lists every item, quantity and fee separately, so it can be compared with another quote.", link: { href: "/quote", label: "Build an itemized quote" } },
       { term: "Certificate of insurance (COI)", def: "Proof of a vendor's liability insurance. Many Chicago venues require one from every vendor before load-in." },
       { term: "Rental period", def: "How long the price covers: one day, a weekend, or a fixed number of hours with overtime charged after." },

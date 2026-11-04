@@ -60,7 +60,7 @@ export type Lead = {
   followup_last_at?: string;
   // Quote builder: the priced line items (customer price + our vendor cost per line) and totals.
   items?: QuoteLine[];
-  quote_subtotal?: number; // what the customer saw, vendor price + markup
+  quote_subtotal?: number; // what the customer saw (vendor price; no markup since Nov 2026)
   quote_cost?: number; // what the vendors charge us
   // CRM fields, edited in /admin/leads.
   status?: LeadStatus;

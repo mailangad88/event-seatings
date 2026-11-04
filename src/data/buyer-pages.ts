@@ -6,7 +6,7 @@ import type { Faq } from "@/components/ui/FaqList";
 // answers real buyer questions and ends in one call to action.
 //
 // Facts rule: everything here is either general practice a planner can check, our own published terms
-// (10% booking fee, nothing charged until approval), or comes from our Nov 2026 vendor research
+// (rental companies' own prices, flat $295/$495 fee per event, nothing charged until every company confirms), or comes from our Nov 2026 vendor research
 // (docs/vendor-research.md, /mnt/project-files/research/vendors). Vendors are described, never named,
 // because they are our partners. Search volumes are NOT measured yet: `phrase` is the target, and the
 // volume/difficulty columns get filled from Search Console or Keyword Planner once those accounts exist.
@@ -147,7 +147,7 @@ export const buyerPages: BuyerPage[] = [
       { q: "What is a damage waiver on a rental quote?", a: "A fee, usually a percentage of the rental, that covers accidental damage beyond normal wear. It rarely covers loss or theft. Ask what it excludes before you compare totals." },
       { q: "Is the cheapest rental quote usually the best?", a: "Only if it includes the same delivery, setup, waiver and rental period. The lowest item price often comes with separate delivery and setup fees." },
       { q: "Should I ask for setup to be included?", a: "If your venue has no staff to place chairs and tables, yes. Ask whether setup means placed in your layout or dropped stacked near the door." },
-      { q: "How does a Beyond Chiavari proposal show these lines?", a: "Every item, delivery, setup and policy is listed separately, with our 10% booking fee shown, so you can compare it with any other quote." },
+      { q: "How does a Beyond Chiavari proposal show these lines?", a: "Every item, delivery, setup and policy is listed separately, with our flat booking fee as its own line, so you can compare it with any other quote." },
     ],
     cta: { title: "Get a quote that is already itemized", text: "Every line on one list: items, delivery, setup and fees. Compare it with anything." },
     related: [
@@ -312,10 +312,10 @@ export const buyerPages: BuyerPage[] = [
     description:
       "An honest comparison: booking Chicago event rentals through Beyond Chiavari vs calling rental companies directly. Cost, time, choice and who to call when things go wrong.",
     answer:
-      "Calling rental companies yourself avoids our 10% booking fee, and it works well for a simple order from one company. Booking through Beyond Chiavari costs that fee and saves you comparing several companies, gives one itemized proposal across every category, and adds our Booking Promise if a vendor cancels. Pick direct for simple, us for multi-category.",
+      "Calling rental companies yourself avoids our flat booking fee, and it works well for a simple order from one company. Item prices are the same either way, because we add no markup. Booking through Beyond Chiavari costs a flat $295 ($495 over 200 guests) and saves you comparing several companies, gives one itemized proposal across every category, and adds our Booking Promise if a vendor cancels. Pick direct for simple, us for multi-category.",
     icon: "users",
     before: { title: "Calling direct", points: ["No booking fee", "You compare and chase each company", "Several contracts and contacts", "You handle a vendor cancellation"] },
-    after: { title: "Booking through us", points: ["10% booking fee, shown on every line", "One list, priced as you build it", "One coordinator for every vendor", "Booking Promise if a vendor cancels"] },
+    after: { title: "Booking through us", points: ["Flat $295 fee ($495 over 200 guests), no markup on items", "One list, priced as you build it", "One coordinator for every vendor", "Booking Promise if a vendor cancels"] },
     sections: [
       {
         h: "When calling direct is the better choice",
@@ -330,7 +330,7 @@ export const buyerPages: BuyerPage[] = [
       caption: "How the two routes compare. Our terms are from /booking-promise and /how-it-works.",
       head: ["", "Calling rental companies yourself", "Booking through Beyond Chiavari"],
       rows: [
-        ["Price", "Vendor price", "Vendor price + 10% booking fee, shown on the proposal"],
+        ["Price", "Vendor price", "Vendor price, plus our flat fee paid after every company confirms"],
         ["Prices before you ask", "Most Chicago houses we checked do not publish them", "Live prices on 2,500+ items"],
         ["Categories per quote", "What that company carries", "19 categories on one list"],
         ["Contacts", "One per company", "One coordinator"],
@@ -339,7 +339,7 @@ export const buyerPages: BuyerPage[] = [
       ],
     },
     faqs: [
-      { q: "Is it cheaper to book event rentals directly?", a: "Yes, by our 10% booking fee, if you book the same items from the same company. You also do the comparing, contracts and coordination yourself." },
+      { q: "Is it cheaper to book event rentals directly?", a: "Yes, by our flat booking fee, if you book the same items from the same company. Item prices are the same, since we add no markup. You also do the comparing, contracts and coordination yourself." },
       { q: "Who delivers if I book through Beyond Chiavari?", a: "An established Chicago-area rental company (we ask for proof of insurance), named once you approve your proposal. Its rental agreement covers delivery, setup and pickup, and we coordinate between you." },
       { q: "Can I see the vendor's price and your fee separately?", a: "Yes. Your proposal shows the rental company's price and our booking fee, so you can check the difference." },
     ],
