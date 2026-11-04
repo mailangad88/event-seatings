@@ -30,7 +30,7 @@ export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
   return (
     <form onSubmit={submit}>
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
-      <div className="flex gap-2 rounded-full border border-line bg-surface p-1.5 focus-within:border-gold">
+      <div className="field-pill flex gap-2 p-1.5">
         <label className="sr-only" htmlFor={`wl-${source}`}>Email address</label>
         <input
           id={`wl-${source}`}
@@ -38,7 +38,7 @@ export function WaitlistForm({ source }: { source: string; dark?: boolean }) {
           type="email"
           required
           placeholder="Your email address"
-          className="min-w-0 flex-1 border-0 bg-transparent px-3 text-sm text-ink placeholder:text-muted focus:ring-0 focus:outline-none"
+          className="min-w-0 flex-1 border-0 bg-transparent px-3 text-sm text-ink placeholder:text-muted outline-none"
         />
         <button className="btn-accent btn-sm shrink-0" disabled={status === "sending"}>
           {status === "sending" ? "Joining…" : "Join"}

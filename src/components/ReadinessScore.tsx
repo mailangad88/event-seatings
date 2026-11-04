@@ -296,15 +296,15 @@ function EmailResult({ resultText, focus, siteName }: { resultText: string; focu
       <div className="mt-4 grid gap-3">
         <label className="text-xs tracking-[0.2em] text-muted uppercase">
           First name
-          <input name="name" autoComplete="given-name" className="mt-1 w-full border-0 border-b border-line bg-transparent px-0 py-2 text-base normal-case tracking-normal text-ink focus:border-gold focus:ring-0 focus:outline-none" />
+          <input name="name" autoComplete="given-name" className="field-line mt-1 py-2 text-base normal-case tracking-normal" />
         </label>
         <label className="text-xs tracking-[0.2em] text-muted uppercase">
           Email
-          <input name="email" type="email" required autoComplete="email" className="mt-1 w-full border-0 border-b border-line bg-transparent px-0 py-2 text-base normal-case tracking-normal text-ink focus:border-gold focus:ring-0 focus:outline-none" />
+          <input name="email" type="email" required autoComplete="email" className="field-line mt-1 py-2 text-base normal-case tracking-normal" />
         </label>
         <label className="text-xs tracking-[0.2em] text-muted uppercase">
           Event date (optional)
-          <input name="event_date" type="date" className="mt-1 w-full border-0 border-b border-line bg-transparent px-0 py-2 text-base normal-case tracking-normal text-ink focus:border-gold focus:ring-0 focus:outline-none" />
+          <input name="event_date" type="date" className="field-line mt-1 py-2 text-base normal-case tracking-normal" />
         </label>
       </div>
       <button className="btn-ghost mt-5 w-full justify-center" disabled={status === "sending"}>

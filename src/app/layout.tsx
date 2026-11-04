@@ -118,10 +118,10 @@ const localBusiness = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" suppressHydrationWarning className={`${sans.variable} ${brand.variable} h-full antialiased`}>
-      <Script id="js-flag" strategy="beforeInteractive">
-        {"document.documentElement.classList.add('js')"}
-      </Script>
       <body className="flex min-h-full flex-col font-sans">
+        <Script id="js-flag" strategy="beforeInteractive">
+          {"document.documentElement.classList.add('js')"}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness).replace(/</g, "\\u003c") }}
