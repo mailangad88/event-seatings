@@ -15,6 +15,7 @@ import { DELIVERY_MINIMUM_ORDER, allInEstimate } from "@/lib/fees";
 import { site } from "@/lib/site";
 import { BookingCta } from "./BookingCta";
 import { ChairArt } from "./ChairArt";
+import { GuestCount } from "./guests/GuestCount";
 import { RentalIcon } from "./rentals/RentalIcon";
 // Direct imports, not the "./ui" barrel: the barrel also holds server cards that load the full image list.
 import { Icon, type IconName } from "./ui/Icon";
@@ -650,7 +651,11 @@ export function QuoteForm({
 
           <aside className="hidden lg:block">
             <div className="card sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col p-5">
-              <p className="eyebrow">Your list</p>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="eyebrow">Your list</p>
+                {/* Change the guest count without scrolling back up; items that follow it update at once. */}
+                <GuestCount value={guests || 100} onChange={setGuests} max={5000} size="sm" />
+              </div>
               <div className="mt-4 min-h-0 flex-1 overflow-y-auto pr-1">
                 {lines.length === 0 ? (
                   <p className="hint">Tap any picture to add it. Your list and total show here.</p>
@@ -700,6 +705,7 @@ export function QuoteForm({
                 <Icon name="close" size={16} />
               </button>
             </div>
+            <GuestCount value={guests || 100} onChange={setGuests} max={5000} size="sm" className="mb-4" />
             <div className="min-h-0 flex-1 overflow-y-auto">{cartList("h-14 w-14")}</div>
             <div className="mt-4">{totals}</div>
             <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full justify-center">Continue to your details</button>
