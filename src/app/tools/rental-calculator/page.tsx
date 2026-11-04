@@ -27,7 +27,7 @@ function item(id: string): CalcItem {
 const faqs: Faq[] = [
   { q: "How many tables do I need for 100 guests?", a: "Thirteen 60-inch rounds at 8 guests each, or ten at 10 guests each. Eight per table leaves room for chargers and centerpieces." },
   { q: "How many plates do I rent per guest?", a: "For a plated dinner, one dinner plate and one salad plate per guest, plus a charger if you want one. Add dessert plates if dessert is served separately." },
-  { q: "Do the calculator prices include delivery?", a: "No. They are rental prices from current Chicago price lists plus our 10% booking fee. Delivery, setup and tax depend on your venue and date and are added in your proposal." },
+  { q: "Do the calculator prices include delivery?", a: "No. They are rental prices from current Chicago price lists, with no markup. Our flat booking fee is separate. Delivery, setup and tax depend on your venue and date and are added in your proposal." },
   { q: "Can I change the list before I send it?", a: "Yes. 'Price this exact list' opens the quote builder with these items and your guest count, and you can change anything there." },
 ];
 

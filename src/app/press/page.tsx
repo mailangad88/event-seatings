@@ -25,7 +25,7 @@ const facts: [string, string][] = [
   ["Started", "2026"],
   ["Founder", "Angad Singh"],
   ["Items listed with prices", catalogItems.length.toLocaleString()],
-  ["How we charge", "The rental company's price plus a 10% fee, shown on every item. Quotes and planning calls are free."],
+  ["How we charge", "The rental company's own price on every item, with no markup, plus one flat fee per event ($295, or $495 over 200 guests). Quotes and planning calls are free."],
   ["Website", site.domain],
   ["Email", site.email],
 ];

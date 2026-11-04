@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
-import { BOOKING_FEE_LABEL } from "@/lib/catalog-types";
+import { BACKUP_CAP_LABEL, BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
   title: "Payments, Deposits & Our Booking Promise",
-  description: `Who you pay, when, and what's protected when you book event rentals through ${site.name} in ${site.market}: free quotes, a ${BOOKING_FEE_LABEL} booking fee only after your vendor confirms, locked prices, insured rental companies and a backup if one cancels.`,
+  description: `Who you pay, when, and what's protected when you book event rentals through ${site.name} in ${site.market}: free quotes, rental companies' own prices, one flat booking fee only after every company confirms, locked prices and a backup if one cancels.`,
   alternates: { canonical: "/booking-promise" },
 });
 
@@ -27,12 +27,12 @@ const promises: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "users",
     title: "Backup guarantee",
-    text: "If your rental company cancels, we find a comparable replacement. If it costs more, we cover the difference up to the full amount of your booking fee. If we can't replace it, your booking fee is refunded.",
+    text: `If your rental company cancels, we find a comparable replacement. If it costs more, we cover the difference up to ${BACKUP_CAP_LABEL}. If we can't replace it, your booking fee is refunded.`,
   },
   {
     icon: "chat",
     title: "One person, start to finish",
-    text: `One coordinator handles every vendor, change and question, and ${replyPromise}.`,
+    text: `One coordinator handles every vendor, change and question, and ${replyPromise}. On the morning of your event we check every delivery is on its way.`,
   },
   {
     icon: "calendar",
@@ -48,7 +48,7 @@ const promises: { icon: IconName; title: string; text: string }[] = [
 
 const payments = [
   { what: "Quote, planning call and proposal", amount: "Free", to: "No one", when: "Any time, no card needed" },
-  { what: `Booking & coordination fee`, amount: `${BOOKING_FEE_LABEL} on top of the rental company's price for your items`, to: site.name, when: "When you approve your proposal, after the vendor confirms your date" },
+  { what: `Booking & coordination fee`, amount: "Flat $295, or $495 over 200 guests. No markup on any item", to: site.name, when: "When you approve your proposal, after every rental company confirms your date in writing" },
   { what: "Rental deposit", amount: "Usually 25-50%, set by the rental company", to: "The rental company", when: "At booking, under their rental agreement" },
   { what: "Balance", amount: "Remaining rental, delivery, damage waiver and tax", to: "The rental company", when: "Usually 7-14 days before the event" },
   { what: "Security deposit (some items)", amount: "Varies, refundable", to: "The rental company", when: "Before delivery, returned after pickup" },
@@ -57,7 +57,7 @@ const payments = [
 const flow = [
   { icon: "quote" as const, title: "Free quote", text: "Build your list online. No card, no commitment." },
   { icon: "users" as const, title: "Vendor confirms", text: "We check your date with local rental companies we know." },
-  { icon: "check" as const, title: "You approve", text: `Pay the ${BOOKING_FEE_LABEL} booking fee securely. Your vendor is locked in.` },
+  { icon: "check" as const, title: "You approve", text: "Pay the flat booking fee securely. Your rental companies are locked in." },
   { icon: "calendar" as const, title: "Deposit & contract", text: "The rental company sends its agreement and deposit invoice. We're copied in." },
   { icon: "truck" as const, title: "Delivered & collected", text: "Balance due before the event. We track delivery and pickup." },
 ];
@@ -69,7 +69,7 @@ const faqs: Faq[] = [
   },
   {
     q: `How does ${site.name} make money?`,
-    a: `Prices on our site include a ${BOOKING_FEE_LABEL} booking and coordination fee on top of the rental company's price. Your proposal shows it as its own line, so you always see the rental company's price and our fee. Some partner rental companies also pay us a referral commission; that never raises your price.`,
+    a: `Item prices on our site are the rental company's own price, with no markup. We charge one booking and coordination fee per event, ${BOOKING_FEE_FULL}, shown as its own line on your proposal. Some rental companies may pay us a referral fee in future. It never changes your price, and if one on your proposal does, your proposal says so.`,
   },
   {
     q: "Who do I pay for the rentals themselves?",
@@ -85,7 +85,7 @@ const faqs: Faq[] = [
   },
   {
     q: "What if the rental company cancels?",
-    a: "Our backup guarantee applies: we find a comparable replacement, cover any price difference up to the full amount of your booking fee, and refund the booking fee if we can't replace your order.",
+    a: `Our backup guarantee applies: we find a comparable replacement, cover any price difference up to ${BACKUP_CAP_LABEL}, and refund the booking fee if we can't replace your order.`,
   },
   {
     q: "What if I need to cancel or postpone?",
@@ -160,9 +160,9 @@ export default function BookingPromisePage() {
           </table>
         </div>
         <Callout kind="note" title="Your total never surprises you" className="mt-8">
-          The prices you see on our site already include our booking fee. Your proposal splits it out: the rental
-          company&apos;s price, our {BOOKING_FEE_LABEL} fee, then delivery, damage waiver and tax for your venue. Nothing
-          is charged until you approve it.
+          The prices you see on our site are the rental companies&apos; own prices. Your proposal lists them, then
+          delivery, damage waiver and tax for your venue, then our fee ({BOOKING_FEE_FULL}) as its own line. Nothing
+          is charged until every company confirms and you approve it.
         </Callout>
       </Section>
 

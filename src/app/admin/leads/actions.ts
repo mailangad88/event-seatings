@@ -75,7 +75,7 @@ export async function markContacted(formData: FormData) {
   revalidatePath("/admin");
 }
 
-// Creates the customer proposal link (/proposal/<token>) for a lead. The link hides the rental partner until the fee is paid.
+// Creates the customer proposal link (/proposal/<token>) for a lead. The link names the rental partner; contact details follow the fee.
 export async function createProposal(formData: FormData) {
   await requireAdmin();
   const id = text(formData.get("id"), 64);

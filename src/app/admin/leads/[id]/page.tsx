@@ -254,7 +254,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
               <Link href={`/admin/leads/${lead.id}/quote`} className="text-sm text-accent">Edit quote</Link>
             </div>
             <p className="mt-1 text-sm text-muted">
-              The customer link hides the rental partner until the {chargeLabel().toLowerCase()} is paid.
+              The customer link names the rental partner and shares its contact once the {chargeLabel().toLowerCase()} is paid.
               {stripeEnabled() ? " Stripe Checkout is on." : " Stripe is off (no STRIPE_SECRET_KEY), so send a payment link yourself and mark it paid here."}
             </p>
             {lead.proposal_token ? (

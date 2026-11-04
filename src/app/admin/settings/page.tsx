@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AdminHeader, Panel } from "@/components/admin/AdminUi";
-import { MARKUP } from "@/lib/catalog-types";
+import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -90,7 +90,7 @@ export default function SettingsPage() {
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between gap-3"><dt className="text-muted">Name</dt><dd>{site.name}</dd></div>
             <div className="flex justify-between gap-3"><dt className="text-muted">Website</dt><dd className="[overflow-wrap:anywhere]">{site.url}</dd></div>
-            <div className="flex justify-between gap-3"><dt className="text-muted">Our fee on catalog prices</dt><dd>{Math.round(MARKUP * 100)}%</dd></div>
+            <div className="flex justify-between gap-3"><dt className="text-muted">Our fee</dt><dd className="text-right">{BOOKING_FEE_FULL} per event, no markup on items</dd></div>
           </dl>
           <p className="mt-3 text-xs text-muted">Name, address and service area live in src/lib/site.ts. Ask Claude to change them.</p>
         </Panel>

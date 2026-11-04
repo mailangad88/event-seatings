@@ -106,7 +106,7 @@ export function RentalCalculator({ chairs, groups }: { chairs: CalcItem[]; group
           <Link href="/book" className="btn-ghost">Talk it through on a call</Link>
         </div>
         <p className="mt-3 text-xs text-muted">
-          Prices are current Chicago rental-house prices plus our 10% booking fee. &quot;Est.&quot; marks a market estimate until a vendor quotes it.
+          Prices are current Chicago rental-house prices, with no markup. Our flat booking fee ($295, or $495 over 200 guests) is separate. &quot;Est.&quot; marks a market estimate until a vendor quotes it.
           Many planners add a few spare plates and glasses for breakage.
         </p>
       </div>
