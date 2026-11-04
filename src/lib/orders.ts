@@ -10,6 +10,9 @@ import type { Lead } from "./store";
 
 export type VendorOrderStatus = "not_sent" | "sent" | "confirmed" | "scheduled" | "delivered" | "picked_up" | "cancelled";
 
+const vendorOrderStatuses: VendorOrderStatus[] = ["not_sent", "sent", "confirmed", "scheduled", "delivered", "picked_up", "cancelled"];
+export const isVendorOrderStatus = (s: unknown): s is VendorOrderStatus => vendorOrderStatuses.includes(s as VendorOrderStatus);
+
 export type VendorOrder = {
   status: VendorOrderStatus;
   delivery_date?: string; // YYYY-MM-DD
@@ -80,6 +83,7 @@ export type VendorPart = {
   vendorName: string;
   lines: { line: QuoteLine; index: number }[]; // index = position in lead.items
   subtotal: number; // what the customer pays for these lines
+  total: number; // same as subtotal (name used by the customer account pages)
   cost: number; // what the rental partner charges us at their list price
   order?: VendorOrder;
   state: PartState;
@@ -105,6 +109,7 @@ export function vendorParts(lead: Lead): VendorPart[] {
       vendorName: vendorName(vendorId),
       lines,
       subtotal: lines.reduce((s, { line }) => s + line.line_total, 0),
+      total: lines.reduce((s, { line }) => s + line.line_total, 0),
       cost: lines.reduce((s, { line }) => s + line.vendor_price * line.qty, 0),
       order: live,
       state: partState(live),
