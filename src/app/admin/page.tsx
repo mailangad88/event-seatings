@@ -10,6 +10,8 @@ import { levelBadge, levelLabel, type AdminAlert, type AlertLevel } from "@/lib/
 import { adminSnapshot } from "@/lib/admin-snapshot";
 import { addDays, ago, chicagoDay, eventLine, isClosed, isConfirmed, isoDaysAgo, money0, prettyDay, stage, TZ } from "@/lib/admin-view";
 import { allTasks } from "@/lib/event-tasks";
+import { buildStops } from "@/lib/deliveries";
+import { emailsToday } from "@/lib/email-schedule";
 import type { Lead } from "@/lib/store";
 import { markContacted } from "./leads/actions";
 
@@ -84,7 +86,7 @@ export default async function TodayPage(props: PageProps<"/admin">) {
   const sp = await props.searchParams;
   const tab = pickTab(sp.tab, workTabs);
   const nTab = pickTab(sp.n, noteTabs);
-  const { leads, partners, alerts, counts } = await adminSnapshot();
+  const { leads, partners, alerts, counts, calls: callsDue } = await adminSnapshot();
   const today = chicagoDay();
   const weekEnd = addDays(today, 7);
   const people = leads.filter((l) => l.kind !== "partner");
@@ -96,6 +98,8 @@ export default async function TodayPage(props: PageProps<"/admin">) {
   const tasksDue = allTasks(people, partners, today).filter((t) => t.due <= today);
 
   const dayAgo = isoDaysAgo(1);
+  const stopsToday = buildStops(people).filter((x) => x.day === today);
+  const mail = emailsToday(people, partners, today);
   // Briefing: what went through on its own in the last day, and what needs the owner.
   const handled = alerts.filter((a) => a.level === "done" && a.at >= dayAgo);
   const decisions = alerts.filter((a) => a.level === "urgent" || a.level === "decision");
@@ -142,6 +146,11 @@ export default async function TodayPage(props: PageProps<"/admin">) {
         <p className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
           {handled.length} thing{handled.length === 1 ? "" : "s"} went through on their own.{" "}
           <span className="text-gold-bright">{counts.needYou} need{counts.needYou === 1 ? "s" : ""} you.</span>
+        </p>
+        <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
+          <Link href="/admin/deliveries" className="hover:text-ink">{stopsToday.filter((x) => x.kind === "delivery").length} drop-offs and {stopsToday.filter((x) => x.kind === "pickup").length} pickups today</Link>
+          <Link href="/admin/scheduled" className="hover:text-ink">{mail.auto} email{mail.auto === 1 ? "" : "s"} go out on their own today{mail.drafts ? `, ${mail.drafts} to send yourself` : ""}</Link>
+          <Link href="/admin/calls" className="hover:text-ink">{callsDue} call{callsDue === 1 ? "" : "s"} to make</Link>
         </p>
         {handled.length > 0 && (
           <ul className="mt-5 flex flex-wrap gap-3">

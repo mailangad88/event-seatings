@@ -3,6 +3,8 @@ import type { Review } from "./reviews";
 import { statements } from "./commissions";
 import type { Lead, VendorPartner } from "./store";
 import { vendorParts } from "./orders";
+import { buildStops } from "./deliveries";
+import { eventsPerDay } from "./capacity";
 import type { VendorApplication } from "./vendor-applications";
 import { addDays, eventLine, isConfirmed, money0, prettyDay, stage } from "./admin-view";
 
@@ -132,6 +134,21 @@ export function buildAlerts({ leads, partners, applications = [], reviews = [], 
       if (a.type === "email" && a.text.startsWith("Sent automatically") && hoursSince(a.at, now) < 24) {
         out.push({ id: `auto-${l.id}-${a.at}`, level: "done", area: "customers", title: `Email sent to ${who(l)}`, detail: a.text.replace(/^Sent automatically:\s*/, ""), href: leadHref(l), at: a.at });
       }
+    }
+  }
+
+  // Trucks in the next two days: stops with no time window, and days over the daily limit.
+  const soon = buildStops(people).filter((x) => x.day >= today && x.day <= addDays(today, 2));
+  for (const x of soon) {
+    if (!x.window && x.vendorId) {
+      out.push({ id: `nowin-${x.id}`, level: "decision", area: "events", title: `Get a ${x.kind === "delivery" ? "drop-off" : "pickup"} time from ${x.vendorName}`, detail: `${who(x.lead)} · ${prettyDay(x.day)} · ${x.address || "no address yet"}. Tell the customer the window.`, href: `/admin/deliveries?day=${x.day}`, at: x.lead.fee_paid_at ?? x.lead.created_at, action: "Call" });
+    }
+  }
+  const limit = eventsPerDay();
+  for (const day of new Set(soon.map((x) => x.day))) {
+    const n = soon.filter((x) => x.day === day && x.kind === "delivery").length;
+    if (n > limit) {
+      out.push({ id: `busy-${day}`, level: "info", area: "events", title: `${n} drop-offs on ${prettyDay(day)}`, detail: `More than your ${limit}-a-day limit. Check every rental partner has the truck time.`, href: `/admin/deliveries?day=${day}`, at: nowIso });
     }
   }
 
