@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { OwnerCard } from "@/components/OwnerCard";
 import Link from "@/components/Link";
 import { Reveal } from "@/components/Reveal";
 import { ReadyPackages } from "@/components/ReadyPackages";
@@ -115,6 +116,32 @@ export default function Home() {
         <ReadyPackages ids={["backyard-birthday-50", "graduation-80", "wedding-150", "corporate-120"]} compact />
       </Section>
 
+      {/* The offer that fits big multi-company events best, one tap away. */}
+      <Section>
+        <Link href="/big-celebrations" className="card group grid overflow-hidden md:grid-cols-[1fr_1.2fr]">
+          <span className="relative block aspect-[4/3] md:aspect-auto">
+            <Image
+              src="/rentals/styled/event-indian-wedding.webp"
+              alt="Bride and groom seated under a marigold mandap with family in bright saris and a dhol player"
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            />
+          </span>
+          <span className="block p-6 sm:p-10">
+            <span className="eyebrow">150 to 400 guests</span>
+            <span className="display-2 mt-3 block">Planning a big wedding, sangeet or quinceañera?</span>
+            <span className="lede mt-4 block">
+              Big celebrations usually need three or four rental companies. We book all of them, line up delivery times and
+              check every delivery on the day, for one flat fee paid after they all confirm.
+            </span>
+            <span className="link-line mt-6 inline-flex">
+              How we handle big celebrations <Icon name="arrow" size={16} />
+            </span>
+          </span>
+        </Link>
+      </Section>
+
       {/* How it works */}
       <Section
         eyebrow="How it works"
@@ -131,6 +158,11 @@ export default function Home() {
             { icon: "truck", title: "Delivered & set up", text: "Dropped off, set up and picked up after." },
           ]}
         />
+      </Section>
+
+      {/* The person behind it: the honest trust signal a new business has. */}
+      <Section>
+        <OwnerCard source="home-owner" />
       </Section>
 
       {/* FAQ */}

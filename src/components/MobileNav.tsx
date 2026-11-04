@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "@/components/Link";
+import { QuoteListLink } from "./QuoteListLink";
 import { useEffect, useState } from "react";
 import type { Menu } from "@/lib/nav";
 import { toneTile } from "@/lib/menu-style";
@@ -21,7 +22,7 @@ export function MobileNav({ menus }: { menus: MobileMenu[] }) {
 
   return (
     <div className="flex items-center gap-2 lg:hidden">
-      <Link href="/quote" className="btn-primary btn-sm">Quote</Link>
+      <QuoteListLink className="btn-primary btn-sm" label="Quote" filledLabel="Quote" bubble />
       <button
         type="button"
         aria-expanded={open}

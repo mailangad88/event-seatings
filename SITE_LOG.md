@@ -39,6 +39,15 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-04): pre-launch audit, quote list, big celebrations
+
+Ranked audit: `/mnt/project-files/plans/pre-launch-audit-2026-11-04.md` (copy in `docs/pre-launch-audit-2026-11-04.md`).
+
+- **Quote list that follows the visitor** (`src/lib/quote-list.ts`): "Add to quote" on item pages and a new "+" on every catalog card add to one list kept on the device. The header button shows the count; `/quote` merges the list in, the planner shows "You have N items on your list". Cleared after the quote is sent.
+- **Email me this list** in the quote builder (`SaveListByEmail`): saves the list as a lead with only an email (source `saved-list:quote-builder`, kind `quiz`) and emails a link that reopens it (`sendSavedList` in `lib/notify.ts`, needs Resend).
+- **Who you'll talk to** (`OwnerCard`, owner set in `site.owner`): on home, /about, /pricing, /book, /big-celebrations and the quote, planner and call thank-you screens. Add a photo by setting `site.owner.photo`.
+- **New page `/big-celebrations`**: the flat-fee offer for 150 to 400 guest events, who it is for, what it needs, a call form (source `big-celebrations`), FAQs. Linked from the home page, the "Plan your event" menu and the sitemap.
+
 ## Changes in this release (2026-11-04): simpler pages, fewer choices
 
 Angad said the site felt overwhelming. Touched 2026-11-04:

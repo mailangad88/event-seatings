@@ -35,6 +35,7 @@ import { formatPrice } from "../ui/PriceTag";
 import { FloorPlan } from "./FloorPlan";
 import { GuestCount } from "../guests/GuestCount";
 import { postLead } from "@/lib/lead-client";
+import { OwnerCard } from "../OwnerCard";
 import { trackActivity } from "@/lib/activity-client";
 
 // Step-by-step event planner on /quote: occasion → guests → where → package → essentials → add-ons → date & details,
@@ -1249,6 +1250,7 @@ function PlanView({
         </div>
         {pdf === "error" && <p className="mt-3 text-sm text-rose" role="alert">The PDF couldn&apos;t be made on this device. Try again, or use your browser&apos;s Print → Save as PDF.</p>}
       </div>
+      <OwnerCard source="planner-thanks" compact className="mt-6" />
 
       <section className="mt-12" aria-labelledby="plan-next">
         <h3 id="plan-next" className="display-3">What happens next</h3>

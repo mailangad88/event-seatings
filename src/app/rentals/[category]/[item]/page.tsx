@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "@/components/Link";
+import { AddToQuoteButton } from "@/components/AddToQuoteButton";
 import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
@@ -267,9 +268,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href={`/quote?items=${i.id}&from=item-${i.id}`} className="btn-primary">
-                Add to my quote
-              </Link>
+              <AddToQuoteButton id={i.id} minQty={i.minQty} perGuest={!!i.perGuest} from={`item-${i.id}`} />
             </div>
             {(() => {
               // Show what a delivered order really costs, not just the rental rate.
@@ -471,9 +470,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
               <strong className="font-medium text-ink">{formatPrice(price)}</strong> {unitLabel(i)}
             </span>
           </span>
-          <Link href={`/quote?items=${i.id}&from=item-bar-${i.id}`} className="btn-primary shrink-0 !px-4 !py-2.5 text-sm">
-            Add to quote
-          </Link>
+          <AddToQuoteButton id={i.id} minQty={i.minQty} perGuest={!!i.perGuest} from={`item-bar-${i.id}`} compact className="btn-primary shrink-0 !px-4 !py-2.5 text-sm" />
         </div>
       </div>
       <div className="mt-24 -mb-32">

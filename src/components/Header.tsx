@@ -2,6 +2,7 @@ import Link from "@/components/Link";
 import { menus, primaryNav, toneTile, type Menu } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { MobileNav } from "./MobileNav";
+import { QuoteListLink } from "./QuoteListLink";
 import { MyEventsNavLink } from "./myevents/MyEventsNavLink";
 import { Icon } from "./ui/Icon";
 import { BrandMark, BrandName } from "./brand/BrandLogo";
@@ -106,7 +107,7 @@ export function Header() {
           <Link href="/account" className={`${linkClass} whitespace-nowrap`} aria-label="Your account">
             <Icon name="users" size={16} /> <span className="max-2xl:hidden">Account</span>
           </Link>
-          <Link href="/quote" className="btn-primary btn-sm whitespace-nowrap">Get a quote</Link>
+          <QuoteListLink className="btn-primary btn-sm whitespace-nowrap" label="Get a quote" />
         </div>
 
         <MobileNav menus={menus.map(({ id, label, href, all, tone, groups }) => ({ id, label, href, all, tone, groups }))} />

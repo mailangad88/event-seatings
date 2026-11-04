@@ -7,7 +7,7 @@ import { syncToCrm } from "@/lib/crm";
 import { getDownload } from "@/data/downloads";
 import { isDisposableEmail } from "@/lib/disposable-email";
 import { scoreLead } from "@/lib/lead-score";
-import { notifyOwner, sendConfirmation, sendDownloadEmail } from "@/lib/notify";
+import { notifyOwner, sendConfirmation, sendDownloadEmail, sendSavedList } from "@/lib/notify";
 import { cleanCode } from "@/lib/referrals";
 import { sequenceLabel } from "@/lib/followups";
 import { interestsFor, interestSummary } from "@/lib/interests";
@@ -238,7 +238,9 @@ export async function POST(request: Request) {
       firstEmailToday(saved.email)
         ? download
           ? sendDownloadEmail(saved, download.title, download.files)
-          : sendConfirmation(saved)
+          : saved.source?.startsWith("saved-list")
+            ? sendSavedList(saved)
+            : sendConfirmation(saved)
         : Promise.resolve(undefined),
     ]);
     // Log every email on the lead's timeline, so the record in /admin shows what went out and when.

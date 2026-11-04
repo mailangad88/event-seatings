@@ -105,6 +105,7 @@ export const menus: Menu[] = [
           { href: "/packages", label: "Ready-made packages", blurb: "Sets sized for your guest count", icon: "gift" },
           { href: "/how-it-works", label: "How it works", blurb: "From quote to delivery day", icon: "list" },
           { href: "/pricing", label: "Pricing", blurb: "One flat fee, no markup on rentals", icon: "wallet" },
+          { href: "/big-celebrations", label: "Big celebrations", blurb: "150+ guests, several rental companies", icon: "users" },
         ],
       },
       {

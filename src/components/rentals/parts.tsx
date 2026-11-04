@@ -1,4 +1,5 @@
 import Link from "@/components/Link";
+import { QuickAdd } from "@/components/QuickAdd";
 import { customerPrice, formatPrice, type CatalogItem } from "@/data/catalog";
 import { RentalVisual } from "./RentalVisual";
 
@@ -26,7 +27,8 @@ export function RentalCard({ item }: { item: CatalogItem }) {
       <p className="mt-3 flex flex-wrap items-baseline gap-x-2 self-end border-t border-line pt-3">
         <span className="font-heading font-semibold text-xl text-wine sm:text-2xl">{formatPrice(customerPrice(item))}</span>
         <span className="text-xs text-muted">{item.unit === "each" ? "each" : item.unit}</span>
-        {item.priceSource === "estimated" && <span className="chip ml-auto">Est.</span>}
+        {item.priceSource === "estimated" && <span className="chip">Est.</span>}
+        <QuickAdd id={item.id} name={item.name} minQty={item.minQty} perGuest={!!item.perGuest} />
       </p>
     </article>
   );
