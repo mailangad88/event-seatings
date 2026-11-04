@@ -174,7 +174,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
         <section className="mt-32 grid gap-14 md:grid-cols-[1.4fr_1fr] md:gap-20">
           <div>
             <p className="eyebrow">Planning notes</p>
-            <ReadMore className="prose-post mt-8" lead={ev.story.slice(0, 1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}>
+            <ReadMore className="prose-post mt-8" label={`More on ${ev.shortName.toLowerCase()}`} lead={ev.story.slice(0, 1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}>
               {ev.story.length > 1 && ev.story.slice(1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
             </ReadMore>
           </div>

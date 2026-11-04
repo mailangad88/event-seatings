@@ -165,6 +165,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
             <p className="eyebrow">Celebrating in {loc.name}</p>
             <ReadMore
               className="prose-post mt-8"
+              label={`More about ${loc.name}`}
               lead={loc.story.slice(0, 1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
             >
               {loc.story.length > 1 && loc.story.slice(1).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}

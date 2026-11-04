@@ -235,7 +235,7 @@ export default async function AreaCategoryPage(props: Props) {
 
       <Section eyebrow={`Celebrating in ${loc.name}`} title={`Where ${loc.name} hosts use ${cat.name.toLowerCase()}`}>
         {story && (
-          <ReadMore className="mb-10 max-w-3xl" lead={<p className="leading-7 text-muted">{story}</p>}>
+          <ReadMore className="mb-10 max-w-3xl" label={`More about ${loc.name}`} lead={<p className="leading-7 text-muted">{story}</p>}>
             {story2 && <p className="leading-7 text-muted">{story2}</p>}
           </ReadMore>
         )}
