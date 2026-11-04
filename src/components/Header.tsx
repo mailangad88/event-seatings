@@ -21,7 +21,7 @@ export function Logo({ center = false }: { light?: boolean; center?: boolean }) 
       <span className="flex flex-col items-start leading-none">
         <BrandName className="h-3 w-auto max-[374px]:h-2.5 sm:h-4" />
         <span className="mt-1.5 text-xs font-medium tracking-[0.06em] whitespace-nowrap text-gold max-[374px]:hidden sm:mt-2 uppercase sm:tracking-[0.2em]">
-          Event Rentals · Chicago
+          Event Rentals
         </span>
       </span>
     </Link>

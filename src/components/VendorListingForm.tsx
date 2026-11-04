@@ -47,7 +47,7 @@ export function VendorListingForm() {
         <p className="display-3">Thanks, we&apos;ve got your request.</p>
         <p className="mt-3 leading-7 text-muted">
           Removals are made within 2 business days and we&apos;ll email you when it&apos;s done. For corrections or partnering,
-          Angad will be in touch within one business day.
+          We&apos;ll be in touch within one business day.
         </p>
       </div>
     );
