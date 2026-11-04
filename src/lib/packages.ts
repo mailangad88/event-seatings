@@ -3,7 +3,7 @@
 // so the price on the card is the price the visitor sees after one tap.
 import { catalogItems } from "@/data/catalog";
 import { toPublicItem } from "@/lib/catalog-types";
-import { allInEstimate } from "@/lib/fees";
+import { MAX_GUESTS, MIN_GUESTS, packageHref, quotePackage, type PackageItemInfo, type PackageQuote } from "@/lib/package-price";
 import { getPlannerEvent, recommend, settings, styleName, type ExtraId, type SettingId, type StyleId } from "@/lib/event-plan";
 
 type PackageDef = {
@@ -28,49 +28,44 @@ const defs: PackageDef[] = [
   { id: "corporate-120", name: "Company dinner or gala", event: "corporate", guests: 120, setting: "venue", style: "classic", blurb: "Padded chairs, rounds, a bar, standing tables and a sound system." },
 ];
 
-export type ReadyPackage = PackageDef & {
-  eventName: string;
-  settingName: string;
-  styleName: string;
-  image: string;
-  alt: string;
-  rentals: number;
-  allIn: number;
-  perGuest: number;
-  itemCount: number;
-  highlights: string[];
-  href: string;
-};
+export type ReadyPackage = PackageDef &
+  PackageQuote & {
+    extras: ExtraId[];
+    eventName: string;
+    settingName: string;
+    styleName: string;
+    image: string;
+    alt: string;
+    href: string;
+    /** Price, name and category of every item the package can use, so a card can reprice for another guest count. */
+    items: Record<string, PackageItemInfo>;
+  };
 
 const byId = new Map(catalogItems.map((i) => [i.id, i]));
 
 function build(d: PackageDef): ReadyPackage {
   const ev = getPlannerEvent(d.event)!;
   const extras = d.extras ?? ev.extras;
-  const lines = recommend({ event: d.event, guests: d.guests, style: d.style, setting: d.setting, extras }).filter((l) => byId.has(l.id));
-  const priced = lines.map((l) => ({ ...l, item: toPublicItem(byId.get(l.id)!), cat: byId.get(l.id)!.categoryId }));
-  const rentals = priced.reduce((s, l) => s + l.item.price * l.qty, 0);
-  const allIn = allInEstimate(rentals, { categoryIds: priced.map((l) => l.cat) }).total;
-  // The biggest lines first, so the card names what the money goes on.
-  const highlights = [...priced]
-    .sort((x, y) => y.item.price * y.qty - x.item.price * x.qty)
-    .slice(0, 4)
-    .map((l) => `${l.item.name} × ${l.qty.toLocaleString()}`);
-  const params = new URLSearchParams({ event: d.event, guests: String(d.guests), setting: d.setting, style: d.style, from: `package-${d.id}` });
+  const shape = { event: d.event, setting: d.setting, style: d.style, extras };
+  // Collect every item the package uses at any size (some only appear above or below a guest count).
+  const items: Record<string, PackageItemInfo> = {};
+  for (const g of [MIN_GUESTS, 10, 25, d.guests, 100, 250, 500, MAX_GUESTS]) {
+    for (const l of recommend({ ...shape, guests: g })) {
+      const it = byId.get(l.id);
+      if (it && !items[l.id]) items[l.id] = { name: it.name, price: toPublicItem(it).price, cat: it.categoryId ?? "" };
+    }
+  }
   return {
     ...d,
+    ...quotePackage(shape, d.guests, items),
     extras,
     eventName: ev.name,
     settingName: settings.find((s) => s.id === d.setting)!.name,
     styleName: styleName(d.style),
     image: ev.image,
     alt: ev.alt,
-    rentals: Math.round(rentals),
-    allIn: Math.round(allIn),
-    perGuest: Math.round(allIn / d.guests),
-    itemCount: lines.length,
-    highlights,
-    href: `/quote?${params}`,
+    href: packageHref({ id: d.id, ...shape }, d.guests),
+    items,
   };
 }
 

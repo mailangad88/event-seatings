@@ -33,6 +33,7 @@ import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
 import { Icon, type IconName } from "../ui/Icon";
 import { formatPrice } from "../ui/PriceTag";
 import { FloorPlan } from "./FloorPlan";
+import { GuestCount } from "../guests/GuestCount";
 import { postLead } from "@/lib/lead-client";
 import { trackActivity } from "@/lib/activity-client";
 
@@ -160,7 +161,10 @@ export function EventPlanner({
       : { guests: 100, extras: [], extrasTouched: false },
   );
   // The visitor's own changes on top of our suggestions: a new quantity (0 = removed) or an item they added.
-  const [overrides, setOverrides] = useState<Record<string, number>>({});
+  // They are stored for the guest count they were made at (`overrideAt`) and scaled to the current count when shown,
+  // so changing the guest count back and forth never drifts.
+  const [rawOverrides, setRawOverrides] = useState<Record<string, number>>({});
+  const [overrideAt, setOverrideAt] = useState(0);
   // Items the visitor changed to another one: our suggested item id → the item they picked instead.
   const [swaps, setSwaps] = useState<Record<string, string>>({});
   // Items the visitor added from a list section ("Add another"), so they show in that section: item id → section.
@@ -192,9 +196,9 @@ export function EventPlanner({
   useEffect(() => {
     if (!a.event) return;
     try {
-      localStorage.setItem(STORE, JSON.stringify({ a, overrides, swaps, placed, step, done }));
+      localStorage.setItem(STORE, JSON.stringify({ a, overrides: rawOverrides, overrideAt, swaps, placed, step, done }));
     } catch {}
-  }, [a, overrides, swaps, placed, step, done]);
+  }, [a, rawOverrides, overrideAt, swaps, placed, step, done]);
 
   const date = a.date || (a.month ? `${a.month}-15` : undefined);
   const dateBlocked = !!a.date && blocked.has(a.date);
@@ -244,6 +248,33 @@ export function EventPlanner({
     return rows.filter((r) => r.qty > 0);
   };
 
+  // The visitor's changes, scaled to the current guest count. A line that grows with the guest count keeps
+  // the same share of our suggestion (10 extra chairs for 50 guests becomes 20 extra for 100); a fixed line
+  // (a cake stand, a dance floor they sized) and anything they removed stay as they are.
+  const overrides = useMemo(() => {
+    const from = overrideAt || a.guests;
+    if (from === a.guests || !a.event) return rawOverrides;
+    const before = recFor({ guests: from });
+    const now = recFor();
+    const out: Record<string, number> = {};
+    for (const [id, q] of Object.entries(rawOverrides)) {
+      const b = before.find((l) => l.id === id)?.qty;
+      const n = now.find((l) => l.id === id)?.qty;
+      if (q <= 0) out[id] = q;
+      else if (b && n) out[id] = Math.max(1, Math.round((q * n) / b));
+      else if (byId.get(id)?.perGuest) out[id] = Math.max(1, Math.round((q * a.guests) / from));
+      else out[id] = q;
+    }
+    return out;
+    // recFor reads a, swaps and the date; those are listed through `a` and `swaps`.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rawOverrides, overrideAt, a, swaps, byId]);
+  // Every change to the visitor's own quantities is saved at the current guest count.
+  const setOverrides = (next: Record<string, number> | ((p: Record<string, number>) => Record<string, number>)) => {
+    setRawOverrides(typeof next === "function" ? next(overrides) : next);
+    setOverrideAt(a.guests);
+  };
+
   const input: PlanInput | undefined =
     a.event && a.style && a.setting ? { event: a.event, guests: a.guests, style: a.style, setting: a.setting, extras: a.extras, date } : undefined;
   const rows = input ? applyOverrides(recFor()) : [];
@@ -263,7 +294,8 @@ export function EventPlanner({
       const v = JSON.parse(saved ?? "null");
       if (!v?.a) return;
       setA(v.a);
-      setOverrides(v.overrides ?? {});
+      setRawOverrides(v.overrides ?? {});
+      setOverrideAt(v.overrideAt ?? v.a.guests);
       setSwaps(v.swaps ?? {});
       setPlaced(v.placed ?? {});
       setDone(v.done ?? {});
@@ -271,6 +303,7 @@ export function EventPlanner({
     } catch {}
   };
   const setQty = (id: string, q: number) => setOverrides((p) => ({ ...p, [id]: Math.max(0, Math.min(10000, Math.floor(q) || 0)) }));
+  const setGuests = (n: number) => setA((p) => ({ ...p, guests: Math.max(1, Math.min(5000, Math.round(n) || 1)) }));
   const resetList = () => {
     setOverrides({});
     setSwaps({});
@@ -479,12 +512,14 @@ export function EventPlanner({
       )}
       {/* Progress */}
       <div className="sticky top-[6.8rem] z-20 -mx-4 border-b border-line bg-bg/95 px-4 py-3 backdrop-blur sm:mx-0 sm:rounded-2xl sm:border">
-        <div className="flex items-center justify-between gap-3 text-sm">
-          <p>
+        <div className="flex items-center justify-between gap-x-4 gap-y-2 text-sm">
+          <p className="min-w-0">
             <span className="text-muted">Step {step + 1} of {steps.length}:</span> <strong>{steps[step]}</strong>
           </p>
+          {/* The guest count stays editable on every step after it's asked; the whole list and the price follow it. */}
+          {a.event && step >= 2 && step < 7 && <GuestCount value={a.guests || 1} onChange={setGuests} max={5000} size="sm" className="ml-auto shrink-0 sm:order-none" />}
           {input && step < 7 ? (
-            <p className="text-right leading-tight tabular-nums">
+            <p className={`text-right leading-tight tabular-nums ${step > 0 && step < 6 ? "hidden sm:block" : ""}`}>
               <span className="text-muted">All-in est. </span>
               <strong>{formatPrice(allIn)}</strong>
               <span className="block text-xs text-muted">{formatPrice(total)} rentals + delivery, setup, tax</span>

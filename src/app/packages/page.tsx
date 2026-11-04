@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { ReadyPackages } from "@/components/ReadyPackages";
-import { FaqList, Figure, Icon, JsonLd, PageHero, PriceDisclaimer, Section, StepFlow, formatPrice, type Faq } from "@/components/ui";
+import { PackageTable } from "@/components/PackageTable";
+import { FaqList, Figure, JsonLd, PageHero, PriceDisclaimer, Section, StepFlow, type Faq } from "@/components/ui";
 import { readyPackages } from "@/lib/packages";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -20,7 +21,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Can I change a package?",
-    a: "Yes. Tapping a package opens it in our planner with the full list. Change the guest count and every quantity follows it, swap the chairs or linens for another style, or remove anything you don't need.",
+    a: "Yes. Set your guest count right on the package card, and again at any time at the top of the planner: every chair, table, glass and linen follows it, and so does the price. You can also swap the chairs or linens for another style, or remove anything you don't need.",
   },
   {
     q: "What does the all-in price include?",
@@ -75,7 +76,7 @@ export default function PackagesPage() {
         intro={
           <>
             Pick the party closest to yours and we&apos;ll open the full list: every chair, table, linen and plate, with an
-            all-in price. Change the guest count or any item, then send it. No payment, no commitment.
+            all-in price. Set your guest count right on the card and the price follows it. Change any item, then send it. No payment, no commitment.
           </>
         }
         breadcrumbs={[{ name: "Packages", href: "/packages" }]}
@@ -94,41 +95,7 @@ export default function PackagesPage() {
       </Section>
 
       <Section tone="white" eyebrow="Side by side" title="Compare the packages">
-        <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-          <table className="w-full min-w-[40rem] border-collapse text-left text-sm">
-            <caption className="sr-only">Every package with its guest count, setting, item count and estimated price</caption>
-            <thead>
-              <tr className="border-b border-line text-muted">
-                <th scope="col" className="py-3 pr-4 font-medium">Package</th>
-                <th scope="col" className="px-4 py-3 font-medium">Guests</th>
-                <th scope="col" className="px-4 py-3 text-right font-medium">All-in est.</th>
-                <th scope="col" className="px-4 py-3 text-right font-medium">Per guest</th>
-                <th scope="col" className="px-4 py-3 text-right font-medium">Rentals</th>
-                <th scope="col" className="px-4 py-3 font-medium">Where</th>
-                <th scope="col" className="px-4 py-3 font-medium">Style</th>
-                <th scope="col" className="py-3 pl-4"><span className="sr-only">Start</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              {readyPackages.map((p) => (
-                <tr key={p.id} className="border-b border-line">
-                  <th scope="row" className="py-3 pr-4 font-medium">{p.name}</th>
-                  <td className="px-4 py-3 tabular-nums">{p.guests}</td>
-                  <td className="px-4 py-3 text-right font-medium tabular-nums">{formatPrice(p.allIn)}</td>
-                  <td className="px-4 py-3 text-right tabular-nums">{formatPrice(p.perGuest)}</td>
-                  <td className="px-4 py-3 text-right tabular-nums">{formatPrice(p.rentals)}</td>
-                  <td className="px-4 py-3">{p.settingName}</td>
-                  <td className="px-4 py-3">{p.styleName}</td>
-                  <td className="py-3 pl-4 text-right">
-                    <Link href={p.href} className="inline-flex items-center gap-1 text-accent underline underline-offset-4">
-                      Start <Icon name="arrow" size={14} />
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <PackageTable packages={readyPackages} />
         <PriceDisclaimer className="mt-4" />
         <p className="mt-6 text-sm text-muted">
           Want to pick item by item instead? <Link href="/rentals" className="text-accent underline">Browse every rental</Link>, find a
