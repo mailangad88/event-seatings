@@ -31,7 +31,10 @@ export default function EventsPage() {
             of its seating. Pick your occasion for chair counts, planning checklists and the styles we&apos;d choose.
           </p>
           <div className="mt-10">
-            <CallButton />
+            <Link href="/quote?from=local-page" className="btn-primary">
+              Get a free quote
+            </Link>
+            <CallButton label="Or book a free call" className="link-line" />
           </div>
         </section>
         <div className="mt-20 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">

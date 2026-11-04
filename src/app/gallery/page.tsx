@@ -69,13 +69,12 @@ export default function GalleryPage() {
       <div className="container-x py-20">
         <p className="eyebrow">Gallery</p>
         <h1 className="display-1 mt-6 max-w-4xl">
-          Every rental, <em className="text-gold">true to size</em> before you book
+          See the rentals before you book
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted">
-          {productImages.length} event rentals, {extraImages.length} extra colours and angles, and{" "}
-          {sceneImages.length} full setups, built from real rental dimensions and pictured in real-world light
-          so you can picture your Chicago event: chairs, tables, linens, tents, dinnerware, dance floors,
-          lighting, lounge furniture, decor and games.
+          Pictures of {productImages.length} event rentals and {sceneImages.length} full setups, drawn from real rental
+          sizes so you can see how chairs, tables, linens, tents and decor will look at your Chicago event before
+          you book. Pick a section below to jump straight to it, then add what you like to your quote.
         </p>
         <nav aria-label="Gallery sections" className="mt-8 flex flex-wrap gap-3 text-sm">
           {groups.map((g) => (
@@ -88,23 +87,21 @@ export default function GalleryPage() {
         {sceneImages.length > 0 && (
           <section aria-labelledby="setups" className="mt-16">
             <h2 id="setups" className="headline text-4xl">Complete event setups</h2>
-            <div className="mt-8 grid gap-6 md:grid-cols-2">
-              {sceneImages.map((s, i) => (
-                <figure key={s.slug} className={`relative ${i === 0 ? "md:col-span-2" : ""}`}>
-                  <SaveIdea idea={{ src: s.src, alt: s.alt, caption: s.caption }} className="absolute top-3 right-3 z-10" />
-                  <Image
-                    src={s.src}
-                    alt={s.alt}
-                    width={s.width}
-                    height={s.height}
-                    priority={i === 0}
-                    sizes={i === 0 ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
-                    className="h-auto w-full"
-                  />
-                  <figcaption className="mt-3 text-sm text-muted">{s.caption}</figcaption>
-                </figure>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {sceneImages.slice(0, 6).map((s, i) => (
+                <SetupFigure key={s.slug} s={s} priority={i === 0} />
               ))}
             </div>
+            {sceneImages.length > 6 && (
+              <details className="mt-8">
+                <summary className="link-line cursor-pointer text-sm">Show all {sceneImages.length} setups</summary>
+                <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {sceneImages.slice(6).map((s) => (
+                    <SetupFigure key={s.slug} s={s} />
+                  ))}
+                </div>
+              </details>
+            )}
           </section>
         )}
 
@@ -115,29 +112,23 @@ export default function GalleryPage() {
               <Link href="/quote" className="link-line text-sm">Get a quote</Link>
             </div>
             <ul className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-              {g.items.map((it) => (
-                <li key={it.slug}>
-                  <figure className="relative">
-                    <SaveIdea
-                      idea={{ src: it.src, alt: it.alt, caption: it.caption, href: getProduct(it.slug) ? `/rentals/${getProduct(it.slug)!.category}/${it.slug}` : undefined }}
-                      className="absolute top-2 right-2 z-10"
-                    />
-                    <Image
-                      src={it.src}
-                      alt={it.alt}
-                      width={it.width}
-                      height={it.height}
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="aspect-square h-auto w-full bg-surface-2 object-cover"
-                    />
-                    <figcaption className="mt-2 text-sm">{it.caption}</figcaption>
-                  </figure>
-                </li>
+              {g.items.slice(0, 4).map((it) => (
+                <ItemFigure key={it.slug} it={it} />
               ))}
             </ul>
+            {g.items.length > 4 && (
+              <details className="mt-8">
+                <summary className="link-line cursor-pointer text-sm">Show all {g.items.length} {g.label.toLowerCase()}</summary>
+                <ul className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+                  {g.items.slice(4).map((it) => (
+                    <ItemFigure key={it.slug} it={it} />
+                  ))}
+                </ul>
+              </details>
+            )}
             {g.extras.length > 0 && (
               <details className="mt-8">
-                <summary className="cursor-pointer text-sm font-medium">
+                <summary className="link-line cursor-pointer text-sm">
                   More colours &amp; angles ({g.extras.length})
                 </summary>
                 <ul className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6">
@@ -178,5 +169,42 @@ export default function GalleryPage() {
         <CallCta source="gallery" title={<>Like what you see? Let&apos;s <em className="text-gold">plan it</em></>} />
       </div>
     </>
+  );
+}
+
+type Img = (typeof productImages)[number];
+
+function SetupFigure({ s, priority = false }: { s: (typeof sceneImages)[number]; priority?: boolean }) {
+  return (
+    <figure className="relative">
+      <SaveIdea idea={{ src: s.src, alt: s.alt, caption: s.caption }} className="absolute top-3 right-3 z-10" />
+      <div className="media relative aspect-[4/3] overflow-hidden">
+        <Image src={s.src} alt={s.alt} fill priority={priority} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
+      </div>
+      <figcaption className="mt-3 text-sm text-muted">{s.caption}</figcaption>
+    </figure>
+  );
+}
+
+function ItemFigure({ it }: { it: Img }) {
+  const product = getProduct(it.slug);
+  return (
+    <li>
+      <figure className="relative">
+        <SaveIdea
+          idea={{ src: it.src, alt: it.alt, caption: it.caption, href: product ? `/rentals/${product.category}/${it.slug}` : undefined }}
+          className="absolute top-2 right-2 z-10"
+        />
+        <Image
+          src={it.src}
+          alt={it.alt}
+          width={it.width}
+          height={it.height}
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="aspect-square h-auto w-full bg-surface-2 object-cover"
+        />
+        <figcaption className="mt-2 text-sm">{it.caption}</figcaption>
+      </figure>
+    </li>
   );
 }

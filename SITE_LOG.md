@@ -38,6 +38,26 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-04): simpler pages, fewer choices
+
+Angad said the site felt overwhelming. Touched 2026-11-04:
+
+- Header: 6 dropdowns down to 4 (Rentals, Plan your event, Ideas & guides, About), top strip removed, one main button (Get a quote). Dropdown picture panels replaced with a small text panel.
+- Footer: one column per menu plus a folded "More planning pages" row, so pages that left the menus still have a link from every page.
+- Home: 12 sections down to 6 (hero with one button and one picture, 8 top categories, packages, how it works, 4 FAQs, quote call to action).
+- /rentals: one hero button, "how it works" removed, sample budgets folded.
+- Category pages: one hero button, 4:3 hero picture, example-photo row removed, full price list and planning/prices folded behind "show more".
+- Item pages: one photo row (max 3, all 4:3, never mixes our pictures with example photos), cost breakdown folded, planning tips column removed (kept on the category page).
+- /tools: 3 "start here" picture cards, then every tool as a short text list (was two image grids of the same tools).
+- /blog: topics first, latest 6 guides instead of 24, shorter intro.
+- /gallery: first 6 setups and first 4 pictures per category shown, the rest behind "Show all"; setups all 4:3.
+- Guide posts: sidebar download card and featured chair removed (download stays inline), tag chips and "Keep planning" block removed.
+- Area and event pages: main button is now "Get a free quote" (call is the second option), like the rest of the site.
+- /ideas: "next three months" picture row removed; the 12 months are now folded rows (this month open), no picture per month.
+- Before/after screenshots: /mnt/project-files/redesign/simplify-2026-11-04/.
+
+Remaining: guide post sidebars, /packages filters. /quote was checked and is already a short step flow.
+
 ## Changes in this release (2026-11-03): new logo
 
 - **Logo**: a Chiavari chair inside an arched doorway, next to the name in Cormorant Garamond and "Event rentals · Chicago". Drawn as SVG outlines, so it no longer waits for the logo font (it was the home page's largest paint on phones). Header and footer use `src/components/brand/BrandLogo.tsx`; colours come from the `--brand-*` tokens in `globals.css` and flip by themselves in dark bands. Last touched 2026-11-03.

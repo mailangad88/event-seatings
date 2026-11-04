@@ -89,11 +89,11 @@ export const menus: Menu[] = [
     all: "Browse all rentals",
     tone: "gold",
     groups: rentalsMenuGroups,
-    promo: { title: "Price your whole event", cta: "Build a quote", href: "/quote", scene: "wedding-reception" },
+    promo: { title: "Price your whole event", cta: "Get a quote", href: "/quote", scene: "wedding-reception" },
   },
   {
     id: "plan",
-    label: "Plan & book",
+    label: "Plan your event",
     href: "/how-it-works",
     all: "How it works",
     tone: "wine",
@@ -101,9 +101,8 @@ export const menus: Menu[] = [
       {
         title: "Get started",
         links: [
-          { href: "/quote", label: "Build a quote", blurb: "Pick items, see prices as you go", icon: "quote" },
+          { href: "/quote", label: "Get a quote", blurb: "Pick items, see prices as you go", icon: "quote" },
           { href: "/packages", label: "Ready-made packages", blurb: "Sets sized for your guest count", icon: "gift" },
-          { href: "/book", label: "Book a free call", blurb: "15 minutes with our team", icon: "phone" },
           { href: "/how-it-works", label: "How it works", blurb: "From quote to delivery day", icon: "list" },
           { href: "/pricing", label: "Pricing", blurb: "One flat fee, no markup on rentals", icon: "wallet" },
         ],
@@ -111,11 +110,10 @@ export const menus: Menu[] = [
       {
         title: "Your event",
         links: [
+          { href: "/tools/rental-calculator", label: "Rental calculator", blurb: "Guest count in, full list out", icon: "chart" },
           { href: "/my-events", label: "My events", blurb: "Countdown and dated checklist", icon: "calendar" },
+          { href: "/tools", label: "All free tools", blurb: "Calculators and checklists", icon: "sliders" },
           { href: "/account", label: "Your account", blurb: "Orders, deliveries, payments, messages", icon: "users" },
-          { href: "/countdown", label: "Event countdown", blurb: "Days left and what to do now", icon: "clock" },
-          { href: "/events", label: "Events we plan", blurb: "Weddings, parties, work events", icon: "users" },
-          { href: "/booking-promise", label: "Payments & Booking Promise", blurb: "How paying and refunds work", icon: "shield" },
         ],
       },
     ],
@@ -123,95 +121,31 @@ export const menus: Menu[] = [
   },
   {
     id: "ideas",
-    label: "Ideas",
-    href: "/ideas",
-    all: "All event ideas",
-    tone: "gold",
-    groups: [
-      {
-        title: "Find ideas",
-        links: [
-          { href: "/ideas", label: "Event ideas by month", blurb: "What to plan and book now", icon: "calendar" },
-          { href: "/party-ideas", label: "Party ideas & themes", blurb: "Themes with a rental list for each", icon: "spark" },
-          { href: "/looks", label: "The Look Book", blurb: "Full room looks you can copy", icon: "heart" },
-          { href: "/events", label: "Events we plan", blurb: "Ideas by type of event", icon: "users" },
-        ],
-      },
-      {
-        title: "See it first",
-        links: [
-          { href: "/gallery", label: "3D gallery", blurb: "Styled rooms you can turn around", icon: "camera" },
-          { href: "/chairs", label: "Chairs in 3D", blurb: "Compare styles and finishes", icon: "chair" },
-          { href: "/quiz", label: "Style quiz", blurb: "Four questions, a matched shortlist", icon: "star" },
-        ],
-      },
-    ],
-    promo: { title: "Get ideas for your date", cta: "See this month", href: "/ideas", scene: "boho-lounge" },
-  },
-  {
-    id: "guides",
-    label: "Guides",
+    label: "Ideas & guides",
     href: "/blog",
     all: "All planning guides",
     tone: "blue",
     groups: [
       {
-        title: "Planning guides",
+        title: "Ideas",
         links: [
-          { href: "/blog", label: "All planning guides", blurb: "Step-by-step help by topic", icon: "book" },
-          { href: "/vendor-guide", label: "Vendor guide", blurb: "Who to hire and in what order", icon: "list" },
-          { href: "/downloads", label: "Free kits & spreadsheets", blurb: "Printable checklists", icon: "download" },
-          { href: "/chicago-event-seasons", label: "Chicago event seasons", blurb: "Weather, prices and busy dates", icon: "sun" },
+          { href: "/ideas", label: "Event ideas by month", blurb: "What to plan and book now", icon: "calendar" },
+          { href: "/party-ideas", label: "Party ideas & themes", blurb: "Themes with a rental list for each", icon: "spark" },
+          { href: "/looks", label: "The Look Book", blurb: "Full room looks you can copy", icon: "heart" },
+          { href: "/gallery", label: "Photo gallery", blurb: "Styled rooms and tables", icon: "camera" },
         ],
       },
       {
-        title: "Quick answers",
+        title: "Guides",
         links: [
-          { href: "/answers", label: "Quick answers", blurb: "Short answers to common questions", icon: "chat" },
-          { href: "/solutions", label: "Rental problems solved", blurb: "Fixes for common snags", icon: "check" },
-          { href: "/glossary", label: "Rental glossary", blurb: "Rental words in plain English", icon: "info" },
+          { href: "/blog", label: "Planning guides", blurb: "Step-by-step help by topic", icon: "book" },
+          { href: "/chair-rental-cost", label: "What rentals cost", blurb: "Chicago prices, explained", icon: "wallet" },
+          { href: "/downloads", label: "Free checklists", blurb: "Printable planning kits", icon: "download" },
           { href: "/faq", label: "FAQ", blurb: "Booking, delivery and payment", icon: "help" },
-        ],
-      },
-      {
-        title: "Costs & sizes",
-        links: [
-          { href: "/chair-rental-cost", label: "Chair rental cost", blurb: "What chairs cost in Chicago", icon: "wallet" },
-          { href: "/data/chicago-rental-prices", label: "Chicago rental prices", blurb: "Price list across rental houses", icon: "chart" },
-          { href: "/compare", label: "Compare your options", blurb: "Side-by-side choices", icon: "sliders" },
-          { href: "/seating-layouts", label: "Seating layouts", blurb: "Rows, rounds and long tables", icon: "ruler" },
         ],
       },
     ],
     promo: { title: "Free planning kits", cta: "Get a kit", href: "/downloads", scene: "garden-ceremony" },
-  },
-  {
-    id: "tools",
-    label: "Free tools",
-    href: "/tools",
-    all: "All free tools",
-    tone: "green",
-    groups: [
-      {
-        title: "Calculators",
-        links: [
-          { href: "/tools/rental-calculator", label: "Rental calculator", blurb: "Guest count in, full list out", icon: "chart" },
-          { href: "/tools/tables-and-chairs", label: "Tables & chairs", blurb: "How many of each you need", icon: "table" },
-          { href: "/tools/tent-size", label: "Tent size", blurb: "The right tent for your guests", icon: "tent" },
-          { href: "/tools/guest-count", label: "Guest count", blurb: "How many will actually come", icon: "users" },
-        ],
-      },
-      {
-        title: "Plans & checklists",
-        links: [
-          { href: "/seating-planner", label: "Seating planner", blurb: "Chairs and tables for each part of the day", icon: "chair" },
-          { href: "/tools/timeline", label: "Timeline builder", blurb: "Work back from your date", icon: "clock" },
-          { href: "/tools/budget-splitter", label: "Budget splitter", blurb: "Where your money should go", icon: "wallet" },
-          { href: "/tools/what-do-i-need", label: "What do I still need?", blurb: "Find the gaps in your list", icon: "check" },
-        ],
-      },
-    ],
-    promo: { title: "All free tools in one place", cta: "See every tool", href: "/tools", scene: "tent-reception-dusk" },
   },
   {
     id: "about",
@@ -219,26 +153,21 @@ export const menus: Menu[] = [
     href: "/about",
     all: "About us",
     tone: "wine",
-    wideOnly: true,
     groups: [
       {
         title: "About us",
         links: [
           { href: "/about", label: "About us", blurb: "Who we are", icon: "home" },
-          { href: "/how-we-work", label: "How we work", blurb: "How we pick and price rentals", icon: "info" },
           { href: "/reviews", label: "Reviews", blurb: "What hosts say", icon: "star" },
-          { href: "/press", label: "Press", blurb: "News and media", icon: "mail" },
           { href: "/chair-rentals", label: "Areas we serve", blurb: "Chicago and the suburbs", icon: "pin" },
-          { href: "/refer", label: "Refer a friend", blurb: "Share and both save", icon: "gift" },
+          { href: "/booking-promise", label: "Payments & refunds", blurb: "How paying works", icon: "shield" },
         ],
       },
       {
         title: "For rental companies",
         links: [
           { href: "/partners", label: "Work with us", blurb: "List your rentals with us", icon: "truck" },
-          { href: "/partners/onboard", label: "Rental company sign-up", blurb: "Get set up", icon: "plus" },
-          { href: "/partners/faq", label: "Partner FAQ", blurb: "Fees, orders and payouts", icon: "help" },
-          { href: "/vendor-listings", label: "Vendor listings & opt-out", blurb: "Change or remove a listing", icon: "block" },
+          { href: "/vendor-listings", label: "Change a listing", blurb: "Update or remove a listing", icon: "block" },
         ],
       },
     ],
@@ -246,17 +175,34 @@ export const menus: Menu[] = [
   },
 ];
 
-/** Footer-only extras: deeper guide pages that do not fit in a dropdown. */
-export const footerExtras: MenuGroup = {
-  title: "Layouts & sizing",
-  links: [
-    { href: "/room-size-guides", label: "Room sizes", icon: "ruler" },
-    { href: "/table-seating-guides", label: "Table seating", icon: "table" },
-    { href: "/chair-fit", label: "Chair fit", icon: "chair" },
-    { href: "/chair-comparisons", label: "Chair comparisons", icon: "sliders" },
-    { href: "/rental-comparisons", label: "Rental comparisons", icon: "sliders" },
-  ],
-};
+/**
+ * Pages that are no longer in the menus but still deserve a link from every page (for people and for
+ * search). The footer shows them as one quiet row of small links.
+ */
+export const footerMore: { href: string; label: string }[] = [
+  { href: "/events", label: "Events we plan" },
+  { href: "/vendor-guide", label: "Vendor guide" },
+  { href: "/chicago-event-seasons", label: "Chicago event seasons" },
+  { href: "/answers", label: "Quick answers" },
+  { href: "/solutions", label: "Rental problems solved" },
+  { href: "/glossary", label: "Glossary" },
+  { href: "/data/chicago-rental-prices", label: "Chicago rental prices" },
+  { href: "/compare", label: "Compare options" },
+  { href: "/seating-layouts", label: "Seating layouts" },
+  { href: "/room-size-guides", label: "Room sizes" },
+  { href: "/table-seating-guides", label: "Table seating" },
+  { href: "/chair-fit", label: "Chair fit" },
+  { href: "/chair-comparisons", label: "Chair comparisons" },
+  { href: "/rental-comparisons", label: "Rental comparisons" },
+  { href: "/chairs", label: "Chairs in 3D" },
+  { href: "/quiz", label: "Style quiz" },
+  { href: "/countdown", label: "Event countdown" },
+  { href: "/seating-planner", label: "Seating planner" },
+  { href: "/how-we-work", label: "How we work" },
+  { href: "/press", label: "Press" },
+  { href: "/refer", label: "Refer a friend" },
+  { href: "/partners/faq", label: "Partner FAQ" },
+];
 
 // Flat list kept for older imports.
 export const primaryNav = [

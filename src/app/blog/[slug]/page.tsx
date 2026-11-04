@@ -2,14 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChairArt } from "@/components/ChairArt";
 import { DownloadGate } from "@/components/DownloadGate";
-import { PlanningLoop } from "@/components/myevents/PlanningLoop";
 import { buyerLinksFor } from "@/data/buyer-pages";
 import { PostBody } from "@/components/PostBody";
 import { ArticleLayout, JsonLd, QuoteCard, QuoteCta, type TocItem } from "@/components/ui";
 import { coverImage, getDownload } from "@/data/downloads";
-import { chairAlt, chairImage, getChair } from "@/data/chairs";
 import { formatDate, getPost, getPosts, getRelated, topicSlug } from "@/lib/blog";
 import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -57,8 +54,6 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   if (!found) notFound();
   const { post, faqs } = found;
   const { html, toc } = withHeadingIds(found.html);
-  const chair = getChair(post.chair);
-  const chairImg = chair && chairImage(chair);
   const hero = post.hero ?? sceneFor(post.slug);
   const related = await getRelated(post);
   const offer = getDownload(post.download ?? "") ?? getDownload("event-planning-kit")!;
@@ -75,7 +70,6 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
     image: [
       { "@type": "ImageObject", url: `${site.url}${hero.src}`, caption: hero.alt },
       ...(post.image && !post.hero ? [{ "@type": "ImageObject", url: `${site.url}${post.image}`, caption: post.imageAlt ?? post.title }] : []),
-      ...(chairImg && chair ? [{ "@type": "ImageObject", url: `${site.url}${chairImg}`, caption: chairAlt(chair) }] : []),
     ],
     keywords: [post.keyword, ...post.tags].filter(Boolean).join(", "),
     articleSection: post.topic,
@@ -110,24 +104,6 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
         aside={
           <>
             <QuoteCard source={`blog-${post.slug}`} />
-            <a href="#free-download" className="group card card-hover block overflow-hidden">
-              <span className="relative block aspect-[4/3] bg-surface-2">
-                <Image src={coverImage(offer.slug)} alt={`Preview of the free ${offer.title}`} fill sizes="320px" className="object-cover object-top" />
-              </span>
-              <span className="block p-4">
-                <span className="block text-xs font-medium tracking-wide text-muted uppercase">Free download</span>
-                <span className="mt-1 block font-medium group-hover:text-gold">{offer.title}</span>
-              </span>
-            </a>
-            {chair && (
-              <Link href={`/chairs/${chair.slug}`} className="group card card-hover block overflow-hidden">
-                <ChairArt chair={chair} className="aspect-[4/3]" />
-                <span className="block p-4">
-                  <span className="block text-xs font-medium tracking-wide text-muted uppercase">Featured piece</span>
-                  <span className="mt-1 block font-medium group-hover:text-gold">{chair.name}</span>
-                </span>
-              </Link>
-            )}
           </>
         }
       >
@@ -141,13 +117,6 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
             <DownloadGate slug={offer.slug} title={offer.title} files={offer.files} compact placement={`blog:${post.slug}`} />
           </div>
         </aside>
-        {post.tags.length > 0 && (
-          <ul className="mt-12 flex max-w-2xl flex-wrap gap-2 border-t border-line pt-6">
-            {post.tags.map((t) => (
-              <li key={t} className="chip">{t}</li>
-            ))}
-          </ul>
-        )}
         <section aria-labelledby="rental-help" className="mt-12 max-w-2xl rounded-2xl border border-line bg-surface p-5">
           <p id="rental-help" className="eyebrow">Ready to rent?</p>
           <ul className="mt-3 grid gap-2 sm:grid-cols-3">
@@ -158,7 +127,6 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
             ))}
           </ul>
         </section>
-        <PlanningLoop text={`${post.title} ${post.tags.join(" ")}`} className="mt-6 max-w-2xl" />
         {related.length > 0 && (
           <section aria-labelledby="related" className="mt-14 max-w-2xl">
             <p id="related" className="eyebrow">Related guides</p>

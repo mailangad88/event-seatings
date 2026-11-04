@@ -230,7 +230,7 @@ function problems(): Problem[] {
 
 const faqs: [string, string][] = [
   ["Are these tools free?", `Yes. Every ${site.name} tool is free and shows its result right away, with no sign-up.`],
-  ["Which tool should I start with?", "If you're not sure, start with the Seating Readiness Score. It shows which part of your seating plan to settle first and links you to the right next tool."],
+  ["Which tool should I start with?", "Start with the rental calculator. Put in your guest count and it gives you a full rental list, then links you to the next tool you need."],
   ["Can I share my results?", "Yes. Every calculator keeps your answers in the page link, so you can send it to a partner, planner or venue coordinator and they see the same result."],
   ["Do the tools work for events other than weddings?", "Yes. They work for any seated event: corporate dinners, galas, showers, milestone birthdays and cultural celebrations."],
   ["Can someone help me with my results?", `Yes. Book a free 15-minute seating call and ${site.name} will turn your results into a chair count, a style shortlist and a timeline.`],
@@ -261,12 +261,10 @@ export default function ToolsPage() {
     },
   ];
 
-  const route = [
-    ["Readiness score", "/tools/seating-readiness"],
-    ["Chair count", list[1].tools[0].href],
-    ["Style quiz", "/quiz"],
-    ["Free seating call", book],
-  ] as const;
+  // Three tools most people need first get a picture card; everything else is a short text list.
+  const startSlugs = ["rental-calculator", "tables-and-chairs", "timeline"];
+  const start = startSlugs.flatMap((slug) => live.filter((t) => t.slug === slug));
+  const more = allTools.filter((t, n, a) => !t.href.startsWith("/tools/") && a.findIndex((x) => x.href === t.href) === n);
 
   return (
     <div className="container-x py-20">
@@ -274,119 +272,76 @@ export default function ToolsPage() {
 
       <div className="max-w-3xl">
         <p className="eyebrow">Free tools</p>
-        <h1 className="display-1 mt-6">
-          Start with your <em className="text-gold">problem</em>
-        </h1>
+        <h1 className="display-1 mt-6">Free event planning tools</h1>
         <p className="mt-6 text-lg leading-8 text-muted" data-answer>
-          Free planning tools for weddings and events across the Chicago area: a seating planner, a readiness score,
-          a style quiz and the quote builder. Pick what&apos;s on your mind and we&apos;ll point you to the tool that
-          answers it. No sign-up needed.
+          Free calculators and checklists for weddings, parties and work events across the Chicago area. Work out
+          how many chairs, tables and linens you need, what size tent fits, and when to book. Each one shows your
+          answer right away, with no sign-up. Not sure where to begin? Start with one of these three.
         </p>
       </div>
 
-      <nav aria-label="Problems" className="mt-14 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        {list.map((p) => (
-          <a key={p.id} href={`#${p.id}`} className="group flex items-center justify-between gap-4 border border-line bg-surface px-6 py-5 transition-colors hover:border-gold">
-            <span className="font-heading font-semibold text-xl leading-snug">{p.problem}</span>
-            <span className="text-gold transition-transform group-hover:translate-x-1" aria-hidden>→</span>
-          </a>
-        ))}
-      </nav>
-
-
-      <section aria-labelledby="all-tools" className="mt-20">
-        <h2 id="all-tools" className="headline text-4xl sm:text-5xl">Every free tool</h2>
-        <p className="mt-3 max-w-2xl text-muted">Calculators that show their working, plans that count back from your date, and checklists you can print. Your answers stay in your browser and the page link. Run a venue or planning business? <Link href="/tools/embed" className="link">Embed these calculators on your site</Link>.</p>
-        {(Object.keys(toolGroups) as ToolGroup[]).map((g) => {
-          const group = live.filter((t) => t.group === g);
-          if (!group.length) return null;
-          return (
-            <div key={g} className="mt-12">
-              <h3 className="eyebrow">{toolGroups[g].title}</h3>
-              <p className="mt-2 text-sm text-muted">{toolGroups[g].intro}</p>
-              <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                {group.map((t) => {
-                  const img = toolImage(t);
-                  return (
-                    <li key={t.slug}>
-                      <Link href={`/tools/${t.slug}`} className="card card-hover block h-full overflow-hidden">
-                        <div className="media aspect-[4/3] rounded-none">
-                          <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw" className="object-cover" />
-                        </div>
-                        <div className="p-5">
-                          <p className="font-heading font-semibold text-xl">{t.name}</p>
-                          <p className="mt-1 text-sm leading-6 text-muted">{t.short}</p>
-                          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="What you get">
-                            {t.outputs.map((o) => <li key={o} className="chip">{o}</li>)}
-                          </ul>
-                        </div>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          );
-        })}
+      <section aria-labelledby="start-here" className="mt-14">
+        <h2 id="start-here" className="sr-only">Start here</h2>
+        <ul className="grid gap-5 sm:grid-cols-3">
+          {start.map((t, n) => {
+            const img = toolImage(t);
+            return (
+              <li key={t.slug}>
+                <Link href={`/tools/${t.slug}`} className="card card-hover block h-full overflow-hidden">
+                  <div className="media aspect-[4/3] rounded-none">
+                    <Image src={img.src} alt={img.alt} fill priority={n === 0} sizes="(min-width: 640px) 30vw, 100vw" className="object-cover" />
+                  </div>
+                  <div className="p-5">
+                    <p className="display-3">{t.name}</p>
+                    <p className="mt-1 text-sm leading-6 text-muted">{t.short}</p>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
-      <figure className="mt-20 border-y border-line py-10">
-        <p className="eyebrow">Not sure? Follow the route</p>
-        <ol className="mt-8 grid gap-6 sm:grid-cols-4">
-          {route.map(([name, href], i) => (
-            <li key={name} className="relative">
-              <Link href={href} className="group block">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold font-heading font-semibold text-xl text-gold">{i + 1}</span>
-                <span className="mt-4 block font-heading font-semibold text-2xl group-hover:text-gold">{name}</span>
-              </Link>
-            </li>
-          ))}
-        </ol>
-        <figcaption className="mt-8 text-sm text-muted">
-          Each tool answers one question and leads to the next: find your gaps, count your chairs, pick a style, then
-          talk it through with us.
-        </figcaption>
-      </figure>
-
-      <div className="mt-24 space-y-24">
-        {list.map((p) => (
-          <section key={p.id} id={p.id} className="scroll-mt-28">
-            <h2 className="display-2">{p.problem}</h2>
-            <p className="mt-3 text-muted">{p.intent}</p>
-            <ul className="mt-10 grid gap-8 md:grid-cols-2">
-              {p.tools.map((t) => (
-                <li key={t.name}>
-                  <Link href={t.href} className="group grid grid-cols-[120px_1fr] gap-6 border border-line bg-surface p-5 transition-colors hover:border-gold">
-                    <Image src={t.image} alt={t.imageAlt} width={1000} height={1250} sizes="120px" className="aspect-[4/5] w-full object-cover" />
-                    <div className="flex flex-col">
-                      {t.startHere && <span className="w-fit bg-gold px-2 py-1 text-xs font-medium tracking-[0.2em] text-accent-ink uppercase">Start here</span>}
-                      <h3 className="display-3 mt-3 group-hover:text-gold">{t.name}</h3>
-                      <p className="mt-2 text-sm leading-6 text-muted">{t.text}</p>
-                      <ul className="mt-auto flex flex-wrap gap-2 pt-4" aria-label="What you get">
-                        {t.outputs.map((o) => (
-                          <li key={o} className="border border-line px-2 py-1 text-xs tracking-[0.18em] text-ink/80 uppercase">{o}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-
-      <section className="mt-28 grid gap-10 border-t border-gold/40 pt-16 md:grid-cols-3">
-        {[
-          ["Answers first", "Every tool shows your result right away. Email is only for sending yourself a copy."],
-          ["Built to share", "Send your link to a partner, planner or venue coordinator and they see the same result."],
-          ["Shows its working", "Each tool explains how it counts, so you can check the numbers yourself."],
-        ].map(([h, t]) => (
-          <div key={h} className="border-t border-line pt-6">
-            <h3 className="display-3">{h}</h3>
-            <p className="mt-3 leading-7 text-muted">{t}</p>
-          </div>
-        ))}
+      <section aria-labelledby="all-tools" className="mt-20">
+        <h2 id="all-tools" className="display-2">Every free tool</h2>
+        <div className="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+          {(Object.keys(toolGroups) as ToolGroup[]).map((g) => {
+            const group = live.filter((t) => t.group === g);
+            if (!group.length) return null;
+            return (
+              <div key={g}>
+                <h3 className="eyebrow border-b border-line pb-2">{toolGroups[g].title}</h3>
+                <ul className="mt-2">
+                  {group.map((t) => (
+                    <li key={t.slug}>
+                      <Link href={`/tools/${t.slug}`} className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2">
+                        <span className="block font-medium group-hover:text-accent">{t.name}</span>
+                        <span className="block text-sm leading-6 text-muted">{t.short}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+          {more.length > 0 && (
+            <div>
+              <h3 className="eyebrow border-b border-line pb-2">More planning help</h3>
+              <ul className="mt-2">
+                {more.map((t) => (
+                  <li key={t.href}>
+                    <Link href={t.href} className="block rounded-xl p-2.5 font-medium transition-colors hover:bg-surface-2 hover:text-accent">
+                      {t.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        <p className="mt-8 text-sm text-muted">
+          Run a venue or planning business? <Link href="/tools/embed" className="link">Put these calculators on your site</Link>.
+        </p>
       </section>
 
       <section className="mt-28 grid gap-14 border-t border-gold/40 pt-16 md:grid-cols-[1fr_1.6fr]">
