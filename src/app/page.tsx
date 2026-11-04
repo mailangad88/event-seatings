@@ -55,8 +55,9 @@ export default function Home() {
             </p>
             <h1 className="display-1 mt-5">Rent everything for your event in one quote</h1>
             <p className="lede mt-6 max-w-xl" data-answer>
-              Chairs, tables, linens, dishes, tents and lighting from {site.market}&apos;s rental companies. Pick what
-              you need and see prices as you go. We book it and handle delivery, setup and pickup.
+              Chairs, tables, linens, dishes, tents and lighting from established {site.market}-area rental companies.
+              Pick what you need and see prices as you go, with our 10% fee included. We book every item for your date
+              and handle delivery, setup and pickup.
             </p>
             <div className="cta-row mt-8 items-center">
               <Link href="/quote?from=home-hero" className="btn-primary btn-lg">

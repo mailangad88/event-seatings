@@ -274,8 +274,9 @@ export default function ToolsPage() {
         <p className="eyebrow">Free tools</p>
         <h1 className="display-1 mt-6">Free event planning tools</h1>
         <p className="mt-6 text-lg leading-8 text-muted" data-answer>
-          Calculators and checklists for events across the Chicago area. Each one shows your answer right away, with
-          no sign-up. Not sure where to begin? Start with one of these three.
+          Free calculators and checklists for weddings, parties and work events across the Chicago area. Work out
+          how many chairs, tables and linens you need, what size tent fits, and when to book. Each one shows your
+          answer right away, with no sign-up. Not sure where to begin? Start with one of these three.
         </p>
       </div>
 

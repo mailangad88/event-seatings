@@ -90,10 +90,10 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-8 text-muted">{ev.intro}</p>
             <div className="mt-10 flex flex-wrap items-center gap-6">
-              <CallButton />
-              <Link href="/quote" className="link-line">
-                Request a quote
+              <Link href="/quote?from=local-page" className="btn-primary">
+                Get a free quote
               </Link>
+              <CallButton label="Or book a free call" className="link-line" />
             </div>
           </div>
           {/* Chair trio collage */}

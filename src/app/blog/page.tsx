@@ -28,7 +28,7 @@ export default async function BlogPage() {
         breadcrumbs={[{ name: "Ideas & guides", href: "/blog" }]}
         eyebrow="Ideas & guides"
         title="Plan a better event in Chicago"
-        intro="Free guides for Chicago-area events: what rentals cost, how many chairs and tables you need, tent sizes and styling ideas. Pick a topic to start."
+        intro="Free planning guides for weddings, parties and work events across the Chicago area. Each one answers a real question: what rentals cost, how many chairs, tables and linens you need, which tent fits your yard, and how to style the room. Pick a topic below to start."
         meta={all.length > 0 && <p>{all.length} guides across {topics.filter((t) => count(t.name) > 0).length} topics</p>}
         media={
           <div className="media aspect-[4/3] shadow-lift">

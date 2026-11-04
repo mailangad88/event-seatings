@@ -116,10 +116,10 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-8 text-muted">{loc.intro}</p>
             <div className="mt-10 flex flex-wrap items-center gap-6">
-              <CallButton />
-              <Link href="/quote" className="link-line">
-                Request a quote
+              <Link href="/quote?from=local-page" className="btn-primary">
+                Get a free quote
               </Link>
+              <CallButton label="Or book a free call" className="link-line" />
             </div>
             <dl className="mt-12 grid grid-cols-3 border-y border-line text-center">
               {[
