@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { chairs } from "@/data/chairs";
 import { usd } from "@/lib/catalog-types";
 import { buildDashboard, dayKey, formDetail, formName, getRange, kindLabels, rangeStart, leadChannel, ranges, type DayPoint, type Row } from "@/lib/dashboard";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Card, FeeStatus, PageTitle } from "@/components/account/AccountUi";
 import { PrintButton, printCss } from "@/components/admin/PrintButton";
 import { site } from "@/lib/site";

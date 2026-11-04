@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AdminHeader, Empty } from "@/components/admin/AdminUi";
 import { OfficeTabs, pickTab } from "@/components/office/OfficeTabs";
 import { Icon } from "@/components/ui/Icon";

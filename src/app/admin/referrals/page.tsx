@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { usd } from "@/lib/catalog-types";
 import { listReferrers, referralReward } from "@/lib/referrals";
 import { site } from "@/lib/site";

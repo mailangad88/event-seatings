@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Card, EventFacts, NeedsList, PageTitle, StageTrack, StatusPill, daysLabel } from "@/components/account/AccountUi";
 import { Icon } from "@/components/ui/Icon";
 import { currentAccount, firstName, fmtDay, nextEvent, type AccountEvent } from "@/lib/account";

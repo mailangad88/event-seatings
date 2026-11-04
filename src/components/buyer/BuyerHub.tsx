@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { FaqList, Figure, Icon, PageHero, QuoteCta, Section, type Faq } from "@/components/ui";
 import { buyerPagesOf, type BuyerPage } from "@/data/buyer-pages";
 import { sceneFor } from "@/lib/scenes";

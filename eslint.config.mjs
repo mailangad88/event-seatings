@@ -5,6 +5,14 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  // Links prefetch on hover/touch via our wrapper (see src/components/Link.tsx), not on scroll.
+  {
+    files: ["src/**/*.{ts,tsx}"],
+    ignores: ["src/components/Link.tsx"],
+    rules: {
+      "no-restricted-imports": ["error", { paths: [{ name: "next/link", importNames: ["default"], message: 'Use "@/components/Link" so links prefetch on hover, not on scroll.' }] }],
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

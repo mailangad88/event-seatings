@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ReadinessScore } from "@/components/ReadinessScore";
 import { bands, readinessAreas, statementCount } from "@/data/readiness";
 import { bookingHref, firstLink } from "@/lib/routes";

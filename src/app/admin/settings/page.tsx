@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AdminHeader, Panel } from "@/components/admin/AdminUi";
 import { BOOKING_FEE_FULL } from "@/lib/catalog-types";
 import { site } from "@/lib/site";

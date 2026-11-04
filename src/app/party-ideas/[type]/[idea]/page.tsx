@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { ActivityGrid, IdeaCard, IdeaRentals, PaletteStrip, SetupPair, ideaScene, plannerHref } from "@/components/party-ideas/parts";
 import { FaqList, Figure, Icon, JsonLd, PageHero, QuoteCta, Section } from "@/components/ui";

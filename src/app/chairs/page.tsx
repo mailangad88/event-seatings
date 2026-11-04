@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ChairBrowser } from "@/components/ChairBrowser";
 import { FaqList, Figure, Icon, PageHero, QuoteCta, Section, type Faq } from "@/components/ui";
 import { allStyles, type Style } from "@/data/chairs";

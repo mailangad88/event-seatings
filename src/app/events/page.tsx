@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ChairArt } from "@/components/ChairArt";
 import { Reveal } from "@/components/Reveal";
 import { Breadcrumbs } from "@/components/geo/Breadcrumbs";

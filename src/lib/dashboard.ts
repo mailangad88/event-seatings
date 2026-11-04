@@ -151,7 +151,11 @@ export function buildDashboard(allLeads: Lead[], views: PageView[], rangeDays: n
   const firstDay =
     since ??
     new Date(
-      Math.min(now.getTime(), ...allLeads.map((l) => new Date(l.created_at).getTime()), ...views.slice(0, 1).map((v) => new Date(v.created_at).getTime())),
+      // A loop, not Math.min(...all): spreading tens of thousands of leads into one call overflows the stack.
+      [...allLeads.map((l) => l.created_at), ...views.slice(0, 1).map((v) => v.created_at)].reduce(
+        (min, at) => Math.min(min, new Date(at).getTime()),
+        now.getTime(),
+      ),
     );
   const days: DayPoint[] = [];
   const index = new Map<string, DayPoint>();

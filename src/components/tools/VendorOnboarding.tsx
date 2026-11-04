@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { attributionFields } from "@/lib/attribution";
 import { track } from "@/lib/analytics";
 import {

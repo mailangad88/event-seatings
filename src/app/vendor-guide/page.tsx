@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { FaqList, Figure, Icon, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
 import { occasions, roles } from "@/data/vendor-guide";
 import { site } from "@/lib/site";

@@ -2,7 +2,7 @@ import { safeEqual } from "@/lib/admin-auth";
 import { bodyTooLarge, readJson } from "@/lib/rate-limit";
 import { scoreLead } from "@/lib/lead-score";
 import { notifyOwner } from "@/lib/notify";
-import { addLead, listLeads, updateLead, type Lead } from "@/lib/store";
+import { addLead, listLeadsByEmail, updateLead, type Lead } from "@/lib/store";
 
 // Booking calendar webhook: when someone books a call (Calendly, Cal.com, HubSpot Meetings via a workflow, or
 // Zapier), their lead moves to "Consult booked", which stops the follow-up emails. If they booked without
@@ -32,7 +32,8 @@ export async function POST(request: Request) {
   if (/cancel/.test(event)) return Response.json({ ok: true, ignored: "cancellation" });
 
   const when = start ? new Date(start).toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "medium", timeStyle: "short" }) : "time not sent";
-  const leads = (await listLeads()).filter((l) => l.email.toLowerCase() === email);
+  // Just this person's leads (indexed lookup), not every lead.
+  const leads = await listLeadsByEmail(email);
   const open = leads.filter((l) => !l.status || l.status === "new" || l.status === "contacted");
   for (const lead of open) {
     await updateLead(lead.id, { status: "consult_booked" }, [{ type: "call", text: `Call booked for ${when} (Chicago time)` }]);

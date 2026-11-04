@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { attributionFields } from "@/lib/attribution";
 import { trackLead } from "@/lib/analytics";
@@ -29,7 +29,9 @@ import { blockedMessage, useBlockedDates } from "@/lib/use-blocked-dates";
 import { allInEstimate } from "@/lib/fees";
 import { ideaQty, type PlannerIdea } from "@/data/party-ideas/types";
 import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
-import { Icon, formatPrice, type IconName } from "../ui";
+// Direct imports, not the "../ui" barrel: the barrel also holds server cards that load the full image list.
+import { Icon, type IconName } from "../ui/Icon";
+import { formatPrice } from "../ui/PriceTag";
 import { FloorPlan } from "./FloorPlan";
 import { postLead } from "@/lib/lead-client";
 import { trackActivity } from "@/lib/activity-client";

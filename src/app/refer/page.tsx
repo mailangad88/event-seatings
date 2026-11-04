@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ReferForm } from "@/components/ReferForm";
 import { FaqList, Figure, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
 import { referralReward } from "@/lib/referrals";

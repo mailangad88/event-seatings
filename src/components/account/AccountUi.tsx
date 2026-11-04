@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Icon } from "@/components/ui/Icon";
 import { eventStages, fmtDay, type AccountEvent, type AccountPart, type NeedsYou, type PartStatus } from "@/lib/account";
 import { usd } from "@/lib/catalog-types";

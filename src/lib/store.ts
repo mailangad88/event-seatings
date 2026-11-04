@@ -1,6 +1,7 @@
 import "server-only";
 import { promises as fs } from "fs";
 import path from "path";
+import { cache } from "react";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { attributionKeys } from "./attribution";
 import { mergeActivity, type ActivityEvent } from "./activity";
@@ -318,9 +319,10 @@ async function orphanLeads(): Promise<Lead[]> {
   });
 }
 
+// First copy of each id wins (a before b), so a lead is never listed twice.
 const mergeById = (a: Lead[], b: Lead[]) => {
-  const seen = new Set(a.map((l) => l.id));
-  return [...a, ...b.filter((l) => !seen.has(l.id))];
+  const seen = new Set<string>();
+  return [...a, ...b].filter((l) => !seen.has(l.id) && Boolean(seen.add(l.id)));
 };
 
 const isUuid = (s: unknown): s is string =>
@@ -413,23 +415,73 @@ export async function importLead(lead: Lead): Promise<boolean> {
   return true;
 }
 
-export async function listLeads(): Promise<Lead[]> {
+// Reads every row of a table 1,000 at a time. The first page also returns the total, so the rest are fetched
+// four at a time instead of one after another (a few thousand leads load in a couple of round trips).
+async function readAllPages<T>(
+  page: (from: number, to: number, withCount: boolean) => PromiseLike<{ data: T[] | null; error: DbError | null; count?: number | null }>,
+  cap = 200_000,
+): Promise<T[]> {
+  const size = 1000;
+  const first = await page(0, size - 1, true);
+  if (first.error) throw first.error;
+  const rows = [...(first.data ?? [])];
+  const total = Math.min(first.count ?? rows.length, cap);
+  if (rows.length < size || total <= size) return rows;
+  const starts: number[] = [];
+  for (let from = size; from < total; from += size) starts.push(from);
+  for (let i = 0; i < starts.length; i += 4) {
+    const pages = await Promise.all(starts.slice(i, i + 4).map((from) => page(from, from + size - 1, false)));
+    for (const p of pages) {
+      if (p.error) throw p.error;
+      rows.push(...(p.data ?? []));
+    }
+  }
+  return rows;
+}
+
+// Every lead, newest first. Wrapped in React cache(), so the admin layout, its sidebar counts and the page
+// share one read per request instead of each loading every lead again.
+const loadLeads = cache(async (): Promise<Lead[]> => {
   const client = sb();
   if (client) {
-    const rows: Lead[] = [];
-    for (let from = 0; ; from += 1000) {
-      const { data, error } = await client
+    const rows = await readAllPages<Lead>((from, to, withCount) =>
+      client
         .from("leads")
-        .select("*")
+        .select("*", withCount ? { count: "exact" } : undefined)
         .order("created_at", { ascending: false })
-        .range(from, from + 999);
-      if (error) throw error;
-      rows.push(...(data ?? []));
-      if (!data || data.length < 1000) break;
-    }
+        .order("id")
+        .range(from, to),
+    );
+    // mergeById also drops a row seen twice when a lead arrived between two page reads.
     return mergeById(rows, await orphanLeads()).sort((a, b) => b.created_at.localeCompare(a.created_at));
   }
   return (await fallbackLeads()).sort((a, b) => b.created_at.localeCompare(a.created_at));
+});
+
+export async function listLeads(): Promise<Lead[]> {
+  return [...(await loadLeads())];
+}
+
+// Leads that have at least one rental-partner order part, with just the fields needed to find a confirmation
+// link's token. Much lighter than listLeads() when the link page is opened.
+export async function findLeadIdByVendorToken(token: string): Promise<string | undefined> {
+  const has = (v?: VendorOrders | null) => Object.values(v ?? {}).some((o) => o?.token === token);
+  const client = sb();
+  if (client) {
+    const rows = await readAllPages<{ id: string; vendor_orders: VendorOrders | null }>((from, to, withCount) =>
+      client
+        .from("leads")
+        .select("id, vendor_orders", withCount ? { count: "exact" } : undefined)
+        .not("vendor_orders", "is", null)
+        .order("created_at", { ascending: false })
+        .order("id")
+        .range(from, to),
+    );
+    const hit = rows.find((r) => has(r.vendor_orders));
+    if (hit) return hit.id;
+    return (await orphanLeads()).find((l) => has(l.vendor_orders))?.id;
+  }
+  return (await fallbackLeads()).find((l) => has(l.vendor_orders))?.id;
 }
 
 export async function getLead(id: string): Promise<Lead | undefined> {
@@ -580,31 +632,30 @@ export async function addPageView(view: Omit<PageView, "created_at">) {
   await writeLocal(db);
 }
 
-// Page views since `since` (ISO time), newest last. Paged so a busy month still loads in full (capped at 200k rows).
+// Page views since `since` (ISO time), oldest first. Only the four columns the reports use; pages are read four
+// at a time so a busy month still loads quickly (capped at 200k rows).
 export async function listPageViews(since?: string): Promise<PageView[]> {
   const client = sb();
   if (client) {
-    const out: PageView[] = [];
-    const size = 1000;
-    for (let from = 0; from < 200_000; from += size) {
-      let q = client.from("page_views").select("path, visitor_id, source, created_at");
-      if (since) q = q.gte("created_at", since);
-      const { data, error } = await q.order("created_at", { ascending: true }).range(from, from + size - 1);
-      if (error) {
-        // Table not created yet: the dashboard still works, just without visit counts.
-        if (error.code === "42P01" || /page_views/.test(error.message)) return [];
-        throw error;
-      }
-      out.push(...(data ?? []));
-      if (!data || data.length < size) break;
+    try {
+      return await readAllPages<PageView>((from, to, withCount) => {
+        let q = client.from("page_views").select("path, visitor_id, source, created_at", withCount ? { count: "exact" } : undefined);
+        if (since) q = q.gte("created_at", since);
+        return q.order("created_at", { ascending: true }).order("id").range(from, to);
+      });
+    } catch (e) {
+      const error = e as DbError;
+      // Table not created yet: the dashboard still works, just without visit counts.
+      if (error.code === "42P01" || /page_views/.test(error.message ?? "")) return [];
+      throw e;
     }
-    return out;
   }
   const views = (await readLocal()).views ?? [];
   return since ? views.filter((v) => v.created_at >= since) : views;
 }
 
-export async function listPartners(): Promise<VendorPartner[]> {
+// One read per request (React cache), since most admin pages and the sidebar both ask for it.
+export const listPartners = cache(async (): Promise<VendorPartner[]> => {
   const client = sb();
   if (client) {
     const { data, error } = await client.from("vendor_partners").select("*");
@@ -616,7 +667,7 @@ export async function listPartners(): Promise<VendorPartner[]> {
     return data ?? [];
   }
   return (await readLocal()).partners ?? [];
-}
+});
 
 export type PartnerPatch = Partial<Omit<VendorPartner, "vendor_id" | "activity" | "updated_at">>;
 

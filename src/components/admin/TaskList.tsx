@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { completeTask } from "@/app/admin/actions";
 import { eventLine, prettyDay } from "@/lib/admin-view";
 import { kindLabel, mailto, type EventTask } from "@/lib/event-tasks";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { homeBase, locationPath, locations, type Location } from "@/data/geo";
 
 // A stylised Chicagoland map: Lake Michigan, the Fox River, every area we serve,

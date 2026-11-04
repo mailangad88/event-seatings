@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { FaqList, Figure, JsonLd, PageHero, QuoteCta, Section, StatRow } from "@/components/ui";
 import { formatPrice } from "@/data/catalog";
 import {

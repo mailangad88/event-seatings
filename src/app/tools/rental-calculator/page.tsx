@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { RentalCalculator, type CalcGroup, type CalcItem } from "@/components/RentalCalculator";
 import { rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { FaqList, Figure, JsonLd, PageHero, QuoteCta, Section, type Faq } from "@/components/ui";

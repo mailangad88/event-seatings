@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AdminHeader, Empty, Panel, Table, Tile } from "@/components/admin/AdminUi";
 import { planTodaysReminders, remindersSwitchedOn } from "@/lib/reminder-run";
 import { reminderKinds, reminderLabels } from "@/lib/reminders";

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useState } from "react";
 import { track } from "@/lib/analytics";
 import { budgets, plannerEvents, settings, type BudgetId, type SettingId } from "@/lib/event-plan";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ParkingTool } from "@/components/tools/ParkingTool";
 import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 

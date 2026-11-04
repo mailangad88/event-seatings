@@ -6,7 +6,7 @@ import { money2, prettyDay } from "./admin-view";
 import { sendEmail } from "./notify";
 import { allPartsConfirmed, vendorName, vendorParts, type VendorOrder, type VendorPart } from "./orders";
 import { site } from "./site";
-import { listLeads, updateLead, type Lead, type LeadActivity, type LeadPatch } from "./store";
+import { findLeadIdByVendorToken, getLead, updateLead, type Lead, type LeadActivity, type LeadPatch } from "./store";
 
 // Confirmation links for rental partners. Each part of an order (lib/orders.ts) gets its own link,
 // /vendor/confirm/<token>, where that partner sees only their lines and answers yes (delivery and pickup
@@ -63,11 +63,12 @@ export async function ensurePartLink(lead: Lead, vendorId: string): Promise<Vend
 // Looks up the part behind a confirmation link. Tokens are random 32-character strings.
 export async function getPartByToken(token: string): Promise<{ lead: Lead; vendorId: string; order: VendorOrder; part?: VendorPart } | undefined> {
   if (!/^[a-f0-9]{32}$/.test(token)) return undefined;
-  for (const lead of await listLeads()) {
-    const hit = Object.entries(lead.vendor_orders ?? {}).find(([, o]) => o?.token === token);
-    if (hit) return { lead, vendorId: hit[0], order: hit[1], part: vendorParts(lead).find((p) => p.vendorId === hit[0] && p.lines.length > 0) };
-  }
-  return undefined;
+  // Find the lead from a slim read of order parts only, then load that one lead in full.
+  const id = await findLeadIdByVendorToken(token);
+  const lead = id ? await getLead(id) : undefined;
+  const hit = Object.entries(lead?.vendor_orders ?? {}).find(([, o]) => o?.token === token);
+  if (!lead || !hit) return undefined;
+  return { lead, vendorId: hit[0], order: hit[1], part: vendorParts(lead).find((p) => p.vendorId === hit[0] && p.lines.length > 0) };
 }
 
 // First view of the link, noted once so /admin/orders shows "Opened".

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { redirect } from "next/navigation";
 import { AccountSidebar, AccountTabs } from "@/components/account/AccountNav";
 import { Icon } from "@/components/ui/Icon";

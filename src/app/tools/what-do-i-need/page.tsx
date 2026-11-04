@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { NeedsTool } from "@/components/tools/NeedsTool";
 import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { featuredPrices } from "@/lib/tools/prices";

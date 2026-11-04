@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { EventDateTool, type Place } from "@/components/EventDateTool";
 import { FaqList, Figure, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
 import { locations } from "@/data/geo";

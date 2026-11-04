@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useEffect, useState } from "react";
 import type { Menu } from "@/lib/nav";
 import { toneTile } from "@/lib/menu-style";

@@ -1,5 +1,6 @@
+import Image from "next/image";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
@@ -345,8 +346,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
               {own.map((m) => (
                 <figure key={m.src}>
                   <div className="media relative aspect-[4/3] overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={m.src} alt={m.alt} width={m.width} height={m.height} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+                    <Image src={m.src} alt={m.alt} fill unoptimized={m.src.endsWith(".svg") || /^https?:/.test(m.src)} sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
                   </div>
                   <figcaption className="mt-2 text-xs text-muted">{m.caption}</figcaption>
                 </figure>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { customerPrice, formatPrice, getCatalogItem } from "@/data/catalog";
 import type { SampleBudget } from "@/data/sample-budgets";
 import { itemHref } from "./parts";

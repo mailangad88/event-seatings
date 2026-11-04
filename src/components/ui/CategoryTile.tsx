@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Icon, type IconName } from "./Icon";
 
 // Category entry point. With an image it is a photo tile; without, an icon tile.

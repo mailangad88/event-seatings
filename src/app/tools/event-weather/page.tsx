@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { EventWeather } from "@/components/tools/EventWeather";
 import { FaqList, Figure, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
 import { CLIMATE_SOURCE, firstFallFreeze, lastSpringFreeze, lightTimes, monthNames, monthSlugs, normalHighF } from "@/lib/chicago-climate";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { Card, EventFacts, FeeStatus, PageTitle, PartCard, StageTrack, daysLabel } from "@/components/account/AccountUi";
 import { PriceDisclaimer } from "@/components/ui";

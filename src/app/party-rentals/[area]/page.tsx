@@ -1,5 +1,6 @@
+import Image from "next/image";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { Breadcrumbs, FaqList, Figure, JsonLd, PriceDisclaimer, QuoteCta, Section } from "@/components/ui";
@@ -130,8 +131,7 @@ export default async function AreaRentalsPage(props: Props) {
             return (
               <li key={c.slug} className="card card-hover group relative overflow-hidden">
                 <div className="relative aspect-[16/9] overflow-hidden bg-surface-2">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- small static thumbnails */}
-                  <img src={s.src} alt={`${s.alt} (${c.label.toLowerCase()} in ${loc.name})`} width={480} height={270} loading="lazy" className="h-full w-full object-cover" />
+                  <Image src={s.src} alt={`${s.alt} (${c.label.toLowerCase()} in ${loc.name})`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
                 </div>
                 <div className="p-5">
                   <h2 className="display-3">

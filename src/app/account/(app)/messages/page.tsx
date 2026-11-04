@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Card, PageTitle } from "@/components/account/AccountUi";
 import { currentAccount, fmtDay } from "@/lib/account";
 

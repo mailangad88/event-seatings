@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AdminHeader, Empty, FeePill, StagePill, Table, Tile } from "@/components/admin/AdminUi";
 import { ago, eventLine, isClosed, money0, money2, prettyDay } from "@/lib/admin-view";
 import { amountDue, chargeLabel, stripeEnabled } from "@/lib/payments";

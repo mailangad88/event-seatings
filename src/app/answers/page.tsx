@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { allAnswers, answerTopics, answersUpdated } from "@/data/answers";
 import { formatDate, getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";

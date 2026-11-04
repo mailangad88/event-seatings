@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { VendorOnboarding } from "@/components/tools/VendorOnboarding";
 import { Callout, FaqList, Icon, PageHero, QuoteCta, Section, StepFlow } from "@/components/ui";
 import { render } from "@/lib/scenes";

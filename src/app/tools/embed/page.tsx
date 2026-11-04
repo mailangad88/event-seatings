@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { EmbedBuilder } from "@/components/tools/EmbedBuilder";
 import { FaqList, PageHero, QuoteCta, Section, StepFlow } from "@/components/ui";
 import { getTool } from "@/data/tools";

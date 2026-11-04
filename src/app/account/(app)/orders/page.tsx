@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Card, PageTitle, StageTrack, StatusPill, daysLabel } from "@/components/account/AccountUi";
 import { currentAccount, eventStages, fmtDay } from "@/lib/account";
 import { usd } from "@/lib/catalog-types";
