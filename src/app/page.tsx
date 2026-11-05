@@ -109,7 +109,7 @@ export default function Home() {
         tone="sand"
         eyebrow="Short on time?"
         title="Start from a ready-made package"
-        intro="Typical parties, already sized and priced with delivery, setup, waiver and tax. Open one and change anything."
+        intro="Typical parties, already sized and priced with delivery, setup, waiver and tax. Start with a ready-made package and customize it to your needs."
         action={<Link href="/packages" className="link-line">All packages <Icon name="arrow" size={16} /></Link>}
       >
         <ReadyPackages ids={["backyard-birthday-50", "graduation-80", "wedding-150", "corporate-120"]} compact />
@@ -160,6 +160,8 @@ export default function Home() {
       </Section>
 
 
+      <QuoteCta source="home" />
+
       {/* FAQ */}
       <Section tone="sand">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
@@ -171,10 +173,6 @@ export default function Home() {
           <FaqList faqs={faqs} />
         </div>
       </Section>
-
-      <div className="-mb-24">
-        <QuoteCta source="home" />
-      </div>
     </>
   );
 }

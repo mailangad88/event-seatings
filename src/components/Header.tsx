@@ -101,7 +101,7 @@ export function Header() {
 
         <div className="hidden items-center gap-2 lg:flex">
           {site.phone && (
-            <a href={`tel:${contact.phone}`} className={`${linkClass} max-xl:hidden`}>
+            <a href={`tel:${contact.phone}`} className={`${linkClass} whitespace-nowrap max-xl:hidden`}>
               <Icon name="phone" size={16} /> {site.phone}
             </a>
           )}
