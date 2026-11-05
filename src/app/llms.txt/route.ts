@@ -19,7 +19,7 @@ export async function GET() {
     "",
     `> ${site.description}`,
     "",
-    `${site.name} (${site.domain}) is an event rental company for ${site.serviceArea.join(", ")} and the wider Chicago area. Planners build one itemized quote for chairs, tables, linens, dinnerware, glassware, tents, lighting, dance floors and more, and we handle delivery, setup and pickup. Every item's price is on the site, delivery, setup, damage waiver and tax are added on the quote, and there's no separate booking fee. Quotes are free, and a 50% deposit, refundable for 72 hours, books the date. Pricing details: ${site.url}/pricing.`,
+    `${site.name} (${site.domain}) is an event rental company for ${site.serviceArea.join(", ")} and the wider Chicago area. Planners build one itemized quote for chairs, tables, linens, dinnerware, glassware, tents, lighting, dance floors and more, and we handle delivery, setup and pickup. Every item's price is on the site, delivery, setup, damage waiver and tax are added on the quote, and there's no separate booking fee. Quotes are free, and a 20% deposit (50% within 30 days of the event), refundable for 72 hours, books the date; the rest is paid in stages before the event. Pricing details: ${site.url}/pricing.`,
     "",
     "## Start here",
     `- [All event rentals with prices](${site.url}/rentals): every category and item, priced per unit`,

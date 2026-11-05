@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { AdminHeader, Panel } from "@/components/admin/AdminUi";
-import { DEPOSIT, MARKUP } from "@/lib/catalog-types";
+import { MARKUP, PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -91,7 +91,7 @@ export default function SettingsPage() {
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between gap-3"><dt className="text-muted">Name</dt><dd>{site.name}</dd></div>
             <div className="flex justify-between gap-3"><dt className="text-muted">Website</dt><dd className="[overflow-wrap:anywhere]">{site.url}</dd></div>
-            <div className="flex justify-between gap-3"><dt className="text-muted">Our margin</dt><dd className="text-right">{Math.round(MARKUP * 100)}% on every item, no separate fee. Deposit {Math.round(DEPOSIT.share * 100)}% to book</dd></div>
+            <div className="flex justify-between gap-3"><dt className="text-muted">Our margin</dt><dd className="text-right">{Math.round(MARKUP * 100)}% on every item, no separate fee. Deposit {Math.round(PAYMENT_SCHEDULE.firstShare * 100)}% to book, then stages</dd></div>
           </dl>
           <p className="mt-3 text-xs text-muted">Name, address and service area live in src/lib/site.ts. Ask Claude to change them.</p>
         </Panel>

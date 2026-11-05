@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallForm } from "@/components/CallForm";
 import { CategoryTile, Figure, HubFaqs, Icon, IconCards, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
-import { DEPOSIT, DEPOSIT_LABEL } from "@/lib/catalog-types";
+import { DEPOSIT_LABEL, PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { categoryTile, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { plannerEvents } from "@/lib/event-plan";
@@ -48,7 +48,7 @@ const doForYou = [
 const faqs: Faq[] = [
   {
     q: "What does it cost?",
-    a: `The item prices on our site, plus delivery, setup, damage waiver and tax on your quote. No separate booking fee. You book with a ${DEPOSIT_LABEL} and pay the balance ${DEPOSIT.balanceDaysBefore} days before.`,
+    a: `The item prices on our site, plus delivery, setup, damage waiver and tax on your quote. No separate booking fee. You book with a ${DEPOSIT_LABEL}, then pay the rest in stages before your event.`,
   },
   {
     q: "Can we see an example price first?",
@@ -139,11 +139,11 @@ export default function BigCelebrationsPage() {
 
       <Section tone="sand" eyebrow="How it works" title="From first call to pickup">
         <StepFlow
-          caption="How a big celebration is booked: a call, one written quote, a deposit to book, then delivery is checked on the day."
+          caption="How a big celebration is booked: a call, one written quote, a deposit to book, then the rest in stages before delivery is checked on the day."
           steps={[
             { icon: "phone", title: "A 15-minute call", text: "Your date, guest count, venue and the look you want." },
             { icon: "quote", title: "One written quote", text: "Every item and price in writing. Change anything." },
-            { icon: "check", title: "Book with a deposit", text: `${DEPOSIT.share * 100}% of the rentals, refundable for ${DEPOSIT.refundHours} hours.` },
+            { icon: "check", title: "Book with a deposit", text: `${PAYMENT_SCHEDULE.firstShare * 100}% of the rentals, refundable for ${PAYMENT_SCHEDULE.refundHours} hours.` },
             { icon: "truck", title: "Delivered and checked", text: "We check each delivery on the morning of your event." },
           ]}
         />
