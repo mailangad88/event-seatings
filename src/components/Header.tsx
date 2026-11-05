@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "@/components/Link";
 import { menus, primaryNav, toneTile, type Menu } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { contact } from "@/lib/contact";
+import { render } from "@/lib/scenes";
 import { MobileNav } from "./MobileNav";
 import { QuoteListLink } from "./QuoteListLink";
 import { MyEventsNavLink } from "./myevents/MyEventsNavLink";
@@ -37,6 +39,7 @@ const cols: Record<number, string> = { 1: "grid-cols-1", 2: "grid-cols-2", 3: "g
 // One dropdown: grouped links with icons and a one-line note, plus a small panel with the next step.
 // Opens on hover and keyboard focus, no JS needed.
 function MegaMenu({ menu }: { menu: Menu }) {
+    const promoScene = render(menu.promo.scene);
     return (
     <div className="group/menu">
       <Link href={menu.href} className={`${linkClass} whitespace-nowrap`} aria-haspopup="true">
@@ -74,9 +77,17 @@ function MegaMenu({ menu }: { menu: Menu }) {
               {menu.all} <Icon name="arrow" size={16} />
             </Link>
           </div>
-          <div className="flex flex-col justify-end gap-3 bg-surface-2 p-6">
-            <p className="display-3">{menu.promo.title}</p>
-            <Link href={menu.promo.href} className="btn-primary btn-sm self-start">
+          <div className="relative flex flex-col justify-end gap-3 overflow-hidden p-6">
+            <Image
+              src={promoScene.src}
+              alt={promoScene.alt}
+              fill
+              sizes="240px"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" aria-hidden />
+            <p className="display-3 relative text-surface">{menu.promo.title}</p>
+            <Link href={menu.promo.href} className="btn-primary btn-sm relative self-start">
               {menu.promo.cta}
             </Link>
           </div>
