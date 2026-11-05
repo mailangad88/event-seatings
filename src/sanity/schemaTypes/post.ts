@@ -104,6 +104,14 @@ export default defineType({
             }),
           ],
         },
+        {
+          type: "object",
+          name: "html",
+          title: "HTML block (imported content)",
+          description: "Raw HTML carried over from an imported guide — a diagram, table or styled callout the rich-text editor can't represent. Shows on the site exactly as before; edit as HTML, not as text.",
+          fields: [defineField({ name: "code", title: "HTML", type: "text", rows: 6, validation: (rule) => rule.required() })],
+          preview: { select: { code: "code" }, prepare: ({ code }) => ({ title: "HTML block", subtitle: (code ?? "").slice(0, 60) }) },
+        },
       ],
       validation: (rule) => rule.required(),
     }),
@@ -145,6 +153,13 @@ export default defineType({
       title: "Target search keyword",
       type: "string",
       group: "seo",
+    }),
+    defineField({
+      name: "importedFrom",
+      title: "Imported from",
+      type: "string",
+      hidden: true,
+      description: "Set by the one-time Markdown import script; identifies posts carried over from /content/blog so the import can be safely re-run.",
     }),
   ],
   preview: {
