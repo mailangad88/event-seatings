@@ -1,14 +1,14 @@
 import { createHmac } from "crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { DEPOSIT, depositFor } from "@/lib/catalog-types";
+import { PAYMENT_SCHEDULE, depositFor } from "@/lib/catalog-types";
 import { amountDue, chargeLabel, chargeMode, checkoutPaid, newProposalToken, verifyStripeSignature } from "@/lib/payments";
 
 describe("amountDue", () => {
   afterEach(() => vi.unstubAllEnvs());
 
-  it("charges a deposit on the rental subtotal, with a floor and never more than the order", () => {
-    expect(amountDue({ quote_subtotal: 4000 })).toBe(4000 * DEPOSIT.share);
-    expect(amountDue({ quote_subtotal: 150 })).toBe(DEPOSIT.min);
+  it("charges the first stage on the rental subtotal, with a floor and never more than the order", () => {
+    expect(amountDue({ quote_subtotal: 4000 })).toBe(4000 * PAYMENT_SCHEDULE.firstShare);
+    expect(amountDue({ quote_subtotal: 150 })).toBe(PAYMENT_SCHEDULE.min);
     expect(amountDue({ quote_subtotal: 60 })).toBe(60);
     expect(amountDue({ quote_subtotal: 0 })).toBe(0);
     expect(amountDue({ items: [{ id: "a", name: "A", qty: 10, unit_price: 50, line_total: 500 }] as never })).toBe(depositFor(500));

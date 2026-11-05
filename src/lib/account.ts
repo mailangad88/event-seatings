@@ -146,7 +146,7 @@ export function toAccountEvent(lead: Lead): AccountEvent {
     stage,
     stageNote: stageNotes[stage],
     proposalUrl,
-    fee: { status: lead.fee_status ?? "unpaid", amount: lead.fee_amount, label: chargeLabel(), paidAt: lead.fee_paid_at, due },
+    fee: { status: lead.fee_status ?? "unpaid", amount: lead.fee_amount, label: chargeLabel(lead), paidAt: lead.fee_paid_at, due },
     parts,
     subtotal: lead.quote_subtotal ?? parts.reduce((s, p) => s + p.total, 0),
     messages,

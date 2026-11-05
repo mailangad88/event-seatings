@@ -4,22 +4,28 @@
 //
 // These are starting defaults written on Nov 4, 2026. They have NOT been reviewed by an attorney yet.
 
-import { DEPOSIT } from "./catalog-types";
+import { PAYMENT_SCHEDULE } from "./catalog-types";
 
-export const TERMS_VERSION = "2026-11-04";
-export const TERMS_UPDATED = "November 4, 2026";
+export const TERMS_VERSION = "2026-11-05";
+export const TERMS_UPDATED = "November 5, 2026";
 
 export const termsPolicy = {
   // How long a written quote's prices hold.
   quoteValidDays: 7,
-  // Deposit to confirm a booking: a share of the rental subtotal, at least depositMin dollars (never more than the
-  // subtotal). Read from DEPOSIT in src/lib/catalog-types.ts so the terms always match checkout.
-  depositPercent: Math.round(DEPOSIT.share * 100),
-  depositMin: DEPOSIT.min,
-  // The balance is due this many days before the event. Inside this window, pay in full to book.
-  balanceDueDays: DEPOSIT.balanceDaysBefore,
+  // Payment schedule, read from PAYMENT_SCHEDULE in src/lib/catalog-types.ts so the terms always match
+  // checkout. More than secondDueDays days before the event when you book: depositPercent% now (at least
+  // depositMin dollars, never more than the order), secondPercent% secondDueDays days before the event,
+  // the rest balanceDueDays days before. Book inside secondDueDays days of the event: lateDepositPercent%
+  // now instead, then the rest balanceDueDays days before. Book inside balanceDueDays days: pay in full.
+  depositPercent: Math.round(PAYMENT_SCHEDULE.firstShare * 100),
+  depositMin: PAYMENT_SCHEDULE.min,
+  secondPercent: Math.round(PAYMENT_SCHEDULE.secondShare * 100),
+  secondDueDays: PAYMENT_SCHEDULE.secondDueDaysBefore,
+  lateDepositPercent: Math.round(PAYMENT_SCHEDULE.lateFirstShare * 100),
+  // The final payment is due this many days before the event. Inside this window, pay in full to book.
+  balanceDueDays: PAYMENT_SCHEDULE.finalDueDaysBefore,
   // Cancel within this many hours of paying the deposit (if the event is more than balanceDueDays away) for a full refund.
-  coolingOffHours: DEPOSIT.refundHours,
+  coolingOffHours: PAYMENT_SCHEDULE.refundHours,
   fullWindowDays: 30,
   // Cancellation charges, as a share of the order total, by days before delivery.
   // More than 30 days: the deposit is kept but can move to a new date within `creditMonths`.

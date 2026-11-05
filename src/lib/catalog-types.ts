@@ -2,6 +2,8 @@
 // The data itself lives in src/data/catalog.ts. Store raw vendor prices there; the customer
 // price is always computed here, so the markup is changed in exactly one place.
 
+import { daysUntil } from "./my-events-key";
+
 export type Vendor = {
   id: string;
   name: string;
@@ -62,23 +64,73 @@ export function toPublicItem(i: CatalogItem): PublicItem {
 // supplier's name or rate. (Vendor-facing pages and admin still use vendorPrice.)
 export const MARKUP = 0.15;
 
-// What the customer pays us to book: a deposit on the rentals, the balance before the event.
-export const DEPOSIT = {
-  share: 0.5, // of the rental subtotal
-  min: 100, // smallest deposit we take
-  balanceDaysBefore: 7, // balance is due this many days before the event
-  refundHours: 72, // full refund of the deposit within this window
+const cents = (n: number) => Math.round(n * 100) / 100;
+
+// `eventDate` minus `n` days, as a YYYY-MM-DD string. UTC noon arithmetic sidesteps DST.
+const addDaysIso = (day: string, n: number) => new Date(Date.parse(`${day}T12:00:00Z`) + n * 864e5).toISOString().slice(0, 10);
+
+const shareOf = (subtotal: number, share: number) => cents(Math.min(subtotal, Math.max(0, subtotal * share)));
+
+// What the customer pays us, in up to three stages, set by Angad on Nov 5 2026. More than
+// secondDueDaysBefore days out when booked: firstShare now (at least $min), secondShare
+// secondDueDaysBefore days before the event, the rest finalDueDaysBefore days before. Booked inside
+// secondDueDaysBefore days: lateFirstShare now instead, then the rest finalDueDaysBefore days before.
+// Booked inside finalDueDaysBefore days (or with no event date to go by): paid in full now.
+export const PAYMENT_SCHEDULE = {
+  firstShare: 0.2,
+  secondShare: 0.3,
+  lateFirstShare: 0.5,
+  secondDueDaysBefore: 30,
+  finalDueDaysBefore: 7,
+  min: 100, // smallest first payment we take
+  refundHours: 72, // full refund of the first payment within this window
 } as const;
 
-/** Deposit due to book an order with this rental subtotal (our prices). Never more than the subtotal. */
-export function depositFor(subtotal: number) {
-  if (subtotal <= 0) return 0;
-  return Math.round(Math.min(subtotal, Math.max(DEPOSIT.min, subtotal * DEPOSIT.share)) * 100) / 100;
+export type PaymentStage = { label: string; amount: number; dueDate?: string };
+
+/** The payment plan for an order with this rental subtotal (our prices), first stage first. */
+export function paymentPlanFor(subtotal: number, eventDate?: string, today: Date = new Date()): PaymentStage[] {
+  const sub = cents(subtotal);
+  if (sub <= 0) return [{ label: "Nothing due", amount: 0 }];
+  const days = eventDate ? daysUntil(eventDate, today) : undefined;
+  const full = (): PaymentStage[] => [{ label: "Full payment", amount: sub }];
+  if (days !== undefined && days <= PAYMENT_SCHEDULE.finalDueDaysBefore) return full();
+
+  const late = days !== undefined && days < PAYMENT_SCHEDULE.secondDueDaysBefore;
+  const firstShare = late ? PAYMENT_SCHEDULE.lateFirstShare : PAYMENT_SCHEDULE.firstShare;
+  const first = Math.min(sub, Math.max(PAYMENT_SCHEDULE.min, shareOf(sub, firstShare)));
+  if (first >= sub) return full();
+  const firstStage: PaymentStage = { label: `${Math.round(firstShare * 100)}% deposit`, amount: first };
+
+  if (late) {
+    return [
+      firstStage,
+      { label: "Balance", amount: cents(sub - first), dueDate: eventDate ? addDaysIso(eventDate, -PAYMENT_SCHEDULE.finalDueDaysBefore) : undefined },
+    ];
+  }
+  const second = Math.min(cents(sub - first), shareOf(sub, PAYMENT_SCHEDULE.secondShare));
+  const secondStage: PaymentStage = {
+    label: `${Math.round(PAYMENT_SCHEDULE.secondShare * 100)}% installment`,
+    amount: second,
+    dueDate: eventDate ? addDaysIso(eventDate, -PAYMENT_SCHEDULE.secondDueDaysBefore) : undefined,
+  };
+  const final = cents(sub - first - second);
+  if (final <= 0) return [firstStage, secondStage];
+  return [
+    firstStage,
+    secondStage,
+    { label: "Balance", amount: final, dueDate: eventDate ? addDaysIso(eventDate, -PAYMENT_SCHEDULE.finalDueDaysBefore) : undefined },
+  ];
 }
 
-export const DEPOSIT_LABEL = `${Math.round(DEPOSIT.share * 100)}% deposit`;
+/** What's due right now to book an order with this rental subtotal. Never more than the subtotal. */
+export function depositFor(subtotal: number, eventDate?: string, today?: Date): number {
+  return paymentPlanFor(subtotal, eventDate, today)[0]?.amount ?? 0;
+}
 
-const cents = (n: number) => Math.round(n * 100) / 100;
+// Generic label for marketing copy that doesn't know a specific event's date: the normal (more than
+// secondDueDaysBefore days out) first-stage share.
+export const DEPOSIT_LABEL = `${Math.round(PAYMENT_SCHEDULE.firstShare * 100)}% deposit`;
 
 // Our prices end on clean amounts, like a shop's own price list: the supplier's rate plus MARKUP,
 // rounded UP (so the markup is never under 15%) to $0.25 under $10, $1 under $100, $5 from $100.

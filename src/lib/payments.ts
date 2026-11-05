@@ -1,15 +1,17 @@
 import "server-only";
 import { createHmac, randomBytes, timingSafeEqual } from "crypto";
-import { depositFor } from "./catalog-types";
+import { paymentPlanFor } from "./catalog-types";
 import type { Lead } from "./store";
 
 // Deposit checkout for customer proposals (/proposal/<token>).
 //
-// Customers pay us: a deposit to book (DEPOSIT in catalog-types), the balance before the event.
+// Customers pay us in stages (PAYMENT_SCHEDULE in catalog-types): a deposit to book, then up to two
+// more installments before the event. This file only collects the first one, through Stripe; later
+// installments are recorded by hand in /admin/payments (cash, Zelle, check or a second Stripe link).
 // Payment runs on Stripe Checkout, called with plain fetch (no SDK). Everything is OFF until
 // STRIPE_SECRET_KEY is set; without it the proposal page says "we'll send you a secure payment link"
 // and Angad can mark the deposit paid by hand in /admin. The lead fields keep their old names:
-// fee_status / fee_amount / fee_paid_at now describe the deposit.
+// fee_status / fee_amount / fee_paid_at now describe this first payment.
 //
 // Env:
 //   STRIPE_SECRET_KEY       sk_live_… or sk_test_…  (turns checkout on)
@@ -29,14 +31,22 @@ const num = (v: string | undefined, fallback: number) => {
 
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
-// What the customer pays us at checkout, in USD.
-export function amountDue(lead: Pick<Lead, "quote_subtotal" | "items">): number {
+const subtotalOf = (lead: Pick<Lead, "quote_subtotal" | "items">) =>
+  lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
+
+// What the customer pays us at checkout, in USD: the first stage of their payment plan.
+export function amountDue(lead: Pick<Lead, "quote_subtotal" | "items" | "event_date">): number {
   if (chargeMode() === "hold") return round2(num(process.env.BOOKING_HOLD_USD, 100));
-  const subtotal = lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
-  return depositFor(subtotal);
+  return paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0;
 }
 
-export const chargeLabel = () => (chargeMode() === "hold" ? "Refundable booking hold" : "Deposit");
+// "Deposit" in general, or the specific share ("20% deposit", "50% deposit", "Full payment") once we
+// know a lead's subtotal and event date.
+export function chargeLabel(lead?: Pick<Lead, "quote_subtotal" | "items" | "event_date">): string {
+  if (chargeMode() === "hold") return "Refundable booking hold";
+  if (!lead) return "Deposit";
+  return paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.label ?? "Deposit";
+}
 
 export const newProposalToken = () => randomBytes(16).toString("hex");
 
@@ -73,9 +83,9 @@ export async function createCheckout(lead: Lead, siteUrl: string): Promise<{ id:
     "line_items[0][quantity]": "1",
     "line_items[0][price_data][currency]": "usd",
     "line_items[0][price_data][unit_amount]": String(Math.round(amount * 100)),
-    "line_items[0][price_data][product_data][name]": chargeLabel(),
+    "line_items[0][price_data][product_data][name]": chargeLabel(lead),
     "line_items[0][price_data][product_data][description]":
-      `Deposit for your event rentals${event ? ` (${event})` : ""}. Fully refundable for 72 hours. The balance is due before your event.`.slice(0, 500),
+      `Payment for your event rentals${event ? ` (${event})` : ""}. Fully refundable for 72 hours. The rest is due in one or two more payments before your event.`.slice(0, 500),
   });
   const session = await stripe("checkout/sessions", { method: "POST", body });
   return { id: session.id, url: session.url, amount };

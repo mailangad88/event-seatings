@@ -38,7 +38,7 @@ async function alertOwner(lead: Lead, amount: number | undefined, via: string) {
           `${lead.name ?? lead.email} paid the deposit via ${via}.`,
           `Event: ${[lead.event_type, lead.event_date, lead.city].filter(Boolean).join(", ") || "not given"}`,
           "",
-          "Next: place the order with the rental partner and pay their deposit. Balance from the customer is due 7 days before the event.",
+          "Next: place the order with the rental partner and pay their deposit. The customer's remaining payments come due in stages before the event.",
           `Open in CRM: ${site.url}/admin/leads/${lead.id}`,
         ].join("\n"),
       }),

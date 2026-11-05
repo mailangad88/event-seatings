@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq } from "@/components/ui";
-import { DEPOSIT, DEPOSIT_LABEL } from "@/lib/catalog-types";
+import { DEPOSIT_LABEL, PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -35,7 +35,7 @@ const detail = [
   {
     icon: "truck",
     title: "4. Approve, then relax",
-    text: `Approve your proposal and pay a ${DEPOSIT_LABEL} to reserve your items. The balance is due ${DEPOSIT.balanceDaysBefore} days before your event. We handle delivery, setup and pickup.`,
+    text: `Approve your proposal and pay a ${DEPOSIT_LABEL} to reserve your items. The rest comes due in stages, the last of it ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before your event. We handle delivery, setup and pickup.`,
     points: ["Prices locked once you book", "Replacement if an item falls through", "Pickup the same night or next morning"],
   },
 ] as const;
@@ -46,7 +46,7 @@ const faqs: Faq[] = [
   { q: "What if an item is unavailable?", a: "We suggest the closest match in style and price, and you choose whether to swap it." },
   {
     q: "When do I pay, and who do I pay?",
-    a: `Nothing until you approve your proposal. Then you pay ${site.name} a ${DEPOSIT_LABEL} to book, fully refundable for ${DEPOSIT.refundHours} hours, and the balance ${DEPOSIT.balanceDaysBefore} days before your event.`,
+    a: `Nothing until you approve your proposal. Then you pay ${site.name} a ${DEPOSIT_LABEL} to book, fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours (${Math.round(PAYMENT_SCHEDULE.lateFirstShare * 100)}% if your event is within ${PAYMENT_SCHEDULE.secondDueDaysBefore} days), then the rest in stages, the last of it ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before your event.`,
   },
   {
     q: "Is there a booking fee?",
@@ -110,8 +110,9 @@ export default function HowItWorksPage() {
             <ol className="mt-5 space-y-4">
               {[
                 ["Free", "Quote, planning call and proposal. No card needed."],
-                [DEPOSIT_LABEL[0].toUpperCase() + DEPOSIT_LABEL.slice(1), `Paid to ${site.name} when you book. Fully refundable for ${DEPOSIT.refundHours} hours.`],
-                ["Balance", `The rest, with delivery, setup, damage waiver and tax, ${DEPOSIT.balanceDaysBefore} days before the event.`],
+                [DEPOSIT_LABEL[0].toUpperCase() + DEPOSIT_LABEL.slice(1), `Paid to ${site.name} when you book. Fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours.`],
+                [`${Math.round(PAYMENT_SCHEDULE.secondShare * 100)}% installment`, `Due ${PAYMENT_SCHEDULE.secondDueDaysBefore} days before the event.`],
+                ["Balance", `The rest, with delivery, setup, damage waiver and tax, ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before the event.`],
                 ["No booking fee", "The prices on our site are what you pay for the items."],
               ].map(([k, v]) => (
                 <li key={k} className="flex gap-4">
@@ -132,7 +133,7 @@ export default function HowItWorksPage() {
                 "Replacement if an item falls through",
                 `One coordinator, ${replyPromise}`,
                 "Free changes until 14 days before",
-                `${DEPOSIT.refundHours}-hour full refund on your deposit`,
+                `${PAYMENT_SCHEDULE.refundHours}-hour full refund on your deposit`,
               ].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <Icon name="shield" size={16} className="text-gold" /> {t}

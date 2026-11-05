@@ -4,7 +4,7 @@ import { Card, EventFacts, FeeStatus, PageTitle, PartCard, StageTrack, daysLabel
 import { PriceDisclaimer } from "@/components/ui";
 import { Icon } from "@/components/ui/Icon";
 import { currentAccount, fmtDay } from "@/lib/account";
-import { DEPOSIT, usd } from "@/lib/catalog-types";
+import { PAYMENT_SCHEDULE, paymentPlanFor, usd } from "@/lib/catalog-types";
 import { updateLead } from "@/lib/store";
 import { sendMessage } from "../../../actions";
 
@@ -28,6 +28,12 @@ export default async function AccountEvent(props: PageProps<"/account/events/[id
     await updateLead(e.id, { messages: e.messages.map((m) => (m.from === "team" && !m.read_at ? { ...m, read_at: now } : m)) }).catch(() => {});
   }
 
+
+  // The payment plan for this order: a deposit, maybe a second installment, then the balance.
+  const plan = paymentPlanFor(e.subtotal, e.date);
+  const installment = plan.length === 3 ? plan[1] : undefined;
+  const finalDueDate = plan.length > 1 ? plan.at(-1)?.dueDate : undefined;
+  const byDate = (dueDate: string | undefined, daysBefore: number) => (dueDate ? fmtDay(dueDate) : `${daysBefore} days before your event`);
 
   return (
     <div className="space-y-6">
@@ -87,11 +93,12 @@ export default async function AccountEvent(props: PageProps<"/account/events/[id
             <p className="mt-1 text-xs text-muted">
               {e.fee.status === "paid"
                 ? `Paid ${fmtDay(e.fee.paidAt?.slice(0, 10)) ?? ""}. Your items are reserved for your date.`
-                : `Reserves your items. Fully refundable for ${DEPOSIT.refundHours} hours.`}
+                : `Reserves your items. Fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours.`}
             </p>
             {e.proposalUrl && e.fee.status === "unpaid" && <Link href={e.proposalUrl} className="btn-primary btn-sm mt-4 w-full">Pay deposit</Link>}
             <p className="mt-4 border-t border-line pt-3 text-xs leading-5 text-muted">
-              The balance, with delivery, setup, damage waiver and tax, is due {DEPOSIT.balanceDaysBefore} days before your event. See{" "}
+              {installment && <>A second payment of {usd(installment.amount)} is due {byDate(installment.dueDate, PAYMENT_SCHEDULE.secondDueDaysBefore)}, and the{" "}</>}
+              {!installment && "The"} balance, with delivery, setup, damage waiver and tax, is due {byDate(finalDueDate, PAYMENT_SCHEDULE.finalDueDaysBefore)}. See{" "}
               <Link href="/account/payments" className="link">Payments</Link>.
             </p>
           </Card>

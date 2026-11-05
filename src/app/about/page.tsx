@@ -28,7 +28,7 @@ const aboutFaqs = [
   },
   {
     q: "How do you make money?",
-    a: "By the item, at the prices on our site. Your quote adds delivery, setup, damage waiver and tax, and there's no separate booking fee. A 50% deposit books your date. There is no charge for a quote or a planning call.",
+    a: "By the item, at the prices on our site. Your quote adds delivery, setup, damage waiver and tax, and there's no separate booking fee. A 20% deposit books your date, then the rest comes due in stages before your event. There is no charge for a quote or a planning call.",
   },
   {
     q: "Where are you based and where do you deliver?",
