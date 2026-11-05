@@ -73,6 +73,37 @@ JOBS = [
         "inside, nobody anywhere in the frame",
         (1024, 1024),
     ),
+    (
+        "event-quinceanera",
+        "a quinceañera staging set up in a ballroom: a pink tulle-draped throne chair on a small stage framed "
+        "by soft pink and white fabric drapery with pink uplighting, a tiara and bouquet resting on the seat, "
+        "a polished dance floor in front reflecting the lights, place-card tables with pink florals in the "
+        "background, nobody in the room, no one on the stage",
+        (1280, 853),
+    ),
+    (
+        "event-shower",
+        "a baby or bridal shower spread set up in a bright sunroom: a wicker chair beside a low table stacked "
+        "with wrapped gifts in pastel paper, a dessert table behind with a small tiered cake and cupcakes, a "
+        "pastel pink, mint and white balloon garland overhead, soft daylight through arched windows, completely "
+        "empty of people",
+        (1280, 853),
+    ),
+    (
+        "event-kids",
+        "a backyard kids' birthday party set up on a lawn: a colourful inflatable bounce house fully set up and "
+        "inflated, a small kids' table and kid-sized chairs in front set with cupcakes and party hats, red, "
+        "blue and yellow balloons tied to the corners, a wooden fence and trees behind, bright daylight, "
+        "nobody anywhere in the frame",
+        (1280, 853),
+    ),
+    (
+        "event-other",
+        "an elegant, occasion-neutral event setup in a bright room: round tables dressed in ivory linen with "
+        "simple floral centrepieces and gold chiavari chairs, warm string lights overhead, soft natural light "
+        "through tall windows, a versatile space that could suit any kind of celebration, nobody in the room",
+        (1280, 853),
+    ),
 ]
 
 
