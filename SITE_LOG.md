@@ -39,6 +39,11 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-05): fix invalid sitemap.xml
+
+- Google Search Console reported "Couldn't fetch, 0 pages" on sitemap.xml. Cause: Next.js writes `url`/`images` strings straight into `<loc>` without XML-escaping, and every Unsplash stock photo URL has an un-escaped `&` in its query string (`?auto=format&fit=crop...`), which broke the XML (invalid around line 9351 of ~145,000 lines). All 7,281 URLs and their image entries are now escaped before Next serializes them (src/app/sitemap.ts). Verified the output parses as valid XML with 0 unescaped `&`.
+- Also confirmed: sitemap.xml itself returns 200 from the production deployment (no SITE_PAUSED or Vercel firewall issue), well under the 50,000-URL / 50MB sitemap limits.
+
 ## Changes in this release (2026-11-04): search engine and AI crawler pass
 
 - robots.txt now names every major AI crawler (ChatGPT, Claude, Perplexity, Gemini/Google-Extended, Apple, Copilot/Bing, Amazon, Meta, DuckDuckGo, Mistral, Cohere, Common Crawl) as welcome, and blocks /account and /partners/status as private.
