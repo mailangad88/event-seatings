@@ -36,6 +36,7 @@ export function portableTextToHtml(blocks: PortableTextBlock[] = []): string {
         if (!url) return "";
         return `<figure><img src="${url}" alt="${escapeHtml(img.alt ?? "")}" loading="lazy" /></figure>`;
       }
+      if (block._type === "html") return (block as unknown as { code?: string }).code ?? "";
       if (block._type !== "block") return "";
       const tag = tagFor[(block.style as string) ?? "normal"] ?? "p";
       const html = ((block.children as Span[]) ?? []).map((s) => renderSpan(s, (block.markDefs as never) ?? [])).join("");

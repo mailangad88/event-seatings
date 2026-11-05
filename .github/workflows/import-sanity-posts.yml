@@ -1,0 +1,37 @@
+# One-time (re-runnable) migration: imports every Markdown post in /content/blog into Sanity, so
+# each one is editable in Studio, not just new posts written there. See scripts/import-posts-to-sanity.mjs.
+# Needs real internet access to api.sanity.io and the live site, which GitHub Actions runners have
+# but the sandboxed Claude session does not — that's why this runs here, not from the session.
+#
+# Run it by hand: GitHub > Actions > Import blog posts to Sanity > Run workflow.
+# Requires repo secrets: SANITY_PROJECT_ID, SANITY_DATASET, SANITY_WRITE_TOKEN (Sanity project ->
+# API -> Tokens, "Editor" permission).
+name: Import blog posts to Sanity
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (parses every post and logs what would be written, writes nothing to Sanity)"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - env:
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+        run: node scripts/import-posts-to-sanity.mjs ${{ inputs.dry_run == 'true' && '--dry-run' || '' }}
