@@ -2,7 +2,7 @@ import Link from "@/components/Link";
 import { Card, FeeStatus, PageTitle } from "@/components/account/AccountUi";
 import { PrintButton, printCss } from "@/components/admin/PrintButton";
 import { site } from "@/lib/site";
-import { currentAccount, fmtDay } from "@/lib/account";
+import { requireAccount, fmtDay } from "@/lib/account";
 import { usd } from "@/lib/catalog-types";
 
 export const dynamic = "force-dynamic";
@@ -11,7 +11,7 @@ export const metadata = { title: "Payments" };
 // What's paid and what's still to pay: the deposit per event, and the rest of each order,
 // which the renter pays to that company under its own agreement.
 export default async function AccountPayments() {
-  const { events } = (await currentAccount())!;
+  const { events } = await requireAccount();
   const paid = events.filter((e) => e.fee.status === "paid").reduce((s, e) => s + (e.fee.amount ?? 0), 0);
   const due = events.filter((e) => e.fee.status === "unpaid" && e.proposalUrl).reduce((s, e) => s + (e.fee.due ?? 0), 0);
   const upcoming = events.filter((e) => (e.daysLeft ?? 0) >= 0 && e.stage < 5);
