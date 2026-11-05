@@ -273,4 +273,42 @@ for i,(n,h,sub) in enumerate(rows):
     b.append(text(792,y+26,sub,15,MUTED))
 b.append(text(600,600,"Schematic. Every facility has its own floor policy, so confirm it in writing.",14,MUTED,SANS,"middle",400,1,True))
 write("gym-floor-protection.svg",svg(1200,640,"How to protect a hardwood gym floor at an event: a floor cover over the event area, glides on chair and table feet, and soft-wheeled carts rolled on the cover","\n".join(b)))
+# 11. Graveside service seating (schematic)
+b=[eyebrow(600,70,"Graveside service seating","middle"),
+   text(600,122,"Close family seated, everyone else nearby",38,INK,SERIF,"middle",300)]
+# tent canopy outline
+b.append(f'<rect x="200" y="180" width="440" height="230" fill="none" stroke="{GOLD}" stroke-dasharray="6 6"/>')
+b.append(text(420,172,"TENT OR CANOPY",12,MUTED,SANS,"middle",500,2))
+# grave / casket
+b.append(f'<rect x="330" y="200" width="180" height="56" fill="{SOFT}" stroke="{GOLD}"/>')
+b.append(text(420,234,"Casket or urn",18,INK,SERIF,"middle"))
+# officiant
+b.append(f'<circle cx="575" cy="222" r="11" fill="{GOLD}"/>')
+b.append(text(575,256,"Officiant",14,MUTED,SANS,"middle"))
+# family rows
+for r in range(2):
+    for c in range(8):
+        b.append(f'<rect x="{260+c*42}" y="{300+r*44}" width="26" height="24" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(420,400,"CLOSE FAMILY (FRONT ROWS)",12,GOLD,SANS,"middle",500,2))
+# standing area
+b.append(f'<path d="M150 450 Q420 520 690 450" fill="none" stroke="{INK}" stroke-opacity=".5" stroke-width="2"/>')
+for k in range(14):
+    x=180+k*36; y=470+ (10 if k%2 else 0)
+    b.append(f'<circle cx="{x}" cy="{y+10}" r="6" fill="none" stroke="{INK}" stroke-opacity=".7"/>')
+b.append(text(420,540,"OTHER GUESTS STAND OR SIT BEHIND",12,MUTED,SANS,"middle",500,2))
+# path
+b.append(f'<path d="M110 640 L110 300 L200 300" fill="none" stroke="{GOLD}" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>')
+b.append(text(126,620,"Firm path from the cars",14,MUTED))
+rows=[("1","Front rows","Spouse, children, parents"),
+      ("2","Seats for elders","Anyone who can't stand long"),
+      ("3","Level ground","Away from neighboring graves"),
+      ("4","Cemetery rules","Ask what vendors may bring")]
+for i,(n,h,sub) in enumerate(rows):
+    y=210+i*100
+    b.append(f'<circle cx="790" cy="{y}" r="18" fill="{GOLD}"/>')
+    b.append(text(790,y+6,n,18,"#0a0806",SANS,"middle",500))
+    b.append(text(822,y-2,h,26,INK,SERIF))
+    b.append(text(822,y+26,sub,15,MUTED))
+b.append(text(600,690,"Schematic, not to scale. Every cemetery sets its own rules.",14,MUTED,SANS,"middle",400,1,True))
+write("graveside-service-seating.svg",svg(1200,720,"Schematic graveside service layout: a tent over the casket or urn, two front rows of chairs for close family, other guests standing behind, and a firm path from the parking area","\n".join(b)))
 print("ok")

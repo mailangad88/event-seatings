@@ -400,6 +400,7 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/blog/restaurant-buyout-chair-rental-chicago` | When to rent chairs for a restaurant buyout (daily post) | 2026-11-03 | ✅ | ✅ quick answer, FAQPage (4) | ✅ Chicago loading/COI | ✅ swap-timeline SVG, chair pair, table | ✅ | ✅ `/book` call |
 | `/blog/graduation-ceremony-chair-rental-chicago` | Commencement on a field: chair counts, layout, turf, rain plan (daily post) | 2026-11-03 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ✅ Chicago-area schools | ✅ field-layout SVG, chair pair, count table | ✅ | ✅ `/book` call + calculator download |
 | `/blog/gym-floor-event-chair-rental` | Events in a school or church gym: floor protection, chairs, counts (daily post) | 2026-11-04 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area schools and churches (tag only) | ✅ floor-protection SVG, chair pair, count table | ✅ | ✅ `/book` call + calculator download |
+| `/blog/graveside-service-chair-rental` | Graveside service seating: what the funeral home brings, when to rent more, cemetery rules (daily post) | 2026-11-05 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ graveside-layout SVG, chair pair | ✅ | ✅ `/book` call + celebration-of-life checklist |
 
 ## Journal guides (added 2026-11-02, PR #16)
 

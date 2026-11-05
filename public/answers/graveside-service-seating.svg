@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-labelledby="t"><title id="t">Schematic graveside service layout: a tent over the casket or urn, two front rows of chairs for close family, other guests standing behind, and a firm path from the parking area</title>
+<rect width="1200" height="720" fill="#1a1713"/><rect x="12" y="12" width="1176" height="696" fill="none" stroke="#c9a96a" stroke-opacity=".45"/>
+<text x="600" y="70" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="3">GRAVESIDE SERVICE SEATING</text>
+<text x="600" y="122" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="38" fill="#efe4cf" text-anchor="middle" font-weight="300" letter-spacing="0">Close family seated, everyone else nearby</text>
+<rect x="200" y="180" width="440" height="230" fill="none" stroke="#c9a96a" stroke-dasharray="6 6"/>
+<text x="420" y="172" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TENT OR CANOPY</text>
+<rect x="330" y="200" width="180" height="56" fill="#2b2318" stroke="#c9a96a"/>
+<text x="420" y="234" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="18" fill="#efe4cf" text-anchor="middle" font-weight="400" letter-spacing="0">Casket or urn</text>
+<circle cx="575" cy="222" r="11" fill="#c9a96a"/>
+<text x="575" y="256" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">Officiant</text>
+<rect x="260" y="300" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="302" y="300" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="344" y="300" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="386" y="300" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="428" y="300" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="470" y="300" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="512" y="300" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="554" y="300" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="260" y="344" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="302" y="344" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="344" y="344" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="386" y="344" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="428" y="344" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="470" y="344" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="512" y="344" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<rect x="554" y="344" width="26" height="24" fill="#c9a96a" fill-opacity=".85"/>
+<text x="420" y="400" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="2">CLOSE FAMILY (FRONT ROWS)</text>
+<path d="M150 450 Q420 520 690 450" fill="none" stroke="#efe4cf" stroke-opacity=".5" stroke-width="2"/>
+<circle cx="180" cy="480" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="216" cy="490" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="252" cy="480" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="288" cy="490" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="324" cy="480" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="360" cy="490" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="396" cy="480" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="432" cy="490" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="468" cy="480" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="504" cy="490" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="540" cy="480" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="576" cy="490" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="612" cy="480" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<circle cx="648" cy="490" r="6" fill="none" stroke="#efe4cf" stroke-opacity=".7"/>
+<text x="420" y="540" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">OTHER GUESTS STAND OR SIT BEHIND</text>
+<path d="M110 640 L110 300 L200 300" fill="none" stroke="#c9a96a" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+<text x="126" y="620" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">Firm path from the cars</text>
+<circle cx="790" cy="210" r="18" fill="#c9a96a"/>
+<text x="790" y="216" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="0">1</text>
+<text x="822" y="208" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="26" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Front rows</text>
+<text x="822" y="236" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">Spouse, children, parents</text>
+<circle cx="790" cy="310" r="18" fill="#c9a96a"/>
+<text x="790" y="316" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="0">2</text>
+<text x="822" y="308" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="26" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Seats for elders</text>
+<text x="822" y="336" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">Anyone who can't stand long</text>
+<circle cx="790" cy="410" r="18" fill="#c9a96a"/>
+<text x="790" y="416" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="0">3</text>
+<text x="822" y="408" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="26" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Level ground</text>
+<text x="822" y="436" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">Away from neighboring graves</text>
+<circle cx="790" cy="510" r="18" fill="#c9a96a"/>
+<text x="790" y="516" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="0">4</text>
+<text x="822" y="508" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="26" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Cemetery rules</text>
+<text x="822" y="536" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">Ask what vendors may bring</text>
+<text x="600" y="690" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="1" font-style="italic">Schematic, not to scale. Every cemetery sets its own rules.</text></svg>
