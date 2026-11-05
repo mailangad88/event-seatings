@@ -6,6 +6,9 @@ import { Figure, FaqList, Icon, JsonLd, PageHero, Section, type Faq } from "@/co
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
+import { getSanityFaqGroups } from "@/sanity/lib/faqs";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = seo({
   title: "Event Rental FAQ: Chicago Chairs, Tables, Linens & More",
@@ -104,8 +107,9 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
   },
 ];
 
-export default function FaqPage() {
-  const all = groups.flatMap((g) => g.faqs);
+export default async function FaqPage() {
+  const allGroups = [...groups, ...(await getSanityFaqGroups())];
+  const all = allGroups.flatMap((g) => g.faqs);
   return (
     <>
       <JsonLd
@@ -140,7 +144,7 @@ export default function FaqPage() {
         <nav aria-label="FAQ topics" className="lg:sticky lg:top-28 lg:self-start">
           <p className="text-xs font-semibold tracking-wide text-muted uppercase">Topics</p>
           <ul className="mt-4 flex flex-wrap gap-2 lg:flex-col">
-            {groups.map((g) => (
+            {allGroups.map((g) => (
               <li key={g.id}>
                 <a href={`#${g.id}`} className="chip hover:border-ink hover:text-ink lg:w-full lg:justify-between">
                   {g.title} <Icon name="arrow" size={14} className="hidden lg:block" />
@@ -150,7 +154,7 @@ export default function FaqPage() {
           </ul>
         </nav>
         <div className="space-y-14">
-          {groups.map((g) => (
+          {allGroups.map((g) => (
             <section key={g.id} id={g.id} className="scroll-mt-28">
               <h2 className="display-3">{g.title}</h2>
               <FaqList faqs={g.faqs} schema={false} className="mt-5" />

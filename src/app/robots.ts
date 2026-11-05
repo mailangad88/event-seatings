@@ -15,7 +15,7 @@ const aiBots = [
   // Other answer engines and the open web archive many AI models learn from
   "Amazonbot", "Meta-ExternalAgent", "Meta-ExternalFetcher", "DuckAssistBot", "MistralAI-User", "cohere-ai", "YouBot", "CCBot",
 ];
-const disallow = ["/admin", "/api", "/account", "/render", "/proposal", "/event-details", "/partners/status", "/reviews/write", "/dl/*.pdf$", "/dl/*.xlsx$", "/dl/*.csv$"];
+const disallow = ["/admin", "/api", "/account", "/render", "/proposal", "/event-details", "/partners/status", "/reviews/write", "/studio", "/dl/*.pdf$", "/dl/*.xlsx$", "/dl/*.csv$"];
 
 export default function robots(): MetadataRoute.Robots {
   return {

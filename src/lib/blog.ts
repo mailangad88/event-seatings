@@ -8,6 +8,7 @@ import { cache } from "react";
 import { chairs, getChair } from "@/data/chairs";
 import { downloadForPost } from "@/data/downloads";
 import { assignHeroes, type GuideHero } from "@/lib/guide-heroes";
+import { getSanityPosts } from "@/sanity/lib/posts";
 
 // Blog posts are Markdown files in /content/blog with a small header, e.g.
 //
@@ -222,11 +223,20 @@ async function readAll(): Promise<Post[]> {
   return [...(await loadAll()).values()].map((e) => ({ ...e.post }));
 }
 
+// Posts written in Sanity Studio (/studio), additive to the Markdown posts above. Re-fetched per
+// request (not cached in module scope like Markdown) so edits in Sanity show up without a redeploy.
+const sanityEntries = cache(async () => {
+  const entries = await getSanityPosts();
+  return new Map(entries.map((e) => [e.post.slug, e]));
+});
+
 export async function getPosts(): Promise<Post[]> {
   const posts = await readAll();
   const map = await heroes(posts);
+  const sanity = [...(await sanityEntries()).values()].map((e) => ({ ...e.post }));
   return posts
     .map((p) => withHero(p, map))
+    .concat(sanity)
     .filter((p) => p.date <= today())
     .sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -236,7 +246,11 @@ export const getPost = cache(async function getPost(slug: string) {
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
   const all = await loadAll();
   const entry = all.get(slug);
-  if (!entry) return null;
+  if (!entry) {
+    const sanity = (await sanityEntries()).get(slug);
+    if (!sanity || sanity.post.date > today()) return null;
+    return { post: { ...sanity.post }, html: sanity.html, faqs: sanity.faqs };
+  }
   const post = { ...entry.post };
   const body = entry.body;
   if (post.date > today()) return null;
