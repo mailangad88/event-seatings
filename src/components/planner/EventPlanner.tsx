@@ -354,6 +354,16 @@ export function EventPlanner({
     setQty(id, Math.max(have?.qty ?? 0, it.perGuest ? Math.ceil(a.guests * it.perGuest) : Math.max(1, it.minQty ?? 1)));
     setPicker(null);
   };
+  // Swap out one item already on the list for a different one picked from "Add to ...", keeping its spot.
+  const replaceInGroup = (oldRow: Row, to: string, group: string) => {
+    const it = byId.get(to);
+    if (!it || to === oldRow.id) return;
+    const have = rows.find((r) => r.id === to);
+    const qty = Math.max(have?.qty ?? 0, it.perGuest ? Math.ceil(a.guests * it.perGuest) : Math.max(1, it.minQty ?? 1));
+    setOverrides((p) => ({ ...p, [oldRow.id]: 0, [to]: qty }));
+    if (!have) setPlaced((p) => { const n = { ...p }; delete n[oldRow.id]; n[to] = group; return n; });
+    setPicker(null);
+  };
   const toggleExtra = (x: ExtraId) =>
     setA((p) => ({ ...p, extrasTouched: true, extras: p.extras.includes(x) ? p.extras.filter((e) => e !== x) : [...p.extras, x] }));
 
@@ -506,7 +516,9 @@ export function EventPlanner({
           items={items}
           current={picker.mode === "swap" ? picker.row : undefined}
           onList={(id) => rows.some((r) => r.id === id)}
+          conflict={picker.mode === "add" ? (id) => rows.find((r) => r.group === picker.group && r.item.category === byId.get(id)?.category) : undefined}
           onPick={(id) => (picker.mode === "swap" ? swapItem(picker.row, id) : addToGroup(id, picker.group))}
+          onReplace={picker.mode === "add" ? (oldRow, id) => replaceInGroup(oldRow, id, picker.group) : undefined}
           onClose={() => setPicker(null)}
         />
       )}
@@ -1037,7 +1049,9 @@ function ItemPicker({
   items,
   current,
   onList,
+  conflict,
   onPick,
+  onReplace,
   onClose,
 }: {
   title: string;
@@ -1046,7 +1060,10 @@ function ItemPicker({
   items: QuoteItem[];
   current?: Row;
   onList: (id: string) => boolean;
+  /** For "add" pickers: the row already on the list, from the same category, that this item could replace. */
+  conflict?: (id: string) => Row | undefined;
   onPick: (id: string) => void;
+  onReplace?: (oldRow: Row, id: string) => void;
   onClose: () => void;
 }) {
   const [cat, setCat] = useState(cats[0]);
@@ -1088,37 +1105,63 @@ function ItemPicker({
             const isCurrent = current?.id === i.id;
             const taken = !isCurrent && onList(i.id);
             const diff = current ? (i.price - current.item.price) * current.qty : 0;
+            // On an "Add to ..." picker, offer a replace shortcut when they already have a different item from this category.
+            const replaces = !isCurrent && !taken ? conflict?.(i.id) : undefined;
+            const body = (
+              <>
+                <div className="relative aspect-square w-full bg-surface-2">
+                  <ItemVisual item={i} sizes="(min-width: 1024px) 220px, 45vw" />
+                  {(isCurrent || taken) && (
+                    <span className="absolute top-2 right-2 rounded-full bg-gold px-2 py-0.5 text-xs font-medium text-accent-ink">
+                      {isCurrent ? "Your pick" : "On your list"}
+                    </span>
+                  )}
+                </div>
+                <div className="p-2.5 text-xs">
+                  <p className="text-sm font-medium leading-snug">{i.name}</p>
+                  <p className="mt-0.5 text-muted tabular-nums">
+                    {formatPrice(i.price)} {i.unit !== "each" ? i.unit : "each"}
+                  </p>
+                  {current && !isCurrent && (
+                    <p className="mt-1 font-medium tabular-nums">
+                      {formatPrice(i.price * current.qty)} for {current.qty}
+                      <span className={diff > 0 ? "text-muted" : "text-accent"}>
+                        {" "}({diff >= 0 ? "+" : "−"}{formatPrice(Math.abs(diff))})
+                      </span>
+                    </p>
+                  )}
+                </div>
+              </>
+            );
             return (
               <li key={i.id}>
-                <button
-                  type="button"
-                  disabled={isCurrent || taken}
-                  onClick={() => onPick(i.id)}
-                  className={`group flex h-full w-full flex-col overflow-hidden rounded-xl border text-left transition ${isCurrent ? "border-gold ring-2 ring-gold" : "border-line hover:border-gold/60"} bg-surface disabled:cursor-default`}
-                >
-                  <div className="relative aspect-square w-full bg-surface-2">
-                    <ItemVisual item={i} sizes="(min-width: 1024px) 220px, 45vw" />
-                    {(isCurrent || taken) && (
-                      <span className="absolute top-2 right-2 rounded-full bg-gold px-2 py-0.5 text-xs font-medium text-accent-ink">
-                        {isCurrent ? "Your pick" : "On your list"}
-                      </span>
-                    )}
+                {replaces ? (
+                  <div className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-line bg-surface text-left">
+                    {body}
+                    <div className="mt-auto flex gap-1.5 border-t border-line p-2">
+                      <button
+                        type="button"
+                        onClick={() => onReplace?.(replaces, i.id)}
+                        title={`Swap out ${replaces.item.name} for this`}
+                        className="btn-ghost btn-sm flex-1 justify-center !px-1 text-xs"
+                      >
+                        Replace it
+                      </button>
+                      <button type="button" onClick={() => onPick(i.id)} className="btn-primary btn-sm flex-1 justify-center !px-1 text-xs">
+                        Add as well
+                      </button>
+                    </div>
                   </div>
-                  <div className="p-2.5 text-xs">
-                    <p className="text-sm font-medium leading-snug">{i.name}</p>
-                    <p className="mt-0.5 text-muted tabular-nums">
-                      {formatPrice(i.price)} {i.unit !== "each" ? i.unit : "each"}
-                    </p>
-                    {current && !isCurrent && (
-                      <p className="mt-1 font-medium tabular-nums">
-                        {formatPrice(i.price * current.qty)} for {current.qty}
-                        <span className={diff > 0 ? "text-muted" : "text-accent"}>
-                          {" "}({diff >= 0 ? "+" : "−"}{formatPrice(Math.abs(diff))})
-                        </span>
-                      </p>
-                    )}
-                  </div>
-                </button>
+                ) : (
+                  <button
+                    type="button"
+                    disabled={isCurrent || taken}
+                    onClick={() => onPick(i.id)}
+                    className={`group flex h-full w-full flex-col overflow-hidden rounded-xl border text-left transition ${isCurrent ? "border-gold ring-2 ring-gold" : "border-line hover:border-gold/60"} bg-surface disabled:cursor-default`}
+                  >
+                    {body}
+                  </button>
+                )}
               </li>
             );
           })}
