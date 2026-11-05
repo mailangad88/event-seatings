@@ -8,7 +8,7 @@
 //
 // Plain module: no server imports, so the client form can use the same field list.
 
-import { DEPOSIT, DEPOSIT_LABEL } from "./catalog-types";
+import { DEPOSIT_LABEL, PAYMENT_SCHEDULE } from "./catalog-types";
 import type { Lead } from "./store";
 
 export type IntakeValue = string | string[];
@@ -212,7 +212,7 @@ export const intakeSections: IntakeSection[] = [
   {
     id: "wrap",
     title: "Wrap up",
-    say: `Here's how we work. You get one written quote with our price for every item, plus delivery, setup, damage waiver and tax. To book, you pay a ${DEPOSIT_LABEL}, fully refundable for ${DEPOSIT.refundHours} hours, and the balance ${DEPOSIT.balanceDaysBefore} days before your event. There's no separate booking fee.`,
+    say: `Here's how we work. You get one written quote with our price for every item, plus delivery, setup, damage waiver and tax. To book, you pay a ${DEPOSIT_LABEL}, fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours, then the rest in stages, the last of it ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before your event. There's no separate booking fee.`,
     fields: [
       {
         id: "next_step",
@@ -502,7 +502,7 @@ export function proposalEmail(lead: Partial<Lead>, url: string, from?: string) {
     "",
     `Here is your quote for ${eventPhrase(lead)}: ${url}`,
     "",
-    `It shows every item at our price, with delivery, setup, damage waiver and tax on their own lines. You book with a ${DEPOSIT_LABEL}, fully refundable for ${DEPOSIT.refundHours} hours.`,
+    `It shows every item at our price, with delivery, setup, damage waiver and tax on their own lines. You book with a ${DEPOSIT_LABEL}, fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours, then the rest in stages before your event.`,
     "",
     "If you want to change anything, just reply and I'll update it.",
     "",

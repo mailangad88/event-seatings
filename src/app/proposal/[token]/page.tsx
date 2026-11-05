@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { Icon, PriceDisclaimer } from "@/components/ui";
-import { DEPOSIT, usd } from "@/lib/catalog-types";
+import { PAYMENT_SCHEDULE, paymentPlanFor, usd } from "@/lib/catalog-types";
 import { allInEstimate } from "@/lib/fees";
 import { amountDue, chargeLabel, chargeMode, checkoutPaid, stripeEnabled } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
@@ -47,7 +47,13 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
   const subtotal = lead.quote_subtotal ?? lines.reduce((s, l) => s + l.line_total, 0);
   const due = lead.fee_amount ?? amountDue(lead);
   const allIn = allInEstimate(subtotal);
-  const balance = Math.max(0, Math.round((allIn.total - (chargeMode() === "fee" ? due : 0)) * 100) / 100);
+  // The payment plan for this order: a deposit now, maybe a second installment, then the balance.
+  // The installment amount is rentals only (no fees); the balance absorbs the rest, fees included.
+  const plan = paymentPlanFor(subtotal, lead.event_date);
+  const installment = plan.length === 3 ? plan[1] : undefined;
+  const finalDueDate = plan.length > 1 ? plan.at(-1)?.dueDate : undefined;
+  const balance = Math.max(0, Math.round((allIn.total - (chargeMode() === "fee" ? due + (installment?.amount ?? 0) : 0)) * 100) / 100);
+  const byDate = (dueDate: string | undefined, daysBefore: number) => (dueDate ? day(dueDate) : `${daysBefore} days before your event`);
   const event = [lead.event_type, day(lead.event_date), lead.guest_count ? `${lead.guest_count} guests` : undefined, lead.venue ?? lead.city]
     .filter(Boolean)
     .join(" · ");
@@ -107,20 +113,30 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
               <div className="mt-3 space-y-2 text-sm leading-6">
                 <p className="flex items-center gap-2 font-medium text-ink"><Icon name="check" size={18} className="text-gold" /> Booking secured. Thank you!</p>
                 <p className="text-muted">
-                  Your items are reserved for your date. We&apos;ll confirm delivery and pickup times by email, and the balance is due{" "}
-                  {DEPOSIT.balanceDaysBefore} days before your event. Reply any time to change quantities.
+                  Your items are reserved for your date. We&apos;ll confirm delivery and pickup times by email.{" "}
+                  {installment && (
+                    <>A second payment of {usd(installment.amount)} is due {byDate(installment.dueDate, PAYMENT_SCHEDULE.secondDueDaysBefore)}, and the{" "}</>
+                  )}
+                  {!installment && <>The{" "}</>}
+                  balance is due {byDate(finalDueDate, PAYMENT_SCHEDULE.finalDueDaysBefore)}. Reply any time to change quantities.
                 </p>
               </div>
             ) : (
               <div className="mt-3 space-y-4 text-sm leading-6">
                 <p>Your items are held while you decide. Paying the deposit reserves them for your date.</p>
                 <div className="rounded-xl bg-gold-soft/50 p-4">
-                  <p className="text-muted">{chargeLabel()}</p>
+                  <p className="text-muted">{chargeLabel(lead)}</p>
                   <p className="mt-1 font-heading font-semibold text-3xl tabular-nums">{usd(due)}</p>
                   <p className="mt-1 text-xs text-muted">
-                    {chargeMode() === "hold"
-                      ? `Fully refundable for ${DEPOSIT.refundHours} hours. Counts toward your order.`
-                      : `Fully refundable for ${DEPOSIT.refundHours} hours. Counts toward your order. About ${usd(balance)} balance due ${DEPOSIT.balanceDaysBefore} days before your event.`}
+                    {chargeMode() === "hold" ? (
+                      `Fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours. Counts toward your order.`
+                    ) : (
+                      <>
+                        Fully refundable for {PAYMENT_SCHEDULE.refundHours} hours. Counts toward your order.{" "}
+                        {installment && <>About {usd(installment.amount)} due {byDate(installment.dueDate, PAYMENT_SCHEDULE.secondDueDaysBefore)}.{" "}</>}
+                        About {usd(balance)} balance due {byDate(finalDueDate, PAYMENT_SCHEDULE.finalDueDaysBefore)}.
+                      </>
+                    )}
                   </p>
                 </div>
                 {stripeEnabled() ? (

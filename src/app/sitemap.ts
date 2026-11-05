@@ -123,5 +123,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const toolPages = toolSitemapEntries(["/countdown"]);
   const entries = [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
   // Pages for rental companies are noindex, so they never belong in the sitemap.
-  return entries.filter((e) => !isVendorPage(e.url.slice(site.url.length)));
+  return entries.filter((e) => !isVendorPage(e.url.slice(site.url.length))).map(escapeSitemapUrls);
+}
+
+// Next.js writes our `url` and `images` strings straight into <loc> without XML-escaping them, so an
+// unescaped "&" (every Unsplash image URL has one, e.g. "?auto=format&fit=crop") breaks the whole sitemap
+// for Google and Bing. Escape them ourselves. (Our URLs never contain < > " ' so "&" is the only risk,
+// but all five are escaped to be safe.)
+const escapeXml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+
+function escapeSitemapUrls<T extends { url: string; images?: string[] }>(entry: T): T {
+  return { ...entry, url: escapeXml(entry.url), images: entry.images?.map(escapeXml) };
 }

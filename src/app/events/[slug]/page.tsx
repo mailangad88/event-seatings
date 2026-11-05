@@ -13,7 +13,7 @@ import Image from "next/image";
 import { Callout, ReadMore } from "@/components/ui";
 import { sceneFor } from "@/lib/scenes";
 import { getChair } from "@/data/chairs";
-import { DEPOSIT } from "@/lib/catalog-types";
+import { PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { eventPath, eventTypes, getEventType, locationPath, locations } from "@/data/geo";
 import { getPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -121,7 +121,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
           <Callout kind="tip" title="Big guest list?" className="mt-16 max-w-3xl">
             For 120+ guests you&apos;ll likely need chairs, tables, linens and often a tent and floor. We put it all on one written
             quote at the prices on our site, with delivery and setup lined up in the right order. No separate booking fee, and
-            you book with a {DEPOSIT.share * 100}% deposit.{" "}
+            you book with a {PAYMENT_SCHEDULE.firstShare * 100}% deposit, then the rest in stages.{" "}
             <Link href="/pricing" className="link">See how pricing works</Link>.
           </Callout>
         )}

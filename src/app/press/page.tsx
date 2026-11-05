@@ -25,7 +25,7 @@ const facts: [string, string][] = [
   ["Started", "2026"],
   ["Founder", site.owner.name],
   ["Items listed with prices", catalogItems.length.toLocaleString()],
-  ["How we charge", "By the item, at the prices on our site, plus delivery, setup, damage waiver and tax on the quote. No separate booking fee. A 50% deposit books the date. Quotes and planning calls are free."],
+  ["How we charge", "By the item, at the prices on our site, plus delivery, setup, damage waiver and tax on the quote. No separate booking fee. A 20% deposit books the date, then the rest comes due in stages before the event. Quotes and planning calls are free."],
   ["Website", site.domain],
   ["Email", site.email],
 ];

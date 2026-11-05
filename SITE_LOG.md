@@ -39,12 +39,17 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-05): fix invalid sitemap.xml
+
+- Google Search Console reported "Couldn't fetch, 0 pages" on sitemap.xml. Cause: Next.js writes `url`/`images` strings straight into `<loc>` without XML-escaping, and every Unsplash stock photo URL has an un-escaped `&` in its query string (`?auto=format&fit=crop...`), which broke the XML (invalid around line 9351 of ~145,000 lines). All 7,281 URLs and their image entries are now escaped before Next serializes them (src/app/sitemap.ts). Verified the output parses as valid XML with 0 unescaped `&`.
+- Also confirmed: sitemap.xml itself returns 200 from the production deployment (no SITE_PAUSED or Vercel firewall issue), well under the 50,000-URL / 50MB sitemap limits.
+
 ## Changes in this release (2026-11-04): search engine and AI crawler pass
 
 - robots.txt now names every major AI crawler (ChatGPT, Claude, Perplexity, Gemini/Google-Extended, Apple, Copilot/Bing, Amazon, Meta, DuckDuckGo, Mistral, Cohere, Common Crawl) as welcome, and blocks /account and /partners/status as private.
 - Pages for rental companies (/partners, /partners/faq, /partners/terms, /partners/onboard, /vendor-listings) are now noindex and left out of the sitemap and llms.txt, so customers searching for rentals land on customer pages. They still work for anyone with the link. List: src/lib/vendor-pages.ts.
 - llms.txt: dropped the partner line and the insurance mention; the price index line describes the market, not other companies.
-- Bing: /BingSiteAuth.xml serves the NEXT_PUBLIC_BING_VERIFICATION code, and the "we'll be back" page carries the Google and Bing verification tags, so both can verify while the site is paused.
+- Bing: /BingSiteAuth.xml is the static verification file Bing Webmaster Tools issued (public/BingSiteAuth.xml), and the "we'll be back" page carries the Google and Bing meta verification tags, so both can verify while the site is paused.
 - IndexNow: GitHub Actions "IndexNow" button pings Bing with every sitemap URL; the script refuses to run while the site is paused.
 - Alt text on the logo inside share images. Sitewide scan found no other images without alt text.
 

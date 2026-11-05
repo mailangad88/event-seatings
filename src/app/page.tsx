@@ -29,7 +29,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How does pricing work?",
-    a: "Every item shows its rental price per piece or per set, and your quote totals as you pick. Item prices are our own prices for a one-day rental, and there's no separate booking fee. Delivery, setup, damage waiver and tax are itemized before you book, and a 50% deposit reserves your date.",
+    a: "Every item shows its rental price per piece or per set, and your quote totals as you pick. Item prices are our own prices for a one-day rental, and there's no separate booking fee. Delivery, setup, damage waiver and tax are itemized before you book, and a 20% deposit reserves your date, with the rest paid in stages before your event.",
   },
   {
     q: "Do I pay anything to get a quote?",
