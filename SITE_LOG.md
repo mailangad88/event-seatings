@@ -44,7 +44,7 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 - robots.txt now names every major AI crawler (ChatGPT, Claude, Perplexity, Gemini/Google-Extended, Apple, Copilot/Bing, Amazon, Meta, DuckDuckGo, Mistral, Cohere, Common Crawl) as welcome, and blocks /account and /partners/status as private.
 - Pages for rental companies (/partners, /partners/faq, /partners/terms, /partners/onboard, /vendor-listings) are now noindex and left out of the sitemap and llms.txt, so customers searching for rentals land on customer pages. They still work for anyone with the link. List: src/lib/vendor-pages.ts.
 - llms.txt: dropped the partner line and the insurance mention; the price index line describes the market, not other companies.
-- Bing: /BingSiteAuth.xml serves the NEXT_PUBLIC_BING_VERIFICATION code, and the "we'll be back" page carries the Google and Bing verification tags, so both can verify while the site is paused.
+- Bing: /BingSiteAuth.xml is the static verification file Bing Webmaster Tools issued (public/BingSiteAuth.xml), and the "we'll be back" page carries the Google and Bing meta verification tags, so both can verify while the site is paused.
 - IndexNow: GitHub Actions "IndexNow" button pings Bing with every sitemap URL; the script refuses to run while the site is paused.
 - Alt text on the logo inside share images. Sitewide scan found no other images without alt text.
 
