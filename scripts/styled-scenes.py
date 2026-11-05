@@ -175,6 +175,23 @@ INVENTORY_PROMPT = (
 )
 NOT_PHYSICAL = re.compile(r"\b(attendant|setup service|set-up service|delivery|fee|deposit|waiver|labor|labour)\b", re.I)
 
+# Items whose catalog name names a real team/brand/character strongly enough that just telling the model
+# "show it generic" in the same prompt wasn't reliable; swap in a fully generic description instead.
+INVENTORY_NAME_OVERRIDES = {
+    "chicago-bears-cornhole-rental": "Cornhole set, two unbranded wooden boards with bean bags, plain solid colours",
+    "chicago-blackhawks-cornhole-rental": "Cornhole set, two unbranded wooden boards with bean bags, plain solid colours",
+    "chicago-bulls-cornhole-rental": "Cornhole set, two unbranded wooden boards with bean bags, plain solid colours",
+    "chicago-white-sox-cornhole-rental": "Cornhole set, two unbranded wooden boards with bean bags, plain solid colours",
+    "cubs-bean-bag-toss": "Cornhole set, two unbranded wooden boards with bean bags, plain solid colours",
+    "mickey-minnie-bounce-house": "Bounce house, generic castle-themed inflatable with round ears motif, no characters",
+    "spiderman-7-n-1-combo": "Bounce house combo with slide, generic superhero-themed inflatable in red and blue, no characters or logos",
+    "mickey-minnie-7-n-1-combo": "Bounce house combo with slide, generic castle-themed inflatable with round ears motif, no characters",
+    "serpentine-table": "Serpentine banquet table, a curved crescent-moon-shaped banquet table (not straight or rectangular), white linen-draped top, used to form round or S-curved table layouts",
+    "special-table-wood-top-30-in-serpentine": "Serpentine banquet table, a curved crescent-moon-shaped banquet table 30in deep (not straight or rectangular), natural wood top, used to form round or S-curved table layouts",
+    "special-table-wood-top-36-in-serpentine": "Serpentine banquet table, a curved crescent-moon-shaped banquet table 36in deep (not straight or rectangular), natural wood top, used to form round or S-curved table layouts",
+    "table-serpentine-60-in-x30-in-four-join-to-form-a-circle": "Serpentine banquet table, a curved crescent-moon-shaped banquet table 60in x 30in (not straight or rectangular); four of them join edge to edge to form a full circle, white linen-draped top",
+}
+
 HERO_PROMPT = (
     "Create a photograph: {scene}. Any rental items shown in the reference images must keep their exact design "
     "and colour. {look}"
@@ -331,7 +348,7 @@ def jobs(args, rentals):
                 continue
             spec = re.sub(r"^group:\s*", "", it.get("specs") or "")
             specs = f" ({spec})" if spec and spec.lower() not in it["name"].lower() else ""
-            name = re.sub(r"[®™]", "", it["name"])
+            name = INVENTORY_NAME_OVERRIDES.get(it["id"]) or re.sub(r"[®™]", "", it["name"])
             prompt = INVENTORY_PROMPT.format(name=name, specs=specs, section=it.get("section") or it["categoryId"],
                                              count="Shown alone")
             out.append((f"{it['id']}--photo", "photo", it["categoryId"], it["name"], [], (1, 1), prompt))
