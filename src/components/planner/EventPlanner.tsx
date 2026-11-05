@@ -611,6 +611,7 @@ export function EventPlanner({
                 aria-label="Number of guests"
                 value={a.guests || ""}
                 onChange={(e) => setA((p) => ({ ...p, guests: Math.min(5000, Math.max(0, Math.floor(Number(e.target.value)))) }))}
+                onKeyDown={(e) => e.key === "Enter" && a.guests > 0 && (e.preventDefault(), go(2))}
                 className="w-40 border-b-2 border-gold bg-transparent font-heading font-semibold text-6xl tabular-nums outline-none transition-shadow focus:shadow-[0_2px_0_0_var(--gold)]"
               />
               <span className="pb-3 text-lg text-muted">guests</span>
@@ -627,11 +628,20 @@ export function EventPlanner({
             />
             <div className="mt-4 flex flex-wrap gap-2">
               {guestPicks.map((n) => (
-                <button key={n} type="button" onClick={() => setA((p) => ({ ...p, guests: n }))} className={a.guests === n ? "chip chip-active" : "chip"}>
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => {
+                    setA((p) => ({ ...p, guests: n }));
+                    go(2);
+                  }}
+                  className={a.guests === n ? "chip chip-active" : "chip"}
+                >
                   {n}
                 </button>
               ))}
             </div>
+            <p className="mt-2 text-xs text-muted">Tap a number to use it and move on, or fine-tune above first.</p>
             {a.guests > 0 && (
               <p className="mt-6 text-sm text-muted">
                 That&apos;s about {Math.ceil(a.guests / 8)} tables of eight and {Math.round(a.guests * (ev?.formal ? 12 : 10)).toLocaleString()} sq ft for seating.
