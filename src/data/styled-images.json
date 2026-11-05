@@ -4066,6 +4066,18 @@
     "model": "gemini-3.1-flash-image",
     "prompt": "Create a photograph: this exact catering piece in use on a lavish buffet at a Polish-American wedding reception, food being served. The item in the reference image (Glass beverage dispenser (side view)) must appear exactly as shown: same model, shape, colour, material, finish and proportions, clearly visible and in focus; do not redesign it or swap it for a different style. The mood is lush, warm and luxurious: golden evening light, abundant fresh florals (roses, garden roses, hydrangeas, hanging floral strands), candles in glass hurricanes, crystal chandeliers and warm fairy lights, a rich warm palette of ivory, gold, blush and deep red, guests in elegant attire laughing and celebrating naturally. Editorial event photography: shot on a full-frame camera with a 35mm lens, natural depth of field with soft bokeh in the background, realistic skin, fabric and reflections, true-to-life colour. No text, no logos, no watermarks, no signage."
   },
+  "beverage-dispenser--photo": {
+    "src": "/rentals/styled/beverage-dispenser--photo.webp",
+    "category": "catering",
+    "kind": "photo",
+    "alt": "Clear cylindrical glass beverage dispenser with a rounded glass lid and silver metal spigot, sitting on a circular brown wood base",
+    "caption": "Glass beverage dispenser",
+    "parent": "beverage-dispenser",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of a standard event-rental Glass beverage dispenser (3 gallon glass with stand), the real model that Chicago party rental companies stock. Draw the true real-world design of this product with accurate construction and proportions; the reference image is a simplified 3D model, so use it only for the colour, finish and general style. Exactly one of it, alone, on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Real materials: true wood grain, real metal reflections, real fabric weave, real glass refraction. Shot on a full-frame camera with an 85mm lens. Must look like a real photograph, not a 3D render or illustration. No people, no props, no text, no logos, no watermark."
+  },
   "beverage-dispenser--solo": {
     "src": "/rentals/styled/beverage-dispenser--solo.webp",
     "category": "catering",
@@ -7522,6 +7534,54 @@
     "model": "gemini-3.1-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Chiavari White Resin Chair\" (White resin; white cushion; 225 lb max) (rental category: Chairs). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV or licensed character theme, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "chicago-bears-cornhole-rental--photo": {
+    "src": "/rentals/styled/chicago-bears-cornhole-rental--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "Chicago Bears Cornhole Rental features two rectangular wooden boards painted yellow and blue with round target holes, folding legs, and small square fabric bean bags resting on top",
+    "caption": "Chicago Bears Cornhole Rental",
+    "parent": "chicago-bears-cornhole-rental",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Cornhole set, two unbranded wooden boards with bean bags, plain solid colours\" (rental category: Games). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "chicago-blackhawks-cornhole-rental--photo": {
+    "src": "/rentals/styled/chicago-blackhawks-cornhole-rental--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "The Chicago Blackhawks Cornhole Rental includes two rectangular wooden boards in solid blue and red with circular holes, alongside small matching fabric bean bags",
+    "caption": "Chicago Blackhawks Cornhole Rental",
+    "parent": "chicago-blackhawks-cornhole-rental",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Cornhole set, two unbranded wooden boards with bean bags, plain solid colours\" (rental category: Games). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "chicago-bulls-cornhole-rental--photo": {
+    "src": "/rentals/styled/chicago-bulls-cornhole-rental--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "This Chicago Bulls Cornhole Rental includes rectangular wooden boards in blue and red with circular holes, elevated on legs, paired with small square fabric toss bags",
+    "caption": "Chicago Bulls Cornhole Rental",
+    "parent": "chicago-bulls-cornhole-rental",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Cornhole set, two unbranded wooden boards with bean bags, plain solid colours\" (rental category: Games). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "chicago-white-sox-cornhole-rental--photo": {
+    "src": "/rentals/styled/chicago-white-sox-cornhole-rental--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "Chicago White Sox Cornhole Rental features two rectangular wooden boards painted blue and red with circular holes, supported on legs beside a pile of fabric toss bags",
+    "caption": "Chicago White Sox Cornhole Rental",
+    "parent": "chicago-white-sox-cornhole-rental",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Cornhole set, two unbranded wooden boards with bean bags, plain solid colours\" (rental category: Games). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "children-ft-s-table-6-ft-length-x-30-in-width-x-24-in-hi--photo": {
     "src": "/rentals/styled/children-ft-s-table-6-ft-length-x-30-in-width-x-24-in-hi--photo.webp",
     "category": "tables",
@@ -10800,6 +10860,18 @@
     "height": 1024,
     "model": "gemini-3.1-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Crystal Verona Charger\" (Chargers) (rental category: Chargers & Specialty Plates). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV or licensed character theme, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "cubs-bean-bag-toss--photo": {
+    "src": "/rentals/styled/cubs-bean-bag-toss--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "The Cubs Bean Bag Toss features two rectangular wooden boards painted blue and red with circular cutouts, accompanied by stacks of small matching fabric bean bags",
+    "caption": "Cubs Bean Bag Toss",
+    "parent": "cubs-bean-bag-toss",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Cornhole set, two unbranded wooden boards with bean bags, plain solid colours\" (rental category: Games). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "curved-arch-rental-with-full-florals--photo": {
     "src": "/rentals/styled/curved-arch-rental-with-full-florals--photo.webp",
@@ -19289,6 +19361,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Mechanical Surfboard Rental (6hrs)\" (6 hours) (rental category: Interactive Games). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "mechanical-wee-wee-3hrs-3-hours--photo": {
+    "src": "/rentals/styled/mechanical-wee-wee-3hrs-3-hours--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "The Mechanical wee wee 3hrs features a blue and white inflatable vinyl toilet with a curved beige phallus, mounted on a metal base beside a motor and joystick",
+    "caption": "Mechanical wee wee 3hrs",
+    "parent": "mechanical-wee-wee-3hrs-3-hours",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Mechanical wee wee 3hrs\" (3 hours) (rental category: Mechanical Bull Rental). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "mediterranean-blue-salad-plate-8-group-specialty-plates--photo": {
     "src": "/rentals/styled/mediterranean-blue-salad-plate-8-group-specialty-plates--photo.webp",
     "category": "dinnerware",
@@ -19480,6 +19564,30 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Metal Tray\" (w/Curved Handle 16\" x 12\") (rental category: Trays). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "mickey-minnie-7-n-1-combo--photo": {
+    "src": "/rentals/styled/mickey-minnie-7-n-1-combo--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "The Mickey Minnie 7-n-1 Combo is a rectangular vinyl inflatable in red, blue, yellow, and green, featuring corner pillars, mesh windows, and an attached front slide",
+    "caption": "Mickey Minnie 7-n-1 Combo",
+    "parent": "mickey-minnie-7-n-1-combo",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Bounce house combo with slide, generic castle-themed inflatable with round ears motif, no characters\" (rental category: Combo Bouncers with Slide). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "mickey-minnie-bounce-house--photo": {
+    "src": "/rentals/styled/mickey-minnie-bounce-house--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "The Mickey Minnie Bounce House is a square inflatable vinyl castle in red, blue, and yellow, with round ear accents, mesh walls, and corner turrets",
+    "caption": "Mickey Minnie Bounce House",
+    "parent": "mickey-minnie-bounce-house",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Bounce house, generic castle-themed inflatable with round ears motif, no characters\" (rental category: Inflatable Bounce Houses). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "mickey-minnie-marble-combo-dry--photo": {
     "src": "/rentals/styled/mickey-minnie-marble-combo-dry--photo.webp",
@@ -21914,6 +22022,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Pancake Dispenser\" (rental category: Food Equipment). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "pancake-dispenser-5-1-2-lb-48-oz-capacity--photo": {
+    "src": "/rentals/styled/pancake-dispenser-5-1-2-lb-48-oz-capacity--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "This silver stainless steel Pancake Dispenser - 5 1/2 Lb features a cylindrical hopper, tapered funnel base, wire stand, and black-gripped dispensing lever",
+    "caption": "Pancake Dispenser - 5 1/2 Lb",
+    "parent": "pancake-dispenser-5-1-2-lb-48-oz-capacity",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Pancake Dispenser - 5 1/2 Lb\" (48 oz capacity) (rental category: Cooking & Grills). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "pancake-griddle-20-x-16-propane--photo": {
     "src": "/rentals/styled/pancake-griddle-20-x-16-propane--photo.webp",
     "category": "catering-equipment",
@@ -22030,6 +22150,18 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Patio Heater\" (rental category: Party Extras). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "patriot-party-beverage-bucket--photo": {
+    "src": "/rentals/styled/patriot-party-beverage-bucket--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The Patriot Party Beverage Bucket is a rectangular plastic cooler with a blue body, a white lid with cup holders, red handles, and a drain plug",
+    "caption": "Patriot Party Beverage Bucket",
+    "parent": "patriot-party-beverage-bucket",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Patriot Party Beverage Bucket\" (rental category: Party Extras). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "patriot-pool-combo--photo": {
     "src": "/rentals/styled/patriot-pool-combo--photo.webp",
@@ -23633,6 +23765,18 @@
     "model": "gemini-3.1-flash-image",
     "prompt": "Create a photograph of a single Projector on its own as the clear hero of the frame, exactly as shown in the reference image: same model, shape, colour, material, finish and proportions. Only one of it, fully visible and sharp, set in a lush styled event space (on its own in a styled corner of the reception) with florals, candlelight and chandelier bokeh softly blurred behind. No people in focus. The mood is lush, warm and luxurious: golden evening light, abundant fresh florals (roses, garden roses, hydrangeas, hanging floral strands), candles in glass hurricanes, crystal chandeliers and warm fairy lights, a rich warm palette of ivory, gold, blush and deep red, guests in elegant attire laughing and celebrating naturally. Editorial event photography: shot on a full-frame camera with a 35mm lens, natural depth of field with soft bokeh in the background, realistic skin, fabric and reflections, true-to-life colour. No text, no logos, no watermarks, no signage."
   },
+  "propane-4-burner-grill-4-burner--photo": {
+    "src": "/rentals/styled/propane-4-burner-grill-4-burner--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The rectangular Propane 4-burner Grill features a silver stainless steel hood, four control dials, black metal side shelves, and a wheeled cart holding a covered propane tank",
+    "caption": "Propane 4-burner Grill",
+    "parent": "propane-4-burner-grill-4-burner",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Propane 4-burner Grill\" (4 burner) (rental category: Party Extras). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "propane-griddle-40-x-24--photo": {
     "src": "/rentals/styled/propane-griddle-40-x-24--photo.webp",
     "category": "catering-equipment",
@@ -23668,6 +23812,18 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Propane Tank Holder, 2 Tank Hard Surface\" (holds two 100 lb tanks) (rental category: Heaters). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "prospector-ft-s-gem-mine-premium-experience--photo": {
+    "src": "/rentals/styled/prospector-ft-s-gem-mine-premium-experience--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "Prospector's Gem Mine Premium Experience is a rectangular brown wooden cart on wheels with a sand hopper, hanging metal mesh sifters, and a blue water basin",
+    "caption": "Prospector's Gem Mine Premium Experience",
+    "parent": "prospector-ft-s-gem-mine-premium-experience",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Prospector's Gem Mine Premium Experience\" (rental category: Games). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "punch-cup--photo": {
     "src": "/rentals/styled/punch-cup--photo.webp",
@@ -25821,6 +25977,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Serving Bowl 10 Round (Platinum)\" (rental category: Dinnerware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "serving-bowl-8-round--photo": {
+    "src": "/rentals/styled/serving-bowl-8-round--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "Serving Bowl 8 Round is a deep circular white ceramic bowl with smooth, curved sides, a glossy glazed finish, and a stable flat base",
+    "caption": "Serving Bowl 8 Round",
+    "parent": "serving-bowl-8-round",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Serving Bowl 8 Round\" (rental category: Dinnerware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "serving-platter-13-oval-gold--photo": {
     "src": "/rentals/styled/serving-platter-13-oval-gold--photo.webp",
     "category": "catering-equipment",
@@ -25833,6 +26001,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Serving Platter 13 Oval (Gold)\" (rental category: Dinnerware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "serving-platter-13-oval-platinum--photo": {
+    "src": "/rentals/styled/serving-platter-13-oval-platinum--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The Serving Platter 13 Oval (Platinum) is an oval silver metal dish with a polished reflective finish and a smooth, slightly raised wide rim",
+    "caption": "Serving Platter 13 Oval (Platinum)",
+    "parent": "serving-platter-13-oval-platinum",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Serving Platter 13 Oval (Platinum)\" (rental category: Dinnerware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "serving-platter-13-round-glass--photo": {
     "src": "/rentals/styled/serving-platter-13-round-glass--photo.webp",
     "category": "catering-equipment",
@@ -25844,6 +26024,18 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Serving Platter 13 Round (Glass)\" (rental category: Dinnerware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "serving-platter-9x13-rectangle-white-9x13-rented-in-dozens-only--photo": {
+    "src": "/rentals/styled/serving-platter-9x13-rectangle-white-9x13-rented-in-dozens-only--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "Serving Platter 9x13 Rectangle White is a smooth white ceramic tray featuring a rectangular shape, rounded corners, and shallow raised rim edges",
+    "caption": "Serving Platter 9x13 Rectangle White",
+    "parent": "serving-platter-9x13-rectangle-white-9x13-rented-in-dozens-only",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Serving Platter 9x13 Rectangle White\" (9x13; rented in dozens only) (rental category: China). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "serving-tray": {
     "src": "/rentals/styled/serving-tray.webp",
@@ -28362,6 +28554,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Specialty Stemware - White Goblet, 16oz\" (rental category: Glassware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "spiderman-7-n-1-combo--photo": {
+    "src": "/rentals/styled/spiderman-7-n-1-combo--photo.webp",
+    "category": "games-kids",
+    "kind": "photo",
+    "alt": "The Spiderman 7-n-1 Combo is a castle-shaped inflatable vinyl bounce house in red and blue, featuring corner pillars, a side slide, comic graphics, and mesh windows",
+    "caption": "Spiderman 7-n-1 Combo",
+    "parent": "spiderman-7-n-1-combo",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Bounce house combo with slide, generic superhero-themed inflatable in red and blue, no characters or logos\" (rental category: Combo Bouncers with Slide). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "spiderman-banner-bounce-house--photo": {
     "src": "/rentals/styled/spiderman-banner-bounce-house--photo.webp",
     "category": "games-kids",
@@ -29007,6 +29211,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel (Circlet) - Teaspoon\" (rental category: Flatware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "stainless-steel-gravy-ladle-2oz--photo": {
+    "src": "/rentals/styled/stainless-steel-gravy-ladle-2oz--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The silver Stainless Steel Gravy Ladle features a deep, round bowl and a polished upright handle ending in a downward curved hook",
+    "caption": "Stainless Steel Gravy Ladle",
+    "parent": "stainless-steel-gravy-ladle-2oz",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Gravy Ladle\" (2oz) (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "stainless-steel-hammered-handle-bouillon-spoon-dessert-spoon--photo": {
     "src": "/rentals/styled/stainless-steel-hammered-handle-bouillon-spoon-dessert-spoon--photo.webp",
     "category": "flatware",
@@ -29114,6 +29330,54 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Ice Cream Scoop\" (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stainless-steel-ice-scoop--photo": {
+    "src": "/rentals/styled/stainless-steel-ice-scoop--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "This silver Stainless Steel Ice Scoop has a deep rounded bowl made of polished metal, curved sides, and a smooth cylindrical handle with a small hanging hole",
+    "caption": "Stainless Steel Ice Scoop",
+    "parent": "stainless-steel-ice-scoop",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Ice Scoop\" (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stainless-steel-ice-tong-6-in--photo": {
+    "src": "/rentals/styled/stainless-steel-ice-tong-6-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "A silver Stainless Steel Ice Tong made of curved metal with straight arms and wide, serrated claw ends for gripping ice",
+    "caption": "Stainless Steel Ice Tong",
+    "parent": "stainless-steel-ice-tong-6-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Ice Tong\" (6¾\") (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stainless-steel-ladle-for-petite-marmite-4oz--photo": {
+    "src": "/rentals/styled/stainless-steel-ladle-for-petite-marmite-4oz--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The silver Stainless Steel Ladle for Petite Marmite features a deep, round bowl attached to a long angled handle that finishes in a curved hook",
+    "caption": "Stainless Steel Ladle for Petite Marmite",
+    "parent": "stainless-steel-ladle-for-petite-marmite-4oz",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Ladle for Petite Marmite\" (4oz) (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stainless-steel-lobster-cracker--photo": {
+    "src": "/rentals/styled/stainless-steel-lobster-cracker--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "A silver Stainless Steel Lobster Cracker features curved handles, a top hinge, and a teardrop-shaped jaw with serrated interior teeth for gripping shells",
+    "caption": "Stainless Steel Lobster Cracker",
+    "parent": "stainless-steel-lobster-cracker",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Lobster Cracker\" (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "stainless-steel-marquette-pattern-bouillon-spoon--photo": {
     "src": "/rentals/styled/stainless-steel-marquette-pattern-bouillon-spoon--photo.webp",
@@ -29606,6 +29870,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel (Onyx) - Teaspoon\" (rental category: Flatware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "stainless-steel-pastry-tong-9-in--photo": {
+    "src": "/rentals/styled/stainless-steel-pastry-tong-9-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "A silver Stainless Steel Pastry Tong features a V-shaped body with wide, scalloped gripping ends joined by a spring hinge",
+    "caption": "Stainless Steel Pastry Tong",
+    "parent": "stainless-steel-pastry-tong-9-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Pastry Tong\" (9½\") (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "stainless-steel-petite-marmite-7-qt-w-sterno--photo": {
     "src": "/rentals/styled/stainless-steel-petite-marmite-7-qt-w-sterno--photo.webp",
     "category": "catering-equipment",
@@ -29617,6 +29893,42 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel - Petite Marmite, 7 qt. w/Sterno\" (rental category: Chafing Dishes). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stainless-steel-platter-tong-6-in--photo": {
+    "src": "/rentals/styled/stainless-steel-platter-tong-6-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "A silver Stainless Steel Platter Tong made of brushed metal, shaped in a U-bend with two smooth, rounded paddle ends for serving food",
+    "caption": "Stainless Steel Platter Tong",
+    "parent": "stainless-steel-platter-tong-6-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Platter Tong\" (6½\") (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stainless-steel-serving-fork-9-in--photo": {
+    "src": "/rentals/styled/stainless-steel-serving-fork-9-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "This silver Stainless Steel Serving Fork features three long pointed tines and a smooth, curved handle with a reflective polished finish",
+    "caption": "Stainless Steel Serving Fork",
+    "parent": "stainless-steel-serving-fork-9-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Serving Fork\" (9\") (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stainless-steel-serving-spoon-9-in--photo": {
+    "src": "/rentals/styled/stainless-steel-serving-spoon-9-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "A silver Stainless Steel Serving Spoon features a rounded oval bowl, a polished reflective finish, and a flat handle bordered by a thin contoured ridge",
+    "caption": "Stainless Steel Serving Spoon",
+    "parent": "stainless-steel-serving-spoon-9-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stainless Steel Serving Spoon\" (9\") (rental category: Serving Utensils). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "stainless-steel-table-30-in-x-30-in-x-34-in-height--photo": {
     "src": "/rentals/styled/stainless-steel-table-30-in-x-30-in-x-34-in-height--photo.webp",
@@ -29746,6 +30058,18 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stand A Bottle Carnival Skill Game\" (rental category: Games). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stand-waiter-38-in-walnut-wood-tray-stand--photo": {
+    "src": "/rentals/styled/stand-waiter-38-in-walnut-wood-tray-stand--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The Stand, Waiter 38\" Walnut is a tall brown wood table with a square raised-edge top and four legs joined by lower horizontal crossbars",
+    "caption": "Stand, Waiter 38\" Walnut",
+    "parent": "stand-waiter-38-in-walnut-wood-tray-stand",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stand, Waiter 38\" Walnut\" (wood tray stand) (rental category: Catering). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "standard-bounce-house--photo": {
     "src": "/rentals/styled/standard-bounce-house--photo.webp",
@@ -29914,6 +30238,30 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Sticker and Vending Machine and Tattoo Vending Machine Rental\" (rental category: Interactive Experiences). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stock-pot-40-quart-basket-rented-separately--photo": {
+    "src": "/rentals/styled/stock-pot-40-quart-basket-rented-separately--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The Stock Pot, 40 Quart has a deep cylindrical silver stainless steel body with two riveted side handles, a polished band, and a fitted lid",
+    "caption": "Stock Pot, 40 Quart",
+    "parent": "stock-pot-40-quart-basket-rented-separately",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stock Pot, 40 Quart\" (basket rented separately) (rental category: Cooking & Grills). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "stove-1-burn-60-000-btu-prop-1-burner-propane--photo": {
+    "src": "/rentals/styled/stove-1-burn-60-000-btu-prop-1-burner-propane--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "Stove, 1 Burn 60,000 Btu Prop features a square silver stainless steel frame, four legs, a black cast iron grate, a front knob, and an orange hose",
+    "caption": "Stove, 1 Burn 60,000 Btu Prop",
+    "parent": "stove-1-burn-60-000-btu-prop-1-burner-propane",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Stove, 1 Burn 60,000 Btu Prop\" (1 burner propane) (rental category: Cooking & Grills). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "stove-top-electric-burner--photo": {
     "src": "/rentals/styled/stove-top-electric-burner--photo.webp",
@@ -30196,6 +30544,18 @@
     "height": 1024,
     "model": "gemini-3.1-flash-image",
     "prompt": "Create a photograph: this exact table dressed and set for a classic black-tie wedding reception, guests mingling around it. The item in the reference image (Sweetheart table with gold sequin linen (side view)) must appear exactly as shown: same model, shape, colour, material, finish and proportions, clearly visible and in focus; do not redesign it or swap it for a different style. The mood is lush, warm and luxurious: golden evening light, abundant fresh florals (roses, garden roses, hydrangeas, hanging floral strands), candles in glass hurricanes, crystal chandeliers and warm fairy lights, a rich warm palette of ivory, gold, blush and deep red, guests in elegant attire laughing and celebrating naturally. Editorial event photography: shot on a full-frame camera with a 35mm lens, natural depth of field with soft bokeh in the background, realistic skin, fabric and reflections, true-to-life colour. No text, no logos, no watermarks, no signage."
+  },
+  "sweetheart-table--photo": {
+    "src": "/rentals/styled/sweetheart-table--photo.webp",
+    "category": "tables",
+    "kind": "photo",
+    "alt": "A rectangular sweetheart table with gold sequin linen is covered in shiny metallic sequins draping to the floor, placed in front of two gold chairs",
+    "caption": "Sweetheart table with gold sequin linen",
+    "parent": "sweetheart-table",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of a standard event-rental Sweetheart table with gold sequin linen (Decorative table for two, about 4'-5' wide), the real model that Chicago party rental companies stock. Draw the true real-world design of this product with accurate construction and proportions; the reference image is a simplified 3D model, so use it only for the colour, finish and general style. Exactly one of it, alone, on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Real materials: true wood grain, real metal reflections, real fabric weave, real glass refraction. Shot on a full-frame camera with an 85mm lens. Must look like a real photograph, not a 3D render or illustration. No people, no props, no text, no logos, no watermark."
   },
   "sweetheart-table--solo": {
     "src": "/rentals/styled/sweetheart-table--solo.webp",
@@ -31174,6 +31534,18 @@
     "model": "gemini-3.1-flash-image",
     "prompt": "Create a photograph: this exact heater warming guests at an autumn evening celebration on a Chicago patio strung with lights. The item in the reference image (Forced-air tent heater (side view)) must appear exactly as shown: same model, shape, colour, material, finish and proportions, clearly visible and in focus; do not redesign it or swap it for a different style. The mood is lush, warm and luxurious: golden evening light, abundant fresh florals (roses, garden roses, hydrangeas, hanging floral strands), candles in glass hurricanes, crystal chandeliers and warm fairy lights, a rich warm palette of ivory, gold, blush and deep red, guests in elegant attire laughing and celebrating naturally. Editorial event photography: shot on a full-frame camera with a 35mm lens, natural depth of field with soft bokeh in the background, realistic skin, fabric and reflections, true-to-life colour. No text, no logos, no watermarks, no signage."
   },
+  "tent-heater--photo": {
+    "src": "/rentals/styled/tent-heater--photo.webp",
+    "category": "heating",
+    "kind": "photo",
+    "alt": "This forced-air tent heater features a rectangular white metal body on black tubular legs, fitted with a side vent, top controls, and an extended flexible silver duct",
+    "caption": "Forced-air tent heater",
+    "parent": "tent-heater",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of a standard event-rental Forced-air tent heater (Indirect-fired, heats 800-1,000 sq ft, fuel extra), the real model that Chicago party rental companies stock. Draw the true real-world design of this product with accurate construction and proportions; the reference image is a simplified 3D model, so use it only for the colour, finish and general style. Exactly one of it, alone, on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Real materials: true wood grain, real metal reflections, real fabric weave, real glass refraction. Shot on a full-frame camera with an 85mm lens. Must look like a real photograph, not a 3D render or illustration. No people, no props, no text, no logos, no watermark."
+  },
   "tent-heater--solo": {
     "src": "/rentals/styled/tent-heater--solo.webp",
     "category": "heating",
@@ -31695,6 +32067,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Traditional Champagne Glass 4 1/2 oz\" (rental category: Glassware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "trash-can--photo": {
+    "src": "/rentals/styled/trash-can--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "This cylindrical dark grey plastic Trash Can features a rounded swing-top lid, molded side handles, and a smooth, durable finish",
+    "caption": "Trash Can",
+    "parent": "trash-can",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Trash Can\" (rental category: Party Extras). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "tray-brown-or-teal--photo": {
     "src": "/rentals/styled/tray-brown-or-teal--photo.webp",
     "category": "catering-equipment",
@@ -31730,6 +32114,18 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Tray Stand, Chrome\" (rental category: Table Busing Equipment). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "tray-waiter-23-in-x-27-in--photo": {
+    "src": "/rentals/styled/tray-waiter-23-in-x-27-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The Tray, Waiter 23\"X 27\" is a rectangular black plastic tray featuring a wide flat surface, rounded corners, and shallow raised rims for serving",
+    "caption": "Tray, Waiter 23\"X 27\"",
+    "parent": "tray-waiter-23-in-x-27-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Tray, Waiter 23\"X 27\"\" (rental category: Catering). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "triangle-arch-rental--photo": {
     "src": "/rentals/styled/triangle-arch-rental--photo.webp",
@@ -32194,6 +32590,18 @@
     "model": "gemini-3.1-flash-image",
     "prompt": "Create a photograph: this exact lighting glowing over guests dining at a Polish-American wedding reception. The item in the reference image (Wireless LED uplight (side view)) must appear exactly as shown: same model, shape, colour, material, finish and proportions, clearly visible and in focus; do not redesign it or swap it for a different style. The mood is lush, warm and luxurious: golden evening light, abundant fresh florals (roses, garden roses, hydrangeas, hanging floral strands), candles in glass hurricanes, crystal chandeliers and warm fairy lights, a rich warm palette of ivory, gold, blush and deep red, guests in elegant attire laughing and celebrating naturally. Editorial event photography: shot on a full-frame camera with a 35mm lens, natural depth of field with soft bokeh in the background, realistic skin, fabric and reflections, true-to-life colour. No text, no logos, no watermarks, no signage."
   },
+  "uplight--photo": {
+    "src": "/rentals/styled/uplight--photo.webp",
+    "category": "lighting",
+    "kind": "photo",
+    "alt": "A compact wireless LED uplight featuring a black metal cube housing, an adjustable support bracket, and a round central lens casting warm illumination",
+    "caption": "Wireless LED uplight",
+    "parent": "uplight",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of a standard event-rental Wireless LED uplight (Wireless, battery powered, any color), the real model that Chicago party rental companies stock. Draw the true real-world design of this product with accurate construction and proportions; the reference image is a simplified 3D model, so use it only for the colour, finish and general style. Exactly one of it, alone, on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Real materials: true wood grain, real metal reflections, real fabric weave, real glass refraction. Shot on a full-frame camera with an 85mm lens. Must look like a real photograph, not a 3D render or illustration. No people, no props, no text, no logos, no watermark."
+  },
   "uplight--solo": {
     "src": "/rentals/styled/uplight--solo.webp",
     "category": "lighting",
@@ -32549,6 +32957,30 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Vintage Wood Bar Folding, 7′ x 21″ x 42″ H\" (rental category: Bars & Bar Stools). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "vintage-wood-tray-oblong-21-in-x-6-in--photo": {
+    "src": "/rentals/styled/vintage-wood-tray-oblong-21-in-x-6-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "This oblong Vintage Wood Tray is made of light brown wood and includes raised edges, built-in cutout handles, and a flat slatted base",
+    "caption": "Vintage Wood Tray",
+    "parent": "vintage-wood-tray-oblong-21-in-x-6-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Vintage Wood Tray\" (Oblong 21\" x 6½\") (rental category: Trays). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "vintage-wood-tray-square-16-in-x-16-in--photo": {
+    "src": "/rentals/styled/vintage-wood-tray-square-16-in-x-16-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The square Vintage Wood Tray is made of warm brown wood with cutout side handles, a slatted base, and dark metal corner brackets",
+    "caption": "Vintage Wood Tray",
+    "parent": "vintage-wood-tray-square-16-in-x-16-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Vintage Wood Tray\" (Square 16\" x 16\") (rental category: Trays). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "volcano-waterslide-with-slip-n-slide--photo": {
     "src": "/rentals/styled/volcano-waterslide-with-slip-n-slide--photo.webp",
     "category": "games-kids",
@@ -32741,6 +33173,18 @@
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Walnut 8' x 42\" Table\" (rental category: Farm Tables & Benches). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
+  "water-boiler-tea-36-cup-one-cup-per-minute-120v--photo": {
+    "src": "/rentals/styled/water-boiler-tea-36-cup-one-cup-per-minute-120v--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "This cylindrical silver stainless steel Water Boiler (Tea) 36 Cup features a black dispensing tap, clear water level gauge, drip tray, and side handles",
+    "caption": "Water Boiler (Tea) 36 Cup",
+    "parent": "water-boiler-tea-36-cup-one-cup-per-minute-120v",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Water Boiler (Tea) 36 Cup\" (one cup per minute; 120V) (rental category: Catering). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
   "water-goblet": {
     "src": "/rentals/styled/water-goblet.webp",
     "category": "tableware",
@@ -32858,6 +33302,18 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Water Vina 12.5 oz\" (rental category: Glassware). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop (#EFE9DF) with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "wave-platter-15-in--photo": {
+    "src": "/rentals/styled/wave-platter-15-in--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The Wave Platter is a shallow white ceramic serving dish featuring an undulating rim with soft curves and a smooth, glossy surface",
+    "caption": "Wave Platter",
+    "parent": "wave-platter-15-in",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"Wave Platter\" (15\") (rental category: White Serving Pieces). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "wedding-cake-stand-square-silver-14-in-x-3-5-in-t--photo": {
     "src": "/rentals/styled/wedding-cake-stand-square-silver-14-in-x-3-5-in-t--photo.webp",
@@ -33440,6 +33896,18 @@
     "height": 1024,
     "model": "gemini-2.5-flash-image",
     "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"White Footed Bowl 4″, 8oz\" (Bowls) (rental category: Bowls (China)). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
+  },
+  "white-footed-bowl-6-24oz-group-bowls--photo": {
+    "src": "/rentals/styled/white-footed-bowl-6-24oz-group-bowls--photo.webp",
+    "category": "catering-equipment",
+    "kind": "photo",
+    "alt": "The White Footed Bowl 6″, 24oz is a round white ceramic dish featuring a deep basin, smooth glazed finish, and a flared pedestal base",
+    "caption": "White Footed Bowl 6″, 24oz",
+    "parent": "white-footed-bowl-6-24oz-group-bowls",
+    "width": 1024,
+    "height": 1024,
+    "model": "gemini-2.5-flash-image",
+    "prompt": "Create a realistic professional catalogue photograph of this event-rental item, the standard real-world model that Chicago party rental companies stock: \"White Footed Bowl 6″, 24oz\" (Bowls) (rental category: Bowls (China)). Show the item exactly as that product really looks, with accurate construction, proportions, colour and material; if the name gives a size or quantity, show one unit (or the set it names). Shown alone on a seamless warm off-white studio backdrop with a soft natural floor shadow, soft window light from the left, three-quarter front view, the whole item in frame and centred with space around it, sharp focus. Must look like a real photograph, not a 3D render or illustration. If the name mentions a movie, TV, sports team, licensed character, or a brand-name game or toy, show a generic unbranded version in similar colours with no characters. No people, no props, no text, no logos, no brand names, no watermark."
   },
   "white-footed-bowl-8-64oz-group-bowls--photo": {
     "src": "/rentals/styled/white-footed-bowl-8-64oz-group-bowls--photo.webp",
