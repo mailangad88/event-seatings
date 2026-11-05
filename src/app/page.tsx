@@ -5,7 +5,7 @@ import { ReadyPackages } from "@/components/ReadyPackages";
 import { CategoryTile, FaqList, Icon, QuoteCta, Section, StepFlow, TrustBar, type Faq } from "@/components/ui";
 import { rentalCategories } from "@/lib/nav";
 import { catalogItems } from "@/data/catalog";
-import { categoryTile, scenes } from "@/lib/scenes";
+import { categoryTile } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import type { Metadata } from "next";
 import { seo } from "@/lib/seo";
@@ -41,9 +41,14 @@ const faqs: Faq[] = [
   },
 ];
 
-export default function Home() {
-  const hero = scenes.blushGarden;
+// The hero uses our own rendered tablescape (not the styled Gemini version, which has guests in it)
+// so the home page opens on an empty, just-set-up table.
+const hero = {
+  src: "/images/scenes/blush-garden-tablescape.webp",
+  alt: `Blush garden wedding tablescape rendered by ${site.name}: rose-gold bamboo chairs with ivory cushions, a blush linen banquet table, taper candles and a low white floral runner in front of a twinkle-light drape`,
+};
 
+export default function Home() {
   return (
     <>
       {/* Hero: one message, one main button, one picture. */}
@@ -121,7 +126,7 @@ export default function Home() {
           <span className="relative block aspect-[4/3] md:aspect-auto">
             <Image
               src="/rentals/styled/event-indian-wedding.webp"
-              alt="Bride and groom seated under a marigold mandap with family in bright saris and a dhol player"
+              alt="Carved wooden mandap draped in marigold and floral garlands over a cushioned loveseat, set up in a ballroom under a crystal chandelier"
               fill
               sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
