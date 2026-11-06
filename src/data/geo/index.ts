@@ -10,6 +10,7 @@ import { dupageAreas } from "./areas/dupage";
 import { foxValleyMchenryAreas } from "./areas/fox-valley-mchenry";
 import { lakeCountyAreas } from "./areas/lake-county";
 import { nearWestCookAreas } from "./areas/near-west-cook";
+import { nearWestCookAreas2 } from "./areas/near-west-cook-2";
 import { northCookAreas } from "./areas/north-cook";
 import { southCookWillAreas } from "./areas/south-cook-will";
 import { westSouthwestCookAreas } from "./areas/west-southwest-cook";
@@ -30,6 +31,7 @@ const allLocations: Location[] = [
   ...southCookWillAreas,
   ...countiesOuterAreas,
   ...nearWestCookAreas,
+  ...nearWestCookAreas2,
 ];
 
 // First entry wins if a slug is ever duplicated across files.
