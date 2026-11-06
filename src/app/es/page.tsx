@@ -28,8 +28,8 @@ const occasions: { title: string; text: string; href?: string; cta?: string }[] 
   {
     title: "Bodas",
     text: "Sillas para la ceremonia y la recepción, mesas, mantelería y pista de baile en una sola lista.",
-    href: "/events/weddings",
-    cta: "Ver ideas de sillas",
+    href: "/es/bodas",
+    cta: "Ver la página de bodas",
   },
   {
     title: "Bautizos, comuniones y eventos religiosos",
