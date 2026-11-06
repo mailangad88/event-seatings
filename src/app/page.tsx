@@ -3,6 +3,7 @@ import Link from "@/components/Link";
 import { Reveal } from "@/components/Reveal";
 import { ReadyPackages } from "@/components/ReadyPackages";
 import { CategoryTile, FaqList, Icon, QuoteCta, Section, StepFlow, TrustBar, type Faq } from "@/components/ui";
+import { LaunchOffer } from "@/components/LaunchOffer";
 import { rentalCategories } from "@/lib/nav";
 import { catalogItems } from "@/data/catalog";
 import { categoryTile } from "@/lib/scenes";
@@ -75,6 +76,7 @@ export default function Home() {
               </Link>
               <Link href="/rentals" className="link-line">Or browse rentals</Link>
             </div>
+            <LaunchOffer from="brand-home" />
           </div>
           <div className="animate-rise media aspect-[4/3] shadow-lift [animation-delay:150ms] lg:aspect-[4/5]">
             <Image src={hero.src} alt={hero.alt} fill priority fetchPriority="high" sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
