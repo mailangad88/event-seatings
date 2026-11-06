@@ -84,6 +84,10 @@ const faqs: Faq[] = [
     a: "No. There's no minimum order with us. Order exactly what you need, and delivery is priced for your order size and address.",
   },
   {
+    q: "Do I need to call around and compare prices?",
+    a: "You can, but you don't need to. Every price is already on our site, and your quote spells out delivery, setup, the damage waiver and tax before you book anything. If another quote comes in lower once those are added in, tell us and we'll take a look.",
+  },
+  {
     q: `You're new. Why should I trust ${site.name}?`,
     a: `We started in 2026 and don't have many reviews yet, so we don't ask you to take our word for it. You get every price in writing, talk to us before you book, and your deposit is fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours.`,
   },

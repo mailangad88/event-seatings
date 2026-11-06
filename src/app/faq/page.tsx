@@ -70,6 +70,10 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
         a: `Chicago and the suburbs, including ${site.serviceArea.slice(1).join(", ")} and nearby towns. Ask about venues farther out.`,
       },
       {
+        q: "How much does delivery cost?",
+        a: "It depends on your order size, your address and whether your venue has stairs or a loading dock. Most orders run $150 to $400 round trip. Your quote shows the exact amount for your date and venue before you book anything.",
+      },
+      {
         q: "Is setup included?",
         a: "Delivery and pickup are standard. Full setup (placing chairs, dressing tables) is available on most items and is shown as its own line on your quote.",
       },
