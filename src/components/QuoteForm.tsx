@@ -21,6 +21,7 @@ import { RentalIcon } from "./rentals/RentalIcon";
 import { Icon, type IconName } from "./ui/Icon";
 import { PriceDisclaimer } from "./ui/PriceDisclaimer";
 import { PriceTag, formatPrice } from "./ui/PriceTag";
+import { ThumbZoom } from "./ui/ThumbZoom";
 import { postLead } from "@/lib/lead-client";
 import { trackActivity } from "@/lib/activity-client";
 import { clearList, readList, writeList } from "@/lib/quote-list";
@@ -69,6 +70,17 @@ const fromPreset = (lines: PresetLine[]) =>
     string,
     Pick
   >;
+
+// The still image behind ItemVisual for a given item/variant, when there is one to enlarge
+// (the chair illustration and the plain category icon have no bitmap to zoom into).
+export function itemZoomSrc(item: QuoteItem, variant?: string): string | undefined {
+  const sw = variant ? item.variants?.find((v) => v.key === variant) : undefined;
+  if (sw) return sw.src;
+  if (item.image) return item.image;
+  const photo = item.photo ? stockPhotos[item.photo] : undefined;
+  if (photo) return stockSrc(photo, 480);
+  return undefined;
+}
 
 // The visual for an item: its 3D render, the chair illustration, or the category drawing.
 export function ItemVisual({ item, sizes, variant }: { item: QuoteItem; sizes: string; variant?: string }) {
@@ -345,11 +357,25 @@ export function QuoteForm({
           and email a confirmed proposal, usually within one business day. Nothing is charged or held until you confirm.
         </p>
         <ul className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-2">
-          {lines.slice(0, 12).map(({ item, qty }) => (
-            <li key={item.id} className="relative h-16 w-16 overflow-hidden rounded-xl border border-line" title={`${qty} × ${item.name}`}>
-              <ItemVisual item={item} sizes="64px" />
-            </li>
-          ))}
+          {lines.slice(0, 12).map(({ item, qty }) => {
+            const thumbBox = (
+              <span className="relative block h-16 w-16 overflow-hidden rounded-xl border border-line">
+                <ItemVisual item={item} sizes="64px" />
+              </span>
+            );
+            const zoom = itemZoomSrc(item);
+            return (
+              <li key={item.id} title={`${qty} × ${item.name}`}>
+                {zoom ? (
+                  <ThumbZoom src={zoom} alt={item.imageAlt ?? `${item.name} rental`} className="h-16 w-16 rounded-xl">
+                    {thumbBox}
+                  </ThumbZoom>
+                ) : (
+                  thumbBox
+                )}
+              </li>
+            );
+          })}
         </ul>
         <BookingCta
           {...contact}
@@ -376,9 +402,21 @@ export function QuoteForm({
     <ul className="space-y-3">
       {lines.map(({ item, qty }) => (
         <li key={item.id} className="flex items-center gap-3">
-          <span className={`relative ${thumb} shrink-0 overflow-hidden rounded-xl border border-line bg-surface-2`}>
-            <ItemVisual item={item} sizes="56px" variant={colours[item.id]} />
-          </span>
+          {(() => {
+            const thumbSpan = (
+              <span className={`relative ${thumb} shrink-0 overflow-hidden rounded-xl border border-line bg-surface-2`}>
+                <ItemVisual item={item} sizes="56px" variant={colours[item.id]} />
+              </span>
+            );
+            const zoom = itemZoomSrc(item, colours[item.id]);
+            return zoom ? (
+              <ThumbZoom src={zoom} alt={item.imageAlt ?? `${item.name} rental`} className={`${thumb} shrink-0 rounded-xl`}>
+                {thumbSpan}
+              </ThumbZoom>
+            ) : (
+              thumbSpan
+            );
+          })()}
           <span className="min-w-0 flex-1">
             <span className="block truncate text-sm font-medium">{item.name}</span>
             {colours[item.id] && (

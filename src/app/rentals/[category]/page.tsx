@@ -15,7 +15,7 @@ import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } f
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { categoryScene } from "@/lib/scenes";
-import { Icon, PriceDisclaimer } from "@/components/ui";
+import { Icon, PriceDisclaimer, ThumbZoom } from "@/components/ui";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -195,17 +195,23 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                       <tr key={i.id} className="border-t border-line">
                         <td className="w-14 py-2.5 pr-3 align-top">
                           {own ? (
-                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
-                              <Image src={own} alt={rentalAlt(i.name, i.specs, i.id)} fill sizes="44px" loading="lazy" className="object-cover" />
-                            </span>
+                            <ThumbZoom src={own} alt={rentalAlt(i.name, i.specs, i.id)}>
+                              <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
+                                <Image src={own} alt={rentalAlt(i.name, i.specs, i.id)} fill sizes="44px" loading="lazy" className="object-cover" />
+                              </span>
+                            </ThumbZoom>
                           ) : similar ? (
-                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
-                              <Image src={similar.src} alt={similarAlt(similar, i.name)} fill sizes="44px" loading="lazy" className="object-cover" />
-                            </span>
+                            <ThumbZoom src={similar.src} alt={similarAlt(similar, i.name)}>
+                              <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
+                                <Image src={similar.src} alt={similarAlt(similar, i.name)} fill sizes="44px" loading="lazy" className="object-cover" />
+                              </span>
+                            </ThumbZoom>
                           ) : thumb.matched ? (
-                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
-                              <StockImg photo={thumb.photos[0]} alt={stockAlt(thumb.photos[0], i.name, true, site.market)} width={44} />
-                            </span>
+                            <ThumbZoom src={stockSrc(thumb.photos[0], 480)} alt={stockAlt(thumb.photos[0], i.name, true, site.market)}>
+                              <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
+                                <StockImg photo={thumb.photos[0]} alt={stockAlt(thumb.photos[0], i.name, true, site.market)} width={44} />
+                              </span>
+                            </ThumbZoom>
                           ) : (
                             <span className="grid h-11 w-11 place-items-center rounded-sm bg-surface-2 text-gold/80">
                               <RentalIcon category={c.id} className="h-6 w-6" title={`${i.name} illustration`} />

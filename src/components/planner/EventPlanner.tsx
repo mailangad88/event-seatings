@@ -32,6 +32,7 @@ import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
 // Direct imports, not the "../ui" barrel: the barrel also holds server cards that load the full image list.
 import { Icon, type IconName } from "../ui/Icon";
 import { formatPrice } from "../ui/PriceTag";
+import { ThumbZoom } from "../ui/ThumbZoom";
 import { FloorPlan } from "./FloorPlan";
 import { GuestCount } from "../guests/GuestCount";
 import { postLead } from "@/lib/lead-client";
@@ -457,9 +458,17 @@ export function EventPlanner({
                 .filter((l) => l.group === g)
                 .map((l) => (
                   <li key={l.id} className="flex gap-3 rounded-2xl border border-line bg-surface p-3 shadow-soft">
-                    <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-surface-2">
-                      <ItemVisual item={l.item} sizes="96px" />
-                    </div>
+                    {l.item.image ? (
+                      <ThumbZoom src={l.item.image} alt={l.item.imageAlt ?? `${l.item.name} rental`} className="h-24 w-24 shrink-0 rounded-xl">
+                        <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-surface-2">
+                          <ItemVisual item={l.item} sizes="96px" />
+                        </div>
+                      </ThumbZoom>
+                    ) : (
+                      <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-surface-2">
+                        <ItemVisual item={l.item} sizes="96px" />
+                      </div>
+                    )}
                     <div className="flex min-w-0 flex-1 flex-col">
                       <p className="font-medium leading-snug">{l.item.name}</p>
                       {l.why && <p className="mt-0.5 text-xs leading-5 text-muted">{l.why}</p>}
