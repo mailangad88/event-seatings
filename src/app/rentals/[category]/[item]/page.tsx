@@ -330,6 +330,11 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
                 </Link>
               </p>
             )}
+            <p className="mt-8 text-sm leading-7 text-muted">
+              Our crew delivers, sets up and picks up the {i.name.toLowerCase()} on your event day, so you are not driving to a warehouse or returning it yourself.
+              {i.minQty && i.minQty > 1 ? ` Orders start at ${i.minQty} ${i.unit === "each" ? "units" : i.unit.replace(/^per /, "")}.` : ""} Tell us about stairs, elevators, grass or gravel at your venue
+              and we plan the setup around it before your date.
+            </p>
           </div>
         </div>
 

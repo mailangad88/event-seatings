@@ -178,6 +178,12 @@ export const buyerPages: BuyerPage[] = [
         h: "Good swaps when stock is gone",
         p: ["Short-notice orders work best when you are flexible on style. Common swaps: white folding for white resin folding, 60-inch rounds for 72-inch rounds with fewer tables, floor-length linens for spandex covers on cocktail tables, and gold Chiavari for silver or clear."],
       },
+      {
+        h: "What usually still has stock",
+        p: [
+          "Standard white folding chairs and round tables are the deepest inventory most Chicago rental houses carry, so they are the last thing to sell out. Specialty chairs, large tents and anything in a single rare color go first. If your date is this week, ask for availability on the basics before you spend time chasing a specific finish, and keep delivery flexible: a same-day request often has to wait for a route that is already running near your address.",
+        ],
+      },
     ],
     faqs: [
       { q: "Can I rent chairs and tables for this weekend in Chicago?", a: "Often, yes, especially for standard folding chairs and round tables. Specialty styles and tents go first. Send your list as early as you can and say which items can be swapped." },
@@ -218,11 +224,18 @@ export const buyerPages: BuyerPage[] = [
           "Move to a weekday delivery if your venue allows an early drop",
         ],
       },
+      {
+        h: "What you get in exchange for a higher minimum",
+        p: [
+          "A high minimum usually comes with a full-service crew: setup, styling, breakdown and a single point of contact, which is worth it once an order is large enough to need coordinating. For a small backyard party or a handful of items, that service is overhead you don't need yet, so a by-the-piece rental store is usually the better fit even though it means handling delivery and placement yourself.",
+        ],
+      },
     ],
     faqs: [
       { q: "Do all event rental companies have a minimum order?", a: "No. Many party rental stores rent by the piece and charge delivery. Minimums are more common at luxury and full-service houses." },
       { q: "What is a typical event rental minimum?", a: "It varies widely and is often unpublished. One Chicago luxury house we checked in November 2026 listed $3,500 within 50 miles." },
       { q: "Can Beyond Chiavari help with a small order?", a: "Yes. We route each item to a partner that rents it at your quantity, and show delivery on the proposal so you can see whether pickup or a different mix is cheaper." },
+      { q: "Will a small order still get the same setup service?", a: "Usually, yes, though some full-service houses reserve setup crews for orders above their minimum. Ask directly, since a small order with delivery but no setup can still beat picking everything up yourself." },
     ],
     cta: { title: "See what your small event costs", text: "Build the list at your real guest count and we will match it to houses that fit the size." },
     related: [
@@ -253,11 +266,19 @@ export const buyerPages: BuyerPage[] = [
         h: "How delivery is usually priced",
         p: ["From the Chicago-area price lists we checked: delivery is priced by distance and time, with extra charges for stairs and after-hours work; party rentals for parks often run on a fixed rental period with an hourly overtime fee."],
       },
+      {
+        h: "If your event runs over two days",
+        p: [
+          "A Friday setup for a Saturday event, or a Sunday brunch after a Saturday wedding, usually means the rentals sit at the venue overnight. Ask whether an extra day is a flat add-on or a full second rental charge, and confirm the venue allows items to stay, since some charge their own overnight storage fee or require everything cleared the same night.",
+        ],
+      },
     ],
     faqs: [
       { q: "Can event rentals be delivered the day before?", a: "Often, if your venue allows it. Day-before delivery gives setup crews more time and can be cheaper than a tight same-day window." },
       { q: "What is a late pickup fee?", a: "A charge for collecting rentals outside normal hours, such as after midnight. Ask for it in writing and compare it with next-morning pickup." },
       { q: "Do I need a certificate of insurance for rentals?", a: "Many Chicago venues ask vendors for one. Ask your venue, then ask the rental company to send it to them directly." },
+      { q: "What if the delivery crew arrives and the room isn't ready?", a: "Most crews will wait a short time at no charge, but a long delay can push into the next delivery on their route and cost extra. Tell the venue your delivery window so the room is cleared in advance." },
+      { q: "Who signs for the rentals on delivery?", a: "Usually whoever is on site, whether that's you, your planner or a venue manager. Make sure someone authorized to approve the count is reachable during the window, since most crews ask for a signature confirming everything arrived." },
     ],
     cta: { title: "Tell us your venue's rules", text: "We put delivery and pickup windows on your proposal before anything is booked." },
     related: [
@@ -291,11 +312,19 @@ export const buyerPages: BuyerPage[] = [
           "Coffee cups: about 6 for every 10 guests",
         ],
       },
+      {
+        h: "Buffet and cocktail-style events",
+        p: [
+          "A buffet needs fewer serving pieces but the same plates, flatware and glasses per guest as a plated dinner, plus chafing dishes and serving spoons sized to your menu, not your guest count. A standing cocktail party needs far less seating (about one highboy per 10 guests) but more glassware, since guests tend to set a glass down and pick up a new one through the night.",
+        ],
+      },
     ],
     faqs: [
       { q: "How many guests fit at a 60-inch round table?", a: "Eight comfortably, ten if chairs are narrow and plates are small. Use eight for a plated dinner with chargers." },
       { q: "Should I rent extra plates and glasses?", a: "Many planners add a small spare for breakage and late additions. Ask the rental company whether unused extras are charged." },
       { q: "Where can I calculate my rental quantities?", a: "Use our free rental calculator. Enter your guest count and it lists quantities with current prices, then sends the list to our quote builder." },
+      { q: "Should I order the exact count or round up?", a: "Round up slightly on anything guests handle, like plates, napkins and glasses, since a few break or go missing. Chairs and tables usually don't need the same buffer, since they come back to us whole." },
+      { q: "Do kids need their own quantities counted separately?", a: "Yes if they are seated at their own table: plan child-size chairs or boosters, smaller plates and a separate head count, since a kids' table rarely needs the same place setting as an adult one." },
     ],
     cta: { title: "Turn your guest count into a priced list", text: "The calculator fills the quote builder for you. Change anything before you send it." },
     related: [
@@ -370,6 +399,12 @@ export const buyerPages: BuyerPage[] = [
           "Full-service houses publish upscale tableware and specialty chairs (one has a public 2026 price guide), or quote only, and some list order minimums, mandatory damage protection and non-refundable deposits.",
         ],
       },
+      {
+        h: "A common mix for weddings",
+        p: [
+          "Many Chicago weddings end up using both: standard folding chairs or basic round tables for an outdoor ceremony from a party store, paired with Chiavari or cross-back chairs, linens and china for the reception from a full-service house. The trade-off is coordinating two deliveries and two pickups, usually on the same day, which is the main reason couples ask us to combine both into one proposal instead.",
+        ],
+      },
     ],
     table: {
       caption: "Typical differences, from our November 2026 review of Chicago-area rental companies.",
@@ -386,6 +421,7 @@ export const buyerPages: BuyerPage[] = [
       { q: "Can I rent from a party store and a full-service house for the same event?", a: "Yes, and many planners do. The work is coordinating two deliveries; one combined proposal handles that." },
       { q: "Which is cheaper for chairs?", a: "For standard folding chairs, party stores are usually cheaper per piece. For Chiavari, cross-back or ghost chairs, full-service houses carry more choice." },
       { q: "Do party stores deliver and set up?", a: "Some deliver, but most expect you to pick up and return items yourself, and few set up. Full-service rental houses deliver, set up and collect, which matters for large orders, tents and heavy furniture." },
+      { q: "Is a damage waiver different between the two?", a: "Full-service houses almost always include or require one, since their inventory (china, linens, specialty chairs) costs more to replace. Party stores sometimes skip it for basic folding chairs and tables, but charge you directly for anything broken or not returned." },
     ],
     cta: { title: "Get the right mix on one list", text: "We route each item to the kind of rental house that fits it, and show the total." },
     related: [
@@ -411,6 +447,12 @@ export const buyerPages: BuyerPage[] = [
         h: "The break-even, step by step",
         p: ["1. Find the rental price per chair per event. 2. Find the purchase price per chair. 3. Divide purchase by rental. That is how many events before buying pays off, before storage and transport."],
       },
+      {
+        h: "Costs the break-even math leaves out",
+        p: [
+          "Owning chairs means finding somewhere dry to keep them between events, a vehicle big enough to move them, and time to clean and stack them afterward. Chairs also wear: a scuffed leg or a torn seat pad matters more on a chair you own, since there is no damage waiver covering it. Add a rough number for storage and transport to the purchase price before you compare it with renting, not after.",
+        ],
+      },
     ],
     table: {
       caption: "Example with sample data. Rental price from our current catalog; purchase price is a placeholder to replace with a real quote.",
@@ -426,6 +468,8 @@ export const buyerPages: BuyerPage[] = [
       { q: "Is it cheaper to rent or buy chairs for a wedding?", a: "For a single wedding, renting is almost always cheaper once you count delivery, storage and resale effort." },
       { q: "When does buying event chairs make sense?", a: "When you host often in the same space and have storage, such as a church hall, venue or office." },
       { q: "How many uses before buying chairs pays off?", a: "Divide the purchase price per chair, plus storage and transport, by the rental price per chair. For basic folding chairs that is often several events; for Chiavari or cross-back chairs it is usually many more, and only if you have somewhere to store them." },
+      { q: "Can I buy a few chairs and rent the rest?", a: "Yes. Some venues and churches buy enough chairs for their everyday seating and rent extras only for larger events, which keeps storage small while still covering peak attendance." },
+      { q: "Does the break-even change by chair style?", a: "Yes. Basic folding chairs are cheap to buy and rent, so they break even sooner. Specialty chairs cost much more to buy, so even frequent hosts often keep renting those and only buy the plain chairs they use every time." },
     ],
     cta: { title: "Price chairs for your date", text: "See current rental prices for every chair style in Chicago." },
     related: [

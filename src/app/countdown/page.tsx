@@ -26,6 +26,7 @@ const faqs = [
   { q: "What are the deadlines under the countdown?", a: "The next few tasks from our timeline builder, counted back from your date: things like booking rentals, sending invitations, the RSVP deadline and sending final counts. They are planning guidance; your vendors' contracts set the real dates." },
   { q: "Will you email me reminders?", a: "Milestone reminder emails are starting soon. If you sign up, we save your date and will email you before each deadline once reminders start. Until then, use 'Add to calendar' for reminders today." },
   { q: "Is my information private?", a: "The countdown itself lives only in your browser and the page link. If you sign up for reminders, we store your name, email and date to send them. We never sell it." },
+  { q: "Can I change the date or name later?", a: "Yes. Open the countdown link again and edit the name, date or start time; the page link updates to match, so share the new link with anyone who had the old one." },
 ];
 
 export default function CountdownPage() {

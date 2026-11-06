@@ -175,6 +175,35 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
 
       <section className="mt-24 grid gap-10 lg:grid-cols-[1fr_1.6fr]">
         <div>
+          <p className="eyebrow">Styling</p>
+          <h2 className="display-2 mt-3">Finishes, delivery and care</h2>
+        </div>
+        <div className="space-y-5 leading-8">
+          <p>
+            The {chair.name} comes in {chair.finishes.map((f) => f.name.toLowerCase()).join(", ")}
+            {chair.finishes.length > 1 ? ", so you can match it to your linens rather than build the room around the chair" : ""}.
+            It pairs well with {chair.pairsWith.charAt(0).toLowerCase()}
+            {chair.pairsWith.slice(1)}, and suits {chair.styles.join(", ").toLowerCase()} rooms best.
+          </p>
+          <p>
+            Chairs arrive stacked on dollies and are counted against your order sheet before our crew leaves, so you are not the one checking boxes on the day.
+            {chair.stackable
+              ? " Because it stacks, we can turn a ceremony into a reception in minutes if you are flipping the same room."
+              : " It does not stack, so flipping a room from ceremony to reception needs a few extra minutes, or a second set of chairs if you cannot spare the time."}{" "}
+            {chair.outdoorFriendly
+              ? "It handles grass, patios and tents well; on soft lawn, ask us about floor boards so the legs don't sink."
+              : "Keep it indoors or under a tent with proper flooring — rain and damp ground can warp the finish or stain the seat."}
+          </p>
+          <p>We pick every chair back up after your event, so there is nothing for you to clean, fold or store.</p>
+          <p>
+            A damage waiver on your quote covers normal wear, a scuffed leg or a wine spill on the seat, so a small mishap during the event does not turn into a bill afterward.
+            If you are mixing the {chair.name} with another style on the day, tell us the split when you book and we will deliver both counted and ready for your layout.
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-24 grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+        <div>
           <p className="eyebrow">Questions</p>
           <h2 className="display-2 mt-3">About the {chair.name}</h2>
           <p className="lede mt-4">Price, fit and planning answers for Chicago-area events.</p>
