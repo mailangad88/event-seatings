@@ -22,7 +22,7 @@ export const metadata: Metadata = seo({
     canonical: "/es/quinceaneras",
     languages: { "en-US": "/events/quinceaneras", "es-US": "/es/quinceaneras", "x-default": "/events/quinceaneras" },
   },
-  openGraph: { title: `${title} | ${site.name}`, description, url: "/es/quinceaneras", locale: "es_US" },
+  openGraph: { title: `${title} | ${site.name}`, description, url: "/es/quinceaneras", locale: "es_US", images: ["/opengraph-image"] },
 });
 
 const heroChairs = ["royal-throne", "infinity", "louis-medallion"].map(getChair).filter((c): c is NonNullable<typeof c> => !!c);
