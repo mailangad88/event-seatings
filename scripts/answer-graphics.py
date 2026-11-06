@@ -273,4 +273,75 @@ for i,(n,h,sub) in enumerate(rows):
     b.append(text(792,y+26,sub,15,MUTED))
 b.append(text(600,600,"Schematic. Every facility has its own floor policy, so confirm it in writing.",14,MUTED,SANS,"middle",400,1,True))
 write("gym-floor-protection.svg",svg(1200,640,"How to protect a hardwood gym floor at an event: a floor cover over the event area, glides on chair and table feet, and soft-wheeled carts rolled on the cover","\n".join(b)))
+# 11. Graveside service seating (schematic)
+b=[eyebrow(600,70,"Graveside service seating","middle"),
+   text(600,122,"Close family seated, everyone else nearby",38,INK,SERIF,"middle",300)]
+# tent canopy outline
+b.append(f'<rect x="200" y="180" width="440" height="230" fill="none" stroke="{GOLD}" stroke-dasharray="6 6"/>')
+b.append(text(420,172,"TENT OR CANOPY",12,MUTED,SANS,"middle",500,2))
+# grave / casket
+b.append(f'<rect x="330" y="200" width="180" height="56" fill="{SOFT}" stroke="{GOLD}"/>')
+b.append(text(420,234,"Casket or urn",18,INK,SERIF,"middle"))
+# officiant
+b.append(f'<circle cx="575" cy="222" r="11" fill="{GOLD}"/>')
+b.append(text(575,256,"Officiant",14,MUTED,SANS,"middle"))
+# family rows
+for r in range(2):
+    for c in range(8):
+        b.append(f'<rect x="{260+c*42}" y="{300+r*44}" width="26" height="24" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(420,400,"CLOSE FAMILY (FRONT ROWS)",12,GOLD,SANS,"middle",500,2))
+# standing area
+b.append(f'<path d="M150 450 Q420 520 690 450" fill="none" stroke="{INK}" stroke-opacity=".5" stroke-width="2"/>')
+for k in range(14):
+    x=180+k*36; y=470+ (10 if k%2 else 0)
+    b.append(f'<circle cx="{x}" cy="{y+10}" r="6" fill="none" stroke="{INK}" stroke-opacity=".7"/>')
+b.append(text(420,540,"OTHER GUESTS STAND OR SIT BEHIND",12,MUTED,SANS,"middle",500,2))
+# path
+b.append(f'<path d="M110 640 L110 300 L200 300" fill="none" stroke="{GOLD}" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>')
+b.append(text(126,620,"Firm path from the cars",14,MUTED))
+rows=[("1","Front rows","Spouse, children, parents"),
+      ("2","Seats for elders","Anyone who can't stand long"),
+      ("3","Level ground","Away from neighboring graves"),
+      ("4","Cemetery rules","Ask what vendors may bring")]
+for i,(n,h,sub) in enumerate(rows):
+    y=210+i*100
+    b.append(f'<circle cx="790" cy="{y}" r="18" fill="{GOLD}"/>')
+    b.append(text(790,y+6,n,18,"#0a0806",SANS,"middle",500))
+    b.append(text(822,y-2,h,26,INK,SERIF))
+    b.append(text(822,y+26,sub,15,MUTED))
+b.append(text(600,690,"Schematic, not to scale. Every cemetery sets its own rules.",14,MUTED,SANS,"middle",400,1,True))
+write("graveside-service-seating.svg",svg(1200,720,"Schematic graveside service layout: a tent over the casket or urn, two front rows of chairs for close family, other guests standing behind, and a firm path from the parking area","\n".join(b)))
+# 12. Pool party seating zones (schematic)
+b=[eyebrow(600,70,"Backyard pool party seating","middle"),
+   text(600,122,"Keep the splash zone and the dry zone apart",36,INK,SERIF,"middle",300)]
+# pool shape
+b.append(f'<ellipse cx="300" cy="330" rx="180" ry="120" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".6"/>')
+b.append(text(300,330,"POOL",16,MUTED,SANS,"middle",500,3))
+# splash zone ring with loungers
+b.append(f'<ellipse cx="300" cy="330" rx="230" ry="165" fill="none" stroke="{GOLD}" stroke-dasharray="4 7" stroke-opacity=".5"/>')
+b.append(text(300,178,"SPLASH ZONE: WATER-SAFE SEATS",12,GOLD,SANS,"middle",500,1.5))
+import math
+for ang in range(0,360,40):
+    a=math.radians(ang)
+    x=300+210*math.cos(a); y=330+150*math.sin(a)
+    b.append(f'<rect x="{x-15:.0f}" y="{y-9:.0f}" width="30" height="18" rx="3" fill="{GOLD}" fill-opacity=".8" transform="rotate({ang} {x:.0f} {y:.0f})"/>')
+# dry zone
+b.append(f'<rect x="580" y="200" width="200" height="260" fill="none" stroke="{INK}" stroke-opacity=".5" stroke-dasharray="3 6"/>')
+b.append(text(680,192,"DRY ZONE",12,MUTED,SANS,"middle",500,1.5))
+for r in range(2):
+    for c in range(2):
+        b.append(f'<rect x="{610+c*85}" y="{240+r*110}" width="60" height="40" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".7"/>')
+b.append(text(680,490,"Tables, chairs, shade",14,MUTED,SANS,"middle"))
+rows=[("1","Poolside loungers","Water-safe frames, spaced for walking"),
+      ("2","Dry-zone tables","Where food and electronics stay"),
+      ("3","Shade","An umbrella or shade sail over seating"),
+      ("4","Clear path","To the bathroom, furniture-free")]
+for i,(n,h,sub) in enumerate(rows):
+    y=200+i*100
+    b.append(f'<circle cx="840" cy="{y}" r="17" fill="{GOLD}"/>')
+    b.append(text(840,y+6,n,17,"#0a0806",SANS,"middle",500))
+    b.append(text(870,y-2,h,24,INK,SERIF))
+    b.append(text(870,y+24,sub,15,MUTED))
+b.append(text(600,600,"Schematic. HOA or condo pools often set their own furniture rules.",14,MUTED,SANS,"middle",400,1,True))
+write("pool-party-seating-zones.svg",svg(1200,640,"Backyard pool party seating zones: water-safe loungers in the splash zone around the pool, and a separate shaded dry zone with tables for dining away from the water","\n".join(b)))
 print("ok")
