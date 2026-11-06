@@ -126,6 +126,7 @@ export default async function ReviewsPage() {
           </div>
           <Callout className="mt-10" title="Booked with us already?">
             Thank you. <Link href="/reviews/write" className="text-accent">Write the first review</Link> and help other Chicago planners decide.
+            We're also thanking our <Link href="/founding-customers" className="text-accent">first 10 customers</Link> directly, no review required.
           </Callout>
         </Section>
       )}
