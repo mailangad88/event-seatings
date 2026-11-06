@@ -4,10 +4,12 @@ import { createElement } from "react";
 import { render } from "@react-email/render";
 import { GoogleReviewEmail, NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
 import { FollowupEmail } from "@/emails/FollowupEmail";
+import { InvoiceEmail } from "@/emails/InvoiceEmail";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
 import { QuoteConfirmationEmail } from "@/emails/QuoteConfirmationEmail";
 import { UnfinishedQuoteEmail } from "@/emails/UnfinishedQuoteEmail";
 import { sequenceFor } from "@/lib/followups";
+import { buildInvoice } from "@/lib/invoices";
 import { buildLeadAlert } from "@/lib/lead-alert";
 import { site } from "@/lib/site";
 import type { Lead } from "@/lib/store";
@@ -142,6 +144,17 @@ export default async function EmailPreviewsPage() {
     { name: "Review request (you send by hand)", when: "Never automatic. Copy from /admin/reviews.", el: createElement(ReviewRequestEmail, { name: "Sample", link: `${site.url}/reviews/write` }) },
     { name: "Google review request (automatic)", when: "5 days after the event, with EVENT_EMAILS_ENABLED=true and NEXT_PUBLIC_GOOGLE_REVIEW_URL set. See /admin/scheduled and /admin/settings.", el: createElement(GoogleReviewEmail, { name: sampleLead.name, link: site.googleReviewUrl || `${site.url}/reviews/write` }) },
     { name: "New review (to you)", when: "When a review is submitted, with RESEND_API_KEY and NOTIFY_EMAIL.", el: createElement(NewReviewEmail, { rating: 5, name: "Sample Customer", body: "Sample review text for layout only.", verified: true }) },
+    {
+      name: "Invoice (to the customer)",
+      when: "Sent by hand from /admin/invoices/order/<id>. Made-up order, deposit already paid.",
+      el: createElement(InvoiceEmail, {
+        number: "BC-INV-20261106-SAMPLE",
+        invoice: buildInvoice({ ...sampleLead, fee_status: "paid", fee_amount: 436 }, 436),
+        name: sampleLead.name,
+        eventLabel: "Wedding · Fri, Jun 12, 2027",
+        viewUrl: `${site.url}/proposal/sample`,
+      }),
+    },
   ];
   const html = await Promise.all(emails.map((e) => render(e.el)));
   return (

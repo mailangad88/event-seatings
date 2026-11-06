@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { vendors } from "@/data/vendors";
 import { AdminHeader, Empty, Panel, Table, Tile } from "@/components/admin/AdminUi";
-import { chicagoDay, money0, money2, prettyDay } from "@/lib/admin-view";
+import { chicagoDay, eventLine, money0, money2, prettyDay } from "@/lib/admin-view";
 import { agingBuckets, COMMISSION_RATE, FREE_ORDERS, invoiceNumber, NET_DAYS, owedStatements, statements, type OwedStatement } from "@/lib/commissions";
+import { listInvoices, stageStatusLabel, type StageStatus } from "@/lib/invoices";
 import { ledgerMethods } from "@/lib/ledger";
 import { site } from "@/lib/site";
 import { listLeads, listPartners, type VendorPartner } from "@/lib/store";
@@ -33,10 +34,14 @@ function reminderMailto(s: OwedStatement, partner?: VendorPartner) {
   return `mailto:${to}?subject=${encodeURIComponent(`Reminder: ${site.name} statement ${s.number}`)}&body=${encodeURIComponent(body)}`;
 }
 
+const stageStatusClass: Record<StageStatus, string> = { paid: "badge-green", due: "badge-amber", overdue: "badge-rose", upcoming: "badge" };
+
 export default async function InvoicesPage(props: PageProps<"/admin/invoices">) {
   const sp = await props.searchParams;
-  const tab = sp.tab === "receipts" ? "receipts" : "commission";
-  const [leads, partners] = await Promise.all([listLeads(), listPartners()]);
+  const tab = sp.tab === "receipts" ? "receipts" : sp.tab === "orders" ? "orders" : "commission";
+  const [leads, partners, invoices] = await Promise.all([listLeads(), listPartners(), tab === "orders" ? listInvoices() : Promise.resolve([])]);
+  const overdueInvoices = invoices.filter((i) => i.overdue);
+  const dueTotal = invoices.reduce((s, i) => s + i.dueTotal, 0);
   const thisMonth = chicagoDay().slice(0, 7);
   const stmts = statements(leads, partners);
   const logOf = (vendorId: string, month: string) => partners.find((p) => p.vendor_id === vendorId)?.commission_log?.[month];
@@ -58,20 +63,64 @@ export default async function InvoicesPage(props: PageProps<"/admin/invoices">) 
       <AdminHeader
         group="Money"
         title="Invoices"
-        intro={`Commission statements for rental partners (first ${FREE_ORDERS} booked orders free, then ${Math.round(COMMISSION_RATE * 1000) / 10}% of the rental total on booked orders, billed after the event month) and receipts for customers who paid the deposit.`}
+        intro={`Commission statements for rental partners (first ${FREE_ORDERS} booked orders free, then ${Math.round(COMMISSION_RATE * 1000) / 10}% of the rental total on booked orders, billed after the event month), customer invoices with their full payment schedule, and receipts for the first payment.`}
       />
 
-      <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Tile tone="amber" label="Statements to send" value={notSent.length} note={money0(notSent.reduce((t, s) => t + s.commission, 0))} alert={notSent.length > 0} />
-        <Tile tone="amber" label="Commission owed to us" value={money0(unpaid.reduce((t, s) => t + s.commission, 0))} note={`${unpaid.length} statements not paid${overdue.length ? `, ${overdue.length} overdue` : ""}`} alert={overdue.length > 0} href="#aging" />
-        <Tile tone="green" label="Commission received" value={money0(paidTotal)} />
-        <Tile tone="blue" label="Customer receipts" value={receipts.length} href="/admin/invoices?tab=receipts" />
-      </div>
+      {tab === "orders" ? (
+        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <Tile tone="blue" label="Customer orders" value={invoices.length} note="Deposit paid, with a payment schedule" />
+          <Tile tone="amber" label="Still due" value={money0(dueTotal)} note="Across every open order" />
+          <Tile tone="rose" label="Overdue" value={overdueInvoices.length} note={money0(overdueInvoices.reduce((t, i) => t + i.dueTotal, 0))} alert={overdueInvoices.length > 0} />
+          <Tile tone="green" label="Paid in full" value={invoices.filter((i) => i.dueTotal <= 0).length} />
+        </div>
+      ) : (
+        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <Tile tone="amber" label="Statements to send" value={notSent.length} note={money0(notSent.reduce((t, s) => t + s.commission, 0))} alert={notSent.length > 0} />
+          <Tile tone="amber" label="Commission owed to us" value={money0(unpaid.reduce((t, s) => t + s.commission, 0))} note={`${unpaid.length} statements not paid${overdue.length ? `, ${overdue.length} overdue` : ""}`} alert={overdue.length > 0} href="#aging" />
+          <Tile tone="green" label="Commission received" value={money0(paidTotal)} />
+          <Tile tone="blue" label="Customer receipts" value={receipts.length} href="/admin/invoices?tab=receipts" />
+        </div>
+      )}
 
       <nav aria-label="Invoice type" className="mt-8 flex flex-wrap gap-2">
         <Link href="/admin/invoices" className={tab === "commission" ? "chip-active" : "chip"}>Rental partner commission</Link>
-        <Link href="/admin/invoices?tab=receipts" className={tab === "receipts" ? "chip-active" : "chip"}>Customer receipts</Link>
+        <Link href="/admin/invoices?tab=orders" className={tab === "orders" ? "chip-active" : "chip"}>Customer invoices</Link>
+        <Link href="/admin/invoices?tab=receipts" className={tab === "receipts" ? "chip-active" : "chip"}>Deposit receipts</Link>
       </nav>
+
+      {tab === "orders" && (
+        <Panel title="Orders by payment status" className="mt-6">
+          {invoices.length === 0 ? (
+            <Empty>No invoiceable orders yet. An order gets an invoice once the customer&apos;s first payment is in.</Empty>
+          ) : (
+            <Table head={["Invoice", "Customer", "Event", "Total", "Paid", "Still due", "Next stage", ""]} right={[3, 4, 5]} min={1080}>
+              {invoices.map((inv) => {
+                const next = inv.stages.find((s) => s.status !== "paid");
+                return (
+                  <tr key={inv.lead.id}>
+                    <td className="whitespace-nowrap font-mono text-xs">{inv.number}</td>
+                    <td><Link href={`/admin/leads/${inv.lead.id}`} className="text-accent">{inv.lead.name || inv.lead.email}</Link></td>
+                    <td className="whitespace-nowrap">{eventLine(inv.lead) || "No date"}</td>
+                    <td className="text-right tabular-nums">{money2(inv.total)}</td>
+                    <td className="text-right tabular-nums">{money2(inv.paidTotal)}</td>
+                    <td className={`text-right tabular-nums ${inv.overdue ? "text-rose" : ""}`}>{money2(inv.dueTotal)}</td>
+                    <td className="whitespace-nowrap">
+                      {next ? (
+                        <>
+                          {next.label} <span className={`${stageStatusClass[next.status]} ml-1`}>{stageStatusLabel[next.status]}</span>
+                        </>
+                      ) : (
+                        <span className="badge-green">Paid in full</span>
+                      )}
+                    </td>
+                    <td><Link href={`/admin/invoices/order/${inv.lead.id}`} className="btn-ghost btn-sm">Invoice</Link></td>
+                  </tr>
+                );
+              })}
+            </Table>
+          )}
+        </Panel>
+      )}
 
       {tab === "commission" && (
         <section id="aging" className="card mt-4 min-w-0 scroll-mt-24 p-6">
@@ -161,7 +210,7 @@ export default async function InvoicesPage(props: PageProps<"/admin/invoices">) 
             </Table>
           )}
         </Panel>
-      ) : (
+      ) : tab === "receipts" ? (
         <Panel title="Deposit receipts" className="mt-4">
           {receipts.length === 0 ? (
             <Empty>No paid deposits yet.</Empty>
@@ -179,7 +228,7 @@ export default async function InvoicesPage(props: PageProps<"/admin/invoices">) 
             </Table>
           )}
         </Panel>
-      )}
+      ) : null}
     </div>
   );
 }
