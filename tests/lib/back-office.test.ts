@@ -26,8 +26,8 @@ describe("dayLoad", () => {
 
   it("counts paid and vendor-confirmed events and fills by events or guests", () => {
     const booked = (g: number) => makeLead({ status: "booked", guest_count: g });
-    expect(dayLoad([booked(10), booked(10)]).level).toBe("open"); // 2/4 events
-    expect(dayLoad([booked(10), booked(10), makeLead({ fee_status: "paid" })]).level).toBe("limited"); // 3/4
+    expect(dayLoad([booked(10), booked(10)]).level).toBe("moderate"); // 2/4 events
+    expect(dayLoad([booked(10), booked(10), makeLead({ fee_status: "paid" })]).level).toBe("busy"); // 3/4
     expect(dayLoad([booked(10), booked(10), booked(10), booked(10)]).level).toBe("full");
     const big = dayLoad([booked(600)]);
     expect(big.guests).toBe(600);
