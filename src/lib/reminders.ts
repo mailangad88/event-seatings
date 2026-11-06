@@ -67,6 +67,9 @@ export type PlannedReminder = {
   subject: string;
   body: string[];
   offer?: string; // e.g. "5% off your rentals until Nov 20", logged on the lead so it's honoured
+  // unfinished_quote only: the saved list and its link, for the visual email (src/emails/UnfinishedQuoteEmail.tsx).
+  quoteItems?: { id: string; name: string }[];
+  quoteLink?: string;
 };
 
 export type ReminderPlan = { send: PlannedReminder[]; skipped: Record<string, number> };
@@ -148,11 +151,14 @@ export function planReminders(leads: Lead[], activity: Map<string, ActivityEvent
         const last = lists.at(-1);
         const age = last ? now - Date.parse(last.at) : 0;
         if (last?.items.length && age >= 20 * HOUR && age <= 7 * DAY) {
-          const names = last.items.map(ctx.itemName).filter(Boolean).slice(0, 5) as string[];
+          const named = last.items.map((id) => ({ id, name: ctx.itemName(id) })).filter((i): i is { id: string; name: string } => !!i.name);
+          const names = named.slice(0, 5).map((i) => i.name);
           const link = `${ctx.siteUrl}/quote?items=${last.items.join(",")}&from=reminder`;
           return {
             kind: "unfinished_quote",
             subject: "Your rental list is saved",
+            quoteItems: named,
+            quoteLink: link,
             body: [
               "Hi,",
               "",

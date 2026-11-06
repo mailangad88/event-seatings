@@ -5,6 +5,7 @@ import { render } from "@react-email/render";
 import { NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
 import { QuoteConfirmationEmail } from "@/emails/QuoteConfirmationEmail";
+import { UnfinishedQuoteEmail } from "@/emails/UnfinishedQuoteEmail";
 import { buildLeadAlert } from "@/lib/lead-alert";
 import { site } from "@/lib/site";
 import type { Lead } from "@/lib/store";
@@ -87,6 +88,16 @@ export default async function EmailPreviewsPage() {
         eventDateLabel: "Fri, Jun 12, 2027",
         guestCount: sampleLead.guest_count,
         viewUrl: `${site.url}/account`,
+        unsubscribe: `${site.url}/unsubscribe`,
+      }),
+    },
+    {
+      name: "Unfinished quote reminder (to the customer)",
+      when: "Daily reminders cron (/admin/reminders), 20 hours to 7 days after they build a list on /quote and don't send it.",
+      el: createElement(UnfinishedQuoteEmail, {
+        name: sampleLead.name,
+        items: (sampleLead.items ?? []).map((l) => ({ id: l.id, name: l.name })),
+        link: `${site.url}/quote?items=${(sampleLead.items ?? []).map((l) => l.id).join(",")}&from=reminder`,
         unsubscribe: `${site.url}/unsubscribe`,
       }),
     },

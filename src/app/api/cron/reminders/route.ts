@@ -1,3 +1,7 @@
+import { createElement } from "react";
+import { render } from "@react-email/render";
+import { UnfinishedQuoteEmail } from "@/emails/UnfinishedQuoteEmail";
+import { log } from "@/lib/log";
 import { sendEmail } from "@/lib/notify";
 import { planTodaysReminders, remindersSwitchedOn } from "@/lib/reminder-run";
 import { reminderLogText } from "@/lib/reminders";
@@ -25,11 +29,26 @@ export async function GET(request: Request) {
   if (enabled && !dry) {
     for (const r of planned) {
       const unsub = unsubscribeUrl(r.lead.email);
+      // The unfinished-quote reminder gets the same visual treatment as the quote confirmation
+      // email (hero image, item thumbnails, one CTA); the other two kinds keep the branded plain-text wrapper.
+      const html =
+        r.kind === "unfinished_quote" && r.quoteItems?.length
+          ? await render(
+              createElement(UnfinishedQuoteEmail, {
+                name: r.lead.name,
+                items: r.quoteItems,
+                link: r.quoteLink ?? `${site.url}/quote`,
+                offerLine: r.offer ? r.body.at(-1) : undefined,
+                unsubscribe: unsub,
+              }),
+            ).catch((e) => (log.warn("unfinished_quote_html_failed", { leadId: r.lead.id, e }), undefined))
+          : undefined;
       const ok = await sendEmail({
         to: r.lead.email,
         subject: r.subject,
         text: [...r.body, "", `The ${site.name} team`, "", `You're getting this because you contacted ${site.name}. Stop these emails: ${unsub}`].join("\n"),
         unsubscribe: unsub,
+        html,
         idempotencyKey: `reminder/${r.lead.id}/${r.kind}`,
       });
       if (!ok) continue;
