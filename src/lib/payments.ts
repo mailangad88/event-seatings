@@ -1,6 +1,7 @@
 import "server-only";
 import { createHmac, randomBytes, timingSafeEqual } from "crypto";
 import { paymentPlanFor } from "./catalog-types";
+import { firstBookingDiscountApplied, withFirstBookingDiscount } from "./offers";
 import type { Lead } from "./store";
 
 // Deposit checkout for customer proposals (/proposal/<token>).
@@ -37,7 +38,8 @@ const subtotalOf = (lead: Pick<Lead, "quote_subtotal" | "items">) =>
 // What the customer pays us at checkout, in USD: the first stage of their payment plan.
 export function amountDue(lead: Pick<Lead, "quote_subtotal" | "items" | "event_date">): number {
   if (chargeMode() === "hold") return round2(num(process.env.BOOKING_HOLD_USD, 100));
-  return paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0;
+  const deposit = paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0;
+  return withFirstBookingDiscount(deposit);
 }
 
 // "Deposit" in general, or the specific share ("20% deposit", "50% deposit", "Full payment") once we
@@ -72,6 +74,7 @@ export async function createCheckout(lead: Lead, siteUrl: string): Promise<{ id:
   const amount = amountDue(lead);
   const back = `${siteUrl}/proposal/${lead.proposal_token}`;
   const event = [lead.event_type, lead.event_date].filter(Boolean).join(", ");
+  const discount = firstBookingDiscountApplied(paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0);
   const body = new URLSearchParams({
     mode: "payment",
     success_url: `${back}?session_id={CHECKOUT_SESSION_ID}`,
@@ -85,7 +88,7 @@ export async function createCheckout(lead: Lead, siteUrl: string): Promise<{ id:
     "line_items[0][price_data][unit_amount]": String(Math.round(amount * 100)),
     "line_items[0][price_data][product_data][name]": chargeLabel(lead),
     "line_items[0][price_data][product_data][description]":
-      `Payment for your event rentals${event ? ` (${event})` : ""}. Fully refundable for 72 hours. The rest is due in one or two more payments before your event.`.slice(0, 500),
+      `Payment for your event rentals${event ? ` (${event})` : ""}.${discount > 0 ? ` Includes your $${discount} first-booking offer.` : ""} Fully refundable for 72 hours. The rest is due in one or two more payments before your event.`.slice(0, 500),
   });
   const session = await stripe("checkout/sessions", { method: "POST", body });
   return { id: session.id, url: session.url, amount };

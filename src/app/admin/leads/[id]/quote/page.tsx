@@ -5,7 +5,8 @@ import { vendors } from "@/data/vendors";
 import { AdminHeader } from "@/components/admin/AdminUi";
 import { LeadFlow } from "@/components/admin/LeadFlow";
 import { eventLine, money2, prettyDay } from "@/lib/admin-view";
-import { MARKUP } from "@/lib/catalog-types";
+import { MARKUP, paymentPlanFor } from "@/lib/catalog-types";
+import { firstBookingDiscountApplied } from "@/lib/offers";
 import { amountDue, chargeLabel } from "@/lib/payments";
 import { getLead } from "@/lib/store";
 import { saveQuote } from "./actions";
@@ -19,6 +20,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
   if (!lead) notFound();
   const lines = lead.items ?? [];
   const locked = lead.fee_status === "paid";
+  const discount = firstBookingDiscountApplied(paymentPlanFor(lead.quote_subtotal ?? 0, lead.event_date)[0]?.amount ?? 0);
   const vendorName = (v: string) => vendors.find((x) => x.id === v)?.name ?? v;
 
   return (
@@ -93,6 +95,9 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
           <div className="flex justify-between"><dt className="text-muted">Customer total</dt><dd className="tabular-nums">{money2(lead.quote_subtotal)}</dd></div>
           <div className="flex justify-between"><dt className="text-muted">Rental companies charge</dt><dd className="tabular-nums">{money2(lead.quote_cost)}</dd></div>
           <div className="flex justify-between font-medium"><dt>{chargeLabel()}</dt><dd className="tabular-nums">{money2(lead.fee_amount ?? amountDue(lead))}</dd></div>
+          {discount > 0 && (
+            <div className="flex justify-between text-xs text-muted"><dt>Includes $50 first-booking offer</dt><dd className="tabular-nums">-{money2(discount)}</dd></div>
+          )}
         </dl>
 
         {!locked && (
