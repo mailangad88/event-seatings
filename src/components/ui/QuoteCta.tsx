@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "@/components/Link";
+import { firstBookingOfferEnabled, FIRST_BOOKING_OFFER_LABEL } from "@/lib/offers";
 import { sceneFor } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { Icon } from "./Icon";
@@ -25,6 +26,7 @@ export function QuoteCta({
           <p className="lede mt-5 max-w-lg">{text}</p>
           <ul className="mt-6 grid gap-2 text-sm text-ink/85 sm:grid-cols-2">
             {[
+              ...(firstBookingOfferEnabled() ? [FIRST_BOOKING_OFFER_LABEL] : []),
               "Live pricing as you pick",
               "Delivery & setup included in quote",
               "One person to call",

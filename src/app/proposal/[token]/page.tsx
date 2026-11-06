@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Icon, PriceDisclaimer } from "@/components/ui";
 import { PAYMENT_SCHEDULE, paymentPlanFor, usd } from "@/lib/catalog-types";
 import { allInEstimate } from "@/lib/fees";
+import { firstBookingDiscountApplied } from "@/lib/offers";
 import { amountDue, chargeLabel, chargeMode, checkoutPaid, stripeEnabled } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
 import { site } from "@/lib/site";
@@ -50,6 +51,7 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
   // The payment plan for this order: a deposit now, maybe a second installment, then the balance.
   // The installment amount is rentals only (no fees); the balance absorbs the rest, fees included.
   const plan = paymentPlanFor(subtotal, lead.event_date);
+  const discount = chargeMode() === "fee" ? firstBookingDiscountApplied(plan[0]?.amount ?? 0) : 0;
   const installment = plan.length === 3 ? plan[1] : undefined;
   const finalDueDate = plan.length > 1 ? plan.at(-1)?.dueDate : undefined;
   const balance = Math.max(0, Math.round((allIn.total - (chargeMode() === "fee" ? due + (installment?.amount ?? 0) : 0)) * 100) / 100);
@@ -127,6 +129,11 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
                 <div className="rounded-xl bg-gold-soft/50 p-4">
                   <p className="text-muted">{chargeLabel(lead)}</p>
                   <p className="mt-1 font-heading font-semibold text-3xl tabular-nums">{usd(due)}</p>
+                  {discount > 0 && (
+                    <p className="mt-1 flex items-center gap-1.5 text-sm font-medium text-gold">
+                      <Icon name="check" size={14} /> Includes your {usd(discount)} first-booking offer
+                    </p>
+                  )}
                   <p className="mt-1 text-xs text-muted">
                     {chargeMode() === "hold" ? (
                       `Fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours. Counts toward your order.`
