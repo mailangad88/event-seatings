@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "@/components/Link";
 import { SeatingPlanner } from "@/components/SeatingPlanner";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -43,6 +44,7 @@ export default function SeatingPlannerPage() {
   return (
     <div className="container-x py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <Breadcrumbs items={[{ name: "Seating planner", href: "/seating-planner" }]} className="mb-6 print:hidden" />
       <div className="grid items-end gap-10 md:grid-cols-[1.5fr_1fr] print:hidden">
         <div>
           <p className="eyebrow">Free planning tool</p>

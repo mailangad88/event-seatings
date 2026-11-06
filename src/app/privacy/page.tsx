@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { site } from "@/lib/site";
 import { ChairStrip } from "@/components/ChairStrip";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
@@ -13,6 +14,7 @@ export const metadata: Metadata = seo({
 export default function PrivacyPage() {
   return (
     <div className="container-x max-w-3xl py-20">
+      <Breadcrumbs items={[{ name: "Privacy policy", href: "/privacy" }]} className="mb-6" />
       <p className="eyebrow">Legal</p>
       <h1 className="display-1 mt-6">Privacy policy</h1>
       <p className="mt-4 text-sm text-muted">Last updated November 4, 2026</p>

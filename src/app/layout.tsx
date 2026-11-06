@@ -60,6 +60,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
   },
+  twitter: { card: "summary_large_image" },
   // Search Console / Bing Webmaster ownership tags. Set the codes in Vercel env vars.
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
