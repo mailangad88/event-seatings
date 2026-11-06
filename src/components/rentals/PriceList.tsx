@@ -3,9 +3,12 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "@/components/Link";
-import { formatPrice } from "@/data/catalog";
 import type { CategoryId } from "@/data/catalog-products";
-import { Icon, ThumbZoom } from "@/components/ui";
+// Direct imports, not the "./ui" barrel: the barrel also holds server cards that load the full
+// image list and catalog data, which a "use client" file must not pull into the browser bundle.
+import { Icon } from "@/components/ui/Icon";
+import { ThumbZoom } from "@/components/ui/ThumbZoom";
+import { formatPrice } from "@/components/ui/PriceTag";
 import { RentalIcon } from "./RentalIcon";
 
 export type PriceListRow = {
