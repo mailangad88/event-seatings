@@ -4,6 +4,7 @@ import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { Breadcrumbs, FaqList, Figure, IconCards, JsonLd, LinkCards, PriceDisclaimer, QuoteCta, Section } from "@/components/ui";
+import { LaunchOffer } from "@/components/LaunchOffer";
 import { iconFor } from "@/lib/icon-for";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getEventType, getLocation, locationPath, eventPath } from "@/data/geo";
@@ -117,6 +118,7 @@ export default async function AreaRentalsPage(props: Props) {
                 <Link href={`/quote?from=area-${loc.slug}`} className="btn-primary">Build my quote</Link>
                 <Link href={locationPath(loc)} className="btn-ghost">Chairs in {loc.name}</Link>
               </div>
+              <LaunchOffer from={`area-${loc.slug}`} />
             </div>
             <Figure caption={`${loc.name} on our Chicagoland delivery map${loc.zips.length ? `, ZIP ${loc.zips.slice(0, 5).join(", ")}` : ""}.`}>
               <AreaMap active={loc} />

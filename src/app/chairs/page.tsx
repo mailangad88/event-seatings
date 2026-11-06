@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { ChairBrowser } from "@/components/ChairBrowser";
 import { FaqList, Figure, Icon, PageHero, QuoteCta, Section, type Faq } from "@/components/ui";
+import { LaunchOffer } from "@/components/LaunchOffer";
 import { allStyles, type Style } from "@/data/chairs";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -60,6 +61,7 @@ export default async function ChairsPage(props: PageProps<"/chairs">) {
           </>
         }
         media={<Figure {...scenes.chairDetail} ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" />}
+        meta={<LaunchOffer from="chairs" className="mt-0" />}
       />
       <div className="container-x section-y">
         <ChairBrowser initialStyle={initialStyle} />
