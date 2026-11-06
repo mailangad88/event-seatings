@@ -28,6 +28,10 @@ const faqs: Faq[] = [
     q: "Do you deliver chairs across the Chicago suburbs?",
     a: `Yes, across Chicago and the suburbs including ${site.serviceArea.slice(1, 8).join(", ")} and nearby towns, with setup and pickup available.`,
   },
+  {
+    q: "What happens if a chair gets damaged or dirty during the event?",
+    a: "A small damage waiver on your quote covers normal wear, a wine spill or a scuffed leg. We clean, repair and store every chair ourselves, so you never fold, stack or wipe one down after your event.",
+  },
 ];
 
 export const metadata: Metadata = seo({

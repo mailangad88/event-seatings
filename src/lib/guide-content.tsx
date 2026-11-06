@@ -1,4 +1,5 @@
 import { BanquetDiagram, BarChart, Flowchart, MonthStrip, TableDiagram, TheaterDiagram } from "@/components/diagrams";
+import Link from "@/components/Link";
 import { ChairArt } from "@/components/ChairArt";
 import type { GuideProps } from "@/components/GuideShell";
 import { chairs, getChair, type Chair } from "@/data/chairs";
@@ -348,6 +349,8 @@ export const roomsFamily: GuideFamily = {
     { q: "How many people fit in a room at round tables?", a: "Divide the usable floor area by 10-12 square feet per guest. For example, a 40 x 60 foot room (2,400 sq ft) seats about 200-240 at rounds before you take out space for a dance floor, bars and a stage." },
     { q: "How much space does ceremony or theater seating need?", a: "Theater rows need about 6-8 square feet per guest, including a center aisle at least 4-6 feet wide. That is why the same room holds roughly twice as many guests for a ceremony as for dinner." },
     { q: "How much space does a standing cocktail reception need?", a: "Plan about 6-8 square feet per guest for a standing reception, with highboy tables for about a third of guests and some lounge or perch seating for older guests." },
+    { q: "Does the room's posted occupancy limit matter?", a: "Yes, and it always wins over these estimates. The fire marshal's posted limit or your venue contract sets the legal maximum; these numbers are a planning guide for comfort and layout, not a substitute for that limit." },
+    { q: "What usable floor percentage should I assume?", a: "Start around 85% for a clean rectangular room and lower it for columns, a built-in bar, odd corners or a stage. Each guide below works from your room's dimensions, so adjust the usable percentage to match what you actually see when you walk the space." },
   ],
   base: "/room-size-guides",
   hubTitle: "How Many Chairs Fit in My Room? Room Size Guides",
@@ -513,6 +516,7 @@ export const compareFamily: GuideFamily = {
     { q: "What is the most popular wedding chair to rent in Chicago?", a: "Chiavari chairs are still the most requested for ballrooms, while cross-back and other wood chairs are the favorite for barns, vineyards and lofts. Ghost chairs suit modern venues where you want the decor to stand out." },
     { q: "Which rental chairs are the most comfortable?", a: "Padded and upholstered chairs (velvet dining, padded folding and chairs with seat cushions) are the most comfortable for long dinners. Chiavari and cross-back chairs are comfortable for 2-3 hours with a seat pad." },
     { q: "Which chairs are best for outdoor events?", a: "Resin, metal and wood folding chairs handle grass and weather best. Avoid upholstered chairs outdoors unless you have a tent, and add floor or plywood under thin legs on soft lawns." },
+    { q: "Can I rent two chair styles for one event?", a: "Yes, and it's common: one chair for the ceremony and a different one for the reception, or a plain chair for most tables and a statement chair for the head table. Add both to the same quote and we'll price the mix." },
   ],
   base: "/chair-comparisons",
   hubTitle: "Event Chair Comparisons: Which Chair Should You Rent?",
@@ -631,6 +635,10 @@ export const costFamily: GuideFamily = {
     { q: "How much does it cost to rent chairs in Chicago?", a: "Basic folding chairs rent for about $2-4 each, Chiavari and cross-back chairs for about $7-11, and ghost or upholstered chairs for about $10-30 per event day. Delivery, setup and pickup are quoted separately for your venue." },
     { q: "Is delivery included in the chair price?", a: "No. The per-chair price covers one event day. Delivery, setup, pickup, any stairs or long carries, a damage waiver and sales tax are itemized in your proposal before you approve anything." },
     { q: "How can I lower my chair rental cost?", a: "Use premium chairs only where guests see them most (ceremony aisle, head table) and simpler chairs elsewhere, book early for May-October weekends, and bundle chairs with tables and linens in one quote so delivery is shared." },
+    { q: "Does the price change with the number of chairs?", a: "The per-chair rate is usually flat, but delivery and setup are charged once per order, so the cost per chair drops as your count goes up. The guides below show the total at 50, 100 and 200 chairs for every style." },
+    { q: "Are estimated prices less reliable than published ones?", a: "Estimated prices come from current Chicago-area market rates for chairs without a public price, and are a close planning figure rather than a guarantee. Your written quote always confirms the exact price before you book." },
+    { q: "Do these prices include tax?", a: "No. Illinois sales tax is added on your written quote, along with delivery, setup and the damage waiver, so the per-chair figures here are the rental rate alone." },
+    { q: "Can I mix cheaper and pricier chairs to control cost?", a: "Yes, and it's one of the easiest ways to manage a budget. Use a statement chair where guests see it most, such as the head table or ceremony aisle, and a lower-cost style for the rest of the room." },
   ],
   base: "/chair-rental-cost",
   hubTitle: "Event Chair Rental Cost in Chicago: Price by Chair and Quantity",
@@ -835,6 +843,25 @@ function buildTable(slug: string): GuideProps | null {
         ),
       },
       { h: "Space and layout tips", body: <><p>Plan {t.footprint}. Leave service aisles of about 4 to 5 feet between tables so servers and guests can pass behind seated chairs.</p><p>The comfortable number is better than the maximum for plated service. Squeezing {t.seatsMax} guests around a table limits elbow room and slows service.</p></> },
+      {
+        h: "Linens and chairs for this table",
+        body: (
+          <>
+            <p>
+              For a floor-length cloth, add about 29 inches of drop on every side of the {t.shape === "round" ? "tabletop" : "top and each end"}; a half drop (15 inches) costs less and still looks tidy for a daytime or casual event. The{" "}
+              <Link href="/tools/linens" className="link">linen size calculator</Link> gives the exact cloth for your {t.name}.
+            </p>
+            <p>
+              {rec.map((c) => c.name).slice(0, -1).join(", ")}
+              {rec.length > 1 ? " and " : ""}
+              {rec[rec.length - 1]?.name} are chairs from our collection that suit {t.use}. Each one's own page has the per-chair price and finishes.
+            </p>
+            <p>
+              Match the chair seat height to the {t.name}'s table height before you order a specialty chair, and check the chair's own page for how it stacks and whether it handles an outdoor setting, since that affects how fast a room turns over between a ceremony and a reception.
+            </p>
+          </>
+        ),
+      },
     ],
     faqs: [
       { q: `How many people sit at a ${t.name}?`, a: `${t.seatsMin === t.seatsMax ? t.seatsMin : `${t.seatsMin} to ${t.seatsMax}`}. These are planning figures and depend on chair width and the style of service.` },
@@ -857,6 +884,10 @@ export const tablesFamily: GuideFamily = {
     { q: "How many chairs fit at a cocktail table?", a: "Highboy cocktail tables are for standing and usually have no chairs. Low 30-inch cocktail tables seat 2-4. Plan one highboy per 8-10 standing guests." },
     { q: "How many tables do I need for 100 guests?", a: "Thirteen 60-inch rounds seat 100 guests at 8 per table, or ten if you seat 10 per table. Add tables for the cake, gifts, DJ and one buffet table per 50 guests, so most 100-guest events order 16 to 18 tables in all." },
     { q: "Round or rectangular tables: which fits more guests?", a: "Rectangular banquet and farm tables usually fit more guests in the same room, because long rows waste less floor than circles. Rounds make conversation easier and suit square rooms. Many planners mix both, with a long head table and rounds for guests." },
+    { q: "What size linen do I need for each table?", a: "For a floor-length cloth, add about 29 inches of drop on every side; a half drop (15 inches) is a lower-cost, casual option. Use the linen size calculator for the exact cloth size for your table." },
+    { q: "How much floor space does each table need?", a: "Plan at least 60-65 inches of floor for a 60-inch round once chairs are pulled out, plus a 4 to 5 foot service aisle on at least two sides so a server can pass seated guests without squeezing by." },
+    { q: "Do kids' tables need different spacing?", a: "Kids' tables are usually lower and smaller, so they fit more tightly, but still leave a full-size aisle around them since parents and servers need to reach the table just as often as any adult table." },
+    { q: "How do I lay out mismatched table shapes in one room?", a: "Keep each table shape in its own zone rather than scattering them, since mixed shapes in a line make the service aisles uneven. A long head table plus a block of rounds for guests is the easiest combination to lay out." },
   ],
   base: "/table-seating-guides",
   hubTitle: "Table Seating Guides: How Many Chairs Per Table",
@@ -869,16 +900,16 @@ export const tablesFamily: GuideFamily = {
 /* ---------------------------------------------------------------- seasons */
 const months = [
   { slug: "january", name: "January", lvl: 0, wx: "Deep winter. Cold, snow and ice are likely, and lake wind makes outdoor events impractical.", ev: "Indoor winter events: galas, corporate kickoffs and milestone birthdays.", tip: "Plan for delivery time around snow and salted entrances, and ask the venue about a coat check." },
-  { slug: "february", name: "February", lvl: 0, wx: "Still winter, with cold snaps. Indoor venues only.", ev: "Engagement parties, fundraisers and Valentine's dinners.", tip: "Snow days can move deliveries, so avoid tight load-in windows." },
+  { slug: "february", name: "February", lvl: 0, wx: "Still winter, with cold snaps. Indoor venues only.", ev: "Engagement parties, fundraisers and Valentine's dinners.", tip: "Snow days can move deliveries, so avoid tight load-in windows and give the crew a wider buffer if a storm is forecast that week." },
   { slug: "march", name: "March", lvl: 1, wx: "Unsettled: thaw, rain and the occasional late snow. Outdoor events remain risky.", ev: "Showers, graduations planning, corporate events and early spring parties.", tip: "Lawn and parking areas are often wet and soft, so ask about ground protection." },
   { slug: "april", name: "April", lvl: 2, wx: "Spring warms up, but rain and cool days are common. Tents or indoor backups are wise.", ev: "Early outdoor ceremonies, showers and rehearsal dinners.", tip: "Spring Saturdays start filling in January, so lock in tents and statement chairs early." },
   { slug: "may", name: "May", lvl: 3, wx: "Mild and green, with the occasional storm. A popular month for outdoor events.", ev: "Graduation parties, weddings and corporate spring events.", tip: "Weekend dates book up fast. Confirm weather backup space before ordering chairs." },
   { slug: "june", name: "June", lvl: 3, wx: "Warm and long days, with a chance of summer thunderstorms.", ev: "Peak wedding season, graduations and outdoor parties.", tip: "Choose outdoor-friendly chairs and consider shade, since sun can be hot for ceremony guests." },
   { slug: "july", name: "July", lvl: 3, wx: "Hot and humid, with pop-up storms. Shade and water matter.", ev: "Outdoor weddings, family reunions and festivals.", tip: "Light chairs that do not trap heat are more comfortable than dark upholstery." },
-  { slug: "august", name: "August", lvl: 3, wx: "Hot and humid early, easing late in the month.", ev: "Weddings, backyard parties and company picnics.", tip: "Book tents and chairs together so setup is coordinated." },
+  { slug: "august", name: "August", lvl: 3, wx: "Hot and humid early, easing late in the month.", ev: "Weddings, backyard parties and company picnics.", tip: "Book tents and chairs together so setup is coordinated, and ask about fans or misters for midday heat if your event runs through the afternoon." },
   { slug: "september", name: "September", lvl: 3, wx: "Comfortable days and cooler evenings, one of the most pleasant months for outdoor events.", ev: "Weddings, fall fundraisers and homecoming events.", tip: "Evenings cool quickly, so plan lighting and warmth after sunset." },
   { slug: "october", name: "October", lvl: 2, wx: "Crisp and colorful, with cold snaps and early frost possible.", ev: "Fall weddings, harvest parties and corporate galas.", tip: "Ask about a tent or indoor backup. Leaves and damp ground affect ceremony setup." },
-  { slug: "november", name: "November", lvl: 1, wx: "Cold and often gray, with early dark and the first snow. Indoor events.", ev: "Thanksgiving gatherings, fundraisers and early holiday parties.", tip: "Book holiday party chairs early because December demand is high." },
+  { slug: "november", name: "November", lvl: 1, wx: "Cold and often gray, with early dark and the first snow. Indoor events.", ev: "Thanksgiving gatherings, fundraisers and early holiday parties.", tip: "Book holiday party chairs early because December demand is high, and plan for an earlier delivery window since it gets dark well before most evening events start." },
   { slug: "december", name: "December", lvl: 0, wx: "Winter, with snow and cold. Holiday parties dominate and indoor venues are in demand.", ev: "Holiday parties, galas and New Year's events.", tip: "Peak month for rentals: confirm delivery windows and have a weather backup day." },
 ];
 function buildMonth(slug: string): GuideProps | null {
@@ -923,8 +954,26 @@ function buildMonth(slug: string): GuideProps | null {
     visual2Caption: `Chairs we would shortlist for ${m.name}.`,
     sections: [
       { h: `What ${m.name} is like for events`, body: <><p>{m.wx}</p><p>Typical events: {m.ev}</p></> },
-      { h: "Chair and logistics tips", body: <><p>{m.tip}</p><p>{m.lvl >= 2 ? "Outdoor ceremonies need chairs that handle damp ground and a plan for rain. Stackable styles also make it easy to move indoors." : "Indoor events let you choose on style and comfort rather than weather resistance."}</p></> },
+      { h: "Chair and logistics tips", body: <><p>{m.tip}</p><p>{m.lvl >= 2 ? "Outdoor ceremonies need chairs that handle damp ground and a plan for rain. Stackable styles also make it easy to move indoors." : "Indoor events let you choose on style and comfort rather than weather resistance, so pick the chair for your room's look and your budget rather than the forecast."}</p></> },
       { h: "When to book", body: <p>{post ? "Weekend dates in this season book earlier, so start a quote as soon as your date and venue are fixed." : "Booking a few months ahead is usually enough, but December and holiday weekends fill early."}</p> },
+      {
+        h: "Planning around the weather",
+        body: (
+          <>
+            <p>
+              {m.lvl >= 2
+                ? <>We check the forecast with you the week of your event and can add a tent sidewall or move the setup under cover with a day or two of notice. Run your date through the <Link href="/tools/rain-plan" className="link">rain plan checklist</Link> so a backup is ready before it is needed.</>
+                : <>Indoor venues make the weather less of a factor, but confirm loading-dock access and parking with the venue, since {m.name.toLowerCase()} conditions can slow a delivery crew more than the event itself.</>}
+            </p>
+            <p>Delivery and setup are itemized on the same quote as the chairs, so you see the full cost before you book anything.</p>
+            <p>
+              {m.lvl >= 2
+                ? "Ask your delivery crew about floor boards or plywood paths under chair legs on wet grass, and plan a sidewall tent or indoor backup if the forecast turns before your date."
+                : "Confirm your venue's load-in time early, since short winter daylight and salted sidewalks can slow a crew more in this month than the distance they're driving."}
+            </p>
+          </>
+        ),
+      },
     ],
     faqs: [
       { q: `Can I hold an outdoor event in Chicago in ${m.name}?`, a: m.lvl >= 2 ? "Yes, with a backup plan for weather. Tents, indoor alternatives and outdoor-friendly chairs reduce the risk." : "It is risky. Most events this month are indoors, so look at indoor venues first." },
@@ -949,6 +998,10 @@ export const seasonsFamily: GuideFamily = {
     { q: "What happens if it rains on my outdoor event?", a: "Book a tent or an indoor backup at the same time as your chairs. Resin and metal chairs handle rain; wood and upholstered chairs need cover. Your quote can include a tent so the plan B is already priced." },
     { q: "How far ahead should I book rentals for a Chicago summer event?", a: "Three to six months for June to September Saturdays, especially for tents, dance floors and specialty chairs, which sell out first. Weekday events and the shoulder months of April, May and October can often be booked four to eight weeks out." },
     { q: "Do I need heaters for a fall event in Chicago?", a: "Often, yes. Evenings from late September onward regularly drop below 60 degrees, and a tent with sidewalls plus one patio heater per 10 to 12 guests keeps an outdoor reception comfortable. Order propane with the heaters so they run all night." },
+    { q: "Which chairs handle Chicago weather best?", a: "Resin, metal and most wood folding chairs handle rain, wind and cold without damage. Upholstered, velvet and unfinished wood chairs need a tent or indoor space, and should come inside the moment a forecast turns." },
+    { q: "Can I change my chair order close to the event if the weather changes?", a: "Usually, yes, within a few days of your event. Call us as soon as the forecast shifts; we will tell you what can still move and what is already locked in for delivery." },
+    { q: "Does the Chicago lakefront have its own weather risks?", a: "Yes. Wind off Lake Michigan runs stronger and cooler than inland, even a few miles away, so lakefront venues need sturdier tent stakes, heavier linens and an earlier call on heaters than a backyard further from the shore." },
+    { q: "Is spring or fall riskier for an outdoor Chicago event?", a: "Both swing widely day to day, but fall is usually the safer bet: temperatures trend milder and more predictable than a cold snap in March or April, even though both seasons need a rain and temperature backup plan." },
   ],
   base: "/chicago-event-seasons",
   hubTitle: "Chicago Event Seasons: Month-by-Month Chair Rental Planning",

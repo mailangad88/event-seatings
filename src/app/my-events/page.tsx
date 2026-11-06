@@ -43,6 +43,10 @@ const faqs: Faq[] = [
     q: "Is my information shared with anyone?",
     a: `No. Your plan stays in your browser. ${site.name} only receives your details if you choose to send your email for a planning check-in, or request a quote.`,
   },
+  {
+    q: "What happens if I clear my browser data?",
+    a: `Your plan is stored in this browser, so clearing site data or switching browsers removes it. Use "Share with partner or planner" to email yourself the link before you clear anything, or sign in so a copy is also kept on your account.`,
+  },
 ];
 
 const steps = [

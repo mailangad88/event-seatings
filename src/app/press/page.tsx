@@ -66,6 +66,7 @@ const faqs = [
   { q: "How fast do you reply to press questions?", a: `Email ${site.email} with "Press" in the subject. We reply within one business day. Tell us your deadline and we will do our best to meet it.` },
   { q: "Can I use your price data?", a: `Yes. The price index and its CSV are free to use with credit to ${site.name} and a link to the page.` },
   { q: "Can I use your photos?", a: "Most images on the site are our own renders and generated event scenes, and some are licensed stock photos. Ask us and we will send ones you can use with credit." },
+  { q: "Can you comment on a specific story or local trend?", a: `Yes. Tell us the angle and your deadline when you email ${site.email}, and we can speak to pricing, booking timelines or what Chicago-area hosts are asking for this season.` },
 ];
 
 export default function PressPage() {

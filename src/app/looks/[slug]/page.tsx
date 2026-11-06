@@ -175,6 +175,33 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
         </div>
       </section>
 
+      {/* Getting it right */}
+      <section className="container-x mt-24 grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+        <div>
+          <p className="eyebrow">Planning</p>
+          <h2 className="display-2 mt-3">Getting the look right</h2>
+        </div>
+        <div className="space-y-5 leading-8">
+          <p>
+            {look.name} comes together on the floor, not just the chair: the linen, florals and light in the recipe above are doing as much work as the {hero.name}.
+            {" "}{look.details.find((d) => d.label.toLowerCase() === "lighting") ? look.details.find((d) => d.label.toLowerCase() === "lighting")!.text + "." : ""} Most couples and planners book the chairs first, then build linen and florals to match the swatches shown here so nothing is picked by eye on the day.
+          </p>
+          <p>
+            It's built for {look.bestFor[0].toLowerCase()}
+            {look.bestFor.length > 1 ? ` and works just as well at ${look.bestFor.slice(1).join(", ").toLowerCase()}` : ""}, and reads best in {look.season.toLowerCase()}.
+            {also.length > 0 && (
+              <>
+                {" "}If your ceremony and reception are in different rooms, keep the {hero.name} for the head table or sweetheart seat and use the {also.map((c) => c.name).join(" or ")} for the rest of the room, so the look still reads as one event.
+              </>
+            )}
+          </p>
+          <p>
+            We deliver every chair, set the table to the recipe above and collect everything afterward, so you are not the one steaming linen or wiping down chairs the morning after. Use the{" "}
+            <Link href="/tools/venue-capacity" className="link">venue capacity calculator</Link> to check how many of these chairs your room actually fits before you order.
+          </p>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="container-x mt-24">
         <div className="grid gap-14 md:grid-cols-[1fr_1.6fr] md:gap-20">

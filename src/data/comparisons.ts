@@ -206,6 +206,7 @@ export const comparisons: Comparison[] = [
     body: [
       { h: "How many", p: ["The tables and chairs calculator starts at one highboy for every eight guests during cocktail hour, and you can change it. Mixing in a few lowboys with chairs is a kind touch for guests who'd rather sit."] },
       { h: "Linens", p: ["Spandex covers are the go-to for highboys because they hug the table. The tablecloth calculator sizes both."] },
+      { h: "Placement", p: ["Spread highboys through the room rather than clustering them near the bar, so guests spread out instead of crowding one spot. Keep a clear path from the bar to the dance floor or next room, and leave at least 3 feet between tables so a server can pass with a tray."] },
     ],
     faqs: [
       { q: "How many cocktail tables per guest?", a: "There's no fixed rule; it depends on how relaxed you want it. The calculator starts at one per eight guests." },
