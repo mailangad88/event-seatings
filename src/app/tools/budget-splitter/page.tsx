@@ -3,8 +3,8 @@ import { BudgetSplitTool } from "@/components/tools/BudgetSplitTool";
 import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 
 const slug = "budget-splitter";
-const title = "Event Budget Splitter: Split by Category and Between Hosts";
-const description = "Free event budget splitter for weddings, parties, backyard and corporate events. Split one total across venue, food, rentals, music and more with sliders that always add to 100%, see cost per guest, and split the bill between families or co-hosts.";
+const title = "Event Budget Splitter and Cost Calculator";
+const description = "Split one total across venue, food, rentals and music with sliders that always add to 100%, see cost per guest, and split the bill between co-hosts.";
 
 export const metadata = toolMetadata(slug, title, description);
 

@@ -5,6 +5,7 @@ import { CallCta } from "@/components/CallCta";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
 import { getProduct } from "@/data/catalog-products";
 import { extraImages, imageCategories, productImages, rentalImageJsonLd, sceneImages } from "@/data/rental-images";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -67,6 +68,7 @@ export default function GalleryPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container-x py-20">
+        <Breadcrumbs items={[{ name: "Gallery", href: "/gallery" }]} className="mb-6" />
         <p className="eyebrow">Gallery</p>
         <h1 className="display-1 mt-6 max-w-4xl">
           See the rentals before you book
@@ -179,7 +181,7 @@ function SetupFigure({ s, priority = false }: { s: (typeof sceneImages)[number];
     <figure className="relative">
       <SaveIdea idea={{ src: s.src, alt: s.alt, caption: s.caption }} className="absolute top-3 right-3 z-10" />
       <div className="media relative aspect-[4/3] overflow-hidden">
-        <Image src={s.src} alt={s.alt} fill priority={priority} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
+        <Image src={s.src} alt={s.alt} fill priority={priority} fetchPriority={priority ? "high" : undefined} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
       </div>
       <figcaption className="mt-3 text-sm text-muted">{s.caption}</figcaption>
     </figure>

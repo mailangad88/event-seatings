@@ -39,12 +39,38 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-06): 12 far south Cook/Will County suburb pages
+
+- Next cluster after the near-west Cook County batches: audited the far south Cook County suburbs and northern Will County for real towns still missing a page. Added Markham, Robbins, Posen, Dixmoor, Riverdale, Calumet Park, Burnham, Thornton, Glenwood, South Chicago Heights, Ford Heights and Beecher (Will County, near the Indiana border) in `src/data/geo/areas/far-south-cook.ts`.
+- Same `Location` schema and shared visuals (area map, chair renders, Service/FAQPage/BreadcrumbList schema) as every other `/chair-rentals/[slug]` page. South Chicago Heights' copy is explicit that it's a separate village from neighboring Chicago Heights, since the names are easy to confuse.
+- Fixed a title-tag collision found by the SEO audit: `/party-rentals/[area]/[category]`'s meta title used the full category phrase, which pushed South Chicago Heights' title past 65 characters and truncated it to the exact same text as the existing South Chicago neighborhood page. Switched to the shorter category name so titles stay under the limit.
+- `npx tsx scripts/check-geo.ts`: 309 locations, 0 errors (was 297). `node scripts/check-copy.mjs` passes.
+
+## Changes in this release (2026-11-06): 4 more near-west Cook County suburb pages
+
+- Follow-up to the batch below: added the remaining real towns in the same near-west Cook County corridor that were held back to keep that batch's quality bar high — Hillside, Stone Park, Forest View and McCook.
+- Added all 4 in `src/data/geo/areas/near-west-cook-2.ts`, same `Location` schema and visuals as the rest of `/chair-rentals/[slug]`. McCook is almost entirely industrial with few residences, so its page is honest about that and focuses on the neighboring villages (Hodgkins, Summit, Brookfield, Indian Head Park) where families with McCook ties actually live.
+- `npx tsx scripts/check-geo.ts`: 297 locations, 0 errors (was 293). `node scripts/check-copy.mjs` passes.
+
+## Changes in this release (2026-11-06): 12 new near-west Cook County suburb pages
+
+- Audited all 281 existing `/chair-rentals/[slug]` area pages against a list of real Chicago-metro municipalities and found a cluster of legitimate near-west Cook County suburbs (the Bellwood/Oak Park/O'Hare corridor) with no page: Franklin Park, Schiller Park, Bellwood, Broadview, Westchester, River Grove, Berkeley, North Riverside, Stickney, Hodgkins, Indian Head Park and Justice.
+- Added all 12 in `src/data/geo/areas/near-west-cook.ts`, following the existing `Location` schema: unique local story (3 paragraphs), 4 settings, 4 delivery logistics, 3 recommended chairs, 5 FAQs, real ZIP codes and coordinates, and links to nearby existing area pages. Visuals come from the shared template (stylised area map + chair renders), so no page is text-only.
+- `npx tsx scripts/check-geo.ts`: 293 locations, 0 errors (was 281). A few of the new pages still warn under the 450-word body-copy guideline, same as several existing pages (e.g. Blue Island, Sandwich, Harvey) — non-blocking.
+- Did not add: Hillside, Stone Park, Forest View, McCook (same corridor, real towns, still missing) — left for a follow-up pass to keep this batch's quality bar high rather than spreading thinner.
+- Avoided duplicating the separate "Write high-intent Chicago rental posts" blog thread's topics; this is new geography coverage, not new blog content.
+
+## Changes in this release (2026-11-05): fix invalid sitemap.xml
+
+- Google Search Console reported "Couldn't fetch, 0 pages" on sitemap.xml. Cause: Next.js writes `url`/`images` strings straight into `<loc>` without XML-escaping, and every Unsplash stock photo URL has an un-escaped `&` in its query string (`?auto=format&fit=crop...`), which broke the XML (invalid around line 9351 of ~145,000 lines). All 7,281 URLs and their image entries are now escaped before Next serializes them (src/app/sitemap.ts). Verified the output parses as valid XML with 0 unescaped `&`.
+- Also confirmed: sitemap.xml itself returns 200 from the production deployment (no SITE_PAUSED or Vercel firewall issue), well under the 50,000-URL / 50MB sitemap limits.
+
 ## Changes in this release (2026-11-04): search engine and AI crawler pass
 
 - robots.txt now names every major AI crawler (ChatGPT, Claude, Perplexity, Gemini/Google-Extended, Apple, Copilot/Bing, Amazon, Meta, DuckDuckGo, Mistral, Cohere, Common Crawl) as welcome, and blocks /account and /partners/status as private.
 - Pages for rental companies (/partners, /partners/faq, /partners/terms, /partners/onboard, /vendor-listings) are now noindex and left out of the sitemap and llms.txt, so customers searching for rentals land on customer pages. They still work for anyone with the link. List: src/lib/vendor-pages.ts.
 - llms.txt: dropped the partner line and the insurance mention; the price index line describes the market, not other companies.
-- Bing: /BingSiteAuth.xml serves the NEXT_PUBLIC_BING_VERIFICATION code, and the "we'll be back" page carries the Google and Bing verification tags, so both can verify while the site is paused.
+- Bing: /BingSiteAuth.xml is the static verification file Bing Webmaster Tools issued (public/BingSiteAuth.xml), and the "we'll be back" page carries the Google and Bing meta verification tags, so both can verify while the site is paused.
 - IndexNow: GitHub Actions "IndexNow" button pings Bing with every sitemap URL; the script refuses to run while the site is paused.
 - Alt text on the logo inside share images. Sitewide scan found no other images without alt text.
 
@@ -401,6 +427,35 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/blog/graduation-ceremony-chair-rental-chicago` | Commencement on a field: chair counts, layout, turf, rain plan (daily post) | 2026-11-03 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ✅ Chicago-area schools | ✅ field-layout SVG, chair pair, count table | ✅ | ✅ `/book` call + calculator download |
 | `/blog/gym-floor-event-chair-rental` | Events in a school or church gym: floor protection, chairs, counts (daily post) | 2026-11-04 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area schools and churches (tag only) | ✅ floor-protection SVG, chair pair, count table | ✅ | ✅ `/book` call + calculator download |
 | `/blog/graveside-service-chair-rental` | Graveside service seating: what the funeral home brings, when to rent more, cemetery rules (daily post) | 2026-11-05 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ graveside-layout SVG, chair pair | ✅ | ✅ `/book` call + celebration-of-life checklist |
+
+### Chicago high-intent gap-fill batch (added 2026-11-06, overnight autonomous run)
+
+20 new posts after checking the existing 721 posts plus the programmatic location/category pages for duplicates. Covers neighborhoods and landmarks with no dedicated guide yet, plus institutional and lifestyle audiences the site hadn't addressed. All have answer-box quick answers, an inline SVG diagram, a stat grid, 6 FAQs (FAQPage schema), 6+ internal links and pass `node scripts/check-copy.mjs`.
+
+| Route | Purpose | Last touched | SEO | AEO | GEO | Visuals | FAQ | CTA |
+|---|---|---|---|---|---|---|---|---|
+| `/blog/gold-coast-party-planning-chicago` | Gold Coast venues, buildings, logistics | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Gold Coast | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/river-north-party-planning-chicago` | River North venues, buildings, logistics | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ River North | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/south-loop-party-planning-chicago` | South Loop venues, buildings, logistics | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ South Loop | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/the-loop-corporate-event-rentals-chicago` | Corporate events in the Loop | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ The Loop | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/bucktown-party-planning-chicago` | Bucktown venues, buildings, logistics | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Bucktown | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/navy-pier-event-rentals-chicago` | What to know renting for a Navy Pier event | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Navy Pier, lakefront wind | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/millennium-park-and-grant-park-event-rentals-chicago` | Rentals for events at Millennium/Grant Park | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Park District permits | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/museum-campus-event-rentals-chicago` | Galas/fundraisers at Field Museum, Shedd, Adler | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Museum Campus | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/wrigleyville-sports-watch-party-rentals-chicago` | Game-day rooftop/backyard watch parties | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Wrigleyville | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/ohare-and-midway-airport-area-event-rentals-chicago` | Hotel meetings/events near O'Hare, Midway | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ airport-area hotels | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/hospital-and-healthcare-event-rentals-chicago` | Staff, donor and family events at hospitals | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ⚠️ generic (no named facility) | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/senior-living-and-nursing-home-event-rentals-chicago` | Family/resident events, ADA-aware layouts | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ⚠️ generic (no named facility) | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/public-library-event-rentals-chicago` | Rentals for library meeting-room events | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ⚠️ generic (no named branch) | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/school-and-class-reunion-rentals-chicago` | Planning a class/school reunion rental order | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago venues | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/block-club-and-neighborhood-association-event-rentals-chicago` | Recurring block club/HOA events (not a one-day block party) | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago block clubs | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/condo-and-apartment-clubhouse-event-rentals-chicago` | Booking a building's amenity/party room | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago condo buildings | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/airbnb-and-vacation-rental-event-chicago` | Renting extra seating for a short-term rental party | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago short-term rentals | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/dog-friendly-and-pet-friendly-event-rentals-chicago` | Including dogs at a backyard party | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago backyards/parks | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/downtown-chicago-hotel-wedding-rentals` | Bringing outside rental chairs into a hotel ballroom | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ downtown Chicago hotels | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/chicago-cultural-center-and-civic-venue-rentals` | Renting for events at city-owned civic/cultural venues | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago civic venues | ✅ diagram, stat grid | ✅ | ✅ |
+
+Remaining: none blocking — `npm run seo-audit --ci` scored 99.1/100 across 7,281 pages with these included, 0 blocking errors. Real photo/3D hero art could replace the generic SVG art later, same as other guides awaiting that pass.
 
 ## Journal guides (added 2026-11-02, PR #16)
 
@@ -1183,7 +1238,7 @@ Columns: SEO = title, description, keyword, canonical; AEO = answer box + FAQ sc
 
 ## Local pages: Local landing pages (Chicago neighborhoods + suburbs)
 
-Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts` + `src/data/geo/areas/*.ts` (Nov 3 2026: 246 more areas, 281 total incl. 10 county pages). Check with `npx tsx scripts/check-geo.ts`.
+Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts` + `src/data/geo/areas/*.ts` (Nov 3 2026: 246 more areas, 281 total incl. 10 county pages; Nov 6 2026: +12 near-west Cook County suburbs in `src/data/geo/areas/near-west-cook.ts`, +4 more in `near-west-cook-2.ts`, +12 far south Cook/Will County suburbs in `far-south-cook.ts`, 309 total). Check with `npx tsx scripts/check-geo.ts`.
 
 **Fact-check, 2026-11-03 (246 new area pages in `src/data/geo/areas/`):**
 - ZIP codes: all 411 ZIPs across all 281 area pages were checked against a public USPS ZIP dataset (the `zipcodes` npm package). Every one is a real Illinois ZIP. Each sits within 8 miles of its place's coordinates (4 for Chicago neighborhoods, 40 for counties). Where a village shares its ZIP with a neighbor (for example Kildeer, Long Grove and Hawthorn Woods on 60047), the post office name differs; that is expected. Census ZCTA files were blocked from the build environment.
@@ -1196,7 +1251,35 @@ Every page has: unique local copy, stylised area map, 3 chair picks with renders
 
 | Page | URL | Last touched | Remaining |
 |---|---|---|---|
-| Areas hub | /chair-rentals | 2026-11-03 | Grouped by county with jump links (281 areas). Add real venue photos; add a short video |
+| Areas hub | /chair-rentals | 2026-11-06 | Grouped by county with jump links (309 areas). Add real venue photos; add a short video |
+| Markham | /chair-rentals/markham | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Robbins | /chair-rentals/robbins | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Posen | /chair-rentals/posen | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Dixmoor | /chair-rentals/dixmoor | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Riverdale | /chair-rentals/riverdale | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Calumet Park | /chair-rentals/calumet-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Burnham | /chair-rentals/burnham | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Thornton | /chair-rentals/thornton | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Glenwood | /chair-rentals/glenwood | 2026-11-06 | New. Owner review of local facts; add real photo |
+| South Chicago Heights | /chair-rentals/south-chicago-heights | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Ford Heights | /chair-rentals/ford-heights | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Beecher | /chair-rentals/beecher | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Hillside | /chair-rentals/hillside | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Stone Park | /chair-rentals/stone-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Forest View | /chair-rentals/forest-view | 2026-11-06 | New. Owner review of local facts; add real photo |
+| McCook | /chair-rentals/mccook | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Franklin Park | /chair-rentals/franklin-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Schiller Park | /chair-rentals/schiller-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Bellwood | /chair-rentals/bellwood | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Broadview | /chair-rentals/broadview | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Westchester | /chair-rentals/westchester | 2026-11-06 | New. Owner review of local facts; add real photo |
+| River Grove | /chair-rentals/river-grove | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Berkeley | /chair-rentals/berkeley | 2026-11-06 | New. Owner review of local facts; add real photo |
+| North Riverside | /chair-rentals/north-riverside | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Stickney | /chair-rentals/stickney | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Hodgkins | /chair-rentals/hodgkins | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Indian Head Park | /chair-rentals/indian-head-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Justice | /chair-rentals/justice | 2026-11-06 | New. Owner review of local facts; add real photo |
 | Chicago | /chair-rentals/chicago | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
 | The Loop | /chair-rentals/the-loop | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
 | River North | /chair-rentals/river-north | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |

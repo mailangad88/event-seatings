@@ -68,7 +68,15 @@ export function sequenceLabel(lead: Lead): string | undefined {
   return parts.length ? `${seq.name}:${parts.join("+")}` : seq.name;
 }
 
-export type Step = { day: number; subject: (l: Lead) => string; body: (l: Lead) => string[] };
+export type Step = {
+  day: number;
+  subject: (l: Lead) => string;
+  body: (l: Lead) => string[];
+  // Visual version of the same email (src/emails/FollowupEmail.tsx): a short on-page heading and
+  // the one button. `body` is still the source of the wording for both the text and HTML parts.
+  heading: (l: Lead) => string;
+  cta: (l: Lead) => { label: string; href: string };
+};
 
 const firstName = (l: Lead) => (l.name ? l.name.trim().split(/\s+/)[0] : "");
 const hi = (l: Lead) => (firstName(l) ? `Hi ${firstName(l)},` : "Hi,");
@@ -80,11 +88,20 @@ const booking = () =>
     ? `Pick a 15-minute time here: ${process.env.NEXT_PUBLIC_BOOKING_URL}`
     : "Reply with a good time and a number, and we'll call you.";
 
+// The one button on the visual version of each email (src/emails/FollowupEmail.tsx). Links to the
+// booking page when one is set, otherwise to the quote builder, which always works without a reply.
+const bookOrQuoteCta = (): { label: string; href: string } =>
+  process.env.NEXT_PUBLIC_BOOKING_URL
+    ? { label: "Book a 15-minute call", href: process.env.NEXT_PUBLIC_BOOKING_URL }
+    : { label: "Go to your quote", href: `${site.url}/quote` };
+
 // Quote and call requests that nobody has answered yet.
 const requestSteps: Step[] = [
   {
     day: 1,
     subject: (l) => `Quick question about your ${event(l)}${date(l) ? ` on ${date(l)}` : ""}`,
+    heading: (l) => `Following up on your ${event(l)}`,
+    cta: bookOrQuoteCta,
     body: (l) => [
       hi(l),
       "",
@@ -99,6 +116,8 @@ const requestSteps: Step[] = [
   {
     day: 3,
     subject: () => "3 things that change a rental quote",
+    heading: () => "3 things that change a rental quote",
+    cta: () => ({ label: "Update your quote", href: `${site.url}/quote` }),
     body: (l) => [
       hi(l),
       "",
@@ -114,6 +133,8 @@ const requestSteps: Step[] = [
   {
     day: 7,
     subject: (l) => `Still planning ${date(l) ? `for ${date(l)}` : `your ${event(l)}`}?`,
+    heading: (l) => `Still planning ${date(l) ? `for ${date(l)}` : `your ${event(l)}`}?`,
+    cta: bookOrQuoteCta,
     body: (l) => [
       hi(l),
       "",
@@ -126,6 +147,8 @@ const requestSteps: Step[] = [
   {
     day: 14,
     subject: () => "Should I close your request?",
+    heading: () => "Should we close your request?",
+    cta: () => ({ label: "Reopen your request", href: `${site.url}/quote` }),
     body: (l) => [
       hi(l),
       "",
@@ -143,6 +166,15 @@ const nurtureSteps: Step[] = [
     subject: (l) => {
       const f = focusFor(l);
       return f.category ? `Planning ${f.category.label.toLowerCase()} for your ${event(l)}: what to check` : "The one rental list most planners forget";
+    },
+    heading: (l) => {
+      const f = focusFor(l);
+      return f.category ? `Planning ${f.category.label.toLowerCase()}: what to check` : "The one rental list most planners forget";
+    },
+    cta: (l) => {
+      const f = focusFor(l);
+      const tool = f.category ? toolFor[f.category.key] : undefined;
+      return tool ? { label: tool.name, href: `${site.url}${tool.href}` } : { label: "Go to the quote builder", href: `${site.url}/quote` };
     },
     body: (l) => {
       const f = focusFor(l);
@@ -170,6 +202,8 @@ const nurtureSteps: Step[] = [
   {
     day: 6,
     subject: () => "Free tools for your seating plan",
+    heading: () => "Free tools for your seating plan",
+    cta: () => ({ label: "Try the seating planner", href: `${site.url}/seating-planner` }),
     body: (l) => {
       const f = focusFor(l);
       const used = new Set(f.tools.map((t) => t.href));
@@ -185,6 +219,8 @@ const nurtureSteps: Step[] = [
   {
     day: 13,
     subject: (l) => (date(l) ? `Planning for ${date(l)}: want a second pair of eyes?` : "Want a second pair of eyes on your plan?"),
+    heading: (l) => (date(l) ? `Planning for ${date(l)}?` : "Want a second pair of eyes on your plan?"),
+    cta: bookOrQuoteCta,
     body: (l) => [
       hi(l),
       "",

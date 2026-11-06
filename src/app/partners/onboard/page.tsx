@@ -48,7 +48,7 @@ export default function PartnerOnboardPage() {
         actions={<a href="#onboard" className="btn-accent">Start onboarding <Icon name="arrow" size={18} /></a>}
         media={
           <figure className="media aspect-[4/3] shadow-lift">
-            <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            <Image src={hero.src} alt={hero.alt} fill priority fetchPriority="high" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </figure>
         }
       />

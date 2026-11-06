@@ -3,6 +3,7 @@ import Link from "@/components/Link";
 import { site } from "@/lib/site";
 import { ChairStrip } from "@/components/ChairStrip";
 import { HubFaqs, StepFlow, type Faq } from "@/components/ui";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { seo } from "@/lib/seo";
 import { TERMS_UPDATED, TERMS_VERSION, termsPolicy as t } from "@/lib/terms";
 
@@ -37,8 +38,8 @@ const sections = [
 
 const steps = [
   { title: "Quote", text: "You send a list. We send prices. Nothing is held yet.", icon: "list" },
-  { title: "Confirm", text: "You agree to these terms and pay the deposit.", icon: "check" },
-  { title: "Balance", text: `The rest is due ${t.balanceDueDays} days before your event.`, icon: "calendar" },
+  { title: "Deposit", text: `You agree to these terms and pay ${t.depositPercent}% (${t.lateDepositPercent}% if booking within ${t.secondDueDays} days of the event).`, icon: "check" },
+  { title: "Installments", text: `The rest comes due in stages: ${t.secondPercent}% ${t.secondDueDays} days out, the balance ${t.balanceDueDays} days before.`, icon: "calendar" },
   { title: "Event day", text: "We deliver, set up and pick up in the agreed windows.", icon: "truck" },
 ] as const;
 
@@ -69,6 +70,7 @@ export default function TermsPage() {
   return (
     <>
       <div className="container-x max-w-3xl py-20">
+        <Breadcrumbs items={[{ name: "Terms and conditions", href: "/terms" }]} className="mb-6" />
         <p className="eyebrow">Legal</p>
         <h1 className="display-1 mt-6">Terms and conditions</h1>
         <p className="mt-4 text-sm text-muted">
@@ -133,11 +135,16 @@ export default function TermsPage() {
           <ul>
             <li>
               To book, you pay a deposit. Unless your quote says otherwise, it is {t.depositPercent}% of the rental
-              subtotal, at least ${t.depositMin} (never more than the subtotal).
+              subtotal, at least ${t.depositMin} (never more than the subtotal). If your event is within {t.secondDueDays}{" "}
+              days when you book, the deposit is {t.lateDepositPercent}% instead.
+            </li>
+            <li>
+              If your event is more than {t.secondDueDays} days away when you book, a second payment of {t.secondPercent}%
+              of the rental subtotal is due {t.secondDueDays} days before your event.
             </li>
             <li>
               The balance is due {t.balanceDueDays} days before your event. If you book inside that window, you pay the full
-              amount to book. If the balance isn&apos;t paid on time, we may treat the order as cancelled by you (see section 4).
+              amount to book. If a payment isn&apos;t made on time, we may treat the order as cancelled by you (see section 4).
             </li>
             <li>
               We take card and bank payments through Stripe, a secure payment company. We never see or store your full card

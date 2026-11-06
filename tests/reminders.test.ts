@@ -35,6 +35,11 @@ describe("unfinished quote list", () => {
     expect(p.send[0].kind).toBe("unfinished_quote");
     expect(p.send[0].body.join("\n")).toContain("https://site.test/quote?items=chiavari-gold,round-60&from=reminder");
     expect(p.send[0].body.join("\n")).toContain("Gold chiavari chair, 60-inch round table");
+    expect(p.send[0].quoteLink).toBe("https://site.test/quote?items=chiavari-gold,round-60&from=reminder");
+    expect(p.send[0].quoteItems).toEqual([
+      { id: "chiavari-gold", name: "Gold chiavari chair" },
+      { id: "round-60", name: "60-inch round table" },
+    ]);
   });
 
   it("waits 20 hours, and gives up after 7 days", () => {

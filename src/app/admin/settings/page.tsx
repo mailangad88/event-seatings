@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { AdminHeader, Panel } from "@/components/admin/AdminUi";
-import { DEPOSIT, MARKUP } from "@/lib/catalog-types";
+import { MARKUP, PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -21,8 +21,10 @@ const groups: { title: string; rows: { name: string; what: string; ok: boolean; 
       { name: "Your alert inbox", what: "Where new requests and paid fees are sent.", ok: on("NOTIFY_EMAIL"), keys: "NOTIFY_EMAIL" },
       { name: "Automatic follow-ups", what: "Daily follow-up emails after someone sends a form.", ok: process.env.FOLLOWUPS_ENABLED === "true" && on("CRON_SECRET"), keys: "FOLLOWUPS_ENABLED=true, CRON_SECRET" },
       { name: "Automatic event emails", what: "Two-weeks-out, day-before and thank-you emails to customers, and order details to rental partners.", ok: process.env.EVENT_EMAILS_ENABLED === "true" && on("CRON_SECRET"), keys: "EVENT_EMAILS_ENABLED=true, CRON_SECRET" },
+      { name: "Google review request", what: "5 days after each event, asks the customer for a Google review. Sent as one of the automatic event emails above, so it also needs those on. See who got one on Scheduled emails and on the lead's own page.", ok: on("NEXT_PUBLIC_GOOGLE_REVIEW_URL"), keys: "NEXT_PUBLIC_GOOGLE_REVIEW_URL (your Google Business Profile's \"Get more reviews\" link)" },
       { name: "Reminder emails", what: "Daily reminders from what people click after sending a form: unfinished quote list, an item they keep viewing, an event date coming up.", ok: process.env.REMINDERS_ENABLED === "true" && on("CRON_SECRET"), keys: "REMINDERS_ENABLED=true, CRON_SECRET" },
       { name: "Admin password", what: "Locks this back office.", ok: on("ADMIN_PASSWORD"), keys: "ADMIN_PASSWORD" },
+      { name: "Renter accounts", what: "Real sign-in for /account (emailed link). Needs the database too, or renters won't see their real events.", ok: on("ACCOUNT_SECRET") && on("RESEND_API_KEY", "NOTIFY_FROM"), keys: "ACCOUNT_SECRET, RESEND_API_KEY, NOTIFY_FROM" },
     ],
   },
   {
@@ -91,7 +93,7 @@ export default function SettingsPage() {
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between gap-3"><dt className="text-muted">Name</dt><dd>{site.name}</dd></div>
             <div className="flex justify-between gap-3"><dt className="text-muted">Website</dt><dd className="[overflow-wrap:anywhere]">{site.url}</dd></div>
-            <div className="flex justify-between gap-3"><dt className="text-muted">Our margin</dt><dd className="text-right">{Math.round(MARKUP * 100)}% on every item, no separate fee. Deposit {Math.round(DEPOSIT.share * 100)}% to book</dd></div>
+            <div className="flex justify-between gap-3"><dt className="text-muted">Our margin</dt><dd className="text-right">{Math.round(MARKUP * 100)}% on every item, no separate fee. Deposit {Math.round(PAYMENT_SCHEDULE.firstShare * 100)}% to book, then stages</dd></div>
           </dl>
           <p className="mt-3 text-xs text-muted">Name, address and service area live in src/lib/site.ts. Ask Claude to change them.</p>
         </Panel>

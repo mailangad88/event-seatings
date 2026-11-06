@@ -5,6 +5,7 @@ import { AdminHeader, Empty, FeePill, Panel, Table, Tile } from "@/components/ad
 import { CopyButton } from "@/components/admin/CopyButton";
 import { Icon } from "@/components/ui/Icon";
 import { ago, chicagoDay, money0, money2, prettyDay } from "@/lib/admin-view";
+import { PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { kindLabel, ledgerKinds, ledgerMethods, ledgerTotals, listLedger, mergeLedger, methodLabel, periods, type LedgerRow, type LedgerTotals } from "@/lib/ledger";
 import { chargeLabel, chargeMode, stripeEnabled } from "@/lib/payments";
 import { site } from "@/lib/site";
@@ -335,7 +336,9 @@ export default async function PaymentsPage(props: PageProps<"/admin/payments">) 
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between gap-3"><dt className="text-muted">Stripe</dt><dd>{stripeEnabled() ? "On" : "Off"}</dd></div>
               <div className="flex justify-between gap-3"><dt className="text-muted">Payment alerts from Stripe</dt><dd>{process.env.STRIPE_WEBHOOK_SECRET ? "On" : "Off"}</dd></div>
-              <div className="flex justify-between gap-3"><dt className="text-muted">What we charge</dt><dd className="text-right">{chargeMode() === "hold" ? "Fixed refundable hold" : "50% deposit on rentals (min $100)"}</dd></div>
+              <div className="flex justify-between gap-3"><dt className="text-muted">What we charge</dt><dd className="text-right">{chargeMode() === "hold"
+                ? "Fixed refundable hold"
+                : `${Math.round(PAYMENT_SCHEDULE.firstShare * 100)}% deposit on rentals (min $${PAYMENT_SCHEDULE.min}), then stages (${PAYMENT_SCHEDULE.lateFirstShare * 100}% if booked within ${PAYMENT_SCHEDULE.secondDueDaysBefore} days)`}</dd></div>
             </dl>
             <p className="mt-3 text-xs text-muted">
               {stripeEnabled()

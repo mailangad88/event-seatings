@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { FaqList } from "@/components/FaqList";
 import { LookScene, lookMedia } from "@/components/LookScene";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
@@ -42,6 +43,10 @@ const faqs: [string, string][] = [
     "When can I book?",
     `Now. We deliver year-round, from holiday parties to summer weddings. Popular Saturdays fill first, so the earlier you ask, the more likely your date is open.`,
   ],
+  [
+    "Can I use a look as a starting point and change parts of it?",
+    "Yes. Most couples use a look as a base and swap the chair, a color in the palette or a detail to fit their venue or budget. Tell us what you want to change when you request the board and we'll price the adjusted version.",
+  ],
 ];
 
 export default function LooksPage() {
@@ -68,6 +73,7 @@ export default function LooksPage() {
 
       {/* Hero: a strip of looks so the page is visual from the first pixel */}
       <section className="container-x pt-10 pb-16 md:pt-16">
+        <Breadcrumbs items={[{ name: "The Look Book", href: "/looks" }]} className="mb-6" />
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow justify-center">The look book · Chicagoland</p>
           <h1 className="display-1 mt-6">

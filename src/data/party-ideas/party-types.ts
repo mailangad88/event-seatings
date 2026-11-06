@@ -11,7 +11,7 @@ export const partyTypes: PartyType[] = [
     planner: "wedding",
     scene: "wedding-reception",
     sceneAlt: "Wedding reception with round tables, gold Chiavari chairs and candlelight",
-    metaTitle: "Wedding Reception Ideas: Themes, Setups & Activities (Chicago)",
+    metaTitle: "Wedding Reception Ideas and Rental Setups",
     metaDescription: "Wedding theme ideas, reception layouts for tents, backyards and halls, guest activities, and the rentals each look needs, with live prices for Chicago weddings.",
     intro:
       "A wedding look comes down to four choices: the chair, the table shape, the linen and the light. Pick a theme below to see the palette, the setup for an indoor hall or a tented lawn, guest activities, and the exact rentals with live prices. Every theme can be added to your plan in one tap.",
@@ -42,7 +42,7 @@ export const partyTypes: PartyType[] = [
     planner: "indian-wedding",
     scene: "sweetheart-stage",
     sceneAlt: "Decorated stage with a sweetheart sofa for a sangeet or reception",
-    metaTitle: "Indian Wedding, Sangeet & Mehndi Party Ideas and Rentals (Chicago)",
+    metaTitle: "Indian Wedding and Sangeet Party Ideas",
     metaDescription: "Mehndi, sangeet and reception ideas: stage and lounge setups, colour palettes, dance-floor sizes, activities and the rentals for each, priced live for Chicagoland.",
     intro:
       "South Asian weddings are several events in one, each with its own look. A mehndi wants low lounge seating and bright colour, a sangeet needs a stage and a big dance floor, and the reception is a formal dinner for hundreds. Here are setups and ideas for each, with the rentals they take.",
@@ -71,7 +71,7 @@ export const partyTypes: PartyType[] = [
     planner: "birthday",
     scene: "backyard-birthday",
     sceneAlt: "Backyard birthday party with long tables and string lights",
-    metaTitle: "Adult Birthday Party Ideas: Themes, Setups, Games & Rentals",
+    metaTitle: "Adult Birthday Party Ideas and Rentals",
     metaDescription: "Birthday party ideas for 30th, 40th, 50th and beyond: themes, backyard and indoor setups, games, props and the rentals for each with live Chicago prices.",
     intro:
       "Most adult birthdays are a cocktail party, a dinner or a backyard bash. Pick the format first, then a theme. Each idea below lists the palette, how to set up a backyard or a rented room, games and props, and the rentals you can add to your quote in one tap.",
@@ -101,8 +101,8 @@ export const partyTypes: PartyType[] = [
     planner: "kids",
     scene: "kids-party",
     sceneAlt: "Kids' party with a bounce house, small tables and games",
-    metaTitle: "Kids' Birthday Party Ideas: Themes, Games, Bounce Houses & Rentals",
-    metaDescription: "Kids' party themes, backyard and indoor setups, games and activities, and the rentals for each (bounce houses, kids' tables, treat machines) with live Chicago prices.",
+    metaTitle: "Kids' Birthday Party Ideas and Rentals",
+    metaDescription: "Kids' party themes, backyard and indoor setups, games, and the rentals for each (bounce houses, kids' tables, treat machines) with live Chicago prices.",
     intro:
       "A good kids' party has one big attraction, a treat station and somewhere for parents to sit. The ideas below pair a theme with games and props you can make at home, and the rentals that do the heavy lifting.",
     setups: [
@@ -131,7 +131,7 @@ export const partyTypes: PartyType[] = [
     planner: "shower",
     scene: "baby-shower",
     sceneAlt: "Baby shower brunch table with florals and pastel linens",
-    metaTitle: "Baby Shower Ideas: Themes, Setups, Games & Rentals (Chicago)",
+    metaTitle: "Baby Shower Ideas, Setups and Rentals",
     metaDescription: "Baby shower themes, brunch and tea setups for homes and rented rooms, shower games and props, and the rentals for each with live prices for Chicagoland.",
     intro:
       "Showers are short, daytime and centred on one table: food, gifts and a backdrop for photos. Pick a theme for the palette and centrepieces, then add the setup, games and rentals that fit your room.",
@@ -160,7 +160,7 @@ export const partyTypes: PartyType[] = [
     planner: "shower",
     scene: "farm-table-dinner",
     sceneAlt: "Long farm table set for a brunch with florals and candles",
-    metaTitle: "Bridal Shower & Brunch Ideas: Themes, Setups & Rentals",
+    metaTitle: "Bridal Shower and Brunch Ideas",
     metaDescription: "Bridal shower and brunch themes, table setups, games and props, with the rentals for each look and live prices for Chicago and the suburbs.",
     intro:
       "A bridal shower is really a styled brunch. The table is the star, so the ideas below focus on the tablescape, a photo moment and one or two easy activities, each with the rentals to match.",
@@ -187,7 +187,7 @@ export const partyTypes: PartyType[] = [
     planner: "graduation",
     scene: "graduation-party",
     sceneAlt: "Graduation party in a backyard with canopy, tables and food stations",
-    metaTitle: "Graduation Party Ideas: Setups, Games, Food Stations & Rentals",
+    metaTitle: "Graduation Party Ideas and Setups",
     metaDescription: "Graduation party ideas for high school and college grads: open house setups, school-colour themes, games and the rentals for each with live Chicago prices.",
     intro:
       "Most grad parties are open houses: guests come and go over three or four hours, so you need food that holds, shade, and seats for about half the guest list at once. These ideas cover the theme, setup and rentals.",
@@ -215,7 +215,7 @@ export const partyTypes: PartyType[] = [
     planner: "quinceanera",
     scene: "dance-party",
     sceneAlt: "Quinceañera dance floor with uplighting",
-    metaTitle: "Quinceañera Ideas: Themes, Setups, Traditions & Rentals (Chicago)",
+    metaTitle: "Quinceañera Ideas, Setups and Rentals",
     metaDescription: "Quinceañera theme ideas, hall and tent setups, traditions and activities, and the rentals for each (throne chairs, dance floors, uplights) with live prices.",
     intro:
       "A quinceañera is a formal dinner and a dance, with a few traditions that need space: the grand entrance, the waltz, and the throne for the quinceañera. Pick a theme for the colours, then the setup and rentals.",
@@ -241,7 +241,7 @@ export const partyTypes: PartyType[] = [
     planner: "corporate",
     scene: "corporate-gala",
     sceneAlt: "Corporate gala room with rounds, uplighting and a stage",
-    metaTitle: "Corporate Event Ideas: Galas, Summer Picnics, Launches & Rentals",
+    metaTitle: "Corporate Event Ideas and Rentals",
     metaDescription: "Corporate event and gala ideas: room setups, team activities, branding moments and the rentals for each, with live prices for Chicago offices and venues.",
     intro:
       "Company events have a job to do: thank the team, launch something or raise money. The setups below match the format, and each idea lists activities and the rentals that make it run smoothly.",
@@ -269,7 +269,7 @@ export const partyTypes: PartyType[] = [
     planner: "birthday",
     scene: "tent-reception-dusk",
     sceneAlt: "Frame tent in a backyard lit with bistro lights at dusk",
-    metaTitle: "Backyard Party Ideas: Setups, Lighting, Games & Rentals (Chicago)",
+    metaTitle: "Backyard Party Ideas and Setups",
     metaDescription: "Backyard party ideas for BBQs, block parties and summer nights: layouts, lighting, games, and the rentals for each with live prices across Chicagoland.",
     intro:
       "A backyard party needs four things a venue gives you for free: cover, light, seating and restrooms. The ideas below show how to set up each, plus games and themes, with the rentals priced for your guest count.",
@@ -296,7 +296,7 @@ export const partyTypes: PartyType[] = [
     planner: "corporate",
     scene: "winter-tent",
     sceneAlt: "Heated winter tent with warm lighting for a holiday party",
-    metaTitle: "Holiday Party Ideas: Christmas, Friendsgiving, New Year's & Diwali",
+    metaTitle: "Holiday Party Ideas and Rentals",
     metaDescription: "Holiday and seasonal party ideas for offices and homes: themes, heated setups, activities and the rentals for each with live Chicago prices.",
     intro:
       "Chicago holiday parties are indoor or heated, run late and centre on food and drink. The ideas below cover company holiday parties, Friendsgiving, New Year's Eve and Diwali, with setups that work in December.",
@@ -323,7 +323,7 @@ export const partyTypes: PartyType[] = [
     planner: "birthday",
     scene: "cocktail-hour",
     sceneAlt: "Cocktail hour with highboy tables and soft lighting",
-    metaTitle: "Anniversary & Retirement Party Ideas: Themes, Setups & Rentals",
+    metaTitle: "Anniversary and Retirement Party Ideas",
     metaDescription: "Ideas for milestone anniversaries and retirement parties: themes, dinner and cocktail setups, toasts and activities, and the rentals for each with live prices.",
     intro:
       "Anniversaries and retirements are about the people and their story, so the ideas below make room for toasts, photos and memories alongside a dinner or cocktail party.",

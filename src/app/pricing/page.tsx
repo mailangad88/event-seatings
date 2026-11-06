@@ -2,18 +2,21 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
-import { DEPOSIT, DEPOSIT_LABEL, usd } from "@/lib/catalog-types";
+import { DEPOSIT_LABEL, PAYMENT_SCHEDULE, usd } from "@/lib/catalog-types";
 import { allInEstimate, DAMAGE_WAIVER } from "@/lib/fees";
 import { readyPackages } from "@/lib/packages";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
+import { termsPolicy } from "@/lib/terms";
 
-const pct = Math.round(DEPOSIT.share * 100);
+const pct = Math.round(PAYMENT_SCHEDULE.firstShare * 100);
+const pct2 = Math.round(PAYMENT_SCHEDULE.secondShare * 100);
+const latePct = Math.round(PAYMENT_SCHEDULE.lateFirstShare * 100);
 
 export const metadata: Metadata = seo({
   title: "Pricing: Every Rental Priced on the Site, No Booking Fee",
-  description: `${site.name} prices every chair, table, linen and tent on the site. Your quote adds delivery, setup, damage waiver and tax. Book with a ${pct}% deposit, refundable for ${DEPOSIT.refundHours} hours. No separate booking fee.`,
+  description: `${site.name} prices every chair, table, linen and tent on the site. Your quote adds delivery, setup, damage waiver and tax. Book with a ${pct}% deposit, refundable for ${PAYMENT_SCHEDULE.refundHours} hours, then pay in stages before your event. No separate booking fee.`,
   alternates: { canonical: "/pricing" },
 });
 
@@ -22,15 +25,16 @@ const included: { icon: IconName; title: string; text: string }[] = [
   { icon: "truck", title: "Delivery and pickup", text: "We arrange drop-off before your event and pickup after it, at times that work for your venue." },
   { icon: "users", title: "Setup if you want it", text: "Chairs placed, tables set and linens on. Leave it off your quote if you'd rather do it yourself." },
   { icon: "phone", title: "One person to call", text: `A free ${site.callLength} call before you book, and the same person for every change after.` },
-  { icon: "calendar", title: "Changes until 14 days out", text: "Add or drop quantities at no charge until 14 days before your event, subject to stock." },
+  { icon: "calendar", title: `Changes until ${termsPolicy.changeCutoffDays} days out`, text: `Add or drop quantities at no charge until ${termsPolicy.changeCutoffDays} days before your event, subject to stock.` },
   { icon: "shield", title: "If an item falls through", text: "We replace it with the same or better at the price you agreed, or refund what you paid for it." },
 ];
 
 const flow = [
   { icon: "quote" as const, title: "Free quote", text: "Build your list on the site or tell us the date, guests and venue." },
   { icon: "phone" as const, title: "Free call", text: "We go through the plan, the venue and the delivery times." },
-  { icon: "check" as const, title: `${pct}% deposit`, text: `Reserves your items. Fully refundable for ${DEPOSIT.refundHours} hours.` },
-  { icon: "calendar" as const, title: "Balance", text: `Due ${DEPOSIT.balanceDaysBefore} days before your event, once the final count is in.` },
+  { icon: "check" as const, title: `${pct}% deposit`, text: `Reserves your items. Fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours.` },
+  { icon: "calendar" as const, title: `${pct2}% installment`, text: `Due ${PAYMENT_SCHEDULE.secondDueDaysBefore} days before your event.` },
+  { icon: "calendar" as const, title: "Balance", text: `Due ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before your event, once the final count is in.` },
   { icon: "truck" as const, title: "Delivered", text: "Dropped off, set up if you asked, and picked up after." },
 ];
 
@@ -46,8 +50,8 @@ const checklist = [
   "Every item and its price is in writing on your quote",
   "Delivery, setup, damage waiver and tax are their own lines, not hidden in the price",
   "You talk to us on a call before anything is booked",
-  `Your deposit is fully refundable for ${DEPOSIT.refundHours} hours`,
-  "Nothing else is charged until the balance, and it's on your quote from day one",
+  `Your deposit is fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours`,
+  "The rest comes due in stages, in writing on your quote from day one",
 ];
 
 const faqs: Faq[] = [
@@ -57,11 +61,11 @@ const faqs: Faq[] = [
   },
   {
     q: "When do I pay?",
-    a: `Quotes and the planning call are free. To book, you pay a ${DEPOSIT_LABEL} of the rentals (at least $${DEPOSIT.min}). The balance is due ${DEPOSIT.balanceDaysBefore} days before your event.`,
+    a: `Quotes and the planning call are free. To book, you pay a ${DEPOSIT_LABEL} of the rentals (at least $${PAYMENT_SCHEDULE.min}; ${latePct}% if your event is within ${PAYMENT_SCHEDULE.secondDueDaysBefore} days). A second payment of ${pct2}% is due ${PAYMENT_SCHEDULE.secondDueDaysBefore} days before your event, and the balance is due ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before.`,
   },
   {
     q: "Can I get my deposit back?",
-    a: `Yes, in full for ${DEPOSIT.refundHours} hours after you pay. After that, our terms explain what happens if you cancel or move your date.`,
+    a: `Yes, in full for ${PAYMENT_SCHEDULE.refundHours} hours after you pay. After that, our terms explain what happens if you cancel or move your date.`,
   },
   {
     q: "Why is delivery a separate line?",
@@ -77,11 +81,15 @@ const faqs: Faq[] = [
   },
   {
     q: "Is there a minimum order?",
-    a: "Delivered orders usually start around $150 in rentals. Below that, ask us and we'll tell you the cheapest way to get what you need.",
+    a: "No. There's no minimum order with us. Order exactly what you need, and delivery is priced for your order size and address.",
+  },
+  {
+    q: "Do I need to call around and compare prices?",
+    a: "You can, but you don't need to. Every price is already on our site, and your quote spells out delivery, setup, the damage waiver and tax before you book anything. If another quote comes in lower once those are added in, tell us and we'll take a look.",
   },
   {
     q: `You're new. Why should I trust ${site.name}?`,
-    a: `We started in 2026 and don't have many reviews yet, so we don't ask you to take our word for it. You get every price in writing, talk to us before you book, and your deposit is fully refundable for ${DEPOSIT.refundHours} hours.`,
+    a: `We started in 2026 and don't have many reviews yet, so we don't ask you to take our word for it. You get every price in writing, talk to us before you book, and your deposit is fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours.`,
   },
 ];
 
@@ -105,7 +113,7 @@ export default function PricingPage() {
         breadcrumbs={[{ name: "Pricing", href: "/pricing" }]}
         eyebrow="Pricing"
         title="Every rental priced on the site"
-        intro={`You see the price of every chair, table, linen and tent before you ask. Your quote adds delivery, setup, damage waiver and tax for your venue. There's no separate booking fee. Book with a ${pct}% deposit, fully refundable for ${DEPOSIT.refundHours} hours.`}
+        intro={`You see the price of every chair, table, linen and tent before you ask. Your quote adds delivery, setup, damage waiver and tax for your venue. There's no separate booking fee. Book with a ${pct}% deposit, fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours.`}
         actions={
           <>
             <Link href="/quote?from=pricing" className="btn-primary">Get my free all-in quote</Link>
@@ -165,12 +173,14 @@ export default function PricingPage() {
       <Section eyebrow="How it works" title="When you pay, step by step">
         <StepFlow
           steps={flow}
-          caption={`How paying works with ${site.name}: a free quote, a free call, a ${pct}% deposit to reserve your items, the balance ${DEPOSIT.balanceDaysBefore} days before, then delivery.`}
+          caption={`How paying works with ${site.name}: a free quote, a free call, a ${pct}% deposit to reserve your items, a ${pct2}% installment ${PAYMENT_SCHEDULE.secondDueDaysBefore} days before, the balance ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before, then delivery.`}
         />
         <Callout kind="note" title="An example" className="mt-8 max-w-3xl">
-          Say your quote comes to $4,000 in rentals plus delivery, setup, waiver and tax. You pay a ${pct}% deposit on the
-          rentals, {usd(4000 * DEPOSIT.share, 0)}, to book. The rest is due {DEPOSIT.balanceDaysBefore} days before your
-          event, after your final guest count is in.
+          Say your quote comes to $4,000 in rentals plus delivery, setup, waiver and tax, more than {PAYMENT_SCHEDULE.secondDueDaysBefore} days out.
+          You pay a {pct}% deposit on the rentals, {usd(4000 * PAYMENT_SCHEDULE.firstShare, 0)}, to book. Another {pct2}%,{" "}
+          {usd(4000 * PAYMENT_SCHEDULE.secondShare, 0)}, is due {PAYMENT_SCHEDULE.secondDueDaysBefore} days before your event, and the rest is
+          due {PAYMENT_SCHEDULE.finalDueDaysBefore} days before, after your final guest count is in. Book within {PAYMENT_SCHEDULE.secondDueDaysBefore}{" "}
+          days of your event and it&apos;s {latePct}% down instead, with the rest due {PAYMENT_SCHEDULE.finalDueDaysBefore} days before.
         </Callout>
       </Section>
 
@@ -186,7 +196,7 @@ export default function PricingPage() {
           </ul>
           <Callout kind="check" title="We're new, and we say so">
             {site.name} started in 2026. That&apos;s why every price is on the site, every quote is in writing, and your deposit is
-            refundable for {DEPOSIT.refundHours} hours. Read the full <Link href="/booking-promise" className="link">Booking Promise</Link>,
+            refundable for {PAYMENT_SCHEDULE.refundHours} hours. Read the full <Link href="/booking-promise" className="link">Booking Promise</Link>,
             see <Link href="/how-it-works" className="link">how booking works</Link>, or browse{" "}
             <Link href="/rentals" className="link">every rental and its price</Link>.
           </Callout>

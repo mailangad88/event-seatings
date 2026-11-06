@@ -8,8 +8,8 @@ import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { tasks } from "@/lib/tools/timeline";
 
-const title = "Event Countdown: Days Until Your Wedding or Party";
-const description = "Free event countdown for weddings, parties and corporate events. Make a live countdown page to share with family and friends, see your next planning deadlines, add them to your calendar and sign up for milestone reminders.";
+const title = "Event Countdown for Your Wedding or Party";
+const description = "Make a live countdown page to share with family and friends, see your next planning deadlines, add them to your calendar and get milestone reminders.";
 
 const img = render("sweetheart-stage");
 
@@ -26,6 +26,7 @@ const faqs = [
   { q: "What are the deadlines under the countdown?", a: "The next few tasks from our timeline builder, counted back from your date: things like booking rentals, sending invitations, the RSVP deadline and sending final counts. They are planning guidance; your vendors' contracts set the real dates." },
   { q: "Will you email me reminders?", a: "Milestone reminder emails are starting soon. If you sign up, we save your date and will email you before each deadline once reminders start. Until then, use 'Add to calendar' for reminders today." },
   { q: "Is my information private?", a: "The countdown itself lives only in your browser and the page link. If you sign up for reminders, we store your name, email and date to send them. We never sell it." },
+  { q: "Can I change the date or name later?", a: "Yes. Open the countdown link again and edit the name, date or start time; the page link updates to match, so share the new link with anyone who had the old one." },
 ];
 
 export default function CountdownPage() {
@@ -62,7 +63,7 @@ export default function CountdownPage() {
         actions={<a href="#countdown" className="btn-accent">Start my countdown</a>}
         media={
           <figure className="media aspect-[4/3] shadow-lift">
-            <Image src={img.src} alt={img.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            <Image src={img.src} alt={img.alt} fill priority fetchPriority="high" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </figure>
         }
       />

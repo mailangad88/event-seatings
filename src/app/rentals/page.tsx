@@ -4,6 +4,7 @@ import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { ReadyPackages } from "@/components/ReadyPackages";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
+import { RecentlyViewedStrip } from "@/components/RecentlyViewedStrip";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { Faqs, JsonLd, faqJsonLd } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
@@ -38,7 +39,7 @@ const faqs = [
   },
   {
     q: "Is there a minimum order?",
-    a: "Many Chicago rental companies set a delivery minimum, often a few hundred dollars. If your order is small, we will tell you the cheapest way to get it, including customer pickup where a partner allows it.",
+    a: "No. There's no minimum order with us. Order exactly what you need, and delivery is priced for your order size and address.",
   },
   {
     q: "What if I damage or lose something?",
@@ -93,6 +94,7 @@ export default function RentalsPage() {
               alt={scenes.gildedIvory.alt}
               fill
               priority
+              fetchPriority="high"
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
             />
@@ -144,6 +146,8 @@ export default function RentalsPage() {
             </li>
           </ul>
         </section>
+
+        <RecentlyViewedStrip className="mt-20" />
 
         <section className="mt-28" aria-labelledby="packages">
           <p className="eyebrow">Skip the browsing</p>

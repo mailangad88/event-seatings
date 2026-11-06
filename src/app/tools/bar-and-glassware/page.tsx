@@ -4,8 +4,8 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "bar-and-glassware";
-const title = "Bar and Glassware Calculator: Drinks, Bottles and Glasses";
-const description = "Free bar calculator for weddings and parties. Work out total drinks, bottles of wine and spirits, beer, ice and bartenders for your guests and hours, plus every wine, beer, rocks and champagne glass to rent, with Chicago rental prices.";
+const title = "Bar and Glassware Calculator for Any Party";
+const description = "Work out drinks, bottles, ice and bartenders for your guests and hours, plus every wine, beer and champagne glass to rent, with Chicago prices.";
 
 export const metadata = toolMetadata(slug, title, description);
 

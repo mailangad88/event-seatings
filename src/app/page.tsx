@@ -5,16 +5,17 @@ import { ReadyPackages } from "@/components/ReadyPackages";
 import { CategoryTile, FaqList, Icon, QuoteCta, Section, StepFlow, TrustBar, type Faq } from "@/components/ui";
 import { rentalCategories } from "@/lib/nav";
 import { catalogItems } from "@/data/catalog";
-import { categoryTile, scenes } from "@/lib/scenes";
+import { categoryTile } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import type { Metadata } from "next";
 import { seo } from "@/lib/seo";
+import { eventPath, getEventType } from "@/data/geo";
 
 export const metadata: Metadata = seo({
   title: { absolute: "Beyond Chiavari | Chicago Event Rentals: Chairs, Tables, Tents" },
   description:
     "Chicago event rentals in one quote: chairs, tables, linens, dinnerware, tents and more, with prices up front and delivery and setup.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { "en-US": "/", "es-US": "/es", "x-default": "/" } },
 });
 
 export const revalidate = 3600;
@@ -29,7 +30,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How does pricing work?",
-    a: "Every item shows its rental price per piece or per set, and your quote totals as you pick. Item prices are our own prices for a one-day rental, and there's no separate booking fee. Delivery, setup, damage waiver and tax are itemized before you book, and a 50% deposit reserves your date.",
+    a: "Every item shows its rental price per piece or per set, and your quote totals as you pick. Item prices are our own prices for a one-day rental, and there's no separate booking fee. Delivery, setup, damage waiver and tax are itemized before you book, and a 20% deposit reserves your date, with the rest paid in stages before your event.",
   },
   {
     q: "Do I pay anything to get a quote?",
@@ -41,9 +42,18 @@ const faqs: Faq[] = [
   },
 ];
 
-export default function Home() {
-  const hero = scenes.blushGarden;
+// The holiday season occasions, pointing to their dedicated /events pages so this quarter's
+// seasonal searches have a clear path in from the home page.
+const holidaySlugs = ["thanksgiving-friendsgiving", "holiday-office-parties", "christmas-new-years-eve", "diwali-parties", "hanukkah-parties"];
 
+// The hero uses our own rendered tablescape (not the styled Gemini version, which has guests in it)
+// so the home page opens on an empty, just-set-up table.
+const hero = {
+  src: "/images/scenes/blush-garden-tablescape.webp",
+  alt: `Blush garden wedding tablescape rendered by ${site.name}: rose-gold bamboo chairs with ivory cushions, a blush linen banquet table, taper candles and a low white floral runner in front of a twinkle-light drape`,
+};
+
+export default function Home() {
   return (
     <>
       {/* Hero: one message, one main button, one picture. */}
@@ -67,7 +77,7 @@ export default function Home() {
             </div>
           </div>
           <div className="animate-rise media aspect-[4/3] shadow-lift [animation-delay:150ms] lg:aspect-[4/5]">
-            <Image src={hero.src} alt={hero.alt} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <Image src={hero.src} alt={hero.alt} fill priority fetchPriority="high" sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </div>
         </div>
       </section>
@@ -109,7 +119,7 @@ export default function Home() {
         tone="sand"
         eyebrow="Short on time?"
         title="Start from a ready-made package"
-        intro="Typical parties, already sized and priced with delivery, setup, waiver and tax. Open one and change anything."
+        intro="Typical parties, already sized and priced with delivery, setup, waiver and tax. Start with a ready-made package and customize it to your needs."
         action={<Link href="/packages" className="link-line">All packages <Icon name="arrow" size={16} /></Link>}
       >
         <ReadyPackages ids={["backyard-birthday-50", "graduation-80", "wedding-150", "corporate-120"]} compact />
@@ -121,7 +131,7 @@ export default function Home() {
           <span className="relative block aspect-[4/3] md:aspect-auto">
             <Image
               src="/rentals/styled/event-indian-wedding.webp"
-              alt="Bride and groom seated under a marigold mandap with family in bright saris and a dhol player"
+              alt="Carved wooden mandap draped in marigold and floral garlands over a cushioned loveseat, set up in a ballroom under a crystal chandelier"
               fill
               sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
@@ -160,6 +170,31 @@ export default function Home() {
       </Section>
 
 
+      {/* Seasonal: links into the dedicated holiday event pages for this quarter's searches. */}
+      <Section
+        tone="sand"
+        eyebrow="This season"
+        title="Hosting a holiday party?"
+        intro="Thanksgiving, office parties, Christmas, New Year's Eve, Diwali and Hanukkah each get their own planning page with chair picks, seating math and a checklist."
+        action={<Link href="/events/holiday-parties" className="link-line">All holiday seating <Icon name="arrow" size={16} /></Link>}
+      >
+        <ul className="flex flex-wrap gap-3">
+          {holidaySlugs.flatMap((slug) => {
+            const ev = getEventType(slug);
+            if (!ev) return [];
+            return [
+              <li key={slug}>
+                <Link href={eventPath(ev)} className="chip transition-colors hover:border-gold hover:text-ink">
+                  {ev.shortName}
+                </Link>
+              </li>,
+            ];
+          })}
+        </ul>
+      </Section>
+
+      <QuoteCta source="home" />
+
       {/* FAQ */}
       <Section tone="sand">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
@@ -171,10 +206,6 @@ export default function Home() {
           <FaqList faqs={faqs} />
         </div>
       </Section>
-
-      <div className="-mb-24">
-        <QuoteCta source="home" />
-      </div>
     </>
   );
 }

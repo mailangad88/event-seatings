@@ -389,6 +389,8 @@ export const downloads: Download[] = [
     intro: mitzvah.intro,
     faqs: [
       { q: "How far ahead should a bar or bat mitzvah be planned?", a: "Most families start 12 to 18 months ahead, once the synagogue sets the date, so the party venue, DJ and photographer can be booked." },
+      { q: "How do I keep kids and adults both entertained?", a: "Split the room into zones: a kids' area with a DJ, games and their own food station, and an adult area with a bar and lounge seating nearby so parents can watch from a seat. The kit's rentals table lists what each zone typically needs." },
+      { q: "What rentals come up most often for a mitzvah party?", a: "Lounge furniture and a dance floor for the party, standard tables and chairs for the adult dinner, and kids' tables sized lower than the adult ones. The kit's rentals table breaks this down by guest count." },
       ...commonFaqs("mitzvah kit"),
     ],
     match: ["mitzvah", "jewish", "bris", "passover", "hanukkah", "shiva", "rosh"],
@@ -437,6 +439,8 @@ export const downloads: Download[] = [
     intro: celebration.intro,
     faqs: [
       { q: "How soon after a death is a celebration of life held?", a: "Anywhere from a week to several months later. Unlike a funeral, it can wait until family can travel and the weather suits the gathering you want." },
+      { q: "What belongs on a memory table?", a: "Photos spanning different years, a few personal items that say something about them, a guest book and a sign asking guests to share a story on a card. The checklist includes a simple layout for setting it up near the entrance." },
+      { q: "Who usually handles the logistics?", a: "Often a close family member or friend volunteers to coordinate, since the immediate family is grieving. The checklist's helper task list is built so you can hand off specific jobs, like the memory table or the repast, to different people." },
       ...commonFaqs("celebration of life checklist"),
     ],
     match: ["celebration-of-life", "memorial", "funeral", "repast", "shiva"],

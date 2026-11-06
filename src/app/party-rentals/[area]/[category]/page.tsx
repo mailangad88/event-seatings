@@ -69,9 +69,12 @@ function pick(items: CatalogItem[], n: number, seed: string): CatalogItem[] {
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const d = await load(props);
   if (!d) return {};
-  const { loc, lc, prices, place, items } = d;
+  const { loc, lc, cat, prices, place, items } = d;
   const path = localCategoryPath(loc.slug, lc);
-  const title = `${lc.label} in ${place}: Prices from ${formatPrice(prices[0])}`;
+  // cat.name (e.g. "Concessions") instead of the longer lc.label keeps most titles under fitTitle's
+  // 65-char cutoff, so the place name survives untruncated instead of two long titles truncating to
+  // the same text (e.g. "South Chicago" vs "South Chicago Heights" both cutting to "South Chicago").
+  const title = `${cat.name} rentals in ${place}: Prices from ${formatPrice(prices[0])}`;
   const description = `${lc.label} in ${place}: ${items.length} options from ${formatPrice(prices[0])}, sizing for your guest count, local delivery notes and one free itemized quote.`;
   return seo({
     title,

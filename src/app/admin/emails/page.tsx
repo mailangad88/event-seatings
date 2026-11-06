@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { createElement } from "react";
 import { render } from "@react-email/render";
-import { NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
+import { GoogleReviewEmail, NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
+import { FollowupEmail } from "@/emails/FollowupEmail";
+import { InvoiceEmail } from "@/emails/InvoiceEmail";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
+import { QuoteConfirmationEmail } from "@/emails/QuoteConfirmationEmail";
+import { UnfinishedQuoteEmail } from "@/emails/UnfinishedQuoteEmail";
+import { sequenceFor } from "@/lib/followups";
+import { buildInvoice } from "@/lib/invoices";
 import { buildLeadAlert } from "@/lib/lead-alert";
 import { site } from "@/lib/site";
 import type { Lead } from "@/lib/store";
@@ -73,12 +79,82 @@ const sampleLead: Lead = {
   },
 };
 
+// The nurture steps go to downloads/quiz sign-ups, not quote leads, so a separate sample stands in for one.
+const sampleNurtureLead: Lead = { ...sampleLead, id: "sample-nurture", kind: "waitlist", email_consent: true, items: [] };
+
 export default async function EmailPreviewsPage() {
+  const requestStep = sequenceFor(sampleLead)?.steps[0];
+  const nurtureStep = sequenceFor(sampleNurtureLead)?.steps[0];
   const emails = [
     { name: "New enquiry alert (to you)", when: "Every form, within seconds, with RESEND_API_KEY and NOTIFY_EMAIL. Made-up enquiry.", el: createElement(LeadAlertEmail, { alert: buildLeadAlert(sampleLead, { siteUrl: site.url }), siteUrl: site.url }) },
-    { name: "Any email (branded wrapper)", when: "Every email sendEmail sends (confirmations, downloads, follow-ups, owner alerts) gets this HTML around its plain text.", el: createElement(TextEmail, { subject: "We got your quote request", text: sampleText, unsubscribe: `${site.url}/unsubscribe` }) },
+    {
+      name: "Quote confirmation (to the customer)",
+      when: "Right after the quote form, with RESEND_API_KEY and NOTIFY_FROM. Made-up quote.",
+      el: createElement(QuoteConfirmationEmail, {
+        name: sampleLead.name,
+        items: sampleLead.items ?? [],
+        subtotal: sampleLead.quote_subtotal,
+        eventDateLabel: "Fri, Jun 12, 2027",
+        guestCount: sampleLead.guest_count,
+        viewUrl: `${site.url}/account`,
+        unsubscribe: `${site.url}/unsubscribe`,
+      }),
+    },
+    {
+      name: "Unfinished quote reminder (to the customer)",
+      when: "Daily reminders cron (/admin/reminders), 20 hours to 7 days after they build a list on /quote and don't send it.",
+      el: createElement(UnfinishedQuoteEmail, {
+        name: sampleLead.name,
+        items: (sampleLead.items ?? []).map((l) => ({ id: l.id, name: l.name })),
+        link: `${site.url}/quote?items=${(sampleLead.items ?? []).map((l) => l.id).join(",")}&from=reminder`,
+        unsubscribe: `${site.url}/unsubscribe`,
+      }),
+    },
+    { name: "Any email (branded wrapper)", when: "Every email sendEmail sends (confirmations, downloads, owner alerts) gets this HTML around its plain text.", el: createElement(TextEmail, { subject: "We got your quote request", text: sampleText, unsubscribe: `${site.url}/unsubscribe` }) },
+    ...(requestStep
+      ? [
+          {
+            name: "Follow-up: unanswered quote request (to the customer)",
+            when: "Daily follow-ups cron, with FOLLOWUPS_ENABLED=true. Day 1, 3, 7 and 14 after a quote or call request nobody has answered yet. Made-up request.",
+            el: createElement(FollowupEmail, {
+              heading: requestStep.heading(sampleLead),
+              preview: requestStep.subject(sampleLead),
+              lines: requestStep.body(sampleLead).slice(2),
+              cta: requestStep.cta(sampleLead),
+              unsubscribe: `${site.url}/unsubscribe`,
+            }),
+          },
+        ]
+      : []),
+    ...(nurtureStep
+      ? [
+          {
+            name: "Follow-up: planning tips (to a download or quiz sign-up)",
+            when: "Daily follow-ups cron, with FOLLOWUPS_ENABLED=true. Day 2, 6 and 13 after someone downloads a kit or takes the quiz and ticks the planning-tips box. Made-up sign-up.",
+            el: createElement(FollowupEmail, {
+              heading: nurtureStep.heading(sampleNurtureLead),
+              preview: nurtureStep.subject(sampleNurtureLead),
+              lines: nurtureStep.body(sampleNurtureLead).slice(2),
+              cta: nurtureStep.cta(sampleNurtureLead),
+              unsubscribe: `${site.url}/unsubscribe`,
+            }),
+          },
+        ]
+      : []),
     { name: "Review request (you send by hand)", when: "Never automatic. Copy from /admin/reviews.", el: createElement(ReviewRequestEmail, { name: "Sample", link: `${site.url}/reviews/write` }) },
+    { name: "Google review request (automatic)", when: "5 days after the event, with EVENT_EMAILS_ENABLED=true and NEXT_PUBLIC_GOOGLE_REVIEW_URL set. See /admin/scheduled and /admin/settings.", el: createElement(GoogleReviewEmail, { name: sampleLead.name, link: site.googleReviewUrl || `${site.url}/reviews/write` }) },
     { name: "New review (to you)", when: "When a review is submitted, with RESEND_API_KEY and NOTIFY_EMAIL.", el: createElement(NewReviewEmail, { rating: 5, name: "Sample Customer", body: "Sample review text for layout only.", verified: true }) },
+    {
+      name: "Invoice (to the customer)",
+      when: "Sent by hand from /admin/invoices/order/<id>. Made-up order, deposit already paid.",
+      el: createElement(InvoiceEmail, {
+        number: "BC-INV-20261106-SAMPLE",
+        invoice: buildInvoice({ ...sampleLead, fee_status: "paid", fee_amount: 436 }, 436),
+        name: sampleLead.name,
+        eventLabel: "Wedding · Fri, Jun 12, 2027",
+        viewUrl: `${site.url}/proposal/sample`,
+      }),
+    },
   ];
   const html = await Promise.all(emails.map((e) => render(e.el)));
   return (

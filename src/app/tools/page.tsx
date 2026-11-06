@@ -7,6 +7,7 @@ import { seo } from "@/lib/seo";
 import { liveTools, toolImage } from "@/components/tools/ToolShell";
 import { toolGroups, type ToolGroup } from "@/data/tools";
 import { FaqList, LinkCards } from "@/components/ui";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const title = "Free Event Planning Tools and Calculators for Chicago Events";
 const description = `Free event planning tools from ${site.name}: tables and chairs, tent size, venue capacity, tablecloth, string light and dance floor calculators, a timeline builder, budget splitter, rain plan checklist and more. No sign-up.`;
@@ -272,6 +273,7 @@ export default function ToolsPage() {
     <div className="container-x py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
+      <Breadcrumbs items={[{ name: "Free tools", href: "/tools" }]} className="mb-6" />
       <div className="max-w-3xl">
         <p className="eyebrow">Free tools</p>
         <h1 className="display-1 mt-6">Free event planning tools</h1>
@@ -291,7 +293,7 @@ export default function ToolsPage() {
               <li key={t.slug}>
                 <Link href={`/tools/${t.slug}`} className="card card-hover block h-full overflow-hidden">
                   <div className="media aspect-[4/3] rounded-none">
-                    <Image src={img.src} alt={img.alt} fill priority={n === 0} sizes="(min-width: 640px) 30vw, 100vw" className="object-cover" />
+                    <Image src={img.src} alt={img.alt} fill priority={n === 0} fetchPriority={n === 0 ? "high" : undefined} sizes="(min-width: 640px) 30vw, 100vw" className="object-cover" />
                   </div>
                   <div className="p-5">
                     <p className="display-3">{t.name}</p>

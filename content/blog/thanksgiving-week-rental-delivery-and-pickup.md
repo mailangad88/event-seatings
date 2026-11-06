@@ -133,4 +133,4 @@ A common rule of thumb is 2 to 3 tables of 8 to 10 seats, plus a few extra chair
 
 ## Get Thanksgiving week on the calendar
 
-Tell us your date, headcount and address, and we will check the dates with the rental companies and put it all on one quote. [Book a free 15-minute planning call](/book) or [get a quote](/quote). One call covers the whole rental list.
+Tell us your date, headcount and address, and we will check availability and put it all on one quote. [Book a free 15-minute planning call](/book) or [get a quote](/quote). One call covers the whole rental list. See our [Thanksgiving & Friendsgiving rental page](/events/thanksgiving-friendsgiving) for chair styles and a planning checklist.

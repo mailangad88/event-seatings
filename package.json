@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@growthbook/growthbook": "^2.0.0",
+    "@portabletext/react": "^8.0.1",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.2.0",
     "@react-three/drei": "^10.7.9",
@@ -33,16 +34,21 @@
     "@remotion/cli": "4.0.532",
     "@remotion/player": "4.0.532",
     "@remotion/renderer": "4.0.532",
+    "@sanity/client": "^7.28.0",
+    "@sanity/image-url": "^2.1.1",
     "@supabase/supabase-js": "^2.117.2",
     "@vercel/blob": "2.8.2",
     "jspdf": "^4.2.1",
     "marked": "^18.0.14",
     "minisearch": "^7.2.0",
-    "next": "16.3.8",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
+    "next": "16.4.5",
+    "next-sanity": "^13.4.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "remotion": "4.0.532",
+    "sanity": "^6.22.0",
     "server-only": "^0.0.1",
+    "styled-components": "^6.6.0",
     "suncalc": "^2.1.1",
     "three": "^0.186.1",
     "zod": "4.5.4"
@@ -68,6 +74,6 @@
     "vitest": "4.1.12"
   },
   "overrides": {
-    "vite": "$vite"
+    "vite": "7.3.7"
   }
 }

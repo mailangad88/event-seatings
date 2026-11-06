@@ -28,7 +28,13 @@ function Linked({ line }: { line: string }) {
  * the text's paragraphs with clickable links, and an unsubscribe link when one applies. Wording stays the text's own.
  */
 export function TextEmail({ subject, text, unsubscribe }: { subject: string; text: string; unsubscribe?: string }) {
-  const paragraphs = text.split(/\n\s*\n/).map((p) => p.split("\n"));
+  // The plain text ends with its own "...unsubscribe: <link>" line (src/lib/notify.ts signOff) so a
+  // reader of the raw text always has a way out. The HTML version already shows that as a link below
+  // (and the layout's footerNote), so drop that one paragraph here instead of showing it twice.
+  const paragraphs = text
+    .split(/\n\s*\n/)
+    .map((p) => p.split("\n"))
+    .filter((lines) => !(unsubscribe && /unsubscribe/i.test(lines.join(" "))));
   return (
     <EmailLayout preview={paragraphs[1]?.join(" ").slice(0, 120) ?? subject} footerNote={unsubscribe ? unsubscribeNote : undefined}>
       <Heading>{subject}</Heading>
@@ -62,6 +68,21 @@ export function ReviewRequestEmail({ name, link }: { name?: string; link: string
         or bad, we publish real reviews only, and we reply to every one.
       </P>
       <CtaButton href={link}>Write a review</CtaButton>
+    </EmailLayout>
+  );
+}
+
+/** Automatic, a few days after the event (event-emails cron): asks for a Google review. */
+export function GoogleReviewEmail({ name, link }: { name?: string; link: string }) {
+  return (
+    <EmailLayout preview="A quick favor: a Google review?" footerNote={unsubscribeNote}>
+      <Heading>How did everything go?</Heading>
+      <P>{name ? `Hi ${name},` : "Hi,"} thanks again for booking your event rentals through {site.name}.</P>
+      <P>
+        If you have two minutes, a Google review helps other hosts in the area find us, and it means a lot to our small team.
+      </P>
+      <CtaButton href={link}>Leave a Google review</CtaButton>
+      <P muted>No pressure either way, and thanks for letting us be part of your event.</P>
     </EmailLayout>
   );
 }

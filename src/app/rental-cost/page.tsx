@@ -33,6 +33,18 @@ export default function RentalCostHub() {
       q: "Is there a booking fee on top of the item prices?",
       a: `No. Item prices are ${site.name}'s own prices for a one-day rental, and there's no separate booking fee. Delivery and pickup, setup, a damage waiver and sales tax are their own lines on your written quote.`,
     },
+    {
+      q: "Which categories cost the most to rent?",
+      a: "Tents and dance floors usually carry the highest per-unit price because of the labor to install them, followed by specialty chairs and upgraded linens. Standard folding chairs, napkins and flatware sit at the low end. The table above ranks every category by its own low and median price.",
+    },
+    {
+      q: "Does ordering more bring the per-item price down?",
+      a: "The per-item price itself usually stays flat, but delivery, setup and a damage waiver are mostly fixed costs per order, so they shrink as a share of the total once you add more items or more quantity to the same quote.",
+    },
+    {
+      q: "Do prices change by season?",
+      a: "The item prices shown here hold year-round, but demand pushes delivery scheduling and availability in peak months (May through October weekends), which can mean less flexibility on short-notice orders rather than a higher listed price.",
+    },
   ];
   return (
     <>

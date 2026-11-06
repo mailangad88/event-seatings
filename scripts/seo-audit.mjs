@@ -7,7 +7,8 @@
 //   npm run seo-audit -- --ci                     # exit 1 on any blocking error or a low score
 //
 // It reads /sitemap.xml, /robots.txt and /llms.txt, fetches every URL in the sitemap, and checks
-// each page for: one H1, title and meta description length, a self canonical, valid JSON-LD
+// each page for: one H1, no skipped heading levels (h2 straight to h4), title and meta description
+// length, a self canonical, valid JSON-LD
 // (FAQPage, BreadcrumbList, Product, ImageObject, VideoObject), a 40 to 60 word direct answer near
 // the top, FAQs, image alt text, a visual (no text-only pages), internal links, broken links,
 // thin and duplicate content, orphan pages and Core Web Vitals hints. Each page gets a 0 to 100
@@ -40,6 +41,12 @@ let BASE = opt("base", "");
 const UTILITY = [/^\/(quote|book|privacy|terms|photo-credits|vendor-listings|quiz|seating-planner|tools\/[^/]+|gallery|reviews|refer)$/];
 const isUtility = (p) => UTILITY.some((re) => re.test(p));
 
+// Plain-text crawler files (llms.txt convention, humans.txt convention). They're deliberately
+// listed in sitemap.xml so AI crawlers and search engines find them, but they're text/plain, not
+// HTML, so none of the HTML-page checks (title, h1, canonical, FAQ schema, visuals, ...) apply.
+// llms.txt gets its own shape checks at the top of main(); these three just need to fetch cleanly.
+const TEXT_FILES = new Set(["/llms.txt", "/llms-full.txt", "/humans.txt"]);
+
 const RULES = {
   "fetch":            { level: "error", weight: 100, label: "Page returns 200" },
   "noindex-in-sitemap": { level: "error", weight: 40, label: "Sitemap page is not noindex" },
@@ -51,8 +58,10 @@ const RULES = {
   "desc-duplicate":   { level: "warn",  weight: 5,  label: "Meta description is unique" },
   "canonical":        { level: "error", weight: 20, label: "Canonical points to itself" },
   "h1":               { level: "error", weight: 15, label: "Exactly one H1" },
+  "heading-skip":     { level: "warn",  weight: 4,  label: "Heading levels do not skip (e.g. H2 straight to H4)" },
   "lang":             { level: "error", weight: 5,  label: "<html lang> is set" },
   "og":               { level: "warn",  weight: 3,  label: "Open Graph title and image" },
+  "twitter":          { level: "warn",  weight: 3,  label: "Twitter/X card and image" },
   "jsonld-invalid":   { level: "error", weight: 20, label: "JSON-LD parses and has the required fields" },
   "breadcrumb":       { level: "warn",  weight: 5,  label: "BreadcrumbList schema" },
   "answer":           { level: "error", weight: 10, label: "Direct answer (30 to 100 words) near the top" },
@@ -85,7 +94,9 @@ async function get(url, tries = 3) {
       // A hung request must not stall the crawl (CI has a 40 minute job limit).
       const started = Date.now();
       const res = await fetch(url, { redirect: "manual", headers: { "user-agent": "seo-audit" }, signal: AbortSignal.timeout(30_000) });
-      const body = res.status === 200 ? await res.text() : "";
+      // Also read the body on 404 so the custom not-found page's content (e.g. its links back
+      // into the site) can be checked, not just its status.
+      const body = res.status === 200 || res.status === 404 ? await res.text() : "";
       const ms = Date.now() - started;
       if (ms > 10_000) console.warn(`  slow: ${url} took ${Math.round(ms / 1000)}s`);
       return { status: res.status, body, location: res.headers.get("location") };
@@ -210,9 +221,20 @@ function analyse(pathname, html) {
   if (!lang) add("lang");
   if (/noindex/i.test(robots)) add("noindex-in-sitemap");
   if (!meta('meta[property="og:title"]') || !meta('meta[property="og:image"]')) add("og");
+  if (!meta('meta[name="twitter:card"]') || !meta('meta[name="twitter:image"]')) add("twitter");
 
   const h1s = root.querySelectorAll("h1");
   if (h1s.length !== 1) add("h1", `${h1s.length} H1s`);
+
+  // Heading levels in document order should not skip (h2 -> h4 with no h3 between). We only
+  // check for a jump of 2 or more levels: going back up (h3 -> h2) or staying flat is fine,
+  // and starting the document at h1 then h2 is the normal case, not a skip.
+  const headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6").map((el) => Number(el.tagName.slice(1)));
+  const skips = [];
+  for (let i = 1; i < headings.length; i++) {
+    if (headings[i] - headings[i - 1] > 1) skips.push(`h${headings[i - 1]} -> h${headings[i]}`);
+  }
+  if (skips.length) add("heading-skip", skips.slice(0, 3).join(", "));
 
   // JSON-LD
   const nodes = [];
@@ -226,7 +248,12 @@ function analyse(pathname, html) {
 
   // Main content = <main> minus nav, header nav, aside forms and the FAQ block.
   const main = root.querySelector("main") ?? root.querySelector("body") ?? root;
-  for (const el of root.querySelectorAll("script, style, noscript, template")) el.remove();
+  // Also strip <title> tooltips inside inline SVGs (e.g. the area map's per-location <title>
+  // hover labels): they're accessibility/tooltip text, not page content, and on a page like
+  // AreaMap that repeats ~280 identical <title>name</title> tags they swamp word count and
+  // simhash with the same boilerplate on every page that embeds the map, producing false
+  // thin-content and near-duplicate flags unrelated to the page's actual written content.
+  for (const el of root.querySelectorAll("script, style, noscript, template, svg title")) el.remove();
   const mainText = clean(main.text);
   const wc = words(mainText);
   const utility = isUtility(pathname);
@@ -350,10 +377,35 @@ async function main() {
     if (missing.length) siteIssue("llms", `${missing.length} llms.txt links are not in the sitemap: ${missing.slice(0, 5).join(", ")}`);
   }
 
+  // Manifest, icons and a helpful 404.
+  const manifest = await get(`${BASE}/manifest.webmanifest`);
+  if (manifest.status !== 200) siteIssue("manifest", "manifest.webmanifest does not return 200");
+  else {
+    try {
+      const m = JSON.parse(manifest.body);
+      if (!Array.isArray(m.icons) || !m.icons.length) siteIssue("manifest", "manifest has no icons");
+    } catch {
+      siteIssue("manifest", "manifest.webmanifest is not valid JSON");
+    }
+  }
+  const favicon = await get(`${BASE}/favicon.ico`);
+  if (favicon.status !== 200) siteIssue("favicon", "favicon.ico does not return 200");
+  const notFound = await get(`${BASE}/this-page-does-not-exist-${Date.now()}`);
+  if (notFound.status !== 404) siteIssue("404", `unknown path returned ${notFound.status}, expected 404`);
+  else if (!/href=/.test(notFound.body)) siteIssue("404", "404 page has no links back into the site");
+
+  // Trailing slash on a handful of real pages should 308 to the slash-less canonical, not 404 or 200
+  // a separate page (a sign trailingSlash normalization or next.config redirect is misconfigured).
+  for (const p of ["/rentals", "/blog", "/chairs"]) {
+    const r = await get(`${BASE}${p}/`, 1);
+    if (r.status !== 308 && r.status !== 301) siteIssue("trailing-slash", `${p}/ returned ${r.status}, expected a redirect`);
+  }
+
   console.error(`Crawling ${paths.length} pages from ${BASE} ...`);
   const pages = await pool(paths, CONCURRENCY, async (p) => {
     const r = await get(`${BASE}${p}`);
     if (r.status !== 200) return { path: p, status: r.status, issues: [{ rule: "fetch", detail: `HTTP ${r.status}${r.location ? ` -> ${r.location}` : ""}` }], links: [] };
+    if (TEXT_FILES.has(p)) return { path: p, status: 200, issues: [], links: [], allLinks: [] };
     try {
       return { path: p, status: 200, ...analyse(p, r.body) };
     } catch (e) {
@@ -431,7 +483,7 @@ async function main() {
   for (const p of pages) {
     const broken = (p.allLinks ?? []).filter((l) => unknownStatus.has(l) && ![200, 301, 302, 307, 308].includes(unknownStatus.get(l)));
     if (broken.length) p.issues.push({ rule: "broken-links", detail: broken.slice(0, 3).join(", ") });
-    if (!LIMIT && p.path !== "/" && !inbound.get(p.path)) p.issues.push({ rule: "orphan" });
+    if (!LIMIT && p.path !== "/" && !TEXT_FILES.has(p.path) && !inbound.get(p.path)) p.issues.push({ rule: "orphan" });
   }
 
   // Scores

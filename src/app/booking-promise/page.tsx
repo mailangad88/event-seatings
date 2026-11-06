@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
-import { DEPOSIT, DEPOSIT_LABEL } from "@/lib/catalog-types";
+import { DEPOSIT_LABEL, PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
+import { termsPolicy } from "@/lib/terms";
 
 export const metadata: Metadata = seo({
   title: "Payments, Deposits & Our Booking Promise",
-  description: `Who you pay, when, and what's protected when you book event rentals with ${site.name} in ${site.market}: free quotes, every price in writing, a deposit refundable for ${DEPOSIT.refundHours} hours, locked prices and a replacement if an item falls through.`,
+  description: `Who you pay, when, and what's protected when you book event rentals with ${site.name} in ${site.market}: free quotes, every price in writing, a deposit refundable for ${PAYMENT_SCHEDULE.refundHours} hours, a staged payment schedule, locked prices and a replacement if an item falls through.`,
   alternates: { canonical: "/booking-promise" },
 });
 
@@ -36,27 +37,37 @@ const promises: { icon: IconName; title: string; text: string }[] = [
   },
   {
     icon: "calendar",
-    title: "Free changes until 14 days out",
-    text: "Add or drop quantities and swap items at no charge until 14 days before your event, subject to stock.",
+    title: `Free changes until ${termsPolicy.changeCutoffDays} days out`,
+    text: `Add or drop quantities and swap items at no charge until ${termsPolicy.changeCutoffDays} days before your event, subject to stock.`,
   },
   {
     icon: "heart",
-    title: `${DEPOSIT.refundHours}-hour change of heart`,
-    text: `Your deposit is fully refundable for ${DEPOSIT.refundHours} hours after you pay. After that, our terms explain cancelling or moving your date.`,
+    title: `${PAYMENT_SCHEDULE.refundHours}-hour change of heart`,
+    text: `Your deposit is fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours after you pay. After that, our terms explain cancelling or moving your date.`,
   },
 ];
 
 const payments = [
   { what: "Quote, planning call and proposal", amount: "Free", when: "Any time, no card needed" },
-  { what: "Deposit", amount: `${Math.round(DEPOSIT.share * 100)}% of the rentals, at least $${DEPOSIT.min}`, when: `When you book. Fully refundable for ${DEPOSIT.refundHours} hours` },
-  { what: "Balance", amount: "The rest of the rentals, plus delivery, setup, damage waiver and tax", when: `${DEPOSIT.balanceDaysBefore} days before your event, after your final count` },
+  {
+    what: "Deposit",
+    amount: `${Math.round(PAYMENT_SCHEDULE.firstShare * 100)}% of the rentals, at least $${PAYMENT_SCHEDULE.min}`,
+    when: `When you book. Fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours`,
+  },
+  {
+    what: "Second installment",
+    amount: `${Math.round(PAYMENT_SCHEDULE.secondShare * 100)}% of the rentals`,
+    when: `${PAYMENT_SCHEDULE.secondDueDaysBefore} days before your event`,
+  },
+  { what: "Balance", amount: "The rest of the rentals, plus delivery, setup, damage waiver and tax", when: `${PAYMENT_SCHEDULE.finalDueDaysBefore} days before your event, after your final count` },
 ];
 
 const flow = [
   { icon: "quote" as const, title: "Free quote", text: "Build your list online. No card, no commitment." },
   { icon: "phone" as const, title: "Free call", text: "We go through your venue, times and anything tricky." },
   { icon: "check" as const, title: "Deposit", text: `A ${DEPOSIT_LABEL} reserves your items for your date.` },
-  { icon: "calendar" as const, title: "Balance", text: `Due ${DEPOSIT.balanceDaysBefore} days before, once your count is final.` },
+  { icon: "calendar" as const, title: "Installment", text: `${Math.round(PAYMENT_SCHEDULE.secondShare * 100)}% due ${PAYMENT_SCHEDULE.secondDueDaysBefore} days before.` },
+  { icon: "calendar" as const, title: "Balance", text: `Due ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before, once your count is final.` },
   { icon: "truck" as const, title: "Delivered & collected", text: "We check delivery on the morning and arrange pickup after." },
 ];
 
@@ -71,7 +82,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Who do I pay?",
-    a: `${site.name}, for everything on your quote: a ${DEPOSIT_LABEL} to book and the balance ${DEPOSIT.balanceDaysBefore} days before your event.`,
+    a: `${site.name}, for everything on your quote: a ${DEPOSIT_LABEL} to book, a second installment ${PAYMENT_SCHEDULE.secondDueDaysBefore} days out, and the balance ${PAYMENT_SCHEDULE.finalDueDaysBefore} days before your event.`,
   },
   {
     q: "What if something gets damaged?",
@@ -87,7 +98,7 @@ const faqs: Faq[] = [
   },
   {
     q: "What if I need to cancel or postpone?",
-    a: `Your deposit is fully refundable for ${DEPOSIT.refundHours} hours after you pay. After that, our terms set out what's refunded or moved to a new date.`,
+    a: `Your deposit is fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours after you pay. After that, our terms set out what's refunded or moved to a new date.`,
   },
   {
     q: "How do I pay?",
@@ -105,7 +116,7 @@ export default function BookingPromisePage() {
         ]}
         eyebrow="Payments & protection"
         title="Know exactly who you pay, when, and what's protected."
-        intro={`A quote from ${site.name} costs nothing. When you book, your prices are locked, your deposit is refundable for ${DEPOSIT.refundHours} hours, and one person looks after your event from quote to pickup.`}
+        intro={`A quote from ${site.name} costs nothing. When you book, your prices are locked, your deposit is refundable for ${PAYMENT_SCHEDULE.refundHours} hours, and one person looks after your event from quote to pickup.`}
         actions={
           <>
             <Link href="/quote?from=booking-promise" className="btn-primary">Start my free quote</Link>

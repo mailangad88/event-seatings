@@ -63,7 +63,7 @@ export function GuestCount({
             }
           }}
           onFocus={(e) => e.currentTarget.select()}
-          className={`${size === "sm" ? "w-11 text-sm" : "w-14 text-base"} min-w-0 bg-transparent text-center font-semibold tabular-nums outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none`}
+          className={`${size === "sm" ? "h-7 w-11 text-sm" : "h-9 w-14 text-base"} min-w-0 bg-transparent text-center font-semibold tabular-nums outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none`}
         />
         <button type="button" aria-label="More guests" disabled={value >= max} onClick={() => commit(stepFor(value, 1))} className={`grid ${btn} shrink-0 place-items-center rounded-full hover:bg-surface-2 disabled:opacity-40`}>
           <Icon name="plus" size={14} />

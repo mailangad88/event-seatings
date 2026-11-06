@@ -21,7 +21,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/packages", "/faq", "/how-it-works", "/pricing", "/big-celebrations", "/venues-and-planners", "/booking-promise", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/press", "/data/chicago-rental-prices", "/privacy", "/terms"].map((p) => ({
+  const pages = ["", "/chairs", "/book", "/quote", "/packages", "/faq", "/how-it-works", "/pricing", "/big-celebrations", "/venues-and-planners", "/booking-promise", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/press", "/data/chicago-rental-prices", "/privacy", "/terms", "/es", "/es/quinceaneras"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -121,7 +121,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   // Free tools, countdown, comparison and vendor onboarding pages (src/lib/tools/sitemap.ts).
   const toolPages = toolSitemapEntries(["/countdown"]);
-  const entries = [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  // Crawler-facing plain-text files (llms.txt, llms-full.txt, humans.txt), so they stay
+  // discoverable from the sitemap as well as robots.txt.
+  const textFiles = ["/llms.txt", "/llms-full.txt", "/humans.txt"].map((p) => ({ url: `${site.url}${p}`, changeFrequency: "weekly" as const, priority: 0.3 }));
+  const entries = [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages, ...textFiles];
   // Pages for rental companies are noindex, so they never belong in the sitemap.
-  return entries.filter((e) => !isVendorPage(e.url.slice(site.url.length)));
+  return entries.filter((e) => !isVendorPage(e.url.slice(site.url.length))).map(escapeSitemapUrls);
+}
+
+// Next.js writes our `url` and `images` strings straight into <loc> without XML-escaping them, so an
+// unescaped "&" (every Unsplash image URL has one, e.g. "?auto=format&fit=crop") breaks the whole sitemap
+// for Google and Bing. Escape them ourselves. (Our URLs never contain < > " ' so "&" is the only risk,
+// but all five are escaped to be safe.)
+const escapeXml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+
+function escapeSitemapUrls<T extends { url: string; images?: string[] }>(entry: T): T {
+  return { ...entry, url: escapeXml(entry.url), images: entry.images?.map(escapeXml) };
 }

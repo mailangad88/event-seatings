@@ -6,6 +6,9 @@ import { Figure, FaqList, Icon, JsonLd, PageHero, Section, type Faq } from "@/co
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
+import { getSanityFaqGroups } from "@/sanity/lib/faqs";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = seo({
   title: "Event Rental FAQ: Chicago Chairs, Tables, Linens & More",
@@ -24,7 +27,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
       },
       {
         q: "Do I deal with several rental companies?",
-        a: "No. You have one point of contact and one quote. We confirm availability with each vendor, line up delivery windows and handle changes for you.",
+        a: "No. You have one point of contact and one quote. We check availability, line up delivery windows and handle changes for you.",
       },
       {
         q: "Can I mix items from different categories?",
@@ -54,7 +57,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
       },
       {
         q: "Are there minimum orders?",
-        a: "Some vendors have delivery minimums, especially on weekends. If your order is small we will tell you up front and suggest the most economical option.",
+        a: "No. There's no minimum order with us. Order exactly what you need, and delivery is priced for your order size and address.",
       },
     ],
   },
@@ -65,6 +68,10 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
       {
         q: "Where do you deliver?",
         a: `Chicago and the suburbs, including ${site.serviceArea.slice(1).join(", ")} and nearby towns. Ask about venues farther out.`,
+      },
+      {
+        q: "How much does delivery cost?",
+        a: "It depends on your order size, your address and whether your venue has stairs or a loading dock. Most orders run $150 to $400 round trip. Your quote shows the exact amount for your date and venue before you book anything.",
       },
       {
         q: "Is setup included?",
@@ -104,8 +111,9 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
   },
 ];
 
-export default function FaqPage() {
-  const all = groups.flatMap((g) => g.faqs);
+export default async function FaqPage() {
+  const allGroups = [...groups, ...(await getSanityFaqGroups())];
+  const all = allGroups.flatMap((g) => g.faqs);
   return (
     <>
       <JsonLd
@@ -140,7 +148,7 @@ export default function FaqPage() {
         <nav aria-label="FAQ topics" className="lg:sticky lg:top-28 lg:self-start">
           <p className="text-xs font-semibold tracking-wide text-muted uppercase">Topics</p>
           <ul className="mt-4 flex flex-wrap gap-2 lg:flex-col">
-            {groups.map((g) => (
+            {allGroups.map((g) => (
               <li key={g.id}>
                 <a href={`#${g.id}`} className="chip hover:border-ink hover:text-ink lg:w-full lg:justify-between">
                   {g.title} <Icon name="arrow" size={14} className="hidden lg:block" />
@@ -150,7 +158,7 @@ export default function FaqPage() {
           </ul>
         </nav>
         <div className="space-y-14">
-          {groups.map((g) => (
+          {allGroups.map((g) => (
             <section key={g.id} id={g.id} className="scroll-mt-28">
               <h2 className="display-3">{g.title}</h2>
               <FaqList faqs={g.faqs} schema={false} className="mt-5" />

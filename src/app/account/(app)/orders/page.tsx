@@ -1,6 +1,6 @@
 import Link from "@/components/Link";
 import { Card, PageTitle, StageTrack, StatusPill, daysLabel } from "@/components/account/AccountUi";
-import { currentAccount, eventStages, fmtDay } from "@/lib/account";
+import { requireAccount, eventStages, fmtDay } from "@/lib/account";
 import { usd } from "@/lib/catalog-types";
 
 export const dynamic = "force-dynamic";
@@ -8,7 +8,7 @@ export const metadata = { title: "Orders" };
 
 // Every event's order, split into its deliveries.
 export default async function AccountOrders() {
-  const { events } = (await currentAccount())!;
+  const { events } = await requireAccount();
   return (
     <div className="space-y-6">
       <PageTitle title="Orders" intro="Each event is one order. When it arrives in more than one delivery, you see each one and its times here." />

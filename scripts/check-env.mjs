@@ -59,7 +59,16 @@ const groups = [
     badText: "Daily jobs are refused (no CRON_SECRET).",
   },
   {
-    title: "5. Nice to have",
+    title: "5. Renter accounts (/account)",
+    items: [
+      ["ACCOUNT_SECRET", "Any long random string (e.g. `openssl rand -base64 32`). Switches on real sign-in."],
+    ],
+    ok: () => has("ACCOUNT_SECRET") && has("RESEND_API_KEY") && has("NOTIFY_FROM"),
+    okText: "Renters can sign in with a real emailed link and see their real events.",
+    badText: "The sample account works, but real sign-in needs ACCOUNT_SECRET plus email sending (RESEND_API_KEY, NOTIFY_FROM) above.",
+  },
+  {
+    title: "6. Nice to have",
     items: [
       ["NEXT_PUBLIC_BOOKING_URL", "Your Calendly / Cal.com link, shown after forms and in emails."],
       ["NEXT_PUBLIC_PHONE", "Business phone for the call buttons."],

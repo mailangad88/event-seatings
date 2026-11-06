@@ -4,8 +4,8 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { firstRoute } from "@/lib/routes";
 
 const slug = "rain-plan";
-const title = "Rain Plan Checklist for Outdoor Events and Weddings";
-const description = "Free rain plan checklist for outdoor weddings, graduation parties and backyard events in Chicago. Set your weather-call date, then tick off tent, sidewall, flooring, power, guest and vendor decisions. Saves in your browser and prints.";
+const title = "Rain Plan Checklist for Outdoor Events";
+const description = "Set your weather-call date, then tick off tent, sidewall, flooring, power, guest and vendor decisions. Saves in your browser and prints.";
 
 export const metadata = toolMetadata(slug, title, description);
 

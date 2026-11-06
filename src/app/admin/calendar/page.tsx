@@ -4,7 +4,7 @@ import { vendors } from "@/data/catalog";
 import { Empty, StagePill } from "@/components/admin/AdminUi";
 import { chicagoDay, eventLine, money0, prettyDay } from "@/lib/admin-view";
 import { listBlockedDates } from "@/lib/availability";
-import { dayLoad, eventsPerDay, guestsPerDay, LIMITED_AT, type DayLoad } from "@/lib/capacity";
+import { dayLoad, eventsPerDay, guestsPerDay, LIGHT_AT, LIMITED_AT, type DayLoad, type LoadLevel } from "@/lib/capacity";
 import { listLeads, type Lead } from "@/lib/store";
 import { blockRange, toggleDate } from "../availability/actions";
 
@@ -16,15 +16,56 @@ const pad = (n: number) => String(n).padStart(2, "0");
 const vendorName = (id?: string) => vendors.find((v) => v.id === id)?.name;
 const isDay = (d: unknown): d is string => typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d);
 
-const cellTone = (load: DayLoad, blocked: boolean) =>
-  blocked ? "bg-surface-2" : load.level === "full" ? "bg-rose-soft" : load.level === "limited" ? "bg-amber-soft" : "bg-surface";
-const barTone = (load: DayLoad) => (load.level === "full" ? "bg-rose" : load.level === "limited" ? "bg-amber" : "bg-green");
+// Shade each day from quiet (open) to heavy (full), light green through amber to red.
+const heatTone: Record<LoadLevel, string> = {
+  open: "bg-surface",
+  light: "bg-green-soft",
+  moderate: "bg-amber-soft",
+  busy: "bg-amber/50",
+  limited: "bg-rose-soft",
+  full: "bg-rose",
+};
+const barTone: Record<LoadLevel, string> = {
+  open: "bg-green",
+  light: "bg-green",
+  moderate: "bg-amber",
+  busy: "bg-amber",
+  limited: "bg-rose",
+  full: "bg-rose",
+};
+const cellTone = (load: DayLoad, blocked: boolean) => (blocked ? "bg-surface-2" : heatTone[load.level]);
+
+const badgeLabel: Partial<Record<LoadLevel, { text: string; cls: string }>> = {
+  busy: { text: "Busy", cls: "badge-amber" },
+  limited: { text: "Nearly full", cls: "badge-rose" },
+  full: { text: "Full", cls: "badge-rose" },
+};
 
 function DayBadge({ load, blocked }: { load: DayLoad; blocked: boolean }) {
   if (blocked) return <span className="badge-rose">Blocked</span>;
-  if (load.level === "full") return <span className="badge-rose">Full</span>;
-  if (load.level === "limited") return <span className="badge-amber">Limited</span>;
-  return null;
+  const b = badgeLabel[load.level];
+  return b ? <span className={b.cls}>{b.text}</span> : null;
+}
+
+function Legend() {
+  const items: { level: LoadLevel; label: string }[] = [
+    { level: "open", label: "Open" },
+    { level: "light", label: "Light" },
+    { level: "moderate", label: "Moderate" },
+    { level: "busy", label: "Busy" },
+    { level: "limited", label: "Nearly full" },
+    { level: "full", label: "Full" },
+  ];
+  return (
+    <div className="flex flex-wrap items-center gap-3 text-xs text-muted">
+      {items.map((it) => (
+        <span key={it.level} className="flex items-center gap-1.5">
+          <span className={`inline-block size-3 rounded-full border border-line ${heatTone[it.level]}`} />
+          {it.label}
+        </span>
+      ))}
+    </div>
+  );
 }
 
 function EventRow({ l, pending }: { l: Lead; pending?: boolean }) {
@@ -175,7 +216,7 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
                   <span className="truncate text-muted">/ {capG} guests</span>
                 </p>
                 <div className="mt-1 h-1.5 rounded-full bg-line/70">
-                  <div className={`h-1.5 rounded-full ${barTone(load)}`} style={{ width: `${Math.min(100, Math.round(load.share * 100))}%` }} />
+                  <div className={`h-1.5 rounded-full ${barTone[load.level]}`} style={{ width: `${Math.min(100, Math.round(load.share * 100))}%` }} />
                 </div>
                 <p className="mt-1.5 text-xs text-muted">
                   {load.confirmed.length} event{load.confirmed.length === 1 ? "" : "s"}
@@ -186,7 +227,9 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
                 ) : load.level === "full" ? (
                   <p className="text-xs text-rose">Fully booked</p>
                 ) : load.level === "limited" ? (
-                  <p className="text-xs text-amber">Limited availability</p>
+                  <p className="text-xs text-rose">Nearly full</p>
+                ) : load.level === "busy" ? (
+                  <p className="text-xs text-amber">Busy day</p>
                 ) : null}
               </Link>
             );
@@ -258,11 +301,13 @@ export default async function CalendarPage(props: PageProps<"/admin/calendar">) 
         </section>
         <section className="card p-6">
           <h2 className="display-3">How to read this</h2>
-          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
+          <div className="mt-3"><Legend /></div>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm">
             <li>Events and guests count bookings a rental partner has confirmed or the customer has paid for. Requests and quotes still open show as pending.</li>
             <li>
-              The bar shows how full the day is against our limit of {capE} events or {capG.toLocaleString()} guests a day, whichever runs out first. It
-              turns gold at {Math.round(LIMITED_AT * 100)}% (limited) and red when full. Change the limits with EVENTS_PER_DAY and GUESTS_PER_DAY in Vercel.
+              Each day is shaded by how full it is against our limit of {capE} events or {capG.toLocaleString()} guests a day, whichever runs out first:
+              open below {Math.round(LIGHT_AT() * 100)}%, then light, moderate, busy and nearly full in steps up to {Math.round(LIMITED_AT() * 100)}%, and
+              full at 100%. Change the limits with EVENTS_PER_DAY, GUESTS_PER_DAY, CAL_LIGHT_AT, CAL_MODERATE_AT, CAL_BUSY_AT and CAL_LIMITED_AT in Vercel.
             </li>
             <li>Blocked days can&apos;t be picked in the quote form or the event planner. Block a day when you&apos;re away or a partner has no stock left.</li>
             <li>Click a day to see who is booked and who is still asking.</li>

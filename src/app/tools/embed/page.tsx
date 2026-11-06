@@ -9,7 +9,7 @@ import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 const title = "Free Event Calculators to Embed on Your Website";
-const description = `Venues, planners and caterers: add ${site.name}'s free tent size, tables and chairs, venue capacity, bar and other event calculators to your own website with one copy-and-paste snippet. Free, no account, no ads.`;
+const description = `Add ${site.name}'s tent size, tables and chairs, and other event calculators to your website with one copy-and-paste snippet. No account needed.`;
 const hero = render("hero-layouts");
 
 export const metadata: Metadata = {
@@ -42,7 +42,7 @@ export default function EmbedPage() {
         breadcrumbs={[{ name: "Free tools", href: "/tools" }, { name: "Embed", href: "/tools/embed" }]}
         media={
           <figure className="media aspect-[4/3] shadow-lift">
-            <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            <Image src={hero.src} alt={hero.alt} fill priority fetchPriority="high" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </figure>
         }
       />

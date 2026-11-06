@@ -8,8 +8,8 @@ import { routeExists } from "@/lib/routes";
 import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
-const title = "Event Rental Comparisons: Tables, Tents, Linens and Lighting";
-const description = "Side-by-side event rental comparisons for Chicago hosts: round vs banquet tables, frame vs pole tents, clear vs white tents, tablecloth lengths, string lights vs uplights, dance floors, cocktail tables and heaters.";
+const title = "Event Rental Comparisons for Chicago Hosts";
+const description = "Side-by-side comparisons for Chicago hosts: tables, tents, tablecloths, lighting, dance floors and heaters, so you can pick with confidence.";
 const hero = render("tent-reception-dusk");
 
 export const metadata: Metadata = {
@@ -24,6 +24,7 @@ const faqs = [
   { q: "Are the prices current?", a: "They are our current prices, checked on the date shown in our catalog. Your written quote confirms the final price for your date." },
   { q: "Where are the chair comparisons?", a: "Chairs have their own set of comparisons, from Chiavari vs folding chairs to ghost vs crossback. They're linked at the bottom of this page." },
   { q: "What if I still can't decide?", a: "Book a free call. We'll look at your venue, guest count and style and recommend what fits." },
+  { q: "Can I rent both options and use each where it fits best?", a: "Often, yes. A common split is one option for the ceremony and the other for the reception, or one for the head table and the other for the rest of the room. Put both on the same quote and we'll price it either way." },
 ];
 
 export default function RentalComparisonsIndex() {
@@ -50,7 +51,7 @@ export default function RentalComparisonsIndex() {
         breadcrumbs={[{ name: "Rental comparisons", href: "/rental-comparisons" }]}
         media={
           <figure className="media aspect-[4/3] shadow-lift">
-            <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            <Image src={hero.src} alt={hero.alt} fill priority fetchPriority="high" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </figure>
         }
       />

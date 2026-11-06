@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallForm } from "@/components/CallForm";
 import { Figure } from "@/components/ui";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -16,6 +17,13 @@ const agenda: [string, string][] = [
   ["Your room", "Venue, layout and guest count, so we can recommend the right chairs, tables and linens and how many you actually need."],
   ["Your look", "Styles that suit your palette and season, from ceremony chairs to tablescapes, lighting and tents."],
   ["Your budget", "An honest estimate for everything on your list, with delivery, setup and pickup itemized. No surprises later."],
+];
+
+const afterCall: [string, string][] = [
+  ["We send your quote", "A written, itemized quote lands in your inbox the same day, priced for your guest count."],
+  ["You approve and reserve", "Reserve your date with 20% down. It's refundable if you cancel within 72 hours."],
+  ["We stay in touch", "Reminders before your remaining payments are due and a check-in as your date gets close."],
+  ["We deliver and set up", "We deliver, set up and pick up on your event day, so you just show up to a ready room."],
 ];
 
 const faqs: [string, string][] = [
@@ -36,6 +44,7 @@ export default async function BookPage(props: PageProps<"/book">) {
   return (
     <div className="container-x py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <Breadcrumbs items={[{ name: "Book a call", href: "/book" }]} className="mb-6" />
       <div className="grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-end">
         <div>
           <p className="eyebrow">Free {site.callLength} planning call</p>
@@ -59,6 +68,27 @@ export default async function BookPage(props: PageProps<"/book">) {
           </li>
         ))}
       </ol>
+
+      <section className="mt-20">
+        <p className="eyebrow">After the call</p>
+        <h2 className="display-3 mt-3">What happens next</h2>
+        <ol className="mt-8 grid gap-6 md:grid-cols-4">
+          {afterCall.map(([t, d], i) => (
+            <li key={t} className="relative flex gap-4 md:block">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/60 font-heading font-semibold text-gold">{i + 1}</span>
+              <div className="md:mt-4">
+                <h3 className="font-medium">{t}</h3>
+                <p className="mt-2 leading-7 text-muted">{d}</p>
+              </div>
+              {i < afterCall.length - 1 && (
+                <svg aria-hidden width="22" height="8" viewBox="0 0 22 8" className="mt-4 hidden text-gold/50 md:absolute md:top-4 md:-right-5 md:block">
+                  <path d="M0 4h20M17 1l3 3-3 3" fill="none" stroke="currentColor" strokeWidth="1" />
+                </svg>
+              )}
+            </li>
+          ))}
+        </ol>
+      </section>
 
 
       <section className="mt-24 grid gap-14 md:grid-cols-[1.6fr_1fr]">

@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: "Receipt", robots: { index: false } }
 
 const long = { month: "long", day: "numeric", year: "numeric" } as const;
 
-// A printable receipt for the deposit. The balance is due 7 days before the event.
+// A printable receipt for the first payment. The rest is due in stages before the event.
 export default async function ReceiptPage(props: PageProps<"/admin/invoices/receipt/[id]">) {
   const { id } = await props.params;
   const lead = await getLead(id);
@@ -50,7 +50,7 @@ export default async function ReceiptPage(props: PageProps<"/admin/invoices/rece
           <tbody>
             <tr className="border-b border-line align-top">
               <td className="py-3 pr-4">
-                {chargeLabel()}
+                {chargeLabel(lead)}
                 <div className="text-xs text-muted">
                   {[lead.event_type, lead.event_date && prettyDay(lead.event_date, long), [lead.venue, lead.city].filter(Boolean).join(", ")].filter(Boolean).join(" · ")}
                 </div>
@@ -61,8 +61,8 @@ export default async function ReceiptPage(props: PageProps<"/admin/invoices/rece
           <tfoot><tr><td className="pt-3 font-medium">Total paid</td><td className="pt-3 text-right font-medium tabular-nums">{money2(lead.fee_amount)}</td></tr></tfoot>
         </table>
         <p className="mt-8 text-xs leading-5 text-muted">
-          Paid {lead.stripe_session_id ? "by card" : "directly to us"}. This is the deposit on your rentals and counts toward your order. The balance,
-          with delivery, setup, damage waiver and tax, is due 7 days before your event. See {site.url}/booking-promise for refunds and changes.
+          Paid {lead.stripe_session_id ? "by card" : "directly to us"}. This counts toward your order. The rest, with delivery, setup, damage waiver
+          and tax, comes due in stages before your event. See {site.url}/booking-promise for the schedule, refunds and changes.
         </p>
       </article>
     </div>

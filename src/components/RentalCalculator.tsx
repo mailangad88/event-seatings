@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "@/components/Link";
 import { useMemo, useState } from "react";
 import { track } from "@/lib/analytics";
+import { ThumbZoom } from "./ui/ThumbZoom";
 
 export type CalcItem = { id: string; name: string; price: number; unit: string; estimated: boolean; image?: string; alt: string };
 export type CalcGroup = { id: string; label: string; optional?: string; lines: { item: CalcItem; per: "guest" | "table" | "ten" }[] };
@@ -82,9 +83,15 @@ export function RentalCalculator({ chairs, groups }: { chairs: CalcItem[]; group
         <ul className="mt-6 divide-y divide-line rounded-2xl border border-line bg-surface">
           {rows.map((r) => (
             <li key={r.item.id} className="flex items-center gap-4 p-4">
-              <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-surface-2">
-                {r.item.image && <Image src={r.item.image} alt={r.item.alt} fill sizes="56px" className="object-cover" />}
-              </span>
+              {r.item.image ? (
+                <ThumbZoom src={r.item.image} alt={r.item.alt} className="h-14 w-14 shrink-0 rounded-xl">
+                  <span className="relative block h-14 w-14 overflow-hidden rounded-xl border border-line bg-surface-2">
+                    <Image src={r.item.image} alt={r.item.alt} fill sizes="56px" className="object-cover" />
+                  </span>
+                </ThumbZoom>
+              ) : (
+                <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-surface-2" />
+              )}
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium">{r.item.name}</span>
                 <span className="block text-xs text-muted">
