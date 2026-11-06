@@ -1,12 +1,15 @@
 import type { IconName } from "@/components/ui";
 import type { Faq } from "@/components/ui/FaqList";
+import { PAYMENT_SCHEDULE } from "@/lib/catalog-types";
+
+const depositPct = Math.round(PAYMENT_SCHEDULE.firstShare * 100);
 
 // Landing pages for people who already have a rental problem ("solutions") or are choosing how to book
 // ("compare"). Each page targets one search phrase, opens with a 40 to 60 word answer, shows a before/after,
 // answers real buyer questions and ends in one call to action.
 //
 // Facts rule: everything here is either general practice a planner can check, our own published terms
-// (our own item prices, 50% deposit to book, no separate booking fee), or comes from our Nov 2026 market research
+// (our own item prices, a staged deposit to book, no separate booking fee), or comes from our Nov 2026 market research
 // (docs/vendor-research.md, /mnt/project-files/research/vendors). Vendors are described, never named,
 // because they are our suppliers. Search volumes are NOT measured yet: `phrase` is the target, and the
 // volume/difficulty columns get filled from Search Console or Keyword Planner once those accounts exist.
@@ -341,7 +344,7 @@ export const buyerPages: BuyerPage[] = [
     description:
       "An honest comparison: renting everything for a Chicago event in one order from Beyond Chiavari vs calling several rental stores. Cost, time, choice and who to call when things go wrong.",
     answer:
-      "Calling a rental store you already know works well for a simple order, like 100 folding chairs. For an event that needs chairs, tables, linens, dishes and maybe a tent, one order with Beyond Chiavari saves you comparing and chasing several companies. Every item is priced on our site, delivery, setup, damage waiver and tax are on one written quote, and you book with a 50% deposit, refundable for 72 hours.",
+      `Calling a rental store you already know works well for a simple order, like 100 folding chairs. For an event that needs chairs, tables, linens, dishes and maybe a tent, one order with Beyond Chiavari saves you comparing and chasing several companies. Every item is priced on our site, delivery, setup, damage waiver and tax are on one written quote, and you book with a ${depositPct}% deposit, refundable for ${PAYMENT_SCHEDULE.refundHours} hours.`,
     icon: "users",
     before: { title: "Calling several stores", points: ["Prices often only by phone", "Several quotes to compare", "Several contracts and contacts", "You handle it if one cancels"] },
     after: { title: "One order with us", points: ["Every item priced on the site", "One quote, priced as you build it", "One person to call", "Booking Promise if an item falls through"] },
@@ -364,7 +367,7 @@ export const buyerPages: BuyerPage[] = [
         ["Categories per quote", "What that store carries", "19 categories on one list"],
         ["Contacts", "One per store", "One person"],
         ["If an item falls through", "You find a replacement", "Same or better at the agreed price, or a refund (Booking Promise)"],
-        ["When you pay", "Each store's deposit terms", "50% deposit to book, refundable for 72 hours; balance 7 days before"],
+        ["When you pay", "Each store's deposit terms", `${depositPct}% deposit to book, refundable for ${PAYMENT_SCHEDULE.refundHours} hours; the rest in stages before your event`],
       ],
     },
     faqs: [
