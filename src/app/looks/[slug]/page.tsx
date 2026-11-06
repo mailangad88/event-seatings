@@ -187,7 +187,7 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
             {" "}{look.details.find((d) => d.label.toLowerCase() === "lighting") ? look.details.find((d) => d.label.toLowerCase() === "lighting")!.text + "." : ""} Most couples and planners book the chairs first, then build linen and florals to match the swatches shown here so nothing is picked by eye on the day.
           </p>
           <p>
-            It's built for {look.bestFor[0].toLowerCase()}
+            It&apos;s built for {look.bestFor[0].toLowerCase()}
             {look.bestFor.length > 1 ? ` and works just as well at ${look.bestFor.slice(1).join(", ").toLowerCase()}` : ""}, and reads best in {look.season.toLowerCase()}.
             {also.length > 0 && (
               <>

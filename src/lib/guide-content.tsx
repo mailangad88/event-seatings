@@ -854,10 +854,10 @@ function buildTable(slug: string): GuideProps | null {
             <p>
               {rec.map((c) => c.name).slice(0, -1).join(", ")}
               {rec.length > 1 ? " and " : ""}
-              {rec[rec.length - 1]?.name} are chairs from our collection that suit {t.use}. Each one's own page has the per-chair price and finishes.
+              {rec[rec.length - 1]?.name} are chairs from our collection that suit {t.use}. Each one&apos;s own page has the per-chair price and finishes.
             </p>
             <p>
-              Match the chair seat height to the {t.name}'s table height before you order a specialty chair, and check the chair's own page for how it stacks and whether it handles an outdoor setting, since that affects how fast a room turns over between a ceremony and a reception.
+              Match the chair seat height to the {t.name}&apos;s table height before you order a specialty chair, and check the chair&apos;s own page for how it stacks and whether it handles an outdoor setting, since that affects how fast a room turns over between a ceremony and a reception.
             </p>
           </>
         ),
