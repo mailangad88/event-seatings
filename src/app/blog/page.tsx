@@ -32,7 +32,7 @@ export default async function BlogPage() {
         meta={all.length > 0 && <p>{all.length} guides across {topics.filter((t) => count(t.name) > 0).length} topics</p>}
         media={
           <div className="media aspect-[4/3] shadow-lift">
-            <Image src={render("hero-layouts").src} alt={render("hero-layouts").alt} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <Image src={render("hero-layouts").src} alt={render("hero-layouts").alt} fill priority fetchPriority="high" sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </div>
         }
       />

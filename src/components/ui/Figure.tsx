@@ -34,11 +34,11 @@ export function Figure({
         <div className="media p-4 sm:p-6 [&_svg]:mx-auto [&_svg]:block [&_svg]:h-auto [&_svg]:w-full">{children}</div>
       ) : !src ? null : ratio ? (
         <div className="media" style={{ aspectRatio: ratio }}>
-          <Image src={src} alt={alt ?? ""} fill priority={priority} sizes={sizes} className={`object-cover ${imgClassName}`} />
+          <Image src={src} alt={alt ?? ""} fill priority={priority} fetchPriority={priority ? "high" : undefined} sizes={sizes} className={`object-cover ${imgClassName}`} />
         </div>
       ) : (
         <div className="media">
-          <Image src={src} alt={alt ?? ""} width={width ?? 1200} height={height ?? 900} priority={priority} sizes={sizes} className={`h-auto w-full ${imgClassName}`} />
+          <Image src={src} alt={alt ?? ""} width={width ?? 1200} height={height ?? 900} priority={priority} fetchPriority={priority ? "high" : undefined} sizes={sizes} className={`h-auto w-full ${imgClassName}`} />
         </div>
       )}
       {caption && <figcaption className="mt-3 text-sm leading-6 text-muted">{caption}</figcaption>}

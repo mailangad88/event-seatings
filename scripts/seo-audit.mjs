@@ -7,7 +7,8 @@
 //   npm run seo-audit -- --ci                     # exit 1 on any blocking error or a low score
 //
 // It reads /sitemap.xml, /robots.txt and /llms.txt, fetches every URL in the sitemap, and checks
-// each page for: one H1, title and meta description length, a self canonical, valid JSON-LD
+// each page for: one H1, no skipped heading levels (h2 straight to h4), title and meta description
+// length, a self canonical, valid JSON-LD
 // (FAQPage, BreadcrumbList, Product, ImageObject, VideoObject), a 40 to 60 word direct answer near
 // the top, FAQs, image alt text, a visual (no text-only pages), internal links, broken links,
 // thin and duplicate content, orphan pages and Core Web Vitals hints. Each page gets a 0 to 100
@@ -51,6 +52,7 @@ const RULES = {
   "desc-duplicate":   { level: "warn",  weight: 5,  label: "Meta description is unique" },
   "canonical":        { level: "error", weight: 20, label: "Canonical points to itself" },
   "h1":               { level: "error", weight: 15, label: "Exactly one H1" },
+  "heading-skip":     { level: "warn",  weight: 4,  label: "Heading levels do not skip (e.g. H2 straight to H4)" },
   "lang":             { level: "error", weight: 5,  label: "<html lang> is set" },
   "og":               { level: "warn",  weight: 3,  label: "Open Graph title and image" },
   "jsonld-invalid":   { level: "error", weight: 20, label: "JSON-LD parses and has the required fields" },
@@ -213,6 +215,16 @@ function analyse(pathname, html) {
 
   const h1s = root.querySelectorAll("h1");
   if (h1s.length !== 1) add("h1", `${h1s.length} H1s`);
+
+  // Heading levels in document order should not skip (h2 -> h4 with no h3 between). We only
+  // check for a jump of 2 or more levels: going back up (h3 -> h2) or staying flat is fine,
+  // and starting the document at h1 then h2 is the normal case, not a skip.
+  const headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6").map((el) => Number(el.tagName.slice(1)));
+  const skips = [];
+  for (let i = 1; i < headings.length; i++) {
+    if (headings[i] - headings[i - 1] > 1) skips.push(`h${headings[i - 1]} -> h${headings[i]}`);
+  }
+  if (skips.length) add("heading-skip", skips.slice(0, 3).join(", "));
 
   // JSON-LD
   const nodes = [];

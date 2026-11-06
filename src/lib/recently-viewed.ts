@@ -7,19 +7,41 @@ const KEY = "bc-recently-viewed-v1";
 const EVENT = "bc:recently-viewed";
 const MAX = 12;
 
+// Cached by raw storage string so useSyncExternalStore's getSnapshot returns the same array
+// reference until localStorage actually changes (a fresh array every call causes an infinite
+// re-render loop: https://react.dev/reference/react/useSyncExternalStore#im-getting-an-error-the-result-of-getsnapshot-should-be-cached).
+let cachedRaw: string | null = null;
+let cachedAll: ViewedItem[] = [];
+const excludeCache = new Map<string, ViewedItem[]>();
+
 function read(): ViewedItem[] {
+  let raw: string | null;
   try {
-    const raw = localStorage.getItem(KEY);
-    const v = raw ? JSON.parse(raw) : [];
-    return Array.isArray(v) ? v : [];
+    raw = localStorage.getItem(KEY);
   } catch {
-    return [];
+    raw = null;
   }
+  if (raw === cachedRaw) return cachedAll;
+  let v: unknown = [];
+  try {
+    v = raw ? JSON.parse(raw) : [];
+  } catch {
+    v = [];
+  }
+  cachedRaw = raw;
+  cachedAll = Array.isArray(v) ? (v as ViewedItem[]) : [];
+  excludeCache.clear();
+  return cachedAll;
 }
 
 export function recentlyViewed(excludeId?: string): ViewedItem[] {
   const all = read();
-  return excludeId ? all.filter((v) => v.id !== excludeId) : all;
+  if (!excludeId) return all;
+  const cached = excludeCache.get(excludeId);
+  if (cached) return cached;
+  const filtered = all.filter((v) => v.id !== excludeId);
+  excludeCache.set(excludeId, filtered);
+  return filtered;
 }
 
 export function addRecentlyViewed(item: ViewedItem) {

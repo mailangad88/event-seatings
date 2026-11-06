@@ -58,6 +58,7 @@ export default function DownloadsPage() {
                 height={528}
                 className={`rounded-lg border border-line shadow-lg ${i === 1 ? "-translate-y-4" : "translate-y-2"}`}
                 priority
+                fetchPriority={i === 1 ? "high" : undefined}
               />
             ))}
           </div>

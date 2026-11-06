@@ -35,6 +35,7 @@ export function StockImg({
       width={width}
       height={height}
       loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "auto"}
       decoding="async"
       className={`absolute inset-0 h-full w-full object-cover ${className}`}
     />

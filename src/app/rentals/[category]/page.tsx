@@ -164,6 +164,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                   alt={categoryScene(c.id)!.alt}
                   fill
                   priority
+                  fetchPriority="high"
                   sizes="40vw"
                   className="object-cover"
                 />

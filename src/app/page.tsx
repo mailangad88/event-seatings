@@ -72,7 +72,7 @@ export default function Home() {
             </div>
           </div>
           <div className="animate-rise media aspect-[4/3] shadow-lift [animation-delay:150ms] lg:aspect-[4/5]">
-            <Image src={hero.src} alt={hero.alt} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <Image src={hero.src} alt={hero.alt} fill priority fetchPriority="high" sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </div>
         </div>
       </section>
