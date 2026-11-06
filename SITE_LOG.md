@@ -39,6 +39,12 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-06): 4 more near-west Cook County suburb pages
+
+- Follow-up to the batch below: added the remaining real towns in the same near-west Cook County corridor that were held back to keep that batch's quality bar high — Hillside, Stone Park, Forest View and McCook.
+- Added all 4 in `src/data/geo/areas/near-west-cook-2.ts`, same `Location` schema and visuals as the rest of `/chair-rentals/[slug]`. McCook is almost entirely industrial with few residences, so its page is honest about that and focuses on the neighboring villages (Hodgkins, Summit, Brookfield, Indian Head Park) where families with McCook ties actually live.
+- `npx tsx scripts/check-geo.ts`: 297 locations, 0 errors (was 293). `node scripts/check-copy.mjs` passes.
+
 ## Changes in this release (2026-11-06): 12 new near-west Cook County suburb pages
 
 - Audited all 281 existing `/chair-rentals/[slug]` area pages against a list of real Chicago-metro municipalities and found a cluster of legitimate near-west Cook County suburbs (the Bellwood/Oak Park/O'Hare corridor) with no page: Franklin Park, Schiller Park, Bellwood, Broadview, Westchester, River Grove, Berkeley, North Riverside, Stickney, Hodgkins, Indian Head Park and Justice.
@@ -1224,7 +1230,7 @@ Columns: SEO = title, description, keyword, canonical; AEO = answer box + FAQ sc
 
 ## Local pages: Local landing pages (Chicago neighborhoods + suburbs)
 
-Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts` + `src/data/geo/areas/*.ts` (Nov 3 2026: 246 more areas, 281 total incl. 10 county pages; Nov 6 2026: +12 near-west Cook County suburbs in `src/data/geo/areas/near-west-cook.ts`, 293 total). Check with `npx tsx scripts/check-geo.ts`.
+Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts` + `src/data/geo/areas/*.ts` (Nov 3 2026: 246 more areas, 281 total incl. 10 county pages; Nov 6 2026: +12 near-west Cook County suburbs in `src/data/geo/areas/near-west-cook.ts`, +4 more in `near-west-cook-2.ts`, 297 total). Check with `npx tsx scripts/check-geo.ts`.
 
 **Fact-check, 2026-11-03 (246 new area pages in `src/data/geo/areas/`):**
 - ZIP codes: all 411 ZIPs across all 281 area pages were checked against a public USPS ZIP dataset (the `zipcodes` npm package). Every one is a real Illinois ZIP. Each sits within 8 miles of its place's coordinates (4 for Chicago neighborhoods, 40 for counties). Where a village shares its ZIP with a neighbor (for example Kildeer, Long Grove and Hawthorn Woods on 60047), the post office name differs; that is expected. Census ZCTA files were blocked from the build environment.
@@ -1237,7 +1243,11 @@ Every page has: unique local copy, stylised area map, 3 chair picks with renders
 
 | Page | URL | Last touched | Remaining |
 |---|---|---|---|
-| Areas hub | /chair-rentals | 2026-11-06 | Grouped by county with jump links (293 areas). Add real venue photos; add a short video |
+| Areas hub | /chair-rentals | 2026-11-06 | Grouped by county with jump links (297 areas). Add real venue photos; add a short video |
+| Hillside | /chair-rentals/hillside | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Stone Park | /chair-rentals/stone-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Forest View | /chair-rentals/forest-view | 2026-11-06 | New. Owner review of local facts; add real photo |
+| McCook | /chair-rentals/mccook | 2026-11-06 | New. Owner review of local facts; add real photo |
 | Franklin Park | /chair-rentals/franklin-park | 2026-11-06 | New. Owner review of local facts; add real photo |
 | Schiller Park | /chair-rentals/schiller-park | 2026-11-06 | New. Owner review of local facts; add real photo |
 | Bellwood | /chair-rentals/bellwood | 2026-11-06 | New. Owner review of local facts; add real photo |
