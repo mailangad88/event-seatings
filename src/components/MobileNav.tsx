@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import type { Menu } from "@/lib/nav";
 import { toneTile } from "@/lib/menu-style";
 import { Icon } from "./ui/Icon";
+import { site } from "@/lib/site";
+import { contact } from "@/lib/contact";
 
 type MobileMenu = Pick<Menu, "id" | "label" | "href" | "all" | "tone" | "groups">;
 
@@ -22,6 +24,17 @@ export function MobileNav({ menus }: { menus: MobileMenu[] }) {
 
   return (
     <div className="flex items-center gap-2 lg:hidden">
+      {/* Tap-to-call: on screens below the desktop phone number (lg, see Header.tsx), this is the only
+          one-tap way to call without opening the menu or the chat dock. */}
+      {site.phone && (
+        <a
+          href={`tel:${contact.phone}`}
+          aria-label={`Call ${site.name}: ${site.phone}`}
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gold/60 text-gold"
+        >
+          <Icon name="phone" size={18} />
+        </a>
+      )}
       <QuoteListLink className="btn-primary btn-sm" label="Quote" filledLabel="Quote" bubble />
       <button
         type="button"
