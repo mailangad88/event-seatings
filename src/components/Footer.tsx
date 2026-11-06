@@ -48,6 +48,7 @@ export function Footer() {
               </li>
             )}
           </ul>
+          <p className="mt-1 text-xs text-muted">Call or text — {contact.replyPromise.toLowerCase()}</p>
           <p className="mt-2 flex gap-5 text-sm text-muted">
             <a href={site.instagram} className="inline-block py-1.5 hover:text-ink">Instagram</a>
             <a href={site.pinterest} className="inline-block py-1.5 hover:text-ink">Pinterest</a>
