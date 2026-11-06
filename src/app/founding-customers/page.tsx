@@ -60,13 +60,13 @@ export default function FoundingCustomersPage() {
       <Section tone="sand" eyebrow="Why we ask for reviews" title="Honest, not traded for">
         <div className="max-w-2xl">
           <p className="leading-7 text-muted">
-            A few days after your event, we'll ask if you'd write a short review. It takes about two minutes, and we publish
-            it exactly as written, good or bad. There's no discount, credit or gift for leaving one, and nothing changes if
+            A few days after your event, we&apos;ll ask if you&apos;d write a short review. It takes about two minutes, and we publish
+            it exactly as written, good or bad. There&apos;s no discount, credit or gift for leaving one, and nothing changes if
             you skip it or write something critical. We ask because new customers in a new city have no way to check our
-            work except through people who already booked with us, and that's you right now.
+            work except through people who already booked with us, and that&apos;s you right now.
           </p>
           <Callout className="mt-8" title="Already booked?">
-            You don't need to wait for our email. <Link href="/reviews/write" className="text-accent">Write your review now</Link>, or call or text{" "}
+            You don&apos;t need to wait for our email. <Link href="/reviews/write" className="text-accent">Write your review now</Link>, or call or text{" "}
             {site.phone} if anything about your order needs attention first.
           </Callout>
         </div>
