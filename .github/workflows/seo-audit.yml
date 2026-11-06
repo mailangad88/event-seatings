@@ -4,6 +4,8 @@ name: SEO audit
 # The job fails when any page has a blocking SEO / AEO / GEO error (missing H1, title,
 # description or canonical, invalid schema, no FAQs or direct answer, missing alt text,
 # thin or duplicate content, broken links, orphan pages) or the site score drops below 90.
+# Skipped heading levels (e.g. h2 straight to h4) are a non-blocking warning that only
+# affects the score, since they're a lesser structural issue than a missing or duplicate H1.
 # The full report is attached to every run as an artifact.
 
 on:

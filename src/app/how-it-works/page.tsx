@@ -86,7 +86,7 @@ export default function HowItWorksPage() {
               <span className="grid h-12 w-12 place-items-center rounded-full bg-gold-soft text-gold">
                 <Icon name={d.icon} size={24} />
               </span>
-              <h2 className="display-3 mt-5">{d.title}</h2>
+              <h3 className="display-3 mt-5">{d.title}</h3>
               <p className="mt-3 leading-7 text-muted">{d.text}</p>
               <ul className="mt-5 space-y-2 text-sm">
                 {d.points.map((p) => (
