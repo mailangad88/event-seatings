@@ -9,6 +9,7 @@ import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { RentalVisual, rentalAlt, rentalImagePath, similarAlt } from "@/components/rentals/RentalVisual";
 import { similarPhoto } from "@/data/similar-photo";
 import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
+import { PriceList, type PriceListRow } from "@/components/rentals/PriceList";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
@@ -53,6 +54,32 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
   const inventory = items.filter((i) => !i.featured);
   const inventoryCount = inventory.length;
   const sections = [...Map.groupBy(inventory, (i) => i.section ?? c.name)].sort((a, b) => a[0].localeCompare(b[0]));
+  // Full price list rows, with each item's thumbnail resolved to a plain image URL (or none, for the
+  // icon fallback) so the client-side search and sort in PriceList doesn't need the server-only helpers.
+  const priceListRows: PriceListRow[] = inventory.map((i) => {
+    const own = rentalImagePath(i.id, i.categoryId);
+    const similar = own ? undefined : similarPhoto(i);
+    const thumb = own || similar ? undefined : photosForItem(i);
+    const thumbSrc = own ?? similar?.src ?? (thumb?.matched ? stockSrc(thumb.photos[0], 44) : undefined);
+    const thumbAlt = own
+      ? rentalAlt(i.name, i.specs, i.id)
+      : similar
+        ? similarAlt(similar, i.name)
+        : thumb?.matched
+          ? stockAlt(thumb.photos[0], i.name, true, site.market)
+          : undefined;
+    return {
+      id: i.id,
+      name: i.name,
+      specs: i.specs,
+      price: customerPrice(i),
+      unit: i.unit,
+      href: itemHref(i),
+      section: i.section ?? c.name,
+      thumbSrc,
+      thumbAlt,
+    };
+  });
   const hero = items.find((i) => rentalImagePath(i.id, i.categoryId));
   const budget = sampleBudgets.find((b) => b.lines.some(([id]) => items.some((i) => i.id === id)));
   const url = `${site.url}/rentals/${c.id}`;
@@ -182,52 +209,8 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
               unit for one event day, before delivery, setup, damage waiver and tax (typically 35-60% more all-in).
             </p>
             <PriceDisclaimer className="mt-2 max-w-2xl" vendorLink />
-            <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-2">
-              {sections.map(([section, rows]) => (
-                <table key={section} className="w-full self-start text-sm">
-                  <caption className="pb-3 text-left text-xs font-medium tracking-[0.18em] text-muted uppercase">{section}</caption>
-                  <tbody>
-                    {rows.map((i) => {
-                      const thumb = photosForItem(i);
-                      const own = rentalImagePath(i.id, i.categoryId);
-                      const similar = own ? undefined : similarPhoto(i);
-                      return (
-                      <tr key={i.id} className="border-t border-line">
-                        <td className="w-14 py-2.5 pr-3 align-top">
-                          {own ? (
-                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
-                              <Image src={own} alt={rentalAlt(i.name, i.specs, i.id)} fill sizes="44px" loading="lazy" className="object-cover" />
-                            </span>
-                          ) : similar ? (
-                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
-                              <Image src={similar.src} alt={similarAlt(similar, i.name)} fill sizes="44px" loading="lazy" className="object-cover" />
-                            </span>
-                          ) : thumb.matched ? (
-                            <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
-                              <StockImg photo={thumb.photos[0]} alt={stockAlt(thumb.photos[0], i.name, true, site.market)} width={44} />
-                            </span>
-                          ) : (
-                            <span className="grid h-11 w-11 place-items-center rounded-sm bg-surface-2 text-gold/80">
-                              <RentalIcon category={c.id} className="h-6 w-6" title={`${i.name} illustration`} />
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-2.5 pr-3">
-                          <Link href={itemHref(i)} className="hover:text-gold">
-                            {i.name}
-                          </Link>
-                          {i.specs && <span className="block text-xs text-muted">{i.specs}</span>}
-                        </td>
-                        <td className="py-2.5 text-right whitespace-nowrap tabular-nums">
-                          {formatPrice(customerPrice(i))}
-                          <span className="block text-xs text-muted">{i.unit}</span>
-                        </td>
-                      </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              ))}
+            <div className="mt-10">
+              <PriceList rows={priceListRows} category={c.id} />
             </div>
             </details>
           </section>
