@@ -2,6 +2,8 @@
 
 Checked live, right now (Nov 6, 7:24pm): the Vercel project, the site's robots.txt and sitemap.xml source code, and a direct Google search for `site:beyondchiavari.com` (zero results).
 
+**Update, 8:05pm same day — done without needing any clicks:** ran the IndexNow GitHub Action (pushed every sitemap URL to Bing), confirmed Bing is already file-verified via `public/BingSiteAuth.xml` (so Step 5 below only needs a sitemap resubmit, not a fresh verification), confirmed internal links to every money page are already strong (they're in the sitewide header mega-menu, `src/lib/nav.ts`, so every page on the site links to them — no code change needed), and drafted (not submitted) a Wikidata entity at `growth/wikidata-entity-prep-2026-11-06.md`.
+
 ## The honest diagnosis
 
 **It's not a bug in the website.** The technical SEO (sitemap, robots.txt, schema, meta tags, page speed, canonical tags) is already excellent — a full crawl of all 7,281 pages on Nov 6 scored 99.1/100 with zero blocking errors. That work is done and isn't the reason.
@@ -49,24 +51,21 @@ Do these in order. Each one unlocks the next.
    - `https://beyondchiavari.com/rentals`
    - `https://beyondchiavari.com/how-it-works`
 
-### Step 5: Verify Bing Webmaster Tools (feeds Copilot and ChatGPT search too)
-1. Go to [bing.com/webmasters](https://www.bing.com/webmasters), sign in.
-2. **Add a site** → enter `https://beyondchiavari.com` → when asked how to verify, choose **Import from Google Search Console** (fastest, since you just did Step 3). Approve the import with the same Google account.
-3. Once imported, go to **Sitemaps** in the left menu, submit `https://beyondchiavari.com/sitemap.xml` if it isn't already listed.
-4. Go to **URL Submission**, paste in the same five URLs from Step 4.
+### Step 5: Bing Webmaster Tools — already file-verified, just submit the sitemap
+Bing is already verified via `public/BingSiteAuth.xml` (done in an earlier PR), so you don't need to re-verify — just:
+1. Go to [bing.com/webmasters](https://www.bing.com/webmasters), sign in, and confirm `beyondchiavari.com` already shows as verified (if Bing still asks you to verify, choose **Import from Google Search Console** after Step 3).
+2. Go to **Sitemaps** in the left menu, submit `https://beyondchiavari.com/sitemap.xml` if it isn't already listed.
+3. Go to **URL Submission**, paste in the same five URLs from Step 4.
 
-### Step 6: Run IndexNow (pushes every page to Bing right away)
-This is already built and scripted — nothing to set up.
-1. On GitHub, open the `mailangad88/event-seatings` repo → **Actions** tab.
-2. Find the workflow named **IndexNow** in the left list → click it → click **Run workflow** (green button, top right) → leave the "paths" box empty → **Run workflow**.
-3. It finishes in under a minute and pings Bing with every page on the sitemap.
+### Step 6: IndexNow — already run
+Already triggered tonight (no action needed) — the `IndexNow` GitHub Action ran successfully and pushed every sitemap URL to Bing. Re-run it the same way (Actions tab → IndexNow → Run workflow) after any future big content push.
 
 ### Step 7: Mark your key conversion events in GA4 (so you can tell what's working)
 1. Submit one real test quote on the live site (any item, any email).
 2. In GA4 → **Admin → Events**, you should see `generate_lead` appear within a few minutes.
 3. Click on it → toggle **Mark as key event**. Do the same for `phone_click` once you have a working phone number live (see Part 2).
 
-That's the whole Google/Bing side. Once Step 1–6 are done, nothing else needs clicking — the site is already built to resubmit itself automatically (IndexNow workflow can be re-run after any big content push, and the sitemap stays current on its own).
+That's the whole Google/Bing side. Once Steps 1–4 are done, nothing else needs clicking — Bing and IndexNow are already handled, and the sitemap stays current on its own.
 
 ---
 
@@ -84,7 +83,7 @@ Per the existing doc (`growth/fast-leads/google-business-profile.md`), a Busines
 Everything is drafted and ready in `growth/fast-leads/google-ads-launch-guide-2026-11-06.md` and the CSVs beside it. The only blockers are the same Step 2 (GA4) above plus a live phone number — once those are in, you can launch campaigns same-day with the suggested $20/day starter budget in that guide. This is the one channel that can put the site in front of a searcher within minutes of turning it on.
 
 ### C. Directory listings (free, independent signals Google also uses)
-Already fully drafted and ready to paste in `growth/directory-listings/` (Yelp, Bing Places, WeddingWire/TheKnot, GigSalad, PartySlate, Nextdoor, Apple Business Connect, and more) — none submitted yet. These take 10–15 minutes each and several (Yelp, Nextdoor, GigSalad) can start showing local searchers within days, independent of Google's own index.
+Already fully drafted and ready to paste in `growth/directory-listings/` (Yelp, Bing Places, WeddingWire/TheKnot, GigSalad, PartySlate, Nextdoor, Apple Business Connect, and more) — none submitted yet. These take 10–15 minutes each and several (Yelp, Nextdoor, GigSalad) can start showing local searchers within days, independent of Google's own index. (These also unlock submitting the Wikidata draft — see `growth/wikidata-entity-prep-2026-11-06.md`.)
 
 ### D. Direct outreach you already have sitting ready
 `growth/vendor-outreach/` has 50 drafted outreach emails to Chicago rental companies and `growth/referral-partners/` has a similar list for referral partners (planners, venues) — none sent yet. These create word-of-mouth and backlink signals too, but more importantly they can generate inbound calls directly without waiting on any search engine at all.
@@ -98,7 +97,7 @@ The Nov 3 council stress-test (`plans/ai-council-review.md`) already flagged the
 Recommendation: treat this first week of calls as the test the council flagged, not as a traffic problem to solve by waiting for organic SEO. Use Part 2's four levers to get real conversations going starting tomorrow, and let Part 1's fixes compound in the background for the weeks after.
 
 ## Timeline, plainly stated
-- **Today:** GA4/GSC/Bing verification live, sitemap submitted, IndexNow run, GBP verification pushed through, directory listings submitted, outreach emails sent.
+- **Today:** GA4/GSC verification live, sitemap submitted (Bing/IndexNow already done tonight), GBP verification pushed through, directory listings submitted, outreach emails sent.
 - **Tomorrow–day 3:** First calls come from Google Ads, GBP (if verified fast), directory listings, and direct outreach — not from organic Google search yet.
 - **Days 4–14:** Google starts crawling and indexing pages requested in Step 4; expect the first organic impressions/clicks to show up in Search Console during this window.
 - **Weeks 3–8:** Organic rankings for the Chicago-area pages start building meaningfully, assuming the directory listings and GBP reviews are also live by then (independent signals that help Google trust the site).

@@ -92,7 +92,9 @@ export default function VenuesAndPlannersPage() {
       <Section tone="sand" eyebrow="What you get" title="What changes for you">
         <IconCards columns={2} items={forYou} />
         <p className="mt-8 text-sm text-muted">
-          How we price it for the family: <Link href="/pricing" className="link">pricing</Link>. Big events:{" "}
+          Planning an event at a specific hall, museum or taproom? See{" "}
+          <Link href="/venues" className="link">venue guides for popular Chicago spaces</Link> and what each one usually
+          needs. How we price it for the family: <Link href="/pricing" className="link">pricing</Link>. Big events:{" "}
           <Link href="/big-celebrations" className="link">big celebrations</Link>. Families can also browse{" "}
           <Link href="/rentals" className="link">every rental and its price</Link>, read{" "}
           <Link href="/how-it-works" className="link">how booking works</Link> and our{" "}

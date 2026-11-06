@@ -61,12 +61,17 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },
-  // Search Console / Bing Webmaster ownership tags. Set the codes in Vercel env vars.
+  // Search Console / Bing Webmaster / Pinterest Business ownership tags. Set the codes in Vercel env vars.
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
-    other: process.env.NEXT_PUBLIC_BING_VERIFICATION
-      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION }
-      : undefined,
+    other: {
+      ...(process.env.NEXT_PUBLIC_BING_VERIFICATION && {
+        "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION,
+      }),
+      ...(process.env.NEXT_PUBLIC_PINTEREST_VERIFICATION && {
+        "p:domain_verify": process.env.NEXT_PUBLIC_PINTEREST_VERIFICATION,
+      }),
+    },
   },
 };
 
