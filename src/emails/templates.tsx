@@ -28,7 +28,13 @@ function Linked({ line }: { line: string }) {
  * the text's paragraphs with clickable links, and an unsubscribe link when one applies. Wording stays the text's own.
  */
 export function TextEmail({ subject, text, unsubscribe }: { subject: string; text: string; unsubscribe?: string }) {
-  const paragraphs = text.split(/\n\s*\n/).map((p) => p.split("\n"));
+  // The plain text ends with its own "...unsubscribe: <link>" line (src/lib/notify.ts signOff) so a
+  // reader of the raw text always has a way out. The HTML version already shows that as a link below
+  // (and the layout's footerNote), so drop that one paragraph here instead of showing it twice.
+  const paragraphs = text
+    .split(/\n\s*\n/)
+    .map((p) => p.split("\n"))
+    .filter((lines) => !(unsubscribe && /unsubscribe/i.test(lines.join(" "))));
   return (
     <EmailLayout preview={paragraphs[1]?.join(" ").slice(0, 120) ?? subject} footerNote={unsubscribe ? unsubscribeNote : undefined}>
       <Heading>{subject}</Heading>
