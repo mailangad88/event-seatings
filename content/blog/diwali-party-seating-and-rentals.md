@@ -130,4 +130,4 @@ Yes. Small cocktail tables, stackable chairs and a lounge piece fit many apartme
 
 ## Plan your Diwali setup
 
-Tell us your guest count, space and which zones you want and we will help you choose seating, tables and lighting in one call. [Book a free 15-minute seating call](/book) or [request a quote](/quote).
+Tell us your guest count, space and which zones you want and we will help you choose seating, tables and lighting in one call. [Book a free 15-minute seating call](/book) or [request a quote](/quote). See our [Diwali party rental page](/events/diwali-parties) for chair styles and a planning checklist.
