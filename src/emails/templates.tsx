@@ -72,6 +72,21 @@ export function ReviewRequestEmail({ name, link }: { name?: string; link: string
   );
 }
 
+/** Automatic, a few days after the event (event-emails cron): asks for a Google review. */
+export function GoogleReviewEmail({ name, link }: { name?: string; link: string }) {
+  return (
+    <EmailLayout preview="A quick favor: a Google review?" footerNote={unsubscribeNote}>
+      <Heading>How did everything go?</Heading>
+      <P>{name ? `Hi ${name},` : "Hi,"} thanks again for booking your event rentals through {site.name}.</P>
+      <P>
+        If you have two minutes, a Google review helps other hosts in the area find us, and it means a lot to our small team.
+      </P>
+      <CtaButton href={link}>Leave a Google review</CtaButton>
+      <P muted>No pressure either way, and thanks for letting us be part of your event.</P>
+    </EmailLayout>
+  );
+}
+
 /** To the owner: a review is waiting for approval. */
 export function NewReviewEmail({ rating, name, body, verified }: { rating: number; name: string; body: string; verified?: boolean }) {
   return (

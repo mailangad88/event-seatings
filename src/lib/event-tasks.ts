@@ -195,6 +195,19 @@ export function tasksFor(l: Lead, partners: Map<string, VendorPartner>, today: s
     detail: "Thank them and ask for a short review. Then move the lead to Completed.",
     email: { to: l.email, subject: `Thanks for booking with ${site.name}`, body: `${hi(l)}\n\nThanks for letting us help with your ${what(l)}. If you have a minute, a short review helps other Chicago hosts find us: ${site.url}/reviews/write\n\nIf anything went wrong with the rentals, reply here and we'll sort it out.\n\n${sign}` },
   });
+  // Google review ask, a few days after the thank-you above so the two don't land the same day.
+  // Only goes out once the Google Business Profile's review link is set (site.googleReviewUrl).
+  if (site.googleReviewUrl) {
+    add({
+      key: "t+5-google-review",
+      due: addDays(ev, 5),
+      kind: "email",
+      who: "customer",
+      title: "Ask for a Google review",
+      detail: "A short, friendly ask for a Google review (separate from the on-site review above).",
+      email: { to: l.email, subject: `A quick favor, ${firstName(l) || "friend"}?`, body: `${hi(l)}\n\nThanks again for booking your ${what(l)} rentals with us. If you have two minutes, a Google review helps other hosts in the area find us: ${site.googleReviewUrl}\n\nNo pressure either way, and thanks for letting us be part of your event.\n\n${sign}` },
+    });
+  }
   for (const p of parts.length ? parts : [undefined]) {
     if (p?.state === "picked_up") continue;
     const info = partInfo(p);
