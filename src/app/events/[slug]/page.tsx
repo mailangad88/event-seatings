@@ -35,6 +35,7 @@ export async function generateMetadata(props: PageProps<"/events/[slug]">): Prom
     alternates: {
       canonical: path,
       ...(ev.slug === "quinceaneras" && { languages: { "en-US": path, "es-US": "/es/quinceaneras" } }),
+      ...(ev.slug === "weddings" && { languages: { "en-US": path, "es-US": "/es/bodas" } }),
     },
     openGraph: { title: `${ev.metaTitle} | ${site.name}`, description: ev.metaDescription, url: path },
   });
