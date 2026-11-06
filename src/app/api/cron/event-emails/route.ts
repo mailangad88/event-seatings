@@ -1,7 +1,11 @@
+import { createElement } from "react";
+import { render } from "@react-email/render";
 import { safeEqual } from "@/lib/admin-auth";
 import { chicagoDay, addDays } from "@/lib/admin-view";
 import { allTasks, tasksFor } from "@/lib/event-tasks";
+import { GoogleReviewEmail } from "@/emails/templates";
 import { sendEmail } from "@/lib/notify";
+import { site } from "@/lib/site";
 import { listLeads, listPartners, updateLead } from "@/lib/store";
 import { unsubscribeUrl } from "@/lib/unsubscribe";
 import { ensurePartLink } from "@/lib/vendor-confirm";
@@ -43,12 +47,19 @@ export async function GET(request: Request) {
         if (link) e = tasksFor(target, partnerMap, today).find((x) => x.key === t.key)?.email ?? e;
       }
       const unsub = t.who === "customer" ? unsubscribeUrl(e.to!) : undefined;
+      // The Google review ask gets its own visual layout (CTA button to the review link) instead of the
+      // generic branded-text wrapper every other event email falls back to.
+      const html =
+        t.key === "t+5-google-review" && site.googleReviewUrl
+          ? await render(createElement(GoogleReviewEmail, { name: t.lead.name, link: site.googleReviewUrl })).catch((err) => (console.error("google review html failed", t.lead.id, err), undefined))
+          : undefined;
       const ok = await sendEmail({
         to: e.to!,
         subject: e.subject,
         text: unsub ? `${e.body}\n\nStop these emails: ${unsub}` : e.body,
         idempotencyKey: `event-email/${t.lead.id}/${t.key}`,
         unsubscribe: unsub,
+        html,
       });
       if (!ok) continue;
       sent += 1;

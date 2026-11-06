@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { createElement } from "react";
 import { render } from "@react-email/render";
-import { NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
+import { GoogleReviewEmail, NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
 import { QuoteConfirmationEmail } from "@/emails/QuoteConfirmationEmail";
 import { buildLeadAlert } from "@/lib/lead-alert";
@@ -92,6 +92,7 @@ export default async function EmailPreviewsPage() {
     },
     { name: "Any email (branded wrapper)", when: "Every email sendEmail sends (confirmations, downloads, follow-ups, owner alerts) gets this HTML around its plain text.", el: createElement(TextEmail, { subject: "We got your quote request", text: sampleText, unsubscribe: `${site.url}/unsubscribe` }) },
     { name: "Review request (you send by hand)", when: "Never automatic. Copy from /admin/reviews.", el: createElement(ReviewRequestEmail, { name: "Sample", link: `${site.url}/reviews/write` }) },
+    { name: "Google review request (automatic)", when: "5 days after the event, with EVENT_EMAILS_ENABLED=true and NEXT_PUBLIC_GOOGLE_REVIEW_URL set. See /admin/scheduled and /admin/settings.", el: createElement(GoogleReviewEmail, { name: sampleLead.name, link: site.googleReviewUrl || `${site.url}/reviews/write` }) },
     { name: "New review (to you)", when: "When a review is submitted, with RESEND_API_KEY and NOTIFY_EMAIL.", el: createElement(NewReviewEmail, { rating: 5, name: "Sample Customer", body: "Sample review text for layout only.", verified: true }) },
   ];
   const html = await Promise.all(emails.map((e) => render(e.el)));

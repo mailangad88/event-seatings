@@ -57,6 +57,9 @@ export const site = {
     url: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
     label: "Book a free 15-minute seating consult",
   },
+  // Direct link to leave a Google review (Google Business Profile > Ask for reviews > Share review form).
+  // Empty until the profile is set up; the automatic review-request email only sends once this is set.
+  googleReviewUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL?.trim() || "",
 };
 
 export type Site = typeof site;
