@@ -26,6 +26,7 @@ import { postLead } from "@/lib/lead-client";
 import { trackActivity } from "@/lib/activity-client";
 import { clearList, readList, writeList } from "@/lib/quote-list";
 import { SaveListByEmail } from "./SaveListByEmail";
+import { ShareQuoteLink } from "./ShareQuoteLink";
 
 export type Swatch = { key: string; label: string; src: string; alt: string };
 export type QuoteItem = PublicItem & { categoryId?: CategoryId; variants?: Swatch[]; featured?: boolean; photo?: StockPhotoKey; similar?: boolean };
@@ -255,6 +256,9 @@ export function QuoteForm({
     const t = setTimeout(() => trackActivity({ t: "quote_list", items: listKey ? listKey.split(",") : [] }), 3000);
     return () => clearTimeout(t);
   }, [listKey]);
+  // Frozen quantities for a shareable link, so what the other person opens matches what's on screen
+  // right now even if their guest count differs (auto-scaled quantities would otherwise drift).
+  const shareItems = useMemo(() => Object.fromEntries(lines.map((l) => [l.item.id, { qty: l.qty, auto: false }])), [lines]);
   const subtotal = lines.reduce((s, l) => s + l.item.price * l.qty, 0);
   const pieces = lines.reduce((s, l) => s + l.qty, 0);
   const anyEstimated = lines.some((l) => l.item.estimated);
@@ -726,7 +730,12 @@ export function QuoteForm({
               <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full justify-center" disabled={!lines.length}>
                 Continue to your details
               </button>
-              {lines.length > 0 && <SaveListByEmail lines={lines.map((l) => ({ id: l.item.id, qty: l.qty }))} guests={guests} />}
+              {lines.length > 0 && (
+                <>
+                  <SaveListByEmail lines={lines.map((l) => ({ id: l.item.id, qty: l.qty }))} guests={guests} />
+                  <ShareQuoteLink items={shareItems} guests={guests} />
+                </>
+              )}
             </div>
           </aside>
         </div>
@@ -771,6 +780,7 @@ export function QuoteForm({
               {cartList("h-14 w-14")}
               <div className="mt-4">{totals}</div>
               <SaveListByEmail lines={lines.map((l) => ({ id: l.item.id, qty: l.qty }))} guests={guests} />
+              <ShareQuoteLink items={shareItems} guests={guests} />
             </div>
             <button type="button" onClick={toDetails} className="btn-primary mt-4 w-full shrink-0 justify-center">Continue to your details</button>
           </div>

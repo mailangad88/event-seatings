@@ -4,6 +4,8 @@ import Link from "@/components/Link";
 import { AddToQuoteButton } from "@/components/AddToQuoteButton";
 import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
+import { RecentlyViewedStrip } from "@/components/RecentlyViewedStrip";
+import { RecordRecentlyViewed } from "@/components/RecordRecentlyViewed";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
 import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumb, Faqs, JsonLd, RentalCard, faqJsonLd, itemHref } from "@/components/rentals/parts";
@@ -241,6 +243,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
     <>
       <div className="container-x py-14">
         <JsonLd data={jsonLd} />
+        <RecordRecentlyViewed item={{ id: i.id, name: i.name, price, unit: unitLabel(i), href: itemHref(i), image: img }} />
         <Breadcrumb trail={[{ name: "Rentals", href: "/rentals" }, { name: c.name, href: `/rentals/${c.id}` }, { name: i.name }]} />
 
         <div className="mt-10 grid gap-12 md:grid-cols-[1.1fr_1fr] md:gap-20">
@@ -461,6 +464,8 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             </p>
           </section>
         )}
+
+        <RecentlyViewedStrip excludeId={i.id} className="mt-28" />
 
         {/* Phones: keep the price and "Add to my quote" in reach while reading specs and FAQs. */}
         <div className="sticky bottom-0 z-40 -mx-4 mt-16 flex items-center gap-3 border-t border-line bg-surface/95 py-3 pr-20 pl-4 backdrop-blur md:hidden">

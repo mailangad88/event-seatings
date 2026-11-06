@@ -4,6 +4,7 @@ import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { ReadyPackages } from "@/components/ReadyPackages";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
+import { RecentlyViewedStrip } from "@/components/RecentlyViewedStrip";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { Faqs, JsonLd, faqJsonLd } from "@/components/rentals/parts";
 import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
@@ -144,6 +145,8 @@ export default function RentalsPage() {
             </li>
           </ul>
         </section>
+
+        <RecentlyViewedStrip className="mt-20" />
 
         <section className="mt-28" aria-labelledby="packages">
           <p className="eyebrow">Skip the browsing</p>
