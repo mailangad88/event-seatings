@@ -9,6 +9,7 @@ import { countiesOuterAreas } from "./areas/counties-outer";
 import { dupageAreas } from "./areas/dupage";
 import { foxValleyMchenryAreas } from "./areas/fox-valley-mchenry";
 import { lakeCountyAreas } from "./areas/lake-county";
+import { nearWestCookAreas } from "./areas/near-west-cook";
 import { northCookAreas } from "./areas/north-cook";
 import { southCookWillAreas } from "./areas/south-cook-will";
 import { westSouthwestCookAreas } from "./areas/west-southwest-cook";
@@ -28,6 +29,7 @@ const allLocations: Location[] = [
   ...westSouthwestCookAreas,
   ...southCookWillAreas,
   ...countiesOuterAreas,
+  ...nearWestCookAreas,
 ];
 
 // First entry wins if a slug is ever duplicated across files.
@@ -68,4 +70,4 @@ export function milesFrom(a: { lat: number; lng: number }, b: { lat: number; lng
 }
 
 // Pages log: bump `updated` when a page's content changes (also mirrored in SITE_LOG.md).
-export const geoContentUpdated = "2026-11-03";
+export const geoContentUpdated = "2026-11-06";

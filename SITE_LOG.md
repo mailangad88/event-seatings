@@ -39,6 +39,14 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 ---
 
+## Changes in this release (2026-11-06): 12 new near-west Cook County suburb pages
+
+- Audited all 281 existing `/chair-rentals/[slug]` area pages against a list of real Chicago-metro municipalities and found a cluster of legitimate near-west Cook County suburbs (the Bellwood/Oak Park/O'Hare corridor) with no page: Franklin Park, Schiller Park, Bellwood, Broadview, Westchester, River Grove, Berkeley, North Riverside, Stickney, Hodgkins, Indian Head Park and Justice.
+- Added all 12 in `src/data/geo/areas/near-west-cook.ts`, following the existing `Location` schema: unique local story (3 paragraphs), 4 settings, 4 delivery logistics, 3 recommended chairs, 5 FAQs, real ZIP codes and coordinates, and links to nearby existing area pages. Visuals come from the shared template (stylised area map + chair renders), so no page is text-only.
+- `npx tsx scripts/check-geo.ts`: 293 locations, 0 errors (was 281). A few of the new pages still warn under the 450-word body-copy guideline, same as several existing pages (e.g. Blue Island, Sandwich, Harvey) — non-blocking.
+- Did not add: Hillside, Stone Park, Forest View, McCook (same corridor, real towns, still missing) — left for a follow-up pass to keep this batch's quality bar high rather than spreading thinner.
+- Avoided duplicating the separate "Write high-intent Chicago rental posts" blog thread's topics; this is new geography coverage, not new blog content.
+
 ## Changes in this release (2026-11-05): fix invalid sitemap.xml
 
 - Google Search Console reported "Couldn't fetch, 0 pages" on sitemap.xml. Cause: Next.js writes `url`/`images` strings straight into `<loc>` without XML-escaping, and every Unsplash stock photo URL has an un-escaped `&` in its query string (`?auto=format&fit=crop...`), which broke the XML (invalid around line 9351 of ~145,000 lines). All 7,281 URLs and their image entries are now escaped before Next serializes them (src/app/sitemap.ts). Verified the output parses as valid XML with 0 unescaped `&`.
@@ -1216,7 +1224,7 @@ Columns: SEO = title, description, keyword, canonical; AEO = answer box + FAQ sc
 
 ## Local pages: Local landing pages (Chicago neighborhoods + suburbs)
 
-Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts` + `src/data/geo/areas/*.ts` (Nov 3 2026: 246 more areas, 281 total incl. 10 county pages). Check with `npx tsx scripts/check-geo.ts`.
+Template: `src/app/chair-rentals/[slug]/page.tsx` · Content: `src/data/geo/{chicago,west-suburbs,north-suburbs}.ts` + `src/data/geo/areas/*.ts` (Nov 3 2026: 246 more areas, 281 total incl. 10 county pages; Nov 6 2026: +12 near-west Cook County suburbs in `src/data/geo/areas/near-west-cook.ts`, 293 total). Check with `npx tsx scripts/check-geo.ts`.
 
 **Fact-check, 2026-11-03 (246 new area pages in `src/data/geo/areas/`):**
 - ZIP codes: all 411 ZIPs across all 281 area pages were checked against a public USPS ZIP dataset (the `zipcodes` npm package). Every one is a real Illinois ZIP. Each sits within 8 miles of its place's coordinates (4 for Chicago neighborhoods, 40 for counties). Where a village shares its ZIP with a neighbor (for example Kildeer, Long Grove and Hawthorn Woods on 60047), the post office name differs; that is expected. Census ZCTA files were blocked from the build environment.
@@ -1229,7 +1237,19 @@ Every page has: unique local copy, stylised area map, 3 chair picks with renders
 
 | Page | URL | Last touched | Remaining |
 |---|---|---|---|
-| Areas hub | /chair-rentals | 2026-11-03 | Grouped by county with jump links (281 areas). Add real venue photos; add a short video |
+| Areas hub | /chair-rentals | 2026-11-06 | Grouped by county with jump links (293 areas). Add real venue photos; add a short video |
+| Franklin Park | /chair-rentals/franklin-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Schiller Park | /chair-rentals/schiller-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Bellwood | /chair-rentals/bellwood | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Broadview | /chair-rentals/broadview | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Westchester | /chair-rentals/westchester | 2026-11-06 | New. Owner review of local facts; add real photo |
+| River Grove | /chair-rentals/river-grove | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Berkeley | /chair-rentals/berkeley | 2026-11-06 | New. Owner review of local facts; add real photo |
+| North Riverside | /chair-rentals/north-riverside | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Stickney | /chair-rentals/stickney | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Hodgkins | /chair-rentals/hodgkins | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Indian Head Park | /chair-rentals/indian-head-park | 2026-11-06 | New. Owner review of local facts; add real photo |
+| Justice | /chair-rentals/justice | 2026-11-06 | New. Owner review of local facts; add real photo |
 | Chicago | /chair-rentals/chicago | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
 | The Loop | /chair-rentals/the-loop | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
 | River North | /chair-rentals/river-north | 2026-10-31 | Real local photo; owner review of local facts; add a reviews block after first events |
