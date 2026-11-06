@@ -75,6 +75,15 @@ export default function FoundingCustomersPage() {
       <Section eyebrow="Questions" title="About founding customer status">
         <FaqList faqs={faqs} />
       </Section>
+
+      <Section tone="sand" eyebrow="Where to go next" title="More about booking with us">
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <li><Link href="/reviews" className="text-accent">Read our reviews</Link></li>
+          <li><Link href="/how-it-works" className="text-accent">How booking works</Link></li>
+          <li><Link href="/faq" className="text-accent">Frequently asked questions</Link></li>
+          <li><Link href="/book" className="text-accent">Book a free seating consult</Link></li>
+        </ul>
+      </Section>
     </>
   );
 }
