@@ -29,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
   // Reviews, referrals and the planning assistant (/tools/floor-plan and /tools/event-date come from toolSitemapEntries). The planning assistant is
   // listed only while NEXT_PUBLIC_PLANNING_ASSISTANT=on, because the page 404s otherwise.
-  const featurePages = ["/reviews", "/refer", ...(process.env.NEXT_PUBLIC_PLANNING_ASSISTANT === "on" ? ["/planning-assistant"] : [])].map((p) => ({
+  const featurePages = ["/reviews", "/refer", "/founding-customers", ...(process.env.NEXT_PUBLIC_PLANNING_ASSISTANT === "on" ? ["/planning-assistant"] : [])].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: p === "/planning-assistant" ? 0.7 : 0.5,

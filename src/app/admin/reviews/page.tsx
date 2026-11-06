@@ -94,7 +94,9 @@ export default async function AdminReviewsPage(props: PageProps<"/admin/reviews"
             {askable.map((l) => {
               const t = reviewToken(l.id);
               const link = t ? `${site.url}/reviews/write?t=${t}` : "";
-              const body = `Hi ${l.name?.split(" ")[0] ?? "there"},\n\nThank you for booking your event rentals through ${site.name}. Would you share an honest review? It takes two minutes and helps other Chicago planners:\n\n${link}\n\nGood or bad, we publish real reviews only and reply to every one.\n\nThank you,\n${site.name}`;
+              const firstName = l.name?.split(" ")[0] ?? "there";
+              const body = `Hi ${firstName},\n\nThank you for booking your event rentals through ${site.name}. Would you share an honest review? It takes two minutes and helps other Chicago planners:\n\n${link}\n\nGood or bad, we publish real reviews only and reply to every one.\n\nThank you,\n${site.name}`;
+              const text = `Hi ${firstName}! Thanks again for booking with ${site.name}. Would you leave us a quick honest review? ${link} Takes 2 min, good or bad either way. Thanks!`;
               return (
                 <li key={l.id} className="card flex flex-wrap items-center justify-between gap-3 p-4">
                   <span>
@@ -105,6 +107,11 @@ export default async function AdminReviewsPage(props: PageProps<"/admin/reviews"
                     <span className="flex flex-wrap gap-2">
                       <input readOnly value={link} className="field w-72 text-xs" aria-label="Review link" />
                       <a className="btn-ghost btn-sm" href={`mailto:${l.email}?subject=${encodeURIComponent("How did your event rentals go?")}&body=${encodeURIComponent(body)}`}>Email</a>
+                      {l.phone ? (
+                        <a className="btn-ghost btn-sm" href={`sms:${l.phone}?&body=${encodeURIComponent(text)}`}>Text</a>
+                      ) : (
+                        <span className="text-xs text-muted">No phone on file for a text</span>
+                      )}
                     </span>
                   ) : (
                     <span className="text-sm text-rose">Set ADMIN_PASSWORD or REVIEW_LINK_SECRET to make review links.</span>
