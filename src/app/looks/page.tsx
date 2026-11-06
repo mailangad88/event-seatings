@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { FaqList } from "@/components/FaqList";
 import { LookScene, lookMedia } from "@/components/LookScene";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
@@ -72,6 +73,7 @@ export default function LooksPage() {
 
       {/* Hero: a strip of looks so the page is visual from the first pixel */}
       <section className="container-x pt-10 pb-16 md:pt-16">
+        <Breadcrumbs items={[{ name: "The Look Book", href: "/looks" }]} className="mb-6" />
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow justify-center">The look book · Chicagoland</p>
           <h1 className="display-1 mt-6">
