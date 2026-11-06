@@ -4,8 +4,8 @@ import { FaqList, Figure, Icon, JsonLd, PageHero, Section, type Faq } from "@/co
 import { occasions, roles } from "@/data/vendor-guide";
 import { site } from "@/lib/site";
 
-const title = "Event Vendor Guide: Who to Hire and When to Book Them";
-const description = `Which vendors you need for a wedding, quinceañera, corporate event or backyard party in Chicago, when to book each one, what to ask them, and where their job overlaps with rentals. A free guide from ${site.name}.`;
+const title = "Event Vendor Guide: Who to Hire and When";
+const description = `Which vendors you need for a Chicago wedding, quinceañera or party, when to book each one, what to ask them, and where their job overlaps with rentals.`;
 
 export const metadata: Metadata = {
   title,

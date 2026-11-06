@@ -5,7 +5,7 @@ import { featuredPrices } from "@/lib/tools/prices";
 
 const slug = "what-do-i-need";
 const title = "Event Rental Checklist: What Do I Still Need?";
-const description = "Free event rental checklist. Pick your event, guests and setting to see everything an event like yours uses, mark what you have or what the venue provides, and get a priced list of what's left to rent in Chicago.";
+const description = "Pick your event, guests and setting to see everything an event like yours uses, mark what you already have, and get a priced list of what's left to rent.";
 
 export const metadata = toolMetadata(slug, title, description);
 

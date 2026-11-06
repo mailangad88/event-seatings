@@ -4,8 +4,8 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "tent-size";
-const title = "Tent Size Calculator: What Size Tent for Your Guests?";
-const description = "Free tent size calculator for weddings, graduation parties and backyard events. Get the square feet you need for seating, dance floor, bar, buffet and band, matched to standard frame and pole tent sizes.";
+const title = "Tent Size Calculator for Your Guest Count";
+const description = "Get the square feet you need for seating, a dance floor, bar, buffet and band, matched to standard frame and pole tent sizes.";
 
 export const metadata = toolMetadata(slug, title, description);
 

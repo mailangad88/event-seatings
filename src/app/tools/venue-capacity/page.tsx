@@ -4,8 +4,8 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { firstRoute } from "@/lib/routes";
 
 const slug = "venue-capacity";
-const title = "Venue Capacity Calculator: How Many Guests Fit in a Room?";
-const description = "Free venue capacity calculator. Enter room length and width to see how many guests fit for a seated dinner, banquet tables, ceremony rows, a cocktail party or a classroom layout, after space for a dance floor, bar and buffet.";
+const title = "Venue Capacity Calculator for Any Room Size";
+const description = "Enter room length and width to see how many guests fit for a seated dinner, ceremony rows or a cocktail party, after space for a dance floor and bar.";
 
 export const metadata = toolMetadata(slug, title, description);
 

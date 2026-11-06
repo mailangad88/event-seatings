@@ -4,7 +4,7 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 
 const slug = "parking";
 const title = "Event Parking and Shuttle Calculator";
-const description = "Free event parking calculator for weddings, graduation parties and backyard events. Estimate cars to park, how many spaces you're short, the size of an overflow lot and how many shuttles to book for your arrival window.";
+const description = "Estimate cars to park, how many spaces you're short, the size of an overflow lot and how many shuttles to book for your arrival window.";
 
 export const metadata = toolMetadata(slug, title, description);
 

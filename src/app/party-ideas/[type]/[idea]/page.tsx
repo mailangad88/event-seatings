@@ -25,8 +25,9 @@ export async function generateMetadata(props: PageProps<"/party-ideas/[type]/[id
   if (!i) return {};
   const t = getPartyType(i.type)!;
   const sc = ideaScene(i.scene, i.sceneAlt);
-  const title = `${i.name} Ideas: Setup, Games & Rentals`;
-  const description = `${i.tagline}. ${t.single[0].toUpperCase()}${t.single.slice(1)} theme with palette, backyard and indoor setups, activities, props and the rentals with live ${site.market} prices.`;
+  const withSuffix = `${i.name} Ideas and Rentals`;
+  const title = withSuffix.length <= 47 ? withSuffix : `${i.name} Ideas`;
+  const description = `${i.tagline}. ${t.single[0].toUpperCase()}${t.single.slice(1)} theme with the rentals and setup to make it, priced live for ${site.market}.`;
   return {
     title,
     description: description.slice(0, 300),

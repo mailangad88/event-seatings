@@ -7,8 +7,8 @@ import { ideaPath, ideas, ideasFor, partyTypes, typePath } from "@/data/party-id
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Party Ideas by Occasion: Themes, Setups, Games & Rentals",
-  description: `${ideas.length} party themes for weddings, birthdays, kids' parties, showers, graduations, quinceañeras, corporate and holiday events, each with setups, activities, props and the rentals to make it, priced live for ${site.market}.`,
+  title: "Party Ideas by Occasion, With Rentals",
+  description: `${ideas.length} party themes with setups, activities and the rentals to make each one, priced live for ${site.market}.`,
   alternates: { canonical: "/party-ideas" },
 };
 
