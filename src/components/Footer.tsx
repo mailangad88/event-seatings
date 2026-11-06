@@ -102,6 +102,7 @@ export function Footer() {
             <Link href="/privacy" className="inline-block py-1.5 hover:text-ink">Privacy</Link>
             <Link href="/terms" className="inline-block py-1.5 hover:text-ink">Terms</Link>
             <Link href="/photo-credits" className="inline-block py-1.5 hover:text-ink">Photo credits</Link>
+            <Link href="/es" className="inline-block py-1.5 hover:text-ink">En Español</Link>
             <a href="/llms.txt" className="inline-block py-1.5 hover:text-ink">For AI tools</a>
           </span>
         </div>

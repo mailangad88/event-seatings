@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-labelledby="t"><title id="t">Backyard pool party seating zones: water-safe loungers in the splash zone around the pool, and a separate shaded dry zone with tables for dining away from the water</title>
+<rect width="1200" height="640" fill="#1a1713"/><rect x="12" y="12" width="1176" height="616" fill="none" stroke="#c9a96a" stroke-opacity=".45"/>
+<text x="600" y="70" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="3">BACKYARD POOL PARTY SEATING</text>
+<text x="600" y="122" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="36" fill="#efe4cf" text-anchor="middle" font-weight="300" letter-spacing="0">Keep the splash zone and the dry zone apart</text>
+<ellipse cx="300" cy="330" rx="180" ry="120" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".6"/>
+<text x="300" y="330" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="3">POOL</text>
+<ellipse cx="300" cy="330" rx="230" ry="165" fill="none" stroke="#c9a96a" stroke-dasharray="4 7" stroke-opacity=".5"/>
+<text x="300" y="178" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="1.5">SPLASH ZONE: WATER-SAFE SEATS</text>
+<rect x="495" y="321" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(0 510 330)"/>
+<rect x="446" y="417" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(40 461 426)"/>
+<rect x="321" y="469" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(80 336 478)"/>
+<rect x="180" y="451" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(120 195 460)"/>
+<rect x="88" y="372" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(160 103 381)"/>
+<rect x="88" y="270" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(200 103 279)"/>
+<rect x="180" y="191" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(240 195 200)"/>
+<rect x="321" y="173" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(280 336 182)"/>
+<rect x="446" y="225" width="30" height="18" rx="3" fill="#c9a96a" fill-opacity=".8" transform="rotate(320 461 234)"/>
+<rect x="580" y="200" width="200" height="260" fill="none" stroke="#efe4cf" stroke-opacity=".5" stroke-dasharray="3 6"/>
+<text x="680" y="192" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="1.5">DRY ZONE</text>
+<rect x="610" y="240" width="60" height="40" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<rect x="695" y="240" width="60" height="40" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<rect x="610" y="350" width="60" height="40" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<rect x="695" y="350" width="60" height="40" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<text x="680" y="490" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">Tables, chairs, shade</text>
+<circle cx="840" cy="200" r="17" fill="#c9a96a"/>
+<text x="840" y="206" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="0">1</text>
+<text x="870" y="198" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="24" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Poolside loungers</text>
+<text x="870" y="224" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">Water-safe frames, spaced for walking</text>
+<circle cx="840" cy="300" r="17" fill="#c9a96a"/>
+<text x="840" y="306" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="0">2</text>
+<text x="870" y="298" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="24" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Dry-zone tables</text>
+<text x="870" y="324" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">Where food and electronics stay</text>
+<circle cx="840" cy="400" r="17" fill="#c9a96a"/>
+<text x="840" y="406" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="0">3</text>
+<text x="870" y="398" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="24" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Shade</text>
+<text x="870" y="424" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">An umbrella or shade sail over seating</text>
+<circle cx="840" cy="500" r="17" fill="#c9a96a"/>
+<text x="840" y="506" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="0">4</text>
+<text x="870" y="498" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="24" fill="#efe4cf" text-anchor="start" font-weight="400" letter-spacing="0">Clear path</text>
+<text x="870" y="524" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#a89d87" text-anchor="start" font-weight="400" letter-spacing="0">To the bathroom, furniture-free</text>
+<text x="600" y="600" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="1" font-style="italic">Schematic. HOA or condo pools often set their own furniture rules.</text></svg>

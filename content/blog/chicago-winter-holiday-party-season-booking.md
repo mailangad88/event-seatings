@@ -150,4 +150,4 @@ Only if you plan an outdoor element. If so, add heat and sidewalls; see [tent he
 ## Ready to price your event?
 
 If you are renting chairs, tables, linens or a tent for this event, we can help you count and compare.
-Use our [request a quote](/quote) form with your guest count and ZIP code, or [book a free planning call](/book) and we will walk through your plan with you.
+Use our [request a quote](/quote) form with your guest count and ZIP code, or [book a free planning call](/book) and we will walk through your plan with you. See our [holiday office party](/events/holiday-office-parties) and [Christmas & New Year's Eve](/events/christmas-new-years-eve) rental pages for chair styles and checklists.

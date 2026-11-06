@@ -164,4 +164,4 @@ Three or four sides plus vegetables, rolls, gravy and cranberry sauce. Plan half
 
 ## Get your rentals priced
 
-When the plan is ready, [request a quote](/quote) with your guest count and ZIP code, or [book a free planning call](/book) and we will help you work through the numbers.
+When the plan is ready, [request a quote](/quote) with your guest count and ZIP code, or [book a free planning call](/book) and we will help you work through the numbers. See our [Thanksgiving & Friendsgiving rental page](/events/thanksgiving-friendsgiving) for chair styles, seating math and a planning checklist.

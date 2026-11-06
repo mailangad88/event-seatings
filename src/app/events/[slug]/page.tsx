@@ -11,6 +11,7 @@ import { JsonLd } from "@/components/geo/JsonLd";
 import { RecommendedChairs } from "@/components/geo/RecommendedChairs";
 import Image from "next/image";
 import { Callout, ReadMore } from "@/components/ui";
+import { LaunchOffer } from "@/components/LaunchOffer";
 import { sceneFor } from "@/lib/scenes";
 import { getChair } from "@/data/chairs";
 import { PAYMENT_SCHEDULE } from "@/lib/catalog-types";
@@ -32,7 +33,11 @@ export async function generateMetadata(props: PageProps<"/events/[slug]">): Prom
   return seo({
     title: ev.metaTitle,
     description: ev.metaDescription,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      ...(ev.slug === "quinceaneras" && { languages: { "en-US": path, "es-US": "/es/quinceaneras" } }),
+      ...(ev.slug === "weddings" && { languages: { "en-US": path, "es-US": "/es/bodas" } }),
+    },
     openGraph: { title: `${ev.metaTitle} | ${site.name}`, description: ev.metaDescription, url: path },
   });
 }
@@ -102,6 +107,7 @@ export default async function EventPage(props: PageProps<"/events/[slug]">) {
               </Link>
               <CallButton label="Or book a free call" className="link-line" />
             </div>
+            <LaunchOffer from={`events-${ev.slug}`} />
           </div>
           {/* Chair trio collage */}
           <div className="animate-rise relative grid grid-cols-2 gap-4 [animation-delay:200ms]">

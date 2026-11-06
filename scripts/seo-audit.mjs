@@ -41,6 +41,12 @@ let BASE = opt("base", "");
 const UTILITY = [/^\/(quote|book|privacy|terms|photo-credits|vendor-listings|quiz|seating-planner|tools\/[^/]+|gallery|reviews|refer)$/];
 const isUtility = (p) => UTILITY.some((re) => re.test(p));
 
+// Plain-text crawler files (llms.txt convention, humans.txt convention). They're deliberately
+// listed in sitemap.xml so AI crawlers and search engines find them, but they're text/plain, not
+// HTML, so none of the HTML-page checks (title, h1, canonical, FAQ schema, visuals, ...) apply.
+// llms.txt gets its own shape checks at the top of main(); these three just need to fetch cleanly.
+const TEXT_FILES = new Set(["/llms.txt", "/llms-full.txt", "/humans.txt"]);
+
 const RULES = {
   "fetch":            { level: "error", weight: 100, label: "Page returns 200" },
   "noindex-in-sitemap": { level: "error", weight: 40, label: "Sitemap page is not noindex" },
@@ -242,7 +248,12 @@ function analyse(pathname, html) {
 
   // Main content = <main> minus nav, header nav, aside forms and the FAQ block.
   const main = root.querySelector("main") ?? root.querySelector("body") ?? root;
-  for (const el of root.querySelectorAll("script, style, noscript, template")) el.remove();
+  // Also strip <title> tooltips inside inline SVGs (e.g. the area map's per-location <title>
+  // hover labels): they're accessibility/tooltip text, not page content, and on a page like
+  // AreaMap that repeats ~280 identical <title>name</title> tags they swamp word count and
+  // simhash with the same boilerplate on every page that embeds the map, producing false
+  // thin-content and near-duplicate flags unrelated to the page's actual written content.
+  for (const el of root.querySelectorAll("script, style, noscript, template, svg title")) el.remove();
   const mainText = clean(main.text);
   const wc = words(mainText);
   const utility = isUtility(pathname);
@@ -394,6 +405,7 @@ async function main() {
   const pages = await pool(paths, CONCURRENCY, async (p) => {
     const r = await get(`${BASE}${p}`);
     if (r.status !== 200) return { path: p, status: r.status, issues: [{ rule: "fetch", detail: `HTTP ${r.status}${r.location ? ` -> ${r.location}` : ""}` }], links: [] };
+    if (TEXT_FILES.has(p)) return { path: p, status: 200, issues: [], links: [], allLinks: [] };
     try {
       return { path: p, status: 200, ...analyse(p, r.body) };
     } catch (e) {
@@ -471,7 +483,7 @@ async function main() {
   for (const p of pages) {
     const broken = (p.allLinks ?? []).filter((l) => unknownStatus.has(l) && ![200, 301, 302, 307, 308].includes(unknownStatus.get(l)));
     if (broken.length) p.issues.push({ rule: "broken-links", detail: broken.slice(0, 3).join(", ") });
-    if (!LIMIT && p.path !== "/" && !inbound.get(p.path)) p.issues.push({ rule: "orphan" });
+    if (!LIMIT && p.path !== "/" && !TEXT_FILES.has(p.path) && !inbound.get(p.path)) p.issues.push({ rule: "orphan" });
   }
 
   // Scores

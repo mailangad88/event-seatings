@@ -130,4 +130,4 @@ Possible in early November with a heated tent or patio heaters, but weather is a
 
 ## Plan your Friendsgiving
 
-[Book a free 15-minute seating call](/book) and we'll count seats and tables with you, or [request a quote](/quote) with your guest count and date.
+[Book a free 15-minute seating call](/book) and we'll count seats and tables with you, or [request a quote](/quote) with your guest count and date. See our [Thanksgiving & Friendsgiving rental page](/events/thanksgiving-friendsgiving) for chair styles and seating math.

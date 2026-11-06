@@ -140,4 +140,4 @@ Usually. Many venues price New Year's Eve as a special night with its own minimu
 
 ## Plan your December event with us
 
-Tell us your date, your venue and your guest count. We will flag anything on the December calendar that could affect your event, then build the full rental list: chairs, tables, linens, tents, heat or cooling and lighting. [Start your plan and instant quote](/quote), or [book a free 15-minute planning call](/book).
+Tell us your date, your venue and your guest count. We will flag anything on the December calendar that could affect your event, then build the full rental list: chairs, tables, linens, tents, heat or cooling and lighting. [Start your plan and instant quote](/quote), or [book a free 15-minute planning call](/book). See our [holiday office party](/events/holiday-office-parties) and [Christmas & New Year's Eve](/events/christmas-new-years-eve) rental pages for chair styles and checklists.

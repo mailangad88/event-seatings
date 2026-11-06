@@ -153,4 +153,4 @@ Plan delivery a day earlier, use mats at the door, and have staff for wet floors
 
 ## Plan the whole rental list in one call
 
-We'll help you plan seating, coat racks and tables in one order. [Book a free 15-minute seating call](/book) and we'll help you build the full list, or [request a quote](/quote) with your guest count, date and venue.
+We'll help you plan seating, coat racks and tables in one order. [Book a free 15-minute seating call](/book) and we'll help you build the full list, or [request a quote](/quote) with your guest count, date and venue. See our [holiday office party rental page](/events/holiday-office-parties) for chair styles and a building-rules checklist.

@@ -5,6 +5,7 @@ import { AreaMap } from "@/components/geo/AreaMap";
 import { PriceBars, RentalCard, itemHref } from "@/components/rentals/parts";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumbs, CheckList, FaqList, Figure, IconCards, JsonLd, LinkCards, PriceDisclaimer, QuoteCta, ReadMore, Section, StatRow } from "@/components/ui";
+import { LaunchOffer } from "@/components/LaunchOffer";
 import { catalogItems, customerPrice, formatPrice, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { getLocation, locationPath } from "@/data/geo";
@@ -183,6 +184,7 @@ export default async function AreaCategoryPage(props: Props) {
                   See all {cat.name.toLowerCase()}
                 </Link>
               </div>
+              <LaunchOffer from={`local-${lc.slug}-${loc.slug}`} />
             </div>
             <Figure src={scene.src} alt={`${scene.alt}. ${lc.label} for events in ${place}.`} caption={scene.caption} ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 45vw" />
           </div>
