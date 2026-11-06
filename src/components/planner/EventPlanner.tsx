@@ -27,6 +27,7 @@ import {
 } from "@/lib/event-plan";
 import { blockedMessage, useBlockedDates } from "@/lib/use-blocked-dates";
 import { allInEstimate } from "@/lib/fees";
+import { firstBookingOfferEnabled, FIRST_BOOKING_OFFER_LABEL } from "@/lib/offers";
 import { ideaQty, type PlannerIdea } from "@/data/party-ideas/types";
 import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
 // Direct imports, not the "../ui" barrel: the barrel also holds server cards that load the full image list.
@@ -899,6 +900,11 @@ export function EventPlanner({
                 <p className="mt-3 text-xs text-muted">
                   Your list ({rows.length} items, {formatPrice(total)}) goes to our team as a quote request. No payment, no commitment; we reply within one business day.
                 </p>
+                {firstBookingOfferEnabled() && (
+                  <p className="mt-2 flex items-center gap-1.5 text-xs font-medium text-gold">
+                    <Icon name="check" size={13} /> {FIRST_BOOKING_OFFER_LABEL}, applied to your deposit when you book.
+                  </p>
+                )}
               </div>
             </div>
             <form onSubmit={send} className="space-y-3 self-start rounded-2xl border border-line bg-surface p-5 shadow-soft">
@@ -1297,6 +1303,7 @@ function PlanView({
         <p className="lede mt-3 max-w-2xl">
           Your quote request for {list.length} items ({formatPrice(total)} in rentals) is with our team. We&apos;ll confirm availability
           and delivery for your venue within one business day{email ? ` at ${email}` : ""}.
+          {firstBookingOfferEnabled() && <> Your {FIRST_BOOKING_OFFER_LABEL} is already saved for when you book.</>}
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <button type="button" className="btn-primary" onClick={download} disabled={pdf === "making"}>
