@@ -7,6 +7,7 @@ import { categoryTile, scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { plannerEvents } from "@/lib/event-plan";
 import { seo } from "@/lib/seo";
+import { termsPolicy } from "@/lib/terms";
 
 
 export const metadata: Metadata = seo({
@@ -40,7 +41,7 @@ const doForYou = [
   { icon: "quote" as const, title: "One written quote", text: "Every item at the price on our site, with delivery, setup, damage waiver and tax shown." },
   { icon: "phone" as const, title: "We check every item", text: "We check your date for every item on your list and suggest swaps if something is booked." },
   { icon: "calendar" as const, title: "Times lined up", text: "Tent first, then floor, then tables and chairs, then linens. Pickup times that fit your venue's rules." },
-  { icon: "list" as const, title: "Changes handled", text: "Guest count went up by 40? Tell us once. We update your order until 14 days out." },
+  { icon: "list" as const, title: "Changes handled", text: `Guest count went up by 40? Tell us once. We update your order until ${termsPolicy.changeCutoffDays} days out.` },
   { icon: "truck" as const, title: "Morning-of check", text: "On the day, we check every delivery is on its way and call you only if something changes." },
   { icon: "shield" as const, title: "If an item falls through", text: "We replace it with the same or better at the price you agreed, or refund what you paid for it." },
 ];

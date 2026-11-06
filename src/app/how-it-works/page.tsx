@@ -6,6 +6,7 @@ import { DEPOSIT_LABEL, PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
+import { termsPolicy } from "@/lib/terms";
 
 export const metadata: Metadata = seo({
   title: "How Event Rentals Work: One Quote for Everything",
@@ -132,7 +133,7 @@ export default function HowItWorksPage() {
                 "Every line in writing",
                 "Replacement if an item falls through",
                 `One coordinator, ${replyPromise}`,
-                "Free changes until 14 days before",
+                `Free changes until ${termsPolicy.changeCutoffDays} days before`,
                 `${PAYMENT_SCHEDULE.refundHours}-hour full refund on your deposit`,
               ].map((t) => (
                 <li key={t} className="flex items-center gap-2">
