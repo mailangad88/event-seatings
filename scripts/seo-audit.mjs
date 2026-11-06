@@ -53,6 +53,7 @@ const RULES = {
   "h1":               { level: "error", weight: 15, label: "Exactly one H1" },
   "lang":             { level: "error", weight: 5,  label: "<html lang> is set" },
   "og":               { level: "warn",  weight: 3,  label: "Open Graph title and image" },
+  "twitter":          { level: "warn",  weight: 3,  label: "Twitter/X card and image" },
   "jsonld-invalid":   { level: "error", weight: 20, label: "JSON-LD parses and has the required fields" },
   "breadcrumb":       { level: "warn",  weight: 5,  label: "BreadcrumbList schema" },
   "answer":           { level: "error", weight: 10, label: "Direct answer (30 to 100 words) near the top" },
@@ -85,7 +86,9 @@ async function get(url, tries = 3) {
       // A hung request must not stall the crawl (CI has a 40 minute job limit).
       const started = Date.now();
       const res = await fetch(url, { redirect: "manual", headers: { "user-agent": "seo-audit" }, signal: AbortSignal.timeout(30_000) });
-      const body = res.status === 200 ? await res.text() : "";
+      // Also read the body on 404 so the custom not-found page's content (e.g. its links back
+      // into the site) can be checked, not just its status.
+      const body = res.status === 200 || res.status === 404 ? await res.text() : "";
       const ms = Date.now() - started;
       if (ms > 10_000) console.warn(`  slow: ${url} took ${Math.round(ms / 1000)}s`);
       return { status: res.status, body, location: res.headers.get("location") };
@@ -210,6 +213,7 @@ function analyse(pathname, html) {
   if (!lang) add("lang");
   if (/noindex/i.test(robots)) add("noindex-in-sitemap");
   if (!meta('meta[property="og:title"]') || !meta('meta[property="og:image"]')) add("og");
+  if (!meta('meta[name="twitter:card"]') || !meta('meta[name="twitter:image"]')) add("twitter");
 
   const h1s = root.querySelectorAll("h1");
   if (h1s.length !== 1) add("h1", `${h1s.length} H1s`);
@@ -348,6 +352,30 @@ async function main() {
     const inSitemap = new Set(urls.map(toPath));
     const missing = llmsLinks.map(toPath).filter((p) => !inSitemap.has(p));
     if (missing.length) siteIssue("llms", `${missing.length} llms.txt links are not in the sitemap: ${missing.slice(0, 5).join(", ")}`);
+  }
+
+  // Manifest, icons and a helpful 404.
+  const manifest = await get(`${BASE}/manifest.webmanifest`);
+  if (manifest.status !== 200) siteIssue("manifest", "manifest.webmanifest does not return 200");
+  else {
+    try {
+      const m = JSON.parse(manifest.body);
+      if (!Array.isArray(m.icons) || !m.icons.length) siteIssue("manifest", "manifest has no icons");
+    } catch {
+      siteIssue("manifest", "manifest.webmanifest is not valid JSON");
+    }
+  }
+  const favicon = await get(`${BASE}/favicon.ico`);
+  if (favicon.status !== 200) siteIssue("favicon", "favicon.ico does not return 200");
+  const notFound = await get(`${BASE}/this-page-does-not-exist-${Date.now()}`);
+  if (notFound.status !== 404) siteIssue("404", `unknown path returned ${notFound.status}, expected 404`);
+  else if (!/href=/.test(notFound.body)) siteIssue("404", "404 page has no links back into the site");
+
+  // Trailing slash on a handful of real pages should 308 to the slash-less canonical, not 404 or 200
+  // a separate page (a sign trailingSlash normalization or next.config redirect is misconfigured).
+  for (const p of ["/rentals", "/blog", "/chairs"]) {
+    const r = await get(`${BASE}${p}/`, 1);
+    if (r.status !== 308 && r.status !== 301) siteIssue("trailing-slash", `${p}/ returned ${r.status}, expected a redirect`);
   }
 
   console.error(`Crawling ${paths.length} pages from ${BASE} ...`);

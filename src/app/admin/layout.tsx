@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { adminNav } from "@/components/admin/AdminNav";
 import { OfficeShell } from "@/components/office/OfficeShell";
 import type { NavCounts } from "@/components/office/OfficeNav";
 import { checkAdmin } from "@/lib/admin-auth";
 import { adminSnapshot } from "@/lib/admin-snapshot";
+
+// robots.txt already disallows /admin, but that's advisory only — a crawler that ignores it (or a stray
+// inbound link) shouldn't be able to index these pages, so set noindex directly too.
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 // Back office shell: dark sidebar, top bar with lead search and the notifications bell, light canvas.
 // The password check lives in src/proxy.ts (pages) and in each Server Action. This layout checks it again

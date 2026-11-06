@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { JsonLd } from "@/components/rentals/parts";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { UNSPLASH_LICENSE, UNSPLASH_URL, stockImageJsonLd, stockPhotos } from "@/data/stock-photos";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -26,6 +27,7 @@ export default function PhotoCreditsPage() {
           image: photos.map((p) => stockImageJsonLd(p, p.alt)),
         }}
       />
+      <Breadcrumbs items={[{ name: "Photo credits", href: "/photo-credits" }]} className="mb-6" />
       <div className="max-w-3xl">
         <p className="eyebrow">Credits</p>
         <h1 className="display-1 mt-6">Photo credits</h1>

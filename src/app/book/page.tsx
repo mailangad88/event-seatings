@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { CallForm } from "@/components/CallForm";
 import { Figure } from "@/components/ui";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
@@ -36,6 +37,7 @@ export default async function BookPage(props: PageProps<"/book">) {
   return (
     <div className="container-x py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <Breadcrumbs items={[{ name: "Book a call", href: "/book" }]} className="mb-6" />
       <div className="grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-end">
         <div>
           <p className="eyebrow">Free {site.callLength} planning call</p>

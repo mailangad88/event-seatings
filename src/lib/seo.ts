@@ -42,5 +42,15 @@ export function seo(meta: Metadata): Metadata {
     if (typeof og.description === "string") og.description = fitDescription(og.description, 200);
     out.openGraph = og;
   }
+  // Twitter/X cards: mirror the page's Open Graph image and description so every page gets an
+  // explicit summary_large_image card instead of relying on Twitter's (unreliable) OG fallback.
+  const ogImages = out.openGraph && "images" in out.openGraph ? out.openGraph.images : undefined;
+  out.twitter = {
+    card: "summary_large_image",
+    title: out.twitter?.title ?? (typeof out.title === "string" ? out.title : undefined),
+    description: out.twitter?.description ?? (typeof out.description === "string" ? out.description : undefined),
+    images: out.twitter?.images ?? ogImages,
+    ...meta.twitter,
+  };
   return out;
 }

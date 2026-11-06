@@ -2,9 +2,14 @@ import type { NextConfig } from "next";
 import moved from "./src/data/moved-items.json";
 
 const nextConfig: NextConfig = {
+  // Canonical URLs never have a trailing slash. Next doesn't normalize this on its own, so a stray
+  // "/foo/" would otherwise serve as a separate, uncanonicalized duplicate of "/foo".
+  trailingSlash: false,
   // Items that moved category keep their old URLs working (e.g. inflatables once listed under tables).
   async redirects() {
     return [
+      // Normalize any trailing-slash URL to its slash-less canonical form (single hop, no chains).
+      { source: "/:path+/", destination: "/:path+", permanent: true },
       ...moved.moved.map((m) => ({
         source: `/rentals/${m.from}/${m.id}`,
         destination: `/rentals/${m.to}/${m.id}`,
