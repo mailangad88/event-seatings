@@ -16,6 +16,7 @@ import { site } from "@/lib/site";
 import { isVendorPage } from "@/lib/vendor-pages";
 import { ideaPath, ideas, PARTY_IDEAS_UPDATED, partyTypes, typePath } from "@/data/party-ideas";
 import { toolSitemapEntries } from "@/lib/tools/sitemap";
+import { venuePath, venues, VENUES_UPDATED } from "@/data/venues";
 
 export const revalidate = 3600;
 
@@ -112,6 +113,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...costCategories.map((c) => ({ url: `${site.url}${costPath(c.id)}`, priority: 0.7, lastModified: LOCAL_RENTALS_UPDATED })),
   ];
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
+  const venuePages = [
+    { url: `${site.url}/venues`, priority: 0.7, lastModified: VENUES_UPDATED },
+    ...venues.map((v) => ({ url: `${site.url}${venuePath(v)}`, priority: 0.6, lastModified: VENUES_UPDATED })),
+  ];
   // Party ideas: hub, one page per party type, one per theme (with its scene image).
   const sceneUrl = (s: string) => `${site.url}${styledImage(s)?.src ?? `/rentals/scenes/${s}.webp`}`;
   const ideaPages = [
@@ -124,7 +129,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Crawler-facing plain-text files (llms.txt, llms-full.txt, humans.txt), so they stay
   // discoverable from the sitemap as well as robots.txt.
   const textFiles = ["/llms.txt", "/llms-full.txt", "/humans.txt"].map((p) => ({ url: `${site.url}${p}`, changeFrequency: "weekly" as const, priority: 0.3 }));
-  const entries = [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages, ...textFiles];
+  const entries = [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...venuePages, ...hubs, ...posts, ...downloadPages, ...textFiles];
   // Pages for rental companies are noindex, so they never belong in the sitemap.
   return entries.filter((e) => !isVendorPage(e.url.slice(site.url.length))).map(escapeSitemapUrls);
 }
