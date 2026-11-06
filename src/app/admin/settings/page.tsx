@@ -23,6 +23,7 @@ const groups: { title: string; rows: { name: string; what: string; ok: boolean; 
       { name: "Automatic event emails", what: "Two-weeks-out, day-before and thank-you emails to customers, and order details to rental partners.", ok: process.env.EVENT_EMAILS_ENABLED === "true" && on("CRON_SECRET"), keys: "EVENT_EMAILS_ENABLED=true, CRON_SECRET" },
       { name: "Reminder emails", what: "Daily reminders from what people click after sending a form: unfinished quote list, an item they keep viewing, an event date coming up.", ok: process.env.REMINDERS_ENABLED === "true" && on("CRON_SECRET"), keys: "REMINDERS_ENABLED=true, CRON_SECRET" },
       { name: "Admin password", what: "Locks this back office.", ok: on("ADMIN_PASSWORD"), keys: "ADMIN_PASSWORD" },
+      { name: "Renter accounts", what: "Real sign-in for /account (emailed link). Needs the database too, or renters won't see their real events.", ok: on("ACCOUNT_SECRET") && on("RESEND_API_KEY", "NOTIFY_FROM"), keys: "ACCOUNT_SECRET, RESEND_API_KEY, NOTIFY_FROM" },
     ],
   },
   {

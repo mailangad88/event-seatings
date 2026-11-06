@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
-import { redirect } from "next/navigation";
 import { AccountSidebar, AccountTabs } from "@/components/account/AccountNav";
 import { Icon } from "@/components/ui/Icon";
-import { currentAccount, firstName } from "@/lib/account";
+import { requireAccount, firstName } from "@/lib/account";
 import { signOut } from "../actions";
 
 export const metadata: Metadata = {
@@ -13,8 +12,7 @@ export const metadata: Metadata = {
 
 // The renter's account shell: a dark sidebar with their sections, and the page on the right.
 export default async function AccountLayout({ children }: { children: React.ReactNode }) {
-  const data = await currentAccount();
-  if (!data) redirect("/account/sign-in");
+  const data = await requireAccount();
   const unread = data.events.reduce((n, e) => n + e.unread, 0);
   const needs = data.events.reduce((n, e) => n + e.needs.length, 0);
   const initials = (data.name ?? data.email).split(/[\s@.]+/).filter(Boolean).slice(0, 2).map((w) => w[0]?.toUpperCase()).join("");

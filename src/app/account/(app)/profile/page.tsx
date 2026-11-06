@@ -1,5 +1,5 @@
 import { Card, PageTitle } from "@/components/account/AccountUi";
-import { currentAccount } from "@/lib/account";
+import { requireAccount } from "@/lib/account";
 import { saveProfile, signOut } from "../../actions";
 
 export const dynamic = "force-dynamic";
@@ -7,7 +7,7 @@ export const metadata = { title: "Profile" };
 
 export default async function AccountProfile(props: PageProps<"/account/profile">) {
   const sp = await props.searchParams;
-  const data = (await currentAccount())!;
+  const data = await requireAccount();
   return (
     <div className="max-w-2xl space-y-6">
       <PageTitle title="Profile" intro="How we greet you and the number we call about deliveries." />

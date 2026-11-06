@@ -1,5 +1,6 @@
 import "server-only";
 import { cache } from "react";
+import { redirect } from "next/navigation";
 import { SAMPLE_EMAIL, getSession } from "./account-auth";
 import { amountDue, chargeLabel } from "./payments";
 import { vendorParts, type VendorOrderStatus } from "./orders";
@@ -199,5 +200,13 @@ export const currentAccount = cache(async (): Promise<AccountData | null> => {
   const s = await getSession();
   return s ? loadAccount(s.email) : null;
 });
+
+// Like currentAccount(), but for pages under the (app) group's layout, which already redirects
+// signed-out visitors to sign-in. Redirects again here instead of crashing on a null account.
+export async function requireAccount(): Promise<AccountData> {
+  const data = await currentAccount();
+  if (!data) redirect("/account/sign-in");
+  return data;
+}
 
 export const nextEvent = (events: AccountEvent[]) => events.find((e) => (e.daysLeft ?? -1) >= 0 && e.stage < 5);

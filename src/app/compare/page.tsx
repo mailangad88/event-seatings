@@ -17,6 +17,7 @@ export default function Page() {
       faqs={[
         { q: "Is booking through Beyond Chiavari more expensive?", a: "Compare the totals. Every item price is on our site, and your written quote adds delivery, setup, damage waiver and tax with no separate booking fee. For a single item from one store, calling that store may cost less. For a full event you get one list, one person to call and our Booking Promise." },
         { q: "Which option is cheapest?", a: "For a single item, a local store you can pick up from is often cheapest. A party store is often cheapest for basic folding chairs and tables you can pick up yourself. Buying only pays off if you host often and can store the items." },
+        { q: "When should I book through Beyond Chiavari instead?", a: "When you need more than one or two items, or items from more than one store. You get one order, one delivery window and one person to call if anything is wrong, instead of tracking several pickups and drop-offs yourself." },
       ]}
     />
   );
