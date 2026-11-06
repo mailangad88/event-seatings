@@ -14,7 +14,7 @@ export const metadata: Metadata = seo({
   title: { absolute: "Beyond Chiavari | Chicago Event Rentals: Chairs, Tables, Tents" },
   description:
     "Chicago event rentals in one quote: chairs, tables, linens, dinnerware, tents and more, with prices up front and delivery and setup.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { "en-US": "/", "es-US": "/es", "x-default": "/" } },
 });
 
 export const revalidate = 3600;
