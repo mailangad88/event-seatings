@@ -1,11 +1,13 @@
 import "server-only";
 import { createElement } from "react";
 import { render } from "@react-email/render";
+import { InvoiceEmail } from "@/emails/InvoiceEmail";
 import { NewReviewEmail, TextEmail } from "@/emails/templates";
 import { usd } from "./catalog-types";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
 import { QuoteConfirmationEmail } from "@/emails/QuoteConfirmationEmail";
 import { buildLeadAlert, leadAlertText } from "./lead-alert";
+import { scheduleLines, type Invoice } from "./invoices";
 import { site } from "./site";
 import { accountsEnabled } from "./account-auth";
 import type { Review } from "./reviews";
@@ -255,6 +257,38 @@ export async function sendDownloadEmail(lead: Lead, title: string, files: { labe
   ].join("\n");
   const subject = `Your free ${title}`;
   return (await sendEmail({ to: lead.email, subject, text, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `download/${lead.id}` })) ? subject : undefined;
+}
+
+/**
+ * Emails a customer their invoice: the order total and payment schedule, with a status on each stage.
+ * Sent by hand from /admin/invoices/order/<id>. Needs RESEND_API_KEY and NOTIFY_FROM like every visitor email.
+ */
+export async function sendInvoiceEmail(lead: Lead, invoice: Invoice): Promise<string | undefined> {
+  if (!process.env.NOTIFY_FROM || !lead.proposal_token) return;
+  const eventLabel = [lead.event_type, prettyDate(lead.event_date)].filter(Boolean).join(" · ");
+  const viewUrl = `${site.url}/proposal/${lead.proposal_token}`;
+  const next = invoice.stages.find((s) => s.status !== "paid");
+  const subject = next
+    ? `Invoice ${invoice.number} · ${usd(next.amount - next.paidAmount, 0)} ${next.status === "overdue" ? "overdue" : "due"}`
+    : `Invoice ${invoice.number} · paid in full`;
+  const text = [
+    lead.name ? `Hi ${lead.name.split(" ")[0]},` : "Hi,",
+    "",
+    `Here is invoice ${invoice.number} for your order${eventLabel ? ` (${eventLabel})` : ""}.`,
+    "",
+    "Payment schedule:",
+    ...scheduleLines(invoice).map((l) => `- ${l}`),
+    "",
+    `Total: ${usd(invoice.total)}`,
+    "",
+    `View your order: ${viewUrl}`,
+    ...signOff(lead.email),
+  ].join("\n");
+  const html = await render(createElement(InvoiceEmail, { number: invoice.number, invoice, name: lead.name, eventLabel, viewUrl })).catch((err) => (
+    log.warn("invoice_email_render_failed", { leadId: lead.id, err }), undefined
+  ));
+  const ok = await sendEmail({ to: lead.email, subject, text, html, unsubscribe: unsubscribeUrl(lead.email) });
+  return ok ? subject : undefined;
 }
 
 /** Tells the owner a review is waiting in /admin/reviews. */
