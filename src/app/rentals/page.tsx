@@ -94,6 +94,7 @@ export default function RentalsPage() {
               alt={scenes.gildedIvory.alt}
               fill
               priority
+              fetchPriority="high"
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
             />

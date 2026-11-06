@@ -69,6 +69,7 @@ export default async function DownloadPage(props: PageProps<"/downloads/[slug]">
               height={1056}
               className="mx-auto max-h-[560px] w-auto rounded-lg border border-line object-contain shadow-xl"
               priority
+              fetchPriority="high"
             />
             <figcaption className="mt-3 text-center text-sm text-muted">First page of the {d.title}.</figcaption>
           </figure>
