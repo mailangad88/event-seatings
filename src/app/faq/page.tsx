@@ -27,7 +27,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
       },
       {
         q: "Do I deal with several rental companies?",
-        a: "No. You have one point of contact and one quote. We confirm availability with each vendor, line up delivery windows and handle changes for you.",
+        a: "No. You have one point of contact and one quote. We check availability, line up delivery windows and handle changes for you.",
       },
       {
         q: "Can I mix items from different categories?",
@@ -57,7 +57,7 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
       },
       {
         q: "Are there minimum orders?",
-        a: "Some vendors have delivery minimums, especially on weekends. If your order is small we will tell you up front and suggest the most economical option.",
+        a: "No. There's no minimum order with us. Order exactly what you need, and delivery is priced for your order size and address.",
       },
     ],
   },

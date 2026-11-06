@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConsentNotice } from "@/components/ConsentNotice";
 import { ContactDock } from "@/components/ContactDock";
+import { ExitIntentOffer } from "@/components/ExitIntentOffer";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { VoteProvider } from "@/components/VoteProvider";
 import { Analytics } from "@/components/Analytics";
@@ -133,6 +134,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer />
           <MobileCtaBar />
           <ContactDock />
+          <ExitIntentOffer />
           <ConsentNotice />
         </VoteProvider>
         <Analytics />
