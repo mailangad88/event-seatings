@@ -4,6 +4,7 @@ import { render } from "@react-email/render";
 import { NewReviewEmail, TextEmail } from "@/emails/templates";
 import { usd } from "./catalog-types";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
+import { QuoteConfirmationEmail } from "@/emails/QuoteConfirmationEmail";
 import { buildLeadAlert, leadAlertText } from "./lead-alert";
 import { site } from "./site";
 import { accountsEnabled } from "./account-auth";
@@ -136,8 +137,10 @@ const signOff = (email: string) => [
 // what happens next, the booking link and what to have ready. Downloads have their own email below.
 export async function sendConfirmation(lead: Lead): Promise<string | undefined> {
   if (!process.env.NOTIFY_FROM || !["quote", "call", "chat"].includes(lead.kind) || lead.opted_out_at) return;
-  // Fixed greeting: the name comes from an unauthenticated form, so never echo it into an email to an arbitrary address.
-  const hi = "Hi,";
+  // The name is whatever the visitor themselves typed into their own quote/call/chat form, so it's safe
+  // (and friendlier) to greet them with it; React escapes it like any other text, so there's no injection risk.
+  const greetName = lead.name?.trim().split(/\s+/)[0];
+  const hi = greetName ? `Hi ${greetName},` : "Hi there,";
   const date = prettyDate(lead.event_date);
   const body: Record<string, string[]> = {
     quote: [
@@ -171,11 +174,29 @@ export async function sendConfirmation(lead: Lead): Promise<string | undefined> 
     ],
   };
   const subject = lead.kind === "quote" ? "We got your quote request" : lead.kind === "call" ? "We got your call request" : "We got your question";
+  const unsubscribe = unsubscribeUrl(lead.email);
+  // The quote confirmation gets its own visual layout (hero image, itemized list, summary card,
+  // a visual "what happens next" and a CTA); call/chat keep the branded plain-text wrapper.
+  const html =
+    lead.kind === "quote" && lead.items?.length
+      ? await render(
+          createElement(QuoteConfirmationEmail, {
+            name: lead.name,
+            items: lead.items,
+            subtotal: lead.quote_subtotal,
+            eventDateLabel: date,
+            guestCount: lead.guest_count,
+            viewUrl: accountsEnabled() ? `${site.url}/account` : `${site.url}/quote`,
+            unsubscribe,
+          }),
+        ).catch((err) => (log.warn("quote_confirmation_html_failed", { leadId: lead.id, err }), undefined))
+      : undefined;
   const ok = await sendEmail({
     to: lead.email,
     subject,
     text: [hi, "", ...body[lead.kind], "", bookingLine(lead), ...signOff(lead.email)].join("\n"),
-    unsubscribe: unsubscribeUrl(lead.email),
+    unsubscribe,
+    html,
     idempotencyKey: `confirm/${lead.id}`,
   });
   return ok ? subject : undefined;

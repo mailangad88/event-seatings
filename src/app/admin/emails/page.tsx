@@ -4,6 +4,7 @@ import { createElement } from "react";
 import { render } from "@react-email/render";
 import { NewReviewEmail, ReviewRequestEmail, TextEmail } from "@/emails/templates";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
+import { QuoteConfirmationEmail } from "@/emails/QuoteConfirmationEmail";
 import { buildLeadAlert } from "@/lib/lead-alert";
 import { site } from "@/lib/site";
 import type { Lead } from "@/lib/store";
@@ -76,6 +77,19 @@ const sampleLead: Lead = {
 export default async function EmailPreviewsPage() {
   const emails = [
     { name: "New enquiry alert (to you)", when: "Every form, within seconds, with RESEND_API_KEY and NOTIFY_EMAIL. Made-up enquiry.", el: createElement(LeadAlertEmail, { alert: buildLeadAlert(sampleLead, { siteUrl: site.url }), siteUrl: site.url }) },
+    {
+      name: "Quote confirmation (to the customer)",
+      when: "Right after the quote form, with RESEND_API_KEY and NOTIFY_FROM. Made-up quote.",
+      el: createElement(QuoteConfirmationEmail, {
+        name: sampleLead.name,
+        items: sampleLead.items ?? [],
+        subtotal: sampleLead.quote_subtotal,
+        eventDateLabel: "Fri, Jun 12, 2027",
+        guestCount: sampleLead.guest_count,
+        viewUrl: `${site.url}/account`,
+        unsubscribe: `${site.url}/unsubscribe`,
+      }),
+    },
     { name: "Any email (branded wrapper)", when: "Every email sendEmail sends (confirmations, downloads, follow-ups, owner alerts) gets this HTML around its plain text.", el: createElement(TextEmail, { subject: "We got your quote request", text: sampleText, unsubscribe: `${site.url}/unsubscribe` }) },
     { name: "Review request (you send by hand)", when: "Never automatic. Copy from /admin/reviews.", el: createElement(ReviewRequestEmail, { name: "Sample", link: `${site.url}/reviews/write` }) },
     { name: "New review (to you)", when: "When a review is submitted, with RESEND_API_KEY and NOTIFY_EMAIL.", el: createElement(NewReviewEmail, { rating: 5, name: "Sample Customer", body: "Sample review text for layout only.", verified: true }) },
