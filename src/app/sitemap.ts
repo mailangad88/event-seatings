@@ -121,7 +121,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   // Free tools, countdown, comparison and vendor onboarding pages (src/lib/tools/sitemap.ts).
   const toolPages = toolSitemapEntries(["/countdown"]);
-  const entries = [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages];
+  // Crawler-facing plain-text files (llms.txt, llms-full.txt, humans.txt), so they stay
+  // discoverable from the sitemap as well as robots.txt.
+  const textFiles = ["/llms.txt", "/llms-full.txt", "/humans.txt"].map((p) => ({ url: `${site.url}${p}`, changeFrequency: "weekly" as const, priority: 0.3 }));
+  const entries = [...pages, ...toolPages, ...featurePages, ...buyer, ...ideaPages, gallery, credits, ...lookPages, ...geoPages, ...localPages, ...guidePages, ...chairPages, ...rentalPages, ...hubs, ...posts, ...downloadPages, ...textFiles];
   // Pages for rental companies are noindex, so they never belong in the sitemap.
   return entries.filter((e) => !isVendorPage(e.url.slice(site.url.length))).map(escapeSitemapUrls);
 }
