@@ -62,7 +62,7 @@ export default async function VenuePage(props: PageProps<"/venues/[slug]">) {
         ]}
         eyebrow={`${venueKindLabel[v.kind]} · ${v.neighborhoodOrCity}`}
         title={<>Rentals for an event at <em className="text-gold">{v.name}</em></>}
-        intro={`${v.whyFit} Here's what to plan for and what it typically costs.`}
+        intro={`${v.whyFit} This guide covers what to rent for a ${venueKindLabel[v.kind].toLowerCase()} like this, sized for ${v.capacityNote}, what it typically costs, and what to ask the venue about delivery and setup.`}
         actions={
           <>
             <Link href={`/quote?from=venue-${v.slug}`} className="btn-primary">
