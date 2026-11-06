@@ -80,7 +80,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Is there a minimum order?",
-    a: "Delivered orders usually start around $150 in rentals. Below that, ask us and we'll tell you the cheapest way to get what you need.",
+    a: "No. There's no minimum order with us. Order exactly what you need, and delivery is priced for your order size and address.",
   },
   {
     q: `You're new. Why should I trust ${site.name}?`,
