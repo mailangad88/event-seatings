@@ -15,7 +15,7 @@ export const metadata: Metadata = seo({
   title,
   description,
   alternates: { canonical: "/es", languages: { "en-US": "/", "es-US": "/es", "x-default": "/" } },
-  openGraph: { title: `${title} | ${site.name}`, description, url: "/es", locale: "es_US" },
+  openGraph: { title: `${title} | ${site.name}`, description, url: "/es", locale: "es_US", images: ["/opengraph-image"] },
 });
 
 const occasions: { title: string; text: string; href?: string; cta?: string }[] = [
@@ -28,32 +28,32 @@ const occasions: { title: string; text: string; href?: string; cta?: string }[] 
   {
     title: "Bodas",
     text: "Sillas para la ceremonia y la recepción, mesas, mantelería y pista de baile en una sola lista.",
-    href: "/quote?event=wedding&from=es-home",
-    cta: "Cotizar esta boda",
+    href: "/events/weddings",
+    cta: "Ver ideas de sillas",
   },
   {
-    title: "Bautizos y primeras comuniones",
-    text: "Sillas y mesas para la misa y para la celebración en casa o en un salón después.",
-    href: "/quote?from=es-home",
-    cta: "Cotizar este evento",
+    title: "Bautizos, comuniones y eventos religiosos",
+    text: "Sillas sencillas y apilables para la misa, y asientos para la celebración en casa o en un salón después.",
+    href: "/events/religious-events",
+    cta: "Ver ideas de sillas",
   },
   {
     title: "Cumpleaños y aniversarios",
-    text: "Desde una fiesta en el patio hasta una celebración grande de aniversario en un salón.",
-    href: "/quote?event=birthday&from=es-home",
-    cta: "Cotizar este evento",
+    text: "Desde una cena familiar hasta una celebración grande de aniversario en un salón.",
+    href: "/events/birthday-parties",
+    cta: "Ver ideas de sillas",
   },
   {
-    title: "Eventos religiosos y comunitarios",
-    text: "Mesas largas y sillas sencillas para salones de iglesia, templo o del vecindario.",
-    href: "/quote?from=es-home",
-    cta: "Cotizar este evento",
+    title: "Fiestas en el patio",
+    text: "Sillas resistentes para exteriores, para una carne asada, un baby shower o una fiesta en el jardín.",
+    href: "/events/backyard-parties",
+    cta: "Ver ideas de sillas",
   },
   {
     title: "Eventos de empresa",
     text: "Sillas, mesas y mantelería para una junta, una cena o una fiesta de fin de año.",
-    href: "/quote?event=corporate&from=es-home",
-    cta: "Cotizar este evento",
+    href: "/events/corporate-events",
+    cta: "Ver ideas de sillas",
   },
 ];
 
@@ -100,6 +100,16 @@ export default function SpanishHomePage() {
           about: { "@id": `${site.url}/#business` },
         }}
       />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Inicio", item: site.url },
+            { "@type": "ListItem", position: 2, name: "Español", item: `${site.url}/es` },
+          ],
+        }}
+      />
       <PageHero
         eyebrow="Chicago y los suburbios"
         title={
@@ -107,7 +117,7 @@ export default function SpanishHomePage() {
             Todo lo que necesitas para tu evento, en <em className="text-gold">una sola cotización</em>
           </>
         }
-        intro="Rentamos sillas, mesas, mantelería, vajilla, carpas y más para bodas, quinceañeras, bautizos y fiestas en Chicago y los suburbios. Ves los precios antes de reservar y nosotros coordinamos la entrega y el montaje."
+        intro="Rentamos sillas, mesas, mantelería, vajilla, carpas y más para bodas, quinceañeras, bautizos y fiestas en Chicago y los suburbios. Ves los precios antes de reservar, armas tu lista en una sola cotización por escrito, y nosotros coordinamos la entrega y el montaje para el día de tu evento."
         actions={
           <>
             <Link href="/quote?from=es-home" className="btn-primary">
