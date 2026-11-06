@@ -637,12 +637,21 @@ export async function listLeadsSince(since: string): Promise<Lead[]> {
   return (await fallbackLeads()).filter((l) => l.created_at >= since).sort((a, b) => a.created_at.localeCompare(b.created_at));
 }
 
+const VIEWS_BACKUP_PATH = "views/all.json";
+
 export async function addPageView(view: Omit<PageView, "created_at">) {
   const row: PageView = { ...view, created_at: new Date().toISOString() };
   const client = sb();
   if (client) {
     const { error } = await client.from("page_views").insert(row);
     if (error) throw error;
+    return;
+  }
+  // No database: without the Blob backup, the deployed filesystem is read-only and writeLocal() would
+  // throw (ENOENT on /var/task/.data). Blob keeps views working in production with no Supabase set up.
+  if (backupConfigured()) {
+    const views = ((await backupGetJson<PageView[]>(VIEWS_BACKUP_PATH)) ?? []).concat(row).slice(-20_000);
+    await backupPutJson(VIEWS_BACKUP_PATH, views);
     return;
   }
   const db = await readLocal();
@@ -668,6 +677,10 @@ export async function listPageViews(since?: string): Promise<PageView[]> {
       if (error.code === "42P01" || /page_views/.test(error.message ?? "")) return [];
       throw e;
     }
+  }
+  if (backupConfigured()) {
+    const views = (await backupGetJson<PageView[]>(VIEWS_BACKUP_PATH)) ?? [];
+    return since ? views.filter((v) => v.created_at >= since) : views;
   }
   const views = (await readLocal()).views ?? [];
   return since ? views.filter((v) => v.created_at >= since) : views;
