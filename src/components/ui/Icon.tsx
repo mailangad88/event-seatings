@@ -54,6 +54,7 @@ const paths = {
   route: "M6 19a2 2 0 1 0 0-.1M18 7a2 2 0 1 0 0-.1M8 19h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7",
   alert: "M12 3 2 20h20zM12 10v4M12 17v.5",
   sun: "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5",
+  share: "M18 8a3 3 0 1 0-2.8-4M18 20a3 3 0 1 0-2.8-4M6 14.5a3 3 0 1 0 0-5M8.6 13l6.9 4M8.6 11l6.9-4",
 } as const;
 
 export type IconName = keyof typeof paths;
