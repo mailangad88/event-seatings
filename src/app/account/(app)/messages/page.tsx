@@ -1,13 +1,13 @@
 import Link from "@/components/Link";
 import { Card, PageTitle } from "@/components/account/AccountUi";
-import { currentAccount, fmtDay } from "@/lib/account";
+import { requireAccount, fmtDay } from "@/lib/account";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Messages" };
 
 // One conversation per event. Opening it shows the full thread and a reply box.
 export default async function AccountMessages() {
-  const { events } = (await currentAccount())!;
+  const { events } = await requireAccount();
   return (
     <div className="space-y-6">
       <PageTitle title="Messages" intro="Each event has its own conversation with your coordinator." />

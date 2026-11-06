@@ -1,21 +1,16 @@
-import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { EventDateTool, type Place } from "@/components/EventDateTool";
 import { FaqList, Figure, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
+import { toolMetadata } from "@/components/tools/ToolShell";
 import { locations } from "@/data/geo";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
-const title = "Event Date Weather, Sunset & Holiday Checker for Chicago";
+const title = "Event Date Weather and Sunset Checker";
 const description =
-  "Check your Chicago-area event date: what the weather actually did on that date over the last 10 years (or the live forecast within a week), sunset and golden hour, nearby holidays, and an add-to-calendar file.";
+  "Check what the weather actually did on your date over the last 10 years, plus sunset, golden hour and nearby holidays for Chicago.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools/event-date" },
-  openGraph: { title, description, url: "/tools/event-date" },
-};
+export const metadata = toolMetadata("event-date", title, description);
 
 const faqs: Faq[] = [
   {

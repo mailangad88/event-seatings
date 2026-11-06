@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Card, EventFacts, FeeStatus, PageTitle, PartCard, StageTrack, daysLabel } from "@/components/account/AccountUi";
 import { PriceDisclaimer } from "@/components/ui";
 import { Icon } from "@/components/ui/Icon";
-import { currentAccount, fmtDay } from "@/lib/account";
+import { requireAccount, fmtDay } from "@/lib/account";
 import { PAYMENT_SCHEDULE, paymentPlanFor, usd } from "@/lib/catalog-types";
 import { updateLead } from "@/lib/store";
 import { sendMessage } from "../../../actions";
@@ -18,7 +18,7 @@ const time = (iso: string) =>
 export default async function AccountEvent(props: PageProps<"/account/events/[id]">) {
   const { id } = await props.params;
   const sp = await props.searchParams;
-  const data = (await currentAccount())!;
+  const data = await requireAccount();
   const e = data.events.find((x) => x.id === id);
   if (!e) notFound();
 

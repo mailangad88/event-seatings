@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "@/components/Link";
 import { formatPrice } from "@/data/catalog";
 import type { CategoryId } from "@/data/catalog-products";
-import { Icon } from "@/components/ui/Icon";
+import { Icon, ThumbZoom } from "@/components/ui";
 import { RentalIcon } from "./RentalIcon";
 
 export type PriceListRow = {
@@ -18,6 +18,8 @@ export type PriceListRow = {
   section: string;
   thumbSrc?: string;
   thumbAlt?: string;
+  /** A larger version of thumbSrc for the hover/long-press zoom; falls back to thumbSrc. */
+  zoomSrc?: string;
 };
 
 type SortKey = "section" | "price-asc" | "price-desc" | "name";
@@ -30,16 +32,19 @@ const sortOptions: { value: SortKey; label: string }[] = [
 ];
 
 function Thumb({ row, category }: { row: PriceListRow; category: CategoryId }) {
+  if (!row.thumbSrc) {
+    return (
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-surface-2 text-gold/80">
+        <RentalIcon category={category} className="h-6 w-6" title={`${row.name} illustration`} />
+      </span>
+    );
+  }
   return (
-    <span className="relative block h-11 w-11 shrink-0 overflow-hidden rounded-sm bg-surface-2">
-      {row.thumbSrc ? (
+    <ThumbZoom src={row.zoomSrc ?? row.thumbSrc} alt={row.thumbAlt ?? row.name}>
+      <span className="relative block h-11 w-11 overflow-hidden rounded-sm bg-surface-2">
         <Image src={row.thumbSrc} alt={row.thumbAlt ?? ""} fill sizes="44px" loading="lazy" className="object-cover" />
-      ) : (
-        <span className="grid h-full w-full place-items-center text-gold/80">
-          <RentalIcon category={category} className="h-6 w-6" title={`${row.name} illustration`} />
-        </span>
-      )}
-    </span>
+      </span>
+    </ThumbZoom>
   );
 }
 

@@ -3,8 +3,8 @@ import { GuestCountTool } from "@/components/tools/GuestCountTool";
 import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 
 const slug = "guest-count";
-const title = "Guest Count Estimator: How Many Guests Will Come?";
-const description = "Free guest count estimator for weddings and parties. Enter invited guests by group and your expected yes rate to get a likely headcount, a low to high range and how many chairs to order.";
+const title = "Guest Count Estimator for Weddings and Parties";
+const description = "Enter invited guests by group and your expected yes rate to get a likely headcount, a range, and how many chairs to order.";
 
 export const metadata = toolMetadata(slug, title, description);
 

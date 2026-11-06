@@ -11,7 +11,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Customer Reviews: Event Rentals in Chicago",
-  description: `Real reviews from people who booked event rentals through ${site.name} in Chicago and the suburbs. Every review is from a real customer and published unedited, good or bad.`,
+  description: `Reviews from people who booked event rentals through ${site.name} in Chicago and the suburbs, published unedited, good or bad.`,
   alternates: { canonical: "/reviews" },
 };
 

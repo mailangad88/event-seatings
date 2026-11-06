@@ -5,8 +5,8 @@ import { routeExists } from "@/lib/routes";
 import { tasks } from "@/lib/tools/timeline";
 
 const slug = "timeline";
-const title = "Event Planning Timeline Builder: Work Back From Your Date";
-const description = "Free event planning timeline builder. Enter your wedding, party or corporate event date and get every task with a real deadline, from booking the venue to final rental counts and the weather call. Add it all to your calendar.";
+const title = "Event Planning Timeline Builder";
+const description = "Enter your event date and get every task with a real deadline, from booking the venue to final rental counts and the weather call.";
 
 export const metadata = toolMetadata(slug, title, description);
 

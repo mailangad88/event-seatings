@@ -1,21 +1,16 @@
-import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { FloorPlanBuilder } from "@/components/floorplan/FloorPlanBuilder";
 import { FaqList, Figure, JsonLd, PageHero, Section, type Faq } from "@/components/ui";
+import { toolMetadata } from "@/components/tools/ToolShell";
 import { catalogItems } from "@/data/catalog";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
-const title = "Free Seating Layout Builder: Drag-and-Drop Event Floor Plan";
+const title = "Seating Layout and Event Floor Plan Builder";
 const description =
-  "Draw your event floor plan free: set the room size, drag round, banquet and farm tables, add a dance floor, bar, buffet and ceremony rows, and see seat counts and walkway warnings instantly. Share, print or download it.";
+  "Set the room size, drag tables and a dance floor into place, and see seat counts and walkway warnings as you go. Share or print it.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools/floor-plan" },
-  openGraph: { title, description, url: "/tools/floor-plan" },
-};
+export const metadata = toolMetadata("floor-plan", title, description);
 
 const faqs: Faq[] = [
   {

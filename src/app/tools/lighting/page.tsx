@@ -4,8 +4,8 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "lighting";
-const title = "String Light Calculator for Tents, Patios and Backyards";
-const description = "Free string light calculator. Enter the space and pick a pattern (straight runs, zigzag, starburst or perimeter) to get feet of bistro lights, bulb count and how many uplights, with rough Chicago rental prices.";
+const title = "String Light Calculator for Any Space";
+const description = "Enter your space and pick a pattern to get feet of bistro lights, bulb count and how many uplights, with rough Chicago prices.";
 
 export const metadata = toolMetadata(slug, title, description);
 

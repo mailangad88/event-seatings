@@ -61,6 +61,9 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
     const similar = own ? undefined : similarPhoto(i);
     const thumb = own || similar ? undefined : photosForItem(i);
     const thumbSrc = own ?? similar?.src ?? (thumb?.matched ? stockSrc(thumb.photos[0], 44) : undefined);
+    // A larger version for the hover/long-press zoom; the vendor render and similar-item photo are
+    // already full quality, only the stock photo thumbnail needs a bigger fetch.
+    const zoomSrc = own ?? similar?.src ?? (thumb?.matched ? stockSrc(thumb.photos[0], 480) : undefined);
     const thumbAlt = own
       ? rentalAlt(i.name, i.specs, i.id)
       : similar
@@ -78,6 +81,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
       section: i.section ?? c.name,
       thumbSrc,
       thumbAlt,
+      zoomSrc,
     };
   });
   const hero = items.find((i) => rentalImagePath(i.id, i.categoryId));

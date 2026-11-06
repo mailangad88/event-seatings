@@ -4,8 +4,8 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "dance-floor";
-const title = "Dance Floor Size Calculator for Weddings and Parties";
-const description = "Free dance floor size calculator. Enter your guest count and how many will dance at once to get the floor size in feet, the number of 3 x 3 panels and the square footage, with a rough Chicago rental price.";
+const title = "Dance Floor Size Calculator for Your Party";
+const description = "Enter your guest count and how many will dance at once to get the floor size in feet, the panel count and a rough Chicago rental price.";
 
 export const metadata = toolMetadata(slug, title, description);
 

@@ -9,7 +9,7 @@ import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 const title = "Free Event Calculators to Embed on Your Website";
-const description = `Venues, planners and caterers: add ${site.name}'s free tent size, tables and chairs, venue capacity, bar and other event calculators to your own website with one copy-and-paste snippet. Free, no account, no ads.`;
+const description = `Add ${site.name}'s tent size, tables and chairs, and other event calculators to your website with one copy-and-paste snippet. No account needed.`;
 const hero = render("hero-layouts");
 
 export const metadata: Metadata = {
