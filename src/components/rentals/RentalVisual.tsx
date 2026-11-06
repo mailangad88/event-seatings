@@ -57,7 +57,7 @@ export function RentalVisual({
   if (src) {
     return (
       <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
-        <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" />
+        <Image src={src} alt={alt} fill priority={priority} fetchPriority={priority ? "high" : undefined} sizes={sizes} className="object-cover" />
       </div>
     );
   }
@@ -66,7 +66,7 @@ export function RentalVisual({
   if (similar) {
     return (
       <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
-        <Image src={similar.src} alt={similarAlt(similar, item.name)} fill priority={priority} sizes={sizes} className="object-cover" />
+        <Image src={similar.src} alt={similarAlt(similar, item.name)} fill priority={priority} fetchPriority={priority ? "high" : undefined} sizes={sizes} className="object-cover" />
         <ExampleChip label="Similar item" />
       </div>
     );

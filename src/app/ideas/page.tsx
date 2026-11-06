@@ -91,7 +91,7 @@ export default async function IdeasPage() {
         meta={`Mid-${current.name}: normal high ${Math.round(normalHighF[mi])}°F at O'Hare, sunset about ${sun.sunset}.`}
         media={
           <figure className="media relative aspect-[4/3]">
-            <Image src={current.image} alt={current.alt} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <Image src={current.image} alt={current.alt} fill priority fetchPriority="high" sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </figure>
         }
       />

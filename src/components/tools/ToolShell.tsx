@@ -108,7 +108,7 @@ export function ToolShell({
         }
         media={
           <figure className="media aspect-[4/3] shadow-lift">
-            <Image src={img.src} alt={img.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            <Image src={img.src} alt={img.alt} fill priority fetchPriority="high" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </figure>
         }
         meta={<span>No sign-up. Your answers stay in your browser and in the page link.</span>}

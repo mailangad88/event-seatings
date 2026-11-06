@@ -26,6 +26,7 @@ export function ChairArt({
           alt={chairAlt(chair)}
           fill
           priority={priority}
+          fetchPriority={priority ? "high" : undefined}
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover"
         />

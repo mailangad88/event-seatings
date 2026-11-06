@@ -64,7 +64,7 @@ export default async function TopicPage(props: PageProps<"/blog/topic/[topic]">)
         intro={`${topic.blurb} ${posts.length} free guides on this topic, each with a quick answer, real Chicago-area price ranges and planning FAQs, so you can work out what to rent before you build a quote.`}
         media={
           <div className="media aspect-[16/10] overflow-hidden bg-espresso shadow-lift">
-            <Image src={art.src} alt={art.alt} width={1200} height={750} priority unoptimized={art.src.endsWith(".svg")} sizes="(max-width: 1024px) 100vw, 50vw" className="h-full w-full object-cover" />
+            <Image src={art.src} alt={art.alt} width={1200} height={750} priority fetchPriority="high" unoptimized={art.src.endsWith(".svg")} sizes="(max-width: 1024px) 100vw, 50vw" className="h-full w-full object-cover" />
           </div>
         }
       />

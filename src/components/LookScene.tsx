@@ -46,6 +46,7 @@ export function LookScene({
           alt={look.mediaAlt ?? `${look.name} decor look: ${look.kicker.toLowerCase()}.`}
           fill
           priority={priority}
+          fetchPriority={priority ? "high" : undefined}
           sizes="(max-width: 768px) 90vw, 40vw"
           className="object-cover"
         />
@@ -76,6 +77,7 @@ export function LookScene({
                 }
                 fill
                 priority={priority}
+                fetchPriority={priority ? "high" : undefined}
                 sizes="(max-width: 768px) 70vw, 30vw"
                 className="object-cover"
               />

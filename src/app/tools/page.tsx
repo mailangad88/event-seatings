@@ -291,7 +291,7 @@ export default function ToolsPage() {
               <li key={t.slug}>
                 <Link href={`/tools/${t.slug}`} className="card card-hover block h-full overflow-hidden">
                   <div className="media aspect-[4/3] rounded-none">
-                    <Image src={img.src} alt={img.alt} fill priority={n === 0} sizes="(min-width: 640px) 30vw, 100vw" className="object-cover" />
+                    <Image src={img.src} alt={img.alt} fill priority={n === 0} fetchPriority={n === 0 ? "high" : undefined} sizes="(min-width: 640px) 30vw, 100vw" className="object-cover" />
                   </div>
                   <div className="p-5">
                     <p className="display-3">{t.name}</p>

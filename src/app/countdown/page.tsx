@@ -63,7 +63,7 @@ export default function CountdownPage() {
         actions={<a href="#countdown" className="btn-accent">Start my countdown</a>}
         media={
           <figure className="media aspect-[4/3] shadow-lift">
-            <Image src={img.src} alt={img.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            <Image src={img.src} alt={img.alt} fill priority fetchPriority="high" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </figure>
         }
       />
