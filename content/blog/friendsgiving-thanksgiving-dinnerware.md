@@ -132,4 +132,4 @@ Plan containers for takeaway, and keep rental dishes separate so they do not lea
 
 ## Plan the holiday table early
 
-[Book a free 15-minute seating call](/book) and we will help you count plates, tables and chairs for your Chicago-area holiday dinner, or [request a quote](/quote).
+[Book a free 15-minute seating call](/book) and we will help you count plates, tables and chairs for your Chicago-area holiday dinner, or [request a quote](/quote). See our [Thanksgiving & Friendsgiving rental page](/events/thanksgiving-friendsgiving) for chair styles and a planning checklist.

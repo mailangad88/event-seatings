@@ -140,4 +140,4 @@ Rinse off food and stack them in the crates the company provides. Most companies
 
 ## Plan your Christmas rentals
 
-For a bigger plan, see [Thanksgiving dinner for a crowd](/blog/thanksgiving-dinner-for-a-crowd), [holiday party at home rentals](/blog/holiday-party-at-home-rentals-chicago) and [December holiday party rentals](/blog/december-holiday-party-rentals-chicago). Then [get a quote](/quote) with your guest count and dates, or [book a free 15-minute planning call](/book). One call covers the whole rental list.
+For a bigger plan, see [Thanksgiving dinner for a crowd](/blog/thanksgiving-dinner-for-a-crowd), [holiday party at home rentals](/blog/holiday-party-at-home-rentals-chicago) and [December holiday party rentals](/blog/december-holiday-party-rentals-chicago), or our [Christmas & New Year's Eve rental page](/events/christmas-new-years-eve) for chair styles and seating math. Then [get a quote](/quote) with your guest count and dates, or [book a free 15-minute planning call](/book). One call covers the whole rental list.
