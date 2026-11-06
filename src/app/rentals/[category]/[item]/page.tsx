@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { AddToQuoteButton } from "@/components/AddToQuoteButton";
+import { AvailabilityHint } from "@/components/AvailabilityHint";
 import { notFound } from "next/navigation";
 import { CallCta } from "@/components/CallCta";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewedStrip";
@@ -273,6 +274,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             <div className="mt-8 flex flex-wrap gap-4">
               <AddToQuoteButton id={i.id} minQty={i.minQty} perGuest={!!i.perGuest} from={`item-${i.id}`} />
             </div>
+            <AvailabilityHint />
             {(() => {
               // Show what a delivered order really costs, not just the rental rate.
               const qty = i.perGuest ? Math.max(i.minQty ?? 1, Math.ceil(100 * i.perGuest)) : Math.max(1, i.minQty ?? 1);
