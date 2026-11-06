@@ -59,6 +59,10 @@ const groups: { id: string; title: string; faqs: Faq[] }[] = [
         q: "Are there minimum orders?",
         a: "No. There's no minimum order with us. Order exactly what you need, and delivery is priced for your order size and address.",
       },
+      {
+        q: "Should I get a few quotes before deciding?",
+        a: "You're welcome to. Most rental companies only give you a price after a call or a form, so it's hard to compare. With us, you can see your full itemized price right on the site before you talk to anyone, so you know what you're comparing against.",
+      },
     ],
   },
   {
