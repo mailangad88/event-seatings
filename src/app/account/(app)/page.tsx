@@ -1,7 +1,7 @@
 import Link from "@/components/Link";
 import { Card, EventFacts, NeedsList, PageTitle, StageTrack, StatusPill, daysLabel } from "@/components/account/AccountUi";
 import { Icon } from "@/components/ui/Icon";
-import { currentAccount, firstName, fmtDay, nextEvent, type AccountEvent } from "@/lib/account";
+import { requireAccount, firstName, fmtDay, nextEvent, type AccountEvent } from "@/lib/account";
 import { usd } from "@/lib/catalog-types";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +26,7 @@ function upcomingStops(events: AccountEvent[]): Stop[] {
 }
 
 export default async function AccountOverview() {
-  const data = (await currentAccount())!;
+  const data = await requireAccount();
   const { events } = data;
   const next = nextEvent(events);
   const upcoming = events.filter((e) => (e.daysLeft ?? 0) >= 0 && e.stage < 5);
