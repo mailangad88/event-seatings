@@ -43,6 +43,7 @@ A living record of every public route on the Beyond Chiavari site (formerly "Eve
 
 - Next cluster after the near-west Cook County batches: audited the far south Cook County suburbs and northern Will County for real towns still missing a page. Added Markham, Robbins, Posen, Dixmoor, Riverdale, Calumet Park, Burnham, Thornton, Glenwood, South Chicago Heights, Ford Heights and Beecher (Will County, near the Indiana border) in `src/data/geo/areas/far-south-cook.ts`.
 - Same `Location` schema and shared visuals (area map, chair renders, Service/FAQPage/BreadcrumbList schema) as every other `/chair-rentals/[slug]` page. South Chicago Heights' copy is explicit that it's a separate village from neighboring Chicago Heights, since the names are easy to confuse.
+- Fixed a title-tag collision found by the SEO audit: `/party-rentals/[area]/[category]`'s meta title used the full category phrase, which pushed South Chicago Heights' title past 65 characters and truncated it to the exact same text as the existing South Chicago neighborhood page. Switched to the shorter category name so titles stay under the limit.
 - `npx tsx scripts/check-geo.ts`: 309 locations, 0 errors (was 297). `node scripts/check-copy.mjs` passes.
 
 ## Changes in this release (2026-11-06): 4 more near-west Cook County suburb pages
