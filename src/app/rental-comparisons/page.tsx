@@ -8,8 +8,8 @@ import { routeExists } from "@/lib/routes";
 import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
-const title = "Event Rental Comparisons: Tables, Tents, Linens and Lighting";
-const description = "Side-by-side event rental comparisons for Chicago hosts: round vs banquet tables, frame vs pole tents, clear vs white tents, tablecloth lengths, string lights vs uplights, dance floors, cocktail tables and heaters.";
+const title = "Event Rental Comparisons for Chicago Hosts";
+const description = "Side-by-side comparisons for Chicago hosts: tables, tents, tablecloths, lighting, dance floors and heaters, so you can pick with confidence.";
 const hero = render("tent-reception-dusk");
 
 export const metadata: Metadata = {

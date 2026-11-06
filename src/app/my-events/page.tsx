@@ -6,8 +6,8 @@ import { routeExists } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { signInOpen } from "@/lib/account-auth";
 
-const title = "My Events: Free Event Countdown, Checklist and Reminders";
-const description = `Save your wedding, party or corporate event in ${site.name}'s free planner: a countdown, a checklist dated back from your event, Chicago weather and sunset for your date, calendar reminders and a share link. No account needed.`;
+const title = "My Events: Free Countdown and Checklist";
+const description = `Save your event in ${site.name}'s free planner: a countdown, a dated checklist, weather for your date, calendar reminders and a share link.`;
 
 export const metadata: Metadata = {
   title,

@@ -4,8 +4,8 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "tables-and-chairs";
-const title = "Tables and Chairs Calculator for Events and Weddings";
-const description = "Free calculator: how many round or banquet tables and chairs you need for your guest count, plus cocktail highboys, ceremony chairs, buffet, bar, cake and gift tables, with rough Chicago rental prices.";
+const title = "Tables and Chairs Calculator for Your Event";
+const description = "See how many round or banquet tables and chairs you need for your guest count, plus highboys, buffet, bar and gift tables, with rough Chicago prices.";
 
 export const metadata = toolMetadata(slug, title, description);
 

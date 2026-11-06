@@ -23,8 +23,8 @@ export type Comparison = {
 export const comparisons: Comparison[] = [
   {
     slug: "round-vs-banquet-tables",
-    title: "Round vs Banquet Tables: Which Is Better for Your Event?",
-    description: "Round tables or long banquet tables for a wedding, party or gala? Compare seating, space, conversation, linens and look, with Chicago rental prices and a calculator for your guest count.",
+    title: "Round vs Banquet Tables: Which Fits Your Event?",
+    description: "Round or long banquet tables for your wedding or party? Compare seating, space and look, with Chicago rental prices and a guest-count calculator.",
     a: { id: "round-60", name: '60" round table', item: "round-60" },
     b: { id: "banquet-8ft", name: "8' banquet table", item: "banquet-8ft" },
     answer: "Round tables seat eight to ten guests facing each other, which is best for conversation and a classic reception look. Banquet tables line up into long rows, seat more people in a narrow room and suit family-style dinners. Many events mix both: rounds for guests, banquets for the head table, buffet and bar.",
@@ -52,8 +52,8 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "frame-tent-vs-pole-tent",
-    title: "Frame Tent vs Pole Tent: Which Tent Is Right for Your Event?",
-    description: "Frame tent or pole tent for a wedding, graduation party or backyard event? Compare surfaces, centre poles, setup, look and sizes, with Chicago rental prices and a tent size calculator.",
+    title: "Frame Tent vs Pole Tent: Which Fits Your Event?",
+    description: "Frame tent or pole tent for your event? Compare surfaces, centre poles, setup and look, with Chicago rental prices and a tent size calculator.",
     a: { id: "frame-tent-20x40", name: "Frame tent", item: "frame-tent-20x40" },
     b: { id: "pole-tent-40x60", name: "Pole tent", item: "pole-tent-40x60" },
     answer: "A frame tent is held up by a metal frame with no centre poles, so it can stand on grass, concrete, asphalt or a deck. A pole tent uses centre poles and stakes in the ground, giving a peaked, classic look. Choose frame for hard surfaces and open floor space; pole for lawns and a traditional style.",
@@ -80,8 +80,8 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "clear-top-tent-vs-white-tent",
-    title: "Clear-Top Tent vs White Tent: Pros, Cons and When to Choose",
-    description: "Clear-top or white tent for your Chicago wedding or party? Compare the view, heat, light, privacy and decor, with rental prices and tools to size your tent and plan lighting.",
+    title: "Clear-Top vs White Tent: Which Should You Rent?",
+    description: "Clear-top or white tent for your Chicago event? Compare the view, heat, light and privacy, with rental prices and a tent size calculator.",
     a: { id: "clear-top-tent", name: "Clear-top tent", item: "clear-top-tent" },
     b: { id: "frame-tent-20x40", name: "White frame tent", item: "frame-tent-20x40" },
     answer: "A clear-top tent shows the sky, trees and stars and looks great at night with string lights, but it lets in sun and heat during the day. A white tent gives shade, softer light for photos and privacy. Choose clear for evening events with a view, white for daytime and hot afternoons.",
@@ -107,8 +107,8 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "floor-length-vs-lap-length-tablecloths",
-    title: "Floor-Length vs Lap-Length Tablecloths: Which Should You Rent?",
-    description: "Floor-length or lap-length tablecloths for your event? Compare the look, cost, sizes and when each works, with a tablecloth size calculator and Chicago linen rental prices.",
+    title: "Floor-Length vs Lap-Length Tablecloths",
+    description: "Floor-length or lap-length tablecloths for your event? Compare the look, cost and sizes, with a linen calculator and Chicago rental prices.",
     a: { id: "round-floor-length", name: "Floor-length cloth", item: "round-floor-length" },
     b: { id: "round-lap-length", name: "Lap-length cloth", item: "round-lap-length" },
     answer: "Floor-length tablecloths reach the ground and hide the table legs for a formal, finished look, so they are the usual choice for weddings and galas. Lap-length cloths hang about 12 inches and show the legs, which is fine for casual parties, buffets and backyard events. A 60-inch round takes a 120-inch cloth for floor length.",
@@ -135,8 +135,8 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "string-lights-vs-uplighting",
-    title: "String Lights vs Uplighting: Which Event Lighting Do You Need?",
-    description: "String lights or uplights for your wedding or party? Compare where each works, the mood they create, power needs and how many you need, with a lighting calculator and Chicago rental prices.",
+    title: "String Lights vs Uplighting: Which Do You Need?",
+    description: "String lights or uplights for your event? Compare where each works, the mood they create and power needs, with a lighting calculator.",
     a: { id: "string-lights", name: "String lights", item: "string-lights" },
     b: { id: "uplight", name: "Uplights", item: "uplight" },
     answer: "String lights hang overhead and create a warm, glowing ceiling, ideal for tents, patios and backyards. Uplights sit on the floor and wash walls or columns with colour, ideal for ballrooms, lofts and halls with walls worth lighting. Many events use both: string lights for the canopy, uplights for walls and the bar.",
@@ -162,8 +162,8 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "wood-dance-floor-vs-led-dance-floor",
-    title: "Wood-Look vs LED Dance Floor: Which Should You Rent?",
-    description: "Classic wood-look or white vinyl dance floor, or a light-up LED floor? Compare look, sizing, power and price per square foot, with a dance floor size calculator and Chicago rental prices.",
+    title: "Wood-Look vs LED Dance Floor: Which to Rent?",
+    description: "Classic wood-look or a light-up LED dance floor? Compare look, sizing and price per square foot, with a dance floor size calculator.",
     a: { id: "dance-floor", name: "Wood-look dance floor", item: "dance-floor" },
     b: { id: "led-dance-floor", name: "LED dance floor", item: "led-dance-floor" },
     answer: "A wood-look or white vinyl dance floor is built from 3 by 3 foot panels and gives a classic, timeless look that suits any style. An LED dance floor lights up and changes colour, which makes it the centre of the party but needs power and costs more per square foot. Size either with our dance floor calculator.",
@@ -189,7 +189,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "highboy-vs-lowboy-cocktail-tables",
-    title: "Highboy vs Lowboy Cocktail Tables: Which Do You Need?",
+    title: "Highboy vs Lowboy Cocktail Tables",
     description: "Cocktail highboys or lowboys for your cocktail hour or party? Compare height, seating, guest flow and linens, with rental prices and a tables and chairs calculator.",
     a: { id: "cocktail-highboy", name: "Cocktail highboy", item: "cocktail-highboy" },
     b: { id: "cocktail-lowboy", name: "Cocktail lowboy", item: "cocktail-lowboy" },
@@ -216,8 +216,8 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "patio-heater-vs-tent-heater",
-    title: "Patio Heater vs Forced-Air Tent Heater for Outdoor Events",
-    description: "Patio heaters or a forced-air tent heater for a fall or spring event in Chicago? Compare open vs enclosed spaces, coverage, fuel and setup, with rental prices and a rain plan checklist.",
+    title: "Patio Heater vs Tent Heater: Which to Rent?",
+    description: "Patio heaters or a forced-air tent heater for a Chicago event? Compare coverage, fuel and setup, with rental prices and a rain plan checklist.",
     a: { id: "patio-heater", name: "Patio heater", item: "patio-heater" },
     b: { id: "tent-heater", name: "Forced-air tent heater", item: "tent-heater" },
     answer: "Patio heaters are free-standing propane heaters that warm guests close by, best for open patios and tents with sidewalls up. A forced-air tent heater blows warm air through ducts into an enclosed tent, heating the whole space; our catalog lists one as heating 800 to 1,000 sq ft. Choose by whether your space is open or enclosed.",

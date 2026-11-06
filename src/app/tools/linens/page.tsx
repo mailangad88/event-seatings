@@ -4,8 +4,8 @@ import { ToolShell, toolMetadata } from "@/components/tools/ToolShell";
 import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "linens";
-const title = "Tablecloth Size Calculator: Round and Banquet Linens";
-const description = "Free tablecloth size calculator. Pick your table (48, 60 or 72 inch round, 6 or 8 foot banquet, cocktail highboy) and drop length to get the right standard linen size, plus napkin and runner counts and rough rental prices.";
+const title = "Tablecloth Size Calculator for Any Table";
+const description = "Pick your table size and drop length to get the right standard linen size, plus napkin and runner counts and rough rental prices.";
 
 export const metadata = toolMetadata(slug, title, description);
 

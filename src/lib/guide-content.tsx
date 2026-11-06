@@ -484,6 +484,12 @@ function buildCompare(slug: string): GuideProps | null {
           </>
         ),
       },
+      {
+        h: "Booking either chair",
+        body: (
+          <p>Both chairs are delivered, set up and picked up by our crew for one quote, with a damage waiver and no separate booking fee. For a Saturday from May to October, book 3 to 6 months ahead so the chair you want is still available; weekday and winter dates often book 2 to 4 weeks out.</p>
+        ),
+      },
     ],
     faqs: [
       { q: `Which is cheaper, the ${short(a)} or the ${short(b)}?`, a: `The ${cheaper.name} (${cheaper.estPrice} per chair, estimated) costs less than the ${dearer.name} (${dearer.estPrice}). For 100 chairs the midpoint difference is about ${usd(diff100)}.` },

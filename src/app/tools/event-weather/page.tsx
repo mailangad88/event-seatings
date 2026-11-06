@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 export const revalidate = 86400;
 
 const title = "Chicago Event Weather and Sunset Planner";
-const description = "Enter your event date and times to see the normal high, sunset, golden light and when it gets dark in Chicago, with what to rent for lighting, heat, shade and rain. Free, with a month-by-month table.";
+const description = "Enter your event date and times to see the normal high, sunset, golden light and when it gets dark in Chicago, with what to rent for it.";
 
 export const metadata: Metadata = {
   title,

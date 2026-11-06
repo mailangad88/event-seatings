@@ -14,8 +14,8 @@ import { site } from "@/lib/site";
 // "This month" moves with the calendar, so re-render daily.
 export const revalidate = 86400;
 
-const title = "Event Ideas by Month: What to Plan and Book in Chicago Now";
-const description = `Seasonal event ideas for every month in Chicago: what people are celebrating, what to rent, what to book now for later events, and planning guides. Updated each month by ${site.name}.`;
+const title = "Event Ideas by Month for Chicago Hosts";
+const description = `Seasonal event ideas for every month in Chicago: what's being celebrated, what to rent, and what to book now. Updated monthly by ${site.name}.`;
 
 export const metadata: Metadata = {
   title,

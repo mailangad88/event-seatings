@@ -8,8 +8,8 @@ import { render } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { tasks } from "@/lib/tools/timeline";
 
-const title = "Event Countdown: Days Until Your Wedding or Party";
-const description = "Free event countdown for weddings, parties and corporate events. Make a live countdown page to share with family and friends, see your next planning deadlines, add them to your calendar and sign up for milestone reminders.";
+const title = "Event Countdown for Your Wedding or Party";
+const description = "Make a live countdown page to share with family and friends, see your next planning deadlines, add them to your calendar and get milestone reminders.";
 
 const img = render("sweetheart-stage");
 
