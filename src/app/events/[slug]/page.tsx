@@ -32,7 +32,10 @@ export async function generateMetadata(props: PageProps<"/events/[slug]">): Prom
   return seo({
     title: ev.metaTitle,
     description: ev.metaDescription,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      ...(ev.slug === "quinceaneras" && { languages: { "en-US": path, "es-US": "/es/quinceaneras" } }),
+    },
     openGraph: { title: `${ev.metaTitle} | ${site.name}`, description: ev.metaDescription, url: path },
   });
 }
