@@ -406,6 +406,35 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/blog/graduation-ceremony-chair-rental-chicago` | Commencement on a field: chair counts, layout, turf, rain plan (daily post) | 2026-11-03 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ✅ Chicago-area schools | ✅ field-layout SVG, chair pair, count table | ✅ | ✅ `/book` call + calculator download |
 | `/blog/gym-floor-event-chair-rental` | Events in a school or church gym: floor protection, chairs, counts (daily post) | 2026-11-04 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area schools and churches (tag only) | ✅ floor-protection SVG, chair pair, count table | ✅ | ✅ `/book` call + calculator download |
 
+### Chicago high-intent gap-fill batch (added 2026-11-06, overnight autonomous run)
+
+20 new posts after checking the existing 721 posts plus the programmatic location/category pages for duplicates. Covers neighborhoods and landmarks with no dedicated guide yet, plus institutional and lifestyle audiences the site hadn't addressed. All have answer-box quick answers, an inline SVG diagram, a stat grid, 6 FAQs (FAQPage schema), 6+ internal links and pass `node scripts/check-copy.mjs`.
+
+| Route | Purpose | Last touched | SEO | AEO | GEO | Visuals | FAQ | CTA |
+|---|---|---|---|---|---|---|---|---|
+| `/blog/gold-coast-party-planning-chicago` | Gold Coast venues, buildings, logistics | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Gold Coast | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/river-north-party-planning-chicago` | River North venues, buildings, logistics | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ River North | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/south-loop-party-planning-chicago` | South Loop venues, buildings, logistics | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ South Loop | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/the-loop-corporate-event-rentals-chicago` | Corporate events in the Loop | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ The Loop | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/bucktown-party-planning-chicago` | Bucktown venues, buildings, logistics | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Bucktown | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/navy-pier-event-rentals-chicago` | What to know renting for a Navy Pier event | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Navy Pier, lakefront wind | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/millennium-park-and-grant-park-event-rentals-chicago` | Rentals for events at Millennium/Grant Park | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Park District permits | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/museum-campus-event-rentals-chicago` | Galas/fundraisers at Field Museum, Shedd, Adler | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Museum Campus | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/wrigleyville-sports-watch-party-rentals-chicago` | Game-day rooftop/backyard watch parties | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Wrigleyville | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/ohare-and-midway-airport-area-event-rentals-chicago` | Hotel meetings/events near O'Hare, Midway | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ airport-area hotels | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/hospital-and-healthcare-event-rentals-chicago` | Staff, donor and family events at hospitals | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ⚠️ generic (no named facility) | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/senior-living-and-nursing-home-event-rentals-chicago` | Family/resident events, ADA-aware layouts | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ⚠️ generic (no named facility) | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/public-library-event-rentals-chicago` | Rentals for library meeting-room events | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ⚠️ generic (no named branch) | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/school-and-class-reunion-rentals-chicago` | Planning a class/school reunion rental order | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago venues | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/block-club-and-neighborhood-association-event-rentals-chicago` | Recurring block club/HOA events (not a one-day block party) | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago block clubs | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/condo-and-apartment-clubhouse-event-rentals-chicago` | Booking a building's amenity/party room | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago condo buildings | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/airbnb-and-vacation-rental-event-chicago` | Renting extra seating for a short-term rental party | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago short-term rentals | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/dog-friendly-and-pet-friendly-event-rentals-chicago` | Including dogs at a backyard party | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago backyards/parks | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/downtown-chicago-hotel-wedding-rentals` | Bringing outside rental chairs into a hotel ballroom | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ downtown Chicago hotels | ✅ diagram, stat grid | ✅ | ✅ |
+| `/blog/chicago-cultural-center-and-civic-venue-rentals` | Renting for events at city-owned civic/cultural venues | 2026-11-06 | ✅ | ✅ quick answer, FAQPage (6) | ✅ Chicago civic venues | ✅ diagram, stat grid | ✅ | ✅ |
+
+Remaining: none blocking — `npm run seo-audit --ci` scored 99.1/100 across 7,281 pages with these included, 0 blocking errors. Real photo/3D hero art could replace the generic SVG art later, same as other guides awaiting that pass.
+
 ## Journal guides (added 2026-11-02, PR #16)
 
 501 new guides in 19 topic hubs (`/blog/topic/[topic]`). The tablecloth size chart is the model post. Every guide passed `node scripts/check-posts.mjs`: a quick-answer box, at least one custom inline SVG diagram (with `<title>`/`<desc>`) plus at least two more visual blocks, 5 or more FAQs (FAQPage schema), BlogPosting + BreadcrumbList schema, 900+ words, valid internal links and a /book or /quote CTA. Hero art: `public/blog/art/<topic>.svg` (generated by `scripts/journal-art.py`) or a chair photo. Writing rules: `docs/journal-writing-guide.md`.

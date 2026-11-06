@@ -8,6 +8,7 @@ import { readyPackages } from "@/lib/packages";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
+import { termsPolicy } from "@/lib/terms";
 
 const pct = Math.round(PAYMENT_SCHEDULE.firstShare * 100);
 const pct2 = Math.round(PAYMENT_SCHEDULE.secondShare * 100);
@@ -24,7 +25,7 @@ const included: { icon: IconName; title: string; text: string }[] = [
   { icon: "truck", title: "Delivery and pickup", text: "We arrange drop-off before your event and pickup after it, at times that work for your venue." },
   { icon: "users", title: "Setup if you want it", text: "Chairs placed, tables set and linens on. Leave it off your quote if you'd rather do it yourself." },
   { icon: "phone", title: "One person to call", text: `A free ${site.callLength} call before you book, and the same person for every change after.` },
-  { icon: "calendar", title: "Changes until 14 days out", text: "Add or drop quantities at no charge until 14 days before your event, subject to stock." },
+  { icon: "calendar", title: `Changes until ${termsPolicy.changeCutoffDays} days out`, text: `Add or drop quantities at no charge until ${termsPolicy.changeCutoffDays} days before your event, subject to stock.` },
   { icon: "shield", title: "If an item falls through", text: "We replace it with the same or better at the price you agreed, or refund what you paid for it." },
 ];
 

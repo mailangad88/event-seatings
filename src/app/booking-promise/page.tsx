@@ -6,6 +6,7 @@ import { DEPOSIT_LABEL, PAYMENT_SCHEDULE } from "@/lib/catalog-types";
 import { scenes } from "@/lib/scenes";
 import { replyPromise, site } from "@/lib/site";
 import { seo } from "@/lib/seo";
+import { termsPolicy } from "@/lib/terms";
 
 export const metadata: Metadata = seo({
   title: "Payments, Deposits & Our Booking Promise",
@@ -36,8 +37,8 @@ const promises: { icon: IconName; title: string; text: string }[] = [
   },
   {
     icon: "calendar",
-    title: "Free changes until 14 days out",
-    text: "Add or drop quantities and swap items at no charge until 14 days before your event, subject to stock.",
+    title: `Free changes until ${termsPolicy.changeCutoffDays} days out`,
+    text: `Add or drop quantities and swap items at no charge until ${termsPolicy.changeCutoffDays} days before your event, subject to stock.`,
   },
   {
     icon: "heart",

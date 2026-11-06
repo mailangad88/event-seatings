@@ -1,3 +1,4 @@
+import { safeEqual } from "@/lib/admin-auth";
 import { backupConfigured, backupDeleteLead, backupListLeads } from "@/lib/lead-backup";
 import { notifyOwner } from "@/lib/notify";
 import { databaseConfigured, importLead, listLeadsSince, updateLead, type Lead } from "@/lib/store";
@@ -16,7 +17,7 @@ const isSpam = (l: Lead) => (l.lost_reason ?? "").startsWith("Spam check");
 
 export async function GET(request: Request) {
   const secret = process.env.CRON_SECRET;
-  if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
+  if (!secret || !safeEqual(request.headers.get("authorization") ?? "", `Bearer ${secret}`)) {
     return Response.json({ error: "unauthorized" }, { status: 401 });
   }
   const dry = new URL(request.url).searchParams.get("dry") === "1";
