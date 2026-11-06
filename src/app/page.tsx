@@ -9,6 +9,7 @@ import { categoryTile } from "@/lib/scenes";
 import { site } from "@/lib/site";
 import type { Metadata } from "next";
 import { seo } from "@/lib/seo";
+import { eventPath, getEventType } from "@/data/geo";
 
 export const metadata: Metadata = seo({
   title: { absolute: "Beyond Chiavari | Chicago Event Rentals: Chairs, Tables, Tents" },
@@ -40,6 +41,10 @@ const faqs: Faq[] = [
     a: `Chicago and the suburbs, including ${site.serviceArea.slice(1).join(", ")}. Ask about venues farther out.`,
   },
 ];
+
+// The holiday season occasions, pointing to their dedicated /events pages so this quarter's
+// seasonal searches have a clear path in from the home page.
+const holidaySlugs = ["thanksgiving-friendsgiving", "holiday-office-parties", "christmas-new-years-eve", "diwali-parties", "hanukkah-parties"];
 
 // The hero uses our own rendered tablescape (not the styled Gemini version, which has guests in it)
 // so the home page opens on an empty, just-set-up table.
@@ -164,6 +169,29 @@ export default function Home() {
         />
       </Section>
 
+
+      {/* Seasonal: links into the dedicated holiday event pages for this quarter's searches. */}
+      <Section
+        tone="sand"
+        eyebrow="This season"
+        title="Hosting a holiday party?"
+        intro="Thanksgiving, office parties, Christmas, New Year's Eve, Diwali and Hanukkah each get their own planning page with chair picks, seating math and a checklist."
+        action={<Link href="/events/holiday-parties" className="link-line">All holiday seating <Icon name="arrow" size={16} /></Link>}
+      >
+        <ul className="flex flex-wrap gap-3">
+          {holidaySlugs.flatMap((slug) => {
+            const ev = getEventType(slug);
+            if (!ev) return [];
+            return [
+              <li key={slug}>
+                <Link href={eventPath(ev)} className="chip transition-colors hover:border-gold hover:text-ink">
+                  {ev.shortName}
+                </Link>
+              </li>,
+            ];
+          })}
+        </ul>
+      </Section>
 
       <QuoteCta source="home" />
 

@@ -148,4 +148,4 @@ Chairs, tables, linens, a buffet line, a bar, coat racks and sometimes a dance f
 
 ## Ready to price your rentals?
 
-Holiday weekends in Chicago go quickly for rentals too. Tell us your date and headcount early and we will help you hold what you need. You can [request a quote](/quote) with your guest count and ZIP code, or [book a free planning call](/book) and we will walk through your list with you.
+Holiday weekends in Chicago go quickly for rentals too. Tell us your date and headcount early and we will help you hold what you need. You can [request a quote](/quote) with your guest count and ZIP code, or [book a free planning call](/book) and we will walk through your list with you. See our [holiday office party rental page](/events/holiday-office-parties) for chair styles and seating math.

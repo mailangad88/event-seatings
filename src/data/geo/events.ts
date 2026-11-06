@@ -1266,4 +1266,437 @@ export const eventTypes: EventType[] = [
     ],
     relatedPosts: ["how-many-chairs-do-i-need"],
   },
+  {
+    slug: "thanksgiving-friendsgiving",
+    name: "Thanksgiving & Friendsgiving Chair Rentals",
+    shortName: "Thanksgiving & Friendsgiving",
+    metaTitle: "Thanksgiving & Friendsgiving Chair Rentals Chicago",
+    metaDescription:
+      "Chair and table rentals for Thanksgiving and Friendsgiving dinners across Chicago and the suburbs. Seat 12 to 40 around one long table. Get a quote.",
+    headline: "Extra seats for *Thanksgiving* and Friendsgiving",
+    intro:
+      "We rent tables and chairs for Thanksgiving and Friendsgiving dinners across Chicago and the suburbs, so your dining room can seat 12, 20 or 40 without borrowed folding chairs. Tell us your headcount and we'll work out the tables, chairs and linens for your room. Request a quote with your date.",
+    story: [
+      "The week of Thanksgiving, Chicago-area homes fill past their usual seating. A dining table built for 8 is asked to host 20 cousins, and a Friendsgiving the Saturday before often has an even bigger guest list than the holiday itself.",
+      "The fix is almost always the same: one or two long tables instead of a mismatched mix of card tables and kitchen chairs, with enough matching seating that nobody ends up on a step stool. We size tables and chairs to your room, not just your guest count, since a long table needs more floor space than a few rounds.",
+      "Delivery that week comes with its own timing. Many families want everything dropped off a day or two early so the table can be set Wednesday night, and picked up after the weekend once out-of-town guests head home. We plan around that window rather than a single rushed morning.",
+    ],
+    painPoints: [
+      {
+        problem: "Your dining table seats 8, and 22 people are coming.",
+        solution:
+          "We'll add a second table or a long banquet table plus matching chairs, sized to fit your dining room or living room.",
+      },
+      {
+        problem: "Borrowed card-table chairs don't match and wobble.",
+        solution:
+          "A single stackable style like the garden folding or bentwood chair keeps the whole table looking planned.",
+      },
+      {
+        problem: "Friendsgiving guest count keeps changing as people RSVP.",
+        solution:
+          "We'll quote a working number with a small buffer and tell you the latest date you can adjust it before delivery.",
+      },
+      {
+        problem: "You want the table set up a day or two before, not the morning of.",
+        solution:
+          "We'll plan an early-week drop-off and a pickup after the weekend so the table is ready whenever you host.",
+      },
+    ],
+    seatingMath: [
+      { label: "8 ft table", value: "Seats 8 along the sides, or 10 with chairs on the ends" },
+      { label: "Table width", value: "Plan 20-24 inches of table edge per guest" },
+      { label: "Extra chairs", value: "Add 2-3 for a kids table or last-minute guests" },
+      { label: "Buffet line", value: "Keep a few feet clear in front for guests to circulate" },
+    ],
+    checklist: [
+      "Lock in a headcount, including a kids table if you're using one",
+      "Measure the room to see how many tables fit",
+      "Pick a chair style that suits a long dinner table",
+      "Decide on a buffet or seated, family-style meal",
+      "Plan delivery a day or two early and pickup after the weekend",
+      "Request a quote with your date and guest count",
+    ],
+    recommendedChairs: [
+      { slug: "garden-folding", why: "Our most affordable stackable chair, easy to set around a long table and just as easy to clear away after." },
+      { slug: "bentwood", why: "A warmer, café-style look for a dinner table that feels a bit more dressed up." },
+      { slug: "cross-back", why: "Sturdy wood seating that suits a rustic or farmhouse table setting." },
+    ],
+    faqs: [
+      {
+        q: "Can I rent tables and chairs for Thanksgiving dinner in Chicago?",
+        a: "Yes. We deliver tables, chairs and linens across Chicago and the suburbs for Thanksgiving and Friendsgiving. Request a quote with your headcount and we'll size everything to your room.",
+      },
+      {
+        q: "How many chairs do I need for a Friendsgiving of 20?",
+        a: "Plan one chair per guest, plus two or three extras for late additions. Two 8-foot tables or one long banquet table usually seats 20 comfortably.",
+      },
+      {
+        q: "Can the table be set up a few days before Thanksgiving?",
+        a: "Often, yes. Many families like the table in place by Tuesday or Wednesday. Tell us your preferred window and we'll plan the delivery around it.",
+      },
+      {
+        q: "When can you pick the tables and chairs back up?",
+        a: "Ask about pickup timing when you request your quote. Many hosts prefer a pickup after the weekend once out-of-town guests have left.",
+      },
+      {
+        q: "What's the most affordable chair for a big Thanksgiving table?",
+        a: "Our teak garden folding chair has an estimated range of about $5 to $7 per chair, and it stacks easily for storage between uses.",
+      },
+      {
+        q: "Can you deliver during Thanksgiving week traffic and early snow?",
+        a: "Yes, we build extra time into winter and holiday-week deliveries. Share your address and any parking or alley access notes when you book.",
+      },
+    ],
+    relatedPosts: [
+      "thanksgiving-dinner-for-a-crowd",
+      "thanksgiving-week-rental-delivery-and-pickup",
+      "friendsgiving-party-for-20-rentals",
+      "friendsgiving-thanksgiving-dinnerware",
+    ],
+  },
+  {
+    slug: "holiday-office-parties",
+    name: "Holiday Office Party Chair Rentals",
+    shortName: "Holiday Office Parties",
+    metaTitle: "Holiday Office Party Rentals in Chicago",
+    metaDescription:
+      "Chair and table rentals for company holiday parties across Chicago and the suburbs, from Loop offices to banquet halls. Itemized quotes for finance. Get a quote.",
+    headline: "Chairs for the *company holiday party*",
+    intro:
+      "We rent chairs and tables for company holiday parties across Chicago and the suburbs, whether it's a cocktail party in your own office, a sit-down dinner at a banquet hall, or a bigger event for several hundred people. Request a quote and we'll plan around your building and your December calendar.",
+    story: [
+      "December fills fast for Chicago offices. A holiday party might mean clearing out a Loop conference floor for a cocktail hour, renting out the back room of a restaurant, or booking a hotel ballroom for a sit-down dinner with awards and a DJ.",
+      "Office buildings add their own rules on top of the party itself. Freight elevator reservations, loading dock windows and sometimes a vendor certificate of insurance are routine downtown, and they matter more in December when every building in the block seems to be hosting something the same week.",
+      "Finance usually wants paperwork, not surprises. We'll give you an itemized quote with chairs, delivery and setup listed separately, so it's easy to get approved before the date closes in.",
+    ],
+    painPoints: [
+      {
+        problem: "Office furniture isn't right for a party, and there aren't enough seats.",
+        solution:
+          "We'll bring in a matching chair style, from simple stackable seating to something nicer for a sit-down dinner, sized to your headcount.",
+      },
+      {
+        problem: "Strict building rules in December's busy delivery season.",
+        solution:
+          "We'll ask for your property manager's freight and dock windows early and build delivery around them.",
+      },
+      {
+        problem: "Mixing a cocktail hour with a seated program or awards.",
+        solution:
+          "We'll help you plan lounge-style seating for mingling plus rows or rounds for the program, and handle the changeover.",
+      },
+      {
+        problem: "Approval takes time, and the date is getting closer.",
+        solution:
+          "Your quote itemizes chairs, delivery and setup, so it's easy to send up the chain quickly.",
+      },
+    ],
+    seatingMath: [
+      { label: "Cocktail party", value: "Seat roughly a third of guests, more if many are standing a long time" },
+      { label: "Seated dinner", value: "One chair per guest, plus a couple of extras" },
+      { label: "60-inch round", value: "Seats 8 comfortably, 10 snugly" },
+      { label: "Coat space", value: "Plan a rack or room for coats, which take up real floor space in winter" },
+    ],
+    checklist: [
+      "Confirm headcount and whether it's a mingling party or a seated dinner",
+      "Get your building's freight, dock and any COI requirements",
+      "Choose a chair style that fits the room and the budget",
+      "Plan seating for any program, awards or speeches",
+      "Line up coat storage for a winter crowd",
+      "Request an itemized quote for approval",
+    ],
+    recommendedChairs: [
+      { slug: "shell", why: "Comfortable, stackable and a step up from folding chairs for an office cocktail hour." },
+      { slug: "infinity", why: "Polished metal seating that stacks fast for a same-day office changeover." },
+      { slug: "velvet-dining", why: "A festive upgrade in emerald or navy for a sit-down holiday dinner." },
+    ],
+    faqs: [
+      {
+        q: "When should I book chairs for a December office party in Chicago?",
+        a: "As early as you can. December weekends and even weeknights fill up fast across the city and suburbs. Booking a month or more ahead gives you the best choice of styles.",
+      },
+      {
+        q: "Can you deliver to an office building in the Loop or River North?",
+        a: "Yes. Most downtown buildings need a freight elevator reservation and a set loading dock time. Share your property manager's rules and we'll plan delivery around them.",
+      },
+      {
+        q: "Do you provide a certificate of insurance for building management?",
+        a: "Not yet. We don't issue certificates of insurance today, though we plan to as we grow. If your building requires one from outside vendors, check before you book and tell us on your planning call.",
+      },
+      {
+        q: "Can we get an itemized quote for finance approval?",
+        a: "Yes. Every quote lists chairs, delivery and setup as separate lines, so it's easy to send through an approval process.",
+      },
+      {
+        q: "What chairs work best for a company holiday party?",
+        a: "It depends on the format. Stackable shell or infinity chairs suit a mixer or cocktail hour, while velvet or Louis medallion chairs dress up a seated dinner.",
+      },
+      {
+        q: "Can you handle a quick room flip between a program and dinner?",
+        a: "Often, yes. Tell us your run of show and we'll plan stackable seating and timing that make a changeover realistic.",
+      },
+    ],
+    relatedPosts: [
+      "holiday-office-party-rentals-chicago",
+      "company-holiday-party-planning-timeline",
+      "chicago-winter-holiday-party-season-booking",
+    ],
+  },
+  {
+    slug: "christmas-new-years-eve",
+    name: "Christmas & New Year's Eve Chair Rentals",
+    shortName: "Christmas & New Year's Eve",
+    metaTitle: "Christmas & New Year's Eve Chair Rentals Chicago",
+    metaDescription:
+      "Chair and table rentals for Christmas dinners and New Year's Eve parties across Chicago and the suburbs. Velvet, ghost and gold chairs. Get a quote.",
+    headline: "Chairs for *Christmas dinner* and New Year's Eve",
+    intro:
+      "We rent tables and chairs for Christmas dinners and New Year's Eve parties across Chicago and the suburbs, from an extended family table at home to a black-tie countdown in a clubhouse or ballroom. Request a quote with your date and we'll plan around the season's busy weeks.",
+    story: [
+      "Christmas and New Year's bring two very different kinds of seating to plan in the same few weeks. Christmas is usually a family dinner that's outgrown the dining room, while New Year's Eve leans toward a dressed-up party with a countdown, a toast and often a later start time.",
+      "Snow, ice and early sunsets change how delivery works in December and early January. We plan extra time for winter routes, ask about shoveled paths and parking, and protect floors on the way in so chairs arrive clean.",
+      "The look each event wants is different too. A Christmas table calls for something warm, while a New Year's Eve room often wants gold or velvet for the midnight toast. We'll help you pick a finish that matches the occasion.",
+    ],
+    painPoints: [
+      {
+        problem: "The holidays mean more guests than your dining room usually seats.",
+        solution:
+          "We'll add a second table or extend the one you have, with matching chairs so the room looks finished, not patched together.",
+      },
+      {
+        problem: "Snow and ice on delivery day during a packed holiday week.",
+        solution:
+          "We plan winter deliveries with extra time and ask about shoveled paths and parking ahead of time.",
+      },
+      {
+        problem: "New Year's Eve needs a dressier look than everyday dining chairs.",
+        solution:
+          "Gold infinity or velvet dining chairs give a countdown party a black-tie feel without a full room overhaul.",
+      },
+      {
+        problem: "Venues and clubhouses book up for New Year's Eve early.",
+        solution:
+          "Reach out as soon as your date and venue are set. We'll hold your quote details and confirm availability quickly.",
+      },
+    ],
+    seatingMath: [
+      { label: "Seated dinner", value: "One chair per guest, plus a couple of extras for drop-ins" },
+      { label: "Cocktail party", value: "Seat roughly a third of guests, more for an older crowd" },
+      { label: "8 ft table", value: "Seats 8, or 10 with chairs on the ends" },
+      { label: "Coat space", value: "Plan a rack or room for winter coats, which take up floor space" },
+    ],
+    checklist: [
+      "Lock in your date early, since December and New Year's Eve fill fast",
+      "Decide if it's a seated dinner, a party, or both",
+      "Choose a festive chair style and finish",
+      "Plan for snow: shoveled paths, parking and floor protection",
+      "Confirm any venue or building rules for a bigger New Year's Eve crowd",
+      "Request a quote with your date and headcount",
+    ],
+    recommendedChairs: [
+      { slug: "velvet-dining", why: "Emerald, navy and champagne velvets feel right for a Christmas table or a winter evening." },
+      { slug: "infinity", why: "Gold or silver chairs that suit a New Year's Eve countdown and stack for quick setup." },
+      { slug: "ghost", why: "Clear acrylic catches candlelight and string lights without crowding a smaller room." },
+    ],
+    faqs: [
+      {
+        q: "Can I rent extra chairs for Christmas dinner at home?",
+        a: "Yes. Matching chairs let you extend your table without mixing kitchen stools and folding chairs. Let us know about stairs or tight entries when you book.",
+      },
+      {
+        q: "When should I book chairs for a New Year's Eve party in Chicago?",
+        a: "As soon as your venue and date are confirmed. Clubhouses, hotels and banquet halls fill up for New Year's Eve well ahead of the date.",
+      },
+      {
+        q: "Do you deliver chairs in the snow?",
+        a: "Yes, we plan winter deliveries with extra time. Clear paths and available parking help us get chairs in safely and on time.",
+      },
+      {
+        q: "What chairs work for a black-tie New Year's Eve countdown?",
+        a: "Gold or silver infinity chairs and velvet dining chairs both suit a dressed-up countdown party, and both stack for faster setup.",
+      },
+      {
+        q: "Can you deliver to a Christmas party in an office or high-rise?",
+        a: "Yes. Most downtown and high-rise buildings require freight elevator reservations and sometimes a COI, which we can't issue yet, so check with your building first.",
+      },
+      {
+        q: "Will the chairs be clean and dry when they arrive in winter?",
+        a: "We protect chairs during winter transport and wipe them down before setup, and we take care with floors when carrying chairs in from snowy sidewalks.",
+      },
+    ],
+    relatedPosts: [
+      "christmas-dinner-for-20-rentals-and-seating",
+      "planning-an-event-in-chicago-in-december",
+      "chicago-winter-holiday-party-season-booking",
+    ],
+  },
+  {
+    slug: "diwali-parties",
+    name: "Diwali Party Chair Rentals",
+    shortName: "Diwali Parties",
+    metaTitle: "Diwali Party Chair Rentals in Chicago",
+    metaDescription:
+      "Chair and table rentals for Diwali parties and card nights across Chicago and the suburbs, for homes, banquet halls and community centers. Get a quote.",
+    headline: "Seating for *Diwali* gatherings, big or small",
+    intro:
+      "We rent chairs and tables for Diwali parties across Chicago and the suburbs, from a family puja and dinner at home to a larger community celebration or card party at a banquet hall. Tell us your guest count and we'll help you plan the room. Request a quote with your date.",
+    story: [
+      "Diwali in the Chicago area ranges from an intimate puja and dinner for extended family in Naperville, Schaumburg or Hoffman Estates to larger community celebrations with dinner, dancing and card games that run late into the night.",
+      "The seating usually splits into a few areas: a space near the puja that stays open and uncluttered, dining tables for a full spread, and often card tables set up separately for guests who want to play. Each needs its own kind of chair.",
+      "Homes host most family Diwali gatherings, which means stairs, tight entries and hardwood floors to work around. We'll ask about access when you book and plan a drop-off that doesn't disrupt the day's preparations.",
+    ],
+    painPoints: [
+      {
+        problem: "Not enough matching chairs in a home for extended family and friends.",
+        solution:
+          "We'll fill the gap with one consistent style so the dining area looks planned, not pieced together from different rooms.",
+      },
+      {
+        problem: "The puja area needs to stay open, and seating can't crowd it.",
+        solution:
+          "We'll help you plan chair placement around the puja space so it stays clear and guests have somewhere to sit nearby.",
+      },
+      {
+        problem: "Card tables for the night's games need their own seating.",
+        solution:
+          "We can add separate card table chairs so the games area doesn't compete with the dinner seating.",
+      },
+      {
+        problem: "Narrow entries and stairs in a home delivery.",
+        solution:
+          "Tell us about stairs and entries when you book, and we'll plan the drop-off and suggest lighter chairs if access is tight.",
+      },
+    ],
+    seatingMath: [
+      { label: "Seated dinner", value: "One chair per guest, plus 2-3 extras for family who drop by" },
+      { label: "Card tables", value: "Plan 4 chairs per card table, or more for a rotating game" },
+      { label: "60-inch round", value: "Seats 8 comfortably, 10 snugly" },
+      { label: "Puja area", value: "Leave a few feet clear around the space for the ceremony" },
+    ],
+    checklist: [
+      "Confirm your guest count for the full evening",
+      "Decide whether card tables are part of the plan",
+      "Map out the puja space, dining area and any games area",
+      "Check stairs, elevators or tight entries for delivery",
+      "Pick a chair style for dining and, separately, for card tables",
+      "Request a quote with your date and address",
+    ],
+    recommendedChairs: [
+      { slug: "infinity", why: "Gold or silver stackable chairs that suit a festive table and set up quickly." },
+      { slug: "louis-medallion", why: "Upholstered elegance for elders and the main dining table." },
+      { slug: "garden-folding", why: "An affordable, easy-to-store option for card tables or overflow seating." },
+    ],
+    faqs: [
+      {
+        q: "Can I rent chairs and tables for a Diwali party at home?",
+        a: "Yes. We deliver to homes across Chicago and the suburbs. Let us know about stairs or tight entries when you book so we can plan the drop-off.",
+      },
+      {
+        q: "Do you set up separate seating for card tables?",
+        a: "Yes, we can quote card table chairs separately from your main dining seating, so the games area has its own setup.",
+      },
+      {
+        q: "How many chairs do I need for a Diwali gathering of 30?",
+        a: "Plan one chair per guest for a seated dinner, plus a small buffer for family who drop by. We'll help you count on a planning call.",
+      },
+      {
+        q: "Can you deliver chairs for a Diwali event at a banquet hall or community center?",
+        a: "Yes, we deliver across Chicago and the suburbs. Check with the hall or center on their outside rental policy and delivery windows.",
+      },
+      {
+        q: "Will the chairs crowd our puja space?",
+        a: "No, we'll plan placement so the puja area stays open, with seating arranged around it rather than in it.",
+      },
+      {
+        q: "How far ahead should I book for Diwali?",
+        a: "Reach out as soon as your date is set. Fall weekends get busy across the Chicago suburbs, so earlier booking gives you the best choice.",
+      },
+    ],
+    relatedPosts: ["diwali-party-seating-and-rentals", "diwali-card-party-table-setup"],
+  },
+  {
+    slug: "hanukkah-parties",
+    name: "Hanukkah Party Chair Rentals",
+    shortName: "Hanukkah Parties",
+    metaTitle: "Hanukkah Party Chair Rentals in Chicago",
+    metaDescription:
+      "Chair and table rentals for Hanukkah parties across Chicago and the suburbs, for family latke nights, synagogue events and community celebrations. Get a quote.",
+    headline: "Chairs for *Hanukkah* dinners and parties",
+    intro:
+      "We rent chairs and tables for Hanukkah parties across Chicago and the suburbs, from a family latke night at home to a larger synagogue or community celebration. Tell us your guest count and we'll help you plan seating around the menorah lighting and the meal. Request a quote with your date.",
+    story: [
+      "Hanukkah gatherings around Chicago and the North Shore range from a family dinner with latkes and a menorah lighting to larger community parties at a synagogue or JCC with games, music and a bigger spread.",
+      "The lighting itself needs a clear, visible spot, usually near a window, with seating arranged so everyone can see without crowding the table or the candles. The meal that follows often calls for more seats than a typical weeknight dinner.",
+      "Because Hanukkah falls in the busy run-up to the end of the year, we plan deliveries with extra time for winter weather and the season's full calendar, so your chairs and tables arrive with room to spare before guests do.",
+    ],
+    painPoints: [
+      {
+        problem: "Extended family for latke night outgrows the usual table.",
+        solution:
+          "We'll add a second table or extend yours, with matching chairs so the room looks complete, not pieced together.",
+      },
+      {
+        problem: "Seating needs to leave the menorah visible to everyone.",
+        solution:
+          "We'll help you plan chair placement that keeps a clear sightline to the lighting without crowding the window or table.",
+      },
+      {
+        problem: "A synagogue or community party needs more seats than usual.",
+        solution:
+          "Stackable chairs make it easy to add rows or rounds for a bigger crowd and clear the room quickly afterward.",
+      },
+      {
+        problem: "Winter weather on delivery day during a busy season.",
+        solution:
+          "We plan winter deliveries with extra time and ask about shoveled paths and parking ahead of time.",
+      },
+    ],
+    seatingMath: [
+      { label: "Seated dinner", value: "One chair per guest, plus 2-3 extras for family who drop by" },
+      { label: "Lighting area", value: "Leave clear sightlines to the menorah from the main seating" },
+      { label: "60-inch round", value: "Seats 8 comfortably, 10 snugly" },
+      { label: "Community events", value: "Plan rows or rounds based on your synagogue or hall's layout" },
+    ],
+    checklist: [
+      "Confirm your guest count for the dinner and lighting",
+      "Plan seating with a clear view of the menorah",
+      "Check your home or venue for stairs, elevators or tight entries",
+      "Pick a chair style that suits the dinner table",
+      "For a community event, check the venue's outside rental policy",
+      "Request a quote with your date and address",
+    ],
+    recommendedChairs: [
+      { slug: "bentwood", why: "A warm, classic look for a family dinner table during the holiday." },
+      { slug: "infinity", why: "Stackable chairs that work well for a bigger synagogue or community party." },
+      { slug: "garden-folding", why: "An affordable, easy-to-store option for extra seating at a family gathering." },
+    ],
+    faqs: [
+      {
+        q: "Can I rent chairs and tables for a Hanukkah party at home?",
+        a: "Yes. We deliver to homes across Chicago and the suburbs. Let us know about stairs or tight entries when you book so we can plan the drop-off.",
+      },
+      {
+        q: "How many chairs do I need for a Hanukkah dinner of 16?",
+        a: "Plan one chair per guest, plus a couple of extras for family who drop by. An 8-foot table seats 8 along the sides, so two tables usually covers 16.",
+      },
+      {
+        q: "Can you deliver chairs for a synagogue or JCC Hanukkah event?",
+        a: "Yes, we deliver across Chicago and the suburbs, including the North Shore. Check with the synagogue or center on their outside rental policy first.",
+      },
+      {
+        q: "Will seating block the view of the menorah lighting?",
+        a: "We'll plan chair placement to keep clear sightlines to the lighting, usually near a window, so everyone can see without crowding the table.",
+      },
+      {
+        q: "Do you deliver chairs in snow and winter weather?",
+        a: "Yes, we plan winter deliveries with extra time. Clear paths and available parking help us get chairs in safely and on time.",
+      },
+      {
+        q: "How far ahead should I book for Hanukkah?",
+        a: "Reach out once your date is set. Late November and December fill up fast across the Chicago area, so earlier booking gives you the best choice.",
+      },
+    ],
+    relatedPosts: ["hanukkah-party-planning"],
+  },
 ];

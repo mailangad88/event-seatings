@@ -139,4 +139,4 @@ As soon as you know the date. Diwali is on Sunday, Nov 8, 2026, and weekends nea
 
 ## Set up your card night
 
-Tell us your headcount, the room and the date, and we will check it with the rental companies and send one quote. [Book a free 15-minute planning call](/book) or [get a quote](/quote). One call covers the whole rental list, from tables to lamps.
+Tell us your headcount, the room and the date, and we will check availability and send one quote. [Book a free 15-minute planning call](/book) or [get a quote](/quote). One call covers the whole rental list, from tables to lamps. See our [Diwali party rental page](/events/diwali-parties) for chair styles and seating math.

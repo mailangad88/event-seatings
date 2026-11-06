@@ -137,4 +137,4 @@ Tables, chairs, linens, serving ware, chafing dishes and, for larger events, a t
 
 ## Ready to price your rentals?
 
-When you know your guest count and date, [request a quote](/quote) and we will build a list of tables, chairs, linens and tent options from partner rental companies. If you would rather talk it through first, [book a free planning call](/book).
+When you know your guest count and date, [request a quote](/quote) and we will build a list of tables, chairs, linens and tent options for you. If you would rather talk it through first, [book a free planning call](/book). See our [Hanukkah party rental page](/events/hanukkah-parties) for chair styles and seating math.
