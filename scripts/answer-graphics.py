@@ -344,4 +344,20 @@ for i,(n,h,sub) in enumerate(rows):
     b.append(text(870,y+24,sub,15,MUTED))
 b.append(text(600,600,"Schematic. HOA or condo pools often set their own furniture rules.",14,MUTED,SANS,"middle",400,1,True))
 write("pool-party-seating-zones.svg",svg(1200,640,"Backyard pool party seating zones: water-safe loungers in the splash zone around the pool, and a separate shaded dry zone with tables for dining away from the water","\n".join(b)))
+# 13. Trivia night table layout (schematic)
+b=[eyebrow(600,70,"Trivia or game night seating","middle"),
+   text(600,122,"Teams at their own tables, facing the host",38,INK,SERIF,"middle",300)]
+# host area
+b.append(f'<rect x="420" y="170" width="360" height="70" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,212,"HOST + SCREEN OR SCOREBOARD",14,"#0a0806",SANS,"middle",500,2))
+# team tables
+teams=[(140,300),(400,300),(660,300),(920,300),(140,460),(400,460),(660,460),(920,460)]
+for i,(x,y) in enumerate(teams):
+    b.append(f'<rect x="{x}" y="{y}" width="160" height="80" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".7"/>')
+    for s_ in range(4):
+        b.append(f'<circle cx="{x+20+s_*40}" cy="{y-14}" r="7" fill="none" stroke="{GOLD}"/>')
+        b.append(f'<circle cx="{x+20+s_*40}" cy="{y+94}" r="7" fill="none" stroke="{GOLD}"/>')
+    b.append(text(x+80,y+46,f"TEAM {i+1}",13,MUTED,SANS,"middle",500,2))
+b.append(text(600,580,"8 teams of 6 to 8 shown. Scale tables to your group and room.",14,MUTED,SANS,"middle",400,1,True))
+write("trivia-night-table-layout.svg",svg(1200,620,"Trivia or game night table layout: a host and screen or scoreboard at the front, with team tables in rows facing it, each seating 6 to 8 players","\n".join(b)))
 print("ok")
