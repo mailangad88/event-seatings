@@ -129,12 +129,20 @@ export default async function AreaRentalsPage(props: Props) {
 
       <Section eyebrow={`Rent in ${loc.name}`} title="Choose what you need">
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {localCategories.map((c) => {
+          {localCategories.map((c, i) => {
             const s = render(c.scene);
             return (
               <li key={c.slug} className="card card-hover group relative overflow-hidden">
                 <div className="relative aspect-[16/9] overflow-hidden bg-surface-2">
-                  <Image src={s.src} alt={`${s.alt} (${c.label.toLowerCase()} in ${loc.name})`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
+                  <Image
+                    src={s.src}
+                    alt={`${s.alt} (${c.label.toLowerCase()} in ${loc.name})`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                    priority={i === 0}
+                    fetchPriority={i === 0 ? "high" : undefined}
+                  />
                 </div>
                 <div className="p-5">
                   <h2 className="display-3">
