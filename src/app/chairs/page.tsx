@@ -72,6 +72,13 @@ export default async function ChairsPage(props: PageProps<"/chairs">) {
             <p className="eyebrow">Chair questions</p>
             <h2 className="display-2 mt-3">Choosing chairs in Chicago</h2>
             <p className="lede mt-4">Quick answers on styles, prices and delivery.</p>
+            <p className="mt-4 text-sm text-muted">
+              Chiavari is the most requested style. Read our full{" "}
+              <Link href="/blog/chiavari-chair-rental-chicago" className="underline">
+                Chiavari chair rental guide
+              </Link>{" "}
+              for finishes, pricing and what to check before you book.
+            </p>
           </div>
           <FaqList faqs={faqs} />
         </div>
