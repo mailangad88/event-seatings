@@ -149,6 +149,14 @@ Plan about one 6-foot table for every five to eight items, plus one or two check
 
 Experiences, unique items and local services often draw strong bidding. Mix price levels so everyone can participate.
 
+### What are the rules for a silent auction?
+
+Post clear opening bids, bid increments, any buy-it-now price and the exact closing time at each table. Close sections in groups rather than all at once, announce winners as each section closes, and check with your village or state on raffle and gaming rules if you add a raffle alongside the auction, since that can need a separate license.
+
+### How do I set up a silent auction table?
+
+Give each item its own card with a title, description, value and starting bid, and leave four to five feet in front of the table so guests can stop and write a bid without blocking the aisle. Use a small riser or easel to add height so items aren't flat on the tablecloth, and group related items together so guests can browse by category.
+
 ## Ready to price your rentals?
 
 Auction tables, risers and linens are easy to count once you know your item list. Send us the number and we will help you plan the display. You can [request a quote](/quote) with your guest count and ZIP code, or [book a free planning call](/book) and we will walk through your list with you.
