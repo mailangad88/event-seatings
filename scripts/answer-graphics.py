@@ -360,4 +360,22 @@ for i,(x,y) in enumerate(teams):
     b.append(text(x+80,y+46,f"TEAM {i+1}",13,MUTED,SANS,"middle",500,2))
 b.append(text(600,580,"8 teams of 6 to 8 shown. Scale tables to your group and room.",14,MUTED,SANS,"middle",400,1,True))
 write("trivia-night-table-layout.svg",svg(1200,620,"Trivia or game night table layout: a host and screen or scoreboard at the front, with team tables in rows facing it, each seating 6 to 8 players","\n".join(b)))
+# 14. Career/job fair booth row layout (schematic)
+b=[eyebrow(600,70,"Career or job fair seating","middle"),
+   text(600,122,"Recruiter booths along the wall, a waiting row for candidates",34,INK,SERIF,"middle",300)]
+b.append(f'<rect x="80" y="160" width="1040" height="60" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,196,"CHECK-IN / REGISTRATION TABLE",14,"#0a0806",SANS,"middle",500,2))
+booths=[(80,280),(300,280),(520,280),(740,280),(960,280)]
+for i,(x,y) in enumerate(booths):
+    b.append(f'<rect x="{x}" y="{y}" width="160" height="90" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".7"/>')
+    for s_ in range(2):
+        b.append(f'<circle cx="{x+50+s_*60}" cy="{y-14}" r="7" fill="none" stroke="{GOLD}"/>')
+    b.append(f'<circle cx="{x+80}" cy="{y+104}" r="7" fill="none" stroke="{GOLD}"/>')
+    b.append(text(x+80,y+50,f"EMPLOYER {i+1}",12,MUTED,SANS,"middle",500,2))
+b.append(f'<rect x="300" y="460" width="600" height="60" fill="none" stroke="{INK}" stroke-opacity=".5" stroke-dasharray="3 6"/>')
+b.append(text(600,452,"WAITING / NETWORKING ROW",12,MUTED,SANS,"middle",500,1.5))
+for cx in range(340,860,60):
+    b.append(f'<circle cx="{cx}" cy="490" r="8" fill="none" stroke="{GOLD}"/>')
+b.append(text(600,560,"Each booth seats one or two recruiters, one candidate chair facing them, plus a waiting row nearby.",14,MUTED,SANS,"middle",400,1,True))
+write("career-fair-booth-layout.svg",svg(1200,600,"Career or job fair seating layout: a check-in table at the front, recruiter booths along the wall each with chairs for staff and one candidate chair, and a waiting row of chairs for candidates between booths","\n".join(b)))
 print("ok")

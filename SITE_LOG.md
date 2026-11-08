@@ -429,6 +429,7 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/blog/pool-party-chair-rental-chicago` | Pool party chair rental: water-safe seating, splash/dry zones, HOA rules (daily post) | 2026-11-06 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ zones SVG, chair pair | ✅ | ✅ `/book` call |
 | `/blog/trivia-game-night-chair-rental-chicago` | Trivia/game night chair rental: team table layout, counts, bar venue questions (daily post) | 2026-11-07 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ table-layout SVG, chair pair | ✅ | ✅ `/book` call |
 | `/blog/graveside-service-chair-rental` | Graveside service seating: what the funeral home brings, when to rent more, cemetery rules (daily post) | 2026-11-05 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ graveside-layout SVG, chair pair | ✅ | ✅ `/book` call + celebration-of-life checklist |
+| `/blog/career-fair-job-fair-chair-rental-chicago` | Career/job fair chair rental: recruiter booth counts, waiting row layout, venue questions (daily post) | 2026-11-08 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ booth-layout SVG, chair pair | ✅ | ✅ `/book` call |
 
 ### Chicago high-intent gap-fill batch (added 2026-11-06, overnight autonomous run)
 
