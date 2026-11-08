@@ -96,6 +96,18 @@ For a 63-chair order, the Windsor costs about $567 to $756 in chair estimates. O
 
 In the Chicago area, sunset is about 8:30 pm in June and around 6:30 pm in early October, so a 4 pm ceremony works for both, while a December ceremony should start earlier.
 
+## Rehearsal dinners and private party rooms in Frankfort
+
+Many couples want the rehearsal dinner close to the wedding venue, and Frankfort's historic downtown has a few restaurants with private or semi-private rooms that suit a group of 15 to 40. A private room usually comes with its own tables and house chairs, so rentals there are limited to extras like a cake stand, a sign or special linens if the room's own setup doesn't match your colors. Call the restaurant directly to ask about room minimums, a fixed menu option and whether outside decor is allowed.
+
+If no private room fits your group size or date, renting a small tent or a room at a banquet hall and bringing in your own chairs and tables gives you full control over the layout and guest count. This also works well for a rehearsal dinner that doubles as a welcome party for out-of-town guests.
+
+<div class="stat-grid">
+<div><strong>15 to 40</strong><span>Typical rehearsal dinner group size in Frankfort</span></div>
+<div><strong>1 long table</strong><span>Or 3 rounds of 60 in for 25 guests</span></div>
+<div><strong>6 to 9 months</strong><span>Book the room or venue this far out for peak season</span></div>
+</div>
+
 ## Downtown and public spaces
 
 Frankfort's historic downtown and village green host community events, and public spaces have their own rules. If you want to hold a ceremony or party in a village property or park, contact the Village of Frankfort or the park district for the site to ask about permits, capacity, alcohol and tents. Downtown events share streets with shops, so ask about loading zones and parking. Do not set up on public property without permission.
@@ -158,6 +170,14 @@ The Windsor spindle chair, with floor-length ivory linens.
 ### Do I need a tent?
 
 For outdoor events, a tent is a smart backup. Ask the village about permits.
+
+### Where can I have a rehearsal dinner in Frankfort, IL?
+
+A handful of downtown Frankfort restaurants offer private or semi-private rooms for groups of 15 to 40, which suits most rehearsal dinners. Call ahead about room minimums and a fixed menu. For a larger group or full control over the layout, rent a small tent or book a banquet hall and bring in your own chairs and tables.
+
+### Are there private party rooms in Frankfort, IL?
+
+Yes, several downtown restaurants have private or semi-private rooms for rehearsal dinners, showers and small celebrations. Room size and minimums vary, so confirm your guest count and date directly with the restaurant before booking.
 
 ## Plan your Frankfort event
 

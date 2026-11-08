@@ -149,6 +149,10 @@ It is a donation of goods or services, such as printing, food or rentals, in exc
 
 Deliver every promised benefit, give them a point of contact, send a recap and thank them promptly.
 
+### What makes a sponsorship package feel upscale?
+
+For a gala or black-tie event, the top tier usually adds a reserved table near the stage, a mention from the podium, and signage that matches the room's decor rather than a generic banner. Keep the benefit list just as clear as a lower tier; a higher price should buy better placement and more visibility, not vague extras.
+
 ## Ready to price your rentals?
 
 Sponsor tents, signage tables and display space all need rentals. Send us your layout and we will help you plan the pieces. You can [request a quote](/quote) with your guest count and ZIP code, or [book a free planning call](/book) and we will walk through your list with you.
