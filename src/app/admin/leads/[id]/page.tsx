@@ -3,7 +3,7 @@ import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { getChair } from "@/data/chairs";
 import { getCatalogItem, vendors } from "@/data/catalog";
-import { getVendor, type Vendor } from "@/data/vendors";
+import { getVendor, isInServiceArea, MAX_VENDOR_SERVICE_DISTANCE_MI, type Vendor } from "@/data/vendors";
 import { VendorContact } from "@/components/admin/VendorContact";
 import { usd, type QuoteLine } from "@/lib/catalog-types";
 import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJourney";
@@ -35,6 +35,8 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 }
 
 // Groups a quote by the vendor each line is priced from, with backup vendors that carry the same items.
+// Vendor suggestions only ever point at partners within MAX_VENDOR_SERVICE_DISTANCE_MI of Chicago —
+// a vendor farther out (even a preferred one) never gets suggested as who to call.
 function byVendor(lines: QuoteLine[]) {
   const groups = new Map<string, QuoteLine[]>();
   for (const l of lines) groups.set(l.vendor_id, [...(groups.get(l.vendor_id) ?? []), l]);
@@ -46,12 +48,20 @@ function byVendor(lines: QuoteLine[]) {
       for (const b of item?.backupVendorIds ?? []) backupIds.add(b);
     }
     backupIds.delete(id);
+    const vendor = getVendor(id) ?? { id, name: id };
+    const nearbyBackups = [...backupIds]
+      .map(getVendor)
+      .filter((v): v is Vendor => !!v && isInServiceArea(v))
+      .sort((a, b) => a.distanceFromChicagoMi - b.distanceFromChicagoMi);
+    const vendorIsNearby = isInServiceArea(vendor as Vendor);
+    const suggestions = (vendorIsNearby ? [vendor as Vendor, ...nearbyBackups] : nearbyBackups).slice(0, 2);
     return {
-      vendor: getVendor(id) ?? { id, name: id },
+      vendor,
       lines: ls,
       cost: ls.reduce((s, l) => s + l.vendor_price * l.qty, 0),
       value: ls.reduce((s, l) => s + l.line_total, 0),
-      backups: [...backupIds].map(getVendor).filter((v): v is Vendor => !!v).slice(0, 4),
+      suggestions,
+      outOfArea: !vendorIsNearby,
     };
   });
 }
@@ -88,7 +98,15 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
   const assigned = lead.assigned_vendor ? getVendor(lead.assigned_vendor) : undefined;
   const groups = byVendor(lines);
   if (assigned && !groups.some((g) => g.vendor.id === assigned.id)) {
-    groups.push({ vendor: assigned, lines: [], cost: 0, value: 0, backups: [] });
+    const assignedIsNearby = isInServiceArea(assigned);
+    groups.push({
+      vendor: assigned,
+      lines: [],
+      cost: 0,
+      value: 0,
+      suggestions: assignedIsNearby ? [assigned] : [],
+      outOfArea: !assignedIsNearby,
+    });
   }
   const first = lead.name?.split(" ")[0] ?? "there";
   const script = intakeProgress(lead);
@@ -196,8 +214,7 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                   <div key={g.vendor.id} className="rounded-xl border border-line p-4">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <h3 className="font-heading font-semibold text-xl">
-                        {g.vendor.name}
-                        {lead.assigned_vendor === g.vendor.id && <span className="ml-2 align-middle text-xs font-sans text-accent">Assigned</span>}
+                        {g.lines.length > 0 ? `${g.lines.length} item${g.lines.length === 1 ? "" : "s"}` : "Assigned vendor"}
                       </h3>
                       {g.lines.length > 0 && <span className="text-sm text-muted tabular-nums">our cost {usd(g.cost)} · customer {usd(g.value)}</span>}
                     </div>
@@ -211,27 +228,36 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                         ))}
                       </ul>
                     )}
-                    <div className="mt-3">
-                      <VendorContact
-                        vendor={g.vendor}
-                        partner={partners.get(g.vendor.id)}
-                        order={vendorOrder(lead, g.lines)}
-                        subject={`Availability for ${day(lead.event_date)}${lead.city ? ` in ${lead.city}` : ""}`}
-                        compact
-                      />
-                    </div>
-                    {g.backups.length > 0 && (
+                    {g.outOfArea && (
                       <p className="mt-3 text-xs text-muted">
-                        Backup if they&apos;re booked:{" "}
-                        {g.backups.map((b, i) => (
-                          <span key={b.id}>
-                            {i > 0 && ", "}
-                            <Link href={`/admin/vendors#${b.id}`} className="text-accent">{b.name}</Link>
-                            {b.phone && <> (<a href={`tel:${b.phone.replace(/[^\d+]/g, "")}`} className="text-accent">{b.phone}</a>)</>}
-                          </span>
-                        ))}
+                        {g.vendor.name} is {Math.round((g.vendor as Vendor).distanceFromChicagoMi ?? 0)} miles from Chicago, outside our {MAX_VENDOR_SERVICE_DISTANCE_MI}-mile service area, so we don&apos;t suggest calling them.
                       </p>
                     )}
+                    <div className="mt-3 space-y-4">
+                      {g.suggestions.length > 0 ? (
+                        g.suggestions.map((v, i) => (
+                          <div key={v.id}>
+                            <p className="text-xs font-semibold tracking-wide text-muted uppercase">
+                              Suggestion {i + 1}
+                              {lead.assigned_vendor === v.id && <span className="ml-2 text-accent">· Assigned</span>}
+                            </p>
+                            <div className="mt-1">
+                              <VendorContact
+                                vendor={v}
+                                partner={partners.get(v.id)}
+                                order={vendorOrder(lead, g.lines)}
+                                subject={`Availability for ${day(lead.event_date)}${lead.city ? ` in ${lead.city}` : ""}`}
+                                compact
+                              />
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="text-sm text-muted">
+                          No rental partner within {MAX_VENDOR_SERVICE_DISTANCE_MI} miles of Chicago carries this yet. Source it directly or quote it by hand.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>

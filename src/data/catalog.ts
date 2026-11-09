@@ -11,7 +11,7 @@
 import { customerPrice, type CatalogItem as BaseItem } from "@/lib/catalog-types";
 import { categories, products, type CategoryId, type Product } from "./catalog-products";
 import inventory from "./catalog-inventory.json";
-import { vendors, type Vendor } from "./vendors";
+import { isInServiceArea, vendors, type Vendor } from "./vendors";
 
 export { vendors, categories, products, customerPrice };
 export type { Vendor, CategoryId, Product };
@@ -363,18 +363,20 @@ const preferredQuoteVendor: Partial<Record<CategoryId, string>> = {
 
 const categoryName = (id: CategoryId) => categories.find((c) => c.id === id)!.name;
 
-/** Quote-only partners carrying a category, in a stable order (most complete first). */
+/** Quote-only partners carrying a category, in a stable order (most complete first), nearest Chicago vendors only. */
 function quoteOnlyVendorsFor(category: CategoryId) {
   const pref = preferredQuoteVendor[category];
   const rank = (v: Vendor) => (v.id === pref ? -1 : Number(v.verifiedVia !== "own website"));
   return vendors
-    .filter((v) => v.id === pref || (v.priceTransparency !== "public-list" && v.categories.includes(category)))
-    .sort((a, b) => rank(a) - rank(b))
+    .filter((v) => isInServiceArea(v) && (v.id === pref || (v.priceTransparency !== "public-list" && v.categories.includes(category))))
+    .sort((a, b) => rank(a) - rank(b) || a.distanceFromChicagoMi - b.distanceFromChicagoMi)
     .map((v) => v.id);
 }
 
 function build(p: Product): CatalogItem {
-  const published = [...(offers[p.id] ?? [])].sort((a, b) => a.vendorPrice - b.vendorPrice);
+  const published = [...(offers[p.id] ?? [])]
+    .filter((o) => isInServiceArea(vendors.find((v) => v.id === o.vendorId) ?? { distanceFromChicagoMi: Infinity }))
+    .sort((a, b) => a.vendorPrice - b.vendorPrice);
   const best = published[0];
   const backups = quoteOnlyVendorsFor(p.category).filter((id) => !published.some((x) => x.vendorId === id));
   return {
