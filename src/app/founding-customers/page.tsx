@@ -66,8 +66,8 @@ export default function FoundingCustomersPage() {
             work except through people who already booked with us, and that&apos;s you right now.
           </p>
           <Callout className="mt-8" title="Already booked?">
-            You don&apos;t need to wait for our email. <Link href="/reviews/write" className="text-accent">Write your review now</Link>, or call or text{" "}
-            {site.phone} if anything about your order needs attention first.
+            You don&apos;t need to wait for our email. <Link href="/reviews/write" className="text-accent">Write your review now</Link>
+            {site.phone ? <>, or call or text {site.phone}</> : null} if anything about your order needs attention first.
           </Callout>
         </div>
       </Section>

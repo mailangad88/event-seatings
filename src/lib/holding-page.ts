@@ -42,13 +42,14 @@ export function holdingPageHtml() {
   const phone = esc(site.phone);
   const tel = site.phone.replace(/[^\d+]/g, "");
   const email = esc(site.email);
+  const callOrText = phone ? `Call or text ${phone}` : "Email us";
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>We'll be back soon | ${esc(site.name)}</title>
-<meta name="description" content="${esc(site.name)} is updating its prices and will be back soon. Call or text ${phone} for help with your event rentals.">
+<meta name="description" content="${esc(site.name)} is updating its prices and will be back soon. ${callOrText} for help with your event rentals.">
 <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
 ${verificationTags()}
 <style>
@@ -79,8 +80,8 @@ button:disabled{opacity:.6}
 <img class="logo" src="/brand/logo-horizontal-light.svg" alt="${esc(site.name)} logo: a chair inside an arch" width="440" height="120">
 <h1>We'll be back soon</h1>
 <p>We're updating our prices and will have the site open again shortly. If you're planning an event, we can still help.</p>
-<a class="call" href="tel:${tel}">Call or text ${phone}</a>
-<p class="small">Or email <a href="mailto:${email}">${email}</a></p>
+${phone ? `<a class="call" href="tel:${tel}">Call or text ${phone}</a>
+<p class="small">Or email <a href="mailto:${email}">${email}</a></p>` : `<a class="call" href="mailto:${email}">Email ${email}</a>`}
 <hr>
 <form id="f" novalidate>
 <p style="margin:0;color:var(--ink);font-weight:600">Want a heads-up when we're back?</p>
@@ -111,9 +112,9 @@ button:disabled{opacity:.6}
       .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{ok:r.ok,j:j}})})
       .then(function(x){
         if(x.ok){f.innerHTML='<p style="margin:0;text-align:center;color:var(--green);font-weight:600">Thanks. We\\'ll be in touch soon.</p>';return;}
-        throw new Error((x.j&&x.j.error)||"Something went wrong. Please call or text ${phone}.");
+        throw new Error((x.j&&x.j.error)||"Something went wrong. Please ${phone ? `call or text ${phone}` : `email ${email}`}.");
       })
-      .catch(function(err){b.disabled=false;b.textContent="Let me know";m.style.color="var(--rose)";m.textContent=err.message||"Something went wrong. Please call or text ${phone}.";});
+      .catch(function(err){b.disabled=false;b.textContent="Let me know";m.style.color="var(--rose)";m.textContent=err.message||"Something went wrong. Please ${phone ? `call or text ${phone}` : `email ${email}`}.";});
   });
 })();
 </script>

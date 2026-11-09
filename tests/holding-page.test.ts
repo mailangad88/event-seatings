@@ -36,7 +36,7 @@ describe("holding page switch", () => {
     expect(res.headers.get("Retry-After")).toBe("3600");
     const html = await res.text();
     expect(html).toContain("We'll be back soon");
-    expect(html).toContain("(630) 360-1795");
+    expect(html).toContain("hello@beyondchiavari.com");
     expect(html).toContain('source:"holding-page"');
   });
 });
