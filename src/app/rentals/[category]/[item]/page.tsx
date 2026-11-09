@@ -252,7 +252,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             </div>
             <AvailabilityHint />
             <div className="mt-6 rounded-xl border border-line bg-surface p-5 text-sm">
-              <p className="font-medium">What's in your quote</p>
+              <p className="font-medium">What&apos;s in your quote</p>
               <p className="mt-2 leading-6 text-muted">
                 Your quote itemizes the rental, delivery fee, setup fee, teardown fee, a damage waiver and Illinois
                 sales tax, and is labeled as an estimate until you approve it for your date and venue. Delivery is one

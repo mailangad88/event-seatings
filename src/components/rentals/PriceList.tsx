@@ -64,7 +64,7 @@ export function PriceList({ rows, category }: { rows: PriceListRow[]; category: 
     const list = [...filtered];
     list.sort((a, b) => a.name.localeCompare(b.name));
     return list;
-  }, [filtered, sort]);
+  }, [filtered]);
 
   const sections = useMemo(
     () => [...Map.groupBy(filtered, (r) => r.section)].sort((a, b) => a[0].localeCompare(b[0])),
