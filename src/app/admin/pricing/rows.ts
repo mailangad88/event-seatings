@@ -1,14 +1,17 @@
 import { catalogItems } from "@/data/catalog";
+import { rentalImage } from "@/data/rental-images";
 import { addDays, chicagoDay, isConfirmed } from "@/lib/admin-view";
 import { customerPrice } from "@/lib/catalog-types";
 import type { Lead } from "@/lib/store";
 
-// Pricing rows shared by /admin/pricing and its "items to recheck" download.
+// Pricing rows shared by /admin/pricing and its "items to recheck" and full-catalog downloads.
 
 export type PriceRow = {
   i: (typeof catalogItems)[number];
   ours: number; // customer price
   cut: number; // our part of the customer price, per unit
+  cutPercent: number; // our part, as a % of the customer price
+  image?: string;
   cheapest?: { vendorId: string; vendorPrice: number; sourceUrl?: string };
   stale: boolean;
   estimated: boolean;
@@ -21,8 +24,23 @@ export function priceRows(today = chicagoDay()): PriceRow[] {
   return catalogItems.map((i) => {
     const cheapest = (i.altOffers ?? []).filter((o) => o.vendorPrice > 0 && o.vendorPrice < i.vendorPrice).sort((a, b) => a.vendorPrice - b.vendorPrice)[0];
     const ours = customerPrice(i);
-    return { i, ours, cut: cents(ours - i.vendorPrice), cheapest, stale: !i.priceCheckedAt || i.priceCheckedAt < staleBefore, estimated: i.priceSource === "estimated" };
+    const cut = cents(ours - i.vendorPrice);
+    return {
+      i,
+      ours,
+      cut,
+      cutPercent: ours > 0 ? Math.round((cut / ours) * 1000) / 10 : 0,
+      image: i.image ?? rentalImage(i.id)?.src,
+      cheapest,
+      stale: !i.priceCheckedAt || i.priceCheckedAt < staleBefore,
+      estimated: i.priceSource === "estimated",
+    };
   });
+}
+
+/** Every category name in the catalog, in catalog order, for the category filter. */
+export function priceCategories(): string[] {
+  return [...new Set(catalogItems.map((i) => i.category))];
 }
 
 // Why an item's price should be checked again, in plain words (empty = fine).
