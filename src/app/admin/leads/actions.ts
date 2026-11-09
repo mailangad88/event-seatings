@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { vendors } from "@/data/catalog";
 import { checkAdmin } from "@/lib/admin-auth";
 import { proposalEmail } from "@/lib/intake";
-import { sendEmail } from "@/lib/notify";
+import { QUOTE_BCC, sendEmail } from "@/lib/notify";
 import { amountDue, newProposalToken } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
 import { site } from "@/lib/site";
@@ -114,7 +114,7 @@ export async function sendProposalEmail(formData: FormData) {
   if (!lead || !lead.proposal_token || !lead.email) redirect(`/admin/leads/${id}`);
 
   const { subject, body } = proposalEmail(lead, `${site.url}/proposal/${lead.proposal_token}`, process.env.OWNER_NAME || "Angad");
-  const ok = await sendEmail({ to: lead.email, subject, text: body, from: QUOTE_FROM, idempotencyKey: `proposal-email/${lead.id}/${Date.now()}` });
+  const ok = await sendEmail({ to: lead.email, subject, text: body, from: QUOTE_FROM, bcc: QUOTE_BCC, idempotencyKey: `proposal-email/${lead.id}/${Date.now()}` });
 
   if (!ok) {
     await updateLead(id, {}, [{ type: "note", text: "Couldn't email the quote: Resend isn't configured or refused the send. Check RESEND_API_KEY in Vercel and that beyondchiavari.com is a verified sending domain in Resend." }]);
@@ -122,7 +122,9 @@ export async function sendProposalEmail(formData: FormData) {
     redirect(`/admin/leads/${id}?email=failed`);
   }
 
-  await updateLead(id, {}, [{ type: "email", text: `Quote emailed to ${lead.email}.` }]);
+  // Logged in full (not just "sent") so the timeline doubles as a record of what the customer was told,
+  // without the admin having to dig through Resend's own dashboard (Angad, 2026-11-09).
+  await updateLead(id, {}, [{ type: "email", text: `To: ${lead.email}\nSubject: ${subject}\n\n${body}` }]);
   revalidatePath(`/admin/leads/${id}`);
   redirect(`/admin/leads/${id}?email=sent`);
 }

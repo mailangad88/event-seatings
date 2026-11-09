@@ -22,7 +22,10 @@ import { log } from "@/lib/log";
 
 // idempotencyKey: Resend sends at most one email per key within 24 hours, so a retry (ours, or the daily
 // recovery job's) can never send the same email twice. Use a stable key such as "lead-alert/<lead id>".
-type Mail = { to: string; subject: string; text: string; from?: string; unsubscribe?: string; html?: string; idempotencyKey?: string };
+type Mail = { to: string; subject: string; text: string; from?: string; bcc?: string; unsubscribe?: string; html?: string; idempotencyKey?: string };
+
+// So Angad gets a copy of every quote email in his own inbox, not just a log entry in admin (Nov 9).
+export const QUOTE_BCC = "hello@beyondchiavari.com";
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -37,7 +40,7 @@ async function brandedHtml(subject: string, text: string, unsubscribe?: string) 
   }
 }
 
-export async function sendEmail({ to, subject, text, from, unsubscribe, html, idempotencyKey }: Mail) {
+export async function sendEmail({ to, subject, text, from, bcc, unsubscribe, html, idempotencyKey }: Mail) {
   const key = process.env.RESEND_API_KEY;
   if (!key) return false;
   html ??= await brandedHtml(subject, text, unsubscribe);
@@ -51,6 +54,7 @@ export async function sendEmail({ to, subject, text, from, unsubscribe, html, id
     to,
     subject,
     text,
+    ...(bcc ? { bcc } : {}),
     ...(html ? { html } : {}),
     // Replies from visitors land in the owner's inbox, not a no-reply box.
     ...(process.env.NOTIFY_EMAIL && to !== process.env.NOTIFY_EMAIL ? { reply_to: process.env.NOTIFY_EMAIL } : {}),
@@ -297,7 +301,7 @@ export async function sendInvoiceEmail(lead: Lead, invoice: Invoice): Promise<st
  * proposal to review and pay. Sent by hand from "Send updated quote to customer" in
  * /admin/leads/<id>/quote after an edit. Needs RESEND_API_KEY + NOTIFY_FROM like every visitor email.
  */
-export async function sendQuoteUpdateEmail(lead: Lead): Promise<string | undefined> {
+export async function sendQuoteUpdateEmail(lead: Lead): Promise<{ subject: string; text: string } | undefined> {
   if (!process.env.NOTIFY_FROM || !lead.proposal_token || lead.opted_out_at) return;
   const subtotal = lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
   const feeLines = feeLinesFor(lead, subtotal);
@@ -320,8 +324,8 @@ export async function sendQuoteUpdateEmail(lead: Lead): Promise<string | undefin
     bookingLine(lead),
     ...signOff(lead.email),
   ].join("\n");
-  const ok = await sendEmail({ to: lead.email, subject, text, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `quote-update/${lead.id}/${Date.now()}` });
-  return ok ? subject : undefined;
+  const ok = await sendEmail({ to: lead.email, subject, text, bcc: QUOTE_BCC, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `quote-update/${lead.id}/${Date.now()}` });
+  return ok ? { subject, text } : undefined;
 }
 
 /** Tells the owner a review is waiting in /admin/reviews. */

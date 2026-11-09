@@ -130,9 +130,9 @@ export async function sendQuoteUpdate(formData: FormData) {
   const lead = await getLead(id);
   if (!lead || !lead.proposal_token) return;
 
-  const subject = await sendQuoteUpdateEmail(lead);
-  if (subject) {
-    await updateLead(id, {}, [{ type: "note", text: `Updated quote emailed to ${lead.email}.` }]);
+  const sent = await sendQuoteUpdateEmail(lead);
+  if (sent) {
+    await updateLead(id, {}, [{ type: "email", text: `To: ${lead.email}\nSubject: ${sent.subject}\n\n${sent.text}` }]);
     revalidatePath(`/admin/leads/${id}`);
   }
 }
