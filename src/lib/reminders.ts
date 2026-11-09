@@ -240,4 +240,7 @@ export function planReminders(leads: Lead[], activity: Map<string, ActivityEvent
   return plan;
 }
 
-export const reminderLogText = (r: PlannedReminder) => `${sentPrefix}${r.kind} ("${r.subject}")${r.offer ? ` · Offer: ${r.offer}` : ""}`;
+// The first line stays in this exact shape (sentKinds above parses it), full body follows so the
+// timeline shows exactly what the customer was sent, not just the subject (Angad, 2026-11-09).
+export const reminderLogText = (r: PlannedReminder) =>
+  `${sentPrefix}${r.kind} ("${r.subject}")${r.offer ? ` · Offer: ${r.offer}` : ""}\nTo: ${r.lead.email}\n\n${r.body.join("\n")}`;

@@ -10,6 +10,7 @@ import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJo
 import { RentalVisual } from "@/components/rentals/RentalVisual";
 import { itemHref } from "@/components/rentals/parts";
 import { AfterEnquiry } from "@/components/admin/AfterEnquiry";
+import { callOutcomes } from "@/lib/call-list";
 import { buildLeadAlert } from "@/lib/lead-alert";
 import { intakeFields, intakeProgress, intakeText, showValue, vendorDetails } from "@/lib/intake";
 import { LeadFlow } from "@/components/admin/LeadFlow";
@@ -432,7 +433,13 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                 <option value="text">Text</option>
                 <option value="vendor">Vendor update</option>
               </select>
+              <select name="outcome" defaultValue="" className="field mb-2" aria-label="Call outcome (if logging a call)">
+                <option value="">Call outcome (if logging a call)…</option>
+                {callOutcomes.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
+              </select>
               <textarea id="note" name="note" rows={4} className="field resize-none" placeholder="Left voicemail, sent proposal, vendor confirmed 150 chairs…" />
+              <label className="label mt-2" htmlFor="logged_at">When (leave blank for right now)</label>
+              <input id="logged_at" name="logged_at" type="datetime-local" className="field" />
             </div>
             <button className="btn-primary w-full">Save</button>
           </form>

@@ -565,12 +565,13 @@ export async function getLeadByProposalToken(token: string): Promise<Lead | unde
   return (await fallbackLeads()).find((l) => l.proposal_token === token);
 }
 
-// Applies CRM edits and appends `log` to the lead's activity timeline in one write.
-export async function updateLead(id: string, patch: LeadPatch, log: Omit<LeadActivity, "at">[] = []) {
+// Applies CRM edits and appends `log` to the lead's activity timeline in one write. An entry can carry its
+// own `at` (e.g. logging a call that happened earlier today) — most callers leave it unset and get `now`.
+export async function updateLead(id: string, patch: LeadPatch, log: (Omit<LeadActivity, "at"> & { at?: string })[] = []) {
   const lead = await getLead(id);
   if (!lead) throw new Error(`Lead ${id} not found`);
   const now = new Date().toISOString();
-  const activity = [...(lead.activity ?? []), ...log.map((a) => ({ ...a, at: now }))];
+  const activity = [...(lead.activity ?? []), ...log.map((a) => ({ ...a, at: a.at ?? now }))].sort((a, b) => a.at.localeCompare(b.at));
   // Supabase needs explicit nulls to clear a column; undefined would be skipped.
   const changes: Record<string, unknown> = { updated_at: now, activity };
   for (const [k, v] of Object.entries(patch)) changes[k] = v === undefined || v === "" ? null : v;

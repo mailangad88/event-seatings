@@ -38,6 +38,13 @@ export async function GET(request: Request) {
     if (dry || !enabled) continue;
 
     const unsub = unsubscribeUrl(lead.email);
+    const bodyText = [
+      ...next.step.body(lead),
+      "",
+      `The ${site.name} team`,
+      "",
+      `You're getting this because you contacted ${site.name}. Stop these emails: ${unsub}`,
+    ].join("\n");
     // Same visual treatment as the quote confirmation and unfinished-quote emails: hero image, one
     // card, one CTA button. The wording is the same lines used in the plain-text part below, minus
     // the greeting line (the component renders its own).
@@ -53,13 +60,7 @@ export async function GET(request: Request) {
     const ok = await sendEmail({
       to: lead.email,
       subject,
-      text: [
-        ...next.step.body(lead),
-        "",
-        `The ${site.name} team`,
-        "",
-        `You're getting this because you contacted ${site.name}. Stop these emails: ${unsub}`,
-      ].join("\n"),
+      text: bodyText,
       unsubscribe: unsub,
       html,
       // One email per lead per step, even if the job runs twice.
@@ -69,7 +70,7 @@ export async function GET(request: Request) {
       await updateLead(
         lead.id,
         { followup_step: next.index + 1, followup_last_at: new Date().toISOString() },
-        [{ type: "email", text: `Follow-up ${next.index + 1} sent: "${subject}"` }],
+        [{ type: "email", text: `Follow-up ${next.index + 1} sent automatically.\nTo: ${lead.email}\nSubject: ${subject}\n\n${bodyText}` }],
       ).catch((e) => console.error("followup update failed", lead.id, e));
     }
   }
