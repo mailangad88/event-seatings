@@ -14,7 +14,7 @@ Hi neighbors — we rent gold, silver, white, and clear Chiavari chairs for wedd
 
 We deliver, set up, and pick up, so you don't have to load or unload anything. We cover St. Charles, Geneva, Batavia, and the towns around us, plus Chicago and the suburbs.
 
-Mention this post for $50 off your first booking. Instant quote at beyondchiavari.com/quote, or call/text (630) 360-1795.
+Mention this post for $50 off your first booking (orders over $1,000). Instant quote at beyondchiavari.com/quote, or call/text (630) 360-1795.
 
 ---
 
@@ -28,7 +28,7 @@ If you're hosting a birthday, graduation, or get-together in the backyard this s
 
 We deliver, set everything up where you want it, and come back for pickup — no borrowing a truck or hauling tables yourself.
 
-Mention this post for $50 off your first booking. Get a quick price at beyondchiavari.com/quote, or call/text (630) 360-1795.
+Mention this post for $50 off your first booking (orders over $1,000). Get a quick price at beyondchiavari.com/quote, or call/text (630) 360-1795.
 
 ---
 
@@ -42,7 +42,7 @@ Graduation season is coming — we rent 20'x20' and 20'x40' tents (seats up to 8
 
 We handle delivery, setup, and takedown, so your yard is ready and clear by the next day.
 
-Mention this post for $50 off your first booking. Quote in a couple minutes at beyondchiavari.com/quote, or call/text (630) 360-1795.
+Mention this post for $50 off your first booking (orders over $1,000). Quote in a couple minutes at beyondchiavari.com/quote, or call/text (630) 360-1795.
 
 ---
 
@@ -56,7 +56,7 @@ If you're planning a wedding in the area, we rent Chiavari and cross-back chairs
 
 We serve Chicago, Evanston, Naperville, St. Charles, Geneva, Batavia, and the nearby suburbs.
 
-Mention this post for $50 off your first booking. Instant quote at beyondchiavari.com/quote, or call/text (630) 360-1795.
+Mention this post for $50 off your first booking (orders over $1,000). Instant quote at beyondchiavari.com/quote, or call/text (630) 360-1795.
 
 ---
 
@@ -70,7 +70,7 @@ Planning a kids' birthday party? We rent a bounce house, yard games, and kids'-s
 
 Covers St. Charles, Geneva, Batavia, and the surrounding towns.
 
-Mention this post for $50 off your first booking. Get a price at beyondchiavari.com/quote, or call/text (630) 360-1795.
+Mention this post for $50 off your first booking (orders over $1,000). Get a price at beyondchiavari.com/quote, or call/text (630) 360-1795.
 
 ---
 
@@ -82,10 +82,10 @@ Mention this post for $50 off your first booking. Get a price at beyondchiavari.
 **Post:**
 If your backyard party or block party needs more bathrooms than your house has, we rent clean single-unit portable restrooms (ADA-accessible units too), delivered and picked up on schedule.
 
-Mention this post for $50 off your first booking. Quote at beyondchiavari.com/quote, or call/text (630) 360-1795.
+Mention this post for $50 off your first booking (orders over $1,000). Quote at beyondchiavari.com/quote, or call/text (630) 360-1795.
 
 ---
 
 ## Reply template for Nextdoor comments/messages
 
-> Thanks for asking! We deliver and set up throughout [their neighborhood] and the surrounding area. What's your date and guest count, and I'll get you an exact price. You can also get an instant quote at beyondchiavari.com/quote — mention this post for $50 off your first booking.
+> Thanks for asking! We deliver and set up throughout [their neighborhood] and the surrounding area. What's your date and guest count, and I'll get you an exact price. You can also get an instant quote at beyondchiavari.com/quote — mention this post for $50 off your first booking (orders over $1,000).

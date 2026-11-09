@@ -39,7 +39,7 @@ const subtotalOf = (lead: Pick<Lead, "quote_subtotal" | "items">) =>
 export function amountDue(lead: Pick<Lead, "quote_subtotal" | "items" | "event_date">): number {
   if (chargeMode() === "hold") return round2(num(process.env.BOOKING_HOLD_USD, 100));
   const deposit = paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0;
-  return withFirstBookingDiscount(deposit);
+  return withFirstBookingDiscount(deposit, subtotalOf(lead));
 }
 
 // "Deposit" in general, or the specific share ("20% deposit", "50% deposit", "Full payment") once we
@@ -74,7 +74,7 @@ export async function createCheckout(lead: Lead, siteUrl: string): Promise<{ id:
   const amount = amountDue(lead);
   const back = `${siteUrl}/proposal/${lead.proposal_token}`;
   const event = [lead.event_type, lead.event_date].filter(Boolean).join(", ");
-  const discount = firstBookingDiscountApplied(paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0);
+  const discount = firstBookingDiscountApplied(paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0, subtotalOf(lead));
   const body = new URLSearchParams({
     mode: "payment",
     success_url: `${back}?session_id={CHECKOUT_SESSION_ID}`,

@@ -20,7 +20,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
   if (!lead) notFound();
   const lines = lead.items ?? [];
   const locked = lead.fee_status === "paid";
-  const discount = firstBookingDiscountApplied(paymentPlanFor(lead.quote_subtotal ?? 0, lead.event_date)[0]?.amount ?? 0);
+  const discount = firstBookingDiscountApplied(paymentPlanFor(lead.quote_subtotal ?? 0, lead.event_date)[0]?.amount ?? 0, lead.quote_subtotal ?? 0);
   const vendorName = (v: string) => vendors.find((x) => x.id === v)?.name ?? v;
 
   return (
@@ -96,7 +96,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
           <div className="flex justify-between"><dt className="text-muted">Rental companies charge</dt><dd className="tabular-nums">{money2(lead.quote_cost)}</dd></div>
           <div className="flex justify-between font-medium"><dt>{chargeLabel()}</dt><dd className="tabular-nums">{money2(lead.fee_amount ?? amountDue(lead))}</dd></div>
           {discount > 0 && (
-            <div className="flex justify-between text-xs text-muted"><dt>Includes $50 first-booking offer</dt><dd className="tabular-nums">-{money2(discount)}</dd></div>
+            <div className="flex justify-between text-xs text-muted"><dt>Includes $50 first-booking offer (orders over $1,000)</dt><dd className="tabular-nums">-{money2(discount)}</dd></div>
           )}
         </dl>
 
