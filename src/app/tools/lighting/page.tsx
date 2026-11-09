@@ -5,7 +5,7 @@ import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "lighting";
 const title = "String Light Calculator for Any Space";
-const description = "Enter your space and pick a pattern to get feet of bistro lights, bulb count and how many uplights, with rough Chicago prices.";
+const description = "Enter your space and pick a pattern to get feet of bistro lights, bulb count and how many uplights you need.";
 
 export const metadata = toolMetadata(slug, title, description);
 
@@ -31,12 +31,12 @@ export default function Page() {
         { title: "Measure the space", text: "Length and width in feet.", icon: "ruler" },
         { title: "Pick a pattern", text: "Straight, zigzag, starburst or edge.", icon: "light" },
         { title: "Set spacing and slack", text: "How dense, and extra for sag.", icon: "plus" },
-        { title: "Price the lights", text: "Strands and uplights, then a quote.", icon: "quote" },
+        { title: "See your list", text: "Strands and uplights, then a free quote.", icon: "quote" },
       ]}
       method={
         <>
           <p>Straight runs: (length ÷ spacing, rounded down, plus one) runs, each as long as the width. Zigzag: one diagonal leg for every spacing step along the length, each leg √(width² + spacing²). Starburst: eight runs from the centre to the four corners and four wall midpoints. Perimeter: twice length plus width.</p>
-          <p>We then add your slack percentage. Bulbs are total feet × 12 ÷ bulb spacing in inches. Uplights are the perimeter divided by your spacing. Our catalog prices string lights per 100 ft strand, so the rough price rounds up to whole strands.</p>
+          <p>We then add your slack percentage. Bulbs are total feet × 12 ÷ bulb spacing in inches. Uplights are the perimeter divided by your spacing. String lights rent in 100 ft strands, so the feet you need round up to whole strands.</p>
           <p>Sizing a tent first? Use the <Link href="/tools/tent-size">tent size calculator</Link>. Planning the whole night? The <Link href="/tools/timeline">timeline builder</Link> reminds you when to book lighting.</p>
         </>
       }

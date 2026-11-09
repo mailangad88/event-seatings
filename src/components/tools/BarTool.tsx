@@ -78,7 +78,7 @@ export function BarTool({ prices }: { prices: Record<string, ToolPrice> }) {
               ))}
             </ul>
           </div>
-          <PriceLines lines={[...glassLines, { id: "portable-bar", qty: bars }]} prices={prices} />
+          <PriceLines lines={[...glassLines, { id: "portable-bar", qty: bars }]} prices={prices} quoteHref={`/quote?items=${[...glassLines.map((l) => l.id), "portable-bar"].join(",")}&guests=${s.guests}&from=tool-bar`} />
           <p className="mt-4 text-xs leading-5 text-muted">Please serve responsibly. Check your venue&apos;s and your town&apos;s rules on serving alcohol; many venues require a licensed bartender or caterer.</p>
           <ShareBar tool="bar" quoteHref={`/quote?items=${[...glassLines.map((l) => l.id), "portable-bar"].join(",")}&guests=${s.guests}&from=tool-bar`} />
         </div>

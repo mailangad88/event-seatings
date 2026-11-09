@@ -5,7 +5,7 @@ import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "dance-floor";
 const title = "Dance Floor Size Calculator for Your Party";
-const description = "Enter your guest count and how many will dance at once to get the floor size in feet, the panel count and a rough Chicago rental price.";
+const description = "Enter your guest count and how many will dance at once to get the floor size in feet and the panel count.";
 
 export const metadata = toolMetadata(slug, title, description);
 
@@ -30,7 +30,7 @@ export default function Page() {
         { title: "Enter guests", text: "Everyone at the party.", icon: "users" },
         { title: "Pick the share dancing", text: "Your call for your crowd.", icon: "spark" },
         { title: "See the floor", text: "Size in feet and in 3' panels.", icon: "floor" },
-        { title: "Price it", text: "Rough cost, then a quote.", icon: "quote" },
+        { title: "See your list", text: "Panel count, then a free quote.", icon: "quote" },
       ]}
       method={
         <>

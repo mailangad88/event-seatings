@@ -31,7 +31,7 @@ export default function Page() {
         { title: "Guests and layout", text: "Seated dinner, ceremony rows or cocktails.", icon: "users" },
         { title: "Add what goes under cover", text: "Dance floor, bar, buffet, band, lounge.", icon: "tent" },
         { title: "See the fit", text: "Comfortable and tightest standard sizes.", icon: "ruler" },
-        { title: "Price the tent", text: "Rough cost, then a real quote.", icon: "quote" },
+        { title: "See your list", text: "The right tent size, then a real quote.", icon: "quote" },
       ]}
       method={
         <>

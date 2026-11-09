@@ -3,7 +3,7 @@ import Link from "@/components/Link";
 import { CallCta } from "@/components/CallCta";
 import { Callout, FaqList, Figure, Icon, JsonLd, PageHero, Section, StepFlow, type Faq, type IconName } from "@/components/ui";
 import { DEPOSIT_LABEL, PAYMENT_SCHEDULE, usd } from "@/lib/catalog-types";
-import { allInEstimate, DAMAGE_WAIVER } from "@/lib/fees";
+import { DAMAGE_WAIVER } from "@/lib/fees";
 import { readyPackages } from "@/lib/packages";
 import { scenes } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -15,13 +15,13 @@ const pct2 = Math.round(PAYMENT_SCHEDULE.secondShare * 100);
 const latePct = Math.round(PAYMENT_SCHEDULE.lateFirstShare * 100);
 
 export const metadata: Metadata = seo({
-  title: "Pricing: Every Rental Priced on the Site, No Booking Fee",
-  description: `${site.name} prices every chair, table, linen and tent on the site. Your quote adds delivery, setup, damage waiver and tax. Book with a ${pct}% deposit, refundable for ${PAYMENT_SCHEDULE.refundHours} hours, then pay in stages before your event. No separate booking fee.`,
+  title: "Pricing: One Written Quote, No Booking Fee",
+  description: `${site.name} sends one written quote for your event: every item, delivery, setup, damage waiver and tax. Book with a ${pct}% deposit, refundable for ${PAYMENT_SCHEDULE.refundHours} hours, then pay in stages before your event. No separate booking fee.`,
   alternates: { canonical: "/pricing" },
 });
 
 const included: { icon: IconName; title: string; text: string }[] = [
-  { icon: "quote", title: "A written all-in quote", text: "Every item at the price on our site, with delivery, setup, damage waiver and tax shown for your venue." },
+  { icon: "quote", title: "A written all-in quote", text: "Every item, delivery, setup, damage waiver and tax itemized and priced for your venue." },
   { icon: "truck", title: "Delivery and pickup", text: "We arrange drop-off before your event and pickup after it, at times that work for your venue." },
   { icon: "users", title: "Setup if you want it", text: "Chairs placed, tables set and linens on. Leave it off your quote if you'd rather do it yourself." },
   { icon: "phone", title: "One person to call", text: `A free ${site.callLength} call before you book, and the same person for every change after.` },
@@ -38,13 +38,10 @@ const flow = [
   { icon: "truck" as const, title: "Delivered", text: "Dropped off, set up if you asked, and picked up after." },
 ];
 
-// Real examples from our ready-made packages, priced from the catalog.
+// Real examples from our ready-made packages, so the page shows what kind of parties we price, without a dollar figure.
 const examples = readyPackages
   .filter((p) => ["backyard-birthday-50", "wedding-150", "corporate-120", "sangeet-250"].includes(p.id))
-  .map((p) => {
-    const est = allInEstimate(p.rentals);
-    return { name: p.name, guests: p.guests, rentals: p.rentals, extras: est.total - p.rentals, total: est.total, href: p.href };
-  });
+  .map((p) => ({ name: p.name, guests: p.guests, itemCount: p.itemCount, href: p.href }));
 
 const checklist = [
   "Every item and its price is in writing on your quote",
@@ -106,14 +103,21 @@ export default function PricingPage() {
           areaServed: { "@type": "City", name: "Chicago" },
           url: `${site.url}/pricing`,
           description: `Chairs, tables, linens, dinnerware, tents and more for Chicago-area events, priced item by item, with delivery, setup, damage waiver and tax on the quote. Book with a ${pct}% deposit. No separate booking fee.`,
-          offers: examples.map((e) => ({ "@type": "Offer", name: `${e.name}, ${e.guests} guests (example)`, price: Math.round(e.total), priceCurrency: "USD" })),
+          offers: examples.map((e) => ({
+            "@type": "Offer",
+            name: `${e.name}, ${e.guests} guests (example)`,
+            priceCurrency: "USD",
+            // No price shown publicly (quoted per order); priceSpecification satisfies schema.org's
+            // Offer requirement without a number, same as the validity check in scripts/seo-audit.mjs.
+            priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", valueAddedTaxIncluded: false },
+          })),
         }}
       />
       <PageHero
         breadcrumbs={[{ name: "Pricing", href: "/pricing" }]}
         eyebrow="Pricing"
-        title="Every rental priced on the site"
-        intro={`You see the price of every chair, table, linen and tent before you ask. Your quote adds delivery, setup, damage waiver and tax for your venue. There's no separate booking fee. Book with a ${pct}% deposit, fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours.`}
+        title="One written quote, nothing hidden"
+        intro={`Send us your list and we'll write up every chair, table, linen and tent with delivery, setup, damage waiver and tax for your venue. There's no separate booking fee. Book with a ${pct}% deposit, fully refundable for ${PAYMENT_SCHEDULE.refundHours} hours.`}
         actions={
           <>
             <Link href="/quote?from=pricing" className="btn-primary">Get my free all-in quote</Link>
@@ -123,16 +127,15 @@ export default function PricingPage() {
         media={<Figure {...scenes.midnightLongTable} ratio="4/5" priority sizes="(max-width: 1024px) 100vw, 40vw" className="mx-auto max-w-md" />}
       />
 
-      <Section eyebrow="Examples" title="What typical events cost, all in">
+      <Section eyebrow="Examples" title="What a typical event includes">
         <div className="overflow-x-auto rounded-2xl border border-line bg-surface">
           <table className="w-full min-w-[36rem] text-left text-sm">
-            <caption className="sr-only">Example event rental costs with {site.name}</caption>
+            <caption className="sr-only">Example events and what they&apos;re sized for with {site.name}</caption>
             <thead className="bg-surface-2 text-xs tracking-wide text-muted uppercase">
               <tr>
                 <th scope="col" className="px-5 py-4 font-semibold">Event</th>
-                <th scope="col" className="px-5 py-4 text-right font-semibold">Rentals</th>
-                <th scope="col" className="px-5 py-4 text-right font-semibold">Delivery, setup, waiver, tax</th>
-                <th scope="col" className="px-5 py-4 text-right font-semibold">All in (est.)</th>
+                <th scope="col" className="px-5 py-4 text-right font-semibold">Items</th>
+                <th scope="col" className="py-4 pl-4"><span className="sr-only">Get a quote</span></th>
               </tr>
             </thead>
             <tbody>
@@ -141,18 +144,19 @@ export default function PricingPage() {
                   <th scope="row" className="px-5 py-4 font-medium">
                     <Link href={e.href} className="link">{e.name}</Link>, {e.guests} guests
                   </th>
-                  <td className="px-5 py-4 text-right tabular-nums text-muted">{usd(e.rentals, 0)}</td>
-                  <td className="px-5 py-4 text-right tabular-nums text-muted">{usd(e.extras, 0)}</td>
-                  <td className="px-5 py-4 text-right font-medium tabular-nums">{usd(e.total, 0)}</td>
+                  <td className="px-5 py-4 text-right tabular-nums text-muted">{e.itemCount}</td>
+                  <td className="py-4 pl-4 pr-5 text-right">
+                    <Link href={e.href} className="link">Get a quote</Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <p className="mt-4 max-w-3xl text-sm leading-6 text-muted">
-          These use our <Link href="/packages" className="link">ready-made packages</Link> at today&apos;s prices, with setup included and
+          These use our <Link href="/packages" className="link">ready-made packages</Link>, with setup included and
           the Chicago tax rate. Change the guest count or swap items in the <Link href="/quote" className="link">quote builder</Link> and
-          the total updates as you go.
+          we&apos;ll send your price in a written quote.
         </p>
       </Section>
 

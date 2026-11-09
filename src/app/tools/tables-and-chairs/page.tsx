@@ -5,7 +5,7 @@ import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "tables-and-chairs";
 const title = "Tables and Chairs Calculator for Your Event";
-const description = "See how many round or banquet tables and chairs you need for your guest count, plus highboys, buffet, bar and gift tables, with rough Chicago prices.";
+const description = "See how many round or banquet tables and chairs you need for your guest count, plus highboys, buffet, bar and gift tables.";
 
 export const metadata = toolMetadata(slug, title, description);
 
@@ -15,7 +15,7 @@ const faqs = [
   { q: "How many cocktail tables do I need?", a: "It depends on how relaxed you want it to feel. This calculator starts at one highboy for every eight guests, and you can change it. Fewer guests per table gives people more places to set a drink." },
   { q: "Do I need separate chairs for the ceremony?", a: "Only if the ceremony and reception happen at the same time in different spaces, or there's no time to move chairs between them. If the crew can flip the room, the same chairs can do both." },
   { q: "Why add spare chairs?", a: "Spares cover a late RSVP, an extra vendor or a damaged chair. A few percent is usually enough." },
-  { q: "Are the prices final?", a: "No. They are rough item prices from our catalog, at our current prices. Delivery, setup, damage waiver and tax are extra, and your written quote confirms the final price for your date." },
+  { q: "How much will this cost?", a: "Send us the list this tool builds and we'll write up a quote: every item, delivery, setup, damage waiver and tax confirmed for your date." },
 ];
 
 export default function Page() {
@@ -25,13 +25,13 @@ export default function Page() {
       slug={slug}
       description={description}
       title={<>How many <em className="text-gold">tables and chairs</em> do you need?</>}
-      intro="Pick your table size and the extras you want. You get a full table order, a chair count and a rough rental price."
+      intro="Pick your table size and the extras you want. You get a full table order and a chair count."
       answer="Divide your guest count by the seats per table and round up: 120 guests at 60-inch rounds seating eight need 15 tables. Then add tables for the head table, gifts, cake, DJ, buffet and bar, highboys for cocktail hour, and chairs for every guest plus a few spares."
       steps={[
         { title: "Enter your guests", text: "Use your high estimate.", icon: "users" },
         { title: "Choose tables", text: "Rounds or banquets, and how many per table.", icon: "table" },
         { title: "Add the extras", text: "Head, gift, cake, DJ, buffet, bar and highboys.", icon: "plus" },
-        { title: "Price it", text: "See rough costs and send the list to a quote.", icon: "quote" },
+        { title: "See your list", text: "Tables, chairs and extras, then send the list to a free quote.", icon: "quote" },
       ]}
       method={
         <>

@@ -2,6 +2,7 @@
 // (src/data/catalog-products.ts) so the menu always matches /rentals/<id>.
 import type { IconName } from "@/components/ui/Icon";
 import { categories, type CategoryId } from "@/data/catalog-products";
+import { priceComparisonPagesEnabled } from "./price-pages";
 import type { MenuTone } from "./menu-style";
 
 export { toneTile, type MenuTone } from "./menu-style";
@@ -188,7 +189,7 @@ export const footerMore: { href: string; label: string }[] = [
   { href: "/answers", label: "Quick answers" },
   { href: "/solutions", label: "Rental problems solved" },
   { href: "/glossary", label: "Glossary" },
-  { href: "/data/chicago-rental-prices", label: "Chicago rental prices" },
+  ...(priceComparisonPagesEnabled() ? [{ href: "/data/chicago-rental-prices", label: "Chicago rental prices" }] : []),
   { href: "/compare", label: "Compare options" },
   { href: "/seating-layouts", label: "Seating layouts" },
   { href: "/room-size-guides", label: "Room sizes" },

@@ -6,7 +6,6 @@ import type { ReadyPackage } from "@/lib/packages";
 import { packageHref, quotePackage } from "@/lib/package-price";
 import { GuestCount } from "./guests/GuestCount";
 import { Icon } from "./ui/Icon";
-import { formatPrice } from "./ui/PriceTag";
 
 // Every package side by side. Set your own guest count and every row is repriced for it,
 // so you compare packages for your party, not for our example sizes.
@@ -22,19 +21,17 @@ export function PackageTable({ packages }: { packages: ReadyPackage[] }) {
             Show each package&apos;s usual size
           </button>
         ) : (
-          <span className="text-sm text-muted">Showing each package at its usual size. Change the number to price them all for your party.</span>
+          <span className="text-sm text-muted">Showing each package at its usual size. Change the number to size them all for your party.</span>
         )}
       </div>
       <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
         <table className="w-full min-w-[40rem] border-collapse text-left text-sm">
-          <caption className="sr-only">Every package with its guest count, setting, item count and estimated price</caption>
+          <caption className="sr-only">Every package with its guest count, setting, style and item count</caption>
           <thead>
             <tr className="border-b border-line text-muted">
               <th scope="col" className="py-3 pr-4 font-medium">Package</th>
               <th scope="col" className="px-4 py-3 font-medium">Guests</th>
-              <th scope="col" className="px-4 py-3 text-right font-medium">All-in est.</th>
-              <th scope="col" className="px-4 py-3 text-right font-medium">Per guest</th>
-              <th scope="col" className="px-4 py-3 text-right font-medium">Rentals</th>
+              <th scope="col" className="px-4 py-3 font-medium">Items</th>
               <th scope="col" className="px-4 py-3 font-medium">Where</th>
               <th scope="col" className="px-4 py-3 font-medium">Style</th>
               <th scope="col" className="py-3 pl-4"><span className="sr-only">Start</span></th>
@@ -45,14 +42,12 @@ export function PackageTable({ packages }: { packages: ReadyPackage[] }) {
               <tr key={p.id} className="border-b border-line">
                 <th scope="row" className="py-3 pr-4 font-medium">{p.name}</th>
                 <td className="px-4 py-3 tabular-nums">{q.guests}</td>
-                <td className="px-4 py-3 text-right font-medium tabular-nums">{formatPrice(q.allIn)}</td>
-                <td className="px-4 py-3 text-right tabular-nums">{formatPrice(q.perGuest)}</td>
-                <td className="px-4 py-3 text-right tabular-nums">{formatPrice(q.rentals)}</td>
+                <td className="px-4 py-3 tabular-nums">{q.itemCount}</td>
                 <td className="px-4 py-3">{p.settingName}</td>
                 <td className="px-4 py-3">{p.styleName}</td>
                 <td className="py-3 pl-4 text-right">
                   <Link href={href} className="inline-flex items-center gap-1 text-accent underline underline-offset-4">
-                    Start <Icon name="arrow" size={14} />
+                    Get a quote <Icon name="arrow" size={14} />
                   </Link>
                 </td>
               </tr>
