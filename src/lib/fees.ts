@@ -32,10 +32,23 @@ export function deliveryEstimate(subtotal: number, categoryIds: string[] = []) {
   return base + (categoryIds.some((c) => HEAVY.has(c)) ? 150 : 0);
 }
 
-export type FeeLine = { label: string; amount: number; note?: string };
+// `id` is only used so the admin quote editor (and the form it posts) can key a row; the public
+// estimate functions below don't need it and tests that compare lines by label/amount still pass.
+export type FeeLine = { id?: string; label: string; amount: number; note?: string };
 export type AllIn = { rentals: number; lines: FeeLine[]; total: number };
 
 const cents = (n: number) => Math.round(n * 100) / 100;
+
+export const sumFeeLines = (lines: FeeLine[]) => cents(lines.reduce((s, l) => s + l.amount, 0));
+
+/**
+ * The fee lines (delivery, setup, teardown, damage waiver, tax) to show and charge for this order:
+ * whatever the admin saved on the lead (`fee_lines`, edited in /admin/leads/<id>/quote), or the
+ * computed estimate below when nothing has been overridden yet.
+ */
+export function feeLinesFor(lead: { fee_lines?: FeeLine[] }, rentals: number, opts?: Parameters<typeof allInEstimate>[1]): FeeLine[] {
+  return lead.fee_lines ?? allInEstimate(rentals, opts).lines;
+}
 
 export function allInEstimate(
   rentals: number,
@@ -55,14 +68,15 @@ export function allInEstimate(
   const tax = cents((rentals + waiver) * SALES_TAX);
   const lines: FeeLine[] = [
     {
+      id: "delivery",
       label: "Delivery fee",
       amount: delivery,
       note: "est., depends on distance and stairs; same-day delivery and pickup is rare and usually quoted separately",
     },
-    ...(setup ? [{ label: "Setup fee", amount: setup, note: "est." }] : []),
-    ...(teardown ? [{ label: "Teardown fee", amount: teardown, note: "est." }] : []),
-    { label: "Damage waiver (10%)", amount: waiver },
-    { label: "Illinois sales tax", amount: tax, note: "Chicago rate, suburbs lower" },
+    ...(setup ? [{ id: "setup", label: "Setup fee", amount: setup, note: "est." }] : []),
+    ...(teardown ? [{ id: "teardown", label: "Teardown fee", amount: teardown, note: "est." }] : []),
+    { id: "waiver", label: "Damage waiver (10%)", amount: waiver },
+    { id: "tax", label: "Illinois sales tax", amount: tax, note: "Chicago rate, suburbs lower" },
   ];
   return { rentals, lines, total: cents(rentals + lines.reduce((s, l) => s + l.amount, 0)) };
 }

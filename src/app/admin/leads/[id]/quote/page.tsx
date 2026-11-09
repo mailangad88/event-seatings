@@ -6,10 +6,11 @@ import { AdminHeader } from "@/components/admin/AdminUi";
 import { LeadFlow } from "@/components/admin/LeadFlow";
 import { eventLine, money2, prettyDay } from "@/lib/admin-view";
 import { MARKUP, paymentPlanFor } from "@/lib/catalog-types";
-import { firstBookingDiscountApplied } from "@/lib/offers";
+import { feeLinesFor, sumFeeLines } from "@/lib/fees";
+import { discountFor } from "@/lib/offers";
 import { amountDue, chargeLabel } from "@/lib/payments";
 import { getLead } from "@/lib/store";
-import { saveQuote } from "./actions";
+import { saveQuote, sendQuoteUpdate } from "./actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Edit quote", robots: { index: false } };
@@ -20,7 +21,11 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
   if (!lead) notFound();
   const lines = lead.items ?? [];
   const locked = lead.fee_status === "paid";
-  const discount = firstBookingDiscountApplied(paymentPlanFor(lead.quote_subtotal ?? 0, lead.event_date)[0]?.amount ?? 0, lead.quote_subtotal ?? 0);
+  const subtotal = lead.quote_subtotal ?? 0;
+  const feeLines = feeLinesFor(lead, subtotal);
+  const feesTotal = sumFeeLines(feeLines);
+  const grandTotal = Math.round((subtotal + feesTotal) * 100) / 100;
+  const discount = discountFor(lead, paymentPlanFor(subtotal, lead.event_date)[0]?.amount ?? 0, subtotal);
   const vendorName = (v: string) => vendors.find((x) => x.id === v)?.name ?? v;
 
   return (
@@ -92,18 +97,59 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
         </div>
 
         <dl className="mt-4 ml-auto max-w-xs space-y-1 text-sm">
-          <div className="flex justify-between"><dt className="text-muted">Customer total</dt><dd className="tabular-nums">{money2(lead.quote_subtotal)}</dd></div>
+          <div className="flex justify-between"><dt className="text-muted">Rentals</dt><dd className="tabular-nums">{money2(subtotal)}</dd></div>
           <div className="flex justify-between"><dt className="text-muted">Rental companies charge</dt><dd className="tabular-nums">{money2(lead.quote_cost)}</dd></div>
+          <div className="flex justify-between font-medium border-t border-line pt-1"><dt>Customer total</dt><dd className="tabular-nums">{money2(grandTotal)}</dd></div>
           <div className="flex justify-between font-medium"><dt>{chargeLabel()}</dt><dd className="tabular-nums">{money2(lead.fee_amount ?? amountDue(lead))}</dd></div>
           {discount > 0 && (
-            <div className="flex justify-between text-xs text-muted"><dt>Includes $50 first-booking offer (orders over $1,000)</dt><dd className="tabular-nums">-{money2(discount)}</dd></div>
+            <div className="flex justify-between text-xs text-muted"><dt>Discount applied to the {chargeLabel().toLowerCase()}</dt><dd className="tabular-nums">-{money2(discount)}</dd></div>
           )}
         </dl>
 
+        <fieldset className="mt-6 border-t border-line pt-5">
+          <legend className="font-heading font-semibold text-xl">Delivery, setup, teardown, waiver & tax</legend>
+          <p className="text-xs text-muted">Pre-filled with the estimate. Change any amount or label, or remove a line, after you confirm the real charge with the rental company.</p>
+          <input type="hidden" name="fee_count" value={feeLines.length} />
+          <div className="mt-3 space-y-2">
+            {feeLines.map((f, i) => (
+              <div key={f.id ?? i} className="grid grid-cols-[1fr_8rem_auto] items-end gap-3">
+                <div>
+                  <label className="sr-only" htmlFor={`fee_label_${i}`}>Fee label {i + 1}</label>
+                  <input id={`fee_label_${i}`} name={`fee_label_${i}`} defaultValue={f.label} disabled={locked} className="field" />
+                </div>
+                <div>
+                  <label className="sr-only" htmlFor={`fee_amount_${i}`}>Fee amount {i + 1}</label>
+                  <input id={`fee_amount_${i}`} name={`fee_amount_${i}`} type="number" min={0} step="0.01" defaultValue={f.amount} disabled={locked} className="field" />
+                </div>
+                <label className="flex items-center gap-2 pb-2.5 text-xs text-muted">
+                  <input type="checkbox" name={`fee_remove_${i}`} disabled={locked} /> Remove
+                </label>
+              </div>
+            ))}
+          </div>
+          {!locked && (
+            <div className="mt-4 grid grid-cols-[1fr_8rem] gap-3">
+              <div>
+                <label className="label" htmlFor="new_fee_label">Add a fee or charge</label>
+                <input id="new_fee_label" name="new_fee_label" className="field" placeholder="Rush delivery" />
+              </div>
+              <div>
+                <label className="label" htmlFor="new_fee_amount">Amount</label>
+                <input id="new_fee_amount" name="new_fee_amount" type="number" min={0} step="0.01" className="field" />
+              </div>
+            </div>
+          )}
+          <div className="mt-4 max-w-xs">
+            <label className="label" htmlFor="discount_amount">Discount (e.g. the $50 first-booking offer)</label>
+            <input id="discount_amount" name="discount_amount" type="number" min={0} step="0.01" defaultValue={discount} disabled={locked} className="field" />
+            <p className="mt-1 text-xs text-muted">Comes off the {chargeLabel().toLowerCase()}. Set to 0 to remove it for this customer.</p>
+          </div>
+        </fieldset>
+
         {!locked && (
           <fieldset className="mt-6 border-t border-line pt-5">
-            <legend className="font-heading font-semibold text-xl">Add a line</legend>
-            <p className="text-xs text-muted">For delivery, setup, or anything the rental company adds that isn&apos;t in the catalog.</p>
+            <legend className="font-heading font-semibold text-xl">Add an item</legend>
+            <p className="text-xs text-muted">For a catalog item quantity, or anything the rental company adds that isn&apos;t in the catalog.</p>
             <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
               <div className="lg:col-span-2">
                 <label className="label" htmlFor="new_name">Item</label>
@@ -139,6 +185,13 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
           </div>
         )}
       </form>
+
+      {lead.proposal_token && !locked && (
+        <form action={sendQuoteUpdate} className="mt-4">
+          <input type="hidden" name="id" value={lead.id} />
+          <button type="submit" className="btn-ghost">Send updated quote to customer</button>
+        </form>
+      )}
     </div>
   );
 }

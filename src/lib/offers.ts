@@ -32,3 +32,13 @@ export function firstBookingDiscountApplied(amountBeforeDiscount: number, orderS
   if (!firstBookingOfferEligible(orderSubtotal) || amountBeforeDiscount <= 0) return 0;
   return cents(amountBeforeDiscount - withFirstBookingDiscount(amountBeforeDiscount, orderSubtotal));
 }
+
+/**
+ * The discount to apply to one lead's deposit: whatever the admin set on the lead (`discount_amount`,
+ * edited in /admin/leads/<id>/quote — 0 removes the offer entirely), or the automatic first-booking
+ * offer when nothing has been overridden yet. Never more than the amount it's discounting.
+ */
+export function discountFor(lead: { discount_amount?: number }, amountBeforeDiscount: number, orderSubtotal: number): number {
+  if (lead.discount_amount !== undefined) return cents(Math.max(0, Math.min(lead.discount_amount, amountBeforeDiscount)));
+  return firstBookingDiscountApplied(amountBeforeDiscount, orderSubtotal);
+}

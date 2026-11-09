@@ -1,7 +1,7 @@
 import "server-only";
 import { createHmac, randomBytes, timingSafeEqual } from "crypto";
 import { paymentPlanFor } from "./catalog-types";
-import { firstBookingDiscountApplied, withFirstBookingDiscount } from "./offers";
+import { discountFor } from "./offers";
 import type { Lead } from "./store";
 
 // Deposit checkout for customer proposals (/proposal/<token>).
@@ -35,11 +35,12 @@ const round2 = (n: number) => Math.round(n * 100) / 100;
 const subtotalOf = (lead: Pick<Lead, "quote_subtotal" | "items">) =>
   lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
 
-// What the customer pays us at checkout, in USD: the first stage of their payment plan.
-export function amountDue(lead: Pick<Lead, "quote_subtotal" | "items" | "event_date">): number {
+// What the customer pays us at checkout, in USD: the first stage of their payment plan, less whatever
+// discount applies (the admin's override on the lead, or the automatic first-booking offer).
+export function amountDue(lead: Pick<Lead, "quote_subtotal" | "items" | "event_date" | "discount_amount">): number {
   if (chargeMode() === "hold") return round2(num(process.env.BOOKING_HOLD_USD, 100));
   const deposit = paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0;
-  return withFirstBookingDiscount(deposit, subtotalOf(lead));
+  return round2(deposit - discountFor(lead, deposit, subtotalOf(lead)));
 }
 
 // "Deposit" in general, or the specific share ("20% deposit", "50% deposit", "Full payment") once we
@@ -74,7 +75,7 @@ export async function createCheckout(lead: Lead, siteUrl: string): Promise<{ id:
   const amount = amountDue(lead);
   const back = `${siteUrl}/proposal/${lead.proposal_token}`;
   const event = [lead.event_type, lead.event_date].filter(Boolean).join(", ");
-  const discount = firstBookingDiscountApplied(paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0, subtotalOf(lead));
+  const discount = discountFor(lead, paymentPlanFor(subtotalOf(lead), lead.event_date)[0]?.amount ?? 0, subtotalOf(lead));
   const body = new URLSearchParams({
     mode: "payment",
     success_url: `${back}?session_id={CHECKOUT_SESSION_ID}`,
