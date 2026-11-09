@@ -33,7 +33,7 @@ export default function Page() {
       method={
         <>
           <p>The item range comes from a common fundraising rule of thumb: about one item for every two to three guests, shown here as a low and high estimate so you have room for donations that fall through. Display tables divide the midpoint of that range by how many items comfortably fit on one 6 ft table, which depends on item size. Checkout tables are one for every 150 guests, rounded up, so a 400-guest gala gets at least three.</p>
-          <p>These are starting points, not guarantees. See the full <Link href="/blog/silent-auction-planning-guide">silent auction planning guide</Link> for sourcing items, choosing a bidding format and planning the room, and the <Link href="/blog/event-sponsorship-packages-guide">event sponsorship packages guide</Link> if you're also lining up sponsors for the same event.</p>
+          <p>These are starting points, not guarantees. See the full <Link href="/blog/silent-auction-planning-guide">silent auction planning guide</Link> for sourcing items, choosing a bidding format and planning the room, and the <Link href="/blog/event-sponsorship-packages-guide">event sponsorship packages guide</Link> if you&apos;re also lining up sponsors for the same event.</p>
         </>
       }
       faqs={faqs}
