@@ -21,7 +21,7 @@ These are the classic ballroom wedding chair - slim and light, fits 10 to a 60" 
 
 We deliver, set up, and pick up. No minimum order. Serving Chicago, Evanston, Naperville, Wheaton, Aurora, St. Charles, Geneva, Batavia, Elgin, and nearby towns.
 
-Text or call (630) 360-1795 with your date and guest count for an exact price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your date and guest count for an exact price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -35,7 +35,7 @@ White folding chairs for rent, $3.25 each. Light, stackable, and quick to set up
 
 We deliver, set up, and pick up. No minimum order.
 
-Text or call (630) 360-1795 for a quote, or go to beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 for a quote, or go to beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -49,7 +49,7 @@ Text or call (630) 360-1795 for a quote, or go to beyondchiavari.com/quote. Ment
 
 We deliver, set up, and pick up. Also have 48" and 72" rounds, banquet tables, and cocktail tables.
 
-Text or call (630) 360-1795 with your guest count for a full price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your guest count for a full price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -63,7 +63,7 @@ Text or call (630) 360-1795 with your guest count for a full price, or get an in
 
 We deliver, set up, and take the tent down after your event. Tables, chairs, linens, lighting, and a dance floor can be added to the same order.
 
-Text or call (630) 360-1795 with your date and guest count for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your date and guest count for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -77,7 +77,7 @@ Backyard party package: round tables, chairs, and tablecloths sized to your gues
 
 Covers Chicago and the suburbs. No minimum order, so this works for 10 guests or 150.
 
-Text or call (630) 360-1795 with your date and guest count for a price, or build your own at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your date and guest count for a price, or build your own at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -93,7 +93,7 @@ If the ceremony and reception are in different spots, we can flip chairs between
 
 Serving Chicago, Evanston, Naperville, St. Charles, Geneva, Batavia, and the surrounding suburbs.
 
-Text or call (630) 360-1795 with your date and guest count for a price breakdown, or start a quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your date and guest count for a price breakdown, or start a quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -105,7 +105,7 @@ Text or call (630) 360-1795 with your date and guest count for a price breakdown
 **Body:**
 Graduation party package: tent, tables, chairs, and a popcorn or snow cone machine if you want one. All delivered, set up, and picked up.
 
-Text or call (630) 360-1795 with your date and guest count for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your date and guest count for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -119,7 +119,7 @@ Portable dance floor, $26 per 3x3 section, laid out to the size you need. Works 
 
 We deliver, lay it out, and pick it up after.
 
-Text or call (630) 360-1795 with your space size for a price, or go to beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your space size for a price, or go to beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -133,7 +133,7 @@ Bistro string lights, $87 per 100 feet, and wireless LED uplights, $35 each, any
 
 We deliver, set up, and take it down after.
 
-Text or call (630) 360-1795 for a price, or start a quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 for a price, or start a quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -147,7 +147,7 @@ Tablecloths, runners, and chair sashes in a range of colors, rented by the piece
 
 Delivered pressed and ready, picked up with the rest of your order.
 
-Text or call (630) 360-1795 with your table count and colors for a price, or build a full order at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your table count and colors for a price, or build a full order at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -161,7 +161,7 @@ White china, stainless flatware, and glassware rented by the piece. Gold charger
 
 Delivered racked and ready, picked up after - no washing on your end.
 
-Text or call (630) 360-1795 with your guest count for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your guest count for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -173,7 +173,7 @@ Text or call (630) 360-1795 with your guest count for a price, or get an instant
 **Body:**
 Velvet or leather lounge sofas and armchairs for cocktail hour or a lounge corner at a reception. Delivered, arranged, and picked up.
 
-Text or call (630) 360-1795 with your date for a price, or start a quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your date for a price, or start a quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -187,7 +187,7 @@ Clean single-unit portable restrooms for backyard parties and events without eno
 
 Delivered, placed, and picked up on schedule.
 
-Text or call (630) 360-1795 with your guest count and date for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your guest count and date for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -201,7 +201,7 @@ Text or call (630) 360-1795 with your guest count and date for a price, or get a
 
 Delivered, set up, and picked up - no inflating or deflating for you to do.
 
-Text or call (630) 360-1795 with your date and address for a price, or start a quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your date and address for a price, or start a quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -215,7 +215,7 @@ Propane patio heaters to keep a backyard or open tent comfortable into the eveni
 
 Delivered and picked up. Propane sold separately.
 
-Text or call (630) 360-1795 with your space size for a price, or go to beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your space size for a price, or go to beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
@@ -229,13 +229,13 @@ Portable PA system with a microphone for toasts and speeches, up to about 300 gu
 
 Delivered and picked up.
 
-Text or call (630) 360-1795 with your guest count for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+Text or call (630) 360-1795 with your guest count for a price, or get an instant quote at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ---
 
 ## Reply template for Craigslist emails/texts
 
-> Thanks for reaching out - yes, these are available. We deliver, set up, and pick up anywhere in the Chicago area. What's your date and guest count, so I can give you an exact price? Instant quote also at beyondchiavari.com/quote. Mention this ad for $50 off your first booking.
+> Thanks for reaching out - yes, these are available. We deliver, set up, and pick up anywhere in the Chicago area. What's your date and guest count, so I can give you an exact price? Instant quote also at beyondchiavari.com/quote. Mention this ad for $50 off your first booking (orders over $1,000).
 
 ## A note on Craigslist's email relay
 

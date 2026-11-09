@@ -51,7 +51,7 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
   // The payment plan for this order: a deposit now, maybe a second installment, then the balance.
   // The installment amount is rentals only (no fees); the balance absorbs the rest, fees included.
   const plan = paymentPlanFor(subtotal, lead.event_date);
-  const discount = chargeMode() === "fee" ? firstBookingDiscountApplied(plan[0]?.amount ?? 0) : 0;
+  const discount = chargeMode() === "fee" ? firstBookingDiscountApplied(plan[0]?.amount ?? 0, subtotal) : 0;
   const installment = plan.length === 3 ? plan[1] : undefined;
   const finalDueDate = plan.length > 1 ? plan.at(-1)?.dueDate : undefined;
   const balance = Math.max(0, Math.round((allIn.total - (chargeMode() === "fee" ? due + (installment?.amount ?? 0) : 0)) * 100) / 100);
