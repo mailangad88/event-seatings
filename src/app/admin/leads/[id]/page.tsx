@@ -11,12 +11,12 @@ import { RentalVisual } from "@/components/rentals/RentalVisual";
 import { itemHref } from "@/components/rentals/parts";
 import { AfterEnquiry } from "@/components/admin/AfterEnquiry";
 import { buildLeadAlert } from "@/lib/lead-alert";
-import { intakeFields, intakeProgress, intakeText, proposalEmail, showValue, vendorDetails } from "@/lib/intake";
+import { intakeFields, intakeProgress, intakeText, showValue, vendorDetails } from "@/lib/intake";
 import { LeadFlow } from "@/components/admin/LeadFlow";
 import { getLead, getVisitorActivity, leadStatuses, listLeadsByEmail, listPartners, statusLabel, trackingFields, type Lead } from "@/lib/store";
 import { amountDue, chargeLabel, stripeEnabled } from "@/lib/payments";
 import { site } from "@/lib/site";
-import { createProposal, saveLead, setFeeStatus } from "../actions";
+import { createProposal, saveLead, sendProposalEmail, setFeeStatus } from "../actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Lead", robots: { index: false } };
@@ -82,6 +82,7 @@ function vendorOrder(lead: Lead, lines: QuoteLine[]) {
 
 export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
   const { id } = await props.params;
+  const sp = await props.searchParams;
   const [lead, partnerRows] = await Promise.all([getLead(id), listPartners()]);
   if (!lead) notFound();
   const partners = new Map(partnerRows.map((p) => [p.vendor_id, p]));
@@ -355,14 +356,18 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
             {lead.proposal_token ? (
               <div className="mt-4 space-y-3 text-sm">
                 <p className="break-all rounded-lg bg-gold-soft/40 p-3 font-mono text-xs">{`${site.url}/proposal/${lead.proposal_token}`}</p>
-                {lead.email && lead.fee_status !== "paid" && (() => {
-                  const m = proposalEmail(lead, `${site.url}/proposal/${lead.proposal_token}`, process.env.OWNER_NAME || "Angad");
-                  return (
-                    <a href={`mailto:${lead.email}?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body)}`} className="btn-primary btn-sm">
-                      Email the quote to {first === "there" ? "them" : first}
-                    </a>
-                  );
-                })()}
+                {sp.email === "sent" && <p className="text-sm text-gold">Quote emailed.</p>}
+                {sp.email === "failed" && (
+                  <p className="text-sm text-rose">
+                    Couldn&apos;t send that email. Check RESEND_API_KEY in Vercel and that beyondchiavari.com is verified in Resend — see the note on the timeline below.
+                  </p>
+                )}
+                {lead.email && lead.fee_status !== "paid" && (
+                  <form action={sendProposalEmail}>
+                    <input type="hidden" name="id" value={lead.id} />
+                    <button className="btn-primary btn-sm">Email the quote to {first === "there" ? "them" : first}</button>
+                  </form>
+                )}
                 <p>
                   Fee: <strong>{lead.fee_status === "paid" ? "Paid" : lead.fee_status === "refunded" ? "Refunded" : "Not paid"}</strong>
                   {" · "}{usd(lead.fee_amount ?? amountDue(lead))}
