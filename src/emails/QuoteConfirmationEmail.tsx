@@ -237,10 +237,15 @@ export function QuoteConfirmationEmail({
               </table>
 
               <Text className="eq-ink" style={{ fontSize: 14, lineHeight: "22px", margin: "4px 0 0", color: brand.ink }}>
-                Want to talk it through sooner? Just reply to this email, or call/text{" "}
-                <Link href={`tel:${site.phone.replace(/[^\d+]/g, "")}`} style={{ color: brand.brass }}>
-                  {site.phone}
-                </Link>
+                Want to talk it through sooner? Just reply to this email
+                {site.phone ? (
+                  <>
+                    , or call/text{" "}
+                    <Link href={`tel:${site.phone.replace(/[^\d+]/g, "")}`} style={{ color: brand.brass }}>
+                      {site.phone}
+                    </Link>
+                  </>
+                ) : null}
                 .
               </Text>
             </div>
