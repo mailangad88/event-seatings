@@ -56,6 +56,10 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
         businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
         areaServed: site.serviceArea.map((name) => ({ "@type": "City", name })),
         seller: { "@id": `${site.url}/#business` },
+        priceCurrency: "USD",
+        // No price shown publicly (quoted per order); priceSpecification satisfies schema.org's
+        // Offer requirement without a number, same as the validity check in scripts/seo-audit.mjs.
+        priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", valueAddedTaxIncluded: false },
       },
     },
     {

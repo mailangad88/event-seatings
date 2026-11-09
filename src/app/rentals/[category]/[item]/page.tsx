@@ -196,6 +196,10 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
         areaServed: site.serviceArea.map((name) => ({ "@type": "City", name })),
         seller: { "@id": `${site.url}/#business` },
         url: pageUrl,
+        priceCurrency: "USD",
+        // No price shown publicly (quoted per order); priceSpecification satisfies schema.org's
+        // Offer requirement without a number, same as the validity check in scripts/seo-audit.mjs.
+        priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", valueAddedTaxIncluded: false },
       },
     },
     {

@@ -13,7 +13,12 @@ export const itemHref = (i: Pick<CatalogItem, "categoryId" | "id">) => `/rentals
 // In a grid, cards share 4 rows (subgrid): picture, name, details, price. A name that wraps to two
 // lines moves the details and price down on every card in that row, so the row stays lined up.
 // Outside a grid the subgrid falls back to plain rows.
-export function RentalCard({ item }: { item: CatalogItem }) {
+//
+// `showPrice` defaults to false (hidden, per the 2026-11-09 price-hiding pass) but can be set true
+// on the few pages that are deliberately price-focused and already show a real $ elsewhere on the
+// same page (e.g. next to PriceBars on /rental-cost and /party-rentals), so every card on that page
+// doesn't collapse to the same boilerplate "get a quote" text.
+export function RentalCard({ item, showPrice = false }: { item: CatalogItem; showPrice?: boolean }) {
   return (
     <article className="group relative row-span-4 grid h-full grid-rows-subgrid gap-y-0">
       <RentalVisual
@@ -27,7 +32,13 @@ export function RentalCard({ item }: { item: CatalogItem }) {
       </h3>
       <p className="mt-1 line-clamp-2 text-xs leading-5 text-muted sm:text-sm sm:leading-6">{item.specs}</p>
       <p className="mt-3 flex flex-wrap items-baseline gap-x-2 self-end border-t border-line pt-3">
-        <span className="text-sm text-muted">Get your price in a free quote</span>
+        {showPrice ? (
+          <span className="text-sm text-muted">
+            {formatPrice(customerPrice(item))} {item.unit === "each" ? "each" : item.unit}
+          </span>
+        ) : (
+          <span className="text-sm text-muted">Get your price in a free quote</span>
+        )}
         <QuickAdd id={item.id} name={item.name} minQty={item.minQty} perGuest={!!item.perGuest} />
       </p>
     </article>
