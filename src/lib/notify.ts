@@ -313,6 +313,7 @@ export async function sendQuoteUpdateEmail(lead: Lead): Promise<string | undefin
     "Rentals and fees:",
     ...(lead.items ?? []).slice(0, 40).map((l) => `- ${l.qty.toLocaleString()} x ${l.name} (${usd(l.line_total, 0)})`),
     ...feeLines.map((f) => `- ${f.label}: ${usd(f.amount, 0)}`),
+    ...(lead.quote_notes ? ["", lead.quote_notes] : []),
     "",
     `Review the full breakdown and your payment schedule here: ${viewUrl}`,
     "",

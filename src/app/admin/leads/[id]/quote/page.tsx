@@ -39,7 +39,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
             <>
               {[eventLine(lead), lead.event_date && prettyDay(lead.event_date)].filter(Boolean).join(" · ")}. Change quantities or put in the
               rental company&apos;s real price after you talk to them. Customer prices are the supplier&apos;s price plus {Math.round(MARKUP * 100)}%, with no separate fee.
-              {lead.proposal_token && !locked && ` The proposal link and the ${chargeLabel().toLowerCase()} update as soon as you save.`}
+              {lead.proposal_token && ` The proposal link updates as soon as you save${locked ? "" : `, and the ${chargeLabel().toLowerCase()} recalculates`}.`}
             </>
           }
         />
@@ -48,8 +48,8 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
 
       {locked && (
         <p className="card mt-6 border-rose/40 p-4 text-sm">
-          The deposit is paid, so this quote is locked. If the order changes, agree it with the customer and the rental company in writing,
-          and note it on the lead.
+          The deposit is paid, so items are locked. Delivery, setup, teardown, the damage waiver, tax, the discount and the notes below can
+          still be corrected once you know the real charge — that only changes the balance due later, not what&apos;s already been charged.
         </p>
       )}
 
@@ -115,35 +115,47 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
               <div key={f.id ?? i} className="grid grid-cols-[1fr_8rem_auto] items-end gap-3">
                 <div>
                   <label className="sr-only" htmlFor={`fee_label_${i}`}>Fee label {i + 1}</label>
-                  <input id={`fee_label_${i}`} name={`fee_label_${i}`} defaultValue={f.label} disabled={locked} className="field" />
+                  <input id={`fee_label_${i}`} name={`fee_label_${i}`} defaultValue={f.label} className="field" />
                 </div>
                 <div>
                   <label className="sr-only" htmlFor={`fee_amount_${i}`}>Fee amount {i + 1}</label>
-                  <input id={`fee_amount_${i}`} name={`fee_amount_${i}`} type="number" min={0} step="0.01" defaultValue={f.amount} disabled={locked} className="field" />
+                  <input id={`fee_amount_${i}`} name={`fee_amount_${i}`} type="number" min={0} step="0.01" defaultValue={f.amount} className="field" />
                 </div>
                 <label className="flex items-center gap-2 pb-2.5 text-xs text-muted">
-                  <input type="checkbox" name={`fee_remove_${i}`} disabled={locked} /> Remove
+                  <input type="checkbox" name={`fee_remove_${i}`} /> Remove
                 </label>
               </div>
             ))}
           </div>
-          {!locked && (
-            <div className="mt-4 grid grid-cols-[1fr_8rem] gap-3">
-              <div>
-                <label className="label" htmlFor="new_fee_label">Add a fee or charge</label>
-                <input id="new_fee_label" name="new_fee_label" className="field" placeholder="Rush delivery" />
-              </div>
-              <div>
-                <label className="label" htmlFor="new_fee_amount">Amount</label>
-                <input id="new_fee_amount" name="new_fee_amount" type="number" min={0} step="0.01" className="field" />
-              </div>
+          <div className="mt-4 grid grid-cols-[1fr_8rem] gap-3">
+            <div>
+              <label className="label" htmlFor="new_fee_label">Add a fee or charge</label>
+              <input id="new_fee_label" name="new_fee_label" className="field" placeholder="Rush delivery" />
             </div>
-          )}
+            <div>
+              <label className="label" htmlFor="new_fee_amount">Amount</label>
+              <input id="new_fee_amount" name="new_fee_amount" type="number" min={0} step="0.01" className="field" />
+            </div>
+          </div>
           <div className="mt-4 max-w-xs">
             <label className="label" htmlFor="discount_amount">Discount (e.g. the $50 first-booking offer)</label>
-            <input id="discount_amount" name="discount_amount" type="number" min={0} step="0.01" defaultValue={discount} disabled={locked} className="field" />
+            <input id="discount_amount" name="discount_amount" type="number" min={0} step="0.01" defaultValue={discount} className="field" />
             <p className="mt-1 text-xs text-muted">Comes off the {chargeLabel().toLowerCase()}. Set to 0 to remove it for this customer.</p>
           </div>
+        </fieldset>
+
+        <fieldset className="mt-6 border-t border-line pt-5">
+          <legend className="font-heading font-semibold text-xl">Additional notes</legend>
+          <p className="text-xs text-muted">Shown to the customer on their proposal page and in the &quot;Send updated quote&quot; email below.</p>
+          <label className="sr-only" htmlFor="quote_notes">Additional notes</label>
+          <textarea
+            id="quote_notes"
+            name="quote_notes"
+            rows={3}
+            defaultValue={lead.quote_notes ?? ""}
+            placeholder="e.g. pickup is the Monday after your event, not the Sunday"
+            className="field mt-3 w-full"
+          />
         </fieldset>
 
         {!locked && (
@@ -178,15 +190,13 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
           </fieldset>
         )}
 
-        {!locked && (
-          <div className="mt-6 flex flex-wrap gap-3">
-            <button type="submit" className="btn-primary">Save quote</button>
-            <Link href={`/admin/leads/${lead.id}`} className="btn-ghost">Cancel</Link>
-          </div>
-        )}
+        <div className="mt-6 flex flex-wrap gap-3">
+          <button type="submit" className="btn-primary">Save quote</button>
+          <Link href={`/admin/leads/${lead.id}`} className="btn-ghost">Cancel</Link>
+        </div>
       </form>
 
-      {lead.proposal_token && !locked && (
+      {lead.proposal_token && (
         <form action={sendQuoteUpdate} className="mt-4">
           <input type="hidden" name="id" value={lead.id} />
           <button type="submit" className="btn-ghost">Send updated quote to customer</button>

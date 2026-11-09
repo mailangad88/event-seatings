@@ -76,6 +76,9 @@ export type Lead = {
   // Override of the automatic first-booking $50 offer (lib/offers.ts), set the same way. 0 removes it;
   // unset falls back to the automatic rule.
   discount_amount?: number;
+  // Free text from /admin/leads/<id>/quote, shown to the customer on their proposal page and in the
+  // "Send updated quote" email (e.g. "pickup is the Monday after, not the Sunday" or a delivery window).
+  quote_notes?: string;
   // CRM fields, edited in /admin/leads.
   status?: LeadStatus;
   assigned_vendor?: string;
@@ -532,6 +535,7 @@ export type LeadPatch = Partial<
     | "quote_cost"
     | "fee_lines"
     | "discount_amount"
+    | "quote_notes"
     | "vendor_orders"
     | "messages"
     | "intake"
