@@ -22,4 +22,3 @@ export { LinkCards, type LinkCard } from "./LinkCards";
 export { ReadMore } from "./ReadMore";
 export { IconCards, CheckList, type IconCard } from "./IconCards";
 export { ThumbZoom } from "./ThumbZoom";
-export { SearchBox } from "./SearchBox";

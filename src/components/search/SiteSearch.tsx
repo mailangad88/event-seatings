@@ -3,10 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "@/components/Link";
 import { Icon } from "@/components/ui/Icon";
-import type MiniSearch from "minisearch";
-
-type Entry = { url: string; title: string; text: string; type: string };
-type Hit = Entry & { score: number };
+import { searchSite, type Hit } from "@/lib/site-search-client";
 
 const typeLabel: Record<string, string> = {
   page: "Page",
@@ -27,28 +24,7 @@ const typeLabel: Record<string, string> = {
   "cost guide": "Cost guide",
 };
 
-let indexPromise: Promise<{ search: MiniSearch<Entry>; byId: Map<string, Entry> }> | null = null;
-
-// Loaded once per visit and reused: the index (public/search-index.json, generated at build time
-// by scripts/build-search-index.ts) is small and has no vendor names or prices in it.
-function loadIndex() {
-  indexPromise ??= Promise.all([import("minisearch"), fetch("/search-index.json").then((r) => r.json() as Promise<Entry[]>)]).then(
-    ([{ default: MiniSearch }, entries]) => {
-      const byId = new Map(entries.map((e, i) => [String(i), e]));
-      const search = new MiniSearch<Entry>({
-        idField: "id",
-        fields: ["title", "text"],
-        storeFields: [],
-        searchOptions: { boost: { title: 3 }, prefix: true, fuzzy: 0.2, combineWith: "OR" },
-      });
-      search.addAll(entries.map((e, i) => ({ ...e, id: String(i) })));
-      return { search, byId };
-    },
-  );
-  return indexPromise;
-}
-
-/** Live, as-you-type site search. Degrades to the plain GET form (SearchBox) with JS off. */
+/** Live, as-you-type site search for the /search page. Degrades to a plain GET form with JS off. */
 export function SiteSearch({ initialQuery = "" }: { initialQuery?: string }) {
   const [query, setQuery] = useState(initialQuery);
   // The hits for the query they were searched for, so a result never shows up next to a query
@@ -61,10 +37,8 @@ export function SiteSearch({ initialQuery = "" }: { initialQuery?: string }) {
   useEffect(() => {
     if (!trimmed) return;
     let cancelled = false;
-    loadIndex().then(({ search, byId }) => {
-      if (cancelled) return;
-      const hits = search.search(trimmed).slice(0, 30).map((r) => ({ ...byId.get(String(r.id))!, score: r.score }));
-      setResult({ query: trimmed, hits });
+    searchSite(trimmed, 30).then((hits) => {
+      if (!cancelled) setResult({ query: trimmed, hits });
     });
     return () => {
       cancelled = true;
@@ -83,16 +57,17 @@ export function SiteSearch({ initialQuery = "" }: { initialQuery?: string }) {
 
   return (
     <div>
-      <form role="search" onSubmit={(e) => e.preventDefault()} className="relative">
-        <Icon name="search" size={18} className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-muted" />
+      <form role="search" action="/search" method="get" className="field-pill flex items-center gap-3 px-5 py-1">
+        <Icon name="search" size={18} className="shrink-0 text-muted" />
         <input
           ref={inputRef}
           type="search"
+          name="q"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search rentals, guides, areas, FAQs…"
           aria-label="Search the site"
-          className="input py-4 pl-11 text-lg"
+          className="min-h-14 w-full bg-transparent text-lg text-ink outline-none placeholder:text-muted"
         />
       </form>
 
