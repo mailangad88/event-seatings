@@ -106,6 +106,9 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
           ) : (
             <p className="mt-3 text-muted">Your coordinator will add the itemized list here.</p>
           )}
+          {lead.quote_notes && (
+            <p className="mt-4 rounded-xl bg-gold-soft/50 p-4 text-sm leading-6 text-ink">{lead.quote_notes}</p>
+          )}
           <PriceDisclaimer className="mt-4" />
         </section>
 

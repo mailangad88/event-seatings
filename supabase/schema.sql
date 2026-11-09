@@ -313,4 +313,5 @@ alter table leads
 -- proposal and payment link keep using the computed estimate and the automatic first-booking offer.
 alter table leads
   add column if not exists fee_lines jsonb,
-  add column if not exists discount_amount numeric(12, 2);
+  add column if not exists discount_amount numeric(12, 2),
+  add column if not exists quote_notes text;
