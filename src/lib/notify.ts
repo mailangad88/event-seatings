@@ -4,6 +4,7 @@ import { render } from "@react-email/render";
 import { InvoiceEmail } from "@/emails/InvoiceEmail";
 import { NewReviewEmail, TextEmail } from "@/emails/templates";
 import { usd } from "./catalog-types";
+import { feeLinesFor, sumFeeLines } from "./fees";
 import { LeadAlertEmail } from "@/emails/LeadAlertEmail";
 import { QuoteConfirmationEmail } from "@/emails/QuoteConfirmationEmail";
 import { buildLeadAlert, leadAlertText } from "./lead-alert";
@@ -288,6 +289,37 @@ export async function sendInvoiceEmail(lead: Lead, invoice: Invoice): Promise<st
     log.warn("invoice_email_render_failed", { leadId: lead.id, err }), undefined
   ));
   const ok = await sendEmail({ to: lead.email, subject, text, html, unsubscribe: unsubscribeUrl(lead.email) });
+  return ok ? subject : undefined;
+}
+
+/**
+ * Tells a customer their quote changed: the new rentals, fees and total, and a link back to their
+ * proposal to review and pay. Sent by hand from "Send updated quote to customer" in
+ * /admin/leads/<id>/quote after an edit. Needs RESEND_API_KEY + NOTIFY_FROM like every visitor email.
+ */
+export async function sendQuoteUpdateEmail(lead: Lead): Promise<string | undefined> {
+  if (!process.env.NOTIFY_FROM || !lead.proposal_token || lead.opted_out_at) return;
+  const subtotal = lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
+  const feeLines = feeLinesFor(lead, subtotal);
+  const total = usd(subtotal + sumFeeLines(feeLines), 0);
+  const eventLabel = [lead.event_type, prettyDate(lead.event_date)].filter(Boolean).join(" · ");
+  const viewUrl = `${site.url}/proposal/${lead.proposal_token}`;
+  const subject = "Your quote has been updated";
+  const text = [
+    lead.name ? `Hi ${lead.name.split(" ")[0]},` : "Hi,",
+    "",
+    `We've updated your rental quote${eventLabel ? ` for ${eventLabel}` : ""}. New estimated total: ${total}.`,
+    "",
+    "Rentals and fees:",
+    ...(lead.items ?? []).slice(0, 40).map((l) => `- ${l.qty.toLocaleString()} x ${l.name} (${usd(l.line_total, 0)})`),
+    ...feeLines.map((f) => `- ${f.label}: ${usd(f.amount, 0)}`),
+    "",
+    `Review the full breakdown and your payment schedule here: ${viewUrl}`,
+    "",
+    bookingLine(lead),
+    ...signOff(lead.email),
+  ].join("\n");
+  const ok = await sendEmail({ to: lead.email, subject, text, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `quote-update/${lead.id}/${Date.now()}` });
   return ok ? subject : undefined;
 }
 

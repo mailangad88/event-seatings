@@ -307,3 +307,10 @@ alter table leads add column if not exists intake jsonb;
 alter table leads
   add column if not exists terms_accepted_at timestamptz,
   add column if not exists terms_version text;
+
+-- Admin-edited delivery/setup/teardown/waiver/tax lines and discount override, from
+-- /admin/leads/<id>/quote (lib/fees.ts, lib/offers.ts). Unset = not yet touched by an admin, so the
+-- proposal and payment link keep using the computed estimate and the automatic first-booking offer.
+alter table leads
+  add column if not exists fee_lines jsonb,
+  add column if not exists discount_amount numeric(12, 2);

@@ -8,6 +8,7 @@ import { mergeActivity, type ActivityEvent } from "./activity";
 import { backupConfigured, backupDeleteLead, backupGetJson, backupGetLead, backupListLeads, backupPutJson, backupPutLead } from "./lead-backup";
 import { isTransient, withRetry } from "./retry";
 import type { QuoteLine } from "./catalog-types";
+import type { FeeLine } from "./fees";
 import type { Journey } from "./journey";
 import type { VendorOrders } from "./orders";
 import type { Intake } from "./intake";
@@ -69,6 +70,12 @@ export type Lead = {
   items?: QuoteLine[];
   quote_subtotal?: number; // what the customer saw, at our prices (supplier rate + MARKUP)
   quote_cost?: number; // what the vendors charge us
+  // Delivery/setup/teardown/waiver/tax, edited in /admin/leads/<id>/quote. Unset = not yet touched by
+  // an admin, so the proposal and payment link fall back to the computed estimate (lib/fees.ts).
+  fee_lines?: FeeLine[];
+  // Override of the automatic first-booking $50 offer (lib/offers.ts), set the same way. 0 removes it;
+  // unset falls back to the automatic rule.
+  discount_amount?: number;
   // CRM fields, edited in /admin/leads.
   status?: LeadStatus;
   assigned_vendor?: string;
@@ -523,6 +530,8 @@ export type LeadPatch = Partial<
     | "items"
     | "quote_subtotal"
     | "quote_cost"
+    | "fee_lines"
+    | "discount_amount"
     | "vendor_orders"
     | "messages"
     | "intake"

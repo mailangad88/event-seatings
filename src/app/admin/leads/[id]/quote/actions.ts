@@ -4,9 +4,12 @@ import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { getVendor } from "@/data/vendors";
 import { checkAdmin } from "@/lib/admin-auth";
-import { customerPrice, usd, type QuoteLine } from "@/lib/catalog-types";
+import { customerPrice, paymentPlanFor, usd, type QuoteLine } from "@/lib/catalog-types";
+import { feeLinesFor, sumFeeLines, type FeeLine } from "@/lib/fees";
+import { sendQuoteUpdateEmail } from "@/lib/notify";
+import { discountFor } from "@/lib/offers";
 import { amountDue } from "@/lib/payments";
-import { getLead, updateLead, type LeadPatch } from "@/lib/store";
+import { getLead, updateLead, type Lead, type LeadPatch } from "@/lib/store";
 
 // Server Actions can be POSTed to from any URL, so each one checks the admin password itself.
 async function requireAdmin() {
@@ -20,9 +23,11 @@ const num = (v: FormDataEntryValue | null) => {
 };
 const cents = (n: number) => Math.round(n * 100) / 100;
 
-// Saves edits to a lead's quote after talking to the rental partner: quantities, the vendor's real price,
-// removed lines and extra lines (delivery, setup, a custom piece). Customer prices are the vendor price; our fee is a flat amount per event.
-// Locked once the deposit is paid, so the customer's paid proposal never changes under them.
+// Saves edits to a lead's quote after talking to the rental partner: item quantities and vendor prices,
+// added/removed items, the delivery/setup/teardown/waiver/tax lines, and the discount. Fee lines and the
+// discount are only stored once an admin saves this page; until then the proposal keeps using the
+// computed estimate (lib/fees.ts) and the automatic first-booking offer. Locked once the deposit is
+// paid, so the customer's paid proposal never changes under them.
 export async function saveQuote(formData: FormData) {
   await requireAdmin();
   const id = text(formData.get("id"), 64);
@@ -68,13 +73,55 @@ export async function saveQuote(formData: FormData) {
     });
     changes.push(`added ${newQty} × ${name}`);
   }
+
+  // Delivery, setup, teardown, damage waiver, tax: whatever the quote page showed (the admin's own
+  // edits, or the computed estimate the first time), re-read by the same row order the page rendered.
+  const oldFees = feeLinesFor(lead, lead.quote_subtotal ?? 0);
+  const feeCount = Math.min(50, Math.max(0, Math.floor(num(formData.get("fee_count")) ?? oldFees.length)));
+  const feeLines: FeeLine[] = [];
+  for (let i = 0; i < feeCount; i++) {
+    if (formData.get(`fee_remove_${i}`) === "on") continue;
+    const label = text(formData.get(`fee_label_${i}`), 80) || oldFees[i]?.label;
+    const amount = cents(num(formData.get(`fee_amount_${i}`)) ?? oldFees[i]?.amount ?? 0);
+    if (!label) continue;
+    feeLines.push({ id: oldFees[i]?.id, label, amount, note: oldFees[i]?.note });
+  }
+  const newFeeLabel = text(formData.get("new_fee_label"), 80);
+  const newFeeAmount = num(formData.get("new_fee_amount"));
+  if (newFeeLabel && newFeeAmount !== undefined) feeLines.push({ label: newFeeLabel, amount: cents(newFeeAmount) });
+
+  const sameFees = JSON.stringify(oldFees.map((f) => [f.label, f.amount])) === JSON.stringify(feeLines.map((f) => [f.label, f.amount]));
+  if (!sameFees) changes.push(`fees: ${usd(sumFeeLines(oldFees))} → ${usd(sumFeeLines(feeLines))}`);
+
+  const discount_amount = cents(num(formData.get("discount_amount")) ?? 0);
+  const oldDepositBeforeDiscount = paymentPlanFor(lead.quote_subtotal ?? 0, lead.event_date)[0]?.amount ?? 0;
+  const oldDiscount = discountFor(lead, oldDepositBeforeDiscount, lead.quote_subtotal ?? 0);
+  if (discount_amount !== oldDiscount) changes.push(`discount ${usd(oldDiscount)} → ${usd(discount_amount)}`);
+
   if (!changes.length) return;
 
   const quote_subtotal = cents(lines.reduce((s, l) => s + l.line_total, 0));
   const quote_cost = cents(lines.reduce((s, l) => s + l.vendor_price * l.qty, 0));
-  const patch: LeadPatch = { items: lines, quote_subtotal, quote_cost };
-  if (lead.proposal_token) patch.fee_amount = amountDue(lead);
-  await updateLead(id, patch, [{ type: "note", text: `Quote edited: ${changes.join("; ")}. New total ${usd(quote_subtotal)}.` }]);
+  const patch: LeadPatch = { items: lines, quote_subtotal, quote_cost, fee_lines: feeLines, discount_amount };
+  const updated: Lead = { ...lead, ...patch };
+  if (lead.proposal_token) patch.fee_amount = amountDue(updated);
+  await updateLead(id, patch, [{ type: "note", text: `Quote edited: ${changes.join("; ")}. New total ${usd(cents(quote_subtotal + sumFeeLines(feeLines)))}.` }]);
   revalidatePath(`/admin/leads/${id}`);
   revalidatePath(`/admin/leads/${id}/quote`);
+  if (lead.proposal_token) revalidatePath(`/proposal/${lead.proposal_token}`);
+}
+
+// Emails the customer that their quote changed, with a link to see the new total and pay. Needs
+// RESEND_API_KEY + NOTIFY_FROM like every other visitor email.
+export async function sendQuoteUpdate(formData: FormData) {
+  await requireAdmin();
+  const id = text(formData.get("id"), 64);
+  const lead = await getLead(id);
+  if (!lead || lead.fee_status === "paid" || !lead.proposal_token) return;
+
+  const subject = await sendQuoteUpdateEmail(lead);
+  if (subject) {
+    await updateLead(id, {}, [{ type: "note", text: `Updated quote emailed to ${lead.email}.` }]);
+    revalidatePath(`/admin/leads/${id}`);
+  }
 }
