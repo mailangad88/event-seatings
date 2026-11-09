@@ -67,7 +67,7 @@ export function LinensTool({ prices }: { prices: Record<string, ToolPrice> }) {
             <DropDiagram drop={drop} />
             <figcaption className="mt-2 text-xs text-muted">The drop is how far the cloth hangs from the table edge.</figcaption>
           </figure>
-          <PriceLines lines={lines} prices={prices} />
+          <PriceLines lines={lines} prices={prices} quoteHref={`/quote?items=${lines.filter((l) => l.qty).map((l) => l.id).join(",")}&guests=${s.guests}&from=tool-linens`} />
           <ShareBar tool="linens" quoteHref={`/quote?items=${lines.filter((l) => l.qty).map((l) => l.id).join(",")}&guests=${s.guests}&from=tool-linens`} />
         </div>
       }

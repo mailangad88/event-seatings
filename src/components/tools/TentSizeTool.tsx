@@ -66,7 +66,7 @@ export function TentSizeTool({ prices }: { prices: Record<string, ToolPrice> }) 
               ))}
             </ul>
           </div>
-          {priced && <PriceLines lines={[{ id: priced, qty: 1 }]} prices={prices} />}
+          {priced && <PriceLines lines={[{ id: priced, qty: 1 }]} prices={prices} quoteHref={`/quote?items=${priced ?? "frame-tent-20x40"},tent-sidewall&guests=${s.guests}&from=tool-tent-size`} />}
           <ShareBar tool="tent-size" quoteHref={`/quote?items=${priced ?? "frame-tent-20x40"},tent-sidewall&guests=${s.guests}&from=tool-tent-size`} />
         </div>
       }

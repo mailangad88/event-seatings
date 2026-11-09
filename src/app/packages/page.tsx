@@ -9,8 +9,8 @@ import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
-  title: `Party Rental Packages in ${site.market}: Priced for Your Guest Count`,
-  description: `Ready-made party rental packages for ${site.market} and the suburbs: backyard birthdays, graduations, showers, weddings, sangeets and company dinners. Each one lists every chair, table and linen with an all-in price.`,
+  title: `Party Rental Packages in ${site.market}: Sized for Your Guest Count`,
+  description: `Ready-made party rental packages for ${site.market} and the suburbs: backyard birthdays, graduations, showers, weddings, sangeets and company dinners. Each one lists every chair, table and linen, and you get your price in a free quote.`,
   alternates: { canonical: "/packages" },
 });
 
@@ -24,8 +24,8 @@ const faqs: Faq[] = [
     a: "Yes. Set your guest count right on the package card, and again at any time at the top of the planner: every chair, table, glass and linen follows it, and so does the price. You can also swap the chairs or linens for another style, or remove anything you don't need.",
   },
   {
-    q: "What does the all-in price include?",
-    a: "The rental items plus our estimate for delivery and pickup, setup and teardown, a 10% damage waiver and Chicago sales tax. Your proposal confirms the exact delivery cost for your address and date.",
+    q: "What does the price include?",
+    a: "The rental items plus delivery and pickup, setup and teardown, a 10% damage waiver and Chicago sales tax, all itemized on your quote. Your proposal confirms the exact delivery cost for your address and date.",
   },
   {
     q: "Is the package price fixed?",
@@ -65,7 +65,15 @@ export default function PackagesPage() {
               name: `${p.name} rental package for ${p.guests} guests`,
               description: p.blurb,
               image: `${site.url}${p.image}`,
-              offers: { "@type": "Offer", price: p.allIn.toFixed(2), priceCurrency: "USD", areaServed: site.market, url: `${site.url}${p.href}` },
+              offers: {
+                "@type": "Offer",
+                priceCurrency: "USD",
+                // No price shown publicly (quoted per order); priceSpecification satisfies schema.org's
+                // Offer requirement without a number, same as the validity check in scripts/seo-audit.mjs.
+                priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", valueAddedTaxIncluded: false },
+                areaServed: site.market,
+                url: `${site.url}${p.href}`,
+              },
             },
           })),
         }}
@@ -75,8 +83,8 @@ export default function PackagesPage() {
         title="Party rental packages, priced for your guests"
         intro={
           <>
-            Pick the party closest to yours and we&apos;ll open the full list: every chair, table, linen and plate, with an
-            all-in price. Set your guest count right on the card and the price follows it. Change any item, then send it. No payment, no commitment.
+            Pick the party closest to yours and we&apos;ll open the full list: every chair, table, linen and plate it
+            includes. Set your guest count right on the card and get your price in a free quote. Change any item, then send it. No payment, no commitment.
           </>
         }
         breadcrumbs={[{ name: "Packages", href: "/packages" }]}

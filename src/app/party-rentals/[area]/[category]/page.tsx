@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AreaMap } from "@/components/geo/AreaMap";
-import { PriceBars, RentalCard, itemHref } from "@/components/rentals/parts";
+import { RentalCard, itemHref } from "@/components/rentals/parts";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
-import { Breadcrumbs, CheckList, FaqList, Figure, IconCards, JsonLd, LinkCards, PriceDisclaimer, QuoteCta, ReadMore, Section, StatRow } from "@/components/ui";
+import { Breadcrumbs, CheckList, FaqList, Figure, IconCards, JsonLd, LinkCards, QuoteCta, ReadMore, Section, StatRow } from "@/components/ui";
 import { LaunchOffer } from "@/components/LaunchOffer";
-import { catalogItems, customerPrice, formatPrice, type CatalogItem } from "@/data/catalog";
+import { catalogItems, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { getLocation, locationPath } from "@/data/geo";
 import {
@@ -50,10 +50,8 @@ async function load(props: Props) {
   const cat = lc && getCategory(lc.id);
   if (!loc || !lc || !cat) return null;
   const items = catalogItems.filter((i) => i.categoryId === lc.id);
-  const prices = items.map(customerPrice).sort((a, b) => a - b);
-  const median = prices[Math.floor(prices.length / 2)];
   const place = loc.kind === "neighborhood" ? `${loc.name}, Chicago` : `${loc.name}, IL`;
-  return { loc, lc, cat, items, prices, median, place };
+  return { loc, lc, cat, items, place };
 }
 
 /** Items to feature: curated first, then inventory items with their own image, spread across price points. */
@@ -70,13 +68,13 @@ function pick(items: CatalogItem[], n: number, seed: string): CatalogItem[] {
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const d = await load(props);
   if (!d) return {};
-  const { loc, lc, cat, prices, place, items } = d;
+  const { loc, lc, cat, place, items } = d;
   const path = localCategoryPath(loc.slug, lc);
   // cat.name (e.g. "Concessions") instead of the longer lc.label keeps most titles under fitTitle's
   // 65-char cutoff, so the place name survives untruncated instead of two long titles truncating to
   // the same text (e.g. "South Chicago" vs "South Chicago Heights" both cutting to "South Chicago").
-  const title = `${cat.name} rentals in ${place}: Prices from ${formatPrice(prices[0])}`;
-  const description = `${lc.label} in ${place}: ${items.length} options from ${formatPrice(prices[0])}, sizing for your guest count, local delivery notes and one free itemized quote.`;
+  const title = `${cat.name} rentals in ${place}: ${items.length} options`;
+  const description = `${lc.label} in ${place}: ${items.length} options, sizing for your guest count, local delivery notes and one free itemized quote.`;
   return seo({
     title,
     description,
@@ -89,19 +87,18 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function AreaCategoryPage(props: Props) {
   const d = await load(props);
   if (!d) notFound();
-  const { loc, lc, cat, items, prices, median, place } = d;
+  const { loc, lc, cat, items, place } = d;
   const path = localCategoryPath(loc.slug, lc);
   const url = `${site.url}${path}`;
   const scene = render(lc.scene);
   const shown = pick(items, 6, loc.slug);
-  const bars = pick(items, 10, `${loc.slug}-bars`).filter((i, k, a) => a.findIndex((x) => x.id === i.id) === k);
   const rows = guestRows(lc);
   const nearby = loc.nearby.flatMap((s) => localAreas.find((l) => l.slug === s) ?? []);
   const others = localCategories.filter((c) => c.slug !== lc.slug);
   const lower = lc.label.toLowerCase();
 
   // Direct answer for answer engines: 40-60 words, every number computed from the catalog.
-  const answer = `${lc.label} in ${place} start at ${formatPrice(prices[0])}, and the typical item costs about ${formatPrice(median)}, across ${items.length} options. Delivery to ${loc.name} is priced per order, usually $150 to $400 depending on distance, stairs and timing, and one free itemized quote covers delivery, setup and pickup.`;
+  const answer = `${lc.label} in ${place} come in ${items.length} options, sized for your guest count. Delivery to ${loc.name} is priced per order, depending on distance, stairs and timing, and one free itemized quote covers delivery, setup and pickup.`;
 
   // Settings in this area with what changes for this category there.
   const settings = loc.settings.map((s) => ({ ...s, tip: lc.tips[settingKind(s.name)] }));
@@ -116,7 +113,7 @@ export default async function AreaCategoryPage(props: Props) {
   const faqs = [
     {
       q: `How much does ${lc.phrase} cost in ${loc.name}?`,
-      a: `${lc.label} through ${site.name} start at ${formatPrice(prices[0])} per item, with a typical item around ${formatPrice(median)} and premium pieces up to ${formatPrice(prices[prices.length - 1])}. Delivery to ${loc.name}, setup, a damage waiver of about 10% and sales tax are added on the same itemized quote.`,
+      a: `It depends on the piece, the finish and how many you need. Delivery to ${loc.name}, setup, a damage waiver and sales tax are added on the same itemized quote, so get a free quote to see the exact price for your event.`,
     },
     {
       q: `Do you deliver ${lower} to ${loc.name}?`,
@@ -143,11 +140,9 @@ export default async function AreaCategoryPage(props: Props) {
         ...(loc.zips.length ? { postalCode: loc.zips.join(", ") } : {}),
       },
       offers: {
-        "@type": "AggregateOffer",
+        "@type": "Offer",
         priceCurrency: "USD",
-        lowPrice: prices[0].toFixed(2),
-        highPrice: prices[prices.length - 1].toFixed(2),
-        offerCount: items.length,
+        priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", valueAddedTaxIncluded: false },
       },
       image: { "@type": "ImageObject", contentUrl: `${site.url}${scene.src}`, caption: scene.alt },
       dateModified: LOCAL_RENTALS_UPDATED,
@@ -194,47 +189,41 @@ export default async function AreaCategoryPage(props: Props) {
       <Section>
         <StatRow
           stats={[
-            { value: formatPrice(prices[0]), label: `lowest ${cat.name.toLowerCase()} price` },
-            { value: formatPrice(median), label: "typical item" },
             { value: String(items.length), label: "options to choose from" },
-            { value: formatPrice(prices[prices.length - 1]), label: "top of the range" },
+            { value: String(rows.length), label: "guest-count sizes shown" },
+            { value: String(settings.length), label: "local settings covered" },
           ]}
         />
         <h2 className="display-2 mt-16">Popular {cat.name.toLowerCase()} for {loc.name} events</h2>
         <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((i) => (
-            <RentalCard key={i.id} item={i} showPrice />
+            <RentalCard key={i.id} item={i} />
           ))}
         </div>
-        <PriceDisclaimer className="mt-8" />
       </Section>
 
       <Section tone="sand" eyebrow={`Planning for ${loc.name}`} title={`How much you need, by guest count`}>
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
-          <div>
-            <table className="w-full text-left text-sm">
-              <caption className="mb-4 text-left text-muted">{lc.sizingNote} These are rules of thumb; we confirm counts on your quote.</caption>
-              <thead>
-                <tr className="border-b border-line">
-                  <th scope="col" className="py-3 pr-4 font-medium">Guests</th>
-                  <th scope="col" className="py-3 font-medium">You will need about</th>
+        <div className="max-w-2xl">
+          <table className="w-full text-left text-sm">
+            <caption className="mb-4 text-left text-muted">{lc.sizingNote} These are rules of thumb; we confirm counts on your quote.</caption>
+            <thead>
+              <tr className="border-b border-line">
+                <th scope="col" className="py-3 pr-4 font-medium">Guests</th>
+                <th scope="col" className="py-3 font-medium">You will need about</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr key={r.guests} className="border-b border-line">
+                  <td className="py-3 pr-4 tabular-nums">{r.label}</td>
+                  <td className="py-3">{r.qty}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {rows.map((r) => (
-                  <tr key={r.guests} className="border-b border-line">
-                    <td className="py-3 pr-4 tabular-nums">{r.label}</td>
-                    <td className="py-3">{r.qty}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="mt-6 text-sm text-muted">
-              Want exact counts for your floor plan? Try the <Link href="/seating-planner" className="link-line">seating planner</Link> or see{" "}
-              <Link href={costPath(cat.id)} className="link-line">what {cat.name.toLowerCase()} cost in Chicago</Link>.
-            </p>
-          </div>
-          <PriceBars items={bars} caption={`Price per item for a sample of ${cat.name.toLowerCase()} available in ${loc.name}.`} />
+              ))}
+            </tbody>
+          </table>
+          <p className="mt-6 text-sm text-muted">
+            Want exact counts for your floor plan? Try the <Link href="/seating-planner" className="link-line">seating planner</Link>.
+          </p>
         </div>
       </Section>
 

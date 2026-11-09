@@ -1,20 +1,28 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
+import { redirect } from "next/navigation";
 import { Breadcrumbs, FaqList, Figure, JsonLd, QuoteCta, Section } from "@/components/ui";
 import { catalogItems, customerPrice, formatPrice } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { costCategories, costPath } from "@/data/local-rentals";
+import { priceComparisonPagesEnabled } from "@/lib/price-pages";
 import { render } from "@/lib/scenes";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = seo({
-  title: "Event Rental Costs in Chicago: Price Guides by Item",
-  description: "What event rentals cost in Chicago: price ranges for chairs, tables, linens, tents, dance floors, bounce houses and more, plus what delivery and setup add.",
-  alternates: { canonical: "/rental-cost" },
-});
+// Hidden behind priceComparisonPagesEnabled() (2026-11-09, Angad): this hub is a price-range table.
+// While the flag is off it 302s to /quote. Left intact so flipping the flag back on in Vercel
+// (no redeploy) brings it straight back.
+export const metadata: Metadata = priceComparisonPagesEnabled()
+  ? seo({
+      title: "Event Rental Costs in Chicago: Price Guides by Item",
+      description: "What event rentals cost in Chicago: price ranges for chairs, tables, linens, tents, dance floors, bounce houses and more, plus what delivery and setup add.",
+      alternates: { canonical: "/rental-cost" },
+    })
+  : {};
 
 export default function RentalCostHub() {
+  if (!priceComparisonPagesEnabled()) redirect("/quote");
   const rows = costCategories.map((c) => {
     const prices = catalogItems.filter((i) => i.categoryId === c.id).map(customerPrice).sort((a, b) => a - b);
     return { c, name: getCategory(c.id)?.name ?? c.id, low: prices[0], median: prices[Math.floor(prices.length / 2)], n: prices.length };

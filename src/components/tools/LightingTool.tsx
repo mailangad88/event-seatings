@@ -70,7 +70,7 @@ export function LightingTool({ prices }: { prices: Record<string, ToolPrice> }) 
             <Pattern p={pattern} L={s.length} W={s.width} s={s.spacing} />
             <figcaption className="mt-2 text-xs text-muted">{r.runs} run{r.runs === 1 ? "" : "s"}. Lights need a power point near one end of each run.</figcaption>
           </figure>
-          <PriceLines lines={[{ id: "string-lights", qty: strands100 }, { id: "uplight", qty: r.uplights }]} prices={prices} />
+          <PriceLines lines={[{ id: "string-lights", qty: strands100 }, { id: "uplight", qty: r.uplights }]} prices={prices} quoteHref="/quote?items=string-lights,uplight&from=tool-lighting" />
           <ShareBar tool="lighting" quoteHref="/quote?items=string-lights,uplight&from=tool-lighting" />
         </div>
       }

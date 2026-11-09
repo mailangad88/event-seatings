@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
-  { q: "How do these comparisons work?", a: "Each page puts two rental options side by side: what they are, where they work, how they look and when to choose each. Where we rent both, you'll see a link to the real catalog price." },
-  { q: "Are the prices current?", a: "They are our current prices, checked on the date shown in our catalog. Your written quote confirms the final price for your date." },
+  { q: "How do these comparisons work?", a: "Each page puts two rental options side by side: what they are, where they work, how they look and when to choose each. Where we rent both, you'll see a link to that item in our catalog." },
+  { q: "Where do I see the price?", a: "The exact price for your event comes with a free quote. It covers the rental plus delivery, setup, a damage waiver and sales tax, confirmed in writing for your date." },
   { q: "Where are the chair comparisons?", a: "Chairs have their own set of comparisons, from Chiavari vs folding chairs to ghost vs crossback. They're linked at the bottom of this page." },
   { q: "What if I still can't decide?", a: "Book a free call. We'll look at your venue, guest count and style and recommend what fits." },
   { q: "Can I rent both options and use each where it fits best?", a: "Often, yes. A common split is one option for the ceremony and the other for the reception, or one for the head table and the other for the rest of the room. Put both on the same quote and we'll price it either way." },

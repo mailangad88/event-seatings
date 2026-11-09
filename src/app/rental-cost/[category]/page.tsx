@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { PriceBars, RentalCard, itemHref } from "@/components/rentals/parts";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumbs, FaqList, Figure, JsonLd, PriceDisclaimer, QuoteCta, Section, StatRow } from "@/components/ui";
@@ -8,10 +8,14 @@ import { catalogItems, customerPrice, formatPrice, type CatalogItem } from "@/da
 import { getCategory } from "@/data/catalog-products";
 import { LOCAL_RENTALS_UPDATED, localAreas, costCategories, costPath, getCostCategory, localCategories, localCategoryPath } from "@/data/local-rentals";
 import { allInEstimate } from "@/lib/fees";
+import { priceComparisonPagesEnabled } from "@/lib/price-pages";
 import { sceneFor } from "@/lib/scenes";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
 
+// Hidden behind priceComparisonPagesEnabled() (2026-11-09, Angad): this whole page is a price
+// calculator. While the flag is off it 302s to /quote and none of the JSX below runs. Left intact,
+// dollar figures and all, so flipping the flag back on in Vercel (no redeploy) brings it straight back.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -32,6 +36,7 @@ function load(id: string) {
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
+  if (!priceComparisonPagesEnabled()) return {};
   const d = load((await props.params).category);
   if (!d) return {};
   const { cat, low, median, high } = d;
@@ -55,6 +60,7 @@ function bands(prices: number[]) {
 }
 
 export default async function RentalCostPage(props: Props) {
+  if (!priceComparisonPagesEnabled()) redirect("/quote");
   const d = load((await props.params).category);
   if (!d) notFound();
   const { cc, cat, items, prices, low, q1, median, q3, high } = d;
