@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import type { Menu } from "@/lib/nav";
 import { toneTile } from "@/lib/menu-style";
 import { Icon } from "./ui/Icon";
+import { LiveSearchField } from "./search/LiveSearchField";
 import { site } from "@/lib/site";
 import { contact } from "@/lib/contact";
 
@@ -53,6 +54,7 @@ export function MobileNav({ menus }: { menus: MobileMenu[] }) {
           onClick={(e) => (e.target as HTMLElement).closest("a") && setOpen(false)}
           className="absolute inset-x-0 top-full h-[calc(100dvh-72px)] overflow-y-auto border-t border-line bg-bg px-4 pt-2 pb-10"
         >
+          <LiveSearchField className="my-4" onNavigate={() => setOpen(false)} />
           {menus.map((m) => (
             <details key={m.id} className="group/sec border-b border-line">
               <summary className="flex cursor-pointer list-none items-center justify-between py-4 font-heading font-semibold text-2xl [&::-webkit-details-marker]:hidden">

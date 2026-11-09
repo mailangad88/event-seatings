@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node scripts/public-files.mjs",
+    "predev": "node scripts/public-files.mjs && npm run build:search-index",
     "dev": "next dev",
-    "prebuild": "node scripts/public-files.mjs",
+    "prebuild": "node scripts/public-files.mjs && npm run build:search-index",
+    "build:search-index": "tsx scripts/build-search-index.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -69,6 +70,7 @@
     "node-html-parser": "^7.1.0",
     "playwright-core": "^1.63.0",
     "tailwindcss": "^4",
+    "tsx": "^4.19.0",
     "typescript": "^5",
     "vite": "7.3.7",
     "vitest": "4.1.12"

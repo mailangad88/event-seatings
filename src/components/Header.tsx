@@ -8,6 +8,7 @@ import { MobileNav } from "./MobileNav";
 import { QuoteListLink } from "./QuoteListLink";
 import { MyEventsNavLink } from "./myevents/MyEventsNavLink";
 import { Icon } from "./ui/Icon";
+import { HeaderSearch } from "./search/HeaderSearch";
 import { BrandMark, BrandName } from "./brand/BrandLogo";
 
 // Kept for older imports (MobileNav, Footer): the flat list of primary links.
@@ -111,6 +112,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <HeaderSearch buttonClassName={`${linkClass} whitespace-nowrap`} />
           {site.phone && (
             <a href={`tel:${contact.phone}`} className={`${linkClass} whitespace-nowrap max-xl:hidden`}>
               <Icon name="phone" size={16} /> {site.phone}

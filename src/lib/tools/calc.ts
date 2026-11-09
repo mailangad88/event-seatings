@@ -361,3 +361,18 @@ export function parkingPlan(input: {
   const shuttles = shuttleRiders ? up(shuttleRiders / seatsPerVehicle) : 0;
   return { shuttleRiders, rideShare, drivers, cars, overflow, lotSqft, tripsPerVehicle, shuttles };
 }
+
+/* ---------------- Silent auction ---------------- */
+
+// Rules of thumb from our silent auction planning guide: 1 item per 2 to 3 guests, one 6 ft display
+// table per 5 to 8 items, and one checkout table per 150 guests (minimum 2 for any event this size).
+export function silentAuction(input: { guests: number; itemsPerGuest: number; itemsPerTable: number }) {
+  const g = Math.max(0, Math.round(input.guests));
+  const itemsPerGuest = clamp(input.itemsPerGuest, 0.2, 1);
+  const itemsPerTable = clamp(input.itemsPerTable, 3, 10);
+  const itemsLow = up(g * itemsPerGuest * 0.8);
+  const itemsHigh = up(g * itemsPerGuest * 1.2);
+  const displayTables = up(((itemsLow + itemsHigh) / 2) / itemsPerTable);
+  const checkoutTables = Math.max(1, up(g / 150));
+  return { itemsLow, itemsHigh, displayTables, checkoutTables };
+}

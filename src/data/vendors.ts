@@ -6,12 +6,20 @@ import type { CategoryId } from "./catalog-products";
 
 export type Vendor = BaseVendor & {
   address?: string;
+  /** Straight-line miles from downtown Chicago. Used to keep vendor suggestions in our service area. */
+  distanceFromChicagoMi: number;
   /** Catalog categories this vendor can fulfil (used to route items with no published offer). */
   categories: CategoryId[];
   priceTransparency: "public-list" | "partial" | "quote-only";
   /** How we confirmed the business exists. */
   verifiedVia: "own website" | "directory listing";
 };
+
+/** Vendors farther than this from Chicago never get suggested, even if they're the only one carrying a category. */
+export const MAX_VENDOR_SERVICE_DISTANCE_MI = 75;
+
+export const isInServiceArea = (v: Pick<Vendor, "distanceFromChicagoMi">) =>
+  v.distanceFromChicagoMi <= MAX_VENDOR_SERVICE_DISTANCE_MI;
 
 export const vendors: Vendor[] = [
   {
@@ -21,6 +29,7 @@ export const vendors: Vendor[] = [
     phone: "847-394-8213",
     address: "2095 Hammond Drive, Schaumburg, IL 60173",
     city: "Schaumburg",
+    distanceFromChicagoMi: 31,
     serviceArea: ["Chicago", "Schaumburg", "Arlington Heights", "Northwest suburbs", "60+ Chicagoland towns"],
     categories: ["chairs", "tables", "tents", "linens", "dinnerware", "flatware", "glassware", "catering-equipment", "dance-floors-staging", "lighting", "heating-cooling", "games-kids", "av-sound", "concessions", "fencing-crowd-control"],
     priceTransparency: "public-list",
@@ -34,6 +43,7 @@ export const vendors: Vendor[] = [
     phone: "(847) 929-2222",
     address: "6130 W. Howard St., Niles, IL 60714",
     city: "Niles",
+    distanceFromChicagoMi: 15,
     serviceArea: ["Chicago", "North Shore", "Northwest suburbs"],
     categories: ["chairs", "tables", "dinnerware", "flatware", "glassware", "catering-equipment", "heating-cooling", "lounge"],
     priceTransparency: "public-list",
@@ -46,6 +56,7 @@ export const vendors: Vendor[] = [
     website: "https://www.houseofrental.com",
     phone: "847-677-2010",
     city: "Skokie",
+    distanceFromChicagoMi: 14,
     serviceArea: ["Chicago", "Evanston", "Skokie", "Northbrook", "Arlington Heights", "Buffalo Grove", "Mt. Prospect", "Des Plaines"],
     categories: ["chairs", "tables", "linens", "dinnerware", "lighting", "dance-floors-staging", "lounge", "heating-cooling", "games-kids", "tents", "concessions", "flatware", "glassware", "catering-equipment", "av-sound", "restrooms-power", "fencing-crowd-control"],
     priceTransparency: "partial",
@@ -58,6 +69,7 @@ export const vendors: Vendor[] = [
     website: "https://www.playhousepartyrentals.com",
     phone: "773-900-6262",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     serviceArea: ["Chicago", "Aurora", "Evanston", "Oak Park", "Naperville", "Schaumburg", "Joliet"],
     categories: ["chairs", "tables", "linens", "tents", "lounge", "decor", "games-kids", "concessions", "fencing-crowd-control", "restrooms-power", "av-sound"],
     priceTransparency: "public-list",
@@ -71,6 +83,7 @@ export const vendors: Vendor[] = [
     phone: "773-756-1919",
     address: "3323 W Addison St #M10, Chicago, IL 60618",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     serviceArea: ["Chicago", "Evanston", "Glenview", "Skokie", "Oak Park", "Wilmette"],
     categories: ["chairs", "tables", "tents", "games-kids", "concessions"],
     priceTransparency: "public-list",
@@ -83,6 +96,7 @@ export const vendors: Vendor[] = [
     website: "https://easybreezybashco.com",
     phone: "414-559-4266",
     city: "Oak Creek, WI",
+    distanceFromChicagoMi: 85,
     serviceArea: ["Chicago downtown", "North Shore", "Western suburbs", "Kenosha", "Milwaukee"],
     categories: ["chairs", "tables", "lounge", "lighting", "decor", "dance-floors-staging", "games-kids", "catering-equipment", "photo-booths", "concessions"],
     priceTransparency: "public-list",
@@ -96,6 +110,7 @@ export const vendors: Vendor[] = [
     phone: "312-882-1891",
     address: "1500 S. Western Ave, Chicago, IL 60608",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     serviceArea: ["Chicago", "Milwaukee", "Midwest"],
     categories: ["chairs", "tables", "lounge", "decor", "dinnerware", "glassware"],
     priceTransparency: "quote-only",
@@ -109,6 +124,7 @@ export const vendors: Vendor[] = [
     phone: "630-690-8500",
     address: "3755 Swenson Ave, St. Charles, IL 60174",
     city: "St. Charles",
+    distanceFromChicagoMi: 38,
     serviceArea: ["Chicago", "Naperville", "Evanston", "Hinsdale", "St. Charles", "Schaumburg"],
     categories: ["tents", "chairs", "tables", "linens", "dance-floors-staging", "lighting", "heating-cooling", "decor", "games-kids", "restrooms-power"],
     priceTransparency: "quote-only",
@@ -122,6 +138,7 @@ export const vendors: Vendor[] = [
     phone: "815-722-2315",
     address: "626 Oakview Ave, Joliet, IL 60433",
     city: "Joliet",
+    distanceFromChicagoMi: 40,
     serviceArea: ["Joliet", "Will County", "Chicago area"],
     categories: ["tents", "tables", "chairs", "linens", "lighting", "heating-cooling", "dance-floors-staging", "decor"],
     priceTransparency: "quote-only",
@@ -134,6 +151,7 @@ export const vendors: Vendor[] = [
     phone: "630-468-2800",
     address: "1345 Lakeside Drive, Romeoville, IL 60446",
     city: "Romeoville",
+    distanceFromChicagoMi: 30,
     serviceArea: ["West and southwest suburbs", "Chicago"],
     categories: ["tents", "chairs", "tables", "linens", "dinnerware", "catering-equipment", "dance-floors-staging", "lighting", "heating-cooling"],
     priceTransparency: "quote-only",
@@ -147,6 +165,7 @@ export const vendors: Vendor[] = [
     phone: "847-310-0000",
     address: "15 N Brandon Dr, Glendale Heights, IL 60139",
     city: "Glendale Heights",
+    distanceFromChicagoMi: 27,
     serviceArea: ["Glendale Heights", "Schaumburg", "Bartlett", "Bloomingdale", "Carol Stream", "Roselle", "Glen Ellyn"],
     categories: ["tents", "tables", "chairs", "linens", "dance-floors-staging", "lighting", "heating-cooling", "games-kids", "catering-equipment"],
     priceTransparency: "quote-only",
@@ -161,6 +180,7 @@ export const vendors: Vendor[] = [
     email: "sales@affordablepartytent.com",
     address: "39W835 Midan Drive Unit C, Elburn, IL 60119",
     city: "Elburn",
+    distanceFromChicagoMi: 50,
     serviceArea: ["Fox Valley", "Western suburbs"],
     categories: ["tents", "tables", "chairs", "linens", "dance-floors-staging", "lighting", "heating-cooling", "restrooms-power"],
     priceTransparency: "quote-only",
@@ -173,6 +193,7 @@ export const vendors: Vendor[] = [
     phone: "630-504-2009",
     address: "429 E Ogden Ave, Naperville, IL 60563",
     city: "Naperville",
+    distanceFromChicagoMi: 28,
     serviceArea: ["Naperville", "Western suburbs"],
     categories: ["chairs", "decor", "linens", "lighting", "dance-floors-staging"],
     priceTransparency: "quote-only",
@@ -186,6 +207,7 @@ export const vendors: Vendor[] = [
     phone: "(224) 279-1500",
     address: "1150 Willis Ave., Wheeling, IL 60090",
     city: "Wheeling",
+    distanceFromChicagoMi: 28,
     serviceArea: ["Chicagoland", "Milwaukee"],
     categories: ["linens"],
     priceTransparency: "quote-only",
@@ -198,6 +220,7 @@ export const vendors: Vendor[] = [
     website: "https://bbjlatavola.com",
     phone: "847-329-8400",
     city: "Niles",
+    distanceFromChicagoMi: 15,
     serviceArea: ["Chicago", "Nationwide shipping"],
     categories: ["linens", "decor"],
     priceTransparency: "quote-only",
@@ -210,6 +233,7 @@ export const vendors: Vendor[] = [
     website: "https://www.tablescapes.com",
     phone: "312-733-9700",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     serviceArea: ["Chicago", "Milwaukee"],
     categories: ["dinnerware", "flatware", "glassware", "linens", "lounge", "decor", "catering-equipment"],
     priceTransparency: "quote-only",
@@ -222,6 +246,7 @@ export const vendors: Vendor[] = [
     website: "https://vintageplacesettings.com",
     phone: "773-876-7674",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     serviceArea: ["Chicago and surrounding areas"],
     categories: ["dinnerware", "flatware", "glassware", "linens", "decor"],
     priceTransparency: "quote-only",
@@ -234,6 +259,7 @@ export const vendors: Vendor[] = [
     website: "http://www.curatedrentals.co",
     phone: "312-520-8956",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     categories: ["lounge", "dance-floors-staging"],
     priceTransparency: "quote-only",
     verifiedVia: "own website",
@@ -244,6 +270,7 @@ export const vendors: Vendor[] = [
     website: "https://completewedo.com/chicago/",
     phone: "331-207-4027",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     categories: ["lighting", "decor", "photo-booths", "av-sound"],
     priceTransparency: "quote-only",
     verifiedVia: "own website",
@@ -253,6 +280,7 @@ export const vendors: Vendor[] = [
     id: "windy-city-event-rentals",
     name: "Windy City Event Rentals",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     serviceArea: ["Chicago", "Suburbs", "NW Indiana"],
     categories: ["chairs", "tables", "dance-floors-staging", "lighting", "linens", "lounge"],
     priceTransparency: "quote-only",
@@ -265,6 +293,7 @@ export const vendors: Vendor[] = [
     phone: "(708) 699-7368",
     address: "5901 S. County Line Road, Hinsdale, IL 60521",
     city: "Hinsdale",
+    distanceFromChicagoMi: 18,
     categories: ["tents", "tables", "chairs", "lighting"],
     priceTransparency: "partial",
     verifiedVia: "directory listing",
@@ -275,6 +304,7 @@ export const vendors: Vendor[] = [
     name: "EZ Tent Rentals",
     address: "5430 Dansher Rd, Countryside, IL",
     city: "Countryside",
+    distanceFromChicagoMi: 15,
     serviceArea: ["Chicagoland"],
     categories: ["tents", "chairs", "tables", "linens", "lighting", "dance-floors-staging", "heating-cooling", "restrooms-power"],
     priceTransparency: "quote-only",
@@ -287,6 +317,7 @@ export const vendors: Vendor[] = [
     phone: "630-922-6100",
     address: "536 IL Route 59, Naperville, IL",
     city: "Naperville",
+    distanceFromChicagoMi: 28,
     serviceArea: ["Chicagoland within 100 miles"],
     categories: ["chairs", "tents", "lighting", "tables", "dance-floors-staging", "dinnerware", "glassware", "linens", "decor"],
     priceTransparency: "quote-only",
@@ -297,6 +328,7 @@ export const vendors: Vendor[] = [
     id: "champagne-petal-rentals",
     name: "Champagne Petal Rentals",
     city: "Chicago",
+    distanceFromChicagoMi: 0,
     categories: ["decor"],
     priceTransparency: "quote-only",
     verifiedVia: "directory listing",

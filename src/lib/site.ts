@@ -31,9 +31,11 @@ export const site = {
   email: "hello@beyondchiavari.com",
   // Founder, shown on /press and in the Organization schema.
   owner: { name: "Isha Kaur" },
-  // Number to call or text. Angad's number for now (Nov 4 2026); to switch to a business line later, change it here
-  // or set NEXT_PUBLIC_PHONE in Vercel.
-  phone: process.env.NEXT_PUBLIC_PHONE?.trim() || "(630) 360-1795",
+  // Number to call or text. Hidden sitewide for now (Nov 9 2026) — empty unless NEXT_PUBLIC_PHONE is set in
+  // Vercel. Every call/text button, "call us" line and the telephone schema field already checks site.phone
+  // truthiness, so setting NEXT_PUBLIC_PHONE in Vercel (then redeploying) brings the phone number back
+  // everywhere at once. To go back to the old number, set NEXT_PUBLIC_PHONE=(630) 360-1795.
+  phone: process.env.NEXT_PUBLIC_PHONE?.trim() || "",
   instagram: "https://instagram.com/beyondchiavari",
   pinterest: "https://pinterest.com/beyondchiavari",
   // Calendly / Cal.com / Google booking page for the free seating call.
