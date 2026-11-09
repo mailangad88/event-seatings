@@ -378,4 +378,19 @@ for cx in range(340,860,60):
     b.append(f'<circle cx="{cx}" cy="490" r="8" fill="none" stroke="{GOLD}"/>')
 b.append(text(600,560,"Each booth seats one or two recruiters, one candidate chair facing them, plus a waiting row nearby.",14,MUTED,SANS,"middle",400,1,True))
 write("career-fair-booth-layout.svg",svg(1200,600,"Career or job fair seating layout: a check-in table at the front, recruiter booths along the wall each with chairs for staff and one candidate chair, and a waiting row of chairs for candidates between booths","\n".join(b)))
+# 15. HOA / condo annual meeting theater-row layout (schematic)
+b=[eyebrow(600,70,"HOA or condo annual meeting seating","middle"),
+   text(600,122,"Rows of chairs facing the board table, with an aisle down the middle",32,INK,SERIF,"middle",300)]
+b.append(f'<rect x="420" y="160" width="360" height="60" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,196,"BOARD / HEAD TABLE",14,"#0a0806",SANS,"middle",500,2))
+b.append(f'<rect x="200" y="230" width="140" height="40" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".7"/>')
+b.append(text(270,254,"SIGN-IN / PROXY",11,MUTED,SANS,"middle",500,1.5))
+rows_y=[310,360,410,460,510]
+for y in rows_y:
+    for x in list(range(220,560,40))+list(range(640,980,40)):
+        b.append(f'<circle cx="{x}" cy="{y}" r="7" fill="none" stroke="{GOLD}"/>')
+b.append(f'<line x1="600" y1="300" x2="600" y2="530" stroke="{INK}" stroke-opacity=".3" stroke-dasharray="3 6"/>')
+b.append(text(600,555,"Center aisle for mic runners and easy exits",13,MUTED,SANS,"middle",400))
+b.append(text(600,585,"Scale rows to expected turnout. Add a mic for Q&A and a table for ballots if voting is on the agenda.",14,MUTED,SANS,"middle",400,1,True))
+write("hoa-annual-meeting-layout.svg",svg(1200,610,"HOA or condo annual meeting seating layout: a board or head table at the front, a sign-in and proxy table to the side, and rows of chairs with a center aisle facing the board","\n".join(b)))
 print("ok")
