@@ -51,7 +51,7 @@ export default async function LookPage(props: PageProps<"/looks/[slug]">) {
   const faqs: [string, string][] = [
     [
       `What chairs create the ${look.name} look?`,
-      `The ${hero.name} is the heart of it (estimated ${hero.estPrice}${hero.estPrice.includes("/") ? "" : " per chair"}). It also works with the ${also.map((c) => c.name).join(" or the ")} for a ceremony, lounge or a second room.`,
+      `The ${hero.name} is the heart of it. It also works with the ${also.map((c) => c.name).join(" or the ")} for a ceremony, lounge or a second room.`,
     ],
     [
       `What venues suit ${look.name}?`,

@@ -98,7 +98,7 @@ export default async function LocationPage(props: PageProps<"/chair-rentals/[slu
           },
           offers: loc.recommendedChairs.flatMap((r) => {
             const c = getChair(r.slug);
-            return c ? [{ "@type": "Offer", name: `${c.name} rental`, description: `Estimated ${c.estPrice} per chair` }] : [];
+            return c ? [{ "@type": "Offer", name: `${c.name} rental` }] : [];
           }),
         }}
       />

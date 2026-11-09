@@ -8,14 +8,12 @@ import type { CategoryId } from "@/data/catalog-products";
 // image list and catalog data, which a "use client" file must not pull into the browser bundle.
 import { Icon } from "@/components/ui/Icon";
 import { ThumbZoom } from "@/components/ui/ThumbZoom";
-import { formatPrice } from "@/components/ui/PriceTag";
 import { RentalIcon } from "./RentalIcon";
 
 export type PriceListRow = {
   id: string;
   name: string;
   specs?: string;
-  price: number;
   unit: string;
   href: string;
   section: string;
@@ -25,12 +23,10 @@ export type PriceListRow = {
   zoomSrc?: string;
 };
 
-type SortKey = "section" | "price-asc" | "price-desc" | "name";
+type SortKey = "section" | "name";
 
 const sortOptions: { value: SortKey; label: string }[] = [
   { value: "section", label: "Grouped (default)" },
-  { value: "price-asc", label: "Price: low to high" },
-  { value: "price-desc", label: "Price: high to low" },
   { value: "name", label: "Name: A to Z" },
 ];
 
@@ -66,9 +62,7 @@ export function PriceList({ rows, category }: { rows: PriceListRow[]; category: 
   const grouped = sort === "section" && !query;
   const flat = useMemo(() => {
     const list = [...filtered];
-    if (sort === "price-asc") list.sort((a, b) => a.price - b.price);
-    else if (sort === "price-desc") list.sort((a, b) => b.price - a.price);
-    else list.sort((a, b) => a.name.localeCompare(b.name));
+    list.sort((a, b) => a.name.localeCompare(b.name));
     return list;
   }, [filtered, sort]);
 
@@ -122,9 +116,10 @@ export function PriceList({ rows, category }: { rows: PriceListRow[]; category: 
                       </Link>
                       {r.specs && <span className="block text-xs text-muted">{r.specs}</span>}
                     </td>
-                    <td className="py-2.5 text-right whitespace-nowrap tabular-nums">
-                      {formatPrice(r.price)}
-                      <span className="block text-xs text-muted">{r.unit}</span>
+                    <td className="py-2.5 text-right whitespace-nowrap">
+                      <Link href={r.href} className="link-line text-xs">
+                        Get price
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -147,9 +142,10 @@ export function PriceList({ rows, category }: { rows: PriceListRow[]; category: 
                   {r.specs && <span className="block text-xs text-muted">{r.specs}</span>}
                   <span className="block text-xs text-muted">{r.section}</span>
                 </td>
-                <td className="py-2.5 text-right whitespace-nowrap tabular-nums">
-                  {formatPrice(r.price)}
-                  <span className="block text-xs text-muted">{r.unit}</span>
+                <td className="py-2.5 text-right whitespace-nowrap">
+                  <Link href={r.href} className="link-line text-xs">
+                    Get price
+                  </Link>
                 </td>
               </tr>
             ))}
