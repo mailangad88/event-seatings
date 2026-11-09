@@ -2,11 +2,19 @@
 
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { vendors } from "@/data/catalog";
 import { checkAdmin } from "@/lib/admin-auth";
+import { proposalEmail } from "@/lib/intake";
+import { sendEmail } from "@/lib/notify";
 import { amountDue, newProposalToken } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
+import { site } from "@/lib/site";
 import { getLead, isLeadStatus, statusLabel, updateLead, type LeadActivity, type LeadPatch } from "@/lib/store";
+
+// Sender for the "Email the quote" button below. Hardcoded (not NOTIFY_FROM) so this always goes out
+// as Beyond Chiavari's own address, whatever NOTIFY_FROM is set to for other visitor emails (Angad, 2026-11-09).
+const QUOTE_FROM = "Beyond Chiavari <hello@beyondchiavari.com>";
 
 // A real calendar day (2026-02-31 passes a pattern check but the database date column refuses it).
 const realDate = (d: string) => /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(`${d}T00:00:00Z`)) && new Date(`${d}T00:00:00Z`).toISOString().startsWith(d);
@@ -94,6 +102,29 @@ export async function createProposal(formData: FormData) {
   );
   revalidatePath(`/admin/leads/${id}`);
   revalidatePath("/admin/proposals");
+}
+
+// Emails the customer their quote/proposal link, through Resend — never opens the admin's own mail app.
+// Was a plain mailto: link, which only works if the admin's computer has a mail account configured
+// (Angad hit this: clicking it opened macOS Mail's "Add Account" screen instead of sending anything).
+export async function sendProposalEmail(formData: FormData) {
+  await requireAdmin();
+  const id = text(formData.get("id"), 64);
+  const lead = await getLead(id);
+  if (!lead || !lead.proposal_token || !lead.email) redirect(`/admin/leads/${id}`);
+
+  const { subject, body } = proposalEmail(lead, `${site.url}/proposal/${lead.proposal_token}`, process.env.OWNER_NAME || "Angad");
+  const ok = await sendEmail({ to: lead.email, subject, text: body, from: QUOTE_FROM, idempotencyKey: `proposal-email/${lead.id}/${Date.now()}` });
+
+  if (!ok) {
+    await updateLead(id, {}, [{ type: "note", text: "Couldn't email the quote: Resend isn't configured or refused the send. Check RESEND_API_KEY in Vercel and that beyondchiavari.com is a verified sending domain in Resend." }]);
+    revalidatePath(`/admin/leads/${id}`);
+    redirect(`/admin/leads/${id}?email=failed`);
+  }
+
+  await updateLead(id, {}, [{ type: "email", text: `Quote emailed to ${lead.email}.` }]);
+  revalidatePath(`/admin/leads/${id}`);
+  redirect(`/admin/leads/${id}?email=sent`);
 }
 
 // Manual override for fees paid outside Stripe (bank transfer, Zelle) or refunds.
