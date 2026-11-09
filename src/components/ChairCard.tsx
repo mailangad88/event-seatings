@@ -41,9 +41,7 @@ export function ChairCard({ chair, index }: { chair: Chair; index?: number }) {
             />
           ))}
         </div>
-        <span className="text-sm font-semibold">
-          From {chair.estPrice.split(/[–-]/)[0].trim()}
-        </span>
+        <span className="text-sm font-medium text-muted">Get a quote</span>
       </div>
     </article>
   );

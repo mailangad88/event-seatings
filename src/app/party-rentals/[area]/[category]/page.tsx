@@ -203,7 +203,7 @@ export default async function AreaCategoryPage(props: Props) {
         <h2 className="display-2 mt-16">Popular {cat.name.toLowerCase()} for {loc.name} events</h2>
         <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((i) => (
-            <RentalCard key={i.id} item={i} />
+            <RentalCard key={i.id} item={i} showPrice />
           ))}
         </div>
         <PriceDisclaimer className="mt-8" />

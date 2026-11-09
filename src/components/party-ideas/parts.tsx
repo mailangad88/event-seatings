@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "@/components/Link";
 import { RentalCard } from "@/components/rentals/parts";
 import { Icon, PriceDisclaimer } from "@/components/ui";
-import { customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
+import { getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getPartyType, ideaPath, ideaQty, type Activity, type IdeaLine, type PartyIdea } from "@/data/party-ideas";
 import { render, sceneFor, type Scene } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -92,8 +92,7 @@ export function ActivityGrid({ activities }: { activities: Activity[] }) {
                     {n > 0 && ", "}
                     <Link href={`/rentals/${i.categoryId}/${i.id}`} className="text-accent underline">
                       {i.name}
-                    </Link>{" "}
-                    <span className="tabular-nums text-muted">({formatPrice(customerPrice(i))})</span>
+                    </Link>
                   </span>
                 ))}
               </p>
@@ -113,7 +112,6 @@ export function IdeaRentals({ lines, guests = 100 }: { lines: IdeaLine[]; guests
     const item = getCatalogItem(l.id);
     return item ? [{ l, item, qty: ideaQty(l, guests) }] : [];
   });
-  const total = rows.reduce((s, r) => s + customerPrice(r.item) * r.qty, 0);
   return (
     <div>
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
@@ -128,8 +126,8 @@ export function IdeaRentals({ lines, guests = 100 }: { lines: IdeaLine[]; guests
         ))}
       </div>
       <div className="mt-8 flex flex-wrap items-baseline justify-between gap-3 rounded-2xl border border-line bg-surface p-5">
-        <p className="text-sm text-muted">These add-ons for {guests} guests, before delivery, setup and tax</p>
-        <p className="font-heading font-semibold text-3xl tabular-nums">{formatPrice(total)}</p>
+        <p className="text-sm text-muted">These add-ons for {guests} guests</p>
+        <p className="font-heading font-semibold text-lg">Get your price in a free quote</p>
       </div>
       <PriceDisclaimer />
     </div>

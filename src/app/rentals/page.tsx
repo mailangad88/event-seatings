@@ -7,7 +7,7 @@ import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewedStrip";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { Faqs, JsonLd, faqJsonLd } from "@/components/rentals/parts";
-import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
+import { catalogItems, categories } from "@/data/catalog";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { Icon, PriceDisclaimer } from "@/components/ui";
 import { categoryTile, scenes } from "@/lib/scenes";
@@ -15,8 +15,8 @@ import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
-  title: `Event Rentals in ${site.market}: Chairs, Tables, Linens, Tents & Tableware Prices`,
-  description: `Rent everything for your event in ${site.market} and the suburbs: chairs, tables, linens, dishes, glassware, tents, dance floors, lighting and more. See prices upfront, build a list and get one quote.`,
+  title: `Event Rentals in ${site.market}: Chairs, Tables, Linens, Tents & Tableware`,
+  description: `Rent everything for your event in ${site.market} and the suburbs: chairs, tables, linens, dishes, glassware, tents, dance floors, lighting and more. Build a list and get one itemized quote.`,
   alternates: { canonical: "/rentals" },
 });
 
@@ -26,8 +26,8 @@ const faqs = [
     a: `Pick the items you need and send one enquiry. We confirm availability for your date and venue and send you a single itemized quote. You deal with one team instead of calling around.`,
   },
   {
-    q: "Are the prices on this page final?",
-    a: "They are current per-item rental rates for one event day. A delivered event adds delivery and pickup (usually $150-$400 per order), setup and teardown, a damage waiver of about 10% and sales tax, so plan on 35-60% more than the rental total. The quote builder shows that all-in estimate as you go. Items marked \"Est.\" use Chicago-area market rates. There's no separate booking fee, and your written quote confirms the final price for your date.",
+    q: "How much do event rentals cost in Chicago?",
+    a: "It depends on what you need, how much, and your date, so we price it in a free quote. On top of the rental rate, delivery, setup, teardown, a damage waiver and Illinois sales tax are itemized on the same quote, labeled as an estimate until you approve it.",
   },
   {
     q: "Do you deliver to the suburbs?",
@@ -50,8 +50,7 @@ const faqs = [
 export default function RentalsPage() {
   const byCategory = categories.map((c) => {
     const items = catalogItems.filter((i) => i.categoryId === c.id);
-    const from = Math.min(...items.map(customerPrice));
-    return { c, items, from };
+    return { c, items };
   });
 
   const jsonLd = [
@@ -106,7 +105,7 @@ export default function RentalsPage() {
             Rental categories
           </h2>
           <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
-            {byCategory.map(({ c, items, from }) => (
+            {byCategory.map(({ c, items }) => (
               <li key={c.id} className="group relative bg-bg p-4 transition-colors hover:bg-surface sm:p-6">
                 {categoryTile(c.id) ? (
                   <div className="media aspect-[4/3]">
@@ -128,7 +127,7 @@ export default function RentalsPage() {
                 </h3>
                 <p className="mt-1 line-clamp-2 text-sm leading-6 text-muted max-sm:hidden">{c.blurb}</p>
                 <p className="mt-2 text-sm font-medium text-gold sm:mt-3">
-                  {items.length} items · from {formatPrice(from)}
+                  {items.length} items · get a quote
                 </p>
               </li>
             ))}

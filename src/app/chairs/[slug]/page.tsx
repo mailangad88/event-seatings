@@ -35,7 +35,6 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
     .filter((c) => c.slug !== chair.slug && c.styles.some((s) => chair.styles.includes(s)))
     .slice(0, 3);
 
-  const [low, high] = (chair.estPrice.match(/\d+/g) ?? []).map(Number);
   const image = chairImage(chair);
   const pageUrl = `${site.url}/chairs/${chair.slug}`;
   const jsonLd = [
@@ -51,18 +50,17 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
       category: "Event chair rental",
       brand: { "@type": "Brand", name: site.name },
       color: chair.finishes.map((f) => f.name).join(", "),
-      ...(low && {
-        offers: {
-          "@type": "AggregateOffer",
-          priceCurrency: "USD",
-          lowPrice: low,
-          highPrice: high ?? low,
-          availability: "https://schema.org/PreOrder",
-          businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
-          areaServed: site.serviceArea.map((name) => ({ "@type": "City", name })),
-          seller: { "@id": `${site.url}/#business` },
-        },
-      }),
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/PreOrder",
+        businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
+        areaServed: site.serviceArea.map((name) => ({ "@type": "City", name })),
+        seller: { "@id": `${site.url}/#business` },
+        priceCurrency: "USD",
+        // No price shown publicly (quoted per order); priceSpecification satisfies schema.org's
+        // Offer requirement without a number, same as the validity check in scripts/seo-audit.mjs.
+        priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", valueAddedTaxIncluded: false },
+      },
     },
     {
       "@context": "https://schema.org",
@@ -87,7 +85,7 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
   const faqs: Faq[] = [
     {
       q: `How much does it cost to rent a ${chair.name} in Chicago?`,
-      a: `Expect about ${chair.estPrice} per chair for a one-day event in Chicago and the suburbs. Delivery, setup and pickup are itemized separately in your quote, and per-chair rates usually drop for larger orders.`,
+      a: `It depends on quantity and your date, so we price it in a free quote. Delivery, setup and teardown are itemized separately, and per-chair rates usually drop for larger orders.`,
     },
     {
       q: `What events is the ${chair.name} best for?`,
@@ -138,15 +136,14 @@ export default async function ChairPage(props: PageProps<"/chairs/[slug]">) {
           <p className="mt-5 font-heading text-2xl leading-snug font-medium text-muted">{chair.tagline}</p>
 
           <p className="mt-8 leading-8" data-answer>
-            {chair.description} In {site.market} the {chair.name} rents for about {chair.estPrice} per chair,
+            {chair.description} In {site.market} the {chair.name}
             {chair.stackable ? " stacks for quick setup" : " does not stack"} and is {chair.outdoorFriendly ? "fine outdoors" : "best indoors or under a tent"}. It suits{" "}
             {chair.uses.slice(0, 3).join(", ").toLowerCase()}.
           </p>
 
           <div className="well mt-10 flex items-baseline gap-3 px-5 py-4">
-            <span className="text-xs tracking-[0.2em] text-muted uppercase">Estimated</span>
-            <span className="headline text-3xl">{chair.estPrice}</span>
-            {!chair.estPrice.includes("/") && <span className="text-sm text-muted">per chair</span>}
+            <span className="text-xs tracking-[0.2em] text-muted uppercase">Price</span>
+            <span className="headline text-xl">Get your price in a free quote</span>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-4">

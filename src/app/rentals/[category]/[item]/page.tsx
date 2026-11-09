@@ -10,13 +10,12 @@ import { RecordRecentlyViewed } from "@/components/RecordRecentlyViewed";
 import { SaveIdea } from "@/components/myevents/SaveIdea";
 import { RentalVisual, rentalAlt, rentalImagePath } from "@/components/rentals/RentalVisual";
 import { Breadcrumb, Faqs, JsonLd, RentalCard, faqJsonLd, itemHref } from "@/components/rentals/parts";
-import { canonicalItem, catalogItems, customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
+import { canonicalItem, catalogItems, customerPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, isPhotoFirst, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
 import { imagesFor, originalImage, rentalImage, rentalImageJsonLd, soloImage, styledImage } from "@/data/rental-images";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
-import { allInEstimate } from "@/lib/fees";
-import { LinkCards, PriceDisclaimer } from "@/components/ui";
+import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -62,11 +61,11 @@ const wc = (s: string) => s.split(/\s+/).filter(Boolean).length;
  * The rest of the direct answer under the H1: the item description, then planning facts until the
  * answer reaches about 40-60 words (what the SEO audit checks for answer engines).
  */
-function answerExtras(i: CatalogItem, price: number): string {
+function answerExtras(i: CatalogItem): string {
   const qty = i.perGuest ? Math.max(i.minQty ?? 1, Math.ceil(100 * i.perGuest)) : 0;
   const extras = [
     i.description ?? "",
-    qty ? `A 100-guest event needs about ${qty.toLocaleString()}, or ${formatPrice(Math.round(qty * price * 100) / 100)} before delivery.` : "",
+    qty ? `A 100-guest event needs about ${qty.toLocaleString()}.` : "",
     i.minQty ? `The minimum order is ${i.minQty}.` : "",
     "Delivery, setup and pickup are added to the same itemized quote, and the quote is free.",
     `Delivered, set up and picked up across ${site.market} and the suburbs.`,
@@ -91,8 +90,8 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]/[it
       ? { url: stockSrc(real.photos[0], 1200, 630), width: 1200, height: 630, alt: stockAlt(real.photos[0], i.name, true, site.market) }
       : undefined;
   return seo({
-    title: `${titleName(i)} Rental ${site.market}: ${formatPrice(customerPrice(i))} ${unitLabel(i)}`,
-    description: `Rent ${withArticle(lower(titleName(i)))} in ${site.market} and the suburbs for ${formatPrice(customerPrice(i))} ${unitLabel(i)}. ${i.specs}. ${i.description} Delivery and setup available.`,
+    title: `${titleName(i)} Rental ${site.market}: Get a Free Quote`,
+    description: `Rent ${withArticle(lower(titleName(i)))} in ${site.market} and the suburbs. ${i.specs}. ${i.description} Delivery and setup available, with your price in a free quote.`,
     alternates: { canonical: itemHref(canonicalItem(i)) },
     ...(og && { openGraph: { images: [og] } }),
   });
@@ -115,19 +114,18 @@ function quantityRows(i: CatalogItem) {
 }
 
 function itemFaqs(i: CatalogItem) {
-  const price = formatPrice(customerPrice(i));
   const c = getCategory(i.categoryId)!;
   const faqs = [
     {
       q: `How much does it cost to rent ${withArticle(lower(i.name))} in ${site.market}?`,
-      a: `${price} ${unitLabel(i)} for one event day${i.priceSource === "estimated" ? ", based on current Chicago-area market rates" : ""}. Delivery and pickup (usually $150-$400 per order), setup, a damage waiver (about 10%) and sales tax are added for your venue, so a delivered order typically costs 35-60% more than the rental rates alone. Multi-day rentals are quoted on request.`,
+      a: `It depends on quantity and your date, so we price it in a free quote. On top of the rental rate, delivery, setup, a damage waiver and Illinois sales tax are itemized on the same quote before you book. Multi-day rentals are quoted on request.`,
     },
   ];
   if (i.perGuest) {
     const qty100 = Math.max(i.minQty ?? 1, Math.ceil(100 * i.perGuest));
     faqs.push({
       q: `How many ${plural(lower(i.name))} do I need for 100 guests?`,
-      a: `About ${qty100}, which comes to ${formatPrice(Math.round(qty100 * customerPrice(i) * 100) / 100)}. Add 5-10% spares for anything guests handle, such as plates, glasses and napkins.`,
+      a: `About ${qty100}. Add 5-10% spares for anything guests handle, such as plates, glasses and napkins.`,
     });
   }
   faqs.push(
@@ -150,7 +148,6 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const c = getCategory(i.categoryId)!;
   const price = customerPrice(i);
   const rows = quantityRows(i);
-  const maxRow = Math.max(...rows.map((r) => r.qty * price), 1);
   const faqs = itemFaqs(i);
   // Related: the next items in the same category (wrapping round), so every item links to different
   // neighbours instead of every page showing the same first four.
@@ -158,13 +155,6 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
   const at = siblings.findIndex((x) => x.id === i.id);
   const related = [1, 2, 3, 4].map((n) => siblings[(at + n) % siblings.length]).filter((x, n, a) => x.id !== i.id && a.indexOf(x) === n);
   const pageUrl = `${site.url}${itemHref(i)}`;
-  // Where this item sits in its own range (same vendor section, else category), by price. Gives every
-  // item page a comparison that is specific to it.
-  const range = (i.section ? siblings.filter((x) => x.section === i.section) : siblings).slice().sort((a, b) => customerPrice(a) - customerPrice(b) || a.name.localeCompare(b.name));
-  const rank = range.findIndex((x) => x.id === i.id);
-  const cheaper = range.slice(Math.max(0, rank - 2), rank).filter((x) => x.name !== i.name);
-  const pricier = range.slice(rank + 1, rank + 3).filter((x) => x.name !== i.name);
-  const rangeName = (i.section ?? c.name).toLowerCase();
   const img = isPhotoFirst(i.id) && !rentalImage(i.id)?.ai ? undefined : rentalImagePath(i.id, i.categoryId);
   // Real event photos: the same item type when we have it, otherwise general photos of the category.
   const real = photosForItem(i);
@@ -201,19 +191,15 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
       ],
       offers: {
         "@type": "Offer",
-        price: price.toFixed(2),
-        priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: price.toFixed(2),
-          priceCurrency: "USD",
-          unitText: i.unit,
-        },
         areaServed: site.serviceArea.map((name) => ({ "@type": "City", name })),
         seller: { "@id": `${site.url}/#business` },
         url: pageUrl,
+        priceCurrency: "USD",
+        // No price shown publicly (quoted per order); priceSpecification satisfies schema.org's
+        // Offer requirement without a number, same as the validity check in scripts/seo-audit.mjs.
+        priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", valueAddedTaxIncluded: false },
       },
     },
     {
@@ -258,64 +244,26 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             <p className="font-heading font-semibold text-lg text-gold">{c.name} rental · {site.market}</p>
             <h1 className="display-1 mt-4">{i.name}</h1>
             <p className="mt-6 text-lg leading-8" data-answer>
-              Rent {withArticle(lower(i.name))} in {site.market} and the suburbs for{" "}
-              <strong className="font-medium">
-                {formatPrice(price)} {unitLabel(i)}
-              </strong>
-              . {answerExtras(i, price)}
+              Rent {withArticle(lower(i.name))} in {site.market} and the suburbs. {answerExtras(i)}
             </p>
 
             <div className="mt-8 flex items-baseline gap-3 border-y border-line py-5">
-              <span className="headline text-4xl">{formatPrice(price)}</span>
-              <span className="text-sm text-muted">{unitLabel(i)}, one event day</span>
-              {i.priceSource === "estimated" && <span className="chip ml-auto">Estimated</span>}
+              <span className="headline text-2xl">Get your price in a free quote</span>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <AddToQuoteButton id={i.id} minQty={i.minQty} perGuest={!!i.perGuest} from={`item-${i.id}`} />
             </div>
             <AvailabilityHint />
-            {(() => {
-              // Show what a delivered order really costs, not just the rental rate.
-              const qty = i.perGuest ? Math.max(i.minQty ?? 1, Math.ceil(100 * i.perGuest)) : Math.max(1, i.minQty ?? 1);
-              const est = allInEstimate(price * qty, { categoryIds: [i.categoryId] });
-              return (
-                <details className="group/cost mt-6 rounded-xl border border-line bg-surface p-5 text-sm">
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-3 [&::-webkit-details-marker]:hidden">
-                    <span className="font-medium">
-                      Delivered and set up: about {formatPrice(Math.round(est.total))}
-                      <span className="font-normal text-muted">
-                        {" "}
-                        for {qty.toLocaleString()} {qty === 1 ? "unit" : "units"}
-                        {i.perGuest ? " (100 guests)" : ""}
-                      </span>
-                    </span>
-                    <span className="shrink-0 text-xs font-medium text-accent group-open/cost:hidden">See breakdown</span>
-                    <span className="hidden shrink-0 text-xs font-medium text-accent group-open/cost:inline">Hide</span>
-                  </summary>
-                  <dl className="mt-3 space-y-1 text-muted">
-                    <div className="flex justify-between gap-4">
-                      <dt>Rental ({qty.toLocaleString()} × {formatPrice(price)})</dt>
-                      <dd className="tabular-nums">{formatPrice(est.rentals)}</dd>
-                    </div>
-                    {est.lines.map((l) => (
-                      <div key={l.label} className="flex justify-between gap-4">
-                        <dt>
-                          {l.label}
-                          {l.note && <span className="text-xs"> ({l.note})</span>}
-                        </dt>
-                        <dd className="tabular-nums">{formatPrice(l.amount)}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <p className="mt-3 text-xs text-muted">
-                    Delivery is one charge per order, so it shrinks per item as your list grows. Your proposal confirms
-                    every fee for your venue. Nothing is charged until you approve it.
-                  </p>
-                  <PriceDisclaimer className="mt-2" vendorLink />
-                </details>
-              );
-            })()}
+            <div className="mt-6 rounded-xl border border-line bg-surface p-5 text-sm">
+              <p className="font-medium">What&apos;s in your quote</p>
+              <p className="mt-2 leading-6 text-muted">
+                Your quote itemizes the rental, delivery fee, setup fee, teardown fee, a damage waiver and Illinois
+                sales tax, and is labeled as an estimate until you approve it for your date and venue. Delivery is one
+                charge per order, so it shrinks per item as your list grows.
+              </p>
+              <PriceDisclaimer className="mt-2" vendorLink />
+            </div>
 
             <dl className="mt-10 border-t border-line text-sm">
               {facts.map(([k, v]) => (
@@ -377,38 +325,29 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
 
         <section className="mt-28 max-w-3xl" aria-labelledby="howmany">
           <figure>
-            <p className="eyebrow">Quantity &amp; cost</p>
+            <p className="eyebrow">Quantity</p>
             <h2 id="howmany" className="headline mt-6 text-4xl">
-              {i.perGuest ? `How many you need` : "Cost at a glance"}
+              {i.perGuest ? `How many you need` : "Common order sizes"}
             </h2>
             <figcaption className="mt-3 text-sm text-muted">
               {i.perGuest
-                ? `Suggested quantity by guest count and the rental cost at ${formatPrice(price)} ${unitLabel(i)}.`
-                : `Rental cost for common quantities at ${formatPrice(price)} ${unitLabel(i)}.`}
+                ? "Suggested quantity by guest count. Get your price for any of these in a free quote."
+                : "Common quantities for this item. Get your price for any of these in a free quote."}
             </figcaption>
             <table className="mt-6 w-full text-sm">
               <thead>
                 <tr className="text-left text-xs tracking-[0.18em] text-muted uppercase">
                   <th className="pb-2 font-medium">{i.perGuest ? "Event size" : "Quantity"}</th>
                   <th className="pb-2 text-right font-medium">Qty</th>
-                  <th className="w-2/5 pb-2" aria-hidden />
-                  <th className="pb-2 text-right font-medium">Cost</th>
                 </tr>
               </thead>
               <tbody>
-                {rows.map((r) => {
-                  const cost = Math.round(r.qty * price * 100) / 100;
-                  return (
-                    <tr key={r.label} className="border-t border-line">
-                      <td className="py-3">{r.label}</td>
-                      <td className="py-3 text-right tabular-nums">{r.qty}</td>
-                      <td className="py-3 pl-4">
-                        <span className="block h-2 rounded-full bg-gold/75" style={{ width: `${Math.max(3, (cost / maxRow) * 100)}%` }} />
-                      </td>
-                      <td className="py-3 text-right tabular-nums">{formatPrice(cost)}</td>
-                    </tr>
-                  );
-                })}
+                {rows.map((r) => (
+                  <tr key={r.label} className="border-t border-line">
+                    <td className="py-3">{r.label}</td>
+                    <td className="py-3 text-right tabular-nums">{r.qty}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </figure>
@@ -422,38 +361,6 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
           <Faqs faqs={faqs} />
         </section>
 
-        {range.length > 2 && (
-          <section className="mt-28 max-w-4xl" aria-labelledby="compare">
-            <p className="eyebrow">How it compares</p>
-            <h2 id="compare" className="headline mt-6 text-4xl">
-              {i.name} vs similar {rangeName}
-            </h2>
-            <p className="mt-6 leading-8">
-              At {formatPrice(price)} {unitLabel(i)}, the {i.name.toLowerCase()} is number {rank + 1} of {range.length} in our{" "}
-              {rangeName} range by price, which runs from {formatPrice(customerPrice(range[0]))} to{" "}
-              {formatPrice(customerPrice(range[range.length - 1]))}.
-            </p>
-            {(cheaper.length > 0 || pricier.length > 0) && (
-              <LinkCards
-                columns={2}
-                className="mt-6"
-                items={[
-                  ...cheaper.map((x) => ({ x, tag: "For less" })),
-                  ...pricier.map((x) => ({ x, tag: "One step up" })),
-                ].map(({ x, tag }) => {
-                  const src = rentalImagePath(x.id, x.categoryId);
-                  return {
-                    href: itemHref(x),
-                    label: x.name,
-                    text: `${tag}: ${formatPrice(customerPrice(x))} ${unitLabel(x)}`,
-                    ...(src ? { image: { src, alt: rentalAlt(x.name, x.specs, x.id) } } : { icon: "arrow" as const }),
-                  };
-                })}
-              />
-            )}
-          </section>
-        )}
-
         {related.length > 0 && (
           <section className="mt-28" aria-labelledby="related">
             <h2 id="related" className="headline text-4xl">
@@ -466,7 +373,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
             </div>
             <p className="mt-10">
               <Link href={`/rentals/${c.id}`} className="link-line">
-                All {c.name.toLowerCase()} and prices
+                All {c.name.toLowerCase()}
               </Link>
             </p>
           </section>
@@ -478,9 +385,7 @@ export default async function ItemPage(props: PageProps<"/rentals/[category]/[it
         <div className="sticky bottom-0 z-40 -mx-4 mt-16 flex items-center gap-3 border-t border-line bg-surface/95 py-3 pr-20 pl-4 backdrop-blur md:hidden">
           <span className="min-w-0 flex-1">
             <span className="block truncate text-sm">{i.name}</span>
-            <span className="text-xs text-muted">
-              <strong className="font-medium text-ink">{formatPrice(price)}</strong> {unitLabel(i)}
-            </span>
+            <span className="text-xs text-muted">Get your price in a free quote</span>
           </span>
           <AddToQuoteButton id={i.id} minQty={i.minQty} perGuest={!!i.perGuest} from={`item-bar-${i.id}`} compact className="btn-primary shrink-0 !px-4 !py-2.5 text-sm" />
         </div>

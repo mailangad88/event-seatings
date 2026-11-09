@@ -35,7 +35,7 @@ export function RecommendedChairs({
                     {chair.name}
                   </Link>
                 </h3>
-                <span className="shrink-0 text-xs tracking-[0.18em] text-gold uppercase">{chair.estPrice}</span>
+                <span className="shrink-0 text-xs tracking-[0.18em] text-gold uppercase">Get a quote</span>
               </div>
               <p className="mt-3 border-t border-line pt-3 text-sm leading-6 text-muted">{why}</p>
             </article>
