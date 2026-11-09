@@ -6,14 +6,13 @@ import { CallCta } from "@/components/CallCta";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { RentalVisual, rentalImagePath } from "@/components/rentals/RentalVisual";
-import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
-import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
+import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
+import { catalogItems, categories } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { categoryScene } from "@/lib/scenes";
-import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -27,15 +26,14 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]">):
   const c = getCategory((await props.params).category);
   if (!c) return {};
   const items = itemsIn(c.id);
-  const from = Math.min(...items.map(customerPrice));
   const first = items.map((i) => rentalImagePath(i.id, i.categoryId)).find(Boolean);
   const photo = categoryPhotos(c.id)[0];
   const og = first
     ? { url: first, alt: `${c.name} for rent in ${site.market}` }
     : { url: stockSrc(photo, 1200, 630), width: 1200, height: 630, alt: `${photo.alt}: ${c.name} for rent in ${site.market}` };
   return {
-    title: `${c.name} Rental ${site.market}: Prices from ${formatPrice(from)}`,
-    description: `${c.name} for rent in ${site.market} and the suburbs: ${c.blurb.toLowerCase()}. ${items.length} options from ${formatPrice(from)}, with sizing guides and FAQs. Get one quote.`,
+    title: `${c.name} Rental ${site.market}: Get a Free Quote`,
+    description: `${c.name} for rent in ${site.market} and the suburbs: ${c.blurb.toLowerCase()}. ${items.length} options, with sizing guides and FAQs. Build a list and get one itemized quote.`,
     alternates: { canonical: `/rentals/${c.id}` },
     openGraph: { images: [og] },
   };
@@ -45,7 +43,6 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
   const c = getCategory((await props.params).category);
   if (!c) notFound();
   const items = itemsIn(c.id);
-  const prices = items.map(customerPrice);
   const featured = items.filter((i) => i.featured);
   const inventory = items.filter((i) => !i.featured);
   const inventoryCount = inventory.length;
@@ -98,9 +95,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{c.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="chip">{items.length} options</span>
-              <span className="chip">
-                {formatPrice(Math.min(...prices))} – {formatPrice(Math.max(...prices))}
-              </span>
+              <span className="chip">Get your price in a free quote</span>
               <span className="chip">Delivery across {site.marketLong}</span>
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
@@ -177,15 +172,14 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
 
         {sections.length > 0 && (
           <section className="mt-28" aria-labelledby="full-list">
-            <p className="eyebrow">Full price list</p>
+            <p className="eyebrow">Full options list</p>
             <h2 id="full-list" className="headline mt-6 text-4xl">
-              Every {c.name.toLowerCase()} option, priced
+              Every {c.name.toLowerCase()} option
             </h2>
             <p className="mt-3 max-w-2xl text-muted">
-              {inventoryCount} more styles, sizes and finishes from {site.market}-area rental companies. Prices are per
-              unit for one event day, before delivery, setup, damage waiver and tax (typically 35-60% more all-in).
+              {inventoryCount} more styles, sizes and finishes. Add any of these to your quote to see the price, with
+              delivery, setup, teardown, a damage waiver and tax itemized.
             </p>
-            <PriceDisclaimer className="mt-2 max-w-2xl" vendorLink />
             <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-2">
               {sections.map(([section, rows]) => (
                 <table key={section} className="w-full self-start text-sm">
@@ -212,9 +206,10 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
                           </Link>
                           {i.specs && <span className="block text-xs text-muted">{i.specs}</span>}
                         </td>
-                        <td className="py-2.5 text-right whitespace-nowrap tabular-nums">
-                          {formatPrice(customerPrice(i))}
-                          <span className="block text-xs text-muted">{i.unit}</span>
+                        <td className="py-2.5 text-right whitespace-nowrap">
+                          <Link href={itemHref(i)} className="link-line text-xs">
+                            Get price
+                          </Link>
                         </td>
                       </tr>
                       );
@@ -236,23 +231,15 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
           </div>
         </section>
 
-        <section className="mt-28 grid gap-16 lg:grid-cols-2" aria-labelledby="prices">
-          <div>
-            <p className="eyebrow">Price guide</p>
-            <h2 id="prices" className="headline mt-6 mb-8 text-4xl">
-              {c.name} rental prices in {site.market}
+        {budget && (
+          <section className="mt-28 max-w-xl" aria-labelledby="worked-example">
+            <p className="eyebrow">Worked example</p>
+            <h2 id="worked-example" className="headline mt-6 mb-8 text-4xl">
+              A sample {c.name.toLowerCase()} list
             </h2>
-            <PriceBars items={featured} caption={`Per-unit rental price for one event day, ${site.marketLong}.`} />
-          </div>
-          {budget && (
-            <div>
-              <p className="eyebrow">Worked example</p>
-              <div className="mt-6">
-                <BudgetExample budget={budget} />
-              </div>
-            </div>
-          )}
-        </section>
+            <BudgetExample budget={budget} />
+          </section>
+        )}
 
         <section className="mt-28 max-w-4xl" aria-labelledby="faq">
           <p className="eyebrow">Questions</p>

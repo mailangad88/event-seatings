@@ -13,7 +13,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How much does chair rental cost in Chicago?",
-    a: "Roughly $2.50 to $4 for a folding chair, $7 to $10 for Chiavari or cross-back, and $12 to $32 for specialty chairs like velvet, Louis or ghost. Delivery and setup are added per order. See live prices in the chairs catalog.",
+    a: "Roughly $2.50 to $4 for a folding chair, $7 to $10 for Chiavari or cross-back, and $12 to $32 for specialty chairs like velvet, Louis or ghost, based on current Chicago-area market rates. Delivery, setup and teardown are added per order. Get your exact price in a free quote.",
   },
   {
     q: "Which chair style suits my venue?",
@@ -45,11 +45,11 @@ export default async function ChairsPage(props: PageProps<"/chairs">) {
         breadcrumbs={[{ name: "Chair styles", href: "/chairs" }]}
         eyebrow="Chair style guide"
         title={<>Find your chair, <em className="text-gold">beyond</em> Chiavari</>}
-        intro="Explore 13 chair styles in 3D by aesthetic and occasion, save the ones you love, then see live prices in the rentals catalog."
+        intro="Explore 13 chair styles in 3D by aesthetic and occasion, save the ones you love, then get your price in a free quote."
         actions={
           <>
             <Link href="/rentals/chairs" className="btn-primary">
-              See chair prices <Icon name="arrow" size={16} />
+              Browse chairs <Icon name="arrow" size={16} />
             </Link>
             <Link href="/quiz" className="btn-ghost">Take the style quiz</Link>
           </>

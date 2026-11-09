@@ -204,7 +204,13 @@ export function QuoteForm({
   const anyEstimated = lines.some((l) => l.item.estimated);
   const [withSetup, setWithSetup] = useState(true);
   // Rental rates exclude delivery, setup, waiver and tax; show the realistic delivered total.
-  const allIn = allInEstimate(subtotal, { categoryIds: lines.map((l) => l.item.categoryId ?? ""), setup: withSetup });
+  const chairLines = lines.filter((l) => l.item.categoryId === "chairs");
+  const allIn = allInEstimate(subtotal, {
+    categoryIds: lines.map((l) => l.item.categoryId ?? ""),
+    setup: withSetup,
+    chairQty: chairLines.reduce((s, l) => s + l.qty, 0),
+    chairRentals: chairLines.reduce((s, l) => s + l.item.price * l.qty, 0),
+  });
   const addedIn = (c: string) => lines.filter((l) => l.item.category === c).length;
 
   // What a starter would cost at the current guest count (or 100), for the cards.

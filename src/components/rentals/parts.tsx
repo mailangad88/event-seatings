@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { customerPrice, formatPrice, type CatalogItem } from "@/data/catalog";
+import type { CatalogItem } from "@/data/catalog";
 import { RentalVisual } from "./RentalVisual";
 
 // Server-only building blocks for the /rentals pages. They receive full catalog items but
-// render only customer-safe fields (name, specs, marked-up price). Never render vendor fields.
+// render only customer-safe fields (name, specs). Never render vendor fields or a public price:
+// Angad asked (2026-11-09) for item prices to come out of the public site; they now only show
+// once someone starts a quote, labeled as an estimate.
 
 export const itemHref = (i: Pick<CatalogItem, "categoryId" | "id">) => `/rentals/${i.categoryId}/${i.id}`;
 
@@ -20,40 +22,8 @@ export function RentalCard({ item }: { item: CatalogItem }) {
         </Link>
       </h3>
       <p className="mt-1 text-sm text-muted">{item.specs}</p>
-      <p className="mt-3 flex items-baseline gap-2 border-t border-line pt-3">
-        <span className="font-serif text-2xl">{formatPrice(customerPrice(item))}</span>
-        <span className="text-xs text-muted">{item.unit === "each" ? "each" : item.unit}</span>
-        {item.priceSource === "estimated" && <span className="chip ml-auto">Est.</span>}
-      </p>
+      <p className="mt-3 border-t border-line pt-3 text-sm text-muted">Get your price in a free quote</p>
     </article>
-  );
-}
-
-/** Horizontal bar chart comparing customer prices. Plain HTML so crawlers can read every value. */
-export function PriceBars({ items, caption }: { items: CatalogItem[]; caption: string }) {
-  const rows = items.map((i) => ({ item: i, price: customerPrice(i) })).sort((a, b) => a.price - b.price);
-  const max = Math.max(...rows.map((r) => r.price), 1);
-  return (
-    <figure>
-      <figcaption className="text-sm text-muted">{caption}</figcaption>
-      <ul className="mt-6 space-y-3">
-        {rows.map(({ item, price }) => (
-          <li key={item.id} className="grid grid-cols-[minmax(0,11rem)_1fr_5.5rem] items-center gap-3 text-sm sm:grid-cols-[minmax(0,15rem)_1fr_6.5rem]">
-            <Link href={itemHref(item)} className="truncate hover:text-gold" title={item.name}>
-              {item.name}
-            </Link>
-            <span className="h-2.5 rounded-full bg-gold/80" style={{ width: `${Math.max(2, (price / max) * 100)}%` }} />
-            <span className="text-right tabular-nums">
-              {formatPrice(price)}
-              <span className="text-muted">{item.priceSource === "estimated" ? "*" : ""}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
-      {rows.some((r) => r.item.priceSource === "estimated") && (
-        <p className="mt-4 text-xs text-muted">* Estimated from Chicago-area market rates; confirmed in your quote.</p>
-      )}
-    </figure>
   );
 }
 

@@ -26,6 +26,7 @@ import {
 import { BookingCta } from "../BookingCta";
 import { ItemVisual, Stepper, type QuoteItem } from "../QuoteForm";
 import { Icon, formatPrice, type IconName } from "../ui";
+import { allInEstimate } from "@/lib/fees";
 import { FloorPlan } from "./FloorPlan";
 
 // Step-by-step event planner: a few picture-first questions build a recommended rental list the visitor can
@@ -759,6 +760,12 @@ function PlanView({
     .sort((x, y) => y.value - x.value);
   const max = Math.max(1, ...groups.map((x) => x.value));
   const first = name?.split(" ")[0];
+  const chairList = list.filter((l) => l.item.categoryId === "chairs");
+  const allIn = allInEstimate(total, {
+    categoryIds: list.map((l) => l.item.categoryId ?? ""),
+    chairQty: chairList.reduce((s, l) => s + l.qty, 0),
+    chairRentals: chairList.reduce((s, l) => s + l.item.price * l.qty, 0),
+  });
 
   return (
     <div>
@@ -850,10 +857,23 @@ function PlanView({
             ))}
           </ul>
           <p className="mt-4 border-t border-line pt-3 text-sm">
-            Rentals total <strong className="tabular-nums">{formatPrice(total)}</strong>
+            Rentals <strong className="tabular-nums">{formatPrice(total)}</strong>
             <span className="text-muted"> · {formatPrice(input.guests ? total / input.guests : 0)} per guest</span>
           </p>
-          <p className="mt-1 text-xs text-muted">Delivery, setup, damage waiver and tax are confirmed in your proposal.</p>
+          <dl className="mt-2 space-y-1 text-sm text-muted">
+            {allIn.lines.map((l) => (
+              <div key={l.label} className="flex justify-between gap-4">
+                <dt>{l.label}</dt>
+                <dd className="tabular-nums">{formatPrice(l.amount)}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-3 border-t border-line pt-3 text-sm">
+            Estimated total <strong className="tabular-nums">{formatPrice(allIn.total)}</strong>
+          </p>
+          <p className="mt-1 text-xs text-muted">
+            This is an estimate. We confirm the final price for your date and venue in your proposal.
+          </p>
         </div>
       </section>
     </div>

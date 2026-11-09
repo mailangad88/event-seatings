@@ -57,10 +57,17 @@ export function toPublicItem(i: CatalogItem): PublicItem {
   };
 }
 
-// Our margin on top of every vendor price (10%).
-export const MARKUP = 0.1;
-// How the fee is written in customer copy (booking promise, terms, how it works). Follows MARKUP.
-export const BOOKING_FEE_LABEL = `${Math.round(MARKUP * 100)}%`;
+// Our margin on top of every vendor price. Angad set this to 40% on 2026-11-09; item prices are no
+// longer shown on public pages, only in a personalized quote, labeled as an estimate.
+export const MARKUP = 0.4;
+// Legacy copy on /booking-promise, /how-it-works, /vendor-listings, /terms and /proposal describes
+// an older "visible booking fee on top of the rental company's price" model that names the rental
+// company's price directly. That model was replaced on 2026-11-04 by "our own pricing" (item prices
+// here are already our own, vendor price and name are never shown). Those pages were never rewritten
+// for that change, so this is intentionally NOT tied to MARKUP: showing the real 40% margin on that
+// old copy would newly expose vendor pricing math we otherwise hide everywhere else. Flagged for a
+// rewrite of those five pages; don't make this follow MARKUP until they're fixed.
+export const BOOKING_FEE_LABEL = "10%";
 
 const cents = (n: number) => Math.round(n * 100) / 100;
 

@@ -4,14 +4,13 @@ import { CallCta } from "@/components/CallCta";
 import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { Faqs, JsonLd, Steps, faqJsonLd } from "@/components/rentals/parts";
-import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
+import { catalogItems, categories } from "@/data/catalog";
 import { sampleBudgets } from "@/data/sample-budgets";
-import { PriceDisclaimer } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `Event Rentals in ${site.market}: Chairs, Tables, Linens, Tents & Tableware Prices`,
-  description: `Rent everything for your event in ${site.market} and the suburbs: chairs, tables, linens, dishes, glassware, tents, dance floors, lighting and more. See prices upfront, build a list and get one quote.`,
+  title: `Event Rentals in ${site.market}: Chairs, Tables, Linens, Tents & Tableware`,
+  description: `Rent everything for your event in ${site.market} and the suburbs: chairs, tables, linens, dishes, glassware, tents, dance floors, lighting and more. Build a list and get one free, itemized quote.`,
   alternates: { canonical: "/rentals" },
 };
 
@@ -21,8 +20,8 @@ const faqs = [
     a: `Pick the items you need and send one enquiry. We match each item with a vetted local rental partner, confirm availability for your date and venue, and send you a single itemized proposal. You deal with one team instead of calling five rental companies.`,
   },
   {
-    q: "Are the prices on this page final?",
-    a: "They are current per-item rental rates for one event day. A delivered event adds delivery and pickup (usually $150-$400 per order), setup and teardown, a damage waiver of about 10% and sales tax, so plan on 35-60% more than the rental total. The quote builder shows that all-in estimate as you go. Items marked \"Est.\" use Chicago-area market rates. Prices are based on local rental companies' published rates plus our booking fee, and your final quote is confirmed by the rental company.",
+    q: "How much will my order cost?",
+    a: "It depends on what you need, how many, and your date, so we price every order in a free quote. On top of the rental, a delivered event adds a delivery fee (usually $150-$400 per order), a setup fee, a teardown fee, a damage waiver of about 10% and Illinois sales tax, so plan on 35-60% more than the rental total. The quote builder itemizes that estimate as you go.",
   },
   {
     q: "Do you deliver to the suburbs?",
@@ -45,8 +44,7 @@ const faqs = [
 export default function RentalsPage() {
   const byCategory = categories.map((c) => {
     const items = catalogItems.filter((i) => i.categoryId === c.id);
-    const from = Math.min(...items.map(customerPrice));
-    return { c, items, from };
+    return { c, items };
   });
 
   const jsonLd = [
@@ -68,12 +66,12 @@ export default function RentalsPage() {
         <JsonLd data={jsonLd} />
         <p className="eyebrow">Event rentals · {site.marketLong}</p>
         <h1 className="headline mt-6 max-w-5xl text-5xl leading-[0.98] sm:text-7xl">
-          Everything for your event, <em className="text-gold">priced upfront</em>
+          Everything for your event, <em className="text-gold">one itemized quote</em>
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
           {catalogItems.length} rental items across {categories.length} categories, from chairs and tables to dishes,
-          glassware, tents and dance floors. See the price, build your list, and get one itemized quote delivered
-          anywhere in {site.marketLong}.
+          glassware, tents and dance floors. Build your list and get one itemized quote delivered anywhere in{" "}
+          {site.marketLong}.
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Link href="/quote" className="btn-primary">
@@ -89,7 +87,7 @@ export default function RentalsPage() {
             Rental categories
           </h2>
           <ul className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {byCategory.map(({ c, items, from }) => (
+            {byCategory.map(({ c, items }) => (
               <li key={c.id} className="group relative bg-bg p-6 transition-colors hover:bg-surface">
                 <RentalIcon category={c.id} className="h-14 w-14 text-gold" />
                 <h3 className="mt-5 font-serif text-2xl font-light">
@@ -98,9 +96,7 @@ export default function RentalsPage() {
                   </Link>
                 </h3>
                 <p className="mt-1 text-sm text-muted">{c.blurb}</p>
-                <p className="mt-4 text-[11px] tracking-[0.18em] text-muted uppercase">
-                  {items.length} items · from {formatPrice(from)}
-                </p>
+                <p className="mt-4 text-[11px] tracking-[0.18em] text-muted uppercase">{items.length} items</p>
               </li>
             ))}
             <li className="flex flex-col justify-between gap-6 bg-surface p-6 sm:col-span-2">
@@ -126,7 +122,7 @@ export default function RentalsPage() {
           <div className="mt-10">
             <Steps
               steps={[
-                { title: "Pick items", body: "Browse by category and add what you need. Prices are shown per item." },
+                { title: "Pick items", body: "Browse by category and add what you need to your list." },
                 { title: "Send one enquiry", body: "Tell us your date, venue and guest count. It takes two minutes." },
                 { title: "Get a proposal", body: "We confirm availability with local partners and send one itemized quote." },
                 { title: "Delivered & set", body: "Your rentals arrive, get set up, and are picked up after the event." },
@@ -141,10 +137,9 @@ export default function RentalsPage() {
             What a rental list <em className="text-gold">actually</em> costs
           </h2>
           <p className="mt-4 max-w-2xl text-muted">
-            Three common {site.market} events, priced line by line with today&apos;s rates. Start from one and change
-            anything.
+            Three common {site.market} events, itemized line by line. Start from one and change anything, then get
+            your price.
           </p>
-          <PriceDisclaimer className="mt-3 max-w-2xl" vendorLink />
           <div className="mt-10 grid gap-8 lg:grid-cols-3">
             {sampleBudgets.map((b) => (
               <BudgetExample key={b.id} budget={b} />
