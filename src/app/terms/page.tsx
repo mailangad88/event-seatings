@@ -400,8 +400,13 @@ export default function TermsPage() {
 
           <h2>Contact us</h2>
           <p>
-            {site.name}, {site.city}. Email <a href={`mailto:${site.email}`}>{site.email}</a> or call{" "}
-            <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>{site.phone}</a>.
+            {site.name}, {site.city}. Email <a href={`mailto:${site.email}`}>{site.email}</a>
+            {site.phone ? (
+              <>
+                {" "}or call <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>{site.phone}</a>
+              </>
+            ) : null}
+            .
           </p>
         </div>
       </div>
