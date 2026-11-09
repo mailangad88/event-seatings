@@ -268,7 +268,7 @@ Ask for reviews on Google first (local search ranking), then The Knot, WeddingWi
 
 ### 8.2 Referral program
 
-- **Give $50, get $50:** the friend gets $50 off their first booking, the client gets a $50 gift card when the friend's event is complete.
+- **Give $50, get $50:** the friend gets $50 off their first booking (orders over $1,000 only), the client gets a $50 gift card when the friend's event is complete.
 - Each client gets a personal link (`?ref={{code}}`) to share. Track in the CRM.
 - Ask at the moments of peak happiness: the setup photo text, the NPS 9/10 reply, and the day-30 gift.
 - Thank every referrer personally by text the day their friend books.

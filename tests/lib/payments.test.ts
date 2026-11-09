@@ -7,18 +7,19 @@ import { amountDue, chargeLabel, chargeMode, checkoutPaid, newProposalToken, ver
 describe("amountDue", () => {
   afterEach(() => vi.unstubAllEnvs());
 
-  it("charges the first stage on the rental subtotal, minus the first-booking offer, with a floor and never more than the order", () => {
-    expect(amountDue({ quote_subtotal: 4000 })).toBe(withFirstBookingDiscount(4000 * PAYMENT_SCHEDULE.firstShare));
-    expect(amountDue({ quote_subtotal: 150 })).toBe(withFirstBookingDiscount(PAYMENT_SCHEDULE.min));
-    expect(amountDue({ quote_subtotal: 60 })).toBe(withFirstBookingDiscount(60));
+  it("charges the first stage on the rental subtotal, minus the first-booking offer on qualifying orders, with a floor and never more than the order", () => {
+    expect(amountDue({ quote_subtotal: 4000 })).toBe(withFirstBookingDiscount(4000 * PAYMENT_SCHEDULE.firstShare, 4000));
+    expect(amountDue({ quote_subtotal: 150 })).toBe(withFirstBookingDiscount(PAYMENT_SCHEDULE.min, 150));
+    expect(amountDue({ quote_subtotal: 60 })).toBe(withFirstBookingDiscount(60, 60));
     expect(amountDue({ quote_subtotal: 0 })).toBe(0);
-    expect(amountDue({ items: [{ id: "a", name: "A", qty: 10, unit_price: 50, line_total: 500 }] as never })).toBe(withFirstBookingDiscount(depositFor(500)));
+    expect(amountDue({ items: [{ id: "a", name: "A", qty: 10, unit_price: 50, line_total: 500 }] as never })).toBe(withFirstBookingDiscount(depositFor(500), 500));
     expect(chargeLabel()).toBe("Deposit");
   });
 
-  it("applies the first-booking offer to the deposit, never below $0, and can be switched off by env var", () => {
+  it("applies the first-booking offer to the deposit only on orders over $1,000, never below $0, and can be switched off by env var", () => {
     expect(amountDue({ quote_subtotal: 4000 })).toBe(4000 * PAYMENT_SCHEDULE.firstShare - FIRST_BOOKING_DISCOUNT);
-    expect(amountDue({ quote_subtotal: 60 })).toBe(10); // deposit 60, discount capped at $0 floor, not negative
+    expect(amountDue({ quote_subtotal: 150 })).toBe(PAYMENT_SCHEDULE.min); // order under $1,000: no offer
+    expect(amountDue({ quote_subtotal: 60 })).toBe(60); // order under $1,000: no offer
     vi.stubEnv("NEXT_PUBLIC_FIRST_BOOKING_OFFER", "off");
     expect(amountDue({ quote_subtotal: 4000 })).toBe(4000 * PAYMENT_SCHEDULE.firstShare);
   });

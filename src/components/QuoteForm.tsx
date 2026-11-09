@@ -12,7 +12,7 @@ import { blockedMessage, useBlockedDates } from "@/lib/use-blocked-dates";
 import { trackLead } from "@/lib/analytics";
 import { sortCategories, suggestedQty, type PublicItem } from "@/lib/catalog-types";
 import { DELIVERY_MINIMUM_ORDER, allInEstimate } from "@/lib/fees";
-import { firstBookingOfferEnabled, FIRST_BOOKING_OFFER_LABEL } from "@/lib/offers";
+import { firstBookingOfferEligible, FIRST_BOOKING_OFFER_LABEL } from "@/lib/offers";
 import { site } from "@/lib/site";
 import { BookingCta } from "./BookingCta";
 import { ChairArt } from "./ChairArt";
@@ -469,7 +469,7 @@ export function QuoteForm({
           <PriceTag amount={allIn.total} unit="" size="lg" />
         </span>
       </div>
-      {firstBookingOfferEnabled() && (
+      {firstBookingOfferEligible(subtotal) && (
         <p className="flex items-center gap-1.5 text-sm font-medium text-gold">
           <Icon name="check" size={14} /> {FIRST_BOOKING_OFFER_LABEL}, applied to your deposit
         </p>
@@ -889,7 +889,7 @@ export function QuoteForm({
             We check your date and send one itemized proposal. No payment and no commitment until you approve it.{" "}
             <Link href="/booking-promise" className="link" target="_blank">How payments work</Link>
           </p>
-          {firstBookingOfferEnabled() && (
+          {firstBookingOfferEligible(subtotal) && (
             <p className="hint mt-1 font-medium text-gold">{FIRST_BOOKING_OFFER_LABEL} once you book.</p>
           )}
           <label className="mt-4 flex cursor-pointer items-start gap-3 text-sm leading-6">

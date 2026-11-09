@@ -13,7 +13,7 @@ Built 2026-11-06 so Angad can start posting free listings right away to get call
 - **Base:** St. Charles, IL — we deliver, we don't have a store people walk into. Use "service area" fields, never a street address.
 - **Delivery area:** Chicago, Evanston, Oak Park, Oak Brook, Schaumburg, Naperville, Wheaton, Aurora, St. Charles, Geneva, Batavia, Elgin, and the towns around them.
 - **Payment:** 20% to book (refundable within 72 hours), 30% due 30 days before the event, 50% due 7 days before. No minimum order.
-- **Launch offer:** $50 off a first booking. There's no promo code yet — just tell people to mention "the Marketplace/Nextdoor/Craigslist ad" when they call or on the quote form, and Angad takes $50 off the total by hand. Mention this only on these free listings, not on the main site.
+- **Launch offer:** $50 off a first booking, orders over $1,000 only. There's no promo code yet — just tell people to mention "the Marketplace/Nextdoor/Craigslist ad" when they call or on the quote form, and Angad takes $50 off the total by hand (only if their order is over $1,000). Mention this only on these free listings, not on the main site.
 
 ## Rules every listing below follows
 
@@ -101,7 +101,7 @@ Then work down the rest of the item/bundle list in each platform's file as time 
 Use the matching template, then personalize with their date and guest count. These also live so a text-reply or DM can be sent fast from a phone.
 
 **General first reply (any platform):**
-> Thanks for reaching out! Yes, these are available to rent — we deliver, set up and pick up anywhere in the Chicago area. What's your event date and how many guests, so I can give you an exact price with delivery? You can also get an instant quote at beyondchiavari.com/quote. And since you found us here, mention this ad for $50 off your first booking.
+> Thanks for reaching out! Yes, these are available to rent — we deliver, set up and pick up anywhere in the Chicago area. What's your event date and how many guests, so I can give you an exact price with delivery? You can also get an instant quote at beyondchiavari.com/quote. And since you found us here, mention this ad for $50 off your first booking (orders over $1,000).
 
 **If they ask "do you deliver to [suburb]?":**
 > Yes — we deliver throughout Chicago and the suburbs, including [suburb]. Delivery is priced based on distance and order size and shows up in your quote before you book anything.
