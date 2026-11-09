@@ -7,6 +7,8 @@ import { getVendor, type Vendor } from "@/data/vendors";
 import { VendorContact } from "@/components/admin/VendorContact";
 import { usd, type QuoteLine } from "@/lib/catalog-types";
 import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJourney";
+import { RentalVisual } from "@/components/rentals/RentalVisual";
+import { itemHref } from "@/components/rentals/parts";
 import { AfterEnquiry } from "@/components/admin/AfterEnquiry";
 import { buildLeadAlert } from "@/lib/lead-alert";
 import { intakeFields, intakeProgress, intakeText, proposalEmail, showValue, vendorDetails } from "@/lib/intake";
@@ -241,14 +243,18 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
             <section className={`${card} overflow-x-auto`}>
               <div className="flex flex-wrap items-baseline justify-between gap-3">
                 <h2 className="display-3">Quote</h2>
+                <Link href={`/quote?items=${lines.map((l) => l.id).join(",")}${lead.guest_count ? `&guests=${lead.guest_count}` : ""}`} target="_blank" className="text-sm text-accent">
+                  View as the customer saw it →
+                </Link>
                 <p className="text-sm text-muted">
                   Customer saw <strong className="text-ink">{usd(subtotal)}</strong> · vendor cost {usd(cost)} · margin{" "}
                   <strong className="text-ink">{usd(subtotal - cost)}</strong>
                 </p>
               </div>
-              <table className="mt-4 w-full min-w-[620px] text-sm">
+              <table className="mt-4 w-full min-w-[640px] text-sm">
                 <thead className="text-left text-muted">
                   <tr className="border-b border-line">
+                    <th className="py-2 font-medium" aria-hidden="true"></th>
                     <th className="py-2 font-medium">Item</th>
                     <th className="py-2 text-right font-medium">Qty</th>
                     <th className="py-2 text-right font-medium">Our price</th>
@@ -257,15 +263,34 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                   </tr>
                 </thead>
                 <tbody>
-                  {lines.map((l) => (
-                    <tr key={l.id} className="border-b border-line last:border-0">
-                      <td className="py-2">{l.name} <span className="text-muted">/ {l.unit}</span></td>
-                      <td className="py-2 text-right tabular-nums">{l.qty.toLocaleString()}</td>
-                      <td className="py-2 text-right tabular-nums">{usd(l.unit_price)}</td>
-                      <td className="py-2 text-right tabular-nums">{usd(l.line_total)}</td>
-                      <td className="py-2 text-right text-muted tabular-nums">{usd(l.vendor_price * l.qty)}</td>
-                    </tr>
-                  ))}
+                  {lines.map((l) => {
+                    const item = getCatalogItem(l.id);
+                    return (
+                      <tr key={l.id} className="border-b border-line last:border-0">
+                        <td className="py-2 pr-2">
+                          {item ? (
+                            <Link href={itemHref(item)} target="_blank" className="block h-12 w-12 overflow-hidden rounded-lg">
+                              <RentalVisual item={item} className="h-12 w-12" sizes="48px" />
+                            </Link>
+                          ) : (
+                            <span className="block h-12 w-12 rounded-lg bg-surface-2" />
+                          )}
+                        </td>
+                        <td className="py-2">
+                          {item ? (
+                            <Link href={itemHref(item)} target="_blank" className="text-accent">{l.name}</Link>
+                          ) : (
+                            l.name
+                          )}{" "}
+                          <span className="text-muted">/ {l.unit}</span>
+                        </td>
+                        <td className="py-2 text-right tabular-nums">{l.qty.toLocaleString()}</td>
+                        <td className="py-2 text-right tabular-nums">{usd(l.unit_price)}</td>
+                        <td className="py-2 text-right tabular-nums">{usd(l.line_total)}</td>
+                        <td className="py-2 text-right text-muted tabular-nums">{usd(l.vendor_price * l.qty)}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </section>
