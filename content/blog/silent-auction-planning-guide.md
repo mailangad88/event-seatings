@@ -97,6 +97,8 @@ This table gives rough starting counts for a silent auction. Adjust for the size
 
 Larger items such as framed art or a weekend trip card may use less table space than baskets. Keep a few extra tables on hand.
 
+Plug in your own guest count with our free [silent auction calculator](/tools/silent-auction-calculator) for an exact range of items, tables and checkout stations.
+
 ## Silent auction steps
 
 <ol class="flow">
