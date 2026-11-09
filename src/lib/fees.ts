@@ -65,7 +65,8 @@ export function allInEstimate(
   const setup = opts.setup === false ? 0 : Math.max(SETUP_MIN / 2, cents(chairSetupFee + setupHalf));
   const teardown = opts.setup === false ? 0 : Math.max(SETUP_MIN / 2, cents(chairTeardownFee + (otherShare - setupHalf)));
   const waiver = cents(rentals * DAMAGE_WAIVER);
-  const tax = cents((rentals + waiver) * SALES_TAX);
+  // Tax applies to the rental items themselves, not to delivery/setup/teardown/the waiver (Angad, 2026-11-09).
+  const tax = cents(rentals * SALES_TAX);
   const lines: FeeLine[] = [
     {
       id: "delivery",

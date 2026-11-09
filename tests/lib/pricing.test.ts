@@ -157,8 +157,8 @@ describe("fees", () => {
     expect(byLabel["Setup fee"]).toBe(75);
     expect(byLabel["Teardown fee"]).toBe(75);
     expect(byLabel["Damage waiver (10%)"]).toBe(100);
-    expect(byLabel["Illinois sales tax"]).toBe(112.75);
-    expect(est.total).toBe(1612.75);
+    expect(byLabel["Illinois sales tax"]).toBe(102.5);
+    expect(est.total).toBe(1602.5);
     const sum = est.rentals + est.lines.reduce((s, l) => s + l.amount, 0);
     expect(est.total).toBeCloseTo(sum, 2);
   });
