@@ -65,7 +65,7 @@ export async function GET(request: Request) {
       sent += 1;
       const fresh = leads.find((l) => l.id === t.lead.id)!;
       fresh.tasks_done = { ...(fresh.tasks_done ?? {}), [t.key]: new Date().toISOString() };
-      await updateLead(t.lead.id, { tasks_done: fresh.tasks_done }, [{ type: "email", text: `Sent automatically: "${e.subject}" to ${e.to}` }]).catch((err) =>
+      await updateLead(t.lead.id, { tasks_done: fresh.tasks_done }, [{ type: "email", text: `Sent automatically.\nTo: ${e.to}\nSubject: ${e.subject}\n\n${e.body}` }]).catch((err) =>
         console.error("event email update failed", t.lead.id, err),
       );
     }

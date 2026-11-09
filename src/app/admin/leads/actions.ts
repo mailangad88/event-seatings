@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { vendors } from "@/data/catalog";
 import { checkAdmin } from "@/lib/admin-auth";
+import { callLogText, isCallOutcome } from "@/lib/call-list";
 import { proposalEmail } from "@/lib/intake";
 import { QUOTE_BCC, sendEmail } from "@/lib/notify";
 import { amountDue, newProposalToken } from "@/lib/payments";
@@ -35,7 +36,7 @@ export async function saveLead(formData: FormData) {
   if (!lead) throw new Error("Lead not found");
 
   const patch: LeadPatch = {};
-  const log: Omit<LeadActivity, "at">[] = [];
+  const log: (Omit<LeadActivity, "at"> & { at?: string })[] = [];
 
   const status = formData.get("status");
   if (isLeadStatus(status) && status !== (lead.status ?? "new")) {
@@ -60,9 +61,17 @@ export async function saveLead(formData: FormData) {
   if (lost !== (lead.lost_reason ?? "")) patch.lost_reason = lost;
 
   const note = text(formData.get("note"));
-  if (note) {
-    const t = formData.get("note_type") as LeadActivity["type"];
-    log.push({ type: noteTypes.includes(t) ? t : "note", text: note });
+  const t = formData.get("note_type") as LeadActivity["type"];
+  const outcome = formData.get("outcome");
+  // Logging a call that already happened (e.g. caught up on paperwork before writing it down) —
+  // leave blank and it's stamped now like every other entry.
+  const loggedAt = text(formData.get("logged_at"), 25);
+  const at = loggedAt && !Number.isNaN(Date.parse(loggedAt)) ? new Date(loggedAt).toISOString() : undefined;
+
+  if (t === "call" && isCallOutcome(outcome)) {
+    log.push({ type: "call", text: note ? `${callLogText("new", outcome)}\n${note}` : callLogText("new", outcome), at });
+  } else if (note) {
+    log.push({ type: noteTypes.includes(t) ? t : "note", text: note, at });
   }
 
   if (Object.keys(patch).length || log.length) await updateLead(id, patch, log);

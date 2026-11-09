@@ -23,6 +23,7 @@ export const adminNav: OfficeNavGroup[] = [
       { href: "/admin/proposals", label: "Proposals", icon: "quote" },
       { href: "/admin/customers", label: "Customers", icon: "users" },
       { href: "/admin/messages", label: "Messages", icon: "chat" },
+      { href: "/admin/communications", label: "Communications", icon: "clock" },
     ],
   },
   {
