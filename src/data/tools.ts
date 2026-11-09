@@ -169,6 +169,14 @@ export const tools: ToolEntry[] = [
     scene: "cross-back",
     outputs: ["Score /100", "Weakest area", "Share link"],
   },
+  {
+    slug: "silent-auction-calculator",
+    name: "Silent auction calculator",
+    short: "Guest count in, how many items, display tables and checkout tables to plan for.",
+    group: "calculators",
+    scene: "corporate-gala",
+    outputs: ["Items needed", "Display tables", "Checkout tables"],
+  },
 ];
 
 export const getTool = (slug: string) => tools.find((t) => t.slug === slug);
