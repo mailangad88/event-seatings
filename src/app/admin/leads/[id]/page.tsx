@@ -10,6 +10,7 @@ import { LeadJourney, LeadOutreach, LeadSource } from "@/components/admin/LeadJo
 import { RentalVisual } from "@/components/rentals/RentalVisual";
 import { itemHref } from "@/components/rentals/parts";
 import { AfterEnquiry } from "@/components/admin/AfterEnquiry";
+import { ActivityEntryBody } from "@/components/admin/ActivityEntry";
 import { callOutcomes } from "@/lib/call-list";
 import { buildLeadAlert } from "@/lib/lead-alert";
 import { intakeFields, intakeProgress, intakeText, showValue, vendorDetails } from "@/lib/intake";
@@ -333,10 +334,10 @@ export default async function LeadPage(props: PageProps<"/admin/leads/[id]">) {
                   <span className="text-muted">
                     {new Date(a.at).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Chicago" })}
                   </span>
-                  <span>
+                  <div>
                     <span className="chip mr-2">{a.type.replace("_", "-")}</span>
-                    <span className="whitespace-pre-line">{a.text}</span>
-                  </span>
+                    <ActivityEntryBody entry={a} />
+                  </div>
                 </li>
               ))}
               {!lead.activity?.length && <li className="text-muted">No activity yet.</li>}

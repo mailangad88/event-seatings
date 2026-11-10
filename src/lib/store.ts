@@ -135,6 +135,10 @@ export type LeadActivity = {
   at: string;
   type: "note" | "status" | "call" | "email" | "text" | "vendor" | "follow_up";
   text: string;
+  // "email" entries only: the exact HTML that was sent, so the admin can preview it as the customer
+  // saw it, not just read the plain text. Unset on entries logged before this existed, and on emails
+  // RESEND_API_KEY wasn't configured for (no HTML was ever rendered).
+  html?: string;
 };
 
 // Marketing attribution saved with every lead: last touch (the visit that converted), first touch

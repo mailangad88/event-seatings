@@ -23,6 +23,23 @@ const num = (v: FormDataEntryValue | null) => {
 };
 const cents = (n: number) => Math.round(n * 100) / 100;
 
+// The full quote as it stood right after a save, not just what changed — so the timeline shows the whole
+// thing at a glance instead of making Angad add up a chain of diffs (Angad, 2026-11-10).
+function snapshotText(lines: QuoteLine[], feeLines: FeeLine[], discount_amount: number, quote_notes: string) {
+  const subtotal = cents(lines.reduce((s, l) => s + l.line_total, 0));
+  const feeTotal = sumFeeLines(feeLines);
+  const total = cents(subtotal + feeTotal - discount_amount);
+  return [
+    "Full quote:",
+    ...lines.map((l) => `- ${l.qty.toLocaleString()} × ${l.name}: ${usd(l.unit_price)} ea = ${usd(l.line_total)}`),
+    `Rentals: ${usd(subtotal)}`,
+    ...feeLines.map((f) => `- ${f.label}: ${usd(f.amount)}`),
+    ...(discount_amount ? [`- Discount: -${usd(discount_amount)}`] : []),
+    ...(quote_notes ? [`Notes: ${quote_notes}`] : []),
+    `Total: ${usd(total)}`,
+  ].join("\n");
+}
+
 // Saves edits to a lead's quote after talking to the rental partner: item quantities and vendor prices,
 // added/removed items, the delivery/setup/teardown/waiver/tax lines, the discount, and a note for the
 // customer. Fee lines and the discount are only stored once an admin saves this page; until then the
@@ -115,7 +132,12 @@ export async function saveQuote(formData: FormData) {
   const patch: LeadPatch = { items: lines, quote_subtotal, quote_cost, fee_lines: feeLines, discount_amount, quote_notes };
   // The deposit already charged is history once paid; only recompute what's due at checkout before that.
   if (!locked && lead.proposal_token) patch.fee_amount = amountDue({ ...lead, ...patch });
-  await updateLead(id, patch, [{ type: "note", text: `Quote edited: ${changes.join("; ")}. New total ${usd(cents(quote_subtotal + sumFeeLines(feeLines)))}.` }]);
+  await updateLead(id, patch, [
+    {
+      type: "note",
+      text: `Quote edited: ${changes.join("; ")}. New total ${usd(cents(quote_subtotal + sumFeeLines(feeLines)))}.\n\n${snapshotText(lines, feeLines, discount_amount, quote_notes)}`,
+    },
+  ]);
   revalidatePath(`/admin/leads/${id}`);
   revalidatePath(`/admin/leads/${id}/quote`);
   if (lead.proposal_token) revalidatePath(`/proposal/${lead.proposal_token}`);
@@ -132,7 +154,7 @@ export async function sendQuoteUpdate(formData: FormData) {
 
   const sent = await sendQuoteUpdateEmail(lead);
   if (sent) {
-    await updateLead(id, {}, [{ type: "email", text: `To: ${lead.email}\nSubject: ${sent.subject}\n\n${sent.text}` }]);
+    await updateLead(id, {}, [{ type: "email", text: `To: ${lead.email}\nSubject: ${sent.subject}\n\n${sent.text}`, html: sent.html }]);
     revalidatePath(`/admin/leads/${id}`);
   }
 }

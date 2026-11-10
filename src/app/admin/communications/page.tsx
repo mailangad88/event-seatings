@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
+import { ActivityEntryBody } from "@/components/admin/ActivityEntry";
 import { AdminHeader, Empty, Panel } from "@/components/admin/AdminUi";
 import { allCommunications, communicationKinds, type CommunicationKind } from "@/lib/communications";
 import { listLeads } from "@/lib/store";
@@ -57,7 +58,9 @@ export default async function AdminCommunications(props: PageProps<"/admin/commu
                   </span>
                   <span className="text-muted">{time(r.entry.at)}</span>
                 </div>
-                <p className="mt-2 whitespace-pre-line text-sm">{r.entry.text}</p>
+                <div className="mt-2">
+                  <ActivityEntryBody entry={r.entry} />
+                </div>
               </li>
             ))}
           </ol>
