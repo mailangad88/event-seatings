@@ -70,7 +70,7 @@ export async function GET(request: Request) {
       await updateLead(
         lead.id,
         { followup_step: next.index + 1, followup_last_at: new Date().toISOString() },
-        [{ type: "email", text: `Follow-up ${next.index + 1} sent automatically.\nTo: ${lead.email}\nSubject: ${subject}\n\n${bodyText}` }],
+        [{ type: "email", text: `Follow-up ${next.index + 1} sent automatically.\nTo: ${lead.email}\nSubject: ${subject}\n\n${bodyText}`, html }],
       ).catch((e) => console.error("followup update failed", lead.id, e));
     }
   }

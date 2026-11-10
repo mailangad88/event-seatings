@@ -30,8 +30,10 @@ export const QUOTE_BCC = "hello@beyondchiavari.com";
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 // Branded HTML (React Email, src/emails) built from the plain text, so every email looks like the site while
-// the text part stays exactly as written. A caller can pass its own `html` instead.
-async function brandedHtml(subject: string, text: string, unsubscribe?: string) {
+// the text part stays exactly as written. A caller can pass its own `html` instead. Exported so a sender that
+// wants to log exactly what the email looked like (lib/store.ts LeadActivity.html) can render it once and
+// both send and log that same markup, instead of sendEmail rendering it a second time internally.
+export async function renderEmailHtml(subject: string, text: string, unsubscribe?: string) {
   try {
     return await render(createElement(TextEmail, { subject, text, unsubscribe }));
   } catch (err) {
@@ -39,6 +41,7 @@ async function brandedHtml(subject: string, text: string, unsubscribe?: string) 
     return undefined;
   }
 }
+const brandedHtml = renderEmailHtml;
 
 export async function sendEmail({ to, subject, text, from, bcc, unsubscribe, html, idempotencyKey }: Mail) {
   const key = process.env.RESEND_API_KEY;
@@ -142,7 +145,11 @@ const signOff = (email: string) => [
 
 // Instant confirmation to the visitor for quotes, call requests and chat questions:
 // what happens next, the booking link and what to have ready. Downloads have their own email below.
-export async function sendConfirmation(lead: Lead): Promise<string | undefined> {
+// What a sender returns once Resend accepts an email, so a caller can log exactly what went out
+// (lib/store.ts LeadActivity.text/html) instead of just the subject.
+export type SentEmail = { subject: string; text: string; html?: string };
+
+export async function sendConfirmation(lead: Lead): Promise<SentEmail | undefined> {
   if (!process.env.NOTIFY_FROM || !["quote", "call", "chat"].includes(lead.kind) || lead.opted_out_at) return;
   // The name is whatever the visitor themselves typed into their own quote/call/chat form, so it's safe
   // (and friendlier) to greet them with it; React escapes it like any other text, so there's no injection risk.
@@ -198,25 +205,20 @@ export async function sendConfirmation(lead: Lead): Promise<string | undefined> 
           }),
         ).catch((err) => (log.warn("quote_confirmation_html_failed", { leadId: lead.id, err }), undefined))
       : undefined;
-  const ok = await sendEmail({
-    to: lead.email,
-    subject,
-    text: [hi, "", ...body[lead.kind], "", bookingLine(lead), ...signOff(lead.email)].join("\n"),
-    unsubscribe,
-    html,
-    idempotencyKey: `confirm/${lead.id}`,
-  });
-  return ok ? subject : undefined;
+  const text = [hi, "", ...body[lead.kind], "", bookingLine(lead), ...signOff(lead.email)].join("\n");
+  const ok = await sendEmail({ to: lead.email, subject, text, unsubscribe, html, idempotencyKey: `confirm/${lead.id}` });
+  return ok ? { subject, text, html } : undefined;
 }
 
 /**
  * "Email me this list" from the quote builder (source "saved-list"): the items, the estimate and a link
  * that opens the same list on any device. Needs RESEND_API_KEY and NOTIFY_FROM like every visitor email.
  */
-export async function sendSavedList(lead: Lead): Promise<string | undefined> {
+export async function sendSavedList(lead: Lead): Promise<SentEmail | undefined> {
   if (!process.env.NOTIFY_FROM || lead.opted_out_at || !lead.items?.length) return;
   const qs = new URLSearchParams({ items: lead.items.map((l) => l.id).slice(0, 80).join(","), browse: "1", from: "saved-list-email" });
   if (lead.guest_count) qs.set("guests", String(lead.guest_count));
+  const unsubscribe = unsubscribeUrl(lead.email);
   const text = [
     "Hi,",
     "",
@@ -235,7 +237,9 @@ export async function sendSavedList(lead: Lead): Promise<string | undefined> {
     ...signOff(lead.email),
   ].join("\n");
   const subject = "Your saved rental list";
-  return (await sendEmail({ to: lead.email, subject, text, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `saved-list/${lead.id}` })) ? subject : undefined;
+  const html = await renderEmailHtml(subject, text, unsubscribe);
+  const ok = await sendEmail({ to: lead.email, subject, text, unsubscribe, html, idempotencyKey: `saved-list/${lead.id}` });
+  return ok ? { subject, text, html } : undefined;
 }
 
 /**
@@ -243,10 +247,11 @@ export async function sendSavedList(lead: Lead): Promise<string | undefined> {
  * Needs RESEND_API_KEY and NOTIFY_FROM on a verified sending domain; without them the visitor still gets
  * the links on screen. This is also the first touch of the planning nurture sequence.
  */
-export async function sendDownloadEmail(lead: Lead, title: string, files: { label: string; file: string }[]): Promise<string | undefined> {
+export async function sendDownloadEmail(lead: Lead, title: string, files: { label: string; file: string }[]): Promise<SentEmail | undefined> {
   if (!process.env.NOTIFY_FROM || lead.opted_out_at) return;
   // Fixed greeting: the name comes from an unauthenticated form, so never echo it into an email to an arbitrary address.
   const hi = "Hi,";
+  const unsubscribe = unsubscribeUrl(lead.email);
   const text = [
     hi,
     "",
@@ -261,7 +266,9 @@ export async function sendDownloadEmail(lead: Lead, title: string, files: { labe
     ...signOff(lead.email),
   ].join("\n");
   const subject = `Your free ${title}`;
-  return (await sendEmail({ to: lead.email, subject, text, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `download/${lead.id}` })) ? subject : undefined;
+  const html = await renderEmailHtml(subject, text, unsubscribe);
+  const ok = await sendEmail({ to: lead.email, subject, text, unsubscribe, html, idempotencyKey: `download/${lead.id}` });
+  return ok ? { subject, text, html } : undefined;
 }
 
 /**
@@ -301,7 +308,7 @@ export async function sendInvoiceEmail(lead: Lead, invoice: Invoice): Promise<st
  * proposal to review and pay. Sent by hand from "Send updated quote to customer" in
  * /admin/leads/<id>/quote after an edit. Needs RESEND_API_KEY + NOTIFY_FROM like every visitor email.
  */
-export async function sendQuoteUpdateEmail(lead: Lead): Promise<{ subject: string; text: string } | undefined> {
+export async function sendQuoteUpdateEmail(lead: Lead): Promise<SentEmail | undefined> {
   if (!process.env.NOTIFY_FROM || !lead.proposal_token || lead.opted_out_at) return;
   const subtotal = lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
   const feeLines = feeLinesFor(lead, subtotal);
@@ -309,6 +316,7 @@ export async function sendQuoteUpdateEmail(lead: Lead): Promise<{ subject: strin
   const eventLabel = [lead.event_type, prettyDate(lead.event_date)].filter(Boolean).join(" · ");
   const viewUrl = `${site.url}/proposal/${lead.proposal_token}`;
   const subject = "Your quote has been updated";
+  const unsubscribe = unsubscribeUrl(lead.email);
   const text = [
     lead.name ? `Hi ${lead.name.split(" ")[0]},` : "Hi,",
     "",
@@ -324,8 +332,9 @@ export async function sendQuoteUpdateEmail(lead: Lead): Promise<{ subject: strin
     bookingLine(lead),
     ...signOff(lead.email),
   ].join("\n");
-  const ok = await sendEmail({ to: lead.email, subject, text, bcc: QUOTE_BCC, unsubscribe: unsubscribeUrl(lead.email), idempotencyKey: `quote-update/${lead.id}/${Date.now()}` });
-  return ok ? { subject, text } : undefined;
+  const html = await renderEmailHtml(subject, text, unsubscribe);
+  const ok = await sendEmail({ to: lead.email, subject, text, bcc: QUOTE_BCC, unsubscribe, html, idempotencyKey: `quote-update/${lead.id}/${Date.now()}` });
+  return ok ? { subject, text, html } : undefined;
 }
 
 /** Tells the owner a review is waiting in /admin/reviews. */
