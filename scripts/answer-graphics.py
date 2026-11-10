@@ -393,4 +393,19 @@ b.append(f'<line x1="600" y1="300" x2="600" y2="530" stroke="{INK}" stroke-opaci
 b.append(text(600,555,"Center aisle for mic runners and easy exits",13,MUTED,SANS,"middle",400))
 b.append(text(600,585,"Scale rows to expected turnout. Add a mic for Q&A and a table for ballots if voting is on the agenda.",14,MUTED,SANS,"middle",400,1,True))
 write("hoa-annual-meeting-layout.svg",svg(1200,610,"HOA or condo annual meeting seating layout: a board or head table at the front, a sign-in and proxy table to the side, and rows of chairs with a center aisle facing the board","\n".join(b)))
+# 16. Prom grand march seating layout (schematic)
+b=[eyebrow(600,70,"Prom grand march seating","middle"),
+   text(600,122,"Parent and family chairs line the runway, facing the camera end",32,INK,SERIF,"middle",300)]
+b.append(f'<rect x="440" y="150" width="320" height="50" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,182,"PHOTOGRAPHER / VIDEO STAND",13,"#0a0806",SANS,"middle",500,1.5))
+b.append(f'<rect x="300" y="230" width="600" height="60" fill="none" stroke="{GOLD}" stroke-opacity=".6" stroke-dasharray="4 6"/>')
+b.append(text(600,222,"RUNWAY — COUPLES WALK THROUGH",12,MUTED,SANS,"middle",500,1.5))
+rows_y=[330,380,430,480]
+for y in rows_y:
+    for x in list(range(220,560,40))+list(range(640,980,40)):
+        b.append(f'<circle cx="{x}" cy="{y}" r="7" fill="none" stroke="{GOLD}"/>')
+b.append(f'<line x1="600" y1="300" x2="600" y2="500" stroke="{INK}" stroke-opacity=".3" stroke-dasharray="3 6"/>')
+b.append(text(600,525,"Entrance at the back, opposite the camera stand",13,MUTED,SANS,"middle",400))
+b.append(text(600,555,"Rows of chairs on both sides of the runway, facing in, for parents and family.",14,MUTED,SANS,"middle",400,1,True))
+write("prom-grand-march-layout.svg",svg(1200,585,"Prom grand march seating layout: a photographer or video stand at the front, a runway down the middle for couples to walk through, and rows of chairs on both sides facing in for parents and family","\n".join(b)))
 print("ok")
