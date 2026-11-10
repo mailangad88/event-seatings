@@ -49,7 +49,7 @@ beforeEach(() => {
   vi.mocked(notify.notifyOwner).mockReset();
   vi.mocked(notify.notifyOwner).mockResolvedValue(true as never);
   vi.mocked(notify.sendConfirmation).mockReset();
-  vi.mocked(notify.sendConfirmation).mockResolvedValue("Thanks" as never);
+  vi.mocked(notify.sendConfirmation).mockResolvedValue({ subject: "Thanks", text: "Thanks for your request." } as never);
   vi.mocked(crm.syncToCrm).mockReset();
   vi.mocked(crm.syncToCrm).mockResolvedValue(undefined as never);
 });

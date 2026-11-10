@@ -8,7 +8,6 @@ import { packageHref, quotePackage } from "@/lib/package-price";
 import { GuestCount } from "./guests/GuestCount";
 // Direct imports, not the "./ui" barrel: the barrel also holds server cards.
 import { Icon } from "./ui/Icon";
-import { formatPrice } from "./ui/PriceTag";
 
 // Cards in a row share grid rows (CSS subgrid), so a title that wraps to two lines pushes the
 // price, list and button down on every card in that row, not just its own. 9 rows: photo, title,
@@ -36,11 +35,10 @@ export function PackageCard({ p, compact = false }: { p: ReadyPackage; compact?:
         <GuestCount value={guests} onChange={setGuests} size="sm" label="Guests" />
       </div>
       <p className="mt-3 px-5">
-        <span className="font-heading font-semibold text-3xl tabular-nums">{formatPrice(q.allIn)}</span>
-        <span className="text-sm text-muted"> all-in est.</span>
+        <span className="font-heading font-semibold text-xl text-wine">Get your price in a free quote</span>
       </p>
-      <p className="px-5 text-xs text-muted tabular-nums" aria-live="polite">
-        About {formatPrice(q.perGuest)} a guest · {formatPrice(q.rentals)} in rentals plus delivery, setup, waiver and tax
+      <p className="px-5 text-xs text-muted" aria-live="polite">
+        Sized for {guests} guests · delivery, setup, waiver and tax itemized on your quote
       </p>
       {compact ? <div aria-hidden /> : <p className="mt-3 px-5 text-sm leading-6 text-muted">{p.blurb}</p>}
       <ul className="mt-3 space-y-1 px-5 text-sm">

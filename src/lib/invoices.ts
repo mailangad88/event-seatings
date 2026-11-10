@@ -1,7 +1,7 @@
 import "server-only";
 import { chicagoDay } from "./admin-view";
 import { PAYMENT_SCHEDULE, paymentPlanFor, usd } from "./catalog-types";
-import { allInEstimate, type FeeLine } from "./fees";
+import { feeLinesFor, sumFeeLines, type FeeLine } from "./fees";
 import { listLedger, mergeLedger } from "./ledger";
 import { listLeads, type Lead } from "./store";
 
@@ -50,7 +50,8 @@ export function paidToDate(leadId: string, rows: ReturnType<typeof mergeLedger>)
 /** The payment plan for one order, with fees folded into the balance, matching the customer's proposal page. */
 export function buildInvoice(lead: Lead, paid: number, today: string = chicagoDay()): Invoice {
   const rentals = lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
-  const allIn = allInEstimate(rentals);
+  const fees = feeLinesFor(lead, rentals);
+  const total = cents(rentals + sumFeeLines(fees));
   const plan = paymentPlanFor(rentals, lead.event_date);
   const [first, ...rest] = plan;
   const installment = plan.length === 3 ? rest[0] : undefined;
@@ -58,7 +59,7 @@ export function buildInvoice(lead: Lead, paid: number, today: string = chicagoDa
   // The balance is whatever is left once the rentals stages are in: the fee lines, plus any rentals share
   // that still hasn't come due (there is none once installment/first cover the full rentals amount).
   const rentalsCovered = cents((first?.amount ?? 0) + (installment?.amount ?? 0));
-  const balance = cents(Math.max(0, allIn.total - rentalsCovered));
+  const balance = cents(Math.max(0, total - rentalsCovered));
 
   const stages: Omit<InvoiceStage, "paidAmount" | "status">[] = [{ label: first?.label ?? "Deposit", amount: first?.amount ?? 0, dueDate: undefined }];
   if (installment) stages.push({ label: installment.label, amount: installment.amount, dueDate: installment.dueDate });
@@ -84,8 +85,8 @@ export function buildInvoice(lead: Lead, paid: number, today: string = chicagoDa
     lead,
     number: invoiceNumberFor(lead),
     rentals,
-    fees: allIn.lines,
-    total: allIn.total,
+    fees,
+    total,
     stages: withStatus,
     paidTotal: cents(paid),
     dueTotal,

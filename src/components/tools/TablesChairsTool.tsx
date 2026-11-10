@@ -56,7 +56,7 @@ export function TablesChairsTool({ prices }: { prices: Record<string, ToolPrice>
             </ul>
             {r.extras.length > 0 && <p className="mt-3 text-xs leading-5 text-muted">Includes {r.extras.map((e) => `${e.count} for the ${e.label.toLowerCase().replace(/ \(.*\)/, "")}`).join(", ")}.</p>}
           </div>
-          <PriceLines lines={lines} prices={prices} />
+          <PriceLines lines={lines} prices={prices} quoteHref={`/quote?items=${encodeURIComponent([...r.tableCounts.keys(), s.chair].join(","))}&guests=${s.guests}&from=tool-tables-and-chairs`} />
           <ShareBar tool="tables-and-chairs" quoteHref={`/quote?items=${encodeURIComponent([...r.tableCounts.keys(), s.chair].join(","))}&guests=${s.guests}&from=tool-tables-and-chairs`} />
         </div>
       }

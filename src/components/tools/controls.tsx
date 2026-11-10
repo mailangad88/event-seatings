@@ -223,36 +223,25 @@ export type ToolPrice = { id: string; name: string; price: number; unit: string;
 
 export const money = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 
-/** Rough cost of the counted items at catalog prices (items only). */
-export function PriceLines({ lines, prices }: { lines: { id: string; qty: number }[]; prices: Record<string, ToolPrice> }) {
-  const rows = lines.filter((l) => l.qty > 0 && prices[l.id]).map((l) => ({ ...prices[l.id], qty: l.qty, total: prices[l.id].price * l.qty }));
+/** Summary of the counted items, by name and quantity (no catalog prices shown here). */
+export function PriceLines({ lines, prices, quoteHref }: { lines: { id: string; qty: number }[]; prices: Record<string, ToolPrice>; quoteHref?: string }) {
+  const rows = lines.filter((l) => l.qty > 0 && prices[l.id]).map((l) => ({ ...prices[l.id], qty: l.qty }));
   if (!rows.length) return null;
-  const total = rows.reduce((a, r) => a + r.total, 0);
   return (
     <div className="mt-6 rounded-2xl border border-line bg-surface p-5">
-      <p className="text-sm font-medium">Rough rental cost at our catalog prices</p>
-      <table className="mt-3 w-full text-sm">
-        <tbody className="divide-y divide-line">
-          {rows.map((r) => (
-            <tr key={r.id}>
-              <td className="py-2 pr-2">
-                {r.qty} × {r.name}
-                {r.estimated && <span className="ml-1 text-xs text-muted">(estimate)</span>}
-              </td>
-              <td className="py-2 text-right tabular-nums">{money(r.total)}</td>
-            </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td className="pt-3 font-medium">Items total</td>
-            <td className="pt-3 text-right font-medium tabular-nums">{money(total)}</td>
-          </tr>
-        </tfoot>
-      </table>
-      <p className="mt-3 text-xs leading-5 text-muted">
-        Items only, before delivery, setup, damage waiver and tax. Your written quote confirms the final price for your date.
-      </p>
+      <p className="text-sm font-medium">What to rent</p>
+      <ul className="mt-3 divide-y divide-line text-sm">
+        {rows.map((r) => (
+          <li key={r.id} className="flex justify-between py-2">
+            <span>{r.qty} × {r.name}</span>
+          </li>
+        ))}
+      </ul>
+      {quoteHref && (
+        <p className="mt-3 text-xs leading-5 text-muted">
+          <Link href={quoteHref} className="link">Get your price for these in a free quote</Link>.
+        </p>
+      )}
     </div>
   );
 }

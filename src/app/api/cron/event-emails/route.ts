@@ -4,7 +4,7 @@ import { safeEqual } from "@/lib/admin-auth";
 import { chicagoDay, addDays } from "@/lib/admin-view";
 import { allTasks, tasksFor } from "@/lib/event-tasks";
 import { GoogleReviewEmail } from "@/emails/templates";
-import { sendEmail } from "@/lib/notify";
+import { renderEmailHtml, sendEmail } from "@/lib/notify";
 import { site } from "@/lib/site";
 import { listLeads, listPartners, updateLead } from "@/lib/store";
 import { unsubscribeUrl } from "@/lib/unsubscribe";
@@ -47,16 +47,17 @@ export async function GET(request: Request) {
         if (link) e = tasksFor(target, partnerMap, today).find((x) => x.key === t.key)?.email ?? e;
       }
       const unsub = t.who === "customer" ? unsubscribeUrl(e.to!) : undefined;
+      const text = unsub ? `${e.body}\n\nStop these emails: ${unsub}` : e.body;
       // The Google review ask gets its own visual layout (CTA button to the review link) instead of the
       // generic branded-text wrapper every other event email falls back to.
       const html =
         t.key === "t+5-google-review" && site.googleReviewUrl
           ? await render(createElement(GoogleReviewEmail, { name: t.lead.name, link: site.googleReviewUrl })).catch((err) => (console.error("google review html failed", t.lead.id, err), undefined))
-          : undefined;
+          : await renderEmailHtml(e.subject, text, unsub);
       const ok = await sendEmail({
         to: e.to!,
         subject: e.subject,
-        text: unsub ? `${e.body}\n\nStop these emails: ${unsub}` : e.body,
+        text,
         idempotencyKey: `event-email/${t.lead.id}/${t.key}`,
         unsubscribe: unsub,
         html,
@@ -65,9 +66,9 @@ export async function GET(request: Request) {
       sent += 1;
       const fresh = leads.find((l) => l.id === t.lead.id)!;
       fresh.tasks_done = { ...(fresh.tasks_done ?? {}), [t.key]: new Date().toISOString() };
-      await updateLead(t.lead.id, { tasks_done: fresh.tasks_done }, [{ type: "email", text: `Sent automatically: "${e.subject}" to ${e.to}` }]).catch((err) =>
-        console.error("event email update failed", t.lead.id, err),
-      );
+      await updateLead(t.lead.id, { tasks_done: fresh.tasks_done }, [
+        { type: "email", text: `Sent automatically.\nTo: ${e.to}\nSubject: ${e.subject}\n\n${e.body}`, html },
+      ]).catch((err) => console.error("event email update failed", t.lead.id, err));
     }
   }
   return Response.json({ enabled, dry, sent, planned });

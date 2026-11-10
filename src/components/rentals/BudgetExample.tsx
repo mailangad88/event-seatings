@@ -1,10 +1,11 @@
 import Link from "@/components/Link";
-import { customerPrice, formatPrice, getCatalogItem } from "@/data/catalog";
+import { customerPrice, getCatalogItem } from "@/data/catalog";
 import type { SampleBudget } from "@/data/sample-budgets";
 import { itemHref } from "./parts";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
+// Kept for internal use (e.g. picking a budget to feature); not shown publicly.
 export function budgetTotal(b: SampleBudget) {
   return round(
     b.lines.reduce((s, [id, qty]) => {
@@ -14,16 +15,14 @@ export function budgetTotal(b: SampleBudget) {
   );
 }
 
-/** A worked rental budget: line items, a proportional bar per line, and the total. */
+/** A worked rental list: items and quantities, with no public price. Price shows once it's in a quote. */
 export function BudgetExample({ budget }: { budget: SampleBudget }) {
   const lines = budget.lines
     .map(([id, qty]) => {
       const item = getCatalogItem(id);
-      return item ? { item, qty, total: round(customerPrice(item) * qty) } : null;
+      return item ? { item, qty } : null;
     })
     .filter((l) => l !== null);
-  const total = budgetTotal(budget);
-  const max = Math.max(...lines.map((l) => l.total), 1);
   const quoteHref = `/quote?items=${budget.lines.map(([id]) => id).join(",")}&guests=${budget.guests}&from=budget-${budget.id}`;
 
   return (
@@ -38,12 +37,10 @@ export function BudgetExample({ budget }: { budget: SampleBudget }) {
           <tr className="text-left text-xs tracking-[0.18em] text-muted uppercase">
             <th className="pb-2 font-medium">Item</th>
             <th className="pb-2 text-right font-medium">Qty</th>
-            <th className="hidden w-1/4 pb-2 sm:table-cell" aria-hidden />
-            <th className="pb-2 text-right font-medium">Total</th>
           </tr>
         </thead>
         <tbody>
-          {lines.map(({ item, qty, total: t }) => (
+          {lines.map(({ item, qty }) => (
             <tr key={item.id} className="border-t border-line">
               <td className="py-2 pr-2">
                 <Link href={itemHref(item)} className="inline-block py-0.5 hover:text-gold">
@@ -51,30 +48,17 @@ export function BudgetExample({ budget }: { budget: SampleBudget }) {
                 </Link>
               </td>
               <td className="py-2 text-right tabular-nums">{qty}</td>
-              <td className="hidden py-2 pl-4 sm:table-cell">
-                <span className="block h-1.5 rounded-full bg-gold/70" style={{ width: `${Math.max(3, (t / max) * 100)}%` }} />
-              </td>
-              <td className="py-2 text-right tabular-nums">{formatPrice(t)}</td>
             </tr>
           ))}
         </tbody>
-        <tfoot>
-          <tr className="border-t border-ink/40">
-            <th className="pt-3 text-left font-medium" colSpan={2}>
-              Rental subtotal
-            </th>
-            <td className="hidden sm:table-cell" />
-            <td className="pt-3 text-right font-heading font-semibold text-2xl text-wine tabular-nums">{formatPrice(total)}</td>
-          </tr>
-        </tfoot>
       </table>
       <p className="mt-3 text-xs text-muted">
-        About {formatPrice(Math.round(total / budget.guests))} per guest before delivery, setup, damage waiver and tax.
+        Get your price for this list, including delivery, setup, teardown, a damage waiver and tax, in a free quote.
       </p>
       {/* mt-auto keeps the button at the bottom, so it lines up with the cards beside it. */}
       <div className="mt-auto pt-6">
-        <Link href={quoteHref} className="btn-ghost">
-          Customize this list
+        <Link href={quoteHref} className="btn-primary">
+          Get my price
         </Link>
       </div>
     </figure>

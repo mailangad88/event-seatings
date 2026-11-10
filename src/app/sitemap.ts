@@ -17,12 +17,14 @@ import { isVendorPage } from "@/lib/vendor-pages";
 import { ideaPath, ideas, PARTY_IDEAS_UPDATED, partyTypes, typePath } from "@/data/party-ideas";
 import { toolSitemapEntries } from "@/lib/tools/sitemap";
 import { venuePath, venues, VENUES_UPDATED } from "@/data/venues";
+import { priceComparisonPagesEnabled } from "@/lib/price-pages";
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priority: Record<string, number> = { "": 1, "/chairs": 0.9, "/book": 0.9, "/quote": 0.8, "/faq": 0.7 };
-  const pages = ["", "/chairs", "/book", "/quote", "/packages", "/faq", "/how-it-works", "/pricing", "/big-celebrations", "/venues-and-planners", "/booking-promise", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/press", "/data/chicago-rental-prices", "/privacy", "/terms", "/es", "/es/quinceaneras", "/es/bodas"].map((p) => ({
+  // The price index is hidden while NEXT_PUBLIC_PRICE_COMPARISON_PAGES isn't "on" (src/lib/price-pages.ts), same as /planning-assistant below.
+  const pages = ["", "/chairs", "/book", "/quote", "/packages", "/faq", "/how-it-works", "/pricing", "/big-celebrations", "/venues-and-planners", "/booking-promise", "/looks", "/quiz", "/seating-planner", "/answers", "/tools", "/tools/seating-readiness", "/solutions", "/compare", "/glossary", "/ideas", "/my-events", "/vendor-guide", "/downloads", "/blog", "/about", "/press", ...(priceComparisonPagesEnabled() ? ["/data/chicago-rental-prices"] : []), "/privacy", "/terms", "/es", "/es/quinceaneras", "/es/bodas"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "weekly" as const,
     priority: priority[p] ?? 0.5,
@@ -109,8 +111,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${site.url}/party-rentals`, priority: 0.8, lastModified: LOCAL_RENTALS_UPDATED },
     ...localAreas.map((l) => ({ url: `${site.url}${areaRentalsPath(l.slug)}`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED })),
     ...localAreas.flatMap((l) => localCategories.map((c) => ({ url: `${site.url}${localCategoryPath(l.slug, c)}`, priority: 0.6, lastModified: LOCAL_RENTALS_UPDATED }))),
-    { url: `${site.url}/rental-cost`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED },
-    ...costCategories.map((c) => ({ url: `${site.url}${costPath(c.id)}`, priority: 0.7, lastModified: LOCAL_RENTALS_UPDATED })),
+    ...(priceComparisonPagesEnabled()
+      ? [
+          { url: `${site.url}/rental-cost`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED },
+          ...costCategories.map((c) => ({ url: `${site.url}${costPath(c.id)}`, priority: 0.7, lastModified: LOCAL_RENTALS_UPDATED })),
+        ]
+      : []),
   ];
   const lookPages = looks.map((l) => ({ url: `${site.url}/looks/${l.slug}`, priority: 0.8, images: img(l.heroChair) }));
   const venuePages = [

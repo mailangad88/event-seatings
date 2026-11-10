@@ -39,7 +39,7 @@ export function DanceFloorTool({ prices }: { prices: Record<string, ToolPrice> }
             <FloorGrid w={w} l={l} />
             <figcaption className="mt-2 text-xs text-muted">Each square is one 3&apos; x 3&apos; panel. Edging adds a few inches on every side.</figcaption>
           </figure>
-          <PriceLines lines={[{ id: "dance-floor", qty: r.panels }]} prices={prices} />
+          <PriceLines lines={[{ id: "dance-floor", qty: r.panels }]} prices={prices} quoteHref={`/quote?items=dance-floor&guests=${s.guests}&from=tool-dance-floor`} />
           <ShareBar tool="dance-floor" quoteHref={`/quote?items=dance-floor&guests=${s.guests}&from=tool-dance-floor`} />
         </div>
       }

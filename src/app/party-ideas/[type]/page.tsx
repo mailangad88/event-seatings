@@ -3,7 +3,7 @@ import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { ActivityGrid, IdeaCard, ideaScene, plannerHref } from "@/components/party-ideas/parts";
 import { FaqList, Figure, Icon, JsonLd, PageHero, QuoteCta, Section } from "@/components/ui";
-import { customerPrice, formatPrice, getCatalogItem, type CatalogItem } from "@/data/catalog";
+import { getCatalogItem, type CatalogItem } from "@/data/catalog";
 import { getPartyType, ideaPath, ideasFor, fullAnswer, withPartyFaqs, PARTY_IDEAS_UPDATED, partyTypes, typePath } from "@/data/party-ideas";
 import { site } from "@/lib/site";
 
@@ -92,7 +92,7 @@ export default async function PartyTypePage(props: PageProps<"/party-ideas/[type
                   {items.map((i) => (
                     <li key={i.id}>
                       <Link href={`/rentals/${i.categoryId}/${i.id}`} className="chip">
-                        {i.name} · {formatPrice(customerPrice(i))}
+                        {i.name}
                       </Link>
                     </li>
                   ))}

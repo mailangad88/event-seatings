@@ -28,19 +28,19 @@ const item = (over: Partial<CatalogItem> = {}): CatalogItem => ({
 const up = (n: number) => roundPrice(n * (1 + MARKUP));
 
 describe("customer pricing", () => {
-  // Since the night of Nov 4 2026 customer prices are our own: supplier rate + 15%, no separate fee.
-  it("rounds our prices up to clean amounts, never under the 15% markup", () => {
-    expect(customerPrice({ vendorPrice: 3.9 })).toBe(4.5); // 4.485
-    expect(customerPrice({ vendorPrice: 65 })).toBe(75); // 74.75
-    expect(customerPrice({ vendorPrice: 20 })).toBe(23); // exactly 23
-    expect(customerPrice({ vendorPrice: 195 })).toBe(225); // 224.25
-    expect(customerPrice({ vendorPrice: 750 })).toBe(865); // 862.50
+  // Since 2026-11-09 customer prices are our own: supplier rate + 40% (was 15%), no separate fee.
+  it("rounds our prices up to clean amounts, never under the 40% markup", () => {
+    expect(customerPrice({ vendorPrice: 3.9 })).toBe(5.5); // 5.46
+    expect(customerPrice({ vendorPrice: 65 })).toBe(91); // exactly 91
+    expect(customerPrice({ vendorPrice: 20 })).toBe(28); // exactly 28
+    expect(customerPrice({ vendorPrice: 195 })).toBe(275); // 273
+    expect(customerPrice({ vendorPrice: 750 })).toBe(1050); // exactly 1050
     expect(roundPrice(10)).toBe(10);
     for (const v of [0.5, 1.1, 2.6, 8.7, 9.99, 43.21, 86.95, 140, 999]) expect(customerPrice({ vendorPrice: v })).toBeGreaterThanOrEqual(v * (1 + MARKUP) - 1e-9);
   });
 
   it("adds MARKUP to the supplier's price", () => {
-    expect(MARKUP).toBe(0.15);
+    expect(MARKUP).toBe(0.4);
     expect(customerPrice({ vendorPrice: 10 })).toBe(up(10));
     expect(customerPrice({ vendorPrice: 4.5 })).toBe(up(4.5));
     expect(customerPrice({ vendorPrice: 3.33 })).toBe(up(3.33));
@@ -150,22 +150,32 @@ describe("fees", () => {
     expect(allInEstimate(-5).total).toBe(0);
   });
 
-  it("adds delivery, setup, waiver and tax that sum to the total", () => {
+  it("adds delivery, setup, teardown, waiver and tax that sum to the total", () => {
     const est = allInEstimate(1000);
     const byLabel = Object.fromEntries(est.lines.map((l) => [l.label, l.amount]));
-    expect(byLabel["Delivery & pickup"]).toBe(250);
-    expect(byLabel["Setup & teardown"]).toBe(150);
+    expect(byLabel["Delivery fee"]).toBe(250);
+    expect(byLabel["Setup fee"]).toBe(75);
+    expect(byLabel["Teardown fee"]).toBe(75);
     expect(byLabel["Damage waiver (10%)"]).toBe(100);
-    expect(byLabel["Sales tax"]).toBe(112.75);
-    expect(est.total).toBe(1612.75);
+    expect(byLabel["Illinois sales tax"]).toBe(102.5);
+    expect(est.total).toBe(1602.5);
     const sum = est.rentals + est.lines.reduce((s, l) => s + l.amount, 0);
     expect(est.total).toBeCloseTo(sum, 2);
   });
 
-  it("applies the setup minimum, and can leave setup out", () => {
+  it("applies the setup minimum (split between setup and teardown), and can leave both out", () => {
     const small = allInEstimate(100);
-    expect(small.lines.find((l) => l.label.startsWith("Setup"))?.amount).toBe(SETUP_MIN);
+    expect(small.lines.find((l) => l.label === "Setup fee")?.amount).toBe(SETUP_MIN / 2);
+    expect(small.lines.find((l) => l.label === "Teardown fee")?.amount).toBe(SETUP_MIN / 2);
     const noSetup = allInEstimate(100, { setup: false });
-    expect(noSetup.lines.some((l) => l.label.startsWith("Setup"))).toBe(false);
+    expect(noSetup.lines.some((l) => l.label.startsWith("Setup") || l.label.startsWith("Teardown"))).toBe(false);
+  });
+
+  it("charges chairs at the real per-chair setup/teardown rate, on top of the 15% share for the rest", () => {
+    const est = allInEstimate(1000, { chairQty: 100, chairRentals: 1000 });
+    const byLabel = Object.fromEntries(est.lines.map((l) => [l.label, l.amount]));
+    // All-chair order: otherShare is 0, so setup/teardown are purely the per-chair rate.
+    expect(byLabel["Setup fee"]).toBe(180); // 100 * $1.80
+    expect(byLabel["Teardown fee"]).toBe(90); // 100 * $0.90
   });
 });

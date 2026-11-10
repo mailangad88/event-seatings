@@ -2,11 +2,20 @@
 
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { vendors } from "@/data/catalog";
 import { checkAdmin } from "@/lib/admin-auth";
+import { callLogText, isCallOutcome } from "@/lib/call-list";
+import { proposalEmail } from "@/lib/intake";
+import { QUOTE_BCC, renderEmailHtml, sendEmail } from "@/lib/notify";
 import { amountDue, newProposalToken } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
+import { site } from "@/lib/site";
 import { getLead, isLeadStatus, statusLabel, updateLead, type LeadActivity, type LeadPatch } from "@/lib/store";
+
+// Sender for the "Email the quote" button below. Hardcoded (not NOTIFY_FROM) so this always goes out
+// as Beyond Chiavari's own address, whatever NOTIFY_FROM is set to for other visitor emails (Angad, 2026-11-09).
+const QUOTE_FROM = "Beyond Chiavari <hello@beyondchiavari.com>";
 
 // A real calendar day (2026-02-31 passes a pattern check but the database date column refuses it).
 const realDate = (d: string) => /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(`${d}T00:00:00Z`)) && new Date(`${d}T00:00:00Z`).toISOString().startsWith(d);
@@ -27,7 +36,7 @@ export async function saveLead(formData: FormData) {
   if (!lead) throw new Error("Lead not found");
 
   const patch: LeadPatch = {};
-  const log: Omit<LeadActivity, "at">[] = [];
+  const log: (Omit<LeadActivity, "at"> & { at?: string })[] = [];
 
   const status = formData.get("status");
   if (isLeadStatus(status) && status !== (lead.status ?? "new")) {
@@ -52,9 +61,17 @@ export async function saveLead(formData: FormData) {
   if (lost !== (lead.lost_reason ?? "")) patch.lost_reason = lost;
 
   const note = text(formData.get("note"));
-  if (note) {
-    const t = formData.get("note_type") as LeadActivity["type"];
-    log.push({ type: noteTypes.includes(t) ? t : "note", text: note });
+  const t = formData.get("note_type") as LeadActivity["type"];
+  const outcome = formData.get("outcome");
+  // Logging a call that already happened (e.g. caught up on paperwork before writing it down) —
+  // leave blank and it's stamped now like every other entry.
+  const loggedAt = text(formData.get("logged_at"), 25);
+  const at = loggedAt && !Number.isNaN(Date.parse(loggedAt)) ? new Date(loggedAt).toISOString() : undefined;
+
+  if (t === "call" && isCallOutcome(outcome)) {
+    log.push({ type: "call", text: note ? `${callLogText("new", outcome)}\n${note}` : callLogText("new", outcome), at });
+  } else if (note) {
+    log.push({ type: noteTypes.includes(t) ? t : "note", text: note, at });
   }
 
   if (Object.keys(patch).length || log.length) await updateLead(id, patch, log);
@@ -94,6 +111,33 @@ export async function createProposal(formData: FormData) {
   );
   revalidatePath(`/admin/leads/${id}`);
   revalidatePath("/admin/proposals");
+}
+
+// Emails the customer their quote/proposal link, through Resend — never opens the admin's own mail app.
+// Was a plain mailto: link, which only works if the admin's computer has a mail account configured
+// (Angad hit this: clicking it opened macOS Mail's "Add Account" screen instead of sending anything).
+export async function sendProposalEmail(formData: FormData) {
+  await requireAdmin();
+  const id = text(formData.get("id"), 64);
+  const lead = await getLead(id);
+  if (!lead || !lead.proposal_token || !lead.email) redirect(`/admin/leads/${id}`);
+
+  const { subject, body } = proposalEmail(lead, `${site.url}/proposal/${lead.proposal_token}`, process.env.OWNER_NAME || "Angad");
+  const html = await renderEmailHtml(subject, body);
+  const ok = await sendEmail({ to: lead.email, subject, text: body, from: QUOTE_FROM, bcc: QUOTE_BCC, html, idempotencyKey: `proposal-email/${lead.id}/${Date.now()}` });
+
+  if (!ok) {
+    await updateLead(id, {}, [{ type: "note", text: "Couldn't email the quote: Resend isn't configured or refused the send. Check RESEND_API_KEY in Vercel and that beyondchiavari.com is a verified sending domain in Resend." }]);
+    revalidatePath(`/admin/leads/${id}`);
+    redirect(`/admin/leads/${id}?email=failed`);
+  }
+
+  // Logged in full (not just "sent") so the timeline doubles as a record of what the customer was told,
+  // without the admin having to dig through Resend's own dashboard (Angad, 2026-11-09). The rendered
+  // HTML is kept too, so the admin can preview exactly what the email looked like.
+  await updateLead(id, {}, [{ type: "email", text: `To: ${lead.email}\nSubject: ${subject}\n\n${body}`, html }]);
+  revalidatePath(`/admin/leads/${id}`);
+  redirect(`/admin/leads/${id}?email=sent`);
 }
 
 // Manual override for fees paid outside Stripe (bank transfer, Zelle) or refunds.

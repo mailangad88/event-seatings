@@ -3,7 +3,7 @@ import { render } from "@react-email/render";
 import { safeEqual } from "@/lib/admin-auth";
 import { UnfinishedQuoteEmail } from "@/emails/UnfinishedQuoteEmail";
 import { log } from "@/lib/log";
-import { sendEmail } from "@/lib/notify";
+import { renderEmailHtml, sendEmail } from "@/lib/notify";
 import { planTodaysReminders, remindersSwitchedOn } from "@/lib/reminder-run";
 import { reminderLogText } from "@/lib/reminders";
 import { site } from "@/lib/site";
@@ -30,6 +30,7 @@ export async function GET(request: Request) {
   if (enabled && !dry) {
     for (const r of planned) {
       const unsub = unsubscribeUrl(r.lead.email);
+      const text = [...r.body, "", `The ${site.name} team`, "", `You're getting this because you contacted ${site.name}. Stop these emails: ${unsub}`].join("\n");
       // The unfinished-quote reminder gets the same visual treatment as the quote confirmation
       // email (hero image, item thumbnails, one CTA); the other two kinds keep the branded plain-text wrapper.
       const html =
@@ -43,18 +44,18 @@ export async function GET(request: Request) {
                 unsubscribe: unsub,
               }),
             ).catch((e) => (log.warn("unfinished_quote_html_failed", { leadId: r.lead.id, e }), undefined))
-          : undefined;
+          : await renderEmailHtml(r.subject, text, unsub);
       const ok = await sendEmail({
         to: r.lead.email,
         subject: r.subject,
-        text: [...r.body, "", `The ${site.name} team`, "", `You're getting this because you contacted ${site.name}. Stop these emails: ${unsub}`].join("\n"),
+        text,
         unsubscribe: unsub,
         html,
         idempotencyKey: `reminder/${r.lead.id}/${r.kind}`,
       });
       if (!ok) continue;
       sent++;
-      await updateLead(r.lead.id, {}, [{ type: "email", text: reminderLogText(r) }]).catch((e) => console.error("reminder log not saved", r.lead.id, e));
+      await updateLead(r.lead.id, {}, [{ type: "email", text: reminderLogText(r), html }]).catch((e) => console.error("reminder log not saved", r.lead.id, e));
     }
   }
   return Response.json({

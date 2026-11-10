@@ -91,7 +91,7 @@ export function NeedsTool({ prices }: { prices: Record<string, ToolPrice> }) {
             </section>
           ))}
         </div>
-        <PriceLines lines={need.map((l) => ({ id: l.id, qty: l.qty }))} prices={prices} />
+        <PriceLines lines={need.map((l) => ({ id: l.id, qty: l.qty }))} prices={prices} quoteHref={`/quote?items=${need.map((l) => l.id).join(",")}&guests=${s.guests}&from=tool-what-do-i-need`} />
         <ShareBar tool="what-do-i-need" quoteHref={`/quote?items=${need.map((l) => l.id).join(",")}&guests=${s.guests}&from=tool-what-do-i-need`} />
       </div>
     </div>

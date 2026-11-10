@@ -249,10 +249,14 @@ export async function POST(request: Request) {
             : sendConfirmation(saved)
         : Promise.resolve(undefined),
     ]);
-    // Log every email on the lead's timeline, so the record in /admin shows what went out and when.
-    const log: { type: "email"; text: string }[] = [];
+    // Log every email in full on the lead's timeline, so the record in /admin shows exactly what went
+    // out, not just that something was sent.
+    const log: { type: "email"; text: string; html?: string }[] = [];
     if (alert.status === "fulfilled" && alert.value) log.push({ type: "email", text: "Lead alert emailed to you" });
-    if (visitor.status === "fulfilled" && visitor.value) log.push({ type: "email", text: `Sent to ${saved.email}: "${visitor.value}"` });
+    if (visitor.status === "fulfilled" && visitor.value) {
+      const sent = visitor.value;
+      log.push({ type: "email", text: `To: ${saved.email}\nSubject: ${sent.subject}\n\n${sent.text}`, html: sent.html });
+    }
     if (log.length) await updateLead(saved.id, {}, log).catch((e) => console.error("email log not saved", saved.id, e));
   });
   return Response.json({ ok: true });

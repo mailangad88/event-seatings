@@ -59,10 +59,12 @@ export function toPublicItem(i: CatalogItem): PublicItem {
   };
 }
 
-// Customer prices are our own prices: the supplier's rate plus MARKUP, set by Angad on Nov 4 2026.
-// There is no separate booking or coordination fee. Customers see one price per item and never the
-// supplier's name or rate. (Vendor-facing pages and admin still use vendorPrice.)
-export const MARKUP = 0.15;
+// Customer prices are our own prices: the supplier's rate plus MARKUP, set by Angad on Nov 4 2026
+// (raised from 10% to 15%, then to 40% on Nov 9 2026). There is no separate booking or coordination
+// fee. Customers see one price per item and never the supplier's name or rate. (Vendor-facing pages
+// and admin still use vendorPrice.) Since Nov 9, this price only appears in a quote, labeled an
+// estimate — see PublicItem/toPublicItem callers and the public /rentals and /chairs pages.
+export const MARKUP = 0.4;
 
 const cents = (n: number) => Math.round(n * 100) / 100;
 
@@ -133,7 +135,7 @@ export function depositFor(subtotal: number, eventDate?: string, today?: Date): 
 export const DEPOSIT_LABEL = `${Math.round(PAYMENT_SCHEDULE.firstShare * 100)}% deposit`;
 
 // Our prices end on clean amounts, like a shop's own price list: the supplier's rate plus MARKUP,
-// rounded UP (so the markup is never under 15%) to $0.25 under $10, $1 under $100, $5 from $100.
+// rounded UP (so the markup is never under MARKUP) to $0.25 under $10, $1 under $100, $5 from $100.
 export function roundPrice(n: number) {
   if (n <= 0) return 0;
   const step = n < 10 ? 0.25 : n < 100 ? 1 : 5;

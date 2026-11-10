@@ -5,7 +5,7 @@ import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "bar-and-glassware";
 const title = "Bar and Glassware Calculator for Any Party";
-const description = "Work out drinks, bottles, ice and bartenders for your guests and hours, plus every wine, beer and champagne glass to rent, with Chicago prices.";
+const description = "Work out drinks, bottles, ice and bartenders for your guests and hours, plus every wine, beer and champagne glass to rent.";
 
 export const metadata = toolMetadata(slug, title, description);
 
@@ -31,7 +31,7 @@ export default function Page() {
         { title: "Guests and hours", text: "Only guests of drinking age.", icon: "users" },
         { title: "Drink mix", text: "Wine, beer, cocktails, soft drinks.", icon: "glass" },
         { title: "Glasses and ice", text: "How many per guest, and the toast.", icon: "plus" },
-        { title: "Price the glassware", text: "Rough cost, then a quote.", icon: "quote" },
+        { title: "See your list", text: "Glassware and bar counts, then a free quote.", icon: "quote" },
       ]}
       method={
         <>

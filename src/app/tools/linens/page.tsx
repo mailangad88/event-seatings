@@ -5,7 +5,7 @@ import { toolPrices } from "@/lib/tools/prices";
 
 const slug = "linens";
 const title = "Tablecloth Size Calculator for Any Table";
-const description = "Pick your table size and drop length to get the right standard linen size, plus napkin and runner counts and rough rental prices.";
+const description = "Pick your table size and drop length to get the right standard linen size, plus napkin and runner counts.";
 
 export const metadata = toolMetadata(slug, title, description);
 
@@ -31,7 +31,7 @@ export default function Page() {
         { title: "Pick the table", text: "Round, banquet or highboy.", icon: "table" },
         { title: "Choose the drop", text: "Lap, half or floor length.", icon: "linen" },
         { title: "Count the tables", text: "Add napkins and runners if you want them.", icon: "plus" },
-        { title: "Price the linens", text: "Rough cost, then a real quote.", icon: "quote" },
+        { title: "See your list", text: "Sizes and counts, then a real quote.", icon: "quote" },
       ]}
       method={
         <>

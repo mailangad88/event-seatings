@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "@/components/Link";
 import { Figure, HubFaqs, Icon, PageHero, QuoteCta, Section, type Faq } from "@/components/ui";
-import { formatPrice } from "@/components/ui/PriceTag";
 import { deliveryNoteFor, getVenueGuide, venueKindLabel, venuePath, venues } from "@/data/venues";
 import { getPackage } from "@/lib/packages";
 import { PAYMENT_SCHEDULE } from "@/lib/catalog-types";
@@ -21,7 +20,7 @@ export async function generateMetadata(props: PageProps<"/venues/[slug]">): Prom
   if (!v) return {};
   return seo({
     title: `Chair & Table Rentals for ${v.name} | ${site.market}`,
-    description: `Planning an event at ${v.name} in ${v.neighborhoodOrCity}? See what to rent, delivery notes and ready-made packages with prices, all on one quote.`,
+    description: `Planning an event at ${v.name} in ${v.neighborhoodOrCity}? See what to rent, delivery notes and ready-made packages, all on one free quote.`,
     alternates: { canonical: venuePath(v) },
   });
 }
@@ -41,7 +40,7 @@ export default async function VenuePage(props: PageProps<"/venues/[slug]">) {
     },
     {
       q: "How do you price rentals for an event here?",
-      a: "You see our own price for every chair, table and linen on the site, plus delivery, setup, a damage waiver and tax on one written quote. There's no separate booking fee, and we never charge a vendor markup you don't see.",
+      a: "Send us your list and we'll write up every chair, table and linen, plus delivery, setup, a damage waiver and tax, on one quote. There's no separate booking fee, and we never charge a vendor markup you don't see.",
     },
     {
       q: "How does payment work?",
@@ -114,8 +113,8 @@ export default async function VenuePage(props: PageProps<"/venues/[slug]">) {
                 <p className="eyebrow">{p.settingName} · {p.guests} guests</p>
                 <h3 className="display-3 mt-3">{p.name}</h3>
                 <p className="mt-3 leading-7 text-muted">{p.blurb}</p>
-                <p className="mt-5 text-2xl font-semibold text-ink">{formatPrice(p.allIn)} <span className="text-sm font-normal text-muted">all-in est.</span></p>
-                <p className="text-sm text-muted">{formatPrice(p.perGuest)} per guest · {p.itemCount} items</p>
+                <p className="mt-5 text-lg font-semibold text-wine">Get your price in a free quote</p>
+                <p className="text-sm text-muted">{p.itemCount} items, sized for {p.guests} guests</p>
                 <Link href={p.href} className="btn-ghost mt-5 inline-flex">
                   Start from this package <Icon name="arrow" size={14} />
                 </Link>
@@ -123,8 +122,8 @@ export default async function VenuePage(props: PageProps<"/venues/[slug]">) {
             ))}
           </ul>
           <p className="mt-6 text-sm text-muted">
-            Prices reprice to your exact guest count on the quote page. See every package on{" "}
-            <Link href="/packages" className="link">/packages</Link> or browse <Link href="/rentals" className="link">every rental and its price</Link>.
+            Your quote adjusts to your exact guest count. See every package on{" "}
+            <Link href="/packages" className="link">/packages</Link> or browse <Link href="/rentals" className="link">every rental</Link>.
           </p>
         </Section>
       )}

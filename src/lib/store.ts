@@ -8,6 +8,7 @@ import { mergeActivity, type ActivityEvent } from "./activity";
 import { backupConfigured, backupDeleteLead, backupGetJson, backupGetLead, backupListLeads, backupPutJson, backupPutLead } from "./lead-backup";
 import { isTransient, withRetry } from "./retry";
 import type { QuoteLine } from "./catalog-types";
+import type { FeeLine } from "./fees";
 import type { Journey } from "./journey";
 import type { VendorOrders } from "./orders";
 import type { Intake } from "./intake";
@@ -69,6 +70,15 @@ export type Lead = {
   items?: QuoteLine[];
   quote_subtotal?: number; // what the customer saw, at our prices (supplier rate + MARKUP)
   quote_cost?: number; // what the vendors charge us
+  // Delivery/setup/teardown/waiver/tax, edited in /admin/leads/<id>/quote. Unset = not yet touched by
+  // an admin, so the proposal and payment link fall back to the computed estimate (lib/fees.ts).
+  fee_lines?: FeeLine[];
+  // Override of the automatic first-booking $50 offer (lib/offers.ts), set the same way. 0 removes it;
+  // unset falls back to the automatic rule.
+  discount_amount?: number;
+  // Free text from /admin/leads/<id>/quote, shown to the customer on their proposal page and in the
+  // "Send updated quote" email (e.g. "pickup is the Monday after, not the Sunday" or a delivery window).
+  quote_notes?: string;
   // CRM fields, edited in /admin/leads.
   status?: LeadStatus;
   assigned_vendor?: string;
@@ -125,6 +135,10 @@ export type LeadActivity = {
   at: string;
   type: "note" | "status" | "call" | "email" | "text" | "vendor" | "follow_up";
   text: string;
+  // "email" entries only: the exact HTML that was sent, so the admin can preview it as the customer
+  // saw it, not just read the plain text. Unset on entries logged before this existed, and on emails
+  // RESEND_API_KEY wasn't configured for (no HTML was ever rendered).
+  html?: string;
 };
 
 // Marketing attribution saved with every lead: last touch (the visit that converted), first touch
@@ -523,6 +537,9 @@ export type LeadPatch = Partial<
     | "items"
     | "quote_subtotal"
     | "quote_cost"
+    | "fee_lines"
+    | "discount_amount"
+    | "quote_notes"
     | "vendor_orders"
     | "messages"
     | "intake"
@@ -552,12 +569,13 @@ export async function getLeadByProposalToken(token: string): Promise<Lead | unde
   return (await fallbackLeads()).find((l) => l.proposal_token === token);
 }
 
-// Applies CRM edits and appends `log` to the lead's activity timeline in one write.
-export async function updateLead(id: string, patch: LeadPatch, log: Omit<LeadActivity, "at">[] = []) {
+// Applies CRM edits and appends `log` to the lead's activity timeline in one write. An entry can carry its
+// own `at` (e.g. logging a call that happened earlier today) — most callers leave it unset and get `now`.
+export async function updateLead(id: string, patch: LeadPatch, log: (Omit<LeadActivity, "at"> & { at?: string })[] = []) {
   const lead = await getLead(id);
   if (!lead) throw new Error(`Lead ${id} not found`);
   const now = new Date().toISOString();
-  const activity = [...(lead.activity ?? []), ...log.map((a) => ({ ...a, at: now }))];
+  const activity = [...(lead.activity ?? []), ...log.map((a) => ({ ...a, at: a.at ?? now }))].sort((a, b) => a.at.localeCompare(b.at));
   // Supabase needs explicit nulls to clear a column; undefined would be skipped.
   const changes: Record<string, unknown> = { updated_at: now, activity };
   for (const [k, v] of Object.entries(patch)) changes[k] = v === undefined || v === "" ? null : v;

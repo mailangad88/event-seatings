@@ -3,8 +3,8 @@ import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { Icon, PriceDisclaimer } from "@/components/ui";
 import { PAYMENT_SCHEDULE, paymentPlanFor, usd } from "@/lib/catalog-types";
-import { allInEstimate } from "@/lib/fees";
-import { firstBookingDiscountApplied } from "@/lib/offers";
+import { feeLinesFor, sumFeeLines } from "@/lib/fees";
+import { discountFor } from "@/lib/offers";
 import { amountDue, chargeLabel, chargeMode, checkoutPaid, stripeEnabled } from "@/lib/payments";
 import { markFeePaid } from "@/lib/proposals";
 import { site } from "@/lib/site";
@@ -47,14 +47,15 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
   const lines = lead.items ?? [];
   const subtotal = lead.quote_subtotal ?? lines.reduce((s, l) => s + l.line_total, 0);
   const due = lead.fee_amount ?? amountDue(lead);
-  const allIn = allInEstimate(subtotal);
+  const feeLines = feeLinesFor(lead, subtotal);
+  const total = Math.round((subtotal + sumFeeLines(feeLines)) * 100) / 100;
   // The payment plan for this order: a deposit now, maybe a second installment, then the balance.
   // The installment amount is rentals only (no fees); the balance absorbs the rest, fees included.
   const plan = paymentPlanFor(subtotal, lead.event_date);
-  const discount = chargeMode() === "fee" ? firstBookingDiscountApplied(plan[0]?.amount ?? 0, subtotal) : 0;
+  const discount = chargeMode() === "fee" ? discountFor(lead, plan[0]?.amount ?? 0, subtotal) : 0;
   const installment = plan.length === 3 ? plan[1] : undefined;
   const finalDueDate = plan.length > 1 ? plan.at(-1)?.dueDate : undefined;
-  const balance = Math.max(0, Math.round((allIn.total - (chargeMode() === "fee" ? due + (installment?.amount ?? 0) : 0)) * 100) / 100);
+  const balance = Math.max(0, Math.round((total - (chargeMode() === "fee" ? due + (installment?.amount ?? 0) : 0)) * 100) / 100);
   const byDate = (dueDate: string | undefined, daysBefore: number) => (dueDate ? day(dueDate) : `${daysBefore} days before your event`);
   const event = [lead.event_type, day(lead.event_date), lead.guest_count ? `${lead.guest_count} guests` : undefined, lead.venue ?? lead.city]
     .filter(Boolean)
@@ -93,10 +94,10 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
               </table>
               <dl className="mt-5 space-y-1.5 text-sm">
                 <div className="flex justify-between font-medium"><dt>Rentals</dt><dd className="tabular-nums">{usd(subtotal)}</dd></div>
-                {allIn.lines.map((f) => (
-                  <div key={f.label} className="flex justify-between"><dt className="text-muted">{f.label}{f.note ? ` (${f.note})` : ""}</dt><dd className="tabular-nums">{usd(f.amount)}</dd></div>
+                {feeLines.map((f) => (
+                  <div key={f.id ?? f.label} className="flex justify-between"><dt className="text-muted">{f.label}{f.note ? ` (${f.note})` : ""}</dt><dd className="tabular-nums">{usd(f.amount)}</dd></div>
                 ))}
-                <div className="flex justify-between border-t border-line pt-2 font-medium"><dt>Estimated total</dt><dd className="tabular-nums">{usd(allIn.total)}</dd></div>
+                <div className="flex justify-between border-t border-line pt-2 font-medium"><dt>Estimated total</dt><dd className="tabular-nums">{usd(total)}</dd></div>
               </dl>
               <p className="mt-3 text-xs leading-5 text-muted">
                 No separate booking fee. Delivery and setup are confirmed once we have your venue details; anything that changes is shown here before you pay the balance.
@@ -104,6 +105,9 @@ export default async function ProposalPage(props: PageProps<"/proposal/[token]">
             </div>
           ) : (
             <p className="mt-3 text-muted">Your coordinator will add the itemized list here.</p>
+          )}
+          {lead.quote_notes && (
+            <p className="mt-4 rounded-xl bg-gold-soft/50 p-4 text-sm leading-6 text-ink">{lead.quote_notes}</p>
           )}
           <PriceDisclaimer className="mt-4" />
         </section>

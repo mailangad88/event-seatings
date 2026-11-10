@@ -8,15 +8,15 @@ import { BudgetExample } from "@/components/rentals/BudgetExample";
 import { RentalIcon } from "@/components/rentals/RentalIcon";
 import { RentalVisual, rentalAlt, rentalImagePath, similarAlt } from "@/components/rentals/RentalVisual";
 import { similarPhoto } from "@/data/similar-photo";
-import { Breadcrumb, Faqs, JsonLd, PriceBars, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
+import { Breadcrumb, Faqs, JsonLd, RentalCard, Steps, faqJsonLd, itemHref } from "@/components/rentals/parts";
 import { PriceList, type PriceListRow } from "@/components/rentals/PriceList";
-import { catalogItems, categories, customerPrice, formatPrice } from "@/data/catalog";
+import { catalogItems, categories } from "@/data/catalog";
 import { getCategory } from "@/data/catalog-products";
 import { categoryPhotos, photosForItem, stockAlt, stockImageJsonLd, stockSrc } from "@/data/stock-photos";
 import { ExampleChip, PhotoCredit, StockImg } from "@/components/rentals/StockPhoto";
 import { sampleBudgets } from "@/data/sample-budgets";
 import { categoryScene } from "@/lib/scenes";
-import { Icon, PriceDisclaimer } from "@/components/ui";
+import { Icon } from "@/components/ui";
 import { site } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
@@ -31,15 +31,14 @@ export async function generateMetadata(props: PageProps<"/rentals/[category]">):
   const c = getCategory((await props.params).category);
   if (!c) return {};
   const items = itemsIn(c.id);
-  const from = Math.min(...items.map(customerPrice));
   const first = items.map((i) => rentalImagePath(i.id, i.categoryId)).find(Boolean);
   const photo = categoryPhotos(c.id)[0];
   const og = first
     ? { url: first, alt: `${c.name} for rent in ${site.market}` }
     : { url: stockSrc(photo, 1200, 630), width: 1200, height: 630, alt: `${photo.alt}: ${c.name} for rent in ${site.market}` };
   return seo({
-    title: `${c.name} Rental ${site.market}: Prices from ${formatPrice(from)}`,
-    description: `${c.name} for rent in ${site.market} and the suburbs: ${c.blurb.toLowerCase()}. ${items.length} options from ${formatPrice(from)}, with sizing guides and FAQs. Get one quote.`,
+    title: `${c.name} Rental ${site.market}: Get a Free Quote`,
+    description: `${c.name} for rent in ${site.market} and the suburbs: ${c.blurb.toLowerCase()}. ${items.length} options, with sizing guides and FAQs. Get one itemized quote.`,
     alternates: { canonical: `/rentals/${c.id}` },
     openGraph: { images: [og] },
   });
@@ -49,7 +48,6 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
   const c = getCategory((await props.params).category);
   if (!c) notFound();
   const items = itemsIn(c.id);
-  const prices = items.map(customerPrice);
   const featured = items.filter((i) => i.featured);
   const inventory = items.filter((i) => !i.featured);
   const inventoryCount = inventory.length;
@@ -75,7 +73,6 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
       id: i.id,
       name: i.name,
       specs: i.specs,
-      price: customerPrice(i),
       unit: i.unit,
       href: itemHref(i),
       section: i.section ?? c.name,
@@ -93,8 +90,8 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
   const faqs = [
     ...c.faqs,
     {
-      q: `Do ${name} rental prices include delivery?`,
-      a: `No. The prices shown are per item for one event day: our own price, with no separate booking fee. Delivery and pickup, setup, a damage waiver and sales tax are added for your venue on the same itemized quote, so you see the all-in total before you book.`,
+      q: `How much does ${name} rental cost?`,
+      a: `It depends on quantity and your date, so we price it in a free quote. On top of the rental, a delivered order adds a delivery fee, a setup fee, a teardown fee, a damage waiver and Illinois sales tax, all itemized on the same quote before you book.`,
     },
     {
       q: `How far ahead should I book ${name} in ${site.market}?`,
@@ -145,9 +142,7 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{c.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="chip">{items.length} options</span>
-              <span className="chip">
-                {formatPrice(Math.min(...prices))} – {formatPrice(Math.max(...prices))}
-              </span>
+              <span className="chip">Get your price in a free quote</span>
               <span className="chip">Delivery across {site.marketLong}</span>
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
@@ -210,10 +205,9 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
               <Icon name="plus" size={22} className="shrink-0 text-accent transition-transform group-open/fl:rotate-45" />
             </summary>
             <p className="mt-3 max-w-2xl text-muted">
-              {inventoryCount} more styles, sizes and finishes. Prices are per
-              unit for one event day, before delivery, setup, damage waiver and tax (typically 35-60% more all-in).
+              {inventoryCount} more styles, sizes and finishes. Add any of these to your quote to see the price,
+              with delivery, setup, teardown, a damage waiver and tax itemized.
             </p>
-            <PriceDisclaimer className="mt-2 max-w-2xl" vendorLink />
             <div className="mt-10">
               <PriceList rows={priceListRows} category={c.id} />
             </div>
@@ -233,20 +227,12 @@ export default async function CategoryPage(props: PageProps<"/rentals/[category]
             <div className="mt-8">
               <Steps steps={c.planning} />
             </div>
-            <div className="mt-12 grid gap-16 lg:grid-cols-2">
-              <div>
-                <h3 id="prices" className="display-3 mb-6">
-                  {c.name} rental prices in {site.market}
-                </h3>
-                <PriceBars items={featured} caption={`Per-unit rental price for one event day, ${site.marketLong}.`} />
+            {budget && (
+              <div className="mt-12 max-w-xl">
+                <h3 className="display-3 mb-6">Worked example</h3>
+                <BudgetExample budget={budget} />
               </div>
-              {budget && (
-                <div>
-                  <h3 className="display-3 mb-6">Worked example</h3>
-                  <BudgetExample budget={budget} />
-                </div>
-              )}
-            </div>
+            )}
           </details>
         </section>
 

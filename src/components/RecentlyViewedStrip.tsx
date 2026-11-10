@@ -2,7 +2,6 @@
 
 import { useSyncExternalStore } from "react";
 import Link from "@/components/Link";
-import { formatPrice } from "./ui/PriceTag";
 import { recentlyViewed, subscribeRecentlyViewed } from "@/lib/recently-viewed";
 
 // A strip of the last few items this visitor opened, so comparing a handful of chairs or table sizes
@@ -32,9 +31,7 @@ export function RecentlyViewedStrip({ excludeId, className = "" }: { excludeId?:
                 )}
               </span>
               <span className="mt-2 block truncate text-sm">{i.name}</span>
-              <span className="block text-xs text-muted">
-                {formatPrice(i.price)} {i.unit}
-              </span>
+              <span className="block text-xs text-muted">Get a quote</span>
             </Link>
           </li>
         ))}

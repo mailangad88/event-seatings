@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { SideCard, sideImage } from "@/components/tools/CompareParts";
-import { FaqList, Icon, JsonLd, PageHero, PriceDisclaimer, QuoteCta, Section } from "@/components/ui";
+import { FaqList, Icon, JsonLd, PageHero, QuoteCta, Section } from "@/components/ui";
 import { comparisons, comparisonPath, getComparison } from "@/data/comparisons";
 import { getTool } from "@/data/tools";
 import { getCatalogItem } from "@/data/catalog";
 import { routeExists } from "@/lib/routes";
 import { site } from "@/lib/site";
-import { toolPrices } from "@/lib/tools/prices";
 
 export const dynamicParams = false;
 
@@ -31,9 +30,7 @@ export async function generateMetadata(props: PageProps<"/rental-comparisons/[sl
 export default async function ComparisonPage(props: PageProps<"/rental-comparisons/[slug]">) {
   const c = getComparison((await props.params).slug);
   if (!c) notFound();
-  const prices = toolPrices([c.a.item, c.b.item].filter((x): x is string => !!x));
-  const pa = c.a.item ? prices[c.a.item] : undefined;
-  const pb = c.b.item ? prices[c.b.item] : undefined;
+  const hasItem = (id?: string) => !!(id && getCatalogItem(id));
   const itemHref = (id?: string) => {
     const i = id ? getCatalogItem(id) : undefined;
     return i ? `/rentals/${i.categoryId}/${i.id}` : "/rentals";
@@ -70,8 +67,8 @@ export default async function ComparisonPage(props: PageProps<"/rental-compariso
         breadcrumbs={[{ name: "Rental comparisons", href: "/rental-comparisons" }, { name, href: comparisonPath(c) }]}
         media={
           <div className="grid grid-cols-2 gap-4">
-            <SideCard side={c.a} price={pa} label="Option A" />
-            <SideCard side={c.b} price={pb} label="Option B" />
+            <SideCard side={c.a} label="Option A" />
+            <SideCard side={c.b} label="Option B" />
           </div>
         }
       />
@@ -95,17 +92,16 @@ export default async function ComparisonPage(props: PageProps<"/rental-compariso
                   <td className="p-4 text-muted">{b}</td>
                 </tr>
               ))}
-              {(pa || pb) && (
+              {(hasItem(c.a.item) || hasItem(c.b.item)) && (
                 <tr>
-                  <th scope="row" className="p-4 font-medium">Rental price</th>
-                  <td className="p-4 text-muted">{pa ? <Link href={itemHref(c.a.item)} className="link">See the {c.a.name.toLowerCase()} price</Link> : "Ask for a quote"}</td>
-                  <td className="p-4 text-muted">{pb ? <Link href={itemHref(c.b.item)} className="link">See the {c.b.name.toLowerCase()} price</Link> : "Ask for a quote"}</td>
+                  <th scope="row" className="p-4 font-medium">Get a price</th>
+                  <td className="p-4 text-muted">{hasItem(c.a.item) ? <Link href={itemHref(c.a.item)} className="link">See the {c.a.name.toLowerCase()}</Link> : "Ask for a quote"}</td>
+                  <td className="p-4 text-muted">{hasItem(c.b.item) ? <Link href={itemHref(c.b.item)} className="link">See the {c.b.name.toLowerCase()}</Link> : "Ask for a quote"}</td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
-        {(pa || pb) && <PriceDisclaimer className="mt-3" />}
       </Section>
 
       <Section tone="sand" eyebrow="The verdict" title="Which should you choose?">

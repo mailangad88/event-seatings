@@ -12,6 +12,7 @@ import { chairs } from "../src/data/chairs";
 import { venues, venuePath } from "../src/data/venues";
 import { locations, eventTypes, locationPath, eventPath } from "../src/data/geo";
 import { localAreas, costCategories, areaRentalsPath, costPath, localCategories, localCategoryPath } from "../src/data/local-rentals";
+import { priceComparisonPagesEnabled } from "../src/lib/price-pages";
 import { ideas, partyTypes, ideaPath, typePath } from "../src/data/party-ideas";
 import { looks } from "../src/data/looks";
 import { families } from "../src/lib/guide-content";
@@ -68,7 +69,7 @@ async function build(): Promise<SearchEntry[]> {
   add("/glossary", "Glossary", "Plain-English definitions of event rental terms.", "page");
   add("/compare", "Compare rentals", "Side-by-side comparisons to help you choose.", "page");
   add("/party-rentals", "Party rentals by area", "Event rental pricing and tips for your part of Chicago.", "page");
-  add("/rental-cost", "Rental cost guides", "What things cost to rent in Chicago, and what changes the price.", "page");
+  if (priceComparisonPagesEnabled()) add("/rental-cost", "Rental cost guides", "What things cost to rent in Chicago, and what changes the price.", "page");
   add("/big-celebrations", "Big celebrations", "Rentals for large weddings, galas and milestone events.", "page");
   add("/venues-and-planners", "Venues & planners", "Information for venues and planners who refer us work.", "page");
   add("/answers", "Answers", "Quick answers to common event-planning questions.", "page");
@@ -99,7 +100,7 @@ async function build(): Promise<SearchEntry[]> {
   for (const l of localAreas) add(areaRentalsPath(l.slug), `Party rentals in ${l.name}`, l.metaDescription, "area");
   for (const l of localAreas)
     for (const c of localCategories) add(localCategoryPath(l.slug, c), `${c.label} in ${l.name}`, c.sizingNote, "rental category");
-  for (const c of costCategories) add(costPath(c.id), c.question, c.drivers[0]?.body, "cost guide");
+  if (priceComparisonPagesEnabled()) for (const c of costCategories) add(costPath(c.id), c.question, c.drivers[0]?.body, "cost guide");
 
   // Party ideas.
   for (const t of partyTypes) add(typePath(t.slug), t.metaTitle, t.metaDescription, "party ideas");

@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import Link from "@/components/Link";
 import { FaqList, Figure, JsonLd, PageHero, QuoteCta, Section, StatRow } from "@/components/ui";
 import { formatPrice } from "@/data/catalog";
@@ -10,6 +11,7 @@ import {
   priceIndexGroups,
   sampleOrder,
 } from "@/data/price-index";
+import { priceComparisonPagesEnabled } from "@/lib/price-pages";
 import { render } from "@/lib/scenes";
 import { seo } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -29,6 +31,7 @@ export const metadata = seo({
 const usd = (n: number) => (n < 10 ? `$${n.toFixed(2)}` : formatPrice(n));
 
 export default function PriceIndexPage() {
+  if (!priceComparisonPagesEnabled()) redirect("/quote");
   const rows = [...priceIndex];
   const byGap = [...rows].sort((a, b) => b.gapPct - a.gapPct);
   const avgGap = Math.round(rows.reduce((s, r) => s + r.gapPct, 0) / rows.length);
