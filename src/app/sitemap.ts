@@ -110,7 +110,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const localPages = [
     { url: `${site.url}/party-rentals`, priority: 0.8, lastModified: LOCAL_RENTALS_UPDATED },
     ...localAreas.map((l) => ({ url: `${site.url}${areaRentalsPath(l.slug)}`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED })),
-    ...localAreas.flatMap((l) => localCategories.map((c) => ({ url: `${site.url}${localCategoryPath(l.slug, c)}`, priority: 0.6, lastModified: LOCAL_RENTALS_UPDATED }))),
+    ...localAreas.flatMap((l) => localCategories.filter((c) => !c.thin).map((c) => ({ url: `${site.url}${localCategoryPath(l.slug, c)}`, priority: 0.6, lastModified: LOCAL_RENTALS_UPDATED }))),
     ...(priceComparisonPagesEnabled()
       ? [
           { url: `${site.url}/rental-cost`, priority: 0.75, lastModified: LOCAL_RENTALS_UPDATED },

@@ -99,7 +99,7 @@ async function build(): Promise<SearchEntry[]> {
   // "[item] rental [area]" and "[item] rental cost" local pages.
   for (const l of localAreas) add(areaRentalsPath(l.slug), `Party rentals in ${l.name}`, l.metaDescription, "area");
   for (const l of localAreas)
-    for (const c of localCategories) add(localCategoryPath(l.slug, c), `${c.label} in ${l.name}`, c.sizingNote, "rental category");
+    for (const c of localCategories.filter((c) => !c.thin)) add(localCategoryPath(l.slug, c), `${c.label} in ${l.name}`, c.sizingNote, "rental category");
   if (priceComparisonPagesEnabled()) for (const c of costCategories) add(costPath(c.id), c.question, c.drivers[0]?.body, "cost guide");
 
   // Party ideas.

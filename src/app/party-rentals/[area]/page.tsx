@@ -146,7 +146,7 @@ export default async function AreaRentalsPage(props: Props) {
                 </div>
                 <div className="p-5">
                   <h2 className="display-3">
-                    <Link href={localCategoryPath(loc.slug, c)} className="after:absolute after:inset-0">{c.label}</Link>
+                    <Link href={c.thin ? `/rentals/${c.id}` : localCategoryPath(loc.slug, c)} className="after:absolute after:inset-0">{c.label}</Link>
                   </h2>
                   <p className="mt-1 text-sm text-muted">
                     {count(c.id)} options from {formatPrice(fromPrice(c.id))}

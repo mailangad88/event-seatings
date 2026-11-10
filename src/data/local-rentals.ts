@@ -44,6 +44,11 @@ export type LocalCategory = {
   booking: string;
   /** Extra local question for the FAQ, {area} is replaced with the area name. */
   localFaq: { q: string; a: string };
+  /** Only 2-3 photographed, written-up products in this category (the rest of the catalog is
+   * unphotographed vendor inventory rows). With prices hidden, a per-area page for this category
+   * can't differ enough from area to area to avoid tripping near-duplicate detection, so these
+   * categories skip /party-rentals/[area]/[category] entirely and point to the category hub instead. */
+  thin?: boolean;
 };
 
 const GUESTS = [50, 100, 150, 200];
@@ -149,6 +154,7 @@ export const localCategories: LocalCategory[] = [
       q: "Can you lay a dance floor on grass in {area}?",
       a: "Yes, with a subfloor that levels the ground first, which adds cost and setup time. Tell us about the slope and surface at your {area} site and the partner prices the right base.",
     },
+    thin: true,
   },
   {
     id: "games-kids",
@@ -171,6 +177,7 @@ export const localCategories: LocalCategory[] = [
       q: "Can I put a bounce house in my {area} backyard?",
       a: "Usually, if the yard has a flat space larger than the unit, power within about 50 feet and no overhead lines. Some {area} parks and HOAs have their own rules, so check before booking an inflatable for a shared space.",
     },
+    thin: true,
   },
   {
     id: "photo-booths",
@@ -193,6 +200,7 @@ export const localCategories: LocalCategory[] = [
       q: "Does a photo booth need power at my {area} venue?",
       a: "Most booths need one standard outlet nearby. For outdoor spots in {area} without power, ask for a battery-powered booth or add a quiet generator to the quote.",
     },
+    thin: true,
   },
   {
     id: "lighting",
@@ -237,6 +245,7 @@ export const localCategories: LocalCategory[] = [
       q: "When do you need patio heaters for an outdoor event in {area}?",
       a: "In the Chicago area, evenings below about 60 degrees, which is common from late September through May. Book heaters for any outdoor event in {area} after sunset in spring or fall.",
     },
+    thin: true,
   },
   {
     id: "dinnerware",

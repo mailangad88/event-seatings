@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { AreaMap } from "@/components/geo/AreaMap";
 import { RentalCard, itemHref } from "@/components/rentals/parts";
 import { rentalImagePath } from "@/components/rentals/RentalVisual";
@@ -37,7 +37,7 @@ const PREBUILT_AREAS = new Set([
 export function generateStaticParams() {
   return localAreas
     .filter((l) => PREBUILT_AREAS.has(l.slug))
-    .flatMap((l) => localCategories.map((c) => ({ area: l.slug, category: c.slug })));
+    .flatMap((l) => localCategories.filter((c) => !c.thin).map((c) => ({ area: l.slug, category: c.slug })));
 }
 
 type Props = { params: Promise<{ area: string; category: string }> };
@@ -67,7 +67,7 @@ function pick(items: CatalogItem[], n: number, seed: string): CatalogItem[] {
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const d = await load(props);
-  if (!d) return {};
+  if (!d || d.lc.thin) return {};
   const { loc, lc, cat, place, items } = d;
   const path = localCategoryPath(loc.slug, lc);
   // cat.name (e.g. "Concessions") instead of the longer lc.label keeps most titles under fitTitle's
@@ -87,6 +87,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function AreaCategoryPage(props: Props) {
   const d = await load(props);
   if (!d) notFound();
+  if (d.lc.thin) redirect(areaRentalsPath(d.loc.slug));
   const { loc, lc, cat, items, place } = d;
   const path = localCategoryPath(loc.slug, lc);
   const url = `${site.url}${path}`;
@@ -283,7 +284,7 @@ export default async function AreaCategoryPage(props: Props) {
               columns={1}
               className="mt-4"
               items={[
-                ...others.map((c) => ({ href: localCategoryPath(loc.slug, c), label: `${c.label} in ${loc.name}` })),
+                ...others.map((c) => ({ href: c.thin ? `/rentals/${c.id}` : localCategoryPath(loc.slug, c), label: c.thin ? c.label : `${c.label} in ${loc.name}` })),
                 { href: locationPath(loc), label: `Chair rentals in ${loc.name}` },
               ]}
             />
