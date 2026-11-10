@@ -434,6 +434,7 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/blog/graveside-service-chair-rental` | Graveside service seating: what the funeral home brings, when to rent more, cemetery rules (daily post) | 2026-11-05 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ graveside-layout SVG, chair pair | ✅ | ✅ `/book` call + celebration-of-life checklist |
 | `/blog/career-fair-job-fair-chair-rental-chicago` | Career/job fair chair rental: recruiter booth counts, waiting row layout, venue questions (daily post) | 2026-11-08 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ booth-layout SVG, chair pair | ✅ | ✅ `/book` call |
 | `/blog/hoa-condo-annual-meeting-chair-rental-chicago` | HOA/condo annual meeting chair rental: turnout-based counts, row/aisle layout, clubhouse questions (daily post) | 2026-11-09 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ meeting-row SVG, chair pair | ✅ | ✅ `/book` call |
+| `/blog/prom-grand-march-chair-rental-chicago` | Prom grand march chair rental: runway row layout, turnout-based counts, separate from dinner-dance venue (daily post) | 2026-11-10 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ grand-march SVG, chair pair | ✅ | ✅ `/book` call |
 
 ### Chicago high-intent gap-fill batch (added 2026-11-06, overnight autonomous run)
 
