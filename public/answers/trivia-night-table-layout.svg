@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-labelledby="t"><title id="t">Trivia or game night table layout: a host and screen or scoreboard at the front, with team tables in rows facing it, each seating 6 to 8 players</title>
+<rect width="1200" height="620" fill="#1a1713"/><rect x="12" y="12" width="1176" height="596" fill="none" stroke="#c9a96a" stroke-opacity=".45"/>
+<text x="600" y="70" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="3">TRIVIA OR GAME NIGHT SEATING</text>
+<text x="600" y="122" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="38" fill="#efe4cf" text-anchor="middle" font-weight="300" letter-spacing="0">Teams at their own tables, facing the host</text>
+<rect x="420" y="170" width="360" height="70" fill="#c9a96a" fill-opacity=".85"/>
+<text x="600" y="212" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="2">HOST + SCREEN OR SCOREBOARD</text>
+<rect x="140" y="300" width="160" height="80" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<circle cx="160" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="160" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="200" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="200" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="240" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="240" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="280" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="280" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<text x="220" y="346" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TEAM 1</text>
+<rect x="400" y="300" width="160" height="80" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<circle cx="420" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="420" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="460" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="460" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="500" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="500" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="540" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="540" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<text x="480" y="346" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TEAM 2</text>
+<rect x="660" y="300" width="160" height="80" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<circle cx="680" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="680" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="720" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="720" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="760" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="760" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="800" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="800" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<text x="740" y="346" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TEAM 3</text>
+<rect x="920" y="300" width="160" height="80" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<circle cx="940" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="940" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="980" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="980" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="1020" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="1020" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="1060" cy="286" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="1060" cy="394" r="7" fill="none" stroke="#c9a96a"/>
+<text x="1000" y="346" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TEAM 4</text>
+<rect x="140" y="460" width="160" height="80" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<circle cx="160" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="160" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="200" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="200" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="240" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="240" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="280" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="280" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<text x="220" y="506" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TEAM 5</text>
+<rect x="400" y="460" width="160" height="80" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<circle cx="420" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="420" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="460" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="460" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="500" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="500" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="540" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="540" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<text x="480" y="506" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TEAM 6</text>
+<rect x="660" y="460" width="160" height="80" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<circle cx="680" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="680" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="720" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="720" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="760" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="760" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="800" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="800" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<text x="740" y="506" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TEAM 7</text>
+<rect x="920" y="460" width="160" height="80" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".7"/>
+<circle cx="940" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="940" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="980" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="980" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="1020" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="1020" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="1060" cy="446" r="7" fill="none" stroke="#c9a96a"/>
+<circle cx="1060" cy="554" r="7" fill="none" stroke="#c9a96a"/>
+<text x="1000" y="506" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="2">TEAM 8</text>
+<text x="600" y="580" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="1" font-style="italic">8 teams of 6 to 8 shown. Scale tables to your group and room.</text></svg>

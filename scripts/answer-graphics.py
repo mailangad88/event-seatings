@@ -344,4 +344,53 @@ for i,(n,h,sub) in enumerate(rows):
     b.append(text(870,y+24,sub,15,MUTED))
 b.append(text(600,600,"Schematic. HOA or condo pools often set their own furniture rules.",14,MUTED,SANS,"middle",400,1,True))
 write("pool-party-seating-zones.svg",svg(1200,640,"Backyard pool party seating zones: water-safe loungers in the splash zone around the pool, and a separate shaded dry zone with tables for dining away from the water","\n".join(b)))
+# 13. Trivia night table layout (schematic)
+b=[eyebrow(600,70,"Trivia or game night seating","middle"),
+   text(600,122,"Teams at their own tables, facing the host",38,INK,SERIF,"middle",300)]
+# host area
+b.append(f'<rect x="420" y="170" width="360" height="70" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,212,"HOST + SCREEN OR SCOREBOARD",14,"#0a0806",SANS,"middle",500,2))
+# team tables
+teams=[(140,300),(400,300),(660,300),(920,300),(140,460),(400,460),(660,460),(920,460)]
+for i,(x,y) in enumerate(teams):
+    b.append(f'<rect x="{x}" y="{y}" width="160" height="80" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".7"/>')
+    for s_ in range(4):
+        b.append(f'<circle cx="{x+20+s_*40}" cy="{y-14}" r="7" fill="none" stroke="{GOLD}"/>')
+        b.append(f'<circle cx="{x+20+s_*40}" cy="{y+94}" r="7" fill="none" stroke="{GOLD}"/>')
+    b.append(text(x+80,y+46,f"TEAM {i+1}",13,MUTED,SANS,"middle",500,2))
+b.append(text(600,580,"8 teams of 6 to 8 shown. Scale tables to your group and room.",14,MUTED,SANS,"middle",400,1,True))
+write("trivia-night-table-layout.svg",svg(1200,620,"Trivia or game night table layout: a host and screen or scoreboard at the front, with team tables in rows facing it, each seating 6 to 8 players","\n".join(b)))
+# 14. Career/job fair booth row layout (schematic)
+b=[eyebrow(600,70,"Career or job fair seating","middle"),
+   text(600,122,"Recruiter booths along the wall, a waiting row for candidates",34,INK,SERIF,"middle",300)]
+b.append(f'<rect x="80" y="160" width="1040" height="60" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,196,"CHECK-IN / REGISTRATION TABLE",14,"#0a0806",SANS,"middle",500,2))
+booths=[(80,280),(300,280),(520,280),(740,280),(960,280)]
+for i,(x,y) in enumerate(booths):
+    b.append(f'<rect x="{x}" y="{y}" width="160" height="90" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".7"/>')
+    for s_ in range(2):
+        b.append(f'<circle cx="{x+50+s_*60}" cy="{y-14}" r="7" fill="none" stroke="{GOLD}"/>')
+    b.append(f'<circle cx="{x+80}" cy="{y+104}" r="7" fill="none" stroke="{GOLD}"/>')
+    b.append(text(x+80,y+50,f"EMPLOYER {i+1}",12,MUTED,SANS,"middle",500,2))
+b.append(f'<rect x="300" y="460" width="600" height="60" fill="none" stroke="{INK}" stroke-opacity=".5" stroke-dasharray="3 6"/>')
+b.append(text(600,452,"WAITING / NETWORKING ROW",12,MUTED,SANS,"middle",500,1.5))
+for cx in range(340,860,60):
+    b.append(f'<circle cx="{cx}" cy="490" r="8" fill="none" stroke="{GOLD}"/>')
+b.append(text(600,560,"Each booth seats one or two recruiters, one candidate chair facing them, plus a waiting row nearby.",14,MUTED,SANS,"middle",400,1,True))
+write("career-fair-booth-layout.svg",svg(1200,600,"Career or job fair seating layout: a check-in table at the front, recruiter booths along the wall each with chairs for staff and one candidate chair, and a waiting row of chairs for candidates between booths","\n".join(b)))
+# 15. HOA / condo annual meeting theater-row layout (schematic)
+b=[eyebrow(600,70,"HOA or condo annual meeting seating","middle"),
+   text(600,122,"Rows of chairs facing the board table, with an aisle down the middle",32,INK,SERIF,"middle",300)]
+b.append(f'<rect x="420" y="160" width="360" height="60" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,196,"BOARD / HEAD TABLE",14,"#0a0806",SANS,"middle",500,2))
+b.append(f'<rect x="200" y="230" width="140" height="40" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".7"/>')
+b.append(text(270,254,"SIGN-IN / PROXY",11,MUTED,SANS,"middle",500,1.5))
+rows_y=[310,360,410,460,510]
+for y in rows_y:
+    for x in list(range(220,560,40))+list(range(640,980,40)):
+        b.append(f'<circle cx="{x}" cy="{y}" r="7" fill="none" stroke="{GOLD}"/>')
+b.append(f'<line x1="600" y1="300" x2="600" y2="530" stroke="{INK}" stroke-opacity=".3" stroke-dasharray="3 6"/>')
+b.append(text(600,555,"Center aisle for mic runners and easy exits",13,MUTED,SANS,"middle",400))
+b.append(text(600,585,"Scale rows to expected turnout. Add a mic for Q&A and a table for ballots if voting is on the agenda.",14,MUTED,SANS,"middle",400,1,True))
+write("hoa-annual-meeting-layout.svg",svg(1200,610,"HOA or condo annual meeting seating layout: a board or head table at the front, a sign-in and proxy table to the side, and rows of chairs with a center aisle facing the board","\n".join(b)))
 print("ok")
