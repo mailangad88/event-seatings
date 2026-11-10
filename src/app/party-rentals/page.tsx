@@ -81,7 +81,7 @@ export default function PartyRentalsHub() {
                       {localCategories.slice(0, 4).map((c, i) => (
                         <span key={c.slug}>
                           {i > 0 && " · "}
-                          <Link href={localCategoryPath(l.slug, c)} className="hover:text-gold">{c.label.split(" ")[0]}</Link>
+                          <Link href={c.thin ? `/rentals/${c.id}` : localCategoryPath(l.slug, c)} className="hover:text-gold">{c.label.split(" ")[0]}</Link>
                         </span>
                       ))}
                     </p>

@@ -223,7 +223,7 @@ export default async function RentalCostPage(props: Props) {
               ))}
             </ul>
           </nav>
-          {lc && (
+          {lc && !lc.thin && (
             <nav aria-label={`${lc.label} by area`}>
               <h3 className="font-medium">{lc.label} by area</h3>
               <ul className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
