@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 610" width="1200" height="610" role="img" aria-labelledby="t"><title id="t">Homecoming court coronation seating layout: a raised riser with a row of chairs for the court facing the crowd, and rows of chairs for the student body facing the riser with a center aisle</title>
+<rect width="1200" height="610" fill="#1a1713"/><rect x="12" y="12" width="1176" height="586" fill="none" stroke="#c9a96a" stroke-opacity=".45"/>
+<text x="600" y="70" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="3">HOMECOMING COURT CORONATION</text>
+<text x="600" y="122" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="32" fill="#efe4cf" text-anchor="middle" font-weight="300" letter-spacing="0">A short ceremony before the dance floor opens</text>
+<rect x="420" y="150" width="360" height="90" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".6"/>
+<text x="600" y="182" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="2">RISER / STAGE</text>
+<g transform="translate(470,232) scale(0.55)" fill="none" stroke="#c9a96a" stroke-width="2.2" stroke-linecap="round"><path d="M4 -34 V0 M22 -34 V0 M4 -16 H24 M24 -16 V0 M4 -34 H22 M4 -26 H22"/></g>
+<g transform="translate(540,232) scale(0.55)" fill="none" stroke="#c9a96a" stroke-width="2.2" stroke-linecap="round"><path d="M4 -34 V0 M22 -34 V0 M4 -16 H24 M24 -16 V0 M4 -34 H22 M4 -26 H22"/></g>
+<g transform="translate(610,232) scale(0.55)" fill="none" stroke="#c9a96a" stroke-width="2.2" stroke-linecap="round"><path d="M4 -34 V0 M22 -34 V0 M4 -16 H24 M24 -16 V0 M4 -34 H22 M4 -26 H22"/></g>
+<g transform="translate(680,232) scale(0.55)" fill="none" stroke="#c9a96a" stroke-width="2.2" stroke-linecap="round"><path d="M4 -34 V0 M22 -34 V0 M4 -16 H24 M24 -16 V0 M4 -34 H22 M4 -26 H22"/></g>
+<g transform="translate(750,232) scale(0.55)" fill="none" stroke="#c9a96a" stroke-width="2.2" stroke-linecap="round"><path d="M4 -34 V0 M22 -34 V0 M4 -16 H24 M24 -16 V0 M4 -34 H22 M4 -26 H22"/></g>
+<text x="600" y="268" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">Court chairs in a row, facing the crowd</text>
+<rect x="250" y="320" width="700" height="190" fill="none" stroke="#c9a96a" stroke-opacity=".5" stroke-dasharray="4 6"/>
+<text x="600" y="312" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="1.5">STUDENT BODY SEATING, FACING THE RISER</text>
+<circle cx="280" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="326" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="372" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="418" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="464" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="510" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="556" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="602" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="648" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="694" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="740" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="786" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="832" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="878" cy="360" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="280" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="326" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="372" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="418" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="464" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="510" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="556" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="602" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="648" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="694" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="740" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="786" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="832" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="878" cy="400" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="280" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="326" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="372" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="418" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="464" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="510" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="556" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="602" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="648" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="694" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="740" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="786" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="832" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="878" cy="440" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="280" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="326" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="372" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="418" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="464" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="510" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="556" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="602" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="648" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="694" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="740" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="786" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="832" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="878" cy="480" r="6" fill="none" stroke="#c9a96a"/>
+<text x="600" y="545" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">Aisle down the middle for the court to walk in and out</text>
+<text x="600" y="575" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="1" font-style="italic">Chairs clear fast once the coronation ends, so the same floor can open for dancing.</text></svg>
