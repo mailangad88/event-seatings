@@ -408,4 +408,21 @@ b.append(f'<line x1="600" y1="300" x2="600" y2="500" stroke="{INK}" stroke-opaci
 b.append(text(600,525,"Entrance at the back, opposite the camera stand",13,MUTED,SANS,"middle",400))
 b.append(text(600,555,"Rows of chairs on both sides of the runway, facing in, for parents and family.",14,MUTED,SANS,"middle",400,1,True))
 write("prom-grand-march-layout.svg",svg(1200,585,"Prom grand march seating layout: a photographer or video stand at the front, a runway down the middle for couples to walk through, and rows of chairs on both sides facing in for parents and family","\n".join(b)))
+
+# 17. Homecoming court coronation seating (schematic)
+b=[eyebrow(600,70,"Homecoming court coronation","middle"),
+   text(600,122,"A short ceremony before the dance floor opens",32,INK,SERIF,"middle",300)]
+b.append(f'<rect x="420" y="150" width="360" height="90" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".6"/>')
+b.append(text(600,182,"RISER / STAGE",13,GOLD,SANS,"middle",500,2))
+for i,x in enumerate([470,540,610,680,750]):
+    b.append(chair(x,232,0.55))
+b.append(text(600,268,"Court chairs in a row, facing the crowd",13,MUTED,SANS,"middle",400))
+b.append(f'<rect x="250" y="320" width="700" height="190" fill="none" stroke="{GOLD}" stroke-opacity=".5" stroke-dasharray="4 6"/>')
+b.append(text(600,312,"STUDENT BODY SEATING, FACING THE RISER",12,MUTED,SANS,"middle",500,1.5))
+for ry in [360,400,440,480]:
+    for rx in range(280,920,46):
+        b.append(f'<circle cx="{rx}" cy="{ry}" r="6" fill="none" stroke="{GOLD}"/>')
+b.append(text(600,545,"Aisle down the middle for the court to walk in and out",13,MUTED,SANS,"middle",400))
+b.append(text(600,575,"Chairs clear fast once the coronation ends, so the same floor can open for dancing.",14,MUTED,SANS,"middle",400,1,True))
+write("homecoming-court-coronation-layout.svg",svg(1200,610,"Homecoming court coronation seating layout: a raised riser with a row of chairs for the court facing the crowd, and rows of chairs for the student body facing the riser with a center aisle","\n".join(b)))
 print("ok")
