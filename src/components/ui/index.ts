@@ -1,5 +1,6 @@
 // Beyond Chiavari UI kit. Import from "@/components/ui".
 export { ArticleLayout, type TocItem } from "./ArticleLayout";
+export { AuthorBio } from "./AuthorBio";
 export { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 export { Callout } from "./Callout";
 export { CategoryTile } from "./CategoryTile";
