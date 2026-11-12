@@ -1,3 +1,4 @@
+import { AuthorBio } from "./AuthorBio";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 import { Figure } from "./Figure";
 
@@ -70,7 +71,10 @@ export function ArticleLayout({
             </nav>
           )}
         </aside>
-        <div className="min-w-0">{children}</div>
+        <div className="min-w-0">
+          {children}
+          <AuthorBio />
+        </div>
         <aside className="min-w-0">{aside && <div className="sticky top-28 space-y-6">{aside}</div>}</aside>
       </div>
     </article>

@@ -81,7 +81,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
     spatialCoverage: { "@type": "Place", name: "Chicago metropolitan area, Illinois" },
     url,
     mainEntityOfPage: url,
-    author: { "@type": "Organization", name: site.name, url: site.url },
+    author: { "@type": "Person", name: site.owner.name, jobTitle: "Founder", worksFor: { "@id": `${site.url}/#business` } },
     publisher: { "@id": `${site.url}/#business` },
   };
 
