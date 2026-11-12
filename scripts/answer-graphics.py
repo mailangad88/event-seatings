@@ -425,4 +425,20 @@ for ry in [360,400,440,480]:
 b.append(text(600,545,"Aisle down the middle for the court to walk in and out",13,MUTED,SANS,"middle",400))
 b.append(text(600,575,"Chairs clear fast once the coronation ends, so the same floor can open for dancing.",14,MUTED,SANS,"middle",400,1,True))
 write("homecoming-court-coronation-layout.svg",svg(1200,610,"Homecoming court coronation seating layout: a raised riser with a row of chairs for the court facing the crowd, and rows of chairs for the student body facing the riser with a center aisle","\n".join(b)))
+
+# 18. Youth sports team banquet layout (schematic)
+b=[eyebrow(600,70,"Team banquet seating","middle"),
+   text(600,122,"Round tables for families, a head table for coaches and a clear line of sight",30,INK,SERIF,"middle",300)]
+b.append(f'<rect x="420" y="150" width="360" height="54" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,183,"COACH / AWARDS TABLE",13,"#0a0806",SANS,"middle",500,1.5))
+import math
+tables=[(230,260),(450,260),(670,260),(890,260),(230,400),(450,400),(670,400),(890,400)]
+for (tx,ty) in tables:
+    b.append(f'<circle cx="{tx}" cy="{ty}" r="46" fill="none" stroke="{GOLD}" stroke-width="2"/>')
+    for ang in range(0,360,45):
+        rx=tx+66*math.cos(math.radians(ang)); ry=ty+66*math.sin(math.radians(ang))
+        b.append(f'<circle cx="{rx:.0f}" cy="{ry:.0f}" r="6" fill="none" stroke="{GOLD}"/>')
+b.append(text(600,500,"Round tables for the team and families, each seating 8",14,MUTED,SANS,"middle",400))
+b.append(text(600,530,"A clear aisle to the awards table keeps the trophy walk-up short for every player.",14,MUTED,SANS,"middle",400,1,True))
+write("team-banquet-layout.svg",svg(1200,560,"Youth sports team banquet seating layout: a coach and awards table at the front, round tables of 8 for players and families, and a clear aisle to the awards table for the trophy walk-up","\n".join(b)))
 print("ok")
