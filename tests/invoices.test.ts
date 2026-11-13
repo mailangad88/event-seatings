@@ -46,11 +46,19 @@ describe("buildInvoice", () => {
     expect(paid.overdue).toBe(false);
   });
 
-  it("flags a stage overdue once its due date has passed and it isn't fully paid", () => {
-    const lead: Lead = { ...baseLead, event_date: "2026-11-20" }; // 14 days out: within 30-day window, so late-first-share applies
-    const invoice = buildInvoice(lead, 0, "2026-11-19"); // the final balance's due date (7 days before) is already past
-    expect(invoice.overdue).toBe(true);
-    expect(invoice.stages.some((s) => s.status === "overdue")).toBe(true);
+  it("never reports a stage overdue: the schedule re-derives from today, so a due date is always still ahead", () => {
+    // paymentPlanFor always picks the schedule shape from how many days today is from the event, so a stage's
+    // due date (itself calculated from that same cutoff) can never already be behind today — once today reaches
+    // it, the plan collapses to a single "due now" stage instead. Both calls below use the SAME explicit `today`
+    // for the schedule shape and the overdue check (see buildInvoice), which is what keeps this deterministic.
+    const lead: Lead = { ...baseLead, event_date: "2026-11-20" };
+    const farOut = buildInvoice(lead, 0, "2026-11-01"); // 19 days out: late-first-share, balance due 2026-11-13
+    expect(farOut.overdue).toBe(false);
+    expect(farOut.stages.some((s) => s.status === "overdue")).toBe(false);
+
+    const pastThatDueDate = buildInvoice(lead, 0, "2026-11-19"); // 1 day out: past the 11-13 due date, but collapsed to full payment
+    expect(pastThatDueDate.overdue).toBe(false);
+    expect(pastThatDueDate.stages.some((s) => s.status === "overdue")).toBe(false);
   });
 
   it("still invoices fees even when the rentals are paid in full up front", () => {
