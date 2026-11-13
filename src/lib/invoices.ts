@@ -52,7 +52,7 @@ export function buildInvoice(lead: Lead, paid: number, today: string = chicagoDa
   const rentals = lead.quote_subtotal ?? (lead.items ?? []).reduce((s, l) => s + l.line_total, 0);
   const fees = feeLinesFor(lead, rentals);
   const total = cents(rentals + sumFeeLines(fees));
-  const plan = paymentPlanFor(rentals, lead.event_date);
+  const plan = paymentPlanFor(rentals, lead.event_date, new Date(`${today}T12:00:00`));
   const [first, ...rest] = plan;
   const installment = plan.length === 3 ? rest[0] : undefined;
   const lastRentalStage = plan.at(-1);
