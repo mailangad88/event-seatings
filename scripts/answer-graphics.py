@@ -441,4 +441,21 @@ for (tx,ty) in tables:
 b.append(text(600,500,"Round tables for the team and families, each seating 8",14,MUTED,SANS,"middle",400))
 b.append(text(600,530,"A clear aisle to the awards table keeps the trophy walk-up short for every player.",14,MUTED,SANS,"middle",400,1,True))
 write("team-banquet-layout.svg",svg(1200,560,"Youth sports team banquet seating layout: a coach and awards table at the front, round tables of 8 for players and families, and a clear aisle to the awards table for the trophy walk-up","\n".join(b)))
+
+# 19. Eagle Scout court of honor seating (schematic)
+b=[eyebrow(600,70,"Eagle Scout court of honor","middle"),
+   text(600,122,"A head table for the badge and a flag line behind it",30,INK,SERIF,"middle",300)]
+b.append(f'<rect x="450" y="150" width="300" height="50" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".6"/>')
+b.append(text(600,181,"HEAD TABLE — SCOUT, PARENTS, SCOUTMASTER",11,GOLD,SANS,"middle",500,1))
+for i,x in enumerate([370,420,780,830]):
+    b.append(f'<rect x="{x}" y="156" width="14" height="38" fill="none" stroke="{GOLD}" stroke-width="1.5"/>')
+b.append(text(600,230,"TROOP FLAGS",11,MUTED,SANS,"middle",500,1.5))
+b.append(f'<rect x="250" y="270" width="700" height="220" fill="none" stroke="{GOLD}" stroke-opacity=".5" stroke-dasharray="4 6"/>')
+b.append(text(600,262,"FAMILY AND TROOP SEATING, FACING THE HEAD TABLE",12,MUTED,SANS,"middle",500,1.5))
+for ry in [310,350,390,430]:
+    for rx in range(280,920,46):
+        b.append(f'<circle cx="{rx}" cy="{ry}" r="6" fill="none" stroke="{GOLD}"/>')
+b.append(text(600,525,"Center aisle for the mentor pin and handshake line",13,MUTED,SANS,"middle",400))
+b.append(text(600,555,"A simple, respectful room: folding chairs are standard, with one nicer chair for the scout.",14,MUTED,SANS,"middle",400,1,True))
+write("eagle-scout-court-of-honor-layout.svg",svg(1200,585,"Eagle Scout court of honor seating layout: a head table for the scout, parents and scoutmaster with troop flags behind it, and rows of chairs for family and troop members facing the head table with a center aisle","\n".join(b)))
 print("ok")

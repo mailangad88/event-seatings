@@ -438,6 +438,7 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/blog/prom-grand-march-chair-rental-chicago` | Prom grand march chair rental: runway row layout, turnout-based counts, separate from dinner-dance venue (daily post) | 2026-11-10 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ grand-march SVG, chair pair | ✅ | ✅ `/book` call |
 | `/blog/homecoming-court-coronation-chair-rental` | Homecoming court coronation chair rental: riser row for court, student-body rows, fast turnover to the dance (daily post) | 2026-11-11 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ coronation SVG, chair pair | ✅ | ✅ `/book` call |
 | `/blog/youth-sports-team-banquet-chair-rental` | Youth sports team banquet chair rental: round tables for families, coach's/awards table, counting by families not roster (daily post) | 2026-11-12 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ team-banquet SVG, chair pair | ✅ | ✅ `/book` call |
+| `/blog/eagle-scout-court-of-honor-chair-rental` | Eagle Scout court of honor chair rental: head table + flag line, family/troop rows, VFW hall/church hall chair counts (daily post) | 2026-11-13 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ court-of-honor SVG, chair pair | ✅ | ✅ `/book` call |
 
 ### Chicago high-intent gap-fill batch (added 2026-11-06, overnight autonomous run)
 
