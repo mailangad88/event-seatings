@@ -458,4 +458,18 @@ for ry in [310,350,390,430]:
 b.append(text(600,525,"Center aisle for the mentor pin and handshake line",13,MUTED,SANS,"middle",400))
 b.append(text(600,555,"A simple, respectful room: folding chairs are standard, with one nicer chair for the scout.",14,MUTED,SANS,"middle",400,1,True))
 write("eagle-scout-court-of-honor-layout.svg",svg(1200,585,"Eagle Scout court of honor seating layout: a head table for the scout, parents and scoutmaster with troop flags behind it, and rows of chairs for family and troop members facing the head table with a center aisle","\n".join(b)))
+
+# 20. Chess tournament board pairing layout (schematic)
+b=[eyebrow(600,70,"Chess tournament seating","middle"),
+   text(600,122,"Pairing tables for two, with room on both sides for spectators",28,INK,SERIF,"middle",300)]
+b.append(f'<rect x="420" y="150" width="360" height="46" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,180,"TOURNAMENT DIRECTOR / PAIRING BOARD",12,"#0a0806",SANS,"middle",500,1.3))
+tables=[(230,260),(390,260),(550,260),(710,260),(870,260),(230,400),(390,400),(550,400),(710,400),(870,400)]
+for (tx,ty) in tables:
+    b.append(f'<rect x="{tx-34}" y="{ty-20}" width="68" height="40" fill="none" stroke="{GOLD}" stroke-width="2"/>')
+    b.append(f'<circle cx="{tx-50}" cy="{ty}" r="7" fill="none" stroke="{GOLD}"/>')
+    b.append(f'<circle cx="{tx+50}" cy="{ty}" r="7" fill="none" stroke="{GOLD}"/>')
+b.append(text(600,500,"Pairing tables for two players each, spaced for quiet concentration",14,MUTED,SANS,"middle",400))
+b.append(text(600,530,"Keep an aisle wide enough for a director to walk every board without bumping a chair.",14,MUTED,SANS,"middle",400,1,True))
+write("chess-tournament-layout.svg",svg(1200,560,"Chess tournament seating layout: a tournament director and pairing board at the front, and rows of two-player pairing tables with room for a director to walk between boards","\n".join(b)))
 print("ok")
