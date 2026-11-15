@@ -472,4 +472,20 @@ for (tx,ty) in tables:
 b.append(text(600,500,"Pairing tables for two players each, spaced for quiet concentration",14,MUTED,SANS,"middle",400))
 b.append(text(600,530,"Keep an aisle wide enough for a director to walk every board without bumping a chair.",14,MUTED,SANS,"middle",400,1,True))
 write("chess-tournament-layout.svg",svg(1200,560,"Chess tournament seating layout: a tournament director and pairing board at the front, and rows of two-player pairing tables with room for a director to walk between boards","\n".join(b)))
+
+# 21. White elephant gift exchange circle (schematic)
+import math
+b=[eyebrow(600,70,"White elephant seating","middle"),
+   text(600,122,"A single circle, so every chair can see the gift pile and the draw",30,INK,SERIF,"middle",300)]
+cx,cy,r=600,330,170
+n=14
+for i in range(n):
+    ang=2*math.pi*i/n - math.pi/2
+    x=cx+r*math.cos(ang); y=cy+r*math.sin(ang)
+    b.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="9" fill="none" stroke="{GOLD}" stroke-width="2"/>')
+b.append(f'<rect x="{cx-55}" y="{cy-30}" width="110" height="60" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".6"/>')
+b.append(text(cx,cy+6,"GIFT PILE",12,GOLD,SANS,"middle",500,1.5))
+b.append(text(600,535,"One circle of chairs, numbers drawn in order, gifts stay visible to everyone",14,MUTED,SANS,"middle",400))
+b.append(text(600,565,"No head table needed: every seat has an equal view and an equal turn.",14,MUTED,SANS,"middle",400,1,True))
+write("white-elephant-circle-layout.svg",svg(1200,600,"White elephant gift exchange seating layout: a single circle of chairs around a central gift pile, so every seat has an equal view of the gifts and the draw order","\n".join(b)))
 print("ok")
