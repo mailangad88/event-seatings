@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-labelledby="t"><title id="t">White elephant gift exchange seating layout: a single circle of chairs around a central gift pile, so every seat has an equal view of the gifts and the draw order</title>
+<rect width="1200" height="600" fill="#1a1713"/><rect x="12" y="12" width="1176" height="576" fill="none" stroke="#c9a96a" stroke-opacity=".45"/>
+<text x="600" y="70" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="3">WHITE ELEPHANT SEATING</text>
+<text x="600" y="122" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="30" fill="#efe4cf" text-anchor="middle" font-weight="300" letter-spacing="0">A single circle, so every chair can see the gift pile and the draw</text>
+<circle cx="600" cy="160" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="674" cy="177" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="733" cy="224" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="766" cy="292" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="766" cy="368" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="733" cy="436" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="674" cy="483" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="600" cy="500" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="526" cy="483" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="467" cy="436" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="434" cy="368" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="434" cy="292" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="467" cy="224" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<circle cx="526" cy="177" r="9" fill="none" stroke="#c9a96a" stroke-width="2"/>
+<rect x="545" y="300" width="110" height="60" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".6"/>
+<text x="600" y="336" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="1.5">GIFT PILE</text>
+<text x="600" y="535" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">One circle of chairs, numbers drawn in order, gifts stay visible to everyone</text>
+<text x="600" y="565" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="1" font-style="italic">No head table needed: every seat has an equal view and an equal turn.</text></svg>
