@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-labelledby="t"><title id="t">Chamber of commerce networking mixer layout: a check-in table, high-top clusters for mingling across most of the room, and a small block of chairs facing a podium only for the speaker segment</title>
+<rect width="1200" height="600" fill="#1a1713"/><rect x="12" y="12" width="1176" height="576" fill="none" stroke="#c9a96a" stroke-opacity=".45"/>
+<text x="600" y="70" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="3">NETWORKING MIXER SEATING</text>
+<text x="600" y="120" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="28" fill="#efe4cf" text-anchor="middle" font-weight="300" letter-spacing="0">Mostly standing, with a seated block only for the speaker segment</text>
+<rect x="90" y="155" width="150" height="46" fill="#2b2318" stroke="#c9a96a" stroke-opacity=".6"/>
+<text x="165" y="183" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#c9a96a" text-anchor="middle" font-weight="500" letter-spacing="1.5">CHECK-IN</text>
+<circle cx="380" cy="210" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="500" cy="180" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="620" cy="230" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="740" cy="185" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="860" cy="220" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="980" cy="190" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="420" cy="320" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="560" cy="300" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="700" cy="330" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="840" cy="300" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<circle cx="960" cy="320" r="16" fill="none" stroke="#c9a96a" stroke-width="1.5"/>
+<text x="600" y="275" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#a89d87" text-anchor="middle" font-weight="500" letter-spacing="1.5">HIGH-TOP CLUSTERS FOR MINGLING</text>
+<rect x="420" y="400" width="360" height="44" fill="#c9a96a" fill-opacity=".85"/>
+<text x="600" y="428" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#0a0806" text-anchor="middle" font-weight="500" letter-spacing="1.3">PODIUM / SPEAKER SPOT</text>
+<circle cx="420" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="462" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="504" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="546" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="588" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="630" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="672" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="714" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="756" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="798" cy="470" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="420" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="462" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="504" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="546" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="588" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="630" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="672" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="714" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="756" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<circle cx="798" cy="500" r="6" fill="none" stroke="#c9a96a"/>
+<text x="600" y="535" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="0">A short block of chairs only for the ribbon-cutting or speaker moment</text>
+<text x="600" y="565" font-family="Jost, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a89d87" text-anchor="middle" font-weight="400" letter-spacing="1" font-style="italic">The rest of the room stays open for mingling before and after.</text></svg>
