@@ -488,4 +488,22 @@ b.append(text(cx,cy+6,"GIFT PILE",12,GOLD,SANS,"middle",500,1.5))
 b.append(text(600,535,"One circle of chairs, numbers drawn in order, gifts stay visible to everyone",14,MUTED,SANS,"middle",400))
 b.append(text(600,565,"No head table needed: every seat has an equal view and an equal turn.",14,MUTED,SANS,"middle",400,1,True))
 write("white-elephant-circle-layout.svg",svg(1200,600,"White elephant gift exchange seating layout: a single circle of chairs around a central gift pile, so every seat has an equal view of the gifts and the draw order","\n".join(b)))
+
+# 22. Chamber of commerce networking mixer layout (schematic)
+b=[eyebrow(600,70,"Networking mixer seating","middle"),
+   text(600,120,"Mostly standing, with a seated block only for the speaker segment",28,INK,SERIF,"middle",300)]
+b.append(f'<rect x="90" y="155" width="150" height="46" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".6"/>')
+b.append(text(165,183,"CHECK-IN",12,GOLD,SANS,"middle",500,1.5))
+hightops=[(380,210),(500,180),(620,230),(740,185),(860,220),(980,190),(420,320),(560,300),(700,330),(840,300),(960,320)]
+for (x,y) in hightops:
+    b.append(f'<circle cx="{x}" cy="{y}" r="16" fill="none" stroke="{GOLD}" stroke-width="1.5"/>')
+b.append(text(600,275,"HIGH-TOP CLUSTERS FOR MINGLING",12,MUTED,SANS,"middle",500,1.5))
+b.append(f'<rect x="420" y="400" width="360" height="44" fill="{GOLD}" fill-opacity=".85"/>')
+b.append(text(600,428,"PODIUM / SPEAKER SPOT",12,"#0a0806",SANS,"middle",500,1.3))
+for ry in [470,500]:
+    for rx in range(420,800,42):
+        b.append(f'<circle cx="{rx}" cy="{ry}" r="6" fill="none" stroke="{GOLD}"/>')
+b.append(text(600,535,"A short block of chairs only for the ribbon-cutting or speaker moment",14,MUTED,SANS,"middle",400))
+b.append(text(600,565,"The rest of the room stays open for mingling before and after.",14,MUTED,SANS,"middle",400,1,True))
+write("networking-mixer-layout.svg",svg(1200,600,"Chamber of commerce networking mixer layout: a check-in table, high-top clusters for mingling across most of the room, and a small block of chairs facing a podium only for the speaker segment","\n".join(b)))
 print("ok")
