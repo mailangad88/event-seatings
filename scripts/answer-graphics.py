@@ -506,4 +506,21 @@ for ry in [470,500]:
 b.append(text(600,535,"A short block of chairs only for the ribbon-cutting or speaker moment",14,MUTED,SANS,"middle",400))
 b.append(text(600,565,"The rest of the room stays open for mingling before and after.",14,MUTED,SANS,"middle",400,1,True))
 write("networking-mixer-layout.svg",svg(1200,600,"Chamber of commerce networking mixer layout: a check-in table, high-top clusters for mingling across most of the room, and a small block of chairs facing a podium only for the speaker segment","\n".join(b)))
+
+# 23. Dance recital seating layout (schematic)
+b=[eyebrow(600,70,"Dance recital seating","middle"),
+   text(600,122,"Rows that give every family a clear view of the stage",30,INK,SERIF,"middle",300)]
+b.append(f'<rect x="420" y="150" width="360" height="90" fill="{SOFT}" stroke="{GOLD}" stroke-opacity=".6"/>')
+b.append(text(600,182,"STAGE",13,GOLD,SANS,"middle",500,2))
+b.append(text(600,223,"Performance area",12,MUTED,SANS,"middle",400))
+b.append(f'<rect x="250" y="310" width="700" height="230" fill="none" stroke="{GOLD}" stroke-opacity=".5" stroke-dasharray="4 6"/>')
+b.append(text(600,292,"AUDIENCE ROWS, FACING THE STAGE",12,MUTED,SANS,"middle",500,1.5))
+for ry in [360,400,440,480,520]:
+    offset = 10 if ry in (400,480) else 0
+    for rx in range(280+offset,920,46):
+        b.append(f'<circle cx="{rx}" cy="{ry}" r="6" fill="none" stroke="{GOLD}"/>')
+b.append(text(600,338,"FRONT ROW — RESERVED",11,GOLD,SANS,"middle",500,1.5))
+b.append(text(600,575,"Center aisle for mid-show exits, and staggered rows so no one sits behind a tall adult",14,MUTED,SANS,"middle",400))
+b.append(text(600,605,"Front row stays open for wheelchair access or small children who need to sit close.",14,MUTED,SANS,"middle",400,1,True))
+write("dance-recital-layout.svg",svg(1200,650,"Dance recital seating layout: a stage facing rows of audience chairs with a center aisle, staggered seats for sightlines, and a reserved front row for wheelchair access or small children","\n".join(b)))
 print("ok")
