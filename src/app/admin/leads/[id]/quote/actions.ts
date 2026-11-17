@@ -193,3 +193,32 @@ export async function sendQuote(formData: FormData) {
   revalidatePath(`/admin/leads/${id}/quote`);
   redirect(`/admin/leads/${id}/quote?email=sent`);
 }
+
+// Opens the customer-facing proposal page for this lead, creating the proposal link first if it doesn't
+// have one yet (no email sent — just so there's always a way to see what the customer would see, even
+// before the first "Send quote to customer"). Same gating as sendQuote and createProposal: a lead needs
+// at least $0.50 due to get a link.
+export async function previewQuote(formData: FormData) {
+  await requireAdmin();
+  const id = text(formData.get("id"), 64);
+  const lead = await getLead(id);
+  if (!lead) redirect(`/admin/leads/${id}/quote`);
+
+  let proposal_token = lead.proposal_token;
+  if (!proposal_token) {
+    if (amountDue(lead) < 0.5) {
+      await updateLead(id, {}, [{ type: "note", text: "Couldn't create a preview link: this lead has no priced items, so there is no fee to charge." }]);
+      revalidatePath(`/admin/leads/${id}/quote`);
+      redirect(`/admin/leads/${id}/quote?preview=failed`);
+    }
+    proposal_token = newProposalToken();
+    await updateLead(
+      id,
+      { proposal_token, proposal_created_at: new Date().toISOString(), fee_status: "unpaid", fee_amount: amountDue(lead) },
+      [{ type: "note", text: "Proposal link created." }],
+    );
+    revalidatePath(`/admin/leads/${id}`);
+    revalidatePath(`/admin/leads/${id}/quote`);
+  }
+  redirect(`/proposal/${proposal_token}`);
+}
