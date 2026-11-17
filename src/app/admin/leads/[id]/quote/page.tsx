@@ -10,7 +10,7 @@ import { feeLinesFor, sumFeeLines } from "@/lib/fees";
 import { discountFor } from "@/lib/offers";
 import { amountDue, chargeLabel } from "@/lib/payments";
 import { getLead } from "@/lib/store";
-import { saveQuote, sendQuote } from "./actions";
+import { previewQuote, saveQuote, sendQuote } from "./actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Edit quote", robots: { index: false } };
@@ -204,14 +204,23 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
             Couldn&apos;t send that email. Check RESEND_API_KEY in Vercel and that beyondchiavari.com is verified in Resend, or that this lead has an email address and priced items — see the note on the timeline.
           </p>
         )}
-        {lead.email ? (
-          <form action={sendQuote}>
-            <input type="hidden" name="id" value={lead.id} />
-            <button type="submit" className="btn-ghost">Send quote to customer</button>
-          </form>
-        ) : (
-          <p className="text-sm text-muted">Add an email address for this lead before you can send the quote.</p>
+        {sp.preview === "failed" && (
+          <p className="mb-2 text-sm text-rose">Couldn&apos;t open a preview: this lead has no priced items, so there is no quote to show.</p>
         )}
+        <div className="flex flex-wrap gap-3">
+          <form action={previewQuote}>
+            <input type="hidden" name="id" value={lead.id} />
+            <button type="submit" className="btn-ghost">Preview quote</button>
+          </form>
+          {lead.email ? (
+            <form action={sendQuote}>
+              <input type="hidden" name="id" value={lead.id} />
+              <button type="submit" className="btn-ghost">Send quote to customer</button>
+            </form>
+          ) : (
+            <p className="text-sm text-muted self-center">Add an email address for this lead before you can send the quote.</p>
+          )}
+        </div>
       </div>
     </div>
   );
