@@ -1,1 +1,44 @@
-IyBVcHRpbWUgY2hlY2s6IGV2ZXJ5IDE1IG1pbnV0ZXMsIGZldGNoIGtleSBwYWdlcyBhbmQgdGhlIGhlYWx0aCBlbmRwb2ludC4KIyBBIGZhaWxlZCBydW4gaXMgdGhlIGFsZXJ0IChHaXRIdWIgbm90aWZpZXMgdGhlIHJlcG8gb3duZXIgb2YgZmFpbGVkIHNjaGVkdWxlZCBydW5zKS4KIyBPcHRpb25hbDogYWRkIGFuIEFMRVJUX1dFQkhPT0tfVVJMIHJlcG9zaXRvcnkgc2VjcmV0IChTbGFjayBvciBEaXNjb3JkIHdlYmhvb2spIHRvIGFsc28gZ2V0IGEgY2hhdCBtZXNzYWdlLgojIFNldCB0aGUgU0lURV9VUkwgcmVwb3NpdG9yeSB2YXJpYWJsZSBvbmNlIGJleW9uZGNoaWF2YXJpLmNvbSBwb2ludHMgYXQgVmVyY2VsLgojClBBVVNFRCAyMDI2LTExLTE3IChBbmdhZCk6IHNjaGVkdWxlIHRyaWdnZXIgY29tbWVudGVkIG91dC4gVG8gcmVzdW1lLCB1bmNvbW1lbnQKIyB0aGUgInNjaGVkdWxlOiAtIGNyb24iIGxpbmVzIGJlbG93LiB3b3JrZmxvd19kaXNwYXRjaCBzdGlsbCB3b3JrcyBtZWFud2hpbGUuCm5hbWU6IFVwdGltZQoKb246CiAgIyBzY2hlZHVsZToKICAjICAgLSBjcm9uOiAiKi8xNSAqICogKiAqIgogIHdvcmtmbG93X2Rpc3BhdGNoOgoKcGVybWlzc2lvbnM6CiAgY29udGVudHM6IHJlYWQKCmpvYnM6CiAgY2hlY2s6CiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICB0aW1lb3V0LW1pbnV0ZXM6IDUKICAgIGVudjoKICAgICAgU0lURV9VUkw6ICR7eyB2YXJzLlNJVEVfVVJMIHx8ICdodHRwczovL2JleW9uZGNoaWF2YXJpLnZlcmNlbC5hcHAnIH19CiAgICBzdGVwczoKICAgICAgLSBuYW1lOiBDaGVjayBwYWdlcwogICAgICAgIGlkOiBjaGVjawogICAgICAgIHJ1bjogfAogICAgICAgICAgZmFpbGVkPSIiCiAgICAgICAgICBmb3IgcGF0aCBpbiAvYXBpL2hlYWx0aCAvIC9xdW90ZSAvcmVudGFscyAvdG9vbHMgL2Jvb2s7IGRvCiAgICAgICAgICAgIGNvZGU9JChjdXJsIC1zIC1vIC9kZXYvbnVsbCAtdyAiJXtodHRwX2NvZGV9IiAtLW1heC10aW1lIDIwIC1MICIkU0lURV9VUkwkcGF0aCIgfHwgZWNobyAwMDApCiAgICAgICAgICAgIGVjaG8gIiRwYXRoIC0+ICRjb2RlIgogICAgICAgICAgICBpZiBbICIkY29kZSIgLWx0IDIwMCBdIHx8IFsgIiRjb2RlIiAtZ2UgNDAwIF07IHRoZW4gZmFpbGVkPSIkZmFpbGVkICRwYXRoKCRjb2RlKSI7IGZpCiAgICAgICAgICBkb25lCiAgICAgICAgICBlY2hvICJmYWlsZWQ9JGZhaWxlZCIgPj4gIiRHSVRIVUJfT1VUUFVUIgogICAgICAgICAgaWYgWyAtbiAiJGZhaWxlZCIgXTsgdGhlbiBlY2hvICI6OmVycm9yOjpEb3duOiRmYWlsZWQiOyBleGl0IDE7IGZpCiAgICAgIC0gbmFtZTogQ2hhdCBhbGVydAogICAgICAgIGlmOiBmYWlsdXJlKCkKICAgICAgICBlbnY6CiAgICAgICAgICBIT09LOiAke3sgc2VjcmV0cy5BTEVSVF9XRUJIT09LX1VSTCB9fQogICAgICAgICAgRkFJTEVEOiAke3sgc3RlcHMuY2hlY2sub3V0cHV0cy5mYWlsZWQgfX0KICAgICAgICBydW46IHwKICAgICAgICAgIGlmIFsgLXogIiRIT09LIiBdOyB0aGVuIGV4aXQgMDsgZmkKICAgICAgICAgIG1zZz0i8J+aqCBVcHRpbWU6ICRTSVRFX1VSTCBpcyBmYWlsaW5nOiRGQUlMRUQiCiAgICAgICAgICBjdXJsIC1zIC1YIFBPU1QgLUggIkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbiIgLWQgInt9XCJ0ZXh0XCI6XCIkbXNnXCIsXCJjb250ZW50XCI6XCIkbXNnXCJ9IiAiJEhPT0siID4gL2Rldi9udWxs
+# Uptime check: every 15 minutes, fetch key pages and the health endpoint.
+# A failed run is the alert (GitHub notifies the repo owner of failed scheduled runs).
+# Optional: add an ALERT_WEBHOOK_URL repository secret (Slack or Discord webhook) to also get a chat message.
+# Set the SITE_URL repository variable once beyondchiavari.com points at Vercel.
+#
+# PAUSED 2026-11-17 (Angad): schedule trigger commented out. To resume, uncomment
+# the "schedule: - cron" lines below. workflow_dispatch still works meanwhile.
+name: Uptime
+
+on:
+  # schedule:
+  #   - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://beyondchiavari.vercel.app' }}
+    steps:
+      - name: Check pages
+        id: check
+        run: |
+          failed=""
+          for path in /api/health / /quote /rentals /tools /book; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 -L "$SITE_URL$path" || echo 000)
+            echo "$path -> $code"
+            if [ "$code" -lt 200 ] || [ "$code" -ge 400 ]; then failed="$failed $path($code)"; fi
+          done
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+          if [ -n "$failed" ]; then echo "::error::Down:$failed"; exit 1; fi
+      - name: Chat alert
+        if: failure()
+        env:
+          HOOK: ${{ secrets.ALERT_WEBHOOK_URL }}
+          FAILED: ${{ steps.check.outputs.failed }}
+        run: |
+          if [ -z "$HOOK" ]; then exit 0; fi
+          msg="🚨 Uptime: $SITE_URL is failing:$FAILED"
+          curl -s -X POST -H "Content-Type: application/json" -d "{\"text\":\"$msg\",\"content\":\"$msg\"}" "$HOOK" > /dev/null
