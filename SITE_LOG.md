@@ -442,6 +442,7 @@ All posts share the template in `src/app/blog/[slug]/page.tsx` (Article JSON-LD,
 | `/blog/chess-tournament-chair-rental` | Chess tournament chair rental: pairing tables for two, counting by entrants, comfort for a long tournament day (daily post) | 2026-11-14 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ chess-tournament SVG, chair pair | ✅ | ✅ `/book` call |
 | `/blog/white-elephant-party-chair-rental` | White elephant party chair rental: single circle around the gift pile, why rows/couches don't work, counting by RSVPs (daily post) | 2026-11-15 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ white-elephant SVG, chair pair | ✅ | ✅ `/book` call |
 | `/blog/networking-mixer-chair-rental` | Chamber of commerce networking mixer chair rental: mostly standing, seated block only for the speaker segment (daily post) | 2026-11-16 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ networking-mixer SVG, chair pair | ✅ | ✅ `/book` call |
+| `/blog/dance-recital-chair-rental` | Dance recital chair rental: audience rows facing the stage, sightline staggering, counting by attending family not dancers (daily post) | 2026-11-17 | ✅ | ✅ quick answer, stat grid, FAQPage (4) | ⚠️ Chicago-area (tag only) | ✅ dance-recital SVG, chair pair | ✅ | ✅ `/book` call |
 
 ### Chicago high-intent gap-fill batch (added 2026-11-06, overnight autonomous run)
 
