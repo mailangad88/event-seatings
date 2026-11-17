@@ -1,15 +1,22 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { getVendor } from "@/data/vendors";
 import { checkAdmin } from "@/lib/admin-auth";
 import { customerPrice, paymentPlanFor, usd, type QuoteLine } from "@/lib/catalog-types";
 import { feeLinesFor, sumFeeLines, type FeeLine } from "@/lib/fees";
-import { sendQuoteUpdateEmail } from "@/lib/notify";
+import { proposalEmail } from "@/lib/intake";
+import { QUOTE_BCC, renderEmailHtml, sendEmail, sendQuoteUpdateEmail, type SentEmail } from "@/lib/notify";
 import { discountFor } from "@/lib/offers";
-import { amountDue } from "@/lib/payments";
+import { amountDue, newProposalToken } from "@/lib/payments";
+import { site } from "@/lib/site";
 import { getLead, updateLead, type LeadPatch } from "@/lib/store";
+
+// Sender for "Send quote to customer" below. Hardcoded (not NOTIFY_FROM) so this always goes out as
+// Beyond Chiavari's own address, whatever NOTIFY_FROM is set to for other visitor emails (Angad, 2026-11-09).
+const QUOTE_FROM = "Beyond Chiavari <hello@beyondchiavari.com>";
 
 // Server Actions can be POSTed to from any URL, so each one checks the admin password itself.
 async function requireAdmin() {
@@ -143,18 +150,46 @@ export async function saveQuote(formData: FormData) {
   if (lead.proposal_token) revalidatePath(`/proposal/${lead.proposal_token}`);
 }
 
-// Emails the customer that their quote changed, with a link to see the new total and pay. Needs
-// RESEND_API_KEY + NOTIFY_FROM like every other visitor email. Allowed even once the deposit is paid —
-// that's exactly when a corrected delivery/setup fee changes the balance they still owe.
-export async function sendQuoteUpdate(formData: FormData) {
+// Emails the customer their quote: the first proposal link if this lead hasn't had one yet (creating it
+// first, same as the "Create proposal link" button on /admin/leads/<id>), or the updated-quote email if
+// it already has one. One button covers both, so there's always a way to send a quote right after editing
+// it here — Angad reported the button missing when a lead reached this page before a proposal existed
+// (2026-11-17). Needs RESEND_API_KEY + NOTIFY_FROM like every other visitor email.
+export async function sendQuote(formData: FormData) {
   await requireAdmin();
   const id = text(formData.get("id"), 64);
   const lead = await getLead(id);
-  if (!lead || !lead.proposal_token) return;
+  if (!lead || !lead.email) redirect(`/admin/leads/${id}/quote?email=failed`);
 
-  const sent = await sendQuoteUpdateEmail(lead);
-  if (sent) {
-    await updateLead(id, {}, [{ type: "email", text: `To: ${lead.email}\nSubject: ${sent.subject}\n\n${sent.text}`, html: sent.html }]);
-    revalidatePath(`/admin/leads/${id}`);
+  let sent: SentEmail | undefined;
+  if (!lead.proposal_token) {
+    if (amountDue(lead) < 0.5) {
+      await updateLead(id, {}, [{ type: "note", text: "Couldn't send the quote: this lead has no priced items, so there is no fee to charge." }]);
+      revalidatePath(`/admin/leads/${id}/quote`);
+      redirect(`/admin/leads/${id}/quote?email=failed`);
+    }
+    const proposal_token = newProposalToken();
+    await updateLead(
+      id,
+      { proposal_token, proposal_created_at: new Date().toISOString(), fee_status: "unpaid", fee_amount: amountDue(lead) },
+      [{ type: "note", text: "Proposal link created." }],
+    );
+    const { subject, body } = proposalEmail(lead, `${site.url}/proposal/${proposal_token}`, process.env.OWNER_NAME || "Angad");
+    const html = await renderEmailHtml(subject, body);
+    const ok = await sendEmail({ to: lead.email, subject, text: body, from: QUOTE_FROM, bcc: QUOTE_BCC, html, idempotencyKey: `proposal-email/${lead.id}/${Date.now()}` });
+    sent = ok ? { subject, text: body, html } : undefined;
+  } else {
+    sent = await sendQuoteUpdateEmail(lead);
   }
+
+  if (!sent) {
+    await updateLead(id, {}, [{ type: "note", text: "Couldn't email the quote: Resend isn't configured or refused the send. Check RESEND_API_KEY in Vercel and that beyondchiavari.com is a verified sending domain in Resend." }]);
+    revalidatePath(`/admin/leads/${id}/quote`);
+    redirect(`/admin/leads/${id}/quote?email=failed`);
+  }
+
+  await updateLead(id, {}, [{ type: "email", text: `To: ${lead.email}\nSubject: ${sent.subject}\n\n${sent.text}`, html: sent.html }]);
+  revalidatePath(`/admin/leads/${id}`);
+  revalidatePath(`/admin/leads/${id}/quote`);
+  redirect(`/admin/leads/${id}/quote?email=sent`);
 }

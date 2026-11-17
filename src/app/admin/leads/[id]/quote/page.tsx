@@ -10,13 +10,14 @@ import { feeLinesFor, sumFeeLines } from "@/lib/fees";
 import { discountFor } from "@/lib/offers";
 import { amountDue, chargeLabel } from "@/lib/payments";
 import { getLead } from "@/lib/store";
-import { saveQuote, sendQuoteUpdate } from "./actions";
+import { saveQuote, sendQuote } from "./actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Edit quote", robots: { index: false } };
 
 export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/quote">) {
   const { id } = await props.params;
+  const sp = await props.searchParams;
   const lead = await getLead(id);
   if (!lead) notFound();
   const lines = lead.items ?? [];
@@ -146,7 +147,7 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
 
         <fieldset className="mt-6 border-t border-line pt-5">
           <legend className="font-heading font-semibold text-xl">Additional notes</legend>
-          <p className="text-xs text-muted">Shown to the customer on their proposal page and in the &quot;Send updated quote&quot; email below.</p>
+          <p className="text-xs text-muted">Shown to the customer on their proposal page and in the &quot;Send quote to customer&quot; email below.</p>
           <label className="sr-only" htmlFor="quote_notes">Additional notes</label>
           <textarea
             id="quote_notes"
@@ -196,12 +197,22 @@ export default async function EditQuotePage(props: PageProps<"/admin/leads/[id]/
         </div>
       </form>
 
-      {lead.proposal_token && (
-        <form action={sendQuoteUpdate} className="mt-4">
-          <input type="hidden" name="id" value={lead.id} />
-          <button type="submit" className="btn-ghost">Send updated quote to customer</button>
-        </form>
-      )}
+      <div className="mt-4">
+        {sp.email === "sent" && <p className="mb-2 text-sm text-gold">Quote emailed to the customer.</p>}
+        {sp.email === "failed" && (
+          <p className="mb-2 text-sm text-rose">
+            Couldn&apos;t send that email. Check RESEND_API_KEY in Vercel and that beyondchiavari.com is verified in Resend, or that this lead has an email address and priced items — see the note on the timeline.
+          </p>
+        )}
+        {lead.email ? (
+          <form action={sendQuote}>
+            <input type="hidden" name="id" value={lead.id} />
+            <button type="submit" className="btn-ghost">Send quote to customer</button>
+          </form>
+        ) : (
+          <p className="text-sm text-muted">Add an email address for this lead before you can send the quote.</p>
+        )}
+      </div>
     </div>
   );
 }
