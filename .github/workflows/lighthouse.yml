@@ -2,12 +2,15 @@
 # Runs after each successful Vercel production deployment, weekly, and on demand.
 # Reports are uploaded to Lighthouse's free temporary public storage; links appear in the run log.
 # Assertions only warn, so a slow page never blocks a deploy.
+#
+# PAUSED 2026-11-17 (Angad): weekly schedule trigger commented out. To resume, uncomment
+# the "schedule: - cron" lines below. Still runs after a production deploy and via workflow_dispatch.
 name: Lighthouse
 
 on:
   deployment_status:
-  schedule:
-    - cron: "0 9 * * 1"
+  # schedule:
+  #   - cron: "0 9 * * 1"
   workflow_dispatch:
 
 permissions:

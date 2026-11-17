@@ -2,11 +2,14 @@
 # A failed run is the alert (GitHub notifies the repo owner of failed scheduled runs).
 # Optional: add an ALERT_WEBHOOK_URL repository secret (Slack or Discord webhook) to also get a chat message.
 # Set the SITE_URL repository variable once beyondchiavari.com points at Vercel.
+#
+# PAUSED 2026-11-17 (Angad): schedule trigger commented out. To resume, uncomment
+# the "schedule: - cron" lines below. workflow_dispatch still works meanwhile.
 name: Uptime
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
+  # schedule:
+  #   - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
